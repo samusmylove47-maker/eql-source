@@ -84,7 +84,7 @@ assets/
   vendor/three.min.js   r128, vendored so the 3D has no CDN dependency
 
 dungeons/
-  index.html            the ten plates, the five maps, the campaign plate
+  index.html            the ten plates and the five maps
   <slug>.html           survey plates (imported)
   <slug>-map.html       navigation maps (imported)
 

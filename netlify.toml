@@ -90,3 +90,11 @@
   from = "/calculator"
   to = "/tools/combo-calculator.html"
   status = 301
+
+# The campaign plate was withdrawn. It had been published and indexed, so
+# send its old URL to the dungeon index rather than leaving a dead end.
+[[redirects]]
+  from = "/dungeons/campaign-10-to-50.html"
+  to = "/dungeons/index.html"
+  status = 301
+  force = true

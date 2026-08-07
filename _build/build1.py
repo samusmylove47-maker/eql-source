@@ -303,18 +303,6 @@ dung = head("Dungeon survey plates",
         <div class="foot"><span>In build</span></div></div>
     </div>
   </section>
-
-  <section class="band">
-    <div class="sechead"><span class="n">Route</span><div><h2 class="sec">Campaign plate</h2></div></div>
-    <div class="cards c2">
-      <a class="card" href="campaign-10-to-50.html" style="--c:var(--bone)">
-        <div class="kicker">Levels 10 &ndash; 50</div>
-        <h3 class="t">The whole climb</h3>
-        <p class="d">Three passes through the surveyed zones, routed around ZEM, respawn timers and travel tolls, with
-          the standing orders that matter more than any single camp choice.</p>
-        <div class="foot"><span>Cross-zone</span><span class="go">Open &rarr;</span></div></a>
-    </div>
-  </section>
 </div>
 </main>
 ''' + foot("../")
