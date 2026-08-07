@@ -5,3 +5,4 @@ node_modules/
 .netlify/
 __pycache__/
 *.pyc
+.claude/settings.local.json
