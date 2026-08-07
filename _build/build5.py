@@ -9,6 +9,9 @@ CSS = '''<style>
 .ix-search{width:100%;font-family:"IBM Plex Mono",monospace;font-size:15px;padding:13px 15px;
   background:var(--panel2);border:1px solid var(--rule2);color:var(--bone)}
 .ix-search:focus{outline:2px solid var(--bone);outline-offset:-1px}
+/* Pinned rather than left to the browser default, which varies by engine and
+   in one common case lands at 4.69:1 — passing by 0.19 and only by accident. */
+.ix-search::placeholder{color:var(--dim);opacity:1}
 .ix-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:11px}
 .ix-row .lab{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--faint);margin-right:2px}
@@ -16,7 +19,8 @@ CSS = '''<style>
   padding:5px 9px;border:1px solid var(--rule);color:var(--mut);transition:all .12s}
 .fchip:hover{color:var(--bone);border-color:var(--rule2)}
 .fchip[aria-pressed="true"]{border-color:var(--bone);color:var(--bone);background:rgba(230,233,228,.07)}
-.fchip.z[aria-pressed="true"]{border-color:var(--zc);color:var(--zc);background:transparent}
+.fchip.z[aria-pressed="true"]{border-color:var(--zc);background:transparent;
+  color:var(--zc);color:color-mix(in srgb, var(--zc) 68%, var(--bone))}
 .ix-mode{display:flex;gap:0;border:1px solid var(--rule)}
 .ix-mode button{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:600;
   text-transform:uppercase;letter-spacing:.05em;padding:7px 16px;color:var(--mut)}
@@ -37,7 +41,11 @@ CSS = '''<style>
   text-transform:uppercase;color:var(--faint);margin-bottom:3px}
 .res .zone{text-align:right}
 .res .zone a{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;
-  text-transform:uppercase;letter-spacing:.03em;color:var(--zc);text-decoration:none}
+  text-transform:uppercase;letter-spacing:.03em;text-decoration:none;
+  /* Raw zone accents run 2.87:1 (Mistmoore) and 3.90:1 (Crushbone) here. 68%
+     is the blanket blend that clears 4.5:1 for all ten, hovered row included. */
+  color:var(--zc);
+  color:color-mix(in srgb, var(--zc) 68%, var(--bone))}
 .res .zone a:hover{text-decoration:underline}
 .res .cls{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px}
 .res .cls span{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.08em;

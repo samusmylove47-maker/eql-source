@@ -15,12 +15,15 @@ RETURN_CSS = """
 .ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a{color:#AEB9B8;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
 .ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
 .ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
  letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
-.ns-bar .ns-sep{color:#4E5C61}
-.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+/* These carried the pre-AA greys. #4E5C61 measured 2.46:1 on this bar. The
+   values here mirror assets/site.css's ramp; they are duplicated rather than
+   referenced because this chrome is injected into standalone tool pages. */
+.ns-bar .ns-sep{color:#7D9096}
+.ns-bar .ns-tag{margin-left:auto;color:#7D9096}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
 """
@@ -47,14 +50,16 @@ for z in Z:
     s = z['slug']
     extra = ''
     if s in MAPS:
-        extra = f'<span class="ns-sep">/</span><a href="{s}-map.html" style="color:{z["accent"]}">Navigation map &rarr;</a>'
+        extra = (f'<span class="ns-sep">/</span><a href="{s}-map.html" '
+                 f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">Navigation map &rarr;</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
            f"Plate {z['plate']:02d} &middot; {z['title']}", extra)
 # ---- maps
 for s in MAPS:
     z = BY[s]
-    extra = f'<span class="ns-sep">/</span><a href="{s}.html" style="color:{z["accent"]}">&larr; Survey plate</a>'
+    extra = (f'<span class="ns-sep">/</span><a href="{s}.html" '
+             f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">&larr; Survey plate</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}-map.html'), f'dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
            f"{z['title']} &middot; map", extra)

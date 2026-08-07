@@ -156,7 +156,7 @@ a.card:hover{background:var(--panel2);transform:translateY(-2px)}
      Blending a quarter of --bone in lifts every one of them over the floor
      without reassigning any zone accent. */
   color:var(--dim);   /* legible fallback where color-mix is unsupported */
-  color:color-mix(in srgb, var(--c,var(--dim)) 74%, var(--bone))}
+  color:color-mix(in srgb, var(--c,var(--dim)) 68%, var(--bone))}
 .card .t{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:29px;
   line-height:1;letter-spacing:.005em;text-transform:uppercase;color:var(--bone);margin:0 0 8px}
 .card .d{font-size:13.8px;color:var(--mut);margin:0 0 14px;line-height:1.55}
@@ -165,12 +165,12 @@ a.card:hover{background:var(--panel2);transform:translateY(-2px)}
   font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;
   text-transform:uppercase;color:var(--dim)}
 .card .foot .go{margin-left:auto;color:var(--c,var(--bone));
-  color:color-mix(in srgb, var(--c,var(--bone)) 74%, var(--bone))}
+  color:color-mix(in srgb, var(--c,var(--bone)) 68%, var(--bone))}
 .chipline{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .pill{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
   text-transform:uppercase;padding:3px 7px;border:1px solid currentColor;color:var(--dim)}
 .pill.ok{color:var(--ok)}.pill.warn{color:var(--warn-t)}
-.pill.live{color:var(--c);color:color-mix(in srgb, var(--c) 74%, var(--bone))}
+.pill.live{color:var(--c);color:color-mix(in srgb, var(--c) 68%, var(--bone))}
 
 /* zone row list */
 .ztable{border:1px solid var(--rule);margin-top:8px}
@@ -179,7 +179,8 @@ a.card:hover{background:var(--panel2);transform:translateY(-2px)}
   text-decoration:none;background:var(--panel);transition:background .14s}
 .zrow:last-child{border-bottom:0}
 .zrow:hover{background:var(--panel2)}
-.zrow .pn{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;color:var(--c)}
+.zrow .pn{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  color:var(--c);color:color-mix(in srgb, var(--c) 56%, var(--bone))}
 .zrow .zt{font-family:"Saira Condensed",sans-serif;font-size:23px;font-weight:700;
   text-transform:uppercase;letter-spacing:.01em;color:var(--bone);line-height:1.05}
 .zrow .zs{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--dim);

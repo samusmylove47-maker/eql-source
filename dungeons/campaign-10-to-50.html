@@ -73,12 +73,15 @@ footer h3{margin-top:0}
 .ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a{color:#AEB9B8;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
 .ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
 .ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
  letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
-.ns-bar .ns-sep{color:#4E5C61}
-.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+/* These carried the pre-AA greys. #4E5C61 measured 2.46:1 on this bar. The
+   values here mirror assets/site.css's ramp; they are duplicated rather than
+   referenced because this chrome is injected into standalone tool pages. */
+.ns-bar .ns-sep{color:#7D9096}
+.ns-bar .ns-tag{margin-left:auto;color:#7D9096}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
 </head>
@@ -115,8 +118,8 @@ footer h3{margin-top:0}
         <text x="162" y="122" text-anchor="middle">Bind Affinity</text>
         <text x="204" y="134" text-anchor="middle" fill="#D9A227">14</text>
         <text x="204" y="110" text-anchor="middle">Spirit of Wolf</text>
-        <text x="330" y="134" text-anchor="middle" fill="#C9453A">20</text>
-        <text x="330" y="122" text-anchor="middle" fill="#C9453A">TOLL BEGINS</text>
+        <text x="330" y="134" text-anchor="middle" fill="#D46C64">20</text>
+        <text x="330" y="122" text-anchor="middle" fill="#D46C64">TOLL BEGINS</text>
         <text x="435" y="134" text-anchor="middle" fill="#D9A227">25</text>
         <text x="435" y="110" text-anchor="middle">Circles / Portals</text>
         <text x="477" y="134" text-anchor="middle" fill="#D9A227">26–27</text>
@@ -128,7 +131,7 @@ footer h3{margin-top:0}
         <text x="112" y="350" text-anchor="end">PASS 2</text>
         <text x="112" y="460" text-anchor="end">PASS 3</text>
       </g>
-      <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+      <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#95A2A2">
         <text x="112" y="254" text-anchor="end">porters</text>
         <text x="112" y="364" text-anchor="end">war / shm</text>
         <text x="112" y="474" text-anchor="end">final trio</text>
@@ -187,7 +190,7 @@ footer h3{margin-top:0}
         <text x="435" y="575">25</text><text x="540" y="575">30</text><text x="645" y="575">35</text>
         <text x="750" y="575">40</text><text x="855" y="575">45</text><text x="960" y="575">50</text>
       </g>
-      <text x="120" y="600" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B" letter-spacing="1.6">CHARACTER LEVEL — EQUAL TO YOUR LOWEST ACTIVE CLASS</text>
+      <text x="120" y="600" font-family="IBM Plex Mono, monospace" font-size="9" fill="#95A2A2" letter-spacing="1.6">CHARACTER LEVEL — EQUAL TO YOUR LOWEST ACTIVE CLASS</text>
     </svg>
   </div>
 </section>

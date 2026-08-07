@@ -9,7 +9,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#D9A227;--accd:#8a6a1c;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#8A9998;--dim:#6C7B7B;--ok:#5FA37E;--warn:#C9453A;--blue:#4FA3D1;--vio:#8E7BC7;--orange:#D9762A}
+/* Grey ramp and --warn lifted so every step clears WCAG AA (4.5:1) on the
+   darkest panel it lands on. --dim previously bottomed out at 3.22:1. Raising
+   it alone would have collided with --mut, so the whole ramp moved up to keep
+   three distinguishable greys. --warn doubles as the "Extreme" tier colour, so
+   lifting it also fixes the tier ramp's darkest step. --vio was 3.93:1 at 18px
+   — just under the large-text floor, so it needed 4.5. Accents are unchanged. */
+:root{--acc:#D9A227;--accd:#8a6a1c;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#A6B3B2;--dim:#8B9999;--ok:#5FA37E;--warn:#D8776F;--blue:#4FA3D1;--vio:#9A89CD;--orange:#D9762A}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
@@ -284,7 +290,7 @@ const RORDER=["DEF","ELF","HUMQ","HIE","HEF","GNM","DWF","KER","HUMF","BAR","FRG
 
 const CLASSNAMES={WAR:"Warrior",CLR:"Cleric",PAL:"Paladin",RNG:"Ranger",SHD:"Shadow Knight",DRU:"Druid",MNK:"Monk",BRD:"Bard",ROG:"Rogue",SHM:"Shaman",NEC:"Necromancer",WIZ:"Wizard",MAG:"Magician",ENC:"Enchanter",BST:"Beastlord",BER:"Berserker"};
 const CORDER=["BRD","BST","BER","CLR","DRU","ENC","MAG","MNK","NEC","PAL","RNG","ROG","SHD","SHM","WAR","WIZ"];
-const TIERS={0:{l:"Free with another",c:"#5FA37E"},1:{l:"Very easy",c:"#5FA37E"},2:{l:"Easy",c:"#4FA3D1"},3:{l:"Moderate",c:"#D9A227"},4:{l:"Hard",c:"#D9762A"},5:{l:"Extreme",c:"#C9453A"}};
+const TIERS={0:{l:"Free with another",c:"#5FA37E"},1:{l:"Very easy",c:"#5FA37E"},2:{l:"Easy",c:"#4FA3D1"},3:{l:"Moderate",c:"#D9A227"},4:{l:"Hard",c:"#D9762A"},5:{l:"Extreme",c:"#D8776F"}};
 const KINDS={buy:{l:"Buy",c:"buy"},craft:{l:"Craft",c:"buy"},farm:{l:"Farm",c:"farm"},free:{l:"Free items",c:"free"},forage:{l:"Forage",c:"farm"}};
 
 /* ============ STATE ============ */
