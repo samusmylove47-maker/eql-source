@@ -12,7 +12,9 @@ VIEWER_CSS = '''<style>
 .ph{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;
   padding:7px 12px;border:1px solid var(--rule);color:var(--mut);transition:all .15s}
 .ph:hover{color:var(--bone);border-color:var(--rule2)}
-.ph[aria-pressed="true"]{border-color:var(--ember);color:var(--ember);background:rgba(196,72,46,.1)}
+/* The pressed tint darkens the background, so the raw ember label came out at
+   3.25:1 — the active button was harder to read than the inactive ones. */
+.ph[aria-pressed="true"]{border-color:var(--ember);color:var(--ember-t);background:rgba(196,72,46,.1)}
 #stage{width:100%;height:clamp(360px,54vh,600px);display:block;background:#0A0E10;cursor:grab;touch-action:none}
 #stage:active{cursor:grabbing}
 .enc-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:1px;
@@ -35,7 +37,7 @@ VIEWER_CSS = '''<style>
 .steps{counter-reset:s;list-style:none;padding:0;margin:20px 0 0}
 .steps li{counter-increment:s;position:relative;padding:14px 0 14px 52px;border-bottom:1px solid var(--rule)}
 .steps li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:14px;
-  font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600;color:var(--ember)}
+  font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600;color:var(--ember-t)}
 .steps .sh{font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:700;text-transform:uppercase;
   letter-spacing:.02em;color:var(--bone);line-height:1.15}
 .steps .sb{font-size:14px;color:var(--mut);margin-top:4px;max-width:72ch}
@@ -45,8 +47,9 @@ VIEWER_CSS = '''<style>
 .loot td{padding:9px 12px;border-bottom:1px solid var(--rule);background:var(--panel);vertical-align:top}
 .loot tr:last-child td{border-bottom:0}
 .loot .it{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:600;color:var(--bone);letter-spacing:.02em}
-.loot .cl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ember);letter-spacing:.06em}
+.loot .cl{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ember-t);letter-spacing:.06em}
 .scroller{overflow-x:auto;border:1px solid var(--rule);margin:8px 0 0}
+.scroller:focus-visible{outline:2px solid var(--bone);outline-offset:2px}
 .scroller table{min-width:560px}
 </style>'''
 
@@ -55,7 +58,7 @@ BODY = '''
 <div class="shell">
   <div class="page-head">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
-    <p class="eyebrow" style="color:var(--ember)">Island 8 &middot; Butterfly Island &middot; final boss</p>
+    <p class="eyebrow" style="color:var(--ember-t)">Island 8 &middot; Butterfly Island &middot; final boss</p>
     <h1>Eye of<br>Veeshan</h1>
     <p class="lede">Mechanically among the simplest fights in the zone. Logistically among the hardest, because
       reaching him means keying your entire raid to the top of a nine-island stack where a single knockback destroys
@@ -95,7 +98,7 @@ BODY = '''
           <button class="ph" data-phase="3" aria-pressed="false">Fight on 8</button>
         </div>
       </div>
-      <canvas id="stage" aria-label="Three-dimensional schematic of Plane of Sky islands 7 and 8 showing raid positioning for the Eye of Veeshan encounter"></canvas>
+      <canvas id="stage" tabindex="0" role="img" aria-label="Three-dimensional schematic of Plane of Sky islands 7 and 8 showing raid positioning for the Eye of Veeshan encounter. Focus this diagram and use the arrow keys to orbit, plus and minus to zoom."></canvas>
       <div class="enc-legend">
         <div class="lg"><span class="nm"><span class="sw" style="background:#C4482E"></span>Eye of Veeshan</span>
           <span class="ds">32,000 HP &middot; 865 a swing</span></div>
@@ -182,7 +185,7 @@ BODY = '''
       <p class="lede" style="margin:0">The Eye is the sole source of one component on eleven of the sixteen class
         unlock lines. Every trio in the game has at least one member who needs something here.</p></div>
       <a class="link" href="../tools/plane-of-sky.html">Track it &rarr;</a></div>
-    <div class="scroller"><table class="loot">
+    <div class="scroller" tabindex="0" role="region" aria-label="Loot table, scrolls sideways"><table class="loot">
       <thead><tr><th>Component</th><th>Feeds</th><th>Reward</th></tr></thead>
       <tbody>
         <tr><td class="it">Ethereal Emerald</td><td class="cl">WAR</td><td>Fangol &mdash; 2H Slash 29 / 35, proc</td></tr>
@@ -225,7 +228,10 @@ SCRIPT = r'''<script src="../assets/vendor/three.min.js"></script>
 <script>
 (function(){
   var cv=document.getElementById('stage'); if(!cv||!window.THREE) return;
-  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var mq=window.matchMedia&&window.matchMedia('(prefers-reduced-motion:reduce)');
+  var reduce=!!(mq&&mq.matches);
+  // Honour the setting when it changes, not only at load.
+  if(mq&&mq.addEventListener) mq.addEventListener('change',function(e){reduce=e.matches;});
   var C={ember:0xC4482E,tank:0x7FB2C7,raid:0xE6E9E4,bait:0xD9A227,portal:0x5FA37E,
          deck7:0x1E262B,deck8:0x232C32,edge:0x3A484F};
 
@@ -340,8 +346,25 @@ SCRIPT = r'''<script src="../assets/vendor/three.min.js"></script>
   cv.addEventListener('touchstart',function(e){if(e.touches.length===1)down(e.touches[0].clientX,e.touches[0].clientY);},{passive:true});
   cv.addEventListener('touchmove',function(e){if(e.touches.length===1){move(e.touches[0].clientX,e.touches[0].clientY);e.preventDefault();}},{passive:false});
   window.addEventListener('touchend',function(){drag=false;});
+  // Zoom only once the viewer has focus, so a page scroll that happens to pass
+  // over the canvas keeps scrolling the page instead of being swallowed.
   cv.addEventListener('wheel',function(e){
+    if(document.activeElement!==cv)return;
     dist=Math.max(34,Math.min(150,dist+e.deltaY*0.06)); place(); e.preventDefault();},{passive:false});
+
+  // Keyboard orbit. Without this the diagram is pointer-only and unusable to
+  // anyone navigating by keyboard.
+  cv.addEventListener('keydown',function(e){
+    var STEP=0.12, k=e.key, handled=true;
+    if(k==='ArrowLeft')       az-=STEP;
+    else if(k==='ArrowRight') az+=STEP;
+    else if(k==='ArrowUp')    pol=Math.max(0.22,pol-STEP*0.6);
+    else if(k==='ArrowDown')  pol=Math.min(1.44,pol+STEP*0.6);
+    else if(k==='+'||k==='=') dist=Math.max(34,dist-6);
+    else if(k==='-'||k==='_') dist=Math.min(150,dist+6);
+    else handled=false;
+    if(handled){place();e.preventDefault();}
+  });
 
   function resize(){
     var w=cv.clientWidth, h=cv.clientHeight;
