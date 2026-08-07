@@ -2,35 +2,29 @@
 
 A reference site for EverQuest Legends: dungeon survey plates, 3D raid
 encounter guides, and progression tools. Static HTML, no server, no database.
-Deployed by Netlify on every push to `main`.
+Netlify publishes on every merge to `main`.
 
-**Read this fully before your first edit in a session.** It is the constitution.
-For what to actually *do*, read `HANDOFF.md` then `docs/BACKLOG.md`. For design
-work, `docs/DESIGN.md` is binding.
+Read this before your first edit in a session. For what to do, read `HANDOFF.md`
+then `docs/BACKLOG.md`. For design work, `docs/DESIGN.md` is binding.
 
 ---
 
 ## 1. The standing agreement
 
 **The human directs.** Priorities, scope, what publishes and when. They supply
-in-game observation, screenshots and logs — things you cannot obtain.
+in-game observation, screenshots and logs.
 
 **You own accuracy.** Which claims enter the site, how each is sourced, what is
 flagged uncertain, and what is refused for lack of evidence. Where sources
 conflict, you adjudicate and record the reasoning.
 
-What "owns accuracy" honestly means: you are the authority on *what the sources
-say* and on *how confident the pages should sound*. You are not the authority on
-ground truth in a live, actively-patched game you cannot play. Conflating those
-two is how bad guides get written.
+That authority has a limit: you are the authority on *what the sources say* and
+on *how confident the pages should sound*, not on ground truth in a live,
+actively-patched game you cannot play.
 
-**So the standard is: every claim traceable to a named source with a date, and
-every gap stated rather than smoothed over.** A page that says "unresolved" in
-the right place is worth more than one that reads well throughout and is quietly
-wrong.
-
-This gives you one obligation that overrides tidiness: **flag uncertainty even
-when it makes a page look less finished.**
+**The standard: every claim traceable to a named source with a date, and every
+gap stated rather than smoothed over.** Flag uncertainty even when it makes a
+page look less finished.
 
 ---
 
@@ -41,24 +35,24 @@ Higher tiers override lower ones. Always.
 1. **Official patch notes** — everquestlegends.com/news. Dated and authoritative.
    Anything published after a wiki page's last edit supersedes that page.
 2. **Structured wiki data** — eqlwiki.com infoboxes, NPC tables, item tables,
-   coordinate records. Somebody entered these from the live game.
+   coordinate records. Entered from the live game.
 3. **eqprogression.com / eqlwiki user guides** — Alanna's Race Unlock Guide and
    similar. Named authors, actively maintained, generally reliable.
 4. **Community aggregators** — EQL Build Forge, EQ Legends Tools. Useful for
    cross-checking, snapshot-dated.
-5. **Wiki prose** — **treat as Project 1999 import until proven otherwise.**
-   Large parts are classic EverQuest text, word for word. It describes a
-   single-class game at fixed difficulty. Quote it only when marked as classic.
+5. **Wiki prose** — treat as Project 1999 import until proven otherwise. Large
+   parts are classic EverQuest text, word for word, describing a single-class
+   game at fixed difficulty. Quote it only when marked as classic.
 
-**Never** cite Project 1999 or Allakhazam as current Legends fact. They are
-useful for historical context and nothing else.
+**Never** cite Project 1999 or Allakhazam as current Legends fact. Historical
+context only.
 
 ### Badge everything below tier 2
 
-Tiers 1 and 2 print plain. **Tiers 3, 4 and 5 must carry a visible badge
-wherever the claim appears** — `<span class="tier t3">T3</span>` and so on. The
-scale is published on the home page and it is the reason the site exists. A T3
-claim printed bare is a bug, and a worse one than a broken link.
+Tiers 1 and 2 print plain. **Tiers 3, 4 and 5 carry a visible badge wherever the
+claim appears** — `<span class="tier t3">T3</span>` and so on. The scale is
+published on the home page. A T3 claim printed bare is a bug, and a worse one
+than a broken link.
 
 ### Two systems that invalidate most inherited advice
 
@@ -69,8 +63,8 @@ claim printed bare is a bug, and a worse one than a broken link.
   class kits, widens aggro ranges and pre-upgrades loot. Named mobs are often
   multiclass from D2; raid bosses start appearing triple-class at D3.
 
-Any inherited line like "you need a full group of level 50s" came from a game
-where neither was true. Unreliable in both directions. Mark it.
+Inherited lines like "you need a full group of level 50s" came from a game where
+neither was true. Unreliable in both directions. Mark them.
 
 ---
 
@@ -78,11 +72,11 @@ where neither was true. Unreliable in both directions. Mark it.
 
 - **Never invent a number.** No drop rate, spawn timer, coordinate, stat or plat
   cost that you did not read in a named source. If it is not sourced, write
-  "not recorded" and move on.
-- **Never present classic EverQuest as Legends.** When a page carries inherited
+  "not recorded".
+- **Never present classic EverQuest as Legends.** Where a page carries inherited
   prose, say so in place.
-- **Never delete a flagged gap to make a page look complete.** Gaps are removed
-  by evidence, not by tidying.
+- **Never delete a flagged gap to make a page look complete.** Gaps close with
+  evidence, not tidying.
 - **Never edit files in `dungeons/` or `tools/` directly.** They are generated.
   Edit the originals in `_build/source/` and run `./build.sh`.
 - **Never push straight to `main` for content changes.** Branch, open a pull
@@ -91,17 +85,17 @@ where neither was true. Unreliable in both directions. Mark it.
 - **New Sebilis / New Sebilisian Expedition content is out of scope** for the
   dungeon plates. The one exception is the Iksar race unlock, which requires
   that faction and is part of the race tracker.
-- **Do not clone eqltools.com.** It is a good sibling site with client-mined
-  data, log parsing and 3D zone geometry we cannot match. Our layer is quests,
-  factions, routes and tactics. Link to them rather than shipping worse copies.
-  `docs/BACKLOG.md` lists exactly what not to build.
+- **Do not clone eqltools.com.** Client-mined data, log parsing and 3D zone
+  geometry we cannot match. Our layer is quests, factions, routes and tactics.
+  Link to them rather than shipping worse copies. `docs/BACKLOG.md` lists what
+  not to build.
 
 ---
 
 ## 4. File map
 
 ```
-HANDOFF.md          START HERE. Current state and the three jobs
+HANDOFF.md          current state and the open work
 site.config.json    site name, tagline and URL. The ONLY place these live
 index.html          GENERATED by _build/build1.py
 sources.html        GENERATED by _build/build2.py
@@ -111,20 +105,21 @@ tools/              GENERATED — four tools, imported or built
 assets/
   site.css          the entire design system, one file
   zones-index.json  DRIVES ALL NAVIGATION. Edit this, rebuild, everything updates
-  index-data.json   mined from the plates by _build/extract.py
+  index-data.json   GENERATED — mined from the plates by _build/extract.py
   vendor/three.min.js   r128, vendored. Do not switch to a CDN
 _build/
-  _partials.py      site name, header, nav, footer
-  build1.py         home          build2.py  tools/raids/sources indexes
+  _partials.py      head, nav and footer
+  build1.py         home and dungeon index
+  build2.py         tools, raids and sources indexes
   build3.py         imports plates and tools, injects chrome
   build4.py         raid encounter guides, contains the 3D engine
-  extract.py        mines the plates into index-data.json
   build5.py         The Index tool
+  extract.py        mines the plates into index-data.json
   sitemap.py        sitemap + robots
   source/           the real originals. Edit these
 docs/
   BACKLOG.md        the work, prioritised, with acceptance criteria
-  DESIGN.md         the aesthetic brief. Binding for any design work
+  DESIGN.md         the aesthetic brief. Binding for design work
   SOURCES.md        source hierarchy and the automation watchlist
   AUTOMATION.md     how the twice-daily refresh works
 scripts/check.py    validation. Run before every commit
@@ -132,49 +127,57 @@ state/              automation memory. Do not hand-edit
 ```
 
 **`assets/zones-index.json` is the single source of navigation truth.** Home
-page, spectrum bars and dungeon index all read from it. One edit updates
-everything.
+page, spectrum bars and dungeon index all read from it.
+
+Generated files are overwritten by `./build.sh`. A rebuild silently throws away
+anything edited in place; `check.py` will not catch it.
 
 ---
 
 ## 5. Build and verify
 
 ```bash
-./build.sh            # regenerate the whole site
-python3 scripts/check.py   # validate before committing
+./build.sh
+python3 scripts/check.py
 ```
 
-`check.py` verifies every internal link resolves, every page has the site chrome
-and a favicon, `zones-index.json` matches the files on disk, no page has lost its
-stylesheet, and — importantly — **that no page claims more verified plates than
-the data supports.** Run it before every commit. A red check is a blocker, not a
-warning.
+`check.py` verifies that every internal link resolves, every page has the site
+chrome and a favicon, `zones-index.json` matches the files on disk, no page has
+lost its stylesheet, and **no page claims more verified plates than the data
+supports.** Run it before every commit. A red check is a blocker, not a warning.
 
 **The counting invariant.** `verify_level` is `full`, `partial` or `none`, and
 anything not `full` must name its open gate in `verify_gate`. The home page and
-the plates page both render the count from that field. This exists because the
-site once published "8 of 10 verified" while the ledger said 5 — three sources
-of truth disagreed and the highest number reached the front page. Never let a
-count be derived from "has a date in the field".
+the plates page render the count from that field. The site once published "8 of
+10 verified" while the ledger said 5, because three sources of truth disagreed
+and the highest number reached the front page. Never derive a count from "has a
+date in the field".
+
+**On Windows**, `build.sh` needs a `python3` on PATH; Windows ships only
+`python`. Any new `open()` in a generator must specify `encoding='utf-8'` and,
+for writes, `newline='\n'` — the platform defaults corrupt the output.
 
 ---
 
 ## 6. Design system
 
-`docs/DESIGN.md` is the full brief and is binding for design work. The
-non-negotiables, repeated here because they are easy to break by accident:
+`docs/DESIGN.md` is the full brief and is binding. The non-negotiables, repeated
+because they are easy to break by accident:
 
-- **Monochrome chrome, polychrome content.** The frame is bone and graphite.
-  All colour comes from the material — the ten zone accents, instrument blue for
+- **Monochrome chrome, polychrome content.** The frame is bone and graphite. All
+  colour comes from the material — the ten zone accents, instrument blue for
   tools, ember for raids.
 - **Three faces.** Saira Condensed (display, uppercase, tight), IBM Plex Mono
   (data, labels, anything numeric), Public Sans (prose).
 - **The spectrum** on the home page is the signature: one bar per zone, in plate
   order, in that zone's permanent accent, height keyed to the top of its level
-  band. It is ornament, chart and navigation at once. If zone count changes,
+  band. Ornament, chart and navigation at once. If the zone count changes,
   update `grid-template-columns:repeat(10,1fr)` in `site.css`.
 - Each zone owns its accent permanently. Never reuse or reassign one.
 - Hairline borders, no rounded corners, no drop shadows, no gradients.
+
+**Desktop PC is the primary target.** Other devices must stay functional and
+390px must not overflow, but where a trade-off exists, the desktop reading wins.
 
 ---
 
@@ -185,8 +188,7 @@ is not. Short sentences. No hype, no "ultimate guide", no exclamation marks.
 British spelling. Numerals for game figures. Address the reader as "you" only in
 instructional passages.
 
-**The tell of a bad page is a smooth sentence covering a hole.** If you catch
-yourself writing around a gap, stop and name the gap instead.
+Do not write around a gap. Name it instead.
 
 ---
 
@@ -208,7 +210,7 @@ Addition / Correction / Source refresh. A fix must never read as new content.
 
 ## 9. Current known gaps
 
-Do not quietly close these. They close with evidence.
+These close with evidence, not tidying.
 
 - **D4 encounter behaviour** — difficulty scaling itself is now partly measured
   by eqltools.com (see `docs/BACKLOG.md` P1), but **which class kits attach to
@@ -225,14 +227,14 @@ Do not quietly close these. They close with evidence.
   19/29.
 - **Navigation maps** — five zones have plates but no map: Crushbone, Befallen,
   Blackburrow, The Hole, The Warrens.
-- **Verification gates** — only 5 of 10 plates have cleared all three gates.
-  3 are partial, 2 are unverified. `verify_gate` in `assets/zones-index.json`
-  names the open gate for each. Do not upgrade a level without doing the work.
+- **Verification gates** — 5 of 10 plates have cleared all three gates. 3 are
+  partial, 2 are unverified. `verify_gate` in `assets/zones-index.json` names the
+  open gate for each. Do not upgrade a level without doing the work.
 
 ---
 
 ## 10. When you are unsure
 
-Say so, in the page and to the human. Then say exactly what would resolve it —
-usually one screenshot, one log line, or one `/loc`. Naming the specific
-missing evidence is far more useful than hedging the prose.
+Say so, in the page and to the human, and say exactly what would resolve it —
+usually one screenshot, one log line, or one `/loc`. Naming the missing evidence
+is more useful than hedging the prose.

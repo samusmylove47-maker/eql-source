@@ -40,7 +40,7 @@ Compare titles against the watchlist, compare `revid` against
 | Character Races | Race tools | Race to primary class matrix |
 | Newbie Guide | Race tools | Lock rules, unlock mechanics |
 | Alanna's Race Unlock Guide | Race tracker | The definitive race unlock source |
-| Rituals | Travel advice | The disputed port levels live here |
+| Rituals | Najena plate, travel notes | The disputed druid/wizard port levels live here |
 
 ### Other sources — no API, fetch politely
 
@@ -48,7 +48,7 @@ Compare titles against the watchlist, compare `revid` against
 |---|---|---|
 | everquestlegends.com/news | Every run | **Tier 1.** Patch notes override everything |
 | eqprogression.com Sky quests page | Weekly | Sky turn-in structure |
-| eqlegendstools.com | Weekly | Curated item data, snapshot-dated, JS-rendered |
+| eqlegendstools.com | Weekly | Curated item data, snapshot-dated, JS-rendered. **Domain unconfirmed** — `CLAUDE.md` and `docs/BACKLOG.md` both call this site `eqltools.com`. One of the two is wrong and it has not been checked. It is also absent from `state/watchlist.json`, so nothing currently fetches it |
 | eqlbuildforge.com/items | Weekly | Item stat snapshot, dated in the footer |
 
 **Known blocked:** necrotalk.com (bot detection) and gnollguard.com (blocks
