@@ -14,9 +14,23 @@ CEIL = 56
 def zsub(z):
     return f"{z['levels']}"
 
+def _lum(h):
+    c = [int(h[i:i+2], 16)/255 for i in (1, 3, 5)]
+    c = [v/12.92 if v <= 0.03928 else ((v+0.055)/1.055)**2.4 for v in c]
+    return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2]
+
+def bar_text(accent):
+    """Plate number sits on the accent bar. Ten accents span light gold to deep
+    crimson, so no single text colour clears AA on all of them — pick whichever
+    of ground or bone contrasts better. The accent itself is never changed."""
+    L = _lum(accent)
+    on_dark = (L + 0.05) / (_lum('#0E1315') + 0.05)
+    on_light = (_lum('#E6E9E4') + 0.05) / (L + 0.05)
+    return '#0E1315' if on_dark >= on_light else '#E6E9E4'
+
 # ---------------------------------------------------------------- HOME
 bars = "\n".join(
-  f'''    <a class="sb" href="dungeons/{z['slug']}.html" style="--c:{z['accent']};--h:{round(TOPLV[z['slug']]/CEIL*100)}%;--d:{i*70}ms">
+  f'''    <a class="sb" href="dungeons/{z['slug']}.html" style="--c:{z['accent']};--bt:{bar_text(z['accent'])};--h:{round(TOPLV[z['slug']]/CEIL*100)}%;--d:{i*70}ms">
       <i></i><u>{z['title']}</u><b>{z['plate']:02d}</b></a>'''
   for i, z in enumerate(Z))
 
@@ -98,7 +112,7 @@ home = head("Accurate, sourced and kept current",
         <div class="h">Aggregators and snapshots</div>
         <div class="d">Item databases and mined-data snapshots. Good for a second opinion; stale the moment a patch
           lands.</div><span class="mark">badged <span class="tier t4">T4</span></span></div>
-      <div class="ts" style="--tc:#C9453A"><div class="n">Tier 5 &middot; handle with care</div>
+      <div class="ts" style="--tc:#D46C64"><div class="n">Tier 5 &middot; handle with care</div>
         <div class="h">Inherited classic prose</div>
         <div class="d">Wiki text imported from Project 1999, describing a single-class game at fixed difficulty. Quoted
           only when marked as classic.</div><span class="mark">badged <span class="tier t5">T5</span></span></div>
@@ -157,7 +171,7 @@ home = head("Accurate, sourced and kept current",
         <p class="d">32,000 hit points and 865 damage a swing. Full 3D model of the island stack, the pull-down to
           Island 7, and the aggro-transfer trick that moves him without keying your whole force.</p>
         <div class="foot"><span>3D model</span><span class="go">Open &rarr;</span></div></a>
-      <div class="card" style="--c:var(--rule2)">
+      <div class="card" style="--c:var(--dim)">
         <div class="kicker">In build</div><h3 class="t">The rest of Sky</h3>
         <p class="d">Spiroc Lord next &mdash; the vanquisher squad-respawn logic sets kill order and is nearly
           impossible to hold in your head from prose. Then Island 6&rsquo;s bee split tree, which is a decision graph
@@ -295,7 +309,7 @@ dung = head("Dungeon survey plates",
       <p class="lede" style="margin:0">The companion document you keep open while you are in the zone.</p></div></div>
     <div class="cards c3">
 {mapcards}
-      <div class="card" style="--c:var(--rule2)"><div class="kicker">Queued</div>
+      <div class="card" style="--c:var(--dim)"><div class="kicker">Queued</div>
         <h3 class="t">Five to go</h3>
         <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have plates but no map yet. Blackburrow
           is next &mdash; it has an explicit three-floor structure, which makes it the strongest candidate for a full
