@@ -58,11 +58,6 @@ for s in MAPS:
     n += 1
     inject(os.path.join(SRC, f'{s}-map.html'), f'dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
            f"{z['title']} &middot; map", extra)
-# ---- campaign plate
-n += 1
-inject(os.path.join(SRC,'campaign-plate-10-to-50.html'), 'dungeons/campaign-10-to-50.html', '../',
-       'Dungeons', 'dungeons/index.html', 'Campaign plate &middot; 10&ndash;50')
-
 # ---- tools
 inject(os.path.join(SRC,'eql-sky-tracker.html'), 'tools/plane-of-sky.html', '../',
        'Tools', 'tools/index.html', 'Plane of Sky tracker')
