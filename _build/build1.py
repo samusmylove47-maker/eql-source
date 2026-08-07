@@ -5,7 +5,7 @@ sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot
 
-Z = json.load(open('assets/zones-index.json'))
+Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
 TOPLV = {"najena":35,"splitpaw":42,"crushbone":22,"befallen":25,"blackburrow":20,
          "lowerguk":49,"nagafenslair":55,"thehole":56,"warrens":25,"mistmoore":45}
@@ -208,7 +208,7 @@ home = head("Accurate, sourced and kept current",
 </section>
 </main>
 ''' + foot()
-open('index.html','w').write(home)
+open('index.html','w',encoding='utf-8',newline='\n').write(home)
 
 # ---------------------------------------------------------------- DUNGEONS
 drows = "\n".join(
@@ -318,6 +318,6 @@ dung = head("Dungeon survey plates",
 </div>
 </main>
 ''' + foot("../")
-open('dungeons/index.html','w').write(dung)
+open('dungeons/index.html','w',encoding='utf-8',newline='\n').write(dung)
 
 print("home + dungeons index written")

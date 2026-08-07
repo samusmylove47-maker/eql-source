@@ -72,7 +72,7 @@ tools = head("Tools", "Three EverQuest Legends progression trackers: Plane of Sk
 </div>
 </main>
 ''' + foot("../")
-open('tools/index.html','w').write(tools)
+open('tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 
 # ---------------------------------------------------------------- RAIDS
 raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest Legends raid bosses: positioning, radii, phase transitions and pull strategy rendered in space.", rel="../") + bar("../") + '''
@@ -126,7 +126,7 @@ raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest L
 </div>
 </main>
 ''' + foot("../")
-open('raids/index.html','w').write(raids)
+open('raids/index.html','w',encoding='utf-8',newline='\n').write(raids)
 
 # ---------------------------------------------------------------- SOURCES
 src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.") + bar() + '''
@@ -235,5 +235,5 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
 </div>
 </main>
 ''' + foot()
-open('sources.html','w').write(src)
+open('sources.html','w',encoding='utf-8',newline='\n').write(src)
 print("tools, raids, sources written")

@@ -53,7 +53,7 @@ zi = "assets/zones-index.json"
 if not os.path.exists(zi):
     fail("assets/zones-index.json is missing — navigation cannot build")
 else:
-    Z = json.load(open(zi))
+    Z = json.load(open(zi, encoding="utf-8"))
     accents, plates = {}, {}
     for z in Z:
         s = z["slug"]
@@ -133,10 +133,10 @@ for p in pages:
 if not os.path.exists("site.config.json"):
     fail("site.config.json is missing — site name and URL have no source of truth")
 else:
-    cfg = json.load(open("site.config.json"))
+    cfg = json.load(open("site.config.json", encoding="utf-8"))
     if not cfg.get("site_url") or "REPLACE-ME" in cfg["site_url"]:
         fail("site.config.json has no real site_url — the sitemap will be wrong")
-    if os.path.exists("sitemap.xml") and cfg["site_url"].rstrip("/") not in open("sitemap.xml").read():
+    if os.path.exists("sitemap.xml") and cfg["site_url"].rstrip("/") not in open("sitemap.xml", encoding="utf-8").read():
         fail("sitemap.xml does not match site_url in site.config.json — run ./build.sh")
     for p_ in pages:
         h = open(p_, encoding="utf-8", errors="replace").read()

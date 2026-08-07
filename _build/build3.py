@@ -3,10 +3,10 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json, re, shutil, os
-_CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json")))
+_CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json"), encoding="utf-8"))
 SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
-Z = json.load(open('assets/zones-index.json'))
+Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 BY = {z['slug']: z for z in Z}
 MAPS = ["najena","splitpaw","lowerguk","nagafenslair","mistmoore"]
 
@@ -38,7 +38,7 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None):
             h = h.replace(a, b)
     h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + RETURN_CSS + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
-    open(dst, 'w', encoding='utf-8').write(h)
+    open(dst, 'w', encoding='utf-8', newline='\n').write(h)
     return len(h)
 
 n = 0

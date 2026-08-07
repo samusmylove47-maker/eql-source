@@ -1,6 +1,6 @@
 # Shared HTML partials for every page on the site.
 import json, os
-_cfg = json.load(open("site.config.json")) if os.path.exists("site.config.json") else {}
+_cfg = json.load(open("site.config.json", encoding="utf-8")) if os.path.exists("site.config.json") else {}
 SITE = _cfg.get("site_name", "EQL Source")
 TAG  = _cfg.get("site_tagline", "Survey")
 

@@ -3,7 +3,7 @@
 Run from build.sh. Output: assets/index-data.json"""
 import os, re, json, html as H
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(ROOT)
-Z=json.load(open('assets/zones-index.json'))
+Z=json.load(open('assets/zones-index.json',encoding='utf-8'))
 
 BADGE=re.compile(r'<span[^>]*class="[^"]*\b(?:tag|pill|badge|new)\b[^"]*"[^>]*>.*?</span>',re.S|re.I)
 def txt(x):
@@ -90,6 +90,6 @@ order=SLOTS[:-1]+TYPES+["Other"]
 slots=[s for s in order if any(i['s']==s for i in clean)]
 classes=[c for c in ["ALL"]+CLS if any(c in i['c'] for i in clean)]
 json.dump({"items":clean,"named":named,"slots":slots,"classes":classes},
-          open('assets/index-data.json','w'), separators=(',',':'))
+          open('assets/index-data.json','w',encoding='utf-8',newline='\n'), separators=(',',':'))
 print(f"index-data.json: {len(clean)} items, {len(named)} named, "
       f"{len(slots)} slots, {len(classes)} class tags")
