@@ -15,7 +15,8 @@
     {"title": "Plane of Sky", "feeds": "tools/plane-of-sky.html and raids/", "tier": 2},
     {"title": "Character Races", "feeds": "tools/race-unlocks.html", "tier": 2},
     {"title": "Newbie Guide", "feeds": "tools/combo-calculator.html", "tier": 3},
-    {"title": "User:Alanna/Alanna's Race Unlock Guide", "feeds": "tools/race-unlocks.html", "tier": 3}
+    {"title": "User:Alanna/Alanna's Race Unlock Guide", "feeds": "tools/race-unlocks.html", "tier": 3},
+    {"title": "Rituals", "feeds": "dungeons/najena.html and the open druid/wizard port-level gap", "tier": 2}
   ],
   "other_sources": [
     {"url": "https://www.everquestlegends.com/news", "cadence": "every-run", "tier": 1},
