@@ -114,11 +114,19 @@ if os.path.exists("index.html"):
     if h.count('class="tier') < 3:
         warn("the home page shows fewer than three example tier badges")
 
-# 4c. the design system's non-negotiables
-for banned, why in ((r"border-radius:\s*(?![0]\b)\d", "rounded corners are not in the design system"),
-                    (r"box-shadow:\s*(?!none)", "drop shadows are not in the design system")):
-    if re.search(banned, css):
-        warn(f"assets/site.css: {why}")
+# 4c. the design system's real constraints
+#
+# This used to warn on any border-radius or box-shadow. That was a previous
+# session's taste encoded as validation, and docs/DESIGN.md now permits both in
+# service of hierarchy. Removed: a checker should catch breakage, not opinions.
+#
+# What is checked instead is the constraint that is actually load-bearing — the
+# three typefaces. A fourth is the usual way a considered site starts to drift.
+FACES = {"Saira Condensed", "IBM Plex Mono", "Public Sans"}
+declared = set(re.findall(r'font-family:\s*"([^"]+)"', css))
+extra = declared - FACES
+if extra:
+    warn(f"assets/site.css uses {sorted(extra)} beyond the three site faces")
 if "cdnjs" in css or "unpkg" in css:
     fail("assets/site.css references a CDN")
 

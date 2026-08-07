@@ -1,133 +1,190 @@
-# Design brief — the aesthetic uplift
+# Design brief
 
-The current design is disciplined and correct. It is also monotonous. This brief
-says what is load-bearing, what is wrong, and what to do about it.
+**Goal: a professional reference site with its own identity.** Modern, clean,
+crisp, impressive. Not bloated, not gaudy. Desktop is the primary target.
 
-**Read the whole thing before changing a pixel.** Several of the things that look
-like defaults are deliberate.
-
----
-
-## What is load-bearing — do not change these
-
-**Monochrome chrome, polychrome content.** The frame is bone and graphite. All
-colour comes from the material: the ten zone accents, instrument blue for tools,
-ember for raids. This is the single decision that keeps the site off the
-near-black-plus-one-neon-accent look every fansite lands on. Keep it.
-
-**The ten zone accents are permanent identity.** Each zone owns its colour
-forever. `check.py` fails on duplicates. Never reassign one.
-
-**Three faces, no more.** Saira Condensed (display, uppercase, tight tracking),
-IBM Plex Mono (data, labels, anything numeric), Public Sans (prose). Adding a
-fourth is the classic way to make a considered site look amateur.
-
-**The spectrum.** Ten bars, plate order, zone accents, height keyed to the top of
-each level band. Ornament, chart and navigation at once. It is the site's
-signature. Improve it; do not replace it.
-
-**Hairlines, no rounded corners, no drop shadows, no gradients on chrome.** The
-plate aesthetic is a technical document, not a SaaS dashboard.
-
-**The tier badges.** `.tier` with `.t1`–`.t5`. Tiers 1 and 2 print plain;
-3 to 5 always show. This is the site's whole reason for existing made visible.
+This brief replaces the previous one, which was written in a Claude Code session
+and asserted a specific flat aesthetic as law — no radii, no shadows, no
+gradients, "a technical document, not a SaaS dashboard". Those were never the
+owner's requirements. They are the direct cause of the site reading as barren
+and utilitarian, and they are withdrawn.
 
 ---
 
-## What is actually wrong
+## 1. The problem to solve
 
-Diagnose it honestly before fixing it:
+The site currently looks like it was generated, because it was. The tells are
+specific and each one is fixable.
 
-1. **Every section has the same rhythm.** Section number, heading, lede, row of
-   equal-weight cards. Five times down the page. Nothing earns attention because
-   everything asks for the same amount.
-2. **No hierarchy inside card rows.** Four cards of identical size, so the reader
-   has no idea which one matters. The Index is our best tool and it looks exactly
-   like the third-best one.
-3. **The page reads grey.** Colour discipline has become colour absence. Between
-   the spectrum and the tier scale there are long stretches with no colour at all.
-4. **Cards are mostly empty space** at desktop width. The type sits small in a
-   large box.
-5. **No texture, no atmosphere.** This is a fantasy game. The site is a cold
-   instrument panel with nothing that says *Norrath*. That is not an argument for
-   dragons and parchment — it is an argument for one restrained atmospheric layer.
-6. **Almost no motion.** Only the spectrum animates, once, on load.
+1. **It explains itself before it shows you anything.** The home page opens with
+   a mission statement, then "What we are trying to do", then four numbered
+   commitments, then a tier scale — four screens of epistemology before a single
+   piece of reference. A reference site earns trust by being useful first.
+2. **Numbered section headings** — `01`, `02`, `03`, `04`, `05` down the page.
+3. **A row of stat tiles** near the top: four tools, 452 items, 208 named, ten
+   plates, eight gaps. Generic landing-page furniture.
+4. **Every band is the same shape.** Heading, lede, row of equal-weight cards,
+   five times. Nothing is more important than anything else.
+5. **Every card is the same card**: kicker, title, paragraph, footer row with a
+   right-aligned arrow.
+6. **The prose declares.** "This site exists to be the version you can trust."
+   Show it instead.
+7. **No depth at all.** Every surface is on one plane, so the eye has nothing to
+   follow.
 
----
-
-## Direction
-
-### 1. Break the rhythm
-Give each band its own shape. Suggested, not prescribed:
-
-- **Hero** — full-bleed, taller, the only place the display face runs above 100px.
-- **Commitments** — asymmetric two-column: a large statement left, the four
-  numbered items in a narrow right rail. Not a four-across grid.
-- **Tier scale** — horizontal, full width, reading as a *scale* rather than five
-  boxes. Consider a continuous bar with five stops, where the colour ramp itself
-  carries the meaning.
-- **Tools** — one hero card at double width (The Index), three smaller beneath.
-- **Raids** — let the ember carry a dark full-bleed band. This is the one section
-  that should feel like a boss fight.
-- **Dungeons** — spectrum-led, minimal text.
-- **Gaps** — quiet, small, deliberately understated. Honesty does not shout.
-
-### 2. Introduce one atmospheric layer, and only one
-Options, pick one and commit:
-
-- A very low-opacity **contour/topographic line motif**, derived from the shapes
-  already in the navigation maps. Justified because the site is a survey.
-- A subtle **grain overlay** at 2–4% opacity, which warms flat dark fields
-  considerably and costs nothing.
-- A **coordinate grid** wash behind the hero only, echoing `/loc` readings.
-
-Requirements: under 8 KB, no images if it can be SVG or CSS, must not reduce text
-contrast below WCAG AA, must respect `prefers-reduced-motion`.
-
-### 3. Use the zone accents more
-Ten good colours sit unused outside the spectrum. Ideas: tint the dungeon rows on
-hover with their own accent; let the plate number take the accent; use accent
-hairlines rather than grey ones in zone contexts.
-
-### 4. Earn some motion
-Restrained and orchestrated, never decorative:
-
-- Section headings and first cards fade-rise on scroll, staggered, once.
-- Card hover: a 2px accent bar grows from left, not a lift-and-shadow.
-- The spectrum bars respond to hover with a readout of that zone's level band.
-
-Everything must be disabled under `prefers-reduced-motion: reduce`.
-
-### 5. Density and hierarchy
-Tighten card padding at desktop. Increase the size gap between a hero card and a
-supporting one — a 2:1 visual weight difference, not the current 1:1. Let some
-numbers be genuinely large; the index strip figures could be twice their size.
+**Test for the whole job:** someone who has never seen the site should not be
+able to tell it was built with an AI assistant.
 
 ---
 
-## Constraints
+## 2. The identity
 
-- **No framework.** No React, no Tailwind, no build step beyond the Python
-  generators. Hand-written CSS in `assets/site.css`.
-- **No web fonts beyond the three already loaded.**
-- **No CDN.** `check.py` fails the build on one. Vendor anything new.
-- **Every page must still pass `check.py`.**
-- **Mobile first-class.** Test at 390px. Zero horizontal overflow is a hard
-  requirement, currently met everywhere.
-- **The four tools are single-file apps** with their own inline styling. They are
-  *not* restyled by `assets/site.css`. Treat them as a separate, later pass, and
-  keep their internal palettes recognisably theirs.
+The site's identity is already in its material, and nothing else has it:
+
+- **The ten zone accents** and the spectrum built from them.
+- **The survey plate** — coordinates, `/loc` readings, room lists, measured
+  drawings. The hand-drawn SVG maps are 1,461 lines of bespoke geometry and are
+  the most valuable thing on the site.
+- **The tier badges** — a published, visible standard of evidence.
+- **The 3D encounter viewer.**
+
+**So: a survey, not a fansite.** The reference for a world, drawn precisely.
+Instruments, plates, measured colour. What that must *not* mean is a flat
+brutalist manifesto — that was the old brief's mistake. Aim for a well-made data
+product: quiet, dense, confident, with real hierarchy.
 
 ---
 
-## How to verify you improved it
+## 3. What is load-bearing
 
-Take a full-page screenshot before and after at 1440px and at 390px. Then answer,
-in writing:
+Do not change these. They are the identity.
 
-1. Can you tell at a glance which tool is the most important one?
-2. Does any two consecutive bands share the same layout shape?
-3. Is there colour in the top third of the page other than the hero text?
-4. Does it still look like a technical instrument rather than a fantasy fansite?
+- **Monochrome frame, colour from content.** All colour comes from the material:
+  ten zone accents, instrument blue for tools, ember for raids.
+- **Each zone owns its accent permanently.** `check.py` fails on duplicates.
+- **The spectrum** — one bar per zone, plate order, height keyed to the top of
+  its level band. Improve it; do not replace it.
+- **The tier badges**, `.tier` with `.t1`–`.t5`.
+- **Three typefaces**, no more: Saira Condensed (display), IBM Plex Mono (data
+  and labels), Public Sans (prose).
+- **WCAG AA on all text.** The site now measures clean across 11,942 text nodes
+  on 25 pages. Do not regress it. Accents that fail as text get a lifted variant;
+  the accent itself is never reassigned.
 
-If the answer to 4 is no, you have gone too far. Pull back.
+---
+
+## 4. What is now permitted
+
+The old bans are lifted, replaced by taste rules. Each of these is allowed
+*because* it builds hierarchy, and only in service of that.
+
+**Elevation.** Surfaces may sit above one another, expressed as a change of
+background value plus a hairline, and optionally a large soft shadow at very low
+opacity. Never a hard drop shadow, never more than three levels.
+
+**Radii.** A small consistent radius is permitted — pick one value in the 3–6px
+range and use it everywhere. Not pills, not circles, not mixed radii.
+
+**Gradients.** Permitted only as near-imperceptible surface modulation — a
+one-or-two-step shift across a large panel. Never a coloured gradient as
+decoration, never on text, never a "hero gradient".
+
+**Motion.** Permitted where it explains something: a state change, a reveal, a
+hover affordance. Never decorative, never looping, always disabled under
+`prefers-reduced-motion`.
+
+**Density.** Tighten. The current cards are mostly empty space at desktop width.
+
+---
+
+## 5. What stays out
+
+- No fourth typeface.
+- No colour outside the system.
+- No illustration, stock art, or generated imagery.
+- No icon set. The site has no need for icons and they date badly.
+- Nothing that shouts: no oversized hero gradient, no glow, no glass, no
+  animated background.
+- No framework. Hand-written CSS in `assets/site.css`. No CDN — `check.py`
+  fails the build on one.
+
+---
+
+## 6. Direction
+
+**Lead with the material.** The spectrum and the ten plates are the strongest
+thing the site has. They belong at the top, not in section 04. A visitor should
+reach the reference before they reach the philosophy.
+
+**Move the epistemology.** The four commitments and the tier scale are important
+and should stay on the site — but as a page of their own, linked prominently,
+not as the first thing between a visitor and the data. The tier badges do the
+explaining in place, which is the point of having them.
+
+**Break the rhythm.** No two consecutive bands should share a layout. Give the
+spectrum full width. Let the tools band lead with one large card. Let raids run
+dark and full-bleed in ember.
+
+**Establish a scale.** The site currently uses 21 distinct font sizes, including
+9, 9.5, 10, 10.5, 11 and 11.5 — differences nobody can see, multiplying
+maintenance. Reduce to a single scale of 7–9 steps and use only those. Same for
+spacing: one scale, used everywhere.
+
+**Unify the plates with the site.** The ten plates and five maps do not load
+`assets/site.css` at all. They carry their own 65-line stylesheet, byte-identical
+across all fifteen files, which re-declares its own greys, panels and type rules
+— and collides with the shared system on `.eyebrow`, `.lede`, `.note`, `code`
+and `:focus-visible`. **This is the largest structural problem on the site.**
+Fixing it is a two-step change: link the stylesheet, then delete the page-local
+block. Do it in that order, verify one plate, then roll it out.
+
+Do not touch the SVG map geometry.
+
+---
+
+## 7. Order of work
+
+Each stage is a pull request, reviewed against a local preview before the next
+begins.
+
+1. **Foundation.** Type scale, spacing scale, elevation levels, radius value.
+   No layout change. The site should look almost identical and be far easier to
+   change.
+2. **Plate unification.** Link `site.css`, remove the page-local block, verify
+   one plate end to end, then the rest.
+3. **Home page.** Restructure to lead with the material; move the epistemology
+   to its own page; drop the numbered sections and the stat tiles.
+4. **Cards and hierarchy.** One card system with real size tiers.
+5. **Raids and tools bands.**
+6. **Motion pass.**
+7. **Interior pages** — tools, raids, dungeons and sources indexes.
+
+---
+
+## 8. Constraints
+
+- `check.py` must pass at every stage.
+- **Zero horizontal overflow at 390px.** Currently met; it is a hard requirement.
+- **Desktop leads.** Where a trade-off exists, the desktop reading wins, but
+  mobile must not break.
+- **The four tools are single-file apps** with their own inline styling and their
+  own palettes. They are a separate pass, and their palettes should stay
+  recognisably theirs.
+- The plates are **deliberately ungraded** for source tier right now. A later
+  phase will verify and grade them. Do not add tier badges to them as part of
+  design work.
+
+---
+
+## 9. How to tell it worked
+
+Answer in writing, with a local preview open at 1440px and 390px:
+
+1. Can you tell at a glance which tool matters most?
+2. Do any two consecutive bands share a layout?
+3. Is there colour above the fold other than in the hero text?
+4. Does a visitor reach reference material before philosophy?
+5. Is there a visible hierarchy of surfaces, or is everything on one plane?
+6. Could a stranger tell this was built with an AI assistant?
+
+Six must be no. If four is no, the restructure has not happened yet.
