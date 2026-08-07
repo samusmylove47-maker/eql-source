@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Race &amp; Primary Calculator — EverQuest Legends</title>
+<meta name="description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#D9A227;--accd:#8a6a1c;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#8A9998;--dim:#6C7B7B;--ok:#5FA37E;--warn:#C9453A;--blue:#4FA3D1;--vio:#8E7BC7;--orange:#D9762A}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(38px,7.6vw,80px);line-height:.88;letter-spacing:-.015em;margin:0 0 8px;text-transform:uppercase}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(23px,4.2vw,32px);line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:18px;letter-spacing:.04em;margin:0 0 8px}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(16px,3vw,21px);color:var(--mut);letter-spacing:.02em;margin:0 0 24px;text-transform:uppercase}
+.lede{color:var(--mut);margin:0 0 20px;max-width:72ch}
+.note{border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:16px 0;color:var(--mut);max-width:80ch;font-size:14px}
+.note strong{color:var(--txt)}
+.note.key{border-left-color:var(--acc)}.note.key strong{color:var(--acc)}
+.note.warn{border-left-color:var(--warn)}.note.warn strong{color:var(--warn)}
+.note.ok{border-left-color:var(--ok)}.note.ok strong{color:var(--ok)}
+.note.blue{border-left-color:var(--blue)}.note.blue strong{color:var(--blue)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input,select{font:inherit;color:var(--txt);background:var(--panel2);border:1px solid var(--line);padding:10px 12px}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.hidden{display:none!important}
+code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--acc);background:var(--panel2);padding:1px 5px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;display:inline-block;white-space:nowrap}
+
+.mast{border-bottom:1px solid var(--line);padding:44px 0 24px;margin-bottom:0}
+.bar{position:sticky;top:0;z-index:20;background:rgba(18,23,26,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -22px 26px;padding:10px 22px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.tab{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;text-transform:uppercase;letter-spacing:.05em;padding:7px 14px;border:1px solid var(--line);color:var(--mut)}
+.tab[aria-pressed="true"]{border-color:var(--acc);color:var(--acc);background:rgba(217,162,39,.09)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line);color:var(--mut)}
+.chip:hover{color:var(--txt)}
+.chip[aria-pressed="true"]{border-color:var(--acc);color:var(--acc)}
+.chip.save{border-color:var(--accd);color:var(--acc)}
+.chip.reset:hover{border-color:var(--warn);color:var(--warn)}
+
+.stat{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:20px 0 6px}
+.stat>*{min-width:0}
+.sc{background:var(--panel);padding:12px 14px}
+.sc dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin:0 0 4px}
+.sc dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:26px;font-weight:700;line-height:1}
+.sc dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:var(--mut);display:block;letter-spacing:0;line-height:1.4;margin-top:3px}
+
+/* race cards */
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;margin-top:20px}
+.rgrid>*{min-width:0}
+.rc{background:var(--panel);border:1px solid var(--line);border-top:3px solid var(--tc);padding:15px 16px 13px;display:flex;flex-direction:column}
+.rc.done{opacity:.52}
+.rc.done .rn{text-decoration:line-through;text-decoration-thickness:1.5px}
+.rc .rtop{display:flex;gap:9px;align-items:flex-start;flex-wrap:wrap;margin-bottom:2px}
+.rc .rn{font-family:"Saira Condensed",sans-serif;font-size:30px;font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1;color:var(--tc);flex:1;min-width:0}
+.rc .meta{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:6px 0 10px;line-height:1.5}
+.rc .prims{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--mut);line-height:1.6;border-top:1px solid var(--line);padding-top:9px;margin-bottom:10px}
+.rc .prims b{color:var(--txt);font-weight:500}
+.work{display:flex;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:11px}
+.work>div{background:var(--panel2);padding:7px 9px;flex:1;min-width:0}
+.work dt{font-family:"IBM Plex Mono",monospace;font-size:8.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.work dd{margin:2px 0 0;font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600}
+.recipe{font-size:13px;color:var(--mut);margin:0 0 11px;line-height:1.55}
+.recipe b{color:var(--txt)}
+.facs{list-style:none;margin:0 0 10px;padding:0;border-top:1px solid var(--line)}
+.facs li{border-bottom:1px solid var(--line)}
+.fb{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;padding:8px 2px}
+.fb:hover .box{border-color:var(--tc)}
+.box{width:15px;height:15px;flex:0 0 15px;border:1.6px solid var(--dim);margin-top:2px;position:relative}
+.fb[aria-checked="true"] .box{border-color:var(--ok);background:var(--ok)}
+.fb[aria-checked="true"] .box::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.fb .fn{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;line-height:1.2}
+.fb[aria-checked="true"] .fn{color:var(--dim);text-decoration:line-through}
+.fb .fs{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--dim);letter-spacing:.03em;margin-top:2px}
+.rfoot{margin-top:auto;display:flex;gap:9px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px}
+.own{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);color:var(--mut);padding:6px 10px}
+.own:hover{border-color:var(--tc);color:var(--tc)}
+.own.is-on{border-color:var(--ok);color:var(--ok);background:rgba(95,163,126,.1)}
+.want{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);color:var(--mut);padding:6px 10px}
+.want.is-on{border-color:var(--acc);color:var(--acc);background:rgba(217,162,39,.1)}
+.rfoot .st{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--dim);letter-spacing:.06em;margin-left:auto}
+
+/* plan */
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:16px;margin-top:18px}
+.plan>*{min-width:0}
+.pcard{border:1px solid var(--line);border-left:2px solid var(--acc);background:var(--panel);padding:14px 16px}
+.pcard.buy{border-left-color:var(--blue)}
+.pcard.farm{border-left-color:var(--orange)}
+.pcard.free{border-left-color:var(--ok)}
+.pcard h4{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;margin:0 0 3px}
+.pcard .who{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:9px}
+.pcard ul{list-style:none;margin:0;padding:0}
+.pcard li{padding:5px 0;border-top:1px solid var(--line);font-size:13.5px}
+.pcard li:first-child{border-top:0}
+.pcard .qty{font-family:"IBM Plex Mono",monospace;font-weight:600;color:var(--acc)}
+.pcard .for{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--dim);display:block;letter-spacing:.04em}
+.route{counter-reset:r;list-style:none;padding:0;margin:16px 0 0}
+.route li{counter-increment:r;position:relative;padding:12px 0 12px 46px;border-bottom:1px solid var(--line)}
+.route li::before{content:counter(r,decimal-leading-zero);position:absolute;left:0;top:12px;font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600;color:var(--acc)}
+.route .rl{font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.1}
+.route .rw{font-size:13.5px;color:var(--mut);margin-top:3px}
+.route li.got{opacity:.4}
+.route li.got .rl{text-decoration:line-through}
+
+/* calculator */
+.calcform{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:14px;margin:18px 0 4px}
+.calcform>*{min-width:0}
+.f label{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin-bottom:6px}
+.f select,.f input{width:100%}
+.slots3{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr));gap:10px}
+.slots3>*{min-width:0}
+.verdict{border:1px solid var(--line);border-top:3px solid var(--vc);background:var(--panel);padding:18px 20px;margin-top:20px}
+.verdict .vh{font-family:"Saira Condensed",sans-serif;font-size:clamp(22px,4vw,30px);font-weight:700;text-transform:uppercase;letter-spacing:.01em;line-height:1.05;color:var(--vc);margin:0 0 8px}
+.verdict p{max-width:78ch;margin:0 0 12px}
+.opts{list-style:none;padding:0;margin:16px 0 0}
+.opts li{border:1px solid var(--line);border-left:2px solid var(--oc);background:var(--panel2);padding:12px 15px;margin-bottom:10px}
+.opts .oh{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.opts .on{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:700;text-transform:uppercase;letter-spacing:.03em;color:var(--oc)}
+.opts .oc2{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-left:auto}
+.opts .od{font-size:13.5px;color:var(--mut);margin-top:5px;line-height:1.55}
+.opts .od b{color:var(--txt)}
+
+.veil{position:fixed;inset:0;background:rgba(8,11,13,.82);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
+.sheet{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--acc);max-width:640px;width:100%;padding:24px}
+.sheet h3{color:var(--acc)}.sheet p{font-size:13.5px;color:var(--mut)}
+.linkbox{width:100%;font-family:"IBM Plex Mono",monospace;font-size:11.5px;margin:6px 0}
+.primary{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--acc);color:var(--acc);padding:12px 20px;background:rgba(217,162,39,.08)}
+.primary:hover{background:rgba(217,162,39,.18)}
+.row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
+footer h3{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{margin-bottom:7px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+ letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+ letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+.ns-bar .ns-sep{color:#4E5C61}
+.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../tools/index.html">Tools</a><span class="ns-sep">/</span><span style="color:#D5DBD8">Race &amp; primary calculator</span><span class="ns-sep">/</span><a href="race-unlocks.html">&larr; Race unlocks</a><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">EverQuest Legends · Untapped Potential · Races</p>
+  <h1>Standing</h1>
+  <p class="subtitle">Every race unlock, the cheapest route through them, and one merged shopping list</p>
+</header>
+
+<div class="bar">
+  <button class="tab" data-tab="track" aria-pressed="true">Race unlocks</button>
+  <button class="tab" data-tab="plan" aria-pressed="false">My route</button>
+  <button class="tab" data-tab="calc" aria-pressed="false">Combo calculator</button>
+  <div class="chips">
+    <button class="chip save" id="btn-share">Save / share link</button>
+    <button class="chip reset" id="btn-reset">Start over</button>
+  </div>
+</div>
+
+<div id="pane-track"></div>
+<div id="pane-plan" class="hidden"></div>
+<div id="pane-calc" class="hidden"></div>
+
+<div id="share" class="veil hidden">
+  <div class="sheet">
+    <h3>Your progress link</h3>
+    <p>Which races you own, which you want, and every faction you have maxed are all encoded in this link. Nothing is stored on a server. Bookmark it, paste it in guild chat, or mail it to yourself — opening it anywhere restores this exact sheet.</p>
+    <input class="linkbox" id="linkbox" type="text" readonly>
+    <p id="savenote" style="margin:2px 0 0"></p>
+    <div class="row"><button class="primary" id="btn-copy">Copy link</button><button class="chip" id="btn-close">Close</button></div>
+  </div>
+</div>
+
+<footer>
+  <h3>Where this comes from</h3>
+  <ul>
+    <li><strong>Unlock requirements, methods and faction values</strong> — Alanna's Race Unlock Guide on eqlwiki.com, revision 166686, <strong>last edited 5 August 2026</strong>. That is the definitive deep-dive; every quantity, NPC, zone and per-turn-in faction figure below traces to it. For full dialogue, alternative methods and step-by-step detail, read it directly.</li>
+    <li><strong>Race / primary class matrix, alignments, racials and starting cities</strong> — eqlwiki.com/Character_Races, revision 163936, last edited 28 July 2026 (launch day). That page carries a general "needs updating" banner, but the class lists were revised at launch and include Legends-specific changes from classic EverQuest — Kerran can take Druid, Wood Elf cannot take Beastlord. Treat the class lists as current and the surrounding prose as older.</li>
+    <li><strong>Unlock and lock mechanics</strong> — eqlwiki.com Newbie Guide, revision 158978, last edited 19 July 2026. Source of the level 11 lock, the free level-50 primary class unlock, and the rule that unlocking a primary class makes it selectable by <em>any</em> race.</li>
+    <li><strong>Race Unlock Tokens</strong> — both the Newbie Guide and Alanna's guide describe them as a store purchase that bypasses the faction work. The Newbie Guide still carries a "not yet implemented" note dated 19 July; players have since reported buying and using them. Treat availability as current and the wiki note as stale. No price is published on either wiki page, so this tool does not quote one.</li>
+    <li><strong>Time and kill counts</strong> are Alanna's figures where she gives them and clearly-marked estimates where she does not. Vendor prices are not published per item, so purchase cost is shown as quantities to buy rather than a plat total.</li>
+  </ul>
+</footer>
+</div>
+
+<script>
+/* ============ STEPS — the actual work, shared across races ============ */
+const STEPS={
+ redwine:{n:"Bottle of Red Wine",kind:"buy",qty:400,item:"Red Wine",npc:"Lokar To`Biath",zone:"Neriak Third Gate",gain:"Dreadguard Inner +5 · Dreadguard Outer +5 · Dark Bargainers +10",note:"One vendor, one turn-in NPC, one zone. The single simplest unlock in the game. Requires indifferent standing.",kills:0,hrs:"2–4"},
+ muffins:{n:"Muffin for Pandos",kind:"buy",qty:400,item:"Muffin (Pincia Brownloe, West Freeport)",npc:"Pandos Flintside",zone:"West Freeport",gain:"Clerics of Tunare +5 · Soldiers of Tunare +5 · Faydark Champions +5 · King Tearis Thex +5",note:"Feeds Wood Elf and High Elf at the same time. If you are KoS, trade him from the next room through the open door in third person.",kills:0,hrs:"2–4"},
+ whitewine:{n:"Hogcaller's Inn, first step",kind:"buy",qty:400,item:"White Wine (Swin Blackeye or Drona Whystlethin)",npc:"Lady Shae",zone:"West Freeport",gain:"Emerald Warriors +5 · Merchants of Felwithe +5 · Merchants of Kelethin +5",note:"Same building as Pandos. Lady Shae sits on a unique faction that is neutral to everyone, so nobody is locked out.",kills:0,hrs:"2–4"},
+ batwings:{n:"Bat Wings",kind:"buy",qty:1600,item:"Bat Wing (any reagent vendor)",npc:"Niola Impholder",zone:"South Felwithe",gain:"Keepers of the Art +5 · King Tearis Thex +5 · Faydark Champions +5 — per 4 wings",note:"Four wings per turn-in, so 1600 wings is 400 cycles. Needs at least indifferent with her.",kills:0,hrs:"3–5"},
+ brandy:{n:"Rohand's Brandy",kind:"buy",qty:400,item:"Brandy (any bartender)",npc:"Captain Rohand",zone:"Qeynos",gain:"Merchants of Qeynos +25 · Antonius Bayle +5 · Coalition of Tradefolk +5 · Guards of Qeynos +5",note:"+25 a hit on Merchants of Qeynos is one of the largest per-turn-in gains available anywhere. Also feeds Human (Freeport).",kills:0,hrs:"2–3"},
+ mead:{n:"Honey Mead for Trumpy",kind:"buy",qty:1600,item:"Honey Mead",npc:"Trumpy Irontoe",zone:"South Qeynos",gain:"Corrupt Qeynos Guards +5 · Circle of Unseen Hands +5 · Kane Bayle +5 — per 4 mead",note:"Trades guards and merchants away for corrupt guards, but Legends' +5 minimum gain makes it come out ahead. Four mead per cycle.",kills:0,hrs:"3–5"},
+ tonics400:{n:"Tumpy Tonics",kind:"craft",qty:400,item:"800 Kiola Nut + 1600 Flask of Water, brewed",npc:"Trantor Everhot",zone:"Kaladim",gain:"Storm Guard +5 · Kazon Stormhammer +5 · Merchants of Kaladim +5 · Miners Guild 249 +5",note:"Brew them rather than handing Tumpy Irontoe 1 nut and 2 waters 800 times. Budget about 843 nuts and 1686 water for failures at trivial.",kills:0,hrs:"6–10"},
+ tonics110:{n:"Tonics for Groflah",kind:"craft",qty:110,item:"110 Kiola Nut + 220 Flask of Water, brewed",npc:"Groflah Steadirt",zone:"East Freeport docks",gain:"Coalition of Tradefolk +10 · Coalition Underground +10 · Knights of Truth +10 · Merchants of Qeynos +7",note:"He spawns at the dock bar at night and shares a spawn with other NPCs — hop difficulties to reroll the spawn. Only 100 are strictly needed; the extra 10 buffers your Knights of Truth for the next step.",kills:0,hrs:"2–4"},
+ intercept:{n:"Message Intercept",kind:"farm",qty:42,item:"84+ Bottle of Milk",npc:"Mojax Hikspin, then Sir Lucan D`Lere",zone:"West Commonlands → West Freeport",gain:"Freeport Militia +25 · Coalition Underground +5 — per note",kills:42,note:"Give Mojax milk to spawn Duggin Scumber, kill him for a note, repeat 42 times, then hand every note to Sir Lucan. Hail Mojax repeatedly to stop him wandering. Buy 100+ milk; this step is fiddly.",hrs:"3–6"},
+ boxes:{n:"Series C Black Boxes, first part",kind:"free",qty:400,item:"Shiny Cards — free from the quest NPC",npc:"Manik Compolten, then any Series C clockwork",zone:"Ak'Anon",gain:"King Ak'Anon +5 · Eldritch Collective +5 · Gem Choppers +5",note:"Costs nothing but clicks. Fill your bags with cards, trade them for black boxes, destroy the boxes, repeat. Needs amiable with Gem Choppers to start — Shondo and the Tonic is the fastest way there.",kills:0,hrs:"4–7"},
+ lionmeat:{n:"Lion Meat Shipment",kind:"free",qty:200,item:"Shipments free from Einhorst McMannus",npc:"Teria O`Danos",zone:"West Karana → Halas",gain:"Merchants of Halas +10 · Wolves of the North +7 · Shamen of Justice +7 · Rogues of the White Rose +5",kills:0,note:"Four shipments per turn-in. Bind in front of Teria and gate. Wizard at 23 for West Karana Gate plus Lesser Evacuate cuts the run down enormously; this step is mostly travel.",hrs:"6–10"},
+ iceberg:{n:"Lion Delights to Iceberg",kind:"free",qty:200,item:"200 Lion Delight from the step above",npc:"Iceberg",zone:"Everfrost Peaks tundra",gain:"Wolves of the North +5 · Shamen of Justice +5 · Merchants of Halas +5 · Steel Warriors +5 · Rogues of the White Rose +5",kills:0,note:"He despawns the moment you hand him one, so trade the entire batch in a single window. Keep the Delights below your normal food so you do not eat them.",hrs:"1"},
+ phosph:{n:"Phosphorous Powder",kind:"farm",qty:800,item:"Powder from high level ghouls",npc:"Zok Zribb",zone:"Ruins of Old Guk → Rathe Mountains",gain:"Guktan Suppliers +5 · Protectors of Gukta +5 · Guktan Elders +5 · High Council of Gukta +5 · Lorekeepers of Gukta +5 — per 2 powder",kills:450,note:"Dar, zol and bok ghoul knights each drop two at close to 100%. Roughly 400–500 kills. This is the one grind that pays you back — expect to take two classes to 50 while doing it.",hrs:"15–25"},
+ iksarore:{n:"High Quality Ore to Iktra",kind:"craft",qty:180,item:"160 Metal Bits, then 180 Small Piece of High Quality Ore",npc:"Crusader Iktra",zone:"North Ro",gain:"New Sebilisian Expedition +5 for 4 Metal Bits · +10 per Small Piece of High Quality Ore",kills:0,note:"Only one faction to max, but the raw plat runs over 1600. Start with Metal Bits — they stop working at amiable but they are cheap. Cut fine steel weapons into bricks or farm Runnyeye goblins to bring the cost down.",hrs:"8–14",plat:"1600+"},
+ kobolds:{n:"Kill 400 kobolds",kind:"farm",qty:400,item:"—",npc:"—",zone:"The Warrens / Stonebrunt Mountains",gain:"Heretics +5 · High Guard of Erudin +5 · Clan Kobolk −1",kills:400,note:"Do not turn in the molars for Heretics faction — they cost you Deepwater Knights. Kobold kills here also feed Kerra Isle faction, which was added recently.",hrs:"3–6"},
+ molars:{n:"Kobold Molars (Good)",kind:"farm",qty:286,item:"Kobold Molars from the kills above",npc:"Tiam Khonsir",zone:"Erudin",gain:"Deepwater Knights +7 · High Council of Erudin +5 · Heretics −1",kills:0,note:"286 molars maxes Deepwater Knights on its own but needs roughly 1430 kobold kills to gather. Mix it with killing Paineel guards rather than relying on it alone.",hrs:"—"},
+ paineel:{n:"Kill Paineel heretics",kind:"farm",qty:0,item:"—",npc:"—",zone:"Paineel",gain:"Deepwater Knights +10 to +100 per kill · Heretics −10 to −100",kills:60,note:"Atdehim Sqonci gives +100, capped by patch, and is still the fastest single target. Eight named guards give +25 each; ordinary guards give +10. Open a personal instance and work through them.",hrs:"2–5"},
+ catman:{n:"Catman Alliance",kind:"free",qty:0,item:"Rolled Up Strip of Cloth — free from the prisoner",npc:"Aderius Rhenar, then Leraena Shelyrak",zone:"The Warrens → Erudin",gain:"Peace Keepers +5 · High Council of Erudin +5 · Heretics −1",kills:0,note:"Run it until amiable with Peace Keepers to open the Peacekeeper Staff quest, or all the way to +2000 if you would rather travel than destroy items. Ring of Toxxulia at Druid 17 skips most of the run.",hrs:"2–4"},
+ peacekeeper:{n:"Peacekeeper Staff, first step",kind:"free",qty:400,item:"Sealed letters — free from the quest NPC",npc:"Lumi Stergnon, then Emil Parsini",zone:"Erudin → Toxxulia Forest",gain:"Merchants of Erudin +5 · High Council of Erudin +5 · High Guard of Erudin +5",kills:0,note:"400 cycles from a standing start, minus whatever the molars and Catman Alliance already gave you. Bind at one of the two NPCs.",hrs:"6–10"},
+ bandages:{n:"Bandages for Honeybugger",kind:"buy",qty:400,item:"Bandages",npc:"Joogl Honeybugger",zone:"Misty Thicket",gain:"Merchants of Rivervale +5 · Guardians of the Vale +5 · Deeppockets +5 · Mayor Gubbin +5",kills:0,note:"Straightforward, and it works even while KoS once you are above level 17.",hrs:"2–3"},
+ clericsupply:{n:"Cleric Supplies",kind:"farm",qty:400,item:"400 Black Wolf Skin, 800 Ruined Wolf Pelt, 400 Berries",npc:"Beek Guinders",zone:"East Commonlands → Rivervale",gain:"Priests of Mischief +5 · Mayor Gubbin +5 · Guardians of the Vale +5",kills:2000,note:"The limiting item is not the one you expect. Roughly 2000 wolf kills for the skins, and the berries are the real wall — three respawn in Misty Thicket on a five-minute timer, six per cycle if you hop between a personal instance and D0, so 5–6 hours for the berries alone even with 200 forage running on cooldown.",hrs:"25–40"},
+ deathfist:{n:"More Help for Innoruuk",kind:"farm",qty:400,item:"400 Deathfist Slashed Belt",npc:"Bregna",zone:"Commonlands → Grobb",gain:"Dark Ones +5 · Shadowknights of Night Keep +5 · Frogloks of Guk −1",kills:2000,note:"About 2000 orc kills. Clear the camps in both Commonlands zones, then a personal instance, then a different difficulty between respawns.",hrs:"20–30"},
+ grublocker:{n:"Nerbilik's Grub Locker",kind:"free",qty:400,item:"Grub Lockers — free from The Gobbler",npc:"Nerbilik",zone:"Neriak Foreign Quarter → Ocean of Tears",gain:"Da Bashers +10 · Grobb Merchants +5 · Broken Skull Clan −1",kills:0,note:"Bind near Nerbilik and port back for more lockers. Wizard Nek Gate or Druid Ring of Lavastorm, both at 22, turn this from a slog into a loop. The Butcherblock translocator drops you close to him.",hrs:"5–8"},
+ ogremuffins:{n:"Oggok Fresh Baked Muffins",kind:"forage",qty:400,item:"667 foraged Fruit, baked into 400 Muffins, crated in tens",npc:"an innkeeper",zone:"Oggok or The Feerrott",gain:"Merchants of Oggok +5 · Oggok Guards +5 · Clurg +5",kills:0,note:"They must be baked, and Fruit can only be foraged. Expect 70–80 hours of foraging on cooldown even in high-Fruit zones. Get baking to 135 and take the first baking AA so you never fail. Alanna's own advice is to start as an Ogre or wait for another method.",hrs:"70–90"},
+ kerra:{n:"Aid the Kerrans of Kerra Isle",kind:"free",qty:11,item:"—",npc:"Hail any class GM on the isle",zone:"Kerra Isle",gain:"Task completion, not faction thresholds",kills:0,note:"The only race with no +2000 grind at all. Work through every quest on the isle. Most races start at −50 to Kerra Isle faction, but Erudite, Dark Elf, Troll, Ogre and Iksar start at −1000, as do Bertoxxulous, Cazic Thule and Innoruuk worshippers. Killing kobolds in The Warrens now raises it.",hrs:"3–6"}
+};
+
+/* ============ RACES ============ */
+const RACES={
+ DEF:{n:"Dark Elf",code:"DEF",align:"Evil",city:"Neriak",racials:"Hide · Ultravision",
+   prim:["CLR","ENC","MAG","NEC","ROG","SHD","WAR","WIZ"],tier:1,
+   facs:["Dreadguard Inner","Dreadguard Outer","Dark Bargainers"],steps:["redwine"],
+   why:"Three factions, one quest, one NPC, one zone, no kills. Nothing else in the game is this contained."},
+ ELF:{n:"Wood Elf",code:"ELF",align:"Good",city:"Kelethin",racials:"Forage · Hide · Infravision",
+   prim:["BRD","DRU","RNG","ROG","WAR"],tier:1,
+   facs:["Emerald Warriors","Soldiers of Tunare","Kelethin Merchants"],steps:["muffins","whitewine"],
+   why:"Two vendor-bought turn-in loops in the same building in West Freeport. Both steps also count toward High Elf, so doing this first makes the next unlock nearly free."},
+ HUMQ:{n:"Human (Qeynos)",code:"HUMQ",align:"Neutral",city:"Qeynos",racials:"None",
+   prim:["BRD","CLR","DRU","ENC","MAG","MNK","NEC","PAL","RNG","ROG","SHD","WAR","WIZ"],tier:1,
+   facs:["Merchants of Qeynos","Guards of Qeynos","Corrupt Qeynos Guards"],steps:["brandy","mead"],
+   why:"Pure vendor work in one city, and Human opens the widest primary class list of any race — thirteen of the sixteen. Also unlocks Half Elf for free."},
+ HIE:{n:"High Elf",code:"HIE",align:"Good",city:"Felwithe",racials:"Infravision",
+   prim:["CLR","ENC","MAG","PAL","WIZ"],tier:2,
+   facs:["Keepers of the Art","Merchants of Felwithe","Clerics of Tunare"],steps:["muffins","whitewine","batwings"],
+   why:"Shares its first two steps with Wood Elf outright — the muffins cover Clerics of Tunare while covering Soldiers of Tunare, and the white wine covers Merchants of Felwithe while covering Kelethin Merchants. If Wood Elf is done, only the bat wings remain."},
+ HEF:{n:"Half Elf",code:"HEF",align:"Neutral",city:"Freeport · Kelethin · Felwithe · Surefall Glade · Qeynos",racials:"Infravision",
+   prim:["BRD","DRU","PAL","RNG","ROG","WAR"],tier:0,derived:["ELF","HUMQ"],
+   facs:[],steps:[],
+   why:"No faction work of its own. Unlock Wood Elf or Human (Qeynos) and this one comes with it."},
+ GNM:{n:"Gnome",code:"GNM",align:"Neutral",city:"Ak'Anon",racials:"Tinkering · Infravision",
+   prim:["CLR","ENC","MAG","NEC","PAL","ROG","SHD","WAR","WIZ"],tier:2,
+   facs:["King Ak'Anon","Gem Choppers","Eldritch Collective"],steps:["boxes"],
+   why:"The only major unlock that costs no money at all — the quest hands you the items. It is 400 cycles of pure clicking in a single city."},
+ DWF:{n:"Dwarf",code:"DWF",align:"Good",city:"Kaladim",racials:"Infravision · Sense Heading · +5 Magic · +5 Poison",
+   prim:["BER","CLR","PAL","ROG","WAR"],tier:2,
+   facs:["Storm Guard","Merchants of Kaladim","Kazon Stormhammer"],steps:["tonics400"],
+   why:"One quest, but you have to brew 400 tonics first. Doing this also produces the tonics Human (Freeport) needs, so run them back to back."},
+ KER:{n:"Kerran",code:"KER",align:"Neutral",city:"Kerra Isle",racials:"Safe Fall · Sneak",
+   prim:["BRD","BER","BST","DRU","ROG","SHM","WAR"],tier:2,
+   facs:[],task:"Aid the Kerrans of Kerra Isle",steps:["kerra"],
+   why:"Unlocked by a task chain rather than a faction grind — the only race that works this way. If your race or deity starts you at −1000, raise Kerra Isle faction by killing kobolds in The Warrens first."},
+ HUMF:{n:"Human (Freeport)",code:"HUMF",align:"Neutral",city:"Freeport",racials:"None",
+   prim:["BRD","CLR","DRU","ENC","MAG","MNK","NEC","PAL","RNG","ROG","SHD","WAR","WIZ"],tier:3,
+   facs:["Coalition of Tradefolk","The Freeport Militia","Knights of Truth"],steps:["tonics110","intercept"],
+   why:"Far lower volume than most — 110 tonics and 42 notes — but the Militia step needs a night spawn, a mob you have to kill 42 times, and an NPC that wanders the zone. Fiddly rather than long."},
+ BAR:{n:"Barbarian",code:"BAR",align:"Good",city:"Halas",racials:"Slam · Increased Consumption · +10 Cold",
+   prim:["BST","BER","ROG","SHM","WAR"],tier:3,
+   facs:["Rogues of the White Rose","Wolves of the North","Merchants of Halas"],steps:["lionmeat","iceberg"],
+   why:"The items are free and the turn-ins are quick. Nearly all of the cost is travel between West Karana and Halas, so this one lives or dies on your movement options."},
+ FRG:{n:"Froglok",code:"FRG",align:"Neutral",city:"Rathe Mountains",racials:"Increased Swimming",
+   prim:["CLR","MNK","NEC","PAL","ROG","SHD","SHM","WAR","WIZ"],tier:3,
+   facs:["Protectors of Gukta","Guktan Elders","Guktan Suppliers"],steps:["phosph"],
+   why:"A kill grind rather than a shopping trip, but the only one that pays for itself — 400 to 500 high level ghouls is enough experience to carry two classes to 50 along the way."},
+ IKS:{n:"Iksar",code:"IKS",align:"Evil",city:"North Ro",racials:"Forage · +15 to +35 AC · HP Regen · Swimming 100",
+   prim:["BST","MNK","NEC","SHD","SHM","WAR"],tier:3,
+   facs:["New Sebilisian Expedition"],steps:["iksarore"],
+   why:"The only race gated behind a single faction rather than three. The catch is money — over 1600 plat of ore unless you farm or recycle the material."},
+ ERU:{n:"Erudite",code:"ERU",align:"Neutral",city:"Erudin · Paineel",racials:"−5 Disease · +5 Magic",
+   prim:["CLR","ENC","MAG","NEC","PAL","SHD","WIZ"],tier:4,
+   facs:["Deepwater Knights","High Council of Erudin","Heretics"],steps:["kobolds","molars","paineel","catman","peacekeeper"],
+   why:"Five interlocking steps where several quests actively damage the factions you still need. The one unlock where improvising costs more than following a tested order exactly — do kobolds first, never hand molars in for Heretics faction."},
+ TRL:{n:"Troll",code:"TRL",align:"Evil",city:"Grobb",racials:"Slam · HP Regen · Infravision · −20 Fire",
+   prim:["BST","BER","SHD","SHM","WAR"],tier:4,
+   facs:["Da Bashers","Grobb Merchants","Dark Ones"],steps:["deathfist","grublocker"],
+   why:"The grub lockers are free and fast once you can port. The belts are the problem: about 2000 Deathfist orc kills."},
+ HFL:{n:"Halfling",code:"HFL",align:"Good",city:"Rivervale",racials:"Hide · Sneak · Infravision · +5 Disease · +5 Poison",
+   prim:["CLR","DRU","PAL","RNG","ROG","WAR"],tier:4,
+   facs:["Guardians of the Vale","Merchants of Rivervale","Priests of Mischief"],steps:["bandages","clericsupply"],
+   why:"The bandages are trivial. Cleric Supplies is the wall, and the bottleneck is not the 2000 wolf kills — it is 400 Berries off three respawning nodes on a five-minute timer."},
+ OGR:{n:"Ogre",code:"OGR",align:"Evil",city:"Oggok",racials:"Frontal Stun Immunity · Slam · Infravision",
+   prim:["BST","BER","SHD","SHM","WAR"],tier:5,
+   facs:["Oggok Guards","Clurg","Merchants of Oggok"],steps:["ogremuffins"],
+   why:"Merchants of Oggok has exactly one realistic source, and it needs 667 foraged Fruit — 70 to 80 hours of foraging on cooldown. Alanna's own recommendation is to start as an Ogre or wait for another method to be added."}
+};
+const RORDER=["DEF","ELF","HUMQ","HIE","HEF","GNM","DWF","KER","HUMF","BAR","FRG","IKS","ERU","TRL","HFL","OGR"];
+
+const CLASSNAMES={WAR:"Warrior",CLR:"Cleric",PAL:"Paladin",RNG:"Ranger",SHD:"Shadow Knight",DRU:"Druid",MNK:"Monk",BRD:"Bard",ROG:"Rogue",SHM:"Shaman",NEC:"Necromancer",WIZ:"Wizard",MAG:"Magician",ENC:"Enchanter",BST:"Beastlord",BER:"Berserker"};
+const CORDER=["BRD","BST","BER","CLR","DRU","ENC","MAG","MNK","NEC","PAL","RNG","ROG","SHD","SHM","WAR","WIZ"];
+const TIERS={0:{l:"Free with another",c:"#5FA37E"},1:{l:"Very easy",c:"#5FA37E"},2:{l:"Easy",c:"#4FA3D1"},3:{l:"Moderate",c:"#D9A227"},4:{l:"Hard",c:"#D9762A"},5:{l:"Extreme",c:"#C9453A"}};
+const KINDS={buy:{l:"Buy",c:"buy"},craft:{l:"Craft",c:"buy"},farm:{l:"Farm",c:"farm"},free:{l:"Free items",c:"free"},forage:{l:"Forage",c:"farm"}};
+
+/* ============ STATE ============ */
+let owned={},want={},facdone={},tab="track",sort="tier";
+let calc={race:"",prim:"",lvl:"plan",c2:"",c3:"",wantRace:"",wantPrim:"",strict:"strict"};
+const $=s=>document.querySelector(s), $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+
+const STORE=(()=>{
+ if(typeof window!=="undefined"&&window.storage&&window.storage.get)
+  return{kind:"artifact",get:async k=>{try{const r=await window.storage.get(k);return r&&r.value?r.value:null;}catch(e){return null;}},
+   set:async(k,v)=>{try{await window.storage.set(k,v);return true;}catch(e){return false;}}};
+ try{const t="__eqlrace";window.localStorage.setItem(t,"1");window.localStorage.removeItem(t);
+  return{kind:"browser",get:async k=>{try{return window.localStorage.getItem(k);}catch(e){return null;}},
+   set:async(k,v)=>{try{window.localStorage.setItem(k,v);return true;}catch(e){return false;}}};}catch(e){}
+ return{kind:"link",get:async()=>null,set:async()=>false};
+})();
+const SKEY="eqlrace:autosave";
+
+/* ---- share codec: bitfield over owned / want / each faction ---- */
+function bitList(){
+ const b=[];
+ RORDER.forEach(r=>{b.push(owned[r]?1:0);b.push(want[r]?1:0);
+  (RACES[r].facs||[]).forEach((f,i)=>b.push(facdone[r+"."+i]?1:0));});
+ return b;
+}
+function applyBits(bits){
+ owned={};want={};facdone={};let i=0;
+ RORDER.forEach(r=>{if(bits[i++])owned[r]=1;if(bits[i++])want[r]=1;
+  (RACES[r].facs||[]).forEach((f,k)=>{if(bits[i++])facdone[r+"."+k]=1;});});
+}
+function b64e(u8){let s="";u8.forEach(b=>s+=String.fromCharCode(b));return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");}
+function b64d(s){s=s.replace(/-/g,"+").replace(/_/g,"/");const bin=atob(s);const o=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)o[i]=bin.charCodeAt(i);return o;}
+function pack(b){const o=new Uint8Array(Math.ceil(b.length/8)||1);b.forEach((v,i)=>{if(v)o[i>>3]|=1<<(7-(i&7));});return o;}
+function unpack(u8,len){const b=[];for(let i=0;i<len;i++)b.push((u8[i>>3]>>(7-(i&7)))&1);return b;}
+function encodeState(){
+ const parts=["v=1","p="+b64e(pack(bitList()))];
+ if(calc.race||calc.prim||calc.wantRace||calc.wantPrim||calc.strict==="loose")
+   parts.push("k="+[calc.race,calc.prim,calc.lvl,calc.c2,calc.c3,calc.wantRace,calc.wantPrim,calc.strict||"strict"].join("~"));
+ return "#"+parts.join("&");
+}
+function decodeState(h){
+ if(!h||h.length<4)return false;
+ const p={};h.replace(/^#/,"").split("&").forEach(kv=>{const i=kv.indexOf("=");if(i>0)p[kv.slice(0,i)]=kv.slice(i+1);});
+ if(!p.p)return false;
+ let n=0;RORDER.forEach(r=>{n+=2+(RACES[r].facs||[]).length;});
+ try{applyBits(unpack(b64d(p.p),n));}catch(e){return false;}
+ if(p.k){const a=p.k.split("~");calc={race:a[0]||"",prim:a[1]||"",lvl:a[2]||"plan",c2:a[3]||"",c3:a[4]||"",wantRace:a[5]||"",wantPrim:a[6]||"",strict:a[7]||"strict"};}
+ return true;
+}
+async function persist(){
+ const h=encodeState();
+ try{history.replaceState(null,"",location.pathname+location.search+h);}catch(e){}
+ await STORE.set(SKEY,h);
+}
+
+/* ============ DERIVED ============ */
+function isUnlocked(r){
+ if(owned[r])return true;
+ const R=RACES[r];
+ if(R.derived)return R.derived.some(d=>isUnlocked(d));
+ if(!R.facs.length)return false;
+ return R.facs.every((f,i)=>facdone[r+"."+i]);
+}
+function facProgress(r){const R=RACES[r];if(!R.facs.length)return{d:0,t:0};return{d:R.facs.filter((f,i)=>facdone[r+"."+i]).length,t:R.facs.length};}
+function targets(){return RORDER.filter(r=>want[r]&&!isUnlocked(r));}
+function neededSteps(){
+ const set=[];
+ targets().forEach(r=>RACES[r].steps.forEach(s=>{if(!set.includes(s))set.push(s);}));
+ return set;
+}
+function stepUsers(s){return targets().filter(r=>RACES[r].steps.includes(s));}
+function unlockedPrimaries(){
+ const set=new Set();
+ RORDER.forEach(r=>{if(isUnlocked(r))RACES[r].prim.forEach(c=>set.add(c));});
+ return set;
+}
+
+/* ============ RENDER: TRACKER ============ */
+function renderTrack(){
+ const list=RORDER.slice();
+ if(sort==="tier")list.sort((a,b)=>RACES[a].tier-RACES[b].tier);
+ if(sort==="az")list.sort((a,b)=>RACES[a].n.localeCompare(RACES[b].n));
+ if(sort==="kills")list.sort((a,b)=>totKills(a)-totKills(b)||RACES[a].tier-RACES[b].tier);
+ if(sort==="hrs")list.sort((a,b)=>lowHrs(a)-lowHrs(b));
+
+ const done=RORDER.filter(isUnlocked).length;
+ const prims=unlockedPrimaries();
+
+ $("#pane-track").innerHTML=`
+ <p class="lede">Every race except Kerran unlocks by reaching <strong>+2000 personal faction</strong> with a set of factions — usually the town guards, the merchants and one class guild. You do not need them maxed at the same time. Starting as a race grants it automatically, and a Race Unlock Token from the store bypasses the work entirely.</p>
+ <div class="note key"><strong>Legends sets the minimum positive faction gain to +5.</strong> That is what makes these grinds tractable: a quest that gave +1 in classic EverQuest gives +5 here, so 400 turn-ins clears +2000 from a standing start. It is also why almost every recommended method below is "do one cheap quest 400 times" rather than anything clever.</div>
+ <dl class="stat">
+   <div class="sc"><dt>Races unlocked</dt><dd>${done} / 16<small>Human counts twice — Qeynos and Freeport are separate achievements</small></dd></div>
+   <div class="sc"><dt>Primary classes open</dt><dd>${prims.size} / 16<small>the union of every unlocked race's primary list</small></dd></div>
+   <div class="sc"><dt>On your route</dt><dd>${targets().length}<small>marked wanted and not yet unlocked</small></dd></div>
+   <div class="sc"><dt>Shared steps</dt><dd>${neededSteps().length}<small>distinct grinds those races need between them</small></dd></div>
+ </dl>
+ <div class="chips" style="margin:18px 0 0;justify-content:flex-start">
+   <span class="chip" style="border:0;padding-left:0;color:var(--dim)">Sort</span>
+   ${[["tier","Difficulty"],["hrs","Fastest"],["kills","Least killing"],["az","A–Z"]].map(([k,l])=>
+     `<button class="chip" data-sort="${k}" aria-pressed="${sort===k}">${l}</button>`).join("")}
+ </div>
+ <div class="rgrid">${list.map(raceCard).join("")}</div>`;
+ wireTrack();
+}
+function totKills(r){return RACES[r].steps.reduce((a,s)=>a+(STEPS[s].kills||0),0);}
+function lowHrs(r){return RACES[r].steps.reduce((a,s)=>{const h=String(STEPS[s].hrs||"0");const m=h.match(/\d+/);return a+(m?+m[0]:0);},0);}
+
+function raceCard(r){
+ const R=RACES[r],T=TIERS[R.tier],un=isUnlocked(r),p=facProgress(r);
+ const kills=totKills(r),hrs=lowHrs(r);
+ const facs=R.facs.map((f,i)=>{
+  const on=!!facdone[r+"."+i];
+  return `<li><button class="fb" role="checkbox" aria-checked="${on}" data-f="${r}.${i}">
+    <span class="box"></span><span style="min-width:0"><span class="fn">${esc(f)}</span>
+    <span class="fs">+2000 personal faction</span></span></button></li>`;}).join("");
+ const steps=R.steps.map(s=>{const S=STEPS[s];
+   return `<b>${esc(S.n)}</b> ${S.qty?"× "+S.qty:""} — ${esc(S.npc)}${S.zone?", "+esc(S.zone):""}`;}).join("<br>");
+ return `<article class="rc ${un?"done":""}" style="--tc:${T.c}">
+  <div class="rtop"><span class="rn">${esc(R.n)}</span>
+    <span class="tag" style="color:${T.c}">${esc(T.l)}</span></div>
+  <div class="meta">${esc(R.align)} · ${esc(R.city)}<br>${esc(R.racials)}</div>
+  <div class="work">
+    <div><dt>Items</dt><dd>${R.steps.reduce((a,s)=>a+(STEPS[s].qty||0),0)||"—"}</dd></div>
+    <div><dt>Kills</dt><dd>${kills?"~"+kills:"0"}</dd></div>
+    <div><dt>Hours</dt><dd>${hrs?"~"+hrs+"+":"—"}</dd></div>
+  </div>
+  <p class="recipe">${steps||"<b>No faction work.</b> Comes free with another race."}</p>
+  <p class="recipe" style="color:var(--dim)">${esc(R.why)}</p>
+  ${R.facs.length?`<ul class="facs">${facs}</ul>`:
+    `<div class="note ${R.derived?"ok":"blue"}" style="margin:0 0 10px;font-size:13px">${R.derived?
+      "<strong>Unlocked automatically</strong> by "+R.derived.map(d=>esc(RACES[d].n)).join(" or ")+".":
+      "<strong>Task, not faction.</strong> Complete "+esc(R.task)+"."}</div>`}
+  <div class="prims"><b>Primary classes:</b> ${R.prim.map(c=>esc(CLASSNAMES[c])).join(" · ")}</div>
+  <div class="rfoot">
+    <button class="own ${owned[r]?"is-on":""}" data-own="${r}">${owned[r]?"✓ Unlocked":"Mark unlocked"}</button>
+    <button class="want ${want[r]?"is-on":""}" data-want="${r}">${want[r]?"★ On route":"Add to route"}</button>
+    <span class="st">${un?"available":(p.t?p.d+" / "+p.t+" factions":"not started")}</span>
+  </div></article>`;
+}
+function wireTrack(){
+ $$("[data-sort]").forEach(b=>b.onclick=()=>{sort=b.dataset.sort;renderTrack();});
+ $$("[data-f]").forEach(b=>b.onclick=async()=>{const k=b.dataset.f;if(facdone[k])delete facdone[k];else facdone[k]=1;renderTrack();await persist();});
+ $$("[data-own]").forEach(b=>b.onclick=async()=>{const k=b.dataset.own;if(owned[k])delete owned[k];else owned[k]=1;renderTrack();await persist();});
+ $$("[data-want]").forEach(b=>b.onclick=async()=>{const k=b.dataset.want;if(want[k])delete want[k];else want[k]=1;renderTrack();await persist();});
+}
+
+/* ============ RENDER: ROUTE ============ */
+function renderPlan(){
+ const t=targets();
+ if(!t.length){
+  $("#pane-plan").innerHTML=`<h2><span class="num">◆</span>My route</h2>
+   <p class="lede">Nothing on your route yet. Go to <strong>Race unlocks</strong> and press <em>Add to route</em> on the races you want. This page will then merge their grinds, strip out the duplicated work, and give you one shopping list and one running order.</p>
+   <div class="note key"><strong>Why the merge matters.</strong> Wood Elf and High Elf share two of three steps outright: the muffins that max Soldiers of Tunare also max Clerics of Tunare, and the white wine that maxes Kelethin Merchants also maxes Merchants of Felwithe. Add both and this page will only ask you to buy them once.</div>`;
+  return;
+ }
+ const steps=neededSteps();
+ const order=t.slice().sort((a,b)=>RACES[a].tier-RACES[b].tier||lowHrs(a)-lowHrs(b));
+ const byKind={};
+ steps.forEach(s=>{const k=STEPS[s].kind;(byKind[k]=byKind[k]||[]).push(s);});
+ const totalKills=steps.reduce((a,s)=>a+(STEPS[s].kills||0),0);
+ const totalTurn=steps.reduce((a,s)=>a+(STEPS[s].qty||0),0);
+ const dupSaved=t.reduce((a,r)=>a+RACES[r].steps.length,0)-steps.length;
+
+ const cards=Object.keys(byKind).map(k=>{
+  const K=KINDS[k];
+  return `<div class="pcard ${K.c}"><h4>${esc(K.l)}</h4>
+   <div class="who">${byKind[k].length} step${byKind[k].length>1?"s":""}</div>
+   <ul>${byKind[k].map(s=>{const S=STEPS[s];
+     return `<li><span class="qty">${S.qty?S.qty+"×":"—"}</span> ${esc(S.item&&S.item!=="—"?S.item:S.n)}
+       <span class="for">→ ${esc(S.npc)} · ${esc(S.zone)}</span>
+       <span class="for">for ${stepUsers(s).map(r=>esc(RACES[r].n)).join(", ")}</span></li>`;}).join("")}</ul></div>`;
+ }).join("");
+
+ $("#pane-plan").innerHTML=`
+ <h2><span class="num">◆</span>My route</h2>
+ <p class="lede">${t.length} race${t.length>1?"s":""} on your route, needing ${steps.length} distinct grind${steps.length>1?"s":""} between them${dupSaved>0?` — the merge removed ${dupSaved} duplicated step${dupSaved>1?"s":""}`:""}.</p>
+ <dl class="stat">
+   <div class="sc"><dt>Races</dt><dd>${t.length}</dd></div>
+   <div class="sc"><dt>Distinct steps</dt><dd>${steps.length}<small>${dupSaved>0?dupSaved+" removed by overlap":"no overlap between these"}</small></dd></div>
+   <div class="sc"><dt>Items to gather</dt><dd>${totalTurn}<small>most quests take a single item type, so they hand in eight at a time</small></dd></div>
+   <div class="sc"><dt>Kills</dt><dd>${totalKills?"~"+totalKills:"0"}</dd></div>
+ </dl>
+ <h3 style="margin-top:32px">Consolidated shopping and farming list</h3>
+ <p class="lede" style="margin-bottom:0">Each line appears once no matter how many races on your route need it.</p>
+ <div class="plan">${cards}</div>
+ <h3 style="margin-top:36px">Suggested order</h3>
+ <p class="lede">Cheapest and most contained first, so that the shared steps are already banked by the time you reach the races that lean on them.</p>
+ <ol class="route">${order.map(r=>{
+   const R=RACES[r],p=facProgress(r);
+   const already=R.steps.filter(s=>order.slice(0,order.indexOf(r)).some(x=>RACES[x].steps.includes(s)));
+   return `<li class="${isUnlocked(r)?"got":""}">
+     <div class="rl" style="color:${TIERS[R.tier].c}">${esc(R.n)}</div>
+     <div class="rw">${esc(R.why)}${already.length?` <strong style="color:var(--ok)">Already covered by an earlier race: ${already.map(s=>esc(STEPS[s].n)).join(", ")}.</strong>`:""}</div>
+     <div class="rw" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim)">${p.t?p.d+" / "+p.t+" factions maxed":"task-based"}</div></li>`;
+  }).join("")}</ol>
+ <h3 style="margin-top:36px">Step detail</h3>
+ ${steps.map(s=>{const S=STEPS[s];
+   return `<div class="note" style="border-left-color:${S.kills?"var(--orange)":"var(--blue)"}">
+     <strong>${esc(S.n)}</strong> — ${esc(S.gain)}.<br>${esc(S.note)}</div>`;}).join("")}`;
+}
+
+/* ============ RENDER: CALCULATOR ============ */
+function renderCalc(){
+ const rOpts=(sel,blank)=>`<option value="">${blank}</option>`+RORDER.map(r=>
+   `<option value="${r}" ${sel===r?"selected":""}>${esc(RACES[r].n)}</option>`).join("");
+ const cOpts=sel=>`<option value="">—</option>`+CORDER.map(c=>`<option value="${c}" ${sel===c?"selected":""}>${esc(CLASSNAMES[c])}</option>`).join("");
+
+ $("#pane-calc").innerHTML=`
+ <h2><span class="num">◆</span>Combo calculator</h2>
+ <p class="lede">Tell it what you want and it will cost the routes. It takes your primary-slot requirement literally.</p>
+ <div class="note key"><strong>The primary slot is the one you cannot change.</strong> It locks at level 11 and stays locked until you spend a class unlock — the first of which arrives free at level 50, after which each class costs a full Plane of Sky quest line. Your second and third classes swap freely in any city, forever. So the primary is not a formality: it is the one class that every loadout you ever build on this character will contain. If you already know which class you will never drop, that is the one that belongs there, and this tool will not argue with you about it.</div>
+ <div class="note"><strong>Race is not cosmetic either.</strong> Base attributes differ by race, and for a melee-leaning trio the difference in starting strength and stamina is worth planning around. This tool does not carry the stat tables, so it will not rank races for you — but it will never tell you your race preference is the thing to give up.</div>
+
+ <div class="calcform">
+   <div class="f"><label>Race you want</label><select id="c-wrace">${rOpts(calc.wantRace,"Choose…")}</select></div>
+   <div class="f"><label>Class you want in the primary slot</label><select id="c-wprim">${cOpts(calc.wantPrim)}</select></div>
+   <div class="f"><label>Primary slot requirement</label><select id="c-strict">
+     <option value="strict" ${calc.strict!=="loose"?"selected":""}>This class must be the primary</option>
+     <option value="loose" ${calc.strict==="loose"?"selected":""}>Any of my three can be the primary</option></select></div>
+ </div>
+ <div class="calcform">
+   <div class="f"><label>Your other two classes</label>
+     <div class="slots3"><select id="c-c2">${cOpts(calc.c2)}</select><select id="c-c3">${cOpts(calc.c3)}</select></div></div>
+   <div class="f"><label>Where are you now</label><select id="c-lvl">
+     <option value="plan" ${calc.lvl==="plan"?"selected":""}>Planning — character not made yet</option>
+     <option value="pre" ${calc.lvl==="pre"?"selected":""}>Below level 11 — nothing locked yet</option>
+     <option value="post" ${calc.lvl==="post"?"selected":""}>Level 11 or above — race and primary locked</option></select></div>
+   <div class="f"><label>Current race and primary <span style="color:var(--dim)">(if already locked)</span></label>
+     <div class="slots3"><select id="c-race">${rOpts(calc.race,"—")}</select><select id="c-prim">${cOpts(calc.prim)}</select></div></div>
+ </div>
+ <div id="verdict"></div>`;
+
+ ["c-race","c-lvl","c-prim","c-wrace","c-wprim","c-c2","c-c3","c-strict"].forEach(id=>{
+  $("#"+id).onchange=async()=>{
+   calc.race=$("#c-race").value;calc.lvl=$("#c-lvl").value;calc.prim=$("#c-prim").value;
+   calc.wantRace=$("#c-wrace").value;calc.wantPrim=$("#c-wprim").value;
+   calc.c2=$("#c-c2").value;calc.c3=$("#c-c3").value;calc.strict=$("#c-strict").value;
+   renderVerdict();await persist();};
+ });
+ renderVerdict();
+}
+
+/* races that can take class C in the primary slot at character creation */
+function hostsFor(c){return RORDER.filter(r=>RACES[r].prim.includes(c));}
+
+function verdictBox(vc,vh,body,opts,extra){
+ return `<div class="verdict" style="--vc:${vc}"><div class="vh">${esc(vh)}</div>${body}
+  ${opts.length?`<ul class="opts">${opts.map(o=>`<li style="--oc:${o.c}">
+    <div class="oh"><span class="on">${esc(o.n)}</span><span class="oc2">${esc(o.cost)}</span></div>
+    <div class="od">${o.d}</div></li>`).join("")}</ul>`:""}</div>${extra||""}`;
+}
+
+/* the launcher table: which race to create as when your target race cannot host your primary */
+function launcherTable(WP,WR){
+ const hosts=hostsFor(WP).filter(r=>r!==WR);
+ if(!hosts.length)return "";
+ const ranked=hosts.slice().sort((a,b)=>RACES[b].tier-RACES[a].tier);
+ const best=ranked[0];
+ return `<h3 style="margin-top:30px">Which race to start as</h3>
+ <p class="lede">Character creation is not gated — you can roll any race, and <strong>starting as a race grants its unlock achievement automatically</strong>. So the launcher you pick is a free race you keep forever. Take the one whose own unlock you would least like to grind later.</p>
+ <ol class="route">${ranked.map(r=>{
+   const R=RACES[r],T=TIERS[R.tier];
+   return `<li${isUnlocked(r)?' class="got"':''}>
+     <div class="rl" style="color:${T.c}">${esc(R.n)}${r===best?' <span class="tag" style="color:var(--ok);vertical-align:middle">Best value</span>':''}${isUnlocked(r)?' <span class="tag" style="color:var(--dim);vertical-align:middle">already yours</span>':''}</div>
+     <div class="rw">Takes ${esc(CLASSNAMES[WP])} as a primary. Its own unlock is rated <strong style="color:${T.c}">${esc(T.l)}</strong>${R.facs.length?` — ${esc(R.facs.join(", "))}`:""}. Starts in ${esc(R.city)}.</div>
+     ${r===best?`<div class="rw" style="color:var(--ok)">Hardest unlock among your options, so starting here saves you the most work later.</div>`:""}</li>`;
+  }).join("")}</ol>`;
+}
+
+function renderVerdict(){
+ const R=calc.race, WR=calc.wantRace, WP=calc.wantPrim;
+ const others=[calc.c2,calc.c3].filter(Boolean);
+ const strict=calc.strict!=="loose";
+ const box=$("#verdict");
+ if(!WR){box.innerHTML=`<div class="note">Pick the race you want to see a verdict.</div>`;return;}
+ const T=RACES[WR], tier=TIERS[T.tier];
+ const raceOwned=isUnlocked(WR), locked=calc.lvl==="post";
+ const raceOK=!locked||R===WR;
+ const raceLine=raceOwned
+   ? `You have already unlocked <b>${esc(T.n)}</b>, so wearing it is a loadout change in any city — free and instant.`
+   : `<b>${esc(T.n)}</b> is not unlocked yet. Its faction work is rated <b style="color:${tier.c}">${tier.l}</b>${T.facs.length?` — ${esc(T.facs.join(", "))}`:""}, and it is on the Race unlocks tab. A Race Unlock Token from the store skips it.`;
+
+ /* ---------- PRIMARY-FIRST: the user named a primary and means it ---------- */
+ if(WP&&strict){
+  const legal=T.prim.includes(WP);
+  let vc,vh,body,opts=[],extra="";
+
+  if(legal){
+   vc="var(--ok)";
+   vh=`${T.n} takes ${CLASSNAMES[WP]} as a primary directly`;
+   body=`<p>No workaround needed. <strong>${esc(T.n)}</strong> is on the list of races that can lock <strong>${esc(CLASSNAMES[WP])}</strong> into the primary slot at creation${others.length?`, and your other two picks — ${esc(others.map(c=>CLASSNAMES[c]).join(" and "))} — sit in slots two and three, where race restrictions do not apply`:""}.</p>`;
+   if(locked&&calc.prim&&calc.prim!==WP){
+    body+=`<p>Your primary is currently locked as <strong>${esc(CLASSNAMES[calc.prim])}</strong>, though, so changing it costs a class unlock.</p>`;
+    opts.push({n:"Spend your free level-50 class unlock",c:"var(--ok)",cost:"Free, once",d:`The first primary class unlock is granted the moment you first reach level 50. Spend it on <b>${esc(CLASSNAMES[WP])}</b> and your primary changes without touching your race.`});
+    opts.push({n:"Unlock "+esc(CLASSNAMES[WP])+" through Plane of Sky",c:"var(--acc)",cost:"Six or seven raid-gated tests",d:`If your free token is already spent, the class line in Plane of Sky unlocks it — and unlocking a primary class makes it selectable by <b>any</b> race thereafter.`});
+   } else if(locked&&calc.prim===WP){
+    body+=`<p>Your primary is already locked as <strong>${esc(CLASSNAMES[WP])}</strong>. Nothing to change there.</p>`;
+   } else {
+    opts.push({n:"Create it directly",c:"var(--ok)",cost:"Free",d:`Roll <b>${esc(T.n)}</b>, set <b>${esc(CLASSNAMES[WP])}</b> as your primary, and lock it at level 11. Your third slot opens at level 10 and both non-primary slots stay swappable for the life of the character.`});
+   }
+   if(!raceOK||!raceOwned&&locked)opts.push({n:"Get "+esc(T.n),c:"var(--acc)",cost:raceOwned?"Free":tier.l,d:raceLine});
+  }
+  else {
+   /* the real case: race cannot host the primary you insist on */
+   const hosts=hostsFor(WP);
+   if(locked&&calc.prim===WP){
+    box.innerHTML=verdictBox("var(--ok)",`You are already positioned correctly — only the race is left`,
+     `<p>Your primary is locked as <strong>${esc(CLASSNAMES[WP])}</strong>, which is exactly what you wanted, and <strong>a race change does not re-validate a locked primary</strong>. ${esc(RACES[R]?RACES[R].n:"Your current race")} was the launcher; nothing about the class needs touching again.</p>
+      <p>All that stands between you and <strong>${esc(T.n)} ${esc(CLASSNAMES[WP])}</strong> is the race unlock itself.</p>`,
+     [raceOwned
+       ?{n:"Swap race in your loadout",c:"var(--ok)",cost:"Free",d:`You have already unlocked <b>${esc(T.n)}</b>. Change race in any city — your locked primary comes with you.`}
+       :{n:"Unlock "+esc(T.n),c:"var(--acc)",cost:tier.l,d:raceLine},
+      {n:"Race Unlock Token",c:"var(--vio)",cost:"Store purchase",d:"Skips the faction work outright. The honest comparison is on the Race unlocks tab — some races are an evening of vendor turn-ins, others are a genuine farm."}],
+     "");
+    return;
+   }
+   if(locked&&calc.prim&&calc.prim!==WP){
+    box.innerHTML=verdictBox("var(--acc)",`Your primary is locked as ${CLASSNAMES[calc.prim]} — that is the thing to move`,
+     `<p>You are past level 11 with <strong>${esc(CLASSNAMES[calc.prim])}</strong> in the primary slot, and you want <strong>${esc(CLASSNAMES[WP])}</strong> there instead. Changing race will not do it — a race swap carries your existing primary along unchanged. The class itself has to be unlocked.</p>
+      <p>Unlocking a primary class makes it selectable by <strong>any</strong> race, so this also solves the ${esc(T.n)} half if you are already ${esc(T.n)}.</p>`,
+     [{n:"Spend your free level-50 class unlock",c:"var(--ok)",cost:"Free, once",d:`Granted the first time you reach level 50. Spend it on <b>${esc(CLASSNAMES[WP])}</b>. This is the only route that does not cost a full raid quest line or a reroll.`},
+      {n:"Unlock "+esc(CLASSNAMES[WP])+" through Plane of Sky",c:"var(--acc)",cost:"A full class quest line",d:`Six or seven tests, end-game gated. What you fall back on once the free token is spent.`},
+      {n:"Reroll with a launcher race",c:"var(--blue)",cost:"Your levelling time",d:`Start again as ${hosts.map(h=>esc(RACES[h].n)).join(", ")}, lock <b>${esc(CLASSNAMES[WP])}</b> at 11, then unlock <b>${esc(T.n)}</b> and swap. Cheapest in tokens, most expensive in hours — worth it only if you are early.`},
+      raceOwned?null:{n:"And you will still need "+esc(T.n),c:"var(--vio)",cost:tier.l,d:raceLine}].filter(Boolean),
+     "");
+    return;
+   }
+   vc="var(--blue)";
+   vh=`Achievable — start elsewhere, then bring the race to the primary`;
+   body=`<p><strong>${esc(T.n)}</strong> cannot select <strong>${esc(CLASSNAMES[WP])}</strong> as a primary at character creation. That does not block you, because <strong>a race change does not re-validate a primary you have already locked</strong>. Lock the class first, move the race second.</p>
+   <p>The races that can lock <strong>${esc(CLASSNAMES[WP])}</strong> in at creation are ${hosts.map(h=>`<strong>${esc(RACES[h].n)}</strong>`).join(", ")}. Pick one of those, lock at 11, then unlock ${esc(T.n)} and swap the loadout. Your primary survives the change.</p>`;
+   opts.push({n:"Lock the class first, then move the race",c:"var(--ok)",cost:tier.l+" — the race unlock only",
+     d:`Roll a launcher race that can take <b>${esc(CLASSNAMES[WP])}</b>, lock it at level 11, then unlock <b>${esc(T.n)}</b> and change race in your loadout. <b>Cheapest route, and the only one that gets you there before level 50.</b> ${raceLine}`});
+   opts.push({n:"Race Unlock Token instead of the grind",c:"var(--vio)",cost:"Store purchase",
+     d:`Identical outcome, bought rather than earned. Worth checking the grind first — several races are an evening of vendor turn-ins rather than a real farm, and Dark Elf is 400 bottles of red wine to one NPC.`});
+   opts.push({n:"Unlock "+esc(CLASSNAMES[WP])+" as a primary class",c:"var(--acc)",cost:"Level-50 token, or Plane of Sky",
+     d:`The other direction: unlocking a primary class makes it selectable by <b>any</b> race, so you could roll ${esc(T.n)} directly and convert later. The catch is that you are stuck with a primary you did not want for the whole climb to 50, and it spends the one free token. Slower and more expensive than the route above unless you were going to unlock that class anyway.`});
+   extra=launcherTable(WP,WR);
+  }
+
+  if(others.length){
+   const dup=others.filter(c=>c===WP);
+   body+=`<p style="color:var(--mut);font-size:13.5px">Slots two and three — ${esc(others.map(c=>CLASSNAMES[c]).join(" and "))} — carry no race restriction and can be changed in any city at any time, forever.${dup.length?" One of them duplicates your primary; pick something else.":""}</p>`;
+  }
+  box.innerHTML=verdictBox(vc,vh,body,opts,extra);
+  return;
+ }
+
+ /* ---------- FLEXIBLE: they said any of the three can be primary ---------- */
+ const trio=[WP].concat(others).filter(Boolean);
+ if(!trio.length){box.innerHTML=`<div class="note">Name at least one class to see a verdict.</div>`;return;}
+ const legalHere=trio.filter(c=>T.prim.includes(c));
+ const free=3-trio.length;
+ let vc,vh,body,opts=[];
+
+ if(legalHere.length){
+  vc="var(--ok)";vh="Legal as it stands";
+  body=`<p><strong>${esc(T.n)}</strong> can take <strong>${esc(legalHere.map(c=>CLASSNAMES[c]).join(" or "))}</strong> as the primary${trio.length>legalHere.length?`, and the rest — ${esc(trio.filter(c=>!legalHere.includes(c)).map(c=>CLASSNAMES[c]).join(", "))} — go in slots two and three`:""}.</p>
+  <p style="color:var(--mut);font-size:13.5px">Choose which of ${esc(legalHere.map(c=>CLASSNAMES[c]).join(" or "))} takes the primary slot deliberately: it is the one you will never be able to drop.</p>`;
+  opts.push({n:"Create it directly",c:"var(--ok)",cost:"Free",d:`Roll <b>${esc(T.n)}</b> and lock <b>${esc(CLASSNAMES[legalHere[0]])}</b> as the primary at level 11. The other two slots stay swappable for the life of the character.`});
+  if(!raceOwned&&locked)opts.push({n:"Get "+esc(T.n),c:"var(--acc)",cost:tier.l,d:raceLine});
+ } else if(free>0){
+  vc="var(--blue)";vh="Needs one more class, or a launcher race";
+  const cand=T.prim;
+  body=`<p>None of ${esc(trio.map(c=>CLASSNAMES[c]).join(", "))} can be ${esc(T.n)}'s primary, but you have ${free} slot${free>1?"s":""} unnamed. Filling one with ${esc(cand.map(c=>CLASSNAMES[c]).join(", "))} makes the trio legal — at the cost of locking that class into every loadout you ever build.</p>`;
+  opts.push({n:"Fill the empty slot with a legal primary",c:"var(--ok)",cost:"Free",d:`Any of <b>${esc(cand.map(c=>CLASSNAMES[c]).join(", "))}</b>. Only do this if you would genuinely be happy carrying that class forever.`});
+  opts.push({n:"Or keep your three and use a launcher race",c:"var(--blue)",cost:tier.l,d:`Roll a race that can host one of your three, lock it, then unlock <b>${esc(T.n)}</b> and swap. Keeps your class list exactly as you wanted it.`});
+ } else {
+  vc="var(--warn)";vh="This exact trio needs an unlock";
+  const hosts=RORDER.filter(r=>trio.some(c=>RACES[r].prim.includes(c)));
+  body=`<p>All three slots are named and none of ${esc(trio.map(c=>CLASSNAMES[c]).join(", "))} is on ${esc(T.n)}'s primary list (${esc(T.prim.map(c=>CLASSNAMES[c]).join(", "))}). One of the two has to move.</p>`;
+  if(hosts.length)opts.push({n:"Launcher race, then swap",c:"var(--ok)",cost:tier.l,d:`These can host one of your three as a primary: <b>${hosts.map(r=>esc(RACES[r].n)).join(", ")}</b>. Roll one, lock at 11, unlock <b>${esc(T.n)}</b>, swap race. Your classes stay exactly as chosen.`});
+  opts.push({n:"Unlock one of your classes as a primary",c:"var(--acc)",cost:"Level-50 token, or Plane of Sky",d:`Unlocking a primary class makes it selectable by any race. Costs your free token or a full Sky line, and leaves you on an unwanted primary until 50.`});
+ }
+ box.innerHTML=verdictBox(vc,vh,body,opts,"");
+}
+
+/* ============ NAV ============ */
+function show(t){
+ tab=t;
+ $$(".tab").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.tab===t)));
+ ["track","plan","calc"].forEach(k=>$("#pane-"+k).classList.toggle("hidden",k!==t));
+ if(t==="track")renderTrack();if(t==="plan")renderPlan();if(t==="calc")renderCalc();
+ window.scrollTo(0,0);
+}
+$$(".tab").forEach(b=>b.onclick=()=>show(b.dataset.tab));
+$("#btn-reset").onclick=async()=>{
+ if(!confirm("Start over? This clears every unlocked race, route pick, maxed faction and calculator choice."))return;
+ owned={};want={};facdone={};
+ calc={race:"",prim:"",lvl:"plan",c2:"",c3:"",wantRace:"",wantPrim:"",strict:"strict"};
+ try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}
+ await STORE.set(SKEY,"");
+ renderTrack();renderPlan();renderCalc();show(tab);};
+$("#btn-share").onclick=()=>{
+ $("#linkbox").value=location.origin+location.pathname+location.search+encodeState();
+ $("#savenote").innerHTML=STORE.kind==="artifact"?"Also saved automatically in this conversation."
+  :STORE.kind==="browser"?"Also saved automatically in this browser."
+  :"<span style='color:var(--warn)'>Automatic saving is unavailable here — this link is your only copy.</span>";
+ $("#share").classList.remove("hidden");$("#linkbox").select();};
+$("#btn-close").onclick=()=>$("#share").classList.add("hidden");
+$("#share").onclick=e=>{if(e.target.id==="share")$("#share").classList.add("hidden");};
+$("#btn-copy").onclick=async()=>{
+ const el=$("#linkbox");el.select();let ok=false;
+ try{await navigator.clipboard.writeText(el.value);ok=true;}catch(e){try{ok=document.execCommand("copy");}catch(e2){}}
+ $("#btn-copy").textContent=ok?"Copied":"Press Ctrl+C";
+ setTimeout(()=>{$("#btn-copy").textContent="Copy link";},1800);};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#share").classList.add("hidden");});
+
+(async()=>{
+ let ok=decodeState(location.hash);
+ if(!ok){const s=await STORE.get(SKEY);if(s)decodeState(s);}
+ show("calc");
+})();
+</script>
+</body>
+</html>

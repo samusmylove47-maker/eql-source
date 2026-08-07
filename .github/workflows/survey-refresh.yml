@@ -1,0 +1,116 @@
+# EQL Source — twice-daily source check.
+#
+# What it does: asks the wiki what changed, reads only the changed pages,
+# drafts an update, opens a PULL REQUEST, and stops.
+# It never publishes. Merging the pull request is what publishes.
+#
+# Runs 06:00 and 18:00 UTC. Change the cron below to move that.
+# You can also run it by hand: Actions tab -> Survey refresh -> Run workflow.
+
+name: Survey refresh
+
+on:
+  schedule:
+    - cron: "0 6,18 * * *"
+  workflow_dispatch:          # the "Run workflow" button
+
+concurrency:
+  group: survey-refresh       # never two of these at once
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25       # hard stop, so a confused run cannot cost all day
+    permissions:
+      contents: write
+      pull-requests: write
+      issues: read
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          # Using a Claude subscription. If /install-github-app created an
+          # ANTHROPIC_API_KEY secret instead, replace this line with:
+          #   anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          claude_args: |
+            --max-turns 40
+            --allowedTools "Read,Write,Edit,Glob,Grep,WebFetch,Bash(git:*),Bash(gh:*),Bash(python3:*),Bash(./build.sh)"
+          prompt: |
+            You are running unattended on a schedule for the EQL Source site.
+            Read CLAUDE.md and docs/SOURCES.md first. They are binding.
+
+            GOAL: find out whether anything the site depends on has changed, and
+            if so, prepare a reviewable update. You are NOT publishing. You are
+            preparing a pull request for a human to read and merge.
+
+            STEP 1 — ask, do not scrape.
+            Read state/watchlist.json. Query the eqlwiki Recent Changes API:
+              https://eqlwiki.com/api.php?action=query&list=recentchanges&rcprop=title|ids|timestamp|comment|user&rclimit=200&format=json
+            Compare returned titles against wiki_pages in the watchlist, and
+            compare each revid against state/last-check.json. Also fetch
+            https://www.everquestlegends.com/news and look for patch notes newer
+            than the last run.
+
+            STEP 2 — if nothing relevant changed, STOP.
+            Update state/last-check.json with the run timestamp, commit that one
+            file directly to main with the message "chore: no source changes",
+            and exit. Do not open a pull request. Most runs should end here and
+            that is correct.
+
+            STEP 3 — if something changed, read only what changed.
+            Use diff=cur&oldid=<last seen revid> so you get the changes and the
+            current text in one request. Guard against the two failure modes in
+            docs/SOURCES.md: a silently stale revision, and an empty page
+            returned as a success. If a fetch looks empty or stale, treat it as
+            a failed fetch and say so in the proposal rather than acting on it.
+
+            STEP 4 — classify every change as GREEN or RED.
+            GREEN: a single-source factual field with no interpretation — a ZEM
+            value, respawn timer, level band, coordinate, item stat. Apply these.
+            RED: anything else — new prose, a new named mob, a changed mechanic,
+            a conflict with something already published, or anything touching a
+            gap listed in CLAUDE.md section 9. Do NOT apply these. Write them up.
+
+            STEP 5 — make the changes.
+            Edit assets/zones-index.json and the originals in _build/source/.
+            Never edit generated files in dungeons/ or tools/ directly.
+            Then run ./build.sh and then python3 scripts/check.py.
+            If check.py fails, fix it. If you cannot, open the pull request
+            anyway with the failure quoted at the top of the proposal.
+
+            STEP 6 — write PROPOSAL.md at the repository root.
+            Structure it as:
+              - One-line summary.
+              - GREEN CHANGES APPLIED: each as old value -> new value, with the
+                source page, its revision id and its edit timestamp.
+              - RED CHANGES FOR YOUR DECISION: what changed, what it conflicts
+                with, which source you would trust and why, and what you did NOT
+                do. Recommend, do not act.
+              - FETCH PROBLEMS: anything stale, empty or blocked.
+              - NOTHING ELSE CHANGED: list the watched pages that were quiet, so
+                the absence of news is explicit.
+            Be specific and short. No hedging, no filler.
+
+            STEP 7 — open the pull request.
+            Branch name: survey/refresh-YYYY-MM-DD-HHMM (UTC).
+            Commit everything including the updated state/last-check.json.
+            Title: "Survey refresh — N green, M red".
+            Body: the contents of PROPOSAL.md.
+            Use gh pr create. Do NOT merge it. Do NOT push to main.
+
+            HARD RULES.
+            Never invent a number. Never present classic EverQuest text as
+            Legends fact. Never quietly close a flagged gap. Never merge your own
+            pull request. If you are unsure about anything, put it in RED and say
+            exactly what evidence would settle it.

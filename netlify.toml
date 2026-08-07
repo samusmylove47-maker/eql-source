@@ -1,0 +1,42 @@
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+# Guides change several times a day. Never let a stale page stick.
+[[headers]]
+  for = "/dungeons/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/raids/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[redirects]]
+  from = "/_build/*"
+  to = "/index.html"
+  status = 404
+
+[[redirects]]
+  from = "/sky"
+  to = "/tools/plane-of-sky.html"
+  status = 301
+[[redirects]]
+  from = "/races"
+  to = "/tools/race-unlocks.html"
+  status = 301
+[[redirects]]
+  from = "/calculator"
+  to = "/tools/combo-calculator.html"
+  status = 301

@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campaign Plate v2 — Levels 10 to 50 | EverQuest Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --stone:#12171A;--plate:#1A2126;--plate2:#232C32;--rule:#2E3A41;--bone:#D5DBD8;--dim:#8A9998;
+  --cb:#BE4F3E;--bf:#8E7BC7;--bb:#5C93C4;--nj:#D9A227;--sp:#45A6A0;--end:#7C8A8A;
+  --blood:#C9453A;--ok:#5FA37E;
+}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--stone);color:var(--bone);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px 90px}
+.mast{border-bottom:1px solid var(--rule);padding:46px 0 26px;margin-bottom:34px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--nj);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9vw,96px);line-height:.86;letter-spacing:-.015em;margin:0 0 8px;text-transform:uppercase}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.2vw,23px);color:var(--dim);letter-spacing:.02em;margin:0;text-transform:uppercase}
+section{margin-top:58px}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--nj);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+.lede{color:var(--dim);margin:0 0 24px;max-width:64ch}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:20px;letter-spacing:.04em;margin:32px 0 10px}
+p{max-width:76ch}
+.plate-box{border:1px solid var(--rule);background:var(--plate);padding:18px}
+svg{display:block;width:100%;height:auto}
+.scroller{overflow-x:auto;border:1px solid var(--rule)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:13.5px}
+th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--dim);text-align:left;padding:11px 13px;background:var(--plate2);border-bottom:1px solid var(--rule);white-space:nowrap}
+td{padding:11px 13px;border-bottom:1px solid var(--rule);vertical-align:top;background:var(--plate)}
+tbody tr:last-child td{border-bottom:0}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:12.5px;white-space:nowrap}
+.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+.zn{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
+.pass{border:1px solid var(--rule);background:var(--plate);padding:20px;margin:18px 0}
+.pass .hd{display:flex;flex-wrap:wrap;gap:14px;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:12px;margin-bottom:14px}
+.pass .tg{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--nj)}
+.pass h4{font-family:"Saira Condensed",sans-serif;font-size:27px;font-weight:700;text-transform:uppercase;margin:0;letter-spacing:.02em}
+.pass .trio{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--dim)}
+.pass .trio b{color:var(--bone);font-weight:500}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.step{background:var(--plate2);padding:12px 14px}
+.step .rng{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.step .z{font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;text-transform:uppercase;margin:3px 0 5px;letter-spacing:.02em}
+.step p{font-size:12.5px;margin:0;color:var(--dim)}
+.note{border-left:2px solid var(--rule);padding:2px 0 2px 16px;margin:20px 0;color:var(--dim);max-width:76ch}
+.danger{border-left-color:var(--blood)}.danger strong{color:var(--blood)}
+.win{border-left-color:var(--ok)}.win strong{color:var(--ok)}
+.fix{border-left-color:var(--nj)}.fix strong{color:var(--nj)}
+.note strong{color:var(--bone)}
+ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--nj);background:var(--plate2);padding:1px 5px}
+.chk{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:20px 0}
+.chk .i{background:var(--plate);padding:12px 14px}
+.chk .i .who{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--nj)}
+.chk .i .sp{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;margin:3px 0 4px;letter-spacing:.02em}
+.chk .i .d{font-size:12.5px;color:var(--dim)}
+.toll{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule);margin:18px 0}
+.toll .t{background:var(--plate);padding:12px 14px;text-align:center}
+.toll .t .l{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:var(--dim)}
+.toll .t .v{font-family:"Saira Condensed",sans-serif;font-size:28px;font-weight:700;line-height:1;margin:5px 0 3px}
+.toll .t .n{font-size:11.5px;color:var(--dim)}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid var(--rule);color:var(--dim);font-size:12.5px}
+footer h3{margin-top:0}
+:focus-visible{outline:2px solid var(--nj);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Campaign Plate v2 · revised after the translocator correction</p>
+  <h1>Levels 10<br>to 50</h1>
+  <p class="subtitle">Routing, zone assignment, travel tolls, and the spells to actually have</p>
+</header>
+
+<section>
+  <h2><span class="num">00</span>What changed in v2</h2>
+  <div class="note fix"><strong>The Freeport ↔ Qeynos translocator exists.</strong> The patch notes state plainly that a new translocator route was added between Freeport and Qeynos, and the community race-unlock guide confirms Legends added a direct route between the two cities. Version 1 of this plan said no such route existed — that came from the wiki's Travel Guide page, which lists only the three classic boat routes and carries its own banner warning that its content is unreliable. It's stale. You were right.</div>
+  <div class="note fix"><strong>The toll is stranger than "1 plat per level."</strong> Translocators are <strong>free until you reach level 20 in any class</strong>, and after that cost <strong>your highest class level in plat</strong> per trip. Not your character level — your highest. That distinction matters enormously for a reset build, and it's covered in section 02.</div>
+  <div class="note fix"><strong>The routing did contain a real error.</strong> Version 1 put Blackburrow in pass 3 and justified it by geography that turns out to be wrong. It also chained three low dungeons into one pass, which is the criss-cross you spotted. Section 03 is rebuilt: one low dungeon per pass, one crossing per pass, no doubling back.</div>
+</section>
+
+<section>
+  <h2><span class="num">01</span>The plate</h2>
+  <p class="lede">Three passes, plotted against character level. Blocks are zones; pins on the top rail are the unlocks that change how you travel; the bar under each pass marks its single continent crossing.</p>
+  <div class="plate-box">
+    <svg viewBox="0 0 1020 640" role="img" aria-label="Revised three-pass levelling route from level 10 to 50">
+      <line x1="120" y1="150" x2="960" y2="150" stroke="#2E3A41" stroke-width="1"/>
+      <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#8A9998">
+        <g stroke="#D9A227" stroke-width="1">
+          <line x1="162" y1="142" x2="162" y2="158"/><line x1="204" y1="142" x2="204" y2="158"/>
+          <line x1="330" y1="142" x2="330" y2="158"/><line x1="435" y1="142" x2="435" y2="158"/>
+          <line x1="456" y1="142" x2="456" y2="158"/><line x1="477" y1="142" x2="477" y2="158"/>
+        </g>
+        <text x="162" y="134" text-anchor="middle" fill="#D9A227">12</text>
+        <text x="162" y="122" text-anchor="middle">Bind Affinity</text>
+        <text x="204" y="134" text-anchor="middle" fill="#D9A227">14</text>
+        <text x="204" y="110" text-anchor="middle">Spirit of Wolf</text>
+        <text x="330" y="134" text-anchor="middle" fill="#C9453A">20</text>
+        <text x="330" y="122" text-anchor="middle" fill="#C9453A">TOLL BEGINS</text>
+        <text x="435" y="134" text-anchor="middle" fill="#D9A227">25</text>
+        <text x="435" y="110" text-anchor="middle">Circles / Portals</text>
+        <text x="477" y="134" text-anchor="middle" fill="#D9A227">26–27</text>
+        <text x="477" y="98" text-anchor="middle">Surefall · West Commons · Evac</text>
+      </g>
+
+      <g font-family="Saira Condensed, sans-serif" font-size="15" font-weight="700" fill="#8A9998" letter-spacing="1.4">
+        <text x="112" y="240" text-anchor="end">PASS 1</text>
+        <text x="112" y="350" text-anchor="end">PASS 2</text>
+        <text x="112" y="460" text-anchor="end">PASS 3</text>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+        <text x="112" y="254" text-anchor="end">porters</text>
+        <text x="112" y="364" text-anchor="end">war / shm</text>
+        <text x="112" y="474" text-anchor="end">final trio</text>
+      </g>
+
+      <!-- PASS 1 -->
+      <g>
+        <rect x="120" y="210" width="210" height="46" fill="#2a1c19" stroke="#BE4F3E"/>
+        <text x="225" y="232" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="16" font-weight="600" fill="#BE4F3E" letter-spacing="1">CRUSHBONE</text>
+        <text x="225" y="247" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">10 → 20 · Faydwer</text>
+        <rect x="330" y="210" width="189" height="46" fill="#2b2413" stroke="#D9A227"/>
+        <text x="424" y="232" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="16" font-weight="600" fill="#D9A227" letter-spacing="1">NAJENA</text>
+        <text x="424" y="247" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">20 → 27 · haste belt at 22</text>
+        <text x="532" y="237" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5FA37E">◀ reset</text>
+        <line x1="322" y1="264" x2="338" y2="264" stroke="#5FA37E" stroke-width="3"/>
+        <text x="330" y="278" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#5FA37E">CROSS FREE (before 20)</text>
+      </g>
+
+      <!-- PASS 2 -->
+      <g>
+        <rect x="120" y="320" width="210" height="46" fill="#1a2530" stroke="#5C93C4"/>
+        <text x="225" y="342" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="15" font-weight="600" fill="#5C93C4" letter-spacing="1">BLACKBURROW</text>
+        <text x="225" y="357" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">10 → 20 · Qeynos side</text>
+        <rect x="330" y="320" width="189" height="46" fill="#221d2e" stroke="#8E7BC7"/>
+        <text x="424" y="342" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="16" font-weight="600" fill="#8E7BC7" letter-spacing="1">BEFALLEN</text>
+        <text x="424" y="357" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">20 → 27 · Pristine Studded</text>
+        <text x="532" y="347" font-family="IBM Plex Mono, monospace" font-size="10" fill="#5FA37E">◀ reset</text>
+        <line x1="322" y1="374" x2="338" y2="374" stroke="#D9A227" stroke-width="3"/>
+        <text x="330" y="388" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#D9A227">QEY→FP · ~20pp</text>
+      </g>
+
+      <!-- PASS 3 -->
+      <g>
+        <rect x="120" y="430" width="315" height="46" fill="#221d2e" stroke="#8E7BC7"/>
+        <text x="277" y="452" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="16" font-weight="600" fill="#8E7BC7" letter-spacing="1">BEFALLEN</text>
+        <text x="277" y="467" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">10 → 25 · one bind, one loop, over-geared</text>
+        <rect x="435" y="430" width="357" height="46" fill="#16292a" stroke="#45A6A0"/>
+        <text x="613" y="452" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="16" font-weight="600" fill="#45A6A0" letter-spacing="1">SPLITPAW</text>
+        <text x="613" y="467" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">25 → 42 · one unbroken climb, ZEM 128</text>
+        <rect x="792" y="430" width="168" height="46" fill="#20262a" stroke="#7C8A8A"/>
+        <text x="876" y="452" text-anchor="middle" font-family="Saira Condensed, sans-serif" font-size="14" font-weight="600" fill="#9BA9A9" letter-spacing="1">LGUK / SOL B / PLANES</text>
+        <text x="876" y="467" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#8A9998">42 → 50</text>
+        <text x="277" y="498" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#5FA37E">NO CROSSING — ALL ANTONICA, ALL RITUAL PORTS</text>
+      </g>
+
+      <line x1="120" y1="550" x2="960" y2="550" stroke="#3C4A52" stroke-width="1.5"/>
+      <g stroke="#3C4A52" stroke-width="1">
+        <line x1="120" y1="550" x2="120" y2="560"/><line x1="225" y1="550" x2="225" y2="560"/>
+        <line x1="330" y1="550" x2="330" y2="560"/><line x1="435" y1="550" x2="435" y2="560"/>
+        <line x1="540" y1="550" x2="540" y2="560"/><line x1="645" y1="550" x2="645" y2="560"/>
+        <line x1="750" y1="550" x2="750" y2="560"/><line x1="855" y1="550" x2="855" y2="560"/>
+        <line x1="960" y1="550" x2="960" y2="560"/>
+      </g>
+      <g font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998" text-anchor="middle">
+        <text x="120" y="575">10</text><text x="225" y="575">15</text><text x="330" y="575">20</text>
+        <text x="435" y="575">25</text><text x="540" y="575">30</text><text x="645" y="575">35</text>
+        <text x="750" y="575">40</text><text x="855" y="575">45</text><text x="960" y="575">50</text>
+      </g>
+      <text x="120" y="600" font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B" letter-spacing="1.6">CHARACTER LEVEL — EQUAL TO YOUR LOWEST ACTIVE CLASS</text>
+    </svg>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>The translocator toll</h2>
+  <p class="lede">This is the mechanic that should shape your travel decisions, and it interacts badly with a reset build in a way that isn't obvious.</p>
+  <p>Translocators instantly move you from one boat dock to the other end of the route. They are <strong>free before you reach level 20 in any class</strong>. After that they cost <strong>your highest class level in plat</strong>.</p>
+
+  <div class="toll">
+    <div class="t"><p class="l">Right now</p><p class="v" style="color:var(--ok)">FREE</p><p class="n">all classes at 10</p></div>
+    <div class="t"><p class="l">After pass 1</p><p class="v" style="color:var(--nj)">27<span style="font-size:14px">pp</span></p><p class="v" style="display:none"></p><p class="n">druid is your highest</p></div>
+    <div class="t"><p class="l">During pass 2</p><p class="v" style="color:var(--nj)">27<span style="font-size:14px">pp</span></p><p class="n">even at character level 10</p></div>
+    <div class="t"><p class="l">At cap</p><p class="v" style="color:var(--blood)">50<span style="font-size:14px">pp</span></p><p class="n">per trip, forever</p></div>
+  </div>
+
+  <p>Read that third column again. The toll keys off your <em>highest</em> class, not your character level. Your resets drop your character level to 10, but they don't drop the toll — once the druid is 27, every crossing costs 27 platinum even while you're fighting level-12 orcs. The reset structure makes this <em>worse</em>, not better, and the number only climbs.</p>
+
+  <div class="note win"><strong>So cross while it's free.</strong> You are both level 10 with nothing above 10. Every translocator trip you take today costs nothing. That window closes permanently the first time any class of yours dings 20 — which will happen at the end of your Crushbone run.</div>
+
+  <div class="note"><strong>And this is the real argument for the druid.</strong> Rituals are free. Circle of West Commons, Circle of Butcherblock, Circle of Surefall Glade and Circle of North Karana cost mana and twenty seconds, not platinum. Getting the druid to 26–27 in pass 1 isn't a convenience — it's how you opt out of a tax that scales with your highest class for the rest of the character's life.</div>
+
+  <div class="note danger"><strong>Ten platinum is not much right now.</strong> You can't currently replace Boots of the Long Road either — those run about 14–17pp from an Adventuring Supply Merchant depending on your charisma and faction. Crushbone fixes this fast; the wiki notes orcs there carry cloth armour and weapons worth real money, and Cracked Staffs alone sell for over a platinum each. Don't skip vendor trash on your first few Crushbone sessions.</div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>The three passes, rebuilt</h2>
+  <p class="lede">One low dungeon per pass. One continent crossing per pass. No doubling back. Your critique of v1 was correct — chaining three low zones into pass 3 while repeating Befallen and Najena in every pass was busywork dressed as a plan.</p>
+
+  <div class="pass">
+    <div class="hd">
+      <span class="tg">Pass 1 · levels 10–27 · Faydwer → Antonica</span>
+      <h4>The Porter Run</h4>
+      <p class="trio">You: <b>Bard · Magician · Druid</b> &nbsp;·&nbsp; Her: <b>Cleric · Magician · Wizard</b></p>
+    </div>
+    <div class="steps">
+      <div class="step"><p class="rng">10 → 20</p><p class="z">Crushbone</p><p>Zero travel, 9:00 respawn, revamped 14 July. Trainer Hill → Wall → Throne Room. Bank the plat.</p></div>
+      <div class="step"><p class="rng">Cross at 19</p><p class="z">Butcherblock → Freeport</p><p>Translocator at the dock. <strong>Do this before anyone hits 20 and it's free.</strong> Then East Commons → Nektulos → Lavastorm.</p></div>
+      <div class="step"><p class="rng">20 → 27</p><p class="z">Najena</p><p>Tuned 15–30, so it covers the whole band alone. The Tenderizer at level 22 drops the Kitchen Toolbelt.</p></div>
+    </div>
+    <p style="margin-top:16px"><strong>Why Najena and not Befallen here:</strong> three reasons. The Kitchen Toolbelt is a 10% haste belt usable by every class at level 22 — for a build whose damage is auto-attack and passive procs, that's the highest-multiplier item in the bracket and you want it in pass 1, not pass 3. Second, Najena's mist elementals are <strong>invulnerable to regular weapons and self-invisible</strong>; the magician-and-druid pass is the only one of your three that handles them without swearing. Third, it ends with your druid at 27.</p>
+    <p><strong>Deliverable:</strong> Druid 26–27 (Circle of Surefall Glade and Circle of West Commons), Wizard 26 (Evacuate: North Karana), two Kitchen Toolbelts. After this, travel is free forever.</p>
+  </div>
+
+  <div class="pass">
+    <div class="hd">
+      <span class="tg">Pass 2 · levels 10–27 · Qeynos → Freeport</span>
+      <h4>The Gnoll Run</h4>
+      <p class="trio">You: <b>Bard · Magician · Warrior</b> &nbsp;·&nbsp; Her: <b>Cleric · Magician · Shaman</b></p>
+    </div>
+    <div class="steps">
+      <div class="step"><p class="rng">10 → 20</p><p class="z">Blackburrow</p><p>Circle of Surefall Glade drops you next to the entrance. Sabertooth Overseer at 20 for the Hardened Bark Breastplate — AC 16, END 15, berserker-legal.</p></div>
+      <div class="step"><p class="rng">Cross</p><p class="z">Qeynos → Freeport</p><p>The route you were right about. One hop, ~20pp. Or skip it entirely with Circle of West Commons.</p></div>
+      <div class="step"><p class="rng">20 → 27</p><p class="z">Befallen</p><p>4:27 respawn, the fastest in the game at this level. Both Pristine Studded sets, plussed to +4 before you leave.</p></div>
+    </div>
+    <p style="margin-top:16px"><strong>Why Blackburrow moved up:</strong> v1 buried it in pass 3 because I thought Qeynos was unreachable. It isn't. And her shaman gets <strong>Spirit of Wolf at level 9</strong>, so this is the pass where overland travel stops being painful — worth pairing with the one zone that has a genuinely long approach.</p>
+  </div>
+
+  <div class="pass">
+    <div class="hd">
+      <span class="tg">Pass 3 · levels 10–50 · no crossings</span>
+      <h4>The Real One</h4>
+      <p class="trio">You: <b>Bard · Warrior · Berserker</b> &nbsp;·&nbsp; Her: <b>Cleric · Shaman · Enchanter</b></p>
+    </div>
+    <div class="steps">
+      <div class="step"><p class="rng">10 → 25</p><p class="z">Befallen</p><p>Covers the entire band alone. Circle of West Commons puts you at the door, you're wearing two haste belts and plussed Pristine Studded, and the 4:27 respawn means this is the fastest possible run of 10–25.</p></div>
+      <div class="step"><p class="rng">25 → 42</p><p class="z">Splitpaw</p><p>Enter from South Karana via Circle of North Karana. Five difficulty bands, ZEM 128, seventeen levels without changing zone.</p></div>
+      <div class="step"><p class="rng">42 → 50</p><p class="z">Lower Guk / Sol B</p><p>Then Plane of Fear and Hate trash from 46 — the XP and the planar gear come out of the same kills.</p></div>
+    </div>
+    <p style="margin-top:16px"><strong>Why Najena is deliberately absent:</strong> your final trio is Bard/Warrior/Berserker and Cleric/Shaman/Enchanter. That's a lot of melee and not much reliable magic damage on your side. Najena's <strong>mist elementals cannot be hurt by regular weapons</strong> and require See Invisible to even target. Do that zone in the caster passes and skip it in the melee one. Splitpaw's gnolls, by contrast, need snare and interrupts — your bard's snare song and her shaman's root cover it exactly.</p>
+    <p><strong>Deliverable:</strong> level 50, a free Class Unlock Token, and a pile of alternate storage.</p>
+  </div>
+
+  <div class="note"><strong>What each pass costs you in tolls:</strong> pass 1 is free if you cross before 20. Pass 2 is one hop at roughly 20pp, or free if you'd rather use Circle of West Commons and skip the translocator. Pass 3 has no crossings at all. Total platinum spent on travel across the entire plan: about twenty.</p></div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>Zone reference</h2>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Zone</th><th>Band</th><th>Respawn</th><th>ZEM</th><th>Pass</th><th>Why it's there</th></tr></thead>
+    <tbody>
+      <tr><td class="zn" style="color:var(--cb)">Crushbone</td><td class="lv">4–22</td><td class="mono">9:00</td><td class="lv">119</td><td class="mono">1</td><td>Adjacent to where you're standing. Fast respawn, good plat, whole new named tier.</td></tr>
+      <tr><td class="zn" style="color:var(--nj)">Najena</td><td class="lv">15–30</td><td class="mono">19:00</td><td class="lv">119</td><td class="mono">1</td><td>Kitchen Toolbelt at 22. Mist elementals demand a caster pass. Four-key chain structures a session.</td></tr>
+      <tr><td class="zn" style="color:var(--bb)">Blackburrow</td><td class="lv">5–22</td><td class="mono">22:00</td><td class="lv">119</td><td class="mono">2</td><td>Hardened Bark Breastplate — AC 16 with 15 endurance at level 20. Circle of Surefall Glade lands beside it.</td></tr>
+      <tr><td class="zn" style="color:var(--bf)">Befallen</td><td class="lv">7–28</td><td class="mono">4:27</td><td class="lv">119</td><td class="mono">2, 3</td><td>Fastest respawn in the bracket, covers 7–28 alone, and the Pristine Studded set is legal for every class either of you will run.</td></tr>
+      <tr><td class="zn" style="color:var(--sp)">Splitpaw</td><td class="lv">25–42</td><td class="mono">22:00</td><td class="lv">128</td><td class="mono">3</td><td>Highest ZEM. Seventeen levels in one zone. Needs snare — your final trios have it.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Travel tools, with real numbers</h2>
+  <p class="lede">Version 1 described some of these vaguely. Here they are with the actual cooldowns, which changes how useful two of them are.</p>
+  <ul class="tight">
+    <li><strong>Origin</strong> — self-only gate to your home city, <strong>18 minute cooldown</strong>. Short enough to be a genuine part of your rotation.</li>
+    <li><strong>Gather Party</strong> — summons your party to you, <strong>six hour cooldown</strong>. I oversold this in v1. At six hours it's an emergency tool, not a travel plan. Save it for a corpse recovery that would otherwise cost you an hour.</li>
+    <li><strong>Difficulty swap as a teleport.</strong> Changing zone difficulty teleports you to that zone's evac point, and you can do it roughly every five minutes out of combat. That's a free intra-zone recall in Blackburrow's three floors and Befallen's key-locked descent — no spell, no mana, no plat.</li>
+    <li><strong>Boots of the Long Road</strong> — 14–17pp from an Adventuring Supply Merchant, price varies with charisma and faction. Fragile speed buff that breaks in combat or on ability use. You can upgrade them to move the click onto a better pair of boots later.</li>
+    <li><strong>Athletics</strong> — the skill that replaced the old run-speed AAs. At high skill you move at Spirit of Wolf speed unbuffed. It levels passively; just be aware it exists so you don't over-invest in speed items.</li>
+    <li><strong>Loot is per person.</strong> This is worth more to a duo than any travel tool: sharing a camp doesn't split drops, it doubles the rolls. Camp named mobs together, always.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Spells and abilities to actually have</h2>
+  <p class="lede">I still can't find a definitive list of what EQ Legends grants automatically versus what you buy, so treat this as a checklist to verify at each threshold. If it isn't on your bar at the listed level, find out why.</p>
+
+  <div class="chk">
+    <div class="i"><p class="who">MAG 4 · WIZ 4 · ENC 4 · CLR 5 · DRU 5 · SHM 5</p><p class="sp">Gate</p><p class="d">Return to bind. Both of you had it at level 4 via Magician. Becomes a permanent Ritual the moment it's scribed.</p></div>
+    <div class="i"><p class="who">MAG 12 · WIZ 12 · ENC 12 · CLR 14 · DRU 14 · SHM 14</p><p class="sp">Bind Affinity</p><p class="d">Sets bind. Also permanent as a Ritual. The single most important spell in this plan.</p></div>
+    <div class="i"><p class="who">Bard 5</p><p class="sp">Selo's Accelerando</p><p class="d">Group speed, outdoors, scales hard with a drum. The fastest way to move through a zone.</p></div>
+    <div class="i"><p class="who">Shaman 9 · Druid 14</p><p class="sp">Spirit of Wolf</p><p class="d">Castable on anyone, ~35 min, doesn't break in combat. Her shaman gets it before your druid does.</p></div>
+    <div class="i"><p class="who">Shaman 15</p><p class="sp">Shrink</p><p class="d">Ritual-eligible, so permanent once learned. Useful in Najena's caves and Blackburrow's tunnels.</p></div>
+    <div class="i"><p class="who">Shaman 24 · Druid 24</p><p class="sp">Spirit of Cheetah</p><p class="d">Self only, double speed, 48 seconds. Pure getaway button.</p></div>
+  </div>
+
+  <h3>Druid ports — the pass-one target</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Level</th><th>Self (Ring of…)</th><th>Level</th><th>Group (Circle of…)</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">15</td><td>North Karana · Surefall Glade</td><td class="lv">25</td><td>Butcherblock · North Karana · Toxxulia</td></tr>
+      <tr><td class="lv">16–17</td><td>Butcherblock · Toxxulia · West Commons</td><td class="lv">26</td><td><strong>Surefall Glade</strong> — lands beside Blackburrow</td></tr>
+      <tr><td class="lv">20–21</td><td>South Ro · Stonebrunt · Steamfont</td><td class="lv">27</td><td><strong>West Commons</strong> — lands beside Befallen</td></tr>
+      <tr><td class="lv">22</td><td>Feerrott · <strong>Lavastorm</strong> (Najena)</td><td class="lv">28–32</td><td>Stonebrunt · Lavastorm · Steamfont · Feerrott · South Ro</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note danger"><strong>Still disputed, still plan for both.</strong> These come from the wiki's Rituals page, which is Legends-specific and dated 20 June. The Travel Guide page gives solo ports at 19 and group Circles at 29 — but that's the same page that got the translocator routes wrong, it carries an unreliability banner, and it uses classic spell names instead of the Legends ones. Given it has now been demonstrably wrong once, I'd weight it lower still. <strong>Target 27; fallback 29.</strong></div>
+
+  <h3>Wizard — her side</h3>
+  <ul class="tight">
+    <li>Self gates 18–23: North Karana 18, Toxxulia 19, Greater Faydark 20, Stonebrunt 21, West Commons 21, Nektulos 22, North Ro 22, Cazic Temple 23, West Karana 23.</li>
+    <li><strong>North Karana Portal at 25</strong> is the only group portal in range.</li>
+    <li><strong>Evacuate: North Karana at 26</strong> — one more level for the only group escape either of you can reach in this bracket.</li>
+  </ul>
+
+  <h3>Melee abilities that break silently</h3>
+  <ul class="tight">
+    <li><strong>Auto-skill checkboxes reset to off every time you change loadouts.</strong> Kick, Bash, Tiger Claw, Smite all stop firing. Re-toggle in Actions → Abilities after every swap, and build a macro. For a build leaning on passive damage this is the failure mode that costs the most and shows the least.</li>
+    <li><strong>Cleave</strong> — Warrior, 12-second cooldown, up to three targets, free, can crit. Damage comes off your <em>weapon's raw damage</em>, so a slow two-hander cleaves far harder than dual wield.</li>
+    <li>Kick, Bash and Berserker Frenzy are all on 8-second cooldowns.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Standing orders</h2>
+  <ul class="tight">
+    <li><strong>Cross to Antonica before anyone hits 20.</strong> It's free today and it never will be again.</li>
+    <li><strong>Bind at camp, every session.</strong> One cast, saves every corpse run and town trip.</li>
+    <li><strong>Camp named together.</strong> Loot is per person — a duo on one named is two rolls, not a split.</li>
+    <li><strong>Run D1 as a floor.</strong> D0 mobs flee at low health; D1 don't. Each tier is +20% XP.</li>
+    <li><strong>Instance rather than queue.</strong> Launch week. Najena also respawns about four times faster inside one.</li>
+    <li><strong>Loop, don't camp.</strong> All five revamped zones have guaranteed named with no placeholders.</li>
+    <li><strong>Don't lock your primary carelessly.</strong> Level 11 locks race, deity and primary permanently. Barbarians cannot be Bards — if the race change is still on, your primary must be Warrior or Berserker.</li>
+  </ul>
+</section>
+
+<footer>
+  <h3>Sources &amp; confidence</h3>
+  <p>Compiled from the EverQuest Legends community wiki (eqlwiki.com): zone pages, the Rituals table, the patch notes archive, the newbie guide, and Alanna's Race Unlock Guide (last edited 3 July 2026), plus official patch notes for the Blackburrow, Crushbone, Najena and Splitpaw revamps.</p>
+  <p><strong>v2 corrections:</strong> the Freeport–Qeynos translocator route is confirmed by the patch notes; the toll structure is free-under-20 then highest-class-level-in-plat; Gather Party is a six-hour cooldown; Circle of Surefall Glade is the correct Blackburrow port. The routing has been rebuilt around all four.</p>
+  <p><strong>Still open:</strong> the druid and wizard port levels remain disputed between two wiki pages. The Travel Guide has now been shown wrong on translocators, which lowers my confidence in it further.</p>
+  <p>Revised 29 July 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

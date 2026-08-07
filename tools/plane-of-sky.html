@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Plane of Sky Tracker — EverQuest Legends</title>
+<meta name="description" content="Build your EverQuest Legends trio, see every Plane of Sky class-unlock quest it needs, and track components island by island.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#4FA3D1;--accd:#2c5e79;--pa:#4FA3D1;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#8A9998;--dim:#6C7B7B;--ok:#5FA37E;--warn:#C9453A;--gold:#D9A227}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(40px,8vw,82px);line-height:.86;letter-spacing:-.015em;margin:0 0 8px;text-transform:uppercase}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(23px,4.2vw,32px);line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--pa);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:18px;letter-spacing:.04em;margin:0 0 8px}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(16px,3vw,21px);color:var(--mut);letter-spacing:.02em;margin:0 0 24px;text-transform:uppercase}
+.lede{color:var(--mut);margin:0 0 22px;max-width:70ch}
+.note{border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:18px 0;color:var(--mut);max-width:78ch;font-size:14px}
+.note strong{color:var(--txt)}
+.note.key{border-left-color:var(--acc)}.note.key strong{color:var(--acc)}
+.note.warn{border-left-color:var(--warn)}.note.warn strong{color:var(--warn)}
+.note.ok{border-left-color:var(--ok)}.note.ok strong{color:var(--ok)}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+input{font:inherit;color:var(--txt);background:var(--panel2);border:1px solid var(--line);padding:11px 13px}
+input:focus{outline:2px solid var(--pa);outline-offset:-1px}
+:focus-visible{outline:2px solid var(--pa);outline-offset:2px}
+.hidden{display:none !important}
+code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--pa);background:var(--panel2);padding:1px 5px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid currentColor;display:inline-block;white-space:nowrap}
+
+/* ---- builder ---- */
+.mast{border-bottom:1px solid var(--line);padding:48px 0 26px;margin-bottom:30px}
+.step{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);margin:34px 0 12px;display:flex;gap:10px;align-items:baseline}
+.step b{color:var(--acc);font-weight:500}
+.classgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,168px),1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.classgrid>*{min-width:0}
+.cbtn{background:var(--panel);padding:13px 14px;text-align:left;transition:background .12s}
+.cbtn:hover{background:var(--panel2)}
+.cbtn .l{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.02em;line-height:1.05}
+.cbtn .d{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;color:var(--dim);margin-top:3px}
+.cbtn[aria-pressed="true"]{background:#20303a;box-shadow:inset 0 0 0 2px var(--acc)}
+.cbtn[aria-pressed="true"] .l{color:var(--acc)}
+.cbtn[disabled]{opacity:.34;cursor:not-allowed}
+.slots{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 4px}
+.slotbox{flex:1 1 170px;border:1px dashed var(--line);padding:12px 14px;min-height:62px}
+.slotbox.filled{border-style:solid;border-color:var(--acc);background:var(--panel)}
+.slotbox .n{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim)}
+.slotbox .v{font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:700;text-transform:uppercase;color:var(--dim);line-height:1.2;margin-top:3px}
+.slotbox.filled .v{color:var(--acc)}
+.slotbox .x{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--mut);margin-top:2px}
+.go{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:26px}
+.primary{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--acc);color:var(--acc);padding:13px 22px;background:rgba(79,163,209,.08)}
+.primary:hover{background:rgba(79,163,209,.18)}
+.primary[disabled]{opacity:.35;cursor:not-allowed;border-color:var(--line);color:var(--dim);background:none}
+
+/* ---- topbar ---- */
+.bar{position:sticky;top:0;z-index:20;background:rgba(18,23,26,.94);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);margin:0 -22px 28px;padding:11px 22px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.bar .back{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);border:1px solid var(--line);padding:6px 11px}
+.bar .back:hover{color:var(--pa);border-color:var(--pa)}
+.bar .nm{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:23px;text-transform:uppercase;letter-spacing:.02em;color:var(--pa)}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-left:auto}
+.chip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;padding:6px 10px;border:1px solid var(--line);color:var(--mut)}
+.chip:hover{color:var(--txt)}
+.chip[aria-pressed="true"]{border-color:var(--pa);color:var(--pa);background:rgba(255,255,255,.03)}
+.chip.save{border-color:var(--accd);color:var(--acc)}
+.chip.save:hover{background:rgba(79,163,209,.12)}
+.chip.reset:hover{border-color:var(--warn);color:var(--warn)}
+
+/* ---- hero ---- */
+.trioline{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(26px,5.8vw,60px);line-height:1.02;text-transform:uppercase;letter-spacing:-.01em;margin:0 0 10px;overflow-wrap:anywhere}
+.trioline i{font-style:normal;color:var(--dim);font-weight:500;padding:0 .12em}
+.hero{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:26px;align-items:start;margin-bottom:12px}
+.hero>*{min-width:0}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+.unlocks{display:grid;grid-template-columns:repeat(auto-fit,minmax(148px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:18px}
+.unlocks>*{min-width:0}
+.ub{background:var(--panel);padding:14px 15px}
+.ub .cn{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;letter-spacing:.03em}
+.ub .cs{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:var(--mut);margin:2px 0 9px}
+.track{height:5px;background:var(--panel2);position:relative;overflow:hidden}
+.track i{position:absolute;inset:0 auto 0 0;background:var(--pa);transition:width .3s ease}
+.ub.done .cn{color:var(--ok)}.ub.done .track i{background:var(--ok)}
+
+/* ---- ladder ---- */
+.ladder{border:1px solid var(--line);background:var(--panel);padding:16px 16px 10px}
+.ladder h3{color:var(--pa)}
+.ladder .cap{font-size:12.5px;color:var(--dim);margin:0 0 14px;line-height:1.5}
+.rung{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:7px 8px;border-left:2px solid var(--line);transition:background .12s}
+.rung:hover{background:var(--panel2)}
+.rung[aria-pressed="true"]{background:var(--panel2);border-left-color:var(--pa)}
+.rung .id{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;color:var(--mut);min-width:30px;text-align:right}
+.rung .meta{min-width:0;flex:1}
+.rung .bn{display:block;font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:.03em;line-height:1.15}
+.rung .sub{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--dim);letter-spacing:.03em;line-height:1.35}
+.rung .cnt{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;min-width:34px;text-align:right;color:var(--pa)}
+.rung.clear{opacity:.36}
+.rung.clear .cnt{color:var(--ok)}
+.rung.clear .bn{text-decoration:line-through;text-decoration-thickness:1px}
+.rung.gate .id{color:var(--warn)}
+
+/* ---- slot conflicts ---- */
+.conf{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:16px}
+.conf>*{min-width:0}
+.cx{border:1px solid var(--line);border-left:2px solid var(--gold);background:var(--panel);padding:13px 15px}
+.cx.solo{border-left-color:var(--ok)}
+.cx .sn{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.cx.solo .sn{color:var(--ok)}
+.cx ul{list-style:none;margin:8px 0 0;padding:0}
+.cx li{padding:5px 0;border-top:1px solid var(--line);font-size:13.5px}
+.cx li:first-child{border-top:0}
+.cx .ri{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em;display:block}
+.cx .rs{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--mut);line-height:1.5}
+.cx .rc{color:var(--pa)}
+
+/* ---- quest cards ---- */
+.classblock{margin-top:42px}
+.chead{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
+.chead .hub{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut)}
+.chead .cnt{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--dim);margin-left:auto;letter-spacing:.07em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));gap:16px;margin-top:18px}
+.grid>*{min-width:0}
+.q{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--line);padding:15px 16px 13px;display:flex;flex-direction:column}
+.q.rdy{border-top-color:var(--ok)}
+.q.g8{border-top-color:var(--warn)}
+.q.done{opacity:.5}
+.q.done .rw{text-decoration:line-through;text-decoration-thickness:1px}
+.q .top{display:flex;gap:9px;align-items:flex-start;margin-bottom:9px;flex-wrap:wrap}
+.q .qn{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);flex:1;min-width:120px}
+.q .rw{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.015em;line-height:1.04;margin:0 0 3px}
+.q .slot{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--pa);margin-bottom:7px}
+.q .st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.55;margin:0 0 11px}
+.q .st.unk{color:var(--warn)}
+.q .say{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--dim);border-top:1px solid var(--line);padding-top:9px;margin-bottom:9px;line-height:1.5;overflow-wrap:anywhere}
+.q .say b{color:var(--mut);font-weight:500}
+.comps{list-style:none;margin:0 0 10px;padding:0;border-top:1px solid var(--line)}
+.comps li{border-bottom:1px solid var(--line)}
+.cmp{display:flex;gap:11px;align-items:flex-start;width:100%;text-align:left;padding:9px 2px}
+.cmp:hover .box{border-color:var(--pa)}
+.box{width:15px;height:15px;flex:0 0 15px;border:1.6px solid var(--dim);margin-top:3px;position:relative}
+.cmp[aria-checked="true"] .box{border-color:var(--ok);background:var(--ok)}
+.cmp[aria-checked="true"] .box::after{content:"";position:absolute;left:4px;top:1px;width:4px;height:8px;border:solid var(--bg);border-width:0 2px 2px 0;transform:rotate(42deg)}
+.cmp .cn2{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;line-height:1.2}
+.cmp[aria-checked="true"] .cn2{color:var(--dim);text-decoration:line-through;text-decoration-thickness:1px}
+.cmp .src{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--mut);letter-spacing:.02em;line-height:1.5;display:block;margin-top:2px}
+.cmp .src i{font-style:normal;color:var(--pa)}
+.cmp[aria-checked="true"] .src,.cmp[aria-checked="true"] .src i{color:var(--dim)}
+.cmp .flag{color:var(--warn)}
+.rune .src i{color:var(--dim)}
+.q .foot{margin-top:auto;display:flex;gap:9px;align-items:center;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:10px}
+.turnin{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;border:1px solid var(--line);color:var(--mut);padding:6px 11px}
+.turnin:hover{border-color:var(--pa);color:var(--pa)}
+.turnin.ready,.turnin.is-done{border-color:var(--ok);color:var(--ok)}
+.turnin.is-done{background:rgba(95,163,126,.1)}
+.q .left{font-family:"IBM Plex Mono",monospace;font-size:10px;color:var(--dim);letter-spacing:.07em;margin-left:auto}
+.empty{border:1px dashed var(--line);padding:30px;text-align:center;color:var(--mut);font-size:14px;margin-top:22px}
+.loading{color:var(--dim);font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;padding:40px 0}
+
+/* ---- share sheet ---- */
+.veil{position:fixed;inset:0;background:rgba(8,11,13,.8);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
+.sheet{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--acc);max-width:620px;width:100%;padding:24px}
+.sheet h3{color:var(--acc)}
+.sheet p{font-size:13.5px;color:var(--mut);max-width:none}
+.linkbox{width:100%;font-family:"IBM Plex Mono",monospace;font-size:11.5px;margin:6px 0 4px}
+.sheet .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+footer{margin-top:66px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
+footer h3{color:var(--txt)}
+footer ul{padding-left:18px;max-width:82ch}footer li{margin-bottom:7px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+ letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+ letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+.ns-bar .ns-sep{color:#4E5C61}
+.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../tools/index.html">Tools</a><span class="ns-sep">/</span><span style="color:#D5DBD8">Plane of Sky tracker</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="wrap">
+
+<!-- ============ BUILDER ============ -->
+<div id="screen-build">
+  <header class="mast">
+    <p class="eyebrow">EverQuest Legends · Plane of Sky · <code>airplane</code></p>
+    <h1>The Quest Room</h1>
+    <p class="subtitle">Build your trio. Track every test it owes.</p>
+    <div class="note key"><strong>In Legends these are not ordinary loot quests — they are the class unlock.</strong> Finishing every test on a class's line unlocks that class as a Primary Class option in your loadouts, tracked in game under <code>/ach</code> → Unlocked Potential. A Primary Class Unlock Token skips a whole line, and you get one free the first time you reach level 50.</div>
+    <div class="note"><strong>Getting to the quest room costs nothing.</strong> Buy Efreeti's Key from the Key Master on Island 1 — it is free — then take the north teleport pad at roughly <code>1600, 520</code>. The key stays on your character permanently.</div>
+  </header>
+
+  <p class="step"><b>01</b> Name your character <span style="color:var(--dim)">— optional</span></p>
+  <input id="in-name" type="text" placeholder="Character name" maxlength="24" style="max-width:340px;width:100%">
+
+  <p class="step"><b>02</b> Pick your three classes</p>
+  <div class="slots" id="slotrow"></div>
+  <div class="classgrid" id="classgrid"></div>
+
+  <div class="go">
+    <button class="primary" id="btn-build" disabled>Build character sheet</button>
+    <button class="chip" id="btn-clearsel">Clear selection</button>
+    <span id="buildhint" style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--dim);letter-spacing:.08em"></span>
+  </div>
+  <div id="preview"></div>
+</div>
+
+<!-- ============ SHEET ============ -->
+<div id="screen-sheet" class="hidden">
+  <div class="bar">
+    <button class="back" id="btn-back">← Change trio</button>
+    <span class="nm" id="c-name"></span>
+    <div class="chips">
+      <button class="chip" data-filter="all" aria-pressed="true">All tests</button>
+      <button class="chip" data-filter="open" aria-pressed="false">Still needed</button>
+      <button class="chip" data-filter="ready" aria-pressed="false">Ready to hand in</button>
+      <button class="chip save" id="btn-share">Save / share link</button>
+      <button class="chip" id="btn-clear">Clear ticks</button>
+      <button class="chip reset" id="btn-reset">Start over</button>
+    </div>
+  </div>
+  <div id="c-body"></div>
+</div>
+
+<!-- ============ SHARE ============ -->
+<div id="share" class="veil hidden">
+  <div class="sheet">
+    <h3>Your progress link</h3>
+    <p>Everything — your trio, your name, every box you have ticked — is encoded in this link itself. Nothing is stored on a server. Bookmark it, paste it in guild chat, or mail it to yourself. Opening it anywhere restores exactly this sheet.</p>
+    <input class="linkbox" id="linkbox" type="text" readonly>
+    <p id="savenote" style="margin:2px 0 0"></p>
+    <div class="row">
+      <button class="primary" id="btn-copy">Copy link</button>
+      <button class="chip" id="btn-close">Close</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <h3>Where this comes from</h3>
+  <ul>
+    <li><strong>Turn-ins, all sixteen classes</strong> — eqprogression.com, Plane of Sky Quests / Class Unlocks, read 4 Aug 2026. This is the Legends-simplified structure: a wind rune plus one or two named items, rather than the three or four classic asked for.</li>
+    <li><strong>Reward tooltips</strong> — eqlwiki.com/Plane_of_Sky, revision 151528 (28 Jun 2026). Verified for Bard, Beastlord, Berserker, Cleric, Druid, Enchanter, Magician, Monk, Necromancer and Paladin. Warrior tooltips are cross-read from eqlwiki.com/Warrior_Plane_of_Sky_Tests; that page's <em>turn-ins</em> are still classic and are not used here.</li>
+    <li><strong>Flagged in red</strong> — Ranger, Rogue, Shadow Knight, Shaman and Wizard reward tooltips have no confirmed Legends-era stat block. A few partial lines come from the EQL Build Forge item snapshot dated 2 Aug 2026, and two shaman entries show classic numbers. The turn-ins for these classes are still Legends-current; only the stats are unverified. Read them in game and the gap closes.</li>
+    <li><strong>Also unconfirmed</strong> — the sub-tester dialogue chain for Ranger, Rogue, Shadow Knight, Shaman and Wizard, and the Gem of Invigoration source on the warrior's Test of Smash.</li>
+    <li><strong>A conflict worth knowing</strong> — the wiki's Dangers section says boss NPCs no longer death touch, while the island walkthroughs below it still describe death touch rotations on Keeper of Souls, Spiroc Lord, Bazzt Zzzt, Sister of the Spire and Eye of Veeshan. The Dangers line is the Legends-era edit; the walkthrough prose is inherited classic text. Assume no death touch, but do not stake a corpse recovery on it.</li>
+  </ul>
+</footer>
+</div>
+
+<script>
+/* ==================== ISLANDS ==================== */
+const ISLANDS={"1":{n:"1",name:"Fairy Island",boss:"Thunder Spirit Princess",d:1},"1.5":{n:"1.5",name:"Noble Island",boss:"Noble Dojorn — week spawn",d:2},"2":{n:"2",name:"Imp Island",boss:"Protector of Sky",d:3},"3":{n:"3",name:"Harpy Island",boss:"Gorgalosk",d:4},"4":{n:"4",name:"Pegasus Island",boss:"Keeper of Souls",d:5},"5":{n:"5",name:"Bird Island",boss:"The Spiroc Lord — farmable",d:6},"6":{n:"6",name:"Bee Island",boss:"Bazzt Zzzt",d:7},"7":{n:"7",name:"Drake Island",boss:"Sister of the Spire — farmable",d:8},"8":{n:"8",name:"Butterfly Island",boss:"Eye of Veeshan",d:9},"any":{n:"—",name:"Zone-wide",boss:"wind runes, any mob",d:0}};
+const LADDER=["8","7","6","5","4","3","2","1.5","1","any"];
+const EF=["1.5","4","8"],EFM="Noble Dojorn · Overseer of Air · the Hand of Veeshan";
+const R=n=>({n:n,i:["any"],m:"random zone-wide drop",rune:1});
+const D=(n,isl,mob,flag)=>({n:n,i:[isl],m:mob,flag:flag});
+const E=n=>({n:n,i:EF,m:EFM});
+
+/* ==================== CLASS DATA ==================== */
+const CLASSES={
+BRD:{label:"Bard",abbr:"BRD",hub:"Cilin Spellsinger",armor:"Chain",v:1,q:[
+ {n:"Test of Tone",g:"Clarisa Spiritsong",say:"choose Clarisa → tone",r:"Mask of Song",s:"Face",st:"AC 12 · STR/DEX/STA/CHA/WIS/INT/AGI +3 · all five resists +7",it:[D("Light Woolen Mask","3","Gorgalosk (boss)"),R("Wind Rune Meda")]},
+ {n:"Test of Voice",g:"Clarisa Spiritsong",say:"choose Clarisa → voice",r:"Mantle of the Songweaver",s:"Shoulders",st:"AC 9 · STR +7 · DEX +7 · CHA +5 · AGI +5 · SV MAGIC +5 · clicky Fury (5)",it:[D("Light Woolen Mantle","4","Keeper of Souls (boss)"),R("Wind Rune Kala")]},
+ {n:"Test of Pitch",g:"Clarisa Spiritsong",say:"choose Clarisa → pitch",r:"Ervaj's Flute of Flight",s:"Primary",st:"Wind Resonance 12 · STR +8 · STA +10 · CHA +10 · INT +5",it:[D("Crude Wooden Flute","5","The Spiroc Lord (boss)"),R("Wind Rune Azia")]},
+ {n:"Test of Wind",g:"Denise Songweaver",say:"choose Denise → wind",r:"Fae Amulet",s:"Neck",st:"AC 5 · DEX +4 · STA +4 · HP +50 · SV DISEASE/POISON +10 · clicky Healing (4)",it:[D("Amulet of Woven Hair","6","Bazzt Zzzt (boss)"),R("Wind Rune Caza")]},
+ {n:"Test of Brass",g:"Denise Songweaver",say:"choose Denise → brass",r:"Denon's Horn of Disaster",s:"Primary",st:"Brass Resonance 15 · STR +5 · CHA +10 · INT +5 · HP +50",it:[D("Glowing Diamond","7","Sister of the Spire (boss)"),E("Efreeti War Horn"),R("Wind Rune Fana")]},
+ {n:"Test of Harmony",g:"Denise Songweaver",say:"choose Denise → harmony",r:"Harmonic Spear",s:"Primary",st:"Piercing 10 / 21 · STR +5 · DEX +5 · CHA +5 · proc Chant of Battle",it:[D("Nebulous Diamond","8","Eye of Veeshan (final boss)"),E("Efreeti War Spear"),R("Wind Rune Heda")]}]},
+BST:{label:"Beastlord",abbr:"BST",hub:"Animist Kratho",armor:"Leather",v:1,q:[
+ {n:"Test of Aviak",g:"Animist Kratho",say:"aviak",r:"Spiroc Beak Earcuff",s:"Ear",st:"AC 4 · HP +10 · Mana +10 · End +10 · WIS +5 · CHA +5 · click Vigor of Zehkes (120s)",it:[D("Spiroc Elder's Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Beza")]},
+ {n:"Test of Azarack",g:"Animist Kratho",say:"azarack",r:"Azarack Skin Wristwraps",s:"Wrist",st:"AC 5 · HP +35 · End +10 · STR +5 · STA +5 · DEX +5 · click Whirl Bolt (240s)",it:[D("Azarack Skin","2","Protector of Sky (boss)"),R("Wind Rune Heda")]},
+ {n:"Test of Claw",g:"Animist Kratho",say:"claw",r:"Windhowl + Spirit Render",s:"Primary / Secondary",st:"Windhowl H2H 12 / 22 · HP +55 · End +25 · proc Herikol's Soothing — paired with Spirit Render H2H 10 / 23 · HP 25 · Mana 25 · proc Sha's Lethargy",it:[D("Sphinx Claw","7","Sister of the Spire (boss)"),D("Mithril Bands","8","Eye of Veeshan (final boss)"),E("Brass Knuckles"),R("Wind Rune Izah")]},
+ {n:"Test of Harpy",g:"Animist Kratho",say:"harpy",r:"Griffin-Hide Armguards",s:"Arms",st:"AC 6 · STA +4 · WIS +3 · End +15 · all five resists +5",it:[D("Leather Cord","3","Gorgalosk (boss)"),R("Wind Rune Kala")]},
+ {n:"Test of Wind",g:"Animist Kratho",say:"wind",r:"Diaphonous Waistband",s:"Waist",st:"AC 5 · STR +5 · WIS +10 · DEX +10 · Haste +41%",haste:41,it:[D("Silken Wrap","6","Bazzt Zzzt (boss)"),R("Wind Rune Geza")]}]},
+BER:{label:"Berserker",abbr:"BER",hub:"Stragen The Hewer",armor:"Chain",v:1,q:[
+ {n:"Test of Sharpness",g:"Stragen The Hewer",say:"sharpness",r:"Skycleaver",s:"Primary",st:"2H Slash 30 / 35 · Dmg Bonus 24 · STA +5 · DEX +10 · SV DISEASE +5 · combat effect Haste",it:[D("Djinni War Blade","7","Sister of the Spire (boss)"),E("Efreeti Standard"),R("Wind Rune Jaka")]},
+ {n:"Test of Will",g:"Stragen The Hewer",say:"will",r:"Molten Coil",s:"Finger",st:"AC 5 · Mana −55 · STR +6 · STA +5 · AGI +5 · DEX +6 · CHA +10 · SV FIRE +5",it:[D("Pulsating Ruby","6","Bazzt Zzzt (boss)"),R("Wind Rune Ena")]},
+ {n:"Test of Ferocity",g:"Stragen The Hewer",say:"ferocity",r:"Sash of Ferocity",s:"Waist",st:"AC 10 · STR +6 · DEX +5 · SV MAGIC +5 · Haste +41%",haste:41,it:[D("High Quality Raiment","5","The Spiroc Lord (boss)"),R("Wind Rune Ozah")]},
+ {n:"Test of Burden",g:"Stragen The Hewer",say:"burden",r:"Shroud of the Sky",s:"Shoulders",st:"AC 8 · HP +25 · End +25 · STR +7 · WIS +7 · DEX +7 · click Raging Strength (120s)",it:[D("Feathered Cape","3","Gorgalosk (boss)"),R("Wind Rune Azia")]},
+ {n:"Test of Blood",g:"Stragen The Hewer",say:"blood",r:"Blood-Drawn Runes",s:"Chest",st:"HP +55 · End +25 · STR +10 · STA +10 · AGI +5 · DEX +10 · HP Regen +10",it:[D("Azarack Blood","2","Protector of Sky (boss)"),R("Wind Rune Lena")]},
+ {n:"Test of Fools Errand",g:"Stragen The Hewer",say:"fools errand",r:"Cudgel of the Fool",s:"Primary",st:"2H Blunt 45 / 52 · Dmg Bonus 40 · INT −7 · proc Fury of the Chosen",it:[D("Jester's Mask","4","Keeper of Souls (boss)"),E("Efreeti Great Staff"),R("Wind Rune Dena")]}]},
+CLR:{label:"Cleric",abbr:"CLR",hub:"Josin Faithbringer",armor:"Plate",v:1,q:[
+ {n:"Test of Courage",g:"Alan Harten",say:"choose Alan → courage",r:"Truewind Earring",s:"Ear",st:"DEX +5 · WIS +9 · SV COLD +10",it:[D("Silver Hoop","3","Gorgalosk (boss)"),R("Wind Rune Lena")]},
+ {n:"Test of Skill",g:"Alan Harten",say:"choose Alan → skill",r:"Aegis of the Wind",s:"Secondary",st:"AC 25 · WIS +9 · MANA +60 · SV DISEASE +10",it:[D("Small Shield","4","Keeper of Souls (boss)"),R("Wind Rune Meda")]},
+ {n:"Test of Protection",g:"Alan Harten",say:"choose Alan → protection",r:"Pauldrons of Piety",s:"Shoulders",st:"AC 11 · STA +8 · CHA +2 · WIS +12 · MANA +35",it:[D("Shiny Pauldrons","5","The Spiroc Lord (boss)"),R("Wind Rune Caza")]},
+ {n:"Test of Resolution",g:"Deric Lennox",say:"choose Deric → resolution",r:"Necklace of Resolution",s:"Neck",st:"AC 4 · STR +5 · WIS +7 · HP +30 · MANA +15 · Promised Renewal · Charges: unlimited",it:[D("Silvered Spiroc Necklace","6","Bazzt Zzzt (boss)"),R("Wind Rune Neza")]},
+ {n:"Test of Theurgy",g:"Deric Lennox",say:"choose Deric → theurgy",r:"Theurgist's Star",s:"Primary",st:"1H Blunt 15 / 25 · WIS +10 · MANA +40 · SV DISEASE/POISON +25 · proc Blessing of the Theurgist",it:[D("Djinni Aura","7","Sister of the Spire (boss)"),E("Efreeti Mace"),R("Wind Rune Kala")]},
+ {n:"Test of The Weak",g:"Deric Lennox",say:"choose Deric → weak",r:"Baton of the Sky",s:"Primary",st:"2H Blunt 33 / 40 · AC 25 · MANA +75 · STR +10 · STA +10 · WIS +15 · Blessing of the Lord Commander (600s)",it:[D("Mithril Bands","8","Eye of Veeshan (final boss)"),E("Efreeti Standard"),R("Wind Rune Ena")]}]},
+DRU:{label:"Druid",abbr:"DRU",hub:"Strandar Pinemist",armor:"Leather",v:1,q:[
+ {n:"Test of Wolf",g:"Will Treewalker",say:"choose Will → wolf",r:"Drake-Hide Mask",s:"Face",st:"AC 4 · STR +10 · DEX +10 · WIS +10 · AGI +10 · MANA +10 · SV MAGIC +7",it:[D("Worn Leather Mask","3","Gorgalosk (boss)"),R("Wind Rune Meda")]},
+ {n:"Test of Bear",g:"Will Treewalker",say:"choose Will → bear",r:"Nature Walker's Mantle",s:"Shoulders",st:"AC 6 · DEX +4 · WIS +4 · AGI +4 · MANA +50",it:[D("Mantle of Woven Grass","4","Keeper of Souls (boss)"),R("Wind Rune Kala")]},
+ {n:"Test of Tree",g:"Will Treewalker",say:"choose Will → tree",r:"Shillelagh",s:"Primary",st:"1H Blunt 10 / 25 · AC 2 · CHA +4 · WIS +9 · AGI +2 · MANA +50 · SV FIRE +5",it:[D("Spiroc Battle Staff","5","The Spiroc Lord (boss)"),D("Efreeti Statuette","4","soul / essence griffons"),R("Wind Rune Azia")]},
+ {n:"Test of The Bee",g:"Fenalla Moonshadow",say:"choose Fenalla → bee",r:"Honeycomb Belt",s:"Waist",st:"AC 6 · CHA +2 · WIS +8 · MANA +75 · Haste +26%",haste:26,it:[D("Divine Honeycomb","6","Bazzt Zzzt (boss)"),R("Wind Rune Dena")]},
+ {n:"Test of Eagle",g:"Fenalla Moonshadow",say:"choose Fenalla → eagle",r:"Spiroc Banisher Focus",s:"Primary / Secondary",st:"STR −2 · DEX −2 · WIS +20 · AGI −2 · MANA +10",it:[D("Ethereal Ruby","7","Sister of the Spire (boss)"),D("Spiroc Elder's Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Ena")]},
+ {n:"Test of Nature",g:"Fenalla Moonshadow",say:"choose Fenalla → nature",r:"Espri",s:"Primary",st:"1H Slash 10 / 23 · DEX +9 · WIS +9 · MANA +50 · proc Combust",it:[D("Storm Sky Opal","8","Eye of Veeshan (final boss)"),E("Efreeti Scimitar"),R("Wind Rune Izah")]}]},
+ENC:{label:"Enchanter",abbr:"ENC",hub:"Enchanter Jolas",armor:"Silk",v:1,q:[
+ {n:"Test of Illusion",g:"Lelulean",say:"choose Lelulean → illusion",r:"Sphinx Hair Cord",s:"Waist",st:"AC 4 · CHA +5 · INT +5 · SV FIRE/DISEASE/COLD +10 · no haste",it:[D("Finely Woven Cloth Cord","3","Gorgalosk (boss)"),R("Wind Rune Meda")]},
+ {n:"Test of Metamorphism",g:"Lelulean",say:"choose Lelulean → metamorphism",r:"Wind Walker's Mantle",s:"Shoulders",st:"AC 6 · STR +5 · DEX +5 · CHA +10 · AGI +2 · HP +50",it:[D("Light Cloth Mantle","4","Keeper of Souls (boss)"),R("Wind Rune Ozah")]},
+ {n:"Test of Deception",g:"Lelulean",say:"choose Lelulean → deception",r:"Ivory Mask",s:"Face",st:"AC 6 · CHA +6 · INT +6 · MANA +30",it:[D("Silken Mask","5","The Spiroc Lord (boss)"),R("Wind Rune Beza")]},
+ {n:"Test of Disillusion",g:"Enderbite",say:"choose Enderbite → disillusion",r:"Earring of Displacement",s:"Ear",st:"AC 6 · CHA +4 · INT +4 · MANA +25 · Gravity Flux (2 charges)",it:[D("Adamantium Earring","6","Bazzt Zzzt (boss)"),R("Wind Rune Caza")]},
+ {n:"Test of Memorization",g:"Enderbite",say:"choose Enderbite → memorization",r:"Necklace of Whispering Winds",s:"Neck",st:"AC 4 · STA +5 · CHA +10 · INT +5 · MANA +35 · Cajoling Whispers (2 charges)",it:[D("Glowing Necklace","7","Sister of the Spire (boss)"),R("Wind Rune Fana")]},
+ {n:"Test of Incapacitation",g:"Enderbite",say:"choose Enderbite → incapacitation",r:"Rod of the Protecting Winds",s:"Primary",st:"2H Blunt 35 / 45 · AC 10 · CHA +15 · INT +15 · MANA +75 · Rune III, infinite charges, 180s",it:[D("Large Sky Sapphire","8","Eye of Veeshan (final boss)"),E("Efreeti Wind Staff"),R("Wind Rune Izah")]}]},
+MAG:{label:"Magician",abbr:"MAG",hub:"Magus Frinon",armor:"Silk",v:1,q:[
+ {n:"Test of Clarification",g:"Frederic Calermin",say:"choose Frederic → clarification",r:"Bracelet of Clarification",s:"Back / Wrist",st:"AC 6 · CHA +1 · INT +9 · MANA +10",it:[D("Feathered Cape","3","Gorgalosk (boss)"),R("Wind Rune Lena")]},
+ {n:"Test of Empowerment",g:"Frederic Calermin",say:"choose Frederic → empowerment",r:"Mask of Empowerment",s:"Face",st:"AC 4 · DEX +7 · INT +7 · AGI +7 · Burnout III (5 charges)",it:[D("Ceramic Mask","4","Keeper of Souls (boss)"),R("Wind Rune Neza")]},
+ {n:"Test of Shielding",g:"Frederic Calermin",say:"choose Frederic → shielding",r:"Gold White Pendant",s:"Neck",st:"AC 2 · INT +5 · MANA +50",it:[D("Golden Coffer","5","The Spiroc Lord (boss)"),R("Wind Rune Azia")]},
+ {n:"Test of Summoning",g:"Roanis Elindar",say:"choose Roanis → summoning",r:"Drake-Hide Amice",s:"Shoulders",st:"AC 6 · STA +5 · HP +50 · MANA +50 · Malaise (10 charges)",it:[D("Large Diamond","6","Bazzt Zzzt (boss)"),R("Wind Rune Dena")]},
+ {n:"Test of Interpretation",g:"Roanis Elindar",say:"choose Roanis → interpretation",r:"Duennan Shielding Ring",s:"Finger",st:"AC 4 · WIS +5 · INT +5 · MANA +30 · Harmshield (1 charge)",it:[D("Golden Efreeti Ring","7","Sister of the Spire (boss)"),R("Wind Rune Ena")]},
+ {n:"Test of Gesticulation",g:"Roanis Elindar",say:"choose Roanis → gesticulation",r:"Staff of The Magister",s:"Primary",st:"2H Blunt 16 / 48 · INT +15 · MANA +75 · SV FIRE +10 · SV COLD +20 · SV POISON +10",it:[D("Hazy Opal","8","Eye of Veeshan (final boss)"),E("Efreeti Magi Staff"),R("Wind Rune Jaka")]},
+ {n:"Test of Displacement",g:"Roanis Elindar",say:"choose Roanis → displacement",r:"Staff of Elemental Mastery: Air",s:"Primary",st:"2H Blunt 15 / 30 · Reclaim Energy · Focus Effect: Servant of Air",it:[D("Crown of Elemental Mastery","7","drake / sphinx / spirit trash"),D("Large Opal","8","Eye of Veeshan (final boss)"),D("Djinni Stave","7","Sister of the Spire (boss)"),R("Wind Rune Heda")]}]},
+MNK:{label:"Monk",abbr:"MNK",hub:"Holwin",armor:"Leather",v:1,q:[
+ {n:"Test of Strength",g:"Ton Po",say:"Ton Po → strength",r:"Back Straps of Mastery",s:"Back / Wrist",st:"AC 15 · STR +7 · STA +7 · CHA +5 · HP +50",it:[D("Silken Strands","3","Gorgalosk (boss)"),R("Wind Rune Caza")]},
+ {n:"Test of Sight",g:"Ton Po",say:"Ton Po → sight",r:"Ton Po's Eye Patch",s:"Face",st:"End +25 · STR +8 · DEX +8 · AGI +8 · See Invisible (worn)",it:[D("Cracked Leather Eyepatch","4","Keeper of Souls (boss)"),R("Wind Rune Geza")]},
+ {n:"Test of Speed",g:"Ton Po",say:"Ton Po → speed",r:"Sandals of Alacrity",s:"Feet",st:"AC 6 · STR +10 · AGI +10 · HP +20 · Alacrity (2 charges)",it:[D("Dove Slippers","5","The Spiroc Lord (boss)"),R("Wind Rune Jaka")]},
+ {n:"Test of Tears",g:"Wu the Enlightened",say:"Wu → tears",r:"Ton Po's Shoulder Wraps",s:"Shoulders",st:"AC 8 · STR +4 · DEX +4 · AGI +4 · all five resists +10",it:[D("Silken Wrap","6","Bazzt Zzzt (boss)"),R("Wind Rune Beza")]},
+ {n:"Test of Fists",g:"Wu the Enlightened",say:"Wu → fists",r:"Wu's Fist of Mastery",s:"Primary / Secondary",st:"1H Blunt 16 / 22 · NO DROP but tooltip carries no LORE flag",it:[D("Nebulous Sapphire","7","Sister of the Spire (boss)"),E("Brass Knuckles"),R("Wind Rune Neza")]},
+ {n:"Test of Tranquility",g:"Wu the Enlightened",say:"Wu → tranquility",r:"Golden Sash of Tranquility",s:"Waist",st:"AC 5 · Haste +41% · STR +15 · DEX +15 · AGI +15",haste:41,it:[D("Tear of Quellious","8","Eye of Veeshan (final boss)"),R("Wind Rune Lena")]}]},
+NEC:{label:"Necromancer",abbr:"NEC",hub:"Drakis Bloodcaster",armor:"Silk",v:1,q:[
+ {n:"Test of Flight",g:"Jzil Gsix",say:"choose Jzil → flight",r:"Bloody Griffon-Hide Wrist Guard",s:"Wrist",st:"AC 5 · DEX +5 · CHA +10 · INT +5 · AGI +5 · MANA +25 · Levitate (10 charges)",it:[D("Griffon's Beak","3","Gorgalosk (boss)"),R("Wind Rune Lena")]},
+ {n:"Test of Power",g:"Jzil Gsix",say:"choose Jzil → power",r:"Cloak of Spiroc Feathers",s:"Back",st:"AC 6 · STR +5 · STA +6 · INT +5 · MANA +50",it:[D("Black Silk Cape","4","Keeper of Souls (boss)"),R("Wind Rune Neza")]},
+ {n:"Test of Mind",g:"Jzil Gsix",say:"choose Jzil → mind",r:"Bloodsoaked Raiment",s:"Shoulders",st:"AC 4 · DEX +3 · INT +5 · HP +30 · MANA +65",it:[D("Fine Cloth Raiment","5","The Spiroc Lord (boss)"),R("Wind Rune Ozah")]},
+ {n:"Test of Heart",g:"Dugaas Helpyre",say:"choose Dugaas → heart",r:"Sphinx Heart Amulet",s:"Neck",st:"AC 4 · STR +10 · CHA −5 · INT +10 · MANA +25 · SV DISEASE +5 · Ultravision (worn)",it:[D("Pulsating Ruby","6","Bazzt Zzzt (boss)"),R("Wind Rune Azia")]},
+ {n:"Test of Finger",g:"Dugaas Helpyre",say:"choose Dugaas → finger",r:"Band of Wailing Winds",s:"Finger",st:"AC 2 · INT +5 · MANA +50 · Invoke Fear (3 charges)",it:[D("Ring of Veeshan","7","Sister of the Spire (boss)"),R("Wind Rune Caza")]},
+ {n:"Test of Hands",g:"Dugaas Helpyre",say:"choose Dugaas → hands",r:"Gorgon Head Staff",s:"Primary",st:"2H Blunt 14 / 41 · INT +15 · MANA +75 · SV DISEASE +25 · proc Tishan's Clash",it:[D("Gorgon Head","3","Gorgalosk (boss)"),E("Efreeti Great Staff"),R("Wind Rune Fana")]}]},
+PAL:{label:"Paladin",abbr:"PAL",hub:"Dason Goldblade",armor:"Plate",v:1,q:[
+ {n:"Test of Spirit",g:"Dirkog Steelhand",say:"tested by Dirkog → spirit",r:"Girdle of Faith",s:"Waist",st:"AC 10 · STR +6 · WIS +6 · AGI +6 · Haste +41%",haste:41,it:[D("Ivory Sky Diamond","5","The Spiroc Lord (boss)"),R("Wind Rune Lena")]},
+ {n:"Test of Sacrifice",g:"Gregori Lightbringer",say:"tested by Gregori → sacrifice",r:"Aldryn, Blade of the Ocean",s:"Primary",st:"1H Slash 20 / 26 · STR +10 · STA +10 · WIS +8",it:[D("Bixie Sword Blade","6","Bazzt Zzzt (boss)"),R("Wind Rune Ozah")]},
+ {n:"Test of Love",g:"Gregori Lightbringer",say:"tested by Gregori → love",r:"Thelvorn, Blade of Light",s:"Primary",st:"1H Slash 20 / 26 · WIS +15 · proc Dismiss Summoned",it:[D("Golden Hilt","7","drake / sphinx / spirit trash"),D("Sphinx Claw","7","Sister of the Spire (boss)"),R("Wind Rune Geza")]},
+ {n:"Test of Compassion",g:"Gregori Lightbringer",say:"tested by Gregori → compassion",r:"Truvinan",s:"Primary",st:"2H Slash 32 / 40 · proc Dismiss Undead",it:[D("Large Sky Diamond","8","Eye of Veeshan (final boss)"),E("Efreeti Zweihander"),R("Wind Rune Izah")]}]},
+RNG:{label:"Ranger",abbr:"RNG",hub:"Ranger Spirit",armor:"Chain",v:0,q:[
+ {n:"Griffon Talon Necklace",g:"Ranger Spirit",say:"tester chain not confirmed for Legends",r:"Griffon Talon Necklace",s:"Neck",st:"",it:[D("Griffon Talon","3","Gorgalosk (boss)"),R("Wind Rune Meda")]},
+ {n:"Dark Cloak of the Sky",g:"Ranger Spirit",say:"tester chain not confirmed for Legends",r:"Dark Cloak of the Sky",s:"Back",st:"",it:[D("Fine Velvet Cloak","4","Keeper of Souls (boss)"),R("Wind Rune Neza")]},
+ {n:"Earthshaker's Mantle",g:"Ranger Spirit",say:"tester chain not confirmed for Legends",r:"Earthshaker's Mantle",s:"Shoulders",st:"",it:[D("Spiroc Earth Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Kala")]},
+ {n:"Thunderforged Earring",g:"Ranger Spirit",say:"tester chain not confirmed for Legends",r:"Thunderforged Earring",s:"Ear",st:"",it:[D("White Gold Earring","6","Bazzt Zzzt (boss)"),R("Wind Rune Azia")]},
+ {n:"Arydryidriyorn",g:"Ranger Spirit",say:"tester chain not confirmed for Legends",r:"Arydryidriyorn",s:"Primary / Secondary",st:"STR +8 · WIS +8 · HP +50 — partial, Build Forge snapshot",it:[D("Circlet of Brambles","7","Sister of the Spire (boss)"),E("Efreeti Long Sword"),R("Wind Rune Ena")]},
+ {n:"Windstriker",g:"Ranger Spirit",say:"tester chain not confirmed for Legends",r:"Windstriker",s:"Range",st:"",it:[D("Shimmering Pearl","8","Eye of Veeshan (final boss)"),E("Efreeti War Bow"),R("Wind Rune Heda")]}]},
+ROG:{label:"Rogue",abbr:"ROG",hub:"Thalik Silenthand",armor:"Chain",v:0,q:[
+ {n:"Wispy Choker of Vigor",g:"Thalik Silenthand",say:"tester chain not confirmed for Legends",r:"Wispy Choker of Vigor",s:"Neck",st:"",it:[D("Inlaid Choker","3","Gorgalosk (boss)"),R("Wind Rune Ozah")]},
+ {n:"Crystal Mask",g:"Thalik Silenthand",say:"tester chain not confirmed for Legends",r:"Crystal Mask",s:"Face",st:"",it:[D("Jester's Mask","4","Keeper of Souls (boss)"),R("Wind Rune Dena")]},
+ {n:"Griffon Wing Spaulders",g:"Thalik Silenthand",say:"tester chain not confirmed for Legends",r:"Griffon Wing Spaulders",s:"Shoulders",st:"",it:[D("Spiroc Sky Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Ena")]},
+ {n:"Shimmering Bracer of Protection",g:"Thalik Silenthand",say:"tester chain not confirmed for Legends",r:"Shimmering Bracer of Protection",s:"Wrist",st:"",it:[D("Fine Wool Cloak","6","Bazzt Zzzt (boss)"),R("Wind Rune Geza")]},
+ {n:"Renard's Belt of Quickness",g:"Thalik Silenthand",say:"tester chain not confirmed for Legends",r:"Renard's Belt of Quickness",s:"Waist",st:"",it:[D("Sphinxian Circlet","7","Sister of the Spire (boss)"),R("Wind Rune Izah")]},
+ {n:"Thornstinger",g:"Thalik Silenthand",say:"tester chain not confirmed for Legends",r:"Thornstinger",s:"Primary",st:"",it:[D("Bixie Stinger","6","Bazzt Zzzt (boss)"),D("Bloodsky Sapphire","8","Eye of Veeshan (final boss)"),R("Wind Rune Jaka")]}]},
+SHD:{label:"Shadow Knight",abbr:"SHD",hub:"Sarkis Ebonblade",armor:"Plate",v:0,q:[
+ {n:"Amulet of the Sphinx Eye",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Amulet of the Sphinx Eye",s:"Neck",st:"AC 15 · STR +7 · WIS +3 · INT +14 · CHA +3 · MANA +25 · Ultravision (worn)",it:[D("Finely Crafted Amulet","3","Gorgalosk (boss)"),R("Wind Rune Ozah")]},
+ {n:"Crimson Ring of the Djinni",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Crimson Ring of the Djinni",s:"Finger",st:"",it:[D("Silvery Ring","4","Keeper of Souls (boss)"),R("Wind Rune Beza")]},
+ {n:"Pegasus-Hide Belt",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Pegasus-Hide Belt",s:"Waist",st:"",it:[D("Finely Woven Cloth Belt","5","The Spiroc Lord (boss)"),R("Wind Rune Dena")]},
+ {n:"Blood Sky Face Plate",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Blood Sky Face Plate",s:"Face",st:"",it:[D("Rusted Pauldrons","6","Bazzt Zzzt (boss)"),R("Wind Rune Fana")]},
+ {n:"Obtenebrate Mithril Guard",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Obtenebrate Mithril Guard",s:"Secondary",st:"",it:[E("Efreeti War Shield"),R("Wind Rune Heda")]},
+ {n:"Khyldorn the Blood Drinker",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Khyldorn the Blood Drinker",s:"Primary",st:"",it:[D("Blood Sky Ruby","8","Eye of Veeshan (final boss)"),E("Efreeti War Axe"),R("Wind Rune Kala")]},
+ {n:"Pearlescent Pauldrons",g:"Sarkis Ebonblade",say:"tester chain not confirmed for Legends",r:"Pearlescent Pauldrons",s:"Shoulders",st:"",it:[D("Fae Pauldrons","8","Eye of Veeshan (final boss)"),D("Sphinxian Ring","7","Sister of the Spire (boss)"),R("Wind Rune Izah")]}]},
+SHM:{label:"Shaman",abbr:"SHM",hub:"Medicine Man Veetra",armor:"Chain",v:0,q:[
+ {n:"Amulet of the Fang",g:"Medicine Man Veetra",say:"tester chain not confirmed for Legends",r:"Amulet of the Fang",s:"Neck",st:"AC 8 · WIS +8 · CHA +2 · MANA +10 · SV MAGIC +5 · SV FIRE +10",it:[D("Leather Cord","3","Gorgalosk (boss)"),R("Wind Rune Meda")]},
+ {n:"Bracelet of the Spirits",g:"Medicine Man Veetra",say:"tester chain not confirmed for Legends",r:"Bracelet of the Spirits",s:"Waist",st:"",it:[D("Ceremonial Belt","5","The Spiroc Lord (boss)"),R("Wind Rune Kala")]},
+ {n:"Fairy-Hide Mantle",g:"Medicine Man Veetra",say:"tester chain not confirmed for Legends",r:"Fairy-Hide Mantle",s:"Shoulders",st:"",it:[D("Light Damask Mantle","5","The Spiroc Lord (boss)"),R("Wind Rune Beza")]},
+ {n:"Vermilion Sky Ring",g:"Medicine Man Veetra",say:"tester chain not confirmed for Legends",r:"Vermilion Sky Ring",s:"Finger",st:"AC 5 · DEX +3 · WIS +7 · SV DISEASE +20 · Feign Death (2 charges) — classic tooltip",it:[D("Bixie Essence","6","bee mobs"),D("Spiritualist's Ring","7","Sister of the Spire (boss)"),R("Wind Rune Heda")]},
+ {n:"Warhammer of the Wind",g:"Medicine Man Veetra",say:"tester chain not confirmed for Legends",r:"Warhammer of the Wind",s:"Primary",st:"",it:[D("Corrosive Venom","6","Bazzt Zzzt (boss)"),E("Efreeti War Club"),R("Wind Rune Ena")]},
+ {n:"Garduk",g:"Medicine Man Veetra",say:"tester chain not confirmed for Legends",r:"Garduk",s:"Primary",st:"Piercing 23 / 40 · WIS +15 · MANA +75 · proc Tagar's Insects — classic tooltip",it:[D("Symbol of Veeshan","8","Eye of Veeshan (final boss)"),E("Efreeti War Maul"),R("Wind Rune Geza")]}]},
+WAR:{label:"Warrior",abbr:"WAR",hub:"Torgon Blademaster",armor:"Plate",v:1,q:[
+ {n:"Test of Skill",g:"Falorn",say:"tested by Falorn → test of blades → skill",r:"Azure Ruby Ring",s:"Finger",st:"AC 5 · STR +6 · DEX +9 · STA +6",it:[D("Azure Ring","3","Gorgalosk (boss)"),R("Wind Rune Neza")]},
+ {n:"Test of Force",g:"Falorn",say:"… test of blades → force",r:"Pauldrons of the Blue Sky",s:"Shoulders",st:"AC 12 · STR +8 · DEX +10 · STA +7 · AGI +10 · Spirit of Cheetah (3 charges)",it:[D("Spiroc Air Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Beza")]},
+ {n:"Test of Strength",g:"Falorn",say:"… test of blades → strength",r:"Runed Wind Amulet",s:"Neck",st:"AC 6 · STR +7 · AGI +7 · HP +40",it:[D("Stone Amulet","4","Keeper of Souls (boss)"),R("Wind Rune Azia")]},
+ {n:"Test of Think",g:"Ogog",say:"tested by ogog → ready for ogog → think",r:"Belt of the Four Winds",s:"Waist",st:"AC 5 · STR +12 · DEX +6 · STA +12 · AGI +6 · SV MAGIC +5 · Haste +41%",haste:41,it:[E("Efreeti Belt"),D("Wind Tablet","6","Bazzt Zzzt (boss)"),R("Wind Rune Fana")]},
+ {n:"Test of Smash",g:"Ogog",say:"… ready for ogog → smash",r:"Dagas",s:"Primary / Secondary",st:"1H Slash 11 / 21 · AC 20 · STR +3 · AGI +2 · HP +100 · Lore Equipped",it:[D("Djinni War Blade","7","Sister of the Spire (boss)"),D("Gem of Invigoration","7","drake / sphinx / spirit trash","source unconfirmed"),R("Wind Rune Jaka")]},
+ {n:"Test of Bash",g:"Ogog",say:"… ready for ogog → bash",r:"Fangol",s:"Primary",st:"2H Slash 29 / 35 · STR +3 · DEX +10 · STA +10 · SV POISON +5 · proc Fangol's Breath",it:[E("Efreeti Battle Axe"),D("Ethereal Emerald","8","Eye of Veeshan (final boss)"),R("Wind Rune Dena")]}]},
+WIZ:{label:"Wizard",abbr:"WIZ",hub:"Wizard Schrock",armor:"Silk",v:0,q:[
+ {n:"Augmentor's Mask",g:"Wizard Schrock",say:"tester chain not confirmed for Legends",r:"Augmentor's Mask",s:"Face",st:"AC 6 · AGI +8 · DEX +4 · INT +9 · MANA +9 — Build Forge snapshot",it:[D("Grey Damask Cloak","3","Gorgalosk (boss)"),R("Wind Rune Dena")]},
+ {n:"Al`Kabor's Cap of Binding",g:"Wizard Schrock",say:"tester chain not confirmed for Legends",r:"Al`Kabor's Cap of Binding",s:"Head",st:"AC 6 · STR +5 · INT +8 · HP +40 · MANA +20 · SV FIRE/COLD +10 — Build Forge snapshot",it:[D("Woven Skull Cap","4","Keeper of Souls (boss)"),R("Wind Rune Fana")]},
+ {n:"Raiment of Thunder",g:"Wizard Schrock",say:"tester chain not confirmed for Legends",r:"Raiment of Thunder",s:"Shoulders",st:"",it:[D("High Quality Raiment","5","The Spiroc Lord (boss)"),R("Wind Rune Geza")]},
+ {n:"Solidate Mithril Ring",g:"Wizard Schrock",say:"tester chain not confirmed for Legends",r:"Solidate Mithril Ring",s:"Finger",st:"",it:[D("Box of Winds","6","Bazzt Zzzt (boss)"),D("Efreeti Statuette","4","soul / essence griffons, Eternal Spirit"),R("Wind Rune Izah")]},
+ {n:"Amulet of the Void",g:"Wizard Schrock",say:"tester chain not confirmed for Legends",r:"Amulet of the Void",s:"Neck",st:"AC 4 · AGI +5 · DEX +5 · INT +5 · CHA +5 · MANA +50 — Build Forge snapshot",it:[D("Amethyst Amulet","7","Sister of the Spire (boss)"),R("Wind Rune Jaka")]},
+ {n:"Nargon's Staff",g:"Wizard Schrock",say:"tester chain not confirmed for Legends",r:"Nargon's Staff",s:"Primary",st:"",it:[D("Large Sky Lapis","8","Eye of Veeshan (final boss)"),E("Efreeti War Staff"),R("Wind Rune Caza")]}]}
+};
+const ORDER=["BRD","BST","BER","CLR","DRU","ENC","MAG","MNK","NEC","PAL","RNG","ROG","SHD","SHM","WAR","WIZ"];
+
+/* ==================== STATE ==================== */
+let trio=[], cname="", ticks={}, done={}, filter="all", islandFilter=null, mode="build";
+const $=s=>document.querySelector(s);
+const $$=s=>Array.from(document.querySelectorAll(s));
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+const key=(c,qi,ii)=>c+"."+qi+"."+ii;
+const dkey=(c,qi)=>c+"."+qi;
+const shallow=it=>it.i.reduce((a,b)=>ISLANDS[b].d<ISLANDS[a].d?b:a);
+
+/* ---------- storage: window.storage → localStorage → link only ---------- */
+const STORE=(()=>{
+  if(typeof window!=="undefined"&&window.storage&&window.storage.get)
+    return{kind:"artifact",
+      get:async k=>{try{const r=await window.storage.get(k);return r&&r.value?r.value:null;}catch(e){return null;}},
+      set:async(k,v)=>{try{await window.storage.set(k,v);return true;}catch(e){return false;}}};
+  try{
+    const t="__posky_probe";window.localStorage.setItem(t,"1");window.localStorage.removeItem(t);
+    return{kind:"browser",
+      get:async k=>{try{return window.localStorage.getItem(k);}catch(e){return null;}},
+      set:async(k,v)=>{try{window.localStorage.setItem(k,v);return true;}catch(e){return false;}}};
+  }catch(e){}
+  return{kind:"link",get:async()=>null,set:async()=>false};
+})();
+const SKEY="posky:autosave";
+
+/* ---------- share-link codec ---------- */
+function b64e(bytes){let s="";bytes.forEach(b=>s+=String.fromCharCode(b));return btoa(s).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");}
+function b64d(str){str=str.replace(/-/g,"+").replace(/_/g,"/");const bin=atob(str);const out=new Uint8Array(bin.length);for(let i=0;i<bin.length;i++)out[i]=bin.charCodeAt(i);return out;}
+function bits(){ // ordered: for each class in trio, for each quest: done bit then one bit per component
+  const b=[];
+  trio.forEach(c=>CLASSES[c].q.forEach((q,qi)=>{
+    b.push(done[dkey(c,qi)]?1:0);
+    q.it.forEach((_,ii)=>b.push(ticks[key(c,qi,ii)]?1:0));
+  }));
+  return b;
+}
+function pack(b){const out=new Uint8Array(Math.ceil(b.length/8));b.forEach((v,i)=>{if(v)out[i>>3]|=1<<(7-(i&7));});return out;}
+function unpack(bytes,len){const b=[];for(let i=0;i<len;i++)b.push((bytes[i>>3]>>(7-(i&7)))&1);return b;}
+function bitLen(){let n=0;trio.forEach(c=>CLASSES[c].q.forEach(q=>n+=1+q.it.length));return n;}
+function encodeState(){
+  const parts=["m="+(mode==="sheet"?"s":"b")];
+  if(trio.length)parts.push("c="+trio.join("."));
+  if(cname)parts.push("n="+encodeURIComponent(cname));
+  if(trio.length===3){const p=b64e(pack(bits()));if(p)parts.push("p="+p);}
+  return "#"+parts.join("&");
+}
+function applyBits(b){
+  ticks={};done={};let i=0;
+  trio.forEach(c=>CLASSES[c].q.forEach((q,qi)=>{
+    if(b[i++])done[dkey(c,qi)]=1;
+    q.it.forEach((_,ii)=>{if(b[i++])ticks[key(c,qi,ii)]=1;});
+  }));
+}
+function decodeState(hash){
+  if(!hash||hash.length<3)return false;
+  const p={};hash.replace(/^#/,"").split("&").forEach(kv=>{const i=kv.indexOf("=");if(i>0)p[kv.slice(0,i)]=kv.slice(i+1);});
+  if(!p.m&&!p.c)return false;
+  trio=(p.c||"").split(".").filter(x=>CLASSES[x]).slice(0,3);
+  cname=p.n?decodeURIComponent(p.n):"";
+  ticks={};done={};
+  if(trio.length===3&&p.p){try{applyBits(unpack(b64d(p.p),bitLen()));}catch(e){ticks={};done={};}}
+  // no mode in the URL means an older share link, which always meant the sheet
+  mode=(p.m==="b")?"build":(trio.length===3?"sheet":"build");
+  return true;
+}
+async function persist(){
+  const h=encodeState();
+  try{history.replaceState(null,"",location.pathname+location.search+h);}catch(e){}
+  await STORE.set(SKEY,h);
+}
+async function wipe(){
+  trio=[];cname="";ticks={};done={};mode="build";filter="all";islandFilter=null;
+  try{history.replaceState(null,"",location.pathname+location.search);}catch(e){}
+  await STORE.set(SKEY,"");
+}
+
+/* ==================== BUILDER ==================== */
+function renderBuilder(){
+  $("#slotrow").innerHTML=[0,1,2].map(i=>{
+    const c=trio[i];
+    return `<div class="slotbox ${c?"filled":""}">
+      <div class="n">Class ${i+1}</div>
+      <div class="v">${c?esc(CLASSES[c].label):"—"}</div>
+      <div class="x">${c?esc(CLASSES[c].q.length)+" tests · "+esc(CLASSES[c].armor):"tap a class below"}</div>
+    </div>`;}).join("");
+  $("#classgrid").innerHTML=ORDER.map(k=>{
+    const c=CLASSES[k],on=trio.includes(k),full=trio.length>=3&&!on;
+    return `<button class="cbtn" data-c="${k}" aria-pressed="${on}" ${full?"disabled":""}>
+      <div class="l">${esc(c.label)}</div>
+      <div class="d">${c.q.length} tests · ${esc(c.armor)}${c.v?"":" · stats tbc"}</div>
+    </button>`;}).join("");
+  $$(".cbtn").forEach(b=>b.onclick=()=>{
+    const k=b.dataset.c;
+    const was=trio.includes(k);
+    trio=was?trio.filter(x=>x!==k):(trio.length<3?trio.concat(k):trio);
+    if(was){ticks={};done={};}      // dropping a class invalidates its ticks
+    renderBuilder(); persist();
+  });
+  const cl=$("#btn-clearsel");
+  if(cl)cl.onclick=async()=>{await wipe();renderBuilder();};
+  const ok=trio.length===3;
+  $("#btn-build").disabled=!ok;
+  $("#buildhint").textContent=ok?"":(3-trio.length)+" more to choose";
+  $("#preview").innerHTML=ok?previewHTML():"";
+}
+function previewHTML(){
+  let tq=0,tc=0,i8=new Set(),deep=0,haste=[];
+  trio.forEach(c=>CLASSES[c].q.forEach(q=>{
+    tq++;tc+=q.it.length;
+    if(q.haste)haste.push({c:c,r:q.r,h:q.haste});
+    q.it.forEach(it=>{const s=shallow(it);if(ISLANDS[s].d>deep)deep=ISLANDS[s].d;if(s==="8")i8.add(c+"."+q.n);});
+  }));
+  const dn=Object.keys(ISLANDS).find(k=>ISLANDS[k].d===deep);
+  const n8=i8.size;
+  const unverified=trio.filter(c=>!CLASSES[c].v);
+  return `<div class="note key" style="margin-top:26px"><strong>${tq} tests, ${tc} components.</strong> Deepest island this trio requires: <strong>Island ${esc(ISLANDS[dn].n)}, ${esc(ISLANDS[dn].name)}</strong>.</div>
+  <div class="note ${n8?(n8>1?"warn":""):"ok"}"><strong>${n8===0?"No Eye of Veeshan kill needed.":n8+" test"+(n8>1?"s":"")+" behind Eye of Veeshan."}</strong> ${n8===0?"Unusual — this trio tops out at Island 7, which most raids can reach without keying the whole force to Island 8.":"Everything else on these three lines stops at Island 7 or below, so you can bank almost the whole set before you ever need the final boss."}</div>
+  ${haste.length?`<div class="note"><strong>Haste at the waist:</strong> ${haste.map(h=>esc(CLASSES[h.c].label)+" — "+esc(h.r)+" ("+h.h+"%)").join(" · ")}.</div>`:`<div class="note"><strong>No haste belt on any of these three lines.</strong> Ten of the sixteen classes have no haste waist item in Sky. If you want haste at the waist it has to come from a random zone drop instead.</div>`}
+  ${unverified.length?`<div class="note warn"><strong>Reward stats not yet verified for ${unverified.map(c=>esc(CLASSES[c].label)).join(", ")}.</strong> The turn-ins and drop sources are Legends-current; only the tooltips are missing. Those cards will say so.</div>`:""}`;
+}
+
+/* ==================== SHEET ==================== */
+function allQuests(){const o=[];trio.forEach(c=>CLASSES[c].q.forEach((q,qi)=>o.push({c,q,qi})));return o;}
+function ready(c,q,qi){return q.it.every((_,ii)=>ticks[key(c,qi,ii)]);}
+function outstanding(){
+  const m={};LADDER.forEach(k=>m[k]=0);
+  allQuests().forEach(({c,q,qi})=>{
+    if(done[dkey(c,qi)])return;
+    q.it.forEach((it,ii)=>{if(!ticks[key(c,qi,ii)])m[shallow(it)]++;});
+  });
+  return m;
+}
+function slotMap(){
+  const m={};
+  trio.forEach(c=>CLASSES[c].q.forEach((q,qi)=>q.s.split(" / ").forEach(s=>{
+    (m[s]=m[s]||[]).push({c,q,qi,s});
+  })));
+  return m;
+}
+
+function renderSheet(){
+  document.documentElement.style.setProperty("--pa","#4FA3D1");
+  $("#c-name").textContent=cname||trio.map(c=>CLASSES[c].abbr).join(" / ");
+
+  const A=allQuests();
+  const totalQ=A.length, doneQ=A.filter(x=>done[dkey(x.c,x.qi)]).length;
+  const totalC=A.reduce((a,x)=>a+x.q.it.length,0);
+  const gotC=A.reduce((a,x)=>a+(done[dkey(x.c,x.qi)]?x.q.it.length:x.q.it.filter((_,ii)=>ticks[key(x.c,x.qi,ii)]).length),0);
+  const readyN=A.filter(x=>!done[dkey(x.c,x.qi)]&&ready(x.c,x.q,x.qi)).length;
+  const out=outstanding();
+  let deepest=null;
+  LADDER.forEach(k=>{if(k!=="any"&&out[k]&&(!deepest||ISLANDS[k].d>ISLANDS[deepest].d))deepest=k;});
+
+  const unlocks=trio.map(c=>{
+    const cl=CLASSES[c],d=cl.q.filter((q,qi)=>done[dkey(c,qi)]).length,pct=Math.round(d/cl.q.length*100);
+    return `<div class="ub ${d===cl.q.length?"done":""}">
+      <div class="cn">${esc(cl.label)}</div>
+      <div class="cs">${d} / ${cl.q.length} tests · ${esc(cl.hub)}</div>
+      <div class="track"><i style="width:${pct}%"></i></div></div>`;}).join("");
+
+  const ladder=LADDER.map(k=>{
+    const I=ISLANDS[k],n=out[k];
+    return `<button class="rung ${n?"":"clear"} ${k==="8"?"gate":""}" data-i="${k}" aria-pressed="${islandFilter===k}">
+      <span class="id">${esc(I.n)}</span>
+      <span class="meta"><span class="bn">${esc(I.name)}</span><span class="sub">${esc(I.boss)}</span></span>
+      <span class="cnt">${n?n:"✓"}</span></button>`;}).join("");
+
+  // slot competition
+  const sm=slotMap();
+  const contested=Object.keys(sm).filter(s=>new Set(sm[s].map(x=>x.c)).size>1).sort();
+  const solo=Object.keys(sm).filter(s=>new Set(sm[s].map(x=>x.c)).size===1&&sm[s].length===1).sort();
+  const confHTML=contested.map(s=>`<div class="cx"><div class="sn">${esc(s)} · ${sm[s].length} contenders</div><ul>${
+    sm[s].map(x=>`<li><span class="ri">${esc(x.q.r)}</span><span class="rs"><span class="rc">${esc(CLASSES[x.c].label)}</span> · ${x.q.st?esc(x.q.st):"tooltip not yet verified"}</span></li>`).join("")}</ul></div>`).join("")
+;
+  const soloBy={};
+  solo.forEach(s=>{const x=sm[s][0];(soloBy[x.q.r]=soloBy[x.q.r]||{c:x.c,slots:[]}).slots.push(s);});
+  const soloKeys=Object.keys(soloBy);
+  const soloHTML=soloKeys.length?`<div class="cx solo"><div class="sn">Uncontested · ${soloKeys.length} rewards</div><ul>${
+    soloKeys.map(r=>`<li><span class="ri">${esc(r)}</span><span class="rs"><span class="rc">${esc(soloBy[r].slots.join(" / "))}</span> · ${esc(CLASSES[soloBy[r].c].label)} — nothing else on your lines competes</span></li>`).join("")}</ul></div>`:"";
+
+  const conflictHTML=confHTML+soloHTML;
+
+  const blocks=trio.map(c=>{
+    const cl=CLASSES[c];
+    const cards=cl.q.map((q,qi)=>({q,qi})).filter(({q,qi})=>{
+      const dn=done[dkey(c,qi)];
+      if(filter==="open"&&dn)return false;
+      if(filter==="ready"&&(dn||!ready(c,q,qi)))return false;
+      if(islandFilter){if(dn)return false;
+        if(!q.it.some((it,ii)=>!ticks[key(c,qi,ii)]&&shallow(it)===islandFilter))return false;}
+      return true;
+    }).map(({q,qi})=>card(c,q,qi)).join("");
+    if(!cards)return "";
+    const d=cl.q.filter((q,qi)=>done[dkey(c,qi)]).length;
+    return `<section class="classblock">
+      <div class="chead"><h2><span class="num">${esc(cl.abbr)}</span>${esc(cl.label)}</h2>
+      <span class="hub">${esc(cl.hub)}</span><span class="cnt">${d} / ${cl.q.length} complete</span></div>
+      ${cl.v?"":`<div class="note warn" style="margin-top:14px"><strong>Reward tooltips for this class are not confirmed for Legends.</strong> Turn-ins and drop sources below are Legends-current. Stat lines are missing, partial, or classic-era — read them in game before you rank them.</div>`}
+      <div class="grid">${cards}</div></section>`;}).join("");
+
+  $("#c-body").innerHTML=`
+    <div class="hero">
+      <div>
+        <p class="eyebrow">Plane of Sky · class unlock tests</p>
+        <div class="trioline">${trio.map(c=>esc(CLASSES[c].label)).join("<i>/</i><wbr>")}</div>
+        <p class="lede">${esc(trio.map(c=>CLASSES[c].armor).filter((v,i,a)=>a.indexOf(v)===i).join(" · "))} — ${totalQ} tests across three testers, ${totalC} components to collect.</p>
+        <div class="unlocks">${unlocks}</div>
+        <div class="note"><strong>${doneQ} of ${totalQ} tests handed in · ${gotC} of ${totalC} components in hand · ${readyN} ready to hand in.</strong> ${deepest?`Deepest island still required: <strong>Island ${esc(ISLANDS[deepest].n)} — ${esc(ISLANDS[deepest].name)}</strong>, ${esc(ISLANDS[deepest].boss)}.`:"Nothing outstanding. Every line is done."}</div>
+        <div class="note key"><strong>Save your progress.</strong> ${STORE.kind==="link"?"This page cannot write to storage here, so use":"Progress saves automatically in this browser. To move it to another device or share it, use"} <em>Save / share link</em> in the bar above — the whole sheet travels inside the URL.</div>
+      </div>
+      <div class="ladder">
+        <h3>What is left, by island</h3>
+        <p class="cap">Outstanding components counted against the shallowest island that can drop them. Efreeti weapons credit to Island 1.5, since Noble Dojorn drops the lot. Tap a rung to filter.</p>
+        ${ladder}
+      </div>
+    </div>
+    <section class="classblock" style="margin-top:38px">
+      <div class="chead"><h2><span class="num">◆</span>Slot competition</h2>
+      <span class="hub">where your three lines collide</span></div>
+      <p class="lede" style="margin-top:14px">Running three classes means three item pools fighting over the same equipment slots. These are the ones where you will have to choose.</p>
+      <div class="conf">${conflictHTML||`<div class="cx solo"><div class="sn">No overlap</div><ul><li><span class="rs">Every reward on these three lines lands in its own slot. Nothing competes.</span></li></ul></div>`}</div>
+    </section>
+    ${blocks||`<div class="empty">Nothing matches that filter.</div>`}`;
+
+  $$(".rung").forEach(b=>b.onclick=()=>{
+    islandFilter=islandFilter===b.dataset.i?null:b.dataset.i;
+    if(islandFilter){filter="all";syncChips();}
+    renderSheet();});
+  $$(".cmp").forEach(b=>b.onclick=async()=>{
+    const k=b.dataset.k;
+    if(ticks[k])delete ticks[k];else ticks[k]=1;
+    renderSheet();await persist();});
+  $$(".turnin").forEach(b=>b.onclick=async()=>{
+    const k=b.dataset.d;
+    if(done[k])delete done[k];else done[k]=1;
+    renderSheet();await persist();});
+}
+
+function card(c,q,qi){
+  const dn=!!done[dkey(c,qi)], rdy=ready(c,q,qi);
+  const g8=q.it.some(it=>shallow(it)==="8");
+  const left=q.it.filter((_,ii)=>!ticks[key(c,qi,ii)]).length;
+  const comps=q.it.map((it,ii)=>{
+    const got=!!ticks[key(c,qi,ii)],isl=it.i.map(x=>ISLANDS[x].n).join(" / ");
+    return `<li><button class="cmp ${it.rune?"rune":""}" role="checkbox" aria-checked="${got}" data-k="${esc(key(c,qi,ii))}">
+      <span class="box"></span><span style="min-width:0">
+        <span class="cn2">${esc(it.n)}</span>
+        <span class="src"><i>${it.rune?"Zone-wide":"Island "+esc(isl)}</i> · ${esc(it.m)}${it.flag?` <span class="flag">· ${esc(it.flag)}</span>`:""}</span>
+      </span></button></li>`;}).join("");
+  return `<article class="q ${dn?"done":(rdy?"rdy":(g8?"g8":""))}">
+    <div class="top"><span class="qn">${esc(q.n)} · ${esc(q.g)}</span>
+      ${q.haste?`<span class="tag" style="color:var(--gold)">Haste ${q.haste}%</span>`:""}
+      ${g8?`<span class="tag" style="color:var(--warn)">Island 8</span>`:""}</div>
+    <h3 class="rw">${esc(q.r)}</h3>
+    <div class="slot">${esc(q.s)}</div>
+    <p class="st ${q.st?"":"unk"}">${q.st?esc(q.st):"Legends tooltip not yet verified — turn-ins below are current"}</p>
+    <div class="say"><b>Say:</b> ${esc(q.say)}</div>
+    <ul class="comps">${comps}</ul>
+    <div class="foot">
+      <button class="turnin ${dn?"is-done":(rdy?"ready":"")}" data-d="${esc(dkey(c,qi))}">${dn?"✓ Handed in":"Mark handed in"}</button>
+      <span class="left">${dn?"complete":(rdy?"all components in hand":left+" still needed")}</span>
+    </div></article>`;
+}
+
+/* ==================== NAV / WIRING ==================== */
+function syncChips(){$$(".chip[data-filter]").forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.filter===filter)));}
+function showSheet(){
+  mode="sheet";
+  $("#screen-build").classList.add("hidden");
+  $("#screen-sheet").classList.remove("hidden");
+  filter="all";islandFilter=null;syncChips();renderSheet();window.scrollTo(0,0);
+  persist();
+}
+function showBuilder(){
+  mode="build";
+  $("#screen-sheet").classList.add("hidden");
+  $("#screen-build").classList.remove("hidden");
+  $("#in-name").value=cname||"";
+  renderBuilder();window.scrollTo(0,0);
+  persist();
+}
+$("#in-name").oninput=e=>{cname=e.target.value.trim();persist();};
+$("#btn-build").onclick=async()=>{
+  const n=trio.length;let need=0;trio.forEach(c=>CLASSES[c].q.forEach(q=>need+=1+q.it.length));
+  if(n===3){ticks=ticks||{};done=done||{};showSheet();await persist();}
+};
+$("#btn-back").onclick=showBuilder;
+$$(".chip[data-filter]").forEach(b=>b.onclick=()=>{filter=b.dataset.filter;islandFilter=null;syncChips();renderSheet();});
+$("#btn-clear").onclick=async()=>{
+  if(!confirm("Clear every ticked component and handed-in test? Your trio stays as it is."))return;
+  ticks={};done={};renderSheet();await persist();};
+$("#btn-reset").onclick=async()=>{
+  if(!confirm("Start over completely? This clears your trio, your name and every tick."))return;
+  await wipe();showBuilder();};
+$("#btn-share").onclick=()=>{
+  const url=location.origin+location.pathname+location.search+encodeState();
+  $("#linkbox").value=url;
+  $("#savenote").innerHTML=STORE.kind==="artifact"?"Also saved automatically in this conversation."
+    :STORE.kind==="browser"?"Also saved automatically in this browser."
+    :"<span style='color:var(--warn)'>Automatic saving is unavailable here — this link is your only copy. Bookmark it.</span>";
+  $("#share").classList.remove("hidden");
+  $("#linkbox").select();};
+$("#btn-close").onclick=()=>$("#share").classList.add("hidden");
+$("#share").onclick=e=>{if(e.target.id==="share")$("#share").classList.add("hidden");};
+$("#btn-copy").onclick=async()=>{
+  const el=$("#linkbox");el.select();
+  let ok=false;
+  try{await navigator.clipboard.writeText(el.value);ok=true;}catch(e){try{ok=document.execCommand("copy");}catch(e2){}}
+  $("#btn-copy").textContent=ok?"Copied":"Press Ctrl+C";
+  setTimeout(()=>{$("#btn-copy").textContent="Copy link";},1800);};
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#share").classList.add("hidden");});
+
+(async()=>{
+  let ok=decodeState(location.hash);
+  if(!ok){const saved=await STORE.get(SKEY);if(saved)ok=decodeState(saved);}
+  $("#in-name").value=cname||"";
+  if(ok&&mode==="sheet"&&trio.length===3)showSheet();
+  else{mode="build";showBuilder();}
+})();
+</script>
+</body>
+</html>

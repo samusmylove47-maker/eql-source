@@ -1,0 +1,30 @@
+{
+  "_comment": "Read by .github/workflows/survey-refresh.yml. Explained in docs/SOURCES.md.",
+  "wiki_api": "https://eqlwiki.com/api.php",
+  "wiki_pages": [
+    {"title": "Najena", "feeds": "dungeons/najena.html", "tier": 2},
+    {"title": "Lair of the Splitpaw", "feeds": "dungeons/splitpaw.html", "tier": 2},
+    {"title": "Crushbone", "feeds": "dungeons/crushbone.html", "tier": 2},
+    {"title": "Befallen", "feeds": "dungeons/befallen.html", "tier": 2},
+    {"title": "Blackburrow", "feeds": "dungeons/blackburrow.html", "tier": 2},
+    {"title": "Lower Guk", "feeds": "dungeons/lowerguk.html", "tier": 2},
+    {"title": "Nagafen's Lair", "feeds": "dungeons/nagafenslair.html", "tier": 2},
+    {"title": "The Hole", "feeds": "dungeons/thehole.html", "tier": 2},
+    {"title": "The Warrens", "feeds": "dungeons/warrens.html", "tier": 2},
+    {"title": "Castle Mistmoore", "feeds": "dungeons/mistmoore.html", "tier": 2},
+    {"title": "Plane of Sky", "feeds": "tools/plane-of-sky.html and raids/", "tier": 2},
+    {"title": "Character Races", "feeds": "tools/race-unlocks.html", "tier": 2},
+    {"title": "Newbie Guide", "feeds": "tools/combo-calculator.html", "tier": 3},
+    {"title": "User:Alanna/Alanna's Race Unlock Guide", "feeds": "tools/race-unlocks.html", "tier": 3},
+    {"title": "Rituals", "feeds": "dungeons/campaign-10-to-50.html", "tier": 2}
+  ],
+  "other_sources": [
+    {"url": "https://www.everquestlegends.com/news", "cadence": "every-run", "tier": 1},
+    {"url": "https://www.eqprogression.com/legends/plane-of-sky-quests-class-unlocks/", "cadence": "weekly", "tier": 3},
+    {"url": "https://eqlbuildforge.com/items/", "cadence": "weekly", "tier": 4}
+  ],
+  "blocked_do_not_retry": [
+    {"url": "https://www.necrotalk.com", "reason": "bot detection"},
+    {"url": "https://gnollguard.com", "reason": "blocks automated requests"}
+  ]
+}

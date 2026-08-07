@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dungeon survey plates — EQL Source</title>
+<meta name="description" content="Ten revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.">
+<meta property="og:title" content="Dungeon survey plates — EQL Source">
+<meta property="og:description" content="Ten revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="shell">
+  <div class="page-head">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
+    <h1>Survey plates</h1>
+    <p class="lede">Ten zones, each shipping a deep-reference plate and, where built, a navigation map companion.
+      Population tables, named rosters with spawn data, loot tied to drop sources, and coordinates re-derived from the
+      wiki&rsquo;s <code>/loc</code> records and collision-checked against the room list.</p>
+  </div>
+
+  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
+    <div class="sechead"><span class="n">All</span><div><h2 class="sec">The ten</h2></div></div>
+    <div class="ztable">
+    <a class="zrow" href="najena.html" style="--c:#D9A227">
+      <span class="pn">01</span>
+      <span><span class="zt">Najena</span><span class="zs">8-35 (tuned 15-30) &middot; /who najena</span></span>
+      <span class="cell zonesub"><em>Respawn</em>19:00</span>
+      <span class="cell"><em>ZEM</em>119 <span style="color:var(--faint)">/ 159%</span></span>
+      <span class="cell"><em>Verified</em>full</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="splitpaw.html" style="--c:#45A6A0">
+      <span class="pn">02</span>
+      <span><span class="zt">Lair of the Splitpaw</span><span class="zs">25-28 entrance ramping to 40-42 deep; named exceed &middot; /who paw</span></span>
+      <span class="cell zonesub"><em>Respawn</em><=22:00</span>
+      <span class="cell"><em>ZEM</em>128 <span style="color:var(--faint)">/ 170%</span></span>
+      <span class="cell"><em>Verified</em>full</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="crushbone.html" style="--c:#BE4F3E">
+      <span class="pn">03</span>
+      <span><span class="zt">Crushbone</span><span class="zs">4-22 &middot; /who None</span></span>
+      <span class="cell zonesub"><em>Respawn</em>not recorded</span>
+      <span class="cell"><em>ZEM</em>119 <span style="color:var(--faint)">/ 159%</span></span>
+      <span class="cell"><em>Verified</em>not yet</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="befallen.html" style="--c:#8E7BC7">
+      <span class="pn">04</span>
+      <span><span class="zt">Befallen</span><span class="zs">7-25+ &middot; /who befallen</span></span>
+      <span class="cell zonesub"><em>Respawn</em>4:27</span>
+      <span class="cell"><em>ZEM</em>119 <span style="color:var(--faint)">/ 159%</span></span>
+      <span class="cell"><em>Verified</em>partial</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="blackburrow.html" style="--c:#5C93C4">
+      <span class="pn">05</span>
+      <span><span class="zt">Blackburrow</span><span class="zs">5-20 &middot; /who None</span></span>
+      <span class="cell zonesub"><em>Respawn</em>not recorded</span>
+      <span class="cell"><em>ZEM</em>119 <span style="color:var(--faint)">/ 159%</span></span>
+      <span class="cell"><em>Verified</em>not yet</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="lowerguk.html" style="--c:#7FA84F">
+      <span class="pn">06</span>
+      <span><span class="zt">Lower Guk</span><span class="zs">24-49 &middot; /who gukbottom</span></span>
+      <span class="cell zonesub"><em>Respawn</em>9:28</span>
+      <span class="cell"><em>ZEM</em>86 <span style="color:var(--faint)">/ 115%</span></span>
+      <span class="cell"><em>Verified</em>full</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="nagafenslair.html" style="--c:#E06B2A">
+      <span class="pn">07</span>
+      <span><span class="zt">Nagafen's Lair</span><span class="zs">25-55 &middot; /who soldungb</span></span>
+      <span class="cell zonesub"><em>Respawn</em><=22:00</span>
+      <span class="cell"><em>ZEM</em>86 <span style="color:var(--faint)">/ 115%</span></span>
+      <span class="cell"><em>Verified</em>full</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="thehole.html" style="--c:#8C7BE0">
+      <span class="pn">08</span>
+      <span><span class="zt">The Hole</span><span class="zs">39-56 &middot; /who hole</span></span>
+      <span class="cell zonesub"><em>Respawn</em><=21:30</span>
+      <span class="cell"><em>ZEM</em>128 <span style="color:var(--faint)">/ 171%</span></span>
+      <span class="cell"><em>Verified</em>partial</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="warrens.html" style="--c:#B5793C">
+      <span class="pn">09</span>
+      <span><span class="zt">The Warrens</span><span class="zs">4-25 &middot; /who warrens</span></span>
+      <span class="cell zonesub"><em>Respawn</em><=6:40</span>
+      <span class="cell"><em>ZEM</em>128 <span style="color:var(--faint)">/ 171%</span></span>
+      <span class="cell"><em>Verified</em>partial</span>
+      <span class="bar"></span></a>
+    <a class="zrow" href="mistmoore.html" style="--c:#A8324A">
+      <span class="pn">10</span>
+      <span><span class="zt">Castle Mistmoore</span><span class="zs">20-45 &middot; /who mistmoore</span></span>
+      <span class="cell zonesub"><em>Respawn</em><=22:00 plus dawn/dusk repop</span>
+      <span class="cell"><em>ZEM</em>97 <span style="color:var(--faint)">/ 129%</span></span>
+      <span class="cell"><em>Verified</em>full</span>
+      <span class="bar"></span></a>
+    </div>
+    <div class="note"><strong>What &ldquo;verified&rdquo; means here, and why most of these are not.</strong> A zone
+      counts as verified only when all three gates pass: its wiki page was fetched in full, <em>its edit history was
+      fetched</em> &mdash; not just the footer date &mdash; and its coordinates were re-derived and collision-checked
+      against the room list. By that standard 5 of 10 are verified, 3 are partial and 2 are not
+      verified at all. Partial plates are complete and useful; they have simply not cleared all three gates.</div>
+    <div class="ztable" style="margin-top:14px">      <div class="zrow" style="--c:#8E7BC7">
+        <span class="pn">04</span>
+        <span><span class="zt" style="font-size:19px">Befallen</span>
+        <span class="zs">edit history came from the page footer, not the history itself</span></span>
+        <span class="cell zonesub"></span><span class="cell"></span>
+        <span class="cell"><em>Gate</em>open</span>
+        <span class="bar"></span></div>
+      <div class="zrow" style="--c:#8C7BE0">
+        <span class="pn">08</span>
+        <span><span class="zt" style="font-size:19px">The Hole</span>
+        <span class="zs">rebuilt after a fabrication was found; coordinates not re-derived since</span></span>
+        <span class="cell zonesub"></span><span class="cell"></span>
+        <span class="cell"><em>Gate</em>open</span>
+        <span class="bar"></span></div>
+      <div class="zrow" style="--c:#B5793C">
+        <span class="pn">09</span>
+        <span><span class="zt" style="font-size:19px">The Warrens</span>
+        <span class="zs">coordinates not re-derived and collision-checked</span></span>
+        <span class="cell zonesub"></span><span class="cell"></span>
+        <span class="cell"><em>Gate</em>open</span>
+        <span class="bar"></span></div>
+      <div class="zrow" style="--c:#BE4F3E">
+        <span class="pn">03</span>
+        <span><span class="zt" style="font-size:19px">Crushbone</span>
+        <span class="zs">not verified — revamped 14 Jul and touched 28 Jul since the plate was built</span></span>
+        <span class="cell zonesub"></span><span class="cell"></span>
+        <span class="cell"><em>Gate</em>unstarted</span>
+        <span class="bar"></span></div>
+      <div class="zrow" style="--c:#5C93C4">
+        <span class="pn">05</span>
+        <span><span class="zt" style="font-size:19px">Blackburrow</span>
+        <span class="zs">not verified — and the plate is missing its reading key</span></span>
+        <span class="cell zonesub"></span><span class="cell"></span>
+        <span class="cell"><em>Gate</em>unstarted</span>
+        <span class="bar"></span></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sechead"><span class="n">Field</span><div><h2 class="sec">Navigation maps</h2>
+      <p class="lede" style="margin:0">The companion document you keep open while you are in the zone.</p></div></div>
+    <div class="cards c3">
+      <a class="card" href="najena-map.html" style="--c:#D9A227">
+        <div class="kicker">Navigation map</div>
+        <h3 class="t">Najena</h3>
+        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
+          so it stays usable on a second monitor.</p>
+        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="splitpaw-map.html" style="--c:#45A6A0">
+        <div class="kicker">Navigation map</div>
+        <h3 class="t">Lair of the Splitpaw</h3>
+        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
+          so it stays usable on a second monitor.</p>
+        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="lowerguk-map.html" style="--c:#7FA84F">
+        <div class="kicker">Navigation map</div>
+        <h3 class="t">Lower Guk</h3>
+        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
+          so it stays usable on a second monitor.</p>
+        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="nagafenslair-map.html" style="--c:#E06B2A">
+        <div class="kicker">Navigation map</div>
+        <h3 class="t">Nagafen's Lair</h3>
+        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
+          so it stays usable on a second monitor.</p>
+        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="mistmoore-map.html" style="--c:#A8324A">
+        <div class="kicker">Navigation map</div>
+        <h3 class="t">Castle Mistmoore</h3>
+        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
+          so it stays usable on a second monitor.</p>
+        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>
+      <div class="card" style="--c:var(--rule2)"><div class="kicker">Queued</div>
+        <h3 class="t">Five to go</h3>
+        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have plates but no map yet. Blackburrow
+          is next &mdash; it has an explicit three-floor structure, which makes it the strongest candidate for a full
+          3D treatment rather than a flat plan.</p>
+        <div class="foot"><span>In build</span></div></div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sechead"><span class="n">Route</span><div><h2 class="sec">Campaign plate</h2></div></div>
+    <div class="cards c2">
+      <a class="card" href="campaign-10-to-50.html" style="--c:var(--bone)">
+        <div class="kicker">Levels 10 &ndash; 50</div>
+        <h3 class="t">The whole climb</h3>
+        <p class="d">Three passes through the surveyed zones, routed around ZEM, respawn timers and travel tolls, with
+          the standing orders that matter more than any single camp choice.</p>
+        <div class="foot"><span>Cross-zone</span><span class="go">Open &rarr;</span></div></a>
+    </div>
+  </section>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All survey plates</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../dungeons/campaign-10-to-50.html">Campaign plate, 10&ndash;50</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

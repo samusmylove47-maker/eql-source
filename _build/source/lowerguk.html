@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lower Guk — Survey Plate | EverQuest Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#7FA84F;--accd:#4c6630}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#12171A;color:#D5DBD8;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.mast{border-bottom:1px solid #2E3A41;padding:46px 0 26px;margin-bottom:34px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9.5vw,98px);line-height:.86;letter-spacing:-.015em;margin:0 0 6px;text-transform:uppercase}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#8A9998;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#2E3A41;border:1px solid #2E3A41}
+.cell{background:#1A2126;padding:11px 13px}
+.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;margin:0 0 4px}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#8A9998;display:block;letter-spacing:0}
+section{margin-top:56px}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+.lede{color:#8A9998;margin:0 0 24px;max-width:64ch}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
+p{max-width:76ch}a{color:var(--acc)}
+.plate-box{border:1px solid #2E3A41;background:#1A2126;padding:16px}
+.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
+@media(max-width:820px){.map-grid{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto}
+.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
+.legend ol{list-style:none;margin:0;padding:0}
+.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #2E3A41}
+.legend .n{color:var(--acc);min-width:19px;text-align:right;font-weight:600}
+.legend .lv{color:#8A9998;margin-left:auto;padding-left:8px;white-space:nowrap}
+.scroller{overflow-x:auto;border:1px solid #2E3A41;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;text-align:left;padding:11px 13px;background:#232C32;border-bottom:1px solid #2E3A41;white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid #2E3A41;vertical-align:top;background:#1A2126}
+tbody tr:last-child td{border-bottom:0}
+.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acc);white-space:nowrap}
+.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
+.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#D5DBD8}
+.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#8A9998;letter-spacing:.04em;line-height:1.45}
+.cls.all{color:#5FA37E}
+.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#8A9998}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acc);display:inline-block;margin-top:4px;white-space:nowrap}
+.tag.warn{border-color:#C9453A;color:#C9453A}
+.tag.new{border-color:#5FA37E;color:#5FA37E}
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
+.camp{border:1px solid #2E3A41;border-top:2px solid var(--acc);background:#1A2126;padding:16px}
+.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
+.camp p{font-size:13.5px;margin:0 0 9px}
+.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.link{flex:1 1 180px;background:#1A2126;border:1px solid #2E3A41;border-left:2px solid var(--acc);padding:12px 14px}
+.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#8A9998;text-transform:uppercase}
+.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
+.link .gives{font-size:12.5px;color:#8A9998}
+.link .gives b{color:var(--acc);font-weight:600}
+.note{border-left:2px solid #2E3A41;padding:2px 0 2px 16px;margin:20px 0;color:#8A9998;max-width:76ch}
+.danger{border-left-color:#C9453A}.danger strong{color:#C9453A}
+.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
+.note strong{color:#D5DBD8}
+ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acc);background:#232C32;padding:1px 5px}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid #2E3A41;color:#8A9998;font-size:12.5px}
+footer h3{margin-top:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Dungeon Survey Plate 06 · Innothule Swamp, Antonica</p>
+  <h1>Lower Guk</h1>
+  <p class="subtitle">Two warring sides, a clan ladder that tells you every level, and the best loot in the bracket</p>
+  <dl class="strip">
+    <div class="cell"><dt>/who name</dt><dd>gukbottom</dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>24&ndash;49</dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>86<small>115% — was 80</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>9:28<small>corrected 10 Jul</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>1197, &minus;217</dd></div>
+    <div class="cell"><dt>Adjacent</dt><dd>Upper Guk<small>4 entrances</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2><span class="num">01</span>Status &amp; a correction</h2>
+  <div class="note fresh"><strong>The zone respawn is 9 minutes 28 seconds, not 28 minutes.</strong> A wiki editor corrected the infobox on <strong>10 July 2026</strong> with the summary "updated zone spawn time", changing <code>28:00</code> to <code>9:28</code>. <strong>The page's own Monsters section still reads "Zone Respawn Time = 28 minutes" and is stale</strong>, as are several NPC notes. One entry — the ghoul supplier — was updated to "9m 27s" in the same pass, which corroborates the new figure. Three times faster than every older guide says, and it changes camp economics completely.<span class="tag new">10 Jul</span></div>
+  <div class="note fresh"><strong>Treated on launch day, 28 July 2026</strong> — placeholders removed and maximum respawn times lowered, alongside The Hole, Nagafen's Lair, Lair of the Splitpaw, The Warrens and Castle Mistmoore. <strong>The page predates that patch by two and a half weeks</strong>, so the spawn percentages below are pre-patch floors and 9:28 is itself a ceiling.</div>
+  <div class="note"><strong>ZEM 86 (115%), raised from 80.</strong> This is the lowest modifier in the series, tied with Nagafen's Lair — roughly <strong>27% below</strong> the revamped low dungeons at 159% and <strong>a third below</strong> The Hole and The Warrens at 171%. <strong>Come here for loot, not for the rate.</strong> The wiki's own framing agrees: the items are "probably the most sought after in the game for this level range."</div>
+  <div class="note danger"><strong>Source warning.</strong> The page was created 2 August 2025 as a Project 1999 import and has five revisions since. Its <strong>infobox and its NPC and item tables are live Legends data</strong>; its narrative sections — Dangers, Benefits, the 30-point Quester of Norrath walkthrough — are classic EverQuest prose, used below for layout and mechanics only. Where the two disagree, as on the respawn timer, the structured record wins.</div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>The plate</h2>
+  <p class="lede">Grid squares are 400 game units. <strong>Filled markers are Live side, hollow rings are Dead side.</strong> The two interleave in coordinate space — that is not a plotting artefact, it is why the zone is famously confusing.</p>
+  <div class="plate-box">
+    <div class="map-grid">
+      <div>
+        <svg viewBox="0 0 740 700" role="img" aria-label="Coordinate plot of named spawn locations in Lower Guk, live and dead sides">
+          <rect x="70" y="60" width="608" height="592" fill="#151B1F" stroke="#2E3A41"/>
+          <g stroke="#1d252b" stroke-width="1">
+            <line x1="166" y1="60" x2="166" y2="652"/><line x1="422" y1="60" x2="422" y2="652"/>
+            <line x1="550" y1="60" x2="550" y2="652"/><line x1="678" y1="60" x2="678" y2="652"/>
+            <line x1="70" y1="76" x2="678" y2="76"/><line x1="70" y1="204" x2="678" y2="204"/>
+            <line x1="70" y1="332" x2="678" y2="332"/><line x1="70" y1="460" x2="678" y2="460"/>
+          </g>
+          <line x1="294" y1="60" x2="294" y2="652" stroke="#3C4A52" stroke-width="1.4"/>
+          <line x1="70" y1="588" x2="678" y2="588" stroke="#3C4A52" stroke-width="1.4"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+            <text x="166" y="668" text-anchor="middle">X 400</text><text x="294" y="668" text-anchor="middle">0</text>
+            <text x="422" y="668" text-anchor="middle">&minus;400</text><text x="550" y="668" text-anchor="middle">&minus;800</text>
+            <text x="678" y="668" text-anchor="middle">&minus;1200</text>
+            <text x="64" y="79" text-anchor="end">Y 1600</text><text x="64" y="207" text-anchor="end">1200</text>
+            <text x="64" y="335" text-anchor="end">800</text><text x="64" y="463" text-anchor="end">400</text>
+            <text x="64" y="591" text-anchor="end">0</text>
+          </g>
+          <g opacity="0.3">
+            <rect x="260" y="440" width="240" height="200" rx="6" fill="#2b3320"/>
+            <rect x="460" y="70" width="210" height="360" rx="6" fill="#23282e"/>
+          </g>
+          <g font-family="Saira Condensed, sans-serif" font-size="11" font-weight="700" letter-spacing="1.3">
+            <text x="264" y="436" fill="#8fae63">LIVE SIDE &middot; KNIGHTS &amp; SHAMANS</text>
+            <text x="464" y="66" fill="#7f8f9e">DEAD SIDE &middot; KNIGHTS &amp; WIZARDS</text>
+          </g>
+          <g stroke="#7FA84F" stroke-width="0.8" opacity="0.5">
+            <line x1="287" y1="621.6" x2="200" y2="636"/><line x1="301" y1="612.3" x2="200" y2="612"/>
+            <line x1="302.3" y1="630.6" x2="200" y2="660"/><line x1="377.2" y1="582.2" x2="440" y2="618"/>
+            <line x1="321.2" y1="555" x2="230" y2="546"/><line x1="351" y1="593.1" x2="440" y2="580"/>
+            <line x1="431.9" y1="521.8" x2="530" y2="520"/><line x1="484.4" y1="514.1" x2="560" y2="548"/>
+            <line x1="342" y1="468" x2="230" y2="466"/><line x1="268.4" y1="398.6" x2="180" y2="392"/>
+            <line x1="436.4" y1="388" x2="360" y2="358"/><line x1="388.4" y1="290.4" x2="290" y2="284"/>
+            <line x1="521.5" y1="415.8" x2="620" y2="446"/><line x1="364.4" y1="412" x2="270" y2="420"/>
+            <line x1="488.9" y1="403" x2="588" y2="424"/><line x1="535.3" y1="389.6" x2="628" y2="386"/>
+            <line x1="578.8" y1="389" x2="640" y2="366"/><line x1="519.6" y1="341.9" x2="600" y2="330"/>
+            <line x1="641.2" y1="317.6" x2="660" y2="296"/><line x1="524.1" y1="315.4" x2="590" y2="300"/>
+            <line x1="487.3" y1="259.7" x2="560" y2="248"/><line x1="637.4" y1="245" x2="660" y2="226"/>
+            <line x1="514.2" y1="227.7" x2="590" y2="212"/><line x1="560.9" y1="209.8" x2="640" y2="186"/>
+            <line x1="533.7" y1="89.4" x2="600" y2="98"/>
+          </g>
+          <g fill="#7FA84F">
+            <circle cx="287" cy="621.6" r="4"/><circle cx="301" cy="612.3" r="4"/><circle cx="302.3" cy="630.6" r="4"/>
+            <circle cx="377.2" cy="582.2" r="4"/><circle cx="376.9" cy="582.6" r="4"/><circle cx="321.2" cy="555" r="4"/>
+            <circle cx="351" cy="593.1" r="4"/><circle cx="431.9" cy="521.8" r="4"/><circle cx="484.4" cy="514.1" r="4"/>
+            <circle cx="342" cy="468" r="4"/><circle cx="268.4" cy="398.6" r="4"/><circle cx="436.4" cy="388" r="4"/>
+            <circle cx="388.4" cy="290.4" r="4"/>
+          </g>
+          <g fill="#12171A" stroke="#9fbf7a" stroke-width="1.6">
+            <circle cx="521.5" cy="415.8" r="4.5"/><circle cx="364.4" cy="412" r="4.5"/><circle cx="488.9" cy="403" r="4.5"/>
+            <circle cx="487" cy="402.1" r="4.5"/><circle cx="535.3" cy="389.6" r="4.5"/><circle cx="578.8" cy="389" r="4.5"/>
+            <circle cx="541.7" cy="383.8" r="4.5"/><circle cx="519.6" cy="341.9" r="4.5"/><circle cx="468.7" cy="341.3" r="4.5"/>
+            <circle cx="641.2" cy="317.6" r="4.5"/><circle cx="524.1" cy="315.4" r="4.5"/><circle cx="489.2" cy="294.6" r="4.5"/>
+            <circle cx="487.3" cy="259.7" r="4.5"/><circle cx="637.4" cy="245" r="4.5"/><circle cx="514.2" cy="227.7" r="4.5"/>
+            <circle cx="560.9" cy="209.8" r="4.5"/><circle cx="538.8" cy="94.6" r="4.5"/><circle cx="533.7" cy="89.4" r="4.5"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#7FA84F">
+            <text x="196" y="639" text-anchor="end">1 froglok king L47</text>
+            <text x="196" y="615" text-anchor="end">2 tactician L45</text>
+            <text x="196" y="663" text-anchor="end">3 kor shaman L39&ndash;43</text>
+            <text x="444" y="621">4/5 herbalist L43 &middot; jin shaman</text>
+            <text x="226" y="549" text-anchor="end">6 huge water elemental</text>
+            <text x="444" y="583">7 granite gargoyle</text>
+            <text x="534" y="523">8 Yun Priest L38</text>
+            <text x="564" y="551">9 crusader L42</text>
+            <text x="226" y="469" text-anchor="end">10 noble L39&ndash;40</text>
+            <text x="176" y="395" text-anchor="end">11 minotaur patriarch</text>
+            <text x="356" y="361" text-anchor="end">12 evil eye &mdash; sees invis</text>
+            <text x="286" y="287" text-anchor="end">13 minotaur elder L33</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#9fbf7a">
+            <text x="624" y="449">14 scribe</text>
+            <text x="266" y="423" text-anchor="end">15 sage L37</text>
+            <text x="592" y="427">16/17 cavalier &middot; savant</text>
+            <text x="632" y="389">18/20 assassin &middot; supplier</text>
+            <text x="644" y="369">19 executioner</text>
+            <text x="604" y="333">21 ritualist</text>
+            <text x="664" y="299">23 sentinel L42</text>
+            <text x="594" y="303">24 GIBs</text>
+            <text x="564" y="251">26 Tsu wizard</text>
+            <text x="664" y="229">27 bloodthirsty</text>
+            <text x="594" y="215">28 reanimated hand</text>
+            <text x="644" y="189">29 archmagi PH</text>
+            <text x="604" y="101">30/31 Guk guards &mdash; ghoul lord</text>
+          </g>
+          <g>
+            <circle cx="363.4" cy="205" r="10" fill="#12171A" stroke="#C9A227" stroke-width="1.8"/>
+            <text x="363.4" y="208.5" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="700" fill="#C9A227" text-anchor="middle">IN</text>
+            <text x="363.4" y="226" font-family="IBM Plex Mono, monospace" font-size="8.5" fill="#8A9998" text-anchor="middle">1197, &minus;217</text>
+          </g>
+          <g>
+            <rect x="86" y="76" width="196" height="112" fill="#1A2126" stroke="#2E3A41"/>
+            <text x="96" y="96" font-family="IBM Plex Mono, monospace" font-size="9" fill="#7FA84F" letter-spacing="1.5">READING THE PLATE</text>
+            <text x="96" y="114" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">/loc returns  Y, X, Z</text>
+            <text x="96" y="128" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+Y = north (up)</text>
+            <text x="96" y="142" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+X = west (left)</text>
+            <text x="96" y="160" font-family="IBM Plex Mono, monospace" font-size="10" fill="#7FA84F">&#9679; Live side</text>
+            <text x="180" y="160" font-family="IBM Plex Mono, monospace" font-size="10" fill="#9fbf7a">&#9711; Dead side</text>
+            <text x="96" y="176" font-family="IBM Plex Mono, monospace" font-size="10" fill="#C9A227">&#9711; succor point</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <ol>
+          <li><span class="n">IN</span><span>Succor &middot; between BR &amp; waterfall</span><span class="lv">1197, &minus;217</span></li>
+          <li><span class="n">1</span><span>the froglok king</span><span class="lv">L47</span></li>
+          <li><span class="n">2</span><span>a froglok tactician</span><span class="lv">L45</span></li>
+          <li><span class="n">3</span><span>a froglok kor shaman</span><span class="lv">L39&ndash;43</span></li>
+          <li><span class="n">4</span><span>a froglok herbalist</span><span class="lv">L43</span></li>
+          <li><span class="n">5</span><span>a froglok jin shaman</span><span class="lv">L42&ndash;46</span></li>
+          <li><span class="n">6</span><span>a huge water elemental</span><span class="lv">L35&ndash;39</span></li>
+          <li><span class="n">7</span><span>a granite gargoyle</span><span class="lv">L38&ndash;42</span></li>
+          <li><span class="n">8</span><span>A Froglok Yun Priest</span><span class="lv">L38</span></li>
+          <li><span class="n">9</span><span>a froglok crusader</span><span class="lv">L42</span></li>
+          <li><span class="n">10</span><span>A Froglok Noble</span><span class="lv">L39&ndash;40</span></li>
+          <li><span class="n">11</span><span>a minotaur patriarch</span><span class="lv">L34</span></li>
+          <li><span class="n">12</span><span>an Evil Eye</span><span class="lv">L34&ndash;36</span></li>
+          <li><span class="n">13</span><span>A Minotaur Elder</span><span class="lv">L33</span></li>
+          <li><span class="n">14</span><span>a ghoul scribe</span><span class="lv">L35</span></li>
+          <li><span class="n">15</span><span>a ghoul sage</span><span class="lv">L37</span></li>
+          <li><span class="n">16</span><span>a ghoul cavalier</span><span class="lv">L36</span></li>
+          <li><span class="n">17</span><span>a ghoul savant</span><span class="lv">L35</span></li>
+          <li><span class="n">18</span><span>a ghoul assassin</span><span class="lv">L35</span></li>
+          <li><span class="n">19</span><span>a ghoul executioner</span><span class="lv">L35</span></li>
+          <li><span class="n">20</span><span>a ghoul supplier</span><span class="lv">L36</span></li>
+          <li><span class="n">21</span><span>a ghoul ritualist</span><span class="lv">L34</span></li>
+          <li><span class="n">22</span><span>a clay gargoyle</span><span class="lv">L27&ndash;31</span></li>
+          <li><span class="n">23</span><span>a ghoul sentinel</span><span class="lv">L42</span></li>
+          <li><span class="n">24</span><span>greater ice bones</span><span class="lv">L30&ndash;34</span></li>
+          <li><span class="n">25</span><span>Shin Ghoul Warrior</span><span class="lv">L24&ndash;28</span></li>
+          <li><span class="n">26</span><span>Tsu Ghoul Wizard</span><span class="lv">L27&ndash;31</span></li>
+          <li><span class="n">27</span><span>a bloodthirsty ghoul</span><span class="lv">L38&ndash;42</span></li>
+          <li><span class="n">28</span><span>a reanimated hand</span><span class="lv">L39&ndash;41</span></li>
+          <li><span class="n">29</span><span>jin ghoul wizard <em>archmagi PH</em></span><span class="lv">L42&ndash;46</span></li>
+          <li><span class="n">30</span><span>a guk ghoul wizard</span><span class="lv">L46&ndash;49</span></li>
+          <li><span class="n">31</span><span>a guk ghoul knight</span><span class="lv">L45&ndash;49</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="note fresh"><strong>Four marker pairs collide and every one is confirmed by the source.</strong> The herbalist and the jin shaman sit <strong>0.5 pixels apart</strong> — the map says the Herbalist Room holds him "along with one other Dar level mob." The cavalier and savant share the Dead Tower. The assassin and supplier are described, twice, as being in the same room. And the two Guk guards flank the Ghoul Lord's throne.</div>
+  <div class="note danger"><strong>The Ghoul Lord and the Ghoul Arch Magi have no coordinates of their own.</strong> Both are plotted by proxy — the Lord by his two Guk guards at <code>1558, &minus;749</code> and <code>1542, &minus;765</code>, the Arch Magi by his placeholder, a jin ghoul wizard at <code>1182, &minus;834</code>. <strong>Camp the guards and the placeholder.</strong> Slaythe the Slayer and Raster of Guk are likewise unlocated and not plotted.</div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Reading a froglok</h2>
+  <p class="lede">A froglok's clan name gives you its level. Learn the ladder and you can con the whole zone by name. Every melee clan has a caster counterpart of matching difficulty.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Rank</th><th>Melee clan</th><th>Caster clan</th><th>Level band</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">1</td><td class="nmob">Guk</td><td class="nmob">Guk</td><td class="src"><strong>45&ndash;49</strong> — the king's and the lord's guards</td></tr>
+      <tr><td class="lv">2</td><td class="nmob">Bok</td><td class="nmob">Jin</td><td class="src">42&ndash;46</td></tr>
+      <tr><td class="lv">3</td><td class="nmob">Dar</td><td class="nmob">Kor</td><td class="src">39&ndash;43</td></tr>
+      <tr><td class="lv">4</td><td class="nmob">Zol</td><td class="nmob">Yun</td><td class="src">36&ndash;40</td></tr>
+      <tr><td class="lv">5</td><td class="nmob">Wan</td><td class="nmob">Urd</td><td class="src">33&ndash;37</td></tr>
+      <tr><td class="lv">6</td><td class="nmob">Vis</td><td class="nmob">Tal</td><td class="src">30&ndash;34</td></tr>
+      <tr><td class="lv">7</td><td class="nmob">Shin</td><td class="nmob">Tsu</td><td class="src">24&ndash;31 — the entrance population</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>There are no warriors in Lower Guk — only knights, shamans and wizards.</strong> Live side has knights and shamans; <strong>dead side has knights and wizards.</strong> Kill order is fixed: <strong>wizards first</strong> (they nuke hard and have few hit points), then shamans, then knights, then pets. Dead side mobs can also ghoulroot.</div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>The two sides</h2>
+  <div class="camps">
+    <div class="camp"><p class="band">Live &middot; 24&ndash;49</p><h4>Frogloks</h4>
+      <p>Knights and shamans. <strong>Hunting here seriously damages froglok faction</strong>, which many players want intact to travel Upper Guk safely.</p>
+      <p><strong>More wanderers than dead side</strong>, and the maze. If you lose faction by accident, killing undead frogloks raises it back.</p></div>
+    <div class="camp"><p class="band">Dead &middot; 24&ndash;49</p><h4>Froglok ghouls</h4>
+      <p>Knights and wizards. Busier, because there is no faction cost. <strong>Undead — a gift for classes with undead specialisations.</strong></p>
+      <p><strong>Most of it is very far from any exit.</strong> Bring an evacuator.</p></div>
+    <div class="camp"><p class="band">Both</p><h4>The maze is the defence</h4>
+      <p>The wiki's assessment: the zone's main defence is how confusing it is, plus the lack of ready access to the deep areas.</p>
+      <p><strong>Hug the right wall through the live maze</strong> to the jail room, then cut straight through to the evil eye.</p></div>
+  </div>
+  <div class="note danger"><strong>Invisibility is unreliable here, and the reason is subtle.</strong> The live/dead split is <em>not absolute</em>. <strong>Dead side holds many living creatures that see straight through Invisibility versus Undead</strong> — the vampire bats most of all, and a Deadly Black Widow waits in the tunnel by the Bedroom specifically to catch people running the wrong one. Live side occasionally holds undead from trains. Several mobs see through ordinary invisibility too: <strong>the Evil Eye, the Huge Water Elemental, one of the basalt gargoyles</strong>, and every mob flagged undead.</div>
+  <div class="note"><strong>Four ways in, one way out that nobody plans to use.</strong> Three Upper Guk entrances land close together on dead side — two need a short swim, the dry one is nearest Guk's front entrance. The fourth, deepest into Upper Guk, is the live side entrance. <strong>Behind the King's Room there is a one-way zone exit</strong> to Upper Guk beside the Innothule entrance: faster than evacuating, but it puts you past the toughest mob in the zone.</div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Named roster</h2>
+  <h3>Live side</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">the froglok king</td><td class="loc">King Room<br><span style="color:#8A9998">PH at &minus;105, 22</span></td><td class="lv">47</td><td class="cls">FROGLOK<br>PAL</td><td class="src"><strong>A ton of hit points and Lay on Hands.</strong> Four guards including Boks and Kors. <strong>Placeholder is a froglok guk shaman at 3%.</strong> The zone exit behind him is the escape hatch.<span class="tag warn">lay hands</span></td></tr>
+      <tr><td class="nmob">a froglok tactician</td><td class="loc">&minus;76, &minus;22</td><td class="lv">45</td><td class="cls">FROGLOK<br>WIZ</td><td class="src">25%, <strong>28-minute timer</strong> (the NPC record's own figure, unchanged by the 10 July edit). Casts level 44 wizard spells. Spawns from one of the king's guards.</td></tr>
+      <tr><td class="nmob">a froglok herbalist</td><td class="loc">18, &minus;260</td><td class="lv">43</td><td class="cls">FROGLOK<br>SHM</td><td class="src">25%. <strong>Drowsy, DoTs and ice attacks — keep magic resist up.</strong> Has a shaman pet. Shares his room with a Dar-level mob.</td></tr>
+      <tr><td class="nmob">a froglok crusader</td><td class="loc">231, &minus;595</td><td class="lv">42</td><td class="cls">FROGLOK<br>PAL</td><td class="src"><strong>Lays on Hands when low.</strong> Bottom floor of the Live Keep. Placeholder is a dar or zol knight. The wiki recommends a solid level-42 group.</td></tr>
+      <tr><td class="nmob">A Froglok Noble</td><td class="loc">375, &minus;150</td><td class="lv">39&ndash;40</td><td class="cls">FROGLOK<br>ENC</td><td class="src">50%. Alone on the eastern side of the northern plank; <strong>placeholder is a Yun shaman.</strong> His room is the gateway toward the king.</td></tr>
+      <tr><td class="nmob">A Froglok Yun Priest</td><td class="loc">207, &minus;431</td><td class="lv">38</td><td class="cls">FROGLOK<br>CLR</td><td class="src"><strong>17%</strong> — the lowest rate on live side. Middle floor of the Live Keep. A level-38 group handles him.</td></tr>
+      <tr><td class="nmob">a huge water elemental</td><td class="loc">103, &minus;85</td><td class="lv">35&ndash;39</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src"><strong>Sees invisibility, attacks regardless of froglok faction, and the nearby Zols assist him.</strong> Drops nothing. The wiki's read: he is a deterrent to explorers.<span class="tag warn">see invis</span></td></tr>
+      <tr><td class="nmob">an Evil Eye</td><td class="loc">625, &minus;445</td><td class="lv">34&ndash;36</td><td class="cls">EVIL EYE<br>WIZ</td><td class="src"><strong>Sees invisibility.</strong> Roughly 80% up. Drops the Bag of Sewn Evil-Eye; <strong>used to drop the Manastone before its removal.</strong> His room is the live-side hub — keep, jail, noble and elder all lead from it.</td></tr>
+      <tr><td class="nmob">a minotaur patriarch</td><td class="loc">592, 80</td><td class="lv">34</td><td class="cls">MINOTAUR<br>RNG</td><td class="src">30%. <strong>Camp him from the Three Minotaur Room</strong> or passers-by will take him.</td></tr>
+      <tr><td class="nmob">A Minotaur Elder</td><td class="loc">930, &minus;295</td><td class="lv">33</td><td class="cls">MINOTAUR<br>CLR</td><td class="src">Placeholder is a greater minotaur. <strong>Spawns inside the pit, at the bottom of a ladder in the mushrooms.</strong> A pit trap in the room can kill you — but if you fall in, you fight only the elder with nothing joining.</td></tr>
+      <tr><td class="nmob">Slaythe the Slayer</td><td class="loc"><span style="color:#C9453A">unrecorded</span></td><td class="lv">&mdash;</td><td class="cls">FROGLOK<br>?</td><td class="src"><strong>A dead end just north of the Jail Room — not in the room itself.</strong> Drops Broken Bow Part B.</td></tr>
+      <tr><td class="nmob">Raster of Guk</td><td class="loc"><span style="color:#C9453A">unrecorded</span></td><td class="lv">&mdash;</td><td class="cls">FROGLOK<br>MNK</td><td class="src"><strong>Extremely rare.</strong> Elder Room, upper alcove next to the cauldron. Drops The Idol (Idol of Zan Fi).<span class="tag warn">very rare</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Dead side</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">the ghoul lord</td><td class="loc">guards at<br>1558, &minus;749</td><td class="lv">~47</td><td class="cls">GHOUL<br>SHD</td><td class="src"><strong>The toughest fight on dead side.</strong> Spawns with Bok and Guk guards. Skull-shaped Barbute (common) and the <strong>Short Sword of the Ykesha</strong> (rare).</td></tr>
+      <tr><td class="nmob">the ghoul arch magi</td><td class="loc">PH at<br>1182, &minus;834</td><td class="lv">~44</td><td class="cls">GHOUL<br>WIZ</td><td class="src"><strong>Rare, guarded by two Dars, high magic resist and a lot of hit points.</strong> Placeholder is a jin ghoul wizard. <strong>A Kor ghoul wizard in this area casts a 600-point nuke.</strong><span class="tag warn">600 DD</span></td></tr>
+      <tr><td class="nmob">a ghoul sentinel</td><td class="loc">845, &minus;1085, &minus;206</td><td class="lv">42</td><td class="cls">GHOUL<br>WAR</td><td class="src">25%. <strong>Alone in a hidden hallway south of the Frenzy room</strong> — the marked triple spawn on the map is <em>not</em> him. A Wan roamer spawns beside him.</td></tr>
+      <tr><td class="nmob">a frenzied ghoul</td><td class="loc"><span style="color:#C9453A">3 spots, Frenzy room</span></td><td class="lv">42</td><td class="cls">GHOUL<br>WAR</td><td class="src"><strong>8%.</strong> Hits very hard and very fast, especially wearing the sash. <strong>The Flowing Black Silk Sash camp.</strong> The three spots can also give bloodthirsty ghouls or Dars.<span class="tag warn">FBSS</span></td></tr>
+      <tr><td class="nmob">a reanimated hand</td><td class="loc">1126, &minus;688</td><td class="lv">39&ndash;41</td><td class="cls">HAND<br>WIZ</td><td class="src"><strong>100% spawn</strong>, above the water in the Hand Room, with a Dar or Zol guard. Wizard Rod on the ground here.</td></tr>
+      <tr><td class="nmob">a ghoul sage</td><td class="loc">550, &minus;220</td><td class="lv">37</td><td class="cls">GHOUL<br>WIZ</td><td class="src">34%. <strong>Assisted by spawns behind a secret wall.</strong> The room is thick with wizards. The scribe spawns here too.</td></tr>
+      <tr><td class="nmob">a ghoul cavalier</td><td class="loc">578, &minus;609</td><td class="lv">36</td><td class="cls">GHOUL<br>SHD</td><td class="src">75%. <strong>Harm Touch and summons a pet.</strong> Dead Tower.</td></tr>
+      <tr><td class="nmob">a ghoul supplier</td><td class="loc">638, &minus;774</td><td class="lv">36</td><td class="cls">GHOUL<br>WAR</td><td class="src">25%, <strong>9m 27s respawn</strong> — the figure updated alongside the zone timer. Store Room. Placeholder is a wan ghoul knight.</td></tr>
+      <tr><td class="nmob">a ghoul assassin</td><td class="loc">620, &minus;754</td><td class="lv">35</td><td class="cls">GHOUL<br>ROG</td><td class="src">20%. <strong>Sees through hide and sneak.</strong> Same room as the supplier. Mask of Deception and the Serrated Bone Dirk.</td></tr>
+      <tr><td class="nmob">a ghoul executioner</td><td class="loc">622, &minus;890</td><td class="lv">35</td><td class="cls">GHOUL<br>WAR</td><td class="src">75%. <strong>On the platform in the middle of the room</strong> — recognisable by the cages holding froglok slaves. The Executioners Axe camp.</td></tr>
+      <tr><td class="nmob">a ghoul savant</td><td class="loc">581, &minus;603</td><td class="lv">35</td><td class="cls">GHOUL<br>CLR</td><td class="src"><strong>100% spawn.</strong> Middle level of the Dead Tower, beside the stairway down. Carries the AC 25 chestplate.</td></tr>
+      <tr><td class="nmob">a ghoul scribe</td><td class="loc">538, &minus;711</td><td class="lv">35</td><td class="cls">GHOUL<br>ENC</td><td class="src"><strong>14%</strong> — the lowest rate in the zone. Sage Room.</td></tr>
+      <tr><td class="nmob">a ghoul ritualist</td><td class="loc">769, &minus;705</td><td class="lv">34</td><td class="cls">GHOUL<br>NEC</td><td class="src">25%. <strong>Spawns between two Tal wizards on the left of the Dead Tower.</strong> Has a pet. Normally three Tal wizards spawn here instead.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The population</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Mob</th><th>Lvl</th><th>Side</th><th>Locations &amp; behaviour</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">A froglok guk knight</td><td class="lv">47&ndash;49</td><td class="src">Live</td><td class="src">20% at (&minus;105, 22) and (&minus;126, 8). <strong>The king's guard, and the toughest living knight.</strong></td></tr>
+      <tr><td class="nmob">A guk ghoul knight · wizard</td><td class="lv">45&ndash;49</td><td class="src">Dead</td><td class="src">33% at (1558, &minus;749), (1540, &minus;732); wizard 34% at (1542, &minus;765). <strong>The Ghoul Lord's throne guards.</strong></td></tr>
+      <tr><td class="nmob">A Froglok Bok Knight</td><td class="lv">42&ndash;46</td><td class="src">Live</td><td class="src">20% at (&minus;105, 22), (&minus;84, 8), (&minus;126, 8). Second only to Guk knights.</td></tr>
+      <tr><td class="nmob">A Kor Ghoul Wizard</td><td class="lv">41&ndash;43</td><td class="src">Dead</td><td class="src">Arch Magi area. <strong>Casts a 600-point direct damage spell.</strong> Drops the Eye of Kor.<span class="tag warn">600 DD</span></td></tr>
+      <tr><td class="nmob">A dar ghoul knight</td><td class="lv">39&ndash;43</td><td class="src">Dead</td><td class="src">50% at (1336, &minus;736), (845, &minus;1085), (832, &minus;1105), (832, &minus;1125).</td></tr>
+      <tr><td class="nmob">A granite gargoyle</td><td class="lv">38&ndash;42</td><td class="src">Live</td><td class="src">(&minus;16, &minus;178) — the King Prep Room.</td></tr>
+      <tr><td class="nmob">A bloodthirsty ghoul</td><td class="lv">38&ndash;42</td><td class="src">Dead</td><td class="src">(1072, &minus;1073). Frenzy room. Only slightly weaker than a frenzied ghoul. Drops Torn Pages of Magi`kot.</td></tr>
+      <tr><td class="nmob">A Froglok Urd Shaman</td><td class="lv">33&ndash;37</td><td class="src">Live</td><td class="src">50% at (465, &minus;514), (302, &minus;363), (350, &minus;73), (216, &minus;466).</td></tr>
+      <tr><td class="nmob">A wan ghoul knight</td><td class="lv">33&ndash;37</td><td class="src">Dead</td><td class="src">33% at five points. <strong>Placeholder for both the assassin and the supplier.</strong></td></tr>
+      <tr><td class="nmob">A greater minotaur</td><td class="lv">32&ndash;36</td><td class="src">Live</td><td class="src"><strong>The Minotaur Elder's placeholder.</strong> Drops the Minotaur Horn — a Wind Resonance 10 focus item.</td></tr>
+      <tr><td class="nmob">A Deadly Black Widow</td><td class="lv">30&ndash;32</td><td class="src">Dead</td><td class="src">3% at four points near (759&ndash;933, &minus;402 to &minus;423). <strong>Waits in the tunnel by the Bedroom to catch anyone running only Invis versus Undead.</strong><span class="tag warn">see invis</span></td></tr>
+      <tr><td class="nmob">A greater ice bones</td><td class="lv">30&ndash;34</td><td class="src">Dead</td><td class="src">33% at (852, &minus;719), (834, &minus;721), (847, &minus;724). Four to five clustered in the GIB Room.</td></tr>
+      <tr><td class="nmob">A basalt gargoyle</td><td class="lv">30&ndash;34</td><td class="src">Dead</td><td class="src">Opposite the Bedroom. <strong>One of them sees invisibility.</strong> Drops the Basalt Carapace.<span class="tag warn">see invis</span></td></tr>
+      <tr><td class="nmob">A froglok vis knight</td><td class="lv">30&ndash;34</td><td class="src">Live</td><td class="src">100% at five points including (224, &minus;87) and (256, &minus;432).</td></tr>
+      <tr><td class="nmob">A basilisk</td><td class="lv">28&ndash;32</td><td class="src">Live</td><td class="src">Guards the live side entrance. <strong>Aggressive, unlike surface basilisks.</strong></td></tr>
+      <tr><td class="nmob">A Tsu Ghoul Wizard</td><td class="lv">27&ndash;31</td><td class="src">Dead</td><td class="src">100% at (1026, &minus;604).</td></tr>
+      <tr><td class="nmob">A Froglok Slave</td><td class="lv">2&ndash;4</td><td class="src">Dead</td><td class="src">Seven recorded points. <strong>Living frogloks held captive by the undead</strong> — in the cages in the Executioner Room and the Slave Room.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Loot table</h2>
+  <p class="lede">Weapon lines read damage / delay. The wiki's own claim: <strong>"probably the most sought after items in the game for this level range."</strong> As of 29 July every roll is gated to your difficulty tier or better.</p>
+  <h3>The famous five</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Flowing Black Silk Sash</td><td class="st">Waist · lore</td><td class="st"><strong>Haste +21%</strong></td><td class="cls all">ALL · all races</td><td class="src">a frenzied ghoul <em>(rare)</em></td></tr>
+      <tr><td class="it">Mithril Two-Handed Sword</td><td class="st">Primary · 2H Slash<br><strong>21</strong> / 40 · lore</td><td class="st"><strong>Haste +31%</strong></td><td class="cls">WAR PAL SHD</td><td class="src">the froglok king <em>(rare, 25%)</em></td></tr>
+      <tr><td class="it">Short Sword of the Ykesha</td><td class="st">Primary / Secondary<br>1H Slash 9 / <strong>24</strong></td><td class="st">Ykesha proc at level 37</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">the ghoul lord <em>(rare)</em></td></tr>
+      <tr><td class="it">Crown of the Froglok Kings</td><td class="st">Head · lore</td><td class="st"><strong>AC 12</strong><br>SV Fire +20 · SV Cold +20</td><td class="cls all">ALL · all races</td><td class="src">the froglok king <em>(common, 75%)</em></td></tr>
+      <tr><td class="it">Runed Falchion</td><td class="st">Primary · 1H Slash<br><strong>11</strong> / 34 · lore · tradeskill</td><td class="st">&mdash;</td><td class="cls">WAR PAL RNG SHD DRU BRD ROG</td><td class="src">a froglok crusader <em>(common)</em></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>The king carries both a 31% haste two-hander and an AC 12 all-class crown</strong>, at 25% and 75% respectively — and the crown is the <em>common</em> drop. Between him and the frenzied ghoul's 21% sash, Lower Guk holds the two best haste items available at this level.</div>
+
+  <h3>Armour &amp; wearables</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Enameled Black Chestplate</td><td class="st">Chest</td><td class="st"><strong>AC 25</strong></td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">a ghoul savant <em>(rare)</em> · <span style="color:#5FA37E">100% spawn</span></td></tr>
+      <tr><td class="it">Brigandine Tunic</td><td class="st">Chest</td><td class="st">AC 17 · END +10 · STR +7 · STA +4</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG SHM</td><td class="src">a ghoul sentinel <em>(rare)</em></td></tr>
+      <tr><td class="it">Basalt Carapace</td><td class="st">Chest · lore · no drop</td><td class="st">AC 14</td><td class="cls">WAR CLR PAL SHD BRD<br>not IKS</td><td class="src">a basalt gargoyle</td></tr>
+      <tr><td class="it">Skull-shaped Barbute</td><td class="st">Head</td><td class="st"><strong>AC 13</strong> · HP +35 · SV Magic +10</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">the ghoul lord <em>(common)</em></td></tr>
+      <tr><td class="it">Adamantite Band</td><td class="st">Finger · focus</td><td class="st"><strong>HP +75</strong> · SV Magic &minus;10<br>Summoning Haste I</td><td class="cls all">ALL · all races</td><td class="src">a reanimated hand <em>(rare)</em></td></tr>
+      <tr><td class="it">Thick Banded Belt</td><td class="st">Waist · attunable</td><td class="st">AC 8 · <strong>STR +15</strong></td><td class="cls all">ALL · all races</td><td class="src">a ghoul supplier <em>(rare)</em></td></tr>
+      <tr><td class="it">Azure Sleeves</td><td class="st">Arms · focus</td><td class="st"><strong>AC 12</strong> · Improved Damage I</td><td class="cls all">ALL · all races</td><td class="src">a minotaur patriarch <em>(common)</em></td></tr>
+      <tr><td class="it">Platinum Tiara</td><td class="st">Head · lore · focus</td><td class="st">AC 3 · HP +35 · <strong>MANA +50</strong><br>Enhancement Haste II</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC</td><td class="src">a froglok tactician <em>(rare)</em></td></tr>
+      <tr><td class="it">Dark Mail Gauntlets</td><td class="st">Hands</td><td class="st">AC 10 · DEX +5 · <strong>MANA +50</strong></td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">a ghoul sentinel <em>(common)</em></td></tr>
+      <tr><td class="it">Shining Metallic Robes</td><td class="st">Chest · focus</td><td class="st">AC 10 · <strong>INT +9</strong> · SV Fire +8 · SV Cold +8<br>Spell Haste II</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">the ghoul arch magi <em>(rare)</em></td></tr>
+      <tr><td class="it">Runed Cowl</td><td class="st">Head · focus</td><td class="st">AC 2 · WIS +5 · <strong>INT +9</strong><br>Reanimation Efficiency II</td><td class="cls">BRD NEC WIZ MAG ENC</td><td class="src">a ghoul sage <em>(rare)</em></td></tr>
+      <tr><td class="it">Chrysoberyl Talisman</td><td class="st">Neck · lore · focus</td><td class="st">AC 5 · WIS +3 · MANA +20<br>Affliction Haste II</td><td class="cls all">ALL · all races</td><td class="src">A Minotaur Elder <em>(common)</em></td></tr>
+      <tr><td class="it">White Gold Necklace</td><td class="st">Neck · focus</td><td class="st">CHA +5 · <strong>+7 Fire / Cold / Magic</strong><br>Affliction Efficiency II</td><td class="cls all">ALL · all races</td><td class="src">A Froglok Noble <em>(rare)</em></td></tr>
+      <tr><td class="it">Mask of Deception</td><td class="st">Face · lore · no drop</td><td class="st">AC 4 · <strong>CHA +13</strong> · SV Magic +7<br>Illusion: Dark Elf at level 15</td><td class="cls">BRD ROG</td><td class="src">a ghoul assassin <em>(common)</em></td></tr>
+      <tr><td class="it">Adamantite Epaulets</td><td class="st">Shoulders</td><td class="st">AC 9 · WIS +7</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">a ghoul cavalier <em>(common)</em></td></tr>
+      <tr><td class="it">Executioners Hood</td><td class="st">Head</td><td class="st">AC 5 · STR +4 · <strong>DEX +9</strong></td><td class="cls">WAR PAL RNG SHD MNK BRD ROG</td><td class="src">a ghoul executioner <em>(common)</em></td></tr>
+      <tr><td class="it">Mithril-Runed Tunic</td><td class="st">Chest · focus</td><td class="st">AC 10 · STA +3 · WIS +5<br>Spell Haste II</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">a froglok crusader <em>(rare)</em></td></tr>
+      <tr><td class="it">Silver-Plated Leggings</td><td class="st">Legs</td><td class="st">AC 10 · STR +3 · AGI +5</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG SHM</td><td class="src">A Froglok Yun Priest <em>(common)</em></td></tr>
+      <tr><td class="it">Amethyst Bracelet</td><td class="st">Wrist · focus</td><td class="st">AC 5 · WIS +3 · HP +15<br>Reagent Conservation II</td><td class="cls all">ALL · all races</td><td class="src">A Froglok Yun Priest <em>(rare)</em></td></tr>
+      <tr><td class="it">Serpentine Bracer</td><td class="st">Wrist · focus</td><td class="st">AC 1 · DEX +3 · <strong>AGI +9</strong><br>Burning Affliction II</td><td class="cls all">ALL · all races</td><td class="src">a reanimated hand <em>(common)</em></td></tr>
+      <tr><td class="it">Shimmering White Shroud</td><td class="st">Back</td><td class="st">AC 5 · MANA +20 · SV Disease +8 · SV Poison +8</td><td class="cls">CLR DRU BRD SHM</td><td class="src">a froglok herbalist <em>(rare)</em></td></tr>
+      <tr><td class="it">Gilded Cloth</td><td class="st">Shoulders · focus</td><td class="st">AC 3 · STR +5 · <strong>AGI +9</strong> · Spell Haste I</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC</td><td class="src">A Froglok Noble <em>(common)</em></td></tr>
+      <tr><td class="it">Embroidered Black Cape · Sleeves</td><td class="st">Shoulders · Arms</td><td class="st">AC 4 each · HP +15/+10 · MANA +20/+25<br>Sleeves: Summoning Efficiency II</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC</td><td class="src">a ghoul ritualist</td></tr>
+      <tr><td class="it">Braided Cinch Cord</td><td class="st">Waist</td><td class="st">AC 2 · INT +4 · HP +8</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">a ghoul sage <em>(common)</em></td></tr>
+      <tr><td class="it">Silversilk Leggings</td><td class="st">Legs</td><td class="st">AC 4 · AGI +4 · HP +12</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC</td><td class="src">the ghoul arch magi <em>(common)</em></td></tr>
+      <tr><td class="it">Carved Ivory Mask</td><td class="st">Face · focus</td><td class="st">AC 2 · AGI +4 · HP +10<br>Reanimation Haste I</td><td class="cls all">ALL · all races</td><td class="src">A Minotaur Elder <em>(rare)</em></td></tr>
+      <tr><td class="it">Moonstone Ring</td><td class="st">Finger · focus</td><td class="st">STR +3 · MANA +30 · Extended Range II</td><td class="cls all">ALL · all races</td><td class="src">a frenzied ghoul <em>(common)</em></td></tr>
+      <tr><td class="it">Shin Gauntlets · Shin Greaves</td><td class="st">Hands · Legs · lore · no drop</td><td class="st">AC 7 / AC 10 · SV Poison +5 / SV Disease +5</td><td class="cls">WAR CLR PAL SHD BRD<br>not IKS</td><td class="src">Shin-clan frogloks</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>Weapons &amp; the rest</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">An Executioners Axe</td><td class="st">Primary · 2H Slash<br><strong>25</strong> / 50 · lore</td><td class="st">Haste proc at level 30</td><td class="cls">WAR BER</td><td class="src">a ghoul executioner <em>(rare)</em></td></tr>
+      <tr><td class="it">A Dark Reaver</td><td class="st">Primary · 2H Slash<br><strong>20</strong> / 42 · lore</td><td class="st">Steal Strength proc at level 30</td><td class="cls">SHD only</td><td class="src">a ghoul cavalier <em>(rare)</em></td></tr>
+      <tr><td class="it">Serrated Bone Dirk</td><td class="st">Primary / Secondary<br>Pierce 8 / 27 · backstab 8</td><td class="st">Engulfing Darkness proc at level 27</td><td class="cls">ROG only</td><td class="src">a ghoul assassin <em>(rare)</em></td></tr>
+      <tr><td class="it">Ebony Bladed Sword</td><td class="st">Primary / Secondary<br>1H Slash 7 / <strong>24</strong></td><td class="st">Ensnaring Roots proc at level 25</td><td class="cls">RNG only</td><td class="src">a minotaur patriarch <em>(rare)</em></td></tr>
+      <tr><td class="it">Enameled Black Mace</td><td class="st">Primary / Secondary<br>1H Blunt 8 / 28</td><td class="st">&mdash;</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">a ghoul savant <em>(common)</em></td></tr>
+      <tr><td class="it">Black Tome with Silver Runes</td><td class="st">Primary · focus</td><td class="st">INT +4 · <strong>MANA +30</strong><br>Burning Affliction II</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">a froglok tactician <em>(common)</em></td></tr>
+      <tr><td class="it">Mithril Frog Totem</td><td class="st">Primary / Secondary</td><td class="st">AGI +5 · <strong>MANA +35</strong></td><td class="cls">CLR DRU BRD SHM</td><td class="src">a froglok herbalist <em>(common)</em></td></tr>
+      <tr><td class="it">The Idol</td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">WIS +3 · INT +3</td><td class="cls all">ALL · all races</td><td class="src">Raster of Guk <span class="tag warn">very rare</span></td></tr>
+      <tr><td class="it">Bag of Sewn Evil-Eye</td><td class="st">Container</td><td class="st">8 slots · <strong>70% weight reduction</strong> · large capacity</td><td class="cls all">ALL</td><td class="src">an Evil Eye <em>(common)</em></td></tr>
+      <tr><td class="it">Light Burlap Sack</td><td class="st">Container · lore</td><td class="st">8 slots · 65% weight reduction</td><td class="cls all">ALL</td><td class="src">a ghoul supplier <em>(common)</em></td></tr>
+      <tr><td class="it">Scepter <em>(of Sorrows)</em></td><td class="st">Ground spawn · lore · no drop</td><td class="st">&mdash;</td><td class="cls">NEC only</td><td class="src">Waterfall Room floor</td></tr>
+      <tr><td class="it">Eye of Kor · Eye of Jin</td><td class="st">Quest · lore · no drop</td><td class="st">&mdash;</td><td class="cls all">ALL</td><td class="src">Kor / Jin ghoul wizards</td></tr>
+      <tr><td class="it">Broken Bow Part B</td><td class="st">Quest · lore · no drop</td><td class="st">&mdash;</td><td class="cls all">ALL</td><td class="src">Slaythe the Slayer</td></tr>
+      <tr><td class="it">Torn Page of Magi`kot pg. 1 · pg. 3<br>Parchment of Flayed Skin · Gorgon Feather Quill<br>Salil's Writ Pg. 60 · Breath of Solusek<br>Gargoyle Eye · Froglok Meat · Froglok Blood<br>Undead Froglok Tongue · Minotaur Battle Axe</td><td class="st">Quest and tradeskill components</td><td class="st">&mdash;</td><td class="cls all">&mdash;</td><td class="src">Throughout</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>The Enameled Black Chestplate at AC 25 is the highest in the project so far</strong>, and it comes off <em>a ghoul savant</em> — a <strong>100% spawn</strong> on the Dead Tower's middle level. Rare on his table, but no placeholder gamble to reach him.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Dangers</h2>
+  <div class="note danger"><strong>Invisibility is two spells and neither is safe.</strong> Dead side holds living creatures that see through Invisibility versus Undead — <strong>vampire bats above all, and a Deadly Black Widow that waits in the Bedroom tunnel specifically for people running the wrong one.</strong> Live side gets undead from trains. Independently see-invis: the <strong>Evil Eye</strong>, the <strong>Huge Water Elemental</strong>, one <strong>basalt gargoyle</strong>, and every mob flagged undead.</div>
+  <div class="note danger"><strong>Live side costs you froglok faction.</strong> That faction is what makes Upper Guk and much of live side safe to walk. If you lose it by accident, <strong>killing undead frogloks raises it back.</strong></div>
+  <div class="note danger"><strong>Dead side is a long way from any exit.</strong> The wiki is blunt: bring an evacuator. Most of it sits far past the entrances.</div>
+  <div class="note danger"><strong>Shamans and wizards are the whole problem.</strong> Shamans carry pets and the nastier DoTs — Scourge, Venom of the Snake. Wizards nuke hard with few hit points and are dead-side only. <strong>Kill wizards first, then shamans, then knights, then pets.</strong> A Kor ghoul wizard in the Arch Magi area casts a <strong>600-point nuke.</strong></div>
+  <div class="note danger"><strong>The live maze is deadlier than Cazic Thule's.</strong> The wiki says so directly. <strong>Hug the right wall to the Jail Room, then cut straight through to the Evil Eye</strong>, which is the hub for everything else. The Elder Room also has a <strong>pit trap</strong> that can kill you — though falling in gets you a clean solo fight with the elder.</div>
+  <div class="note"><strong>Two genuinely safe spots.</strong> The tunnel beneath the GIB Room is called <strong>Safe Hall</strong>. And just above "C" on the bottom floor there is a sharp L turn <strong>no wanderer visits</strong> — people regroup and even bind there.</div>
+</section>
+
+<section>
+  <h2><span class="num">08</span>Getting there</h2>
+  <ul class="tight">
+    <li><strong>Upper Guk is the only adjacent zone, with four entrances down.</strong> Three land close together on dead side — two need a short swim, the dry one is nearest Guk's front entrance.</li>
+    <li><strong>The live side entrance is the deepest into Upper Guk</strong> and least used.</li>
+    <li><strong>Behind the King's Room is a one-way exit</strong> to Upper Guk beside the Innothule entrance. Faster than evacuating, but it runs you past the toughest mob in the zone.</li>
+    <li><strong>You must be level 5 to zone in.</strong></li>
+    <li>Succor and evacuate drop you at <code>1197, &minus;217</code>, the Upper Guk zone line between the Bedroom and the Waterfall.</li>
+  </ul>
+</section>
+
+<footer>
+  <h3>Sources &amp; confidence</h3>
+  <p>Structured data from the EverQuest Legends community wiki (eqlwiki.com) Lower Guk page and its linked NPC and item pages, <strong>latest revision 16:14 on 10 July 2026</strong>. Patch data from the official Legends notes for 23 June and 28&ndash;29 July 2026.</p>
+  <p><strong>Provenance.</strong> Created 2 August 2025 as a Project 1999 import, five revisions since. Its infobox and generated tables are Legends data and were treated as authoritative; the Dangers, Benefits and 30-point walkthrough sections are classic prose, used for layout, camp routes and mechanics only. <strong>An earlier revision of this page was served on first fetch and had to be diffed against the current one</strong> — that check is what surfaced the respawn correction.</p>
+  <p><strong>Known gaps.</strong> The page contradicts itself on the respawn timer: the infobox says <strong>9:28</strong>, the Monsters section still says 28 minutes. This plate follows the infobox. <strong>The ghoul lord, the ghoul arch magi, Slaythe the Slayer and Raster of Guk have no coordinates</strong> and are located by guard or placeholder only. A Kor ghoul wizard's position is unrecorded. Spawn percentages predate the 28 July launch pass. Several population entries carry only "Various". Verify with <code>/loc</code>.</p>
+  <p>Verified against source, 31 July 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

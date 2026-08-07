@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(py -3 --version)",
+      "Bash(where python *)",
+      "Bash(where python3 *)",
+      "Bash(where py *)",
+      "Read(//c//**)",
+      "Read(//usr/**)",
+      "Bash(git --version)",
+      "Bash(reg query *)",
+      "Bash(node \"C:/Users/Lindsey/AppData/Local/Temp/claude/C--Users-Lindsey-Desktop-EQL-Source-eql-source/9aa95015-530e-406c-99ec-6ea985c88c97/scratchpad/check-port.js\" \"C:/Users/Lindsey/Desktop/EQL Source/eql-source\")",
+      "Bash(winget --version)",
+      "Bash(winget search *)",
+      "Bash(winget install *)",
+      "Bash(/c/Users/Lindsey/AppData/Local/Programs/Python/Python312/python.exe --version)",
+      "Bash(cp /c/Users/Lindsey/AppData/Local/Programs/Python/Python312/python.exe /c/Users/Lindsey/AppData/Local/Programs/Python/Python312/python3.exe)",
+      "Bash(/c/Users/Lindsey/AppData/Local/Programs/Python/Python312/python3.exe --version)",
+      "Bash(/c/Users/Lindsey/AppData/Local/Programs/Python/Python312/python.exe -m pip --version)",
+      "Bash(git config *)",
+      "Bash(gh --version)",
+      "Bash(git init *)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m ' *)"
+    ]
+  }
+}

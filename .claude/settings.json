@@ -1,0 +1,26 @@
+{
+  "permissions": {
+    "allow": [
+      "Read", "Glob", "Grep",
+      "Edit(_build/source/**)",
+      "Edit(assets/**)",
+      "Edit(docs/**)",
+      "Edit(state/**)",
+      "Edit(raids/*.html)",
+      "Write(PROPOSAL.md)",
+      "Bash(./build.sh)",
+      "Bash(python3 scripts/check.py)",
+      "Bash(python3 _build/*)",
+      "Bash(git status)", "Bash(git diff:*)", "Bash(git log:*)",
+      "Bash(git add:*)", "Bash(git commit:*)", "Bash(git checkout:*)",
+      "Bash(gh pr:*)", "Bash(ls:*)", "Bash(cat:*)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Bash(gh pr merge:*)",
+      "Bash(rm -rf:*)",
+      "Edit(dungeons/**)",
+      "Edit(tools/**)"
+    ]
+  }
+}

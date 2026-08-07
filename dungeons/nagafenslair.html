@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nagafen's Lair — Survey Plate | EverQuest Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#E06B2A;--accd:#8a3f18}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#12171A;color:#D5DBD8;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.mast{border-bottom:1px solid #2E3A41;padding:46px 0 26px;margin-bottom:34px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9.5vw,98px);line-height:.86;letter-spacing:-.015em;margin:0 0 6px;text-transform:uppercase}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#8A9998;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#2E3A41;border:1px solid #2E3A41}
+.cell{background:#1A2126;padding:11px 13px}
+.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;margin:0 0 4px}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#8A9998;display:block;letter-spacing:0}
+section{margin-top:56px}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+.lede{color:#8A9998;margin:0 0 24px;max-width:64ch}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
+p{max-width:76ch}a{color:var(--acc)}
+.plate-box{border:1px solid #2E3A41;background:#1A2126;padding:16px}
+.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
+@media(max-width:820px){.map-grid{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto}
+.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
+.legend ol{list-style:none;margin:0;padding:0}
+.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #2E3A41}
+.legend .n{color:var(--acc);min-width:19px;text-align:right;font-weight:600}
+.legend .lv{color:#8A9998;margin-left:auto;padding-left:8px;white-space:nowrap}
+.scroller{overflow-x:auto;border:1px solid #2E3A41;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;text-align:left;padding:11px 13px;background:#232C32;border-bottom:1px solid #2E3A41;white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid #2E3A41;vertical-align:top;background:#1A2126}
+tbody tr:last-child td{border-bottom:0}
+.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acc);white-space:nowrap}
+.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
+.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#D5DBD8}
+.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#8A9998;letter-spacing:.04em;line-height:1.45}
+.cls.all{color:#5FA37E}
+.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#8A9998}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acc);display:inline-block;margin-top:4px;white-space:nowrap}
+.tag.warn{border-color:#C9453A;color:#C9453A}
+.tag.new{border-color:#5FA37E;color:#5FA37E}
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
+.camp{border:1px solid #2E3A41;border-top:2px solid var(--acc);background:#1A2126;padding:16px}
+.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
+.camp p{font-size:13.5px;margin:0 0 9px}
+.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.link{flex:1 1 180px;background:#1A2126;border:1px solid #2E3A41;border-left:2px solid var(--acc);padding:12px 14px}
+.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#8A9998;text-transform:uppercase}
+.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
+.link .gives{font-size:12.5px;color:#8A9998}
+.link .gives b{color:var(--acc);font-weight:600}
+.note{border-left:2px solid #2E3A41;padding:2px 0 2px 16px;margin:20px 0;color:#8A9998;max-width:76ch}
+.danger{border-left-color:#C9453A}.danger strong{color:#C9453A}
+.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
+.note strong{color:#D5DBD8}
+ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acc);background:#232C32;padding:1px 5px}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid #2E3A41;color:#8A9998;font-size:12.5px}
+footer h3{margin-top:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+ letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+ letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+.ns-bar .ns-sep{color:#4E5C61}
+.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:#D5DBD8">Plate 07 &middot; Nagafen's Lair</span><span class="ns-sep">/</span><a href="nagafenslair-map.html" style="color:#E06B2A">Navigation map &rarr;</a><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Dungeon Survey Plate 07 · Lavastorm Mountains, Antonica</p>
+  <h1>Nagafen's Lair</h1>
+  <p class="subtitle">Sol B — nothing here can be hidden from, and the lava is not scenery</p>
+  <dl class="strip">
+    <div class="cell"><dt>/who name</dt><dd>soldungb</dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>25&ndash;55</dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>86<small>115% — was 80</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>&le;22:00<small>max lowered 28 Jul</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>&minus;424, &minus;263</dd></div>
+    <div class="cell"><dt>Adjacent</dt><dd>Lavastorm<small>+ Sol A, many links</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2><span class="num">01</span>Status</h2>
+  <div class="note danger"><strong>Everything in this zone sees through invisibility.</strong> That single rule defines Sol B and separates it from every other plate in this series. <strong>Corpse retrieval and quick movement are not possible.</strong> You fight through whatever you meet, both ways. Greater kobolds see through hide as well.<span class="tag warn">no invis</span></div>
+  <div class="note fresh"><strong>Treated on launch day, 28 July 2026</strong> — placeholders removed and maximum respawn times lowered, alongside The Hole, Lower Guk, Lair of the Splitpaw, The Warrens and Castle Mistmoore. <strong>Personal instances were enabled 11 June</strong>, and on the same date <strong>Lord Nagafen stopped spawning in open world and personal instances</strong> — he is raid-instance content. King Tranix, Warlord Skarlon and the Crown of King Tranix carry the same flag on the zone map.</div>
+  <div class="note"><strong>ZEM 86 (115%), raised from 80 — the joint lowest in the series</strong> alongside Lower Guk, about a third below The Hole and The Warrens at 171%. But community consensus puts <strong>Sol B as the zone that carries the mid-40s</strong>, and the reason is the loot, not the rate.</div>
+  <div class="note"><strong>Source.</strong> The wiki page was last edited <strong>5 July 2026 at 19:43</strong> and the fetched revision is current. Its infobox and its NPC and item tables are live Legends data; the Dangers, Benefits and Traveling sections are imported Project 1999 prose, used below for layout and mechanics only.</div>
+  <div class="note danger"><strong>Read the difficulty framing carefully.</strong> The prose below says Lord Nagafen needs "at least four full groups". <strong>That is a classic single-class estimate and it does not describe Legends.</strong> Characters here run three classes at once, and instance difficulty D0&ndash;D4 changes mob behaviour and loot tier without changing mob levels. Treat every group-size claim on this page as a P99 artefact, not a requirement.</div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>The plate</h2>
+  <p class="lede">Grid squares are 200 game units. <strong>The whole zone sits in negative Y</strong> — you enter at the top and descend south-west toward the dragon. Faint dots are ordinary population spawns.</p>
+  <div class="plate-box">
+    <div class="map-grid">
+      <div>
+        <svg viewBox="0 0 740 690" role="img" aria-label="Coordinate plot of named spawn locations in Nagafen's Lair">
+          <rect x="70" y="60" width="608" height="585" fill="#151B1F" stroke="#2E3A41"/>
+          <g stroke="#1d252b" stroke-width="1">
+            <line x1="160" y1="60" x2="160" y2="645"/><line x1="340" y1="60" x2="340" y2="645"/>
+            <line x1="430" y1="60" x2="430" y2="645"/><line x1="520" y1="60" x2="520" y2="645"/>
+            <line x1="610" y1="60" x2="610" y2="645"/>
+            <line x1="70" y1="82.5" x2="678" y2="82.5"/><line x1="70" y1="172.5" x2="678" y2="172.5"/>
+            <line x1="70" y1="262.5" x2="678" y2="262.5"/><line x1="70" y1="352.5" x2="678" y2="352.5"/>
+            <line x1="70" y1="442.5" x2="678" y2="442.5"/><line x1="70" y1="532.5" x2="678" y2="532.5"/>
+            <line x1="70" y1="622.5" x2="678" y2="622.5"/>
+          </g>
+          <line x1="250" y1="60" x2="250" y2="645" stroke="#3C4A52" stroke-width="1.4"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+            <text x="160" y="661" text-anchor="middle">X 200</text><text x="250" y="661" text-anchor="middle">0</text>
+            <text x="430" y="661" text-anchor="middle">&minus;400</text><text x="610" y="661" text-anchor="middle">&minus;800</text>
+            <text x="64" y="85" text-anchor="end">Y &minus;400</text><text x="64" y="175" text-anchor="end">&minus;600</text>
+            <text x="64" y="265" text-anchor="end">&minus;800</text><text x="64" y="355" text-anchor="end">&minus;1000</text>
+            <text x="64" y="445" text-anchor="end">&minus;1200</text><text x="64" y="535" text-anchor="end">&minus;1400</text>
+            <text x="64" y="625" text-anchor="end">&minus;1600</text>
+          </g>
+          <g opacity="0.32">
+            <rect x="270" y="130" width="170" height="90" rx="6" fill="#3a2413"/>
+            <rect x="95" y="105" width="130" height="115" rx="6" fill="#3a2413"/>
+            <rect x="255" y="185" width="130" height="80" rx="6" fill="#2b2118"/>
+            <rect x="370" y="380" width="290" height="245" rx="6" fill="#3a1c10"/>
+          </g>
+          <g font-family="Saira Condensed, sans-serif" font-size="11" font-weight="700" letter-spacing="1.3">
+            <text x="274" y="126" fill="#b07a44">KOBOLD ROYALS &middot; 35&ndash;42</text>
+            <text x="99" y="101" fill="#b07a44">EFREETI &amp; LAVA POOL &middot; 42&ndash;50</text>
+            <text x="259" y="181" fill="#8a7050">BATS &amp; BUGS &middot; 38&ndash;46</text>
+            <text x="374" y="376" fill="#c07a45">FIRE GIANT CASTLE &middot; 47&ndash;55</text>
+          </g>
+          <g fill="#6C7B7B" opacity="0.55">
+            <circle cx="348.1" cy="207.2" r="3"/><circle cx="314.8" cy="197.2" r="3"/><circle cx="356.6" cy="216.6" r="3"/>
+            <circle cx="343.6" cy="240.4" r="3"/><circle cx="263.5" cy="212.1" r="3"/><circle cx="277.9" cy="195.9" r="3"/>
+            <circle cx="429.6" cy="303.9" r="3"/><circle cx="308.9" cy="223.8" r="3"/><circle cx="313" cy="222.9" r="3"/>
+            <circle cx="386.4" cy="166.7" r="3"/>
+          </g>
+          <g stroke="#E06B2A" stroke-width="0.8" opacity="0.5">
+            <line x1="642" y1="530.2" x2="700" y2="512"/><line x1="411.6" y1="555.5" x2="330" y2="566"/>
+            <line x1="423.2" y1="600.9" x2="330" y2="606"/><line x1="621.2" y1="554.6" x2="700" y2="548"/>
+            <line x1="378.7" y1="559.5" x2="300" y2="530"/><line x1="530.8" y1="405.2" x2="700" y2="398"/>
+            <line x1="105.5" y1="119.4" x2="120" y2="86"/><line x1="405.7" y1="353.4" x2="490" y2="336"/>
+            <line x1="356.6" y1="245.4" x2="450" y2="256"/><line x1="185.6" y1="140.1" x2="120" y2="240"/>
+            <line x1="412.9" y1="149.6" x2="500" y2="118"/><line x1="394.9" y1="168" x2="500" y2="146"/>
+            <line x1="307.6" y1="222.9" x2="240" y2="284"/><line x1="405.2" y1="195.9" x2="500" y2="174"/>
+            <line x1="298.6" y1="153.2" x2="230" y2="120"/><line x1="405.2" y1="142.3" x2="500" y2="90"/>
+            <line x1="449.8" y1="376.4" x2="530" y2="358"/>
+          </g>
+          <g fill="#E06B2A">
+            <circle cx="642" cy="530.2" r="4.5"/><circle cx="411.6" cy="555.5" r="4.5"/><circle cx="423.2" cy="600.9" r="4.5"/>
+            <circle cx="621.2" cy="554.6" r="4.5"/><circle cx="621.2" cy="547.8" r="4.5"/><circle cx="378.7" cy="559.5" r="4.5"/>
+            <circle cx="530.8" cy="405.2" r="4.5"/><circle cx="462.4" cy="459.1" r="4.5"/><circle cx="414.2" cy="492.9" r="4.5"/>
+            <circle cx="399.4" cy="613.5" r="4.5"/><circle cx="105.5" cy="119.4" r="4.5"/><circle cx="405.7" cy="353.4" r="4.5"/>
+            <circle cx="356.6" cy="245.4" r="4.5"/><circle cx="185.6" cy="140.1" r="4.5"/><circle cx="189.7" cy="203.1" r="4.5"/>
+            <circle cx="198.7" cy="195.4" r="4.5"/><circle cx="412.9" cy="149.6" r="4.5"/><circle cx="394.9" cy="168" r="4.5"/>
+            <circle cx="307.6" cy="222.9" r="4.5"/><circle cx="405.2" cy="195.9" r="4.5"/><circle cx="298.6" cy="153.2" r="4.5"/>
+            <circle cx="405.2" cy="142.3" r="4.5"/><circle cx="449.8" cy="376.4" r="4.5"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" fill="#E06B2A">
+            <text x="704" y="515">LORD NAGAFEN L55 <tspan fill="#C9453A">raid</tspan></text>
+            <text x="326" y="569" text-anchor="end">Warlord Skarlon L53 <tspan fill="#C9453A">raid</tspan></text>
+            <text x="326" y="609" text-anchor="end">King Tranix L52 <tspan fill="#C9453A">700+ HT</tspan></text>
+            <text x="704" y="551">Magi Rokyl L51 &middot; Zordak vendor</text>
+            <text x="296" y="533" text-anchor="end">Fire Giant Wizard</text>
+            <text x="704" y="401">Fire Giant Warriors &mdash; <tspan fill="#C9453A">8hr respawn</tspan></text>
+            <text x="124" y="82">Efreeti Lord Djarn L50</text>
+            <text x="494" y="339">stone spider &mdash; 3%</text>
+            <text x="454" y="259">noxious spider &mdash; <tspan fill="#C9453A">1200 DoT</tspan></text>
+            <text x="116" y="244" text-anchor="end">lava guardians &times;3</text>
+            <text x="504" y="121">Solusek kobold king L42</text>
+            <text x="504" y="149">kobold priest L40</text>
+            <text x="236" y="287" text-anchor="end">death beetle</text>
+            <text x="504" y="177">kobold champion L39</text>
+            <text x="226" y="123" text-anchor="end">kobold noble &mdash; <tspan fill="#C9453A">charms</tspan></text>
+            <text x="504" y="93">Targin the Rock</text>
+            <text x="534" y="361">guano harvester &mdash; invisible</text>
+          </g>
+          <g>
+            <circle cx="368.4" cy="93.3" r="11" fill="#12171A" stroke="#C9A227" stroke-width="2"/>
+            <text x="368.4" y="97" font-family="IBM Plex Mono, monospace" font-size="10" font-weight="700" fill="#C9A227" text-anchor="middle">IN</text>
+          </g>
+          <g>
+            <rect x="86" y="430" width="200" height="112" fill="#1A2126" stroke="#2E3A41"/>
+            <text x="96" y="450" font-family="IBM Plex Mono, monospace" font-size="9" fill="#E06B2A" letter-spacing="1.5">READING THE PLATE</text>
+            <text x="96" y="468" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">/loc returns  Y, X, Z</text>
+            <text x="96" y="482" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+Y = north (up)</text>
+            <text x="96" y="496" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+X = west (left)</text>
+            <text x="96" y="514" font-family="IBM Plex Mono, monospace" font-size="10" fill="#C9A227">&#9711; zone line</text>
+            <text x="96" y="530" font-family="IBM Plex Mono, monospace" font-size="10" fill="#E06B2A">&#9679; named</text>
+            <text x="180" y="530" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6C7B7B">&#9702; population</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <ol>
+          <li><span class="n">IN</span><span>Zone line &amp; succor</span><span class="lv">&minus;424, &minus;263</span></li>
+          <li><span class="n">1</span><span>Lord Nagafen</span><span class="lv">L55</span></li>
+          <li><span class="n">2</span><span>Zordakalicus Ragefire</span><span class="lv">L54</span></li>
+          <li><span class="n">3</span><span>Warlord Skarlon</span><span class="lv">L53</span></li>
+          <li><span class="n">4</span><span>King Tranix</span><span class="lv">L52</span></li>
+          <li><span class="n">5</span><span>Magi Rokyl</span><span class="lv">L51</span></li>
+          <li><span class="n">6</span><span>Efreeti Lord Djarn</span><span class="lv">L50</span></li>
+          <li><span class="n">7</span><span>Fire Giant Warrior &times;4</span><span class="lv">L47&ndash;51</span></li>
+          <li><span class="n">8</span><span>Fire Giant Wizard</span><span class="lv">L47&ndash;51</span></li>
+          <li><span class="n">9</span><span>Imp Protector</span><span class="lv">L44&ndash;48</span></li>
+          <li><span class="n">10</span><span>stone spider</span><span class="lv">L44&ndash;46</span></li>
+          <li><span class="n">11</span><span>noxious spider</span><span class="lv">L43&ndash;45</span></li>
+          <li><span class="n">12</span><span>lava duct crawler</span><span class="lv">L43&ndash;45</span></li>
+          <li><span class="n">13</span><span>lava guardian &times;3</span><span class="lv">L42&ndash;46</span></li>
+          <li><span class="n">14</span><span>Solusek kobold king</span><span class="lv">L42</span></li>
+          <li><span class="n">15</span><span>kobold priest</span><span class="lv">L40</span></li>
+          <li><span class="n">16</span><span>death beetle</span><span class="lv">L40&ndash;42</span></li>
+          <li><span class="n">17</span><span>kobold champion</span><span class="lv">L39</span></li>
+          <li><span class="n">18</span><span>kobold noble</span><span class="lv">L38</span></li>
+          <li><span class="n">19</span><span>sonic bat</span><span class="lv">L38&ndash;42</span></li>
+          <li><span class="n">20</span><span>Targin the Rock</span><span class="lv">L35&ndash;39</span></li>
+          <li><span class="n">21</span><span>Midghh the Dark</span><span class="lv">L35</span></li>
+          <li><span class="n">22</span><span>guano harvester</span><span class="lv">L25</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="note fresh"><strong>Three marker pairs collide and all three check out.</strong> Magi Rokyl and the vendor Zordak Ragefire sit <strong>6.8 pixels</strong> apart in the inner lair. Two of the three lava guardians are 11.8 apart at the pool they guard. And <strong>Targin the Rock is 10.6 pixels from the Solusek kobold king</strong> — the wiki gives his waypoint as <code>&minus;541, &minus;352</code>, left of the throne in the King's room.</div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Structure — nineteen mapped rooms</h2>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>#</th><th>Room</th><th>Who / what</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">1&ndash;3</td><td class="nmob">Pool · Window · Circle</td><td class="src">Kobold outer areas. Nothing named recorded.</td></tr>
+      <tr><td class="lv">4</td><td class="nmob">Efreeti Room</td><td class="src"><strong>Efreeti Lord Djarn.</strong> Golden Efreeti Boots (common), Djarns Amethyst Ring (rare)</td></tr>
+      <tr><td class="lv">5</td><td class="nmob">Noble Room</td><td class="src">kobold noble — Staff of Writhing (common), Petrified Erudite Heart Amulet (rare)</td></tr>
+      <tr><td class="lv">6</td><td class="nmob">King Room</td><td class="src">Solusek kobold king — Runed Mithril Bracer (common), <strong>Fleshripper</strong> (rare). <strong>Targin the Rock spawns left of the throne</strong></td></tr>
+      <tr><td class="lv">7</td><td class="nmob">Priest Room</td><td class="src">kobold priest — Carnal Pauldrons (common), <strong>Mithril Breastplate</strong> (rare). <strong>Reached through a painted false wall</strong> between the two hallways to the king and champion</td></tr>
+      <tr><td class="lv">8</td><td class="nmob">Champion Room</td><td class="src">kobold champion — Shield of the Slain Unicorn (common), Painbringer (rare). <strong>Southern of the three royal ledges</strong></td></tr>
+      <tr><td class="lv">9</td><td class="nmob">Block Crusher Trap</td><td class="src"><strong>A trap.</strong> Marked on the map for a reason</td></tr>
+      <tr><td class="lv">10</td><td class="nmob">"Lily Pads"</td><td class="src"><strong>Stepping stones across a river of lava</strong></td></tr>
+      <tr><td class="lv">11</td><td class="nmob">Death Beetle Room</td><td class="src">death beetle — Black Chitin Leggings (common), Death Scarab Gland (rare). Lava beetles around it</td></tr>
+      <tr><td class="lv">12</td><td class="nmob">Nox Corridor</td><td class="src">noxious spider — Green Silken Drape (common), Golden Chitin Bracer (rare)</td></tr>
+      <tr><td class="lv">13</td><td class="nmob">Stone Spider Room</td><td class="src">stone spider — Crystalline Orb (common), Brown Chitin Protector (rare)</td></tr>
+      <tr><td class="lv">14</td><td class="nmob">Collector's Room</td><td class="src">guano harvester, <strong>invisible, long wander path.</strong> Large Soiled Bag (common), <strong>Cloak of Shadows</strong> (rare)</td></tr>
+      <tr><td class="lv">15</td><td class="nmob">Fire Giant Castle entrance</td><td class="src"><strong>Many doors inside the castle are not on the map.</strong></td></tr>
+      <tr><td class="lv">16</td><td class="nmob">Throne Room</td><td class="src">King Tranix — Polished Mithril Torque (common), Crown of King Tranix (rare) <strong>raid instance only</strong></td></tr>
+      <tr><td class="lv">17</td><td class="nmob">Skarlon Room</td><td class="src">Warlord Skarlon — Mithril Vambraces (common), Mithril Greaves (rare), <strong>Razing Sword of Skarlon</strong> (ultra-rare) <strong>raid instance only</strong></td></tr>
+      <tr><td class="lv">18</td><td class="nmob">Drawbridge Room</td><td class="src"><strong>Two levers lower the drawbridge at the southern edge. It raises itself again after a while.</strong></td></tr>
+      <tr><td class="lv">19</td><td class="nmob">Nagafen's Lair</td><td class="src">Magi Rokyl — Polished Mithril Mask (common), Rokyls Channelling Crystal (rare). <strong>Lord Nagafen</strong> <strong>raid instance only</strong></td></tr>
+      <tr><td class="lv">x</td><td class="nmob">Pit trap</td><td class="src"><strong>Into lava.</strong></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>Lettered points on the wiki map are zone lines into Solusek's Eye (Sol A).</strong> There are several. They are the standard escape from Sol B — but the wiki warns they are used the same way from the other side, so you may arrive in someone else's emergency.</div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>Named roster</h2>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Class</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">Lord Nagafen</td><td class="loc">&minus;1395, &minus;871</td><td class="lv">55</td><td class="cls">LAVA DRAGON<br>WAR</td><td class="src"><strong>Raid instance only since 11 June.</strong> Two attacks decide the fight: an <strong>area-effect fire spell and an area-effect fear spell.</strong> Drops Cloak of Flames, Bladestopper, Gold Plated Koshigatana, Selo's Drums and more.<span class="tag warn">raid</span></td></tr>
+      <tr><td class="nmob">Zordakalicus Ragefire</td><td class="loc">the lair</td><td class="lv">54</td><td class="cls">LAVA DRAGON<br>WAR</td><td class="src"><strong>Triggered spawn, part of the Cleric epic.</strong> Drops the whole Blazing / Fennin Ro set — breastplate AC 20 with SV Fire +20, helm, gauntlets, vambraces, boots, bracer.</td></tr>
+      <tr><td class="nmob">Warlord Skarlon</td><td class="loc">&minus;1451, &minus;359</td><td class="lv">53</td><td class="cls">GIANT<br>WAR</td><td class="src">20%. <strong>The hardest single fire giant</strong> — the wiki calls him "a melee class's best friend". His sword is ultra-rare. <strong>Raid instance only.</strong></td></tr>
+      <tr><td class="nmob">King Tranix</td><td class="loc">&minus;1552, &minus;385</td><td class="lv">52</td><td class="cls">GIANT<br>SHD</td><td class="src">100%. <strong>Harm Touches for over 700</strong>, and is rumoured to carry 21 in every resist. Throne Room. Crown is <strong>raid instance only.</strong><span class="tag warn">700+ HT</span></td></tr>
+      <tr><td class="nmob">Magi Rokyl</td><td class="loc">&minus;1449, &minus;825</td><td class="lv">51</td><td class="cls">GIANT<br>WIZ</td><td class="src">100%. <strong>Guardian of Nagafen's inner lair.</strong> Carries Rokyls Channelling Crystal — AC 10, HP +50, MANA +50, Extended Enhancement III.</td></tr>
+      <tr><td class="nmob">Efreeti Lord Djarn</td><td class="loc">&minus;482, 321</td><td class="lv">50</td><td class="cls">EFREETI<br>WIZ</td><td class="src"><strong>10%.</strong> A nasty wizard with two other mobs and a pather in the room. <strong>Break carefully and stay out of his line of sight.</strong> Placeholder is a lava guardian.</td></tr>
+      <tr><td class="nmob">Fire Giant Warrior</td><td class="loc">&minus;1117, &minus;624 &middot; &minus;1237, &minus;472<br>&minus;1312, &minus;365 &middot; &minus;1580, &minus;332</td><td class="lv">47&ndash;51</td><td class="cls">GIANT<br>WAR</td><td class="src"><strong>Eight-hour respawn.</strong> <strong>You must be in melee range to land spells on them</strong> — they resist everything cast from distance.<span class="tag warn">8 hours</span></td></tr>
+      <tr><td class="nmob">Fire Giant Wizard</td><td class="loc">&minus;1460, &minus;286</td><td class="lv">47&ndash;51</td><td class="cls">GIANT<br>WIZ</td><td class="src">34%. Drops Diamond Dust and Fire Giant Toes.</td></tr>
+      <tr><td class="nmob">Imp Protector</td><td class="loc">near the Efreeti</td><td class="lv">44&ndash;48</td><td class="cls">IMP<br>ROG</td><td class="src"><strong>Rogues.</strong> Found near and on the way to Djarn. The wiki notes they and the lava guardians run slightly higher than expected.</td></tr>
+      <tr><td class="nmob">stone spider</td><td class="loc">&minus;1002, &minus;346</td><td class="lv">44&ndash;46</td><td class="cls">SPIDER<br>WAR</td><td class="src"><strong>3%</strong> — the rarest spawn in the zone. <strong>Vulnerable to cold and poison; outright resists anything magic-based, including lifetaps.</strong></td></tr>
+      <tr><td class="nmob">noxious spider</td><td class="loc">&minus;762, &minus;237</td><td class="lv">43&ndash;45</td><td class="cls">SPIDER<br>WAR</td><td class="src">~25%. <strong>A poison DoT that deals 1200 damage over its duration.</strong> Paths past the lava duct crawlers.<span class="tag warn">1200 DoT</span></td></tr>
+      <tr><td class="nmob">lava duct crawler</td><td class="loc">various</td><td class="lv">43&ndash;45</td><td class="cls">SPIDER<br>WAR</td><td class="src"><strong>Procs Boiling Blood.</strong> Beware the stone spider among them and the noxious spider pathing by.</td></tr>
+      <tr><td class="nmob">lava guardian</td><td class="loc">&minus;528, 143 &middot; &minus;668, 134<br>&minus;651, 114</td><td class="lv">42&ndash;46</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src">100% at all three. <strong>They guard Djarn's lava pool and act as his placeholder.</strong></td></tr>
+      <tr><td class="nmob">Solusek kobold king</td><td class="loc">&minus;549, &minus;362</td><td class="lv">42</td><td class="cls">KOBOLD<br>SHD</td><td class="src">50%. Spawns beside two Solusek kobolds. Carries <strong>Fleshripper</strong>, a 20/42 two-hander with Word of Shadow.</td></tr>
+      <tr><td class="nmob">kobold priest</td><td class="loc">&minus;590, &minus;322</td><td class="lv">40</td><td class="cls">KOBOLD<br>CLR</td><td class="src">25%. <strong>Reached through a painted false wall.</strong> Carries the <strong>Mithril Breastplate — AC 17, AGI +15, HP +30.</strong></td></tr>
+      <tr><td class="nmob">death beetle</td><td class="loc">&minus;712, &minus;128</td><td class="lv">40&ndash;42</td><td class="cls">BEETLE<br>WAR</td><td class="src"><strong>Procs a unique DoT.</strong> A small room between the bat-and-bug area and the Efreeti.</td></tr>
+      <tr><td class="nmob">kobold champion</td><td class="loc">&minus;652, &minus;345</td><td class="lv">39</td><td class="cls">KOBOLD<br>WAR</td><td class="src">25%. <strong>Southern of the three royal ledges.</strong> Shield of the Slain Unicorn and Painbringer.</td></tr>
+      <tr><td class="nmob">kobold noble</td><td class="loc">&minus;557, &minus;108</td><td class="lv">38</td><td class="cls">KOBOLD<br>ENC</td><td class="src">40%. <strong>An enchanter, usually with a pet, and he charms.</strong> The wiki's word: it makes the fight really nasty.<span class="tag warn">charms</span></td></tr>
+      <tr><td class="nmob">Targin the Rock</td><td class="loc">&minus;533, &minus;345<br><span style="color:#8A9998">waypoint &minus;541, &minus;352, &minus;59</span></td><td class="lv">35&ndash;39</td><td class="cls">HUMAN<br>MNK</td><td class="src">100%. <strong>Left of the throne in the King's room.</strong> Killing the placeholder improves his spawn chance. Drops the Code of Zan Fi.</td></tr>
+      <tr><td class="nmob">Midghh the Dark</td><td class="loc"><span style="color:#C9453A">unrecorded</span></td><td class="lv">35</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>An extremely rare spawn with little information.</strong> No faction hits. Paths from the Pool area. Drops a Bronze Two Handed Battle Axe.<span class="tag warn">very rare</span></td></tr>
+      <tr><td class="nmob">guano harvester</td><td class="loc">&minus;1053, &minus;444</td><td class="lv">25</td><td class="cls">GOBLIN<br>WAR</td><td class="src">15%. <strong>Placeholder is a sonic bat. On spawning it immediately casts invisibility on itself and roams the bat caves.</strong> Carries the <strong>Cloak of Shadows — AC 12, DEX +13</strong>, off a level 25 mob.</td></tr>
+      <tr><td class="nmob">Zordak Ragefire</td><td class="loc">&minus;1434, &minus;825</td><td class="lv">60</td><td class="cls">HUMAN<br>MERCHANT</td><td class="src"><strong>Non-aggressive vendor</strong> standing in Nagafen's lair. Part of the Cleric epic — handing him the Shimmering Pearl starts a monologue.</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The population</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Mob</th><th>Lvl</th><th>Behaviour</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">Sonic bat</td><td class="lv">38&ndash;42</td><td class="src">50% at six points around (&minus;652 to &minus;751, &minus;30 to &minus;237). <strong>Their melee procs Sonic Scream, a long-duration single-target stun.</strong> The wiki calls them nearly impossible to solo for that reason.<span class="tag warn">stun proc</span></td></tr>
+      <tr><td class="nmob">Lava beetle</td><td class="lv">38&ndash;42</td><td class="src">30% at (&minus;892, &minus;399), (&minus;714, &minus;131), (&minus;712, &minus;140). <strong>Aggressive and social</strong>, in and around the death beetle room.</td></tr>
+      <tr><td class="nmob">Solusek Kobold · Shaman</td><td class="lv">36&ndash;38</td><td class="src">Shaman 9% at (&minus;549, &minus;362) and (&minus;587, &minus;303) — the royal ledges.</td></tr>
+      <tr><td class="nmob">Greater Kobold</td><td class="lv">32&ndash;37</td><td class="src"><strong>See through hide and invisibility.</strong> Two tiers — "a greater kobold" is the lower one. The outer-area population, and there are a lot of them.</td></tr>
+      <tr><td class="nmob">Greater kobold shaman</td><td class="lv">33&ndash;37</td><td class="src">Also see through hide and invisibility. Drops Black Henbane.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Loot table</h2>
+  <p class="lede">55 items. Weapon lines read damage / delay. As of 29 July every roll is gated to your difficulty tier or better.</p>
+  <h3>Reachable without a raid instance</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Djarns Amethyst Ring</td><td class="st">Finger · lore · focus</td><td class="st">AGI +9 · <strong>HP +80</strong><br>Spell Haste II</td><td class="cls all">ALL · all races</td><td class="src">Efreeti Lord Djarn <em>(rare)</em></td></tr>
+      <tr><td class="it">Golden Efreeti Boots</td><td class="st">Feet · focus</td><td class="st">AC 5 · WIS +9 · INT +9 · SV Poison +1<br>Enhancement Haste II</td><td class="cls all">ALL · all races</td><td class="src">Efreeti Lord Djarn <em>(common)</em></td></tr>
+      <tr><td class="it">Cloak of Shadows</td><td class="st">Back · lore</td><td class="st"><strong>AC 12 · DEX +13</strong> · SV Disease +10</td><td class="cls all">ALL · all races</td><td class="src">guano harvester <em>(rare)</em> · <span style="color:#5FA37E">L25 mob</span></td></tr>
+      <tr><td class="it">Mithril Breastplate</td><td class="st">Chest · lore</td><td class="st"><strong>AC 17 · AGI +15</strong> · HP +30</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG<br>not IKS</td><td class="src">kobold priest <em>(rare)</em></td></tr>
+      <tr><td class="it">Rokyls Channelling Crystal</td><td class="st">Secondary · lore · focus</td><td class="st">AC 10 · <strong>HP +50 · MANA +50</strong><br>Extended Enhancement III</td><td class="cls">BRD NEC WIZ MAG ENC</td><td class="src">Magi Rokyl <em>(rare)</em></td></tr>
+      <tr><td class="it">Polished Mithril Mask</td><td class="st">Face · lore · no drop · focus</td><td class="st">AC 5 · WIS +7 · INT +7<br>Improved Damage II</td><td class="cls all">ALL · all races</td><td class="src">Magi Rokyl <em>(common)</em></td></tr>
+      <tr><td class="it">Fleshripper</td><td class="st">Primary · 2H Slash<br><strong>20</strong> / 42 · lore · no drop</td><td class="st">Word of Shadow proc at level 35</td><td class="cls">WAR SHD</td><td class="src">Solusek kobold king <em>(rare)</em></td></tr>
+      <tr><td class="it">Green Silken Drape</td><td class="st">Chest · focus</td><td class="st">AC 8 · DEX +9 · STA +9 · INT +3<br><strong>SV Poison +15</strong> · Affliction Haste II</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">noxious spider <em>(common)</em></td></tr>
+      <tr><td class="it">Brown Chitin Protector</td><td class="st">Chest</td><td class="st">AC 12 · DEX +9 · STA +9 · AGI +9</td><td class="cls">DRU only<br>HUM ELF HEF HFL</td><td class="src">stone spider <em>(rare)</em></td></tr>
+      <tr><td class="it">Staff of Writhing</td><td class="st">Primary · 1H Blunt<br>9 / 33 · lore</td><td class="st">CHA &minus;9<br>Chaotic Feedback proc at level 28</td><td class="cls">BRD NEC WIZ MAG ENC</td><td class="src">kobold noble <em>(common)</em></td></tr>
+      <tr><td class="it">Shield of the Slain Unicorn</td><td class="st">Secondary · Pierce<br>10 / 40 · lore</td><td class="st">AC 9</td><td class="cls">WAR only</td><td class="src">kobold champion <em>(common)</em></td></tr>
+      <tr><td class="it">Carnal Pauldrons</td><td class="st">Shoulders · no drop</td><td class="st">AC 9 · DEX +7 · MANA +15</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">kobold priest <em>(common)</em></td></tr>
+      <tr><td class="it">Runed Mithril Bracer</td><td class="st">Wrist · focus</td><td class="st">AC 4 · STR +3 · WIS +5<br>Reagent Conservation III</td><td class="cls all">ALL · all races</td><td class="src">Solusek kobold king <em>(common)</em></td></tr>
+      <tr><td class="it">Golden Chitin Bracer</td><td class="st">Wrist</td><td class="st">AC 5 · INT +5 · AGI +5</td><td class="cls all">ALL · not IKS</td><td class="src">noxious spider <em>(rare)</em></td></tr>
+      <tr><td class="it">Petrified Erudite Heart Amulet</td><td class="st">Neck</td><td class="st">AC 2 · INT +5 · MANA +15</td><td class="cls">BRD NEC WIZ MAG ENC</td><td class="src">kobold noble <em>(rare)</em></td></tr>
+      <tr><td class="it">Black Chitin Leggings</td><td class="st">Legs</td><td class="st">AC 7 · HP +10 · MANA +10</td><td class="cls all">ALL · not IKS</td><td class="src">death beetle <em>(common)</em></td></tr>
+      <tr><td class="it">Painbringer</td><td class="st">Primary / Secondary<br>1H Slash 7 / <strong>23</strong> · lore · no drop</td><td class="st">Word of Pain proc at level 17</td><td class="cls">WAR only</td><td class="src">kobold champion <em>(rare)</em></td></tr>
+      <tr><td class="it">Large Soiled Bag</td><td class="st">Container · lore</td><td class="st">10 slots · <strong>100% weight reduction</strong></td><td class="cls all">ALL</td><td class="src">guano harvester <em>(common)</em></td></tr>
+      <tr><td class="it">Crystalline Orb</td><td class="st">Primary / Secondary<br>lore · 5 charges</td><td class="st">Eye of Zomm</td><td class="cls all">ALL · all races</td><td class="src">stone spider <em>(common)</em></td></tr>
+      <tr><td class="it">Death Scarab Gland</td><td class="st">1 charge · lore</td><td class="st">Burrowing Scarab</td><td class="cls all">ALL · all races</td><td class="src">death beetle <em>(rare)</em></td></tr>
+      <tr><td class="it">Code of Zan Fi</td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">STR +2 · monk epic component</td><td class="cls all">ALL · all races</td><td class="src">Targin the Rock</td></tr>
+      <tr><td class="it">Throwing Boulder</td><td class="st">Range / Ammo<br>Throwing <strong>36</strong> / 35 · range 200</td><td class="st">&mdash;</td><td class="cls">WAR SHD ROG<br>BAR TRL OGR IKS</td><td class="src">Fire giants · King Tranix · Skarlon</td></tr>
+      <tr><td class="it">Blackened Mithril Boots</td><td class="st">Feet · no drop</td><td class="st">AC 5 · MANA +10 · SV Magic +5</td><td class="cls">DRU only</td><td class="src">a kobold guardian</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>The best value in the zone comes off a level 25 mob.</strong> The <strong>guano harvester</strong> carries the <strong>Cloak of Shadows — AC 12, DEX +13, SV Disease +10, all classes and races.</strong> His placeholder is a sonic bat, he casts invisibility on himself the moment he spawns, and he roams the bat caves. Finding him is the whole difficulty.</div>
+
+  <h3>Raid instance only</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Cloak of Flames</td><td class="st">Back</td><td class="st">AC 10 · DEX +9 · AGI +9 · <strong>HP +50</strong><br>SV Fire +15 · <strong>Haste +36%</strong> · ALL classes</td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Bladestopper</td><td class="st">Secondary · lore</td><td class="st"><strong>AC 25</strong> · STA +15 · HP +50<br>Rune IV at level 40 · 600s cooldown</td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Razing Sword of Skarlon</td><td class="st">Primary · 2H Slash<br><strong>25</strong> / 40 · lore · no drop</td><td class="st">Serpent Sight (worn)</td><td class="src">Warlord Skarlon <em>(ultra-rare)</em></td></tr>
+      <tr><td class="it">Crown of King Tranix</td><td class="st">Head · lore</td><td class="st"><strong>AC 13 · CHA +15 · SV Magic +20</strong><br>Serpent Sight (worn) · ALL classes</td><td class="src">King Tranix <em>(rare)</em></td></tr>
+      <tr><td class="it">Polished Mithril Torque</td><td class="st">Neck · lore · no drop</td><td class="st">AC 7 · <strong>WIS +13 · INT +13</strong></td><td class="src">King Tranix <em>(common)</em></td></tr>
+      <tr><td class="it">Gold Plated Koshigatana</td><td class="st">Primary / Secondary<br>Pierce 9 / <strong>25</strong> · backstab 9</td><td class="st">Dismiss Summoned proc at level 30</td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Gauntlets of Fiery Might</td><td class="st">Hands</td><td class="st">AC 10 · STR/DEX/STA +7<br>SV Disease +7 · SV Poison +7</td><td class="src">Lord Nagafen · Zordakalicus</td></tr>
+      <tr><td class="it">Blight, Hammer of the Scourge</td><td class="st">Primary · 2H Blunt<br><strong>23</strong> / 47</td><td class="st">STA/WIS/INT +9 · SV Disease +10<br>Scourge proc at 30 · SHM only</td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Hierophant`s Crook</td><td class="st">Primary · 2H Blunt<br><strong>20</strong> / 44</td><td class="st">STR/DEX/WIS +9 · Earthquake at 30<br>DRU only</td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Mithril Vambraces · Greaves</td><td class="st">Arms · Legs</td><td class="st">AC 10 each · STR +7 · SV Magic +5</td><td class="src">Warlord Skarlon</td></tr>
+      <tr><td class="it">Selo`s Drums of the March</td><td class="st">Primary / Secondary · focus</td><td class="st"><strong>Percussion Resonance 14</strong></td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Treasure Hunter`s Satchel</td><td class="st">Container · lore</td><td class="st">10 slots · 100% reduction · <strong>giant capacity</strong></td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Red Dragon Tooth · Red Dragon Scales<br>Prayers of Life · Torn, burnt book</td><td class="st">Components and charges</td><td class="st">Tooth: Invoke Death, 1 charge<br>Prayers: Word of Healing, 5 charges</td><td class="src">Lord Nagafen</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The Blazing set — Zordakalicus Ragefire</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Piece</th><th>Slot</th><th>Stats</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Blazing Breastplate of Fennin Ro</td><td class="st">Chest</td><td class="st"><strong>AC 20</strong> · STR +5 · CHA +8 · WIS +5 · INT +5 · <strong>SV Fire +20</strong> · Sunbeam at 45</td></tr>
+      <tr><td class="it">Blazing Gauntlets of Fennin Ro</td><td class="st">Hands</td><td class="st"><strong>AC 15</strong> · DEX +8 · CHA +5 · AGI +8 · SV Fire +8 · Firefist (worn)</td></tr>
+      <tr><td class="it">Blazing Vambraces</td><td class="st">Arms</td><td class="st"><strong>AC 15</strong> · DEX +8 · CHA +5 · AGI +8 · <strong>SV Fire +20</strong> · Shield of Flame at 45</td></tr>
+      <tr><td class="it">Blazing Helm of Fennin Ro</td><td class="st">Head</td><td class="st">AC 14 · CHA +5 · INT +5 · AGI +5 · SV Fire +10 · Column of Fire</td></tr>
+      <tr><td class="it">Blazing Boots of Fennin Ro</td><td class="st">Feet</td><td class="st">AC 14 · DEX +8 · CHA +5 · AGI +10 · SV Fire +10</td></tr>
+      <tr><td class="it">Blazing Bracer of Fennin Ro</td><td class="st">Wrist</td><td class="st">AC 8 · DEX +8 · CHA +5 · SV Fire +6 · Fire Bolt at 40</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">All six are <strong>WAR CLR PAL SHD BRD</strong>, lore and no drop. Zordakalicus is a <strong>triggered spawn</strong> and part of the Cleric epic — the aggressive dragon form of the vendor Zordak Ragefire standing in Nagafen's lair. <strong>Between them the set carries SV Fire +74</strong>, which matters more here than anywhere else in Norrath.</div>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Dangers</h2>
+  <div class="note danger"><strong>Nothing can be hidden from.</strong> Everything sees invisibility; greater kobolds see hide too. <strong>Corpse retrieval is a fighting problem, not a stealth problem.</strong> Plan every trip as a two-way fight.</div>
+  <div class="note danger"><strong>The lava is a damage source, not scenery.</strong> Falling in hurts badly. There is usually a way out nearby — <strong>you have to survive until you reach it.</strong> The wiki notes longtime hunters keep entire suits of fire-resist jewellery for this zone. There is also a <strong>pit trap into lava</strong> and a <strong>block crusher trap</strong>, both marked on the map.</div>
+  <div class="note danger"><strong>Sonic bats stun for a long time.</strong> Their melee procs Sonic Scream, a long-duration single-target stun — the wiki says it takes you out of commission for a while and makes them nearly unsoloable. The bugs are worse: <strong>poison and disease DoTs, travelling in packs, aggroing easily.</strong> The noxious spider's DoT alone does <strong>1200 damage.</strong></div>
+  <div class="note danger"><strong>Fire giants break the normal rules.</strong> They cannot be mesmerised at all, and cannot be charmed except by very high level enchanters. <strong>They resist every spell cast from outside melee range.</strong> They aggro each other through walls. The wiki calls a feign-pull essential and says the area should not be attempted without one.</div>
+  <div class="note danger"><strong>The Efreeti area has no exit.</strong> Imp Protectors ring Djarn, the pathing is difficult, and the wiki states plainly there is <strong>basically no way to flee other than evacuating.</strong></div>
+  <div class="note danger"><strong>The tunnels are winding and confusing.</strong> Getting lost, getting trapped, and failing to get out quickly are all named as dangers in their own right. The Sol A zone lines are the escape — but the path to them is twisty.</div>
+  <div class="note"><strong>The counterweight.</strong> Several areas near the Sol A zone lines are relatively safe: you can pull, and zone out if overwhelmed. The wiki's assessment is that a savvy group earns mountains of experience there in a short time.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Getting there</h2>
+  <ul class="tight">
+    <li><strong>Main entrance from Lavastorm Mountains.</strong> Travel to the large lava pit at the north end — confusingly also called Solusek's Eye. <strong>Two cave paths sit on its southern edge; take the western one.</strong></li>
+    <li><strong>Multiple zone lines connect to Solusek's Eye (Sol A)</strong>, marked as lettered points on the wiki map. They are the standard escape route.</li>
+    <li><strong>They are used as escapes from the other side too</strong> — the wiki's warning is that you may go from the frying pan into the fire when you arrive.</li>
+    <li>Succor and evacuate drop you at <code>&minus;424, &minus;263</code>, the zone line to Lavastorm.</li>
+  </ul>
+</section>
+
+<footer>
+  <h3>Sources &amp; confidence</h3>
+  <p>Structured data from the EverQuest Legends community wiki (eqlwiki.com) Nagafen's Lair page and its linked NPC and item pages, <strong>last edited 5 July 2026 at 19:43</strong>; the fetched revision was confirmed current. Patch data from the official Legends notes for 11 June, 23 June and 28&ndash;29 July 2026.</p>
+  <p><strong>Provenance.</strong> The page is a Project 1999 import and its Dangers, Benefits and Traveling sections remain that text, used here for layout, routes and mechanics only. <strong>Its group-size claims are classic single-class estimates and are marked as such in section 01</strong> — they do not describe Legends, where characters run three classes at once and instance difficulty alters behaviour rather than level.</p>
+  <p><strong>Known gaps.</strong> <strong>Midghh the Dark has no recorded coordinate</strong> and the wiki calls him extremely rare with little information. Imp Protector, Greater Kobold, Solusek Kobold and lava duct crawler coordinates are listed only as "See Discussion" or "Various". Zordakalicus Ragefire's location is given only as "Lair". Several named carry "Various" for loot. The 22-minute zone timer predates the 28 July launch pass and is a ceiling. Verify with <code>/loc</code>.</p>
+  <p>Verified against source, 31 July 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

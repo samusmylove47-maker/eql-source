@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Blackburrow — Survey Plate | EverQuest Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#5C93C4;--accd:#35597a}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#12171A;color:#D5DBD8;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.mast{border-bottom:1px solid #2E3A41;padding:46px 0 26px;margin-bottom:34px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9.5vw,98px);line-height:.86;letter-spacing:-.015em;margin:0 0 6px;text-transform:uppercase}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#8A9998;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#2E3A41;border:1px solid #2E3A41}
+.cell{background:#1A2126;padding:11px 13px}
+.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;margin:0 0 4px}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#8A9998;display:block;letter-spacing:0}
+section{margin-top:56px}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+.lede{color:#8A9998;margin:0 0 24px;max-width:64ch}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
+p{max-width:76ch}a{color:var(--acc)}
+.plate-box{border:1px solid #2E3A41;background:#1A2126;padding:16px}
+.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
+@media(max-width:820px){.map-grid{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto}
+.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
+.legend ol{list-style:none;margin:0;padding:0}
+.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #2E3A41}
+.legend .n{color:var(--acc);min-width:19px;text-align:right;font-weight:600}
+.legend .lv{color:#8A9998;margin-left:auto;padding-left:8px;white-space:nowrap}
+.scroller{overflow-x:auto;border:1px solid #2E3A41;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;text-align:left;padding:11px 13px;background:#232C32;border-bottom:1px solid #2E3A41;white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid #2E3A41;vertical-align:top;background:#1A2126}
+tbody tr:last-child td{border-bottom:0}
+.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acc);white-space:nowrap}
+.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
+.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#D5DBD8}
+.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#8A9998;letter-spacing:.04em;line-height:1.45}
+.cls.all{color:#5FA37E}
+.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#8A9998}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acc);display:inline-block;margin-top:4px;white-space:nowrap}
+.tag.warn{border-color:#C9453A;color:#C9453A}
+.tag.new{border-color:#5FA37E;color:#5FA37E}
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
+.camp{border:1px solid #2E3A41;border-top:2px solid var(--acc);background:#1A2126;padding:16px}
+.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
+.camp p{font-size:13.5px;margin:0 0 9px}
+.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.link{flex:1 1 180px;background:#1A2126;border:1px solid #2E3A41;border-left:2px solid var(--acc);padding:12px 14px}
+.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#8A9998;text-transform:uppercase}
+.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
+.link .gives{font-size:12.5px;color:#8A9998}
+.link .gives b{color:var(--acc);font-weight:600}
+.note{border-left:2px solid #2E3A41;padding:2px 0 2px 16px;margin:20px 0;color:#8A9998;max-width:76ch}
+.danger{border-left-color:#C9453A}.danger strong{color:#C9453A}
+.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
+.note strong{color:#D5DBD8}
+ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acc);background:#232C32;padding:1px 5px}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid #2E3A41;color:#8A9998;font-size:12.5px}
+footer h3{margin-top:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+ letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+ letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+.ns-bar .ns-sep{color:#4E5C61}
+.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:#D5DBD8">Plate 05 &middot; Blackburrow</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Dungeon Survey Plate 05 · Qeynos Hills / Everfrost</p>
+  <h1>Blackburrow</h1>
+  <p class="subtitle">Three floors, one exit tunnel, and the best chest piece in the bracket</p>
+  <dl class="strip">
+    <div class="cell"><dt>/who name</dt><dd>blackburrow</dd></div>
+    <div class="cell"><dt>Level band</dt><dd>5–20<small>Lord Elgnub at 22</small></dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>119<small>159%</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>22:00</dd></div>
+    <div class="cell"><dt>Succor</dt><dd>−159, 39</dd></div>
+    <div class="cell"><dt>Adjacent</dt><dd>Qeynos Hills<small>and Everfrost</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2><span class="num">01</span>Revamp status</h2>
+  <p class="lede">Revamped 2 June 2026 — the first of the dungeon passes. The patch note is short: zone population adjusted for a smoother curve from 5 to 20, familiar loot upgraded for the Legends era, and some spicy new loot added.</p>
+  <p>"Some new loot" undersells it. The revamp added an entire cast of Splitpaw refugee gnolls — a Sentry, a Sharpshooter, an Explorer, two Commanders, a Shaman and a Monk — plus the Sabertooth Overseer, Master Brewer, Mannan of the Sabertooth, Socho Darkpaw and Lord Elgnub. Between them they carry <strong>Hardened Bark Breastplate, Vagrant's Tunic, Spiked Buckler, Keg Mallet, Pub Pants, Refugee Shroud, Burrowing Goggles and the Runed Sabertooth Girdle</strong>, none of which existed before.</p>
+  <p>Community reports put the practical curve at <strong>7–8 at the entrance, 10–14 through the middle, 15–19 among the elites deeper in, and Lord Elgnub at 22</strong> as the cap fight — which matches the wiki's named levels closely.</p>
+  <div class="note"><strong>Confidence note.</strong> Wiki page last edited 4 July 2026, a month after the revamp. Blackburrow was <em>not</em> named in the 28 July launch-day dungeon pass, so placeholders and respawn timers here are unchanged. One naming discrepancy: some community guides call the level-22 cap fight "Lord Bongle"; the wiki calls him Lord Elgnub. Same gnoll.</div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>The plate</h2>
+  <p class="lede">A ring with a deep hole in the middle, stacked three floors down. This is a top-down coordinate plot, so floors overlap in plan view — <strong>markers are shaded by floor</strong>. Grid squares are 200 game units.</p>
+  <div class="plate-box">
+    <div class="map-grid">
+      <div>
+        <svg viewBox="0 0 620 420" role="img" aria-label="Coordinate plot of named spawn locations in Blackburrow, shaded by floor">
+          <rect x="60" y="60" width="500" height="300" fill="#151B1F" stroke="#2E3A41"/>
+          <g stroke="#212A30" stroke-width="1">
+            <line x1="108" y1="60" x2="108" y2="360"/><line x1="218" y1="60" x2="218" y2="360"/>
+            <line x1="328" y1="60" x2="328" y2="360"/><line x1="438" y1="60" x2="438" y2="360"/>
+            <line x1="548" y1="60" x2="548" y2="360"/>
+            <line x1="60" y1="125" x2="560" y2="125"/><line x1="60" y1="235" x2="560" y2="235"/>
+            <line x1="60" y1="345" x2="560" y2="345"/>
+          </g>
+          <line x1="328" y1="60" x2="328" y2="360" stroke="#3C4A52" stroke-width="1.5"/>
+          <line x1="60" y1="235" x2="560" y2="235" stroke="#3C4A52" stroke-width="1.5"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+            <text x="108" y="376" text-anchor="middle">X 400</text><text x="218" y="376" text-anchor="middle">200</text>
+            <text x="328" y="376" text-anchor="middle">0</text><text x="438" y="376" text-anchor="middle">−200</text>
+            <text x="548" y="376" text-anchor="middle">−400</text>
+            <text x="52" y="128" text-anchor="end">Y 200</text><text x="52" y="238" text-anchor="end">0</text>
+            <text x="52" y="348" text-anchor="end">−200</text>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" text-anchor="middle">
+            <g><circle cx="307" cy="323" r="11" fill="#12171A" stroke="#C9A227" stroke-width="1.6"/><text x="307" y="327" fill="#C9A227">IN</text></g>
+            <g fill="#12171A" stroke="#8FBEE4" stroke-width="1.6">
+              <circle cx="340" cy="199" r="11"/><circle cx="439" cy="166" r="11"/><circle cx="406" cy="147" r="11"/>
+            </g>
+            <g fill="#8FBEE4"><text x="340" y="203">1</text><text x="439" y="170">2</text><text x="406" y="151">3</text></g>
+            <g fill="#12171A" stroke="#5C93C4" stroke-width="1.6">
+              <circle cx="252" cy="131" r="11"/><circle cx="397" cy="89" r="11"/><circle cx="409" cy="186" r="11"/>
+              <circle cx="505" cy="205" r="11"/><circle cx="516" cy="222" r="11"/><circle cx="349" cy="288" r="11"/>
+              <circle cx="486" cy="282" r="11"/><circle cx="264" cy="282" r="11"/>
+            </g>
+            <g fill="#5C93C4">
+              <text x="252" y="135">4</text><text x="397" y="93">5</text><text x="409" y="190">6</text>
+              <text x="505" y="209">7</text><text x="516" y="226">8</text><text x="349" y="292">9</text>
+              <text x="486" y="286">10</text><text x="264" y="286">11</text>
+            </g>
+            <g fill="#12171A" stroke="#3A6A96" stroke-width="1.8">
+              <circle cx="117" cy="318" r="11"/><circle cx="80" cy="324" r="11"/><circle cx="116" cy="206" r="11"/>
+              <circle cx="132" cy="208" r="11"/><circle cx="242" cy="145" r="11"/><circle cx="129" cy="97" r="11"/>
+              <circle cx="540" cy="147" r="11"/>
+            </g>
+            <g fill="#8FBEE4">
+              <text x="117" y="322">12</text><text x="80" y="328">13</text><text x="116" y="210">14</text>
+              <text x="132" y="212">15</text><text x="242" y="149">16</text><text x="129" y="101">17</text>
+              <text x="540" y="151">18</text>
+            </g>
+          </g>
+          <g font-family="Saira Condensed, sans-serif" font-size="11" font-weight="600" fill="#6C7B7B" letter-spacing="1.4">
+            <text x="240" y="340">ZONE LINE · QEYNOS HILLS</text>
+            <text x="90" y="90">BREWERY &amp; SHARPSHOOTER LEDGE</text>
+          </g>
+          <g>
+            <rect x="366" y="290" width="188" height="62" fill="#1A2126" stroke="#2E3A41"/>
+            <text x="376" y="307" font-family="IBM Plex Mono, monospace" font-size="9" fill="#5C93C4" letter-spacing="1.5">FLOOR SHADING</text>
+            <circle cx="382" cy="320" r="5" fill="none" stroke="#8FBEE4" stroke-width="1.6"/>
+            <text x="394" y="324" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">Floor 1 — the ring</text>
+            <circle cx="382" cy="336" r="5" fill="none" stroke="#5C93C4" stroke-width="1.6"/>
+            <text x="394" y="340" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">Floor 2 · Floor 3 (dark)</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <ol>
+          <li><span class="n">IN</span><span>Zone line</span><span class="lv">−159, 39</span></li>
+          <li><span class="n">1</span><span>Splitpaw Sentry</span><span class="lv">L10</span></li>
+          <li><span class="n">2</span><span>A giant plague rat</span><span class="lv">L10</span></li>
+          <li><span class="n">3</span><span>Tranixx Darkpaw</span><span class="lv">L10</span></li>
+          <li><span class="n">4</span><span>Sabertooth Clan Necro</span><span class="lv">L15</span></li>
+          <li><span class="n">5</span><span>Mannan of the Sabertooth</span><span class="lv">L15</span></li>
+          <li><span class="n">6</span><span>Refugee Splitpaw (shm)</span><span class="lv">L14</span></li>
+          <li><span class="n">7</span><span>The gnoll high shaman</span><span class="lv">L15</span></li>
+          <li><span class="n">8</span><span>A gnoll commander</span><span class="lv">L13–15</span></li>
+          <li><span class="n">9</span><span>Splitpaw Commander</span><span class="lv">L14</span></li>
+          <li><span class="n">10</span><span>Socho Darkpaw</span><span class="lv">L13</span></li>
+          <li><span class="n">11</span><span>A Gnoll Tactician</span><span class="lv">L13–15</span></li>
+          <li><span class="n">12</span><span>Sabertooth Overseer</span><span class="lv">L20</span></li>
+          <li><span class="n">13</span><span>Refugee Splitpaw (mnk)</span><span class="lv">L18</span></li>
+          <li><span class="n">14</span><span>Master Brewer</span><span class="lv">L18</span></li>
+          <li><span class="n">15</span><span>Splitpaw Sharpshooter</span><span class="lv">L20</span></li>
+          <li><span class="n">16</span><span>Splitpaw Explorer</span><span class="lv">L18</span></li>
+          <li><span class="n">17</span><span>Splitpaw Commander</span><span class="lv">L14</span></li>
+          <li><span class="n">18</span><span>Lord Elgnub</span><span class="lv">L22</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>The three floors</h2>
+  <div class="camps">
+    <div class="camp"><p class="band">Floor One · levels 7–12</p><h4>The Ring</h4>
+      <p>Two entrances feeding a ring with a deep hole in the middle. The plague rat storeroom, the Sentry Lookout, and Tranixx Darkpaw in his spawn room — he stopped roaming the zone lines on 14 July.</p>
+      <p>The Hollowed Tree has a <strong>false floor that drops to floor two</strong>. Useful once, unpleasant by accident.</p></div>
+    <div class="camp"><p class="band">Floor Two · levels 12–17</p><h4>Caves &amp; Commanders</h4>
+      <p>Snake Ledge with a ladder down, the Floor Spike Room, the Elite Gnoll Room, Refugee's Nook, the High Shaman room, two commander posts, and Socho's hide under a land bridge.</p>
+      <p>The densest floor, and where clean pulls stop being possible.</p></div>
+    <div class="camp"><p class="band">Floor Three · levels 17–22</p><h4>Brewery &amp; The Lord</h4>
+      <p>The Bridge Room is the classic pull spot. Beyond it: the Overseer's post, the Brewer's barrel supply, Sharpshooter Ledge, the Banner Room and the Explorer's alcove.</p>
+      <p>Lord Elgnub sits northeast of the underground river landing, at the far end.</p></div>
+  </div>
+  <div class="note"><strong>Gnoll fangs are free levels.</strong> Every gnoll in the zone drops them commonly. They turn in at South Qeynos for the Moonstones quest and at Halas for the Gnoll Bounty — experience, faction and rewards at low levels. Loot every fang.</div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>Named roster</h2>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>#</th><th>Named</th><th>Flr</th><th>Loc (Y, X)</th><th>Lvl</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">12</td><td class="nmob">Sabertooth Overseer</td><td class="lv">3</td><td class="loc">−150, 384</td><td class="lv">20</td><td class="src">A berserker gnoll. Usually the first named met on floor three.</td></tr>
+      <tr><td class="lv">18</td><td class="nmob">Lord Elgnub</td><td class="lv">3</td><td class="loc">160, −385</td><td class="lv">22</td><td class="src">Shadow knight. The zone's cap fight, northeast of the underground river landing.</td></tr>
+      <tr><td class="lv">14</td><td class="nmob">Master Brewer</td><td class="lv">3</td><td class="loc">53, 386</td><td class="lv">18</td><td class="src">Among the barrels underneath the brewery. A gnoll brewer (L17) spawns beside him at <code>53, 356</code>.</td></tr>
+      <tr><td class="lv">15</td><td class="nmob">Splitpaw Sharpshooter</td><td class="lv">3</td><td class="loc">49, 357</td><td class="lv">20</td><td class="src">Ranger. Up the ramp north of the Overseer.</td></tr>
+      <tr><td class="lv">13</td><td class="nmob">Refugee Splitpaw (monk)</td><td class="lv">3</td><td class="loc">−162, 452</td><td class="lv">18</td><td class="src">Southwest end of floor three. One of two refugee variants with separate loot tables.</td></tr>
+      <tr><td class="lv">16</td><td class="nmob">Splitpaw Explorer</td><td class="lv">3</td><td class="loc">164, 157</td><td class="lv">18</td><td class="src">Rogue. Bottom of a cave junction.</td></tr>
+      <tr><td class="lv">10</td><td class="nmob">Socho Darkpaw</td><td class="lv">2</td><td class="loc">−85, −286</td><td class="lv">13</td><td class="src">Rogue. Hides under a land bridge in the floor-two caves.</td></tr>
+      <tr><td class="lv">5</td><td class="nmob">Mannan of the Sabertooth</td><td class="lv">2</td><td class="loc">265, −124</td><td class="lv">15</td><td class="src">Small room up the ramp east out of the Floor Spike room.</td></tr>
+      <tr><td class="lv">9</td><td class="nmob">Splitpaw Commander</td><td class="lv">2/3</td><td class="loc">−97, −38 · 251, 363</td><td class="lv">14</td><td class="src">Two of them — one overlooking the underground river, one in the Banner Room.</td></tr>
+      <tr><td class="lv">7</td><td class="nmob">The gnoll high shaman</td><td class="lv">2</td><td class="loc">55, −320</td><td class="lv">15</td><td class="src">Not the same as the generic "a gnoll high shaman" spawns.</td></tr>
+      <tr><td class="lv">6</td><td class="nmob">Refugee Splitpaw (shaman)</td><td class="lv">2</td><td class="loc">89, −147</td><td class="lv">14</td><td class="src">In an alcove south-southeast of the Elite room.</td></tr>
+      <tr><td class="lv">4</td><td class="nmob">Sabertooth Clan Necromancer</td><td class="lv">2</td><td class="loc">189, 140</td><td class="lv">15</td><td class="src">In the Floor Spike Room.</td></tr>
+      <tr><td class="lv">8</td><td class="nmob">A gnoll commander</td><td class="lv">2</td><td class="loc">23, −341 · 292, −115</td><td class="lv">13–15</td><td class="src">Two spawn points on floor two.</td></tr>
+      <tr><td class="lv">11</td><td class="nmob">A Gnoll Tactician</td><td class="lv">2</td><td class="loc">−86, 117</td><td class="lv">13–15</td><td class="src">9% spawn.</td></tr>
+      <tr><td class="lv">2</td><td class="nmob">A giant plague rat</td><td class="lv">1</td><td class="loc">126, −201</td><td class="lv">10</td><td class="src">In the storeroom off the entrance caves.</td></tr>
+      <tr><td class="lv">1</td><td class="nmob">Splitpaw Sentry</td><td class="lv">1</td><td class="loc">66, −21</td><td class="lv">10</td><td class="src">Ranger. On a ledge overlooking The Pit.</td></tr>
+      <tr><td class="lv">3</td><td class="nmob">Tranixx Darkpaw</td><td class="lv">1</td><td class="loc">160, −140</td><td class="lv">10</td><td class="src">Spawn room on floor one. <strong>No longer patrols the zone lines</strong> as of 14 July — he stays put now.</td></tr>
+      <tr><td class="lv">—</td><td class="nmob">An elite gnoll guard</td><td class="lv">1–3</td><td class="loc">various</td><td class="lv">11–13</td><td class="src">Stationary, often placed next to named. The main reason clean pulls fail.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Loot table</h2>
+  <p class="lede">Items marked <span class="tag new">new</span> arrived with the 2 June revamp. Note how many carry focus effects — this bracket did not previously have them.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Hardened Bark Breastplate<span class="tag new">new</span></td><td class="st">Chest</td><td class="st">AC 16 · END 15<br>SV Disease 10 · SV Poison 10</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG BER</td><td class="src">Sabertooth Overseer · L20</td></tr>
+      <tr><td class="it">Runed Sabertooth Girdle<span class="tag new">new</span></td><td class="st">Waist</td><td class="st">AC 5 · STA 5 · WIS 5<br><span style="color:#8A9998">stats adjusted 16 June</span></td><td class="cls all">ALL</td><td class="src">Sabertooth Overseer · L20</td></tr>
+      <tr><td class="it">Wicked Sallet<span class="tag new">new</span></td><td class="st">Head · focus · rare</td><td class="st">AC 10 · STR 3 · STA 3 · INT 2<br>Mana Preservation I</td><td class="cls">SHD only</td><td class="src">Lord Elgnub · L22</td></tr>
+      <tr><td class="it">Dark Runed Leggings<span class="tag new">new</span></td><td class="st">Legs</td><td class="st">AC 5 · HP 10 · INT 5</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Lord Elgnub · L22</td></tr>
+      <tr><td class="it">Keg Mallet<span class="tag new">new</span></td><td class="st">1H Blunt 9 / 30</td><td class="st">STA 3 · WIS 3</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST<br><span style="color:#C9453A">Berserker removed 16 June</span></td><td class="src">Master Brewer · L18</td></tr>
+      <tr><td class="it">Pub Pants<span class="tag new">new</span></td><td class="st">Legs</td><td class="st">AC 6 · MANA 10 · END 10<br>AGI 5</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Master Brewer · L18</td></tr>
+      <tr><td class="it">Blackburrow Cask</td><td class="st">Container · 8 large slots</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">Master Brewer (guaranteed) · gnoll brewer (rare)</td></tr>
+      <tr><td class="it">Spiked Buckler<span class="tag new">new</span></td><td class="st">Secondary · focus</td><td class="st">AC 10 · DEX 2<br>SV Fire 5 · SV Cold 5<br>Improved Damage I</td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM</td><td class="src">Mannan of the Sabertooth · L15</td></tr>
+      <tr><td class="it">Vagrant's Tunic<span class="tag new">new</span></td><td class="st">Chest · focus</td><td class="st">AC 8 · HP 5 · WIS 4<br>SV Cold 10<br>Mana Preservation I</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Socho Darkpaw · L13</td></tr>
+      <tr><td class="it">Darkpaw Sash<span class="tag new">new</span></td><td class="st">Waist</td><td class="st">AC 2 · DEX 2 · SV Cold 3</td><td class="cls all">ALL</td><td class="src">Socho Darkpaw · L13</td></tr>
+      <tr><td class="it">Refugee Shroud<span class="tag new">new</span></td><td class="st">Shoulders · click</td><td class="st">AC 2 · MANA 10 · CHA 4<br>SV Magic 3<br><strong>Shrink</strong> · 7.3s · req level 15</td><td class="cls all">ALL</td><td class="src">Refugee Splitpaw (monk) · L18</td></tr>
+      <tr><td class="it">Sharp Claws<span class="tag new">new</span></td><td class="st">Hand to Hand 7 / 24<br>Laceration effect</td><td class="st">Req level 15</td><td class="cls">MNK BST</td><td class="src">Refugee Splitpaw (monk) · L18</td></tr>
+      <tr><td class="it">Burrowing Goggles<span class="tag new">new</span></td><td class="st">Face · focus</td><td class="st">AC 5 · HP 10 · INT 5<br>Burning Affliction I</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Splitpaw Explorer · L18</td></tr>
+      <tr><td class="it">Well Worn Boots<span class="tag new">new</span></td><td class="st">Feet</td><td class="st">AC 6 · END 5 · WIS 3</td><td class="cls">DRU MNK SHM BST</td><td class="src">Splitpaw Explorer · L18</td></tr>
+      <tr><td class="it">Sabertooth Short Bow<span class="tag new">new</span></td><td class="st">Range · Archery 6 / 30<br>Knee Shot effect</td><td class="st">Req level 15 · range 50</td><td class="cls">WAR RNG ROG</td><td class="src">Splitpaw Sharpshooter · L20</td></tr>
+      <tr><td class="it">Sharpshooter's Bandana<span class="tag new">new</span></td><td class="st">Head</td><td class="st">AC 3 · STR 3 · DEX 3</td><td class="cls">WAR PAL RNG SHD MNK BRD ROG</td><td class="src">Splitpaw Sharpshooter · L20</td></tr>
+      <tr><td class="it">Gnoll Hide Lariat</td><td class="st">1H Slash 3 / <strong>20</strong><br>Stun proc at level 25</td><td class="st">AC 3</td><td class="cls">WAR RNG BRD ROG</td><td class="src">Splitpaw Commander · L14</td></tr>
+      <tr><td class="it">Bark Splinted Shoulderpads<span class="tag new">new</span></td><td class="st">Shoulders</td><td class="st">AC 10 · STA 4<br>SV Disease 3 · SV Poison 3</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Splitpaw Commander · L14</td></tr>
+      <tr><td class="it">Ill-Fitting Robes<span class="tag new">new</span></td><td class="st">Chest · focus</td><td class="st">Reanimation Efficiency I</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Sabertooth Clan Necromancer · L15</td></tr>
+      <tr><td class="it">Ill-Fitting Slippers<span class="tag new">new</span></td><td class="st">Feet</td><td class="st">AC 2 · STR 2 · INT 2</td><td class="cls all">ALL</td><td class="src">Sabertooth Clan Necromancer · L15</td></tr>
+      <tr><td class="it">Runed Shawl<span class="tag new">new</span></td><td class="st">Shoulders</td><td class="st">AC 3 · INT 2 · WIS 2<br>SV Magic 3 · SV Cold 3</td><td class="cls">CLR DRU SHM</td><td class="src">Refugee Splitpaw (shaman) · L14</td></tr>
+      <tr><td class="it">Runed Totem Staff</td><td class="st">2H Blunt 9 / 37 · lore</td><td class="st">HP 5 · MANA 5</td><td class="cls">CLR DRU SHM NEC WIZ MAG ENC</td><td class="src">Refugee Splitpaw (shaman) · L14</td></tr>
+      <tr><td class="it">Elven Charm Necklace<span class="tag new">new</span></td><td class="st">Neck · focus · quest</td><td class="st">INT 3 · WIS 3 · CHA 3<br>Extended Range I</td><td class="cls all">ALL</td><td class="src">The gnoll high shaman · L15</td></tr>
+      <tr><td class="it">An Elven Charm Necklace</td><td class="st">Neck · focus · lore</td><td class="st">CHA 3<br>Extended Range I</td><td class="cls all">ALL</td><td class="src">The gnoll high shaman · L15</td></tr>
+      <tr><td class="it">Clay Totem<span class="tag new">new</span></td><td class="st">Primary / Secondary</td><td class="st">HP 5 · WIS 7</td><td class="cls">CLR DRU BRD SHM</td><td class="src">The gnoll high shaman · L15</td></tr>
+      <tr><td class="it">Wooden Totem</td><td class="st">Primary / Secondary</td><td class="st">MANA 10</td><td class="cls">CLR DRU BRD SHM</td><td class="src">A gnoll shaman · the gnoll high shaman</td></tr>
+      <tr><td class="it">Rat Paw Talisman<span class="tag new">new</span></td><td class="st">Neck</td><td class="st">AC 2 · MANA 2 · WIS 2</td><td class="cls">CLR DRU SHM NEC WIZ MAG ENC</td><td class="src">A giant plague rat · L10</td></tr>
+      <tr><td class="it">Balanced Rat Tooth<span class="tag new">new</span></td><td class="st">Range Ammo · Throwing 6 / 36</td><td class="st">Range 60</td><td class="cls">WAR RNG SHD MNK BRD ROG NEC WIZ MAG ENC BST BER</td><td class="src">A giant plague rat · L10</td></tr>
+      <tr><td class="it">Raw-Hide Arm Guard<span class="tag new">new</span></td><td class="st">Wrist</td><td class="st">AC 2 · STA 2</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Splitpaw Sentry · L10</td></tr>
+      <tr><td class="it">Crude Arrow<span class="tag new">new</span></td><td class="st">Ammo · Archery</td><td class="st">DMG 3 · range 60</td><td class="cls">WAR PAL RNG SHD ROG</td><td class="src">Splitpaw Sentry · L10</td></tr>
+      <tr><td class="it">Spiked Collar</td><td class="st">Neck</td><td class="st">AC 3 · STR 3</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">A gnoll commander · elite gnoll guard</td></tr>
+      <tr><td class="it">Studded Leather Collar</td><td class="st">Neck</td><td class="st">AC 3 · STR 1 · STA 1</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">An elite gnoll guard · a gnoll shaman</td></tr>
+      <tr><td class="it">Rusty Spiked Shoulderpads</td><td class="st">Shoulders</td><td class="st">AC 3 · STR 5<br><span style="color:#C9453A">SV Magic −10</span></td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Gnoll commander · Splitpaw Commander · Socho Darkpaw</td></tr>
+      <tr><td class="it">Onyx Earring</td><td class="st">Ear</td><td class="st">AGI 2</td><td class="cls all">ALL</td><td class="src">Gnoll commander · elite gnoll guard · Splitpaw Commander</td></tr>
+      <tr><td class="it">Giant Snake Fang</td><td class="st">Pierce 5 / 27 · quest</td><td class="st">—</td><td class="cls">ALL except CLR PAL DRU MNK SHM</td><td class="src">A giant snake</td></tr>
+      <tr><td class="it">Gnoll Fang</td><td class="st">Quest turn-in · no drop</td><td class="st">Hand in at Halas or South Qeynos</td><td class="cls all">ALL</td><td class="src">Every gnoll in the zone</td></tr>
+      <tr><td class="it">Blackburrow Gnoll Pelt · Skin</td><td class="st">Quest items</td><td class="st">Monk headband chain</td><td class="cls all">ALL</td><td class="src">Higher-level gnolls · Socho Darkpaw (skin)</td></tr>
+      <tr><td class="it">Baby Joseph Sayer</td><td class="st">Quest · lore · no drop</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">Lord Elgnub · L22</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note danger"><strong>Read Rusty Spiked Shoulderpads carefully.</strong> STR +5 looks good at level 13 until you notice the −10 magic resistance, in a zone full of gnoll shamans and a necromancer. Bark Splinted Shoulderpads off the Splitpaw Commander are strictly better for anyone who can wear them.</div>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Dangers</h2>
+  <div class="note danger"><strong>Five gnolls in aggro range of each other is normal.</strong> Worse, spawn groups mix levels — an elite guard sitting inside a cluster of low gnolls makes a clean pull close to impossible. Con the whole group, not the one you are aiming at.</div>
+  <div class="note danger"><strong>Blackburrow gnolls are exceptionally social.</strong> They come to each other's aid eagerly, patrollers appear from blind corners, and they will aggro <em>through closed doors</em>. Be very careful with AoE and fear effects — one stray spell or one runner starts a zone-wide train.</div>
+  <div class="note danger"><strong>There is only one tunnel to the surface, and low-level players hunt along it.</strong> When a deep group misses a pull, everything they collected comes up that single corridor.</div>
+  <div class="note danger"><strong>The architecture itself is a hazard.</strong> Bridges, narrow ledges, water and a deep central pit. NPC pathing is decent but players fall off things and wedge into cracks. Mind your step on floor three.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Getting there</h2>
+  <ul class="tight">
+    <li><strong>Qeynos Hills entrance</strong> — northeast corner, east of Surefall Glade and north of the Western Karana zone lines. No path leads to it; look for a cave mouth shaped like a gnoll's head.</li>
+    <li><strong>Everfrost entrance</strong> — southeast segment of the canyons. Harder to find, guarded by a couple of gnolls with two more down the tunnel. Torches light the way now.</li>
+    <li><strong>Circle of Surefall Glade</strong> (Druid, group) is the best port for this zone — Surefall Glade opens onto Qeynos Hills and the cave mouth sits east of it. <strong>Circle of North Karana</strong> or <strong>North Karana Portal</strong> work one level earlier but leave a longer run.</li>
+    <li><strong>Freeport ↔ Qeynos translocator.</strong> Legends added a direct route between the two cities. Translocators are <strong>free until you reach level 20 in any class</strong>, and then cost your highest class level in plat per trip.</li>
+    <li>Succor and evacuate drop you at <code>−159, 39</code>, the zone line to Qeynos Hills.</li>
+  </ul>
+</section>
+
+<footer>
+  <h3>Sources &amp; confidence</h3>
+  <p>Compiled from the EverQuest Legends community wiki (eqlwiki.com) Blackburrow zone, NPC and item pages — last edited 4 July 2026, a month after the 2 June revamp — plus official patch notes and community beta levelling reports.</p>
+  <p>Floor assignments come from the wiki's three floor maps; the coordinate plot flattens them, so use the shading. Blackburrow was not included in the 28 July launch-day dungeon pass. Verify with <code>/loc</code>.</p>
+  <p>Built 29 July 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

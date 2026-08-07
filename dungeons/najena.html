@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Najena — Survey Plate | EverQuest Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#D9A227;--accd:#8a6a1c}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#12171A;color:#D5DBD8;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.mast{border-bottom:1px solid #2E3A41;padding:46px 0 26px;margin-bottom:34px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9.5vw,98px);line-height:.86;letter-spacing:-.015em;margin:0 0 6px;text-transform:uppercase}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#8A9998;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#2E3A41;border:1px solid #2E3A41}
+.cell{background:#1A2126;padding:11px 13px}
+.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;margin:0 0 4px}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#8A9998;display:block;letter-spacing:0}
+section{margin-top:56px}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+.lede{color:#8A9998;margin:0 0 24px;max-width:64ch}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
+p{max-width:76ch}a{color:var(--acc)}
+.plate-box{border:1px solid #2E3A41;background:#1A2126;padding:16px}
+.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
+@media(max-width:820px){.map-grid{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto}
+.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
+.legend ol{list-style:none;margin:0;padding:0}
+.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #2E3A41}
+.legend .n{color:var(--acc);min-width:19px;text-align:right;font-weight:600}
+.legend .lv{color:#8A9998;margin-left:auto;padding-left:8px;white-space:nowrap}
+.scroller{overflow-x:auto;border:1px solid #2E3A41;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;text-align:left;padding:11px 13px;background:#232C32;border-bottom:1px solid #2E3A41;white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid #2E3A41;vertical-align:top;background:#1A2126}
+tbody tr:last-child td{border-bottom:0}
+.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acc);white-space:nowrap}
+.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
+.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#D5DBD8}
+.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#8A9998;letter-spacing:.04em;line-height:1.45}
+.cls.all{color:#5FA37E}
+.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#8A9998}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acc);display:inline-block;margin-top:4px;white-space:nowrap}
+.tag.warn{border-color:#C9453A;color:#C9453A}
+.tag.new{border-color:#5FA37E;color:#5FA37E}
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
+.camp{border:1px solid #2E3A41;border-top:2px solid var(--acc);background:#1A2126;padding:16px}
+.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
+.camp p{font-size:13.5px;margin:0 0 9px}
+.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.link{flex:1 1 180px;background:#1A2126;border:1px solid #2E3A41;border-left:2px solid var(--acc);padding:12px 14px}
+.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#8A9998;text-transform:uppercase}
+.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
+.link .gives{font-size:12.5px;color:#8A9998}
+.link .gives b{color:var(--acc);font-weight:600}
+.note{border-left:2px solid #2E3A41;padding:2px 0 2px 16px;margin:20px 0;color:#8A9998;max-width:76ch}
+.danger{border-left-color:#C9453A}.danger strong{color:#C9453A}
+.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
+.note strong{color:#D5DBD8}
+ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acc);background:#232C32;padding:1px 5px}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid #2E3A41;color:#8A9998;font-size:12.5px}
+footer h3{margin-top:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+ letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+ letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+.ns-bar .ns-sep{color:#4E5C61}
+.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:#D5DBD8">Plate 01 &middot; Najena</span><span class="ns-sep">/</span><a href="najena-map.html" style="color:#D9A227">Navigation map &rarr;</a><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Dungeon Survey Plate 01 · Lavastorm Mountains, Antonica</p>
+  <h1>Najena</h1>
+  <p class="subtitle">A four-key descent, sixteen elemental spawns, and the best haste belt in the bracket</p>
+  <dl class="strip">
+    <div class="cell"><dt>/who name</dt><dd>najena</dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>8&ndash;35<small>tuned 15&ndash;30</small></dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>119<small>159% — was 130</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>19:00<small>current, not a ceiling</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>&minus;13, 856</dd></div>
+    <div class="cell"><dt>Adjacent</dt><dd>Lavastorm<small>only exit</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2><span class="num">01</span>Source confidence — this one is different</h2>
+  <div class="note fresh"><strong>The wiki page for this zone is actively maintained, and that is unique among the dungeons surveyed so far.</strong> It was edited <strong>ten times on 30 July 2026</strong>, between 09:30 and 11:01, by a single editor working through it. The Map section was separately expanded on <strong>6 July</strong> and again on <strong>24 July</strong>. Compare the rest of the project: The Hole was last touched 15 July, Befallen 7 June, The Warrens 16 May. <strong>The structured data behind this plate is hours old, not months.</strong></div>
+  <div class="note"><strong>The usual caveat still applies to the prose, and here it is unusually easy to see.</strong> The page began life on 30 July 2025 as a Project 1999 import. The narrative sections still carry that text word for word — the sentence about which keys are No Rent appears <em>verbatim</em> on Allakhazam, and the hedge about Journeyman's Boots ends in a literal question mark. So the split holds: <strong>infobox, map list, NPC table and item table are live Legends data; the Dangers, Keys and Traveling prose are classic EverQuest.</strong> Where the two disagree below, the structured record wins and the disagreement is shown rather than hidden.</div>
+  <div class="note fresh"><strong>Revamped 23 June 2026.</strong> The patch note promised smoother NPC level progression for 15&ndash;30, new named, new drops, loot improvements, and <em>"a striking lack of placeholders for named mobs."</em> Najena was <strong>not</strong> in the 28 July launch-day dungeon pass, which means the 19-minute respawn is a <strong>current figure rather than a pre-patch ceiling</strong> — one of only two plates in this series where that is true.</div>
+  <div class="note"><strong>The ZEM came down, from 130 to 119 (159%).</strong> Najena is the third zone in this series the 23 June rebalance reduced, after The Warrens and Befallen. 159% is still strong — level with Crushbone, Befallen and Blackburrow, and far above Lower Guk at 115% — but anyone quoting a pre-June figure is overestimating it.</div>
+  <h3>Three launch-week rules that reach this zone</h3>
+  <ul class="tight">
+    <li><strong>Loot rolls to your difficulty tier or better</strong> as of 29 July, with a diminishing chance at higher tiers. Every rate in section 06 is gated by that on top of its own drop chance.</li>
+    <li><strong>The low-level item haste cap was removed on 7 July.</strong> This is the single most useful change for anyone coming here at 20&ndash;25, because it un-caps the <strong>Kitchen Toolbelt</strong> — a +10% haste waist item, usable by every class, off a level 22 named near the front of the zone.<span class="tag new">7 Jul</span></li>
+    <li><strong>Chain-stunning is dead</strong> (28 July): stun immunity now outlasts the current stun. Relevant because Najena's answer to a fleeing caster used to be a second stun, and several named here flee.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">02</span>The plate</h2>
+  <p class="lede">Every marker is a surveyed <code>/loc</code> from the wiki's NPC table. Grid squares are 200 game units. You enter at the gold circle on the left and work rightward and downward — <strong>lower X is deeper, lower Y is further south into the prison and Rathyl's wing.</strong> Faint hollow dots are ordinary population spawn points, plotted to show where the zone is actually dense.</p>
+  <div class="plate-box">
+    <div class="map-grid">
+      <div>
+        <svg viewBox="0 0 720 500" role="img" aria-label="Coordinate plot of named and population spawn locations in Najena, plotted from surveyed slash-loc data">
+          <rect x="90" y="50" width="396" height="412" fill="#151B1F" stroke="#2E3A41"/>
+          <g stroke="#212A30" stroke-width="1">
+            <line x1="123" y1="50" x2="123" y2="462"/><line x1="189" y1="50" x2="189" y2="462"/>
+            <line x1="255" y1="50" x2="255" y2="462"/><line x1="321" y1="50" x2="321" y2="462"/>
+            <line x1="453" y1="50" x2="453" y2="462"/>
+            <line x1="90" y1="83" x2="486" y2="83"/><line x1="90" y1="149" x2="486" y2="149"/>
+            <line x1="90" y1="281" x2="486" y2="281"/><line x1="90" y1="347" x2="486" y2="347"/>
+            <line x1="90" y1="413" x2="486" y2="413"/>
+          </g>
+          <line x1="387" y1="50" x2="387" y2="462" stroke="#3C4A52" stroke-width="1.5"/>
+          <line x1="90" y1="215" x2="486" y2="215" stroke="#3C4A52" stroke-width="1.5"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+            <text x="123" y="478" text-anchor="middle">X 800</text><text x="255" y="478" text-anchor="middle">400</text>
+            <text x="387" y="478" text-anchor="middle">0</text><text x="453" y="478" text-anchor="middle">&minus;200</text>
+            <text x="82" y="53" text-anchor="end">Y 400</text><text x="82" y="152" text-anchor="end">200</text>
+            <text x="82" y="218" text-anchor="end">0</text><text x="82" y="284" text-anchor="end">&minus;200</text>
+            <text x="82" y="350" text-anchor="end">&minus;400</text><text x="82" y="416" text-anchor="end">&minus;600</text>
+          </g>
+          <g opacity="0.4">
+            <rect x="305" y="56" width="152" height="102" fill="#332b18"/>
+            <rect x="250" y="145" width="146" height="110" fill="#2b2718"/>
+            <rect x="298" y="280" width="158" height="172" fill="#23201a"/>
+          </g>
+          <g font-family="Saira Condensed, sans-serif" font-size="10.5" font-weight="600" letter-spacing="1.3">
+            <text x="309" y="52" fill="#a08340">CAVES, GOBLIN CAMPS &amp; NAJENA &middot; 17&ndash;35</text>
+            <text x="252" y="141" fill="#a08340">FRONT HALLS &middot; 8&ndash;25</text>
+            <text x="300" y="276" fill="#a08340">PRISON, BASEMENT &amp; RATHYL'S WING &middot; 18&ndash;30</text>
+          </g>
+          <g fill="none" stroke="#6C7B7B" stroke-width="1" opacity="0.5">
+            <circle cx="440.8" cy="63.2" r="2.5"/><circle cx="360.6" cy="69.8" r="2.5"/><circle cx="344.1" cy="76.4" r="2.5"/><circle cx="314.4" cy="63.2" r="2.5"/>
+            <circle cx="378.1" cy="75.4" r="2.5"/><circle cx="372.5" cy="74.8" r="2.5"/><circle cx="411.8" cy="151.6" r="2.5"/><circle cx="376.4" cy="69.5" r="2.5"/>
+            <circle cx="350.7" cy="215" r="2.5"/><circle cx="395.3" cy="223.3" r="2.5"/><circle cx="432.5" cy="178.7" r="2.5"/><circle cx="449.7" cy="178.7" r="2.5"/>
+            <circle cx="433.2" cy="172.1" r="2.5"/><circle cx="400.2" cy="446" r="2.5"/><circle cx="400.2" cy="436.1" r="2.5"/><circle cx="409.1" cy="446" r="2.5"/>
+            <circle cx="426.6" cy="442.7" r="2.5"/><circle cx="329.3" cy="97.2" r="2.5"/>
+            <circle cx="327.3" cy="125.6" r="2.5"/><circle cx="334.9" cy="127.6" r="2.5"/><circle cx="458.6" cy="232.2" r="2.5"/>
+            <circle cx="406.8" cy="201.8" r="2.5"/><circle cx="378.8" cy="125.9" r="2.5"/><circle cx="354" cy="158.9" r="2.5"/><circle cx="292.9" cy="170.4" r="2.5"/>
+            <circle cx="324.6" cy="170.8" r="2.5"/><circle cx="386" cy="249.7" r="2.5"/><circle cx="386.3" cy="245.7" r="2.5"/>
+            <circle cx="324.3" cy="211.7" r="2.5"/><circle cx="324.3" cy="238.1" r="2.5"/><circle cx="256.7" cy="218.3" r="2.5"/><circle cx="274.8" cy="239.8" r="2.5"/>
+            <circle cx="329.2" cy="195.2" r="2.5"/><circle cx="311.1" cy="188.6" r="2.5"/>
+          </g>
+          <g stroke="#D9A227" stroke-width="0.7" opacity="0.5">
+            <line x1="314.4" y1="63.2" x2="252" y2="58"/><line x1="352.4" y1="98.5" x2="272" y2="92"/>
+            <line x1="411.1" y1="92.2" x2="500" y2="76"/><line x1="408.8" y1="125.6" x2="500" y2="116"/>
+            <line x1="351" y1="134.1" x2="278" y2="130"/><line x1="460.9" y1="153.3" x2="516" y2="148"/>
+            <line x1="274.1" y1="171.8" x2="222" y2="160"/><line x1="292.3" y1="170.4" x2="200" y2="196"/>
+            <line x1="347.7" y1="167.5" x2="500" y2="176"/><line x1="325.3" y1="197.8" x2="240" y2="214"/>
+            <line x1="460.3" y1="226.6" x2="516" y2="216"/><line x1="417.4" y1="217" x2="500" y2="244"/>
+            <line x1="411.8" y1="231.5" x2="500" y2="272"/><line x1="268.2" y1="223.6" x2="204" y2="240"/>
+            <line x1="426.3" y1="265.8" x2="516" y2="300"/><line x1="337.5" y1="289.2" x2="252" y2="282"/>
+            <line x1="331.9" y1="301.5" x2="240" y2="310"/><line x1="311.1" y1="342.1" x2="226" y2="344"/>
+            <line x1="330.9" y1="377.7" x2="240" y2="380"/><line x1="403.2" y1="439.7" x2="330" y2="452"/>
+            <line x1="426.3" y1="436.1" x2="540" y2="442"/>
+          </g>
+          <g fill="#D9A227">
+            <circle cx="268.2" cy="223.6" r="3.5"/><circle cx="274.1" cy="171.8" r="3.5"/><circle cx="292.3" cy="170.4" r="3.5"/>
+            <circle cx="347.7" cy="167.5" r="3.5"/><circle cx="325.3" cy="197.8" r="3.5"/><circle cx="311.1" cy="342.1" r="3.5"/>
+            <circle cx="330.9" cy="377.7" r="3.5"/><circle cx="331.9" cy="301.5" r="3.5"/><circle cx="337.5" cy="289.2" r="3.5"/>
+            <circle cx="417.4" cy="217" r="3.5"/><circle cx="426.3" cy="436.1" r="3.5"/><circle cx="426.3" cy="265.8" r="3.5"/>
+            <circle cx="403.2" cy="439.7" r="3.5"/><circle cx="460.3" cy="226.6" r="3.5"/><circle cx="460.9" cy="153.3" r="3.5"/>
+            <circle cx="352.4" cy="98.5" r="3.5"/><circle cx="411.1" cy="92.2" r="3.5"/><circle cx="314.4" cy="63.2" r="3.5"/>
+            <circle cx="411.8" cy="231.5" r="3.5"/><circle cx="351" cy="134.1" r="3.5"/><circle cx="408.8" cy="125.6" r="3.5"/>
+          </g>
+          <g font-family="IBM Plex Mono, monospace" font-size="9.5" font-weight="600" text-anchor="middle">
+            <g><circle cx="104.5" cy="219.3" r="10" fill="#12171A" stroke="#C9A227" stroke-width="1.6"/><text x="104.5" y="223" fill="#C9A227">IN</text></g>
+            <g fill="#12171A" stroke="#D9A227" stroke-width="1.5">
+              <circle cx="204" cy="240" r="9"/><circle cx="222" cy="160" r="9"/><circle cx="200" cy="196" r="9"/>
+              <circle cx="500" cy="176" r="9"/><circle cx="240" cy="214" r="9"/><circle cx="226" cy="344" r="9"/>
+              <circle cx="240" cy="380" r="9"/><circle cx="240" cy="310" r="9"/><circle cx="252" cy="282" r="9"/>
+              <circle cx="500" cy="244" r="9"/><circle cx="540" cy="442" r="9"/><circle cx="516" cy="300" r="9"/>
+              <circle cx="330" cy="452" r="9"/><circle cx="516" cy="216" r="9"/><circle cx="516" cy="148" r="9"/>
+              <circle cx="272" cy="92" r="9"/><circle cx="500" cy="76" r="9"/><circle cx="252" cy="58" r="9"/>
+              <circle cx="500" cy="272" r="9"/><circle cx="278" cy="130" r="9"/><circle cx="500" cy="116" r="9"/>
+            </g>
+            <g fill="#D9A227">
+              <text x="204" y="243">1</text><text x="222" y="163">2</text><text x="200" y="199">3</text>
+              <text x="500" y="179">3</text><text x="240" y="217">4</text><text x="226" y="347">5</text>
+              <text x="240" y="383">6</text><text x="240" y="313">7</text><text x="252" y="285">8</text>
+              <text x="500" y="247">9</text><text x="540" y="445">10</text><text x="516" y="303">11</text>
+              <text x="330" y="455">12</text><text x="516" y="219">13</text><text x="516" y="151">14</text>
+              <text x="272" y="95">15</text><text x="500" y="79">16</text><text x="252" y="61">17</text>
+              <text x="500" y="275">18</text><text x="278" y="133">19</text><text x="500" y="119">20</text>
+            </g>
+          </g>
+          <g>
+            <rect x="500" y="326" width="196" height="88" fill="#1A2126" stroke="#2E3A41"/>
+            <text x="510" y="344" font-family="IBM Plex Mono, monospace" font-size="9" fill="#D9A227" letter-spacing="1.5">READING THE PLATE</text>
+            <text x="510" y="361" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">/loc returns  Y, X, Z</text>
+            <text x="510" y="375" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+Y = north (up)</text>
+            <text x="510" y="389" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+X = west (left)</text>
+            <text x="510" y="405" font-family="IBM Plex Mono, monospace" font-size="10" fill="#C9A227">&#9711; zone line</text>
+            <text x="592" y="405" font-family="IBM Plex Mono, monospace" font-size="10" fill="#6C7B7B">&#9702; population</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <ol>
+          <li><span class="n">IN</span><span>Zone line &amp; succor</span><span class="lv">&minus;13, 856</span></li>
+          <li><span class="n">1</span><span>Unbound Flame</span><span class="lv">L25</span></li>
+          <li><span class="n">2</span><span>The Tenderizer</span><span class="lv">L22</span></li>
+          <li><span class="n">3</span><span>Lost Crusader &times;2</span><span class="lv">L25</span></li>
+          <li><span class="n">4</span><span>The guard captain</span><span class="lv">L25</span></li>
+          <li><span class="n">5</span><span>Officer Grush</span><span class="lv">L24</span></li>
+          <li><span class="n">6</span><span>A Visiting Priestess</span><span class="lv">L25</span></li>
+          <li><span class="n">7</span><span>BoneCracker</span><span class="lv">L24</span></li>
+          <li><span class="n">8</span><span>Trazdon</span><span class="lv">L24</span></li>
+          <li><span class="n">9</span><span>Moosh</span><span class="lv">L18</span></li>
+          <li><span class="n">10</span><span>Rathyl</span><span class="lv">L27</span></li>
+          <li><span class="n">11</span><span>Rathyl reincarnate</span><span class="lv">L30</span></li>
+          <li><span class="n">12</span><span>Ekeros</span><span class="lv">L26</span></li>
+          <li><span class="n">13</span><span>Drelzna</span><span class="lv">L25</span></li>
+          <li><span class="n">14</span><span>The Blood Artist</span><span class="lv">L27</span></li>
+          <li><span class="n">15</span><span>Najena</span><span class="lv">L35</span></li>
+          <li><span class="n">16</span><span>Akksstaff</span><span class="lv">L30&ndash;32</span></li>
+          <li><span class="n">17</span><span>The Widowmistress</span><span class="lv">L34</span></li>
+          <li><span class="n">18</span><span>An Injured Halfling</span><span class="lv">L20</span></li>
+          <li><span class="n">19</span><span>A froglok ghoul</span><span class="lv">L20</span></li>
+          <li><span class="n">20</span><span>A goblin warrior</span><span class="lv">L15&ndash;17</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+  <div class="note"><strong>The guard captain stands with Officer Grush and A Visiting Priestess, in the southern wing rather than the entry level.</strong> The wiki's text places all three together, and Grush and the Priestess are recorded at <code>&minus;385, 230</code> and <code>&minus;493, 170</code> — well south, past BoneCracker. Community maps of the zone put the captain in that same wing. <strong>Look for him and the Shiny Metal Key there.</strong> His own NPC record lists <code>52, 187</code>, worth a glance in passing.</div>
+  <div class="note"><strong>Two other plotted pairs land on top of each other, and both are correct.</strong> BoneCracker and Trazdon sit 13.5 pixels apart — the map lists them as rooms 8 and 7, adjacent. Moosh and the injured halfling sit 15.5 pixels apart, both inside the prison. Neither is a plotting error.</div>
+  <div class="note danger"><strong>One record does contradict itself and is not plotted where the wiki puts it.</strong> Rathyl reincarnate is listed at <code>&minus;154, &minus;119</code>, but the same page states he spawns <em>on Rathyl's corpse</em> — and Rathyl is at <code>&minus;670, &minus;119</code>. The X matches exactly and the Y differs by 516, which looks like a transcription slip. <strong>Expect him where Rathyl died</strong>, not at the listed coordinate. He is plotted at the listed value with this warning attached.</div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Structure — eleven mapped rooms</h2>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>#</th><th>Room</th><th>Who is there</th><th>What matters</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">1</td><td class="nmob">Entry Room</td><td class="src">Elementals</td><td class="src">Where the sixteen-spot elemental rotation begins — see section 07</td></tr>
+      <tr><td class="lv">1.5</td><td class="nmob">Dead-end room, left of entry</td><td class="src">Unbound Flame</td><td class="src">Drop of Crystallized Flame (common), <strong>Flaming Fist</strong> (rare)</td></tr>
+      <tr><td class="lv">2</td><td class="nmob">Najena's Room</td><td class="src">Najena &middot; two magicians and their pets</td><td class="src">Behind the fourth key. Flowing Black Robe (common), Clawed Knuckle-Ring and Black Tome (rare)</td></tr>
+      <tr><td class="lv">3</td><td class="nmob">Torture Rooms</td><td class="src">&mdash;</td><td class="src">&mdash;</td></tr>
+      <tr><td class="lv">4</td><td class="nmob">Crystal Room</td><td class="src">Three higher-level magicians</td><td class="src"><strong>Mage focus quest items</strong> — the best magician camp in the zone</td></tr>
+      <tr><td class="lv">5</td><td class="nmob">Drelzna's Room</td><td class="src">Drelzna &middot; necromancer placeholder on the chair</td><td class="src"><strong>Journeyman's Boots</strong>, Ashenwood Short Spear, Stiletto of the Bloodclaw, Earring of Disease Reflection, Golden Crescent Key</td></tr>
+      <tr><td class="lv">6</td><td class="nmob">Pit traps <em>(marked X)</em></td><td class="src">&mdash;</td><td class="src"><strong>Two traps on the upper level drop into the prison at room 10.</strong> Easy to fall in, hard to get out</td></tr>
+      <tr><td class="lv">7</td><td class="nmob">Magician's Lair</td><td class="src">Trazdon</td><td class="src">On a ramp above a pool of blood with two elementals below. Dark Circlet, Damask Robe, Binding Bracelets</td></tr>
+      <tr><td class="lv">8</td><td class="nmob">BoneCracker's Room</td><td class="src">BoneCracker &middot; two dark elf necromancers</td><td class="src">Band of Flesh (common), Barbed Leather Whip and Leering Mask (rare), <strong>Dull Bone Key</strong></td></tr>
+      <tr><td class="lv">9</td><td class="nmob">Ogre Captain's Room</td><td class="src">The guard captain, flanked by two guards &middot; Officer Grush &middot; A Visiting Priestess</td><td class="src">Dark Mail Coat, Dark Mail Mittens, Ogre War Maul, <strong>Shiny Metal Key</strong>. South of the front halls &mdash; see section 02</td></tr>
+      <tr><td class="lv">10</td><td class="nmob">Prison</td><td class="src">Linara Parlone &middot; an injured halfling in a cell &middot; Moosh wanders</td><td class="src">Bottom of both pit traps. Quest items — A Stein, A Shovel, A Broom, Torn Pages of Mastery</td></tr>
+      <tr><td class="lv">11</td><td class="nmob">Rathyl's Room</td><td class="src">Rathyl &middot; magician placeholder &middot; Ekeros outside &middot; three more magicians</td><td class="src">Crimson Cape, Travelers Pouch and Pack, <strong>Bloodstained Key</strong>; Hollowed Bone Bracers off the reincarnate</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="camps">
+    <div class="camp"><p class="band">Rooms 1, 1.5, 3, 6, 9 &middot; 8&ndash;25</p><h4>Front halls</h4>
+      <p>Skeletons two and three to a room, aggressive elementals, ogre guards. All attack on sight.</p>
+      <p><strong>Below about level 17 this is a group zone</strong> — the wiki's own words are that walking into a room can bring four or more creatures at once. Everything triggers everything else.</p></div>
+    <div class="camp"><p class="band">Rooms 7, 8, 10, 11 &middot; 18&ndash;30</p><h4>Prison &amp; basement</h4>
+      <p>The southern descent. Necromancers, magicians, the prison and Rathyl's wing at the far end.</p>
+      <p>Both pit traps land here. The prisoners are quest-relevant and <strong>one of them will get you killed on faction</strong> — see section 08.</p></div>
+    <div class="camp"><p class="band">Rooms 2, 4 &amp; the caves &middot; 17&ndash;35</p><h4>Caves &amp; Najena's wing</h4>
+      <p>Behind Najena's room: two goblin camps — three spawns south, five north — level 18-ish warriors or magicians, plus four individual spiders and a possible minotaur.</p>
+      <p><strong>Goblin magicians summon elementals and cast a damage shield on anything nearby.</strong> They drop mage focus quest items.</p></div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>The key chain</h2>
+  <p class="lede">Four keys gate the descent, plus one off-chain keyring for the prison. The zone is vertical and the keys are the only way through it.</p>
+  <div class="chain">
+    <div class="link"><p class="step">Key 1</p><p class="who">The guard captain <span class="lv">L25 &middot; 33% &middot; southern wing</span></p><p class="gives"><strong>Shiny Metal Key</strong><br>Opens the cell outside Rathyl's room</p></div>
+    <div class="link"><p class="step">Key 2</p><p class="who">BoneCracker <span class="lv">L24 &middot; 25% &middot; &minus;262, 167</span></p><p class="gives"><strong>Dull Bone Key</strong><br>Opens Rathyl's area itself</p></div>
+    <div class="link"><p class="step">Key 3</p><p class="who">Rathyl <span class="lv">L27 &middot; 33% &middot; &minus;670, &minus;119</span></p><p class="gives"><strong>Bloodstained Key</strong><br>Opens Drelzna's room</p></div>
+    <div class="link"><p class="step">Key 4</p><p class="who">Drelzna <span class="lv">L25 &middot; 20% &middot; &minus;35, &minus;222</span></p><p class="gives"><strong>Golden Crescent Key</strong><br>Opens Najena's room</p></div>
+  </div>
+  <ul class="tight">
+    <li><strong>Keys 1 and 2 are both needed before you can reach Rathyl at all.</strong> The Shiny Metal Key opens the outer cell; the Dull Bone Key opens his area behind it. A small enough character can slip through the bars instead and skip both.</li>
+    <li><strong>All four keys now persist through logout — but the wiki's own prose still says otherwise, and it is wrong.</strong> The narrative section claims "these first two keys are the only keys that aren't No Rent." That sentence is imported Project 1999 text and appears verbatim on Allakhazam. The <strong>item records tell a different story:</strong> the Bloodstained Key lost NO RENT / Temporary on <strong>24 June</strong> and the Golden Crescent Key lost its on <strong>7 July</strong>, and neither carries the flag on its page now. <strong>The old advice to run Rathyl → Drelzna → Najena in one unbroken sitting no longer applies.</strong><span class="tag new">verified</span></li>
+    <li><strong>Doors search your bags as of 7 July.</strong> You no longer need the key on your cursor. Guides written before that date say otherwise.</li>
+    <li><strong>The wiki contradicts itself on which key is "first."</strong> Its section headings number the Dull Bone Key as #1 and the Shiny Metal Key as #2; its ordered walkthrough says get the Shiny Metal Key first. It does not matter — you need both before Rathyl opens, so take whichever named is up.</li>
+    <li><strong>Guard's Keyring</strong> is off the chain and opens the prison cells. It drops from <strong>ogre guards, guard officers and Moosh</strong>, and Moosh has been a <strong>guaranteed</strong> drop for it since 29 June. If a pit trap has dumped you into the prison, that is your way out.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Named roster</h2>
+  <p class="lede">The 23 June revamp promised "a striking lack of placeholders." The percentages below are what the wiki still records; where a named has a known placeholder it is named, because several clearly still do.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">Najena</td><td class="loc">353, 105</td><td class="lv">35</td><td class="cls">DARK ELF<br>MAG</td><td class="src">Room 2, behind key 4. <strong>Placeholder is an earth elemental.</strong> Respawn about 19 minutes. Flanked by two magicians and their pets. The wiki's prose calls her "about 29th level" — that is stale classic text; <strong>the NPC record says 35.</strong><span class="tag warn">L35</span></td></tr>
+      <tr><td class="nmob">The Widowmistress</td><td class="loc">460, 220</td><td class="lv">34</td><td class="cls">DARK ELF<br>ROG</td><td class="src"><strong>Placeholder is the giant black widow at that exact coordinate</strong> — one of four spiders back by the goblin camps. Drops the Darkspun Shroud.</td></tr>
+      <tr><td class="nmob">Akksstaff</td><td class="loc">372, &minus;73</td><td class="lv">30&ndash;32</td><td class="cls">DARK ELF<br>MAG</td><td class="src"><strong>May con indifferent rather than kill-on-sight</strong> — the wiki suspects Beta Neutral faction. Damask Robe and the Dark Gold Sr Apprentice Robe.</td></tr>
+      <tr><td class="nmob">Rathyl reincarnate</td><td class="loc"><span style="color:#C9453A">on Rathyl's corpse</span></td><td class="lv">30</td><td class="cls">SKELETON<br>WAR</td><td class="src"><strong>Spawns instantly where Rathyl dies.</strong> Procs a 35-damage frost spell. Carries the Hollowed Bone Bracers and two Torn Pages of Mastery. Do not loot with your back to the corpse.<span class="tag warn">instant</span></td></tr>
+      <tr><td class="nmob">Rathyl</td><td class="loc">&minus;670, &minus;119</td><td class="lv">27</td><td class="cls">DARK ELF<br>NEC</td><td class="src">33%, 19-minute respawn. <strong>Placeholder is a magician.</strong> Behind two locked doors at the far south end.</td></tr>
+      <tr><td class="nmob">The Blood Artist</td><td class="loc">187, &minus;224, &minus;11</td><td class="lv">27</td><td class="cls">DARK ELF<br>NEC</td><td class="src">The Artist's Brush and The Muse's Flayed Legs — one of the few named here carrying gear for both a caster and a melee.</td></tr>
+      <tr><td class="nmob">Ekeros</td><td class="loc">&minus;681, &minus;49</td><td class="lv">26</td><td class="cls">HUMAN<br>ROG</td><td class="src">33%. <strong>Behind a locked jail cell on the bottom floor.</strong> To pull him outside the cell, use a thrown item or a spell.</td></tr>
+      <tr><td class="nmob">Drelzna</td><td class="loc">&minus;35, &minus;222</td><td class="lv">25</td><td class="cls">DARK ELF<br>SHD</td><td class="src">20%. <strong>Placeholder is the necromancer that spawns in front of the chair in the middle of the room.</strong> The zone's headline camp — see the Journeyman's Boots note in section 06.</td></tr>
+      <tr><td class="nmob">The guard captain</td><td class="loc">southern wing<br><span style="color:#8A9998">record lists 52, 187</span></td><td class="lv">25</td><td class="cls">OGRE<br>WAR</td><td class="src">33%. <strong>Flanked by a pair of guards, usually including a guard officer.</strong> A standard warrior with no special abilities — but he is a wall of ogre with two friends.</td></tr>
+      <tr><td class="nmob">A Visiting Priestess</td><td class="loc">&minus;493, 170</td><td class="lv">25</td><td class="cls">DARK ELF<br>CLR</td><td class="src"><strong>10%</strong> — the lowest rate in the zone. Recorded as spawning to the right of the guard captain, though the coordinates disagree. <strong>Starts the only quest that begins in Najena.</strong></td></tr>
+      <tr><td class="nmob">Lost Crusader</td><td class="loc">135, 287, 4<br>144, 119, &minus;13</td><td class="lv">25</td><td class="cls">DWARF<br>SHD</td><td class="src">Two spawn points in the front halls. Sword of the Lost and the Signet Ring — the best early weapon here for a paladin or shadow knight.</td></tr>
+      <tr><td class="nmob">Unbound Flame</td><td class="loc">&minus;26, 360, 5</td><td class="lv">25</td><td class="cls">FIRE ELEMENTAL<br>WIZ</td><td class="src">Dead-end room to the left of the entry. A wizard-class elemental — <strong>the only source of the Flaming Fist</strong>, and reachable within a minute of zoning in.</td></tr>
+      <tr><td class="nmob">BoneCracker</td><td class="loc">&minus;262, 167</td><td class="lv">24</td><td class="cls">OLD FROGLOK GHOUL<br>WAR</td><td class="src">25%, and the prose adds he spawns every 20 minutes. <strong>Shares his room with two dark elf necromancers</strong> — plan for three.</td></tr>
+      <tr><td class="nmob">Officer Grush</td><td class="loc">~&minus;385, 230</td><td class="lv">24</td><td class="cls">OGRE<br>SHM</td><td class="src"><strong>Casts Root and Walking Sleep.</strong> Expect to be held in place. Carries a shaman-only spear.<span class="tag warn">roots</span></td></tr>
+      <tr><td class="nmob">Trazdon</td><td class="loc">&minus;225, 150</td><td class="lv">24</td><td class="cls">DARK ELF<br>NEC</td><td class="src">Room 7. <strong>On a ramp above a pool of blood with two elementals spawned below him.</strong> Flees under 10%. The widest loot spread of any mid named here.</td></tr>
+      <tr><td class="nmob">The Tenderizer</td><td class="loc">131, 342, 4</td><td class="lv">22</td><td class="cls">OGRE<br>WAR</td><td class="src">Near the front. <strong>Carries the Kitchen Toolbelt</strong> — see section 06. For most groups this is the first thing worth killing in the zone.</td></tr>
+      <tr><td class="nmob">Moosh</td><td class="loc">&minus;6, &minus;92</td><td class="lv">18</td><td class="cls">OGRE<br>WAR</td><td class="src">9% in the prison. <strong>Guaranteed Guard's Keyring since 29 June.</strong> Flees, and may social with the prisoners. <strong>Read the faction warning in section 08 before touching him.</strong><span class="tag warn">faction</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h3>The population — and where it stands</h3>
+  <p class="lede">Coordinates below are the wiki's own. These are the mobs you will actually spend the day fighting, and several of them are placeholders for the named above.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Mob</th><th>Lvl</th><th>Class</th><th>Locations &amp; behaviour</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">A magician</td><td class="lv">9&ndash;23</td><td class="cls">DARK ELF · MAG</td><td class="src">Ten recorded points: (0, 110), (&minus;25, &minus;25), (110, &minus;138), (110, &minus;190), (130, &minus;163), (&minus;700, &minus;40), (&minus;670, &minus;40), (&minus;700, &minus;67), (&minus;690, &minus;120), (357, 175). <strong>The 14&ndash;15s are at the gate and the room just after; the deep cluster around &minus;700 guards Rathyl.</strong> Drops the full Damask set.</td></tr>
+      <tr><td class="nmob">A guard officer</td><td class="lv">22&ndash;25</td><td class="cls">OGRE · WAR</td><td class="src">(60, 175) and (80, 230), and the wiki flags its own list as incomplete. Ordinary ogres, common throughout. Drops the Guard's Keyring, Whore's Bane and the Large Ringmail Coif.</td></tr>
+      <tr><td class="nmob">A skeleton <em>(Najena)</em></td><td class="lv">21&ndash;22</td><td class="cls">UNDEAD · WAR</td><td class="src">(40, &minus;60), (270, 25), (170, 100), (135, 285). <strong>The wiki's words: the highest-level and most dangerous skeletons in all of Najena</strong>, despite the plain name. Drops the Hilt of the Nobleman and the bronze weapon line.</td></tr>
+      <tr><td class="nmob">Tentacle Terror</td><td class="lv">20&ndash;22</td><td class="cls">TENTACLE · WAR</td><td class="src">10% at (10, 190), (&minus;70, 190), (&minus;10, 395), (&minus;75, 340). <strong>Placeholder is a large skeleton.</strong> Drops Terror Spines, no-drop.</td></tr>
+      <tr><td class="nmob">A froglok ghoul</td><td class="lv">20</td><td class="cls">OLD FROGLOK GHOUL · WAR</td><td class="src">(245, 109). Froglok Blood and Froglok Meat.</td></tr>
+      <tr><td class="nmob">An injured halfling</td><td class="lv">20</td><td class="cls">HALFLING · WAR</td><td class="src">(&minus;50, &minus;75), in a cell with Linara Parlone. <strong>Will rush to Moosh's aid for no apparent reason.</strong> Drops A Shovel and two Torn Pages of Mastery.</td></tr>
+      <tr><td class="nmob">Linara Parlone</td><td class="lv">25</td><td class="cls">HIGH ELF · ENC</td><td class="src">Prison, western cell, northern wall, opposite the halfling. A prisoner of Najena. <strong>Primary faction may be Keepers of the Art.</strong> Drops A Stein, A Shovel, A Broom and a Torn Page of Mastery Fire — four separate quest lines.</td></tr>
+      <tr><td class="nmob">A giant black widow</td><td class="lv">18&ndash;22</td><td class="cls">SPIDER · WAR</td><td class="src">(460, &minus;160), (440, 80), (420, 130), (460, 220). <strong>Flees at 15%.</strong> The one at (460, 220) is the Widowmistress placeholder.</td></tr>
+      <tr><td class="nmob">A necromancer</td><td class="lv">18&ndash;24</td><td class="cls">DARK ELF · NEC</td><td class="src">33% at (271, 181), (265, 158) and (&minus;52, &minus;217), all basement. Assistants to Drelzna and Najena. <strong>The centre spawn is Drelzna's placeholder.</strong></td></tr>
+      <tr><td class="nmob">A goblin magician</td><td class="lv">17&ndash;19</td><td class="cls">GOBLIN · MAG</td><td class="src">15% at (423, 27), (425, 44), (192, &minus;75), (441, 32). <strong>Summon elementals and cast a damage shield on anything nearby.</strong> Drop mage focus quest items.</td></tr>
+      <tr><td class="nmob">A goblin warrior <em>(Najena)</em></td><td class="lv">15&ndash;17</td><td class="cls">GOBLIN · WAR</td><td class="src">(271, &minus;66). <strong>Placeholder for the minotaur.</strong> Southern camp has three spawns, northern camp five.</td></tr>
+      <tr><td class="nmob">A Minotaur</td><td class="lv">29</td><td class="cls">MINOTAUR · WAR</td><td class="src">Large goblin camp, by the Widowmistress. Drops the <strong>Minotaur Horn</strong> — a Wind Resonance 10 focus item.</td></tr>
+      <tr><td class="nmob">Dark-boned skeleton</td><td class="lv">15&ndash;19</td><td class="cls">SKELETON · WAR</td><td class="src">50% at (134, 189), (&minus;105, 3), (&minus;93, 2). Drops Darkbone Marrow, a quest item.</td></tr>
+      <tr><td class="nmob">An ogre guard</td><td class="lv">10&ndash;20</td><td class="cls">OGRE · WAR / SHD</td><td class="src">Throughout the front halls. Carries the Guard's Keyring and the bronze two-handers.</td></tr>
+      <tr><td class="nmob">An earth elemental</td><td class="lv">9&ndash;17</td><td class="cls">ELEMENTAL · WAR</td><td class="src"><strong>Najena's own placeholder</strong>, and the most common of the three elemental types. Drops Iron Oxide, Russet Oxide, Drop of Mercury and the Hardened Brick of Clay.</td></tr>
+      <tr><td class="nmob">A mist elemental</td><td class="lv">9&ndash;16</td><td class="cls">WATER ELEMENTAL · WAR</td><td class="src"><strong>Invulnerable to regular weapons, and casts invisibility on itself seconds after spawning.</strong> Requires See Invisible to target and magic damage to kill. Kill-on-sight to everyone. Drops Swirling Mist.<span class="tag warn">magic only</span></td></tr>
+      <tr><td class="nmob">A large skeleton · a greater skeleton</td><td class="lv">8&ndash;20</td><td class="cls">SKELETON · WAR</td><td class="src">The front-hall filler, two or three to a room. Cloth armour, rusty weapons, bone chips, Darkbone Marrow.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Loot table</h2>
+  <p class="lede">The wiki lists 80 items dropping here. Weapon lines read damage / delay. As of 29 July every roll is gated to your difficulty tier or better, with a diminishing chance at higher tiers.</p>
+
+  <div class="note fresh"><strong>Journeyman's Boots — the headline item, and the sources disagree.</strong> The eqlwiki <em>item record</em> names its source plainly: <strong>Najena, Drelzna.</strong> The zone map entry for room 5 lists her dropping them with full stats — <strong>FEET, AC 1, NO DROP, clickable JourneymanBoots effect.</strong> Against that, one line of narrative prose says she "used to spawn the Journeyman Boots (but not as of ? era)" — a sentence that ends in a literal question mark and appears <em>word for word</em> on Allakhazam, marking it as imported classic text rather than a Legends observation. Two further points favour the drop: the map section was expanded on 6 and 24 July by an active editor, and the <strong>23 June Najena patch note ends with the developers joking "I could swear my Journeyman's Boots are 1% faster."</strong><br><br><strong>Working conclusion: expect them off Drelzna, and treat the prose hedge as stale.</strong> A separate Journeyman's Boots Quest also exists as an alternative route. If you camp her and they never drop, that is the single most valuable correction you could send back.</div>
+
+  <h3>Chase items</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Journeyman's Boots</td><td class="st">Feet · no drop</td><td class="st">AC 1<br><strong>Clickable run speed</strong>, instant, any slot</td><td class="cls all">ALL · all races</td><td class="src">Drelzna · L25 <span class="tag warn">see note</span></td></tr>
+      <tr><td class="it">Kitchen Toolbelt</td><td class="st">Waist · lore · attunable</td><td class="st"><strong>Haste +10%</strong></td><td class="cls all">ALL · all races</td><td class="src">The Tenderizer · L22</td></tr>
+      <tr><td class="it">Blued Two-Handed Hammer</td><td class="st">Primary · 2H Blunt<br><strong>21</strong> / 44 · lore</td><td class="st">DEX +3 · STA +3 · <strong>MANA +30</strong><br>SV Fire +10<br>Project Lightning proc at level 30</td><td class="cls">ALL except BRD ROG<br>NEC WIZ MAG ENC</td><td class="src">A Visiting Priestess<br><em>quest reward, min level 30</em></td></tr>
+      <tr><td class="it">Ashenwood Short Spear</td><td class="st">Primary · Pierce<br>6 / 22 · backstab 6 · lore</td><td class="st"><strong>Haste proc at level 25</strong></td><td class="cls">WAR RNG SHD BRD ROG BST</td><td class="src">Drelzna · L25 <em>(rare)</em></td></tr>
+      <tr><td class="it">Flowing Black Robe</td><td class="st">Chest · lore · focus</td><td class="st">AC 8 · STA +5 · INT +3<br>Reanimation Efficiency I</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Najena · L35 <em>(common)</em></td></tr>
+      <tr><td class="it">Black Tome with Silver Runes</td><td class="st">Primary · focus</td><td class="st">INT +4 · <strong>MANA +30</strong><br>Burning Affliction II</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Najena · L35 <em>(rare)</em></td></tr>
+      <tr><td class="it">Clawed Knuckle-Ring</td><td class="st">Finger · focus</td><td class="st"><strong>HP +20</strong><br>Extended Enhancement II</td><td class="cls all">ALL · all races</td><td class="src">Najena · L35 <em>(rare)</em></td></tr>
+      <tr><td class="it">Dark Mail Coat</td><td class="st">Chest · attunable</td><td class="st"><strong>AC 10</strong> · HP +10 · END +10<br>STR +3 · STA +3</td><td class="cls">WAR CLR PAL RNG SHD<br>BRD ROG SHM BER</td><td class="src">The guard captain · L25</td></tr>
+      <tr><td class="it">Dark Mail Mittens</td><td class="st">Hands · attunable</td><td class="st">AC 7 · HP +5 · STA +2<br>SV Fire +5</td><td class="cls">WAR CLR PAL RNG SHD<br>BRD ROG SHM BER</td><td class="src">The guard captain · L25</td></tr>
+      <tr><td class="it">Traveling Sollerets</td><td class="st">Feet · no drop</td><td class="st"><strong>AC 9</strong> · END +10<br>STA +2 · AGI +2 · SV Cold +5</td><td class="cls">WAR CLR PAL SHD BRD BER</td><td class="src"><span style="color:#C9453A">source not recorded</span></td></tr>
+      <tr><td class="it">Crimson Cape</td><td class="st">Back · lore equipped · attunable</td><td class="st">AC 4 · HP +10 · MANA +10<br><strong>INT +5</strong></td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Rathyl · L27</td></tr>
+      <tr><td class="it">Hollowed Bone Bracers</td><td class="st"><strong>Arms</strong> · focus</td><td class="st">AC 6 · MANA +15 · SV Magic +7<br>Burning Affliction I</td><td class="cls">CLR DRU BRD SHM<br>NEC WIZ MAG ENC</td><td class="src">Rathyl reincarnate · L30</td></tr>
+      <tr><td class="it">Darkspun Shroud</td><td class="st"><strong>Shoulders</strong> · attunable</td><td class="st">AC 3 · AGI +7 · CHA +5<br>+3 Magic / Cold / Poison<br><strong>SV Void +1</strong></td><td class="cls">NEC WIZ MAG ENC</td><td class="src">The Widowmistress · L34</td></tr>
+      <tr><td class="it">Sword of the Lost</td><td class="st">Primary · 1H Slash<br><strong>15</strong> / 40 · lore equipped</td><td class="st">STA +4</td><td class="cls">PAL SHD</td><td class="src">Lost Crusader · L25</td></tr>
+      <tr><td class="it">Stiletto of the Bloodclaw</td><td class="st">Primary / Secondary<br>Pierce 6 / 23 · backstab 6 · lore</td><td class="st">Blood Claw proc at level 18</td><td class="cls">SHD ROG NEC</td><td class="src">Drelzna · L25</td></tr>
+      <tr><td class="it">Flaming Fist</td><td class="st">Primary / Secondary<br>Hand to Hand 6 / <strong>18</strong></td><td class="st"><strong>SV Fire +20</strong></td><td class="cls">MNK BST</td><td class="src">Unbound Flame · L25 <em>(rare)</em></td></tr>
+      <tr><td class="it">Emissary Mask</td><td class="st">Face · attunable · focus</td><td class="st">AC 4 · WIS +3 · SV Fire +3<br>Improved Healing I</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">A Visiting Priestess · L25</td></tr>
+      <tr><td class="it">The Artist's Brush</td><td class="st">Range / Primary / Secondary<br>attunable · focus</td><td class="st">INT +3 · DEX +3 · MANA +10<br>Reagent Conservation I</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">The Blood Artist · L27</td></tr>
+      <tr><td class="it">The Muse's Flayed Legs</td><td class="st">Legs · attunable</td><td class="st">AC 6 · END +5 · STR +2<br><span style="color:#C9453A">SV Disease &minus;5</span></td><td class="cls">WAR RNG SHD DRU MNK<br>BRD ROG SHM BST BER</td><td class="src">The Blood Artist · L27</td></tr>
+      <tr><td class="it">Dark Circlet</td><td class="st">Head · lore equipped · no trade<br>quest · focus</td><td class="st">AC 4 · INT +4 · HP +10 · CHA &minus;2<br>Reanimation Efficiency I</td><td class="cls">NEC only</td><td class="src">Trazdon · L24</td></tr>
+      <tr><td class="it">Band of Flesh</td><td class="st">Finger · focus</td><td class="st">STR +2<br>Summoning Efficiency I</td><td class="cls all">ALL · all races</td><td class="src">BoneCracker · L24 <em>(common)</em></td></tr>
+      <tr><td class="it">Minotaur Horn</td><td class="st">Primary / Secondary · focus</td><td class="st"><strong>Wind Resonance 10</strong></td><td class="cls all">ALL · all races</td><td class="src">A Minotaur · L29</td></tr>
+      <tr><td class="it">Ogre War Maul</td><td class="st">Primary · 2H Blunt<br>17 / 50</td><td class="st">&mdash;</td><td class="cls">ALL except BRD ROG<br>NEC WIZ MAG ENC</td><td class="src">The guard captain · L25</td></tr>
+      <tr><td class="it">Dull Wooden Spear</td><td class="st">Primary · Pierce<br>8 / 33 · lore equipped · no trade</td><td class="st">WIS +2 · AGI +2 · SV Cold +5</td><td class="cls">SHM only</td><td class="src">Officer Grush · L24</td></tr>
+      <tr><td class="it">Barbed Leather Whip</td><td class="st">Primary / Secondary<br>1H Slash 7 / 28</td><td class="st">&mdash;</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">BoneCracker · L24 <em>(rare)</em></td></tr>
+      <tr><td class="it">Leering Mask</td><td class="st">Face</td><td class="st">AC 3 · DEX +3</td><td class="cls all">ALL · all races</td><td class="src">BoneCracker · L24 <em>(rare)</em></td></tr>
+      <tr><td class="it">Blackened Sapphire</td><td class="st">Primary / Secondary</td><td class="st">STA +3 · MANA +5</td><td class="cls">CLR SHD DRU<br>NEC WIZ MAG ENC</td><td class="src">Ekeros · L26</td></tr>
+      <tr><td class="it">Drop of Crystallized Flame</td><td class="st">Ear · lore equipped<br>attunable · quest</td><td class="st">AC 1 · MANA +10 · INT +1</td><td class="cls">PAL SHD NEC WIZ MAG ENC</td><td class="src">Unbound Flame · L25 <em>(common)</em></td></tr>
+      <tr><td class="it">Earring of Disease Reflection</td><td class="st">Ear</td><td class="st">AC 1 · <strong>SV Disease +5</strong><br><span style="color:#8A9998">the name oversells it — it is a save, not a reflect</span></td><td class="cls all">ALL · all races</td><td class="src">Drelzna · L25 <em>(common)</em></td></tr>
+      <tr><td class="it">The Tenderizer <em>(weapon)</em></td><td class="st">Primary / Secondary<br>1H Blunt 5 / <strong>19</strong> · lore</td><td class="st">STR +2</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">The Tenderizer · L22</td></tr>
+      <tr><td class="it">Signet Ring of the Lost Crusader</td><td class="st">Finger · lore equipped</td><td class="st">STR +1 · INT +1</td><td class="cls all">ALL · all races</td><td class="src">Lost Crusader · L25</td></tr>
+      <tr><td class="it">Binding Bracelets</td><td class="st">Wrist · attunable</td><td class="st">AC 3 · MANA +5 · INT +1</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Trazdon · L24</td></tr>
+      <tr><td class="it">Dark Gold Sr Apprentice Robe</td><td class="st">Chest · lore</td><td class="st">AC 4 · MANA +2</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Akksstaff · L30&ndash;32</td></tr>
+      <tr><td class="it">Stone Circlet · Stone Collar<br>Stone Bracelet</td><td class="st">Head · Neck · Wrist</td><td class="st">AC 6 · AC 5 · AC 4<br><span style="color:#8A9998">no stats, pure armour</span></td><td class="cls all">ALL · all races</td><td class="src">Elementals <em>(unconfirmed which type)</em></td></tr>
+      <tr><td class="it">Soft Leather Shoes</td><td class="st">Feet</td><td class="st">AC 3</td><td class="cls all">ALL · all races</td><td class="src">Various</td></tr>
+      <tr><td class="it">Bronze Rapier</td><td class="st">Primary / Secondary<br>Pierce 4 / 28 · backstab 4</td><td class="st">&mdash;</td><td class="cls">WAR RNG SHD BRD ROG</td><td class="src">Trazdon · L24</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>The Kitchen Toolbelt is the reason to come here at 20.</strong> A +10% haste waist item, usable by <em>every class and every race</em>, off a level 22 ogre near the front of the zone — and the <strong>7 July patch removed the low-level item haste cap</strong>, so it now works as printed. Nothing else in this bracket is close, and you do not need a single key to reach him.</div>
+  <div class="note"><strong>Najena is a caster's zone by design.</strong> Three of the four best items she drops are NEC WIZ MAG ENC only, the Damask set below is the same, and the magicians and goblin magicians carry mage focus quest items. A melee-heavy group will still level well but will watch most of the loot go to someone else — and will be stonewalled outright by mist elementals.</div>
+
+  <h3>Damask Armor — eleven slots, off ordinary magicians</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Piece</th><th>Slot</th><th>AC</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Damask Robe</td><td class="st">Chest</td><td class="lv"><strong>6</strong></td><td class="src">Focus: Extended Enhancement I. Also off Trazdon and Akksstaff</td></tr>
+      <tr><td class="it">Damask Leggings</td><td class="st">Legs</td><td class="lv">4</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Cap</td><td class="st">Head</td><td class="lv">3</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Cape</td><td class="st">Back</td><td class="lv">3</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Gloves</td><td class="st">Hands</td><td class="lv">3</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Sleeves</td><td class="st">Arms</td><td class="lv">3</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Amice</td><td class="st">Shoulders</td><td class="lv">2</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Collar</td><td class="st">Neck</td><td class="lv">2</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Sash</td><td class="st">Waist</td><td class="lv">2</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Veil</td><td class="st">Face</td><td class="lv">2</td><td class="src">&mdash;</td></tr>
+      <tr><td class="it">Damask Wristbands</td><td class="st">Wrist</td><td class="lv">2</td><td class="src">&mdash;</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note">All eleven pieces are <strong>NEC WIZ MAG ENC, all races</strong>, and all drop from ordinary <strong>a magician</strong> spawns — ten recorded points spread from the entry gate to the deep cluster guarding Rathyl. <strong>The whole set assembles from normal clearing, no keys and no named required.</strong> Damask also drops in Befallen, so pieces from either zone combine.</div>
+
+  <h3>Keys, quest items and components</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>What it is for</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Shiny Metal Key</td><td class="st">Key 1 — cell outside Rathyl's room · <span style="color:#5FA37E">persists</span></td><td class="src">The guard captain</td></tr>
+      <tr><td class="it">Dull Bone Key</td><td class="st">Key 2 — Rathyl's area · <span style="color:#5FA37E">persists</span></td><td class="src">BoneCracker</td></tr>
+      <tr><td class="it">Bloodstained Key</td><td class="st">Key 3 — Drelzna's room · <span style="color:#5FA37E">No Rent removed 24 June</span></td><td class="src">Rathyl · also listed off Drelzna</td></tr>
+      <tr><td class="it">Golden Crescent Key</td><td class="st">Key 4 — Najena's room · <span style="color:#5FA37E">No Rent removed 7 July</span></td><td class="src">Drelzna</td></tr>
+      <tr><td class="it">Guard's Keyring</td><td class="st">Opens the prison cells — off-chain</td><td class="src">Moosh <em>(guaranteed since 29 June)</em> · ogre guards · guard officers</td></tr>
+      <tr><td class="it">Torn Page of Mastery<br>Earth · Water · Fire · Wind</td><td class="st"><strong>Magician epic components</strong> · no drop</td><td class="src">Rathyl reincarnate <em>(Earth, Wind)</em><br>An injured halfling <em>(Earth, Water)</em><br>Linara Parlone <em>(Fire)</em></td></tr>
+      <tr><td class="it">A Stein · A Shovel<br>A Broom · A Torch</td><td class="st">Stein of Ulissa, Shovel of Ponz,<br>Broom of Trilon, Torch of Alna quests</td><td class="src">Linara Parlone · an injured halfling · various</td></tr>
+      <tr><td class="it">Hilt of the Nobleman</td><td class="st">The Sword of Nobility · lore · no drop</td><td class="src">A skeleton <em>(Najena)</em></td></tr>
+      <tr><td class="it">Whore's Bane</td><td class="st">Quest item</td><td class="src">Moosh · guard officers</td></tr>
+      <tr><td class="it">Terror Spines</td><td class="st">Quest component · lore · no drop</td><td class="src">Tentacle Terror</td></tr>
+      <tr><td class="it">Darkbone Marrow</td><td class="st">Quest item</td><td class="src">Dark-boned skeletons · greater skeletons</td></tr>
+      <tr><td class="it">Froglok Blood · Froglok Meat</td><td class="st">Quest components</td><td class="src">A froglok ghoul</td></tr>
+      <tr><td class="it">Spider Silk · Spider Legs</td><td class="st">Tradeskill and quest components</td><td class="src">Giant black widows</td></tr>
+      <tr><td class="it">Large Ringmail Coif</td><td class="st">Armour</td><td class="src">A guard officer</td></tr>
+      <tr><td class="it">Bronze weapon line<br><span style="color:#8A9998">Axe · Flail · Halberd · Warhammer<br>2H Battle Axe · 2H Hammer</span></td><td class="st">Vendor fodder and early melee</td><td class="src">Skeletons · ogre guards</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>Two epics route through this zone.</strong> The wiki's related-quest list names the <strong>Necromancer Epic</strong> and the <strong>Magician Epic</strong>, alongside The Mystic Cloak, The Visiting Priestess, and the Torch of Alna, Shovel of Ponz, Stein of Ulissa and Broom of Trilon chains. The four <strong>Torn Pages of Mastery</strong> — Earth, Water, Fire and Wind — are the magician thread, and three of the four come out of the prison and Rathyl's wing.</div>
+  <div class="note"><strong>Only one quest actually starts here:</strong> The Visiting Priestess, minimum level 30, rewarding the <strong>Blued Two-Handed Hammer</strong>. It runs through Mistmoore Castle, Neriak Commons, Neriak Third Gate and Solusek's Eye — so it is a long chain begun off a 10% spawn.</div>
+</section>
+
+<section>
+  <h2><span class="num">07</span>The elemental rotation</h2>
+  <p class="lede">This section has no equivalent in any other plate in this series, because no other zone documents its spawn system this precisely. It is the wiki's own farming guide, and it is Legends-era content rather than imported prose.</p>
+  <div class="note"><strong>There are sixteen elemental spawn locations in Najena</strong>, not counting Najena's own placeholder. Three types rotate through them — <strong>Earth, Mist and Fire</strong> — but not every spot spawns every type. The pattern the wiki records is three variants: <strong>some spots produce only Earth; others alternate Earth or Mist; two alternate Earth or Fire.</strong> On the spots that vary, the split is roughly even.</div>
+  <div class="camps">
+    <div class="camp"><p class="band">Most common</p><h4>Earth elemental</h4>
+      <p>Appears at every spot. <strong>Also Najena's placeholder</strong>, which is why her camp is an elemental camp.</p>
+      <p>Drops <strong>Iron Oxide, Russet Oxide, Drop of Mercury</strong> and the Hardened Brick of Clay.</p></div>
+    <div class="camp"><p class="band">Middling</p><h4>Mist elemental</h4>
+      <p>Only on spots that alternate with Earth. <strong>Invulnerable to regular weapons and self-invisible seconds after spawn.</strong></p>
+      <p>Drops <strong>Swirling Mist</strong>. Bring See Invisible and magic damage or skip them entirely.</p></div>
+    <div class="camp"><p class="band">Rarest</p><h4>Fire elemental</h4>
+      <p>Only two spots can produce it, alternating with Earth. Unbound Flame at the entry is a fire elemental named.</p>
+      <p>Drops <strong>Lava Rock and Charcoal</strong> — the scarcest components in the zone.</p></div>
+  </div>
+  <div class="note"><strong>What a long session actually yields.</strong> The wiki records a four-hour-plus farming run producing <strong>well over a stack of Drops of Mercury, about fifteen Swirling Mists, and six Lava Rocks.</strong> Fine Plate dye components came out similarly — a stack and more of Iron and Russet Oxides against five or six Charcoals. The estimate given is <strong>roughly twenty to twenty-five percent drop rate for each individual dye and temper component.</strong> The ratio between the three elemental types is the thing to plan around: mercury accumulates on its own, lava rock does not.</div>
+  <div class="note fresh"><strong>If Lava Rocks are the goal, leave the dungeon.</strong> The wiki's own advice is that <strong>Lavastorm Mountains outperforms Najena</strong> for them. One named spot: the middle of a gas plume at the edge of a small lava pool, <code>/loc &minus;985, +115</code>, directly north of the Lavastorm–Nektulos zone line entrance. <strong>That point spawns a fire elemental every six minutes</strong>, and there are likely others in the zone.</div>
+</section>
+
+<section>
+  <h2><span class="num">08</span>Dangers</h2>
+  <div class="note danger"><strong>Mist elementals cannot be hurt by ordinary weapons, and they hide.</strong> They cast invisibility on themselves several seconds after spawning, so <strong>See Invisible is needed even to target them</strong> and magic damage to kill them. They are kill-on-sight to everyone. A melee-only group will be stonewalled at a spawn point it cannot clear — route around it or bring a caster. This is the single most likely thing to stop a group cold in this zone.</div>
+  <div class="note danger"><strong>Do not kill Moosh in the prison.</strong> Attacking him brings <strong>an injured halfling</strong> out of the cell to help him, and killing that halfling <strong>tanks every Rivervale faction.</strong> Moosh also attacks players far above his level, so simply loitering in the prison is a bad idea. If you are trapped in a cell he is the way out — take the keyring and leave.</div>
+  <div class="note danger"><strong>Two pit traps on the upper level drop you into the prison.</strong> They are marked X on the wiki map, easy to fall into, and much harder to climb out of. The Guard's Keyring is what gets you out — which is the one legitimate reason to want Moosh dead. Some players use the traps deliberately as a shortcut to Rathyl, shrinking to fit through the bars.</div>
+  <div class="note danger"><strong>The front rooms swarm.</strong> Two to three skeletons lie on the floor of any given room, and each is inside the aggro trigger radius of the others. Below about level 17 the wiki's advice is blunt: <strong>walking into a room can bring four or more creatures at once.</strong> Elementals and ogre guards are mixed in and all attack on sight.</div>
+  <div class="note danger"><strong>Officer Grush roots.</strong> He casts Root and Walking Sleep, so expect to be held in place next to an ogre camp. <strong>The "skeletons" at 21&ndash;22 are the most dangerous mobs in the front half</strong> despite the plain name — do not read a green con on a large skeleton and assume the room is safe.</div>
+  <div class="note danger"><strong>Rathyl reincarnates instantly.</strong> A level 30 skeleton rises on his corpse the moment he dies, procing a 35-damage frost spell. If your group relaxes to loot, it opens on you at full health. Note also that <strong>Trazdon flees under 10%</strong> and, since 28 July, you cannot chain-stun a runner.</div>
+  <div class="note"><strong>The counterweight: this is a fair zone once you know it.</strong> Nothing here death-touches, nothing here harm-touches for hundreds, and no named requires a raid. The dangers are all positional — traps, swarms, an unhittable mob type and one faction landmine — and every one of them is avoidable with the map in hand.</div>
+</section>
+
+<section>
+  <h2><span class="num">09</span>Getting there</h2>
+  <ul class="tight">
+    <li>The entrance is in the <strong>southeastern corner of Lavastorm Mountains</strong>. The wiki calls it impossible to miss — a huge set of double doors with one blown off its hinges.</li>
+    <li><strong>Lavastorm is the only adjacent zone</strong>, and no wizard teleport lands there. This is a druid trip or a run.</li>
+    <li><strong>Ring of Lavastorm</strong> (druid, self) is the first travel option available; <strong>Circle of Lavastorm</strong> (druid, group) comes considerably later. Exact levels are disputed between two wiki pages — see the note below.</li>
+    <li><strong>Nektulos Gate / Nektulos Portal</strong> (wizard) is the overland approach, then a run east and north to Lavastorm.</li>
+    <li><strong>Rituals</strong> take a flat 20 seconds, require being out of combat and resting, and drain your full mana and endurance on completion. They are a travel tool, never an escape.</li>
+    <li><strong>Characters at or below level 4 cannot enter.</strong> You are placed near the Nektulos Forest zone line with the message "You are not yet experienced enough to pass through an inter-planar portal."</li>
+    <li>Succor and evacuate drop you at <code>&minus;13, 856</code>, the zone line back to Lavastorm.</li>
+  </ul>
+  <div class="note"><strong>Port levels remain unresolved across the project.</strong> The eqlwiki <em>Rituals</em> page and the <em>Travel Guide</em> page disagree on druid and wizard port levels, and the Travel Guide has already been proven wrong about translocator routes. This plate does not quote a specific level for that reason. <strong>Gnoll Guard's spell pages are the likeliest source to settle it</strong>, since its spell data was rebuilt from the game client as of the 27 July patch with per-class level requirements verified field by field.</div>
+</section>
+
+<footer>
+  <h3>Sources &amp; confidence</h3>
+  <p>Structured data — mob levels, races, classes, coordinates, spawn rates, item stats, focus effects, ZEM, zone spawn timer and succor point — from the EverQuest Legends community wiki (eqlwiki.com) Najena zone page and its linked NPC, item and quest pages. <strong>That page was last edited at 11:01 on 30 July 2026</strong>, one of ten edits made that morning; the Map section was separately expanded on 6 July and 24 July. Patch data from the official EverQuest Legends notes for 23 and 29 June, 7 July, and 28 and 29 July 2026, cross-checked against the Gnoll Guard patch archive. The Journeyman's Boots question was checked against the eqlwiki item record for that item and against Allakhazam, which confirmed the contradicting sentence is imported classic text.</p>
+  <p><strong>Provenance.</strong> The page was created on 30 July 2025 as a Project 1999 import. Unlike the other zones surveyed in this series it has since received real Legends-era editing, and its structured tables are correspondingly fresh. Its <strong>narrative sections remain classic EverQuest prose</strong> and were used only for layout and for mechanics unlikely to have changed. Where prose and structured record conflict — on key flags, on Najena's level, and on Journeyman's Boots — <strong>the structured record was followed and the conflict is shown in the text rather than hidden.</strong></p>
+  <p><strong>Known gaps.</strong> Rathyl reincarnate's listed coordinate contradicts the same page's statement that he spawns on Rathyl's corpse; the discrepancy is 516 on the Y axis with the X matching exactly. The guard captain's NPC record lists <code>52, 187</code>, which does not agree with the recorded positions of Officer Grush and A Visiting Priestess &mdash; the two NPCs the same page places beside him. This plate follows the latter. <strong>The Traveling Sollerets have no recorded drop source.</strong> The Stone Circlet, Collar and Bracelet are listed as zone drops without a named source. Several named carry only "Various" for loot. The sixteen elemental spawn points are described but not individually located, so they are not plotted. The item table lists 80 items and this plate covers the notable ones. <strong>Verify with <code>/loc</code> and a con check on the first lap.</strong></p>
+  <p>Verified against source, 30 July 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>

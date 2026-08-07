@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sourcing standard — EQL Source</title>
+<meta name="description" content="How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.">
+<meta property="og:title" content="Sourcing standard — EQL Source">
+<meta property="og:description" content="How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css">
+</head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="tools/index.html">Tools</a>
+      <a href="tools/index-search.html">The Index</a>
+      <a href="raids/index.html">Raids</a>
+      <a href="dungeons/index.html">Dungeons</a>
+      <a href="sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="shell">
+  <div class="page-head">
+    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Sources</p>
+    <h1>Sourcing<br>standard</h1>
+    <p class="lede">This site exists because most EverQuest Legends reference material is classic EverQuest text in a
+      Legends-shaped hole. The only defence against that is a standard applied without exceptions, including the
+      inconvenient ones.</p>
+  </div>
+
+  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
+    <div class="sechead"><span class="n">01</span><div><h2 class="sec">The hierarchy</h2></div></div>
+    <div class="cards c2">
+      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest</div>
+        <h3 class="t">Official patch notes</h3>
+        <p class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
+          page&rsquo;s last edit supersedes that page.</p></div>
+      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 2</div>
+        <h3 class="t">Structured wiki data</h3>
+        <p class="d">Infoboxes, NPC tables, item tables, coordinate records on eqlwiki. Machine-shaped fields that
+          somebody entered from the live game.</p></div>
+      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier 3</div>
+        <h3 class="t">Named community guides</h3>
+        <p class="d">eqprogression.com, and maintained wiki user guides such as Alanna&rsquo;s Race Unlock Guide.
+          Named authors, actively updated, dated. Reliable, but they are one person&rsquo;s reading of the game.</p></div>
+      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier 4</div>
+        <h3 class="t">Aggregators</h3>
+        <p class="d">EQL Build Forge, EQ Legends Tools. Useful for cross-checking a number against a second pair of
+          eyes. Each carries a snapshot date; anything older than the last patch is treated as stale.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Tier 5 &middot; marked on sight</div>
+        <h3 class="t">Wiki prose</h3>
+        <p class="d">Large parts are a Project 1999 import, sometimes word for word. It describes a single-class game
+          at fixed difficulty. It is quoted only when marked as classic, never as Legends fact.</p></div>
+    </div>
+    <div class="note sig"><strong>Two systems break almost all inherited advice.</strong> Legends characters run
+      <em>three</em> classes at once, and difficulty D0&ndash;D4 changes mob behaviour rather than mob level. Any line
+      that says &ldquo;you need a full group of level 50s&rdquo; came from a game where neither was true, and is
+      unreliable in both directions.</div>
+  </section>
+
+  <section class="band" id="gaps">
+    <div class="sechead"><span class="n">02</span><div><h2 class="sec">Known gaps</h2>
+      <p class="lede" style="margin:0">This list is expected to grow as verification deepens, not shrink.</p></div></div>
+    <div class="cards c2">
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 boss behaviour</h3>
+        <p class="d">No published source documents which class kits attach to which raid boss at D3 and D4. Needs
+          combat logs.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Plane of Sky</div><h3 class="t">Five class tooltips</h3>
+        <p class="d">Ranger, Rogue, Shadow Knight, Shaman and Wizard reward stat blocks are unconfirmed for Legends.
+          The turn-ins and drop sources are current; only the stats are missing.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Respawn ceilings</h3>
+        <p class="d">The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
+          the pre-patch timer as a ceiling rather than a current value.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Placeholder removals</h3>
+        <p class="d">If placeholders are gone entirely, published spawn percentages may no longer mean anything.
+          Unresolved, and it affects how every named roster should be written.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Travel</div><h3 class="t">Druid and wizard port levels</h3>
+        <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
+          translocators, so it is weighted lower, but the conflict is open.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
+        <p class="d">The zone has never been surveyed, so the Eye of Veeshan model is schematic rather than measured.
+          A handful of <code>/loc</code> readings from islands 7 and 8 would fix it. The page says so in place.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Five missing maps</h3>
+        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have survey plates but no navigation
+          map companion. Blackburrow is next; its explicit three-floor structure suits a 3D treatment.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Verification gates</h3>
+        <p class="d">Five of the ten plates have not cleared the full three-gate standard. Which gate is open is
+          listed against each zone on the <a href="dungeons/index.html" style="color:var(--warn)">plates page</a>.</p></div>
+      <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
+        <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another
+          hour of reading wikis.</p></div>
+    </div>
+  </section>
+
+  <section class="band" id="changelog">
+    <div class="sechead"><span class="n">03</span><div><h2 class="sec">Change log</h2>
+      <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
+    <div class="ztable">
+      <div class="zrow" style="--c:var(--bone)"><span class="pn">NEW</span>
+        <span><span class="zt">Site launch</span><span class="zs">Ten plates, five maps, three tools, first raid encounter</span></span>
+        <span class="cell zonesub"><em>Type</em>Addition</span><span class="cell"><em>Date</em>6 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
+        <span><span class="zt">Tracker state handling</span><span class="zs">Changes made in the trio builder were never saved, so reloading restored the previous trio. Reset also left the trio and the calculator selections untouched. Both trackers now have separate <em>Clear ticks</em> and <em>Start over</em> actions</span></span>
+        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>6 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
+        <span><span class="zt">Verification counting</span><span class="zs">Front page claimed 8 of 10 plates verified. By the project&rsquo;s own three-gate standard it is 5. Corrected, and the open gate is now named per zone</span></span>
+        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>6 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
+        <span><span class="zt">Primary-slot logic</span><span class="zs">Calculator no longer suggests demoting a class you require in the primary slot</span></span>
+        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>6 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--z01)"><span class="pn">DAT</span>
+        <span><span class="zt">Race unlock data</span><span class="zs">Rebuilt against Alanna&rsquo;s guide revision 166686</span></span>
+        <span class="cell zonesub"><em>Type</em>Source refresh</span><span class="cell"><em>Date</em>5 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+    </div>
+    <div class="note"><strong>Update cadence.</strong> Legends patches weekly and the wikis move daily. Anything on this
+      site that predates the most recent patch touching its subject is flagged in place rather than silently trusted.</div>
+  </section>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="dungeons/index.html">All survey plates</a></li>
+        <li><a href="dungeons/najena.html">Najena</a></li>
+        <li><a href="dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="dungeons/campaign-10-to-50.html">Campaign plate, 10&ndash;50</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="raids/index.html">Encounter index</a></li>
+        <li><a href="raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="tools/index-search.html">The Index</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="sources.html">Sourcing standard</a></li>
+        <li><a href="sources.html#gaps">Known gaps</a></li>
+        <li><a href="sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

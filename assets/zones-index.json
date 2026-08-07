@@ -1,0 +1,172 @@
+[
+ {
+  "plate": 1,
+  "slug": "najena",
+  "title": "Najena",
+  "accent": "#D9A227",
+  "levels": "8-35 (tuned 15-30)",
+  "zem": 119,
+  "zem_pct": 159,
+  "respawn": "19:00",
+  "who": "najena",
+  "adjacent": [
+   "Lavastorm Mountains"
+  ],
+  "verified": "2026-07-30",
+  "verify_level": "full",
+  "verify_gate": null
+ },
+ {
+  "plate": 2,
+  "slug": "splitpaw",
+  "title": "Lair of the Splitpaw",
+  "accent": "#45A6A0",
+  "levels": "25-28 entrance ramping to 40-42 deep; named exceed",
+  "zem": 128,
+  "zem_pct": 170,
+  "respawn": "<=22:00",
+  "who": "paw",
+  "adjacent": [
+   "Southern Plains of Karana"
+  ],
+  "verified": "2026-07-31",
+  "verify_level": "full",
+  "verify_gate": null
+ },
+ {
+  "plate": 3,
+  "slug": "crushbone",
+  "title": "Crushbone",
+  "accent": "#BE4F3E",
+  "levels": "4-22",
+  "zem": 119,
+  "zem_pct": 159,
+  "respawn": null,
+  "who": null,
+  "adjacent": null,
+  "verified": null,
+  "verify_level": "none",
+  "verify_gate": "not verified \u2014 revamped 14 Jul and touched 28 Jul since the plate was built"
+ },
+ {
+  "plate": 4,
+  "slug": "befallen",
+  "title": "Befallen",
+  "accent": "#8E7BC7",
+  "levels": "7-25+",
+  "zem": 119,
+  "zem_pct": 159,
+  "respawn": "4:27",
+  "who": "befallen",
+  "adjacent": [
+   "West Commonlands"
+  ],
+  "verified": "2026-07-30",
+  "verify_level": "partial",
+  "verify_gate": "edit history came from the page footer, not the history itself"
+ },
+ {
+  "plate": 5,
+  "slug": "blackburrow",
+  "title": "Blackburrow",
+  "accent": "#5C93C4",
+  "levels": "5-20",
+  "zem": 119,
+  "zem_pct": 159,
+  "respawn": null,
+  "who": null,
+  "adjacent": null,
+  "verified": null,
+  "verify_level": "none",
+  "verify_gate": "not verified \u2014 and the plate is missing its reading key"
+ },
+ {
+  "plate": 6,
+  "slug": "lowerguk",
+  "title": "Lower Guk",
+  "accent": "#7FA84F",
+  "levels": "24-49",
+  "zem": 86,
+  "zem_pct": 115,
+  "respawn": "9:28",
+  "who": "gukbottom",
+  "adjacent": [
+   "Upper Guk"
+  ],
+  "verified": "2026-07-31",
+  "verify_level": "full",
+  "verify_gate": null
+ },
+ {
+  "plate": 7,
+  "slug": "nagafenslair",
+  "title": "Nagafen's Lair",
+  "accent": "#E06B2A",
+  "levels": "25-55",
+  "zem": 86,
+  "zem_pct": 115,
+  "respawn": "<=22:00",
+  "who": "soldungb",
+  "adjacent": [
+   "Lavastorm Mountains",
+   "Solusek's Eye (Sol A)"
+  ],
+  "verified": "2026-07-31",
+  "verify_level": "full",
+  "verify_gate": null
+ },
+ {
+  "plate": 8,
+  "slug": "thehole",
+  "title": "The Hole",
+  "accent": "#8C7BE0",
+  "levels": "39-56",
+  "zem": 128,
+  "zem_pct": 171,
+  "respawn": "<=21:30",
+  "who": "hole",
+  "adjacent": [
+   "Paineel",
+   "Neriak Third Gate (teleporter)",
+   "Erudin (teleporter)"
+  ],
+  "verified": "2026-07-30",
+  "verify_level": "partial",
+  "verify_gate": "rebuilt after a fabrication was found; coordinates not re-derived since"
+ },
+ {
+  "plate": 9,
+  "slug": "warrens",
+  "title": "The Warrens",
+  "accent": "#B5793C",
+  "levels": "4-25",
+  "zem": 128,
+  "zem_pct": 171,
+  "respawn": "<=6:40",
+  "who": "warrens",
+  "adjacent": [
+   "Paineel",
+   "Stonebrunt Mountains"
+  ],
+  "verified": "2026-07-30",
+  "verify_level": "partial",
+  "verify_gate": "coordinates not re-derived and collision-checked"
+ },
+ {
+  "plate": 10,
+  "slug": "mistmoore",
+  "title": "Castle Mistmoore",
+  "accent": "#A8324A",
+  "levels": "20-45",
+  "zem": 97,
+  "zem_pct": 129,
+  "respawn": "<=22:00 plus dawn/dusk repop",
+  "who": "mistmoore",
+  "adjacent": [
+   "Lesser Faydark"
+  ],
+  "verified": "2026-07-31",
+  "verify_level": "full",
+  "verify_gate": null
+ }
+]

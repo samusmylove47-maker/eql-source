@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Splitpaw Lair — Survey Plate | EverQuest Legends</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--acc:#45A6A0;--accd:#2c6a67}
+*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
+body{margin:0;background:#12171A;color:#D5DBD8;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
+.mast{border-bottom:1px solid #2E3A41;padding:46px 0 26px;margin-bottom:34px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9.5vw,98px);line-height:.86;letter-spacing:-.015em;margin:0 0 6px;text-transform:uppercase}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#8A9998;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#2E3A41;border:1px solid #2E3A41}
+.cell{background:#1A2126;padding:11px 13px}
+.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;margin:0 0 4px}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#8A9998;display:block;letter-spacing:0}
+section{margin-top:56px}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+.lede{color:#8A9998;margin:0 0 24px;max-width:64ch}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
+p{max-width:76ch}a{color:var(--acc)}
+.plate-box{border:1px solid #2E3A41;background:#1A2126;padding:16px}
+.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
+@media(max-width:820px){.map-grid{grid-template-columns:1fr}}
+svg{display:block;width:100%;height:auto}
+.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
+.legend ol{list-style:none;margin:0;padding:0}
+.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #2E3A41}
+.legend .n{color:var(--acc);min-width:19px;text-align:right;font-weight:600}
+.legend .lv{color:#8A9998;margin-left:auto;padding-left:8px;white-space:nowrap}
+.scroller{overflow-x:auto;border:1px solid #2E3A41;margin:18px 0}
+table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
+th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;text-align:left;padding:11px 13px;background:#232C32;border-bottom:1px solid #2E3A41;white-space:nowrap}
+td{padding:10px 13px;border-bottom:1px solid #2E3A41;vertical-align:top;background:#1A2126}
+tbody tr:last-child td{border-bottom:0}
+.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acc);white-space:nowrap}
+.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
+.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#D5DBD8}
+.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#8A9998;letter-spacing:.04em;line-height:1.45}
+.cls.all{color:#5FA37E}
+.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#8A9998}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acc);display:inline-block;margin-top:4px;white-space:nowrap}
+.tag.warn{border-color:#C9453A;color:#C9453A}
+.tag.new{border-color:#5FA37E;color:#5FA37E}
+.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
+.camp{border:1px solid #2E3A41;border-top:2px solid var(--acc);background:#1A2126;padding:16px}
+.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
+.camp p{font-size:13.5px;margin:0 0 9px}
+.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.link{flex:1 1 180px;background:#1A2126;border:1px solid #2E3A41;border-left:2px solid var(--acc);padding:12px 14px}
+.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#8A9998;text-transform:uppercase}
+.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
+.link .gives{font-size:12.5px;color:#8A9998}
+.link .gives b{color:var(--acc);font-weight:600}
+.note{border-left:2px solid #2E3A41;padding:2px 0 2px 16px;margin:20px 0;color:#8A9998;max-width:76ch}
+.danger{border-left-color:#C9453A}.danger strong{color:#C9453A}
+.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
+.note strong{color:#D5DBD8}
+ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acc);background:#232C32;padding:1px 5px}
+footer{margin-top:70px;padding-top:22px;border-top:1px solid #2E3A41;color:#8A9998;font-size:12.5px}
+footer h3{margin-top:0}
+:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+</style>
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<style>
+.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+ align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+ letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+ letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+.ns-bar .ns-sep{color:#4E5C61}
+.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:#D5DBD8">Plate 02 &middot; Lair of the Splitpaw</span><span class="ns-sep">/</span><a href="splitpaw-map.html" style="color:#45A6A0">Navigation map &rarr;</a><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="wrap">
+
+<header class="mast">
+  <p class="eyebrow">Dungeon Survey Plate 02 · Southern Plains of Karana</p>
+  <h1>Splitpaw<br>Lair</h1>
+  <p class="subtitle">One dungeon that carries a character from 25 to the low 40s</p>
+  <dl class="strip">
+    <div class="cell"><dt>/who name</dt><dd>paw</dd></div>
+    <div class="cell"><dt>Post-revamp</dt><dd>25–42<small>five difficulty bands</small></dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>128<small>170% — highest of the set</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>22:00<small>lowered 28 July</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>−122, 63</dd></div>
+    <div class="cell"><dt>Adjacent</dt><dd>South Karana<small>only exit</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <h2><span class="num">01</span>Revamp status</h2>
+  <p class="lede">The only zone in this set to be worked on twice. Splitpaw got the largest of the pre-launch reworks on 14 July, then a second pass on launch day.</p>
+  <p>The 14 July notes describe enemies of <strong>levels 25–28 at the entrance</strong>, ramping through <strong>five difficulty bands</strong>, with standard enemies at <strong>levels 40–42</strong> in the deepest areas. Named enemies in each band can somewhat exceed the level of the standard population around them. New rare spawns were added along with new and improved equipment drops, and <strong>rare-spawn and equipment drop rates were substantially increased</strong> — guaranteed rare spawns in the lowest areas, tapering gradually toward the deepest, with named still appearing very frequently even at the end.</p>
+  <div class="note fresh"><strong>Launch day, 28 July 2026.</strong> Splitpaw appeared again in the launch patch, in a list of dungeons that had <strong>placeholders removed and maximum respawn times lowered</strong>. The other zones in that pass were The Hole, Nagafen's Lair, Lower Guk, The Warrens and Castle Mistmoore. The note closes with "more dungeon treatments will take place over time," so this list will grow.</div>
+  <p>Practically: enter in the mid-20s and there is no need to leave until the low 40s.</p>
+  <div class="note danger"><strong>One caveat.</strong> Opinion on the revamp splits by playstyle. Solo players report a dense zone with named up on most laps. Groups working it at level report trains and aggro problems that Upper and Lower Guk don't have. Read the danger section before the first pull.</div>
+  <div class="note"><strong>Confidence note.</strong> The community wiki's Splitpaw page was last edited <strong>2 June 2026</strong> — six weeks before the revamp. Coordinates and geometry should hold, but <strong>levels and drop tables on that page are pre-revamp</strong>. Where the wiki says a mob is level 31 and the patch notes say the band is 40–42, believe the patch notes.</div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>The plate</h2>
+  <p class="lede">Named-spawn stations plotted to scale from surveyed <code>/loc</code> data. Grid squares are 200 game units. The zone runs almost entirely along one axis — enter at the bottom and climb north, with the Ishva pocket branching east.</p>
+  <div class="plate-box">
+    <div class="map-grid" style="grid-template-columns:minmax(0,1fr) minmax(0,290px)">
+      <div>
+        <svg viewBox="0 0 560 990" role="img" aria-label="Coordinate plot of named spawn locations in Splitpaw Lair">
+          <defs><pattern id="water" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="#2c6a67"/></pattern></defs>
+          <rect x="60" y="70" width="440" height="870" fill="#151B1F" stroke="#2E3A41"/>
+          <g stroke="#212A30" stroke-width="1">
+            <line x1="150" y1="70" x2="150" y2="940"/><line x1="250" y1="70" x2="250" y2="940"/>
+            <line x1="350" y1="70" x2="350" y2="940"/><line x1="450" y1="70" x2="450" y2="940"/>
+            <line x1="60" y1="130" x2="500" y2="130"/><line x1="60" y1="230" x2="500" y2="230"/>
+            <line x1="60" y1="330" x2="500" y2="330"/><line x1="60" y1="430" x2="500" y2="430"/>
+            <line x1="60" y1="530" x2="500" y2="530"/><line x1="60" y1="630" x2="500" y2="630"/>
+            <line x1="60" y1="730" x2="500" y2="730"/><line x1="60" y1="830" x2="500" y2="830"/>
+          </g>
+          <line x1="250" y1="70" x2="250" y2="940" stroke="#3C4A52" stroke-width="1.5"/>
+          <line x1="60" y1="830" x2="500" y2="830" stroke="#3C4A52" stroke-width="1.5"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+            <text x="150" y="956" text-anchor="middle">X 200</text><text x="250" y="956" text-anchor="middle">0</text>
+            <text x="350" y="956" text-anchor="middle">−200</text><text x="450" y="956" text-anchor="middle">−400</text>
+            <text x="52" y="133" text-anchor="end">Y 1400</text><text x="52" y="233" text-anchor="end">1200</text>
+            <text x="52" y="333" text-anchor="end">1000</text><text x="52" y="433" text-anchor="end">800</text>
+            <text x="52" y="533" text-anchor="end">600</text><text x="52" y="633" text-anchor="end">400</text>
+            <text x="52" y="733" text-anchor="end">200</text><text x="52" y="833" text-anchor="end">0</text>
+          </g>
+          <g opacity="0.5">
+            <rect x="62" y="600" width="436" height="338" fill="#1d2a2a"/>
+            <rect x="62" y="430" width="436" height="170" fill="#1f2f2f"/>
+            <rect x="62" y="200" width="436" height="230" fill="#213434"/>
+            <rect x="62" y="72" width="436" height="128" fill="#243b3a"/>
+          </g>
+          <g font-family="Saira Condensed, sans-serif" font-size="12" font-weight="600" fill="#5d7373" letter-spacing="1.8">
+            <text x="70" y="930">BAND 1 · DOUBLE DOORS · 25–30</text>
+            <text x="70" y="594">BAND 2 · MID HALLS &amp; ISHVA · 30–39</text>
+            <text x="70" y="424">BAND 3 · WATER CAVERN · 30–35</text>
+            <text x="70" y="194">BAND 4 · JUDGES &amp; EXECUTIONER · 34–39</text>
+            <text x="70" y="88">BAND 5 · DEEP · 39–42</text>
+          </g>
+          <rect x="120" y="360" width="120" height="120" fill="url(#water)" opacity="0.5"/>
+          <polyline points="219,891 263,834 86,639 127,652 207,642 263,643 327,628 256,529 138,460 475,471 200,380 299,430 334,299 340,255 156,261 194,245 261,178 205,108" fill="none" stroke="#45A6A0" stroke-width="1" stroke-dasharray="3 5" opacity="0.4"/>
+          <g font-family="IBM Plex Mono, monospace" font-size="11" font-weight="600" text-anchor="middle">
+            <g><circle cx="219" cy="891" r="12" fill="#12171A" stroke="#C9A227" stroke-width="1.6"/><text x="219" y="895" fill="#C9A227">IN</text></g>
+            <g fill="#12171A" stroke="#45A6A0" stroke-width="1.6">
+              <circle cx="263" cy="834" r="12"/><circle cx="86" cy="639" r="12"/><circle cx="127" cy="652" r="12"/>
+              <circle cx="207" cy="642" r="12"/><circle cx="263" cy="643" r="12"/><circle cx="327" cy="628" r="12"/>
+              <circle cx="256" cy="529" r="12"/><circle cx="138" cy="460" r="12"/><circle cx="475" cy="471" r="12"/>
+              <circle cx="200" cy="380" r="12"/><circle cx="299" cy="430" r="12"/><circle cx="334" cy="299" r="12"/>
+              <circle cx="156" cy="261" r="12"/><circle cx="194" cy="245" r="12"/><circle cx="261" cy="178" r="12"/>
+              <circle cx="205" cy="108" r="12"/>
+            </g>
+            <g fill="#45A6A0">
+              <text x="263" y="838">2</text><text x="86" y="643">3</text><text x="127" y="656">4</text>
+              <text x="207" y="646">5</text><text x="263" y="647">6</text><text x="327" y="632">7</text>
+              <text x="256" y="533">8</text><text x="138" y="464">9</text><text x="475" y="475">10</text>
+              <text x="200" y="384">11</text><text x="299" y="434">12</text><text x="334" y="303">13</text>
+              <text x="156" y="265">15</text><text x="194" y="249">16</text><text x="261" y="182">17</text>
+              <text x="205" y="112">18</text>
+            </g>
+            <g><rect x="329" y="244" width="22" height="22" fill="#12171A" stroke="#C9A227" stroke-width="1.6"/><text x="340" y="260" fill="#C9A227" font-size="10">14</text></g>
+            <g fill="#12171A" stroke="#C9453A" stroke-width="1.4"><circle cx="460" cy="498" r="7"/><circle cx="477" cy="498" r="7"/></g>
+          </g>
+          <g font-family="Saira Condensed, sans-serif" font-size="11" fill="#7d9b9a" letter-spacing="1">
+            <text x="440" y="446" text-anchor="middle">ISHVA</text>
+            <text x="440" y="518" text-anchor="middle">GUARDS</text>
+            <text x="180" y="352" text-anchor="middle">POND</text>
+          </g>
+          <g>
+            <rect x="72" y="852" width="176" height="74" fill="#1A2126" stroke="#2E3A41"/>
+            <text x="84" y="872" font-family="IBM Plex Mono, monospace" font-size="9" fill="#45A6A0" letter-spacing="1.6">READING THE PLATE</text>
+            <text x="84" y="889" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">/loc returns  Y, X, Z</text>
+            <text x="84" y="904" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+Y = north (up)</text>
+            <text x="84" y="919" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A9998">+X = west (left)</text>
+          </g>
+        </svg>
+      </div>
+      <div class="legend">
+        <ol>
+          <li><span class="n">IN</span><span>Zone line</span><span class="lv">−122, 63</span></li>
+          <li><span class="n">2</span><span>Double Doors gnolls</span><span class="lv">L24</span></li>
+          <li><span class="n">3</span><span>Brother Hayle (prison)</span><span class="lv">L24</span></li>
+          <li><span class="n">4</span><span>Brother Gruff</span><span class="lv">L16</span></li>
+          <li><span class="n">5</span><span>Nisch Mas Gnoll</span><span class="lv">L29–31</span></li>
+          <li><span class="n">6</span><span>Lteth Val Scribe</span><span class="lv">L30</span></li>
+          <li><span class="n">7</span><span>Tesch Val Kadvem</span><span class="lv">L39</span></li>
+          <li><span class="n">8</span><span>One eyed gnoll</span><span class="lv">L35</span></li>
+          <li><span class="n">9</span><span>Water cavern</span><span class="lv">L19</span></li>
+          <li><span class="n">10</span><span>The Ishva Mal + guards</span><span class="lv">L40</span></li>
+          <li><span class="n">11</span><span>Gaduladian widemouths</span><span class="lv">L30–33</span></li>
+          <li><span class="n">12</span><span>Rosch Mal Gnoll</span><span class="lv">L31</span></li>
+          <li><span class="n">13</span><span>Nisch Val Torash Mashk</span><span class="lv">L39</span></li>
+          <li><span class="n">14</span><span>Safe room</span><span class="lv">1150, −180</span></li>
+          <li><span class="n">15</span><span>Verishe Mal Judges</span><span class="lv">L34–39</span></li>
+          <li><span class="n">16</span><span>Executioner · Kurrpok</span><span class="lv">L34</span></li>
+          <li><span class="n">17</span><span>Rosch Val L'Vlor</span><span class="lv">L39</span></li>
+          <li><span class="n">18</span><span>Tesch Val Deval`Nmak</span><span class="lv">L39</span></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Reading a gnoll</h2>
+  <p class="lede">Splitpaw shares something with only one other zone in Norrath: the gnolls have a full class hierarchy, and their names announce what they will do to you before you pull them.</p>
+  <div class="camps">
+    <div class="camp"><p class="band">Prefix</p><h4>Tesch</h4><p><strong>Warrior.</strong> Straightforward. Hits hard, no surprises.</p></div>
+    <div class="camp"><p class="band">Prefix</p><h4>Lteth</h4><p><strong>Rogue.</strong> Will backstab anything that lets it get behind.</p></div>
+    <div class="camp"><p class="band">Prefix</p><h4>Nisch</h4><p><strong>Cleric / shaman.</strong> Heals its friends. Kill first or interrupt — a Nisch in a pull turns a twenty-second fight into a two-minute one.</p></div>
+    <div class="camp"><p class="band">Prefix</p><h4>Rosch</h4><p><strong>Caster.</strong> Mages, enchanters, necromancers. Pets and area damage.</p></div>
+  </div>
+  <p>Power rank runs <strong>Mas → Mal → Val</strong>, weakest to strongest. So <em>a Tesch Mas Gnoll</em> is an entry-band warrior and <em>a Rosch Val Gnoll</em> is a deep-band mage. The name is the con.</p>
+</section>
+
+<section>
+  <h2><span class="num">04</span>The three camps</h2>
+  <div class="camps">
+    <div class="camp"><p class="band">Camp 1 · low-to-mid 30s</p><h4>Double Doors</h4>
+      <p>Everything from the entrance up to the double doors, plus the rooms directly behind them. The lowest camp and the natural starting point.</p>
+      <p><strong>Do not pull the roamer on the bridge.</strong> That one mob is the difference between a clean camp and a nasty train.</p></div>
+    <div class="camp"><p class="band">Camp 2 · mid 30s to low 40s</p><h4>Judges &amp; Executioner</h4>
+      <p>Through the double doors, through the next room, across the bridge, around the U-shaped room, across a second bridge. Near-continuous pulls from the executioner room, the judges and the Vals on the side, plus three named in the area.</p>
+      <p><strong>Nothing in this zone sees invisibility.</strong> Invis and walk straight here.</p></div>
+    <div class="camp"><p class="band">Camp 3 · 40 and up</p><h4>The Ishva Area</h4>
+      <p>Past the double doors to the first bridge, drop down, go right. A door on the left, in and up the ramp until a pond appears. Take the underwater passage.</p>
+      <p>Thirteen mobs inside plus another area within swimming distance. The highest camp in the dungeon.</p></div>
+  </div>
+  <p>There is a small <strong>safe room at <code>1150, −180</code></strong>, directly north of Nisch Val Torash Mashk. Stay out of the doorway and it is safe to medate there — the recovery point for the whole upper half of the zone.</p>
+  <div class="note"><strong>Loot every scroll.</strong> Scroll drops here turn in for experience in South Qeynos, and the turn-ins stay worth doing into the high 40s. The wiki's author calls this the zone's main benefit, ahead of the gear. Volume 1 doesn't drop inside the zone, but volumes 2–4 do.</div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Named roster</h2>
+  <p class="lede">Levels are pre-revamp wiki values. Where a named sits in a band the patch notes put at 40–42, expect it higher than listed.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>#</th><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Notes</th></tr></thead>
+    <tbody>
+      <tr><td class="lv">18</td><td class="nmob">Tesch Val Deval`Nmak</td><td class="loc">1445, 90</td><td class="lv">39</td><td class="src">Room holds 4 mobs; PH and named both on a 20-minute timer. The deepest named.</td></tr>
+      <tr><td class="lv">17</td><td class="nmob">Rosch Val L'Vlor</td><td class="loc">1304, −21</td><td class="lv">39</td><td class="src"><strong>Casts an AE rain.</strong> If he's holding the tome he'll be wielding it.<span class="tag warn">AE damage</span></td></tr>
+      <tr><td class="lv">13</td><td class="nmob">Nisch Val Torash Mashk</td><td class="loc">1062, −168</td><td class="lv">39</td><td class="src"><strong>Complete-heals below 25%</strong> — bring interrupts.<span class="tag warn">complete heal</span></td></tr>
+      <tr><td class="lv">7</td><td class="nmob">Tesch Val Kadvem</td><td class="loc">405, −154</td><td class="lv">39</td><td class="src">50% spawn chance.</td></tr>
+      <tr><td class="lv">10</td><td class="nmob">The Ishva Mal</td><td class="loc">719, −450 (area)</td><td class="lv">40</td><td class="src">Spawns roughly every 36 hours on a 28-minute respawn; PH is an Ishva Lteth gnoll. Two named bodyguards at <code>664, −419</code> and <code>664, −453</code> (L38–39). Nearby gnolls will complete-heal the PH if you fight too close to the hallway.<span class="tag warn">rare spawn</span></td></tr>
+      <tr><td class="lv">16</td><td class="nmob">Verishe Mal Executioner</td><td class="loc">1171, 113</td><td class="lv">34</td><td class="src">50% spawn.</td></tr>
+      <tr><td class="lv">15</td><td class="nmob">Verishe Mal Judge</td><td class="loc">1138, 188</td><td class="lv">34–39</td><td class="src">They surround the Executioner and <strong>path through him on the pull</strong> — kill them at their spawn points instead.</td></tr>
+      <tr><td class="lv">16</td><td class="nmob">Kurrpok Splitpaw</td><td class="loc">1184, 113</td><td class="lv">25</td><td class="src">Spawns in the executioner area and is executed quickly — be there if you want him.</td></tr>
+      <tr><td class="lv">8</td><td class="nmob">A one eyed gnoll</td><td class="loc">602, −12</td><td class="lv">35</td><td class="src">Alone in a cave. Doesn't always drop the eye.</td></tr>
+      <tr><td class="lv">6</td><td class="nmob">A Lteth Val Scribe</td><td class="loc">374, −26</td><td class="lv">30</td><td class="src">Back of a passage after dropping off the first rock bridge and heading east. 50% spawn.</td></tr>
+      <tr><td class="lv">3</td><td class="nmob">Brother Hayle</td><td class="loc">382, 329</td><td class="lv">24</td><td class="src">Human cleric held in the prison. No loot. 50% spawn.</td></tr>
+      <tr><td class="lv">4</td><td class="nmob">Brother Gruff</td><td class="loc">357, 246</td><td class="lv">16</td><td class="src">No loot. 50% spawn.</td></tr>
+      <tr><td class="lv">12</td><td class="nmob">A Rosch Mal Gnoll</td><td class="loc">800, −98</td><td class="lv">31</td><td class="src">Mage-class gnoll.</td></tr>
+      <tr><td class="lv">11</td><td class="nmob">A gaduladian widemouth</td><td class="loc">900, 100</td><td class="lv">30–33</td><td class="src">Seven of them in the water around this loc. <strong>Non-aggro but social</strong> — pull one and you may get the pond.</td></tr>
+      <tr><td class="lv">9</td><td class="nmob">A hiding gnoll</td><td class="loc">718–800, 212–236</td><td class="lv">19</td><td class="src">In the water cavern. Gives a negative faction hit.</td></tr>
+      <tr><td class="lv">—</td><td class="nmob">A Nisch / Tesch Val Guard</td><td class="loc">664, −419 · 664, −453</td><td class="lv">38–39</td><td class="src">Personal bodyguards to the Ishva Mal.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Loot table</h2>
+  <p class="lede">Gnoll-language item names make this table harder to read than most. Slot and class list matter more than the name here.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Kicsh Der Pavz<span class="tag new">new</span></td><td class="st">1H Slash 10 / 38<br>Strong Poison proc</td><td class="st">DEX 5</td><td class="cls">WAR SHD BRD ROG</td><td class="src">Tesch Val Deval`Nmak · L39</td></tr>
+      <tr><td class="it">Thick Amber Potion<span class="tag new">new</span></td><td class="st">Expendable · single charge</td><td class="st"><strong>Greater Healing</strong> at level 45</td><td class="cls all">ALL</td><td class="src">Tesch Val Deval`Nmak · also common trash</td></tr>
+      <tr><td class="it">Gnoll Hide Tome<span class="tag new">new</span></td><td class="st">Primary / Secondary</td><td class="st">INT 10 · WIS 5 · HP 15<br>SV Poison 10</td><td class="cls">caster only</td><td class="src">Rosch Val L'Vlor · L39</td></tr>
+      <tr><td class="it">Devlas Ilkvel<span class="tag new">new</span></td><td class="st">Secondary</td><td class="st">AC 12 · DEX 5<br>SV Poison 7</td><td class="cls">WAR CLR PAL RNG SHD DRU BRD SHM</td><td class="src">Nisch Val Torash Mashk · L39</td></tr>
+      <tr><td class="it">Tesch Val Sinisch<span class="tag new">new</span></td><td class="st">Pierce · ultra rare</td><td class="st">—</td><td class="cls">SHM</td><td class="src">Nisch Val Torash Mashk · L39</td></tr>
+      <tr><td class="it">A Split Paw</td><td class="st">Quest item</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">Nisch Val Torash Mashk · L39</td></tr>
+      <tr><td class="it">Vacra Av Svim<span class="tag new">new</span></td><td class="st">Secondary 8 / 31 · no drop</td><td class="st">AGI 6 · HP 5</td><td class="cls">WAR BRD ROG</td><td class="src">Tesch Val Kadvem · L39</td></tr>
+      <tr><td class="it">Fine Steel Scimitar</td><td class="st">1H Slash</td><td class="st">—</td><td class="cls">melee</td><td class="src">Tesch Val Kadvem · L39</td></tr>
+      <tr><td class="it">Robe of the Ishva<span class="tag new">new</span></td><td class="st">Chest · focus</td><td class="st">AC 8 · CHA 5 · MANA 50<br>SV Poison 14<br><strong>Summoning Efficiency II</strong></td><td class="cls">caster</td><td class="src">The Ishva Mal · L40</td></tr>
+      <tr><td class="it">Brain of the Ishva Mal</td><td class="st">Quest item</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">The Ishva Mal · L40</td></tr>
+      <tr><td class="it">Scroll: Summon Corpse</td><td class="st">Spell scroll</td><td class="st">—</td><td class="cls">NEC</td><td class="src">The Ishva Mal · L40</td></tr>
+      <tr><td class="it">Fine Steel Spear · Split Paw Tooth Necklace<br>Ringmail Boots · White Hellebore</td><td class="st">Various</td><td class="st">—</td><td class="cls">varies</td><td class="src">Nisch Val Guard · Tesch Val Guard · L38–39</td></tr>
+      <tr><td class="it">Split Paw Hide Gloves</td><td class="st">Hands</td><td class="st">AC 4 · DEX 3 · WIS 2</td><td class="cls">melee-leaning</td><td class="src">Verishe Mal Executioner · a one eyed gnoll</td></tr>
+      <tr><td class="it">Split Paw Hide Belt</td><td class="st">Waist</td><td class="st">—</td><td class="cls">melee-leaning</td><td class="src">Verishe Mal Judge · L34–39</td></tr>
+      <tr><td class="it">Split Paw Hide Mask</td><td class="st">Face</td><td class="st">—</td><td class="cls">melee-leaning</td><td class="src">Kurrpok Splitpaw · L25</td></tr>
+      <tr><td class="it">Ruby Pendant · Dagger of Dropping<br>Bronze Bastard Sword</td><td class="st">Neck · Pierce · 2H Slash</td><td class="st">—</td><td class="cls">varies</td><td class="src">Kurrpok Splitpaw · L25</td></tr>
+      <tr><td class="it">Fine steel weapons</td><td class="st">Various</td><td class="st">—</td><td class="cls">melee</td><td class="src">Verishe Mal Executioner · Verishe Mal Judge</td></tr>
+      <tr><td class="it">Gnoll's Eye</td><td class="st">Quest · no drop</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">A one eyed gnoll · L35</td></tr>
+      <tr><td class="it">Journal of Greater Enchantment</td><td class="st">Quest / lore item</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">A Lteth Val Scribe · L30</td></tr>
+      <tr><td class="it">Giant Snake Rattle</td><td class="st">Quest item</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">A gaduladian widemouth · L30–33</td></tr>
+      <tr><td class="it">Scroll volumes 2–4</td><td class="st">Turn-in · South Qeynos</td><td class="st">Experience, good into the high 40s</td><td class="cls all">ALL</td><td class="src">Trash throughout the zone</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Dangers</h2>
+  <div class="note danger"><strong>Snare or root is not optional here.</strong> Gnolls flee, they have a lot of hit points, and they cover ground fast — a runner will pull in half a room, or come back with a healer. The wiki is explicit that snaring or rooting is required in this dungeon.</div>
+  <div class="note danger"><strong>Almost nothing is solo.</strong> Starting at the entrance, nearly every gnoll is paired. You need to be able to take on two at once just to walk in the front door.</div>
+  <div class="note danger"><strong>Walls don't block social aggro.</strong> Mobs know you're fighting their friends through solid rock. This bites hardest at the small room past the first bridge: the gnolls there are manageable, but around the corner and through a gate sit two tougher ones who come running. <strong>If you hear chains rattling, turn and run.</strong></div>
+  <div class="note danger"><strong>The prison cells are a trap.</strong> Step inside and the door shuts with the lever on the outside. The main prison hall does not do this — that door can be walked through freely.</div>
+  <p>Beyond that, Splitpaw is a fair zone. Trains here are mini-trains rather than Blackburrow-scale disasters, wandering mobs are rare and usually solitary enough to learn, and the rare spawns sit in their own pockets away from traffic.</p>
+</section>
+
+<section>
+  <h2><span class="num">08</span>Getting there</h2>
+  <ul class="tight">
+    <li>Enter <strong>Southern Plains of Karana</strong> and travel to the centre. Look for <strong>three bloody claws sticking up out of the earth</strong> — gnoll legend says their god set his foot here and the surface markings are the footprint. Pass between the claws; in what would be the centre of the paw is a small dark hole facing them. It is easy to walk straight over, so slow down.</li>
+    <li><strong>Circle of North Karana</strong> (Druid, group) or <strong>North Karana Portal</strong> (Wizard, group), then run south.</li>
+    <li><strong>Evacuate: North Karana</strong> arrives one level after the Wizard portal and is a group escape rather than a travel spell.</li>
+    <li>It is a long walk from Qeynos or Highpass Hold. Binding in Arena helps; binding at the camp inside the zone helps more.</li>
+    <li>Succor and evacuate drop you at <code>−122, 63</code>, the zone line back to South Karana.</li>
+  </ul>
+</section>
+
+<footer>
+  <h3>Sources &amp; confidence</h3>
+  <p>Compiled from the EverQuest Legends community wiki (eqlwiki.com) zone, NPC and item pages, the official patch notes for the 14 July 2026 Splitpaw revamp and the 28 July launch-day dungeon pass, and community levelling reports from the pre-launch beta.</p>
+  <p><strong>The wiki zone page predates the revamp by six weeks.</strong> Geometry and coordinates should hold; levels and loot tables may not. The patch notes' band structure (25–28 entrance, 40–42 deepest) supersedes any individual mob level listed here, and the 28 July pass removed placeholders and lowered respawn times again.</p>
+  <p>Built 29 July 2026.</p>
+</footer>
+
+</div>
+</body>
+</html>
