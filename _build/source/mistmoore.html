@@ -8,12 +8,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#A8324A;--accd:#5c1c29}
+:root{--acc:#A8324A;--accd:#5c1c29;--acct:color-mix(in srgb, #A8324A 56%, #E6E9E4)}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:#12171A;color:#D5DBD8;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
 .wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
 .mast{border-bottom:1px solid #2E3A41;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
 h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px,9.5vw,98px);line-height:.86;letter-spacing:-.015em;margin:0 0 6px;text-transform:uppercase}
 .subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#8A9998;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
 .strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#2E3A41;border:1px solid #2E3A41}
@@ -23,10 +23,10 @@ h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(46px
 .cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#8A9998;display:block;letter-spacing:0}
 section{margin-top:56px}
 h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
+h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
 .lede{color:#8A9998;margin:0 0 24px;max-width:64ch}
 h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acc)}
+p{max-width:76ch}a{color:var(--acct)}
 .plate-box{border:1px solid #2E3A41;background:#1A2126;padding:16px}
 .map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
 @media(max-width:820px){.map-grid{grid-template-columns:1fr}}
@@ -34,14 +34,14 @@ svg{display:block;width:100%;height:auto}
 .legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
 .legend ol{list-style:none;margin:0;padding:0}
 .legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #2E3A41}
-.legend .n{color:var(--acc);min-width:19px;text-align:right;font-weight:600}
+.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
 .legend .lv{color:#8A9998;margin-left:auto;padding-left:8px;white-space:nowrap}
 .scroller{overflow-x:auto;border:1px solid #2E3A41;margin:18px 0}
 table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
 th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#8A9998;text-align:left;padding:11px 13px;background:#232C32;border-bottom:1px solid #2E3A41;white-space:nowrap}
 td{padding:10px 13px;border-bottom:1px solid #2E3A41;vertical-align:top;background:#1A2126}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acc);white-space:nowrap}
+.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
 .lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
 .nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
 .it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#D5DBD8}
@@ -49,12 +49,12 @@ tbody tr:last-child td{border-bottom:0}
 .cls.all{color:#5FA37E}
 .st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.5}
 .src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#8A9998}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acc);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#C9453A}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
+.tag.warn{border-color:#C9453A;color:#D46C64}
 .tag.new{border-color:#5FA37E;color:#5FA37E}
 .camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
 .camp{border:1px solid #2E3A41;border-top:2px solid var(--acc);background:#1A2126;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acc)}
+.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
 .camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
 .camp p{font-size:13.5px;margin:0 0 9px}
 .chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
@@ -62,13 +62,13 @@ tbody tr:last-child td{border-bottom:0}
 .link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#8A9998;text-transform:uppercase}
 .link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
 .link .gives{font-size:12.5px;color:#8A9998}
-.link .gives b{color:var(--acc);font-weight:600}
+.link .gives b{color:var(--acct);font-weight:600}
 .note{border-left:2px solid #2E3A41;padding:2px 0 2px 16px;margin:20px 0;color:#8A9998;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#C9453A}
+.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
 .fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
 .note strong{color:#D5DBD8}
 ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acc);background:#232C32;padding:1px 5px}
+code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#232C32;padding:1px 5px}
 footer{margin-top:70px;padding-top:22px;border-top:1px solid #2E3A41;color:#8A9998;font-size:12.5px}
 footer h3{margin-top:0}
 :focus-visible{outline:2px solid var(--acc);outline-offset:2px}
@@ -118,7 +118,7 @@ footer h3{margin-top:0}
           </g>
           <line x1="525" y1="55" x2="525" y2="440" stroke="#3C4A52" stroke-width="1.5"/>
           <line x1="70" y1="160" x2="700" y2="160" stroke="#3C4A52" stroke-width="1.5"/>
-          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#6C7B7B">
+          <g font-family="IBM Plex Mono, monospace" font-size="9" fill="#95A2A2">
             <text x="105" y="456" text-anchor="middle">X 600</text><text x="245" y="456" text-anchor="middle">400</text>
             <text x="385" y="456" text-anchor="middle">200</text><text x="525" y="456" text-anchor="middle">0</text>
             <text x="665" y="456" text-anchor="middle">&minus;200</text>
@@ -133,7 +133,7 @@ footer h3{margin-top:0}
           <g font-family="Saira Condensed, sans-serif" font-size="11" font-weight="600" letter-spacing="1.4">
             <text x="104" y="346" fill="#8a5560">OUTER GROUNDS &middot; GRAVEYARD, TOWER, JAIL &middot; 24&ndash;37</text>
             <text x="394" y="122" fill="#8a5560">THE CASTLE &middot; 27&ndash;40</text>
-            <text x="580" y="70" fill="#6C7B7B">THE CANYON</text>
+            <text x="580" y="70" fill="#95A2A2">THE CANYON</text>
           </g>
           <g stroke="#A8324A" stroke-width="0.7" opacity="0.55">
             <line x1="114.1" y1="167" x2="100" y2="135"/><line x1="220.5" y1="171.2" x2="206" y2="145"/>
@@ -280,8 +280,8 @@ footer h3{margin-top:0}
   <table>
     <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Mayong Mistmoore</td><td class="loc"><span style="color:#C9453A">unrecorded</span></td><td class="lv">~53</td><td class="cls">? / ?</td><td class="src">Coffin Room, room 15. The first vampire, cursed by unknown means. Drops the <strong>Fanged Skull Stiletto — 12 / 22 with backstab 12</strong>, the best weapon in the zone by a wide margin. The wiki has no level or coordinate confirmed.<span class="tag warn">unconfirmed</span></td></tr>
-      <tr><td class="nmob">Dark Huntress</td><td class="loc"><span style="color:#C9453A">random</span></td><td class="lv">50</td><td class="cls">HUMAN<br>NEC</td><td class="src"><strong>Highly aggressive and resistant to spells.</strong> A rare NPC that spawns at random locations, buffs itself, and hunts. No loot recorded.<span class="tag warn">roams</span></td></tr>
+      <tr><td class="nmob">Mayong Mistmoore</td><td class="loc"><span style="color:#D46C64">unrecorded</span></td><td class="lv">~53</td><td class="cls">? / ?</td><td class="src">Coffin Room, room 15. The first vampire, cursed by unknown means. Drops the <strong>Fanged Skull Stiletto — 12 / 22 with backstab 12</strong>, the best weapon in the zone by a wide margin. The wiki has no level or coordinate confirmed.<span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Dark Huntress</td><td class="loc"><span style="color:#D46C64">random</span></td><td class="lv">50</td><td class="cls">HUMAN<br>NEC</td><td class="src"><strong>Highly aggressive and resistant to spells.</strong> A rare NPC that spawns at random locations, buffs itself, and hunts. No loot recorded.<span class="tag warn">roams</span></td></tr>
       <tr><td class="nmob">Black Dire</td><td class="loc">90, &minus;166, &minus;222</td><td class="lv">45</td><td class="cls">WOLF ELEMENTAL<br>SHD</td><td class="src"><strong>Triggered — spawns at the end of the canyon when an advisor is killed.</strong> Hits in the 200s, can quad, and harm touches. Shaman epic. Drops the Black Dire Pelt.<span class="tag warn">quads + HT</span></td></tr>
       <tr><td class="nmob">An undead knight</td><td class="loc">&minus;36, 365, &minus;263</td><td class="lv">40</td><td class="cls">SKELETON<br>?</td><td class="src">100%. One of several mobs of this name across the game; this is the Mistmoore one. Loot unrecorded.</td></tr>
       <tr><td class="nmob">Xicotl</td><td class="loc">&minus;191, 92 &middot; <em>Level 2</em></td><td class="lv">40</td><td class="cls">TROLL<br>SHD</td><td class="src"><strong>~20%</strong> on a 22-minute respawn; <strong>placeholder is a Mistmoore guard.</strong> Drops the Glowing Sword Hilt for Zimel's Blades / SoulFire.</td></tr>

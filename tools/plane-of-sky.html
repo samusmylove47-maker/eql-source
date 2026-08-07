@@ -9,7 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#4FA3D1;--accd:#2c5e79;--pa:#4FA3D1;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#8A9998;--dim:#6C7B7B;--ok:#5FA37E;--warn:#C9453A;--gold:#D9A227}
+/* Grey ramp and --warn lifted so every step clears WCAG AA (4.5:1) on the
+   darkest panel it lands on. --dim previously bottomed out at 3.08:1, which put
+   17 labels below the legibility floor. Raising --dim alone would have collided
+   with --mut, so the whole ramp moved up to keep three distinguishable greys.
+   --warn is now text-safe; it was 2.97:1 on --panel2. Accents are unchanged. */
+:root{--acc:#4FA3D1;--accd:#2c5e79;--pa:#4FA3D1;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#A6B3B2;--dim:#8B9999;--ok:#5FA37E;--warn:#D8776F;--gold:#D9A227}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
@@ -177,12 +182,15 @@ footer ul{padding-left:18px;max-width:82ch}footer li{margin-bottom:7px}
 .ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:#8A9998;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a{color:#AEB9B8;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
 .ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
 .ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
  letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
-.ns-bar .ns-sep{color:#4E5C61}
-.ns-bar .ns-tag{margin-left:auto;color:#4E5C61}
+/* These carried the pre-AA greys. #4E5C61 measured 2.46:1 on this bar. The
+   values here mirror assets/site.css's ramp; they are duplicated rather than
+   referenced because this chrome is injected into standalone tool pages. */
+.ns-bar .ns-sep{color:#7D9096}
+.ns-bar .ns-tag{margin-left:auto;color:#7D9096}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
 </head>
