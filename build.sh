@@ -15,6 +15,8 @@ python3 _build/build5.py
 python3 _build/build6.py
 python3 _build/build7.py
 python3 _build/build8.py
+python3 _build/extract_faction.py
 python3 _build/build9.py
+python3 _build/build10.py
 python3 _build/sitemap.py
 echo "Rebuilt. Commit and push, or drag the folder to Netlify."

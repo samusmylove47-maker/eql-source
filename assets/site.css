@@ -736,6 +736,59 @@ h1.display em{color:var(--z01)}
    the plot scrolls with the page instead of fighting the viewport. */
 @media(max-width:900px){.plotsvg{height:auto;width:100%}}
 
+/* ---------- faction impact checker ----------
+   Two sources on one page and they must not blur together: what a faction is
+   FOR is read from a guide, what MOVES it is measured from our own logs. The
+   measured half carries the tier M badge and the warmer treatment. */
+.fsearch{width:100%;max-width:560px;margin:var(--s-4) 0 var(--s-5);
+  background:var(--surface-1);border:1px solid var(--rule);border-radius:var(--r);
+  color:var(--txt);font-family:"IBM Plex Mono",monospace;font-size:var(--t-base);
+  padding:var(--s-3) var(--s-4)}
+.fsearch::placeholder{color:var(--faint)}
+.fsearch:focus{outline:2px solid var(--instr);outline-offset:2px;
+  border-color:color-mix(in srgb, var(--instr) 50%, var(--rule))}
+.fres{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));
+  gap:var(--s-4)}
+.fcard{background:var(--surface-1);border:1px solid var(--rule);border-radius:var(--r);
+  padding:var(--s-4);box-shadow:var(--shadow-1)}
+.fcard h3{font-family:"Saira Condensed",sans-serif;font-size:var(--t-md);
+  text-transform:uppercase;letter-spacing:.02em;margin:0 0 var(--s-2);color:var(--bone)}
+.fcard p{margin:0 0 var(--s-2);font-size:var(--t-sm)}
+.fcard ul{list-style:none;margin:0 0 var(--s-3);padding:0}
+.fcard li{font-size:var(--t-sm);padding:var(--s-1) 0;border-bottom:1px solid var(--rule)}
+.fcard li:last-child{border-bottom:0}
+.fcard .d{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);color:var(--dim)}
+.fsub{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.12em;
+  text-transform:uppercase;color:var(--faint);margin-top:var(--s-3)!important}
+.fneed{color:var(--txt)}
+.dim{color:var(--faint)}
+
+.fzone{background:var(--surface-1);border:1px solid var(--rule);border-radius:var(--r);
+  padding:var(--s-5);margin-bottom:var(--s-4);box-shadow:var(--shadow-1)}
+.fzhead{display:flex;flex-wrap:wrap;align-items:baseline;gap:var(--s-3);
+  margin-bottom:var(--s-4)}
+.fzhead h3{font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);
+  text-transform:uppercase;letter-spacing:.02em;margin:0;color:var(--bone)}
+.fzmeta{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);color:var(--faint);
+  letter-spacing:.06em}
+.fcols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:var(--s-5)}
+.fdown,.fup,.fwarn,.fgood{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.14em;text-transform:uppercase;margin:0 0 var(--s-2)}
+.fdown,.fwarn{color:var(--warn-t)}
+.fup,.fgood{color:var(--ok)}
+.fwarn,.fgood{margin-top:var(--s-4)}
+.flist,.fsteps{list-style:none;margin:0;padding:0}
+.flist li{padding:var(--s-2) 0;border-bottom:1px solid var(--rule)}
+.flist li b{display:block;color:var(--txt);font-size:var(--t-sm)}
+.flist li.down b{color:var(--warn-t)}
+.flist li.up b{color:var(--ok)}
+.fdelta,.fuse{display:block;font-size:var(--t-2xs);color:var(--dim);margin-top:2px}
+.fdelta{font-family:"IBM Plex Mono",monospace}
+.fsteps li{padding:var(--s-2) 0;font-size:var(--t-sm);border-bottom:1px solid var(--rule)}
+.fnothing,.fnone{color:var(--faint);font-size:var(--t-sm)}
+.tier.tM{border-color:color-mix(in srgb, var(--ok) 60%, var(--rule));color:var(--ok)}
+
 /* Height control. Sits above its plot, one button per storey plus All. The
    unselected storeys fade rather than vanish, so a reader keeps the sense of
    what is above and below the level they are looking at. */
