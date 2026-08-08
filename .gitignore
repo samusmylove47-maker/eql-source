@@ -6,3 +6,9 @@ node_modules/
 __pycache__/
 *.pyc
 .claude/settings.local.json
+
+# Combat logs are the collaborator's own play records and can contain private
+# chat. logstats.py reads them from outside the repo; only the derived counts
+# in assets/measured.json are committed.
+state/logs/
+*eqlog*.txt

@@ -1,0 +1,1522 @@
+[
+ {
+  "zone": null,
+  "difficulty_label": null,
+  "difficulty": 2,
+  "difficulty_from": "loot tier",
+  "difficulty_agrees": null,
+  "date": "04 Aug 2026",
+  "window": "16:24-16:27",
+  "stamps": [],
+  "kills": 27,
+  "distinct": 12,
+  "drop_tiers": {
+   "2": 7
+  },
+  "faction": {
+   "Sabertooths of Blackburrow": 25,
+   "Guards of Qeynos": 25,
+   "Silent Fist Clan": 25,
+   "Jaggedpine Treefolk": 25,
+   "Merchants of Qeynos": 25
+  },
+  "context": [
+   "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session.",
+   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
+   "these are level 4 we are level 26 so hit rate is very low",
+   "they are level 40 not 4, typo"
+  ],
+  "escapes": [],
+  "faction_by_mob": {},
+  "exp_by_mob": {
+   "a gnoll bouncer": 0.664,
+   "a gnoll necromancer": 0.814,
+   "a gnoll brewer": 0.814,
+   "Master Brewer": 0.942,
+   "a gnoll necromancer pet": 0.942,
+   "Sabertooth Overseer": 1.234,
+   "a gnoll elite": 1.053,
+   "Splitpaw Explorer": 0.942,
+   "an elite gnoll fighter": 1.081,
+   "Splitpaw Sharpshooter": 1.234,
+   "a boisterous gnoll": 0.814
+  },
+  "you_hit": 193,
+  "you_miss": 79,
+  "mob_hit": 440,
+  "mob_miss": 466,
+  "mobs": {
+   "An elite gnoll fighter": {
+    "swings": 114,
+    "landed": 63,
+    "avg": 5.4,
+    "max": 26,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A gnoll elite": {
+    "swings": 187,
+    "landed": 95,
+    "avg": 7.7,
+    "max": 38,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 21,
+     "Burst of Fire": 19,
+     "Searing Arrow": 14,
+     "Tangling Weeds": 10,
+     "Lifespike": 6,
+     "Flame Lick": 3,
+     "Grasping Roots": 3,
+     "Harm Touch": 1,
+     "Disease Cloud": 1
+    },
+    "loot": {}
+   },
+   "A gnoll brewer": {
+    "swings": 33,
+    "landed": 17,
+    "avg": 5.7,
+    "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A gnoll bouncer": {
+    "swings": 137,
+    "landed": 57,
+    "avg": 3.2,
+    "max": 20,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 3,
+     "Tangling Weeds": 2,
+     "Sprouting Heal": 1,
+     "Burst of Fire": 1
+    },
+    "loot": {}
+   },
+   "Master Brewer": {
+    "swings": 36,
+    "landed": 20,
+    "avg": 6.1,
+    "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Keg Mallet +2": 1,
+     "Mammoth Skin": 1,
+     "Gnoll Fang": 1
+    }
+   },
+   "A gnoll necromancer": {
+    "swings": 69,
+    "landed": 34,
+    "avg": 8.2,
+    "max": 27,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 17,
+     "Heat Blood": 3,
+     "Poison Bolt": 2,
+     "Engulfing Darkness": 2
+    },
+    "loot": {}
+   },
+   "Sabertooth Overseer": {
+    "swings": 39,
+    "landed": 21,
+    "avg": 12.0,
+    "max": 41,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Runed Sabertooth Girdle +2": 1,
+     "Mote of Lesser Potential": 1
+    }
+   },
+   "Splitpaw Sharpshooter": {
+    "swings": 44,
+    "landed": 26,
+    "avg": 6.8,
+    "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 6,
+     "Burst of Fire": 4,
+     "Tangling Weeds": 2,
+     "Searing Arrow": 2,
+     "Grasping Roots": 1
+    },
+    "loot": {
+     "Sharpshooter's Bandana +2": 1
+    }
+   },
+   "A gnoll necromancer pet": {
+    "swings": 114,
+    "landed": 46,
+    "avg": 5.5,
+    "max": 19,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 14,
+     "Harm Touch": 4,
+     "Clinging Darkness": 1
+    },
+    "loot": {}
+   },
+   "Splitpaw Explorer": {
+    "swings": 29,
+    "landed": 17,
+    "avg": 9.3,
+    "max": 30,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Well Worn Boots +2": 1
+    }
+   },
+   "An elite gnoll shaman": {
+    "swings": 50,
+    "landed": 26,
+    "avg": 11.9,
+    "max": 40,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Healing": 8,
+     "Root": 2,
+     "Burst of Flame": 2,
+     "Inner Fire": 1
+    },
+    "loot": {}
+   },
+   "A gnoll elite pet": {
+    "swings": 25,
+    "landed": 4,
+    "avg": 1.2,
+    "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 5,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "A boisterous gnoll": {
+    "swings": 29,
+    "landed": 14,
+    "avg": 4.7,
+    "max": 8,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A gnoll": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Symbol of Transal": 2,
+     "Center": 1
+    },
+    "loot": {}
+   },
+   "a gnoll bouncer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Patch of Gnoll Fur": 2,
+     "Gnoll Fang": 1,
+     "Rusty Broad Sword +2": 1
+    }
+   },
+   "a gnoll necromancer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Patch of Gnoll Fur": 3,
+     "Gnoll Fang": 1,
+     "Damask Amice +2": 1
+    }
+   },
+   "a gnoll elite": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Patch of Gnoll Fur": 4,
+     "Gnoll Fang": 2,
+     "Ringmail Boots +2": 1
+    }
+   },
+   "an elite gnoll fighter": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Gnoll Fang": 2,
+     "Patch of Gnoll Fur": 1,
+     "Ringmail Neckguard +2": 1,
+     "Silver Amulet +2": 1
+    }
+   }
+  }
+ },
+ {
+  "zone": "The Castle of Mistmoore",
+  "difficulty_label": "Awakened",
+  "difficulty": 1,
+  "difficulty_from": "zone line",
+  "difficulty_agrees": true,
+  "date": "08 Aug 2026",
+  "window": "11:08-11:48",
+  "stamps": [
+   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
+   "these are level 4 we are level 26 so hit rate is very low",
+   "they are level 40 not 4, typo"
+  ],
+  "kills": 135,
+  "distinct": 35,
+  "drop_tiers": {
+   "1": 34,
+   "2": 7
+  },
+  "faction": {
+   "Mayong Mistmoore": 130,
+   "King Tearis Thex": 130,
+   "Agents of Mistmoore": 130,
+   "League of Antonican Bards": 130,
+   "Ring of Scale": 130,
+   "Temple of Solusek Ro": 2,
+   "Shadowed Men": 2
+  },
+  "context": [
+   "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session.",
+   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
+   "these are level 4 we are level 26 so hit rate is very low",
+   "they are level 40 not 4, typo"
+  ],
+  "escapes": [
+   {
+    "at": "11:23:23",
+    "by": "Shara",
+    "engaged": [
+     "A will ravisher",
+     "A will sapper",
+     "A will pillager",
+     "A leering gargoyle",
+     "A flouting gargoyle",
+     "A thought spoiler"
+    ],
+    "after": "A soul seductress cast Shock of Poison"
+   },
+   {
+    "at": "11:40:38",
+    "by": "Shara",
+    "engaged": [
+     "A jeering gargoyle",
+     "A will sapper",
+     "A will pillager",
+     "A flouting gargoyle",
+     "A leering gargoyle",
+     "Princess Cherista"
+    ],
+    "after": "Princess Cherista cast Screaming Terror"
+   }
+  ],
+  "faction_by_mob": {
+   "a pledge familiar": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "an initiate familiar": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a grinning gargoyle": {
+    "Mayong Mistmoore": -4,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -4,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed ghoul": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed familiar": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed custodian": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed guard": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "an imp familiar": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed sentry": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "Ssynthi": {
+    "Temple of Solusek Ro": -5,
+    "Shadowed Men": 5
+   },
+   "a soul temptress": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a will sapper": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a soul seductress": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a will pillager": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a leering gargoyle": {
+    "Mayong Mistmoore": -4,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -4,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a soul inveigling": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a flouting gargoyle": {
+    "Mayong Mistmoore": -4,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -4,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "Xicotl": {
+    "Mayong Mistmoore": -300,
+    "King Tearis Thex": 75,
+    "Agents of Mistmoore": -300,
+    "League of Antonican Bards": 75,
+    "Ring of Scale": 15
+   },
+   "a glyphed forbidder": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a spiritish ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed aegis": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a wightish ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a wraithish ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a sneering gargoyle": {
+    "Mayong Mistmoore": -4,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -4,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "Enynti": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a vampiric ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a ghastish ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a jeering gargoyle": {
+    "Mayong Mistmoore": -4,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -4,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a ghoulish ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a ghostly ancille": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a thought spoiler": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a dark librarian": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed warder": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   }
+  },
+  "exp_by_mob": {
+   "a pledge familiar": 0.2,
+   "an initiate familiar": 0.453,
+   "a grinning gargoyle": 0.675,
+   "a glyphed ghoul": 0.934,
+   "a glyphed familiar": 0.6,
+   "a glyphed custodian": 1.177,
+   "a glyphed guard": 0.834,
+   "an imp familiar": 1.177,
+   "a glyphed sentry": 1.034,
+   "Ssynthi": 0.705,
+   "a soul temptress": 0.921,
+   "a will sapper": 1.501,
+   "an undead knight": 3.025,
+   "a soul seductress": 1.034,
+   "an avenging caitiff": 1.537,
+   "a will pillager": 1.84,
+   "a leering gargoyle": 2.361,
+   "a soul inveigling": 1.202,
+   "a flouting gargoyle": 1.936,
+   "Xicotl": 3.025,
+   "a glyphed forbidder": 1.77,
+   "a spiritish ancille": 0.921,
+   "a glyphed aegis": 1.471,
+   "a wightish ancille": 0.838,
+   "a wraithish ancille": 1.0,
+   "a sneering gargoyle": 0.871,
+   "Enynti": 0.782,
+   "a vampiric ancille": 2.059,
+   "a ghastish ancille": 1.987,
+   "a jeering gargoyle": 1.349,
+   "a ghoulish ancille": 1.612,
+   "a ghostly ancille": 1.274,
+   "a thought spoiler": 0.911,
+   "a dark librarian": 1.906,
+   "a glyphed warder": 0.869
+  },
+  "you_hit": 1195,
+  "you_miss": 831,
+  "mob_hit": 2554,
+  "mob_miss": 2407,
+  "mobs": {
+   "A pledge familiar": {
+    "swings": 795,
+    "landed": 335,
+    "avg": 7.1,
+    "max": 38,
+    "backstabs": 18,
+    "backstab_avg": 57.9,
+    "backstab_max": 143,
+    "casts": {
+     "Root": 34,
+     "Fire Bolt": 13,
+     "Shock of Lightning": 12,
+     "Frost Bolt": 8
+    },
+    "loot": {}
+   },
+   "An initiate familiar": {
+    "swings": 693,
+    "landed": 315,
+    "avg": 8.8,
+    "max": 39,
+    "backstabs": 25,
+    "backstab_avg": 62.8,
+    "backstab_max": 143,
+    "casts": {
+     "Root": 52,
+     "Shock of Lightning": 15,
+     "Screaming Terror": 4,
+     "Shadow Vortex": 3,
+     "Shock of Poison": 2,
+     "Engulfing Darkness": 1
+    },
+    "loot": {}
+   },
+   "A glyphed ghoul": {
+    "swings": 145,
+    "landed": 70,
+    "avg": 10.1,
+    "max": 48,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A grinning gargoyle": {
+    "swings": 56,
+    "landed": 25,
+    "avg": 18.4,
+    "max": 49,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A glyphed familiar": {
+    "swings": 167,
+    "landed": 86,
+    "avg": 8.4,
+    "max": 39,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 11,
+     "Root": 5
+    },
+    "loot": {}
+   },
+   "A glyphed sentry": {
+    "swings": 149,
+    "landed": 81,
+    "avg": 11.5,
+    "max": 52,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A glyphed guard": {
+    "swings": 293,
+    "landed": 142,
+    "avg": 8.6,
+    "max": 46,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "An imp familiar": {
+    "swings": 39,
+    "landed": 20,
+    "avg": 14.0,
+    "max": 43,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A glyphed custodian": {
+    "swings": 39,
+    "landed": 16,
+    "avg": 11.8,
+    "max": 34,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Healing": 5,
+     "Holy Might": 2,
+     "Root": 1
+    },
+    "loot": {}
+   },
+   "Ssynthi": {
+    "swings": 38,
+    "landed": 16,
+    "avg": 20.6,
+    "max": 48,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 8,
+     "Instill": 7,
+     "Shielding": 1
+    },
+    "loot": {
+     "Robe of the Keeper +1": 2,
+     "Shadowed Book": 2
+    }
+   },
+   "An undead knight": {
+    "swings": 98,
+    "landed": 63,
+    "avg": 33.4,
+    "max": 97,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Dry Bone Fire Burst": 10
+    },
+    "loot": {}
+   },
+   "A will sapper": {
+    "swings": 246,
+    "landed": 138,
+    "avg": 10.9,
+    "max": 55,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A soul temptress": {
+    "swings": 24,
+    "landed": 19,
+    "avg": 19.7,
+    "max": 52,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shadow Vortex": 3,
+     "Fear": 3,
+     "Shielding": 1,
+     "Negation of Life": 1,
+     "Heat Blood": 1
+    },
+    "loot": {}
+   },
+   "An avenging caitiff": {
+    "swings": 87,
+    "landed": 47,
+    "avg": 13.1,
+    "max": 49,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A will pillager": {
+    "swings": 443,
+    "landed": 257,
+    "avg": 14.6,
+    "max": 61,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A soul seductress": {
+    "swings": 65,
+    "landed": 35,
+    "avg": 22.7,
+    "max": 58,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 7,
+     "Shadow Vortex": 5,
+     "Negation of Life": 3,
+     "Shock of Poison": 3,
+     "Shielding": 1,
+     "Leatherskin": 1,
+     "Heat Blood": 1
+    },
+    "loot": {}
+   },
+   "A leering gargoyle": {
+    "swings": 234,
+    "landed": 141,
+    "avg": 24.8,
+    "max": 87,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A flouting gargoyle": {
+    "swings": 111,
+    "landed": 62,
+    "avg": 22.7,
+    "max": 67,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A soul inveigling": {
+    "swings": 50,
+    "landed": 27,
+    "avg": 20.8,
+    "max": 67,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 5,
+     "Shadow Vortex": 3,
+     "Negation of Life": 3,
+     "Major Shielding": 2,
+     "Leatherskin": 2,
+     "Heat Blood": 2,
+     "Shock of Poison": 1
+    },
+    "loot": {}
+   },
+   "Xicotl": {
+    "swings": 99,
+    "landed": 62,
+    "avg": 31.4,
+    "max": 111,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 2,
+     "Engulfing Darkness": 2,
+     "Cancelling of Life": 1
+    },
+    "loot": {
+     "Glowing Sword Hilt": 1
+    }
+   },
+   "A jeering gargoyle": {
+    "swings": 78,
+    "landed": 46,
+    "avg": 18.4,
+    "max": 63,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A will ravisher": {
+    "swings": 35,
+    "landed": 18,
+    "avg": 13.3,
+    "max": 53,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A thought spoiler": {
+    "swings": 47,
+    "landed": 28,
+    "avg": 19.9,
+    "max": 51,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 8,
+     "Lightning Bolt": 6,
+     "Tishan's Clash": 2,
+     "Lesser Shielding": 1
+    },
+    "loot": {}
+   },
+   "A glyphed forbidder": {
+    "swings": 46,
+    "landed": 22,
+    "avg": 10.9,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Healing": 6,
+     "Symbol of Transal": 3,
+     "Holy Might": 3,
+     "Echoing Light": 3,
+     "Daring": 2,
+     "Root": 1
+    },
+    "loot": {}
+   },
+   "A spiritish ancille": {
+    "swings": 55,
+    "landed": 33,
+    "avg": 19.9,
+    "max": 55,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 10,
+     "Instill": 9
+    },
+    "loot": {}
+   },
+   "A wightish ancille": {
+    "swings": 33,
+    "landed": 25,
+    "avg": 20.0,
+    "max": 53,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shadow Vortex": 2
+    },
+    "loot": {}
+   },
+   "A glyphed aegis": {
+    "swings": 48,
+    "landed": 20,
+    "avg": 9.6,
+    "max": 30,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoulish ancille": {
+    "swings": 248,
+    "landed": 128,
+    "avg": 16.1,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 9,
+     "Alacrity": 2,
+     "Suffocate": 2,
+     "Chaos Flux": 2,
+     "Beguile": 1,
+     "Ensnaring Roots": 1
+    },
+    "loot": {}
+   },
+   "A ghastish ancille": {
+    "swings": 212,
+    "landed": 116,
+    "avg": 19.4,
+    "max": 61,
+    "backstabs": 1,
+    "backstab_avg": 72.0,
+    "backstab_max": 72,
+    "casts": {},
+    "loot": {}
+   },
+   "A wraithish ancille": {
+    "swings": 43,
+    "landed": 24,
+    "avg": 22.6,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 8,
+     "Engulfing Darkness": 3,
+     "Shadow Vortex": 3,
+     "Shock of Poison": 1,
+     "Heat Blood": 1
+    },
+    "loot": {}
+   },
+   "A vampiric ancille": {
+    "swings": 54,
+    "landed": 30,
+    "avg": 23.3,
+    "max": 59,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Enynti": {
+    "swings": 40,
+    "landed": 22,
+    "avg": 11.7,
+    "max": 42,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Rune of Fortune": 1
+    }
+   },
+   "A sneering gargoyle": {
+    "swings": 19,
+    "landed": 10,
+    "avg": 11.5,
+    "max": 51,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghostly ancille": {
+    "swings": 30,
+    "landed": 22,
+    "avg": 36.1,
+    "max": 69,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 7,
+     "Instill": 6,
+     "Tishan's Clash": 1
+    },
+    "loot": {}
+   },
+   "A dark librarian": {
+    "swings": 28,
+    "landed": 15,
+    "avg": 14.1,
+    "max": 52,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A deathly harbinger": {
+    "swings": 16,
+    "landed": 7,
+    "avg": 14.7,
+    "max": 34,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Lasna Cheroon": {
+    "swings": 16,
+    "landed": 10,
+    "avg": 21.6,
+    "max": 76,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Major Shielding": 1,
+     "Leatherskin": 1,
+     "Engulfing Darkness": 1,
+     "Screaming Terror": 1,
+     "Shock of Poison": 1
+    },
+    "loot": {}
+   },
+   "A shadowy scribe": {
+    "swings": 10,
+    "landed": 6,
+    "avg": 17.0,
+    "max": 29,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 3,
+     "Instill": 2
+    },
+    "loot": {}
+   },
+   "Princess Cherista": {
+    "swings": 7,
+    "landed": 5,
+    "avg": 21.0,
+    "max": 35,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 1
+    },
+    "loot": {}
+   },
+   "A glyphed warder": {
+    "swings": 25,
+    "landed": 10,
+    "avg": 19.9,
+    "max": 48,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Healing": 3,
+     "Center": 1
+    },
+    "loot": {}
+   },
+   "A fallen noble": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Symbol of Transal": 2
+    },
+    "loot": {}
+   },
+   "an initiate familiar": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Familiar Ring": 3,
+     "Raw-Hide Belt +2": 1,
+     "Raw-Hide Skullcap +1": 1,
+     "Rusty Short Sword +2": 1,
+     "Raw-Hide Shoulderpads +2": 1,
+     "Bronze Long Sword +1": 1,
+     "Bronze Mace +1": 1,
+     "Rusty Long Sword +1": 1,
+     "Rusty Short Sword +1": 1,
+     "Raw-Hide Boots +1": 1,
+     "Raw-Hide Belt +1": 1,
+     "Bronze Long Sword +2": 1
+    }
+   },
+   "a pledge familiar": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Familiar Ring": 3,
+     "Bronze Dagger +1": 1,
+     "Bronze Spear +1": 1,
+     "Ice of Velious": 1,
+     "Bronze Two Handed Sword +1": 1,
+     "Raw-Hide Shoulderpads +2": 1,
+     "Rusty Long Sword +1": 1,
+     "Rusty Short Sword +1": 1
+    }
+   },
+   "a glyphed ghoul": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Vial of Vampire Blood": 3,
+     "Fine Steel Great Staff +1": 1
+    }
+   },
+   "a grinning gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Gargoyle Eye": 1
+    }
+   },
+   "a glyphed familiar": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Raw-Hide Wristbands +1": 1,
+     "Rusty Long Sword +1": 1,
+     "Rusty Short Sword +1": 1
+    }
+   },
+   "a glyphed guard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Ringmail Coat +1": 1,
+     "Mote of Minor Potential": 1,
+     "Fine Steel Short Sword +1": 1,
+     "Mote of Lesser Potential": 1,
+     "Fine Steel Scimitar +1": 1,
+     "Stone Marker": 1
+    }
+   },
+   "a glyphed sentry": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Warhammer +2": 1,
+     "Fine Steel Dagger +1": 1
+    }
+   },
+   "an imp familiar": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Sacrificial Dagger +1": 1
+    }
+   },
+   "a soul temptress": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Flame Agate": 1,
+     "Fine Steel Dagger +1": 1,
+     "Mote of Minor Potential": 1
+    }
+   },
+   "a will sapper": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Black Silk Gloves +1": 1,
+     "Mote of Lesser Potential": 1
+    }
+   },
+   "a soul seductress": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Jade Earring +1": 1
+    }
+   },
+   "an avenging caitiff": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Crested Spaulders +1": 1,
+     "Fine Steel Short Sword +1": 1,
+     "Crested Helm +1": 1
+    }
+   },
+   "a will pillager": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Short Sword +1": 1
+    }
+   },
+   "a soul inveigling": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Ivory": 1
+    }
+   },
+   "a glyphed forbidder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Warhammer +1": 1,
+     "Ivory": 1
+    }
+   },
+   "a wightish ancille": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Dagger +1": 1,
+     "Mote of Minor Potential": 1
+    }
+   },
+   "a wraithish ancille": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Jade Earring +1": 1
+    }
+   },
+   "a ghoulish ancille": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Splinted Bronze Cloak +2": 1,
+     "Fine Steel Short Sword +1": 1,
+     "Fine Steel Two Handed Sword +1": 1
+    }
+   },
+   "a leering gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Mistmoore Granite": 1
+    }
+   },
+   "a thought spoiler": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Ivory": 1
+    }
+   },
+   "a dark librarian": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Illegible Scroll": 1
+    }
+   }
+  }
+ }
+]

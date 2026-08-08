@@ -1,0 +1,344 @@
+"""Combat logs in, measured figures out.
+
+WHY THIS EXISTS
+---------------
+Almost everything on this site is read from somewhere. A combat log is the one
+source that is measured rather than read: it records what actually happened, in
+the live game, on a known date, to a known character. It is the only way to
+close the gaps CLAUDE.md lists as the biggest ones — which class kits attach to
+which mob, what a fight actually costs, and what a named mob really drops.
+
+It is also the one source that can be over-read, so this is deliberately narrow:
+it counts what the log states and attaches the conditions to every figure. A hit
+rate measured by a level 26 trio against level 40 mobs is a fact about that
+matchup and nothing else, and the output carries the level gap so the page can
+say so.
+
+    python3 _build/logstats.py <dir-of-logs>     # writes assets/measured.json
+
+TELLING MOBS FROM PLAYERS
+-------------------------
+This is the part that goes wrong quietly. A first pass here recorded "Azuria" as
+a named mob missing from the Mistmoore plate. Azuria is a player: they dodge,
+riposte, parry and carry a thorns shield, and they were fighting the same mobs
+we were. Published, that would have invented a mob.
+
+So a name counts as a mob only on positive evidence, never by default:
+  - the log says "You have slain <name>", or
+  - the log says "<name> has been slain", or
+  - it attacked us, or
+  - it is written with an article, as trash always is.
+Anything else is left out. A named mob that was fought but not killed and never
+landed a blow will be missed, which is the right way round to be wrong.
+
+ZONE AND DIFFICULTY
+-------------------
+The zone line carries both:
+
+    You have entered The Castle of Mistmoore 1 (Awakened).
+
+The parenthesised word is the tier name: D0 Base/Normal, D1 Awakened, D2
+Adaptive, D3 Fused, D4 Refined. Loot is read separately — items drop at +N and
+the modal N is the difficulty — and the two are reported apart rather than
+collapsed, because they are independent and their agreement is evidence. They
+agreed on the 8 Aug Mistmoore session. Where they disagree, the page says the
+difficulty is unresolved instead of choosing.
+
+BACKSTAB
+--------
+Kept apart from ordinary swings. Mistmoore's familiars hit for 1-38 in melee and
+100-143 from behind, so a combined average of "10.5, max 143" describes neither.
+It is also the clearest class evidence in a log: a spell list can belong to one
+broad caster kit, but backstab is a rogue ability, and a mob type doing both is
+running two kits.
+"""
+import os, sys, re, json, collections, datetime
+
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+os.chdir(ROOT)
+
+TS = re.compile(r'^\[(\w{3}) (\w{3}) (\d{2}) (\d{2}):(\d{2}):(\d{2}) (\d{4})\]\s*(.*)$')
+VERBS = (r'(?:hit|slash|bash|crush|pierce|bite|claw|kick|punch|gore|maul|slice|'
+         r'backstab|frenzy|strike)')
+ARTICLE = re.compile(r'^(?:a|an|the)\s+', re.I)
+
+# The difficulty tier names used by personal and public instancing, supplied by
+# the collaborator on 8 Aug 2026. Independently corroborated for D1 by our own
+# log: the zone line read "(Awakened)" and 22 of 27 drops were +1, so the label
+# and the loot-tier rule agree without being derived from each other.
+DIFFICULTY = {'base': 0, 'normal': 0, 'base / normal': 0,
+              'awakened': 1, 'adaptive': 2, 'fused': 3, 'refined': 4}
+
+ZONE = re.compile(r'You have entered (.+?)\.\s*$')
+STAMP = re.compile(r'ATTN Claude:\s*(.+?)\'?\s*$')
+SLAIN_BY_YOU = re.compile(r'^You have slain (.+?)!')
+SLAIN = re.compile(r'^(.+?) has been slain')
+HIT_YOU = re.compile(rf'^(.{{1,44}}?) ({VERBS}(?:es|s)?) YOU for (\d+)')
+MISS_YOU = re.compile(rf'^(.{{1,44}}?) tries to {VERBS} YOU, but')
+YOU_HIT = re.compile(rf'^You {VERBS}(?:es|s)? (.+?) for (\d+)')
+YOU_MISS = re.compile(rf'^You try to {VERBS} (.+?), but')
+CAST = re.compile(r'^(.{1,44}?) begins (?:to cast a spell|casting) ?(.*?)\.?$')
+LOOT = re.compile(r"looted an? (.+?) from (.+?)'s corpse")
+PLUS = re.compile(r'\+(\d)\b')
+FACTION = re.compile(r'Your faction standing with (.+?) (?:has|could)')
+FACTION_D = re.compile(r'Your faction standing with (.+?) has been adjusted by (-?\d+)')
+EXP = re.compile(r'You gain (?:party )?experience! \(([\d.]+)%\)')
+
+# Faction arrives in the same second as the kill that caused it, just before the
+# "You have slain" line, so it can be attributed per mob rather than only summed.
+# It is worth doing: killing Xicotl moved Mayong Mistmoore by -300 where a trash
+# kill moves it by -5, so a named is 60x a trash kill on that faction. No wiki
+# carries that, and it is the whole basis of a faction planner.
+
+# Escapes. Succor and Evacuate teleport the group out, so a cast of one is a
+# decision that the fight was lost — the single most useful judgement a log
+# records, and one no wiki carries. What was being fought and what it had just
+# done are captured with it, because "we ran" is only useful with the reason.
+ESCAPE = re.compile(r'\b(\w+ )?(Succor|Evacuate|Evacuation)\b', re.I)
+ENGAGE = re.compile(r'^(.{1,44}?) (?:says|shouts), ')
+ESCAPE_WINDOW = datetime.timedelta(seconds=45)
+LEVEL_SELF = re.compile(r'You have (?:gained|reached) level (\d+)')
+
+
+def parse(path):
+    rows = []
+    for line in open(path, encoding='utf-8', errors='replace'):
+        m = TS.match(line.rstrip('\n'))
+        if m:
+            when = datetime.datetime.strptime(
+                f'{m.group(2)} {m.group(3)} {m.group(7)} {m.group(4)}:{m.group(5)}:{m.group(6)}',
+                '%b %d %Y %H:%M:%S')
+            rows.append((when, m.group(8)))
+    return rows
+
+
+def collect(rows):
+    """Split into zone sessions and count within each."""
+    mobs = set()
+    for _when, x in rows:
+        for rx in (SLAIN_BY_YOU, SLAIN, HIT_YOU, MISS_YOU):
+            m = rx.match(x)
+            if m:
+                mobs.add(m.group(1).strip())
+        m = CAST.match(x)
+        if m and ARTICLE.match(m.group(1).strip()):
+            mobs.add(m.group(1).strip())
+    mobs = {m for m in mobs if m and not m.startswith('You')}
+
+    # Character context is usually stamped before zoning in — the trio and level
+    # were noted at 11:07:53 and the zone was entered at 11:08:57, which put them
+    # in different sessions. Every stamp in the file is therefore offered to
+    # every session as context; session-scoped stamps stay separate.
+    all_stamps = [m.group(1).strip().rstrip("'")
+                  for _w, x in rows for m in [STAMP.search(x)] if m]
+
+    def new_session(zone, diff, when):
+        return dict(zone=zone, difficulty_label=diff,
+                    date=when.strftime('%d %b %Y'),
+                    start=when.strftime('%H:%M'), end=when.strftime('%H:%M'),
+                    stamps=[], kills=collections.Counter(),
+                    casts=collections.defaultdict(collections.Counter),
+                    loot=collections.defaultdict(collections.Counter),
+                    drop_tiers=collections.Counter(), faction=collections.Counter(),
+                    dmg=collections.defaultdict(list),
+                    mob_hit=collections.Counter(), mob_miss=collections.Counter(),
+                    you_hit=0, you_miss=0, context=all_stamps, escapes=[],
+                    fac_by_mob=collections.defaultdict(dict),
+                    exp_by_mob=collections.defaultdict(list))
+
+    # A log that starts mid-zone has no "You have entered" line at all — the
+    # Blackburrow stress test is exactly that, and its combat is worth keeping.
+    # Open an unnamed session so nothing before the first zone line is lost. The
+    # zone stays null rather than being guessed from context.
+    # Split on a zone change, and also on any gap longer than GAP: a log that
+    # starts mid-zone has no zone line at all, and without this the 4 August
+    # stress test and the 8 August Mistmoore run merged into one "session"
+    # spanning four days.
+    GAP = datetime.timedelta(minutes=30)
+    sessions, cur, prev = [], None, None
+    for when, x in rows:
+        if cur is None or (prev is not None and when - prev > GAP):
+            cur = new_session(cur['zone'] if cur else None,
+                              cur['difficulty_label'] if cur else None, when)
+            sessions.append(cur)
+        prev = when
+        m = ZONE.search(x)
+        if m:
+            raw = m.group(1).strip()
+            diff = None
+            dm = re.search(r'\((.+?)\)\s*$', raw)
+            if dm:
+                diff = dm.group(1)
+                raw = raw[:dm.start()].strip()
+            raw = re.sub(r'\s+\d+$', '', raw)
+            # Re-entering the same zone is not a new session. Dying and
+            # returning, or stepping out and back, emits another zone line and
+            # was splitting one Mistmoore run into a 15-minute session and a
+            # 2-minute one. A real break is caught by the gap rule above.
+            if cur and cur['zone'] == raw and cur['difficulty_label'] == diff:
+                continue
+            cur = new_session(raw, diff, when)
+            sessions.append(cur)
+            continue
+        cur['end'] = when.strftime('%H:%M')
+
+        m = STAMP.search(x)
+        if m:
+            cur['stamps'].append(m.group(1).strip().rstrip("'"))
+        m = FACTION_D.search(x)
+        if m:
+            cur.setdefault('_fac_buf', []).append((when, m.group(1).strip(), int(m.group(2))))
+        m = EXP.search(x)
+        if m:
+            cur['_exp_buf'] = (when, float(m.group(1)))
+
+        m = SLAIN_BY_YOU.match(x)
+        if m and m.group(1).strip() in mobs:
+            name = m.group(1).strip()
+            cur['kills'][name] += 1
+            # attribute anything from the same second to this kill
+            for w, fac, delta in cur.get('_fac_buf', []):
+                if (when - w).total_seconds() <= 1:
+                    cur['fac_by_mob'][name].setdefault(fac, delta)
+            cur['_fac_buf'] = []
+            eb = cur.get('_exp_buf')
+            if eb and (when - eb[0]).total_seconds() <= 1:
+                cur['exp_by_mob'][name].append(eb[1])
+        m = CAST.match(x)
+        if m:
+            who = m.group(1).strip()
+            if who in mobs:
+                cur['casts'][who][(m.group(2) or '').strip() or '(unnamed)'] += 1
+        m = LOOT.search(x)
+        if m:
+            item, src = m.group(1).strip(), m.group(2).strip()
+            if src in mobs:
+                cur['loot'][src][item] += 1
+            first = PLUS.search(item)
+            if first and 'to create' not in x:
+                cur['drop_tiers'][first.group(1)] += 1
+        m = FACTION.search(x)
+        if m:
+            cur['faction'][m.group(1).strip()] += 1
+        m = HIT_YOU.match(x)
+        if m and m.group(1).strip() in mobs:
+            cur['dmg'][m.group(1).strip()].append((m.group(2), int(m.group(3))))
+            cur['mob_hit'][m.group(1).strip()] += 1
+        m = MISS_YOU.match(x)
+        if m and m.group(1).strip() in mobs:
+            cur['mob_miss'][m.group(1).strip()] += 1
+        # Everything that engaged us recently, not just whichever mob swung last.
+        # Naming only the last one said the group fled "a jeering gargoyle" when
+        # Princess Cherista was the actual threat; in a multi-mob fight the last
+        # swing is arbitrary.
+        recent = cur.setdefault('_recent', [])
+        for rx in (HIT_YOU, MISS_YOU):
+            mm2 = rx.match(x)
+            if mm2 and mm2.group(1).strip() in mobs:
+                recent.append((mm2.group(1).strip(), when, None))
+                break
+        mm2 = CAST.match(x)
+        if mm2 and mm2.group(1).strip() in mobs:
+            recent.append((mm2.group(1).strip(), when, (mm2.group(2) or '').strip()))
+
+        if ESCAPE.search(x) and 'begins casting' in x:
+            who = x.split(' begins casting')[0].strip()
+            window = [r for r in recent if (when - r[1]) <= ESCAPE_WINDOW]
+            engaged, seen = [], set()
+            for nm, _w, _sp in reversed(window):
+                if nm not in seen:
+                    seen.add(nm)
+                    engaged.append(nm)
+            last_spell = next(((nm, sp) for nm, _w, sp in reversed(window) if sp), None)
+            cur['escapes'].append(dict(
+                at=when.strftime('%H:%M:%S'), by=who,
+                engaged=engaged[:6],
+                after=f'{last_spell[0]} cast {last_spell[1]}' if last_spell else None))
+            cur['_recent'] = []
+
+        if YOU_HIT.match(x):
+            cur['you_hit'] += 1
+        if YOU_MISS.match(x):
+            cur['you_miss'] += 1
+    return sessions
+
+
+def summarise(s):
+    mh, mm = sum(s['mob_hit'].values()), sum(s['mob_miss'].values())
+
+    # Difficulty two ways, kept separate so they can disagree in the open.
+    # The zone line names the tier; the loot tier is the collaborator's own rule,
+    # that the modal +N of what drops is the difficulty. Where a log has no zone
+    # line at all — one that started mid-zone — only the loot reading survives.
+    label = (s['difficulty_label'] or '').strip().lower()
+    d_named = DIFFICULTY.get(label)
+    d_loot = None
+    if s['drop_tiers']:
+        d_loot = int(max(s['drop_tiers'].items(), key=lambda kv: kv[1])[0])
+    agree = None if (d_named is None or d_loot is None) else (d_named == d_loot)
+
+    out = dict(zone=s['zone'], difficulty_label=s['difficulty_label'],
+               difficulty=d_named if d_named is not None else d_loot,
+               difficulty_from='zone line' if d_named is not None else
+                               ('loot tier' if d_loot is not None else None),
+               difficulty_agrees=agree, date=s['date'],
+               window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
+               kills=sum(s['kills'].values()), distinct=len(s['kills']),
+               drop_tiers=dict(sorted(s['drop_tiers'].items())),
+               faction=dict(s['faction'].most_common()),
+               context=s.get('context', []), escapes=s.get('escapes', []),
+               faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
+               exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
+               you_hit=s['you_hit'], you_miss=s['you_miss'],
+               mob_hit=mh, mob_miss=mm, mobs={})
+    for name, v in s['dmg'].items():
+        h, ms = s['mob_hit'].get(name, 0), s['mob_miss'].get(name, 0)
+        # Backstab is kept apart from ordinary swings. Mistmoore's familiars hit
+        # for 1-38 in melee and 100-143 from behind; averaging the two together
+        # reports "10.5 average, 143 maximum", which describes neither and hides
+        # the thing a reader actually needs to know.
+        plain = [d for verb, d in v if verb != 'backstabs']
+        backs = [d for verb, d in v if verb == 'backstabs']
+        out['mobs'][name] = dict(
+            swings=h + ms, landed=h,
+            avg=round(sum(plain) / len(plain), 1) if plain else None,
+            max=max(plain) if plain else None,
+            backstabs=len(backs),
+            backstab_avg=round(sum(backs) / len(backs), 1) if backs else None,
+            backstab_max=max(backs) if backs else None,
+            casts=dict(s['casts'][name].most_common()) if name in s['casts'] else {},
+            loot=dict(s['loot'][name].most_common()) if name in s['loot'] else {})
+    for name in s['casts']:
+        out['mobs'].setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
+                                          backstabs=0, backstab_avg=None, backstab_max=None,
+                                          casts=dict(s['casts'][name].most_common()),
+                                          loot=dict(s['loot'][name].most_common()) if name in s['loot'] else {}))
+    for name in s['loot']:
+        out['mobs'].setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
+                                          backstabs=0, backstab_avg=None, backstab_max=None,
+                                          casts={}, loot=dict(s['loot'][name].most_common())))
+    return out
+
+
+def build(src):
+    files = ([src] if os.path.isfile(src)
+             else [os.path.join(src, f) for f in sorted(os.listdir(src)) if f.endswith('.txt')])
+    sessions = []
+    for f in files:
+        for s in collect(parse(f)):
+            if sum(s['kills'].values()) or s['dmg']:
+                sessions.append(summarise(s))
+    json.dump(sessions, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
+              indent=1)
+    print(f"{len(files)} log file(s) -> {len(sessions)} session(s) with combat")
+    for s in sessions:
+        th, tm_ = s['you_hit'], s['you_miss']
+        print(f"  {s['zone']} ({s['difficulty_label']}) {s['date']} {s['window']}: "
+              f"{s['kills']} kills / {s['distinct']} distinct, {len(s['mobs'])} mobs measured, "
+              f"your hit rate {100*th/max(1,th+tm_):.1f}%, drops {s['drop_tiers']}")
+        for line in s['stamps']:
+            print(f"      stamp: {line[:110]}")
+
+
+if __name__ == '__main__':
+    build(sys.argv[1] if len(sys.argv) > 1 else 'state/logs')

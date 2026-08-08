@@ -32,6 +32,14 @@ page look less finished.
 
 Higher tiers override lower ones. Always.
 
+0. **Measured combat logs — tier M.** First-hand instrument data from our own
+   play: what happened, in the live game, on a dated session, to a named
+   character. Parsed by `_build/logstats.py` into `assets/measured.json`.
+   **Outranks every read source for what it directly measures, and generalises
+   to nothing beyond its stated conditions.** Always publish trio, level, zone,
+   difficulty label, date and sample size beside the figure. One session is a
+   sample, not a rate: a drop seen once is "seen once". Full handling, including
+   how mobs are told from players, is in `docs/SOURCES.md`.
 1. **Official patch notes** — everquestlegends.com/news. Dated and authoritative.
    Anything published after a wiki page's last edit supersedes that page.
 2. **Structured wiki data** — eqlwiki.com infoboxes, NPC tables, item tables,
@@ -93,6 +101,36 @@ log their absence as a defect.
 - **Difficulty D0–D4 does not raise mob levels.** It makes mobs run player-style
   class kits, widens aggro ranges and pre-upgrades loot. Named mobs are often
   multiclass from D2; raid bosses start appearing triple-class at D3.
+
+  **Measured, and it starts earlier than that on trash.** In Castle Mistmoore at
+  **D1**, 8 Aug 2026, two ordinary trash types backstabbed 39 times between them
+  — `An initiate familiar` 22, `A pledge familiar` 17 — while the same types were
+  logged casting Root, Screaming Terror, Shadow Vortex, Shock of Poison and
+  Engulfing Darkness. Backstab is a rogue ability and a spell list is not, so
+  that mob type carries two kits at D1, on trash, not on a named. The log cannot
+  tell whether one individual does both.
+
+  Damage separates the same way: those familiars hit for 1–38 in melee and
+  100–143 from behind. Never publish a combined average for a mob that
+  backstabs.
+
+  The tiers are named in game, and the zone line prints the name on entry —
+  `You have entered The Castle of Mistmoore 1 (Awakened).`
+
+  | | Name |
+  |---|---|
+  | **D0** | Base / Normal — the default open world |
+  | **D1** | Awakened |
+  | **D2** | Adaptive |
+  | **D3** | Fused |
+  | **D4** | Refined |
+
+  Loot gives the same answer independently: items drop at `+N` and the modal `N`
+  is the difficulty. Read the *dropped* value, not the created one — `looted a
+  Keg Mallet +2 … to create a Keg Mallet +4` is a `+2` drop. The two readings
+  agreed on our 8 Aug Mistmoore session, which is why both are kept and reported
+  separately rather than collapsed: when they disagree, the difficulty is
+  unresolved and the page must say so.
 
 Inherited lines like "you need a full group of level 50s" came from a game where
 neither was true. Unreliable in both directions. Mark them.
