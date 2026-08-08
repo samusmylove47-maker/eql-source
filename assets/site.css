@@ -652,3 +652,33 @@ h1.display em{color:var(--z01)}
 .hero.ember-hero::after{background:repeating-radial-gradient(circle at 50% 50%,
     transparent 0 32px, rgba(215,108,85,.11) 32px 33px,
     transparent 33px 66px, rgba(217,162,39,.06) 66px 67px)}
+
+/* ---------- survey plots ----------
+   The plot is the artefact; the key beneath it is the same data as text, so the
+   information is never carried by the drawing alone. */
+.plotband{border-top:1px solid var(--rule)}
+.plotwrap{margin-top:var(--s-5);border:1px solid var(--rule);border-radius:var(--r);
+  overflow:hidden;background:#12171A;box-shadow:var(--shadow-1)}
+.plotsvg{display:block;width:100%;height:auto;max-height:min(78vh,760px)}
+.plotkey{list-style:none;margin:var(--s-5) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+  gap:0 var(--s-5);border-top:1px solid var(--rule)}
+.plotkey>*{min-width:0}
+.plotkey li{display:grid;grid-template-columns:auto minmax(0,1fr) auto;
+  gap:var(--s-1) var(--s-3);align-items:baseline;
+  padding:var(--s-2) 0;border-bottom:1px solid var(--rule)}
+.plotkey .pi{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);font-weight:600;
+  color:color-mix(in srgb, var(--c) 56%, var(--bone));min-width:1.6em}
+.plotkey .pn2{font-size:var(--t-sm);color:var(--txt)}
+.plotkey .pl{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.06em;color:var(--dim);white-space:nowrap}
+.plotkey .pc{grid-column:2/-1;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.06em;color:var(--faint)}
+.plotmissing{list-style:none;margin:var(--s-3) 0 0;padding:0;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:0 var(--s-5)}
+.plotmissing>*{min-width:0}
+.plotmissing li{display:flex;justify-content:space-between;gap:var(--s-3);align-items:baseline;
+  padding:var(--s-2) 0;border-bottom:1px solid var(--rule)}
+.plotmissing .pn2{font-size:var(--t-sm);color:var(--mut)}
+.plotmissing .pc{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.06em;color:var(--faint);text-align:right}
