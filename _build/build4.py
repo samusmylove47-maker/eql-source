@@ -67,8 +67,8 @@ BODY = '''
 
   <section class="band" style="border-top:0;padding-top:clamp(28px,4vw,44px)">
     <dl class="statline">
-      <div class="stx"><dt>Hit points</dt><dd>32,000</dd></div>
-      <div class="stx"><dt>Melee damage</dt><dd>865<small>per swing</small></dd></div>
+      <div class="stx"><dt>Hit points</dt><dd>32,000 <span class="tier t5">T5</span><small>pre-launch import &mdash; see sourcing</small></dd></div>
+      <div class="stx"><dt>Melee damage</dt><dd>? <span class="tier t5">T5</span><small>sources give 865 and 200 &mdash; see sourcing</small></dd></div>
       <div class="stx"><dt>Island</dt><dd>8<small>Butterfly</small></dd></div>
       <div class="stx"><dt>Key</dt><dd>Veeshan&rsquo;s<small>from island 7 Sirran</small></dd></div>
       <div class="stx"><dt>Trash</dt><dd>None<small>the Hand, if up</small></dd></div>
@@ -101,7 +101,7 @@ BODY = '''
       <canvas id="stage" tabindex="0" role="img" aria-label="Three-dimensional schematic of Plane of Sky islands 7 and 8 showing raid positioning for the Eye of Veeshan encounter. Focus this diagram and use the arrow keys to orbit, plus and minus to zoom."></canvas>
       <div class="enc-legend">
         <div class="lg"><span class="nm"><span class="sw" style="background:#C4482E"></span>Eye of Veeshan</span>
-          <span class="ds">32,000 HP &middot; 865 a swing</span></div>
+          <span class="ds">32,000 HP, unverified for Legends</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#7FB2C7"></span>Main tank</span>
           <span class="ds">rotation of three to four</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#E6E9E4"></span>Raid stack</span>
@@ -160,8 +160,10 @@ BODY = '''
 
   <section class="band">
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">Tanking it</h2></div></div>
-    <p class="lede">865 a swing against a 32,000 point health pool means this is a sustained-damage check on your
-      healers rather than a burst check. There are no adds, no phases and no movement requirement.</p>
+    <p class="lede">There are no adds, no phases and no movement requirement, so this is a sustained-damage check on
+      your healers rather than a burst check. <strong>How long a check, we cannot tell you.</strong> The only published
+      figures for the Eye predate the game and contradict each other &mdash; see the sourcing section. Bring more
+      healing than you think and time the first minute yourself.</p>
     <div class="cards c3" style="margin-top:24px">
       <div class="card" style="--c:var(--ember)"><div class="kicker">If death touch is live</div>
         <h3 class="t">Rotate three</h3>
@@ -171,7 +173,7 @@ BODY = '''
       <div class="card" style="--c:var(--ok)"><div class="kicker">If it is gone</div>
         <h3 class="t">One tank, rolled heals</h3>
         <p class="d">A single geared warrior with defensive up and clerics rolling heals holds it indefinitely. The
-          fight becomes a mana-management problem, and 32,000 points is a long time to keep that going.</p></div>
+          fight becomes a mana-management problem rather than a survival one.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">At D3 and above</div>
         <h3 class="t">Assume a class kit</h3>
         <p class="d">Raid bosses start appearing triple-class at D3. Nobody has published which kits attach to the Eye,
@@ -211,9 +213,25 @@ BODY = '''
   <section class="band">
     <div class="sechead"><span class="n">05</span><div><h2 class="sec">Sourcing</h2></div></div>
     <div class="note"><strong>eqlwiki.com/Plane_of_Sky</strong>, revision 151528, last edited 28 June 2026, read
-      4 August 2026. Source of the hit points, the melee damage, the island structure, the key chain, the pull-down
-      strategies and the Hand of Veeshan spawn condition. The Dangers section is a Legends-era edit; the island
-      walkthroughs are an inherited Project 1999 import and are marked as such wherever quoted.</div>
+      4 August 2026. Source of the island structure, the key chain, the pull-down strategies and the Hand of Veeshan
+      spawn condition. The Dangers section is a Legends-era edit; the island walkthroughs are an inherited Project 1999
+      import and are marked as such wherever quoted.</div>
+    <div class="note warn"><strong>The Eye&rsquo;s stat block is not Legends data, and we published it as though it
+      were.</strong> Corrected 8 August 2026. Three problems, found by applying the provenance test in
+      <code>CLAUDE.md</code>:
+      <br><br>
+      <strong>One.</strong> The 32,000 hit points come from <em>eqlwiki.com/Eye_of_Veeshan</em>, whose oldest revision
+      is 25 March 2026 by an account named <code>imported&gt;Kistraxx</code> &mdash; four months before EverQuest
+      Legends launched on 28 July 2026. It is a Project 1999 import.
+      <br><br>
+      <strong>Two.</strong> The melee figure is contradicted within eqlwiki itself. The Plane of Sky page gives 865 a
+      swing; the Eye&rsquo;s own page gives 200 to 200. That is a factor of four, and both pages predate launch.
+      <br><br>
+      <strong>Three.</strong> That stat block lists the Eye as a single class, Warrior, at level 70. Legends raid
+      bosses run three classes from D3, and a single-class stat block is a classic stat block.
+      <br><br>
+      Both figures now carry a <span class="tier t5">T5</span> badge, and the tanking section no longer reasons from
+      either. What replaces them is in-game observation: time the fight and count the swings.</div>
     <div class="note"><strong>eqprogression.com</strong>, Plane of Sky Quests / Class Unlocks, read 4 August 2026.
       Source of the component-to-reward mapping in the loot table.</div>
     <div class="note warn"><strong>Not sourced, and stated as unknown:</strong> whether death touch is live at launch,
