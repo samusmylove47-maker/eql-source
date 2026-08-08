@@ -92,6 +92,13 @@ def collect(rows):
             mobs.add(m.group(1).strip())
     mobs = {m for m in mobs if m and not m.startswith('You')}
 
+    # Character context is usually stamped before zoning in — the trio and level
+    # were noted at 11:07:53 and the zone was entered at 11:08:57, which put them
+    # in different sessions. Every stamp in the file is therefore offered to
+    # every session as context; session-scoped stamps stay separate.
+    all_stamps = [m.group(1).strip().rstrip("'")
+                  for _w, x in rows for m in [STAMP.search(x)] if m]
+
     def new_session(zone, diff, when):
         return dict(zone=zone, difficulty_label=diff,
                     date=when.strftime('%d %b %Y'),
@@ -102,7 +109,7 @@ def collect(rows):
                     drop_tiers=collections.Counter(), faction=collections.Counter(),
                     dmg=collections.defaultdict(list),
                     mob_hit=collections.Counter(), mob_miss=collections.Counter(),
-                    you_hit=0, you_miss=0)
+                    you_hit=0, you_miss=0, context=all_stamps)
 
     # A log that starts mid-zone has no "You have entered" line at all — the
     # Blackburrow stress test is exactly that, and its combat is worth keeping.
@@ -183,6 +190,7 @@ def summarise(s):
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
+               context=s.get('context', []),
                you_hit=s['you_hit'], you_miss=s['you_miss'],
                mob_hit=mh, mob_miss=mm, mobs={})
     for name, v in s['dmg'].items():

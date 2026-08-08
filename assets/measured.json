@@ -17,6 +17,12 @@
    "Jaggedpine Treefolk": 25,
    "Merchants of Qeynos": 25
   },
+  "context": [
+   "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session.",
+   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
+   "these are level 4 we are level 26 so hit rate is very low",
+   "they are level 40 not 4, typo"
+  ],
   "you_hit": 193,
   "you_miss": 79,
   "mob_hit": 440,
@@ -241,63 +247,70 @@
   "zone": "The Castle of Mistmoore",
   "difficulty_label": "Awakened",
   "date": "08 Aug 2026",
-  "window": "11:08-11:25",
+  "window": "11:08-11:28",
   "stamps": [
    "My partner, Shara, will also be logging today and I will provide her logs separate later.",
    "these are level 4 we are level 26 so hit rate is very low",
    "they are level 40 not 4, typo"
   ],
-  "kills": 50,
-  "distinct": 20,
+  "kills": 79,
+  "distinct": 24,
   "drop_tiers": {
-   "1": 14,
-   "2": 3
+   "1": 22,
+   "2": 5
   },
   "faction": {
-   "Mayong Mistmoore": 47,
-   "King Tearis Thex": 47,
-   "Agents of Mistmoore": 47,
-   "League of Antonican Bards": 47,
-   "Ring of Scale": 47,
+   "Mayong Mistmoore": 76,
+   "King Tearis Thex": 76,
+   "Agents of Mistmoore": 76,
+   "League of Antonican Bards": 76,
+   "Ring of Scale": 76,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
-  "you_hit": 439,
-  "you_miss": 351,
-  "mob_hit": 1083,
-  "mob_miss": 993,
+  "context": [
+   "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session.",
+   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
+   "these are level 4 we are level 26 so hit rate is very low",
+   "they are level 40 not 4, typo"
+  ],
+  "you_hit": 605,
+  "you_miss": 460,
+  "mob_hit": 1473,
+  "mob_miss": 1392,
   "mobs": {
    "A pledge familiar": {
-    "swings": 351,
-    "landed": 153,
-    "avg": 11.8,
+    "swings": 556,
+    "landed": 249,
+    "avg": 10.5,
     "max": 143,
     "casts": {
-     "Root": 11,
+     "Root": 24,
+     "Shock of Lightning": 7,
      "Fire Bolt": 5,
-     "Frost Bolt": 3,
-     "Shock of Lightning": 2
+     "Frost Bolt": 3
     },
     "loot": {}
    },
    "An initiate familiar": {
-    "swings": 262,
-    "landed": 120,
-    "avg": 14.3,
+    "swings": 516,
+    "landed": 236,
+    "avg": 14.4,
     "max": 143,
     "casts": {
-     "Root": 16,
-     "Shock of Lightning": 2,
-     "Shadow Vortex": 2,
-     "Screaming Terror": 2,
-     "Shock of Poison": 1
+     "Root": 27,
+     "Shock of Lightning": 4,
+     "Screaming Terror": 4,
+     "Shadow Vortex": 3,
+     "Shock of Poison": 2,
+     "Engulfing Darkness": 1
     },
     "loot": {}
    },
    "A glyphed ghoul": {
-    "swings": 53,
-    "landed": 29,
-    "avg": 7.4,
+    "swings": 77,
+    "landed": 45,
+    "avg": 10.3,
     "max": 48,
     "casts": {},
     "loot": {}
@@ -311,13 +324,13 @@
     "loot": {}
    },
    "A glyphed familiar": {
-    "swings": 71,
-    "landed": 30,
+    "swings": 134,
+    "landed": 67,
     "avg": 8.3,
-    "max": 38,
+    "max": 39,
     "casts": {
-     "Root": 3,
-     "Lightning Bolt": 2
+     "Lightning Bolt": 7,
+     "Root": 5
     },
     "loot": {}
    },
@@ -330,9 +343,9 @@
     "loot": {}
    },
    "A glyphed guard": {
-    "swings": 109,
-    "landed": 50,
-    "avg": 6.4,
+    "swings": 173,
+    "landed": 78,
+    "avg": 7.3,
     "max": 46,
     "casts": {},
     "loot": {}
@@ -346,13 +359,14 @@
     "loot": {}
    },
    "A glyphed custodian": {
-    "swings": 23,
-    "landed": 11,
-    "avg": 12.7,
+    "swings": 39,
+    "landed": 16,
+    "avg": 11.8,
     "max": 34,
     "casts": {
-     "Healing": 2,
-     "Holy Might": 1
+     "Healing": 5,
+     "Holy Might": 2,
+     "Root": 1
     },
     "loot": {}
    },
@@ -510,17 +524,47 @@
     "loot": {}
    },
    "A glyphed forbidder": {
-    "swings": 19,
-    "landed": 8,
-    "avg": 5.2,
-    "max": 16,
+    "swings": 46,
+    "landed": 22,
+    "avg": 10.9,
+    "max": 57,
     "casts": {
+     "Greater Healing": 6,
      "Symbol of Transal": 3,
+     "Holy Might": 3,
+     "Echoing Light": 3,
      "Daring": 2,
-     "Holy Might": 1,
-     "Root": 1,
-     "Greater Healing": 1
+     "Root": 1
     },
+    "loot": {}
+   },
+   "A spiritish ancille": {
+    "swings": 55,
+    "landed": 33,
+    "avg": 19.9,
+    "max": 55,
+    "casts": {
+     "Lightning Bolt": 10,
+     "Instill": 9
+    },
+    "loot": {}
+   },
+   "A wightish ancille": {
+    "swings": 33,
+    "landed": 25,
+    "avg": 20.0,
+    "max": 53,
+    "casts": {
+     "Shadow Vortex": 2
+    },
+    "loot": {}
+   },
+   "A glyphed aegis": {
+    "swings": 48,
+    "landed": 20,
+    "avg": 9.6,
+    "max": 30,
+    "casts": {},
     "loot": {}
    },
    "Lasna Cheroon": {
@@ -541,9 +585,14 @@
     "max": null,
     "casts": {},
     "loot": {
+     "Familiar Ring": 2,
      "Raw-Hide Belt +2": 1,
      "Raw-Hide Skullcap +1": 1,
-     "Rusty Short Sword +2": 1
+     "Rusty Short Sword +2": 1,
+     "Raw-Hide Shoulderpads +2": 1,
+     "Bronze Long Sword +1": 1,
+     "Bronze Mace +1": 1,
+     "Rusty Long Sword +1": 1
     }
    },
    "a pledge familiar": {
@@ -553,9 +602,13 @@
     "max": null,
     "casts": {},
     "loot": {
-     "Familiar Ring": 1,
+     "Familiar Ring": 2,
      "Bronze Dagger +1": 1,
-     "Bronze Spear +1": 1
+     "Bronze Spear +1": 1,
+     "Ice of Velious": 1,
+     "Bronze Two Handed Sword +1": 1,
+     "Raw-Hide Shoulderpads +2": 1,
+     "Rusty Long Sword +1": 1
     }
    },
    "a glyphed ghoul": {
@@ -565,7 +618,7 @@
     "max": null,
     "casts": {},
     "loot": {
-     "Vial of Vampire Blood": 1
+     "Vial of Vampire Blood": 2
     }
    },
    "a grinning gargoyle": {
@@ -598,7 +651,9 @@
     "casts": {},
     "loot": {
      "Ringmail Coat +1": 1,
-     "Mote of Minor Potential": 1
+     "Mote of Minor Potential": 1,
+     "Fine Steel Short Sword +1": 1,
+     "Mote of Lesser Potential": 1
     }
    },
    "a glyphed sentry": {
@@ -681,6 +736,28 @@
     "casts": {},
     "loot": {
      "Ivory": 1
+    }
+   },
+   "a glyphed forbidder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Warhammer +1": 1,
+     "Ivory": 1
+    }
+   },
+   "a wightish ancille": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Dagger +1": 1,
+     "Mote of Minor Potential": 1
     }
    }
   }
