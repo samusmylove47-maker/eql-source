@@ -17,7 +17,6 @@
     ],
     "deny": [
       "Bash(git push --force:*)",
-      "Bash(gh pr merge:*)",
       "Bash(rm -rf:*)",
       "Edit(dungeons/**)",
       "Edit(tools/**)"
