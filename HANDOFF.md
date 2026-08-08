@@ -89,6 +89,15 @@ is open is recorded per zone. `/verify <zone>` walks it.
 catches broken links, missing chrome, duplicate zone accents, CDN dependencies,
 and any page claiming more verified plates than the data supports.
 
+**The published site is `public/`, and nothing else is deployed.** Generators
+write into it; `assets/*.json`, `_build/`, `docs/`, `scripts/`, `state/` and the
+project docs stay at the root and never reach a host. This replaced a list of
+twelve blacklist rules that only worked while someone remembered to extend it —
+on 8 August 2026 Cloudflare served `CLAUDE.md`, `build.sh` and `docs/BACKLOG.md`
+publicly because those rules were Netlify-specific and did not travel. Host
+settings: Cloudflare Pages build output directory `public`, Netlify
+`publish = "public"`, build command empty on both.
+
 **Never edit generated files.** `dungeons/`, `tools/`, `raids/index.html`,
 `index.html` and `sources.html` are output. Edit `_build/source/` and the
 generators in `_build/`. A rebuild silently discards work done in the wrong

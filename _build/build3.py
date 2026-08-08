@@ -60,7 +60,7 @@ for z in Z:
         extra = (f'<span class="ns-sep">/</span><a href="{s}-map.html" '
                  f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">Navigation map &rarr;</a>')
     n += 1
-    inject(os.path.join(SRC, f'{s}.html'), f'dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
+    inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
            f"Plate {z['plate']:02d} &middot; {z['title']}", extra)
 # ---- maps
 for s in MAPS:
@@ -68,17 +68,17 @@ for s in MAPS:
     extra = (f'<span class="ns-sep">/</span><a href="{s}.html" '
              f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">&larr; Survey plate</a>')
     n += 1
-    inject(os.path.join(SRC, f'{s}-map.html'), f'dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
+    inject(os.path.join(SRC, f'{s}-map.html'), f'public/dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
            f"{z['title']} &middot; map", extra)
 # ---- tools
-inject(os.path.join(SRC,'eql-sky-tracker.html'), 'tools/plane-of-sky.html', '../',
+inject(os.path.join(SRC,'eql-sky-tracker.html'), 'public/tools/plane-of-sky.html', '../',
        'Tools', 'tools/index.html', 'Plane of Sky tracker', own_bar=True)
-inject(os.path.join(SRC,'eql-race-unlocks.html'), 'tools/race-unlocks.html', '../',
+inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/race-unlocks.html', '../',
        'Tools', 'tools/index.html', 'Race unlock tracker',
        extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
        own_bar=True)
 # calculator = same app, boots on the calc tab, shares the same save key
-inject(os.path.join(SRC,'eql-race-unlocks.html'), 'tools/combo-calculator.html', '../',
+inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator.html', '../',
        'Tools', 'tools/index.html', 'Race &amp; primary calculator',
        extra='<span class="ns-sep">/</span><a href="race-unlocks.html">&larr; Race unlocks</a>',
        subs=[(' show("track");\n})();', ' show("calc");\n})();'),

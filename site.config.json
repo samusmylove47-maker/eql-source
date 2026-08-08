@@ -2,5 +2,5 @@
   "_comment": "Single source of truth for site identity. Edit here, run ./build.sh, everything updates.",
   "site_name": "EQL Source",
   "site_tagline": "Survey",
-  "site_url": "https://eqlsource.netlify.app"
+  "site_url": "https://eqlsource.com"
 }

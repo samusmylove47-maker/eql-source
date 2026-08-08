@@ -355,7 +355,7 @@ def main():
 
     done = 0
     for slug, lst in grouped.items():
-        path = f'dungeons/{slug}.html'
+        path = f'public/dungeons/{slug}.html'
         if not os.path.exists(path):
             continue
         h = open(path, encoding='utf-8').read()
