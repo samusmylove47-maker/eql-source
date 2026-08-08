@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How raid access works — EQL Source</title>
+<meta name="description" content="Open-world raid bosses no longer spawn in EverQuest Legends. What replaced them, how the three instance types differ, and why a personal instance is not a solo raid.">
+<meta property="og:title" content="How raid access works — EQL Source">
+<meta property="og:description" content="Open-world raid bosses no longer spawn in EverQuest Legends. What replaced them, how the three instance types differ, and why a personal instance is not a solo raid.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../learn/raid-access.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+<section class="hero page">
+  <div class="shell">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn</p>
+    <h1 class="display">How raid access<br><em>actually works.</em></h1>
+    <p class="hero-lede">Open-world raid bosses no longer spawn. Three different things are called
+      &ldquo;instances&rdquo; and only one of them contains a raid boss. Getting that wrong costs you a
+      charge and an evening.</p>
+    <p class="hero-sig"><span>Sourced to patch notes</span><span>16 Jun 2026</span><span>Read 8 Aug 2026</span></p>
+  </div>
+</section>
+
+<div class="shell">
+  <div class="note warn"><strong>The mistake this page exists to prevent.</strong> A
+    <em>personal instance</em> is not a <em>solo raid</em>. They are different features with different
+    entry methods. Enter a personal instance of Plane of Hate expecting to find Innoruuk and you will
+    find an empty zone, having spent one of your two charges to get there.</div>
+</div>
+
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">What changed</h2>
+      <p class="lede" style="margin:0">In classic EverQuest you found a raid boss by going where it
+        stood and waiting for it to be up. That is not how Legends works, and it is the single
+        assumption most inherited advice still makes.</p></div></div>
+
+    <div class="cards c2">
+      <div class="card contour" style="--c:var(--warn);--cx:88%;--cy:114%">
+        <div class="kicker">No longer true</div>
+        <h3 class="t">Open world</h3>
+        <p class="d">Raid bosses do not spawn in the open world. The 16 June patch names them
+          individually: Maestro of Rancor, Innoruuk, the Prince of Hate, Cazic Thule, Fright, Terror,
+          Dread and a dracoliche &ldquo;no longer spawn in the open world &amp; personal
+          instances&rdquo;. Nothing since has reversed it.</p>
+        <div class="foot"><span>Patch note, 16 Jun 2026</span></div>
+      </div>
+      <div class="card contour" style="--c:var(--ok);--cx:12%;--cy:110%">
+        <div class="kicker">How it works now</div>
+        <h3 class="t">Voidlings</h3>
+        <p class="d">Raid instances are created by NPCs called voidlings. Hail one and it offers a list
+          of raid options along with their lockout timers. That is the only route to a raid boss.</p>
+        <div class="foot"><span>eqlwiki Personal_Instance</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The three instance types</h2>
+      <p class="lede" style="margin:0">They share a word and almost nothing else.</p></div></div>
+
+    <div class="ztable">
+      <div class="zrow" style="--c:var(--instr)">
+        <span class="pn">01</span>
+        <span><span class="zt">Public</span><span class="zs">shared zone instance</span></span>
+        <span class="cell zonesub"><em>Entry</em>zone line</span>
+        <span class="cell"><em>Charges</em>none</span>
+        <span class="cell"><em>Raid boss</em>no</span>
+        <span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--z01)">
+        <span class="pn">02</span>
+        <span><span class="zt">Personal</span><span class="zs">your own copy of a zone, for grouping and farming</span></span>
+        <span class="cell zonesub"><em>Entry</em>zone-level</span>
+        <span class="cell"><em>Charges</em>2, one an hour</span>
+        <span class="cell"><em>Raid boss</em>no</span>
+        <span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--ember)">
+        <span class="pn">03</span>
+        <span><span class="zt">Raid</span><span class="zs">created by a voidling; this is the one with the boss in it</span></span>
+        <span class="cell zonesub"><em>Entry</em>hail a voidling</span>
+        <span class="cell"><em>Charges</em>lockout timer</span>
+        <span class="cell"><em>Raid boss</em>yes</span>
+        <span class="bar"></span></div>
+    </div>
+
+    <div class="note"><strong>Group and raid sizes.</strong> A group caps at 4. A raid caps at 8. If you
+      are reading advice that assumes several dozen players and a dozen healers, you are reading classic
+      EverQuest, and it will not transfer.</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="split">
+      <div>
+        <div class="sechead"><div><h2 class="sec">Solo raid versions exist</h2>
+          <p class="lede" style="margin:0">This is documented rather than folklore, and it is the reason
+            small-group raiding is worth planning around at all.</p></div></div>
+        <p class="lede">The 16 June patch note lists, verbatim: <em>&ldquo;Balance changes to Solo Raid
+          versions of Innoruuk, Cazic-Thule, Maestro of Rancor, and Lord of Loathing.&rdquo;</em> A
+          thing cannot be rebalanced unless it exists. Four named raid bosses have separately tuned
+          solo versions.</p>
+        <p class="lede">Difficulty D0 to D4 is selectable when creating a raid instance, and difficulty
+          does not raise mob levels &mdash; it changes what mobs <em>do</em>.</p>
+      </div>
+      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:112%">
+        <h3 class="stdh">What is not settled</h3>
+        <p class="stdp">Two sources disagree about lockouts and we are not going to pick one for you.</p>
+        <ul class="gatelist">
+          <li class="gaterow" style="--c:var(--warn)">
+            <span class="gn">A</span><span class="gz">Decoupled</span>
+            <span class="gl">6 May 2026</span>
+            <span class="gs">A developer stream reported that solo and multiplayer raid timers are
+              separate. That is pre-launch intent. <span class="tier t4">T4</span></span></li>
+          <li class="gaterow" style="--c:var(--warn)">
+            <span class="gn">B</span><span class="gz">Shared, weekly</span>
+            <span class="gl">current</span>
+            <span class="gs">Community summaries describe one lockout shared between solo and
+              multiplayer, resetting Tuesdays. <span class="tier t4">T4</span></span></li>
+        </ul>
+        <p class="stdfoot">The patch notes do not settle it. If you clear a boss solo, assume your group
+          lockout may be gone until you have tested otherwise.</p>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><span class="n">Sourcing</span><div><h2 class="sec">Where this came from</h2></div></div>
+    <div class="note"><strong>everquestlegends.com patch notes, 16 June 2026.</strong> Read 8 August
+      2026. Source of the open-world removal, the named boss list, the personal instance availability
+      for Plane of Hate and Plane of Fear, and the solo raid balance line. Tier 1.</div>
+    <div class="note"><strong>eqlwiki.com/Personal_Instance</strong>, created 4 July 2026 by the editor
+      Caliente, read 8 August 2026. Source of the voidling mechanism, the three instance types and the
+      charge limits. Tier 2: the page passes the provenance test &mdash; it was authored fresh by a
+      named editor rather than imported, and it describes a system that has no classic equivalent. It
+      does predate launch, so it is beta-era documentation of a live feature.</div>
+    <div class="note warn"><strong>Not sourced, and stated as unknown:</strong> whether solo and
+      multiplayer raid lockouts are shared or separate; how a solo raid version differs mechanically
+      from the group version beyond being &ldquo;balanced&rdquo;; and which class kits any raid boss
+      runs at D3 and above. All three close with in-game observation, not further reading.</div>
+  </div>
+</section>
+
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All survey plates</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
