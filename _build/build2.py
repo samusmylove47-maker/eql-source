@@ -100,7 +100,7 @@ raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest L
         <div class="chipline"><span class="pill live">3D model</span><span class="pill">Pull strategy</span><span class="pill">Tank rotation</span></div>
         <div class="foot"><span>Full guide</span><span class="go">Open &rarr;</span></div></a>
 
-      <div class="card" style="--c:var(--rule2)">
+      <div class="card" style="--c:var(--dim)">
         <div class="kicker">Queued &middot; islands 5, 6, 7, 4, 3</div>
         <h3 class="t">Spiroc Lord &rarr; Gorgalosk</h3>
         <p class="d">The build order is set by which fights a diagram actually helps with. Island 5 first: the
@@ -197,7 +197,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
           map companion. Blackburrow is next; its explicit three-floor structure suits a 3D treatment.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Verification gates</h3>
         <p class="d">Five of the ten plates have not cleared the full three-gate standard. Which gate is open is
-          listed against each zone on the <a href="dungeons/index.html" style="color:var(--warn)">plates page</a>.</p></div>
+          listed against each zone on the <a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>
       <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
         <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another
           hour of reading wikis.</p></div>
