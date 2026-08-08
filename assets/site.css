@@ -528,3 +528,85 @@ a.card.figured:hover .fig{opacity:.22}
   -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 72%);
   mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 72%)}
 .band.ember .shell{position:relative;z-index:1}
+
+/* ==========================================================================
+   HOME — an actual home page. Three doors, what changed, and why to trust it.
+   It deliberately does NOT enumerate the plates, the tools or the raids; that
+   is what the nav is for, and listing them here made the page a table of
+   contents for itself.
+   ========================================================================== */
+
+.hero .shell{max-width:none;width:min(var(--max),100%);margin:0 auto}
+h1.display{max-width:16ch}
+/* Gradient-clipped display type: the headline takes light across it rather than
+   sitting flat. The fallback colour is set first for anything without clip. */
+h1.display em{color:var(--z01);
+  background:linear-gradient(96deg,var(--bone) 4%,var(--z01) 52%,var(--z07) 96%);
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent}
+.hero-lede{font-size:var(--t-md);color:var(--mut);max-width:52ch;
+  margin:var(--s-5) 0 0;line-height:1.6}
+
+/* ---------- the three doors ---------- */
+.doorgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));
+  gap:var(--s-4);margin-top:var(--s-5)}
+.doorgrid>*{min-width:0}
+.door{position:relative;display:flex;flex-direction:column;overflow:hidden;
+  border-radius:var(--r);border:1px solid var(--rule);border-top:2px solid var(--c);
+  padding:clamp(var(--s-5),3vw,var(--s-6));text-decoration:none;
+  background:linear-gradient(158deg,
+    color-mix(in srgb, var(--c) 11%, var(--surface-1)) 0%, var(--surface-1) 62%);
+  box-shadow:var(--shadow-1);
+  transition:transform var(--speed),box-shadow var(--speed),border-color var(--speed)}
+.door:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);
+  border-color:color-mix(in srgb, var(--c) 45%, var(--rule))}
+.dq{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wider);text-transform:uppercase;
+  color:color-mix(in srgb, var(--c) 62%, var(--bone));margin-bottom:var(--s-3)}
+.dt{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:clamp(26px,3vw,34px);line-height:1;text-transform:uppercase;
+  letter-spacing:.01em;color:var(--bone);margin:0 0 var(--s-3)}
+.dd{font-size:var(--t-sm);color:var(--mut);line-height:1.55;margin:0 0 var(--s-5)}
+.dgo{margin-top:auto;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--dim)}
+.door:hover .dgo{color:var(--bone)}
+.doornote{margin-top:var(--s-5);font-size:var(--t-sm);color:var(--dim);max-width:var(--measure)}
+.doornote a{color:var(--mut);text-underline-offset:3px}
+.doornote a:hover{color:var(--bone)}
+
+/* ---------- what changed, beside the standard ---------- */
+.split{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,.85fr);
+  gap:clamp(var(--s-5),4vw,var(--s-7));align-items:start}
+@media(max-width:900px){.split{grid-template-columns:1fr}}
+.chlist{list-style:none;margin:var(--s-5) 0 0;padding:0;border-top:1px solid var(--rule)}
+.ch{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s-3);
+  align-items:baseline;padding:var(--s-3) 0;border-bottom:1px solid var(--rule)}
+@media(max-width:640px){.ch{grid-template-columns:1fr;gap:var(--s-1)}}
+.ch .k{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--c);
+  border:1px solid currentColor;border-radius:var(--r);padding:2px 6px;white-space:nowrap}
+.ch .t{font-size:var(--t-sm);color:var(--txt)}
+.ch .d{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.08em;color:var(--faint);white-space:nowrap}
+
+.standard{position:relative;overflow:hidden;border-radius:var(--r);
+  border:1px solid var(--rule);padding:clamp(var(--s-5),3vw,var(--s-6));
+  background:linear-gradient(158deg,
+    color-mix(in srgb, var(--c) 9%, var(--surface-1)) 0%, var(--surface-1) 60%);
+  box-shadow:var(--shadow-1)}
+.stdh{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-lg);
+  text-transform:uppercase;letter-spacing:.02em;color:var(--bone);margin:0 0 var(--s-3)}
+.stdp{font-size:var(--t-sm);color:var(--mut);line-height:1.55;margin:0 0 var(--s-4)}
+.stdscale{list-style:none;counter-reset:tier;margin:0;padding:0;
+  border-top:1px solid var(--rule)}
+.stdscale li{counter-increment:tier;position:relative;padding:var(--s-3) 0 var(--s-3) var(--s-6);
+  border-bottom:1px solid var(--rule)}
+.stdscale li::before{content:counter(tier);position:absolute;left:0;top:var(--s-3);
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);font-weight:600;color:var(--tc);
+  border:1px solid var(--tc);border-radius:var(--r);width:20px;height:20px;
+  display:grid;place-items:center}
+.stdscale b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:600;
+  font-size:var(--t-md);text-transform:uppercase;letter-spacing:.02em;color:var(--bone);line-height:1.1}
+.stdscale span{display:block;font-size:var(--t-2xs);font-family:"IBM Plex Mono",monospace;
+  letter-spacing:.06em;color:var(--dim);margin-top:3px}
+.stdfoot{margin:var(--s-4) 0 0}

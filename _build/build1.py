@@ -51,162 +51,97 @@ nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
 nnone = sum(1 for z in Z if z["verify_level"]=="none")
 
+from changelog import ENTRIES, TONE
+
+recent = "\n".join(
+  f'''      <li class="ch" style="--c:{TONE[e['kind']]}">
+        <span class="k">{e['kind']}</span>
+        <span class="t">{e['title']}</span>
+        <span class="d">{e['date']}</span>
+      </li>''' for e in ENTRIES[:4])
+
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, 3D raid encounter guides and dungeon survey plates. Every claim names its source and its date.") + bar() + f'''
 <main>
 
 <section class="hero">
   <div class="shell">
-    <div class="hero-grid">
+    <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
+    <h1 class="display">The reference<br>that shows<br><em>its working.</em></h1>
+    <p class="hero-lede">Legends moves every week, and most of what the community reads about it is
+      classic EverQuest text in a Legends-shaped hole. Every figure here names the page it came from
+      and the day it was read. Every gap says so out loud.</p>
+    <p class="hero-sig"><span>{len(Z)} plates surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
+  </div>
+</section>
+
+<section class="band doors">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Start here</h2>
+      <p class="lede" style="margin:0">Three ways in, depending on what you came for.</p></div></div>
+    <div class="doorgrid">
+
+      <a class="door contour" href="tools/index-search.html" style="--c:var(--bone);--cx:88%;--cy:116%">
+        <span class="dq">I need to find something</span>
+        <h3 class="dt">The Index</h3>
+        <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
+          Ask where a thing drops, filter by class and slot, or find the named you have not met.</p>
+        <span class="dgo">Search {NITEMS} items &rarr;</span>
+      </a>
+
+      <a class="door contour" href="dungeons/index.html" style="--c:var(--z01);--cx:12%;--cy:110%">
+        <span class="dq">I am going into a zone</span>
+        <h3 class="dt">The survey plates</h3>
+        <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
+          and coordinates re-derived from <code>/loc</code> records. Navigation maps where they exist.</p>
+        <span class="dgo">{len(Z)} plates, {len(MAPS)} maps &rarr;</span>
+      </a>
+
+      <a class="door contour" href="tools/index.html" style="--c:var(--instr);--cx:84%;--cy:104%">
+        <span class="dq">I am planning a character</span>
+        <h3 class="dt">The trackers</h3>
+        <p class="dd">Class unlocks, race unlocks and the primary-slot decision you can never take back.
+          Progress packs into the page URL, so nothing is stored and nothing is lost.</p>
+        <span class="dgo">Three trackers &rarr;</span>
+      </a>
+
+    </div>
+    <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; boss fights
+      rendered in three dimensions, because a paragraph about where to stand has never been as clear as
+      being shown.</p>
+  </div>
+</section>
+
+<section class="band ledger">
+  <div class="shell">
+    <div class="split">
       <div>
-        <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
-        <h1 class="display">Ten dungeons,<br><em>measured.</em></h1>
-        <p class="hero-sig"><span>N 353</span><span>E 105</span><span>Plate 01 &mdash; 10</span></p>
+        <div class="sechead"><div><h2 class="sec">What changed</h2>
+          <p class="lede" style="margin:0">Typed by what it was, so a correction never reads as new
+            content. Every entry is public, including the ones that make us look worse.</p></div></div>
+        <ul class="chlist">
+{recent}
+        </ul>
+        <p style="margin-top:var(--s-5)"><a class="link" href="sources.html#changelog"
+          style="margin:0">The full change log &rarr;</a></p>
       </div>
-      <div class="hero-aside">
-        <p class="lede">Legends moves every week, and most of what the community reads about it is
-          classic EverQuest text in a Legends-shaped hole. This is the surveyed version.</p>
-        <dl style="margin-top:var(--s-5)">
-          <div><dt>{NITEMS}</dt><dd><b>items indexed</b>each with the mob that drops it</dd></div>
-          <div><dt>{NNAMED}</dt><dd><b>named mobs</b>levels, coordinates, spawn notes</dd></div>
-        </dl>
-      </div>
+
+      <aside class="standard contour" style="--c:var(--instr);--cx:92%;--cy:112%">
+        <h3 class="stdh">Why you can check us</h3>
+        <p class="stdp">Every claim carries the weight of its source. Tiers 1 and 2 print plain;
+          anything weaker carries its badge wherever it appears
+          &mdash; <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
+        <ol class="stdscale">
+          <li style="--tc:#5FA37E"><b>Developer statements</b><span>Patch notes and direct answers</span></li>
+          <li style="--tc:#7FB2C7"><b>Structured wiki data</b><span>Infoboxes, tables, coordinate records</span></li>
+          <li style="--tc:#D9A227"><b>Named community guides</b><span>Attributed, maintained, one reading</span></li>
+          <li style="--tc:#D9762A"><b>Aggregators</b><span>Mined snapshots, stale after a patch</span></li>
+          <li style="--tc:#D46C64"><b>Inherited classic prose</b><span>Project 1999 text. Quoted, marked</span></li>
+        </ol>
+        <p class="stdfoot"><a class="link" href="sources.html" style="margin:0">The full standard, and
+          every open gap &rarr;</a></p>
+      </aside>
     </div>
-
-  </div>
-</section>
-
-<section class="band" style="border-top:0;padding-top:0">
-  <div class="shell">
-    <div class="sechead">
-      <div><h2 class="sec">The plates</h2>
-        <p class="lede" style="margin:0">Population tables, named rosters with spawn data, loot tied to
-          its drop source, and coordinates re-derived from <code>/loc</code> records.</p></div>
-      <a class="link" href="dungeons/index.html">All plates and maps &rarr;</a></div>
-    <div class="plates">
-{plates}
-    </div>
-    <div class="note"><strong>{nfull} of {len(Z)} have cleared all three verification gates.</strong>
-      {npart} are partial and {nnone} are not verified at all. Which gate is open is recorded against
-      each zone rather than averaged away. Partial plates are complete and useful; they have simply
-      not cleared every gate.</div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead">
-      <div><h2 class="sec">Tools</h2>
-        <p class="lede" style="margin:0">No account, no login, no server holding your data. What you tick
-          is packed into the page URL &mdash; bookmark it, paste it in guild chat, open it anywhere.</p></div>
-      <a class="link" href="tools/index.html">All tools &rarr;</a></div>
-    <div class="cards lead">
-      <a class="card feature figured contour" href="tools/index-search.html"
-         style="--c:var(--bone);--cx:92%;--cy:118%">
-        <span class="fig">{NITEMS}</span>
-        <div class="kicker">Loot &amp; named lookup</div>
-        <h3 class="t">The Index</h3>
-        <p class="d">Every item and named mob across the ten surveyed dungeons, in one searchable place.
-          Ask where something drops, filter by class and slot, or find which named you still have not met.</p>
-        <div class="chipline"><span class="pill">{NITEMS} items</span><span class="pill">{NNAMED} named</span><span class="pill">Cross-zone</span></div>
-        <div class="foot"><span>Built from our own plates</span><span class="go">Open &rarr;</span></div></a>
-
-      <a class="card figured contour" href="tools/plane-of-sky.html"
-         style="--c:var(--instr);--cx:14%;--cy:112%">
-        <span class="fig">95</span>
-        <div class="kicker">Progression</div><h3 class="t">Plane of Sky</h3>
-        <p class="d">Build your trio and get every class-unlock test it owes &mdash; 95 quests, 222 components,
-          each tagged with the island and boss that drops it.</p>
-        <div class="foot"><span>All 560 trios</span><span class="go">Open &rarr;</span></div></a>
-
-      <a class="card figured contour" href="tools/race-unlocks.html"
-         style="--c:var(--instr);--cx:88%;--cy:106%">
-        <span class="fig">16</span>
-        <div class="kicker">Progression</div><h3 class="t">Race unlocks</h3>
-        <p class="d">Sixteen races with their factions, methods and honest work counts. Mark what you want
-          and it merges the grinds into one list, stripping the duplicated steps.</p>
-        <div class="foot"><span>Merged routes</span><span class="go">Open &rarr;</span></div></a>
-
-      <a class="card figured contour" href="tools/combo-calculator.html"
-         style="--c:var(--instr);--cx:20%;--cy:118%">
-        <span class="fig">560</span>
-        <div class="kicker">Planning</div><h3 class="t">Race &amp; primary</h3>
-        <p class="d">The primary slot is the only one you can never change. Name the class that must sit
-          there and the race you want, and it costs every route to both.</p>
-        <div class="foot"><span>Takes you literally</span><span class="go">Open &rarr;</span></div></a>
-    </div>
-  </div>
-</section>
-
-<section class="band ember">
-  <div class="shell">
-    <div class="ember-grid">
-      <div>
-        <h2 class="sec">Boss fights<br>you can orbit</h2>
-        <p class="lede">Positioning, radii and phase transitions rendered in three dimensions, because a
-          paragraph about where to stand has never been as clear as being shown. Drag to orbit, or use the
-          arrow keys.</p>
-        <p style="margin:var(--s-5) 0 0"><a class="link" href="raids/eye-of-veeshan.html"
-          style="margin:0;border-color:var(--ember)">Open the Eye of Veeshan &rarr;</a></p>
-      </div>
-      <dl class="ember-stats">
-        <div><dt>Hit points</dt><dd>32,000</dd></div>
-        <div><dt>Damage a swing</dt><dd>865</dd></div>
-        <div><dt>Island</dt><dd>8</dd></div>
-        <div><dt>Encounters built</dt><dd>1</dd></div>
-      </dl>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead">
-      <div><h2 class="sec">How we grade a source</h2>
-        <p class="lede" style="margin:0">Higher tiers override lower ones, always. Tier 1 and Tier 2 print
-          plain; anything below carries its badge wherever the claim appears, like this:
-          <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p></div>
-      <a class="link" href="sources.html">The full standard &rarr;</a></div>
-    <div class="tier-scale scale-strip">
-      <div class="ss" style="--tc:#5FA37E"><div class="n">Tier 1</div><div class="h">Developer</div>
-        <div class="d">Patch notes and direct answers. Dated, authoritative, override everything below.</div></div>
-      <div class="ss" style="--tc:#7FB2C7"><div class="n">Tier 2</div><div class="h">Wiki data</div>
-        <div class="d">Infoboxes, NPC and item tables, coordinate records. Entered from the live game.</div></div>
-      <div class="ss" style="--tc:#D9A227"><div class="n">Tier 3</div><div class="h">Named guides</div>
-        <div class="d">Maintained, attributed work. Reliable, but one person&rsquo;s reading of the game.</div></div>
-      <div class="ss" style="--tc:#D9762A"><div class="n">Tier 4</div><div class="h">Aggregators</div>
-        <div class="d">Mined snapshots. Good for a second opinion; stale the moment a patch lands.</div></div>
-      <div class="ss" style="--tc:#D46C64"><div class="n">Tier 5</div><div class="h">Classic prose</div>
-        <div class="d">Wiki text imported from Project 1999. Quoted only when marked as classic.</div></div>
-    </div>
-    <div class="note warn"><strong>Two systems break almost all inherited advice.</strong> Characters run
-      <em>three</em> classes at once, and difficulty D0&ndash;D4 changes what mobs <em>do</em> rather than what
-      level they are. Any line saying &ldquo;you need a full group of level 50s&rdquo; came from a game where
-      neither was true. Where we quote it, we mark it.</div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead">
-      <div><h2 class="sec">What we do not know</h2>
-        <p class="lede" style="margin:0">Published because a reference that hides its holes is not a
-          reference.</p></div>
-      <a class="link" href="sources.html#gaps">All open questions &rarr;</a></div>
-    <dl class="gaplist">
-      <a href="sources.html#gaps"><dt>D4 boss behaviour</dt>
-        <dd>Raid bosses go triple-class at D3, but nobody has published which kits attach to which boss.
-          Closes with combat logs, not research.</dd></a>
-      <a href="sources.html#gaps"><dt>Plane of Sky geometry</dt>
-        <dd>Never surveyed, so the Eye of Veeshan model is schematic rather than measured. A handful of
-          <code>/loc</code> readings would fix it.</dd></a>
-      <a href="sources.html#gaps"><dt>Respawn ceilings</dt>
-        <dd>The 28 July patch lowered maximums without publishing figures. Affected plates state pre-patch
-          timers as ceilings.</dd></a>
-      <div><dt>Send a screenshot</dt>
-        <dd>Most of these close with one tooltip, one log line or one <code>/loc</code>. In-game
-          observation outranks everything on this page, including us.</dd></div>
-    </dl>
   </div>
 </section>
 
