@@ -99,6 +99,17 @@ raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest L
       <p class="lede" style="margin:0">Nine islands, each gated by a key that only drops once the island below is
         cleared. Progression is vertical and unforgiving: fall off and every key you are carrying is destroyed.</p></div></div>
     <div class="cards c2">
+      <a class="card figured contour" href="plane-of-sky.html"
+         style="--c:var(--z01);--cx:14%;--cy:112%">
+        <span class="fig">7</span>
+        <div class="kicker">Progression &middot; solo route</div>
+        <h3 class="t">Every island, fewest pulls</h3>
+        <p class="d">What has to die before each boss appears, what tends to go wrong, and which
+          islands forgive a mistake. Written from a post-launch solo run rather than inherited raid
+          text.</p>
+        <div class="chipline"><span class="pill">7 islands</span><span class="pill">Solo</span></div>
+        <div class="foot"><span>Sourced, badged T3</span><span class="go">Open &rarr;</span></div></a>
+
       <a class="card" href="eye-of-veeshan.html" style="--c:var(--ember)">
         <div class="kicker">Island 8 &middot; Butterfly Island &middot; final boss</div>
         <h3 class="t">Eye of Veeshan</h3>
