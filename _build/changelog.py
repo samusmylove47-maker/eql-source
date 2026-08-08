@@ -4,6 +4,21 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="8 Aug 2026", title="The Eye of Veeshan's stat block",
+         body="We published 32,000 hit points and 865 damage a swing as though they were EverQuest "
+              "Legends figures. They are not. The hit points come from an eqlwiki page whose oldest "
+              "revision is 25 March 2026 by an account named <code>imported&gt;Kistraxx</code> &mdash; "
+              "four months before the game launched. The melee figure is contradicted inside eqlwiki "
+              "itself, which gives 865 on one page and 200 on another. And the stat block lists the "
+              "Eye as a single class at level 70, where Legends raid bosses run three classes from D3. "
+              "Both figures now carry a T5 badge and the tanking section no longer reasons from either"),
+    dict(kind="Correction", date="8 Aug 2026", title="Four respawn timers",
+         body="The Hole read 21:30; eqlwiki replaced that with 7:48 on 14 July, two weeks before we "
+              "captured the older value &mdash; it was stale on arrival. Befallen 4:27 to 4:30, Najena "
+              "19:00 to 4:50, and Crushbone and Blackburrow gain figures they previously lacked. Each "
+              "now records the revision, date, editor and comment behind it. Lower Guk's change was "
+              "deliberately not adopted: the wiki raised it to 11:00, but the 28 July patch says that "
+              "zone's respawn was <em>lowered</em>, and that contradiction is unresolved"),
     dict(kind="Correction", date="7 Aug 2026", title="Item count on The Index",
          body="The page described itself as holding &ldquo;389 items&rdquo; while the index it shipped "
               "held 452, and its own counter said 452 on screen. 389 was never correct at any point. "
