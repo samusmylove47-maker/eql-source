@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://eqlsource.netlify.app/404.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/dungeons/befallen.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/dungeons/blackburrow.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/dungeons/crushbone.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
@@ -18,6 +19,8 @@
   <url><loc>https://eqlsource.netlify.app/dungeons/thehole.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/dungeons/warrens.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/index.html</loc><lastmod>2026-08-08</lastmod><priority>1.0</priority></url>
+  <url><loc>https://eqlsource.netlify.app/learn/deity.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.netlify.app/learn/difficulty.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/learn/raid-access.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/raids/eye-of-veeshan.html</loc><lastmod>2026-08-08</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.netlify.app/raids/index.html</loc><lastmod>2026-08-08</lastmod><priority>0.8</priority></url>

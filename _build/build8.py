@@ -165,7 +165,8 @@ page = head("Plane of Sky, island by island",
           <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
             <span class="gz">Class kits at D3+</span><span class="gl">unpublished</span>
             <span class="gs">Raid bosses run three classes from D3. Which kits attach to which Sky
-              boss is recorded nowhere.</span></li>
+              boss is recorded nowhere. <a href="../learn/difficulty.html">What difficulty
+              changes</a> sets out what is known about the tiers and what is not.</span></li>
         </ul>
       </aside>
     </div>

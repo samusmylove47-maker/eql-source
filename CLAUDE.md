@@ -294,9 +294,13 @@ Addition / Correction / Source refresh. A fix must never read as new content.
 
 These close with evidence, not tidying.
 
-- **D4 encounter behaviour** — difficulty scaling itself is now partly measured
-  by eqltools.com (see `docs/BACKLOG.md` P1), but **which class kits attach to
-  which raid boss at D3+ is still unpublished.** Needs combat logs. Biggest gap.
+- **D4 encounter behaviour** — the tiers themselves are now documented in
+  `learn/difficulty.html`: names, what scales, and what EQL Tools measured.
+  D1 and D2 hit points are pinned; **D3 and D4 are not, by anyone**. And
+  **which class kits attach to which raid boss at D3+ is still unpublished** —
+  the biggest gap on the site. Needs combat logs from a raid at D3 or D4.
+  Our own logs now show two kits on *trash* at D1, which is earlier and lower
+  than the published claim about named mobs from D2.
 - **Plane of Sky geometry** — never surveyed. The Eye of Veeshan model is
   schematic and says so. Needs `/loc` readings.
 - **Five Sky class tooltips** — Ranger, Rogue, Shadow Knight, Shaman, Wizard

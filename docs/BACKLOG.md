@@ -28,7 +28,7 @@ before and after at both widths; the four verification questions at the end of
 
 ---
 
-## P1 — Difficulty primer
+## P1 — Difficulty primer  — BUILT 8 Aug 2026
 
 **Why:** D4 behaviour is the biggest documented gap on the site, and our raid
 guides currently say "nobody has published this". That is no longer entirely
@@ -80,11 +80,33 @@ What the rest of the ecosystem has:
 | eqlbase `/deities/` | Alignment and compatibility cards. No faction effects, no quests, no dates |
 | eqltools, eqlegendstools | Nothing |
 
-**And the advice that does exist contradicts itself**, which is squarely this
-project's adjudication remit. eqlwiki's Newbie Guide (7 Aug 2026) says "choosing
-Agnostic is always a safe bet". everquestguides.com (3 Jul, updated 24 Jul 2026)
-says agnostic "locks you out of every deity-specific item and faction perk".
-Both cannot be right, and nobody has said so in public.
+**The advice that exists is incomplete rather than contradictory — checked
+8 Aug 2026, and the earlier framing of this entry was wrong.** Both sources were
+read in full:
+
+- eqlwiki Newbie Guide, last edited 7 Aug 2026 14:31, carries a WIP banner:
+  *"If your class allows, choosing Agnostic is always a safe bet."*
+- everquestguides.com New Player FAQ, 3 Jul 2026, updated 24 Jul 2026:
+  *"It dodges the enemies a deity makes and locks you out of every
+  deity-specific item and faction perk."*
+
+This entry previously said "both cannot be right". **They can.** The first is a
+claim about risk; the second names a benefit *and* a cost in the same sentence.
+Nothing in the second says agnostic is unsafe — it says it is safe and that the
+safety is paid for. Writing them up as a contradiction would have published a
+false claim about two sources that agree.
+
+The real editorial point is better than the invented one: **the wiki gives
+advice with the cost omitted, on a choice that locks permanently at level 11.**
+"Always a safe bet" is true and incomplete, and incomplete is what matters when
+the decision cannot be taken back. That is worth saying, with both quotes and
+both dates, and without pretending anyone is wrong.
+
+Two things the FAQ supplies that the wiki does not:
+- It corroborates the token: *"the devs have confirmed a Deity Token that
+  changes it afterward"*, which matches the Producer's Letter price below.
+- *"The best-value picks players land on are Bristlebane and Solusek Ro."*
+  Explicitly player consensus, single source — **T4, badge it**.
 
 **The fact almost nobody publishes:** the lock is reversible. The official
 Producer's Letter (8 Jul 2026, everquestlegends.com) prices a Deity Unlock Token
@@ -96,10 +118,12 @@ URL-state pattern. Data is eqlwiki starting faction standings (T2, holes and all
 - naming the TBA holes is a feature here), deity quest lists (T2), token prices
 (T1). No mined data required.
 
-**Acceptance:** the page states plainly that the two published positions on
-agnostic contradict each other, names both sources with dates, and does not
-pretend to resolve what the evidence cannot. The Bristlebane and Solusek Ro
-"best value" ranking traces to a single T4 source and must be badged as such.
+**Acceptance:** the page quotes both published positions on agnostic with their
+dates, and states accurately how they relate — the wiki's advice omits a cost the
+FAQ names, which is not the same as the two disagreeing. It does not manufacture
+a contradiction, and does not pretend to resolve what the evidence cannot. The
+Bristlebane and Solusek Ro "best value" ranking is explicitly player consensus
+from a single source and must be badged T4.
 
 ---
 

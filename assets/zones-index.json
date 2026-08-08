@@ -47,8 +47,8 @@
   "who": null,
   "adjacent": null,
   "verified": null,
-  "verify_level": "none",
-  "verify_gate": "not verified — revamped 14 Jul and touched 28 Jul since the plate was built",
+  "verify_level": "partial",
+  "verify_gate": "gates 1 and 2 cleared 8 Aug 2026: page fetched in full, and the edit history taken from the API rather than the footer — last edited 14 July 2026, revision 157369, by Mandlz. Every coordinate matches the wiki and all 17 land on drawn floor. Gate 3, the room-list collision check, is still open",
   "respawn_note": "eqlwiki infobox, page last edited 14 Jul 2026; corroborated by eqlwiki Zone_Spawn_Timers. Pre-dates the 28 Jul patch, which reduced Orc Scoutsman and Orc Warden timers substantially, so treat as a pre-patch ceiling."
  },
  {
@@ -66,7 +66,7 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "edit history came from the page footer, not the history itself",
+  "verify_gate": "gate 2 cleared 8 Aug 2026 from the API rather than the footer: last edited 5 August 2026, revision 166594, by Grumpymixon. The plate's recorded date of 7 June was two months stale. Roster re-compared in full — all 15 named on the wiki are on the plate, and its key items including the Ebon Scythe are indexed. Gate 3, the room-list collision check, is still open",
   "respawn_note": "eqlwiki rev 164926, 1 Aug 2026, editor Caliente, \"changed timer from 4:27 to 4:30, seems most accurate within seconds\" — the comment names our exact published figure as the value it replaced. Befallen is not in the 28 Jul patch list, so this is a measurement refinement rather than a patch effect."
  },
  {
@@ -82,7 +82,7 @@
   "adjacent": null,
   "verified": null,
   "verify_level": "none",
-  "verify_gate": "not verified — and the plate is missing its reading key",
+  "verify_gate": "edit history cleared 8 Aug 2026 from the API rather than the footer: the only August edits are images (revisions 165753 and 165754, Piano), so the content still dates from 4 July 2026. All 17 coordinates land on drawn floor. Still open: the page has not been re-fetched in full against the plate, the room-list collision check, and the plate's reading key",
   "respawn_note": "eqlwiki infobox, page last edited 4 Aug 2026; corroborated by eqlwiki Zone_Spawn_Timers. Blackburrow is not in the 28 Jul patch list."
  },
  {
@@ -139,7 +139,7 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "rebuilt after a fabrication was found; coordinates not re-derived since",
+  "verify_gate": "rebuilt after a fabrication was found. All 17 recorded coordinates now check out against the zone's own extracted geometry, but the room-list collision check that gate 3 asks for has not been done",
   "respawn_note": "eqlwiki rev 157133, 14 Jul 2026, editor Realpoor, \"updated respawn timer\", replacing 21:30. Our 21:30 was captured on 30 Jul from a figure the wiki had already superseded two weeks earlier — it was stale on arrival, not overtaken since."
  },
  {
@@ -158,7 +158,7 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "coordinates not re-derived and collision-checked",
+  "verify_gate": "all 19 recorded coordinates check out against the zone's own extracted geometry; the room-list collision check that gate 3 asks for is still outstanding",
   "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
  },
  {

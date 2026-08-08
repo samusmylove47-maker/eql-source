@@ -161,6 +161,46 @@ else:
         if cfg["site_name"] not in h and "ns-bar" not in h:
             warn(f"{p_} does not carry the site name")
 
+# ---------------------------------------------------------------- source integrity
+# check.py validates the generated site, which means a broken *generator* passes
+# it. build.sh was once committed with merge conflict markers still in it and
+# this script reported all clear, because the HTML it had produced earlier was
+# still fine. The site was healthy; the thing that builds it was not.
+#
+# So: no tracked source file may carry conflict markers, and build.sh must at
+# least parse. Neither is expensive and both catch a class of fault that is
+# invisible to every other check here.
+import subprocess
+CONFLICT = ("<" * 7, "=" * 7, ">" * 7)
+tracked = subprocess.run(["git", "ls-files"], capture_output=True, text=True).stdout.split()
+for f_ in tracked:
+    if not os.path.isfile(f_) or f_.endswith((".png", ".jpg", ".svg", ".ico", ".woff2")):
+        continue
+    try:
+        txt = open(f_, encoding="utf-8", errors="replace").read()
+    except OSError:
+        continue
+    for line in txt.splitlines():
+        if line.startswith(CONFLICT[0]) or line.startswith(CONFLICT[2]) or line.rstrip() == CONFLICT[1]:
+            fail(f"{f_} still contains merge conflict markers")
+            break
+
+if os.path.exists("build.sh"):
+    r = subprocess.run(["bash", "-n", "build.sh"], capture_output=True, text=True)
+    if r.returncode != 0:
+        fail(f"build.sh does not parse: {r.stderr.strip().splitlines()[0] if r.stderr.strip() else 'syntax error'}")
+    gens = [ln.split()[-1] for ln in open("build.sh", encoding="utf-8")
+            if ln.startswith("python3 _build/")]
+    for g in gens:
+        if not os.path.exists(g):
+            fail(f"build.sh runs {g}, which does not exist")
+    on_disk = {f"_build/{f_}" for f_ in os.listdir("_build")
+               if f_.endswith(".py") and f_ not in ("_partials.py", "changelog.py",
+                                                    "geometry.py", "logstats.py",
+                                                    "extract_faction.py")}
+    for g in sorted(on_disk - set(gens)):
+        warn(f"{g} exists but build.sh never runs it")
+
 print(f"checked {len(pages)} pages")
 for w in warns: print(f"  WARN  {w}")
 for f in fails: print(f"  FAIL  {f}")

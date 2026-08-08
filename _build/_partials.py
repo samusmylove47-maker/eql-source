@@ -62,6 +62,7 @@ def foot(rel=""):
       </ul></div>
       <div><h4>Learn</h4><ul>
         <li><a href="{rel}learn/raid-access.html">How raid access works</a></li>
+        <li><a href="{rel}learn/difficulty.html">What difficulty changes</a></li>
       </ul></div>
       <div><h4>About</h4><ul>
         <li><a href="{rel}sources.html">Sourcing standard</a></li>

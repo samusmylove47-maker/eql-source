@@ -4,6 +4,23 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="8 Aug 2026", title="Befallen's respawn, and a source two months stale",
+         body="Two faults on one plate, both found by taking the wiki's edit history from the API "
+              "instead of its page footer. <strong>The plate said its source was last edited 7 June "
+              "2026. It was last edited 5 August</strong>, revision 166594 &mdash; and the plate "
+              "reasoned from the wrong date, telling readers the page &ldquo;cannot reflect anything "
+              "after 7 June&rdquo; when it postdates launch and gained the Ebon Scythe on 5 August. "
+              "Separately, <strong>the prose still gave the respawn as 4:27 in four places while "
+              "the zone data said 4:30</strong>, corrected from the wiki on 1 August &mdash; the "
+              "page and the data driving it disagreed. The roster itself checks out: all 15 named "
+              "mobs on the wiki are on the plate"),
+    dict(kind="Addition", date="8 Aug 2026", title="Kelynn, missing from the Crushbone roster",
+         body="A named mob the plate never carried. Found by comparing our roster against the "
+              "eqlwiki Crushbone page line by line during a verification pass: 16 named on the "
+              "wiki, 18 on our plate, and <strong>Kelynn was on theirs and not ours</strong>. "
+              "Level 9, 12% spawn, at 3, 387. The same comparison found <strong>no coordinate "
+              "mismatches at all</strong> across the fifteen named mobs both sources carry, and "
+              "the zone respawn agreeing at 9:00"),
     dict(kind="Correction", date="8 Aug 2026", title="Six Najena coordinates that sit outside Najena",
          body="Rathyl, Ekeros, BoneCracker, Officer Grush, Trazdon and A Visiting Priestess are "
               "recorded on eqlwiki at positions south of the zone&rsquo;s own extent, by between 57 and "

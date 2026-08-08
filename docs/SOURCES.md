@@ -233,3 +233,21 @@ A zone counts as **verified** only when all three are true:
 
 Anything short of that is `partial`, and which gate is open is recorded on the
 plate. Do not upgrade a zone's status without doing all three.
+
+### A fourth check that now exists, and is not a substitute for gate 3
+
+Since the zone geometry was extracted, every recorded coordinate can be tested
+against the floor the game itself draws. All 174 plotted positions across the ten
+zones land within 120 units of drawn floor — and the six Najena coordinates that
+did not were found this way and withheld.
+
+**This is a stronger check than gate 3 in one direction and weaker in another.**
+It proves a coordinate is somewhere a player can stand inside that zone, which a
+room-list comparison cannot. It does not prove the coordinate matches the room
+its note names, which is exactly what gate 3 asks. A mob recorded in "Room 7"
+whose coordinate sits on solid floor in Room 3 passes this check and fails gate 3.
+
+So it is recorded per zone as evidence, and **no zone's `verify_level` moves on
+it alone**. Where a gate description said coordinates had not been re-derived,
+that is now inaccurate and has been corrected to say what has been done and what
+has not.
