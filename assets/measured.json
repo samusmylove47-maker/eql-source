@@ -342,7 +342,7 @@
   "difficulty_from": "zone line",
   "difficulty_agrees": true,
   "date": "08 Aug 2026",
-  "window": "11:08-11:58",
+  "window": "11:08-12:02",
   "stamps": [
    {
     "at": "11:09",
@@ -362,7 +362,7 @@
    {
     "at": "11:57",
     "text": "Shara lost connection to the game.",
-    "conditions": false
+    "conditions": true
    },
    {
     "at": "11:58",
@@ -370,18 +370,18 @@
     "conditions": false
    }
   ],
-  "kills": 161,
-  "distinct": 36,
+  "kills": 172,
+  "distinct": 39,
   "drop_tiers": {
-   "1": 36,
+   "1": 38,
    "2": 8
   },
   "faction": {
-   "Mayong Mistmoore": 156,
-   "King Tearis Thex": 156,
-   "Agents of Mistmoore": 156,
-   "League of Antonican Bards": 156,
-   "Ring of Scale": 156,
+   "Mayong Mistmoore": 167,
+   "King Tearis Thex": 167,
+   "Agents of Mistmoore": 167,
+   "League of Antonican Bards": 167,
+   "Ring of Scale": 167,
    "Temple of Solusek Ro": 2,
    "Shadowed Men": 2
   },
@@ -674,6 +674,27 @@
     "Agents of Mistmoore": -5,
     "League of Antonican Bards": 5,
     "Ring of Scale": 5
+   },
+   "a dark offerer": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "Princess Cherista": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a will ravisher": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
    }
   },
   "exp_by_mob": {
@@ -687,15 +708,15 @@
    "an imp familiar": 1.119,
    "a glyphed sentry": 1.025,
    "Ssynthi": 0.705,
-   "a soul temptress": 0.921,
-   "a will sapper": 1.501,
+   "a soul temptress": 0.891,
+   "a will sapper": 1.492,
    "an undead knight": 3.025,
-   "a soul seductress": 1.034,
+   "a soul seductress": 1.004,
    "an avenging caitiff": 1.537,
    "a will pillager": 1.84,
-   "a leering gargoyle": 2.361,
+   "a leering gargoyle": 2.276,
    "a soul inveigling": 1.202,
-   "a flouting gargoyle": 2.875,
+   "a flouting gargoyle": 2.313,
    "Xicotl": 3.025,
    "a glyphed forbidder": 1.77,
    "a spiritish ancille": 0.866,
@@ -706,18 +727,21 @@
    "Enynti": 0.742,
    "a vampiric ancille": 1.754,
    "a ghastish ancille": 1.811,
-   "a jeering gargoyle": 1.341,
+   "a jeering gargoyle": 1.31,
    "a ghoulish ancille": 1.491,
    "a ghostly ancille": 1.274,
    "a thought spoiler": 0.911,
    "a dark librarian": 1.906,
    "a glyphed warder": 0.869,
-   "a shadowy sage": 2.097
+   "a shadowy sage": 2.097,
+   "a dark offerer": 0.911,
+   "Princess Cherista": 2.144,
+   "a will ravisher": 1.906
   },
-  "you_hit": 1486,
-  "you_miss": 1068,
-  "mob_hit": 3024,
-  "mob_miss": 2819,
+  "you_hit": 1631,
+  "you_miss": 1180,
+  "mob_hit": 3297,
+  "mob_miss": 3024,
   "mobs": {
    "A pledge familiar": {
     "swings": 795,
@@ -869,9 +893,9 @@
     "loot": {}
    },
    "A will sapper": {
-    "swings": 246,
-    "landed": 138,
-    "avg": 10.9,
+    "swings": 313,
+    "landed": 170,
+    "avg": 10.8,
     "max": 55,
     "backstabs": 0,
     "backstab_avg": null,
@@ -880,15 +904,15 @@
     "loot": {}
    },
    "A soul temptress": {
-    "swings": 24,
-    "landed": 19,
-    "avg": 19.7,
+    "swings": 62,
+    "landed": 39,
+    "avg": 19.5,
     "max": 52,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Shadow Vortex": 3,
+     "Shadow Vortex": 8,
      "Fear": 3,
      "Shielding": 1,
      "Negation of Life": 1,
@@ -908,8 +932,8 @@
     "loot": {}
    },
    "A will pillager": {
-    "swings": 443,
-    "landed": 257,
+    "swings": 448,
+    "landed": 259,
     "avg": 14.6,
     "max": 61,
     "backstabs": 0,
@@ -919,28 +943,29 @@
     "loot": {}
    },
    "A soul seductress": {
-    "swings": 65,
-    "landed": 35,
-    "avg": 22.7,
-    "max": 58,
+    "swings": 97,
+    "landed": 52,
+    "avg": 22.1,
+    "max": 59,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Screaming Terror": 7,
-     "Shadow Vortex": 5,
-     "Negation of Life": 3,
+     "Screaming Terror": 11,
+     "Shadow Vortex": 7,
+     "Negation of Life": 4,
      "Shock of Poison": 3,
+     "Heat Blood": 2,
+     "Engulfing Darkness": 2,
      "Shielding": 1,
-     "Leatherskin": 1,
-     "Heat Blood": 1
+     "Leatherskin": 1
     },
     "loot": {}
    },
    "A leering gargoyle": {
-    "swings": 234,
-    "landed": 141,
-    "avg": 24.8,
+    "swings": 287,
+    "landed": 168,
+    "avg": 27.3,
     "max": 87,
     "backstabs": 0,
     "backstab_avg": null,
@@ -949,9 +974,9 @@
     "loot": {}
    },
    "A flouting gargoyle": {
-    "swings": 147,
-    "landed": 84,
-    "avg": 23.0,
+    "swings": 234,
+    "landed": 136,
+    "avg": 24.3,
     "max": 76,
     "backstabs": 0,
     "backstab_avg": null,
@@ -960,28 +985,29 @@
     "loot": {}
    },
    "A soul inveigling": {
-    "swings": 50,
-    "landed": 27,
-    "avg": 20.8,
+    "swings": 51,
+    "landed": 28,
+    "avg": 20.4,
     "max": 67,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Screaming Terror": 5,
-     "Shadow Vortex": 3,
+     "Screaming Terror": 6,
+     "Shadow Vortex": 4,
      "Negation of Life": 3,
      "Major Shielding": 2,
      "Leatherskin": 2,
      "Heat Blood": 2,
-     "Shock of Poison": 1
+     "Shock of Poison": 1,
+     "Engulfing Darkness": 1
     },
     "loot": {}
    },
    "Xicotl": {
-    "swings": 99,
-    "landed": 62,
-    "avg": 31.4,
+    "swings": 102,
+    "landed": 64,
+    "avg": 30.9,
     "max": 111,
     "backstabs": 0,
     "backstab_avg": null,
@@ -996,9 +1022,9 @@
     }
    },
    "A jeering gargoyle": {
-    "swings": 89,
-    "landed": 51,
-    "avg": 17.5,
+    "swings": 162,
+    "landed": 96,
+    "avg": 19.1,
     "max": 63,
     "backstabs": 0,
     "backstab_avg": null,
@@ -1007,10 +1033,10 @@
     "loot": {}
    },
    "A will ravisher": {
-    "swings": 35,
-    "landed": 18,
-    "avg": 13.3,
-    "max": 53,
+    "swings": 92,
+    "landed": 58,
+    "avg": 16.3,
+    "max": 65,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -1042,11 +1068,11 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
+     "Daring": 11,
+     "Symbol of Transal": 9,
      "Greater Healing": 6,
-     "Symbol of Transal": 3,
      "Holy Might": 3,
      "Echoing Light": 3,
-     "Daring": 2,
      "Root": 1
     },
     "loot": {}
@@ -1246,15 +1272,19 @@
     "loot": {}
    },
    "Princess Cherista": {
-    "swings": 7,
-    "landed": 5,
-    "avg": 21.0,
-    "max": 35,
+    "swings": 28,
+    "landed": 19,
+    "avg": 28.1,
+    "max": 71,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Screaming Terror": 1
+     "Screaming Terror": 4,
+     "Shadow Vortex": 1,
+     "Negation of Life": 1,
+     "Shock of Poison": 1,
+     "Engulfing Darkness": 1
     },
     "loot": {}
    },
@@ -1285,6 +1315,42 @@
      "Instill": 5,
      "Tishan's Clash": 1
     },
+    "loot": {}
+   },
+   "A dark offerer": {
+    "swings": 12,
+    "landed": 8,
+    "avg": 15.1,
+    "max": 42,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shadow Vortex": 3,
+     "Engulfing Darkness": 1
+    },
+    "loot": {}
+   },
+   "A deathly herald": {
+    "swings": 19,
+    "landed": 7,
+    "avg": 9.7,
+    "max": 30,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A deathly usher": {
+    "swings": 10,
+    "landed": 6,
+    "avg": 17.5,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
     "loot": {}
    },
    "A fallen noble": {
@@ -1444,7 +1510,8 @@
     "loot": {
      "Flame Agate": 1,
      "Fine Steel Dagger +1": 1,
-     "Mote of Minor Potential": 1
+     "Mote of Minor Potential": 1,
+     "Mithril Earring +1": 1
     }
    },
    "a will sapper": {
@@ -1471,7 +1538,9 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Jade Earring +1": 1
+     "Jade Earring +1": 1,
+     "Topaz": 1,
+     "Mote of Minor Potential": 1
     }
    },
    "an avenging caitiff": {
@@ -1634,7 +1703,8 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Gargoyle Eye": 1
+     "Gargoyle Eye": 2,
+     "Mistmoore Granite": 2
     }
    },
    "a shadowy sage": {
@@ -1648,6 +1718,34 @@
     "casts": {},
     "loot": {
      "Amber": 1
+    }
+   },
+   "a dark offerer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Silver Amulet +1": 1,
+     "Thick Caustic Fluid": 1
+    }
+   },
+   "a jeering gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Gargoyle Eye": 1,
+     "Mistmoore Granite": 1
     }
    }
   }

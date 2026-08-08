@@ -105,8 +105,9 @@ ESCAPE_WINDOW = datetime.timedelta(seconds=45)
 # fight. So the change is marked in place and shown on the page, and the reader
 # is told conditions varied rather than being handed two thin sessions.
 CONDITION_CHANGE = re.compile(
-    r'(lost connection|disconnect|linkdead|logged off|logging off|left the group|'
-    r'swapped|switching to|changed (?:trio|difficulty|class))', re.I)
+    r'(?:lost connection|disconnected|linkdead|logged off|logging off|'
+    r'left the group|swapped|switching to|changed (?:trio|difficulty|class))',
+    re.I)
 LEVEL_SELF = re.compile(r'You have (?:gained|reached) level (\d+)')
 
 
