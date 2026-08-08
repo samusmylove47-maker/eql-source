@@ -66,7 +66,7 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "edit history came from the page footer, not the history itself",
+  "verify_gate": "gate 2 cleared 8 Aug 2026 from the API rather than the footer: last edited 5 August 2026, revision 166594, by Grumpymixon. The plate's recorded date of 7 June was two months stale. Roster re-compared in full — all 15 named on the wiki are on the plate, and its key items including the Ebon Scythe are indexed. Gate 3, the room-list collision check, is still open",
   "respawn_note": "eqlwiki rev 164926, 1 Aug 2026, editor Caliente, \"changed timer from 4:27 to 4:30, seems most accurate within seconds\" — the comment names our exact published figure as the value it replaced. Befallen is not in the 28 Jul patch list, so this is a measurement refinement rather than a patch effect."
  },
  {
