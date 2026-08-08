@@ -35,7 +35,7 @@ calculator, and The Index (452 items and 208 named mobs searchable across the
 ten survey plates). All client-side. Progress is packed into the URL fragment
 and mirrored to browser storage — no account, no server.
 
-**Ten dungeon survey plates** plus five navigation maps and a campaign plate.
+**Ten dungeon survey plates** plus five navigation maps.
 These are hand-written HTML, imported from `_build/source/` with site chrome
 injected at build time.
 
