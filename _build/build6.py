@@ -1,28 +1,38 @@
-"""Survey plots — one per zone, drawn from recorded coordinates only.
+"""Survey plots — recorded coordinates, made readable.
 
-WHAT THIS DOES AND DELIBERATELY DOES NOT DO
--------------------------------------------
-It plots the 208 named-mob positions the project has actually recorded, to
-scale, on a measured grid. Every mark on the output traces to a `/loc` in
-assets/index-data.json, which extract.py mines from the plates.
+THE PROBLEM THIS SOLVES
+-----------------------
+The first version of this page was numbered dots against a grid, with a lookup
+table underneath. Readers reported it as "just dots on the screen" — accurate,
+and useless, because nothing on the drawing told you what you were looking at.
 
-It draws NO walls, rooms, corridors or terrain. That information is not in the
-data, and a floor plan invented around real coordinates would look authoritative
-while being wrong — the exact failure CLAUDE.md exists to prevent. These are
-survey plots, not maps, and they are labelled as such.
+WHAT IS DRAWN, AND ON WHAT AUTHORITY
+------------------------------------
+Every mark traces to a `/loc` recorded in assets/index-data.json.
+
+- POINTS are named in place rather than numbered, and coloured by level band, so
+  the danger gradient is visible without reading anything.
+- REGIONS are convex hulls around mobs that are close together. A hull says
+  "these recorded positions sit together". It is NOT a room shape and the legend
+  says so. No wall, corridor or door is drawn anywhere, because the project holds
+  no survey of them.
+- A REGION IS ONLY NAMED when at least two of its members' notes independently
+  mention the same place. One note agreeing with itself is not evidence, so those
+  regions stay unnamed and are labelled by their contents instead.
+- SCALE AND COMPASS are drawn because a coordinate means nothing without them.
 
 ORIENTATION
 -----------
 EverQuest's /loc returns Y, X, Z. The navigation maps in _build/source state the
-convention this project draws to: north is up the page, west is to the left.
-+Y is north and +X is west, so both axes inverting gives page coordinates.
+convention: north up the page, west to the left. +Y is north and +X is west, so
+both axes invert to page coordinates.
 
-A NOTE ON THE MINUS SIGN
-------------------------
-141 of the 208 recorded coordinates use U+2212 MINUS SIGN, not ASCII hyphen.
-A plain `-?\\d+` regex reads every one of those as positive. Parse with NUM below.
+THE MINUS SIGN
+--------------
+141 of the recorded coordinates use U+2212 MINUS SIGN, not ASCII hyphen. A plain
+`-?\\d+` regex reads every one as positive. Parse with NUM below.
 """
-import os, sys, json, re
+import os, sys, json, re, math, collections
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
@@ -39,100 +49,221 @@ def esc(s):
     return (str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
             .replace('"', '&quot;'))
 
-def nice_step(span):
-    """A round grid interval giving roughly 6-12 lines across the span."""
-    for s in (25, 50, 100, 250, 500, 1000, 2000):
-        if span / s <= 12:
-            return s
-    return 5000
+# Region naming. Ordered most specific first; a name is only used when two or
+# more member notes agree on it.
+PATS = [
+    re.compile(r'\bRoom\s+\d+\b', re.I),
+    re.compile(r'\b(?:the\s+)?((?:Dead|Live|Secret|Ratman|Frenzy|Undead|Golem|Jail|Throne|Bone)\s+'
+               r'(?:Tower|Keep|Vault|Jail|Room|Hall|Yard|Chamber|Wing))\b', re.I),
+    re.compile(r'\b(bottom|middle|top|upper|lower)\s+floor\b', re.I),
+]
 
-def plot(zone, pts):
-    """pts: list of (y, x, name, level). Returns (svg, legend_rows)."""
+def region_name(notes):
+    for p in PATS:
+        hits = [m.group(0).strip() for n in notes for m in [p.search(n or '')] if m]
+        if len(hits) >= 2:
+            best, cnt = collections.Counter(h.lower() for h in hits).most_common(1)[0]
+            if cnt >= 2:
+                for h in hits:
+                    if h.lower() == best:
+                        return h[0].upper() + h[1:]
+    return None
+
+def lvl_of(s):
+    v = nums(s)
+    return sum(v[:2]) / len(v[:2]) if v else None
+
+def cluster(pts, eps):
+    par = list(range(len(pts)))
+    def f(a):
+        while par[a] != a:
+            par[a] = par[par[a]]; a = par[a]
+        return a
+    for i in range(len(pts)):
+        for j in range(i + 1, len(pts)):
+            if math.dist(pts[i][:2], pts[j][:2]) <= eps:
+                ra, rb = f(i), f(j)
+                if ra != rb: par[rb] = ra
+    g = collections.defaultdict(list)
+    for i in range(len(pts)): g[f(i)].append(i)
+    return list(g.values())
+
+def hull(points):
+    """Convex hull, monotone chain. Returns [] for fewer than 3 points."""
+    p = sorted(set(points))
+    if len(p) < 3: return []
+    def half(ps):
+        out = []
+        for q in ps:
+            while len(out) >= 2 and ((out[-1][0]-out[-2][0])*(q[1]-out[-2][1]) -
+                                     (out[-1][1]-out[-2][1])*(q[0]-out[-2][0])) <= 0:
+                out.pop()
+            out.append(q)
+        return out
+    return half(p)[:-1] + half(p[::-1])[:-1]
+
+def expand(poly, pad):
+    cx = sum(x for x, _ in poly) / len(poly)
+    cy = sum(y for _, y in poly) / len(poly)
+    out = []
+    for x, y in poly:
+        d = math.hypot(x - cx, y - cy) or 1
+        out.append((x + (x - cx) / d * pad, y + (y - cy) / d * pad))
+    return out
+
+def lift(hexc, pct=0.56):
+    """Accent blended toward bone, for text on the plot's dark field. The raw
+    accents are chosen as chrome; two of the ten fall below AA as small text."""
+    a=[int(hexc[i:i+2],16) for i in (1,3,5)]; b=[0xE6,0xE9,0xE4]
+    return '#%02X%02X%02X' % tuple(round(a[i]*pct+b[i]*(1-pct)) for i in range(3))
+
+def nice_step(span):
+    for s in (25, 50, 100, 250, 500, 1000):
+        if span / s <= 10: return s
+    return 2000
+
+# level band -> colour. Cool where it is safe, hot where it is not.
+def band_colour(lv, lo, hi):
+    if lv is None or hi == lo: return '#7FB2C7'
+    t = max(0.0, min(1.0, (lv - lo) / (hi - lo)))
+    stops = [(0.0, (95,163,126)), (0.5, (217,162,39)), (1.0, (201,69,58))]
+    for i in range(len(stops) - 1):
+        a, b = stops[i], stops[i+1]
+        if a[0] <= t <= b[0]:
+            k = (t - a[0]) / (b[0] - a[0] or 1)
+            c = [round(a[1][j] + (b[1][j] - a[1][j]) * k) for j in range(3)]
+            return '#%02X%02X%02X' % tuple(c)
+    return '#C9453A'
+
+def build_plot(zone, pts):
     ys = [p[0] for p in pts]; xs = [p[1] for p in pts]
-    # page axes: north up, west left  ->  px = -x, py = -y
     pxs = [-v for v in xs]; pys = [-v for v in ys]
-    pad = max(90, (max(pxs) - min(pxs) + max(pys) - min(pys)) * 0.09)
+    span = max(max(pxs) - min(pxs), max(pys) - min(pys)) or 100
+    pad = max(140, span * 0.16)
     x0, x1 = min(pxs) - pad, max(pxs) + pad
     y0, y1 = min(pys) - pad, max(pys) + pad
     w, h = x1 - x0, y1 - y0
     step = nice_step(max(w, h))
-    acc = zone['accent']
+    lv = [p[4] for p in pts if p[4] is not None]
+    lo, hi = (min(lv), max(lv)) if lv else (0, 1)
 
     g = []
     gx = (int(x0 // step) + 1) * step
     while gx < x1:
-        major = abs(gx) < 1e-9
         g.append(f'<line x1="{gx:.0f}" y1="{y0:.0f}" x2="{gx:.0f}" y2="{y1:.0f}" '
-                 f'stroke="{"#3A484F" if major else "#293439"}" stroke-width="{2 if major else 1}" '
-                 f'vector-effect="non-scaling-stroke"/>')
+                 f'stroke="#232D32" stroke-width="1" vector-effect="non-scaling-stroke"/>')
         gx += step
     gy = (int(y0 // step) + 1) * step
     while gy < y1:
-        major = abs(gy) < 1e-9
         g.append(f'<line x1="{x0:.0f}" y1="{gy:.0f}" x2="{x1:.0f}" y2="{gy:.0f}" '
-                 f'stroke="{"#3A484F" if major else "#293439"}" stroke-width="{2 if major else 1}" '
-                 f'vector-effect="non-scaling-stroke"/>')
+                 f'stroke="#232D32" stroke-width="1" vector-effect="non-scaling-stroke"/>')
         gy += step
 
-    marks, rows = [], []
-    for i, (yv, xv, name, lvl) in enumerate(pts, 1):
+    regions, rlabels = [], []
+    for c in cluster(pts, span * 0.14):
+        pp = [(-pts[i][1], -pts[i][0]) for i in c]
+        nm = region_name([pts[i][3] for i in c]) if len(c) >= 2 else None
+        hp = expand(hull(pp), span * 0.035) if len(pp) >= 3 else []
+        if hp:
+            d = 'M' + 'L'.join(f'{x:.0f},{y:.0f}' for x, y in hp) + 'Z'
+            regions.append(f'<path d="{d}" fill="{zone["accent"]}" fill-opacity=".07" '
+                           f'stroke="{zone["accent"]}" stroke-opacity=".34" stroke-width="1.5" '
+                           f'stroke-dasharray="7 5" vector-effect="non-scaling-stroke"/>')
+        elif len(pp) == 2:
+            (ax, ay), (bx, by) = pp
+            regions.append(f'<line x1="{ax:.0f}" y1="{ay:.0f}" x2="{bx:.0f}" y2="{by:.0f}" '
+                           f'stroke="{zone["accent"]}" stroke-opacity=".3" stroke-width="1.5" '
+                           f'stroke-dasharray="7 5" vector-effect="non-scaling-stroke"/>')
+        if nm:
+            cx = sum(x for x, _ in pp) / len(pp)
+            cy = min(y for _, y in pp) - span * 0.055
+            rlabels.append(f'<text x="{cx:.0f}" y="{cy:.0f}" text-anchor="middle" '
+                           f'font-family="Saira Condensed, sans-serif" font-size="{span*0.033:.0f}" '
+                           f'font-weight="700" letter-spacing="1" fill="{lift(zone["accent"])}" '
+                           f'style="text-transform:uppercase">{esc(nm)}</text>')
+
+    marks = []
+    fs = span * 0.026
+    for yv, xv, name, note, lev in pts:
         px, py = -xv, -yv
+        col = band_colour(lev, lo, hi)
+        short = name if len(name) <= 26 else name[:24] + '…'
         marks.append(
-            f'<g><circle cx="{px:.0f}" cy="{py:.0f}" r="9" fill="{acc}" fill-opacity=".22" '
-            f'stroke="{acc}" stroke-width="2" vector-effect="non-scaling-stroke"/>'
-            f'<circle cx="{px:.0f}" cy="{py:.0f}" r="2.5" fill="{acc}"/>'
-            f'<text x="{px:.0f}" y="{py - 15:.0f}" text-anchor="middle" '
-            f'font-family="IBM Plex Mono, monospace" font-size="15" fill="#E6E9E4" '
-            f'style="paint-order:stroke" stroke="#0E1315" stroke-width="4">{i}</text></g>')
-        rows.append(f'<li><span class="pi">{i}</span><span class="pn2">{esc(name)}</span>'
-                    f'<span class="pl">{esc(lvl) if lvl else "level not recorded"}</span>'
-                    f'<span class="pc">{yv:.0f}, {xv:.0f}</span></li>')
+            f'<g><circle cx="{px:.0f}" cy="{py:.0f}" r="{span*0.011:.1f}" fill="{col}" '
+            f'fill-opacity=".9" stroke="#0E1315" stroke-width="1.5" vector-effect="non-scaling-stroke"/>'
+            f'<text x="{px:.0f}" y="{py - span*0.022:.0f}" text-anchor="middle" '
+            f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#E6E9E4" '
+            f'style="paint-order:stroke" stroke="#0E1315" stroke-width="{fs*0.32:.1f}" '
+            f'stroke-linejoin="round">{esc(short)}</text></g>')
+
+    # scale bar and compass, bottom-left and top-right
+    sbx, sby = x0 + span * 0.05, y1 - span * 0.06
+    scale = (f'<g><line x1="{sbx:.0f}" y1="{sby:.0f}" x2="{sbx+step:.0f}" y2="{sby:.0f}" '
+             f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+             f'<line x1="{sbx:.0f}" y1="{sby-span*0.012:.0f}" x2="{sbx:.0f}" y2="{sby+span*0.012:.0f}" '
+             f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+             f'<line x1="{sbx+step:.0f}" y1="{sby-span*0.012:.0f}" x2="{sbx+step:.0f}" y2="{sby+span*0.012:.0f}" '
+             f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+             f'<text x="{sbx+step/2:.0f}" y="{sby-span*0.022:.0f}" text-anchor="middle" '
+             f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#AEB9B8">'
+             f'{step} units</text></g>')
+    ncx, ncy = x1 - span * 0.07, y0 + span * 0.09
+    compass = (f'<g><line x1="{ncx:.0f}" y1="{ncy+span*0.05:.0f}" x2="{ncx:.0f}" y2="{ncy-span*0.03:.0f}" '
+               f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+               f'<path d="M{ncx:.0f},{ncy-span*0.045:.0f} L{ncx-span*0.014:.0f},{ncy-span*0.02:.0f} '
+               f'L{ncx+span*0.014:.0f},{ncy-span*0.02:.0f} Z" fill="#AEB9B8"/>'
+               f'<text x="{ncx:.0f}" y="{ncy+span*0.085:.0f}" text-anchor="middle" '
+               f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#AEB9B8">N</text></g>')
 
     svg = (f'<svg class="plotsvg" viewBox="{x0:.0f} {y0:.0f} {w:.0f} {h:.0f}" role="img" '
-           f'aria-label="Survey plot of {esc(zone["title"])}. {len(pts)} recorded named-mob '
-           f'positions on a {step}-unit grid. North is up, west is left. Every position is '
-           f'listed in the table beneath this plot.">'
-           f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#12171A"/>'
-           + ''.join(g) + ''.join(marks) + '</svg>')
-    return svg, '\n'.join(rows), step, len(pts)
+           f'aria-label="Survey plot of {esc(zone["title"])}. {len(pts)} recorded named-mob positions, '
+           f'labelled in place and coloured by level. Dashed outlines group positions that sit close '
+           f'together; they are not room shapes. North is up, west is left. Every position is also '
+           f'listed as text beneath the plot.">'
+           f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#10161A"/>'
+           + ''.join(g) + ''.join(regions) + ''.join(rlabels) + ''.join(marks)
+           + scale + compass + '</svg>')
+    return svg, step, (lo, hi), sum(1 for r in rlabels)
 
 sections = []
-total_plotted = total_named = 0
+tot_plot = tot_named = tot_regions = 0
 for z in Z:
     pts, unplotted = [], []
     for n in IX['named']:
-        if n['z'] != z['slug']:
-            continue
+        if n['z'] != z['slug']: continue
         v = nums(n.get('loc'))
         if len(v) >= 2:
-            pts.append((v[0], v[1], n['n'], n.get('lv', '')))
+            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv'))))
         else:
-            # Deliberately unplottable: the project records "unrecorded",
-            # "various", "any elemental point" and so on rather than inventing a
-            # position. Those entries must still be visible, or the plot quietly
-            # under-reports the zone.
             unplotted.append((n['n'], (n.get('loc') or 'not recorded').strip()))
-    if not pts:
-        continue
-    total_plotted += len(pts); total_named += len(pts) + len(unplotted)
-    svg, rows, step, count = plot(z, pts)
+    if not pts: continue
+    tot_plot += len(pts); tot_named += len(pts) + len(unplotted)
+    svg, step, (lo, hi), nregions = build_plot(z, pts)
+    tot_regions += nregions
+
+    rows = '\n'.join(
+        f'<li><span class="pn2">{esc(nm)}</span>'
+        f'<span class="pl">{"level " + str(int(lv)) if lv else "level not recorded"}</span>'
+        f'<span class="pc">{yv:.0f}, {xv:.0f}</span></li>'
+        for yv, xv, nm, _, lv in sorted(pts, key=lambda p: (p[4] is None, p[4] or 0)))
+
     missing = ''
     if unplotted:
-        items = ''.join(f'<li><span class="pn2">{esc(a)}</span>'
-                        f'<span class="pc">{esc(b)}</span></li>' for a, b in unplotted)
-        missing = (f'<div class="note warn"><strong>{len(unplotted)} of '
-                   f'{len(pts) + len(unplotted)} named mobs in this zone are not on the plot.</strong> '
-                   f'Their positions are recorded as wandering, variable or simply not taken. They are '
-                   f'listed here rather than placed somewhere plausible.</div>'
-                   f'<ul class="plotmissing">{items}</ul>')
+        items = ''.join(f'<li><span class="pn2">{esc(a)}</span><span class="pc">{esc(b)}</span></li>'
+                        for a, b in unplotted)
+        missing = (f'<div class="note warn"><strong>{len(unplotted)} of {len(pts)+len(unplotted)} named '
+                   f'mobs in this zone are not on the plot.</strong> They wander, vary by spawn point, '
+                   f'or have no coordinate on record. Listed here rather than placed somewhere '
+                   f'plausible.</div><ul class="plotmissing">{items}</ul>')
+
     sections.append(f'''
 <section class="band plotband" id="{z['slug']}" style="--c:{z['accent']}">
   <div class="shell">
     <div class="sechead">
       <div><h2 class="sec">{esc(z['title'])}</h2>
-        <p class="lede" style="margin:0">{count} of {count + len(unplotted)} named mobs plotted &middot; {step}-unit grid &middot;
-          north up, west left. Marks are plotted from <code>/loc</code> records only; no walls or
-          rooms are drawn, because the project holds no survey of them.</p></div>
+        <p class="lede" style="margin:0">{len(pts)} of {len(pts)+len(unplotted)} named mobs plotted
+          &middot; {step}-unit grid &middot; levels {int(lo)}&ndash;{int(hi)} shown green through red.
+          Dashed outlines group positions that sit near each other; they are not room shapes.</p></div>
       <a class="link" href="{z['slug']}.html">Plate {z['plate']:02d} &rarr;</a></div>
     <div class="plotwrap">{svg}</div>
     <ol class="plotkey">
@@ -144,27 +275,29 @@ for z in Z:
 
 page = head("Survey plots",
   "Every recorded named-mob coordinate in the ten surveyed EverQuest Legends dungeons, plotted to "
-  "scale on a measured grid.", rel="../") + bar("../") + f'''
+  "scale, labelled in place and coloured by level.", rel="../") + bar("../") + f'''
 <main>
 
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="index.html">Dungeons</a> &nbsp;/&nbsp; Plots</p>
-    <h1 class="display">Every position<br><em>we hold.</em></h1>
-    <p class="hero-lede">{total_plotted} of {total_named} named mobs plotted from their recorded
-      <code>/loc</code> on a measured grid. The other {total_named - total_plotted} wander, vary by
-      spawn point, or have no coordinate on record &mdash; they are listed under each plot rather than
-      placed somewhere plausible.</p>
-    <p class="hero-sig"><span>{total_plotted} plotted</span><span>{total_named - total_plotted} unplottable</span><span>{len(sections)} zones</span><span>No geometry invented</span></p>
+    <h1 class="display">Where everything<br><em>actually is.</em></h1>
+    <p class="hero-lede">{tot_plot} named mobs plotted from their recorded <code>/loc</code>, labelled
+      where they stand and coloured by level. The other {tot_named - tot_plot} wander or have no
+      coordinate on record, and are listed rather than placed.</p>
+    <p class="hero-sig"><span>{tot_plot} positions</span><span>{len(sections)} zones</span><span>North up, west left</span><span>To scale</span></p>
   </div>
 </section>
 
 <div class="shell">
-  <div class="note"><strong>Why there are no walls on these.</strong> The project holds coordinates,
-    not floor plans. A room drawn around a real coordinate would look authoritative and be a guess, so
-    nothing here is drawn that was not measured. The five hand-drawn navigation maps under
-    <a href="index.html">Dungeons</a> are a separate, deliberate piece of work.</div>
+  <div class="note"><strong>How to read these, and what they are not.</strong> A dashed outline groups
+    named mobs whose recorded positions sit close together &mdash; it means &ldquo;these are near each
+    other&rdquo;, not &ldquo;this is a room&rdquo;. An outline is given a name only when at least two of
+    its members&rsquo; notes independently mention the same place; {tot_regions} groups across the ten
+    zones cleared that bar, and the rest stay unnamed rather than guessed at. <strong>No wall, door or
+    corridor is drawn anywhere on this page</strong>, because the project holds coordinates and not a
+    survey of the geometry between them.</div>
 </div>
 {''.join(sections)}
 
@@ -172,4 +305,4 @@ page = head("Survey plots",
 ''' + foot("../")
 
 open('dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
-print(f"survey plots: {len(sections)} zones, {sum(1 for n in IX['named'] if nums(n.get('loc')))} positions")
+print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions")
