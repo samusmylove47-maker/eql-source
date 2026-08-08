@@ -81,6 +81,14 @@ CAST = re.compile(r'^(.{1,44}?) begins (?:to cast a spell|casting) ?(.*?)\.?$')
 LOOT = re.compile(r"looted an? (.+?) from (.+?)'s corpse")
 PLUS = re.compile(r'\+(\d)\b')
 FACTION = re.compile(r'Your faction standing with (.+?) (?:has|could)')
+FACTION_D = re.compile(r'Your faction standing with (.+?) has been adjusted by (-?\d+)')
+EXP = re.compile(r'You gain (?:party )?experience! \(([\d.]+)%\)')
+
+# Faction arrives in the same second as the kill that caused it, just before the
+# "You have slain" line, so it can be attributed per mob rather than only summed.
+# It is worth doing: killing Xicotl moved Mayong Mistmoore by -300 where a trash
+# kill moves it by -5, so a named is 60x a trash kill on that faction. No wiki
+# carries that, and it is the whole basis of a faction planner.
 
 # Escapes. Succor and Evacuate teleport the group out, so a cast of one is a
 # decision that the fight was lost — the single most useful judgement a log
@@ -134,7 +142,9 @@ def collect(rows):
                     drop_tiers=collections.Counter(), faction=collections.Counter(),
                     dmg=collections.defaultdict(list),
                     mob_hit=collections.Counter(), mob_miss=collections.Counter(),
-                    you_hit=0, you_miss=0, context=all_stamps, escapes=[])
+                    you_hit=0, you_miss=0, context=all_stamps, escapes=[],
+                    fac_by_mob=collections.defaultdict(dict),
+                    exp_by_mob=collections.defaultdict(list))
 
     # A log that starts mid-zone has no "You have entered" line at all — the
     # Blackburrow stress test is exactly that, and its combat is worth keeping.
@@ -175,9 +185,25 @@ def collect(rows):
         m = STAMP.search(x)
         if m:
             cur['stamps'].append(m.group(1).strip().rstrip("'"))
+        m = FACTION_D.search(x)
+        if m:
+            cur.setdefault('_fac_buf', []).append((when, m.group(1).strip(), int(m.group(2))))
+        m = EXP.search(x)
+        if m:
+            cur['_exp_buf'] = (when, float(m.group(1)))
+
         m = SLAIN_BY_YOU.match(x)
         if m and m.group(1).strip() in mobs:
-            cur['kills'][m.group(1).strip()] += 1
+            name = m.group(1).strip()
+            cur['kills'][name] += 1
+            # attribute anything from the same second to this kill
+            for w, fac, delta in cur.get('_fac_buf', []):
+                if (when - w).total_seconds() <= 1:
+                    cur['fac_by_mob'][name].setdefault(fac, delta)
+            cur['_fac_buf'] = []
+            eb = cur.get('_exp_buf')
+            if eb and (when - eb[0]).total_seconds() <= 1:
+                cur['exp_by_mob'][name].append(eb[1])
         m = CAST.match(x)
         if m:
             who = m.group(1).strip()
@@ -261,6 +287,8 @@ def summarise(s):
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
                context=s.get('context', []), escapes=s.get('escapes', []),
+               faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
+               exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
                you_hit=s['you_hit'], you_miss=s['you_miss'],
                mob_hit=mh, mob_miss=mm, mobs={})
     for name, v in s['dmg'].items():
