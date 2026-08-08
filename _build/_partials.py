@@ -33,6 +33,7 @@ def bar(rel=""):
       <a href="{rel}tools/index-search.html">The Index</a>
       <a href="{rel}raids/index.html">Raids</a>
       <a href="{rel}dungeons/index.html">Dungeons</a>
+      <a href="{rel}learn/raid-access.html">Learn</a>
       <a href="{rel}sources.html">Accuracy</a>
     </nav>
   </div>
@@ -57,6 +58,9 @@ def foot(rel=""):
         <li><a href="{rel}tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="{rel}tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="{rel}tools/index-search.html">The Index</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="{rel}learn/raid-access.html">How raid access works</a></li>
       </ul></div>
       <div><h4>About</h4><ul>
         <li><a href="{rel}sources.html">Sourcing standard</a></li>

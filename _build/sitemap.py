@@ -6,7 +6,7 @@ if not DOMAIN or "REPLACE-ME" in DOMAIN:
     raise SystemExit("site_url is not set in site.config.json — set it and rerun")
 today=datetime.date.today().isoformat()
 pages=[]
-for p in sorted(glob.glob("*.html")+glob.glob("dungeons/*.html")+glob.glob("raids/*.html")+glob.glob("tools/*.html")):
+for p in sorted(glob.glob("*.html")+glob.glob("dungeons/*.html")+glob.glob("raids/*.html")+glob.glob("tools/*.html")+glob.glob("learn/*.html")):
     p=p.replace(os.sep,"/")   # Windows globs return backslashes; URLs must not
     pri="1.0" if p=="index.html" else ("0.8" if p.endswith("index.html") else "0.6")
     pages.append(f"  <url><loc>{DOMAIN}/{p}</loc><lastmod>{today}</lastmod><priority>{pri}</priority></url>")
