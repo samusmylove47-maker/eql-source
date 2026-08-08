@@ -1002,10 +1002,210 @@
   }
  },
  "measured": {
+  "Blackburrow": {
+   "difficulty": 2,
+   "date": "04 Aug 2026",
+   "kills": 42,
+   "per_mob": {},
+   "factions": [],
+   "falling": [],
+   "rising": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Befallen": {
+   "difficulty": 1,
+   "date": "04 Aug 2026",
+   "kills": 75,
+   "per_mob": {
+    "a necro theurgist": {
+     "Burning Dead": -2
+    },
+    "the thaumaturgist": {
+     "Burning Dead": -5
+    },
+    "Arisen Thaumaturgist": {
+     "Burning Dead": -5
+    },
+    "a shadowknight": {
+     "Burning Dead": -5
+    },
+    "a necro acolyte": {
+     "Burning Dead": -2
+    },
+    "a necro initiate": {
+     "Burning Dead": -2
+    }
+   },
+   "factions": [
+    "Burning Dead"
+   ],
+   "falling": [
+    "Burning Dead"
+   ],
+   "rising": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The City of Guk": {
+   "difficulty": 4,
+   "date": "04 Aug 2026",
+   "kills": 16,
+   "per_mob": {
+    "a froglok shin warrior": {
+     "Frogloks of Guk": -5
+    },
+    "the froglok shin lord": {
+     "Frogloks of Guk": -50
+    },
+    "a froglok ton knight": {
+     "Frogloks of Guk": -5
+    },
+    "a froglok vis shaman": {
+     "Frogloks of Guk": -5
+    },
+    "a froglok scryer": {
+     "Frogloks of Guk": -5
+    }
+   },
+   "factions": [
+    "Frogloks of Guk"
+   ],
+   "falling": [
+    "Frogloks of Guk"
+   ],
+   "rising": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Ruins of Old Guk": {
+   "difficulty": 1,
+   "date": "05 Aug 2026",
+   "kills": 20,
+   "per_mob": {
+    "a froglok tsu shaman": {
+     "Frogloks of Guk": -5
+    },
+    "a froglok shin knight": {
+     "Frogloks of Guk": -5
+    },
+    "a vis ghoul knight": {
+     "Frogloks of Guk": 5
+    },
+    "a shin ghoul knight": {
+     "Frogloks of Guk": 5
+    },
+    "a froglok yun shaman": {
+     "Frogloks of Guk": -5
+    },
+    "a froglok tal shaman": {
+     "Frogloks of Guk": -5
+    },
+    "a ghoul scribe": {
+     "Frogloks of Guk": 5
+    }
+   },
+   "factions": [
+    "Frogloks of Guk"
+   ],
+   "falling": [
+    "Frogloks of Guk"
+   ],
+   "rising": [
+    "Frogloks of Guk"
+   ],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Kerra Isle": {
+   "difficulty": 0,
+   "date": "06 Aug 2026",
+   "kills": 2,
+   "per_mob": {
+    "kerran tiger spahi": {
+     "Heretics": -5,
+     "Deepwater Knights": 5,
+     "Gate Callers": 5,
+     "Craftkeepers": 5,
+     "Crimson Hands": 5
+    },
+    "a kerran mujahed": {
+     "Heretics": -3,
+     "Deepwater Knights": 5,
+     "Gate Callers": 5,
+     "Craftkeepers": 5,
+     "Crimson Hands": 5
+    }
+   },
+   "factions": [
+    "Craftkeepers",
+    "Crimson Hands",
+    "Deepwater Knights",
+    "Gate Callers",
+    "Heretics"
+   ],
+   "falling": [
+    "Heretics"
+   ],
+   "rising": [
+    "Craftkeepers",
+    "Crimson Hands",
+    "Deepwater Knights",
+    "Gate Callers"
+   ],
+   "steps_undone": [
+    {
+     "step": "kobolds",
+     "name": "Kill 400 kobolds",
+     "factions": [
+      "Heretics"
+     ],
+     "races": [
+      "Erudite"
+     ]
+    }
+   ],
+   "steps_helped": [
+    {
+     "step": "molars",
+     "name": "Kobold Molars (Good)",
+     "factions": [
+      "Deepwater Knights"
+     ],
+     "races": [
+      "Erudite"
+     ]
+    },
+    {
+     "step": "paineel",
+     "name": "Kill Paineel heretics",
+     "factions": [
+      "Deepwater Knights"
+     ],
+     "races": [
+      "Erudite"
+     ]
+    }
+   ],
+   "damages": [
+    "Erudite"
+   ],
+   "helps": [
+    "Erudite"
+   ]
+  },
   "The Castle of Mistmoore": {
    "difficulty": 1,
    "date": "08 Aug 2026",
-   "kills": 301,
+   "kills": 602,
    "per_mob": {
     "a pledge familiar": {
      "Mayong Mistmoore": -5,
@@ -1403,206 +1603,6 @@
    "helps": [
     "High Elf",
     "Wood Elf"
-   ]
-  },
-  "Blackburrow": {
-   "difficulty": 2,
-   "date": "04 Aug 2026",
-   "kills": 42,
-   "per_mob": {},
-   "factions": [],
-   "falling": [],
-   "rising": [],
-   "steps_undone": [],
-   "steps_helped": [],
-   "damages": [],
-   "helps": []
-  },
-  "Befallen": {
-   "difficulty": 1,
-   "date": "04 Aug 2026",
-   "kills": 75,
-   "per_mob": {
-    "a necro theurgist": {
-     "Burning Dead": -2
-    },
-    "the thaumaturgist": {
-     "Burning Dead": -5
-    },
-    "Arisen Thaumaturgist": {
-     "Burning Dead": -5
-    },
-    "a shadowknight": {
-     "Burning Dead": -5
-    },
-    "a necro acolyte": {
-     "Burning Dead": -2
-    },
-    "a necro initiate": {
-     "Burning Dead": -2
-    }
-   },
-   "factions": [
-    "Burning Dead"
-   ],
-   "falling": [
-    "Burning Dead"
-   ],
-   "rising": [],
-   "steps_undone": [],
-   "steps_helped": [],
-   "damages": [],
-   "helps": []
-  },
-  "The City of Guk": {
-   "difficulty": 4,
-   "date": "04 Aug 2026",
-   "kills": 16,
-   "per_mob": {
-    "a froglok shin warrior": {
-     "Frogloks of Guk": -5
-    },
-    "the froglok shin lord": {
-     "Frogloks of Guk": -50
-    },
-    "a froglok ton knight": {
-     "Frogloks of Guk": -5
-    },
-    "a froglok vis shaman": {
-     "Frogloks of Guk": -5
-    },
-    "a froglok scryer": {
-     "Frogloks of Guk": -5
-    }
-   },
-   "factions": [
-    "Frogloks of Guk"
-   ],
-   "falling": [
-    "Frogloks of Guk"
-   ],
-   "rising": [],
-   "steps_undone": [],
-   "steps_helped": [],
-   "damages": [],
-   "helps": []
-  },
-  "The Ruins of Old Guk": {
-   "difficulty": 1,
-   "date": "05 Aug 2026",
-   "kills": 20,
-   "per_mob": {
-    "a froglok tsu shaman": {
-     "Frogloks of Guk": -5
-    },
-    "a froglok shin knight": {
-     "Frogloks of Guk": -5
-    },
-    "a vis ghoul knight": {
-     "Frogloks of Guk": 5
-    },
-    "a shin ghoul knight": {
-     "Frogloks of Guk": 5
-    },
-    "a froglok yun shaman": {
-     "Frogloks of Guk": -5
-    },
-    "a froglok tal shaman": {
-     "Frogloks of Guk": -5
-    },
-    "a ghoul scribe": {
-     "Frogloks of Guk": 5
-    }
-   },
-   "factions": [
-    "Frogloks of Guk"
-   ],
-   "falling": [
-    "Frogloks of Guk"
-   ],
-   "rising": [
-    "Frogloks of Guk"
-   ],
-   "steps_undone": [],
-   "steps_helped": [],
-   "damages": [],
-   "helps": []
-  },
-  "Kerra Isle": {
-   "difficulty": 0,
-   "date": "06 Aug 2026",
-   "kills": 2,
-   "per_mob": {
-    "kerran tiger spahi": {
-     "Heretics": -5,
-     "Deepwater Knights": 5,
-     "Gate Callers": 5,
-     "Craftkeepers": 5,
-     "Crimson Hands": 5
-    },
-    "a kerran mujahed": {
-     "Heretics": -3,
-     "Deepwater Knights": 5,
-     "Gate Callers": 5,
-     "Craftkeepers": 5,
-     "Crimson Hands": 5
-    }
-   },
-   "factions": [
-    "Craftkeepers",
-    "Crimson Hands",
-    "Deepwater Knights",
-    "Gate Callers",
-    "Heretics"
-   ],
-   "falling": [
-    "Heretics"
-   ],
-   "rising": [
-    "Craftkeepers",
-    "Crimson Hands",
-    "Deepwater Knights",
-    "Gate Callers"
-   ],
-   "steps_undone": [
-    {
-     "step": "kobolds",
-     "name": "Kill 400 kobolds",
-     "factions": [
-      "Heretics"
-     ],
-     "races": [
-      "Erudite"
-     ]
-    }
-   ],
-   "steps_helped": [
-    {
-     "step": "molars",
-     "name": "Kobold Molars (Good)",
-     "factions": [
-      "Deepwater Knights"
-     ],
-     "races": [
-      "Erudite"
-     ]
-    },
-    {
-     "step": "paineel",
-     "name": "Kill Paineel heretics",
-     "factions": [
-      "Deepwater Knights"
-     ],
-     "races": [
-      "Erudite"
-     ]
-    }
-   ],
-   "damages": [
-    "Erudite"
-   ],
-   "helps": [
-    "Erudite"
    ]
   }
  }

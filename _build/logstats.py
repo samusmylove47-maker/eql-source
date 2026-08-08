@@ -141,7 +141,10 @@ CHATTER = re.compile(r'^(\w[\w`\'-]{2,23}) (?:tells|says) (?:the |your )?'
 GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins to cast a spell on you)')
 
 
-CHAR = re.compile(r'eqlog_([A-Za-z]+)_', re.I)
+# Filenames carry a date stamp so a rotated log cannot overwrite an earlier
+# one, and a trailing digit so two logs from the same character can coexist:
+#   eqlog_Avenrae_rivervale_2026-08-08-pm.txt  ->  Avenrae
+CHAR = re.compile(r'eqlog_([A-Za-z]+?)\d*_', re.I)
 
 
 def character_of(path):
@@ -473,9 +476,39 @@ def build(src):
         for s in collect(parse(f), character_of(f)):
             if sum(s['kills'].values()) or s['dmg']:
                 sessions.append(summarise(s))
-    json.dump(sessions, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
+    # ACCUMULATE, NEVER REPLACE.
+    #
+    # This used to write whatever the current log folder produced, which is fine
+    # until a log rotates. EverQuest was restarted mid-afternoon on 8 August and
+    # began a fresh file at 14:34. Re-running against that alone silently
+    # deleted the morning's two Mistmoore sessions — 300 kills — because the
+    # output is a wholesale replacement. The raw log was recoverable that time;
+    # it will not always be.
+    #
+    # Sessions are keyed by character, date, window and zone. A re-parse of the
+    # same stretch replaces its own entry and nothing else is touched, so the
+    # committed record only ever grows.
+    existing = []
+    try:
+        existing = json.load(open('assets/measured.json', encoding='utf-8'))
+    except (OSError, ValueError):
+        pass
+
+    def keyof(sess):
+        return (sess.get('character'), sess.get('date'),
+                sess.get('window'), sess.get('zone'))
+
+    merged = {keyof(s): s for s in existing}
+    fresh = {keyof(s): s for s in sessions}
+    kept = len([k for k in merged if k not in fresh])
+    merged.update(fresh)
+    out = sorted(merged.values(),
+                 key=lambda s: (s.get('date') or '', s.get('window') or ''))
+
+    json.dump(out, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
               indent=1)
-    print(f"{len(files)} log file(s) -> {len(sessions)} session(s) with combat")
+    print(f"{len(files)} log file(s) -> {len(sessions)} parsed, "
+          f"{kept} earlier session(s) preserved, {len(out)} total")
     for s in sessions:
         th, tm_ = s['you_hit'], s['you_miss']
         print(f"  {s.get('character') or '?'} | {s['zone']} D{s['difficulty']} "
