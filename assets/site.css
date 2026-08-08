@@ -809,3 +809,12 @@ h1.display em{color:var(--z01)}
 .lyr{transition:stroke-opacity .18s}
 .lyr.mute{stroke-opacity:.07}
 @media(prefers-reduced-motion:reduce){.lvbtn,.lyr{transition:none}}
+
+/* Pull-quotes on the deity page. Two guides quoted side by side, so the
+   attribution has to carry its own date and tier without shouting. */
+.quote{margin:var(--s-4) 0;padding:var(--s-3) 0 var(--s-3) var(--s-4);
+  border-left:2px solid color-mix(in srgb, var(--instr) 55%, var(--rule));
+  font-size:var(--t-md);line-height:1.55;color:var(--txt)}
+.quote cite{display:block;margin-top:var(--s-2);font-style:normal;
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.04em;
+  color:var(--dim);line-height:1.6}
