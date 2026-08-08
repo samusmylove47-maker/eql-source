@@ -129,6 +129,12 @@ def collect(rows):
                 diff = dm.group(1)
                 raw = raw[:dm.start()].strip()
             raw = re.sub(r'\s+\d+$', '', raw)
+            # Re-entering the same zone is not a new session. Dying and
+            # returning, or stepping out and back, emits another zone line and
+            # was splitting one Mistmoore run into a 15-minute session and a
+            # 2-minute one. A real break is caught by the gap rule above.
+            if cur and cur['zone'] == raw and cur['difficulty_label'] == diff:
+                continue
             cur = new_session(raw, diff, when)
             sessions.append(cur)
             continue

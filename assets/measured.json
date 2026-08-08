@@ -241,59 +241,63 @@
   "zone": "The Castle of Mistmoore",
   "difficulty_label": "Awakened",
   "date": "08 Aug 2026",
-  "window": "11:08-11:22",
+  "window": "11:08-11:25",
   "stamps": [
    "My partner, Shara, will also be logging today and I will provide her logs separate later.",
    "these are level 4 we are level 26 so hit rate is very low",
    "they are level 40 not 4, typo"
   ],
-  "kills": 48,
+  "kills": 50,
   "distinct": 20,
   "drop_tiers": {
-   "1": 13,
+   "1": 14,
    "2": 3
   },
   "faction": {
-   "Mayong Mistmoore": 45,
-   "King Tearis Thex": 45,
-   "Agents of Mistmoore": 45,
-   "League of Antonican Bards": 45,
-   "Ring of Scale": 45,
+   "Mayong Mistmoore": 47,
+   "King Tearis Thex": 47,
+   "Agents of Mistmoore": 47,
+   "League of Antonican Bards": 47,
+   "Ring of Scale": 47,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
-  "you_hit": 410,
-  "you_miss": 333,
-  "mob_hit": 827,
-  "mob_miss": 742,
+  "you_hit": 439,
+  "you_miss": 351,
+  "mob_hit": 1083,
+  "mob_miss": 993,
   "mobs": {
    "A pledge familiar": {
-    "swings": 214,
-    "landed": 94,
-    "avg": 15.2,
+    "swings": 351,
+    "landed": 153,
+    "avg": 11.8,
     "max": 143,
     "casts": {
-     "Root": 6,
+     "Root": 11,
      "Fire Bolt": 5,
      "Frost Bolt": 3,
-     "Shock of Lightning": 1
+     "Shock of Lightning": 2
     },
     "loot": {}
    },
    "An initiate familiar": {
-    "swings": 158,
-    "landed": 77,
-    "avg": 16.8,
+    "swings": 262,
+    "landed": 120,
+    "avg": 14.3,
     "max": 143,
     "casts": {
-     "Root": 14
+     "Root": 16,
+     "Shock of Lightning": 2,
+     "Shadow Vortex": 2,
+     "Screaming Terror": 2,
+     "Shock of Poison": 1
     },
     "loot": {}
    },
    "A glyphed ghoul": {
-    "swings": 36,
-    "landed": 16,
-    "avg": 8.7,
+    "swings": 53,
+    "landed": 29,
+    "avg": 7.4,
     "max": 48,
     "casts": {},
     "loot": {}
@@ -307,9 +311,9 @@
     "loot": {}
    },
    "A glyphed familiar": {
-    "swings": 56,
-    "landed": 22,
-    "avg": 9.6,
+    "swings": 71,
+    "landed": 30,
+    "avg": 8.3,
     "max": 38,
     "casts": {
      "Root": 3,
@@ -378,23 +382,24 @@
     "loot": {}
    },
    "A will sapper": {
-    "swings": 93,
-    "landed": 54,
-    "avg": 10.7,
+    "swings": 123,
+    "landed": 71,
+    "avg": 9.5,
     "max": 55,
     "casts": {},
     "loot": {}
    },
    "A soul temptress": {
-    "swings": 10,
-    "landed": 7,
-    "avg": 18.1,
-    "max": 42,
+    "swings": 24,
+    "landed": 19,
+    "avg": 19.7,
+    "max": 52,
     "casts": {
-     "Shadow Vortex": 2,
+     "Shadow Vortex": 3,
+     "Fear": 3,
      "Shielding": 1,
      "Negation of Life": 1,
-     "Fear": 1
+     "Heat Blood": 1
     },
     "loot": {}
    },
@@ -407,17 +412,17 @@
     "loot": {}
    },
    "A will pillager": {
-    "swings": 221,
-    "landed": 126,
-    "avg": 12.1,
+    "swings": 259,
+    "landed": 150,
+    "avg": 12.2,
     "max": 56,
     "casts": {},
     "loot": {}
    },
    "A soul seductress": {
-    "swings": 19,
-    "landed": 12,
-    "avg": 26.8,
+    "swings": 32,
+    "landed": 20,
+    "avg": 22.2,
     "max": 52,
     "casts": {
      "Negation of Life": 2,
@@ -425,22 +430,23 @@
      "Shadow Vortex": 2,
      "Shielding": 1,
      "Leatherskin": 1,
-     "Heat Blood": 1
+     "Heat Blood": 1,
+     "Shock of Poison": 1
     },
     "loot": {}
    },
    "A leering gargoyle": {
-    "swings": 155,
-    "landed": 92,
-    "avg": 24.9,
+    "swings": 175,
+    "landed": 105,
+    "avg": 23.9,
     "max": 87,
     "casts": {},
     "loot": {}
    },
    "A flouting gargoyle": {
-    "swings": 54,
-    "landed": 26,
-    "avg": 26.4,
+    "swings": 91,
+    "landed": 49,
+    "avg": 22.8,
     "max": 67,
     "casts": {},
     "loot": {}
@@ -474,13 +480,46 @@
      "Glowing Sword Hilt": 1
     }
    },
+   "A jeering gargoyle": {
+    "swings": 18,
+    "landed": 6,
+    "avg": 14.0,
+    "max": 28,
+    "casts": {},
+    "loot": {}
+   },
+   "A will ravisher": {
+    "swings": 19,
+    "landed": 8,
+    "avg": 13.1,
+    "max": 28,
+    "casts": {},
+    "loot": {}
+   },
    "A thought spoiler": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
+    "swings": 26,
+    "landed": 14,
+    "avg": 9.9,
+    "max": 27,
     "casts": {
-     "Lesser Shielding": 1
+     "Instill": 4,
+     "Lightning Bolt": 4,
+     "Lesser Shielding": 1,
+     "Tishan's Clash": 1
+    },
+    "loot": {}
+   },
+   "A glyphed forbidder": {
+    "swings": 19,
+    "landed": 8,
+    "avg": 5.2,
+    "max": 16,
+    "casts": {
+     "Symbol of Transal": 3,
+     "Daring": 2,
+     "Holy Might": 1,
+     "Root": 1,
+     "Greater Healing": 1
     },
     "loot": {}
    },
@@ -492,17 +531,6 @@
     "casts": {
      "Major Shielding": 1,
      "Leatherskin": 1
-    },
-    "loot": {}
-   },
-   "A glyphed forbidder": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
-    "casts": {
-     "Symbol of Transal": 3,
-     "Daring": 2
     },
     "loot": {}
    },
@@ -600,7 +628,9 @@
     "max": null,
     "casts": {},
     "loot": {
-     "Flame Agate": 1
+     "Flame Agate": 1,
+     "Fine Steel Dagger +1": 1,
+     "Mote of Minor Potential": 1
     }
    },
    "a will sapper": {
