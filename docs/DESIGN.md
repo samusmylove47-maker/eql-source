@@ -213,6 +213,18 @@ reasoning: the plates set `svg{width:100%}` and `site.css` sets
 
 Do not touch the SVG map geometry.
 
+**On generating maps.** The project holds 208 recorded named-mob coordinates and
+`dungeons/plots.html` now draws all of them to scale on a measured grid. What it
+deliberately does not draw is walls, rooms or corridors — that geometry is not in
+the data, and a floor plan invented around real coordinates would look
+authoritative while being a guess. Twenty-seven of the 208 are recorded as
+wandering, variable or simply not taken; those are listed under each plot rather
+than placed somewhere plausible, so the plot never silently under-reports a zone.
+
+A hand-drawn map is a different artefact and needs a different input: either
+in-game survey work, or an existing map used as reference. That is the owner's
+call, not something to infer.
+
 ---
 
 ## 7. Order of work
