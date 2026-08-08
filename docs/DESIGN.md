@@ -3,11 +3,31 @@
 **Goal: a professional reference site with its own identity.** Modern, clean,
 crisp, impressive. Not bloated, not gaudy. Desktop is the primary target.
 
-This brief replaces the previous one, which was written in a Claude Code session
-and asserted a specific flat aesthetic as law — no radii, no shadows, no
-gradients, "a technical document, not a SaaS dashboard". Those were never the
-owner's requirements. They are the direct cause of the site reading as barren
-and utilitarian, and they are withdrawn.
+**The site must be good to look at. That is a requirement, not a finishing
+touch.** It sits alongside being functional, verifiable and transparent — not
+beneath them. A reference nobody enjoys opening does not get opened, and a
+standard of evidence nobody reads persuades nobody. Beauty and rigour are not in
+tension here; the rigour is the subject matter, and the design is how it earns
+attention.
+
+## The rejected direction
+
+This brief replaces one written in a Claude Code session, which asserted a
+specific flat aesthetic as law: no radii, no shadows, no gradients, hairlines
+only, "a technical document, not a SaaS dashboard", and a final test asking
+whether the result still looked like a technical instrument — with instructions
+to *pull back* if it had become too visually appealing.
+
+**That direction is rejected outright, not merely relaxed.** It was never the
+owner's requirement, and it produced exactly what it promised: flat, barren,
+spartan. Every surface on one plane, every element the same weight, nothing
+drawing the eye anywhere.
+
+Restraint is not the same thing as absence. A disciplined palette, a tight type
+scale and generous space are restraint. Refusing depth, contrast and focal
+weight is just an unfinished page. **Where this brief and the old one disagree,
+this one wins, and the old instinct to strip things back should be actively
+resisted.**
 
 ---
 
@@ -48,10 +68,18 @@ The site's identity is already in its material, and nothing else has it:
 - **The tier badges** — a published, visible standard of evidence.
 - **The 3D encounter viewer.**
 
-**So: a survey, not a fansite.** The reference for a world, drawn precisely.
-Instruments, plates, measured colour. What that must *not* mean is a flat
-brutalist manifesto — that was the old brief's mistake. Aim for a well-made data
-product: quiet, dense, confident, with real hierarchy.
+**So: a survey, not a fansite.** The reference for a world, drawn precisely —
+instruments, plates, measured colour.
+
+Read that as a *subject*, not as a licence to be austere. The old brief made
+exactly that mistake: it took "technical" to mean stripped, and produced
+something that looks unfinished rather than exacting. A surveyor's chart, a
+well-set atlas and a good instrument panel are all beautiful objects, and they
+are beautiful *because* of their precision, not in spite of it.
+
+The target is a well-made data product: dense, confident, deliberate, with real
+hierarchy and real depth — something a visitor notices is well built before they
+have read a single figure.
 
 ---
 
@@ -73,27 +101,47 @@ Do not change these. They are the identity.
 
 ---
 
-## 4. What is now permitted
+## 4. What the design must do
 
-The old bans are lifted, replaced by taste rules. Each of these is allowed
-*because* it builds hierarchy, and only in service of that.
+These are requirements, not permissions. A stage that ships without them has not
+met the brief.
 
-**Elevation.** Surfaces may sit above one another, expressed as a change of
-background value plus a hairline, and optionally a large soft shadow at very low
-opacity. Never a hard drop shadow, never more than three levels.
+**Build depth.** The page must have a visible hierarchy of surfaces — the reader
+should be able to tell what sits on top of what without reading a word. Express
+it as a change of background value plus a hairline, and a large soft shadow at
+low opacity where a surface genuinely floats. Cap it at three levels. What is
+banned is the *hard* drop shadow of a 2010s card, not depth itself.
 
-**Radii.** A small consistent radius is permitted — pick one value in the 3–6px
-range and use it everywhere. Not pills, not circles, not mixed radii.
+**Soften the geometry.** One small radius, chosen once in the 3–6px range, used
+everywhere. Not pills, not circles, not mixed values. Sharp corners everywhere
+is a style, and it is the style being replaced.
 
-**Gradients.** Permitted only as near-imperceptible surface modulation — a
-one-or-two-step shift across a large panel. Never a coloured gradient as
-decoration, never on text, never a "hero gradient".
+**Give the eye somewhere to go.** Every screen needs a clear first thing. That
+means real contrast in size and weight — a 2:1 visual difference between a
+primary card and a supporting one, not the current 1:1. Some numbers should be
+genuinely large.
 
-**Motion.** Permitted where it explains something: a state change, a reveal, a
-hover affordance. Never decorative, never looping, always disabled under
-`prefers-reduced-motion`.
+**Use the colour you already own.** Ten good accents currently appear in one
+element on one page. They should tint rows on hover, mark plate numbers, carry
+accent hairlines in zone context. The frame stays monochrome; the material is
+where colour lives.
 
-**Density.** Tighten. The current cards are mostly empty space at desktop width.
+**Modulate large surfaces.** A one-or-two-step gradient across a big panel to
+keep it from reading as dead flat. Never a coloured gradient as decoration,
+never on text, never a hero gradient.
+
+**Move with purpose.** Motion where it explains something — a state change, a
+reveal, a hover affordance. Never decorative, never looping, always disabled
+under `prefers-reduced-motion`.
+
+**Tighten.** The current cards are mostly empty space at desktop width.
+
+### The failure mode to watch for
+
+If a stage lands and the page still reads as flat, grey and evenly weighted, the
+work has not been done — regardless of how disciplined the CSS looks. That is the
+old brief reasserting itself. The correct response is to add hierarchy, not to
+justify its absence as restraint.
 
 ---
 
@@ -186,5 +234,14 @@ Answer in writing, with a local preview open at 1440px and 390px:
 4. Does a visitor reach reference material before philosophy?
 5. Is there a visible hierarchy of surfaces, or is everything on one plane?
 6. Could a stranger tell this was built with an AI assistant?
+7. **Is it good to look at?** Would you send someone the link because the page
+   itself is worth seeing, not only because the data is useful?
 
-Six must be no. If four is no, the restructure has not happened yet.
+Six must be no. Seven must be yes — and it is the one that decides whether the
+brief was met. If four is no, the restructure has not happened. If five or seven
+is no, the old flat direction has crept back in; add hierarchy rather than
+defending the absence of it.
+
+**There is no "too visually appealing" failure state.** The old brief had one,
+and it was wrong. The only aesthetic failures available here are gaudy, cluttered
+and generic — none of which is the same as attractive.
