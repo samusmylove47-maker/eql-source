@@ -5,6 +5,49 @@ when one changes.
 
 ---
 
+## The game's own map files — first-party geometry, tier 1
+
+EverQuest Legends installs plain-text map files with the game:
+
+```
+C:\Users\Public\Daybreak Game Company\Installed Games\EverQuest Legends\maps\
+```
+
+194 files on the current install. The format is the long-standing EQ one, one
+record per line, comma separated:
+
+```
+L x1,y1,z1,x2,y2,z2,r,g,b     one 3D line segment
+P x,y,z,r,g,b,size,Label      one labelled point, underscores render as spaces
+```
+
+`<zone>.txt` is geometry; `<zone>_1.txt` is labels. **The coordinates share the
+`/loc` space**, with the axis convention the project already uses:
+
+```
+map_x = −worldX      map_y = −worldY      map_z = worldZ (true elevation)
+/loc prints worldY, worldX, worldZ
+```
+
+**This is first-party data shipped by the publisher and describing the live
+game, so it outranks every wiki page.** Treat it as tier 1.
+
+**What it can and cannot settle.** It is authoritative for geometry: zone
+extents, floor plans, elevation, and which zone connects to which. The label
+layers carry only zone exits — Najena's has exactly one label — so **there are
+no mob positions in it.** It can prove a recorded coordinate impossible without
+supplying the right one. It found six such coordinates in Najena on 8 Aug 2026.
+
+Six of the ten plated zones are present (Najena, Splitpaw, Crushbone, Befallen,
+Lower Guk, Mistmoore). Blackburrow, Nagafen's Lair, The Hole and The Warrens are
+not in the shipped set.
+
+**Do not copy these files into the repository or publish them.** They are
+Daybreak's. Reading them to check our own figures is not publishing them; any
+geometry the site draws must be our own derivation, not their line work.
+
+---
+
 ## The watchlist
 
 Machine-readable copy: `state/watchlist.json`. That file is what the automation
