@@ -2,6 +2,9 @@
  {
   "zone": null,
   "difficulty_label": null,
+  "difficulty": 2,
+  "difficulty_from": "loot tier",
+  "difficulty_agrees": null,
   "date": "04 Aug 2026",
   "window": "16:24-16:27",
   "stamps": [],
@@ -246,25 +249,28 @@
  {
   "zone": "The Castle of Mistmoore",
   "difficulty_label": "Awakened",
+  "difficulty": 1,
+  "difficulty_from": "zone line",
+  "difficulty_agrees": true,
   "date": "08 Aug 2026",
-  "window": "11:08-11:28",
+  "window": "11:08-11:33",
   "stamps": [
    "My partner, Shara, will also be logging today and I will provide her logs separate later.",
    "these are level 4 we are level 26 so hit rate is very low",
    "they are level 40 not 4, typo"
   ],
-  "kills": 79,
-  "distinct": 24,
+  "kills": 87,
+  "distinct": 31,
   "drop_tiers": {
-   "1": 22,
-   "2": 5
+   "1": 23,
+   "2": 6
   },
   "faction": {
-   "Mayong Mistmoore": 76,
-   "King Tearis Thex": 76,
-   "Agents of Mistmoore": 76,
-   "League of Antonican Bards": 76,
-   "Ring of Scale": 76,
+   "Mayong Mistmoore": 84,
+   "King Tearis Thex": 84,
+   "Agents of Mistmoore": 84,
+   "League of Antonican Bards": 84,
+   "Ring of Scale": 84,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
@@ -274,10 +280,10 @@
    "these are level 4 we are level 26 so hit rate is very low",
    "they are level 40 not 4, typo"
   ],
-  "you_hit": 605,
-  "you_miss": 460,
-  "mob_hit": 1473,
-  "mob_miss": 1392,
+  "you_hit": 738,
+  "you_miss": 539,
+  "mob_hit": 1655,
+  "mob_miss": 1539,
   "mobs": {
    "A pledge familiar": {
     "swings": 556,
@@ -495,10 +501,10 @@
     }
    },
    "A jeering gargoyle": {
-    "swings": 18,
-    "landed": 6,
-    "avg": 14.0,
-    "max": 28,
+    "swings": 42,
+    "landed": 23,
+    "avg": 17.2,
+    "max": 58,
     "casts": {},
     "loot": {}
    },
@@ -564,6 +570,60 @@
     "landed": 20,
     "avg": 9.6,
     "max": 30,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoulish ancille": {
+    "swings": 74,
+    "landed": 40,
+    "avg": 17.7,
+    "max": 55,
+    "casts": {
+     "Alacrity": 2
+    },
+    "loot": {}
+   },
+   "A ghastish ancille": {
+    "swings": 107,
+    "landed": 55,
+    "avg": 20.7,
+    "max": 72,
+    "casts": {},
+    "loot": {}
+   },
+   "A wraithish ancille": {
+    "swings": 11,
+    "landed": 8,
+    "avg": 19.5,
+    "max": 40,
+    "casts": {
+     "Screaming Terror": 2
+    },
+    "loot": {}
+   },
+   "A vampiric ancille": {
+    "swings": 54,
+    "landed": 30,
+    "avg": 23.3,
+    "max": 59,
+    "casts": {},
+    "loot": {}
+   },
+   "Enynti": {
+    "swings": 40,
+    "landed": 22,
+    "avg": 11.7,
+    "max": 42,
+    "casts": {},
+    "loot": {
+     "Rune of Fortune": 1
+    }
+   },
+   "A sneering gargoyle": {
+    "swings": 19,
+    "landed": 10,
+    "avg": 11.5,
+    "max": 51,
     "casts": {},
     "loot": {}
    },
@@ -758,6 +818,26 @@
     "loot": {
      "Fine Steel Dagger +1": 1,
      "Mote of Minor Potential": 1
+    }
+   },
+   "a wraithish ancille": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "casts": {},
+    "loot": {
+     "Jade Earring +1": 1
+    }
+   },
+   "a ghoulish ancille": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "casts": {},
+    "loot": {
+     "Splinted Bronze Cloak +2": 1
     }
    }
   }

@@ -103,7 +103,18 @@ def section(sess_list, zone_title):
     hitrate = f"{100*yh/(yh+ym):.1f}%" if (yh + ym) else 'not measured'
     tiers = ', '.join(f'+{k} &times;{v}' for k, v in s['drop_tiers'].items()) or 'none recorded'
     facs = ', '.join(esc(f) for f in list(s['faction'])[:8]) or 'none recorded'
-    diff = esc(s['difficulty_label']) if s['difficulty_label'] else 'not stated'
+    d, lab = s.get('difficulty'), s.get('difficulty_label')
+    if lab and d is not None:
+        diff = f'D{d}, {esc(lab)}'
+    elif lab:
+        diff = esc(lab)
+    elif d is not None:
+        diff = f'D{d}, read from the loot tier rather than the zone line'
+    else:
+        diff = 'not stated'
+    if s.get('difficulty_agrees') is False:
+        diff += (' &mdash; <b>but the zone name and the loot tier disagree</b>, '
+                 'so treat the difficulty as unresolved')
 
     return (
         f'<section class="meas">'

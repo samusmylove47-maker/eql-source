@@ -102,6 +102,24 @@ log their absence as a defect.
   class kits, widens aggro ranges and pre-upgrades loot. Named mobs are often
   multiclass from D2; raid bosses start appearing triple-class at D3.
 
+  The tiers are named in game, and the zone line prints the name on entry —
+  `You have entered The Castle of Mistmoore 1 (Awakened).`
+
+  | | Name |
+  |---|---|
+  | **D0** | Base / Normal — the default open world |
+  | **D1** | Awakened |
+  | **D2** | Adaptive |
+  | **D3** | Fused |
+  | **D4** | Refined |
+
+  Loot gives the same answer independently: items drop at `+N` and the modal `N`
+  is the difficulty. Read the *dropped* value, not the created one — `looted a
+  Keg Mallet +2 … to create a Keg Mallet +4` is a `+2` drop. The two readings
+  agreed on our 8 Aug Mistmoore session, which is why both are kept and reported
+  separately rather than collapsed: when they disagree, the difficulty is
+  unresolved and the page must say so.
+
 Inherited lines like "you need a full group of level 50s" came from a game where
 neither was true. Unreliable in both directions. Mark them.
 

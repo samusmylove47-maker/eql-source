@@ -32,11 +32,18 @@ figure rests on. A drop seen once is "seen once", never a drop rate.
 ### Reading a log
 
 - Zone and difficulty arrive together: `You have entered The Castle of Mistmoore
-  1 (Awakened).` The parenthesised word is recorded as the stated difficulty
-  label. **It is not yet mapped to a D-number** — that mapping is unconfirmed.
-- Difficulty is separately inferable from loot: items drop at `+N`, and the modal
+  1 (Awakened).` The parenthesised word is the difficulty tier name:
+  **D0 Base/Normal, D1 Awakened, D2 Adaptive, D3 Fused, D4 Refined.** Supplied by
+  the collaborator, 8 Aug 2026.
+- Difficulty is separately readable from loot: items drop at `+N`, and the modal
   `N` is the difficulty. Read the *dropped* value, not the created one —
   `looted a Keg Mallet +2 ... to create a Keg Mallet +4` is a `+2` drop.
+- **Both readings are kept, and reported separately.** They are independent —
+  one comes from the zone name, the other from what dropped — so agreement is
+  worth something. They agreed on the 8 Aug Mistmoore session: the line said
+  `Awakened` and 22 of 27 drops were `+1`, giving D1 twice over. When they
+  disagree, the difficulty is unresolved and the page says so rather than
+  picking one.
 - The collaborator marks context in party chat with `ATTN Claude:`. Those lines
   are captured verbatim as session notes.
 

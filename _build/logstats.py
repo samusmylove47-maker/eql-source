@@ -52,6 +52,13 @@ VERBS = (r'(?:hit|slash|bash|crush|pierce|bite|claw|kick|punch|gore|maul|slice|'
          r'backstab|frenzy|strike)')
 ARTICLE = re.compile(r'^(?:a|an|the)\s+', re.I)
 
+# The difficulty tier names used by personal and public instancing, supplied by
+# the collaborator on 8 Aug 2026. Independently corroborated for D1 by our own
+# log: the zone line read "(Awakened)" and 22 of 27 drops were +1, so the label
+# and the loot-tier rule agree without being derived from each other.
+DIFFICULTY = {'base': 0, 'normal': 0, 'base / normal': 0,
+              'awakened': 1, 'adaptive': 2, 'fused': 3, 'refined': 4}
+
 ZONE = re.compile(r'You have entered (.+?)\.\s*$')
 STAMP = re.compile(r'ATTN Claude:\s*(.+?)\'?\s*$')
 SLAIN_BY_YOU = re.compile(r'^You have slain (.+?)!')
@@ -185,7 +192,23 @@ def collect(rows):
 
 def summarise(s):
     mh, mm = sum(s['mob_hit'].values()), sum(s['mob_miss'].values())
-    out = dict(zone=s['zone'], difficulty_label=s['difficulty_label'], date=s['date'],
+
+    # Difficulty two ways, kept separate so they can disagree in the open.
+    # The zone line names the tier; the loot tier is the collaborator's own rule,
+    # that the modal +N of what drops is the difficulty. Where a log has no zone
+    # line at all — one that started mid-zone — only the loot reading survives.
+    label = (s['difficulty_label'] or '').strip().lower()
+    d_named = DIFFICULTY.get(label)
+    d_loot = None
+    if s['drop_tiers']:
+        d_loot = int(max(s['drop_tiers'].items(), key=lambda kv: kv[1])[0])
+    agree = None if (d_named is None or d_loot is None) else (d_named == d_loot)
+
+    out = dict(zone=s['zone'], difficulty_label=s['difficulty_label'],
+               difficulty=d_named if d_named is not None else d_loot,
+               difficulty_from='zone line' if d_named is not None else
+                               ('loot tier' if d_loot is not None else None),
+               difficulty_agrees=agree, date=s['date'],
                window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
