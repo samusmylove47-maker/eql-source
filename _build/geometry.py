@@ -167,6 +167,57 @@ def normal_z(t):
 
 
 # ---------------------------------------------------------------- outlines
+def walkable(tris):
+    """Floors, including the ones whose triangles are wound the wrong way.
+
+    Normally an up-facing normal means floor and a down-facing one means
+    ceiling, and inside Castle Mistmoore that holds: the interior has 1,968
+    up-facing and 2,575 down-facing surfaces interleaved at sensible heights.
+
+    Parts of some zones are wound the other way, and their floors read as
+    ceilings. The outer gates of Mistmoore have no up-facing surface anywhere,
+    but 26 down-facing ones sitting at Z -240 — exactly the foot of the walls
+    around them. Nothing puts a ceiling at floor level, so those are floors.
+    Dropping them cost about 200 units of the zone's width and left A glyphed
+    ghoul stranded 176 units from anything drawn.
+
+    Rather than guess at winding per mesh, take every up-facing surface, then
+    add back only those down-facing ones with no up-facing surface anywhere
+    near them. Where a real floor exists the real one wins and its ceiling is
+    still ignored; only genuinely empty ground gets patched.
+    """
+    up = [t for t in tris if normal_z(t) > FLOOR_N]
+    down = [t for t in tris if normal_z(t) < -FLOOR_N]
+    if not up:
+        return down
+    cell, reach = 64.0, 100.0
+    grid = collections.defaultdict(list)
+    for t in up:
+        cy = sum(p[0] for p in t) / 3.0
+        cx = sum(p[1] for p in t) / 3.0
+        grid[(int(cy // cell), int(cx // cell))].append((cy, cx))
+    span = int(reach // cell) + 1
+    extra = []
+    for t in down:
+        cy = sum(p[0] for p in t) / 3.0
+        cx = sum(p[1] for p in t) / 3.0
+        gy, gx = int(cy // cell), int(cx // cell)
+        near = False
+        for a in range(gy - span, gy + span + 1):
+            for b in range(gx - span, gx + span + 1):
+                for uy, ux in grid.get((a, b), ()):
+                    if (uy - cy) ** 2 + (ux - cx) ** 2 <= reach * reach:
+                        near = True
+                        break
+                if near:
+                    break
+            if near:
+                break
+        if not near:
+            extra.append(t)
+    return up + extra
+
+
 def boundary_chains(floors):
     """Polylines where the floor stops, in page coordinates."""
     edges = collections.Counter()
@@ -316,7 +367,7 @@ def build(src_dir):
             report.append((z['slug'], 'no archive', 0, 0))
             continue
         tris = zone_triangles(path)
-        floors = [t for t in tris if normal_z(t) > FLOOR_N]
+        floors = walkable(tris)
         bands = elevation_bands(floors)
         layers = []
         for lo, hi in bands:

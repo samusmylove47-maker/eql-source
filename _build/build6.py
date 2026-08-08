@@ -168,6 +168,15 @@ def lift(hexc, pct=0.56):
     a=[int(hexc[i:i+2],16) for i in (1,3,5)]; b=[0xE6,0xE9,0xE4]
     return '#%02X%02X%02X' % tuple(round(a[i]*pct+b[i]*(1-pct)) for i in range(3))
 
+ON_FLOOR = 120          # world units; a mob this close to drawn floor is on the map
+
+def seg_dist(px, py, a, b):
+    """Distance from a point to a line segment."""
+    dx, dy = b[0] - a[0], b[1] - a[1]
+    L = dx * dx + dy * dy
+    t = 0.0 if L == 0 else max(0.0, min(1.0, ((px - a[0]) * dx + (py - a[1]) * dy) / L))
+    return math.hypot(px - (a[0] + t * dx), py - (a[1] + t * dy))
+
 def nice_step(span):
     for s in (25, 50, 100, 250, 500, 1000):
         if span / s <= 10: return s
@@ -405,6 +414,7 @@ def build_plot(zone, pts, layers):
 
 sections = []
 tot_plot = tot_named = tot_regions = tot_withheld = tot_geo = 0
+tot_measured = tot_on_floor = 0
 for z in Z:
     pts, unplotted, withheld = [], [], []
     for n in IX['named']:
@@ -422,6 +432,20 @@ for z in Z:
     tot_plot += len(pts); tot_named += zone_total
     tot_withheld += len(withheld)
     layers = GEO.get(z['slug'], {}).get('layers', [])
+
+    # How many recorded positions actually land on the floor we drew. Two
+    # independent things have to be right for a point to land close — the
+    # coordinate and the geometry — so this is a real check on both, and it is
+    # counted here rather than typed, so it cannot drift from the data.
+    segs = [s for L in layers for c in L['lines'] for s in zip(c, c[1:])]
+    if segs:
+        for yv, xv, *_ in pts:
+            px, py = -xv, -yv
+            best = min(seg_dist(px, py, a, b) for a, b in segs)
+            tot_measured += 1
+            if best <= ON_FLOOR:
+                tot_on_floor += 1
+
     svg, step, (lo, hi), nregions = build_plot(z, pts, layers)
     tot_regions += nregions
     if layers:
@@ -521,6 +545,12 @@ page = head("Survey plots",
     derivation and not a copy of any published map, so it shows where the floor ends and nothing else:
     <strong>doors, locks and one-way drops are not marked</strong>, and a gap in a line is as likely to
     be a ledge as a doorway.
+    <br><br><strong>{tot_on_floor} of {tot_measured} plotted mobs land on that floor</strong>, within
+    {ON_FLOOR} units of it. That is worth stating because two independent things have to be right for a
+    point to land close &mdash; the recorded coordinate and our reading of the geometry &mdash; so
+    agreement is evidence for both. It is counted at build time from the same data the drawing uses,
+    not typed in. A position that fell well outside would be visible as a dot in open space, and the
+    six withheld from Najena are exactly that case.
     <br><br>Where a zone stacks, <strong>the height control isolates one storey at a time</strong>.
     Storeys are found from the geometry itself, by looking for the heights where floor area piles up,
     so they are the building&rsquo;s real levels rather than slices at fixed intervals. Flat zones get
@@ -563,4 +593,5 @@ page = head("Survey plots",
 ''' + foot("../")
 
 open('dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
-print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions, {tot_withheld} withheld")
+print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions, "
+      f"{tot_withheld} withheld, {tot_on_floor}/{tot_measured} on drawn floor")
