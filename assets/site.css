@@ -809,3 +809,21 @@ h1.display em{color:var(--z01)}
 .lyr{transition:stroke-opacity .18s}
 .lyr.mute{stroke-opacity:.07}
 @media(prefers-reduced-motion:reduce){.lvbtn,.lyr{transition:none}}
+
+/* ---------- difficulty primer ----------
+   Two sources on one page again: what EQL Tools measured and what our logs did.
+   The table carries both, so the "in our logs" column has to read as ours. */
+.dtable{width:100%;border-collapse:collapse;font-size:var(--t-sm);min-width:560px}
+.dtable th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:500;
+  border-bottom:1px solid var(--rule);padding:0 var(--s-3) var(--s-2) 0}
+.dtable td{border-bottom:1px solid var(--rule);padding:var(--s-3) var(--s-3) var(--s-3) 0;
+  vertical-align:top}
+.dtable .dn{font-family:"IBM Plex Mono",monospace;color:var(--instr);font-weight:600;
+  white-space:nowrap}
+.dtable .dname{color:var(--bone);font-weight:600}
+.dtable .dnote{color:var(--dim)}
+.tw{overflow-x:auto;margin:var(--s-4) 0}
+.dcode{background:var(--surface-0);border:1px solid var(--rule);border-radius:var(--r);
+  padding:var(--s-4);overflow-x:auto;font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-sm);color:var(--mut);line-height:1.7;margin:var(--s-4) 0}

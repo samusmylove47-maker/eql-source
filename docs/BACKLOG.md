@@ -28,7 +28,7 @@ before and after at both widths; the four verification questions at the end of
 
 ---
 
-## P1 — Difficulty primer
+## P1 — Difficulty primer  — BUILT 8 Aug 2026
 
 **Why:** D4 behaviour is the biggest documented gap on the site, and our raid
 guides currently say "nobody has published this". That is no longer entirely
