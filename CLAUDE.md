@@ -131,7 +131,7 @@ state/              automation memory. Do not hand-edit
 ```
 
 **`assets/zones-index.json` is the single source of navigation truth.** Home
-page, spectrum bars and dungeon index all read from it.
+page, plate cards and dungeon index all read from it.
 
 Generated files are overwritten by `./build.sh`. A rebuild silently throws away
 anything edited in place; `check.py` will not catch it.
@@ -173,10 +173,11 @@ because they are easy to break by accident:
   tools, ember for raids.
 - **Three faces.** Saira Condensed (display, uppercase, tight), IBM Plex Mono
   (data, labels, anything numeric), Public Sans (prose).
-- **The spectrum** on the home page is the signature: one bar per zone, in plate
-  order, in that zone's permanent accent, height keyed to the top of its level
-  band. Ornament, chart and navigation at once. If the zone count changes,
-  update `grid-template-columns:repeat(10,1fr)` in `site.css`.
+- **The plate cards** are the home page's signature: one card per zone, washed
+  with its own accent, carrying its plate number cropped by the card edge. They
+  reflow, so adding a zone needs no layout change. A fixed-column spectrum of
+  coloured bars preceded them and was withdrawn on 2026-08-08 — it cluttered the
+  page and would not survive the zone count growing.
 - Each zone owns its accent permanently. Never reuse or reassign one. Where an
   accent fails contrast as text, derive a lifted variant; never change the accent.
 - **WCAG AA on all text.** Verified clean across 25 pages. Do not regress it.
@@ -204,7 +205,8 @@ Do not write around a gap. Name it instead.
 
 **A new dungeon plate.** Add to `assets/zones-index.json` with the next plate
 number and an unused accent. Put `<slug>.html` in `_build/source/`. Run
-`./build.sh`. Update the spectrum column count in `site.css`.
+`./build.sh`. The plate grid reflows on its own; nothing in `site.css` needs a
+count updated. `check.py` fails if the home page stops linking a zone.
 
 **A new raid encounter.** Copy `_build/build4.py`. The 3D engine is
 self-contained in it: islands, markers, radius rings, dashed paths, phases, and

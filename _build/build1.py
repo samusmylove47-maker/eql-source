@@ -11,33 +11,12 @@ Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 NITEMS, NNAMED = len(IX['items']), len(IX['named'])
 MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
-TOPLV = {"najena":35,"splitpaw":42,"crushbone":22,"befallen":25,"blackburrow":20,
-         "lowerguk":49,"nagafenslair":55,"thehole":56,"warrens":25,"mistmoore":45}
-CEIL = 56
 
 def zsub(z):
     return f"{z['levels']}"
 
-def _lum(h):
-    c = [int(h[i:i+2], 16)/255 for i in (1, 3, 5)]
-    c = [v/12.92 if v <= 0.03928 else ((v+0.055)/1.055)**2.4 for v in c]
-    return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2]
-
-def bar_text(accent):
-    """Plate number sits on the accent bar. Ten accents span light gold to deep
-    crimson, so no single text colour clears AA on all of them — pick whichever
-    of ground or bone contrasts better. The accent itself is never changed."""
-    L = _lum(accent)
-    on_dark = (L + 0.05) / (_lum('#0E1315') + 0.05)
-    on_light = (_lum('#E6E9E4') + 0.05) / (L + 0.05)
-    return '#0E1315' if on_dark >= on_light else '#E6E9E4'
 
 # ---------------------------------------------------------------- HOME
-bars = "\n".join(
-  f'''    <a class="sb" href="dungeons/{z['slug']}.html" style="--c:{z['accent']};--bt:{bar_text(z['accent'])};--h:{round(TOPLV[z['slug']]/CEIL*100)}%;--d:{i*70}ms">
-      <i></i><u>{z['title']}</u><b>{z['plate']:02d}</b></a>'''
-  for i, z in enumerate(Z))
-
 zrows = "\n".join(
   f'''    <a class="zrow" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
       <span class="pn">{z['plate']:02d}</span>
@@ -94,13 +73,6 @@ home = head("Accurate, sourced and kept current",
       </div>
     </div>
 
-    <div class="spectrum lead bleed">
-      <div class="spec-label"><span>The survey &middot; plate order</span><span>bar height = top of level band</span></div>
-      <div class="spec-bars">
-{bars}
-      </div>
-      <div class="spec-key"><span>01 &nbsp;Najena</span><span>10 &nbsp;Castle Mistmoore</span></div>
-    </div>
   </div>
 </section>
 
@@ -129,7 +101,9 @@ home = head("Accurate, sourced and kept current",
           is packed into the page URL &mdash; bookmark it, paste it in guild chat, open it anywhere.</p></div>
       <a class="link" href="tools/index.html">All tools &rarr;</a></div>
     <div class="cards lead">
-      <a class="card feature" href="tools/index-search.html" style="--c:var(--bone)">
+      <a class="card feature figured contour" href="tools/index-search.html"
+         style="--c:var(--bone);--cx:92%;--cy:118%">
+        <span class="fig">{NITEMS}</span>
         <div class="kicker">Loot &amp; named lookup</div>
         <h3 class="t">The Index</h3>
         <p class="d">Every item and named mob across the ten surveyed dungeons, in one searchable place.
@@ -137,19 +111,25 @@ home = head("Accurate, sourced and kept current",
         <div class="chipline"><span class="pill">{NITEMS} items</span><span class="pill">{NNAMED} named</span><span class="pill">Cross-zone</span></div>
         <div class="foot"><span>Built from our own plates</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="tools/plane-of-sky.html" style="--c:var(--instr)">
+      <a class="card figured contour" href="tools/plane-of-sky.html"
+         style="--c:var(--instr);--cx:14%;--cy:112%">
+        <span class="fig">95</span>
         <div class="kicker">Progression</div><h3 class="t">Plane of Sky</h3>
         <p class="d">Build your trio and get every class-unlock test it owes &mdash; 95 quests, 222 components,
           each tagged with the island and boss that drops it.</p>
         <div class="foot"><span>All 560 trios</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="tools/race-unlocks.html" style="--c:var(--instr)">
+      <a class="card figured contour" href="tools/race-unlocks.html"
+         style="--c:var(--instr);--cx:88%;--cy:106%">
+        <span class="fig">16</span>
         <div class="kicker">Progression</div><h3 class="t">Race unlocks</h3>
         <p class="d">Sixteen races with their factions, methods and honest work counts. Mark what you want
           and it merges the grinds into one list, stripping the duplicated steps.</p>
         <div class="foot"><span>Merged routes</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="tools/combo-calculator.html" style="--c:var(--instr)">
+      <a class="card figured contour" href="tools/combo-calculator.html"
+         style="--c:var(--instr);--cx:20%;--cy:118%">
+        <span class="fig">560</span>
         <div class="kicker">Planning</div><h3 class="t">Race &amp; primary</h3>
         <p class="d">The primary slot is the only one you can never change. Name the class that must sit
           there and the race you want, and it costs every route to both.</p>

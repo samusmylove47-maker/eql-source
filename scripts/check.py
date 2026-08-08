@@ -87,12 +87,16 @@ else:
                 fail(f"{page} claims {claim.group(1)} verified but zones-index says {counts['full']} "
                      f"— never publish a higher number than the data supports")
 
-    # the spectrum column count must match the zone count
-    css = open("assets/site.css", encoding="utf-8").read()
-    m = re.search(r"\.spec-bars\{[^}]*repeat\((\d+),", css)
-    if m and int(m.group(1)) != len(Z):
-        fail(f"spectrum has {m.group(1)} columns but there are {len(Z)} zones — "
-             f"update .spec-bars in assets/site.css")
+    # The home page must show every zone. This replaces the old spectrum column
+    # check: the spectrum was a fixed ten-column grid that had to be edited by
+    # hand on every new zone, and it stopped scaling once the plate count grew.
+    # The plate grid reflows on its own, so what needs guarding is that no zone
+    # silently drops off the page.
+    if os.path.exists("index.html"):
+        h = open("index.html", encoding="utf-8").read()
+        missing = [z["slug"] for z in Z if f'dungeons/{z["slug"]}.html' not in h]
+        if missing:
+            fail(f"home page does not link {len(missing)} zone(s): {', '.join(missing)}")
 
 # 4. the 3D viewer must not depend on a CDN
 for p in glob.glob("raids/*.html"):

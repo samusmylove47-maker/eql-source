@@ -15,7 +15,7 @@
 :root{
   /* ---- surfaces: three levels, and only three ----------------------------
      0 is the page, 1 is a panel resting on it, 2 is a panel lifted off it —
-     hover, input wells, the spectrum trough. Anything needing a fourth level
+     hover states, input wells, table heads. Anything needing a fourth level
      is a sign the layout, not the palette, is wrong. */
   --surface-0:#0E1315;
   --surface-1:#161D21;
@@ -82,8 +82,8 @@
   --max:1240px;
 
   /* ---- geometry. One radius, used on surfaces and controls. Data displays —
-     the spectrum bars, the zone stripe — stay square, because a chart reads as
-     a measurement and rounded measurements look approximate. ---------------- */
+     bars, stripes and rules — stay square, because a measurement drawn with
+     rounded ends reads as approximate. ------------------------------------- */
   --r:4px;
 
   /* ---- elevation. Never a hard drop shadow; these are wide and faint, and
@@ -179,33 +179,6 @@ section.band{padding:var(--band) 0;border-top:1px solid var(--rule)}
 .ix dd small{display:block;font-family:inherit;font-size:var(--t-sm);
   font-weight:400;color:var(--dim);line-height:1.4;margin-top:7px}
 
-/* ---------- THE SPECTRUM — signature element ----------
-   Deliberately square: this is a chart, and rounded bars read as approximate. */
-.spectrum{margin-top:clamp(38px,6vw,64px)}
-.spec-label{display:flex;justify-content:space-between;align-items:baseline;
-  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--faint);margin-bottom:var(--s-3)}
-.spec-bars{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;height:clamp(120px,17vw,190px)}
-.sb{position:relative;display:block;text-decoration:none;background:var(--surface-2);
-  overflow:hidden;transform-origin:bottom}
-.sb i{position:absolute;left:0;right:0;bottom:0;display:block;background:var(--c);
-  height:var(--h);transform:scaleY(0);transform-origin:bottom;
-  animation:rise .7s cubic-bezier(.16,.84,.44,1) forwards;animation-delay:var(--d)}
-@keyframes rise{to{transform:scaleY(1)}}
-@media (prefers-reduced-motion:reduce){.sb i{transform:scaleY(1);animation:none}}
-.sb b{position:absolute;left:0;right:0;bottom:var(--s-2);text-align:center;
-  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);font-weight:600;
-  color:var(--bt,var(--surface-0));letter-spacing:.05em;z-index:2}
-.sb u{position:absolute;left:0;right:0;top:var(--s-2);text-align:center;text-decoration:none;
-  font-family:"Saira Condensed",sans-serif;font-size:var(--t-sm);font-weight:600;
-  text-transform:uppercase;letter-spacing:.03em;color:var(--mut);
-  opacity:0;transition:opacity var(--speed);writing-mode:vertical-rl;
-  margin:0 auto;height:calc(100% - 34px);z-index:2}
-.sb:hover u,.sb:focus u{opacity:1;color:var(--bone)}
-.sb:hover i,.sb:focus i{filter:brightness(1.25)}
-.spec-key{display:flex;justify-content:space-between;font-family:"IBM Plex Mono",monospace;
-  font-size:var(--t-2xs);letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--faint);
-  margin-top:var(--s-3);padding-top:var(--s-3);border-top:1px solid var(--rule)}
 
 /* ---------- cards ---------- */
 .cards{display:grid;gap:var(--s-4)}
@@ -369,17 +342,6 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .hero-aside dd{margin:0;font-size:var(--t-sm);color:var(--dim);line-height:1.35}
 .hero-aside dd b{display:block;color:var(--mut);font-weight:600}
 
-/* ---------- the spectrum, promoted to the hero floor ---------- */
-.spectrum.lead{margin-top:clamp(var(--s-5),4vw,var(--s-6));
-  padding-bottom:clamp(var(--s-6),6vw,var(--s-8))}
-.spectrum.lead .spec-bars{height:clamp(140px,17vw,215px)}
-.sb{border-radius:var(--r) var(--r) 0 0}
-.sb u{opacity:.55}
-.sb:hover u,.sb:focus u{opacity:1}
-.sb::after{content:"";position:absolute;inset:0;border:1px solid transparent;
-  border-radius:var(--r) var(--r) 0 0;transition:border-color var(--speed)}
-.sb:hover::after,.sb:focus::after{border-color:color-mix(in srgb,var(--c) 60%,var(--bone))}
-
 /* ---------- plate table: the reference, immediately ---------- */
 .zrow{position:relative}
 .zrow::before{content:"";position:absolute;left:0;top:0;bottom:0;width:2px;
@@ -499,12 +461,6 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .plate .gate.full{background:var(--c)}
 .plate .gate.partial{background:linear-gradient(90deg,var(--c) 50%,transparent 50%)}
 
-/* ---------- the spectrum, made monumental and full-bleed ---------- */
-.spectrum.bleed{width:100vw;margin-left:calc(50% - 50vw);padding:0 var(--gut)}
-.spectrum.lead .spec-bars{height:clamp(160px,23vw,290px);gap:2px}
-.spectrum.lead .sb u{opacity:.85;font-size:var(--t-xs)}
-.spectrum.lead .sb:hover u,.spectrum.lead .sb:focus u{opacity:1}
-.sb i{box-shadow:inset 0 1px 0 rgba(230,233,228,.28)}
 
 /* ---------- ember band, given real weight ---------- */
 .band.ember .sec{font-size:clamp(38px,6.2vw,72px)}
@@ -543,3 +499,32 @@ h1.display em{color:var(--z01)}
   -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 70%);
   mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 70%)}
 @media(max-width:900px){.hero::after{display:none}}
+
+/* ---------- the plate language, extended to the rest of the page ----------
+   The plate cards were the thing that worked, so the same three moves — a
+   contour field, a cropped figure and an accent wash — carry into the tool
+   and raid cards. One vocabulary, not a page of unrelated ideas. */
+.card.figured{overflow:hidden;
+  background:linear-gradient(155deg,
+    color-mix(in srgb, var(--c) 9%, var(--surface-1)) 0%,
+    var(--surface-1) 62%)}
+.card .fig{position:absolute;right:-10px;bottom:-26px;z-index:0;pointer-events:none;
+  font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:112px;line-height:.7;
+  letter-spacing:-.04em;color:var(--c);opacity:.15;font-variant-numeric:tabular-nums}
+.card.feature .fig{font-size:180px;right:-16px;bottom:-40px;opacity:.13}
+a.card.figured:hover .fig{opacity:.22}
+.card.figured>*{position:relative;z-index:1}
+
+/* The ember band gets the contour treatment too, anchored low-left so it does
+   not collide with the figures panel on the right. */
+.band.ember{position:relative;overflow:hidden}
+.band.ember::after{content:"";position:absolute;left:-10%;bottom:-60%;width:70vw;height:150%;
+  z-index:0;pointer-events:none;
+  background:repeating-radial-gradient(circle at 50% 50%,
+    transparent 0 30px,
+    rgba(215,108,85,.13) 30px 31px,
+    transparent 31px 62px,
+    rgba(215,108,85,.07) 62px 63px);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 72%);
+  mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 72%)}
+.band.ember .shell{position:relative;z-index:1}
