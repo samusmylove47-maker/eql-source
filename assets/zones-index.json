@@ -81,8 +81,8 @@
   "who": null,
   "adjacent": null,
   "verified": null,
-  "verify_level": "none",
-  "verify_gate": "edit history cleared 8 Aug 2026 from the API rather than the footer: the only August edits are images (revisions 165753 and 165754, Piano), so the content still dates from 4 July 2026. All 17 coordinates land on drawn floor. Still open: the page has not been re-fetched in full against the plate, the room-list collision check, and the plate's reading key",
+  "verify_level": "partial",
+  "verify_gate": "gates 1 and 2 cleared 8 Aug 2026. History from the API, not the footer: current revision 165754, 4 August 2026, by Piano — but the only August edits are images, so the content dates from 4 July. Roster compared in full: all 16 named on the wiki are on the plate, respawn agrees at 22:00, and two coordinates differ trivially — Refugee Splitpaw (mnk) by 13 units and Splitpaw Sharpshooter by 4. Both ours and the wiki's land on drawn floor, so neither can be shown wrong and both are left as recorded. Still open: gate 3, the room-list collision check, and the plate's reading key",
   "respawn_note": "eqlwiki infobox, page last edited 4 Aug 2026; corroborated by eqlwiki Zone_Spawn_Timers. Blackburrow is not in the 28 Jul patch list."
  },
  {
