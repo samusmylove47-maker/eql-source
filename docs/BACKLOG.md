@@ -80,6 +80,33 @@ state pattern used by the other tools.
 
 ---
 
+## P2.5 — Raid access and instance types primer
+
+**Status: writable today, entirely tier 1.** Researched 8 Aug 2026.
+
+Open-world raid bosses no longer spawn in EverQuest Legends. Raid instances are
+created by NPCs called **voidlings** — hail one for a list of raid options with
+lockout timers. There are three distinct instance types and they are easy to
+confuse: **public**, **personal** (zone-level, 2 charges, 1 per hour), and
+**raid** (voidling-created). Raids cap at 8 players, groups at 4, and D0–D4 is
+selectable in raid instances.
+
+**The misconception worth correcting:** a personal instance is *not* a solo raid.
+Someone entering a personal instance of Plane of Hate expecting Innoruuk will
+find an empty zone and will have spent a charge doing it.
+
+Sourced: patch note 16 Jun 2026 confirms *"Personal instances for Plane of Hate
+and Plane of Fear are now available!"* and *"Balance changes to Solo Raid
+versions of Innoruuk, Cazic-Thule, Maestro of Rancor, and Lord of Loathing"* —
+so solo raid versions demonstrably exist. `eqlwiki.com/Personal_Instance`
+(4 Jul 2026) documents the mechanism.
+
+**Unresolved, do not publish either side:** a 6 May 2026 dev stream reported solo
+and multiplayer raid lockouts are decoupled; current community summaries describe
+a shared Tuesday-resetting weekly lockout. The patch notes do not settle it.
+
+---
+
 ## P3 — More raid encounters
 
 Order set by which fights a diagram actually helps with:
@@ -91,6 +118,35 @@ Order set by which fights a diagram actually helps with:
 
 Copy `_build/build4.py`. The 3D engine is self-contained in it. **Every model
 must state in place whether it is surveyed from `/loc` data or schematic.**
+
+### Sourcing verdict, 8 Aug 2026 — read before writing any of these
+
+**Plane of Sky: YES, with hard limits.** On 19 July 2026 editor *Sadres* made a
+deliberate de-classicing pass on `eqlwiki.com/Plane_of_Sky`, summarised as
+"Cut out large swaths of the raid strategy fluff from classic... replaced it with
+my own experiences on EQLegends Beta". The page lost 28% of its bytes. Islands
+3–7 have surviving Legends-authored strategy prose. Route, spawn logic and phase
+structure are writable, **badged T3**, attributed to Sadres and dated, reinforced
+by the 16 Jun patch note that restructured Sky spawns.
+
+**Do not publish any boss HP, AC, level or damage figure.** The only ones
+available come from pages created in 2025, before the game existed. Confirmed
+Legends facts worth having: keys now bind permanently to the keyring, and **boss
+NPCs no longer have a death touch**.
+
+**Plane of Hate: NO. Plane of Fear: NO.** Both zones are implemented and solo
+raid versions of their bosses demonstrably exist — but *nobody has written down
+what happens inside them*. The Hate zone page's only 2026 strategy edit deleted a
+heading and substituted nothing. Every boss page predates the game: Cazic Thule's
+450,000 HP and "several dozen melee and a dozen healers" is classic EverQuest,
+unaltered. A guide written today would be classic tactics wearing a Legends
+banner — precisely what this project exists to prevent.
+
+**What unblocks Hate and Fear:** one person entering a voidling solo raid
+instance at a stated difficulty and recording what the boss actually does —
+ability names, whether it runs multiclass kits, roughly how long it survives.
+That is a few hours of play. Searching harder will not produce it, because it has
+not been written down by anyone yet.
 
 ---
 
