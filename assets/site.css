@@ -682,3 +682,39 @@ h1.display em{color:var(--z01)}
 .plotmissing .pn2{font-size:var(--t-sm);color:var(--mut)}
 .plotmissing .pc{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:.06em;color:var(--faint);text-align:right}
+
+/* ---------- island cards: the plate language applied to encounters ---------- */
+.islands{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,330px),1fr));
+  gap:var(--s-4);margin-top:var(--s-5)}
+.islands>*{min-width:0}
+.island{position:relative;overflow:hidden;border-radius:var(--r);
+  border:1px solid var(--rule);border-top:2px solid var(--c);
+  padding:clamp(var(--s-4),2.6vw,var(--s-5));box-shadow:var(--shadow-1);
+  background:linear-gradient(158deg,
+    color-mix(in srgb, var(--c) 11%, var(--surface-1)) 0%, var(--surface-1) 60%)}
+.isl-n{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wider);text-transform:uppercase;
+  color:color-mix(in srgb, var(--c) 62%, var(--bone))}
+.isl-tier{float:right;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--tc);
+  border:1px solid currentColor;border-radius:var(--r);padding:2px 7px}
+.isl-name{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:clamp(24px,2.6vw,31px);line-height:1;text-transform:uppercase;
+  letter-spacing:.01em;color:var(--bone);margin:var(--s-3) 0 var(--s-4)}
+.isl-body{margin:0;border-top:1px solid var(--rule)}
+.isl-body dt{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--faint);
+  margin-top:var(--s-3)}
+.isl-body dd{margin:var(--s-1) 0 0;font-size:var(--t-sm);color:var(--mut);line-height:1.55}
+.isl-body dd strong{color:var(--txt)}
+
+.findings{list-style:none;counter-reset:fi;margin:var(--s-5) 0 0;padding:0;
+  border-top:1px solid var(--rule)}
+.findings li{counter-increment:fi;position:relative;padding:var(--s-4) 0 var(--s-4) var(--s-6);
+  border-bottom:1px solid var(--rule);font-size:var(--t-sm);color:var(--mut);line-height:1.55}
+.findings li::before{content:counter(fi,decimal-leading-zero);position:absolute;left:0;
+  top:var(--s-4);font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  font-weight:600;color:var(--instr)}
+.findings b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:600;
+  font-size:var(--t-md);text-transform:uppercase;letter-spacing:.02em;color:var(--bone);
+  line-height:1.15;margin-bottom:var(--s-1)}
