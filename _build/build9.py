@@ -25,11 +25,24 @@ def esc(s):
             .replace('>', '&gt;').replace('"', '&quot;'))
 
 
+# Normalising is not enough on its own: in play, Lower Guk is "The Ruins of Old
+# Guk" and Upper Guk is "The City of Guk". Aliases are listed explicitly rather
+# than guessed at by similarity, because a wrong match would attach one zone's
+# measurements to another zone's plate, which is worse than no match at all.
+# A zone with no plate — Upper Guk, Kerra Isle — is reported as unmatched, not
+# silently dropped.
+ALIASES = {
+    'ruinsoldguk': 'lowerguk',
+    'cityguk': 'upperguk',
+}
+
+
 def key(name):
     """Zone names differ between the game and the site: 'The Castle of
     Mistmoore' against 'Castle Mistmoore'. Strip the articles and join up."""
     s = re.sub(r'\b(the|of|a|an)\b', ' ', (name or '').lower())
-    return re.sub(r'[^a-z0-9]', '', s)
+    s = re.sub(r'[^a-z0-9]', '', s)
+    return ALIASES.get(s, s)
 
 
 CSS = """
@@ -142,7 +155,16 @@ def merge(sessions):
     if len(sessions) == 1:
         return sessions[0]
     out = dict(sessions[0])
-    out['window'] = f"{sessions[0]['window'].split('-')[0]}-{sessions[-1]['window'].split('-')[-1]}"
+    # Sessions can span days. Shara's Befallen runs at D1 cover 4, 6 and 7
+    # August, and the character's level may well have moved between them, which
+    # changes every hit rate in the table. They are still merged — the samples
+    # are small individually — but the span is stated and the page carries a
+    # caveat rather than presenting three days as one afternoon.
+    dates = sorted({s['date'] for s in sessions})
+    out['days'] = len(dates)
+    out['date'] = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
+    out['window'] = (f"{sessions[0]['window'].split('-')[0]}-{sessions[-1]['window'].split('-')[-1]}"
+                     if len(dates) == 1 else f"{len(sessions)} sittings")
     out['kills'] = sum(s['kills'] for s in sessions)
     out['you_hit'] = sum(s['you_hit'] for s in sessions)
     out['you_miss'] = sum(s['you_miss'] for s in sessions)
@@ -205,8 +227,14 @@ def merge(sessions):
 
 
 def section(sess_list, zone_title):
-    same = [z for z in sess_list if z.get('difficulty') == sess_list[0].get('difficulty')]
-    s = merge(sorted(same, key=lambda z: z['window']))
+    # Merge only what was measured under the same conditions: same difficulty
+    # and the same character. A healer's log and a tank's describe different
+    # fights from different sides, and averaging them would describe neither.
+    best = max(sess_list, key=lambda z: z['kills'])
+    same = [z for z in sess_list
+            if z.get('difficulty') == best.get('difficulty')
+            and z.get('character') == best.get('character')]
+    s = merge(sorted(same, key=lambda z: (z['date'], z['window'])))
     # Stamps used to be bare strings and are now {at, text, conditions}; accept
     # either so an older measured.json still renders.
     def txt(v):
@@ -281,11 +309,21 @@ def section(sess_list, zone_title):
         f'<div class="cond">'
         f'<b>{("One session" if s.get("sessions_merged", 1) < 2 else str(s["sessions_merged"]) + " sessions")}, '
         f'{esc(s["date"])}, {esc(s["window"])}.</b> '
-        f'{"<b>" + esc(who) + "</b> " if who else ""}'
-        f'Zone entered as <b>{esc(zone_title)} ({diff})</b>. '
-        f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '
-        f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
-        f'Faction moved: {facs}.'
+        + f'Measured from <b>{esc(s.get("character") or "an unnamed character")}</b>&rsquo;s log. '
+        + (f'<b>Measured across {s["days"]} days</b>, so the character&rsquo;s level may have '
+           f'changed within the span &mdash; treat the landing rates as an average over that '
+           f'range rather than a figure for one level. ' if s.get('days', 1) > 1 else '')
+        # A stamp is party chat, so it reaches everyone's log. Shara's Befallen
+        # runs carried "Avenrae BRD WAR BER" and were printing it as though it
+        # described the character whose log this is. It only describes the
+        # subject when it names them.
+        + (f'<b>{esc(who)}</b> ' if who and s.get('character')
+           and who.lower().startswith(str(s['character']).lower())
+           else (f'Party context noted in chat at the time: <em>{esc(who)}</em> ' if who else ''))
+        + f'Zone entered as <b>{esc(zone_title)} ({diff})</b>. '
+        + f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '
+        + f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
+        + f'Faction moved: {facs}.'
         + (''.join(
             f'<br><b>{"Conditions changed at" if c else "Noted at"} {esc(at)}:</b> {esc(n)}'
             if at else f'<br><b>Noted at the time:</b> {esc(n)}'

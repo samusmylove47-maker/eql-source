@@ -141,6 +141,18 @@ CHATTER = re.compile(r'^(\w[\w`\'-]{2,23}) (?:tells|says) (?:the |your )?'
 GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins to cast a spell on you)')
 
 
+CHAR = re.compile(r'eqlog_([A-Za-z]+)_', re.I)
+
+
+def character_of(path):
+    """Whose log this is. Damage taken, hit rates and control effects are all
+    from the logger's point of view, so two characters' figures must never be
+    averaged together — the healer's log and the tank's describe different
+    fights."""
+    m = CHAR.search(os.path.basename(path))
+    return m.group(1) if m else None
+
+
 def parse(path):
     rows = []
     for line in open(path, encoding='utf-8', errors='replace'):
@@ -153,7 +165,7 @@ def parse(path):
     return rows
 
 
-def collect(rows):
+def collect(rows, character=None):
     """Split into zone sessions and count within each."""
     mobs = set()
     for _when, x in rows:
@@ -184,7 +196,8 @@ def collect(rows):
     # were noted at 11:07:53 and the zone was entered at 11:08:57, which put them
     # in different sessions. Every stamp in the file is therefore offered to
     # every session as context; session-scoped stamps stay separate.
-    all_stamps = [{'at': w.strftime('%H:%M'), 'text': m.group(1).strip().rstrip("'")}
+    all_stamps = [{'at': w.strftime('%H:%M'), 'date': w.strftime('%d %b %Y'),
+                   'text': m.group(1).strip().rstrip("'")}
                   for w, x in rows for m in [STAMP.search(x)] if m]
 
     def new_session(zone, diff, when):
@@ -198,6 +211,7 @@ def collect(rows):
                     dmg=collections.defaultdict(list),
                     mob_hit=collections.Counter(), mob_miss=collections.Counter(),
                     you_hit=0, you_miss=0, context=all_stamps, escapes=[],
+                    difficulty_num=None, character=character,
                     ctl=dict(melee_avoided=0, lockout_lines=0, fear_lines=0,
                              stuns=collections.Counter(),
                              stun_casters=collections.defaultdict(collections.Counter),
@@ -225,12 +239,23 @@ def collect(rows):
         m = ZONE.search(x)
         if m:
             raw = m.group(1).strip()
-            diff = None
-            dm = re.search(r'\((.+?)\)\s*$', raw)
+            diff = dnum = None
+            # "The Castle of Mistmoore 1 (Awakened)". The number was read as an
+            # instance id and discarded. It is the difficulty: Shara's log has
+            # Befallen 1 (Awakened), Blackburrow 2 (Adaptive), Befallen 3
+            # (Fused) and The City of Guk 4 (Refined), matching the published
+            # tier names exactly. So every zone line states the difficulty twice
+            # and the two are checked against each other.
+            dm = re.search(r'\s+(\d+)\s*\((.+?)\)\s*$', raw)
             if dm:
-                diff = dm.group(1)
+                dnum, diff = int(dm.group(1)), dm.group(2)
                 raw = raw[:dm.start()].strip()
-            raw = re.sub(r'\s+\d+$', '', raw)
+            else:
+                dm = re.search(r'\s*\((.+?)\)\s*$', raw)
+                if dm:
+                    diff = dm.group(1)
+                    raw = raw[:dm.start()].strip()
+                raw = re.sub(r'\s+\d+$', '', raw)
             # Re-entering the same zone is not a new session. Dying and
             # returning, or stepping out and back, emits another zone line and
             # was splitting one Mistmoore run into a 15-minute session and a
@@ -238,6 +263,7 @@ def collect(rows):
             if cur and cur['zone'] == raw and cur['difficulty_label'] == diff:
                 continue
             cur = new_session(raw, diff, when)
+            cur['difficulty_num'] = dnum
             sessions.append(cur)
             continue
         cur['end'] = when.strftime('%H:%M')
@@ -363,22 +389,38 @@ def summarise(s):
     # line at all — one that started mid-zone — only the loot reading survives.
     label = (s['difficulty_label'] or '').strip().lower()
     d_named = DIFFICULTY.get(label)
+    d_num = s.get('difficulty_num')
+    # An unnumbered, unlabelled zone line is the open world, which is D0.
+    if d_named is None and d_num is None and s['zone']:
+        d_named = 0
     d_loot = None
     if s['drop_tiers']:
         d_loot = int(max(s['drop_tiers'].items(), key=lambda kv: kv[1])[0])
     agree = None if (d_named is None or d_loot is None) else (d_named == d_loot)
 
-    out = dict(zone=s['zone'], difficulty_label=s['difficulty_label'],
-               difficulty=d_named if d_named is not None else d_loot,
-               difficulty_from='zone line' if d_named is not None else
-                               ('loot tier' if d_loot is not None else None),
+    out = dict(zone=s['zone'], character=s.get('character'),
+               difficulty_label=s['difficulty_label'],
+               difficulty_num=d_num,
+               difficulty=d_num if d_num is not None else
+                          (d_named if d_named is not None else d_loot),
+               difficulty_from=('zone line, numbered' if d_num is not None else
+                                ('zone line' if d_named is not None else
+                                 ('loot tier' if d_loot is not None else None))),
+               difficulty_label_agrees=(None if (d_num is None or d_named is None)
+                                        else d_num == d_named),
                difficulty_agrees=agree, date=s['date'],
                window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
                kinds=sorted(s['kills']),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
-               context=s.get('context', []), escapes=s.get('escapes', []),
+               # Context is offered from the whole file so a trio stamped before
+               # zoning in is not lost, but only from the same day. Shara's log
+               # spans four days, and an 8 August stamp reading "Level 26" was
+               # being printed against Befallen runs from 4 August.
+               context=[c for c in s.get('context', [])
+                        if c.get('date') in (None, s['date'])],
+               escapes=s.get('escapes', []),
                control=dict(
                    melee_stuns_avoided=s['ctl']['melee_avoided'],
                    lockout_lines=s['ctl']['lockout_lines'],
@@ -428,7 +470,7 @@ def build(src):
              else [os.path.join(src, f) for f in sorted(os.listdir(src)) if f.endswith('.txt')])
     sessions = []
     for f in files:
-        for s in collect(parse(f)):
+        for s in collect(parse(f), character_of(f)):
             if sum(s['kills'].values()) or s['dmg']:
                 sessions.append(summarise(s))
     json.dump(sessions, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
@@ -436,7 +478,8 @@ def build(src):
     print(f"{len(files)} log file(s) -> {len(sessions)} session(s) with combat")
     for s in sessions:
         th, tm_ = s['you_hit'], s['you_miss']
-        print(f"  {s['zone']} ({s['difficulty_label']}) {s['date']} {s['window']}: "
+        print(f"  {s.get('character') or '?'} | {s['zone']} D{s['difficulty']} "
+              f"({s['difficulty_label']}) {s['date']} {s['window']}: "
               f"{s['kills']} kills / {s['distinct']} distinct, {len(s['mobs'])} mobs measured, "
               f"your hit rate {100*th/max(1,th+tm_):.1f}%, drops {s['drop_tiers']}")
         for line in s['stamps']:
