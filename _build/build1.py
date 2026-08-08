@@ -47,6 +47,27 @@ zrows = "\n".join(
       <span class="cell"><em>Map</em>{'yes' if z['slug'] in MAPS else '—'}</span>
       <span class="bar"></span></a>''' for z in Z)
 
+# Home page: ten colour objects rather than ten table rows. The contour rings
+# are anchored to a different corner per plate so the ten cards do not read as
+# one texture repeated — each looks like a different piece of the same map.
+_CORNERS = [("86%","118%"),("14%","112%"),("92%","104%"),("8%","120%"),("78%","110%"),
+            ("20%","104%"),("94%","116%"),("10%","106%"),("70%","120%"),("30%","110%")]
+
+def _gate(z):
+    lv = z["verify_level"]
+    label = {"full":"all three gates cleared","partial":"partial — "+(z.get("verify_gate") or ""),
+             "none":"not verified — "+(z.get("verify_gate") or "")}[lv]
+    return f'<span class="gate {lv}" title="{label}"></span>'
+
+plates = "\n".join(
+  f'''    <a class="plate contour" href="dungeons/{z['slug']}.html"
+       style="--c:{z['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+      <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
+      <span class="num">{z['plate']:02d}</span>
+      <h3 class="pt">{z['title']}</h3>
+      <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{'<span>Map <b>yes</b></span>' if z['slug'] in MAPS else ''}</span>
+    </a>''' for i, z in enumerate(Z))
+
 nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
 nnone = sum(1 for z in Z if z["verify_level"]=="none")
@@ -61,6 +82,7 @@ home = head("Accurate, sourced and kept current",
       <div>
         <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
         <h1 class="display">Ten dungeons,<br><em>measured.</em></h1>
+        <p class="hero-sig"><span>N 353</span><span>E 105</span><span>Plate 01 &mdash; 10</span></p>
       </div>
       <div class="hero-aside">
         <p class="lede">Legends moves every week, and most of what the community reads about it is
@@ -72,7 +94,7 @@ home = head("Accurate, sourced and kept current",
       </div>
     </div>
 
-    <div class="spectrum lead">
+    <div class="spectrum lead bleed">
       <div class="spec-label"><span>The survey &middot; plate order</span><span>bar height = top of level band</span></div>
       <div class="spec-bars">
 {bars}
@@ -89,8 +111,8 @@ home = head("Accurate, sourced and kept current",
         <p class="lede" style="margin:0">Population tables, named rosters with spawn data, loot tied to
           its drop source, and coordinates re-derived from <code>/loc</code> records.</p></div>
       <a class="link" href="dungeons/index.html">All plates and maps &rarr;</a></div>
-    <div class="ztable">
-{zrows}
+    <div class="plates">
+{plates}
     </div>
     <div class="note"><strong>{nfull} of {len(Z)} have cleared all three verification gates.</strong>
       {npart} are partial and {nnone} are not verified at all. Which gate is open is recorded against

@@ -435,3 +435,111 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
   text-transform:uppercase;letter-spacing:.02em;color:var(--mut)}
 .gaplist dd{margin:0;font-size:var(--t-sm);color:var(--dim);line-height:1.5}
 .gaplist a:hover dt{color:var(--bone)}
+
+/* ==========================================================================
+   THE SURVEY LAYER
+   A site about mapping ought to look drawn. Three devices, all pure CSS, all
+   derived from what a survey actually is — a coordinate grid, contour rings
+   and a measured bar. They are the site's hand. Used sparingly and always
+   beneath the content, never over text.
+   ========================================================================== */
+
+/* Contour rings. Concentric, irregular spacing, keyed to whatever accent the
+   element carries. This is the motif that makes a card feel drawn rather than
+   filled. Anchored off-corner so the arcs read as part of a larger map. */
+.contour{position:relative;isolation:isolate}
+.contour::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    repeating-radial-gradient(circle at var(--cx,88%) var(--cy,116%),
+      transparent 0 22px,
+      color-mix(in srgb, var(--c,var(--bone)) 26%, transparent) 22px 23px,
+      transparent 23px 46px,
+      color-mix(in srgb, var(--c,var(--bone)) 16%, transparent) 46px 47px);
+  opacity:.5;
+  -webkit-mask-image:radial-gradient(circle at var(--cx,88%) var(--cy,116%),#000 0%,transparent 78%);
+  mask-image:radial-gradient(circle at var(--cx,88%) var(--cy,116%),#000 0%,transparent 78%)}
+.contour>*{position:relative;z-index:1}
+
+/* ---------- the plate grid — ten colour objects, not ten table rows ------- */
+.plates{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,232px),1fr));
+  gap:var(--s-3);margin-top:var(--s-5)}
+.plates>*{min-width:0}
+.plate{position:relative;display:flex;flex-direction:column;justify-content:flex-end;
+  min-height:196px;overflow:hidden;text-decoration:none;border-radius:var(--r);
+  border:1px solid var(--rule);border-top:2px solid var(--c);
+  padding:var(--s-4) var(--s-4) var(--s-3);
+  background:linear-gradient(155deg,
+    color-mix(in srgb, var(--c) 13%, var(--surface-1)) 0%,
+    var(--surface-1) 58%);
+  transition:transform var(--speed),box-shadow var(--speed),border-color var(--speed)}
+.plate:hover{transform:translateY(-3px);box-shadow:var(--shadow-2);
+  border-color:color-mix(in srgb, var(--c) 45%, var(--rule))}
+
+/* The plate number, set enormous and cropped by the card edge. A designer's
+   move: the figure is ornament and data at once, and the crop tells you the
+   card is a window onto something larger. */
+.plate .num{position:absolute;right:-14px;bottom:-30px;z-index:0;
+  font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:132px;line-height:.7;
+  letter-spacing:-.04em;color:var(--c);opacity:.19;pointer-events:none;
+  font-variant-numeric:tabular-nums}
+.plate:hover .num{opacity:.28}
+
+.plate .pt{position:relative;z-index:1;font-family:"Saira Condensed",sans-serif;
+  font-weight:700;font-size:var(--t-lg);line-height:1;text-transform:uppercase;
+  letter-spacing:.01em;color:var(--bone);margin:0 0 var(--s-2)}
+.plate .meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-3);
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim)}
+.plate .meta b{font-weight:400;color:color-mix(in srgb, var(--c) 56%, var(--bone))}
+.plate .lvl{position:absolute;top:var(--s-4);left:var(--s-4);z-index:1;
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:var(--tr-wide);
+  text-transform:uppercase;color:var(--mut)}
+.plate .gate{position:absolute;top:var(--s-4);right:var(--s-4);z-index:1;width:7px;height:7px;
+  border-radius:50%;border:1px solid var(--c)}
+.plate .gate.full{background:var(--c)}
+.plate .gate.partial{background:linear-gradient(90deg,var(--c) 50%,transparent 50%)}
+
+/* ---------- the spectrum, made monumental and full-bleed ---------- */
+.spectrum.bleed{width:100vw;margin-left:calc(50% - 50vw);padding:0 var(--gut)}
+.spectrum.lead .spec-bars{height:clamp(160px,23vw,290px);gap:2px}
+.spectrum.lead .sb u{opacity:.85;font-size:var(--t-xs)}
+.spectrum.lead .sb:hover u,.spectrum.lead .sb:focus u{opacity:1}
+.sb i{box-shadow:inset 0 1px 0 rgba(230,233,228,.28)}
+
+/* ---------- ember band, given real weight ---------- */
+.band.ember .sec{font-size:clamp(38px,6.2vw,72px)}
+.band.ember .ember-stats dd{font-size:var(--t-2xl)}
+
+/* ---------- a fine grain, to stop large dark fields reading as dead flat --- */
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.032;
+  background-image:
+    repeating-linear-gradient(0deg, rgba(230,233,228,.9) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(230,233,228,.55) 0 1px, transparent 1px 4px);
+  mix-blend-mode:overlay}
+@media (prefers-reduced-motion:reduce){body::after{opacity:.02}}
+
+/* Hero: the headline's second line takes the first plate's accent, so the
+   page's largest object is coloured by the material rather than by chrome. */
+h1.display em{color:var(--z01)}
+
+/* A surveyor's slug line under the headline — the kind of marginalia a real
+   plate carries. Ornament that happens to be true. */
+.hero-sig{display:flex;gap:var(--s-4);flex-wrap:wrap;margin:var(--s-5) 0 0;
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--faint)}
+.hero-sig span{position:relative;padding-left:var(--s-3)}
+.hero-sig span::before{content:"";position:absolute;left:0;top:.45em;width:5px;height:1px;
+  background:var(--rule2)}
+
+/* Contour rings in the hero, at the opposite corner from the coordinate grid's
+   densest area, so the two devices do not fight. */
+.hero::after{content:"";position:absolute;right:-8%;top:-30%;width:62vw;height:130%;
+  z-index:0;pointer-events:none;
+  background:repeating-radial-gradient(circle at 50% 50%,
+    transparent 0 34px,
+    rgba(217,162,39,.10) 34px 35px,
+    transparent 35px 70px,
+    rgba(126,178,199,.07) 70px 71px);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 70%);
+  mask-image:radial-gradient(circle at 50% 50%,#000 0%,transparent 70%)}
+@media(max-width:900px){.hero::after{display:none}}
