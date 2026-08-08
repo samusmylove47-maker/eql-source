@@ -36,6 +36,9 @@
     "landed": 63,
     "avg": 5.4,
     "max": 26,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -44,6 +47,9 @@
     "landed": 95,
     "avg": 7.7,
     "max": 38,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Light Healing": 21,
      "Burst of Fire": 19,
@@ -62,6 +68,9 @@
     "landed": 17,
     "avg": 5.7,
     "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -70,6 +79,9 @@
     "landed": 57,
     "avg": 3.2,
     "max": 20,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Light Healing": 3,
      "Tangling Weeds": 2,
@@ -83,6 +95,9 @@
     "landed": 20,
     "avg": 6.1,
     "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Keg Mallet +2": 1,
@@ -95,6 +110,9 @@
     "landed": 34,
     "avg": 8.2,
     "max": 27,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Lifespike": 17,
      "Heat Blood": 3,
@@ -108,6 +126,9 @@
     "landed": 21,
     "avg": 12.0,
     "max": 41,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Runed Sabertooth Girdle +2": 1,
@@ -119,6 +140,9 @@
     "landed": 26,
     "avg": 6.8,
     "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Light Healing": 6,
      "Burst of Fire": 4,
@@ -135,6 +159,9 @@
     "landed": 46,
     "avg": 5.5,
     "max": 19,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Lifespike": 14,
      "Harm Touch": 4,
@@ -147,6 +174,9 @@
     "landed": 17,
     "avg": 9.3,
     "max": 30,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Well Worn Boots +2": 1
@@ -157,6 +187,9 @@
     "landed": 26,
     "avg": 11.9,
     "max": 40,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Healing": 8,
      "Root": 2,
@@ -170,6 +203,9 @@
     "landed": 4,
     "avg": 1.2,
     "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Lifespike": 5,
      "Harm Touch": 1
@@ -181,6 +217,9 @@
     "landed": 14,
     "avg": 4.7,
     "max": 8,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -189,6 +228,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Symbol of Transal": 2,
      "Center": 1
@@ -200,6 +242,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Patch of Gnoll Fur": 2,
@@ -212,6 +257,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Patch of Gnoll Fur": 3,
@@ -224,6 +272,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Patch of Gnoll Fur": 4,
@@ -236,6 +287,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Gnoll Fang": 2,
@@ -253,24 +307,24 @@
   "difficulty_from": "zone line",
   "difficulty_agrees": true,
   "date": "08 Aug 2026",
-  "window": "11:08-11:33",
+  "window": "11:08-11:39",
   "stamps": [
    "My partner, Shara, will also be logging today and I will provide her logs separate later.",
    "these are level 4 we are level 26 so hit rate is very low",
    "they are level 40 not 4, typo"
   ],
-  "kills": 87,
-  "distinct": 31,
+  "kills": 102,
+  "distinct": 34,
   "drop_tiers": {
-   "1": 23,
+   "1": 25,
    "2": 6
   },
   "faction": {
-   "Mayong Mistmoore": 84,
-   "King Tearis Thex": 84,
-   "Agents of Mistmoore": 84,
-   "League of Antonican Bards": 84,
-   "Ring of Scale": 84,
+   "Mayong Mistmoore": 99,
+   "King Tearis Thex": 99,
+   "Agents of Mistmoore": 99,
+   "League of Antonican Bards": 99,
+   "Ring of Scale": 99,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
@@ -280,16 +334,19 @@
    "these are level 4 we are level 26 so hit rate is very low",
    "they are level 40 not 4, typo"
   ],
-  "you_hit": 738,
-  "you_miss": 539,
-  "mob_hit": 1655,
-  "mob_miss": 1539,
+  "you_hit": 965,
+  "you_miss": 702,
+  "mob_hit": 2019,
+  "mob_miss": 1808,
   "mobs": {
    "A pledge familiar": {
     "swings": 556,
     "landed": 249,
-    "avg": 10.5,
-    "max": 143,
+    "avg": 7.1,
+    "max": 38,
+    "backstabs": 17,
+    "backstab_avg": 56.8,
+    "backstab_max": 143,
     "casts": {
      "Root": 24,
      "Shock of Lightning": 7,
@@ -301,8 +358,11 @@
    "An initiate familiar": {
     "swings": 516,
     "landed": 236,
-    "avg": 14.4,
-    "max": 143,
+    "avg": 9.0,
+    "max": 39,
+    "backstabs": 22,
+    "backstab_avg": 67.0,
+    "backstab_max": 143,
     "casts": {
      "Root": 27,
      "Shock of Lightning": 4,
@@ -318,6 +378,9 @@
     "landed": 45,
     "avg": 10.3,
     "max": 48,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -326,16 +389,22 @@
     "landed": 14,
     "avg": 10.6,
     "max": 44,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
    "A glyphed familiar": {
-    "swings": 134,
+    "swings": 136,
     "landed": 67,
     "avg": 8.3,
     "max": 39,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 7,
+     "Lightning Bolt": 11,
      "Root": 5
     },
     "loot": {}
@@ -345,6 +414,9 @@
     "landed": 27,
     "avg": 9.3,
     "max": 52,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -353,6 +425,9 @@
     "landed": 78,
     "avg": 7.3,
     "max": 46,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -361,6 +436,9 @@
     "landed": 15,
     "avg": 15.0,
     "max": 43,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -369,6 +447,9 @@
     "landed": 16,
     "avg": 11.8,
     "max": 34,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Healing": 5,
      "Holy Might": 2,
@@ -381,6 +462,9 @@
     "landed": 12,
     "avg": 21.5,
     "max": 48,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Instill": 5,
      "Lightning Bolt": 5,
@@ -396,16 +480,22 @@
     "landed": 63,
     "avg": 33.4,
     "max": 97,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Dry Bone Fire Burst": 10
     },
     "loot": {}
    },
    "A will sapper": {
-    "swings": 123,
-    "landed": 71,
-    "avg": 9.5,
+    "swings": 173,
+    "landed": 101,
+    "avg": 10.8,
     "max": 55,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -414,6 +504,9 @@
     "landed": 19,
     "avg": 19.7,
     "max": 52,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Shadow Vortex": 3,
      "Fear": 3,
@@ -428,38 +521,50 @@
     "landed": 31,
     "avg": 14.0,
     "max": 49,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
    "A will pillager": {
-    "swings": 259,
-    "landed": 150,
-    "avg": 12.2,
-    "max": 56,
+    "swings": 413,
+    "landed": 240,
+    "avg": 14.9,
+    "max": 61,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
    "A soul seductress": {
-    "swings": 32,
-    "landed": 20,
-    "avg": 22.2,
-    "max": 52,
+    "swings": 53,
+    "landed": 32,
+    "avg": 22.5,
+    "max": 58,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
-     "Negation of Life": 2,
-     "Screaming Terror": 2,
-     "Shadow Vortex": 2,
+     "Screaming Terror": 5,
+     "Shadow Vortex": 4,
+     "Negation of Life": 3,
+     "Shock of Poison": 3,
      "Shielding": 1,
      "Leatherskin": 1,
-     "Heat Blood": 1,
-     "Shock of Poison": 1
+     "Heat Blood": 1
     },
     "loot": {}
    },
    "A leering gargoyle": {
-    "swings": 175,
-    "landed": 105,
-    "avg": 23.9,
+    "swings": 223,
+    "landed": 135,
+    "avg": 24.1,
     "max": 87,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -468,6 +573,9 @@
     "landed": 49,
     "avg": 22.8,
     "max": 67,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -476,6 +584,9 @@
     "landed": 25,
     "avg": 20.5,
     "max": 67,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Screaming Terror": 5,
      "Major Shielding": 2,
@@ -491,6 +602,9 @@
     "landed": 53,
     "avg": 31.2,
     "max": 111,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Harm Touch": 1,
      "Engulfing Darkness": 1,
@@ -501,10 +615,13 @@
     }
    },
    "A jeering gargoyle": {
-    "swings": 42,
-    "landed": 23,
-    "avg": 17.2,
-    "max": 58,
+    "swings": 69,
+    "landed": 39,
+    "avg": 18.2,
+    "max": 63,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -513,19 +630,25 @@
     "landed": 8,
     "avg": 13.1,
     "max": 28,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
    "A thought spoiler": {
-    "swings": 26,
-    "landed": 14,
-    "avg": 9.9,
-    "max": 27,
+    "swings": 47,
+    "landed": 28,
+    "avg": 19.9,
+    "max": 51,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
-     "Instill": 4,
-     "Lightning Bolt": 4,
-     "Lesser Shielding": 1,
-     "Tishan's Clash": 1
+     "Instill": 8,
+     "Lightning Bolt": 6,
+     "Tishan's Clash": 2,
+     "Lesser Shielding": 1
     },
     "loot": {}
    },
@@ -534,6 +657,9 @@
     "landed": 22,
     "avg": 10.9,
     "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Greater Healing": 6,
      "Symbol of Transal": 3,
@@ -549,6 +675,9 @@
     "landed": 33,
     "avg": 19.9,
     "max": 55,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Lightning Bolt": 10,
      "Instill": 9
@@ -560,6 +689,9 @@
     "landed": 25,
     "avg": 20.0,
     "max": 53,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Shadow Vortex": 2
     },
@@ -570,34 +702,54 @@
     "landed": 20,
     "avg": 9.6,
     "max": 30,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
    "A ghoulish ancille": {
-    "swings": 74,
-    "landed": 40,
-    "avg": 17.7,
-    "max": 55,
+    "swings": 205,
+    "landed": 106,
+    "avg": 16.7,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
-     "Alacrity": 2
+     "Instill": 9,
+     "Alacrity": 2,
+     "Suffocate": 2,
+     "Chaos Flux": 2,
+     "Beguile": 1
     },
     "loot": {}
    },
    "A ghastish ancille": {
-    "swings": 107,
-    "landed": 55,
-    "avg": 20.7,
-    "max": 72,
+    "swings": 201,
+    "landed": 111,
+    "avg": 19.8,
+    "max": 61,
+    "backstabs": 1,
+    "backstab_avg": 72.0,
+    "backstab_max": 72,
     "casts": {},
     "loot": {}
    },
    "A wraithish ancille": {
-    "swings": 11,
-    "landed": 8,
-    "avg": 19.5,
-    "max": 40,
+    "swings": 38,
+    "landed": 21,
+    "avg": 23.8,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
-     "Screaming Terror": 2
+     "Screaming Terror": 8,
+     "Engulfing Darkness": 2,
+     "Shadow Vortex": 2,
+     "Shock of Poison": 1,
+     "Heat Blood": 1
     },
     "loot": {}
    },
@@ -606,6 +758,9 @@
     "landed": 30,
     "avg": 23.3,
     "max": 59,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -614,6 +769,9 @@
     "landed": 22,
     "avg": 11.7,
     "max": 42,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Rune of Fortune": 1
@@ -624,6 +782,35 @@
     "landed": 10,
     "avg": 11.5,
     "max": 51,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghostly ancille": {
+    "swings": 30,
+    "landed": 22,
+    "avg": 36.1,
+    "max": 69,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 7,
+     "Instill": 6,
+     "Tishan's Clash": 1
+    },
+    "loot": {}
+   },
+   "A dark librarian": {
+    "swings": 28,
+    "landed": 15,
+    "avg": 14.1,
+    "max": 52,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {}
    },
@@ -632,9 +819,25 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {
      "Major Shielding": 1,
      "Leatherskin": 1
+    },
+    "loot": {}
+   },
+   "A fallen noble": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Symbol of Transal": 2
     },
     "loot": {}
    },
@@ -643,6 +846,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Familiar Ring": 2,
@@ -660,6 +866,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Familiar Ring": 2,
@@ -676,6 +885,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Vial of Vampire Blood": 2
@@ -686,6 +898,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Gargoyle Eye": 1
@@ -696,6 +911,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Raw-Hide Wristbands +1": 1,
@@ -708,6 +926,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Ringmail Coat +1": 1,
@@ -721,6 +942,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Fine Steel Warhammer +2": 1
@@ -731,6 +955,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Sacrificial Dagger +1": 1
@@ -741,6 +968,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Flame Agate": 1,
@@ -753,6 +983,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Black Silk Gloves +1": 1
@@ -763,6 +996,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Jade Earring +1": 1
@@ -773,6 +1009,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Crested Spaulders +1": 1
@@ -783,6 +1022,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Fine Steel Short Sword +1": 1
@@ -793,6 +1035,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Ivory": 1
@@ -803,6 +1048,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Fine Steel Warhammer +1": 1,
@@ -814,6 +1062,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Fine Steel Dagger +1": 1,
@@ -825,6 +1076,9 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
      "Jade Earring +1": 1
@@ -835,9 +1089,53 @@
     "landed": 0,
     "avg": null,
     "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
     "casts": {},
     "loot": {
-     "Splinted Bronze Cloak +2": 1
+     "Splinted Bronze Cloak +2": 1,
+     "Fine Steel Short Sword +1": 1,
+     "Fine Steel Two Handed Sword +1": 1
+    }
+   },
+   "a leering gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Mistmoore Granite": 1
+    }
+   },
+   "a thought spoiler": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Ivory": 1
+    }
+   },
+   "a dark librarian": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Illegible Scroll": 1
     }
    }
   }

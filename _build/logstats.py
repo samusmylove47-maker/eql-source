@@ -37,10 +37,20 @@ The zone line carries both:
 
     You have entered The Castle of Mistmoore 1 (Awakened).
 
-The parenthesised word is recorded as the zone's stated difficulty label but is
-NOT mapped to a D-number here, because that mapping is not yet confirmed. Loot
-tier is recorded separately: items drop at +N, and the modal N is the
-difficulty by the collaborator's own rule.
+The parenthesised word is the tier name: D0 Base/Normal, D1 Awakened, D2
+Adaptive, D3 Fused, D4 Refined. Loot is read separately — items drop at +N and
+the modal N is the difficulty — and the two are reported apart rather than
+collapsed, because they are independent and their agreement is evidence. They
+agreed on the 8 Aug Mistmoore session. Where they disagree, the page says the
+difficulty is unresolved instead of choosing.
+
+BACKSTAB
+--------
+Kept apart from ordinary swings. Mistmoore's familiars hit for 1-38 in melee and
+100-143 from behind, so a combined average of "10.5, max 143" describes neither.
+It is also the clearest class evidence in a log: a spell list can belong to one
+broad caster kit, but backstab is a rogue ability, and a mob type doing both is
+running two kits.
 """
 import os, sys, re, json, collections, datetime
 
@@ -63,7 +73,7 @@ ZONE = re.compile(r'You have entered (.+?)\.\s*$')
 STAMP = re.compile(r'ATTN Claude:\s*(.+?)\'?\s*$')
 SLAIN_BY_YOU = re.compile(r'^You have slain (.+?)!')
 SLAIN = re.compile(r'^(.+?) has been slain')
-HIT_YOU = re.compile(rf'^(.{{1,44}}?) {VERBS}(?:es|s)? YOU for (\d+)')
+HIT_YOU = re.compile(rf'^(.{{1,44}}?) ({VERBS}(?:es|s)?) YOU for (\d+)')
 MISS_YOU = re.compile(rf'^(.{{1,44}}?) tries to {VERBS} YOU, but')
 YOU_HIT = re.compile(rf'^You {VERBS}(?:es|s)? (.+?) for (\d+)')
 YOU_MISS = re.compile(rf'^You try to {VERBS} (.+?), but')
@@ -178,7 +188,7 @@ def collect(rows):
             cur['faction'][m.group(1).strip()] += 1
         m = HIT_YOU.match(x)
         if m and m.group(1).strip() in mobs:
-            cur['dmg'][m.group(1).strip()].append(int(m.group(2)))
+            cur['dmg'][m.group(1).strip()].append((m.group(2), int(m.group(3))))
             cur['mob_hit'][m.group(1).strip()] += 1
         m = MISS_YOU.match(x)
         if m and m.group(1).strip() in mobs:
@@ -218,16 +228,29 @@ def summarise(s):
                mob_hit=mh, mob_miss=mm, mobs={})
     for name, v in s['dmg'].items():
         h, ms = s['mob_hit'].get(name, 0), s['mob_miss'].get(name, 0)
+        # Backstab is kept apart from ordinary swings. Mistmoore's familiars hit
+        # for 1-38 in melee and 100-143 from behind; averaging the two together
+        # reports "10.5 average, 143 maximum", which describes neither and hides
+        # the thing a reader actually needs to know.
+        plain = [d for verb, d in v if verb != 'backstabs']
+        backs = [d for verb, d in v if verb == 'backstabs']
         out['mobs'][name] = dict(
-            swings=h + ms, landed=h, avg=round(sum(v) / len(v), 1), max=max(v),
+            swings=h + ms, landed=h,
+            avg=round(sum(plain) / len(plain), 1) if plain else None,
+            max=max(plain) if plain else None,
+            backstabs=len(backs),
+            backstab_avg=round(sum(backs) / len(backs), 1) if backs else None,
+            backstab_max=max(backs) if backs else None,
             casts=dict(s['casts'][name].most_common()) if name in s['casts'] else {},
             loot=dict(s['loot'][name].most_common()) if name in s['loot'] else {})
     for name in s['casts']:
         out['mobs'].setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
+                                          backstabs=0, backstab_avg=None, backstab_max=None,
                                           casts=dict(s['casts'][name].most_common()),
                                           loot=dict(s['loot'][name].most_common()) if name in s['loot'] else {}))
     for name in s['loot']:
         out['mobs'].setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
+                                          backstabs=0, backstab_avg=None, backstab_max=None,
                                           casts={}, loot=dict(s['loot'][name].most_common())))
     return out
 

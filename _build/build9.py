@@ -78,6 +78,9 @@ def section(sess_list, zone_title):
             land = f"{100*d['landed']/d['swings']:.0f}%" if d['swings'] else '&mdash;'
             dmg = (f"{d['avg']:g} avg &middot; {d['max']} max" if d['avg'] is not None
                    else 'not measured')
+            if d.get('backstabs'):
+                dmg += (f'<span class="sub">backstab {d["backstab_avg"]:g} avg &middot; '
+                        f'{d["backstab_max"]} max, seen {d["backstabs"]}&times;</span>')
             casts = ', '.join(f'{esc(k)}' for k in list(d['casts'])[:6]) or '&mdash;'
             loot = ', '.join(esc(k) for k in list(d['loot'])[:6]) or '&mdash;'
             out.append(
