@@ -272,35 +272,35 @@ dung = head("Dungeon survey plates",
       verified at all. Partial plates are complete and useful; they have simply not cleared all three gates.</div>
     <div class="ztable" style="margin-top:14px">      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="befallen"][0]["accent"]}">
         <span class="pn">{[z for z in Z if z["slug"]=="befallen"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="befallen"][0]["title"]}</span>
+        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="befallen"][0]["title"]}</span>
         <span class="zs">{[z for z in Z if z["slug"]=="befallen"][0]["verify_gate"]}</span></span>
         <span class="cell zonesub"></span><span class="cell"></span>
         <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="befallen"][0]["verify_level"]] }</span>
         <span class="bar"></span></div>
       <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="thehole"][0]["accent"]}">
         <span class="pn">{[z for z in Z if z["slug"]=="thehole"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="thehole"][0]["title"]}</span>
+        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="thehole"][0]["title"]}</span>
         <span class="zs">{[z for z in Z if z["slug"]=="thehole"][0]["verify_gate"]}</span></span>
         <span class="cell zonesub"></span><span class="cell"></span>
         <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="thehole"][0]["verify_level"]] }</span>
         <span class="bar"></span></div>
       <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="warrens"][0]["accent"]}">
         <span class="pn">{[z for z in Z if z["slug"]=="warrens"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="warrens"][0]["title"]}</span>
+        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="warrens"][0]["title"]}</span>
         <span class="zs">{[z for z in Z if z["slug"]=="warrens"][0]["verify_gate"]}</span></span>
         <span class="cell zonesub"></span><span class="cell"></span>
         <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="warrens"][0]["verify_level"]] }</span>
         <span class="bar"></span></div>
       <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="crushbone"][0]["accent"]}">
         <span class="pn">{[z for z in Z if z["slug"]=="crushbone"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="crushbone"][0]["title"]}</span>
+        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="crushbone"][0]["title"]}</span>
         <span class="zs">{[z for z in Z if z["slug"]=="crushbone"][0]["verify_gate"]}</span></span>
         <span class="cell zonesub"></span><span class="cell"></span>
         <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="crushbone"][0]["verify_level"]] }</span>
         <span class="bar"></span></div>
       <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="blackburrow"][0]["accent"]}">
         <span class="pn">{[z for z in Z if z["slug"]=="blackburrow"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="blackburrow"][0]["title"]}</span>
+        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="blackburrow"][0]["title"]}</span>
         <span class="zs">{[z for z in Z if z["slug"]=="blackburrow"][0]["verify_gate"]}</span></span>
         <span class="cell zonesub"></span><span class="cell"></span>
         <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="blackburrow"][0]["verify_level"]] }</span>
