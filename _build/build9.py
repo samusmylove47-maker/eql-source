@@ -86,6 +86,47 @@ def escapes_html(s):
             f'the number of mobs engaged is usually the reason rather than the named itself.</p>')
 
 
+def control_html(s):
+    """What takes control away from you, and what cast it.
+
+    The most actionable thing in a log, and it took a death to find. Counted by
+    what the log says happened rather than by what a spell is assumed to be:
+    Screaming Terror was taken for a fear spell and produced no fear behaviour
+    at all, only a scream and a lockout.
+    """
+    c = s.get('control') or {}
+    stuns = c.get('stuns') or {}
+    if not stuns and not c.get('melee_stuns_avoided'):
+        return ''
+    rows = ''.join(
+        f'<tr><td><span class="mob">{esc(sp)}</span></td>'
+        f'<td class="n">{d["landed"]}</td>'
+        f'<td>{esc(", ".join(f"{k} ({v})" for k, v in list(d["casters"].items())[:6])) or "&mdash;"}</td></tr>'
+        for sp, d in stuns.items())
+    total = sum(d['landed'] for d in stuns.values())
+    lead = (f'<b>{c.get("melee_stuns_avoided", 0)}</b> stunning melee attacks were shrugged off, '
+            f'and <b>{total}</b> stuns landed anyway &mdash; <b>every one of them from a spell</b>. '
+            f'That gap is the point: an immunity to stunning <em>melee</em> attacks does nothing '
+            f'about a spell, and the character being measured carried exactly that immunity.')
+    if c.get('screams'):
+        lead += (f' Screaming Terror landed {c["screams"]} times for '
+                 f'<b>{c["scream_seconds"]} seconds</b> of being unable to act.')
+    if c.get('fear_lines') == 0 and c.get('screams'):
+        lead += (' It produced <b>no fear behaviour whatsoever</b> &mdash; no fleeing, nothing '
+                 'the log calls fear &mdash; so despite the name it reads as a stun, and '
+                 'fear protection does not appear to touch it.')
+    return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
+            f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">What takes control away</h3>'
+            f'<div class="cond">{lead}</div>'
+            f'<table><thead><tr><th>Spell</th><th>Stuns landed</th><th>Cast by</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table>'
+            f'<p class="caveat" style="margin:0 0 18px">Counted from what the log recorded, not '
+            f'from what a spell is assumed to do. Resist rates depend on the character&rsquo;s own '
+            f'resistances and alternate abilities, so treat these as what happened to one build '
+            f'rather than as a property of the mob. The useful part is the kill order: whatever '
+            f'casts the spell at the top of this table takes your turn away most often.</p>')
+
+
 def section(sess_list, zone_title):
     s = max(sess_list, key=lambda z: z['kills'])          # the fullest session
     # Stamps used to be bare strings and are now {at, text, conditions}; accept
@@ -170,7 +211,7 @@ def section(sess_list, zone_title):
             f'<br><b>{"Conditions changed at" if c else "Noted at"} {esc(at)}:</b> {esc(n)}'
             if at else f'<br><b>Noted at the time:</b> {esc(n)}'
             for n, at, c in notes) if notes else '')
-        + f'</div>{escapes_html(s)}{tables}'
+        + f'</div>{control_html(s)}{escapes_html(s)}{tables}'
         f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
         f'session, not rates. A drop listed here was seen at least once and nothing more &mdash; no '
         f'drop rate can be read from it. Damage and landing figures describe this trio, at this '

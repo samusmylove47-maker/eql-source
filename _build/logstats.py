@@ -110,6 +110,27 @@ CONDITION_CHANGE = re.compile(
     re.I)
 LEVEL_SELF = re.compile(r'You have (?:gained|reached) level (\d+)')
 
+# CONTROL EFFECTS — what stops you playing, and what it came from.
+#
+# This is the most actionable thing a log holds and it took a death to notice.
+# The collaborator carries a 100% immunity to stunning MELEE attacks, and it
+# works: 206 melee stuns avoided in one session. Every stun that actually landed
+# came from a spell, which that immunity does not cover — 29 of 35 from Lightning
+# Bolt alone. Meanwhile Screaming Terror, assumed to be fear, produced no fear
+# behaviour at all: no fleeing, no "afraid", just a scream and a lockout.
+#
+# So control is counted by what the log says happened, not by what a spell is
+# assumed to be, and the spell that caused each stun is captured with it. That
+# is what turns "this mob is dangerous" into a kill order.
+STUN_LANDED = re.compile(r'^You are stunned!')
+STUN_AVOIDED = re.compile(r'^You avoid the stunning blow')
+STUN_LOCKOUT = re.compile(r"^You can't attack while stunned")
+SCREAM_START = re.compile(r'^You begin to scream')
+SCREAM_END = re.compile(r'^You stop screaming')
+BY_SPELL = re.compile(r'\bby ([A-Z][^.]*?)\.?\s*$')
+RESISTED = re.compile(r'^You resist (.+?)\'s (.+?)!')
+FEAR_WORDS = re.compile(r'You (?:flee|are afraid|are terrified|run in terror)')
+
 
 def parse(path):
     rows = []
@@ -154,6 +175,11 @@ def collect(rows):
                     dmg=collections.defaultdict(list),
                     mob_hit=collections.Counter(), mob_miss=collections.Counter(),
                     you_hit=0, you_miss=0, context=all_stamps, escapes=[],
+                    ctl=dict(melee_avoided=0, lockout_lines=0, fear_lines=0,
+                             stuns=collections.Counter(),
+                             stun_casters=collections.defaultdict(collections.Counter),
+                             resists=collections.defaultdict(collections.Counter),
+                             screams=0, scream_seconds=0),
                     fac_by_mob=collections.defaultdict(dict),
                     exp_by_mob=collections.defaultdict(list))
 
@@ -198,6 +224,35 @@ def collect(rows):
             note = m.group(1).strip().rstrip("'")
             cur['stamps'].append({'at': when.strftime('%H:%M'), 'text': note,
                                   'conditions': bool(CONDITION_CHANGE.search(note))})
+        ctl = cur['ctl']
+        if STUN_AVOIDED.match(x):
+            ctl['melee_avoided'] += 1
+        if STUN_LOCKOUT.match(x):
+            ctl['lockout_lines'] += 1
+        if FEAR_WORDS.search(x):
+            ctl['fear_lines'] += 1
+        if STUN_LANDED.match(x):
+            cur['_stun_at'] = when
+        elif cur.get('_stun_at') and (when - cur['_stun_at']).total_seconds() <= 2:
+            # the line after "You are stunned!" names what did it
+            sp = BY_SPELL.search(x)
+            if sp:
+                spell = sp.group(1).strip()
+                ctl['stuns'][spell] += 1
+                who = re.match(r'^(.{1,44}?) hit you for', x)
+                if who:
+                    ctl['stun_casters'][spell][who.group(1).strip()] += 1
+                cur['_stun_at'] = None
+        if SCREAM_START.match(x):
+            ctl['screams'] += 1
+            cur['_scream_at'] = when
+        if SCREAM_END.match(x) and cur.get('_scream_at'):
+            ctl['scream_seconds'] += int((when - cur['_scream_at']).total_seconds())
+            cur['_scream_at'] = None
+        m = RESISTED.match(x)
+        if m:
+            ctl['resists'][m.group(2).strip()][m.group(1).strip()] += 1
+
         m = FACTION_D.search(x)
         if m:
             cur.setdefault('_fac_buf', []).append((when, m.group(1).strip(), int(m.group(2))))
@@ -300,6 +355,17 @@ def summarise(s):
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
                context=s.get('context', []), escapes=s.get('escapes', []),
+               control=dict(
+                   melee_stuns_avoided=s['ctl']['melee_avoided'],
+                   lockout_lines=s['ctl']['lockout_lines'],
+                   fear_lines=s['ctl']['fear_lines'],
+                   screams=s['ctl']['screams'],
+                   scream_seconds=s['ctl']['scream_seconds'],
+                   stuns={k: dict(landed=v,
+                                  casters=dict(s['ctl']['stun_casters'][k].most_common()))
+                          for k, v in s['ctl']['stuns'].most_common()},
+                   resists={k: dict(v.most_common())
+                            for k, v in s['ctl']['resists'].items()}),
                faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
                exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
                you_hit=s['you_hit'], you_miss=s['you_miss'],
