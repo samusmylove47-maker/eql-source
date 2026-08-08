@@ -1005,7 +1005,7 @@
   "The Castle of Mistmoore": {
    "difficulty": 1,
    "date": "08 Aug 2026",
-   "kills": 235,
+   "kills": 264,
    "per_mob": {
     "a pledge familiar": {
      "Mayong Mistmoore": -5,
@@ -1292,6 +1292,55 @@
      "Ring of Scale": 5
     },
     "a werewolf": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a werewolf gypsy": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "an ancille cook": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Butler Syncall": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Maid Issis": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a shadowy scrivener": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a negotiator": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a dark elf noble": {
      "Mayong Mistmoore": -5,
      "King Tearis Thex": 5,
      "Agents of Mistmoore": -5,

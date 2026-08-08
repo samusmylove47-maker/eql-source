@@ -1984,20 +1984,20 @@
   "difficulty_from": "zone line",
   "difficulty_agrees": true,
   "date": "08 Aug 2026",
-  "window": "12:04-12:23",
+  "window": "12:04-12:34",
   "stamps": [],
-  "kills": 62,
-  "distinct": 28,
+  "kills": 91,
+  "distinct": 39,
   "drop_tiers": {
-   "1": 22,
-   "2": 2
+   "1": 28,
+   "2": 3
   },
   "faction": {
-   "Mayong Mistmoore": 62,
-   "King Tearis Thex": 62,
-   "Agents of Mistmoore": 62,
-   "League of Antonican Bards": 62,
-   "Ring of Scale": 62,
+   "Mayong Mistmoore": 89,
+   "King Tearis Thex": 89,
+   "Agents of Mistmoore": 89,
+   "League of Antonican Bards": 89,
+   "Ring of Scale": 89,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
@@ -2033,21 +2033,33 @@
   ],
   "escapes": [],
   "control": {
-   "melee_stuns_avoided": 72,
-   "lockout_lines": 145,
+   "melee_stuns_avoided": 102,
+   "lockout_lines": 225,
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
     "Lightning Bolt": {
-     "landed": 20,
+     "landed": 34,
      "casters": {
-      "a thought spoiler": 8,
+      "a thought spoiler": 11,
+      "a dark elf noble": 6,
+      "a thought corruptor": 5,
       "a vampire noble": 5,
       "a glyphed familiar": 2,
       "Ssynthi": 2,
-      "a thought corruptor": 2,
+      "a shadowy scrivener": 2,
       "a spiritish ancille": 1
+     }
+    },
+    "Tishan's Clash": {
+     "landed": 5,
+     "casters": {
+      "a spiritish ancille": 1,
+      "a vampire oracle": 1,
+      "a vampire noble": 1,
+      "a thought corruptor": 1,
+      "a dark elf noble": 1
      }
     },
     "Holy Might": {
@@ -2057,12 +2069,10 @@
       "a glyphed forbidder": 1
      }
     },
-    "Tishan's Clash": {
-     "landed": 3,
+    "Chaos Flux": {
+     "landed": 2,
      "casters": {
-      "a spiritish ancille": 1,
-      "a vampire oracle": 1,
-      "a vampire noble": 1
+      "a negotiator": 2
      }
     }
    },
@@ -2097,24 +2107,37 @@
     "Tishan's Clash": {
      "a spiritish ancille": 1,
      "a vampire noble": 1,
-     "a thought spoiler": 1
+     "a thought spoiler": 1,
+     "a dark elf noble": 1
     },
     "Fatigue Drain": {
      "a ghastish ancille": 1,
-     "a will ravisher": 1
+     "a will ravisher": 1,
+     "Butler Syncall": 1
     },
     "Shadow Vortex": {
      "a soul seductress": 1,
      "a soul temptress": 1
     },
     "Screaming Terror": {
-     "a soul seductress": 4
+     "a soul seductress": 4,
+     "Maid Issis": 1
     },
     "Negation of Life": {
-     "a soul temptress": 1
+     "a soul temptress": 1,
+     "a dark offerer": 1
     },
     "Mana Drain": {
      "a thought spoiler": 1
+    },
+    "Charm": {
+     "a negotiator": 1
+    },
+    "Sicken": {
+     "a gypsy musician": 1
+    },
+    "Drowsy": {
+     "a gypsy musician": 1
     }
    }
   },
@@ -2311,17 +2334,80 @@
     "Agents of Mistmoore": -5,
     "League of Antonican Bards": 5,
     "Ring of Scale": 5
+   },
+   "a werewolf gypsy": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a glyphed warder": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "an ancille cook": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "Butler Syncall": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "Maid Issis": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a shadowy scrivener": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a dark offerer": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a negotiator": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
+   },
+   "a dark elf noble": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
    }
   },
   "exp_by_mob": {
    "a pledge familiar": 0.122,
    "a sneering gargoyle": 0.869,
-   "an initiate familiar": 0.329,
+   "an initiate familiar": 0.29,
    "a grinning gargoyle": 0.558,
    "a glyphed ghoul": 0.869,
    "a glyphed custodian": 0.962,
    "a glyphed familiar": 0.431,
-   "a glyphed guard": 0.804,
+   "a glyphed guard": 0.77,
    "Ssynthi": 0.703,
    "an imp familiar": 1.061,
    "a wightish ancille": 0.911,
@@ -2330,23 +2416,34 @@
    "a glyphed sentry": 0.784,
    "a glyphed forbidder": 1.198,
    "a ghastish ancille": 1.549,
-   "a thought corruptor": 0.854,
-   "a jeering gargoyle": 1.318,
-   "a flouting gargoyle": 1.725,
-   "a thought spoiler": 0.751,
-   "a will pillager": 1.677,
+   "a thought corruptor": 0.817,
+   "a jeering gargoyle": 1.2,
+   "a flouting gargoyle": 1.608,
+   "a thought spoiler": 0.728,
+   "a will pillager": 1.667,
    "a soul seductress": 0.854,
    "a will ravisher": 1.725,
-   "a will sapper": 1.318,
+   "a will sapper": 1.36,
    "a soul temptress": 0.751,
    "a vampire noble": 0.78,
    "a vampire oracle": 0.78,
-   "a werewolf": 1.445
+   "a werewolf": 1.06,
+   "a werewolf gypsy": 1.581,
+   "a gypsy dancer": 0.632,
+   "a glyphed warder": 0.706,
+   "an ancille cook": 2.166,
+   "Butler Syncall": 1.581,
+   "Maid Issis": 0.958,
+   "a shadowy scrivener": 0.751,
+   "a gypsy ambassador": 1.318,
+   "a dark offerer": 0.787,
+   "a negotiator": 0.78,
+   "a dark elf noble": 0.78
   },
-  "you_hit": 595,
-  "you_miss": 396,
-  "mob_hit": 1172,
-  "mob_miss": 1092,
+  "you_hit": 939,
+  "you_miss": 627,
+  "mob_hit": 1640,
+  "mob_miss": 1559,
   "mobs": {
    "A pledge familiar": {
     "swings": 432,
@@ -2365,15 +2462,15 @@
     "loot": {}
    },
    "An initiate familiar": {
-    "swings": 111,
-    "landed": 51,
+    "swings": 134,
+    "landed": 61,
     "avg": 11.3,
     "max": 34,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Root": 18,
+     "Root": 24,
      "Shock of Lightning": 2
     },
     "loot": {}
@@ -2439,8 +2536,8 @@
     "loot": {}
    },
    "A glyphed guard": {
-    "swings": 208,
-    "landed": 106,
+    "swings": 236,
+    "landed": 115,
     "avg": 11.1,
     "max": 46,
     "backstabs": 0,
@@ -2576,9 +2673,9 @@
     "loot": {}
    },
    "A flouting gargoyle": {
-    "swings": 64,
-    "landed": 38,
-    "avg": 34.9,
+    "swings": 149,
+    "landed": 80,
+    "avg": 30.5,
     "max": 76,
     "backstabs": 0,
     "backstab_avg": null,
@@ -2587,24 +2684,25 @@
     "loot": {}
    },
    "A thought corruptor": {
-    "swings": 15,
-    "landed": 10,
+    "swings": 34,
+    "landed": 22,
     "avg": 18.9,
-    "max": 53,
+    "max": 57,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 3,
-     "Instill": 2
+     "Lightning Bolt": 7,
+     "Instill": 5,
+     "Tishan's Clash": 1
     },
     "loot": {}
    },
    "A jeering gargoyle": {
-    "swings": 24,
-    "landed": 16,
-    "avg": 16.8,
-    "max": 43,
+    "swings": 73,
+    "landed": 47,
+    "avg": 14.8,
+    "max": 63,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -2612,9 +2710,9 @@
     "loot": {}
    },
    "A will pillager": {
-    "swings": 179,
-    "landed": 92,
-    "avg": 17.0,
+    "swings": 274,
+    "landed": 141,
+    "avg": 18.8,
     "max": 61,
     "backstabs": 0,
     "backstab_avg": null,
@@ -2623,17 +2721,17 @@
     "loot": {}
    },
    "A thought spoiler": {
-    "swings": 46,
-    "landed": 28,
-    "avg": 15.2,
+    "swings": 67,
+    "landed": 35,
+    "avg": 14.9,
     "max": 55,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 10,
-     "Instill": 7,
-     "Tishan's Clash": 2
+     "Lightning Bolt": 13,
+     "Instill": 11,
+     "Tishan's Clash": 3
     },
     "loot": {}
    },
@@ -2666,9 +2764,9 @@
     "loot": {}
    },
    "A werewolf": {
-    "swings": 116,
-    "landed": 62,
-    "avg": 10.7,
+    "swings": 226,
+    "landed": 123,
+    "avg": 11.9,
     "max": 46,
     "backstabs": 0,
     "backstab_avg": null,
@@ -2677,9 +2775,9 @@
     "loot": {}
    },
    "A will sapper": {
-    "swings": 33,
-    "landed": 18,
-    "avg": 11.2,
+    "swings": 106,
+    "landed": 51,
+    "avg": 10.5,
     "max": 55,
     "backstabs": 0,
     "backstab_avg": null,
@@ -2733,10 +2831,10 @@
     "loot": {}
    },
    "A werewolf gypsy": {
-    "swings": 23,
-    "landed": 12,
-    "avg": 20.8,
-    "max": 33,
+    "swings": 49,
+    "landed": 25,
+    "avg": 19.3,
+    "max": 50,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -2744,14 +2842,193 @@
     "loot": {}
    },
    "A gypsy dancer": {
-    "swings": 10,
-    "landed": 4,
-    "avg": 19.0,
+    "swings": 37,
+    "landed": 16,
+    "avg": 13.1,
     "max": 38,
+    "backstabs": 1,
+    "backstab_avg": 65.0,
+    "backstab_max": 65,
+    "casts": {},
+    "loot": {}
+   },
+   "A glyphed warder": {
+    "swings": 42,
+    "landed": 16,
+    "avg": 9.9,
+    "max": 32,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Healing": 10,
+     "Echoing Light": 3
+    },
+    "loot": {}
+   },
+   "An ancille cook": {
+    "swings": 79,
+    "landed": 52,
+    "avg": 26.6,
+    "max": 75,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 2,
+     "Cancelling of Life": 1,
+     "Engulfing Darkness": 1
+    },
+    "loot": {}
+   },
+   "Butler Syncall": {
+    "swings": 26,
+    "landed": 13,
+    "avg": 27.4,
+    "max": 63,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 1
+    },
+    "loot": {
+     "Butler Syncalls Fang": 1
+    }
+   },
+   "Maid Issis": {
+    "swings": 12,
+    "landed": 6,
+    "avg": 34.8,
+    "max": 61,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 1
+    },
+    "loot": {
+     "Nightshade Wreath +1": 1
+    }
+   },
+   "A gypsy ambassador": {
+    "swings": 22,
+    "landed": 9,
+    "avg": 15.7,
+    "max": 44,
+    "backstabs": 2,
+    "backstab_avg": 141.5,
+    "backstab_max": 196,
+    "casts": {},
+    "loot": {}
+   },
+   "A dark offerer": {
+    "swings": 65,
+    "landed": 29,
+    "avg": 14.5,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shadow Vortex": 5,
+     "Shielding": 1,
+     "Lesser Shielding": 1,
+     "Engulfing Darkness": 1,
+     "Heat Blood": 1,
+     "Negation of Life": 1
+    },
+    "loot": {}
+   },
+   "A negotiator": {
+    "swings": 26,
+    "landed": 11,
+    "avg": 16.7,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaos Flux": 7,
+     "Alacrity": 2,
+     "Tashani": 2,
+     "Shielding": 1,
+     "Charm": 1
+    },
+    "loot": {}
+   },
+   "A dark elf noble": {
+    "swings": 32,
+    "landed": 16,
+    "avg": 18.3,
+    "max": 46,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 6,
+     "Instill": 2,
+     "Tishan's Clash": 2,
+     "Lesser Shielding": 1
+    },
+    "loot": {}
+   },
+   "A shadowy scrivener": {
+    "swings": 15,
+    "landed": 5,
+    "avg": 10.4,
+    "max": 16,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 4,
+     "Lesser Shielding": 1,
+     "Instill": 1
+    },
+    "loot": {}
+   },
+   "A deathly usher": {
+    "swings": 40,
+    "landed": 22,
+    "avg": 16.2,
+    "max": 50,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
+    "loot": {}
+   },
+   "A gypsy musician": {
+    "swings": 13,
+    "landed": 7,
+    "avg": 29.6,
+    "max": 61,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Inner Fire": 4,
+     "Spirit of Wolf": 4,
+     "Sicken": 1,
+     "Drowsy": 1
+    },
+    "loot": {}
+   },
+   "Mynthi Davissi": {
+    "swings": 7,
+    "landed": 3,
+    "avg": 40.7,
+    "max": 68,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Quickness": 5,
+     "Lesser Shielding": 1,
+     "Tashani": 1,
+     "Root": 1
+    },
     "loot": {}
    },
    "Shara": {
@@ -2763,12 +3040,13 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Healing": 55,
-     "Flowering Heal": 28
+     "Healing": 83,
+     "Flowering Heal": 46,
+     "Shield of Barbs": 1
     },
     "loot": {}
    },
-   "A glyphed warder": {
+   "A dark sacrificer": {
     "swings": 0,
     "landed": 0,
     "avg": null,
@@ -2777,7 +3055,7 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Healing": 1
+     "Leatherskin": 1
     },
     "loot": {}
    },
@@ -2865,7 +3143,8 @@
     "loot": {
      "Fine Steel Rapier +1": 1,
      "Fine Steel Dagger +1": 1,
-     "Stone Marker": 1
+     "Stone Marker": 1,
+     "Fine Steel Long Sword +1": 1
     }
    },
    "an imp familiar": {
@@ -3001,7 +3280,7 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Gargoyle Eye": 1
+     "Gargoyle Eye": 2
     }
    },
    "a will ravisher": {
@@ -3027,7 +3306,9 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Mote of Minor Potential": 1
+     "Mote of Minor Potential": 2,
+     "Black Silk Gloves +1": 1,
+     "Bronze Gauntlets +1": 1
     }
    },
    "a thought spoiler": {
@@ -3040,7 +3321,8 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Silver Amulet +1": 1
+     "Silver Amulet +1": 1,
+     "Mithril Earring +1": 1
     }
    },
    "a soul temptress": {
@@ -3081,6 +3363,110 @@
     "casts": {},
     "loot": {
      "Amber": 1
+    }
+   },
+   "a werewolf gypsy": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Lute of the Gypsy Princess +1": 1
+    }
+   },
+   "a gypsy dancer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Power of Wind": 1
+    }
+   },
+   "a glyphed warder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Ringmail Neckguard +2": 1
+    }
+   },
+   "a jeering gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Mistmoore Granite": 1
+    }
+   },
+   "an ancille cook": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Dark Cauldron": 1
+    }
+   },
+   "a shadowy scrivener": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Ivory": 1
+    }
+   },
+   "a negotiator": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Pearl": 1
+    }
+   },
+   "a dark offerer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Thick Caustic Fluid": 2
     }
    }
   }

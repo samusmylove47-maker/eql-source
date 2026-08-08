@@ -40,9 +40,10 @@ CSS = """
 .meas .cond{border-left:2px solid var(--accd);background:#161C21;padding:12px 16px;
   margin:0 0 18px;color:#AEB9B8;font-size:14px}
 .meas .cond b{color:#E6E9E4}
-.meas table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:14px}
+.meas .tw{overflow-x:auto;margin:0 0 14px;-webkit-overflow-scrolling:touch}
+.meas table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px}
 .meas th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:#7D9096;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#9FB0B4;font-weight:500;
   border-bottom:1px solid #2E3A41;padding:0 12px 7px 0}
 .meas td{border-bottom:1px solid #232D32;padding:9px 12px 9px 0;vertical-align:top}
 .meas td.n{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:#C9D1CF}
@@ -52,7 +53,9 @@ CSS = """
 .tierM{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);border-radius:3px;
   color:var(--acct);vertical-align:2px}
-@media(max-width:640px){.meas table,.meas thead,.meas tbody,.meas tr,.meas td,.meas th{display:block}
+@media(max-width:760px){.meas .tw{overflow-x:visible}
+  .meas table{min-width:0}
+  .meas table,.meas thead,.meas tbody,.meas tr,.meas td,.meas th{display:block}
   .meas thead{display:none}.meas td{border:0;padding:2px 0}
   .meas tr{border-bottom:1px solid #232D32;padding:10px 0;display:block}}
 </style>"""
@@ -118,8 +121,8 @@ def control_html(s):
     return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
             f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">What takes control away</h3>'
             f'<div class="cond">{lead}</div>'
-            f'<table><thead><tr><th>Spell</th><th>Stuns landed</th><th>Cast by</th></tr></thead>'
-            f'<tbody>{rows}</tbody></table>'
+            f'<div class="tw"><table><thead><tr><th>Spell</th><th>Stuns landed</th><th>Cast by</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div>'
             f'<p class="caveat" style="margin:0 0 18px">Counted from what the log recorded, not '
             f'from what a spell is assumed to do. Resist rates depend on the character&rsquo;s own '
             f'resistances and alternate abilities, so treat these as what happened to one build '
@@ -174,11 +177,11 @@ def section(sess_list, zone_title):
     if named:
         tables += (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
                    f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Named</h3>'
-                   f'<table><thead>{hdr}</thead><tbody>{rows(named)}</tbody></table>')
+                   f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(named)}</tbody></table></div>')
     if trash:
         tables += (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
                    f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Everything else</h3>'
-                   f'<table><thead>{hdr}</thead><tbody>{rows(trash)}</tbody></table>')
+                   f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(trash)}</tbody></table></div>')
 
     yh, ym = s['you_hit'], s['you_miss']
     hitrate = f"{100*yh/(yh+ym):.1f}%" if (yh + ym) else 'not measured'
