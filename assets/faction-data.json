@@ -1205,7 +1205,7 @@
   "The Castle of Mistmoore": {
    "difficulty": 1,
    "date": "08 Aug 2026",
-   "kills": 602,
+   "kills": 1018,
    "per_mob": {
     "a pledge familiar": {
      "Mayong Mistmoore": -5,
@@ -1552,6 +1552,12 @@
      "King Tearis Thex": 5,
      "Agents of Mistmoore": -5,
      "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a dark sacrificer": {
+     "Ring of Scale": 5
+    },
+    "a dark ritualist": {
      "Ring of Scale": 5
     }
    },

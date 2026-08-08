@@ -156,6 +156,23 @@ def character_of(path):
     return m.group(1) if m else None
 
 
+# ZONE STATED BY THE COLLABORATOR, NOT INFERRED
+#
+# A log that begins mid-zone has no "You have entered" line, so its zone is
+# unknown however obvious it looks. The 8 August afternoon logs start at 14:22
+# and 14:34, after a client restart, and carried 411 and 5 kills against a null
+# zone — the largest single sample the project has, reaching no plate.
+#
+# Rather than guess from context, the zone is recorded here as a statement:
+# "The entire log took place inside Mistmoore", 8 Aug 2026. That is a person
+# telling us where they were, which is evidence, and it is written down as such
+# so a later reader can see it was asserted rather than parsed.
+ZONE_STATED = {
+    ('Avenrae', '08 Aug 2026', '14:34-16:43'): 'The Castle of Mistmoore',
+    ('Shara',   '08 Aug 2026', '14:22-15:33'): 'The Castle of Mistmoore',
+}
+
+
 def parse(path):
     rows = []
     for line in open(path, encoding='utf-8', errors='replace'):
@@ -495,8 +512,20 @@ def build(src):
         pass
 
     def keyof(sess):
-        return (sess.get('character'), sess.get('date'),
-                sess.get('window'), sess.get('zone'))
+        # Deliberately NOT keyed on zone. A session's zone can be corrected —
+        # the 8 August afternoon runs went from null to Mistmoore once the
+        # collaborator said where they were — and keying on it meant the
+        # corrected session was added alongside the stale one rather than
+        # replacing it. Character, date and window identify a stretch of play
+        # uniquely and do not change under correction.
+        return (sess.get('character'), sess.get('date'), sess.get('window'))
+
+    for s in sessions:
+        if s.get('zone') is None:
+            stated = ZONE_STATED.get((s.get('character'), s.get('date'), s.get('window')))
+            if stated:
+                s['zone'] = stated
+                s['zone_from'] = 'stated by the collaborator, not read from the log'
 
     merged = {keyof(s): s for s in existing}
     fresh = {keyof(s): s for s in sessions}

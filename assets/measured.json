@@ -16942,7 +16942,7 @@
   }
  },
  {
-  "zone": null,
+  "zone": "The Castle of Mistmoore",
   "character": "Shara",
   "difficulty_label": null,
   "difficulty_num": null,
@@ -17917,10 +17917,11 @@
      "Jade Earring +2": 1
     }
    }
-  }
+  },
+  "zone_from": "stated by the collaborator, not read from the log"
  },
  {
-  "zone": null,
+  "zone": "The Castle of Mistmoore",
   "character": "Avenrae",
   "difficulty_label": null,
   "difficulty_num": null,
@@ -19930,7 +19931,8 @@
      "Gargoyle Eye": 1
     }
    }
-  }
+  },
+  "zone_from": "stated by the collaborator, not read from the log"
  },
  {
   "zone": "The Castle of Mistmoore",
