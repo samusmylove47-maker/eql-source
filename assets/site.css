@@ -735,3 +735,24 @@ h1.display em{color:var(--z01)}
 /* Narrow screens have no spare height to trade, so revert to width-driven —
    the plot scrolls with the page instead of fighting the viewport. */
 @media(max-width:900px){.plotsvg{height:auto;width:100%}}
+
+/* Height control. Sits above its plot, one button per storey plus All. The
+   unselected storeys fade rather than vanish, so a reader keeps the sense of
+   what is above and below the level they are looking at. */
+.levels{display:flex;flex-wrap:wrap;align-items:stretch;gap:var(--s-2);
+  margin-top:var(--s-4)}
+.lvlab{align-self:center;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:var(--s-1)}
+.lvbtn{display:flex;flex-direction:column;gap:2px;padding:var(--s-2) var(--s-3);
+  background:var(--surface-1);border:1px solid var(--rule);border-radius:var(--r);
+  color:var(--mut);font-family:"IBM Plex Mono",monospace;font-size:var(--t-sm);
+  line-height:1;cursor:pointer;transition:background .12s,border-color .12s,color .12s}
+.lvbtn span{font-size:var(--t-2xs);color:var(--faint);letter-spacing:.04em}
+.lvbtn:hover{border-color:color-mix(in srgb, var(--c) 45%, var(--rule));color:var(--txt)}
+.lvbtn:focus-visible{outline:2px solid var(--instr);outline-offset:2px}
+.lvbtn.on{background:color-mix(in srgb, var(--c) 16%, var(--surface-2));
+  border-color:color-mix(in srgb, var(--c) 58%, var(--rule));color:var(--bone)}
+.lvbtn.on span{color:color-mix(in srgb, var(--c) 40%, var(--mut))}
+.lyr{transition:stroke-opacity .18s}
+.lyr.mute{stroke-opacity:.07}
+@media(prefers-reduced-motion:reduce){.lvbtn,.lyr{transition:none}}

@@ -137,6 +137,8 @@ assets/
   site.css          the entire design system, one file
   zones-index.json  DRIVES ALL NAVIGATION. Edit this, rebuild, everything updates
   index-data.json   GENERATED — mined from the plates by _build/extract.py
+  zone-geometry.json  floor plans derived from the game meshes. Committed data,
+                    NOT a build step — see _build/geometry.py
   vendor/three.min.js   r128, vendored. Do not switch to a CDN
 _build/
   _partials.py      head, nav and footer
@@ -145,6 +147,11 @@ _build/
   build3.py         imports plates and tools, injects chrome
   build4.py         raid encounter guides, contains the 3D engine
   build5.py         The Index tool
+  geometry.py       zone floor plans from the game's own meshes. Reads .s3d
+                    archives from the EverQuest Legends install, writes
+                    assets/zone-geometry.json. Run by hand, not by build.sh: a
+                    rebuild must work on a machine without the game. The .s3d
+                    files are Daybreak's and are never committed
   extract.py        mines the plates into index-data.json
   sitemap.py        sitemap + robots
   source/           the real originals. Edit these
