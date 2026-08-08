@@ -81,6 +81,14 @@ CAST = re.compile(r'^(.{1,44}?) begins (?:to cast a spell|casting) ?(.*?)\.?$')
 LOOT = re.compile(r"looted an? (.+?) from (.+?)'s corpse")
 PLUS = re.compile(r'\+(\d)\b')
 FACTION = re.compile(r'Your faction standing with (.+?) (?:has|could)')
+
+# Escapes. Succor and Evacuate teleport the group out, so a cast of one is a
+# decision that the fight was lost — the single most useful judgement a log
+# records, and one no wiki carries. What was being fought and what it had just
+# done are captured with it, because "we ran" is only useful with the reason.
+ESCAPE = re.compile(r'\b(\w+ )?(Succor|Evacuate|Evacuation)\b', re.I)
+ENGAGE = re.compile(r'^(.{1,44}?) (?:says|shouts), ')
+ESCAPE_WINDOW = datetime.timedelta(seconds=45)
 LEVEL_SELF = re.compile(r'You have (?:gained|reached) level (\d+)')
 
 
@@ -126,7 +134,7 @@ def collect(rows):
                     drop_tiers=collections.Counter(), faction=collections.Counter(),
                     dmg=collections.defaultdict(list),
                     mob_hit=collections.Counter(), mob_miss=collections.Counter(),
-                    you_hit=0, you_miss=0, context=all_stamps)
+                    you_hit=0, you_miss=0, context=all_stamps, escapes=[])
 
     # A log that starts mid-zone has no "You have entered" line at all — the
     # Blackburrow stress test is exactly that, and its combat is worth keeping.
@@ -193,6 +201,35 @@ def collect(rows):
         m = MISS_YOU.match(x)
         if m and m.group(1).strip() in mobs:
             cur['mob_miss'][m.group(1).strip()] += 1
+        # Everything that engaged us recently, not just whichever mob swung last.
+        # Naming only the last one said the group fled "a jeering gargoyle" when
+        # Princess Cherista was the actual threat; in a multi-mob fight the last
+        # swing is arbitrary.
+        recent = cur.setdefault('_recent', [])
+        for rx in (HIT_YOU, MISS_YOU):
+            mm2 = rx.match(x)
+            if mm2 and mm2.group(1).strip() in mobs:
+                recent.append((mm2.group(1).strip(), when, None))
+                break
+        mm2 = CAST.match(x)
+        if mm2 and mm2.group(1).strip() in mobs:
+            recent.append((mm2.group(1).strip(), when, (mm2.group(2) or '').strip()))
+
+        if ESCAPE.search(x) and 'begins casting' in x:
+            who = x.split(' begins casting')[0].strip()
+            window = [r for r in recent if (when - r[1]) <= ESCAPE_WINDOW]
+            engaged, seen = [], set()
+            for nm, _w, _sp in reversed(window):
+                if nm not in seen:
+                    seen.add(nm)
+                    engaged.append(nm)
+            last_spell = next(((nm, sp) for nm, _w, sp in reversed(window) if sp), None)
+            cur['escapes'].append(dict(
+                at=when.strftime('%H:%M:%S'), by=who,
+                engaged=engaged[:6],
+                after=f'{last_spell[0]} cast {last_spell[1]}' if last_spell else None))
+            cur['_recent'] = []
+
         if YOU_HIT.match(x):
             cur['you_hit'] += 1
         if YOU_MISS.match(x):
@@ -223,7 +260,7 @@ def summarise(s):
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
-               context=s.get('context', []),
+               context=s.get('context', []), escapes=s.get('escapes', []),
                you_hit=s['you_hit'], you_miss=s['you_miss'],
                mob_hit=mh, mob_miss=mm, mobs={})
     for name, v in s['dmg'].items():

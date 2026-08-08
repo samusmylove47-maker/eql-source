@@ -58,6 +58,34 @@ CSS = """
 </style>"""
 
 
+def escapes_html(s):
+    """Fights the group broke off.
+
+    A wiki records what a mob is. It does not record the moment a group decided
+    a fight was lost, which is the judgement a reader actually wants, and a
+    combat log is the only place it exists. Printed with what was engaged and
+    what had just been cast, and with no claim that the fight is unwinnable —
+    only that this group, at this level, chose to leave it.
+    """
+    esc_list = s.get('escapes') or []
+    if not esc_list:
+        return ''
+    items = ''.join(
+        f'<li><b>{esc(e["at"])}</b> &mdash; {esc(e["by"])} took the group out'
+        + (f', with <b>{esc(", ".join(e["engaged"]))}</b> engaged' if e.get('engaged') else '')
+        + (f'. Last thing cast before the call: <b>{esc(e["after"])}</b>' if e.get('after') else '')
+        + '.</li>'
+        for e in esc_list)
+    return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
+            f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Fights broken off</h3>'
+            f'<ul style="margin:0 0 16px;padding-left:20px;color:#AEB9B8;font-size:14px;'
+            f'line-height:1.7">{items}</ul>'
+            f'<p class="caveat" style="margin:0 0 18px">An escape is a judgement, not a verdict. '
+            f'It records that this group at this level chose to leave, which is worth knowing and is '
+            f'written down nowhere else &mdash; but it is not evidence the fight cannot be won, and '
+            f'the number of mobs engaged is usually the reason rather than the named itself.</p>')
+
+
 def section(sess_list, zone_title):
     s = max(sess_list, key=lambda z: z['kills'])          # the fullest session
     stamps = s.get('context') or s['stamps']
@@ -130,7 +158,7 @@ def section(sess_list, zone_title):
         f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
         f'Faction moved: {facs}.'
         + (''.join(f'<br><b>Noted at the time:</b> {esc(n)}' for n in notes) if notes else '')
-        + f'</div>{tables}'
+        + f'</div>{escapes_html(s)}{tables}'
         f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
         f'session, not rates. A drop listed here was seen at least once and nothing more &mdash; no '
         f'drop rate can be read from it. Damage and landing figures describe this trio, at this '
