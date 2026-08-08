@@ -45,6 +45,40 @@ NUM = re.compile(r'[-−]?\d+(?:\.\d+)?')
 def nums(s):
     return [float(t.replace('−', '-')) for t in NUM.findall(s or '')]
 
+# A range is not a coordinate. "718–800, 212–236" is a span the mob appears
+# across, and reading its two ends as a Y,X pair put A hiding gnoll 464 units
+# outside Lair of the Splitpaw. Ranges join the unplotted list, which already
+# exists for mobs that vary by spawn point. Note the en dash, not a hyphen.
+RANGE = re.compile(r'\d\s*[–—]\s*\d')
+
+# COORDINATES WITHHELD FROM THE PLOT
+# ----------------------------------
+# These six are recorded on eqlwiki (read 8 Aug 2026) and are transcribed
+# faithfully on the Najena plate — the plate is not wrong about what the source
+# says. They are withheld because the position itself cannot be right.
+#
+# Najena's drawn geometry spans worldY −166..544. Every one of these sits south
+# of that, by between 59 and 515 units, which places them outside the dungeon.
+# That is checked against two map sets drawn independently by different
+# cartographers, Brewall and Goodurden, which agree on the zone's extent to
+# within two units (−166..544 against −167..546). The zone was not rebuilt for
+# Legends, so the classic extent applies.
+#
+# What makes it a column problem rather than noise: the X value matches in every
+# case, and only Y is out. Brewall's own markers for four of them put them
+# inside the zone at the same X — Rathyl −154 against our −670, Ekeros −162
+# against −681, BoneCracker +250 against −262, Officer Grush +91 against −385.
+#
+# No replacement value is published here. Brewall is a tier 4 aggregator of
+# classic data and is not authority for a Legends coordinate; it is used only to
+# show the recorded figure is impossible, which does not require it to be right.
+# One /loc reading per mob closes this.
+WITHHELD = {
+    ('najena', 'Rathyl'), ('najena', 'Ekeros'), ('najena', 'BoneCracker'),
+    ('najena', 'Officer Grush'), ('najena', 'Trazdon'),
+    ('najena', 'A Visiting Priestess'),
+}
+
 def esc(s):
     return (str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
             .replace('"', '&quot;'))
@@ -302,18 +336,23 @@ def build_plot(zone, pts):
     return svg, step, (lo, hi), sum(1 for r in rlabels)
 
 sections = []
-tot_plot = tot_named = tot_regions = 0
+tot_plot = tot_named = tot_regions = tot_withheld = 0
 for z in Z:
-    pts, unplotted = [], []
+    pts, unplotted, withheld = [], [], []
     for n in IX['named']:
         if n['z'] != z['slug']: continue
-        v = nums(n.get('loc'))
-        if len(v) >= 2:
-            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv'))))
+        raw = (n.get('loc') or '').strip()
+        v = nums(raw)
+        if (z['slug'], n['n']) in WITHHELD:
+            withheld.append((n['n'], raw or 'not recorded'))
+        elif RANGE.search(raw) or len(v) < 2:
+            unplotted.append((n['n'], raw or 'not recorded'))
         else:
-            unplotted.append((n['n'], (n.get('loc') or 'not recorded').strip()))
+            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv'))))
     if not pts: continue
-    tot_plot += len(pts); tot_named += len(pts) + len(unplotted)
+    zone_total = len(pts) + len(unplotted) + len(withheld)
+    tot_plot += len(pts); tot_named += zone_total
+    tot_withheld += len(withheld)
     svg, step, (lo, hi), nregions = build_plot(z, pts)
     tot_regions += nregions
 
@@ -327,17 +366,34 @@ for z in Z:
     if unplotted:
         items = ''.join(f'<li><span class="pn2">{esc(a)}</span><span class="pc">{esc(b)}</span></li>'
                         for a, b in unplotted)
-        missing = (f'<div class="note warn"><strong>{len(unplotted)} of {len(pts)+len(unplotted)} named '
+        missing = (f'<div class="note warn"><strong>{len(unplotted)} of {zone_total} named '
                    f'mobs in this zone are not on the plot.</strong> They wander, vary by spawn point, '
                    f'or have no coordinate on record. Listed here rather than placed somewhere '
                    f'plausible.</div><ul class="plotmissing">{items}</ul>')
+
+    if withheld:
+        items = ''.join(f'<li><span class="pn2">{esc(a)}</span><span class="pc">{esc(b)}</span></li>'
+                        for a, b in withheld)
+        missing += (
+            f'<div class="note warn"><strong>A further {len(withheld)} coordinates are recorded but '
+            f'cannot be right, and are withheld rather than drawn.</strong> Each sits south of this '
+            f'zone&rsquo;s own extent &mdash; outside the dungeon &mdash; by between 59 and 515 units. '
+            f'The figures below are transcribed correctly from '
+            f'<a href="https://eqlwiki.com/Najena">the eqlwiki Najena page</a> '
+            f'<span class="tier t5">T5</span>, read 8 August 2026; it is the recorded position that is '
+            f'wrong, not the transcription. The zone extent is checked against two map sets drawn '
+            f'independently by different cartographers, which agree on it to within two units, and the '
+            f'zone was not rebuilt for Legends. In every case the X value is consistent and only Y is '
+            f'out, which points at one column rather than at noise. No replacement is published here, '
+            f'because none is sourced. <strong>One <code>/loc</code> reading per mob closes '
+            f'this.</strong></div><ul class="plotmissing">{items}</ul>')
 
     sections.append(f'''
 <section class="band plotband" id="{z['slug']}" style="--c:{z['accent']}">
   <div class="shell">
     <div class="sechead">
       <div><h2 class="sec">{esc(z['title'])}</h2>
-        <p class="lede" style="margin:0">{len(pts)} of {len(pts)+len(unplotted)} named mobs plotted
+        <p class="lede" style="margin:0">{len(pts)} of {zone_total} named mobs plotted
           &middot; {step}-unit grid &middot; levels {int(lo)}&ndash;{int(hi)} shown green through red.
           Dashed outlines group positions that sit near each other; they are not room shapes.</p></div>
       <a class="link" href="{z['slug']}.html">Plate {z['plate']:02d} &rarr;</a></div>
@@ -362,8 +418,9 @@ page = head("Survey plots",
       <a href="index.html">Dungeons</a> &nbsp;/&nbsp; Plots</p>
     <h1 class="display">Where everything<br><em>actually is.</em></h1>
     <p class="hero-lede">{tot_plot} named mobs plotted from their recorded <code>/loc</code>, labelled
-      where they stand and coloured by level. The other {tot_named - tot_plot} wander or have no
-      coordinate on record, and are listed rather than placed.</p>
+      where they stand and coloured by level. The other {tot_named - tot_plot} wander, have no
+      coordinate on record, or &mdash; in {tot_withheld} cases &mdash; carry a recorded coordinate that
+      places them outside the zone itself. All are listed rather than placed.</p>
     <p class="hero-sig"><span>{tot_plot} positions</span><span>{len(sections)} zones</span><span>North up, west left</span><span>To scale</span></p>
   </div>
 </section>
@@ -383,4 +440,4 @@ page = head("Survey plots",
 ''' + foot("../")
 
 open('dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
-print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions")
+print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions, {tot_withheld} withheld")
