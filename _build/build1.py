@@ -11,6 +11,7 @@ Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 NITEMS, NNAMED = len(IX['items']), len(IX['named'])
 MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
+BYS = {z['slug']: z for z in Z}
 
 def zsub(z):
     return f"{z['levels']}"
@@ -168,81 +169,101 @@ mapcards = "\n".join(
         <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>''' for s in
   [z['slug'] for z in Z if z['slug'] in MAPS])
 
+# The plate cards live here, on the plates page. The home page links to this
+# page rather than reproducing it.
+dplates = "\n".join(
+  f'''      <a class="plate contour" href="{z['slug']}.html"
+         style="--c:{z['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+        <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
+        <span class="num">{z['plate']:02d}</span>
+        <h3 class="pt">{z['title']}</h3>
+        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{'<span>Map <b>yes</b></span>' if z['slug'] in MAPS else ''}</span>
+      </a>''' for i, z in enumerate(Z))
+
+# The open gates, generated rather than written out five times by hand. Sorted
+# so unverified zones come before partial ones — the worse state reads first.
+_ORDER = {"none": 0, "partial": 1, "full": 2}
+gaterows = "\n".join(
+  f'''      <li class="gaterow" style="--c:{z['accent']}">
+        <span class="gn">{z['plate']:02d}</span>
+        <span class="gz">{z['title']}</span>
+        <span class="gs">{z['verify_gate']}</span>
+        <span class="gl">{'unstarted' if z['verify_level']=='none' else 'open'}</span>
+      </li>'''
+  for z in sorted((z for z in Z if z['verify_level'] != 'full'),
+                  key=lambda z: (_ORDER[z['verify_level']], z['plate'])))
+
+mapcards = "\n".join(
+  f'''      <a class="door contour" href="{s}-map.html"
+         style="--c:{BYS[s]['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+        <span class="dq">Navigation map</span>
+        <h3 class="dt">{BYS[s]['title']}</h3>
+        <p class="dd">The companion you keep open while you are in the zone. Plotted routes, numbered
+          camps and the pulls that matter, kept short enough to stay usable on a second monitor.</p>
+        <span class="dgo">Open the map &rarr;</span>
+      </a>''' for i, s in enumerate(sorted(MAPS)))
+
 dung = head("Dungeon survey plates",
   "Ten revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
   rel="../") + bar("../") + f'''
 <main>
-<div class="shell">
-  <div class="page-head">
+
+<section class="hero page">
+  <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
-    <h1>Survey plates</h1>
-    <p class="lede">Ten zones, each shipping a deep-reference plate and, where built, a navigation map companion.
-      Population tables, named rosters with spawn data, loot tied to drop sources, and coordinates re-derived from the
-      wiki&rsquo;s <code>/loc</code> records and collision-checked against the room list.</p>
+    <h1 class="display">Ten zones,<br><em>surveyed.</em></h1>
+    <p class="hero-lede">Each shipping a deep-reference plate and, where built, a navigation map
+      companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
+      coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and collision-checked
+      against the room list.</p>
+    <p class="hero-sig"><span>{len(Z)} plates</span><span>{len(MAPS)} maps</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
   </div>
+</section>
 
-  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
-    <div class="sechead"><span class="n">All</span><div><h2 class="sec">The ten</h2></div></div>
-    <div class="ztable">
-{drows}
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell">
+    <div class="plates">
+{dplates}
     </div>
-    <div class="note"><strong>What &ldquo;verified&rdquo; means here, and why most of these are not.</strong> A zone
-      counts as verified only when all three gates pass: its wiki page was fetched in full, <em>its edit history was
-      fetched</em> &mdash; not just the footer date &mdash; and its coordinates were re-derived and collision-checked
-      against the room list. By that standard {nfull} of {len(Z)} are verified, {npart} are partial and {nnone} are not
-      verified at all. Partial plates are complete and useful; they have simply not cleared all three gates.</div>
-    <div class="ztable" style="margin-top:14px">      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="befallen"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="befallen"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="befallen"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="befallen"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="befallen"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="thehole"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="thehole"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="thehole"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="thehole"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="thehole"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="warrens"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="warrens"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="warrens"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="warrens"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="warrens"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="crushbone"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="crushbone"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="crushbone"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="crushbone"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="crushbone"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="blackburrow"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="blackburrow"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:var(--t-md)">{[z for z in Z if z["slug"]=="blackburrow"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="blackburrow"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="blackburrow"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="band">
-    <div class="sechead"><span class="n">Field</span><div><h2 class="sec">Navigation maps</h2>
-      <p class="lede" style="margin:0">The companion document you keep open while you are in the zone.</p></div></div>
-    <div class="cards c3">
+<section class="band">
+  <div class="shell">
+    <div class="split">
+      <div>
+        <div class="sechead"><div><h2 class="sec">What verified means</h2>
+          <p class="lede" style="margin:0">A zone counts as verified only when all three gates pass: its
+            wiki page was fetched in full, <em>its edit history was fetched</em> &mdash; not merely the
+            footer date &mdash; and its coordinates were re-derived and collision-checked against the
+            room list.</p></div></div>
+        <p class="lede">By that standard <strong>{nfull} of {len(Z)}</strong> are verified,
+          {npart} are partial and {nnone} are not verified at all. Partial plates are complete and
+          useful; they have simply not cleared every gate. Which gate is open is recorded per zone
+          rather than averaged into a single number that would flatter us.</p>
+      </div>
+      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:110%">
+        <h3 class="stdh">Open gates</h3>
+        <ul class="gatelist">
+{gaterows}
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Navigation maps</h2>
+      <p class="lede" style="margin:0">Five zones have one. Crushbone, Befallen, Blackburrow, The Hole
+        and The Warrens do not yet &mdash; Blackburrow is next, because its explicit three-floor
+        structure makes it the strongest candidate for a treatment other than a flat plan.</p></div></div>
+    <div class="doorgrid">
 {mapcards}
-      <div class="card" style="--c:var(--dim)"><div class="kicker">Queued</div>
-        <h3 class="t">Five to go</h3>
-        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have plates but no map yet. Blackburrow
-          is next &mdash; it has an explicit three-floor structure, which makes it the strongest candidate for a full
-          3D treatment rather than a flat plan.</p>
-        <div class="foot"><span>In build</span></div></div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
 </main>
 ''' + foot("../")
 open('dungeons/index.html','w',encoding='utf-8',newline='\n').write(dung)

@@ -7,16 +7,20 @@ from _partials import head, bar, foot
 # ---------------------------------------------------------------- TOOLS
 tools = head("Tools", "Three EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + '''
 <main>
-<div class="shell">
-  <div class="page-head">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
-    <h1>Tools</h1>
-    <p class="lede">Three trackers. No account, no login, no server holding your data. Everything you tick is packed
-      into the page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and the
-      sheet rebuilds exactly. They also autosave in your browser, so day to day you can just come back.</p>
-  </div>
 
-  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
+<section class="hero page">
+  <div class="shell">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
+    <h1 class="display">Four trackers,<br><em>no account.</em></h1>
+    <p class="hero-lede">No login, no server holding your data. Everything you tick is packed into the
+      page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and
+      the sheet rebuilds exactly. They autosave in your browser too, so day to day you can just come back.</p>
+    <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
+  </div>
+</section>
+
+<div class="shell">
+  <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; 452 items, 208 named</div>
@@ -77,16 +81,20 @@ open('tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 # ---------------------------------------------------------------- RAIDS
 raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest Legends raid bosses: positioning, radii, phase transitions and pull strategy rendered in space.", rel="../") + bar("../") + '''
 <main>
-<div class="shell">
-  <div class="page-head">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
-    <h1>Encounters</h1>
-    <p class="lede">Boss fights you can orbit. Each encounter is built as an interactive three-dimensional diagram
-      &mdash; the platform, the boss, the raid stack, the radii that matter and the routes between them &mdash; because
-      a paragraph about where to stand has never once been as clear as being shown.</p>
-  </div>
 
-  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
+<section class="hero page ember-hero">
+  <div class="shell">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
+    <h1 class="display">Boss fights<br><em>you can orbit.</em></h1>
+    <p class="hero-lede">Each encounter is an interactive three-dimensional diagram &mdash; the platform,
+      the boss, the stack, the radii that matter and the routes between them &mdash; because a paragraph
+      about where to stand has never once been as clear as being shown.</p>
+    <p class="hero-sig"><span>Drag to orbit</span><span>Arrow keys work too</span><span>No plugin</span></p>
+  </div>
+</section>
+
+<div class="shell">
+  <section class="band" style="border-top:0;padding-top:0">
     <div class="sechead"><span class="n">Live</span><div><h2 class="sec">Plane of Sky</h2>
       <p class="lede" style="margin:0">Nine islands, each gated by a key that only drops once the island below is
         cleared. Progression is vertical and unforgiving: fall off and every key you are carrying is destroyed.</p></div></div>
@@ -131,14 +139,19 @@ open('raids/index.html','w',encoding='utf-8',newline='\n').write(raids)
 # ---------------------------------------------------------------- SOURCES
 src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.") + bar() + '''
 <main>
-<div class="shell">
-  <div class="page-head">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Sources</p>
-    <h1>Sourcing<br>standard</h1>
-    <p class="lede">This site exists because most EverQuest Legends reference material is classic EverQuest text in a
-      Legends-shaped hole. The only defence against that is a standard applied without exceptions, including the
-      inconvenient ones.</p>
+
+<section class="hero page">
+  <div class="shell">
+    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
+    <h1 class="display">Sourcing<br><em>standard.</em></h1>
+    <p class="hero-lede">This site exists because most EverQuest Legends reference material is classic
+      EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied
+      without exceptions, including the inconvenient ones.</p>
+    <p class="hero-sig"><span>Five tiers</span><span>Every claim dated</span><span>Gaps published</span></p>
   </div>
+</section>
+
+<div class="shell">
 
   <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
     <div class="sechead"><span class="n">01</span><div><h2 class="sec">The hierarchy</h2></div></div>

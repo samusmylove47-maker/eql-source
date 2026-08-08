@@ -540,10 +540,16 @@ a.card.figured:hover .fig{opacity:.22}
 h1.display{max-width:16ch}
 /* Gradient-clipped display type: the headline takes light across it rather than
    sitting flat. The fallback colour is set first for anything without clip. */
-h1.display em{color:var(--z01);
-  background:linear-gradient(96deg,var(--bone) 4%,var(--z01) 52%,var(--z07) 96%);
-  -webkit-background-clip:text;background-clip:text;
-  -webkit-text-fill-color:transparent}
+h1.display em{color:var(--z01)}
+/* The gradient only engages where the clip is supported. Without this guard a
+   browser lacking background-clip:text keeps the transparent fill and renders
+   the headline invisible — a blank hero rather than a flat one. */
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+  h1.display em{
+    background:linear-gradient(96deg,var(--bone) 4%,var(--z01) 52%,var(--z07) 96%);
+    -webkit-background-clip:text;background-clip:text;
+    -webkit-text-fill-color:transparent}
+}
 .hero-lede{font-size:var(--t-md);color:var(--mut);max-width:52ch;
   margin:var(--s-5) 0 0;line-height:1.6}
 
@@ -610,3 +616,39 @@ h1.display em{color:var(--z01);
 .stdscale span{display:block;font-size:var(--t-2xs);font-family:"IBM Plex Mono",monospace;
   letter-spacing:.06em;color:var(--dim);margin-top:3px}
 .stdfoot{margin:var(--s-4) 0 0}
+
+/* ---------- interior page heroes ----------
+   Same device as the home page at reduced scale, so an interior page is
+   recognisably the same site without competing with the front door. */
+.hero.page{padding:clamp(28px,4vw,56px) 0 0}
+.hero.page h1.display{font-size:clamp(38px,6vw,78px);max-width:14ch}
+.hero.page .crumb{margin-bottom:var(--s-4)}
+.hero.page .hero-lede{font-size:var(--t-base);max-width:var(--measure)}
+
+/* ---------- the open-gate list ---------- */
+.gatelist{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.gaterow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s-2) var(--s-3);
+  align-items:baseline;padding:var(--s-3) 0;border-bottom:1px solid var(--rule)}
+.gaterow .gn{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);font-weight:600;
+  color:color-mix(in srgb, var(--c) 56%, var(--bone))}
+.gaterow .gz{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-md);
+  text-transform:uppercase;letter-spacing:.02em;color:var(--bone);line-height:1.1}
+.gaterow .gl{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--faint);white-space:nowrap}
+.gaterow .gs{grid-column:1/-1;font-size:var(--t-sm);color:var(--dim);line-height:1.5}
+
+/* The raids index takes the ember wash, so the section keeps its identity even
+   at the top of its own page. Zone accents stay with the zones; ember stays
+   with raids; instrument blue stays with tools. */
+.hero.ember-hero{background:
+  radial-gradient(88% 120% at 78% 0%, rgba(196,72,46,.16) 0%, transparent 62%),
+  linear-gradient(180deg,#14100E 0%, var(--surface-0) 78%)}
+.hero.ember-hero h1.display em{color:var(--ember-t)}
+@supports ((background-clip:text) or (-webkit-background-clip:text)){
+  .hero.ember-hero h1.display em{
+    background:linear-gradient(96deg,var(--bone) 4%,var(--ember-t) 58%,var(--z01) 98%);
+    -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+}
+.hero.ember-hero::after{background:repeating-radial-gradient(circle at 50% 50%,
+    transparent 0 32px, rgba(215,108,85,.11) 32px 33px,
+    transparent 33px 66px, rgba(217,162,39,.06) 66px 67px)}
