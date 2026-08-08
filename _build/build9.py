@@ -88,9 +88,18 @@ def escapes_html(s):
 
 def section(sess_list, zone_title):
     s = max(sess_list, key=lambda z: z['kills'])          # the fullest session
+    # Stamps used to be bare strings and are now {at, text, conditions}; accept
+    # either so an older measured.json still renders.
+    def txt(v):
+        return v['text'] if isinstance(v, dict) else v
+
+    CLASSES = r'\b(BRD|WAR|CLR|SHM|NEC|DRU|ROG|MNK|BER|PAL|SHD|RNG|WIZ|MAG|ENC|BST)\b'
     stamps = s.get('context') or s['stamps']
-    who = next((x for x in stamps if re.search(r'\b(BRD|WAR|CLR|SHM|NEC|DRU|ROG|MNK|BER|PAL|SHD|RNG|WIZ|MAG|ENC|BST)\b', x)), None)
-    notes = [x for x in s['stamps'] if x is not who]
+    who = next((txt(x) for x in stamps if re.search(CLASSES, txt(x))), None)
+    notes = [(txt(x),
+              x.get('at') if isinstance(x, dict) else None,
+              bool(isinstance(x, dict) and x.get('conditions')))
+             for x in s['stamps'] if txt(x) != who]
 
     named, trash = [], []
     for name, d in s['mobs'].items():
@@ -157,7 +166,10 @@ def section(sess_list, zone_title):
         f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '
         f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
         f'Faction moved: {facs}.'
-        + (''.join(f'<br><b>Noted at the time:</b> {esc(n)}' for n in notes) if notes else '')
+        + (''.join(
+            f'<br><b>{"Conditions changed at" if c else "Noted at"} {esc(at)}:</b> {esc(n)}'
+            if at else f'<br><b>Noted at the time:</b> {esc(n)}'
+            for n, at, c in notes) if notes else '')
         + f'</div>{escapes_html(s)}{tables}'
         f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
         f'session, not rates. A drop listed here was seen at least once and nothing more &mdash; no '

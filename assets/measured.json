@@ -21,10 +21,30 @@
    "Merchants of Qeynos": 25
   },
   "context": [
-   "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session.",
-   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
-   "these are level 4 we are level 26 so hit rate is very low",
-   "they are level 40 not 4, typo"
+   {
+    "at": "11:07",
+    "text": "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session."
+   },
+   {
+    "at": "11:09",
+    "text": "My partner, Shara, will also be logging today and I will provide her logs separate later."
+   },
+   {
+    "at": "11:20",
+    "text": "these are level 4 we are level 26 so hit rate is very low"
+   },
+   {
+    "at": "11:20",
+    "text": "they are level 40 not 4, typo"
+   },
+   {
+    "at": "11:57",
+    "text": "Shara lost connection to the game."
+   },
+   {
+    "at": "11:58",
+    "text": "Reconnected"
+   }
   ],
   "escapes": [],
   "faction_by_mob": {},
@@ -322,32 +342,74 @@
   "difficulty_from": "zone line",
   "difficulty_agrees": true,
   "date": "08 Aug 2026",
-  "window": "11:08-11:48",
+  "window": "11:08-11:58",
   "stamps": [
-   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
-   "these are level 4 we are level 26 so hit rate is very low",
-   "they are level 40 not 4, typo"
+   {
+    "at": "11:09",
+    "text": "My partner, Shara, will also be logging today and I will provide her logs separate later.",
+    "conditions": false
+   },
+   {
+    "at": "11:20",
+    "text": "these are level 4 we are level 26 so hit rate is very low",
+    "conditions": false
+   },
+   {
+    "at": "11:20",
+    "text": "they are level 40 not 4, typo",
+    "conditions": false
+   },
+   {
+    "at": "11:57",
+    "text": "Shara lost connection to the game.",
+    "conditions": false
+   },
+   {
+    "at": "11:58",
+    "text": "Reconnected",
+    "conditions": false
+   }
   ],
-  "kills": 135,
-  "distinct": 35,
+  "kills": 161,
+  "distinct": 36,
   "drop_tiers": {
-   "1": 34,
-   "2": 7
+   "1": 36,
+   "2": 8
   },
   "faction": {
-   "Mayong Mistmoore": 130,
-   "King Tearis Thex": 130,
-   "Agents of Mistmoore": 130,
-   "League of Antonican Bards": 130,
-   "Ring of Scale": 130,
+   "Mayong Mistmoore": 156,
+   "King Tearis Thex": 156,
+   "Agents of Mistmoore": 156,
+   "League of Antonican Bards": 156,
+   "Ring of Scale": 156,
    "Temple of Solusek Ro": 2,
    "Shadowed Men": 2
   },
   "context": [
-   "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session.",
-   "My partner, Shara, will also be logging today and I will provide her logs separate later.",
-   "these are level 4 we are level 26 so hit rate is very low",
-   "they are level 40 not 4, typo"
+   {
+    "at": "11:07",
+    "text": "Avenrae BRD WAR BER. Level 26. Mistmoore Castle. Shara playing hybrid support temporarily, DRU BRD NEC (Main trio will be BRD CLR SHM), so I only have those buffs during this session."
+   },
+   {
+    "at": "11:09",
+    "text": "My partner, Shara, will also be logging today and I will provide her logs separate later."
+   },
+   {
+    "at": "11:20",
+    "text": "these are level 4 we are level 26 so hit rate is very low"
+   },
+   {
+    "at": "11:20",
+    "text": "they are level 40 not 4, typo"
+   },
+   {
+    "at": "11:57",
+    "text": "Shara lost connection to the game."
+   },
+   {
+    "at": "11:58",
+    "text": "Reconnected"
+   }
   ],
   "escapes": [
    {
@@ -605,18 +667,25 @@
     "Agents of Mistmoore": -5,
     "League of Antonican Bards": 5,
     "Ring of Scale": 5
+   },
+   "a shadowy sage": {
+    "Mayong Mistmoore": -5,
+    "King Tearis Thex": 5,
+    "Agents of Mistmoore": -5,
+    "League of Antonican Bards": 5,
+    "Ring of Scale": 5
    }
   },
   "exp_by_mob": {
    "a pledge familiar": 0.2,
    "an initiate familiar": 0.453,
    "a grinning gargoyle": 0.675,
-   "a glyphed ghoul": 0.934,
+   "a glyphed ghoul": 0.917,
    "a glyphed familiar": 0.6,
    "a glyphed custodian": 1.177,
-   "a glyphed guard": 0.834,
-   "an imp familiar": 1.177,
-   "a glyphed sentry": 1.034,
+   "a glyphed guard": 0.828,
+   "an imp familiar": 1.119,
+   "a glyphed sentry": 1.025,
    "Ssynthi": 0.705,
    "a soul temptress": 0.921,
    "a will sapper": 1.501,
@@ -626,28 +695,29 @@
    "a will pillager": 1.84,
    "a leering gargoyle": 2.361,
    "a soul inveigling": 1.202,
-   "a flouting gargoyle": 1.936,
+   "a flouting gargoyle": 2.875,
    "Xicotl": 3.025,
    "a glyphed forbidder": 1.77,
-   "a spiritish ancille": 0.921,
+   "a spiritish ancille": 0.866,
    "a glyphed aegis": 1.471,
    "a wightish ancille": 0.838,
-   "a wraithish ancille": 1.0,
-   "a sneering gargoyle": 0.871,
-   "Enynti": 0.782,
-   "a vampiric ancille": 2.059,
-   "a ghastish ancille": 1.987,
-   "a jeering gargoyle": 1.349,
-   "a ghoulish ancille": 1.612,
+   "a wraithish ancille": 1.01,
+   "a sneering gargoyle": 0.814,
+   "Enynti": 0.742,
+   "a vampiric ancille": 1.754,
+   "a ghastish ancille": 1.811,
+   "a jeering gargoyle": 1.341,
+   "a ghoulish ancille": 1.491,
    "a ghostly ancille": 1.274,
    "a thought spoiler": 0.911,
    "a dark librarian": 1.906,
-   "a glyphed warder": 0.869
+   "a glyphed warder": 0.869,
+   "a shadowy sage": 2.097
   },
-  "you_hit": 1195,
-  "you_miss": 831,
-  "mob_hit": 2554,
-  "mob_miss": 2407,
+  "you_hit": 1486,
+  "you_miss": 1068,
+  "mob_hit": 3024,
+  "mob_miss": 2819,
   "mobs": {
    "A pledge familiar": {
     "swings": 795,
@@ -684,9 +754,9 @@
     "loot": {}
    },
    "A glyphed ghoul": {
-    "swings": 145,
-    "landed": 70,
-    "avg": 10.1,
+    "swings": 176,
+    "landed": 83,
+    "avg": 10.3,
     "max": 48,
     "backstabs": 0,
     "backstab_avg": null,
@@ -720,9 +790,9 @@
     "loot": {}
    },
    "A glyphed sentry": {
-    "swings": 149,
-    "landed": 81,
-    "avg": 11.5,
+    "swings": 244,
+    "landed": 135,
+    "avg": 11.6,
     "max": 52,
     "backstabs": 0,
     "backstab_avg": null,
@@ -731,9 +801,9 @@
     "loot": {}
    },
    "A glyphed guard": {
-    "swings": 293,
-    "landed": 142,
-    "avg": 8.6,
+    "swings": 305,
+    "landed": 151,
+    "avg": 8.5,
     "max": 46,
     "backstabs": 0,
     "backstab_avg": null,
@@ -742,10 +812,10 @@
     "loot": {}
    },
    "An imp familiar": {
-    "swings": 39,
-    "landed": 20,
-    "avg": 14.0,
-    "max": 43,
+    "swings": 73,
+    "landed": 35,
+    "avg": 19.6,
+    "max": 53,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -879,10 +949,10 @@
     "loot": {}
    },
    "A flouting gargoyle": {
-    "swings": 111,
-    "landed": 62,
-    "avg": 22.7,
-    "max": 67,
+    "swings": 147,
+    "landed": 84,
+    "avg": 23.0,
+    "max": 76,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -926,9 +996,9 @@
     }
    },
    "A jeering gargoyle": {
-    "swings": 78,
-    "landed": 46,
-    "avg": 18.4,
+    "swings": 89,
+    "landed": 51,
+    "avg": 17.5,
     "max": 63,
     "backstabs": 0,
     "backstab_avg": null,
@@ -982,16 +1052,16 @@
     "loot": {}
    },
    "A spiritish ancille": {
-    "swings": 55,
-    "landed": 33,
-    "avg": 19.9,
+    "swings": 72,
+    "landed": 45,
+    "avg": 19.5,
     "max": 55,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 10,
-     "Instill": 9
+     "Lightning Bolt": 14,
+     "Instill": 13
     },
     "loot": {}
    },
@@ -1020,27 +1090,29 @@
     "loot": {}
    },
    "A ghoulish ancille": {
-    "swings": 248,
-    "landed": 128,
-    "avg": 16.1,
+    "swings": 565,
+    "landed": 283,
+    "avg": 14.8,
     "max": 57,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
      "Instill": 9,
+     "Greater Healing": 5,
      "Alacrity": 2,
      "Suffocate": 2,
      "Chaos Flux": 2,
-     "Beguile": 1,
-     "Ensnaring Roots": 1
+     "Ensnaring Roots": 2,
+     "Ensnare": 2,
+     "Beguile": 1
     },
     "loot": {}
    },
    "A ghastish ancille": {
-    "swings": 212,
-    "landed": 116,
-    "avg": 19.4,
+    "swings": 399,
+    "landed": 225,
+    "avg": 17.9,
     "max": 61,
     "backstabs": 1,
     "backstab_avg": 72.0,
@@ -1049,9 +1121,9 @@
     "loot": {}
    },
    "A wraithish ancille": {
-    "swings": 43,
-    "landed": 24,
-    "avg": 22.6,
+    "swings": 55,
+    "landed": 30,
+    "avg": 22.2,
     "max": 57,
     "backstabs": 0,
     "backstab_avg": null,
@@ -1066,34 +1138,39 @@
     "loot": {}
    },
    "A vampiric ancille": {
-    "swings": 54,
-    "landed": 30,
+    "swings": 128,
+    "landed": 75,
     "avg": 23.3,
-    "max": 59,
+    "max": 67,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
-    "casts": {},
+    "casts": {
+     "Shadow Vortex": 1,
+     "Screaming Terror": 1,
+     "Shock of Poison": 1
+    },
     "loot": {}
    },
    "Enynti": {
-    "swings": 40,
-    "landed": 22,
-    "avg": 11.7,
+    "swings": 57,
+    "landed": 28,
+    "avg": 11.5,
     "max": 42,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Rune of Fortune": 1
+     "Rune of Fortune": 2,
+     "Ringmail Pants +1": 1
     }
    },
    "A sneering gargoyle": {
-    "swings": 19,
-    "landed": 10,
-    "avg": 11.5,
-    "max": 51,
+    "swings": 45,
+    "landed": 20,
+    "avg": 15.5,
+    "max": 58,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -1195,6 +1272,21 @@
     },
     "loot": {}
    },
+   "A shadowy sage": {
+    "swings": 13,
+    "landed": 9,
+    "avg": 21.9,
+    "max": 35,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 7,
+     "Instill": 5,
+     "Tishan's Clash": 1
+    },
+    "loot": {}
+   },
    "A fallen noble": {
     "swings": 0,
     "landed": 0,
@@ -1262,7 +1354,7 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Vial of Vampire Blood": 3,
+     "Vial of Vampire Blood": 4,
      "Fine Steel Great Staff +1": 1
     }
    },
@@ -1323,7 +1415,8 @@
     "casts": {},
     "loot": {
      "Fine Steel Warhammer +2": 1,
-     "Fine Steel Dagger +1": 1
+     "Fine Steel Dagger +1": 1,
+     "Steel Knuckles +1": 1
     }
    },
    "an imp familiar": {
@@ -1336,7 +1429,7 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Sacrificial Dagger +1": 1
+     "Sacrificial Dagger +1": 2
     }
    },
    "a soul temptress": {
@@ -1475,7 +1568,8 @@
     "loot": {
      "Splinted Bronze Cloak +2": 1,
      "Fine Steel Short Sword +1": 1,
-     "Fine Steel Two Handed Sword +1": 1
+     "Fine Steel Two Handed Sword +1": 1,
+     "Bronze Breastplate +2": 1
     }
    },
    "a leering gargoyle": {
@@ -1515,6 +1609,45 @@
     "casts": {},
     "loot": {
      "Illegible Scroll": 1
+    }
+   },
+   "a sneering gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Gargoyle Eye": 1
+    }
+   },
+   "a flouting gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Gargoyle Eye": 1
+    }
+   },
+   "a shadowy sage": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Amber": 1
     }
    }
   }

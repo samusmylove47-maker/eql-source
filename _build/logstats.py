@@ -97,6 +97,16 @@ EXP = re.compile(r'You gain (?:party )?experience! \(([\d.]+)%\)')
 ESCAPE = re.compile(r'\b(\w+ )?(Succor|Evacuate|Evacuation)\b', re.I)
 ENGAGE = re.compile(r'^(.{1,44}?) (?:says|shouts), ')
 ESCAPE_WINDOW = datetime.timedelta(seconds=45)
+
+# A stamp reporting the group changing is flagged, not split on. Every measured
+# figure is conditional on who was present, and at 11:57:34 on 8 Aug the healer
+# lost connection — but she was back at 11:58:07, 33 seconds later. Cutting the
+# session there would have halved the sample to record a gap shorter than one
+# fight. So the change is marked in place and shown on the page, and the reader
+# is told conditions varied rather than being handed two thin sessions.
+CONDITION_CHANGE = re.compile(
+    r'(lost connection|disconnect|linkdead|logged off|logging off|left the group|'
+    r'swapped|switching to|changed (?:trio|difficulty|class))', re.I)
 LEVEL_SELF = re.compile(r'You have (?:gained|reached) level (\d+)')
 
 
@@ -129,8 +139,8 @@ def collect(rows):
     # were noted at 11:07:53 and the zone was entered at 11:08:57, which put them
     # in different sessions. Every stamp in the file is therefore offered to
     # every session as context; session-scoped stamps stay separate.
-    all_stamps = [m.group(1).strip().rstrip("'")
-                  for _w, x in rows for m in [STAMP.search(x)] if m]
+    all_stamps = [{'at': w.strftime('%H:%M'), 'text': m.group(1).strip().rstrip("'")}
+                  for w, x in rows for m in [STAMP.search(x)] if m]
 
     def new_session(zone, diff, when):
         return dict(zone=zone, difficulty_label=diff,
@@ -184,7 +194,9 @@ def collect(rows):
 
         m = STAMP.search(x)
         if m:
-            cur['stamps'].append(m.group(1).strip().rstrip("'"))
+            note = m.group(1).strip().rstrip("'")
+            cur['stamps'].append({'at': when.strftime('%H:%M'), 'text': note,
+                                  'conditions': bool(CONDITION_CHANGE.search(note))})
         m = FACTION_D.search(x)
         if m:
             cur.setdefault('_fac_buf', []).append((when, m.group(1).strip(), int(m.group(2))))
@@ -337,7 +349,7 @@ def build(src):
               f"{s['kills']} kills / {s['distinct']} distinct, {len(s['mobs'])} mobs measured, "
               f"your hit rate {100*th/max(1,th+tm_):.1f}%, drops {s['drop_tiers']}")
         for line in s['stamps']:
-            print(f"      stamp: {line[:110]}")
+            print(f"      stamp {line['at']}: {line['text'][:100]}")
 
 
 if __name__ == '__main__':
