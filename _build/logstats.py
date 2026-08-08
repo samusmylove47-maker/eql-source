@@ -131,6 +131,15 @@ BY_SPELL = re.compile(r'\bby ([A-Z][^.]*?)\.?\s*$')
 RESISTED = re.compile(r'^You resist (.+?)\'s (.+?)!')
 FEAR_WORDS = re.compile(r'You (?:flee|are afraid|are terrified|run in terror)')
 
+# Signals that a name belongs to a person rather than a mob. Nothing hostile
+# heals us and nothing hostile speaks in a chat channel, so these are safe one
+# way: they never mistake a mob for a player.
+HEALED_YOU = re.compile(r'^(.{1,24}?) healed you(?: over time)? for \d+')
+YOU_HEALED = re.compile(r'^You healed (.{1,24}?) for \d+')
+CHATTER = re.compile(r'^(\w[\w`\'-]{2,23}) (?:tells|says) (?:the |your )?'
+                     r'(?:guild|group|party|raid|fellowship|General|OOC|auction)')
+GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins to cast a spell on you)')
+
 
 def parse(path):
     rows = []
@@ -156,6 +165,20 @@ def collect(rows):
         if m and ARTICLE.match(m.group(1).strip()):
             mobs.add(m.group(1).strip())
     mobs = {m for m in mobs if m and not m.startswith('You')}
+
+    # Subtract the people. "<name> has been slain" is evidence something died,
+    # not evidence it was a mob: Shara was killed by Lasna Cheroon and duly
+    # appeared in the named-mob table of a published plate. That is the Azuria
+    # error arriving from the other direction, and the same rule applies —
+    # positive evidence only, and people leave plenty of it. Nothing hostile
+    # heals us, and nothing hostile talks in a chat channel.
+    players = set()
+    for _w, x in rows:
+        for rx in (HEALED_YOU, YOU_HEALED, CHATTER, GROUP_CAST):
+            m = rx.match(x)
+            if m:
+                players.add(m.group(1).strip())
+    mobs -= players
 
     # Character context is usually stamped before zoning in — the trio and level
     # were noted at 11:07:53 and the zone was entered at 11:08:57, which put them
@@ -352,6 +375,7 @@ def summarise(s):
                difficulty_agrees=agree, date=s['date'],
                window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
+               kinds=sorted(s['kills']),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
                context=s.get('context', []), escapes=s.get('escapes', []),

@@ -130,8 +130,83 @@ def control_html(s):
             f'casts the spell at the top of this table takes your turn away most often.</p>')
 
 
+def merge(sessions):
+    """Combine sessions of the same zone and difficulty into one measurement.
+
+    Taking the largest and discarding the rest threw away 127 kills and three
+    named mobs measured nowhere else, because one afternoon in Mistmoore was cut
+    into two sessions by a zone line. Sessions are only ever merged when zone
+    and difficulty match, so nothing measured under different conditions is
+    averaged together.
+    """
+    if len(sessions) == 1:
+        return sessions[0]
+    out = dict(sessions[0])
+    out['window'] = f"{sessions[0]['window'].split('-')[0]}-{sessions[-1]['window'].split('-')[-1]}"
+    out['kills'] = sum(s['kills'] for s in sessions)
+    out['you_hit'] = sum(s['you_hit'] for s in sessions)
+    out['you_miss'] = sum(s['you_miss'] for s in sessions)
+    out['sessions_merged'] = len(sessions)
+
+    for key in ('drop_tiers', 'faction'):
+        c = collections.Counter()
+        for s in sessions:
+            c.update(s.get(key) or {})
+        out[key] = dict(c.most_common()) if key == 'faction' else dict(sorted(c.items()))
+
+    out['stamps'] = [x for s in sessions for x in s.get('stamps', [])]
+    out['escapes'] = [x for s in sessions for x in s.get('escapes', [])]
+
+    mobs = {}
+    for s in sessions:
+        for name, d in s['mobs'].items():
+            m = mobs.setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
+                                           backstabs=0, backstab_avg=None, backstab_max=None,
+                                           casts=collections.Counter(), loot=collections.Counter(),
+                                           _dmg=0.0, _bdmg=0.0))
+            m['swings'] += d.get('swings') or 0
+            if d.get('avg') is not None:
+                m['_dmg'] += d['avg'] * (d.get('landed') or 0)
+                m['max'] = max(m['max'] or 0, d.get('max') or 0)
+            m['landed'] += d.get('landed') or 0
+            if d.get('backstabs'):
+                m['_bdmg'] += (d.get('backstab_avg') or 0) * d['backstabs']
+                m['backstabs'] += d['backstabs']
+                m['backstab_max'] = max(m['backstab_max'] or 0, d.get('backstab_max') or 0)
+            m['casts'].update(d.get('casts') or {})
+            m['loot'].update(d.get('loot') or {})
+    for m in mobs.values():
+        m['avg'] = round(m['_dmg'] / m['landed'], 1) if m['landed'] else None
+        m['backstab_avg'] = round(m['_bdmg'] / m['backstabs'], 1) if m['backstabs'] else None
+        m['casts'] = dict(m['casts'].most_common())
+        m['loot'] = dict(m['loot'].most_common())
+        del m['_dmg'], m['_bdmg']
+    out['mobs'] = mobs
+    # Unique names, not the sum of per-session counts: the same gargoyle type
+    # appearing in both halves of an afternoon is one kind of mob, not two.
+    kinds = {k for s in sessions for k in (s.get('kinds') or [])}
+    out['kinds'] = sorted(kinds)
+    out['distinct'] = len(kinds) or max(s['distinct'] for s in sessions)
+
+    ctl = dict(sessions[0].get('control') or {})
+    if ctl:
+        for k in ('melee_stuns_avoided', 'lockout_lines', 'fear_lines', 'screams', 'scream_seconds'):
+            ctl[k] = sum((s.get('control') or {}).get(k, 0) for s in sessions)
+        stuns = {}
+        for s in sessions:
+            for sp, d in ((s.get('control') or {}).get('stuns') or {}).items():
+                e = stuns.setdefault(sp, dict(landed=0, casters=collections.Counter()))
+                e['landed'] += d['landed']
+                e['casters'].update(d.get('casters') or {})
+        ctl['stuns'] = {k: dict(landed=v['landed'], casters=dict(v['casters'].most_common()))
+                        for k, v in sorted(stuns.items(), key=lambda kv: -kv[1]['landed'])}
+        out['control'] = ctl
+    return out
+
+
 def section(sess_list, zone_title):
-    s = max(sess_list, key=lambda z: z['kills'])          # the fullest session
+    same = [z for z in sess_list if z.get('difficulty') == sess_list[0].get('difficulty')]
+    s = merge(sorted(same, key=lambda z: z['window']))
     # Stamps used to be bare strings and are now {at, text, conditions}; accept
     # either so an older measured.json still renders.
     def txt(v):
@@ -204,7 +279,8 @@ def section(sess_list, zone_title):
         f'<section class="meas">'
         f'<h2>Measured in play <span class="tierM">TIER M</span></h2>'
         f'<div class="cond">'
-        f'<b>One session, {esc(s["date"])}, {esc(s["window"])}.</b> '
+        f'<b>{("One session" if s.get("sessions_merged", 1) < 2 else str(s["sessions_merged"]) + " sessions")}, '
+        f'{esc(s["date"])}, {esc(s["window"])}.</b> '
         f'{"<b>" + esc(who) + "</b> " if who else ""}'
         f'Zone entered as <b>{esc(zone_title)} ({diff})</b>. '
         f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '

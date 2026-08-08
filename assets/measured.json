@@ -10,6 +10,20 @@
   "stamps": [],
   "kills": 27,
   "distinct": 12,
+  "kinds": [
+   "Master Brewer",
+   "Sabertooth Overseer",
+   "Splitpaw Explorer",
+   "Splitpaw Sharpshooter",
+   "a boisterous gnoll",
+   "a gnoll bouncer",
+   "a gnoll brewer",
+   "a gnoll elite",
+   "a gnoll elite pet",
+   "a gnoll necromancer",
+   "a gnoll necromancer pet",
+   "an elite gnoll fighter"
+  ],
   "drop_tiers": {
    "2": 7
   },
@@ -302,23 +316,6 @@
     },
     "loot": {}
    },
-   "Shara": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
-    "backstabs": 0,
-    "backstab_avg": null,
-    "backstab_max": null,
-    "casts": {
-     "Greater Healing": 9,
-     "Celestial Remedy": 6,
-     "Smite": 4,
-     "Healing": 3,
-     "Stun": 2
-    },
-    "loot": {}
-   },
    "a gnoll bouncer": {
     "swings": 0,
     "landed": 0,
@@ -424,6 +421,48 @@
   ],
   "kills": 173,
   "distinct": 40,
+  "kinds": [
+   "Enynti",
+   "Princess Cherista",
+   "Ssynthi",
+   "Xicotl",
+   "a dark librarian",
+   "a dark offerer",
+   "a deathly usher",
+   "a flouting gargoyle",
+   "a ghastish ancille",
+   "a ghostly ancille",
+   "a ghoulish ancille",
+   "a glyphed aegis",
+   "a glyphed custodian",
+   "a glyphed familiar",
+   "a glyphed forbidder",
+   "a glyphed ghoul",
+   "a glyphed guard",
+   "a glyphed sentry",
+   "a glyphed warder",
+   "a grinning gargoyle",
+   "a jeering gargoyle",
+   "a leering gargoyle",
+   "a pledge familiar",
+   "a shadowy sage",
+   "a sneering gargoyle",
+   "a soul inveigling",
+   "a soul seductress",
+   "a soul temptress",
+   "a spiritish ancille",
+   "a thought spoiler",
+   "a vampiric ancille",
+   "a wightish ancille",
+   "a will pillager",
+   "a will ravisher",
+   "a will sapper",
+   "a wraithish ancille",
+   "an avenging caitiff",
+   "an imp familiar",
+   "an initiate familiar",
+   "an undead knight"
+  ],
   "drop_tiers": {
    "1": 38,
    "2": 9
@@ -472,27 +511,27 @@
     "at": "11:23:23",
     "by": "Shara",
     "engaged": [
-     "Shara",
      "A will ravisher",
      "A will sapper",
      "A will pillager",
      "A leering gargoyle",
-     "A flouting gargoyle"
+     "A flouting gargoyle",
+     "A thought spoiler"
     ],
-    "after": "Shara cast Lesser Succor III"
+    "after": "A soul seductress cast Shock of Poison"
    },
    {
     "at": "11:40:38",
     "by": "Shara",
     "engaged": [
-     "Shara",
      "A jeering gargoyle",
      "A will sapper",
      "A will pillager",
      "A flouting gargoyle",
-     "A leering gargoyle"
+     "A leering gargoyle",
+     "Princess Cherista"
     ],
-    "after": "Shara cast Lesser Succor III"
+    "after": "Princess Cherista cast Screaming Terror"
    }
   ],
   "control": {
@@ -1550,23 +1589,6 @@
     "casts": {},
     "loot": {}
    },
-   "Shara": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
-    "backstabs": 0,
-    "backstab_avg": null,
-    "backstab_max": null,
-    "casts": {
-     "Healing": 127,
-     "Flowering Heal": 77,
-     "Shield of Barbs": 7,
-     "Illusion: Dark Elf": 5,
-     "Lesser Succor III": 2
-    },
-    "loot": {}
-   },
    "A fallen noble": {
     "swings": 0,
     "landed": 0,
@@ -1988,6 +2010,55 @@
   "stamps": [],
   "kills": 127,
   "distinct": 47,
+  "kinds": [
+   "Butler Syncall",
+   "Enynti",
+   "Maid Issis",
+   "Mynthi Davissi",
+   "Ssynthi",
+   "a dark elf noble",
+   "a dark offerer",
+   "a deathly herald",
+   "a deathly usher",
+   "a flouting gargoyle",
+   "a ghastish ancille",
+   "a ghoulish ancille",
+   "a glyphed custodian",
+   "a glyphed familiar",
+   "a glyphed forbidder",
+   "a glyphed ghoul",
+   "a glyphed guard",
+   "a glyphed sentry",
+   "a glyphed warder",
+   "a grinning gargoyle",
+   "a gypsy ambassador",
+   "a gypsy dancer",
+   "a gypsy musician",
+   "a jeering gargoyle",
+   "a leering gargoyle",
+   "a negotiator",
+   "a pledge familiar",
+   "a shadowy scrivener",
+   "a sneering gargoyle",
+   "a soul seductress",
+   "a soul temptress",
+   "a spiritish ancille",
+   "a thought corruptor",
+   "a thought spoiler",
+   "a vampire noble",
+   "a vampire oracle",
+   "a vampiric ancille",
+   "a werewolf",
+   "a werewolf gypsy",
+   "a wightish ancille",
+   "a will pillager",
+   "a will ravisher",
+   "a will sapper",
+   "a wraithish ancille",
+   "an ancille cook",
+   "an imp familiar",
+   "an initiate familiar"
+  ],
   "drop_tiers": {
    "1": 39,
    "2": 5,
@@ -2037,12 +2108,11 @@
     "at": "12:42:06",
     "by": "Shara",
     "engaged": [
-     "Shara",
      "A sneering gargoyle",
      "A spiritish ancille",
      "A vampiric ancille"
     ],
-    "after": "Shara cast Lesser Succor III"
+    "after": "A spiritish ancille cast Instill"
    }
   ],
   "control": {
@@ -3168,23 +3238,6 @@
      "Ringmail Coat +2": 1,
      "Rune of Fortune": 1
     }
-   },
-   "Shara": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
-    "backstabs": 0,
-    "backstab_avg": null,
-    "backstab_max": null,
-    "casts": {
-     "Healing": 110,
-     "Flowering Heal": 62,
-     "Shield of Barbs": 1,
-     "Creeping Crud": 1,
-     "Lesser Succor III": 1
-    },
-    "loot": {}
    },
    "A dark sacrificer": {
     "swings": 0,
