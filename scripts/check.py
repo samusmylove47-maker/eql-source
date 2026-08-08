@@ -87,12 +87,15 @@ else:
                 fail(f"{page} claims {claim.group(1)} verified but zones-index says {counts['full']} "
                      f"— never publish a higher number than the data supports")
 
-    # the spectrum column count must match the zone count
-    css = open("assets/site.css", encoding="utf-8").read()
-    m = re.search(r"\.spec-bars\{[^}]*repeat\((\d+),", css)
-    if m and int(m.group(1)) != len(Z):
-        fail(f"spectrum has {m.group(1)} columns but there are {len(Z)} zones — "
-             f"update .spec-bars in assets/site.css")
+    # Every zone must be reachable from the dungeon index. This lives here rather
+    # than on the home page: the home page deliberately does not enumerate the
+    # plates — that is what the index is for — so requiring it to link all ten
+    # would force the page back into being a table of contents for itself.
+    if os.path.exists("dungeons/index.html"):
+        h = open("dungeons/index.html", encoding="utf-8").read()
+        missing = [z["slug"] for z in Z if f'{z["slug"]}.html' not in h]
+        if missing:
+            fail(f"dungeons/index.html does not link {len(missing)} zone(s): {', '.join(missing)}")
 
 # 4. the 3D viewer must not depend on a CDN
 for p in glob.glob("raids/*.html"):
@@ -109,8 +112,15 @@ for cls in (".tier", ".t1", ".t3", ".t5"):
         fail(f"assets/site.css has lost {cls} — the source-tier badge system is load-bearing")
 if os.path.exists("index.html"):
     h = open("index.html", encoding="utf-8").read()
-    if "tier-scale" not in h:
-        fail("index.html no longer publishes the source-tier scale")
+    # What matters is that the scale is published and legible on the home page,
+    # not which markup renders it. This used to require a literal "tier-scale"
+    # class, which broke the moment the scale was redesigned even though every
+    # tier was still on the page.
+    named = sum(1 for t in ("Developer", "wiki data", "community guides",
+                            "Aggregator", "classic prose") if t.lower() in h.lower())
+    if named < 5:
+        fail(f"index.html names only {named} of the 5 source tiers — the scale is "
+             f"the reason the site exists and must stay published on the home page")
     if h.count('class="tier') < 3:
         warn("the home page shows fewer than three example tier badges")
 

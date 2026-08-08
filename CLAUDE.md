@@ -35,7 +35,34 @@ Higher tiers override lower ones. Always.
 1. **Official patch notes** — everquestlegends.com/news. Dated and authoritative.
    Anything published after a wiki page's last edit supersedes that page.
 2. **Structured wiki data** — eqlwiki.com infoboxes, NPC tables, item tables,
-   coordinate records. Entered from the live game.
+   coordinate records — **but only once the page passes the provenance test below.**
+
+### The provenance test — apply before trusting any eqlwiki page as tier 2
+
+Tier 2 prints **bare, with no badge**, so misclassifying a page here is the most
+expensive mistake available. Large parts of eqlwiki were bulk-imported from the
+Project 1999 wiki *before EverQuest Legends existed*, and imported infoboxes look
+identical to measured ones.
+
+**EverQuest Legends launched 28 July 2026.** Check the page's oldest revision:
+
+- **Oldest revision predates 2026, or the author is `imported>…` or `P99Wiki>…`**
+  → the page is a Project 1999 import. **Tier 5, badge it,** no matter how
+  structured it looks. Every Plane of Sky, Hate and Fear boss page fails this
+  test: Spiroc Lord created Jan 2025, Bazzt Zzzt Nov 2025 and never edited since.
+- **A named editor changed the field after launch with a comment describing
+  measurement** → tier 2, and cite the revision id, date and editor.
+- **Page carries `{{Classic Era}}`** → its prose is import until proven otherwise.
+  Nine of the ten surveyed zone pages carry it. Note the wiki uses that template
+  to mean the current level-50 era, not classic EverQuest, but in practice the
+  tagged prose is P99 text.
+
+Two tells that a stat block is classic rather than Legends: a boss listed with a
+**single class** (Legends raid bosses run triple-class from D3), and raid sizing
+advice measured in dozens of players (Legends caps raids at 8).
+
+**A page can be tier 2 in its infobox and tier 5 in its prose at the same time.**
+Najena is exactly that today — infobox 4:50, prose "19 minutes", same page.
 3. **eqprogression.com / eqlwiki user guides** — Alanna's Race Unlock Guide and
    similar. Named authors, actively maintained, generally reliable.
 4. **Community aggregators** — EQL Build Forge, EQ Legends Tools. Useful for
@@ -131,7 +158,7 @@ state/              automation memory. Do not hand-edit
 ```
 
 **`assets/zones-index.json` is the single source of navigation truth.** Home
-page, spectrum bars and dungeon index all read from it.
+page, plate cards and dungeon index all read from it.
 
 Generated files are overwritten by `./build.sh`. A rebuild silently throws away
 anything edited in place; `check.py` will not catch it.
@@ -173,10 +200,11 @@ because they are easy to break by accident:
   tools, ember for raids.
 - **Three faces.** Saira Condensed (display, uppercase, tight), IBM Plex Mono
   (data, labels, anything numeric), Public Sans (prose).
-- **The spectrum** on the home page is the signature: one bar per zone, in plate
-  order, in that zone's permanent accent, height keyed to the top of its level
-  band. Ornament, chart and navigation at once. If the zone count changes,
-  update `grid-template-columns:repeat(10,1fr)` in `site.css`.
+- **The plate cards** are the home page's signature: one card per zone, washed
+  with its own accent, carrying its plate number cropped by the card edge. They
+  reflow, so adding a zone needs no layout change. A fixed-column spectrum of
+  coloured bars preceded them and was withdrawn on 2026-08-08 — it cluttered the
+  page and would not survive the zone count growing.
 - Each zone owns its accent permanently. Never reuse or reassign one. Where an
   accent fails contrast as text, derive a lifted variant; never change the accent.
 - **WCAG AA on all text.** Verified clean across 25 pages. Do not regress it.
@@ -204,7 +232,8 @@ Do not write around a gap. Name it instead.
 
 **A new dungeon plate.** Add to `assets/zones-index.json` with the next plate
 number and an unused accent. Put `<slug>.html` in `_build/source/`. Run
-`./build.sh`. Update the spectrum column count in `site.css`.
+`./build.sh`. The plate grid reflows on its own; nothing in `site.css` needs a
+count updated. `check.py` fails if the home page stops linking a zone.
 
 **A new raid encounter.** Copy `_build/build4.py`. The 3D engine is
 self-contained in it: islands, markers, radius rings, dashed paths, phases, and

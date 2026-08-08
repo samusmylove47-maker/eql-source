@@ -11,33 +11,13 @@ Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 NITEMS, NNAMED = len(IX['items']), len(IX['named'])
 MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
-TOPLV = {"najena":35,"splitpaw":42,"crushbone":22,"befallen":25,"blackburrow":20,
-         "lowerguk":49,"nagafenslair":55,"thehole":56,"warrens":25,"mistmoore":45}
-CEIL = 56
+BYS = {z['slug']: z for z in Z}
 
 def zsub(z):
     return f"{z['levels']}"
 
-def _lum(h):
-    c = [int(h[i:i+2], 16)/255 for i in (1, 3, 5)]
-    c = [v/12.92 if v <= 0.03928 else ((v+0.055)/1.055)**2.4 for v in c]
-    return 0.2126*c[0] + 0.7152*c[1] + 0.0722*c[2]
-
-def bar_text(accent):
-    """Plate number sits on the accent bar. Ten accents span light gold to deep
-    crimson, so no single text colour clears AA on all of them — pick whichever
-    of ground or bone contrasts better. The accent itself is never changed."""
-    L = _lum(accent)
-    on_dark = (L + 0.05) / (_lum('#0E1315') + 0.05)
-    on_light = (_lum('#E6E9E4') + 0.05) / (L + 0.05)
-    return '#0E1315' if on_dark >= on_light else '#E6E9E4'
 
 # ---------------------------------------------------------------- HOME
-bars = "\n".join(
-  f'''    <a class="sb" href="dungeons/{z['slug']}.html" style="--c:{z['accent']};--bt:{bar_text(z['accent'])};--h:{round(TOPLV[z['slug']]/CEIL*100)}%;--d:{i*70}ms">
-      <i></i><u>{z['title']}</u><b>{z['plate']:02d}</b></a>'''
-  for i, z in enumerate(Z))
-
 zrows = "\n".join(
   f'''    <a class="zrow" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
       <span class="pn">{z['plate']:02d}</span>
@@ -47,183 +27,125 @@ zrows = "\n".join(
       <span class="cell"><em>Map</em>{'yes' if z['slug'] in MAPS else '—'}</span>
       <span class="bar"></span></a>''' for z in Z)
 
+# Home page: ten colour objects rather than ten table rows. The contour rings
+# are anchored to a different corner per plate so the ten cards do not read as
+# one texture repeated — each looks like a different piece of the same map.
+_CORNERS = [("86%","118%"),("14%","112%"),("92%","104%"),("8%","120%"),("78%","110%"),
+            ("20%","104%"),("94%","116%"),("10%","106%"),("70%","120%"),("30%","110%")]
+
+def _gate(z):
+    lv = z["verify_level"]
+    label = {"full":"all three gates cleared","partial":"partial — "+(z.get("verify_gate") or ""),
+             "none":"not verified — "+(z.get("verify_gate") or "")}[lv]
+    return f'<span class="gate {lv}" title="{label}"></span>'
+
+plates = "\n".join(
+  f'''    <a class="plate contour" href="dungeons/{z['slug']}.html"
+       style="--c:{z['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+      <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
+      <span class="num">{z['plate']:02d}</span>
+      <h3 class="pt">{z['title']}</h3>
+      <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{'<span>Map <b>yes</b></span>' if z['slug'] in MAPS else ''}</span>
+    </a>''' for i, z in enumerate(Z))
+
 nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
 nnone = sum(1 for z in Z if z["verify_level"]=="none")
 
+from changelog import ENTRIES, TONE
+
+recent = "\n".join(
+  f'''      <li class="ch" style="--c:{TONE[e['kind']]}">
+        <span class="k">{e['kind']}</span>
+        <span class="t">{e['title']}</span>
+        <span class="d">{e['date']}</span>
+      </li>''' for e in ENTRIES[:4])
+
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, 3D raid encounter guides and dungeon survey plates. Every claim names its source and its date.") + bar() + f'''
 <main>
-<div class="shell">
-  <section style="padding:clamp(48px,9vw,104px) 0 0">
-    <p class="eyebrow">EverQuest Legends &middot; <b>a fan reference, updated daily</b></p>
-    <h1 class="display">Accurate,<br>sourced,<br><em>and kept</em><br>current.</h1>
-    <p class="lede" style="margin-top:30px;font-size:clamp(17px,2.2vw,20px)">Legends is three months old and moves every
-      week. Most of what the community reads about it is classic EverQuest text in a Legends-shaped hole &mdash; written
-      for a game with one class per character and no difficulty dial. <strong>This site exists to be the version you can
-      trust.</strong> Every figure names the page it came from and the day it was read. Every gap says so out loud.</p>
 
-    <dl class="index-strip">
-      <div class="ix"><dt>Tools</dt><dd>4<small>progression trackers and a searchable index, no account needed</small></dd></div>
-      <div class="ix"><dt>Items indexed</dt><dd>{NITEMS}<small>with the mob that drops each one</small></dd></div>
-      <div class="ix"><dt>Named mobs</dt><dd>{NNAMED}<small>levels, coordinates and spawn notes</small></dd></div>
-      <div class="ix"><dt>Survey plates</dt><dd>{len(Z)}<small>{nfull} verified to the full three-gate standard &middot; {npart} partial &middot; {nnone} not yet</small></dd></div>
-      <div class="ix"><dt>Open gaps</dt><dd>8<small>listed publicly, not hidden</small></dd></div>
-    </dl>
-  </section>
-</div>
-
-<section class="band">
+<section class="hero">
   <div class="shell">
-    <div class="sechead"><span class="n">01</span>
-      <div><h2 class="sec">What we are trying to do</h2></div></div>
-    <div class="pledge">
-      <h3>Four commitments</h3>
-      <ol>
-        <li><div class="lh">Name the source, name the date</div>
-          <div class="ld">Every number traces to a page we can point at, with the day it was read. If we cannot
-            source it, we do not print it.</div></li>
-        <li><div class="lh">Say when we do not know</div>
-          <div class="ld">A guide that reads &ldquo;unresolved&rdquo; in the right place is worth more than one that
-            reads smoothly and is quietly wrong. Our open questions are published, not buried.</div></li>
-        <li><div class="lh">Grade the evidence in public</div>
-          <div class="ld">Anything that is not a developer statement or structured wiki data carries a visible tier
-            badge, so you always know how much weight a claim can bear.</div></li>
-        <li><div class="lh">Check it every day</div>
-          <div class="ld">The wikis move daily and the game patches weekly. Sources are re-checked twice a day, and
-            anything predating the last patch that touched its subject is flagged rather than trusted.</div></li>
-      </ol>
-    </div>
-
-    <h3 style="margin-top:42px">How we grade a source</h3>
-    <p class="lede">Higher tiers override lower ones, always. <strong>Tier 1 and Tier 2 claims are printed
-      plain.</strong> Anything below that carries its badge wherever it appears, like this:
-      <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
-    <div class="tier-scale">
-      <div class="ts" style="--tc:#5FA37E"><div class="n">Tier 1 &middot; strongest</div>
-        <div class="h">Developer statements</div>
-        <div class="d">Official patch notes and direct developer answers. Dated, authoritative, and they override
-          everything below.</div><span class="mark">printed without a badge</span></div>
-      <div class="ts" style="--tc:#7FB2C7"><div class="n">Tier 2</div>
-        <div class="h">Structured wiki data</div>
-        <div class="d">Infoboxes, NPC tables, item tables and coordinate records &mdash; fields somebody entered from
-          the live game.</div><span class="mark">printed without a badge</span></div>
-      <div class="ts" style="--tc:#D9A227"><div class="n">Tier 3</div>
-        <div class="h">Named community guides</div>
-        <div class="d">Maintained, dated, attributed work by a named author. Reliable, but it is one person&rsquo;s
-          reading of the game.</div><span class="mark">badged <span class="tier t3">T3</span></span></div>
-      <div class="ts" style="--tc:#D9762A"><div class="n">Tier 4</div>
-        <div class="h">Aggregators and snapshots</div>
-        <div class="d">Item databases and mined-data snapshots. Good for a second opinion; stale the moment a patch
-          lands.</div><span class="mark">badged <span class="tier t4">T4</span></span></div>
-      <div class="ts" style="--tc:#D46C64"><div class="n">Tier 5 &middot; handle with care</div>
-        <div class="h">Inherited classic prose</div>
-        <div class="d">Wiki text imported from Project 1999, describing a single-class game at fixed difficulty. Quoted
-          only when marked as classic.</div><span class="mark">badged <span class="tier t5">T5</span></span></div>
-    </div>
-    <div class="note warn"><strong>Two systems break almost all inherited advice.</strong> Characters run
-      <em>three</em> classes at once, and difficulty D0&ndash;D4 changes what mobs <em>do</em> rather than what level
-      they are. Any line that says &ldquo;you need a full group of level 50s&rdquo; came from a game where neither was
-      true. Where we quote it, we mark it.</div>
+    <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
+    <h1 class="display">The reference<br>that shows<br><em>its working.</em></h1>
+    <p class="hero-lede">Legends moves every week, and most of what the community reads about it is
+      classic EverQuest text in a Legends-shaped hole. Every figure here names the page it came from
+      and the day it was read. Every gap says so out loud.</p>
+    <p class="hero-sig"><span>{len(Z)} plates surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
   </div>
 </section>
 
-<section class="band">
+<section class="band doors">
   <div class="shell">
-    <div class="sechead"><span class="n">02</span>
-      <div><h2 class="sec">Tools</h2>
-        <p class="lede" style="margin:0">No account, no login, no server holding your data. Everything you tick is
-          packed into the page URL &mdash; bookmark it, paste it in guild chat, open it anywhere.</p></div>
-      <a class="link" href="tools/index.html">All tools &rarr;</a></div>
-    <div class="cards c2">
-      <a class="card" href="tools/index-search.html" style="--c:var(--bone)">
-        <div class="kicker">New &middot; searchable</div><h3 class="t">The Index</h3>
-        <p class="d">Every item and named mob across the ten surveyed dungeons in one place. Ask where something drops,
-          filter by class and slot, or find which named you still have not met. {NITEMS} items, {NNAMED} named, each linked back
-          to the plate it came from.</p>
-        <div class="foot"><span>Loot &amp; named lookup</span><span class="go">Open &rarr;</span></div></a>
-      <a class="card" href="tools/plane-of-sky.html" style="--c:var(--instr)">
-        <div class="kicker">Progression</div><h3 class="t">Plane of Sky tracker</h3>
-        <p class="d">Build your trio and get every class-unlock test it owes &mdash; 95 quests, 222 components, each
-          tagged with the island and boss that drops it. With slot-competition analysis, because three classes means
-          three item pools fighting over the same slots.</p>
-        <div class="foot"><span>All 560 trios</span><span class="go">Open &rarr;</span></div></a>
-      <a class="card" href="tools/race-unlocks.html" style="--c:var(--instr)">
-        <div class="kicker">Progression</div><h3 class="t">Race unlock tracker</h3>
-        <p class="d">All sixteen race unlocks with their factions, methods and honest work counts. Mark what you want
-          and it merges the grinds into one shopping list, stripping the duplicated steps.</p>
-        <div class="foot"><span>Merged routes</span><span class="go">Open &rarr;</span></div></a>
-      <a class="card" href="tools/combo-calculator.html" style="--c:var(--instr)">
-        <div class="kicker">Planning</div><h3 class="t">Race &amp; primary calculator</h3>
-        <p class="d">The primary slot is the only one you can never change. Name the class that must sit there and the
-          race you want, and it costs every route to both &mdash; without arguing you out of the requirement.</p>
-        <div class="foot"><span>Takes you literally</span><span class="go">Open &rarr;</span></div></a>
+    <div class="sechead"><div><h2 class="sec">Start here</h2>
+      <p class="lede" style="margin:0">Three ways in, depending on what you came for.</p></div></div>
+    <div class="doorgrid">
+
+      <a class="door contour" href="tools/index-search.html" style="--c:var(--bone);--cx:88%;--cy:116%">
+        <span class="dq">I need to find something</span>
+        <h3 class="dt">The Index</h3>
+        <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
+          Ask where a thing drops, filter by class and slot, or find the named you have not met.</p>
+        <span class="dgo">Search {NITEMS} items &rarr;</span>
+      </a>
+
+      <a class="door contour" href="dungeons/index.html" style="--c:var(--z01);--cx:12%;--cy:110%">
+        <span class="dq">I am going into a zone</span>
+        <h3 class="dt">The survey plates</h3>
+        <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
+          and coordinates re-derived from <code>/loc</code> records. Navigation maps where they exist.</p>
+        <span class="dgo">{len(Z)} plates, {len(MAPS)} maps &rarr;</span>
+      </a>
+
+      <a class="door contour" href="tools/index.html" style="--c:var(--instr);--cx:84%;--cy:104%">
+        <span class="dq">I am planning a character</span>
+        <h3 class="dt">The trackers</h3>
+        <p class="dd">Class unlocks, race unlocks and the primary-slot decision you can never take back.
+          Progress packs into the page URL, so nothing is stored and nothing is lost.</p>
+        <span class="dgo">Three trackers &rarr;</span>
+      </a>
+
     </div>
+    <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; boss fights
+      rendered in three dimensions, because a paragraph about where to stand has never been as clear as
+      being shown.</p>
   </div>
 </section>
 
-<section class="band">
+<section class="band ledger">
   <div class="shell">
-    <div class="sechead"><span class="n">03</span>
-      <div><h2 class="sec">Raid encounters</h2>
-        <p class="lede" style="margin:0">Boss fights you can orbit. Positioning, radii and phase transitions rendered
-          in three dimensions, because a paragraph about where to stand has never been as clear as being shown.</p></div>
-      <a class="link" href="raids/index.html">Encounter index &rarr;</a></div>
-    <div class="cards c2">
-      <a class="card" href="raids/eye-of-veeshan.html" style="--c:var(--ember)">
-        <div class="kicker">Plane of Sky &middot; Island 8 &middot; final boss</div><h3 class="t">Eye of Veeshan</h3>
-        <p class="d">32,000 hit points and 865 damage a swing. Full 3D model of the island stack, the pull-down to
-          Island 7, and the aggro-transfer trick that moves him without keying your whole force.</p>
-        <div class="foot"><span>3D model</span><span class="go">Open &rarr;</span></div></a>
-      <div class="card" style="--c:var(--dim)">
-        <div class="kicker">In build</div><h3 class="t">The rest of Sky</h3>
-        <p class="d">Spiroc Lord next &mdash; the vanquisher squad-respawn logic sets kill order and is nearly
-          impossible to hold in your head from prose. Then Island 6&rsquo;s bee split tree, which is a decision graph
-          rather than a tactic.</p>
-        <div class="chipline"><span class="pill warn">D4 behaviour needs field data</span></div>
-        <div class="foot"><span>Queued</span></div></div>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><span class="n">04</span>
-      <div><h2 class="sec">Dungeon survey plates</h2>
-        <p class="lede" style="margin:0">Deep reference for every revamped zone: population tables, named rosters with
-          spawn data, loot tied to drop sources, and plotted coordinate maps. Bar height is the top of each zone&rsquo;s
-          level band.</p></div>
-      <a class="link" href="dungeons/index.html">All plates &rarr;</a></div>
-    <div class="spectrum" style="margin-top:26px">
-      <div class="spec-label"><span>The survey &middot; plate order</span><span>bar height = top of level band</span></div>
-      <div class="spec-bars">
-{bars}
+    <div class="split">
+      <div>
+        <div class="sechead"><div><h2 class="sec">What changed</h2>
+          <p class="lede" style="margin:0">Typed by what it was, so a correction never reads as new
+            content. Every entry is public, including the ones that make us look worse.</p></div></div>
+        <ul class="chlist">
+{recent}
+        </ul>
+        <p style="margin-top:var(--s-5)"><a class="link" href="sources.html#changelog"
+          style="margin:0">The full change log &rarr;</a></p>
       </div>
-      <div class="spec-key"><span>01 &nbsp;Najena</span><span>10 &nbsp;Castle Mistmoore</span></div>
+
+      <aside class="standard contour" style="--c:var(--instr);--cx:92%;--cy:112%">
+        <h3 class="stdh">Why you can check us</h3>
+        <p class="stdp">Every claim carries the weight of its source. Tiers 1 and 2 print plain;
+          anything weaker carries its badge wherever it appears
+          &mdash; <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
+        <ol class="stdscale">
+          <li style="--tc:#5FA37E"><b>Developer statements</b><span>Patch notes and direct answers</span></li>
+          <li style="--tc:#7FB2C7"><b>Structured wiki data</b><span>Infoboxes, tables, coordinate records</span></li>
+          <li style="--tc:#D9A227"><b>Named community guides</b><span>Attributed, maintained, one reading</span></li>
+          <li style="--tc:#D9762A"><b>Aggregators</b><span>Mined snapshots, stale after a patch</span></li>
+          <li style="--tc:#D46C64"><b>Inherited classic prose</b><span>Project 1999 text. Quoted, marked</span></li>
+        </ol>
+        <p class="stdfoot"><a class="link" href="sources.html" style="margin:0">The full standard, and
+          every open gap &rarr;</a></p>
+      </aside>
     </div>
   </div>
 </section>
 
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><span class="n">05</span>
-      <div><h2 class="sec">What we do not know</h2>
-        <p class="lede" style="margin:0">Published because a reference that hides its holes is not a reference.</p></div>
-      <a class="link" href="sources.html#gaps">All open questions &rarr;</a></div>
-    <div class="cards c3">
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Biggest gap</div><h3 class="t">D4 boss behaviour</h3>
-        <p class="d">Difficulty raises how often mobs run extra class kits, and raid bosses go triple-class at D3
-          &mdash; but nobody has published which kits attach to which boss. It closes with combat logs, not
-          research.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Sky geometry</h3>
-        <p class="d">Plane of Sky has never been surveyed, so our Eye of Veeshan model is schematic rather than
-          measured. A handful of <code>/loc</code> readings would fix it.</p></div>
-      <div class="card" style="--c:var(--ok)"><div class="kicker">How to help</div><h3 class="t">Send a screenshot</h3>
-        <p class="d">Most of our open questions close with one tooltip, one log line or one <code>/loc</code>. In-game
-          observation outranks everything on this page, including us.</p></div>
-    </div>
-  </div>
-</section>
 </main>
 ''' + foot()
 open('index.html','w',encoding='utf-8',newline='\n').write(home)
@@ -247,81 +169,101 @@ mapcards = "\n".join(
         <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>''' for s in
   [z['slug'] for z in Z if z['slug'] in MAPS])
 
+# The plate cards live here, on the plates page. The home page links to this
+# page rather than reproducing it.
+dplates = "\n".join(
+  f'''      <a class="plate contour" href="{z['slug']}.html"
+         style="--c:{z['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+        <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
+        <span class="num">{z['plate']:02d}</span>
+        <h3 class="pt">{z['title']}</h3>
+        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{'<span>Map <b>yes</b></span>' if z['slug'] in MAPS else ''}</span>
+      </a>''' for i, z in enumerate(Z))
+
+# The open gates, generated rather than written out five times by hand. Sorted
+# so unverified zones come before partial ones — the worse state reads first.
+_ORDER = {"none": 0, "partial": 1, "full": 2}
+gaterows = "\n".join(
+  f'''      <li class="gaterow" style="--c:{z['accent']}">
+        <span class="gn">{z['plate']:02d}</span>
+        <span class="gz">{z['title']}</span>
+        <span class="gs">{z['verify_gate']}</span>
+        <span class="gl">{'unstarted' if z['verify_level']=='none' else 'open'}</span>
+      </li>'''
+  for z in sorted((z for z in Z if z['verify_level'] != 'full'),
+                  key=lambda z: (_ORDER[z['verify_level']], z['plate'])))
+
+mapcards = "\n".join(
+  f'''      <a class="door contour" href="{s}-map.html"
+         style="--c:{BYS[s]['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+        <span class="dq">Navigation map</span>
+        <h3 class="dt">{BYS[s]['title']}</h3>
+        <p class="dd">The companion you keep open while you are in the zone. Plotted routes, numbered
+          camps and the pulls that matter, kept short enough to stay usable on a second monitor.</p>
+        <span class="dgo">Open the map &rarr;</span>
+      </a>''' for i, s in enumerate(sorted(MAPS)))
+
 dung = head("Dungeon survey plates",
   "Ten revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
   rel="../") + bar("../") + f'''
 <main>
-<div class="shell">
-  <div class="page-head">
+
+<section class="hero page">
+  <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
-    <h1>Survey plates</h1>
-    <p class="lede">Ten zones, each shipping a deep-reference plate and, where built, a navigation map companion.
-      Population tables, named rosters with spawn data, loot tied to drop sources, and coordinates re-derived from the
-      wiki&rsquo;s <code>/loc</code> records and collision-checked against the room list.</p>
+    <h1 class="display">Ten zones,<br><em>surveyed.</em></h1>
+    <p class="hero-lede">Each shipping a deep-reference plate and, where built, a navigation map
+      companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
+      coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and collision-checked
+      against the room list.</p>
+    <p class="hero-sig"><span>{len(Z)} plates</span><span>{len(MAPS)} maps</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
   </div>
+</section>
 
-  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
-    <div class="sechead"><span class="n">All</span><div><h2 class="sec">The ten</h2></div></div>
-    <div class="ztable">
-{drows}
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell">
+    <div class="plates">
+{dplates}
     </div>
-    <div class="note"><strong>What &ldquo;verified&rdquo; means here, and why most of these are not.</strong> A zone
-      counts as verified only when all three gates pass: its wiki page was fetched in full, <em>its edit history was
-      fetched</em> &mdash; not just the footer date &mdash; and its coordinates were re-derived and collision-checked
-      against the room list. By that standard {nfull} of {len(Z)} are verified, {npart} are partial and {nnone} are not
-      verified at all. Partial plates are complete and useful; they have simply not cleared all three gates.</div>
-    <div class="ztable" style="margin-top:14px">      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="befallen"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="befallen"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="befallen"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="befallen"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="befallen"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="thehole"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="thehole"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="thehole"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="thehole"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="thehole"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="warrens"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="warrens"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="warrens"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="warrens"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="warrens"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="crushbone"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="crushbone"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="crushbone"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="crushbone"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="crushbone"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-      <div class="zrow" style="--c:{[z for z in Z if z["slug"]=="blackburrow"][0]["accent"]}">
-        <span class="pn">{[z for z in Z if z["slug"]=="blackburrow"][0]["plate"]:02d}</span>
-        <span><span class="zt" style="font-size:19px">{[z for z in Z if z["slug"]=="blackburrow"][0]["title"]}</span>
-        <span class="zs">{[z for z in Z if z["slug"]=="blackburrow"][0]["verify_gate"]}</span></span>
-        <span class="cell zonesub"></span><span class="cell"></span>
-        <span class="cell"><em>Gate</em>{ {"partial":"open","none":"unstarted"}[[z for z in Z if z["slug"]=="blackburrow"][0]["verify_level"]] }</span>
-        <span class="bar"></span></div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <section class="band">
-    <div class="sechead"><span class="n">Field</span><div><h2 class="sec">Navigation maps</h2>
-      <p class="lede" style="margin:0">The companion document you keep open while you are in the zone.</p></div></div>
-    <div class="cards c3">
+<section class="band">
+  <div class="shell">
+    <div class="split">
+      <div>
+        <div class="sechead"><div><h2 class="sec">What verified means</h2>
+          <p class="lede" style="margin:0">A zone counts as verified only when all three gates pass: its
+            wiki page was fetched in full, <em>its edit history was fetched</em> &mdash; not merely the
+            footer date &mdash; and its coordinates were re-derived and collision-checked against the
+            room list.</p></div></div>
+        <p class="lede">By that standard <strong>{nfull} of {len(Z)}</strong> are verified,
+          {npart} are partial and {nnone} are not verified at all. Partial plates are complete and
+          useful; they have simply not cleared every gate. Which gate is open is recorded per zone
+          rather than averaged into a single number that would flatter us.</p>
+      </div>
+      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:110%">
+        <h3 class="stdh">Open gates</h3>
+        <ul class="gatelist">
+{gaterows}
+        </ul>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Navigation maps</h2>
+      <p class="lede" style="margin:0">Five zones have one. Crushbone, Befallen, Blackburrow, The Hole
+        and The Warrens do not yet &mdash; Blackburrow is next, because its explicit three-floor
+        structure makes it the strongest candidate for a treatment other than a flat plan.</p></div></div>
+    <div class="doorgrid">
 {mapcards}
-      <div class="card" style="--c:var(--dim)"><div class="kicker">Queued</div>
-        <h3 class="t">Five to go</h3>
-        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have plates but no map yet. Blackburrow
-          is next &mdash; it has an explicit three-floor structure, which makes it the strongest candidate for a full
-          3D treatment rather than a flat plan.</p>
-        <div class="foot"><span>In build</span></div></div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
 </main>
 ''' + foot("../")
 open('dungeons/index.html','w',encoding='utf-8',newline='\n').write(dung)

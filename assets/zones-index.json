@@ -7,14 +7,15 @@
   "levels": "8-35 (tuned 15-30)",
   "zem": 119,
   "zem_pct": 159,
-  "respawn": "19:00",
+  "respawn": "4:50",
   "who": "najena",
   "adjacent": [
    "Lavastorm Mountains"
   ],
   "verified": "2026-07-30",
   "verify_level": "full",
-  "verify_gate": null
+  "verify_gate": null,
+  "respawn_note": "eqlwiki revs 166006 and 166039, 4 Aug 2026, editor Grumpymixon, \"Reset the spawn timer to actual value\" then \"More accurate respawn time\", 19:00 to 4:45 to 4:50. Najena is NOT in the 28 Jul patch list, so this reads as correction of a long-wrong wiki figure. The page still contradicts itself: its Classic Era prose says 19 minutes while its infobox says 4:50."
  },
  {
   "plate": 2,
@@ -31,7 +32,8 @@
   ],
   "verified": "2026-07-31",
   "verify_level": "full",
-  "verify_gate": null
+  "verify_gate": null,
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
  },
  {
   "plate": 3,
@@ -41,12 +43,13 @@
   "levels": "4-22",
   "zem": 119,
   "zem_pct": 159,
-  "respawn": null,
+  "respawn": "9:00",
   "who": null,
   "adjacent": null,
   "verified": null,
   "verify_level": "none",
-  "verify_gate": "not verified \u2014 revamped 14 Jul and touched 28 Jul since the plate was built"
+  "verify_gate": "not verified — revamped 14 Jul and touched 28 Jul since the plate was built",
+  "respawn_note": "eqlwiki infobox, page last edited 14 Jul 2026; corroborated by eqlwiki Zone_Spawn_Timers. Pre-dates the 28 Jul patch, which reduced Orc Scoutsman and Orc Warden timers substantially, so treat as a pre-patch ceiling."
  },
  {
   "plate": 4,
@@ -56,14 +59,15 @@
   "levels": "7-25+",
   "zem": 119,
   "zem_pct": 159,
-  "respawn": "4:27",
+  "respawn": "4:30",
   "who": "befallen",
   "adjacent": [
    "West Commonlands"
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "edit history came from the page footer, not the history itself"
+  "verify_gate": "edit history came from the page footer, not the history itself",
+  "respawn_note": "eqlwiki rev 164926, 1 Aug 2026, editor Caliente, \"changed timer from 4:27 to 4:30, seems most accurate within seconds\" — the comment names our exact published figure as the value it replaced. Befallen is not in the 28 Jul patch list, so this is a measurement refinement rather than a patch effect."
  },
  {
   "plate": 5,
@@ -73,12 +77,13 @@
   "levels": "5-20",
   "zem": 119,
   "zem_pct": 159,
-  "respawn": null,
+  "respawn": "22:00",
   "who": null,
   "adjacent": null,
   "verified": null,
   "verify_level": "none",
-  "verify_gate": "not verified \u2014 and the plate is missing its reading key"
+  "verify_gate": "not verified — and the plate is missing its reading key",
+  "respawn_note": "eqlwiki infobox, page last edited 4 Aug 2026; corroborated by eqlwiki Zone_Spawn_Timers. Blackburrow is not in the 28 Jul patch list."
  },
  {
   "plate": 6,
@@ -95,7 +100,8 @@
   ],
   "verified": "2026-07-31",
   "verify_level": "full",
-  "verify_gate": null
+  "verify_gate": null,
+  "respawn_note": "DISPUTED. eqlwiki rev 165379, 2 Aug 2026, editor Caliente, \"updated current zone respawn time\", 9:28 to 11:00. Not adopted: Lower Guk IS named in the 28 Jul patch as having respawn LOWERED, and 11:00 is higher than 9:28. Until that is reconciled the older measured figure stands and the conflict is published. eqlwiki Zone_Spawn_Timers gives a third value, 9:27."
  },
  {
   "plate": 7,
@@ -113,7 +119,8 @@
   ],
   "verified": "2026-07-31",
   "verify_level": "full",
-  "verify_gate": null
+  "verify_gate": null,
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
  },
  {
   "plate": 8,
@@ -123,7 +130,7 @@
   "levels": "39-56",
   "zem": 128,
   "zem_pct": 171,
-  "respawn": "<=21:30",
+  "respawn": "7:48",
   "who": "hole",
   "adjacent": [
    "Paineel",
@@ -132,7 +139,8 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "rebuilt after a fabrication was found; coordinates not re-derived since"
+  "verify_gate": "rebuilt after a fabrication was found; coordinates not re-derived since",
+  "respawn_note": "eqlwiki rev 157133, 14 Jul 2026, editor Realpoor, \"updated respawn timer\", replacing 21:30. Our 21:30 was captured on 30 Jul from a figure the wiki had already superseded two weeks earlier — it was stale on arrival, not overtaken since."
  },
  {
   "plate": 9,
@@ -150,7 +158,8 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "coordinates not re-derived and collision-checked"
+  "verify_gate": "coordinates not re-derived and collision-checked",
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
  },
  {
   "plate": 10,
@@ -167,6 +176,7 @@
   ],
   "verified": "2026-07-31",
   "verify_level": "full",
-  "verify_gate": null
+  "verify_gate": null,
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
  }
 ]

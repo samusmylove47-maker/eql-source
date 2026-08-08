@@ -61,7 +61,7 @@ able to tell it was built with an AI assistant.
 
 The site's identity is already in its material, and nothing else has it:
 
-- **The ten zone accents** and the spectrum built from them.
+- **The ten zone accents**, used as fields rather than as trim.
 - **The survey plate** — coordinates, `/loc` readings, room lists, measured
   drawings. The hand-drawn SVG maps are 1,461 lines of bespoke geometry and are
   the most valuable thing on the site.
@@ -90,8 +90,9 @@ Do not change these. They are the identity.
 - **Monochrome frame, colour from content.** All colour comes from the material:
   ten zone accents, instrument blue for tools, ember for raids.
 - **Each zone owns its accent permanently.** `check.py` fails on duplicates.
-- **The spectrum** — one bar per zone, plate order, height keyed to the top of
-  its level band. Improve it; do not replace it.
+- **The plate cards** — one per zone, accent-washed, plate number cropped by the
+  card edge, contour rings anchored to a different corner on each. This is the
+  home page's signature and the visual language the rest of the page extends.
 - **The tier badges**, `.tier` with `.t1`–`.t5`.
 - **Three typefaces**, no more: Saira Condensed (display), IBM Plex Mono (data
   and labels), Public Sans (prose).
@@ -160,8 +161,8 @@ justify its absence as restraint.
 
 ## 6. Direction
 
-**Lead with the material.** The spectrum and the ten plates are the strongest
-thing the site has. They belong at the top, not in section 04. A visitor should
+**Lead with the material.** The ten plates are the strongest thing the site has.
+They belong at the top, not in section 04. A visitor should
 reach the reference before they reach the philosophy.
 
 **Move the epistemology.** The four commitments and the tier scale are important
@@ -170,7 +171,7 @@ not as the first thing between a visitor and the data. The tier badges do the
 explaining in place, which is the point of having them.
 
 **Break the rhythm.** No two consecutive bands should share a layout. Give the
-spectrum full width. Let the tools band lead with one large card. Let raids run
+the plate grid room to breathe. Let the tools band lead with one large card. Let raids run
 dark and full-bleed in ember.
 
 **Establish a scale.** The site currently uses 21 distinct font sizes, including
@@ -179,12 +180,36 @@ maintenance. Reduce to a single scale of 7–9 steps and use only those. Same fo
 spacing: one scale, used everywhere.
 
 **Unify the plates with the site.** The ten plates and five maps do not load
-`assets/site.css` at all. They carry their own 65-line stylesheet, byte-identical
-across all fifteen files, which re-declares its own greys, panels and type rules
-— and collides with the shared system on `.eyebrow`, `.lede`, `.note`, `code`
-and `:focus-visible`. **This is the largest structural problem on the site.**
-Fixing it is a two-step change: link the stylesheet, then delete the page-local
-block. Do it in that order, verify one plate, then roll it out.
+`assets/site.css`. They carry their own 65-line stylesheet — verified
+byte-identical across all fifteen files apart from line 11, which sets the zone
+accent. **This is the largest structural problem on the site.**
+
+**It is not a matter of deleting that block.** An inventory established that
+`site.css` styles no bare `h1`, `h2`, `section`, `table`, `th`, `td` or
+`footer` — it only ever styles `h1.display`, `h2.sec` and `section.band`. The
+plates contain 4,224 `<td>`, 104 `<section>`, 104 `<h2>`, 66 `<table>` and 15
+`<footer>` elements that would lose every rule they have. Removing the block
+first would strip the plates bare.
+
+The order is the reverse:
+
+1. **Absorb before linking.** Move the plate block's element rules — tables,
+   bare headings, sections, footer — into `site.css`, expressed in tokens.
+2. **Reconcile the greys.** Five structural colours in the plates sit *between*
+   the shared ramp's rungs rather than on one: `#12171A`, `#1A2126`, `#232C32`,
+   `#2E3A41` and `#8A9998`. Each needs a deliberate decision, not a nearest-match.
+3. **Rename the two modifiers.** The plates call them `.danger` and `.fresh`;
+   `site.css` calls the same idea `.note.warn` and `.note.ok`, with *identical*
+   colour values. Renaming 95 elements merges those rules at zero visual cost.
+   `.note.key`, used 6 times, has no counterpart and needs one.
+4. **Then** link `site.css` and remove what is now duplicated, one plate first.
+
+Two findings that make this safer than it sounds. The plates contain **no `<a>`
+elements at all**, so link styling cannot regress. And every one of the 670 SVG
+`<text>` elements specifies its own family and size, so no stylesheet change can
+reach the drawings — with one exception to check by eye rather than by
+reasoning: the plates set `svg{width:100%}` and `site.css` sets
+`max-width:100%`, and the drawings carry a `viewBox` with no width or height.
 
 Do not touch the SVG map geometry.
 
@@ -245,3 +270,21 @@ defending the absence of it.
 **There is no "too visually appealing" failure state.** The old brief had one,
 and it was wrong. The only aesthetic failures available here are gaudy, cluttered
 and generic — none of which is the same as attractive.
+
+
+---
+
+## 10. Withdrawn: the spectrum
+
+A row of ten coloured bars, one per zone, sized by level band, sat on the home
+page until 2026-08-08. The previous brief called it "the signature" and said to
+improve it rather than replace it.
+
+It was withdrawn by the owner after seeing it in place, for a reason that is
+worth recording because it applies to anything built next: **it did not scale.**
+Ten bars read as a chart; thirty read as clutter, and every zone in the game is
+eventually getting revamped and surveyed. A signature element that breaks when
+the project succeeds is the wrong signature.
+
+The zone accents themselves were never the problem and are more prominent now
+than they were — as fields on the plate cards rather than as bars.
