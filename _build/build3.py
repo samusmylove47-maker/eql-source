@@ -34,12 +34,19 @@ def bar_html(rel, crumb, crumb_href, here, extra=""):
             f'<span class="ns-sep">/</span><span style="color:#D5DBD8">{here}</span>'
             f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>')
 
-def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None):
+# Pages that already have a sticky bar of their own. Both bars pin to top:0,
+# and this one wins on z-index, so on the race tracker it covered 73% of the
+# tool's own tab-and-save bar the moment you scrolled. The breadcrumb is the
+# less important of the two, so it stops following on those pages.
+UNPIN = '<style>.ns-bar{position:static}</style>'
+
+def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False):
     h = open(src, encoding='utf-8').read()
     if subs:
         for a, b in subs:
             h = h.replace(a, b)
-    h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + RETURN_CSS + '</head>', 1)
+    css = RETURN_CSS + (UNPIN if own_bar else '')
+    h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + css + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
     open(dst, 'w', encoding='utf-8', newline='\n').write(h)
     return len(h)
@@ -65,15 +72,17 @@ for s in MAPS:
            f"{z['title']} &middot; map", extra)
 # ---- tools
 inject(os.path.join(SRC,'eql-sky-tracker.html'), 'tools/plane-of-sky.html', '../',
-       'Tools', 'tools/index.html', 'Plane of Sky tracker')
+       'Tools', 'tools/index.html', 'Plane of Sky tracker', own_bar=True)
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'tools/race-unlocks.html', '../',
        'Tools', 'tools/index.html', 'Race unlock tracker',
-       extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>')
+       extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
+       own_bar=True)
 # calculator = same app, boots on the calc tab, shares the same save key
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'tools/combo-calculator.html', '../',
        'Tools', 'tools/index.html', 'Race &amp; primary calculator',
        extra='<span class="ns-sep">/</span><a href="race-unlocks.html">&larr; Race unlocks</a>',
        subs=[(' show("track");\n})();', ' show("calc");\n})();'),
-             ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')])
+             ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')],
+       own_bar=True)
 n += 3
 print(f"imported {n} pages")
