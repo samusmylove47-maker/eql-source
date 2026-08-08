@@ -179,12 +179,36 @@ maintenance. Reduce to a single scale of 7–9 steps and use only those. Same fo
 spacing: one scale, used everywhere.
 
 **Unify the plates with the site.** The ten plates and five maps do not load
-`assets/site.css` at all. They carry their own 65-line stylesheet, byte-identical
-across all fifteen files, which re-declares its own greys, panels and type rules
-— and collides with the shared system on `.eyebrow`, `.lede`, `.note`, `code`
-and `:focus-visible`. **This is the largest structural problem on the site.**
-Fixing it is a two-step change: link the stylesheet, then delete the page-local
-block. Do it in that order, verify one plate, then roll it out.
+`assets/site.css`. They carry their own 65-line stylesheet — verified
+byte-identical across all fifteen files apart from line 11, which sets the zone
+accent. **This is the largest structural problem on the site.**
+
+**It is not a matter of deleting that block.** An inventory established that
+`site.css` styles no bare `h1`, `h2`, `section`, `table`, `th`, `td` or
+`footer` — it only ever styles `h1.display`, `h2.sec` and `section.band`. The
+plates contain 4,224 `<td>`, 104 `<section>`, 104 `<h2>`, 66 `<table>` and 15
+`<footer>` elements that would lose every rule they have. Removing the block
+first would strip the plates bare.
+
+The order is the reverse:
+
+1. **Absorb before linking.** Move the plate block's element rules — tables,
+   bare headings, sections, footer — into `site.css`, expressed in tokens.
+2. **Reconcile the greys.** Five structural colours in the plates sit *between*
+   the shared ramp's rungs rather than on one: `#12171A`, `#1A2126`, `#232C32`,
+   `#2E3A41` and `#8A9998`. Each needs a deliberate decision, not a nearest-match.
+3. **Rename the two modifiers.** The plates call them `.danger` and `.fresh`;
+   `site.css` calls the same idea `.note.warn` and `.note.ok`, with *identical*
+   colour values. Renaming 95 elements merges those rules at zero visual cost.
+   `.note.key`, used 6 times, has no counterpart and needs one.
+4. **Then** link `site.css` and remove what is now duplicated, one plate first.
+
+Two findings that make this safer than it sounds. The plates contain **no `<a>`
+elements at all**, so link styling cannot regress. And every one of the 670 SVG
+`<text>` elements specifies its own family and size, so no stylesheet change can
+reach the drawings — with one exception to check by eye rather than by
+reasoning: the plates set `svg{width:100%}` and `site.css` sets
+`max-width:100%`, and the drawings carry a `viewBox` with no width or height.
 
 Do not touch the SVG map geometry.
 
