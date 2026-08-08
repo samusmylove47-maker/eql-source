@@ -61,7 +61,49 @@ known and what is still open.
 
 ---
 
-## P2 — Faction Impact Checker
+## P1.5 - The Level 11 Lock: a deity and permanent-choice guide
+
+**Proposed 8 Aug 2026 after surveying the sibling sites. Needs the owner's
+approval before building - it is a new section, not an extension.**
+
+**Why this one.** Primary class and race lock permanently at level 11. The site
+already ships a race-and-primary calculator for two legs of that decision. Deity
+is the third, and it is the largest genuinely uncovered decision in the game.
+
+What the rest of the ecosystem has:
+
+| Source | Deity coverage |
+|---|---|
+| eqlwiki `Deity` | **A redirect stub. No text at all.** |
+| eqlwiki `Category:Deity` | 17 names, "There is currently no text in this page" |
+| eqlwiki `Starting_Faction_Standings` | Carries its own cleanup banner admitting inaccuracies specific to Legends; TBA across Rivervale, Kelethin, Kaladim |
+| eqlbase `/deities/` | Alignment and compatibility cards. No faction effects, no quests, no dates |
+| eqltools, eqlegendstools | Nothing |
+
+**And the advice that does exist contradicts itself**, which is squarely this
+project's adjudication remit. eqlwiki's Newbie Guide (7 Aug 2026) says "choosing
+Agnostic is always a safe bet". everquestguides.com (3 Jul, updated 24 Jul 2026)
+says agnostic "locks you out of every deity-specific item and faction perk".
+Both cannot be right, and nobody has said so in public.
+
+**The fact almost nobody publishes:** the lock is reversible. The official
+Producer's Letter (8 Jul 2026, everquestlegends.com) prices a Deity Unlock Token
+at 500 IR, Race at 1,000, Class at 1,500. That is tier 1 and it changes the
+decision materially.
+
+**Build:** extend the existing calculator rather than starting a codebase. Same
+URL-state pattern. Data is eqlwiki starting faction standings (T2, holes and all
+- naming the TBA holes is a feature here), deity quest lists (T2), token prices
+(T1). No mined data required.
+
+**Acceptance:** the page states plainly that the two published positions on
+agnostic contradict each other, names both sources with dates, and does not
+pretend to resolve what the evidence cannot. The Bristlebane and Solusek Ro
+"best value" ranking traces to a single T4 source and must be badged as such.
+
+---
+
+## P2 - Faction Impact Checker
 
 **Why:** nobody has built one, it is a real and constant EverQuest problem, and
 we already hold the faction data from the race-unlock work.
@@ -77,6 +119,20 @@ objects). It needs extracting to `assets/faction-data.json` the same way
 **Acceptance:** answers "I am about to farm Deathfist orcs for 2000 kills — what
 does that cost me?" with named factions and named consequences. Shares the URL
 state pattern used by the other tools.
+
+**Confirmed uncontested, 8 Aug 2026.** eqltools has no faction content. Neither
+does eqlegendstools. eqlbase's faction pages carry three columns - members,
+raised by killing, lowered by killing - raw counts with no quest requirements, no
+gated unlocks, no reverse lookup. eqlwiki has 258 faction pages but organised
+faction-first: faction to its mobs, not mob to its consequences. Its Crushbone
+page warns that killing slaves hurts their home city, and never says which race
+unlock that damages.
+
+**Nobody joins the chain mob -> faction -> consequence.** That join is human
+knowledge rather than mined data, and it is already written out in prose inside
+`_build/source/eql-race-unlocks.html` - thresholds, the +5 maximum gain mechanic,
+the kobold and Deepwater Knights conflict, the cross-race collisions. The hard
+part is done; what remains is extraction and interface.
 
 ---
 
@@ -169,6 +225,23 @@ itself.
 
 ---
 
+## P4.5 - Inventory import for the Sky tracker
+
+**Proposed 8 Aug 2026.** eqlegendstools accepts a plain-text inventory export and
+auto-ticks Plane of Sky quest progress from it. Our tracker makes the player tick
+by hand across 560 trios.
+
+**This is not a data pipeline and does not breach the exclusion below.** The file
+is supplied by the player from their own client. It needs no item database, only
+matching against the turn-in names our 95-quest tracker already lists. Nothing is
+uploaded anywhere; the parse happens in the browser like everything else here.
+
+Worth copying honestly: their implementation warns that Wind Runes live in the
+currency tab and will not appear in the export. Ours should say the same. Record
+it in the change log as an idea taken from a sibling site rather than an original.
+
+---
+
 ## Deliberately not doing
 
 **Do not clone EQL Tools.** Their layer is client-mined numbers, log parsing and
@@ -176,6 +249,27 @@ itself.
 Spellmaster, Zone Atlas, AA Planner, Starting Attributes, the Learn primers. All
 need a data pipeline we do not have. Shipping worse copies would waste our effort
 and make the community worse off.
+
+**The same exclusion now covers eqlbase.com**, found 8 Aug 2026 - a second mined
+database: 2,038 spells, 568 zones, a bestiary with loot tables and faction
+affiliations, and a Build Planner. Self-described "VERY early alpha", so any
+figure taken from it needs a snapshot date.
+
+**Do not enter these either**, each surveyed 8 Aug 2026 and each already served
+well:
+
+- **Items, weapons, procs, focus effects, clickies, worn effects, exaltations** -
+  eqlegendstools.com owns this thoroughly. Version 4.6.7, audited bi-weekly, 43
+  items changed in the week to 6 Aug, three-class filtering throughout, and item
+  comparison. Link to it.
+- **Travel, ports, boats, bind points** - eqlwiki's Travel Guide is strong and
+  genuinely Legends-aware. The one thing worth publishing is our own druid and
+  wizard port-level contradiction, as a sourced correction rather than a tool.
+- **Levelling routes** - everquestguides.com's 1-50 guide is Legends-native and
+  already warns that grinding frogs costs the Froglok unlock.
+- **Class epic quests** - eqlwiki's list admits its walkthroughs are "1.0 from
+  allakhazam", which is tempting under our rules, but it is a very large content
+  project against an incumbent that at least has text on the page.
 
 **Our layer is quests, factions, routes and tactics** — the human-knowledge
 layer. That is where every new tool should sit. When a player needs something we

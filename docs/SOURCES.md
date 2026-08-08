@@ -94,6 +94,19 @@ accordingly and say where it came from.
 
 ---
 
+## A tier 5 page worth naming in public
+
+eqlwiki's **Per-Level Hunting Guide** is one of the most-linked pages on the wiki
+and is a Project 1999 import. It cites P1999 forums, carries the phrase "As of
+June 2020", and repeats the P99-specific claim that characters "generally perform
+like characters three or more levels higher" - a statement about a single-class
+server at fixed difficulty. It predates both multiclass and D0-D4, so it is wrong
+in both directions for Legends.
+
+Publishing that finding costs nothing and is exactly what the tier scale is for.
+
+---
+
 ## The stale-revision trap
 
 **A wiki fetch can silently return an old revision.** This has happened in this
