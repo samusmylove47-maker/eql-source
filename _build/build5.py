@@ -3,6 +3,12 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT); sys.path.insert(0, os.path.join(ROOT,'_build'))
 from _partials import head, bar, foot
 
+# One read, used for both the counts printed in the page and the data embedded
+# in it, so the sentence and the tool can never disagree. They did: the page
+# claimed 389 items while this very file shipped 452 to the counter beside it.
+IX = json.load(open('assets/index-data.json', encoding='utf-8'))
+NITEMS, NNAMED = len(IX['items']), len(IX['named'])
+
 CSS = '''<style>
 .ix-controls{position:sticky;top:58px;z-index:30;background:rgba(14,19,21,.96);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);padding:14px 0 12px;margin-bottom:0}
@@ -60,7 +66,7 @@ CSS = '''<style>
 mark{background:rgba(230,233,228,.22);color:var(--bone);padding:0 1px}
 </style>'''
 
-BODY = '''
+BODY = f'''
 <main>
 <div class="shell">
   <div class="page-head">
@@ -68,7 +74,7 @@ BODY = '''
     <h1>The Index</h1>
     <p class="lede">Every item and every named mob recorded across the ten surveyed dungeons, in one searchable
       place. Ask it where something drops, what a zone holds for your classes, or which named you still have not
-      met. <strong>389 items and 208 named</strong>, each tied back to the plate it came from.</p>
+      met. <strong>{NITEMS} items and {NNAMED} named</strong>, each tied back to the plate it came from.</p>
   </div>
 </div>
 
@@ -103,7 +109,7 @@ BODY = '''
 </main>
 '''
 
-SCRIPT = '<script>window.__IX__=' + json.dumps(json.load(open("assets/index-data.json", encoding="utf-8")), separators=(",",":")) + ';</script>' + '''<script>
+SCRIPT = '<script>window.__IX__=' + json.dumps(IX, separators=(",",":")) + ';</script>' + '''<script>
 (async function(){
   var D=null, mode="items", q="", fC=new Set(), fS=new Set(), fZ=new Set();
   var $=function(s){return document.querySelector(s)};

@@ -6,6 +6,10 @@ import json
 from _partials import head, bar, foot
 
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
+# Counts are read from the mined data, never typed. The Index once published
+# "389 items" while the data held 452 and its own counter said so on screen.
+IX = json.load(open('assets/index-data.json', encoding='utf-8'))
+NITEMS, NNAMED = len(IX['items']), len(IX['named'])
 MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
 TOPLV = {"najena":35,"splitpaw":42,"crushbone":22,"befallen":25,"blackburrow":20,
          "lowerguk":49,"nagafenslair":55,"thehole":56,"warrens":25,"mistmoore":45}
@@ -61,8 +65,8 @@ home = head("Accurate, sourced and kept current",
 
     <dl class="index-strip">
       <div class="ix"><dt>Tools</dt><dd>4<small>progression trackers and a searchable index, no account needed</small></dd></div>
-      <div class="ix"><dt>Items indexed</dt><dd>452<small>with the mob that drops each one</small></dd></div>
-      <div class="ix"><dt>Named mobs</dt><dd>208<small>levels, coordinates and spawn notes</small></dd></div>
+      <div class="ix"><dt>Items indexed</dt><dd>{NITEMS}<small>with the mob that drops each one</small></dd></div>
+      <div class="ix"><dt>Named mobs</dt><dd>{NNAMED}<small>levels, coordinates and spawn notes</small></dd></div>
       <div class="ix"><dt>Survey plates</dt><dd>{len(Z)}<small>{nfull} verified to the full three-gate standard &middot; {npart} partial &middot; {nnone} not yet</small></dd></div>
       <div class="ix"><dt>Open gaps</dt><dd>8<small>listed publicly, not hidden</small></dd></div>
     </dl>
@@ -135,7 +139,7 @@ home = head("Accurate, sourced and kept current",
       <a class="card" href="tools/index-search.html" style="--c:var(--bone)">
         <div class="kicker">New &middot; searchable</div><h3 class="t">The Index</h3>
         <p class="d">Every item and named mob across the ten surveyed dungeons in one place. Ask where something drops,
-          filter by class and slot, or find which named you still have not met. 452 items, 208 named, each linked back
+          filter by class and slot, or find which named you still have not met. {NITEMS} items, {NNAMED} named, each linked back
           to the plate it came from.</p>
         <div class="foot"><span>Loot &amp; named lookup</span><span class="go">Open &rarr;</span></div></a>
       <a class="card" href="tools/plane-of-sky.html" style="--c:var(--instr)">
