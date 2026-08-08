@@ -659,7 +659,14 @@ h1.display em{color:var(--z01)}
 .plotband{border-top:1px solid var(--rule)}
 .plotwrap{margin-top:var(--s-5);border:1px solid var(--rule);border-radius:var(--r);
   overflow:hidden;background:#12171A;box-shadow:var(--shadow-1)}
-.plotsvg{display:block;width:100%;height:auto;max-height:min(78vh,760px)}
+/* Sized by height, not width. A zone's plot has whatever aspect ratio its mobs
+   give it — Najena is a tall column, Befallen is nearly square. Setting
+   width:100% forces every plot into the container's landscape box and
+   preserveAspectRatio letterboxes the drawing inside it: Najena drew 446px wide
+   in a 1158px frame, most of the panel empty. Driving from height lets the box
+   track the content, so the drawing gets the whole panel. */
+.plotsvg{display:block;height:min(108vh,1150px);width:auto;max-width:100%;
+  margin-inline:auto}
 .plotkey{list-style:none;margin:var(--s-5) 0 0;padding:0;
   display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
   gap:0 var(--s-5);border-top:1px solid var(--rule)}
@@ -718,3 +725,13 @@ h1.display em{color:var(--z01)}
 .findings b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:600;
   font-size:var(--t-md);text-transform:uppercase;letter-spacing:.02em;color:var(--bone);
   line-height:1.15;margin-bottom:var(--s-1)}
+
+/* Plots run the full page width. Label placement needs the room, and a survey
+   read at postage-stamp size is not a survey. The plot sits outside .shell in
+   the markup rather than breaking out of it with 100vw: vw units count the
+   scrollbar, so the 100vw version overflowed by exactly its width and put a
+   horizontal scrollbar on the page. */
+.plotwrap{border-radius:0;border-left:0;border-right:0}
+/* Narrow screens have no spare height to trade, so revert to width-driven —
+   the plot scrolls with the page instead of fighting the viewport. */
+@media(max-width:900px){.plotsvg{height:auto;width:100%}}
