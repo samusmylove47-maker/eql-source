@@ -10,12 +10,15 @@ WHAT IS DRAWN, AND ON WHAT AUTHORITY
 ------------------------------------
 Every mark traces to a `/loc` recorded in assets/index-data.json.
 
+- THE FLOOR PLAN is derived from the game's own zone mesh by _build/geometry.py
+  and read from assets/zone-geometry.json. It is our own computation of where the
+  walkable floor ends, not a copy of any published map. Where a zone stacks, each
+  storey is a separate group so the height control can isolate it.
 - POINTS are named in place rather than numbered, and coloured by level band, so
   the danger gradient is visible without reading anything.
 - REGIONS are convex hulls around mobs that are close together. A hull says
   "these recorded positions sit together". It is NOT a room shape and the legend
-  says so. No wall, corridor or door is drawn anywhere, because the project holds
-  no survey of them.
+  says so.
 - A REGION IS ONLY NAMED when at least two of its members' notes independently
   mention the same place. One note agreeing with itself is not evidence, so those
   regions stay unnamed and are labelled by their contents instead.
@@ -40,6 +43,14 @@ from _partials import head, bar, foot
 
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
+
+# Floor plans derived from the game meshes by _build/geometry.py. Committed data
+# rather than a build step, because a rebuild must work without the game
+# installed. Missing or empty is fine: the plot falls back to points alone.
+try:
+    GEO = json.load(open('assets/zone-geometry.json', encoding='utf-8'))
+except (OSError, ValueError):
+    GEO = {}
 
 NUM = re.compile(r'[-−]?\d+(?:\.\d+)?')
 def nums(s):
@@ -175,10 +186,14 @@ def band_colour(lv, lo, hi):
             return '#%02X%02X%02X' % tuple(c)
     return '#C9453A'
 
-def build_plot(zone, pts):
+def build_plot(zone, pts, layers):
     ys = [p[0] for p in pts]; xs = [p[1] for p in pts]
     pxs = [-v for v in xs]; pys = [-v for v in ys]
-    span = max(max(pxs) - min(pxs), max(pys) - min(pys)) or 100
+    gx = [x for L in layers for c in L['lines'] for x, _y in c]
+    gy = [y for L in layers for c in L['lines'] for _x, y in c]
+    # The zone's own footprint sets the scale once there is geometry; the points
+    # alone used to, which zoomed in on wherever the named mobs happened to be.
+    span = max(max(pxs + gx) - min(pxs + gx), max(pys + gy) - min(pys + gy)) or 100
     lv = [p[4] for p in pts if p[4] is not None]
     lo, hi = (min(lv), max(lv)) if lv else (0, 1)
 
@@ -186,10 +201,18 @@ def build_plot(zone, pts):
     r_dot = span * 0.010
 
     def box(cx, cy, text, anchor, size=None):
+        """Collision box for a label, measured rather than guessed.
+
+        IBM Plex Mono advances exactly 0.60em per character, confirmed against
+        the rendered text. Height was the error: text occupies 1.26em, not the
+        1.04em assumed here, and every label also carries a halo stroke of
+        0.42em painted under it. Underestimating both is why labels kept
+        overlapping after the placer said they did not."""
         s = fs if size is None else size
         w = len(text) * s * 0.60
+        pad = s * 0.30
         x = cx if anchor == 'start' else (cx - w if anchor == 'end' else cx - w / 2)
-        return (x, cy - s * 0.82, x + w, cy + s * 0.22)
+        return (x - pad, cy - s * 0.98 - pad, x + w + pad, cy + s * 0.30 + pad)
 
     def hits(a, b):
         return not (a[2] < b[0] or b[2] < a[0] or a[3] < b[1] or b[3] < a[1])
@@ -201,11 +224,31 @@ def build_plot(zone, pts):
     # it belongs to, and further still once placement pushes it sideways.
     extents = []
 
+    # ---- the floor plan, drawn under everything else -----------------------
+    # One group per storey so the height control can isolate them. Without it a
+    # stacked zone draws every level on top of every other and reads as noise.
+    geo = []
+    for i, L in enumerate(layers):
+        paths = ''.join(
+            '<polyline points="' + ' '.join(f'{x},{y}' for x, y in c) + '"/>'
+            for c in L['lines'])
+        geo.append(f'<g class="lyr" data-lyr="{i}" data-z0="{L["z"][0]}" '
+                   f'data-z1="{L["z"][1]}" fill="none" stroke="{zone["accent"]}" '
+                   f'stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" '
+                   f'stroke-linecap="round" vector-effect="non-scaling-stroke">{paths}</g>')
+        for c in L['lines']:
+            for x, y in c:
+                extents.append((x, y, x, y))
+
     regions, rlabels, rboxes = [], [], []
     for c in cluster(pts, span * 0.14):
         pp = [(-pts[i][1], -pts[i][0]) for i in c]
         nm = region_name([pts[i][3] for i in c]) if len(c) >= 2 else None
-        hp = expand(hull(pp), span * 0.035) if len(pp) >= 3 else []
+        # hull() returns nothing for points that are collinear or coincident, and
+        # expand() divides by the vertex count. Three points in a line is a real
+        # case, so check the hull rather than the input.
+        h = hull(pp) if len(pp) >= 3 else []
+        hp = expand(h, span * 0.035) if h else []
         if hp:
             d = 'M' + 'L'.join(f'{x:.0f},{y:.0f}' for x, y in hp) + 'Z'
             regions.append(f'<path d="{d}" fill="{zone["accent"]}" fill-opacity=".07" '
@@ -263,6 +306,25 @@ def build_plot(zone, pts):
                 continue
             chosen = (lx, ly, anchor, bb)
             break
+        if chosen is None:
+            # The candidate ring is exhausted, which happens wherever the zone is
+            # crowded — Mistmoore's library corner puts six names in one room.
+            # Falling back to the default position knowingly draws one label over
+            # another, so push outward in rings until something is free instead.
+            # A name further from its marker still has a leader line; a name
+            # written through another name is simply lost.
+            for mult in (2.6, 3.6, 4.8, 6.2, 8.0):
+                for k in range(12):
+                    a = k * math.pi / 6.0
+                    lx = px + math.cos(a) * r_dot * 2.0 * mult
+                    ly = py + math.sin(a) * (r_dot * 2.0 + fs) * mult * 0.55
+                    anchor = 'start' if math.cos(a) > 0.4 else ('end' if math.cos(a) < -0.4 else 'middle')
+                    bb = box(lx, ly, short, anchor)
+                    if not any(hits(bb, q) for q in placed):
+                        chosen = (lx, ly, anchor, bb)
+                        break
+                if chosen:
+                    break
         if chosen is None:
             lx, ly, anchor = px, py - r_dot * 1.9 - fs * 0.9, 'middle'
             chosen = (lx, ly, anchor, box(lx, ly, short, anchor))
@@ -337,12 +399,12 @@ def build_plot(zone, pts):
            f'together; they are not room shapes. North is up, west is left. Every position is also '
            f'listed as text beneath the plot.">'
            f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#10161A"/>'
-           + ''.join(g) + ''.join(regions) + ''.join(rlabels) + ''.join(marks)
+           + ''.join(g) + ''.join(geo) + ''.join(regions) + ''.join(rlabels) + ''.join(marks)
            + scale + compass + '</svg>')
     return svg, step, (lo, hi), sum(1 for r in rlabels)
 
 sections = []
-tot_plot = tot_named = tot_regions = tot_withheld = 0
+tot_plot = tot_named = tot_regions = tot_withheld = tot_geo = 0
 for z in Z:
     pts, unplotted, withheld = [], [], []
     for n in IX['named']:
@@ -359,8 +421,25 @@ for z in Z:
     zone_total = len(pts) + len(unplotted) + len(withheld)
     tot_plot += len(pts); tot_named += zone_total
     tot_withheld += len(withheld)
-    svg, step, (lo, hi), nregions = build_plot(z, pts)
+    layers = GEO.get(z['slug'], {}).get('layers', [])
+    svg, step, (lo, hi), nregions = build_plot(z, pts, layers)
     tot_regions += nregions
+    if layers:
+        tot_geo += 1
+
+    # Height control. Only worth showing where the zone actually stacks; a flat
+    # zone gets no control rather than a dead one. Ordered top storey first,
+    # which is how a reader thinks about a building.
+    height = ''
+    if len(layers) > 1:
+        opts = ''.join(
+            f'<button type="button" class="lvbtn" data-lyr="{i}" '
+            f'aria-pressed="false">{i+1}<span>{L["z"][0]} to {L["z"][1]}</span></button>'
+            for i, L in reversed(list(enumerate(layers))))
+        height = (f'<div class="levels" data-zone="{z["slug"]}">'
+                  f'<span class="lvlab">Height</span>'
+                  f'<button type="button" class="lvbtn on" data-lyr="all" '
+                  f'aria-pressed="true">All<span>{len(layers)} levels</span></button>{opts}</div>')
 
     rows = '\n'.join(
         f'<li><span class="pn2">{esc(nm)}</span>'
@@ -406,6 +485,7 @@ for z in Z:
           &middot; {step}-unit grid &middot; levels {int(lo)}&ndash;{int(hi)} shown green through red.
           Dashed outlines group positions that sit near each other; they are not room shapes.</p></div>
       <a class="link" href="{z['slug']}.html">Plate {z['plate']:02d} &rarr;</a></div>
+    {height}
   </div>
   <div class="plotwrap">{svg}</div>
   <div class="shell">
@@ -435,17 +515,51 @@ page = head("Survey plots",
 </section>
 
 <div class="shell">
-  <div class="note"><strong>How to read these, and what they are not.</strong> A dashed outline groups
-    named mobs whose recorded positions sit close together &mdash; it means &ldquo;these are near each
-    other&rdquo;, not &ldquo;this is a room&rdquo;. An outline is given a name only when at least two of
-    its members&rsquo; notes independently mention the same place; {tot_regions} groups across the ten
-    zones cleared that bar, and the rest stay unnamed rather than guessed at. <strong>No wall, door or
-    corridor is drawn anywhere on this page</strong>, because the project holds coordinates and not a
-    survey of the geometry between them.</div>
+  <div class="note"><strong>How to read these.</strong> The floor plan is the outline of the walkable
+    floor, computed from the zone&rsquo;s own geometry in the game files &mdash; where the line runs is
+    where the floor stops, at a wall or a drop. {tot_geo} of the ten zones carry one. It is our own
+    derivation and not a copy of any published map, so it shows where the floor ends and nothing else:
+    <strong>doors, locks and one-way drops are not marked</strong>, and a gap in a line is as likely to
+    be a ledge as a doorway.
+    <br><br>Where a zone stacks, <strong>the height control isolates one storey at a time</strong>.
+    Storeys are found from the geometry itself, by looking for the heights where floor area piles up,
+    so they are the building&rsquo;s real levels rather than slices at fixed intervals. Flat zones get
+    no control.
+    <br><br>A dashed outline groups named mobs whose recorded positions sit close together &mdash; it
+    means &ldquo;these are near each other&rdquo;, not &ldquo;this is a room&rdquo;. An outline is named
+    only when at least two of its members&rsquo; notes independently mention the same place;
+    {tot_regions} groups across the ten zones cleared that bar, and the rest stay unnamed rather than
+    guessed at. <strong>Mob positions are not tied to a storey</strong>, because most recorded
+    coordinates carry no height &mdash; every point stays visible whichever level you select.</div>
 </div>
 {''.join(sections)}
 
 </main>
+<script>
+/* Height control. Progressive enhancement: with no JS every storey stays
+   visible, which is the same drawing the page shipped before the control
+   existed. Selecting a level fades the others rather than hiding them, so you
+   keep the sense of what sits above and below. */
+(function(){{
+  document.querySelectorAll('.levels').forEach(function(bar){{
+    var svg = bar.closest('section').querySelector('.plotsvg');
+    if (!svg) return;
+    var layers = svg.querySelectorAll('.lyr');
+    bar.addEventListener('click', function(e){{
+      var b = e.target.closest('.lvbtn');
+      if (!b) return;
+      bar.querySelectorAll('.lvbtn').forEach(function(o){{
+        o.classList.toggle('on', o === b);
+        o.setAttribute('aria-pressed', o === b ? 'true' : 'false');
+      }});
+      var pick = b.dataset.lyr;
+      layers.forEach(function(g){{
+        g.classList.toggle('mute', pick !== 'all' && g.dataset.lyr !== pick);
+      }});
+    }});
+  }});
+}})();
+</script>
 ''' + foot("../")
 
 open('dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
