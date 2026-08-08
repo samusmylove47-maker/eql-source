@@ -32,6 +32,14 @@ page look less finished.
 
 Higher tiers override lower ones. Always.
 
+0. **Measured combat logs — tier M.** First-hand instrument data from our own
+   play: what happened, in the live game, on a dated session, to a named
+   character. Parsed by `_build/logstats.py` into `assets/measured.json`.
+   **Outranks every read source for what it directly measures, and generalises
+   to nothing beyond its stated conditions.** Always publish trio, level, zone,
+   difficulty label, date and sample size beside the figure. One session is a
+   sample, not a rate: a drop seen once is "seen once". Full handling, including
+   how mobs are told from players, is in `docs/SOURCES.md`.
 1. **Official patch notes** — everquestlegends.com/news. Dated and authoritative.
    Anything published after a wiki page's last edit supersedes that page.
 2. **Structured wiki data** — eqlwiki.com infoboxes, NPC tables, item tables,

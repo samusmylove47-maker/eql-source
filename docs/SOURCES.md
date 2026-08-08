@@ -5,6 +5,55 @@ when one changes.
 
 ---
 
+## Measured combat logs — instrument data, tier M
+
+Every other source on this list is *read*. A combat log is *measured*: it records
+what happened, in the live game, on a stated date, to a stated character. It is
+the only thing the project has that can close the gaps CLAUDE.md calls the
+biggest ones — which class kits attach to which mob, what a fight costs, what a
+named mob actually drops.
+
+`_build/logstats.py` turns a log directory into `assets/measured.json`. Logs are
+kept out of the repository; the derived counts are committed.
+
+**Tier M outranks every read source for what it directly measures, and
+generalises to nothing at all beyond its stated conditions.** A hit rate is a
+fact about one trio at one level against one set of mobs on one day. Publish the
+conditions with the figure or do not publish the figure:
+
+- character and class trio, and the same for anyone grouped
+- level, and the level of what was fought when known
+- zone, and the difficulty label from the zone line
+- date, and the length of the sample
+
+**One session is a sample, not a rate.** Say how many swings, kills or drops a
+figure rests on. A drop seen once is "seen once", never a drop rate.
+
+### Reading a log
+
+- Zone and difficulty arrive together: `You have entered The Castle of Mistmoore
+  1 (Awakened).` The parenthesised word is recorded as the stated difficulty
+  label. **It is not yet mapped to a D-number** — that mapping is unconfirmed.
+- Difficulty is separately inferable from loot: items drop at `+N`, and the modal
+  `N` is the difficulty. Read the *dropped* value, not the created one —
+  `looted a Keg Mallet +2 ... to create a Keg Mallet +4` is a `+2` drop.
+- The collaborator marks context in party chat with `ATTN Claude:`. Those lines
+  are captured verbatim as session notes.
+
+### Telling mobs from players, which is where this goes wrong
+
+A first pass recorded **Azuria** as a named mob missing from the Mistmoore plate.
+Azuria is a player — they dodge, riposte, parry and carry a thorns shield, and
+were fighting the same mobs we were. Published, that would have invented a mob
+and given it a fabricated spell list.
+
+A name counts as a mob **only on positive evidence**: the log says we slew it, it
+was slain, it attacked us, or it is written with an article. Anything else is
+left out. A named mob fought but never killed and never landing a blow gets
+missed — the right way round to be wrong.
+
+---
+
 ## The game's own map files — first-party geometry, tier 1
 
 EverQuest Legends installs plain-text map files with the game:
