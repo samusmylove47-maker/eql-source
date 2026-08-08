@@ -35,7 +35,34 @@ Higher tiers override lower ones. Always.
 1. **Official patch notes** — everquestlegends.com/news. Dated and authoritative.
    Anything published after a wiki page's last edit supersedes that page.
 2. **Structured wiki data** — eqlwiki.com infoboxes, NPC tables, item tables,
-   coordinate records. Entered from the live game.
+   coordinate records — **but only once the page passes the provenance test below.**
+
+### The provenance test — apply before trusting any eqlwiki page as tier 2
+
+Tier 2 prints **bare, with no badge**, so misclassifying a page here is the most
+expensive mistake available. Large parts of eqlwiki were bulk-imported from the
+Project 1999 wiki *before EverQuest Legends existed*, and imported infoboxes look
+identical to measured ones.
+
+**EverQuest Legends launched 28 July 2026.** Check the page's oldest revision:
+
+- **Oldest revision predates 2026, or the author is `imported>…` or `P99Wiki>…`**
+  → the page is a Project 1999 import. **Tier 5, badge it,** no matter how
+  structured it looks. Every Plane of Sky, Hate and Fear boss page fails this
+  test: Spiroc Lord created Jan 2025, Bazzt Zzzt Nov 2025 and never edited since.
+- **A named editor changed the field after launch with a comment describing
+  measurement** → tier 2, and cite the revision id, date and editor.
+- **Page carries `{{Classic Era}}`** → its prose is import until proven otherwise.
+  Nine of the ten surveyed zone pages carry it. Note the wiki uses that template
+  to mean the current level-50 era, not classic EverQuest, but in practice the
+  tagged prose is P99 text.
+
+Two tells that a stat block is classic rather than Legends: a boss listed with a
+**single class** (Legends raid bosses run triple-class from D3), and raid sizing
+advice measured in dozens of players (Legends caps raids at 8).
+
+**A page can be tier 2 in its infobox and tier 5 in its prose at the same time.**
+Najena is exactly that today — infobox 4:50, prose "19 minutes", same page.
 3. **eqprogression.com / eqlwiki user guides** — Alanna's Race Unlock Guide and
    similar. Named authors, actively maintained, generally reliable.
 4. **Community aggregators** — EQL Build Forge, EQ Legends Tools. Useful for

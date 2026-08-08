@@ -48,12 +48,30 @@ Compare titles against the watchlist, compare `revid` against
 |---|---|---|
 | everquestlegends.com/news | Every run | **Tier 1.** Patch notes override everything |
 | eqprogression.com Sky quests page | Weekly | Sky turn-in structure |
-| eqlegendstools.com | Weekly | Curated item data, snapshot-dated, JS-rendered. **Domain unconfirmed** — `CLAUDE.md` and `docs/BACKLOG.md` both call this site `eqltools.com`. One of the two is wrong and it has not been checked. It is also absent from `state/watchlist.json`, so nothing currently fetches it |
+| eqltools.com | Weekly | **Confirmed 8 Aug 2026.** Zone Atlas, Trio Builder, AA Planner, Spellmaster, Log Parser, Gear Upgrade Finder, Where to Level, and the Learn primers. This is the site `CLAUDE.md` and `docs/BACKLOG.md` mean. Client-mined; we link rather than duplicate |
+| eqlegendstools.com | Weekly | **A different site**, also real. Weapon and gear search, proc lookup, Plane of Sky quest reward tracker, focus and clicky lookup, Exaltation planner. The two were previously conflated in this file |
 | eqlbuildforge.com/items | Weekly | Item stat snapshot, dated in the footer |
 
-**Known blocked:** necrotalk.com (bot detection) and gnollguard.com (blocks
-automated requests, paginates hard). Do not retry these on a schedule. If their
-content is needed, ask the human to fetch it by hand.
+**Known blocked:** necrotalk.com (bot detection), gnollguard.com (blocks
+automated requests, paginates hard) and eqprogression.com (returns 403 to
+automated fetch, confirmed 8 Aug 2026). Do not retry these on a schedule. If
+their content is needed, ask the human to fetch it by hand.
+
+**Lookalike domains — do not cite.** `eqlegends.wiki`, `everquestlegends.wiki`,
+`everquestlegends-wiki.wiki` and `everquest-legends-wiki.wiki` rank highly and
+look authoritative. They carry no bylines, no edit history and no citations, and
+they reference "developer updates" without linking any. Tier 5 at best. They will
+keep surfacing in searches; skip them.
+
+**Patch notes live at two addresses.** The full list is at
+`everquestlegends.com/patch-notes`, which is JS-rendered; `/news` is a separate,
+shorter feed and lags behind. Check the former. As of 8 Aug 2026 the complete set
+is 7-7, 7-14, 7-28, 7-29 and 8-4 — probing intermediate dates returns redirects
+to `/home`, so gaps in that sequence are real rather than missed.
+
+**Some hotfixes are Discord-only.** A 5 Aug 2026 hotfix was never posted to the
+website; eqlwiki transcribed it. Tier 1 in origin, tier 2 as received — badge it
+accordingly and say where it came from.
 
 ---
 
