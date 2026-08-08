@@ -6,15 +6,16 @@
 ENTRIES = [
     dict(kind="Correction", date="8 Aug 2026", title="Six Najena coordinates that sit outside Najena",
          body="Rathyl, Ekeros, BoneCracker, Officer Grush, Trazdon and A Visiting Priestess are "
-              "recorded on eqlwiki at positions south of the zone&rsquo;s own extent, by between 59 and "
-              "515 units &mdash; outside the dungeon. Najena&rsquo;s geometry runs from &minus;166 to "
-              "544 on the north&ndash;south axis, checked against two map sets drawn independently by "
-              "different cartographers that agree on it to within two units. The X value is right in "
-              "every case and only the north&ndash;south value is out, which points at one column "
-              "rather than at noise. Our transcription matches the source exactly, so this is the "
-              "source being wrong rather than us misreading it. The six are withheld from the survey "
-              "plot and listed with the reason instead. <strong>No replacement figure is published, "
-              "because none is sourced</strong> &mdash; one <code>/loc</code> reading per mob closes it"),
+              "recorded on eqlwiki at positions south of the zone&rsquo;s own extent, by between 57 and "
+              "513 units &mdash; outside the dungeon. Najena&rsquo;s geometry runs from &minus;168 to "
+              "546 on the north&ndash;south axis, measured from the map file EverQuest Legends installs "
+              "with the game; two community map sets drawn independently agree to within two units. "
+              "The east&ndash;west value is right in every case and only the north&ndash;south value is "
+              "out, which points at a single column rather than at noise. Our transcription matches the "
+              "source exactly, so this is the source being wrong rather than us misreading it. The six "
+              "are withheld from the survey plot and listed with the reason instead. <strong>No "
+              "replacement figure is published, because none is sourced</strong> &mdash; the official "
+              "map carries no mob positions, so one <code>/loc</code> reading per mob closes it"),
     dict(kind="Correction", date="8 Aug 2026", title="A coordinate range read as a coordinate",
          body="A hiding gnoll in Lair of the Splitpaw is recorded as &ldquo;718&ndash;800, "
               "212&ndash;236&rdquo; &mdash; a span it appears across, not a point. The survey plot read "

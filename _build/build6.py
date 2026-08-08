@@ -57,12 +57,18 @@ RANGE = re.compile(r'\d\s*[–—]\s*\d')
 # faithfully on the Najena plate — the plate is not wrong about what the source
 # says. They are withheld because the position itself cannot be right.
 #
-# Najena's drawn geometry spans worldY −166..544. Every one of these sits south
-# of that, by between 59 and 515 units, which places them outside the dungeon.
-# That is checked against two map sets drawn independently by different
-# cartographers, Brewall and Goodurden, which agree on the zone's extent to
-# within two units (−166..544 against −167..546). The zone was not rebuilt for
-# Legends, so the classic extent applies.
+# Najena's geometry spans worldY −168..546. Every one of these sits south of
+# that, by between 57 and 513 units, which places them outside the dungeon.
+#
+# The authority is the game's own map file: EverQuest Legends installs najena.txt
+# under maps/ in the game directory, 4,144 line segments of first-party geometry
+# describing the live zone. Two community map sets drawn independently by
+# different cartographers, Brewall and Goodurden, agree with it to within two
+# units (−166..544 and −167..546), which is corroboration rather than the source.
+#
+# The client's label layer, najena_1.txt, carries exactly one label — the zone
+# exit. Official maps ship geometry and zone connections, no mob positions. So
+# they can show a recorded position is impossible but cannot supply the right one.
 #
 # What makes it a column problem rather than noise: the X value matches in every
 # case, and only Y is out. Brewall's own markers for four of them put them
@@ -377,16 +383,19 @@ for z in Z:
         missing += (
             f'<div class="note warn"><strong>A further {len(withheld)} coordinates are recorded but '
             f'cannot be right, and are withheld rather than drawn.</strong> Each sits south of this '
-            f'zone&rsquo;s own extent &mdash; outside the dungeon &mdash; by between 59 and 515 units. '
+            f'zone&rsquo;s own extent &mdash; outside the dungeon &mdash; by between 57 and 513 units. '
             f'The figures below are transcribed correctly from '
             f'<a href="https://eqlwiki.com/Najena">the eqlwiki Najena page</a> '
             f'<span class="tier t5">T5</span>, read 8 August 2026; it is the recorded position that is '
-            f'wrong, not the transcription. The zone extent is checked against two map sets drawn '
-            f'independently by different cartographers, which agree on it to within two units, and the '
-            f'zone was not rebuilt for Legends. In every case the X value is consistent and only Y is '
-            f'out, which points at one column rather than at noise. No replacement is published here, '
-            f'because none is sourced. <strong>One <code>/loc</code> reading per mob closes '
-            f'this.</strong></div><ul class="plotmissing">{items}</ul>')
+            f'wrong, not the transcription. The extent is measured from the map file EverQuest Legends '
+            f'installs with the game, 4,144 segments of first-party geometry for this zone, and two '
+            f'community map sets drawn independently agree with it to within two units. In every case '
+            f'the east&ndash;west value is consistent and only the north&ndash;south one is out, which '
+            f'points at a single column rather than at noise. The official map carries geometry and '
+            f'zone exits but no mob positions, so it can show a figure is impossible without supplying '
+            f'the right one. No replacement is published here, because none is sourced. <strong>One '
+            f'<code>/loc</code> reading per mob closes this.</strong></div>'
+            f'<ul class="plotmissing">{items}</ul>')
 
     sections.append(f'''
 <section class="band plotband" id="{z['slug']}" style="--c:{z['accent']}">
