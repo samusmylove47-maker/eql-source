@@ -50,9 +50,13 @@ context only.
 ### Badge everything below tier 2
 
 Tiers 1 and 2 print plain. **Tiers 3, 4 and 5 carry a visible badge wherever the
-claim appears** — `<span class="tier t3">T3</span>` and so on. The scale is
-published on the home page. A T3 claim printed bare is a bug, and a worse one
-than a broken link.
+claim appears** — `<span class="tier t3">T3</span>` and so on. A T3 claim printed
+bare is a bug, and a worse one than a broken link.
+
+**Exception, deliberate:** the ten survey plates carry no tier badges yet. They
+are incomplete and ungraded on purpose, pending a later phase that verifies and
+grades them in full. Do not add badges to them as part of other work, and do not
+log their absence as a defect.
 
 ### Two systems that invalidate most inherited advice
 
@@ -173,8 +177,12 @@ because they are easy to break by accident:
   order, in that zone's permanent accent, height keyed to the top of its level
   band. Ornament, chart and navigation at once. If the zone count changes,
   update `grid-template-columns:repeat(10,1fr)` in `site.css`.
-- Each zone owns its accent permanently. Never reuse or reassign one.
-- Hairline borders, no rounded corners, no drop shadows, no gradients.
+- Each zone owns its accent permanently. Never reuse or reassign one. Where an
+  accent fails contrast as text, derive a lifted variant; never change the accent.
+- **WCAG AA on all text.** Verified clean across 25 pages. Do not regress it.
+- Elevation, small consistent radii, imperceptible surface gradients and
+  purposeful motion are all permitted in service of hierarchy. `docs/DESIGN.md`
+  sets the limits. An earlier brief banned them outright; that ban is withdrawn.
 
 **Desktop PC is the primary target.** Other devices must stay functional and
 390px must not overflow, but where a trade-off exists, the desktop reading wins.
