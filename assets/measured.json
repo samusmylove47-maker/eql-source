@@ -1984,9 +1984,9 @@
   "difficulty_from": "zone line",
   "difficulty_agrees": true,
   "date": "08 Aug 2026",
-  "window": "12:04-12:41",
+  "window": "12:04-12:42",
   "stamps": [],
-  "kills": 123,
+  "kills": 127,
   "distinct": 47,
   "drop_tiers": {
    "1": 39,
@@ -1994,11 +1994,11 @@
    "3": 1
   },
   "faction": {
-   "Mayong Mistmoore": 117,
-   "King Tearis Thex": 117,
-   "Agents of Mistmoore": 117,
-   "League of Antonican Bards": 117,
-   "Ring of Scale": 117,
+   "Mayong Mistmoore": 121,
+   "King Tearis Thex": 121,
+   "Agents of Mistmoore": 121,
+   "League of Antonican Bards": 121,
+   "Ring of Scale": 121,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
@@ -2032,20 +2032,32 @@
     "text": "screaming terror on me: healer dead. What kind of resist was this,and which mob cast it for future kill priority?"
    }
   ],
-  "escapes": [],
+  "escapes": [
+   {
+    "at": "12:42:06",
+    "by": "Shara",
+    "engaged": [
+     "Shara",
+     "A sneering gargoyle",
+     "A spiritish ancille",
+     "A vampiric ancille"
+    ],
+    "after": "Shara cast Lesser Succor III"
+   }
+  ],
   "control": {
-   "melee_stuns_avoided": 141,
-   "lockout_lines": 285,
+   "melee_stuns_avoided": 143,
+   "lockout_lines": 293,
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
     "Lightning Bolt": {
-     "landed": 44,
+     "landed": 46,
      "casters": {
       "a thought spoiler": 14,
+      "a spiritish ancille": 7,
       "a dark elf noble": 6,
-      "a spiritish ancille": 5,
       "a thought corruptor": 5,
       "a vampire noble": 5,
       "a shadowy scrivener": 5,
@@ -2102,7 +2114,8 @@
      "a thought spoiler": 2,
      "a vampire noble": 1,
      "a vampire oracle": 1,
-     "a shadowy scrivener": 1
+     "a shadowy scrivener": 1,
+     "a spiritish ancille": 1
     },
     "Lightning Bolt": {
      "a thought spoiler": 3,
@@ -2458,7 +2471,7 @@
   },
   "exp_by_mob": {
    "a pledge familiar": 0.122,
-   "a sneering gargoyle": 0.869,
+   "a sneering gargoyle": 0.67,
    "an initiate familiar": 0.325,
    "a grinning gargoyle": 0.558,
    "a glyphed ghoul": 0.869,
@@ -2469,7 +2482,7 @@
    "an imp familiar": 1.061,
    "a wightish ancille": 0.911,
    "a ghoulish ancille": 1.326,
-   "a vampiric ancille": 1.715,
+   "a vampiric ancille": 1.761,
    "a glyphed sentry": 0.84,
    "a glyphed forbidder": 1.198,
    "a ghastish ancille": 1.549,
@@ -2501,14 +2514,14 @@
    "a deathly usher": 1.327,
    "a leering gargoyle": 1.935,
    "a deathly herald": 1.725,
-   "a spiritish ancille": 0.751,
+   "a spiritish ancille": 0.716,
    "a wraithish ancille": 0.845,
    "Enynti": 0.708
   },
-  "you_hit": 1288,
-  "you_miss": 873,
-  "mob_hit": 2189,
-  "mob_miss": 2053,
+  "you_hit": 1322,
+  "you_miss": 897,
+  "mob_hit": 2224,
+  "mob_miss": 2100,
   "mobs": {
    "A pledge familiar": {
     "swings": 432,
@@ -2563,9 +2576,9 @@
     "loot": {}
    },
    "A sneering gargoyle": {
-    "swings": 30,
-    "landed": 13,
-    "avg": 21.8,
+    "swings": 62,
+    "landed": 25,
+    "avg": 21.7,
     "max": 58,
     "backstabs": 0,
     "backstab_avg": null,
@@ -2668,10 +2681,10 @@
     "loot": {}
    },
    "A vampiric ancille": {
-    "swings": 134,
-    "landed": 73,
-    "avg": 20.0,
-    "max": 67,
+    "swings": 165,
+    "landed": 87,
+    "avg": 20.1,
+    "max": 69,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -2683,17 +2696,17 @@
     "loot": {}
    },
    "A spiritish ancille": {
-    "swings": 29,
-    "landed": 12,
-    "avg": 10.8,
-    "max": 39,
+    "swings": 48,
+    "landed": 21,
+    "avg": 13.5,
+    "max": 50,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 8,
-     "Instill": 6,
-     "Tishan's Clash": 3
+     "Instill": 11,
+     "Lightning Bolt": 10,
+     "Tishan's Clash": 4
     },
     "loot": {}
    },
@@ -3165,10 +3178,11 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Healing": 107,
-     "Flowering Heal": 61,
+     "Healing": 110,
+     "Flowering Heal": 62,
      "Shield of Barbs": 1,
-     "Creeping Crud": 1
+     "Creeping Crud": 1,
+     "Lesser Succor III": 1
     },
     "loot": {}
    },
@@ -3224,7 +3238,7 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Mote of Minor Potential": 1
+     "Mote of Minor Potential": 2
     }
    },
    "an initiate familiar": {
@@ -3339,7 +3353,8 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Mithril Earring +1": 1
+     "Mithril Earring +1": 1,
+     "Topaz": 1
     }
    },
    "a glyphed forbidder": {
