@@ -1,0 +1,1409 @@
+{
+ "steps": {
+  "redwine": {
+   "name": "Bottle of Red Wine",
+   "kind": "buy",
+   "zone": "Neriak Third Gate",
+   "npc": "Lokar To`Biath",
+   "item": "Red Wine",
+   "qty": 400,
+   "hours": "2\u20134",
+   "note": "One vendor, one turn-in NPC, one zone. The single simplest unlock in the game. Requires indifferent standing.",
+   "gain_raw": "Dreadguard Inner +5 \u00b7 Dreadguard Outer +5 \u00b7 Dark Bargainers +10",
+   "gain": [
+    {
+     "faction": "Dreadguard Inner",
+     "delta": 5
+    },
+    {
+     "faction": "Dreadguard Outer",
+     "delta": 5
+    },
+    {
+     "faction": "Dark Bargainers",
+     "delta": 10
+    }
+   ]
+  },
+  "muffins": {
+   "name": "Muffin for Pandos",
+   "kind": "buy",
+   "zone": "West Freeport",
+   "npc": "Pandos Flintside",
+   "item": "Muffin (Pincia Brownloe, West Freeport)",
+   "qty": 400,
+   "hours": "2\u20134",
+   "note": "Feeds Wood Elf and High Elf at the same time. If you are KoS, trade him from the next room through the open door in third person.",
+   "gain_raw": "Clerics of Tunare +5 \u00b7 Soldiers of Tunare +5 \u00b7 Faydark Champions +5 \u00b7 King Tearis Thex +5",
+   "gain": [
+    {
+     "faction": "Clerics of Tunare",
+     "delta": 5
+    },
+    {
+     "faction": "Soldiers of Tunare",
+     "delta": 5
+    },
+    {
+     "faction": "Faydark Champions",
+     "delta": 5
+    },
+    {
+     "faction": "King Tearis Thex",
+     "delta": 5
+    }
+   ]
+  },
+  "whitewine": {
+   "name": "Hogcaller's Inn, first step",
+   "kind": "buy",
+   "zone": "West Freeport",
+   "npc": "Lady Shae",
+   "item": "White Wine (Swin Blackeye or Drona Whystlethin)",
+   "qty": 400,
+   "hours": "2\u20134",
+   "note": "Same building as Pandos. Lady Shae sits on a unique faction that is neutral to everyone, so nobody is locked out.",
+   "gain_raw": "Emerald Warriors +5 \u00b7 Merchants of Felwithe +5 \u00b7 Merchants of Kelethin +5",
+   "gain": [
+    {
+     "faction": "Emerald Warriors",
+     "delta": 5
+    },
+    {
+     "faction": "Merchants of Felwithe",
+     "delta": 5
+    },
+    {
+     "faction": "Merchants of Kelethin",
+     "delta": 5
+    }
+   ]
+  },
+  "batwings": {
+   "name": "Bat Wings",
+   "kind": "buy",
+   "zone": "South Felwithe",
+   "npc": "Niola Impholder",
+   "item": "Bat Wing (any reagent vendor)",
+   "qty": 1600,
+   "hours": "3\u20135",
+   "note": "Four wings per turn-in, so 1600 wings is 400 cycles. Needs at least indifferent with her.",
+   "gain_raw": "Keepers of the Art +5 \u00b7 King Tearis Thex +5 \u00b7 Faydark Champions +5 \u2014 per 4 wings",
+   "gain": [
+    {
+     "faction": "Keepers of the Art",
+     "delta": 5
+    },
+    {
+     "faction": "King Tearis Thex",
+     "delta": 5
+    },
+    {
+     "faction": "Faydark Champions",
+     "delta": 5
+    }
+   ]
+  },
+  "brandy": {
+   "name": "Rohand's Brandy",
+   "kind": "buy",
+   "zone": "Qeynos",
+   "npc": "Captain Rohand",
+   "item": "Brandy (any bartender)",
+   "qty": 400,
+   "hours": "2\u20133",
+   "note": "+25 a hit on Merchants of Qeynos is one of the largest per-turn-in gains available anywhere. Also feeds Human (Freeport).",
+   "gain_raw": "Merchants of Qeynos +25 \u00b7 Antonius Bayle +5 \u00b7 Coalition of Tradefolk +5 \u00b7 Guards of Qeynos +5",
+   "gain": [
+    {
+     "faction": "Merchants of Qeynos",
+     "delta": 25
+    },
+    {
+     "faction": "Antonius Bayle",
+     "delta": 5
+    },
+    {
+     "faction": "Coalition of Tradefolk",
+     "delta": 5
+    },
+    {
+     "faction": "Guards of Qeynos",
+     "delta": 5
+    }
+   ]
+  },
+  "mead": {
+   "name": "Honey Mead for Trumpy",
+   "kind": "buy",
+   "zone": "South Qeynos",
+   "npc": "Trumpy Irontoe",
+   "item": "Honey Mead",
+   "qty": 1600,
+   "hours": "3\u20135",
+   "note": "Trades guards and merchants away for corrupt guards, but Legends' +5 minimum gain makes it come out ahead. Four mead per cycle.",
+   "gain_raw": "Corrupt Qeynos Guards +5 \u00b7 Circle of Unseen Hands +5 \u00b7 Kane Bayle +5 \u2014 per 4 mead",
+   "gain": [
+    {
+     "faction": "Corrupt Qeynos Guards",
+     "delta": 5
+    },
+    {
+     "faction": "Circle of Unseen Hands",
+     "delta": 5
+    },
+    {
+     "faction": "Kane Bayle",
+     "delta": 5
+    }
+   ]
+  },
+  "tonics400": {
+   "name": "Tumpy Tonics",
+   "kind": "craft",
+   "zone": "Kaladim",
+   "npc": "Trantor Everhot",
+   "item": "800 Kiola Nut + 1600 Flask of Water, brewed",
+   "qty": 400,
+   "hours": "6\u201310",
+   "note": "Brew them rather than handing Tumpy Irontoe 1 nut and 2 waters 800 times. Budget about 843 nuts and 1686 water for failures at trivial.",
+   "gain_raw": "Storm Guard +5 \u00b7 Kazon Stormhammer +5 \u00b7 Merchants of Kaladim +5 \u00b7 Miners Guild 249 +5",
+   "gain": [
+    {
+     "faction": "Storm Guard",
+     "delta": 5
+    },
+    {
+     "faction": "Kazon Stormhammer",
+     "delta": 5
+    },
+    {
+     "faction": "Merchants of Kaladim",
+     "delta": 5
+    }
+   ]
+  },
+  "tonics110": {
+   "name": "Tonics for Groflah",
+   "kind": "craft",
+   "zone": "East Freeport docks",
+   "npc": "Groflah Steadirt",
+   "item": "110 Kiola Nut + 220 Flask of Water, brewed",
+   "qty": 110,
+   "hours": "2\u20134",
+   "note": "He spawns at the dock bar at night and shares a spawn with other NPCs \u2014 hop difficulties to reroll the spawn. Only 100 are strictly needed; the extra 10 buffers your Knights of Truth for the next step.",
+   "gain_raw": "Coalition of Tradefolk +10 \u00b7 Coalition Underground +10 \u00b7 Knights of Truth +10 \u00b7 Merchants of Qeynos +7",
+   "gain": [
+    {
+     "faction": "Coalition of Tradefolk",
+     "delta": 10
+    },
+    {
+     "faction": "Coalition Underground",
+     "delta": 10
+    },
+    {
+     "faction": "Knights of Truth",
+     "delta": 10
+    },
+    {
+     "faction": "Merchants of Qeynos",
+     "delta": 7
+    }
+   ]
+  },
+  "intercept": {
+   "name": "Message Intercept",
+   "kind": "farm",
+   "zone": "West Commonlands \u2192 West Freeport",
+   "npc": "Mojax Hikspin, then Sir Lucan D`Lere",
+   "item": "84+ Bottle of Milk",
+   "qty": 42,
+   "hours": "3\u20136",
+   "note": "Give Mojax milk to spawn Duggin Scumber, kill him for a note, repeat 42 times, then hand every note to Sir Lucan. Hail Mojax repeatedly to stop him wandering. Buy 100+ milk; this step is fiddly.",
+   "gain_raw": "Freeport Militia +25 \u00b7 Coalition Underground +5 \u2014 per note",
+   "gain": [
+    {
+     "faction": "Freeport Militia",
+     "delta": 25
+    },
+    {
+     "faction": "Coalition Underground",
+     "delta": 5
+    }
+   ]
+  },
+  "boxes": {
+   "name": "Series C Black Boxes, first part",
+   "kind": "free",
+   "zone": "Ak'Anon",
+   "npc": "Manik Compolten, then any Series C clockwork",
+   "item": "Shiny Cards \u2014 free from the quest NPC",
+   "qty": 400,
+   "hours": "4\u20137",
+   "note": "Costs nothing but clicks. Fill your bags with cards, trade them for black boxes, destroy the boxes, repeat. Needs amiable with Gem Choppers to start \u2014 Shondo and the Tonic is the fastest way there.",
+   "gain_raw": "King Ak'Anon +5 \u00b7 Eldritch Collective +5 \u00b7 Gem Choppers +5",
+   "gain": [
+    {
+     "faction": "King Ak'Anon",
+     "delta": 5
+    },
+    {
+     "faction": "Eldritch Collective",
+     "delta": 5
+    },
+    {
+     "faction": "Gem Choppers",
+     "delta": 5
+    }
+   ]
+  },
+  "lionmeat": {
+   "name": "Lion Meat Shipment",
+   "kind": "free",
+   "zone": "West Karana \u2192 Halas",
+   "npc": "Teria O`Danos",
+   "item": "Shipments free from Einhorst McMannus",
+   "qty": 200,
+   "hours": "6\u201310",
+   "note": "Four shipments per turn-in. Bind in front of Teria and gate. Wizard at 23 for West Karana Gate plus Lesser Evacuate cuts the run down enormously; this step is mostly travel.",
+   "gain_raw": "Merchants of Halas +10 \u00b7 Wolves of the North +7 \u00b7 Shamen of Justice +7 \u00b7 Rogues of the White Rose +5",
+   "gain": [
+    {
+     "faction": "Merchants of Halas",
+     "delta": 10
+    },
+    {
+     "faction": "Wolves of the North",
+     "delta": 7
+    },
+    {
+     "faction": "Shamen of Justice",
+     "delta": 7
+    },
+    {
+     "faction": "Rogues of the White Rose",
+     "delta": 5
+    }
+   ]
+  },
+  "iceberg": {
+   "name": "Lion Delights to Iceberg",
+   "kind": "free",
+   "zone": "Everfrost Peaks tundra",
+   "npc": "Iceberg",
+   "item": "200 Lion Delight from the step above",
+   "qty": 200,
+   "hours": "1",
+   "note": "He despawns the moment you hand him one, so trade the entire batch in a single window. Keep the Delights below your normal food so you do not eat them.",
+   "gain_raw": "Wolves of the North +5 \u00b7 Shamen of Justice +5 \u00b7 Merchants of Halas +5 \u00b7 Steel Warriors +5 \u00b7 Rogues of the White Rose +5",
+   "gain": [
+    {
+     "faction": "Wolves of the North",
+     "delta": 5
+    },
+    {
+     "faction": "Shamen of Justice",
+     "delta": 5
+    },
+    {
+     "faction": "Merchants of Halas",
+     "delta": 5
+    },
+    {
+     "faction": "Steel Warriors",
+     "delta": 5
+    },
+    {
+     "faction": "Rogues of the White Rose",
+     "delta": 5
+    }
+   ]
+  },
+  "phosph": {
+   "name": "Phosphorous Powder",
+   "kind": "farm",
+   "zone": "Ruins of Old Guk \u2192 Rathe Mountains",
+   "npc": "Zok Zribb",
+   "item": "Powder from high level ghouls",
+   "qty": 800,
+   "hours": "15\u201325",
+   "note": "Dar, zol and bok ghoul knights each drop two at close to 100%. Roughly 400\u2013500 kills. This is the one grind that pays you back \u2014 expect to take two classes to 50 while doing it.",
+   "gain_raw": "Guktan Suppliers +5 \u00b7 Protectors of Gukta +5 \u00b7 Guktan Elders +5 \u00b7 High Council of Gukta +5 \u00b7 Lorekeepers of Gukta +5 \u2014 per 2 powder",
+   "gain": [
+    {
+     "faction": "Guktan Suppliers",
+     "delta": 5
+    },
+    {
+     "faction": "Protectors of Gukta",
+     "delta": 5
+    },
+    {
+     "faction": "Guktan Elders",
+     "delta": 5
+    },
+    {
+     "faction": "High Council of Gukta",
+     "delta": 5
+    },
+    {
+     "faction": "Lorekeepers of Gukta",
+     "delta": 5
+    }
+   ]
+  },
+  "iksarore": {
+   "name": "High Quality Ore to Iktra",
+   "kind": "craft",
+   "zone": "North Ro",
+   "npc": "Crusader Iktra",
+   "item": "160 Metal Bits, then 180 Small Piece of High Quality Ore",
+   "qty": 180,
+   "hours": "8\u201314",
+   "note": "Only one faction to max, but the raw plat runs over 1600. Start with Metal Bits \u2014 they stop working at amiable but they are cheap. Cut fine steel weapons into bricks or farm Runnyeye goblins to bring the cost down.",
+   "gain_raw": "New Sebilisian Expedition +5 for 4 Metal Bits \u00b7 +10 per Small Piece of High Quality Ore",
+   "gain": [
+    {
+     "faction": "New Sebilisian Expedition",
+     "delta": 5
+    }
+   ]
+  },
+  "kobolds": {
+   "name": "Kill 400 kobolds",
+   "kind": "farm",
+   "zone": "The Warrens / Stonebrunt Mountains",
+   "npc": "\u2014",
+   "item": "\u2014",
+   "qty": 400,
+   "hours": "3\u20136",
+   "note": "Do not turn in the molars for Heretics faction \u2014 they cost you Deepwater Knights. Kobold kills here also feed Kerra Isle faction, which was added recently.",
+   "gain_raw": "Heretics +5 \u00b7 High Guard of Erudin +5 \u00b7 Clan Kobolk \u22121",
+   "gain": [
+    {
+     "faction": "Heretics",
+     "delta": 5
+    },
+    {
+     "faction": "High Guard of Erudin",
+     "delta": 5
+    }
+   ]
+  },
+  "molars": {
+   "name": "Kobold Molars (Good)",
+   "kind": "farm",
+   "zone": "Erudin",
+   "npc": "Tiam Khonsir",
+   "item": "Kobold Molars from the kills above",
+   "qty": 286,
+   "hours": "\u2014",
+   "note": "286 molars maxes Deepwater Knights on its own but needs roughly 1430 kobold kills to gather. Mix it with killing Paineel guards rather than relying on it alone.",
+   "gain_raw": "Deepwater Knights +7 \u00b7 High Council of Erudin +5 \u00b7 Heretics \u22121",
+   "gain": [
+    {
+     "faction": "Deepwater Knights",
+     "delta": 7
+    },
+    {
+     "faction": "High Council of Erudin",
+     "delta": 5
+    }
+   ]
+  },
+  "paineel": {
+   "name": "Kill Paineel heretics",
+   "kind": "farm",
+   "zone": "Paineel",
+   "npc": "\u2014",
+   "item": "\u2014",
+   "qty": 0,
+   "hours": "2\u20135",
+   "note": "Atdehim Sqonci gives +100, capped by patch, and is still the fastest single target. Eight named guards give +25 each; ordinary guards give +10. Open a personal instance and work through them.",
+   "gain_raw": "Deepwater Knights +10 to +100 per kill \u00b7 Heretics \u221210 to \u2212100",
+   "gain": [
+    {
+     "faction": "Deepwater Knights",
+     "delta": 10
+    },
+    {
+     "faction": "to",
+     "delta": 100
+    }
+   ]
+  },
+  "catman": {
+   "name": "Catman Alliance",
+   "kind": "free",
+   "zone": "The Warrens \u2192 Erudin",
+   "npc": "Aderius Rhenar, then Leraena Shelyrak",
+   "item": "Rolled Up Strip of Cloth \u2014 free from the prisoner",
+   "qty": 0,
+   "hours": "2\u20134",
+   "note": "Run it until amiable with Peace Keepers to open the Peacekeeper Staff quest, or all the way to +2000 if you would rather travel than destroy items. Ring of Toxxulia at Druid 17 skips most of the run.",
+   "gain_raw": "Peace Keepers +5 \u00b7 High Council of Erudin +5 \u00b7 Heretics \u22121",
+   "gain": [
+    {
+     "faction": "Peace Keepers",
+     "delta": 5
+    },
+    {
+     "faction": "High Council of Erudin",
+     "delta": 5
+    }
+   ]
+  },
+  "peacekeeper": {
+   "name": "Peacekeeper Staff, first step",
+   "kind": "free",
+   "zone": "Erudin \u2192 Toxxulia Forest",
+   "npc": "Lumi Stergnon, then Emil Parsini",
+   "item": "Sealed letters \u2014 free from the quest NPC",
+   "qty": 400,
+   "hours": "6\u201310",
+   "note": "400 cycles from a standing start, minus whatever the molars and Catman Alliance already gave you. Bind at one of the two NPCs.",
+   "gain_raw": "Merchants of Erudin +5 \u00b7 High Council of Erudin +5 \u00b7 High Guard of Erudin +5",
+   "gain": [
+    {
+     "faction": "Merchants of Erudin",
+     "delta": 5
+    },
+    {
+     "faction": "High Council of Erudin",
+     "delta": 5
+    },
+    {
+     "faction": "High Guard of Erudin",
+     "delta": 5
+    }
+   ]
+  },
+  "bandages": {
+   "name": "Bandages for Honeybugger",
+   "kind": "buy",
+   "zone": "Misty Thicket",
+   "npc": "Joogl Honeybugger",
+   "item": "Bandages",
+   "qty": 400,
+   "hours": "2\u20133",
+   "note": "Straightforward, and it works even while KoS once you are above level 17.",
+   "gain_raw": "Merchants of Rivervale +5 \u00b7 Guardians of the Vale +5 \u00b7 Deeppockets +5 \u00b7 Mayor Gubbin +5",
+   "gain": [
+    {
+     "faction": "Merchants of Rivervale",
+     "delta": 5
+    },
+    {
+     "faction": "Guardians of the Vale",
+     "delta": 5
+    },
+    {
+     "faction": "Deeppockets",
+     "delta": 5
+    },
+    {
+     "faction": "Mayor Gubbin",
+     "delta": 5
+    }
+   ]
+  },
+  "clericsupply": {
+   "name": "Cleric Supplies",
+   "kind": "farm",
+   "zone": "East Commonlands \u2192 Rivervale",
+   "npc": "Beek Guinders",
+   "item": "400 Black Wolf Skin, 800 Ruined Wolf Pelt, 400 Berries",
+   "qty": 400,
+   "hours": "25\u201340",
+   "note": "The limiting item is not the one you expect. Roughly 2000 wolf kills for the skins, and the berries are the real wall \u2014 three respawn in Misty Thicket on a five-minute timer, six per cycle if you hop between a personal instance and D0, so 5\u20136 hours for the berries alone even with 200 forage running on cooldown.",
+   "gain_raw": "Priests of Mischief +5 \u00b7 Mayor Gubbin +5 \u00b7 Guardians of the Vale +5",
+   "gain": [
+    {
+     "faction": "Priests of Mischief",
+     "delta": 5
+    },
+    {
+     "faction": "Mayor Gubbin",
+     "delta": 5
+    },
+    {
+     "faction": "Guardians of the Vale",
+     "delta": 5
+    }
+   ]
+  },
+  "deathfist": {
+   "name": "More Help for Innoruuk",
+   "kind": "farm",
+   "zone": "Commonlands \u2192 Grobb",
+   "npc": "Bregna",
+   "item": "400 Deathfist Slashed Belt",
+   "qty": 400,
+   "hours": "20\u201330",
+   "note": "About 2000 orc kills. Clear the camps in both Commonlands zones, then a personal instance, then a different difficulty between respawns.",
+   "gain_raw": "Dark Ones +5 \u00b7 Shadowknights of Night Keep +5 \u00b7 Frogloks of Guk \u22121",
+   "gain": [
+    {
+     "faction": "Dark Ones",
+     "delta": 5
+    },
+    {
+     "faction": "Shadowknights of Night Keep",
+     "delta": 5
+    }
+   ]
+  },
+  "grublocker": {
+   "name": "Nerbilik's Grub Locker",
+   "kind": "free",
+   "zone": "Neriak Foreign Quarter \u2192 Ocean of Tears",
+   "npc": "Nerbilik",
+   "item": "Grub Lockers \u2014 free from The Gobbler",
+   "qty": 400,
+   "hours": "5\u20138",
+   "note": "Bind near Nerbilik and port back for more lockers. Wizard Nek Gate or Druid Ring of Lavastorm, both at 22, turn this from a slog into a loop. The Butcherblock translocator drops you close to him.",
+   "gain_raw": "Da Bashers +10 \u00b7 Grobb Merchants +5 \u00b7 Broken Skull Clan \u22121",
+   "gain": [
+    {
+     "faction": "Da Bashers",
+     "delta": 10
+    },
+    {
+     "faction": "Grobb Merchants",
+     "delta": 5
+    }
+   ]
+  },
+  "ogremuffins": {
+   "name": "Oggok Fresh Baked Muffins",
+   "kind": "forage",
+   "zone": "Oggok or The Feerrott",
+   "npc": "an innkeeper",
+   "item": "667 foraged Fruit, baked into 400 Muffins, crated in tens",
+   "qty": 400,
+   "hours": "70\u201390",
+   "note": "They must be baked, and Fruit can only be foraged. Expect 70\u201380 hours of foraging on cooldown even in high-Fruit zones. Get baking to 135 and take the first baking AA so you never fail. Alanna's own advice is to start as an Ogre or wait for another method.",
+   "gain_raw": "Merchants of Oggok +5 \u00b7 Oggok Guards +5 \u00b7 Clurg +5",
+   "gain": [
+    {
+     "faction": "Merchants of Oggok",
+     "delta": 5
+    },
+    {
+     "faction": "Oggok Guards",
+     "delta": 5
+    },
+    {
+     "faction": "Clurg",
+     "delta": 5
+    }
+   ]
+  },
+  "kerra": {
+   "name": "Aid the Kerrans of Kerra Isle",
+   "kind": "free",
+   "zone": "Kerra Isle",
+   "npc": "Hail any class GM on the isle",
+   "item": "\u2014",
+   "qty": 11,
+   "hours": "3\u20136",
+   "note": "The only race with no +2000 grind at all. Work through every quest on the isle. Most races start at \u221250 to Kerra Isle faction, but Erudite, Dark Elf, Troll, Ogre and Iksar start at \u22121000, as do Bertoxxulous, Cazic Thule and Innoruuk worshippers. Killing kobolds in The Warrens now raises it.",
+   "gain_raw": "Task completion, not faction thresholds",
+   "gain": []
+  }
+ },
+ "races": {
+  "DEF": {
+   "name": "Dark Elf",
+   "align": "Evil",
+   "city": "Neriak",
+   "tier": 1,
+   "factions": [
+    "Dreadguard Inner",
+    "Dreadguard Outer",
+    "Dark Bargainers"
+   ],
+   "steps": [
+    "redwine"
+   ],
+   "classes": [
+    "CLR",
+    "ENC",
+    "MAG",
+    "NEC",
+    "ROG",
+    "SHD",
+    "WAR",
+    "WIZ"
+   ],
+   "why": "Three factions, one quest, one NPC, one zone, no kills. Nothing else in the game is this contained."
+  },
+  "ELF": {
+   "name": "Wood Elf",
+   "align": "Good",
+   "city": "Kelethin",
+   "tier": 1,
+   "factions": [
+    "Emerald Warriors",
+    "Soldiers of Tunare",
+    "Kelethin Merchants"
+   ],
+   "steps": [
+    "muffins",
+    "whitewine"
+   ],
+   "classes": [
+    "BRD",
+    "DRU",
+    "RNG",
+    "ROG",
+    "WAR"
+   ],
+   "why": "Two vendor-bought turn-in loops in the same building in West Freeport. Both steps also count toward High Elf, so doing this first makes the next unlock nearly free."
+  },
+  "HUMQ": {
+   "name": "Human (Qeynos)",
+   "align": "Neutral",
+   "city": "Qeynos",
+   "tier": 1,
+   "factions": [
+    "Merchants of Qeynos",
+    "Guards of Qeynos",
+    "Corrupt Qeynos Guards"
+   ],
+   "steps": [
+    "brandy",
+    "mead"
+   ],
+   "classes": [
+    "BRD",
+    "CLR",
+    "DRU",
+    "ENC",
+    "MAG",
+    "MNK",
+    "NEC",
+    "PAL",
+    "RNG",
+    "ROG",
+    "SHD",
+    "WAR",
+    "WIZ"
+   ],
+   "why": "Pure vendor work in one city, and Human opens the widest primary class list of any race \u2014 thirteen of the sixteen. Also unlocks Half Elf for free."
+  },
+  "HIE": {
+   "name": "High Elf",
+   "align": "Good",
+   "city": "Felwithe",
+   "tier": 2,
+   "factions": [
+    "Keepers of the Art",
+    "Merchants of Felwithe",
+    "Clerics of Tunare"
+   ],
+   "steps": [
+    "muffins",
+    "whitewine",
+    "batwings"
+   ],
+   "classes": [
+    "CLR",
+    "ENC",
+    "MAG",
+    "PAL",
+    "WIZ"
+   ],
+   "why": "Shares its first two steps with Wood Elf outright \u2014 the muffins cover Clerics of Tunare while covering Soldiers of Tunare, and the white wine covers Merchants of Felwithe while covering Kelethin Merchants. If Wood Elf is done, only the bat wings remain."
+  },
+  "HEF": {
+   "name": "Half Elf",
+   "align": "Neutral",
+   "city": "Freeport \u00b7 Kelethin \u00b7 Felwithe \u00b7 Surefall Glade \u00b7 Qeynos",
+   "tier": 0,
+   "factions": [],
+   "steps": [],
+   "classes": [
+    "BRD",
+    "DRU",
+    "PAL",
+    "RNG",
+    "ROG",
+    "WAR"
+   ],
+   "why": "No faction work of its own. Unlock Wood Elf or Human (Qeynos) and this one comes with it."
+  },
+  "GNM": {
+   "name": "Gnome",
+   "align": "Neutral",
+   "city": "Ak'Anon",
+   "tier": 2,
+   "factions": [
+    "King Ak'Anon",
+    "Gem Choppers",
+    "Eldritch Collective"
+   ],
+   "steps": [
+    "boxes"
+   ],
+   "classes": [
+    "CLR",
+    "ENC",
+    "MAG",
+    "NEC",
+    "PAL",
+    "ROG",
+    "SHD",
+    "WAR",
+    "WIZ"
+   ],
+   "why": "The only major unlock that costs no money at all \u2014 the quest hands you the items. It is 400 cycles of pure clicking in a single city."
+  },
+  "DWF": {
+   "name": "Dwarf",
+   "align": "Good",
+   "city": "Kaladim",
+   "tier": 2,
+   "factions": [
+    "Storm Guard",
+    "Merchants of Kaladim",
+    "Kazon Stormhammer"
+   ],
+   "steps": [
+    "tonics400"
+   ],
+   "classes": [
+    "BER",
+    "CLR",
+    "PAL",
+    "ROG",
+    "WAR"
+   ],
+   "why": "One quest, but you have to brew 400 tonics first. Doing this also produces the tonics Human (Freeport) needs, so run them back to back."
+  },
+  "KER": {
+   "name": "Kerran",
+   "align": "Neutral",
+   "city": "Kerra Isle",
+   "tier": 2,
+   "factions": [],
+   "steps": [
+    "kerra"
+   ],
+   "classes": [
+    "BRD",
+    "BER",
+    "BST",
+    "DRU",
+    "ROG",
+    "SHM",
+    "WAR"
+   ],
+   "why": "Unlocked by a task chain rather than a faction grind \u2014 the only race that works this way. If your race or deity starts you at \u22121000, raise Kerra Isle faction by killing kobolds in The Warrens first."
+  },
+  "HUMF": {
+   "name": "Human (Freeport)",
+   "align": "Neutral",
+   "city": "Freeport",
+   "tier": 3,
+   "factions": [
+    "Coalition of Tradefolk",
+    "The Freeport Militia",
+    "Knights of Truth"
+   ],
+   "steps": [
+    "tonics110",
+    "intercept"
+   ],
+   "classes": [
+    "BRD",
+    "CLR",
+    "DRU",
+    "ENC",
+    "MAG",
+    "MNK",
+    "NEC",
+    "PAL",
+    "RNG",
+    "ROG",
+    "SHD",
+    "WAR",
+    "WIZ"
+   ],
+   "why": "Far lower volume than most \u2014 110 tonics and 42 notes \u2014 but the Militia step needs a night spawn, a mob you have to kill 42 times, and an NPC that wanders the zone. Fiddly rather than long."
+  },
+  "BAR": {
+   "name": "Barbarian",
+   "align": "Good",
+   "city": "Halas",
+   "tier": 3,
+   "factions": [
+    "Rogues of the White Rose",
+    "Wolves of the North",
+    "Merchants of Halas"
+   ],
+   "steps": [
+    "lionmeat",
+    "iceberg"
+   ],
+   "classes": [
+    "BST",
+    "BER",
+    "ROG",
+    "SHM",
+    "WAR"
+   ],
+   "why": "The items are free and the turn-ins are quick. Nearly all of the cost is travel between West Karana and Halas, so this one lives or dies on your movement options."
+  },
+  "FRG": {
+   "name": "Froglok",
+   "align": "Neutral",
+   "city": "Rathe Mountains",
+   "tier": 3,
+   "factions": [
+    "Protectors of Gukta",
+    "Guktan Elders",
+    "Guktan Suppliers"
+   ],
+   "steps": [
+    "phosph"
+   ],
+   "classes": [
+    "CLR",
+    "MNK",
+    "NEC",
+    "PAL",
+    "ROG",
+    "SHD",
+    "SHM",
+    "WAR",
+    "WIZ"
+   ],
+   "why": "A kill grind rather than a shopping trip, but the only one that pays for itself \u2014 400 to 500 high level ghouls is enough experience to carry two classes to 50 along the way."
+  },
+  "IKS": {
+   "name": "Iksar",
+   "align": "Evil",
+   "city": "North Ro",
+   "tier": 3,
+   "factions": [
+    "New Sebilisian Expedition"
+   ],
+   "steps": [
+    "iksarore"
+   ],
+   "classes": [
+    "BST",
+    "MNK",
+    "NEC",
+    "SHD",
+    "SHM",
+    "WAR"
+   ],
+   "why": "The only race gated behind a single faction rather than three. The catch is money \u2014 over 1600 plat of ore unless you farm or recycle the material."
+  },
+  "ERU": {
+   "name": "Erudite",
+   "align": "Neutral",
+   "city": "Erudin \u00b7 Paineel",
+   "tier": 4,
+   "factions": [
+    "Deepwater Knights",
+    "High Council of Erudin",
+    "Heretics"
+   ],
+   "steps": [
+    "kobolds",
+    "molars",
+    "paineel",
+    "catman",
+    "peacekeeper"
+   ],
+   "classes": [
+    "CLR",
+    "ENC",
+    "MAG",
+    "NEC",
+    "PAL",
+    "SHD",
+    "WIZ"
+   ],
+   "why": "Five interlocking steps where several quests actively damage the factions you still need. The one unlock where improvising costs more than following a tested order exactly \u2014 do kobolds first, never hand molars in for Heretics faction."
+  },
+  "TRL": {
+   "name": "Troll",
+   "align": "Evil",
+   "city": "Grobb",
+   "tier": 4,
+   "factions": [
+    "Da Bashers",
+    "Grobb Merchants",
+    "Dark Ones"
+   ],
+   "steps": [
+    "deathfist",
+    "grublocker"
+   ],
+   "classes": [
+    "BST",
+    "BER",
+    "SHD",
+    "SHM",
+    "WAR"
+   ],
+   "why": "The grub lockers are free and fast once you can port. The belts are the problem: about 2000 Deathfist orc kills."
+  },
+  "HFL": {
+   "name": "Halfling",
+   "align": "Good",
+   "city": "Rivervale",
+   "tier": 4,
+   "factions": [
+    "Guardians of the Vale",
+    "Merchants of Rivervale",
+    "Priests of Mischief"
+   ],
+   "steps": [
+    "bandages",
+    "clericsupply"
+   ],
+   "classes": [
+    "CLR",
+    "DRU",
+    "PAL",
+    "RNG",
+    "ROG",
+    "WAR"
+   ],
+   "why": "The bandages are trivial. Cleric Supplies is the wall, and the bottleneck is not the 2000 wolf kills \u2014 it is 400 Berries off three respawning nodes on a five-minute timer."
+  },
+  "OGR": {
+   "name": "Ogre",
+   "align": "Evil",
+   "city": "Oggok",
+   "tier": 5,
+   "factions": [
+    "Oggok Guards",
+    "Clurg",
+    "Merchants of Oggok"
+   ],
+   "steps": [
+    "ogremuffins"
+   ],
+   "classes": [
+    "BST",
+    "BER",
+    "SHD",
+    "SHM",
+    "WAR"
+   ],
+   "why": "Merchants of Oggok has exactly one realistic source, and it needs 667 foraged Fruit \u2014 70 to 80 hours of foraging on cooldown. Alanna's own recommendation is to start as an Ogre or wait for another method to be added."
+  }
+ },
+ "measured": {
+  "The Castle of Mistmoore": {
+   "difficulty": 1,
+   "date": "08 Aug 2026",
+   "kills": 300,
+   "per_mob": {
+    "a pledge familiar": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "an initiate familiar": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a grinning gargoyle": {
+     "Mayong Mistmoore": -4,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -4,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed ghoul": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed familiar": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed custodian": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed guard": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "an imp familiar": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed sentry": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Ssynthi": {
+     "Temple of Solusek Ro": -5,
+     "Shadowed Men": 5
+    },
+    "a soul temptress": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a will sapper": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a soul seductress": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a will pillager": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a leering gargoyle": {
+     "Mayong Mistmoore": -4,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -4,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a soul inveigling": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a flouting gargoyle": {
+     "Mayong Mistmoore": -4,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -4,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Xicotl": {
+     "Mayong Mistmoore": -300,
+     "King Tearis Thex": 75,
+     "Agents of Mistmoore": -300,
+     "League of Antonican Bards": 75,
+     "Ring of Scale": 15
+    },
+    "a glyphed forbidder": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a spiritish ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed aegis": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a wightish ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a wraithish ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a sneering gargoyle": {
+     "Mayong Mistmoore": -4,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -4,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Enynti": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a vampiric ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a ghastish ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a jeering gargoyle": {
+     "Mayong Mistmoore": -4,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -4,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a ghoulish ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a ghostly ancille": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a thought spoiler": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a dark librarian": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a glyphed warder": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a shadowy sage": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a dark offerer": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Princess Cherista": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a will ravisher": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a deathly usher": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a thought corruptor": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a vampire noble": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a vampire oracle": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a werewolf": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a werewolf gypsy": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "an ancille cook": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Butler Syncall": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "Maid Issis": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a shadowy scrivener": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a negotiator": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a dark elf noble": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    },
+    "a deathly herald": {
+     "Mayong Mistmoore": -5,
+     "King Tearis Thex": 5,
+     "Agents of Mistmoore": -5,
+     "League of Antonican Bards": 5,
+     "Ring of Scale": 5
+    }
+   },
+   "factions": [
+    "Agents of Mistmoore",
+    "King Tearis Thex",
+    "League of Antonican Bards",
+    "Mayong Mistmoore",
+    "Ring of Scale",
+    "Shadowed Men",
+    "Temple of Solusek Ro"
+   ],
+   "falling": [
+    "Agents of Mistmoore",
+    "Mayong Mistmoore",
+    "Temple of Solusek Ro"
+   ],
+   "rising": [
+    "King Tearis Thex",
+    "League of Antonican Bards",
+    "Ring of Scale",
+    "Shadowed Men"
+   ],
+   "steps_undone": [],
+   "steps_helped": [
+    {
+     "step": "muffins",
+     "name": "Muffin for Pandos",
+     "factions": [
+      "King Tearis Thex"
+     ],
+     "races": [
+      "High Elf",
+      "Wood Elf"
+     ]
+    },
+    {
+     "step": "batwings",
+     "name": "Bat Wings",
+     "factions": [
+      "King Tearis Thex"
+     ],
+     "races": [
+      "High Elf"
+     ]
+    }
+   ],
+   "damages": [],
+   "helps": [
+    "High Elf",
+    "Wood Elf"
+   ]
+  }
+ }
+}

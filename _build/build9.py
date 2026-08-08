@@ -40,9 +40,10 @@ CSS = """
 .meas .cond{border-left:2px solid var(--accd);background:#161C21;padding:12px 16px;
   margin:0 0 18px;color:#AEB9B8;font-size:14px}
 .meas .cond b{color:#E6E9E4}
-.meas table{width:100%;border-collapse:collapse;margin:0 0 14px;font-size:14px}
+.meas .tw{overflow-x:auto;margin:0 0 14px;-webkit-overflow-scrolling:touch}
+.meas table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px}
 .meas th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:#7D9096;font-weight:500;
+  letter-spacing:.14em;text-transform:uppercase;color:#9FB0B4;font-weight:500;
   border-bottom:1px solid #2E3A41;padding:0 12px 7px 0}
 .meas td{border-bottom:1px solid #232D32;padding:9px 12px 9px 0;vertical-align:top}
 .meas td.n{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:#C9D1CF}
@@ -52,7 +53,9 @@ CSS = """
 .tierM{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);border-radius:3px;
   color:var(--acct);vertical-align:2px}
-@media(max-width:640px){.meas table,.meas thead,.meas tbody,.meas tr,.meas td,.meas th{display:block}
+@media(max-width:760px){.meas .tw{overflow-x:visible}
+  .meas table{min-width:0}
+  .meas table,.meas thead,.meas tbody,.meas tr,.meas td,.meas th{display:block}
   .meas thead{display:none}.meas td{border:0;padding:2px 0}
   .meas tr{border-bottom:1px solid #232D32;padding:10px 0;display:block}}
 </style>"""
@@ -86,11 +89,136 @@ def escapes_html(s):
             f'the number of mobs engaged is usually the reason rather than the named itself.</p>')
 
 
+def control_html(s):
+    """What takes control away from you, and what cast it.
+
+    The most actionable thing in a log, and it took a death to find. Counted by
+    what the log says happened rather than by what a spell is assumed to be:
+    Screaming Terror was taken for a fear spell and produced no fear behaviour
+    at all, only a scream and a lockout.
+    """
+    c = s.get('control') or {}
+    stuns = c.get('stuns') or {}
+    if not stuns and not c.get('melee_stuns_avoided'):
+        return ''
+    rows = ''.join(
+        f'<tr><td><span class="mob">{esc(sp)}</span></td>'
+        f'<td class="n">{d["landed"]}</td>'
+        f'<td>{esc(", ".join(f"{k} ({v})" for k, v in list(d["casters"].items())[:6])) or "&mdash;"}</td></tr>'
+        for sp, d in stuns.items())
+    total = sum(d['landed'] for d in stuns.values())
+    lead = (f'<b>{c.get("melee_stuns_avoided", 0)}</b> stunning melee attacks were shrugged off, '
+            f'and <b>{total}</b> stuns landed anyway &mdash; <b>every one of them from a spell</b>. '
+            f'That gap is the point: an immunity to stunning <em>melee</em> attacks does nothing '
+            f'about a spell, and the character being measured carried exactly that immunity.')
+    if c.get('screams'):
+        lead += (f' Screaming Terror landed {c["screams"]} times for '
+                 f'<b>{c["scream_seconds"]} seconds</b> of being unable to act.')
+    if c.get('fear_lines') == 0 and c.get('screams'):
+        lead += (' It produced <b>no fear behaviour whatsoever</b> &mdash; no fleeing, nothing '
+                 'the log calls fear &mdash; so despite the name it reads as a stun, and '
+                 'fear protection does not appear to touch it.')
+    return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
+            f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">What takes control away</h3>'
+            f'<div class="cond">{lead}</div>'
+            f'<div class="tw"><table><thead><tr><th>Spell</th><th>Stuns landed</th><th>Cast by</th></tr></thead>'
+            f'<tbody>{rows}</tbody></table></div>'
+            f'<p class="caveat" style="margin:0 0 18px">Counted from what the log recorded, not '
+            f'from what a spell is assumed to do. Resist rates depend on the character&rsquo;s own '
+            f'resistances and alternate abilities, so treat these as what happened to one build '
+            f'rather than as a property of the mob. The useful part is the kill order: whatever '
+            f'casts the spell at the top of this table takes your turn away most often.</p>')
+
+
+def merge(sessions):
+    """Combine sessions of the same zone and difficulty into one measurement.
+
+    Taking the largest and discarding the rest threw away 127 kills and three
+    named mobs measured nowhere else, because one afternoon in Mistmoore was cut
+    into two sessions by a zone line. Sessions are only ever merged when zone
+    and difficulty match, so nothing measured under different conditions is
+    averaged together.
+    """
+    if len(sessions) == 1:
+        return sessions[0]
+    out = dict(sessions[0])
+    out['window'] = f"{sessions[0]['window'].split('-')[0]}-{sessions[-1]['window'].split('-')[-1]}"
+    out['kills'] = sum(s['kills'] for s in sessions)
+    out['you_hit'] = sum(s['you_hit'] for s in sessions)
+    out['you_miss'] = sum(s['you_miss'] for s in sessions)
+    out['sessions_merged'] = len(sessions)
+
+    for key in ('drop_tiers', 'faction'):
+        c = collections.Counter()
+        for s in sessions:
+            c.update(s.get(key) or {})
+        out[key] = dict(c.most_common()) if key == 'faction' else dict(sorted(c.items()))
+
+    out['stamps'] = [x for s in sessions for x in s.get('stamps', [])]
+    out['escapes'] = [x for s in sessions for x in s.get('escapes', [])]
+
+    mobs = {}
+    for s in sessions:
+        for name, d in s['mobs'].items():
+            m = mobs.setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
+                                           backstabs=0, backstab_avg=None, backstab_max=None,
+                                           casts=collections.Counter(), loot=collections.Counter(),
+                                           _dmg=0.0, _bdmg=0.0))
+            m['swings'] += d.get('swings') or 0
+            if d.get('avg') is not None:
+                m['_dmg'] += d['avg'] * (d.get('landed') or 0)
+                m['max'] = max(m['max'] or 0, d.get('max') or 0)
+            m['landed'] += d.get('landed') or 0
+            if d.get('backstabs'):
+                m['_bdmg'] += (d.get('backstab_avg') or 0) * d['backstabs']
+                m['backstabs'] += d['backstabs']
+                m['backstab_max'] = max(m['backstab_max'] or 0, d.get('backstab_max') or 0)
+            m['casts'].update(d.get('casts') or {})
+            m['loot'].update(d.get('loot') or {})
+    for m in mobs.values():
+        m['avg'] = round(m['_dmg'] / m['landed'], 1) if m['landed'] else None
+        m['backstab_avg'] = round(m['_bdmg'] / m['backstabs'], 1) if m['backstabs'] else None
+        m['casts'] = dict(m['casts'].most_common())
+        m['loot'] = dict(m['loot'].most_common())
+        del m['_dmg'], m['_bdmg']
+    out['mobs'] = mobs
+    # Unique names, not the sum of per-session counts: the same gargoyle type
+    # appearing in both halves of an afternoon is one kind of mob, not two.
+    kinds = {k for s in sessions for k in (s.get('kinds') or [])}
+    out['kinds'] = sorted(kinds)
+    out['distinct'] = len(kinds) or max(s['distinct'] for s in sessions)
+
+    ctl = dict(sessions[0].get('control') or {})
+    if ctl:
+        for k in ('melee_stuns_avoided', 'lockout_lines', 'fear_lines', 'screams', 'scream_seconds'):
+            ctl[k] = sum((s.get('control') or {}).get(k, 0) for s in sessions)
+        stuns = {}
+        for s in sessions:
+            for sp, d in ((s.get('control') or {}).get('stuns') or {}).items():
+                e = stuns.setdefault(sp, dict(landed=0, casters=collections.Counter()))
+                e['landed'] += d['landed']
+                e['casters'].update(d.get('casters') or {})
+        ctl['stuns'] = {k: dict(landed=v['landed'], casters=dict(v['casters'].most_common()))
+                        for k, v in sorted(stuns.items(), key=lambda kv: -kv[1]['landed'])}
+        out['control'] = ctl
+    return out
+
+
 def section(sess_list, zone_title):
-    s = max(sess_list, key=lambda z: z['kills'])          # the fullest session
+    same = [z for z in sess_list if z.get('difficulty') == sess_list[0].get('difficulty')]
+    s = merge(sorted(same, key=lambda z: z['window']))
+    # Stamps used to be bare strings and are now {at, text, conditions}; accept
+    # either so an older measured.json still renders.
+    def txt(v):
+        return v['text'] if isinstance(v, dict) else v
+
+    CLASSES = r'\b(BRD|WAR|CLR|SHM|NEC|DRU|ROG|MNK|BER|PAL|SHD|RNG|WIZ|MAG|ENC|BST)\b'
     stamps = s.get('context') or s['stamps']
-    who = next((x for x in stamps if re.search(r'\b(BRD|WAR|CLR|SHM|NEC|DRU|ROG|MNK|BER|PAL|SHD|RNG|WIZ|MAG|ENC|BST)\b', x)), None)
-    notes = [x for x in s['stamps'] if x is not who]
+    who = next((txt(x) for x in stamps if re.search(CLASSES, txt(x))), None)
+    notes = [(txt(x),
+              x.get('at') if isinstance(x, dict) else None,
+              bool(isinstance(x, dict) and x.get('conditions')))
+             for x in s['stamps'] if txt(x) != who]
 
     named, trash = [], []
     for name, d in s['mobs'].items():
@@ -124,11 +252,11 @@ def section(sess_list, zone_title):
     if named:
         tables += (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
                    f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Named</h3>'
-                   f'<table><thead>{hdr}</thead><tbody>{rows(named)}</tbody></table>')
+                   f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(named)}</tbody></table></div>')
     if trash:
         tables += (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
                    f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Everything else</h3>'
-                   f'<table><thead>{hdr}</thead><tbody>{rows(trash)}</tbody></table>')
+                   f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(trash)}</tbody></table></div>')
 
     yh, ym = s['you_hit'], s['you_miss']
     hitrate = f"{100*yh/(yh+ym):.1f}%" if (yh + ym) else 'not measured'
@@ -151,14 +279,18 @@ def section(sess_list, zone_title):
         f'<section class="meas">'
         f'<h2>Measured in play <span class="tierM">TIER M</span></h2>'
         f'<div class="cond">'
-        f'<b>One session, {esc(s["date"])}, {esc(s["window"])}.</b> '
+        f'<b>{("One session" if s.get("sessions_merged", 1) < 2 else str(s["sessions_merged"]) + " sessions")}, '
+        f'{esc(s["date"])}, {esc(s["window"])}.</b> '
         f'{"<b>" + esc(who) + "</b> " if who else ""}'
         f'Zone entered as <b>{esc(zone_title)} ({diff})</b>. '
         f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '
         f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
         f'Faction moved: {facs}.'
-        + (''.join(f'<br><b>Noted at the time:</b> {esc(n)}' for n in notes) if notes else '')
-        + f'</div>{escapes_html(s)}{tables}'
+        + (''.join(
+            f'<br><b>{"Conditions changed at" if c else "Noted at"} {esc(at)}:</b> {esc(n)}'
+            if at else f'<br><b>Noted at the time:</b> {esc(n)}'
+            for n, at, c in notes) if notes else '')
+        + f'</div>{control_html(s)}{escapes_html(s)}{tables}'
         f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
         f'session, not rates. A drop listed here was seen at least once and nothing more &mdash; no '
         f'drop rate can be read from it. Damage and landing figures describe this trio, at this '

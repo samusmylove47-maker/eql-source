@@ -97,7 +97,48 @@ EXP = re.compile(r'You gain (?:party )?experience! \(([\d.]+)%\)')
 ESCAPE = re.compile(r'\b(\w+ )?(Succor|Evacuate|Evacuation)\b', re.I)
 ENGAGE = re.compile(r'^(.{1,44}?) (?:says|shouts), ')
 ESCAPE_WINDOW = datetime.timedelta(seconds=45)
+
+# A stamp reporting the group changing is flagged, not split on. Every measured
+# figure is conditional on who was present, and at 11:57:34 on 8 Aug the healer
+# lost connection — but she was back at 11:58:07, 33 seconds later. Cutting the
+# session there would have halved the sample to record a gap shorter than one
+# fight. So the change is marked in place and shown on the page, and the reader
+# is told conditions varied rather than being handed two thin sessions.
+CONDITION_CHANGE = re.compile(
+    r'(?:lost connection|disconnected|linkdead|logged off|logging off|'
+    r'left the group|swapped|switching to|changed (?:trio|difficulty|class))',
+    re.I)
 LEVEL_SELF = re.compile(r'You have (?:gained|reached) level (\d+)')
+
+# CONTROL EFFECTS — what stops you playing, and what it came from.
+#
+# This is the most actionable thing a log holds and it took a death to notice.
+# The collaborator carries a 100% immunity to stunning MELEE attacks, and it
+# works: 206 melee stuns avoided in one session. Every stun that actually landed
+# came from a spell, which that immunity does not cover — 29 of 35 from Lightning
+# Bolt alone. Meanwhile Screaming Terror, assumed to be fear, produced no fear
+# behaviour at all: no fleeing, no "afraid", just a scream and a lockout.
+#
+# So control is counted by what the log says happened, not by what a spell is
+# assumed to be, and the spell that caused each stun is captured with it. That
+# is what turns "this mob is dangerous" into a kill order.
+STUN_LANDED = re.compile(r'^You are stunned!')
+STUN_AVOIDED = re.compile(r'^You avoid the stunning blow')
+STUN_LOCKOUT = re.compile(r"^You can't attack while stunned")
+SCREAM_START = re.compile(r'^You begin to scream')
+SCREAM_END = re.compile(r'^You stop screaming')
+BY_SPELL = re.compile(r'\bby ([A-Z][^.]*?)\.?\s*$')
+RESISTED = re.compile(r'^You resist (.+?)\'s (.+?)!')
+FEAR_WORDS = re.compile(r'You (?:flee|are afraid|are terrified|run in terror)')
+
+# Signals that a name belongs to a person rather than a mob. Nothing hostile
+# heals us and nothing hostile speaks in a chat channel, so these are safe one
+# way: they never mistake a mob for a player.
+HEALED_YOU = re.compile(r'^(.{1,24}?) healed you(?: over time)? for \d+')
+YOU_HEALED = re.compile(r'^You healed (.{1,24}?) for \d+')
+CHATTER = re.compile(r'^(\w[\w`\'-]{2,23}) (?:tells|says) (?:the |your )?'
+                     r'(?:guild|group|party|raid|fellowship|General|OOC|auction)')
+GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins to cast a spell on you)')
 
 
 def parse(path):
@@ -125,12 +166,26 @@ def collect(rows):
             mobs.add(m.group(1).strip())
     mobs = {m for m in mobs if m and not m.startswith('You')}
 
+    # Subtract the people. "<name> has been slain" is evidence something died,
+    # not evidence it was a mob: Shara was killed by Lasna Cheroon and duly
+    # appeared in the named-mob table of a published plate. That is the Azuria
+    # error arriving from the other direction, and the same rule applies —
+    # positive evidence only, and people leave plenty of it. Nothing hostile
+    # heals us, and nothing hostile talks in a chat channel.
+    players = set()
+    for _w, x in rows:
+        for rx in (HEALED_YOU, YOU_HEALED, CHATTER, GROUP_CAST):
+            m = rx.match(x)
+            if m:
+                players.add(m.group(1).strip())
+    mobs -= players
+
     # Character context is usually stamped before zoning in — the trio and level
     # were noted at 11:07:53 and the zone was entered at 11:08:57, which put them
     # in different sessions. Every stamp in the file is therefore offered to
     # every session as context; session-scoped stamps stay separate.
-    all_stamps = [m.group(1).strip().rstrip("'")
-                  for _w, x in rows for m in [STAMP.search(x)] if m]
+    all_stamps = [{'at': w.strftime('%H:%M'), 'text': m.group(1).strip().rstrip("'")}
+                  for w, x in rows for m in [STAMP.search(x)] if m]
 
     def new_session(zone, diff, when):
         return dict(zone=zone, difficulty_label=diff,
@@ -143,6 +198,11 @@ def collect(rows):
                     dmg=collections.defaultdict(list),
                     mob_hit=collections.Counter(), mob_miss=collections.Counter(),
                     you_hit=0, you_miss=0, context=all_stamps, escapes=[],
+                    ctl=dict(melee_avoided=0, lockout_lines=0, fear_lines=0,
+                             stuns=collections.Counter(),
+                             stun_casters=collections.defaultdict(collections.Counter),
+                             resists=collections.defaultdict(collections.Counter),
+                             screams=0, scream_seconds=0),
                     fac_by_mob=collections.defaultdict(dict),
                     exp_by_mob=collections.defaultdict(list))
 
@@ -184,7 +244,38 @@ def collect(rows):
 
         m = STAMP.search(x)
         if m:
-            cur['stamps'].append(m.group(1).strip().rstrip("'"))
+            note = m.group(1).strip().rstrip("'")
+            cur['stamps'].append({'at': when.strftime('%H:%M'), 'text': note,
+                                  'conditions': bool(CONDITION_CHANGE.search(note))})
+        ctl = cur['ctl']
+        if STUN_AVOIDED.match(x):
+            ctl['melee_avoided'] += 1
+        if STUN_LOCKOUT.match(x):
+            ctl['lockout_lines'] += 1
+        if FEAR_WORDS.search(x):
+            ctl['fear_lines'] += 1
+        if STUN_LANDED.match(x):
+            cur['_stun_at'] = when
+        elif cur.get('_stun_at') and (when - cur['_stun_at']).total_seconds() <= 2:
+            # the line after "You are stunned!" names what did it
+            sp = BY_SPELL.search(x)
+            if sp:
+                spell = sp.group(1).strip()
+                ctl['stuns'][spell] += 1
+                who = re.match(r'^(.{1,44}?) hit you for', x)
+                if who:
+                    ctl['stun_casters'][spell][who.group(1).strip()] += 1
+                cur['_stun_at'] = None
+        if SCREAM_START.match(x):
+            ctl['screams'] += 1
+            cur['_scream_at'] = when
+        if SCREAM_END.match(x) and cur.get('_scream_at'):
+            ctl['scream_seconds'] += int((when - cur['_scream_at']).total_seconds())
+            cur['_scream_at'] = None
+        m = RESISTED.match(x)
+        if m:
+            ctl['resists'][m.group(2).strip()][m.group(1).strip()] += 1
+
         m = FACTION_D.search(x)
         if m:
             cur.setdefault('_fac_buf', []).append((when, m.group(1).strip(), int(m.group(2))))
@@ -284,9 +375,21 @@ def summarise(s):
                difficulty_agrees=agree, date=s['date'],
                window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
+               kinds=sorted(s['kills']),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
                context=s.get('context', []), escapes=s.get('escapes', []),
+               control=dict(
+                   melee_stuns_avoided=s['ctl']['melee_avoided'],
+                   lockout_lines=s['ctl']['lockout_lines'],
+                   fear_lines=s['ctl']['fear_lines'],
+                   screams=s['ctl']['screams'],
+                   scream_seconds=s['ctl']['scream_seconds'],
+                   stuns={k: dict(landed=v,
+                                  casters=dict(s['ctl']['stun_casters'][k].most_common()))
+                          for k, v in s['ctl']['stuns'].most_common()},
+                   resists={k: dict(v.most_common())
+                            for k, v in s['ctl']['resists'].items()}),
                faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
                exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
                you_hit=s['you_hit'], you_miss=s['you_miss'],
@@ -337,7 +440,7 @@ def build(src):
               f"{s['kills']} kills / {s['distinct']} distinct, {len(s['mobs'])} mobs measured, "
               f"your hit rate {100*th/max(1,th+tm_):.1f}%, drops {s['drop_tiers']}")
         for line in s['stamps']:
-            print(f"      stamp: {line[:110]}")
+            print(f"      stamp {line['at']}: {line['text'][:100]}")
 
 
 if __name__ == '__main__':

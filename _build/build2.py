@@ -5,13 +5,13 @@ sys.path.insert(0, os.path.join(ROOT,'_build'))
 from _partials import head, bar, foot
 
 # ---------------------------------------------------------------- TOOLS
-tools = head("Tools", "Three EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + '''
+tools = head("Tools", "Five EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + '''
 <main>
 
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
-    <h1 class="display">Four trackers,<br><em>no account.</em></h1>
+    <h1 class="display">Five trackers,<br><em>no account.</em></h1>
     <p class="hero-lede">No login, no server holding your data. Everything you tick is packed into the
       page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and
       the sheet rebuilds exactly. They autosave in your browser too, so day to day you can just come back.</p>
@@ -50,6 +50,16 @@ tools = head("Tools", "Three EverQuest Legends progression trackers: Plane of Sk
           shopping list, stripping out the duplicated steps. Wood Elf and High Elf share two of three outright.</p>
         <div class="chipline"><span class="pill">Faction routes</span><span class="pill">Merged list</span></div>
         <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
+
+      <a class="card" href="faction-impact.html" style="--c:var(--ok)">
+        <div class="kicker">Planning &middot; measured from play</div>
+        <h3 class="t">Faction impact checker</h3>
+        <p class="d">Faction moves while you are not looking, and you find out hours later when a vendor stops
+          speaking to you. Name a zone, a faction or a race and it says what rises, what falls, how far per kill,
+          and which unlocks that helps or costs. The movement is counted from our own combat logs rather than
+          assumed, so it states plainly which zones we have measured and which we have not.</p>
+        <div class="chipline"><span class="pill">Measured</span><span class="pill">Coverage stated</span></div>
+        <div class="foot"><span>From our own logs</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
         <div class="kicker">Planning</div>

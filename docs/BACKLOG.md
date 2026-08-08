@@ -103,14 +103,22 @@ pretend to resolve what the evidence cannot. The Bristlebane and Solusek Ro
 
 ---
 
-## P2 - Faction Impact Checker
+## P2 - Faction Impact Checker  — BUILT 8 Aug 2026
 
 **Why:** nobody has built one, it is a real and constant EverQuest problem, and
 we already hold the faction data from the race-unlock work.
 
-**Build:** `tools/faction-impact.html`. Input: a zone, or a mob type, or a
-planned grind. Output: which factions rise, which fall, and — the valuable part —
-**which race unlocks or quest lines that damages.**
+**Built.** `tools/faction-impact.html`, from `_build/extract_faction.py` and
+`_build/build10.py`. Search across 65 factions, 25 quest steps and 16 races.
+
+What the entry did not anticipate: the movement half is **measured from our own
+combat logs**, not read, so it covers only zones we have played — one so far.
+Coverage is stated at the top and every uncovered zone is named, because a
+faction tool that stays silent about a zone reads as "this zone is safe".
+
+Also: checking only the factions a race *requires* finds almost nothing. The
+steps that unlock a race move far more factions than the race lists, and a
+step's side gain costs as much to undo as a requirement. Both are traced.
 
 The data exists in `_build/source/eql-race-unlocks.html` (`STEPS` and `RACES`
 objects). It needs extracting to `assets/faction-data.json` the same way
