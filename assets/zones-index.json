@@ -139,7 +139,7 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "rebuilt after a fabrication was found; coordinates not re-derived since",
+  "verify_gate": "rebuilt after a fabrication was found. All 17 recorded coordinates now check out against the zone's own extracted geometry, but the room-list collision check that gate 3 asks for has not been done",
   "respawn_note": "eqlwiki rev 157133, 14 Jul 2026, editor Realpoor, \"updated respawn timer\", replacing 21:30. Our 21:30 was captured on 30 Jul from a figure the wiki had already superseded two weeks earlier — it was stale on arrival, not overtaken since."
  },
  {
@@ -158,7 +158,7 @@
   ],
   "verified": "2026-07-30",
   "verify_level": "partial",
-  "verify_gate": "coordinates not re-derived and collision-checked",
+  "verify_gate": "all 19 recorded coordinates check out against the zone's own extracted geometry; the room-list collision check that gate 3 asks for is still outstanding",
   "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
  },
  {

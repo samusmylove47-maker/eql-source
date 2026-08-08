@@ -817,7 +817,6 @@ h1.display em{color:var(--z01)}
 .quote cite{display:block;margin-top:var(--s-2);font-style:normal;
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.04em;
   color:var(--dim);line-height:1.6}
-=======
 /* ---------- difficulty primer ----------
    Two sources on one page again: what EQL Tools measured and what our logs did.
    The table carries both, so the "in our logs" column has to read as ours. */
