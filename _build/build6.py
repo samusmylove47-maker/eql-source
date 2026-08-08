@@ -415,6 +415,7 @@ def build_plot(zone, pts, layers):
 sections = []
 tot_plot = tot_named = tot_regions = tot_withheld = tot_geo = 0
 tot_measured = tot_on_floor = 0
+PLATE_QUEUE = []
 for z in Z:
     pts, unplotted, withheld = [], [], []
     for n in IX['named']:
@@ -438,6 +439,7 @@ for z in Z:
     # coordinate and the geometry — so this is a real check on both, and it is
     # counted here rather than typed, so it cannot drift from the data.
     segs = [s for L in layers for c in L['lines'] for s in zip(c, c[1:])]
+    zone_on_floor = 0
     if segs:
         for yv, xv, *_ in pts:
             px, py = -xv, -yv
@@ -445,6 +447,7 @@ for z in Z:
             tot_measured += 1
             if best <= ON_FLOOR:
                 tot_on_floor += 1
+                zone_on_floor += 1
 
     svg, step, (lo, hi), nregions = build_plot(z, pts, layers)
     tot_regions += nregions
@@ -519,6 +522,104 @@ for z in Z:
     {missing}
   </div>
 </section>''')
+    if layers:
+        PLATE_QUEUE.append((z, svg, layers, len(pts), zone_on_floor))
+
+# ---- the same drawing, put on each plate ---------------------------------
+# The plates are standalone pages with their own inline CSS and no link to
+# site.css, so the block carries its own styling rather than borrowing any.
+# build3.py has already written them by the time this runs, and regenerates
+# them from _build/source on every build, so injecting here is not cumulative.
+PLATE_CSS = """
+<style>
+.fplan{margin:38px 0 10px}
+.fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
+.fp-lede{color:#9FADAC;margin:0 0 16px;max-width:66ch}
+.fp-wrap{border:1px solid #2E3A41;background:#10161A;overflow:hidden;border-radius:4px}
+.fp-wrap svg{display:block;height:min(96vh,1000px);width:auto;max-width:100%;margin:0 auto}
+@media(max-width:900px){.fp-wrap svg{height:auto;width:100%}}
+.fp-levels{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:0 0 14px}
+.fp-levels .lab{align-self:center;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:#7D9096;margin-right:4px}
+.fp-levels button{display:flex;flex-direction:column;gap:2px;padding:8px 12px;cursor:pointer;
+  background:#1A2126;border:1px solid #2E3A41;border-radius:4px;color:#AEB9B8;
+  font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1}
+.fp-levels button span{font-size:10px;color:#7D9096}
+.fp-levels button:hover{color:#E6E9E4;border-color:var(--accd)}
+.fp-levels button:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+.fp-levels button.on{background:color-mix(in srgb, var(--acc) 16%, #1A2126);
+  border-color:var(--accd);color:#E6E9E4}
+.fp-note{color:#7D9096;font-size:13.5px;margin:12px 0 0;max-width:78ch}
+.lyr{transition:stroke-opacity .18s}
+.lyr.mute{stroke-opacity:.07}
+@media(prefers-reduced-motion:reduce){.lyr{transition:none}}
+</style>"""
+
+PLATE_JS = """
+<script>
+(function(){
+  var bar=document.querySelector('.fp-levels'); if(!bar) return;
+  var svg=document.querySelector('.fp-wrap svg'); if(!svg) return;
+  var layers=svg.querySelectorAll('.lyr');
+  bar.addEventListener('click',function(e){
+    var b=e.target.closest('button'); if(!b) return;
+    bar.querySelectorAll('button').forEach(function(o){
+      o.classList.toggle('on',o===b); o.setAttribute('aria-pressed',o===b?'true':'false');});
+    var pick=b.dataset.lyr;
+    layers.forEach(function(g){g.classList.toggle('mute',pick!=='all'&&g.dataset.lyr!==pick);});
+  });
+})();
+</script>"""
+
+
+def write_plate_plan(z, svg, layers, npts, on_floor):
+    """Put the floor plan on the plate itself, above its first section."""
+    path = f"dungeons/{z['slug']}.html"
+    if not os.path.exists(path):
+        return False
+    h = open(path, encoding='utf-8').read()
+    if '<section>' not in h:
+        return False
+
+    lv = ''
+    if len(layers) > 1:
+        opts = ''.join(
+            f'<button type="button" data-lyr="{i}" aria-pressed="false">{i+1}'
+            f'<span>{L["z"][0]} to {L["z"][1]}</span></button>'
+            for i, L in reversed(list(enumerate(layers))))
+        lv = (f'<div class="fp-levels"><span class="lab">Height</span>'
+              f'<button type="button" data-lyr="all" class="on" aria-pressed="true">All'
+              f'<span>{len(layers)} levels</span></button>{opts}</div>')
+        levels_line = (f' This zone has {len(layers)} levels and they overlap when flattened, so the '
+                       f'control above isolates one at a time.')
+    else:
+        levels_line = ' This zone is a single level, so there is nothing to separate.'
+
+    block = (f'<section class="fplan">'
+             f'<h2>Floor plan</h2>'
+             f'<p class="fp-lede">Where the walkable floor ends, computed from the zone&rsquo;s own '
+             f'geometry in the game files, with the {npts} named mobs whose positions are on record '
+             f'plotted on it.{levels_line}</p>'
+             f'{lv}<div class="fp-wrap">{svg}</div>'
+             f'<p class="fp-note">A line marks the edge of the floor &mdash; a wall or a drop. '
+             f'Doors, locks and one-way drops are not marked, and a gap is as likely to be a ledge as '
+             f'a doorway. {on_floor} of these {npts} positions land on the drawn floor, which is worth '
+             f'stating because the coordinates and the geometry come from different sources and both '
+             f'have to be right for that to happen. This drawing is derived from the game&rsquo;s mesh '
+             f'and is not a copy of any published map.</p></section>')
+
+    h = h.replace('</head>', PLATE_CSS + '</head>', 1)
+    h = h.replace('<section>', block + '<section>', 1)
+    h = h.replace('</body>', PLATE_JS + '</body>', 1)
+    open(path, 'w', encoding='utf-8', newline='\n').write(h)
+    return True
+
+
+plated = 0
+for z, svg, layers, npts, onf in PLATE_QUEUE:
+    if write_plate_plan(z, svg, layers, npts, onf):
+        plated += 1
 
 page = head("Survey plots",
   "Every recorded named-mob coordinate in the ten surveyed EverQuest Legends dungeons, plotted to "
@@ -594,4 +695,5 @@ page = head("Survey plots",
 
 open('dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions, "
-      f"{tot_withheld} withheld, {tot_on_floor}/{tot_measured} on drawn floor")
+      f"{tot_withheld} withheld, {tot_on_floor}/{tot_measured} on drawn floor, "
+      f"{plated} plates given a floor plan")
