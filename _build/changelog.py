@@ -4,6 +4,13 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="8 Aug 2026", title="Kelynn, missing from the Crushbone roster",
+         body="A named mob the plate never carried. Found by comparing our roster against the "
+              "eqlwiki Crushbone page line by line during a verification pass: 16 named on the "
+              "wiki, 18 on our plate, and <strong>Kelynn was on theirs and not ours</strong>. "
+              "Level 9, 12% spawn, at 3, 387. The same comparison found <strong>no coordinate "
+              "mismatches at all</strong> across the fifteen named mobs both sources carry, and "
+              "the zone respawn agreeing at 9:00"),
     dict(kind="Correction", date="8 Aug 2026", title="Six Najena coordinates that sit outside Najena",
          body="Rathyl, Ekeros, BoneCracker, Officer Grush, Trazdon and A Visiting Priestess are "
               "recorded on eqlwiki at positions south of the zone&rsquo;s own extent, by between 57 and "

@@ -47,8 +47,8 @@
   "who": null,
   "adjacent": null,
   "verified": null,
-  "verify_level": "none",
-  "verify_gate": "not verified — revamped 14 Jul and touched 28 Jul since the plate was built",
+  "verify_level": "partial",
+  "verify_gate": "gates 1 and 2 cleared 8 Aug 2026: page fetched in full, and the edit history taken from the API rather than the footer — last edited 14 July 2026, revision 157369, by Mandlz. Every coordinate matches the wiki and all 17 land on drawn floor. Gate 3, the room-list collision check, is still open",
   "respawn_note": "eqlwiki infobox, page last edited 14 Jul 2026; corroborated by eqlwiki Zone_Spawn_Timers. Pre-dates the 28 Jul patch, which reduced Orc Scoutsman and Orc Warden timers substantially, so treat as a pre-patch ceiling."
  },
  {
@@ -82,7 +82,7 @@
   "adjacent": null,
   "verified": null,
   "verify_level": "none",
-  "verify_gate": "not verified — and the plate is missing its reading key",
+  "verify_gate": "edit history cleared 8 Aug 2026 from the API rather than the footer: the only August edits are images (revisions 165753 and 165754, Piano), so the content still dates from 4 July 2026. All 17 coordinates land on drawn floor. Still open: the page has not been re-fetched in full against the plate, the room-list collision check, and the plate's reading key",
   "respawn_note": "eqlwiki infobox, page last edited 4 Aug 2026; corroborated by eqlwiki Zone_Spawn_Timers. Blackburrow is not in the 28 Jul patch list."
  },
  {
