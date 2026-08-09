@@ -796,6 +796,10 @@ h1.display em{color:var(--z01)}
 /* A faction that moves both ways in one zone, and a sample too small to be a
    rate. Both exist to stop a true number reading as a contradiction or as more
    evidence than it is. */
+/* Direction known, magnitude nil — a faction already at its floor or ceiling.
+   Held visually apart from measured movement so the two are never read as the
+   same strength of evidence. */
+.flist li.capped b{border-bottom:1px dotted var(--faint)}
 .floose{margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--warn-t);
   background:rgba(201,69,58,.05);color:var(--dim);font-size:var(--t-2xs);line-height:1.55}
 .floose strong{color:var(--ink)}

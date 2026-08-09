@@ -1019,6 +1019,8 @@
    ],
    "falling": [],
    "rising": [],
+   "capped_up": [],
+   "capped_down": [],
    "steps_undone": [],
    "steps_helped": [],
    "damages": [],
@@ -1059,6 +1061,8 @@
     "Burning Dead"
    ],
    "rising": [],
+   "capped_up": [],
+   "capped_down": [],
    "steps_undone": [],
    "steps_helped": [],
    "damages": [],
@@ -1095,6 +1099,8 @@
     "Frogloks of Guk"
    ],
    "rising": [],
+   "capped_up": [],
+   "capped_down": [],
    "steps_undone": [],
    "steps_helped": [],
    "damages": [],
@@ -1103,7 +1109,7 @@
   "The Ruins of Old Guk": {
    "difficulty": 1,
    "date": "05 Aug 2026",
-   "kills": 20,
+   "kills": 238,
    "per_mob": {
     "a froglok tsu shaman": {
      "Frogloks of Guk": -5
@@ -1125,11 +1131,27 @@
     },
     "a ghoul scribe": {
      "Frogloks of Guk": 5
+    },
+    "a tsu ghoul wizard": {
+     "Frogloks of Guk": 5
+    },
+    "a nok ghoul wizard": {
+     "Frogloks of Guk": 5
+    },
+    "a froglok slave": {
+     "Frogloks of Guk": -1
+    },
+    "a dar ghoul knight": {
+     "Frogloks of Guk": 1
     }
    },
    "factions": [
     "Frogloks of Guk"
    ],
+   "capped": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
    "factions_seen": [
     "Frogloks of Guk",
     "Undead Frogloks of Guk"
@@ -1139,6 +1161,10 @@
    ],
    "rising": [
     "Frogloks of Guk"
+   ],
+   "capped_up": [],
+   "capped_down": [
+    "Undead Frogloks of Guk"
    ],
    "steps_undone": [],
    "steps_helped": [],
@@ -1189,6 +1215,8 @@
     "Deepwater Knights",
     "Gate Callers"
    ],
+   "capped_up": [],
+   "capped_down": [],
    "steps_undone": [
     {
      "step": "kobolds",
@@ -1618,6 +1646,8 @@
     "Ring of Scale",
     "Shadowed Men"
    ],
+   "capped_up": [],
+   "capped_down": [],
    "steps_undone": [],
    "steps_helped": [
     {
