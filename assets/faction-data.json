@@ -1008,6 +1008,15 @@
    "kills": 42,
    "per_mob": {},
    "factions": [],
+   "factions_seen": [
+    "Guards of Qeynos",
+    "Jaggedpine Treefolk",
+    "Karana Residents",
+    "Merchants of Qeynos",
+    "Sabertooths of Blackburrow",
+    "Silent Fist Clan",
+    "Split Paw Clan"
+   ],
    "falling": [],
    "rising": [],
    "steps_undone": [],
@@ -1042,6 +1051,10 @@
    "factions": [
     "Burning Dead"
    ],
+   "factions_seen": [
+    "Befallen Inhabitants",
+    "Burning Dead"
+   ],
    "falling": [
     "Burning Dead"
    ],
@@ -1073,6 +1086,9 @@
     }
    },
    "factions": [
+    "Frogloks of Guk"
+   ],
+   "factions_seen": [
     "Frogloks of Guk"
    ],
    "falling": [
@@ -1114,6 +1130,10 @@
    "factions": [
     "Frogloks of Guk"
    ],
+   "factions_seen": [
+    "Frogloks of Guk",
+    "Undead Frogloks of Guk"
+   ],
    "falling": [
     "Frogloks of Guk"
    ],
@@ -1151,6 +1171,14 @@
     "Deepwater Knights",
     "Gate Callers",
     "Heretics"
+   ],
+   "factions_seen": [
+    "Craftkeepers",
+    "Crimson Hands",
+    "Deepwater Knights",
+    "Gate Callers",
+    "Heretics",
+    "Kerra Isle"
    ],
    "falling": [
     "Heretics"
@@ -1562,6 +1590,15 @@
     }
    },
    "factions": [
+    "Agents of Mistmoore",
+    "King Tearis Thex",
+    "League of Antonican Bards",
+    "Mayong Mistmoore",
+    "Ring of Scale",
+    "Shadowed Men",
+    "Temple of Solusek Ro"
+   ],
+   "factions_seen": [
     "Agents of Mistmoore",
     "King Tearis Thex",
     "League of Antonican Bards",

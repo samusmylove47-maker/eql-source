@@ -784,6 +784,19 @@ h1.display em{color:var(--z01)}
 .flist li.up b{color:var(--ok)}
 .fdelta,.fuse{display:block;font-size:var(--t-2xs);color:var(--dim);margin-top:2px}
 .fdelta{font-family:"IBM Plex Mono",monospace}
+/* A faction that moves both ways in one zone, and a sample too small to be a
+   rate. Both exist to stop a true number reading as a contradiction or as more
+   evidence than it is. */
+.floose{margin:12px 0 0;padding:10px 12px;border-left:3px solid var(--warn-t);
+  background:rgba(201,69,58,.05);color:var(--dim);font-size:var(--t-2xs);line-height:1.55}
+.floose strong{color:var(--ink)}
+.fboth{display:block;font-size:var(--t-2xs);color:var(--warn-t);margin-top:3px;
+  font-style:italic}
+.fthin{display:inline-block;margin-left:8px;padding:1px 6px;border-radius:3px;
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  color:var(--warn-t);border:1px solid var(--warn-t);text-transform:none;
+  letter-spacing:0}
+@media(max-width:520px){.fthin{display:block;margin:4px 0 0}}
 .fsteps li{padding:var(--s-2) 0;font-size:var(--t-sm);border-bottom:1px solid var(--rule)}
 .fnothing,.fnone{color:var(--faint);font-size:var(--t-sm)}
 .tier.tM{border-color:color-mix(in srgb, var(--ok) 60%, var(--rule));color:var(--ok)}

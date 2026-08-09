@@ -3,7 +3,7 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
-from _partials import head, bar, foot
+from _partials import head, bar, foot, TOOLS, wordnum
 
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 # Counts are read from the mined data, never typed. The Index once published
@@ -103,7 +103,7 @@ home = head("Accurate, sourced and kept current",
         <h3 class="dt">The trackers</h3>
         <p class="dd">Class unlocks, race unlocks and the primary-slot decision you can never take back.
           Progress packs into the page URL, so nothing is stored and nothing is lost.</p>
-        <span class="dgo">Three trackers &rarr;</span>
+        <span class="dgo">{wordnum(len(TOOLS))} trackers &rarr;</span>
       </a>
 
     </div>
