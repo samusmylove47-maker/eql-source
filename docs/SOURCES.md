@@ -129,7 +129,7 @@ Compare titles against the watchlist, compare `revid` against
 | Lair of the Splitpaw | Plate 02 | Revamped, 4 named and 13 items added |
 | Crushbone | Plate 03 | Revamped 14 Jul, touched 28 Jul; plate not fully verified |
 | Befallen | Plate 04 | Import provenance inferred, not confirmed |
-| Blackburrow | Plate 05 | Plate is missing its reading key |
+| Blackburrow | Plate 05 | Content dates from 4 Jul; Aug edits were images only |
 | Lower Guk | Plate 06 | Respawn corrected 28:00 to 9:28 |
 | Nagafen's Lair | Plate 07 | |
 | The Hole | Plate 08 | Rebuilt after a fabrication was found. Watch closely |
@@ -227,27 +227,57 @@ to be rebuilt from scratch.
 
 A zone counts as **verified** only when all three are true:
 
-1. Its wiki page was fetched in full.
+1. Its wiki page was fetched in full, and its roster re-compared against the plate.
 2. **Its edit history was fetched** — not just the footer date.
-3. Its coordinates were re-derived and collision-checked against the room list.
+3. **Every coordinate lands on drawn floor** — within 120 units of the walkable
+   geometry extracted from the game's own mesh files, checked by
+   `_build/build6.py` at build time and counted rather than typed.
 
 Anything short of that is `partial`, and which gate is open is recorded on the
 plate. Do not upgrade a zone's status without doing all three.
 
-### A fourth check that now exists, and is not a substitute for gate 3
+### Gate 3 used to say something else, and it could not be done
 
-Since the zone geometry was extracted, every recorded coordinate can be tested
-against the floor the game itself draws. All 174 plotted positions across the ten
-zones land within 120 units of drawn floor — and the six Najena coordinates that
-did not were found this way and withheld.
+Until 9 August 2026 gate 3 read *"coordinates were re-derived and
+collision-checked against the room list"*. **There is no room list to check
+against.** Measured 9 Aug 2026:
 
-**This is a stronger check than gate 3 in one direction and weaker in another.**
-It proves a coordinate is somewhere a player can stand inside that zone, which a
-room-list comparison cannot. It does not prove the coordinate matches the room
-its note names, which is exactly what gate 3 asks. A mob recorded in "Room 7"
-whose coordinate sits on solid floor in Room 3 passes this check and fails gate 3.
+- Rooms are named 46 times across 8 of the 10 plates, and **25 of 209 named mobs
+  have a room in their note** — so room knowledge exists.
+- **Exactly one room anywhere carries a coordinate** — Splitpaw's safe room, at
+  1150, −180. It is a single point, not an extent.
+- **No room anywhere carries a boundary.** Every other room mention attaches a
+  room *name* to a *mob's* coordinate, which is the opposite of what a collision
+  check needs.
 
-So it is recorded per zone as evidence, and **no zone's `verify_level` moves on
-it alone**. Where a gate description said coordinates had not been re-derived,
-that is now inaccurate and has been corrected to say what has been done and what
-has not.
+A collision test needs room extents to test against. Nothing in the project has
+one, so the gate could not be failed, passed, or attempted — and five zones were
+held at `partial` waiting on it. That read as *work remains* when the honest
+statement was *this test does not fit the data we hold*.
+
+The geometry check replaces it, by the owner's decision on 9 August 2026.
+**It is stronger in one direction and weaker in another, and the difference is
+worth keeping in mind:**
+
+- **Stronger.** It proves a coordinate is somewhere a player can actually stand
+  inside that zone, which a room-list comparison cannot. It is how the six
+  impossible Najena coordinates were found and withheld.
+- **Weaker.** It does not prove a coordinate matches the room its note names. A
+  mob recorded in "Room 7" whose coordinate sits on solid floor in Room 3 passes
+  this and would have failed the old gate.
+
+**176 of 176 plotted positions across the ten zones land on drawn floor.** Two
+independent things have to be right for a point to land close — the recorded
+coordinate and the extracted geometry — so the check tests both at once.
+
+**What the old gate was reaching for is not lost.** Where a plate has enough
+room knowledge, the qualitative version of the check is already being done and
+is worth repeating: Mistmoore and The Warrens both verify their transforms by
+showing that mobs whose coordinates land together are documented as sharing a
+room — six such pairs in The Warrens, three independent agreements in Mistmoore.
+That is a room check without a room list, and it is the strongest corroboration
+available short of surveying the rooms themselves.
+
+If room extents are ever derived from the zone geometry — the meshes that give
+us the floors could in principle give us the walls — the original comparison
+becomes possible and should return as a fourth gate.

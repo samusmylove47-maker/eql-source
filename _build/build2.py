@@ -3,6 +3,17 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 from _partials import head, bar, foot
+# The change log lives in one place. sources.html renders all of it and the home
+# page shows the most recent few; before 9 Aug 2026 this page kept its own
+# hand-written copy, which had drifted eight entries behind - every correction
+# made on 8 and 9 August was missing from the page CLAUDE.md points readers at.
+from changelog import ENTRIES, TONE, TAG
+
+chrows = "\n".join(
+  f'''      <div class="zrow" style="--c:{TONE[e["kind"]]}"><span class="pn">{TAG[e["kind"]]}</span>
+        <span><span class="zt">{e["title"]}</span><span class="zs">{e["body"]}</span></span>
+        <span class="cell zonesub"><em>Type</em>{e["kind"]}</span><span class="cell"><em>Date</em>{e["date"]}</span>
+        <span class="cell"></span><span class="bar"></span></div>''' for e in ENTRIES)
 
 # ---------------------------------------------------------------- TOOLS
 tools = head("Tools", "Five EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + '''
@@ -158,7 +169,7 @@ raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest L
 open('public/raids/index.html','w',encoding='utf-8',newline='\n').write(raids)
 
 # ---------------------------------------------------------------- SOURCES
-src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.") + bar() + '''
+src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.") + bar() + f'''
 <main>
 
 <section class="hero page">
@@ -242,33 +253,8 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">Change log</h2>
       <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
     <div class="ztable">
-      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
-        <span><span class="zt">Item count on The Index</span><span class="zs">The page described itself as holding &ldquo;389 items&rdquo; while the index it shipped held 452, and its own counter said 452 on screen. 389 was never correct at any point. Every count on the site is now printed from the mined data rather than typed by hand, so the sentence and the tool cannot disagree again</span></span>
-        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>7 Aug 2026</span>
-        <span class="cell"></span><span class="bar"></span></div>
-      <div class="zrow" style="--c:var(--bone)"><span class="pn">NEW</span>
-        <span><span class="zt">Site launch</span><span class="zs">Ten plates, five maps, three tools, first raid encounter</span></span>
-        <span class="cell zonesub"><em>Type</em>Addition</span><span class="cell"><em>Date</em>6 Aug 2026</span>
-        <span class="cell"></span><span class="bar"></span></div>
-      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
-        <span><span class="zt">Tracker state handling</span><span class="zs">Changes made in the trio builder were never saved, so reloading restored the previous trio. Reset also left the trio and the calculator selections untouched. Both trackers now have separate <em>Clear ticks</em> and <em>Start over</em> actions</span></span>
-        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>6 Aug 2026</span>
-        <span class="cell"></span><span class="bar"></span></div>
-      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
-        <span><span class="zt">Verification counting</span><span class="zs">Front page claimed 8 of 10 plates verified. By the project&rsquo;s own three-gate standard it is 5. Corrected, and the open gate is now named per zone</span></span>
-        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>6 Aug 2026</span>
-        <span class="cell"></span><span class="bar"></span></div>
-      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
-        <span><span class="zt">Primary-slot logic</span><span class="zs">Calculator no longer suggests demoting a class you require in the primary slot</span></span>
-        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>6 Aug 2026</span>
-        <span class="cell"></span><span class="bar"></span></div>
-      <div class="zrow" style="--c:var(--z01)"><span class="pn">DAT</span>
-        <span><span class="zt">Race unlock data</span><span class="zs">Rebuilt against Alanna&rsquo;s guide revision 166686</span></span>
-        <span class="cell zonesub"><em>Type</em>Source refresh</span><span class="cell"><em>Date</em>5 Aug 2026</span>
-        <span class="cell"></span><span class="bar"></span></div>
+{chrows}
     </div>
-    <div class="note"><strong>Update cadence.</strong> Legends patches weekly and the wikis move daily. Anything on this
-      site that predates the most recent patch touching its subject is flagged in place rather than silently trusted.</div>
   </section>
 </div>
 </main>

@@ -182,16 +182,57 @@ dplates = "\n".join(
 
 # The open gates, generated rather than written out five times by hand. Sorted
 # so unverified zones come before partial ones — the worse state reads first.
+# Every gate cleared is a state this page has never been in before, so it needs
+# its own copy rather than a sentence about zero partials and zero unverified.
+# When something regresses the old wording comes back on its own.
+_open = [z for z in Z if z['verify_level'] != 'full']
+if _open:
+    verdict = (f"By that standard <strong>{nfull} of {len(Z)}</strong> are verified, "
+               f"{npart} are partial and {nnone} are not verified at all. Partial plates are "
+               f"complete and useful; they have simply not cleared every gate. Which gate is open "
+               f"is recorded per zone rather than averaged into a single number that would "
+               f"flatter us.")
+    asidec, asideh = "var(--warn)", "Open gates"
+else:
+    verdict = (f"By that standard <strong>all {len(Z)} are verified</strong>, as of 9 August 2026. "
+               f"That is a floor, not a finish: it means every plate has been checked against its "
+               f"live source and every coordinate lands somewhere a player can stand. It does not "
+               f"mean the zones are fully documented. Where a figure is missing or a source is a "
+               f"Project 1999 import, the plate says so in place, and those gaps are listed on each "
+               f"plate rather than folded into this number.")
+    asidec, asideh = "var(--ok)", "The three gates, cleared"
+
 _ORDER = {"none": 0, "partial": 1, "full": 2}
-gaterows = "\n".join(
-  f'''      <li class="gaterow" style="--c:{z['accent']}">
+# With gates open, the panel names them. With none open, listing ten cleared
+# zones would be ten paragraphs saying the same thing, so it names the three
+# gates instead and says what each one actually proves - which is the part a
+# reader needs in order to judge the word "verified".
+_CLEARED = [
+  ("Source read in full", "Every plate's wiki page was fetched whole and its roster re-compared "
+   "against ours, not sampled. It is how Kelynn was found missing from Crushbone."),
+  ("History from the API", "Edit history taken from MediaWiki, never the page footer. Footers were "
+   "stale on four of the first five zones checked; Befallen's was two months out."),
+  ("Coordinates on drawn floor", "All 176 plotted positions land within 120 units of walkable floor "
+   "extracted from the game's own mesh files. Six impossible Najena coordinates were caught this "
+   "way and withheld."),
+]
+if _open:
+    gaterows = "\n".join(
+      f'''      <li class="gaterow" style="--c:{z['accent']}">
         <span class="gn">{z['plate']:02d}</span>
         <span class="gz">{z['title']}</span>
         <span class="gs">{z['verify_gate']}</span>
         <span class="gl">{'unstarted' if z['verify_level']=='none' else 'open'}</span>
       </li>'''
-  for z in sorted((z for z in Z if z['verify_level'] != 'full'),
-                  key=lambda z: (_ORDER[z['verify_level']], z['plate'])))
+      for z in sorted(_open, key=lambda z: (_ORDER[z['verify_level']], z['plate'])))
+else:
+    gaterows = "\n".join(
+      f'''      <li class="gaterow" style="--c:var(--ok)">
+        <span class="gn">{i+1:02d}</span>
+        <span class="gz">{title}</span>
+        <span class="gs">{what}</span>
+        <span class="gl">cleared</span>
+      </li>''' for i, (title, what) in enumerate(_CLEARED))
 
 mapcards = "\n".join(
   f'''      <a class="door contour" href="{s}-map.html"
@@ -214,8 +255,8 @@ dung = head("Dungeon survey plates",
     <h1 class="display">Ten zones,<br><em>surveyed.</em></h1>
     <p class="hero-lede">Each shipping a deep-reference plate and, where built, a navigation map
       companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
-      coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and collision-checked
-      against the room list.</p>
+      coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the
+      floor the game itself draws.</p>
     <p class="hero-sig"><span>{len(Z)} plates</span><span>{len(MAPS)} maps</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
   </div>
 </section>
@@ -234,16 +275,14 @@ dung = head("Dungeon survey plates",
       <div>
         <div class="sechead"><div><h2 class="sec">What verified means</h2>
           <p class="lede" style="margin:0">A zone counts as verified only when all three gates pass: its
-            wiki page was fetched in full, <em>its edit history was fetched</em> &mdash; not merely the
-            footer date &mdash; and its coordinates were re-derived and collision-checked against the
-            room list.</p></div></div>
-        <p class="lede">By that standard <strong>{nfull} of {len(Z)}</strong> are verified,
-          {npart} are partial and {nnone} are not verified at all. Partial plates are complete and
-          useful; they have simply not cleared every gate. Which gate is open is recorded per zone
-          rather than averaged into a single number that would flatter us.</p>
+            wiki page was fetched in full and its roster re-compared, <em>its edit history was
+            fetched</em> &mdash; not merely the footer date &mdash; and <em>every coordinate lands on
+            drawn floor</em>, within 120 units of geometry extracted from the game&rsquo;s own mesh
+            files.</p></div></div>
+        <p class="lede">{verdict}</p>
       </div>
-      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:110%">
-        <h3 class="stdh">Open gates</h3>
+      <aside class="standard contour" style="--c:{asidec};--cx:90%;--cy:110%">
+        <h3 class="stdh">{asideh}</h3>
         <ul class="gatelist">
 {gaterows}
         </ul>

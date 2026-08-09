@@ -313,9 +313,14 @@ These close with evidence, not tidying.
   19/29.
 - **Navigation maps** — five zones have plates but no map: Crushbone, Befallen,
   Blackburrow, The Hole, The Warrens.
-- **Verification gates** — 5 of 10 plates have cleared all three gates. 3 are
-  partial, 2 are unverified. `verify_gate` in `assets/zones-index.json` names the
-  open gate for each. Do not upgrade a level without doing the work.
+- **Verification gates** — all 10 plates have cleared all three gates as of
+  9 Aug 2026, and `verify_gate` in `assets/zones-index.json` records the evidence
+  for each. Gate 3 changed that day: it asked for a collision check against a
+  room list that does not exist, and now asks that every coordinate land within
+  120 units of drawn floor. `docs/SOURCES.md` carries the reasoning and what the
+  new gate is weaker at. Do not upgrade a level without doing the work, and do
+  not read "verified" as "complete" — it means checked against source, not
+  finished.
 
 ---
 

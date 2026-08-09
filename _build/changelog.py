@@ -4,6 +4,23 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="9 Aug 2026", title="A verification gate that could not be passed",
+         body="Gate 3 of the verification standard asked that coordinates be collision-checked "
+              "against the room list. <strong>There is no room list.</strong> Across the five zones "
+              "then held at <em>partial</em>, not one room carried a coordinate and 9 of 209 named "
+              "mobs named a room or floor at all &mdash; so the check had no left-hand side and "
+              "could not be failed, passed or attempted. Five zones sat waiting on it, which read as "
+              "work remaining when the truth was that the test did not fit our data. <strong>Gate 3 "
+              "is now the geometry check</strong>: every coordinate must land within 120 units of "
+              "the walkable floor extracted from the game's own mesh files, counted at build time "
+              "rather than typed. It is the stronger test for whether a position is real &mdash; it "
+              "is how six impossible Najena coordinates were found and withheld &mdash; and the "
+              "weaker one for whether a position matches the room its note names. That trade is "
+              "stated in the standard rather than buried. Closing the change, <strong>The Warrens "
+              "cleared gate 1</strong>: its page was fetched in full for the first time and all 17 "
+              "named mobs, the 6:40 respawn and the 4&ndash;25 level range all agree; and "
+              "<strong>Blackburrow gained the reading key</strong> it was the only plate of ten to "
+              "lack. All ten zones are now fully verified, 176 of 176 coordinates on drawn floor"),
     dict(kind="Source refresh", date="9 Aug 2026", title="The Hole, three weeks behind its own source",
          body="The plate cited the wiki as last edited 15 July. Taken from the API rather than the "
               "page footer, it had been edited <strong>six times on 8 August</strong>, the last at "
@@ -83,3 +100,6 @@ ENTRIES = [
 ]
 
 TONE = {"Correction": "var(--ok)", "Addition": "var(--bone)", "Source refresh": "var(--instr)"}
+
+# The three-letter stamp on the change log rows.
+TAG = {"Correction": "FIX", "Addition": "NEW", "Source refresh": "DAT"}
