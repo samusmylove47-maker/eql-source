@@ -100,8 +100,13 @@ project docs stay at the root and never reach a host. This replaced a list of
 twelve blacklist rules that only worked while someone remembered to extend it —
 on 8 August 2026 Cloudflare served `CLAUDE.md`, `build.sh` and `docs/BACKLOG.md`
 publicly because those rules were Netlify-specific and did not travel. Host
-settings: Cloudflare Pages build output directory `public`, Netlify
-`publish = "public"`, build command empty on both.
+**The host is a Worker with static assets, not Pages.** Cloudflare connected
+the repository to a Worker and deploys it with `npx wrangler deploy`, so there
+is no "build output directory" field anywhere in its dashboard — looking for
+one wastes time, and three sets of instructions failed that way. The equivalent
+lives in `wrangler.jsonc` as `assets.directory: ./public`, in the repository
+where it is reviewable. `netlify.toml` keeps `publish = "public"` so moving
+back costs nothing.
 
 **Never edit generated files.** `dungeons/`, `tools/`, `raids/index.html`,
 `index.html` and `sources.html` are output. Edit `_build/source/` and the
