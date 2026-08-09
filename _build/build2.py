@@ -2,7 +2,38 @@ import os, sys
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
-from _partials import head, bar, foot
+import json
+from _partials import head, bar, foot, TOOLS, wordnum
+
+# Counts are printed from the mined data, never typed. The tools index said
+# "208 named" while every other page said 209, four days after a change log
+# entry promised exactly this.
+IX = json.load(open("assets/index-data.json", encoding="utf-8"))
+N_ITEMS, N_NAMED = len(IX["items"]), len(IX["named"])
+
+# The known-gaps section reads the ledger rather than describing it from
+# memory. On 9 Aug the gate was redefined, every zone reached full, and this
+# section still said five had not cleared - on the page whose whole job is
+# admitting what is wrong.
+ZONES = json.load(open("assets/zones-index.json", encoding="utf-8"))
+N_OPEN = sum(1 for z in ZONES if z["verify_level"] != "full")
+
+if N_OPEN:
+    gates_card = (
+        '<div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div>'
+        '<h3 class="t">Verification gates</h3>'
+        f'<p class="d">{wordnum(N_OPEN)} of the ten plates have not cleared the full '
+        'three-gate standard. Which gate is open is listed against each zone on the '
+        '<a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>')
+else:
+    gates_card = (
+        '<div class="card" style="--c:var(--ok)"><div class="kicker">Dungeons</div>'
+        '<h3 class="t">Verification gates, all cleared</h3>'
+        '<p class="d">All ten plates have passed all three gates, and the evidence for each '
+        'is recorded on the <a href="dungeons/index.html" style="color:var(--ok)">plates page</a>. '
+        'That is not the same as complete. It means each plate has been checked against its live '
+        'source and every coordinate lands somewhere a player can stand &mdash; the gaps listed '
+        'here are what remains.</p></div>')
 # The change log lives in one place. sources.html renders all of it and the home
 # page shows the most recent few; before 9 Aug 2026 this page kept its own
 # hand-written copy, which had drifted eight entries behind - every correction
@@ -16,13 +47,13 @@ chrows = "\n".join(
         <span class="cell"></span><span class="bar"></span></div>''' for e in ENTRIES)
 
 # ---------------------------------------------------------------- TOOLS
-tools = head("Tools", "Five EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + '''
+tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + f'''
 <main>
 
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
-    <h1 class="display">Five trackers,<br><em>no account.</em></h1>
+    <h1 class="display">{wordnum(len(TOOLS))} trackers,<br><em>no account.</em></h1>
     <p class="hero-lede">No login, no server holding your data. Everything you tick is packed into the
       page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and
       the sheet rebuilds exactly. They autosave in your browser too, so day to day you can just come back.</p>
@@ -34,7 +65,7 @@ tools = head("Tools", "Five EverQuest Legends progression trackers: Plane of Sky
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
       <a class="card" href="index-search.html" style="--c:var(--bone)">
-        <div class="kicker">Lookup &middot; 452 items, 208 named</div>
+        <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
         <h3 class="t">The Index</h3>
         <p class="d">Every item and named mob recorded across the ten surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
@@ -240,9 +271,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Five missing maps</h3>
         <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have survey plates but no navigation
           map companion. Blackburrow is next; its explicit three-floor structure suits a 3D treatment.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Verification gates</h3>
-        <p class="d">Five of the ten plates have not cleared the full three-gate standard. Which gate is open is
-          listed against each zone on the <a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>
+      {gates_card}
       <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
         <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another
           hour of reading wikis.</p></div>

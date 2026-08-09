@@ -4,6 +4,42 @@ _cfg = json.load(open("site.config.json", encoding="utf-8")) if os.path.exists("
 SITE = _cfg.get("site_name", "EQL Source")
 TAG  = _cfg.get("site_tagline", "Survey")
 
+# ---------------------------------------------------------------------------
+# The site's own navigation registries. Nothing here may be typed twice.
+#
+# The footer was hand-written and drifted: it listed four tools of five, and the
+# faction impact checker - the most original tool on the site - appeared in no
+# footer on any page, reachable only from the tools index. The tools index said
+# "Five trackers" while the home page said "Three". One list fixes all of it,
+# and scripts/check.py fails the build if a file in public/tools/ is missing
+# from TOOLS.
+#
+# `name` is the display name. `foot` is the shorter footer label where the full
+# name would wrap; where they are the same, `foot` is omitted.
+TOOLS = [
+    dict(slug="index-search",     name="The Index"),
+    dict(slug="plane-of-sky",     name="Plane of Sky tracker"),
+    dict(slug="race-unlocks",     name="Race unlock tracker"),
+    dict(slug="combo-calculator", name="Race and primary calculator"),
+    dict(slug="faction-impact",   name="Faction impact checker"),
+]
+
+LEARN = [
+    dict(slug="raid-access", name="How raid access works"),
+    dict(slug="difficulty",  name="What difficulty changes"),
+    dict(slug="deity",       name="Deity, and the level 11 lock"),
+]
+
+_WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",
+          7: "Seven", 8: "Eight", 9: "Nine", 10: "Ten"}
+
+
+def wordnum(n):
+    """Small numbers read better as words in a headline, and the headline must
+    still be printed from the list rather than typed."""
+    return _WORDS.get(n, str(n))
+
+
 def head(title, desc, rel="", extra=""):
     return f'''<!DOCTYPE html>
 <html lang="en">
@@ -39,6 +75,14 @@ def bar(rel=""):
   </div>
 </header>'''
 
+def _foot_links(items, folder, rel):
+    """Footer list items for a registry. Generated so the footer cannot drift
+    from the pages it is meant to link."""
+    return "\n".join(
+        f'        <li><a href="{rel}{folder}/{it["slug"]}.html">'
+        f'{it.get("foot", it["name"])}</a></li>' for it in items)
+
+
 def foot(rel=""):
     return f'''<footer class="site-foot">
   <div class="shell">
@@ -55,14 +99,10 @@ def foot(rel=""):
         <li><a href="{rel}raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
       </ul></div>
       <div><h4>Tools</h4><ul>
-        <li><a href="{rel}tools/plane-of-sky.html">Plane of Sky tracker</a></li>
-        <li><a href="{rel}tools/race-unlocks.html">Race unlock tracker</a></li>
-        <li><a href="{rel}tools/combo-calculator.html">Race and primary calculator</a></li>
-        <li><a href="{rel}tools/index-search.html">The Index</a></li>
+{_foot_links(TOOLS, "tools", rel)}
       </ul></div>
       <div><h4>Learn</h4><ul>
-        <li><a href="{rel}learn/raid-access.html">How raid access works</a></li>
-        <li><a href="{rel}learn/difficulty.html">What difficulty changes</a></li>
+{_foot_links(LEARN, "learn", rel)}
       </ul></div>
       <div><h4>About</h4><ul>
         <li><a href="{rel}sources.html">Sourcing standard</a></li>

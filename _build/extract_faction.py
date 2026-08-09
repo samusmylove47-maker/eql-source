@@ -111,12 +111,19 @@ def build():
             difficulty=s.get('difficulty'), date=s.get('date'),
             kills=0, per_mob={}, factions=collections.Counter()))
         z['kills'] += s.get('kills', 0)
+        # Every faction the session saw named, whether or not the parser could
+        # tie it to a mob. Without this a zone where attribution failed renders
+        # an empty card, which claims we found nothing when we found movement we
+        # could not sign. Blackburrow: 42 kills, five factions, no attribution.
+        for f in (s.get('faction') or {}):
+            z.setdefault('seen', set()).add(f)
         for mob, facs in (s.get('faction_by_mob') or {}).items():
             z['per_mob'].setdefault(mob, facs)
             for f in facs:
                 z['factions'][f] += 1
     for z in measured.values():
         z['factions'] = sorted(z['factions'])
+        z['factions_seen'] = sorted(z.pop('seen', set()))
 
     # What a zone's faction movement touches. Checking only the factions a race
     # *requires* misses most of it: a race lists three requirements, but the

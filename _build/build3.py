@@ -3,6 +3,7 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json, re, shutil, os
+from withheld import WITHHELD, REASON, MARK
 _CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json"), encoding="utf-8"))
 SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
@@ -40,8 +41,52 @@ def bar_html(rel, crumb, crumb_href, here, extra=""):
 # less important of the two, so it stops following on those pages.
 UNPIN = '<style>.ns-bar{position:static}</style>'
 
-def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False):
+WH_CSS = """
+<style>
+.wh{font-family:"IBM Plex Mono",monospace;font-size:.82em;letter-spacing:.06em;
+  text-transform:uppercase;color:#D9837C;border-bottom:1px dotted #D9837C}
+.whnote{margin:14px 0 0;padding:12px 14px;border-left:3px solid #C9453A;
+  background:rgba(201,69,58,.06);color:#9FADAC;font-size:14px;line-height:1.55}
+.whnote strong{color:#E6E9E4}
+</style>"""
+
+
+def mark_withheld(h, slug):
+    """Replace the coordinate cell of every withheld mob, and say why once.
+
+    Matched on the row rather than on the coordinate text, so a coordinate that
+    also appears legitimately elsewhere on the page is untouched.
+    """
+    names = sorted(n for z, n in WITHHELD if z == slug)
+    if not names:
+        return h, 0
+    hits = 0
+    for name in names:
+        # the roster row: name cell, then the loc cell immediately after
+        pat = re.compile(
+            r'(<td class="nmob">' + re.escape(name) + r'</td>\s*<td class="loc">)(.*?)(</td>)',
+            re.S)
+        h, n = pat.subn(lambda m: m.group(1) + MARK + m.group(3), h)
+        hits += n
+    if hits:
+        note = ('<p class="whnote"><strong>Why six positions are missing.</strong> '
+                + REASON.get(slug, '') + '</p>')
+        # after the roster table that carries them
+        i = h.find(MARK)
+        j = h.find('</table>', i)
+        if j > 0:
+            j += len('</table>')
+            h = h[:j] + note + h[j:]
+    return h, hits
+
+
+def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False,
+           wh_slug=None):
     h = open(src, encoding='utf-8').read()
+    if wh_slug:
+        h, nwh = mark_withheld(h, wh_slug)
+        if nwh:
+            h = h.replace('</head>', WH_CSS + '</head>', 1)
     if subs:
         for a, b in subs:
             h = h.replace(a, b)
@@ -61,7 +106,7 @@ for z in Z:
                  f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">Navigation map &rarr;</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
-           f"Plate {z['plate']:02d} &middot; {z['title']}", extra)
+           f"Plate {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s)
 # ---- maps
 for s in MAPS:
     z = BY[s]

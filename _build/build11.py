@@ -12,7 +12,7 @@ not ours. They are cited by name, linked, badged, and never restated as though
 we found them. Where they say something is unpinned, this page says unpinned.
 
 OUR OWN LOGS supply something they do not have: the difficulty is written in the
-zone line on entry, twice, as a number and a name. That comes from 22 sessions
+zone line on entry, twice, as a number and a name. That comes from {len(SESSIONS)} sessions
 across two characters and five tiers, and it is tier M. It also lets us check
 their tier names against the game's own text, and to put one measured finding
 next to their multiclass claim that goes slightly further than it does.
@@ -91,7 +91,7 @@ page = head("What difficulty changes",
       condition your loot arrives in. The con colour of a mob is the same at every tier, which is
       exactly why the setting catches people out.</p>
     <p class="hero-sig"><span>5 tiers</span><span>D4 is the maximum</span>
-      <span>{both} sessions cross-checked</span></p>
+      <span>{both} of {len(SESSIONS)} sessions cross-checked</span></p>
   </div>
 </section>
 
@@ -219,7 +219,7 @@ You have entered The City of Guk 4 (Refined).</pre>
       rarer than it should be. <strong>Go and read it</strong> if you want the mote grades, the
       lockout timings and the full tables &mdash; this page deliberately does not reproduce them.</div>
     <div class="note"><strong>Our own combat logs</strong> <span class="tier tM">TIER M</span>
-      {len(SESSIONS)} sessions across two characters, parsed by <code>_build/logstats.py</code>.
+      {len(SESSIONS)} sessions across two characters, parsed by our own <code>logstats.py</code>.
       Source of the zone-line reading, the loot-tier correspondence and the multiclass observation.
       Every figure derived from them appears with the character, level, zone, tier and sample size
       beside it.</div>

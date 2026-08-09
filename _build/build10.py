@@ -50,13 +50,24 @@ for key, st in steps.items():
 for code, r in races.items():
     for fac in r['factions']:
         index.setdefault(fac, dict(raised_by=[], needed_by=[], moved_in=[]))['needed_by'].append(r['name'])
+# Keyed on zone AND direction, not zone alone.
+#
+# It used to key on zone only and keep whichever delta was largest in absolute
+# terms, which silently collapsed a faction that moves both ways in one zone
+# into a single signed number. The Ruins of Old Guk does exactly that: killing
+# living frogloks costs Frogloks of Guk 5 and killing the undead ones pays 5,
+# because the zone is split between the two. The old shape rendered "-5 a kill"
+# under Falls and "-5 a kill" again under Rises, which reads as a contradiction
+# rather than as the genuinely useful fact it is.
 for zone, z in measured.items():
     for mob, facs in z['per_mob'].items():
         for fac, delta in facs.items():
+            direction = 'up' if delta > 0 else 'down'
             index.setdefault(fac, dict(raised_by=[], needed_by=[], moved_in=[]))
-            entry = next((e for e in index[fac]['moved_in'] if e['zone'] == zone), None)
+            entry = next((e for e in index[fac]['moved_in']
+                          if e['zone'] == zone and e['dir'] == direction), None)
             if not entry:
-                entry = dict(zone=zone, per_kill=None, biggest=None, mob=None)
+                entry = dict(zone=zone, dir=direction, per_kill=None, biggest=None, mob=None)
                 index[fac]['moved_in'].append(entry)
             if entry['biggest'] is None or abs(delta) > abs(entry['biggest']):
                 entry['biggest'], entry['mob'] = delta, mob
@@ -67,6 +78,38 @@ covered = sorted(measured)
 uncovered = [z['title'] for z in ZONES
              if not any(z['title'].lower().split()[-1] in c.lower() for c in covered)]
 
+# A sample is not a rate. Kerra Isle rests on 2 kills and Mistmoore on 1,018,
+# and until now they rendered identically under the word "measured".
+THIN = 50
+
+
+def unattributed(z):
+    """Factions this zone was seen moving that no mob could be blamed for.
+
+    Blackburrow rendered two empty columns under "measured across 42 kills",
+    which reads as "we looked and nothing happened". Five factions moved; the
+    parser just could not tie any of them to the mob that caused it. Naming
+    them once beneath the columns says what is actually true, and says it in
+    one place rather than repeating it in both.
+    """
+    known = set(z.get('falling') or []) | set(z.get('rising') or [])
+    loose = [f for f in (z.get('factions_seen') or []) if f not in known]
+    if not loose:
+        return ''
+    return ('<p class="floose"><strong>Seen moving, direction unknown.</strong> '
+            + esc(', '.join(loose))
+            + ' &mdash; these appeared in the log without a mob we could attribute '
+            'them to, so neither the sign nor the size is known. A session where the '
+            'faction message and the kill sit adjacent would close it.</p>')
+
+
+def thin(kills):
+    if kills >= THIN:
+        return ''
+    return ('<span class="fthin">small sample &mdash; treat as seen once, '
+            'not as a rate</span>')
+
+
 zone_cards = ''
 for zone, z in measured.items():
     def facline(names, sign):
@@ -74,12 +117,25 @@ for zone, z in measured.items():
             return '<li class="fnone">nothing recorded</li>'
         out = ''
         for f in names:
-            e = next((e for e in index.get(f, {}).get('moved_in', []) if e['zone'] == zone), None)
+            want = 'up' if sign == 'up' else 'down'
+            e = next((e for e in index.get(f, {}).get('moved_in', [])
+                      if e['zone'] == zone and e['dir'] == want), None)
+            # Both ways in one zone is a real finding, not a glitch. Say so
+            # where the reader meets it rather than leaving them to notice the
+            # same name in both columns and distrust the page.
+            other = any(x for x in index.get(f, {}).get('moved_in', [])
+                        if x['zone'] == zone and x['dir'] != want)
             detail = ''
             if e:
                 detail = (f'<span class="fdelta">{e["per_kill"]:+d} a kill'
                           + (f', up to {e["biggest"]:+d} from {esc(e["mob"])}'
-                             if e['biggest'] != e['per_kill'] else '') + '</span>')
+                             if e['biggest'] != e['per_kill'] else '')
+                          + (f' &middot; from {esc(e["mob"])}'
+                             if e['biggest'] == e['per_kill'] and e['mob'] else '')
+                          + '</span>')
+                if other:
+                    detail += ('<span class="fboth">also moves the other way in this zone '
+                               '&mdash; which mobs you kill decides the sign</span>')
             # Three cases, not two. A faction can be required by a race, or
             # merely raised by a step that a race uses — and calling the second
             # "no unlock needs this" contradicted the step list printed directly
@@ -110,13 +166,14 @@ for zone, z in measured.items():
   <article class="fzone">
     <div class="fzhead">
       <h3>{esc(zone)}</h3>
-      <span class="fzmeta">D{z.get("difficulty")} &middot; measured across {z["kills"]} kills
-        &middot; {esc(z.get("date") or "")}</span>
+      <span class="fzmeta">D{z.get("difficulty")} &middot; measured across {z["kills"]} kill{"" if z["kills"] == 1 else "s"}
+        &middot; {esc(z.get("date") or "")}{thin(z["kills"])}</span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist">{facline(z["falling"], "down")}</ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist">{facline(z["rising"], "up")}</ul></div>
     </div>
+    {unattributed(z)}
     {"<h4 class='fwarn'>Quest steps this undoes</h4><ul class='fsteps'>" + undone + "</ul>" if undone else ""}
     {"<h4 class='fgood'>Quest steps this helps</h4><ul class='fsteps'>" + helped + "</ul>" if helped else ""}
     {"<p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>" if not undone and not helped else ""}
@@ -136,7 +193,7 @@ page = head("Faction impact checker",
     <p class="hero-lede">Faction moves while you are not looking. You clear a zone for six hours and
       find out afterwards that an unlock you had not started is now expensive, or that a vendor has
       stopped speaking to you. This checks that before you commit the evening.</p>
-    <p class="hero-sig"><span>{len(index)} factions</span><span>{len(covered)} zone measured</span>
+    <p class="hero-sig"><span>{len(index)} factions</span><span>{len(covered)} zone{"" if len(covered) == 1 else "s"} measured</span>
       <span>{len(steps)} quest steps</span><span>{len(races)} races</span></p>
   </div>
 </section>
@@ -167,7 +224,7 @@ page = head("Faction impact checker",
     <div class="sechead"><span class="n">Measured</span><div><h2 class="sec">Zones we have counted</h2>
       <p class="lede" style="margin:0">Faction movement recorded from play, with the size per kill and
         the worst single mob. <span class="tier tM">TIER M</span></p></div></div>
-    {zone_cards or "<p class='fnothing'>No zone measured yet.</p>"}
+    {zone_cards or "<p class='fnothing'>No zones measured yet.</p>"}
   </div>
 </section>
 
@@ -176,7 +233,7 @@ page = head("Faction impact checker",
     <div class="sechead"><span class="n">Not measured</span><div><h2 class="sec">Where we cannot answer</h2></div></div>
     <div class="note"><strong>These zones have plates but no faction measurement:</strong>
       {esc(", ".join(uncovered)) or "none"}. Faction data for them would come from a combat log of an
-      hour in the zone &mdash; the same way the measured zone above was produced. Until then this page
+      hour in the zone &mdash; the same way the measured zones above were produced. Until then this page
       has nothing to say about them, and says nothing rather than guessing.</div>
   </div>
 </section>
