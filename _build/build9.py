@@ -260,10 +260,12 @@ def section(sess_list, zone_title):
     CLASSES = r'\b(BRD|WAR|CLR|SHM|NEC|DRU|ROG|MNK|BER|PAL|SHD|RNG|WIZ|MAG|ENC|BST)\b'
     stamps = s.get('context') or s['stamps']
     who = next((txt(x) for x in stamps if re.search(CLASSES, txt(x))), None)
-    notes = [(txt(x),
-              x.get('at') if isinstance(x, dict) else None,
-              bool(isinstance(x, dict) and x.get('conditions')))
-             for x in s['stamps'] if txt(x) != who]
+    # Only stamps that state a condition reach the page. The rest is party chat:
+    # "I will provide her logs separate later" was being republished as though
+    # it described the fight.
+    notes = [(txt(x), x.get('at') if isinstance(x, dict) else None, True)
+             for x in s['stamps']
+             if txt(x) != who and isinstance(x, dict) and x.get('conditions')]
 
     named, trash = [], []
     for name, d in s['mobs'].items():
@@ -299,9 +301,14 @@ def section(sess_list, zone_title):
                    f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Named</h3>'
                    f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(named)}</tbody></table></div>')
     if trash:
-        tables += (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
-                   f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Everything else</h3>'
-                   f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(trash)}</tbody></table></div>')
+        tsw = sum(d['swings'] or 0 for _n, d in trash)
+        tld = sum(d['landed'] or 0 for _n, d in trash)
+        rate = f'{100*tld/tsw:.0f}%' if tsw else 'not measured'
+        # Ordinary mobs stop being itemised here. Sixty rows of "a dark elf
+        # noble" was the largest block on a measured section, and nobody plans
+        # an evening around trash damage averages. The aggregate keeps the scale.
+        tables += (f'<p class="trash">Plus <b>{len(trash)}</b> ordinary mob types over '
+                   f'<b>{tsw:,}</b> swings, landing {rate}. Not itemised.</p>')
 
     yh, ym = s['you_hit'], s['you_miss']
     hitrate = f"{100*yh/(yh+ym):.1f}%" if (yh + ym) else 'not measured'

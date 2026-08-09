@@ -256,6 +256,12 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .foot-grid li{margin-bottom:7px}
 .foot-grid a{font-size:var(--t-sm);color:var(--mut);text-decoration:none}
 .foot-grid a:hover{color:var(--bone)}
+.zprov{border-left:3px solid var(--c);padding:14px 0 14px 16px;margin:0 0 18px}
+.zprov h3{margin:0 0 8px;font-family:"Saira Condensed",sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--ink)}
+.zprov p,.zprov div{margin:0 0 9px;color:var(--dim);font-size:13.5px;line-height:1.6}
+.zprov strong{color:var(--ink)}
+.src-line{margin:0;font-size:13.5px;color:var(--dim)}
 .foot-contact{margin:22px 0 0;padding:16px 18px;border:1px solid var(--line);
   border-radius:4px;background:rgba(255,255,255,.02)}
 .foot-contact p{margin:0;color:var(--dim);font-size:14px;line-height:1.6}

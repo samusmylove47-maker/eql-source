@@ -16,6 +16,17 @@ N_ITEMS, N_NAMED = len(IX["items"]), len(IX["named"])
 # section still said five had not cleared - on the page whose whole job is
 # admitting what is wrong.
 ZONES = json.load(open("assets/zones-index.json", encoding="utf-8"))
+
+# Per-zone provenance, lifted off the plates on 10 Aug 2026. The plates carried
+# 4,033 words explaining which wiki revision a figure came from and why a marker
+# pair collides - true, useful to us, and not what a player standing at a zone
+# line needs. It lives here now, whole, and each plate links to its section.
+PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
+BYSLUG = {z["slug"]: z for z in ZONES}
+prov_blocks = "".join(
+    f'<div class="zprov" id="zone-{slug}" style="--c:{BYSLUG[slug]["accent"]}">'
+    f'<h3>{BYSLUG[slug]["title"]}</h3>' + "".join(notes) + '</div>'
+    for slug, notes in sorted(PROV.items(), key=lambda kv: BYSLUG[kv[0]]["plate"]))
 N_OPEN = sum(1 for z in ZONES if z["verify_level"] != "full")
 
 if N_OPEN:
@@ -278,8 +289,16 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     </div>
   </section>
 
+  <section class="band" id="provenance">
+    <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
+      <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
+        This used to sit on the plates themselves. It belongs here, where someone
+        checking our working can find all ten in one place.</p></div></div>
+    {prov_blocks}
+  </section>
+
   <section class="band" id="changelog">
-    <div class="sechead"><span class="n">03</span><div><h2 class="sec">Change log</h2>
+    <div class="sechead"><span class="n">04</span><div><h2 class="sec">Change log</h2>
       <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
     <div class="ztable">
 {chrows}

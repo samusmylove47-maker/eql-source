@@ -141,6 +141,35 @@ def run(pages, fail, warn):
                          f"search snippets and Discord embeds")
                     break
 
+    # ---- 6. prose may not grow -----------------------------------------------
+    #
+    # The site reached 67,752 words before anyone measured it. Not one page was
+    # written carelessly; every paragraph justified itself at the time, and the
+    # total was still four times what a reader wants. Two people who both like
+    # writing will not catch that by reading.
+    #
+    # assets/prose-budget.json holds a per-page ceiling. A page may shrink freely
+    # and the ceiling follows it down on the next commit; a page may not grow.
+    # Trimming is the only direction this ratchet turns.
+    try:
+        budget = json.load(open("assets/prose-budget.json", encoding="utf-8"))
+    except (OSError, ValueError):
+        budget = None
+        warn("assets/prose-budget.json is missing — prose growth is unchecked")
+    if budget is not None:
+        SCRIPT = re.compile(r"<(script|style)\b.*?</\1>", re.S | re.I)
+        for p in pages:
+            key = p.replace(os.sep, "/").replace("public/", "")
+            cap = budget.get(key)
+            if cap is None:
+                continue
+            h = open(p, encoding="utf-8", errors="replace").read()
+            t = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]+>", " ", SCRIPT.sub(" ", h)))
+            n = len([w for w in t.split() if any(c.isalpha() for c in w)])
+            if n > cap + 40:          # a little slack for a genuine new fact
+                fail(f"{key} has grown to {n:,} words against a ceiling of {cap:,}. "
+                     f"Cut something, or move it to Accuracy, Learn or the change log")
+
     # ---- 6. no tool may be orphaned from the footer -------------------------
     #
     # The faction impact checker, the most original tool on the site, appeared in
