@@ -223,6 +223,34 @@ to be rebuilt from scratch.
 
 ---
 
+## Tier C — a first-hand report, not yet an instrument reading
+
+Added 10 August 2026. The scale ran M, 1, 2, 3, 4, 5, and a named player saying
+*"I did this last night and it did not work the way the wiki says"* fits none of
+them. It is not Tier M: nothing was parsed, and recollection is not a log. It is
+not tiers 3 to 5: those are readings of documents, and this is not a document.
+
+**Tier C sits below M and above 3.** First-hand, named, dated, unconfirmed.
+
+Every Tier C claim publishes four things:
+
+1. **Who reported it**, by name. Credit is the whole point — it is the only
+   currency we have for the people who find these.
+2. **When**, and under what conditions they saw it.
+3. **What would confirm it** — usually one log line or one screenshot.
+4. **That it is unconfirmed**, in a badge, wherever the claim appears.
+
+**A Tier C claim never becomes fact by repetition.** It either gets confirmed
+and moves tier, with the confirming evidence named, or it stays C indefinitely
+and visibly. Watch for the failure mode where a C claim is cited so often that
+someone quietly drops the badge.
+
+**This applies to us too.** The collaborator's own play reports are Tier C, not
+Tier M. Our logs are Tier M because a parser read them; our memories are not.
+Exempting ourselves would be the most obvious way to corrupt the scale.
+
+---
+
 ## Verification standard
 
 A zone counts as **verified** only when all three are true:

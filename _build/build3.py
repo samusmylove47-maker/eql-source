@@ -48,6 +48,10 @@ WH_CSS = """
 .whnote{margin:14px 0 0;padding:12px 14px;border-left:3px solid #C9453A;
   background:rgba(201,69,58,.06);color:#9FADAC;font-size:14px;line-height:1.55}
 .whnote strong{color:#E6E9E4}
+.disputed{text-decoration:line-through;text-decoration-color:#D9837C;
+  text-decoration-thickness:2px;color:#8A9998}
+.ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.62}
+.ph-ev li{margin:0 0 7px}
 </style>"""
 
 

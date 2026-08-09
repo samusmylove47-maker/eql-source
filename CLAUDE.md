@@ -32,6 +32,14 @@ page look less finished.
 
 Higher tiers override lower ones. Always.
 
+**Tier C — a first-hand report, off the numeric ramp.** A named player saying
+"I played this last night and it did not work the way the wiki says". Not tier M
+— nothing was parsed, and recollection is not a log. Not tiers 3–5 — those are
+readings of documents. It sits below M and above 3, and every C claim publishes
+who reported it, when, what would confirm it, and that it has not been.
+**Our own play reports are Tier C, not Tier M**; exempting ourselves would
+corrupt the scale fastest. Full handling in `docs/SOURCES.md`.
+
 0. **Measured combat logs — tier M.** First-hand instrument data from our own
    play: what happened, in the live game, on a dated session, to a named
    character. Parsed by `_build/logstats.py` into `assets/measured.json`.
