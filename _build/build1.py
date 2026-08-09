@@ -28,7 +28,7 @@ zrows = "\n".join(
       <span class="bar"></span></a>''' for z in Z)
 
 # Home page: ten colour objects rather than ten table rows. The contour rings
-# are anchored to a different corner per plate so the ten cards do not read as
+# are anchored to a different corner per survey so the ten cards do not read as
 # one texture repeated — each looks like a different piece of the same map.
 _CORNERS = [("86%","118%"),("14%","112%"),("92%","104%"),("8%","120%"),("78%","110%"),
             ("20%","104%"),("94%","116%"),("10%","106%"),("70%","120%"),("30%","110%")]
@@ -62,7 +62,7 @@ recent = "\n".join(
       </li>''' for e in ENTRIES[:4])
 
 home = head("Accurate, sourced and kept current",
-  "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, 3D raid encounter guides and dungeon survey plates. Every claim names its source and its date.") + bar() + f'''
+  "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, 3D raid encounter guides and dungeon surveys. Every claim names its source and its date.") + bar() + f'''
 <main>
 
 <section class="hero">
@@ -72,7 +72,7 @@ home = head("Accurate, sourced and kept current",
     <p class="hero-lede">Legends moves every week, and most of what the community reads about it is
       classic EverQuest text in a Legends-shaped hole. Every figure here names the page it came from
       and the day it was read. Every gap says so out loud.</p>
-    <p class="hero-sig"><span>{len(Z)} plates surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
+    <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
   </div>
 </section>
 
@@ -92,10 +92,10 @@ home = head("Accurate, sourced and kept current",
 
       <a class="door contour" href="dungeons/index.html" style="--c:var(--z01);--cx:12%;--cy:110%">
         <span class="dq">I am going into a zone</span>
-        <h3 class="dt">The survey plates</h3>
+        <h3 class="dt">The surveys</h3>
         <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
           and coordinates re-derived from <code>/loc</code> records. Navigation maps where they exist.</p>
-        <span class="dgo">{len(Z)} plates, {len(MAPS)} maps &rarr;</span>
+        <span class="dgo">{len(Z)} surveys, {len(MAPS)} maps &rarr;</span>
       </a>
 
       <a class="door contour" href="tools/index.html" style="--c:var(--instr);--cx:84%;--cy:104%">
@@ -169,7 +169,7 @@ mapcards = "\n".join(
         <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>''' for s in
   [z['slug'] for z in Z if z['slug'] in MAPS])
 
-# The plate cards live here, on the plates page. The home page links to this
+# The survey cards live here, on the surveys page. The home page links to this
 # page rather than reproducing it.
 dplates = "\n".join(
   f'''      <a class="plate contour" href="{z['slug']}.html"
@@ -188,17 +188,17 @@ dplates = "\n".join(
 _open = [z for z in Z if z['verify_level'] != 'full']
 if _open:
     verdict = (f"By that standard <strong>{nfull} of {len(Z)}</strong> are verified, "
-               f"{npart} are partial and {nnone} are not verified at all. Partial plates are "
+               f"{npart} are partial and {nnone} are not verified at all. Partial surveys are "
                f"complete and useful; they have simply not cleared every gate. Which gate is open "
                f"is recorded per zone rather than averaged into a single number that would "
                f"flatter us.")
     asidec, asideh = "var(--warn)", "Open gates"
 else:
     verdict = (f"By that standard <strong>all {len(Z)} are verified</strong>, as of 9 August 2026. "
-               f"That is a floor, not a finish: it means every plate has been checked against its "
+               f"That is a floor, not a finish: it means every survey has been checked against its "
                f"live source and every coordinate lands somewhere a player can stand. It does not "
                f"mean the zones are fully documented. Where a figure is missing or a source is a "
-               f"Project 1999 import, the plate says so in place, and those gaps are listed on each "
+               f"Project 1999 import, the survey says so in place, and those gaps are listed on each "
                f"plate rather than folded into this number.")
     asidec, asideh = "var(--ok)", "The three gates, cleared"
 
@@ -208,7 +208,7 @@ _ORDER = {"none": 0, "partial": 1, "full": 2}
 # gates instead and says what each one actually proves - which is the part a
 # reader needs in order to judge the word "verified".
 _CLEARED = [
-  ("Source read in full", "Every plate's wiki page was fetched whole and its roster re-compared "
+  ("Source read in full", "Every survey's wiki page was fetched whole and its roster re-compared "
    "against ours, not sampled. It is how Kelynn was found missing from Crushbone."),
   ("History from the API", "Edit history taken from MediaWiki, never the page footer. Footers were "
    "stale on four of the first five zones checked; Befallen's was two months out."),
@@ -244,7 +244,7 @@ mapcards = "\n".join(
         <span class="dgo">Open the map &rarr;</span>
       </a>''' for i, s in enumerate(sorted(MAPS)))
 
-dung = head("Dungeon survey plates",
+dung = head("Dungeon surveys",
   "Ten revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
   rel="../") + bar("../") + f'''
 <main>
@@ -253,11 +253,11 @@ dung = head("Dungeon survey plates",
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
     <h1 class="display">Ten zones,<br><em>surveyed.</em></h1>
-    <p class="hero-lede">Each shipping a deep-reference plate and, where built, a navigation map
+    <p class="hero-lede">Each shipping a deep-reference survey and, where built, a navigation map
       companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
       coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the
       floor the game itself draws.</p>
-    <p class="hero-sig"><span>{len(Z)} plates</span><span>{len(MAPS)} maps</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
+    <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len(MAPS)} maps</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
   </div>
 </section>
 

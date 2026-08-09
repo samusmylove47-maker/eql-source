@@ -17,10 +17,10 @@ N_ITEMS, N_NAMED = len(IX["items"]), len(IX["named"])
 # admitting what is wrong.
 ZONES = json.load(open("assets/zones-index.json", encoding="utf-8"))
 
-# Per-zone provenance, lifted off the plates on 10 Aug 2026. The plates carried
+# Per-zone provenance, lifted off the surveys on 10 Aug 2026. The plates carried
 # 4,033 words explaining which wiki revision a figure came from and why a marker
 # pair collides - true, useful to us, and not what a player standing at a zone
-# line needs. It lives here now, whole, and each plate links to its section.
+# line needs. It lives here now, whole, and each survey links to its section.
 PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
 BYSLUG = {z["slug"]: z for z in ZONES}
 prov_blocks = "".join(
@@ -33,16 +33,16 @@ if N_OPEN:
     gates_card = (
         '<div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div>'
         '<h3 class="t">Verification gates</h3>'
-        f'<p class="d">{wordnum(N_OPEN)} of the ten plates have not cleared the full '
+        f'<p class="d">{wordnum(N_OPEN)} of the ten surveys have not cleared the full '
         'three-gate standard. Which gate is open is listed against each zone on the '
         '<a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>')
 else:
     gates_card = (
         '<div class="card" style="--c:var(--ok)"><div class="kicker">Dungeons</div>'
         '<h3 class="t">Verification gates, all cleared</h3>'
-        '<p class="d">All ten plates have passed all three gates, and the evidence for each '
+        '<p class="d">All ten surveys have passed all three gates, and the evidence for each '
         'is recorded on the <a href="dungeons/index.html" style="color:var(--ok)">plates page</a>. '
-        'That is not the same as complete. It means each plate has been checked against its live '
+        'That is not the same as complete. It means each survey has been checked against its live '
         'source and every coordinate lands somewhere a player can stand &mdash; the gaps listed '
         'here are what remains.</p></div>')
 # The change log lives in one place. sources.html renders all of it and the home
@@ -80,7 +80,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <h3 class="t">The Index</h3>
         <p class="d">Every item and named mob recorded across the ten surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
-          links back to the plate it was mined from, so you can read the surrounding context before planning a night
+          links back to the survey it was mined from, so you can read the surrounding context before planning a night
           around it.</p>
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
         <div class="foot"><span>Built from our own plates</span><span class="go">Open &rarr;</span></div></a>
@@ -280,7 +280,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
         <p class="d">The zone has never been surveyed, so the Eye of Veeshan model is schematic rather than measured.
           A handful of <code>/loc</code> readings from islands 7 and 8 would fix it. The page says so in place.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Five missing maps</h3>
-        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have survey plates but no navigation
+        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have surveys but no navigation
           map companion. Blackburrow is next; its explicit three-floor structure suits a 3D treatment.</p></div>
       {gates_card}
       <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
@@ -292,7 +292,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
   <section class="band" id="provenance">
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
-        This used to sit on the plates themselves. It belongs here, where someone
+        This used to sit on the surveys themselves. It belongs here, where someone
         checking our working can find all ten in one place.</p></div></div>
     {prov_blocks}
   </section>

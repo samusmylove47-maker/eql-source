@@ -1,4 +1,4 @@
-"""Measured-in-play sections, from assets/measured.json onto the plates.
+"""Measured-in-play sections, from assets/measured.json onto the surveys.
 
 Reads what logstats.py counted and writes it into the matching plate, under the
 floor plan. Nothing here interprets: it prints what was measured with the

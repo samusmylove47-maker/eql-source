@@ -74,7 +74,7 @@ BODY = f'''
     <h1>The Index</h1>
     <p class="lede">Every item and every named mob recorded across the ten surveyed dungeons, in one searchable
       place. Ask it where something drops, what a zone holds for your classes, or which named you still have not
-      met. <strong>{NITEMS} items and {NNAMED} named</strong>, each tied back to the plate it came from.</p>
+      met. <strong>{NITEMS} items and {NNAMED} named</strong>, each tied back to the survey it came from.</p>
   </div>
 </div>
 
@@ -98,8 +98,8 @@ BODY = f'''
 <div class="shell">
   <div class="ix-results" id="results"></div>
   <div class="note" style="margin-top:34px"><strong>What this is and is not.</strong> It indexes the loot and named
-    tables from our own survey plates &mdash; so its coverage is exactly the ten zones we have surveyed, not the whole
-    game. Stats are quoted as the plate records them, which means anything the plate flagged as uncertain is uncertain
+    tables from our own surveys &mdash; so its coverage is exactly the ten zones we have surveyed, not the whole
+    game. Stats are quoted as the survey records them, which means anything the survey flagged as uncertain is uncertain
     here too. Follow the zone link to read the surrounding context before you plan a night around a drop.</div>
   <div class="note sig"><strong>Looking for a gear upgrade check against your own inventory?</strong>
     <a href="https://eqltools.com/gear" style="color:var(--bone)">EQL Tools has one</a> that reads your inventory file

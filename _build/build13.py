@@ -160,7 +160,7 @@ ENTRIES = [
                  'how often it does.',
          legends='<strong>Reported gone in the revamped dungeons</strong> &mdash; Befallen, '
                  'Blackburrow and Najena &mdash; where the named is reported to spawn every cycle.',
-         note='The spawn percentages on our own Najena plate are almost certainly meaningless if '
+         note='The spawn percentages on our own Najena survey are almost certainly meaningless if '
               'this holds. They are left printed and struck through rather than deleted, because '
               'deleting them would hide what the source says.',
          evidence=[
