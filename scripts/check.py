@@ -204,6 +204,17 @@ if os.path.exists("build.sh"):
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 
+# ---- the propagation gate ---------------------------------------------------
+# Everything above checks that a page is well formed. This checks that facts
+# agree with each other and with the data they came from, which is the class of
+# fault that actually shipped. See scripts/gate.py.
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+try:
+    import gate
+    gate.run(pages, fail, warn)
+except Exception as e:                      # a broken gate must not pass silently
+    fail(f"the propagation gate did not run: {type(e).__name__}: {e}")
+
 print(f"checked {len(pages)} pages")
 for w in warns: print(f"  WARN  {w}")
 for f in fails: print(f"  FAIL  {f}")
