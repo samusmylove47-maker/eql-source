@@ -234,6 +234,45 @@ A zone counts as **verified** only when all three are true:
 Anything short of that is `partial`, and which gate is open is recorded on the
 plate. Do not upgrade a zone's status without doing all three.
 
+### Gate 3 cannot currently be performed, and that needs a decision
+
+Checked 9 Aug 2026 across all five zones still at `partial`. Gate 3 asks that
+coordinates be "collision-checked against the room list". **There is no room
+list to check against.**
+
+| Zone | Rooms named on the plate | Rooms with coordinates | Mobs whose note names a room |
+|---|---|---|---|
+| Crushbone | 0 | 0 | 0 of 19 |
+| Befallen | 0 | 0 | 2 of 19 |
+| Blackburrow | 0 | 0 | 7 of 18 |
+| The Hole | 1 | 0 | 1 of 30 |
+| The Warrens | 0 | 0 | 3 of 19 |
+
+Not one room anywhere carries a coordinate, and 9 of 209 named mobs name a room
+or floor at all. The check has no left-hand side. It cannot be failed, passed,
+or even attempted.
+
+**So five zones sit at `partial` for a gate nobody can close.** That reads as
+"work remains" when the honest statement is "this test does not apply to the
+data we hold". Leaving it is its own small dishonesty.
+
+**This needs the owner's decision, and should not be resolved by quietly
+lowering the bar.** Three options, in the order I would rank them:
+
+1. **Replace gate 3 with the geometry check.** Every coordinate is already
+   tested against the floor the game itself draws — 174 of 174 land on it, and
+   the six impossible Najena coordinates were found that way. It is a stronger
+   test than a room list for the thing that matters (is this position real?) and
+   weaker for the thing a room list would catch (is it in the room the note
+   claims?). Under this, the five zones become `full`.
+2. **Keep gate 3 and mark it not applicable per zone**, so the count stops
+   implying pending work. Zones stay `partial` with the reason stated.
+3. **Build the room lists.** Real work, and only possible where the navigation
+   maps carry room boundaries — five zones have no map at all.
+
+Recorded rather than acted on. Until it is decided, the gate text on each zone
+says what has been checked and what has not.
+
 ### A fourth check that now exists, and is not a substitute for gate 3
 
 Since the zone geometry was extracted, every recorded coordinate can be tested

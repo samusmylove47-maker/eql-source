@@ -78,6 +78,12 @@ difficulty two independent ways, and there is measured evidence of multiclass
 behaviour on trash at D1.
 
 ### Job 3 — Close verification gaps
+**Blocked on a decision, not on work.** Every zone has now been checked against
+its live wiki page with revision ids recorded: 5 full, 5 partial, 0 unverified.
+The only gate left anywhere is gate 3, and it cannot be performed — no plate
+carries a room list with coordinates, so there is nothing to collision-check
+against. `docs/SOURCES.md` sets out three options and asks the owner to pick.
+
 Five of ten plates have not cleared the full three-gate standard, and which gate
 is open is recorded per zone. `/verify <zone>` walks it.
 
