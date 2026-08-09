@@ -15,7 +15,9 @@
   "verified": "2026-07-30",
   "verify_level": "full",
   "verify_gate": null,
-  "respawn_note": "eqlwiki revs 166006 and 166039, 4 Aug 2026, editor Grumpymixon, \"Reset the spawn timer to actual value\" then \"More accurate respawn time\", 19:00 to 4:45 to 4:50. Najena is NOT in the 28 Jul patch list, so this reads as correction of a long-wrong wiki figure. The page still contradicts itself: its Classic Era prose says 19 minutes while its infobox says 4:50."
+  "respawn_note": "eqlwiki revs 166006 and 166039, 4 Aug 2026, editor Grumpymixon, \"Reset the spawn timer to actual value\" then \"More accurate respawn time\", 19:00 to 4:45 to 4:50. Najena is NOT in the 28 Jul patch list, so this reads as correction of a long-wrong wiki figure. The page still contradicts itself: its Classic Era prose says 19 minutes while its infobox says 4:50.",
+  "placeholders_removed": true,
+  "placeholders_source": "Avenrae, 9 Aug 2026 — ten or more consecutive cycles at The Tenderizer"
  },
  {
   "plate": 2,
@@ -33,7 +35,9 @@
   "verified": "2026-07-31",
   "verify_level": "full",
   "verify_gate": null,
-  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  },
  {
   "plate": 3,
@@ -49,7 +53,9 @@
   "verified": null,
   "verify_level": "full",
   "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full and roster re-compared; history from the API — last edited 14 July 2026, revision 157369, by Mandlz; all 18 coordinates land on drawn floor.",
-  "respawn_note": "eqlwiki infobox, page last edited 14 Jul 2026; corroborated by eqlwiki Zone_Spawn_Timers. Pre-dates the 28 Jul patch, which reduced Orc Scoutsman and Orc Warden timers substantially, so treat as a pre-patch ceiling."
+  "respawn_note": "eqlwiki infobox, page last edited 14 Jul 2026; corroborated by eqlwiki Zone_Spawn_Timers. Pre-dates the 28 Jul patch, which reduced Orc Scoutsman and Orc Warden timers substantially, so treat as a pre-patch ceiling.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  },
  {
   "plate": 4,
@@ -67,7 +73,9 @@
   "verified": "2026-07-30",
   "verify_level": "full",
   "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — all 15 named on the wiki are on the plate and its key items including the Ebon Scythe are indexed; history from the API, last edited 5 August 2026, revision 166594, by Grumpymixon, where the plate had recorded 7 June; all 18 coordinates land on drawn floor.",
-  "respawn_note": "eqlwiki rev 164926, 1 Aug 2026, editor Caliente, \"changed timer from 4:27 to 4:30, seems most accurate within seconds\" — the comment names our exact published figure as the value it replaced. Befallen is not in the 28 Jul patch list, so this is a measurement refinement rather than a patch effect."
+  "respawn_note": "eqlwiki rev 164926, 1 Aug 2026, editor Caliente, \"changed timer from 4:27 to 4:30, seems most accurate within seconds\" — the comment names our exact published figure as the value it replaced. Befallen is not in the 28 Jul patch list, so this is a measurement refinement rather than a patch effect.",
+  "placeholders_removed": true,
+  "placeholders_source": "Avenrae, 9 Aug 2026 — hours in zone, named on every cycle"
  },
  {
   "plate": 5,
@@ -83,7 +91,9 @@
   "verified": null,
   "verify_level": "full",
   "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — all 16 named on the wiki are on the plate and respawn agrees at 22:00; history from the API, revision 165754, 4 August 2026, by Piano, though the only August edits are images so the content dates from 4 July; all 17 coordinates land on drawn floor. Two differ trivially from the wiki — Refugee Splitpaw (mnk) by 13 units, Splitpaw Sharpshooter by 4 — and both readings land on floor, so neither can be shown wrong and both are left as recorded.",
-  "respawn_note": "eqlwiki infobox, page last edited 4 Aug 2026; corroborated by eqlwiki Zone_Spawn_Timers. Blackburrow is not in the 28 Jul patch list."
+  "respawn_note": "eqlwiki infobox, page last edited 4 Aug 2026; corroborated by eqlwiki Zone_Spawn_Timers. Blackburrow is not in the 28 Jul patch list.",
+  "placeholders_removed": true,
+  "placeholders_source": "Avenrae, 9 Aug 2026 — hours in zone, named on every cycle"
  },
  {
   "plate": 6,
@@ -101,7 +111,9 @@
   "verified": "2026-07-31",
   "verify_level": "full",
   "verify_gate": null,
-  "respawn_note": "DISPUTED. eqlwiki rev 165379, 2 Aug 2026, editor Caliente, \"updated current zone respawn time\", 9:28 to 11:00. Not adopted: Lower Guk IS named in the 28 Jul patch as having respawn LOWERED, and 11:00 is higher than 9:28. Until that is reconciled the older measured figure stands and the conflict is published. eqlwiki Zone_Spawn_Timers gives a third value, 9:27."
+  "respawn_note": "DISPUTED. eqlwiki rev 165379, 2 Aug 2026, editor Caliente, \"updated current zone respawn time\", 9:28 to 11:00. Not adopted: Lower Guk IS named in the 28 Jul patch as having respawn LOWERED, and 11:00 is higher than 9:28. Until that is reconciled the older measured figure stands and the conflict is published. eqlwiki Zone_Spawn_Timers gives a third value, 9:27.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  },
  {
   "plate": 7,
@@ -120,7 +132,9 @@
   "verified": "2026-07-31",
   "verify_level": "full",
   "verify_gate": null,
-  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  },
  {
   "plate": 8,
@@ -140,7 +154,9 @@
   "verified": "2026-07-30",
   "verify_level": "full",
   "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — every named mob the wiki lists is on the plate and respawn agrees at 7:48; history from the API, six edits on 8 August, latest revision 168060 at 21:25 by Mandlz, where the plate had recorded 15 July; all 18 coordinates land on drawn floor.",
-  "respawn_note": "eqlwiki rev 157133, 14 Jul 2026, editor Realpoor, \"updated respawn timer\", replacing 21:30. Our 21:30 was captured on 30 Jul from a figure the wiki had already superseded two weeks earlier — it was stale on arrival, not overtaken since."
+  "respawn_note": "eqlwiki rev 157133, 14 Jul 2026, editor Realpoor, \"updated respawn timer\", replacing 21:30. Our 21:30 was captured on 30 Jul from a figure the wiki had already superseded two weeks earlier — it was stale on arrival, not overtaken since.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  },
  {
   "plate": 9,
@@ -159,7 +175,9 @@
   "verified": "2026-07-30",
   "verify_level": "full",
   "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — all 17 named on the wiki are on the plate, respawn agrees at 6:40 and the level range at 4-25; history from the API, current revision 126176, 16 May 2026, by Clowd, and the oldest is 12 February 2024 by P99Wiki>MalleSnow, so the page is a Project 1999 import by the provenance test and the plate already says so in prose; all 19 coordinates land on drawn floor.",
-  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  },
  {
   "plate": 10,
@@ -177,6 +195,8 @@
   "verified": "2026-07-31",
   "verify_level": "full",
   "verify_gate": null,
-  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling."
+  "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
+  "placeholders_removed": null,
+  "placeholders_source": null
  }
 ]
