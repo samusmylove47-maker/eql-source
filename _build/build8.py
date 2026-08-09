@@ -198,5 +198,5 @@ page = head("Plane of Sky, island by island",
 </main>
 ''' + foot("../")
 
-open('raids/plane-of-sky.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/raids/plane-of-sky.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"raids/plane-of-sky.html written: {len(ISLANDS)} islands")

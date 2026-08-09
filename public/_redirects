@@ -1,0 +1,23 @@
+# Redirects in the portable format read by Cloudflare Pages, kept equivalent to
+# netlify.toml so either host behaves the same.
+#
+# WARNING, and the reason the publish directory matters more than this file:
+# both Netlify and Cloudflare Pages serve a real file in preference to a rule
+# like these. Blocking an internal path only works while someone remembers to
+# add it here. Deploying a directory that never contains internal files is the
+# only version of this that cannot rot — see the publish-directory note in
+# HANDOFF.md.
+
+# Pretty URLs for the three trackers that get shared in chat.
+/sky         /tools/plane-of-sky.html      301
+/races       /tools/race-unlocks.html      301
+/calculator  /tools/combo-calculator.html  301
+
+# The campaign plate was withdrawn. It had been published and indexed, so send
+# its old URL to the dungeon index rather than leaving a dead end.
+/dungeons/campaign-10-to-50.html  /dungeons/index.html  301
+
+# The blacklist that used to sit here is gone. It listed ten internal paths
+# and blocked them by rule, which only ever worked while someone remembered
+# to add the next one. public/ is the deploy root and contains nothing
+# internal, so there is nothing left to block.

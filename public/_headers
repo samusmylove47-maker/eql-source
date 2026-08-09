@@ -1,0 +1,25 @@
+# Header rules in the portable format read by Cloudflare Pages (and by Netlify,
+# which prefers netlify.toml where the two overlap — they are kept equivalent so
+# it does not matter which the host reads).
+#
+# Kept in step with netlify.toml by hand. If you change one, change the other.
+
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/assets/*
+  Cache-Control: public, max-age=3600
+
+# Guides change several times a day. Never let a stale page stick.
+/dungeons/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/raids/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/learn/*
+  Cache-Control: public, max-age=0, must-revalidate
+
+/tools/*
+  Cache-Control: public, max-age=0, must-revalidate

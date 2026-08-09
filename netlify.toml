@@ -1,5 +1,5 @@
 [build]
-  publish = "."
+  publish = "public"
 
 [[headers]]
   for = "/*"
@@ -23,60 +23,10 @@
   [headers.values]
     Cache-Control = "public, max-age=0, must-revalidate"
 
-# Internal files. publish = "." deploys the whole repository, so everything
-# below would otherwise be readable on the live site. Netlify serves a real
-# file in preference to a redirect rule, so each of these needs force = true
-# — without it the rule is silently ignored for paths that exist on disk.
-[[redirects]]
-  from = "/_build/*"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/docs/*"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/scripts/*"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/state/*"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/CLAUDE.md"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/HANDOFF.md"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/START-HERE.md"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/README.md"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/build.sh"
-  to = "/index.html"
-  status = 404
-  force = true
-[[redirects]]
-  from = "/site.config.json"
-  to = "/index.html"
-  status = 404
-  force = true
+# The twelve force-404 rules that used to live here are gone. They existed
+# only because publish = "." deployed the entire repository, so every
+# internal directory had to be blacklisted by hand and a forgotten one was
+# published. public/ contains nothing internal, so there is nothing to hide.
 
 [[redirects]]
   from = "/sky"

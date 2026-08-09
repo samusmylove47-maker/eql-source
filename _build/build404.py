@@ -65,5 +65,5 @@ page = head("Page not found",
 </main>
 ''' + foot()
 
-open('404.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/404.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"404.html written: {len(page)} bytes")

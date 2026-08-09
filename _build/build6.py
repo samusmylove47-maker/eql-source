@@ -575,7 +575,7 @@ PLATE_JS = """
 
 def write_plate_plan(z, svg, layers, npts, on_floor):
     """Put the floor plan on the plate itself, above its first section."""
-    path = f"dungeons/{z['slug']}.html"
+    path = f"public/dungeons/{z['slug']}.html"
     if not os.path.exists(path):
         return False
     h = open(path, encoding='utf-8').read()
@@ -693,7 +693,7 @@ page = head("Survey plots",
 </script>
 ''' + foot("../")
 
-open('dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions, "
       f"{tot_withheld} withheld, {tot_on_floor}/{tot_measured} on drawn floor, "
       f"{plated} plates given a floor plan")

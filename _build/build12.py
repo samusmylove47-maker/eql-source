@@ -202,5 +202,5 @@ page = head("Deity, and the level 11 lock",
 </main>
 ''' + foot("../")
 
-open('learn/deity.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/learn/deity.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"learn/deity.html written: {len(DEITIES)} deities, {len(HOLES)} data holes named")

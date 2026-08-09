@@ -227,6 +227,6 @@ q.addEventListener('input', run);
 </script>
 ''' + foot("../")
 
-open('tools/faction-impact.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/tools/faction-impact.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"tools/faction-impact.html written: {len(index)} factions, "
       f"{len(covered)} zone(s) measured, {len(uncovered)} not")
