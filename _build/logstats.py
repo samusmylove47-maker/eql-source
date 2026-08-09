@@ -167,6 +167,37 @@ def character_of(path):
 # "The entire log took place inside Mistmoore", 8 Aug 2026. That is a person
 # telling us where they were, which is evidence, and it is written down as such
 # so a later reader can see it was asserted rather than parsed.
+# CONDITIONS STATED BY THE COLLABORATOR
+#
+# A log records what happened, not why. On the afternoon of 8 August the
+# healer's client froze and crashed repeatedly, and the collaborator reports
+# that every death that day but one fell during or just after a crash. Those
+# deaths, and any escape called because the group had suddenly lost its healer,
+# measure a technical fault rather than the encounter — and the plate presents
+# escapes as a judgement the group made about a fight.
+#
+# Recorded here so the affected sessions carry the caveat in public rather than
+# reading as evidence about the zone. Stated by a person, like ZONE_STATED,
+# not inferred from the log.
+SESSION_CAVEAT = {
+    ('Avenrae', '08 Aug 2026', '14:34-16:43'):
+        "The healer's client was freezing and crashing through this session. The "
+        "collaborator reports that every death this day but one fell during or just "
+        "after a crash, so deaths and any escape here may record a technical failure "
+        "rather than the fight going badly.",
+    ('Avenrae', '08 Aug 2026', '17:15-18:14'):
+        "The healer's client was freezing and crashing through this session. The "
+        "collaborator reports that every death this day but one fell during or just "
+        "after a crash, so deaths and any escape here may record a technical failure "
+        "rather than the fight going badly.",
+    ('Shara', '08 Aug 2026', '14:22-15:33'):
+        "Client freezing and crashing repeatedly through this session; the low kill "
+        "count reflects that rather than the zone.",
+    ('Shara', '08 Aug 2026', '15:33-18:14'):
+        "Client freezing and crashing repeatedly through this session; the low kill "
+        "count reflects that rather than the zone.",
+}
+
 ZONE_STATED = {
     ('Avenrae', '08 Aug 2026', '14:34-16:43'): 'The Castle of Mistmoore',
     ('Shara',   '08 Aug 2026', '14:22-15:33'): 'The Castle of Mistmoore',
@@ -526,6 +557,10 @@ def build(src):
             if stated:
                 s['zone'] = stated
                 s['zone_from'] = 'stated by the collaborator, not read from the log'
+    for s in sessions:
+        caveat = SESSION_CAVEAT.get((s.get('character'), s.get('date'), s.get('window')))
+        if caveat:
+            s['caveat'] = caveat
 
     merged = {keyof(s): s for s in existing}
     fresh = {keyof(s): s for s in sessions}

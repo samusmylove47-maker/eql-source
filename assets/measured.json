@@ -17918,7 +17918,8 @@
     }
    }
   },
-  "zone_from": "stated by the collaborator, not read from the log"
+  "zone_from": "stated by the collaborator, not read from the log",
+  "caveat": "Client freezing and crashing repeatedly through this session; the low kill count reflects that rather than the zone."
  },
  {
   "zone": "The Castle of Mistmoore",
@@ -19932,7 +19933,8 @@
     }
    }
   },
-  "zone_from": "stated by the collaborator, not read from the log"
+  "zone_from": "stated by the collaborator, not read from the log",
+  "caveat": "The healer's client was freezing and crashing through this session. The collaborator reports that every death this day but one fell during or just after a crash, so deaths and any escape here may record a technical failure rather than the fight going badly."
  },
  {
   "zone": "The Castle of Mistmoore",
@@ -21069,7 +21071,8 @@
      "Amber": 1
     }
    }
-  }
+  },
+  "caveat": "Client freezing and crashing repeatedly through this session; the low kill count reflects that rather than the zone."
  },
  {
   "zone": "The Castle of Mistmoore",
@@ -22908,6 +22911,7 @@
      "Ivory": 1
     }
    }
-  }
+  },
+  "caveat": "The healer's client was freezing and crashing through this session. The collaborator reports that every death this day but one fell during or just after a crash, so deaths and any escape here may record a technical failure rather than the fight going badly."
  }
 ]
