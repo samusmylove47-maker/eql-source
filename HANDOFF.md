@@ -78,8 +78,13 @@ difficulty two independent ways, and there is measured evidence of multiclass
 behaviour on trash at D1.
 
 ### Job 3 — Close verification gaps
-Five of ten plates have not cleared the full three-gate standard, and which gate
-is open is recorded per zone. `/verify <zone>` walks it.
+**Done, 9 Aug 2026.** All ten plates have cleared all three gates, and the
+evidence for each is recorded in `verify_gate`. Gate 3 was rewritten that day
+because the old one asked for a collision check against a room list the project
+does not hold; it now asks that every coordinate land on drawn floor, and 176 of
+176 do. `docs/SOURCES.md` carries the reasoning, including what the new gate is
+weaker at. `/verify <zone>` still walks the standard, and re-running it is how a
+zone gets re-checked after its wiki page changes.
 
 ---
 
