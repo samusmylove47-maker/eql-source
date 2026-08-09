@@ -217,7 +217,22 @@ anything edited in place; `check.py` will not catch it.
 python3 scripts/check.py
 ```
 
-`check.py` verifies that every internal link resolves, every page has the site
+After changing `scripts/gate.py`, also run:
+
+```bash
+python3 scripts/gate_selftest.py
+```
+
+`scripts/gate.py` is the propagation gate, run by `check.py`. It exists because
+every fault an external audit found on 9 Aug 2026 was the same fault: a
+correction applied in one place instead of all of them. It refuses a build where
+a count disagrees with the data it came from, a withheld coordinate reaches a
+table, a page metadata asserts a figure the body hedges, a zone marked `full`
+still names an open gate, or a tool is missing from the footer. **A dead check
+looks exactly like a passing one**, so `gate_selftest.py` mutates the tree with
+each real fault and proves the gate still catches it.
+
+`check.py` also verifies that every internal link resolves, every page has the site
 chrome and a favicon, `zones-index.json` matches the files on disk, no page has
 lost its stylesheet, and **no page claims more verified plates than the data
 supports.** Run it before every commit. A red check is a blocker, not a warning.
