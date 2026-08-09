@@ -4,6 +4,14 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Source refresh", date="9 Aug 2026", title="The Hole, three weeks behind its own source",
+         body="The plate cited the wiki as last edited 15 July. Taken from the API rather than the "
+              "page footer, it had been edited <strong>six times on 8 August</strong>, the last at "
+              "21:25. Re-compared in full: every named mob the wiki lists is on the plate and the "
+              "respawn still agrees at 7:48, so nothing was wrong &mdash; but <strong>Slizik the "
+              "Mighty gained a coordinate</strong>, 372, &minus;88, where the plate had only "
+              "&ldquo;back of the Ratman Jail&rdquo;. It lands 10 units from drawn floor, so it "
+              "checks out against the zone geometry as well as against the source"),
     dict(kind="Correction", date="8 Aug 2026", title="Befallen's respawn, and a source two months stale",
          body="Two faults on one plate, both found by taking the wiki's edit history from the API "
               "instead of its page footer. <strong>The plate said its source was last edited 7 June "
