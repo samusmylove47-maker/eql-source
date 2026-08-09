@@ -278,6 +278,15 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 /* t5 was #C9453A — 3.2:1, below AA at this size. Lifted to 4.5:1, same hue. The
    tier badges are load-bearing: an unreadable one is worse than a missing one. */
 .t1{color:#5FA37E}.t2{color:#7FB2C7}.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
+/* Tier C — a named player's first-hand report, unconfirmed. Deliberately not
+   on the numeric ramp: it is a different kind of claim, not a weaker one. */
+.tc{background:rgba(92,147,196,.16);color:#8FBEE4;border-color:rgba(92,147,196,.5)}
+/* A figure we still print because the source says it, while telling the reader
+   we do not believe it. Never delete a source figure to make a page tidy. */
+.disputed{text-decoration:line-through;text-decoration-color:var(--warn-t);
+  text-decoration-thickness:2px;color:var(--faint)}
+.ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.6}
+.ph-ev li{margin:0 0 7px}
 .tier-scale{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));
   gap:1px;background:var(--rule);border:1px solid var(--rule);
   border-radius:var(--r);overflow:hidden;margin:26px 0}

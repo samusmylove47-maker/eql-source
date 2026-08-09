@@ -4,6 +4,36 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="10 Aug 2026", title="Najena's spawn percentages, and a T5 number in a structured field",
+         body="Two faults on the flagship plate, both found by an outside reader and both worse than "
+              "reported. <strong>The header carried a 19:00 zone respawn and argued it was "
+              "current.</strong> It is not a zone figure: it comes from the wiki zone page's prose, "
+              "on a page carrying <code>{{Classic Era}}</code>, so by our own standard it is import "
+              "text. The infobox on that same page gives the zone spawn timer as <strong>4:50</strong>, "
+              "corrected there on 4 August. The ~19 minute figure is a per-mob cycle and is now "
+              "labelled as one. Publishing a tier 5 prose number in a structured field and then "
+              "reasoning about whether it was current is the exact mistake this site exists to "
+              "catch. <strong>Separately, the spawn percentages are almost certainly meaningless.</strong> "
+              "Four sources say the revamped dungeons have no placeholders &mdash; the 23 June patch "
+              "note promising &ldquo;a striking lack of placeholders&rdquo;, eqlwiki's Named Mobs "
+              "category, and Avenrae's own play across ten or more consecutive cycles at The "
+              "Tenderizer with no placeholder seen, plus hours in Befallen and Blackburrow. Only "
+              "individual wiki mob pages still describe placeholders, in classic text nobody has "
+              "revisited. The figures stay printed and struck through: deleting them would hide what "
+              "the source says. A log across several cycles at one camp settles it outright. "
+              "<strong>Drelzna also gained three drops</strong> her wiki record carries and this "
+              "plate never did &mdash; Dark Elf Parts, Bronze Greaves and Tentacle Whip"),
+    dict(kind="Addition", date="10 Aug 2026", title="Tier C, for a first-hand report that is not a log",
+         body="The source scale ran M, 1, 2, 3, 4, 5, and a named player saying &ldquo;I did this last "
+              "night and it did not work the way the wiki says&rdquo; fitted none of them. It is not "
+              "tier M &mdash; nothing was parsed, and recollection is not a log. It is not 3 to 5, "
+              "which are readings of documents. <strong>Tier C sits below M and above 3: first-hand, "
+              "named, dated, unconfirmed</strong>, and every claim carrying it publishes who reported "
+              "it, when, what would confirm it, and that it has not been. A Tier C claim never becomes "
+              "fact by repetition &mdash; it is confirmed and moves, or it stays C visibly. "
+              "<strong>This applies to us as well:</strong> our logs are tier M because a parser read "
+              "them; our memories are not, and exempting ourselves would be the fastest way to corrupt "
+              "the scale"),
     dict(kind="Correction", date="9 Aug 2026", title="A verification gate that could not be passed",
          body="Gate 3 of the verification standard asked that coordinates be collision-checked "
               "against the room list. <strong>There is no room list.</strong> Across the five zones "
