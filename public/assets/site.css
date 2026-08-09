@@ -256,6 +256,12 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .foot-grid li{margin-bottom:7px}
 .foot-grid a{font-size:var(--t-sm);color:var(--mut);text-decoration:none}
 .foot-grid a:hover{color:var(--bone)}
+.foot-contact{margin:22px 0 0;padding:16px 18px;border:1px solid var(--line);
+  border-radius:4px;background:rgba(255,255,255,.02)}
+.foot-contact p{margin:0;color:var(--dim);font-size:14px;line-height:1.6}
+.foot-contact strong{color:var(--ink)}
+.foot-contact a{color:var(--instr-t,#8FBEE4)}
+.foot-nolog{margin-top:7px !important;font-size:12.5px !important;color:var(--faint) !important}
 .foot-legal{margin-top:var(--s-6);padding-top:var(--s-5);border-top:1px solid var(--rule);
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.08em;
   color:var(--faint);line-height:1.8}

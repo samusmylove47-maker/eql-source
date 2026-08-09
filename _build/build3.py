@@ -52,7 +52,26 @@ WH_CSS = """
   text-decoration-thickness:2px;color:#8A9998}
 .ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.62}
 .ph-ev li{margin:0 0 7px}
+.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #2E3A41;border-radius:4px;
+  background:rgba(255,255,255,.02)}
+.inj-contact p{margin:0;color:#9FADAC;font-size:14px;line-height:1.6}
+.inj-contact strong{color:#E6E9E4}
+.inj-contact a{color:#8FBEE4}
+.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:#7D9096}
 </style>"""
+
+# The plates and tools are standalone pages with their own footers, so foot()
+# never reaches them - and they are the most-read pages on the site. A door only
+# on the pages nobody arrives at is not a door.
+CONTACT = """
+<div class="inj-contact">
+  <p><strong>Found something this page gets wrong, or something the wiki does?</strong>
+    That is the most useful thing anyone can send us, and every finding is credited by name.
+    <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+    a finding</a> &middot; <a href="REL_learn/still-true.html">see what is already open</a>.</p>
+  <p class="nolog">Please do not attach a combat log to a public issue &mdash; they can carry
+    private chat. Say you have one and we will ask.</p>
+</div>"""
 
 
 def mark_withheld(h, slug):
@@ -97,6 +116,8 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
     css = RETURN_CSS + (UNPIN if own_bar else '')
     h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + css + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
+    if '</footer>' in h:
+        h = h.replace('</footer>', CONTACT.replace('REL_', rel) + '\n</footer>', 1)
     open(dst, 'w', encoding='utf-8', newline='\n').write(h)
     return len(h)
 
