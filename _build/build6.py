@@ -52,6 +52,16 @@ try:
 except (OSError, ValueError):
     GEO = {}
 
+# Which named drops what. The item records carry their source in `d` as
+# "Drelzna · L25", so the mob name is everything before the middle dot. This is
+# a join we have always held and never surfaced on the map: a reader looking at
+# a marker wants to know what it drops, and until now had to scroll to a table.
+DROPS = collections.defaultdict(list)
+for _it in IX['items']:
+    _src = (_it.get('d') or '').split('·')[0].strip()
+    if _src:
+        DROPS[(_it['z'], _src)].append(_it['n'])
+
 NUM = re.compile(r'[-−]?\d+(?:\.\d+)?')
 def nums(s):
     return [float(t.replace('−', '-')) for t in NUM.findall(s or '')]
@@ -194,6 +204,74 @@ def band_colour(lv, lo, hi):
             c = [round(a[1][j] + (b[1][j] - a[1][j]) * k) for j in range(3)]
             return '#%02X%02X%02X' % tuple(c)
     return '#C9453A'
+
+def layer_of(px, py, layers):
+    """Which storey a plan position belongs to.
+
+    Most recorded coordinates are two-value with no Z, so the storey cannot be
+    read off the coordinate — it is inferred from which drawn floor the position
+    sits nearest. Where storeys overlap in plan view this can only be a best
+    guess, and the plate says so rather than implying we know.
+
+    Returns (index of nearest layer, distance to it).
+    """
+    best, best_d = None, None
+    for i, L in enumerate(layers):
+        segs = [sg for c in L['lines'] for sg in zip(c, c[1:])]
+        if not segs:
+            continue
+        d = min(seg_dist(px, py, a, b) for a, b in segs)
+        if best_d is None or d < best_d:
+            best, best_d = i, d
+    return best, best_d
+
+
+def route_order(dots, levels):
+    """An order to walk the named in, and how far that walk is.
+
+    Nearest neighbour from the lowest-level mob — a rough stand-in for starting
+    near the entrance, since the zone line is not recorded for every zone —
+    then 2-opt until it stops improving. With eighteen points that is instant
+    and lands within a few per cent of optimal.
+
+    THIS IS NOT A PATH. It is an order, drawn as straight lines between spawn
+    points. It does not know about walls, doors, locks or drops, and the plate
+    must say so wherever the overlay appears. A route that looks like it walks
+    through a wall is the drawing being honest about what it is, not an error.
+    """
+    n = len(dots)
+    if n < 3:
+        return list(range(n)), 0.0
+
+    def dist(a, b):
+        return math.hypot(dots[a][0] - dots[b][0], dots[a][1] - dots[b][1])
+
+    start = min(range(n), key=lambda i: (levels[i] if levels[i] is not None else 999))
+    unvisited = set(range(n)) - {start}
+    tour = [start]
+    while unvisited:
+        last = tour[-1]
+        nxt = min(unvisited, key=lambda j: dist(last, j))
+        tour.append(nxt)
+        unvisited.discard(nxt)
+
+    improved = True
+    while improved:
+        improved = False
+        for i in range(1, n - 1):
+            for k in range(i + 1, n):
+                a, b = tour[i - 1], tour[i]
+                c = tour[k]
+                d = tour[k + 1] if k + 1 < n else None
+                delta = dist(a, c) - dist(a, b)
+                if d is not None:
+                    delta += dist(b, d) - dist(c, d)
+                if delta < -1e-9:
+                    tour[i:k + 1] = reversed(tour[i:k + 1])
+                    improved = True
+    total = sum(dist(tour[i], tour[i + 1]) for i in range(n - 1))
+    return tour, total
+
 
 def build_plot(zone, pts, layers):
     ys = [p[0] for p in pts]; xs = [p[1] for p in pts]
@@ -341,16 +419,50 @@ def build_plot(zone, pts, layers):
         placed.append(bb)
         if abs(lx - px) > r_dot * 2.2 or abs(ly - py) > r_dot * 3.4:
             ex = lx if anchor == 'middle' else (lx - fs * 0.2 if anchor == 'start' else lx + fs * 0.2)
-            leaders.append(f'<line x1="{px:.0f}" y1="{py:.0f}" x2="{ex:.0f}" y2="{ly + fs*0.28:.0f}" '
+            leaders.append(f'<line class="mklead" x1="{px:.0f}" y1="{py:.0f}" x2="{ex:.0f}" '
+                           f'y2="{ly + fs*0.28:.0f}" '
                            f'stroke="#5C6B70" stroke-width="1" vector-effect="non-scaling-stroke"/>')
         col = band_colour(lev, lo, hi)
+        # Everything the reader might want to filter or read on click travels
+        # with the marker, so the page needs no second data structure and the
+        # SVG stays the single record of what was drawn.
+        lyr, lyr_d = layer_of(px, py, layers)
+        drops = DROPS.get((zone['slug'], name), [])
+        # Levels arrive as floats from the band maths; a reader wants "25".
+        lev_txt = f'{lev:g}' if lev is not None else ''
+        lyr_attr = f' data-lyr="{lyr}"' if lyr is not None else ''
         marks.append(
-            f'<g><circle cx="{px:.0f}" cy="{py:.0f}" r="{r_dot:.1f}" fill="{col}" '
+            f'<g class="mk" data-name="{esc(name)}" data-lv="{lev_txt}"{lyr_attr}'
+            f' data-drops="{esc(" · ".join(drops))}" tabindex="0" role="button"'
+            f' aria-label="{esc(name)}{f", level {lev_txt}" if lev_txt else ""}'
+            f'{f". Drops {len(drops)} recorded items." if drops else ". No drops recorded."}">'
+            f'<circle cx="{px:.0f}" cy="{py:.0f}" r="{r_dot:.1f}" fill="{col}" '
             f'fill-opacity=".95" stroke="#0E1315" stroke-width="1.5" vector-effect="non-scaling-stroke"/>'
-            f'<text x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" '
+            f'<text class="mklbl" x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" '
             f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#E6E9E4" '
             f'style="paint-order:stroke" stroke="#10161A" stroke-width="{fs*0.42:.1f}" '
             f'stroke-linejoin="round">{esc(short)}</text></g>')
+    # ---- the farming route -------------------------------------------------
+    # An order to take the named in, not a path through the zone. Drawn hidden;
+    # the plate's control reveals it.
+    tour, tour_len = route_order(dots, [p[4] for p in pts])
+    route = ''
+    if len(tour) > 2:
+        pl = ' '.join(f'{dots[i][0]:.0f},{dots[i][1]:.0f}' for i in tour)
+        stops = ''.join(
+            f'<circle class="rstop" cx="{dots[i][0]:.0f}" cy="{dots[i][1]:.0f}" '
+            f'r="{r_dot*1.9:.1f}" fill="none" stroke="#E8B04B" stroke-width="1.6" '
+            f'vector-effect="non-scaling-stroke"/>'
+            f'<text class="rnum" x="{dots[i][0]:.0f}" y="{dots[i][1] - r_dot*2.6:.0f}" '
+            f'text-anchor="middle" font-family="IBM Plex Mono, monospace" '
+            f'font-size="{fs*0.86:.0f}" fill="#E8B04B" style="paint-order:stroke" '
+            f'stroke="#10161A" stroke-width="{fs*0.36:.1f}">{k+1}</text>'
+            for k, i in enumerate(tour))
+        route = (f'<g class="route" hidden><polyline points="{pl}" fill="none" '
+                 f'stroke="#E8B04B" stroke-width="2" stroke-opacity=".75" '
+                 f'stroke-dasharray="7 5" stroke-linejoin="round" '
+                 f'vector-effect="non-scaling-stroke"/>{stops}</g>')
+
     marks = leaders + marks
     extents += placed
 
@@ -408,9 +520,10 @@ def build_plot(zone, pts, layers):
            f'together; they are not room shapes. North is up, west is left. Every position is also '
            f'listed as text beneath the plot.">'
            f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#10161A"/>'
-           + ''.join(g) + ''.join(geo) + ''.join(regions) + ''.join(rlabels) + ''.join(marks)
+           + ''.join(g) + ''.join(geo) + ''.join(regions) + ''.join(rlabels) + route
+           + ''.join(marks)
            + scale + compass + '</svg>')
-    return svg, step, (lo, hi), sum(1 for r in rlabels)
+    return svg, step, (lo, hi), sum(1 for r in rlabels), tour, tour_len
 
 sections = []
 tot_plot = tot_named = tot_regions = tot_withheld = tot_geo = 0
@@ -449,7 +562,7 @@ for z in Z:
                 tot_on_floor += 1
                 zone_on_floor += 1
 
-    svg, step, (lo, hi), nregions = build_plot(z, pts, layers)
+    svg, step, (lo, hi), nregions, tour, tour_len = build_plot(z, pts, layers)
     tot_regions += nregions
     if layers:
         tot_geo += 1
@@ -523,7 +636,7 @@ for z in Z:
   </div>
 </section>''')
     if layers:
-        PLATE_QUEUE.append((z, svg, layers, len(pts), zone_on_floor))
+        PLATE_QUEUE.append((z, svg, layers, len(pts), zone_on_floor, tour, tour_len, pts))
 
 # ---- the same drawing, put on each plate ---------------------------------
 # The plates are standalone pages with their own inline CSS and no link to
@@ -554,26 +667,107 @@ PLATE_CSS = """
 .lyr{transition:stroke-opacity .18s}
 .lyr.mute{stroke-opacity:.07}
 @media(prefers-reduced-motion:reduce){.lyr{transition:none}}
+.fp-toggles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.fp-t{padding:7px 13px;cursor:pointer;background:#1A2126;border:1px solid #2E3A41;
+  border-radius:4px;color:#AEB9B8;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  letter-spacing:.04em}
+.fp-t:hover{color:#E6E9E4;border-color:var(--accd)}
+.fp-t:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+.fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #1A2126);border-color:var(--accd);
+  color:#E6E9E4}
+.fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
+.plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
+.mk{cursor:pointer}
+.mk:focus-visible circle{stroke:#E6E9E4;stroke-width:3}
+.mk.dim{opacity:.14}
+.mk.sel circle{stroke:#E6E9E4;stroke-width:3}
+.fp-detail{margin:12px 0 0;padding:13px 15px;border:1px solid #2E3A41;border-radius:4px;
+  background:#151B1F}
+.fp-detail h3{margin:0 0 3px;font-family:"Saira Condensed",sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:#E6E9E4}
+.fp-detail .dmeta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#7D9096;
+  letter-spacing:.06em;text-transform:uppercase}
+.fp-detail ul{margin:9px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.fp-detail li{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#C6D0CE;
+  background:#1A2126;border:1px solid #2E3A41;border-radius:3px;padding:3px 8px}
+.fp-detail .dnone{color:#9FADAC;font-size:13.5px;margin:8px 0 0}
+.fp-route{margin:12px 0 0;padding:12px 14px;border-left:3px solid #E8B04B;
+  background:rgba(232,176,75,.06);color:#9FADAC;font-size:13.5px;line-height:1.6}
+.fp-route strong,.fp-route .rlen{color:#E6E9E4}
+.fp-route em{color:#F2DDAE;font-style:normal}
 </style>"""
 
 PLATE_JS = """
 <script>
 (function(){
-  var bar=document.querySelector('.fp-levels'); if(!bar) return;
-  var svg=document.querySelector('.fp-wrap svg'); if(!svg) return;
+  var wrap=document.querySelector('.fp-wrap'); if(!wrap) return;
+  var svg=wrap.querySelector('svg'); if(!svg) return;
   var layers=svg.querySelectorAll('.lyr');
-  bar.addEventListener('click',function(e){
-    var b=e.target.closest('button'); if(!b) return;
-    bar.querySelectorAll('button').forEach(function(o){
-      o.classList.toggle('on',o===b); o.setAttribute('aria-pressed',o===b?'true':'false');});
-    var pick=b.dataset.lyr;
-    layers.forEach(function(g){g.classList.toggle('mute',pick!=='all'&&g.dataset.lyr!==pick);});
+  var marks=svg.querySelectorAll('.mk');
+  var route=svg.querySelector('.route');
+  var rnote=document.querySelector('.fp-route');
+  var detail=document.querySelector('.fp-detail');
+  var bar=document.querySelector('.fp-levels');
+  var togs=document.querySelector('.fp-toggles');
+  var pick='all';
+
+  // Height. Storeys mute rather than vanish so the zone keeps its shape, and
+  // the named filter with them - a mob on floor 3 is noise while you read
+  // floor 1.
+  function applyLayer(){
+    layers.forEach(function(g){
+      g.classList.toggle('mute', pick!=='all' && g.dataset.lyr!==pick);
+    });
+    marks.forEach(function(m){
+      var on = pick==='all' || m.dataset.lyr===pick;
+      m.classList.toggle('dim', !on);
+    });
+  }
+  if(bar){
+    bar.addEventListener('click', function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      bar.querySelectorAll('button').forEach(function(o){
+        o.classList.toggle('on', o===b); o.setAttribute('aria-pressed', o===b?'true':'false');});
+      pick=b.dataset.lyr; applyLayer();
+    });
+  }
+
+  if(togs){
+    togs.addEventListener('click', function(e){
+      var b=e.target.closest('button'); if(!b) return;
+      var on=b.getAttribute('aria-pressed')!=='true';
+      b.setAttribute('aria-pressed', on?'true':'false');
+      b.classList.toggle('on', on);
+      if(b.dataset.t==='names'){ svg.classList.toggle('nonames', !on); }
+      if(b.dataset.t==='route'){
+        if(route) route.hidden=!on;
+        if(rnote) rnote.hidden=!on;
+      }
+    });
+  }
+
+  function show(m){
+    marks.forEach(function(o){ o.classList.toggle('sel', o===m); });
+    var drops=(m.dataset.drops||'').split(' · ').filter(Boolean);
+    var lv=m.dataset.lv? '<span class="dmeta">Level '+m.dataset.lv+'</span>' : '';
+    var body = drops.length
+      ? '<ul>'+drops.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul>'
+      : '<p class="dnone">No drops recorded for this mob on this plate. That means we '
+        +'have not recorded any, not that it carries nothing.</p>';
+    detail.innerHTML='<h3>'+m.dataset.name+'</h3>'+lv+body;
+    detail.hidden=false;
+  }
+  marks.forEach(function(m){
+    m.addEventListener('click', function(){ show(m); });
+    m.addEventListener('keydown', function(e){
+      if(e.key==='Enter'||e.key===' '){ e.preventDefault(); show(m); }
+    });
   });
 })();
 </script>"""
 
 
-def write_plate_plan(z, svg, layers, npts, on_floor):
+def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
     """Put the floor plan on the plate itself, above its first section."""
     path = f"public/dungeons/{z['slug']}.html"
     if not os.path.exists(path):
@@ -581,6 +775,30 @@ def write_plate_plan(z, svg, layers, npts, on_floor):
     h = open(path, encoding='utf-8').read()
     if '<section>' not in h:
         return False
+
+    # Three controls, one row. Names off is the one a reader reaches for first:
+    # a dense zone puts eighteen labels on the plan and orienting is easier
+    # without them.
+    toggles = ('<div class="fp-toggles">'
+               '<button type="button" class="fp-t on" data-t="names" aria-pressed="true">Names</button>'
+               + ('<button type="button" class="fp-t" data-t="route" aria-pressed="false">'
+                  'Farming route</button>' if len(tour) > 2 else '')
+               + '</div>')
+
+    # The route's honesty clause. It appears with the drawing, not in a footnote,
+    # because the drawing is what gets screenshotted into Discord.
+    route_note = ''
+    if len(tour) > 2:
+        order = ' &rarr; '.join(pts[i][2] for i in tour)
+        route_note = (
+            f'<p class="fp-route" hidden><strong>The route, in order.</strong> {order}. '
+            f'<span class="rlen">{tour_len:,.0f} units of straight-line travel.</span> '
+            f'<em>This is an order to take them in, not a path through the zone.</em> '
+            f'The lines run point to point and know nothing about walls, doors, locks '
+            f'or drops &mdash; a segment that appears to cross a wall is the drawing '
+            f'being honest about what it is. It starts at the lowest-level named as a '
+            f'stand-in for starting near the entrance, because the zone line is not '
+            f'recorded for every zone.</p>')
 
     lv = ''
     if len(layers) > 1:
@@ -601,7 +819,9 @@ def write_plate_plan(z, svg, layers, npts, on_floor):
              f'<p class="fp-lede">Where the walkable floor ends, computed from the zone&rsquo;s own '
              f'geometry in the game files, with the {npts} named mobs whose positions are on record '
              f'plotted on it.{levels_line}</p>'
-             f'{lv}<div class="fp-wrap">{svg}</div>'
+             f'{toggles}{lv}<div class="fp-wrap">{svg}</div>'
+             f'<div class="fp-detail" hidden aria-live="polite"></div>'
+             f'{route_note}'
              f'<p class="fp-note">A line marks the edge of the floor &mdash; a wall or a drop. '
              f'Doors, locks and one-way drops are not marked, and a gap is as likely to be a ledge as '
              f'a doorway. {on_floor} of these {npts} positions land on the drawn floor, which is worth '
@@ -617,8 +837,8 @@ def write_plate_plan(z, svg, layers, npts, on_floor):
 
 
 plated = 0
-for z, svg, layers, npts, onf in PLATE_QUEUE:
-    if write_plate_plan(z, svg, layers, npts, onf):
+for z, svg, layers, npts, onf, tour, tlen, pts in PLATE_QUEUE:
+    if write_plate_plan(z, svg, layers, npts, onf, tour, tlen, pts):
         plated += 1
 
 page = head("Survey plots",
