@@ -117,6 +117,13 @@ def build():
         # could not sign. Blackburrow: 42 kills, five factions, no attribution.
         for f in (s.get('faction') or {}):
             z.setdefault('seen', set()).add(f)
+        # A faction at its floor or ceiling reports in words, not numbers. The
+        # direction is still in the message; only the magnitude is nil, because
+        # nothing moved. Keeping these lets a zone say "this would rise, but it
+        # is already at maximum for you" instead of showing an empty column.
+        for mob, facs in (s.get('faction_capped_by_mob') or {}).items():
+            for f, d in facs.items():
+                z.setdefault('capped', {}).setdefault(f, d)
         for mob, facs in (s.get('faction_by_mob') or {}).items():
             z['per_mob'].setdefault(mob, facs)
             for f in facs:
@@ -139,6 +146,12 @@ def build():
         falling = {f for facs in z['per_mob'].values() for f, d in facs.items() if d < 0}
         rising = {f for facs in z['per_mob'].values() for f, d in facs.items() if d > 0}
         z['falling'], z['rising'] = sorted(falling), sorted(rising)
+        # Capped factions are reported separately from measured ones. A capped
+        # reading is weaker evidence - it says which way a kill pushes, never
+        # how hard - so it must never be mixed into the per-kill figures.
+        cap = z.get('capped', {})
+        z['capped_up'] = sorted(f for f, d in cap.items() if d == 'up' and f not in rising)
+        z['capped_down'] = sorted(f for f, d in cap.items() if d == 'down' and f not in falling)
 
         z['steps_undone'], z['steps_helped'] = [], []
         for key, st in steps.items():

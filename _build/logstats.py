@@ -82,6 +82,23 @@ LOOT = re.compile(r"looted an? (.+?) from (.+?)'s corpse")
 PLUS = re.compile(r'\+(\d)\b')
 FACTION = re.compile(r'Your faction standing with (.+?) (?:has|could)')
 FACTION_D = re.compile(r'Your faction standing with (.+?) has been adjusted by (-?\d+)')
+
+# THE MESSAGE THAT IS NOT A MISSING NUMBER
+# Blackburrow logged 2,631 faction lines across 42 kills and not one was
+# attributable, which read as a parser gap and was published as "direction
+# unknown". It is not a gap. EverQuest reports a faction that has hit its floor
+# or ceiling in words instead of numbers:
+#
+#   Your faction standing with Undead Frogloks of Guk could not possibly get any worse.
+#   Your faction standing with Frogloks of Guk could not possibly get any better.
+#
+# The direction is right there. "worse" is a kill that would have lowered the
+# faction and could not; "better" is one that would have raised it. Only the
+# magnitude is unknowable, because nothing moved. Reading these as noise threw
+# away the direction for every capped faction we have ever logged - in the
+# 9 Aug Lower Guk run they are 337 of the 355 faction lines.
+FACTION_CAP = re.compile(
+    r'Your faction standing with (.+?) could not possibly get any (better|worse)')
 EXP = re.compile(r'You gain (?:party )?experience! \(([\d.]+)%\)')
 
 # Faction arrives in the same second as the kill that caused it, just before the
@@ -199,6 +216,11 @@ SESSION_CAVEAT = {
 }
 
 ZONE_STATED = {
+    # Avenrae's 9 Aug log opens mid-zone with no "You have entered" line.
+    # Shara's log covers the same clock window and carries
+    # "The Ruins of Old Guk 1 (Awakened)", and both characters stamped the
+    # party channel with "D1 Awakened Lower Guk starting run" at 11:11.
+    ('Avenrae', '09 Aug 2026', '11:10-13:16'): 'The Ruins of Old Guk',
     ('Avenrae', '08 Aug 2026', '14:34-16:43'): 'The Castle of Mistmoore',
     ('Shara',   '08 Aug 2026', '14:22-15:33'): 'The Castle of Mistmoore',
 }
@@ -269,6 +291,7 @@ def collect(rows, character=None):
                              resists=collections.defaultdict(collections.Counter),
                              screams=0, scream_seconds=0),
                     fac_by_mob=collections.defaultdict(dict),
+                    cap_by_mob=collections.defaultdict(dict),
                     exp_by_mob=collections.defaultdict(list))
 
     # A log that starts mid-zone has no "You have entered" line at all — the
@@ -356,6 +379,12 @@ def collect(rows, character=None):
         m = FACTION_D.search(x)
         if m:
             cur.setdefault('_fac_buf', []).append((when, m.group(1).strip(), int(m.group(2))))
+        m = FACTION_CAP.search(x)
+        if m:
+            # Direction known, magnitude nil. Kept apart from the numeric buffer
+            # so a capped faction can never be averaged in as if it moved.
+            cur.setdefault('_cap_buf', []).append(
+                (when, m.group(1).strip(), 'up' if m.group(2) == 'better' else 'down'))
         m = EXP.search(x)
         if m:
             cur['_exp_buf'] = (when, float(m.group(1)))
@@ -369,6 +398,10 @@ def collect(rows, character=None):
                 if (when - w).total_seconds() <= 1:
                     cur['fac_by_mob'][name].setdefault(fac, delta)
             cur['_fac_buf'] = []
+            for w, fac, direction in cur.get('_cap_buf', []):
+                if (when - w).total_seconds() <= 1:
+                    cur['cap_by_mob'][name].setdefault(fac, direction)
+            cur['_cap_buf'] = []
             eb = cur.get('_exp_buf')
             if eb and (when - eb[0]).total_seconds() <= 1:
                 cur['exp_by_mob'][name].append(eb[1])
@@ -484,6 +517,7 @@ def summarise(s):
                    resists={k: dict(v.most_common())
                             for k, v in s['ctl']['resists'].items()}),
                faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
+               faction_capped_by_mob={k: v for k, v in s.get('cap_by_mob', {}).items()},
                exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
                you_hit=s['you_hit'], you_miss=s['you_miss'],
                mob_hit=mh, mob_miss=mm, mobs={})

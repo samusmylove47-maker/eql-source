@@ -22913,5 +22913,1708 @@
    }
   },
   "caveat": "The healer's client was freezing and crashing through this session. The collaborator reports that every death this day but one fell during or just after a crash, so deaths and any escape here may record a technical failure rather than the fight going badly."
+ },
+ {
+  "zone": "The Ruins of Old Guk",
+  "character": "Avenrae",
+  "difficulty_label": null,
+  "difficulty_num": null,
+  "difficulty": 1,
+  "difficulty_from": "loot tier",
+  "difficulty_label_agrees": null,
+  "difficulty_agrees": null,
+  "date": "09 Aug 2026",
+  "window": "11:10-13:16",
+  "stamps": [
+   {
+    "at": "11:11",
+    "text": "D1 Awakened Lower Guk starting run, level 34 war brd ber",
+    "conditions": false
+   }
+  ],
+  "kills": 218,
+  "distinct": 36,
+  "kinds": [
+   "Hoptor Thaggelum",
+   "Hoptor Thaggelum pet",
+   "a basalt gargoyle",
+   "a bloodthirsty ghoul",
+   "a bok ghoul knight",
+   "a dar ghoul knight",
+   "a dar ghoul knight pet",
+   "a deadly black widow",
+   "a frenzied ghoul",
+   "a froglok shin knight",
+   "a froglok slave",
+   "a ghoul assassin",
+   "a ghoul cavalier",
+   "a ghoul cavalier pet",
+   "a ghoul executioner",
+   "a ghoul ritualist",
+   "a ghoul ritualist pet",
+   "a ghoul sage",
+   "a ghoul scribe",
+   "a ghoul scribe pet",
+   "a ghoul sentinel",
+   "a ghoul supplier",
+   "a greater ice bones",
+   "a guk ghoul knight",
+   "a nok ghoul wizard",
+   "a shin ghoul knight",
+   "a shin ghoul warrior",
+   "a tal ghoul wizard",
+   "a tsu ghoul wizard",
+   "a vampire bat",
+   "a vis ghoul knight",
+   "a wan ghoul knight",
+   "a wan ghoul knight pet",
+   "a yun ghoul wizard",
+   "a zol ghoul knight",
+   "an urd ghoul wizard"
+  ],
+  "drop_tiers": {
+   "1": 43,
+   "2": 12
+  },
+  "faction": {
+   "Frogloks of Guk": 182,
+   "Undead Frogloks of Guk": 173
+  },
+  "context": [
+   {
+    "at": "11:11",
+    "date": "09 Aug 2026",
+    "text": "D1 Awakened Lower Guk starting run, level 34 war brd ber"
+   }
+  ],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 413,
+   "lockout_lines": 234,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {
+    "Lightning Bolt": {
+     "landed": 35,
+     "casters": {
+      "an urd ghoul wizard": 11,
+      "the ghoul arch magus": 11,
+      "a tal ghoul wizard": 8,
+      "a yun ghoul wizard": 4,
+      "a nok ghoul wizard": 1
+     }
+    },
+    "Tishan's Clash": {
+     "landed": 7,
+     "casters": {
+      "an urd ghoul wizard": 3,
+      "a tal ghoul wizard": 2,
+      "a yun ghoul wizard": 2
+     }
+    },
+    "Ykesha": {
+     "landed": 5,
+     "casters": {
+      "Hoptor Thaggelum": 5
+     }
+    }
+   },
+   "resists": {
+    "Root": {
+     "a nok ghoul wizard": 4,
+     "a ghoul scribe pet": 1
+    },
+    "Lightning Bolt": {
+     "a tal ghoul wizard": 5,
+     "a ghoul sage": 4,
+     "an urd ghoul wizard": 3,
+     "a nok ghoul wizard": 2,
+     "a yun ghoul wizard": 2,
+     "a tsu ghoul wizard": 1,
+     "the ghoul arch magus": 1
+    },
+    "Poison": {
+     "a deadly black widow": 7
+    },
+    "Instill": {
+     "an urd ghoul wizard": 10,
+     "a yun ghoul wizard": 5,
+     "a tal ghoul wizard": 4,
+     "the ghoul arch magus": 4,
+     "a tsu ghoul wizard": 2
+    },
+    "Ice Bone Frost Burst": {
+     "a greater ice bones": 5
+    },
+    "Ghoul Root": {
+     "a dar ghoul knight": 15,
+     "a zol ghoul knight": 10,
+     "a wan ghoul knight": 9,
+     "a vis ghoul knight": 3,
+     "an urd ghoul wizard": 3,
+     "a bok ghoul knight": 3,
+     "Hoptor Thaggelum": 3,
+     "the ghoul arch magus": 3,
+     "a ghoul cavalier": 2,
+     "a shin ghoul knight": 2,
+     "a ghoul sentinel": 2,
+     "a bloodthirsty ghoul": 2,
+     "a yun ghoul wizard": 1,
+     "a shin ghoul warrior": 1,
+     "a guk ghoul knight": 1
+    },
+    "Engulfing Darkness": {
+     "a ghoul cavalier": 1,
+     "a dar ghoul knight": 1
+    },
+    "Harm Touch": {
+     "a ghoul cavalier pet": 1
+    },
+    "Clinging Darkness": {
+     "a dar ghoul knight pet": 2,
+     "a ghoul cavalier pet": 1
+    },
+    "Cancelling of Life": {
+     "a ghoul cavalier": 2,
+     "a dar ghoul knight pet": 1
+    },
+    "Tishan's Clash": {
+     "an urd ghoul wizard": 4,
+     "a yun ghoul wizard": 1,
+     "the ghoul arch magus": 1
+    },
+    "Disease Cloud": {
+     "Hoptor Thaggelum pet": 2
+    },
+    "Screaming Terror": {
+     "a ghoul ritualist": 3
+    }
+   }
+  },
+  "faction_by_mob": {
+   "a froglok shin knight": {
+    "Frogloks of Guk": -5
+   },
+   "a shin ghoul knight": {
+    "Frogloks of Guk": 5
+   },
+   "a tsu ghoul wizard": {
+    "Frogloks of Guk": 5
+   },
+   "a vis ghoul knight": {
+    "Frogloks of Guk": 5
+   },
+   "a nok ghoul wizard": {
+    "Frogloks of Guk": 5
+   },
+   "a froglok slave": {
+    "Frogloks of Guk": -1
+   },
+   "a dar ghoul knight": {
+    "Frogloks of Guk": 1
+   }
+  },
+  "faction_capped_by_mob": {
+   "a shin ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a tsu ghoul wizard": {
+    "Undead Frogloks of Guk": "down"
+   },
+   "a vis ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a nok ghoul wizard": {
+    "Undead Frogloks of Guk": "down"
+   },
+   "a tal ghoul wizard": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul ritualist": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a basalt gargoyle": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul supplier": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a wan ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a zol ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul assassin": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul cavalier": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "an urd ghoul wizard": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a yun ghoul wizard": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a dar ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "Hoptor Thaggelum": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a bok ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a shin ghoul warrior": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul executioner": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul scribe": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul sage": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a guk ghoul knight": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a ghoul sentinel": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a frenzied ghoul": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   },
+   "a bloodthirsty ghoul": {
+    "Undead Frogloks of Guk": "down",
+    "Frogloks of Guk": "up"
+   }
+  },
+  "exp_by_mob": {
+   "a shin ghoul knight": 0.431,
+   "a froglok shin knight": 0.541,
+   "a vampire bat": 0.423,
+   "a tsu ghoul wizard": 0.354,
+   "a deadly black widow": 0.751,
+   "a vis ghoul knight": 0.74,
+   "a nok ghoul wizard": 0.17,
+   "a greater ice bones": 0.805,
+   "a tal ghoul wizard": 0.473,
+   "a ghoul ritualist": 0.959,
+   "a basalt gargoyle": 0.773,
+   "a ghoul supplier": 1.138,
+   "a wan ghoul knight": 0.966,
+   "a zol ghoul knight": 1.247,
+   "a ghoul assassin": 0.959,
+   "a ghoul cavalier": 1.138,
+   "an urd ghoul wizard": 0.628,
+   "a yun ghoul wizard": 0.85,
+   "a dar ghoul knight": 1.611,
+   "Hoptor Thaggelum": 1.997,
+   "a bok ghoul knight": 1.826,
+   "a shin ghoul warrior": 0.246,
+   "a ghoul executioner": 0.984,
+   "a ghoul scribe": 0.984,
+   "a ghoul sage": 1.163,
+   "a guk ghoul knight": 2.076,
+   "a ghoul sentinel": 1.525,
+   "a frenzied ghoul": 1.525,
+   "a bloodthirsty ghoul": 1.416
+  },
+  "you_hit": 3190,
+  "you_miss": 2244,
+  "mob_hit": 5140,
+  "mob_miss": 5765,
+  "mobs": {
+   "A froglok shin knight": {
+    "swings": 314,
+    "landed": 135,
+    "avg": 10.6,
+    "max": 50,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A shin ghoul knight": {
+    "swings": 664,
+    "landed": 262,
+    "avg": 12.8,
+    "max": 59,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A vis ghoul knight": {
+    "swings": 441,
+    "landed": 183,
+    "avg": 20.7,
+    "max": 71,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A vampire bat": {
+    "swings": 209,
+    "landed": 74,
+    "avg": 10.8,
+    "max": 61,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A deadly black widow": {
+    "swings": 387,
+    "landed": 171,
+    "avg": 18.1,
+    "max": 67,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A nok ghoul wizard": {
+    "swings": 14,
+    "landed": 7,
+    "avg": 14.4,
+    "max": 45,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Root": 4,
+     "Lightning Bolt": 4
+    },
+    "loot": {}
+   },
+   "A tsu ghoul wizard": {
+    "swings": 17,
+    "landed": 7,
+    "avg": 13.9,
+    "max": 32,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 5,
+     "Lightning Bolt": 3
+    },
+    "loot": {}
+   },
+   "A greater ice bones": {
+    "swings": 353,
+    "landed": 141,
+    "avg": 20.3,
+    "max": 71,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Ice Bone Frost Burst": 40
+    },
+    "loot": {}
+   },
+   "A basalt gargoyle": {
+    "swings": 197,
+    "landed": 95,
+    "avg": 25.5,
+    "max": 75,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A tal ghoul wizard": {
+    "swings": 83,
+    "landed": 30,
+    "avg": 23.1,
+    "max": 67,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 18,
+     "Instill": 15,
+     "Tishan's Clash": 2
+    },
+    "loot": {}
+   },
+   "A ghoul ritualist pet": {
+    "swings": 42,
+    "landed": 15,
+    "avg": 2.5,
+    "max": 14,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 8,
+     "Harm Touch": 1,
+     "Engulfing Darkness": 1,
+     "Cancelling of Life": 1
+    },
+    "loot": {}
+   },
+   "A ghoul ritualist": {
+    "swings": 31,
+    "landed": 20,
+    "avg": 32.2,
+    "max": 77,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 6,
+     "Shadow Vortex": 5,
+     "Negation of Life": 1,
+     "Shock of Poison": 1
+    },
+    "loot": {}
+   },
+   "A wan ghoul knight": {
+    "swings": 2125,
+    "landed": 982,
+    "avg": 24.3,
+    "max": 82,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Root": 5,
+     "Boil Blood": 2,
+     "Torbas' Acid Blast": 2,
+     "Scourge": 1
+    },
+    "loot": {}
+   },
+   "A ghoul supplier": {
+    "swings": 76,
+    "landed": 40,
+    "avg": 26.9,
+    "max": 86,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A zol ghoul knight": {
+    "swings": 1866,
+    "landed": 904,
+    "avg": 31.2,
+    "max": 93,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoul assassin": {
+    "swings": 60,
+    "landed": 23,
+    "avg": 32.3,
+    "max": 77,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoul cavalier": {
+    "swings": 84,
+    "landed": 39,
+    "avg": 30.5,
+    "max": 86,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 2,
+     "Cancelling of Life": 2,
+     "Engulfing Darkness": 1
+    },
+    "loot": {}
+   },
+   "An urd ghoul wizard": {
+    "swings": 158,
+    "landed": 82,
+    "avg": 33.1,
+    "max": 80,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 36,
+     "Lightning Bolt": 24,
+     "Tishan's Clash": 8,
+     "Major Shielding": 1,
+     "Leatherskin": 1
+    },
+    "loot": {}
+   },
+   "A yun ghoul wizard": {
+    "swings": 94,
+    "landed": 47,
+    "avg": 36.2,
+    "max": 89,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 17,
+     "Lightning Bolt": 11,
+     "Tishan's Clash": 4,
+     "Leatherskin": 2
+    },
+    "loot": {}
+   },
+   "A dar ghoul knight": {
+    "swings": 2517,
+    "landed": 1290,
+    "avg": 34.2,
+    "max": 103,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Heat Blood": 2,
+     "Shadow Vortex": 2,
+     "Engulfing Darkness": 2,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "Hoptor Thaggelum": {
+    "swings": 220,
+    "landed": 117,
+    "avg": 58.0,
+    "max": 127,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shadow Vortex": 6,
+     "Harm Touch": 2,
+     "Negation of Life": 1
+    },
+    "loot": {
+     "Skull-Shaped Barbute +1": 2
+    }
+   },
+   "A bok ghoul knight": {
+    "swings": 232,
+    "landed": 119,
+    "avg": 38.8,
+    "max": 112,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Hoptor Thaggelum pet": {
+    "swings": 25,
+    "landed": 9,
+    "avg": 3.6,
+    "max": 15,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 5,
+     "Disease Cloud": 2
+    },
+    "loot": {}
+   },
+   "The ghoul arch magus": {
+    "swings": 81,
+    "landed": 39,
+    "avg": 60.7,
+    "max": 124,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 13,
+     "Instill": 12,
+     "Bonds of Force": 2,
+     "Tishan's Clash": 1,
+     "Steelskin": 1
+    },
+    "loot": {}
+   },
+   "A shin ghoul warrior": {
+    "swings": 24,
+    "landed": 10,
+    "avg": 8.6,
+    "max": 44,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoul cavalier pet": {
+    "swings": 9,
+    "landed": 1,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 3,
+     "Harm Touch": 1,
+     "Clinging Darkness": 1
+    },
+    "loot": {}
+   },
+   "A ghoul executioner": {
+    "swings": 34,
+    "landed": 15,
+    "avg": 33.5,
+    "max": 80,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoul sage": {
+    "swings": 23,
+    "landed": 6,
+    "avg": 34.0,
+    "max": 61,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 6,
+     "Instill": 1,
+     "Tishan's Clash": 1
+    },
+    "loot": {}
+   },
+   "A ghoul scribe pet": {
+    "swings": 4,
+    "landed": 1,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Root": 1
+    },
+    "loot": {}
+   },
+   "A ghoul scribe": {
+    "swings": 9,
+    "landed": 3,
+    "avg": 42.0,
+    "max": 48,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Alacrity": 14,
+     "Feedback": 3,
+     "Instill": 2,
+     "Chaos Flux": 1
+    },
+    "loot": {}
+   },
+   "A guk ghoul knight": {
+    "swings": 198,
+    "landed": 116,
+    "avg": 48.1,
+    "max": 133,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A dar ghoul knight pet": {
+    "swings": 29,
+    "landed": 10,
+    "avg": 3.6,
+    "max": 13,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 3,
+     "Clinging Darkness": 2,
+     "Harm Touch": 1,
+     "Cancelling of Life": 1
+    },
+    "loot": {}
+   },
+   "A ghoul sentinel": {
+    "swings": 54,
+    "landed": 28,
+    "avg": 37.7,
+    "max": 107,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A bloodthirsty ghoul": {
+    "swings": 165,
+    "landed": 80,
+    "avg": 36.1,
+    "max": 96,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A frenzied ghoul": {
+    "swings": 50,
+    "landed": 31,
+    "avg": 53.8,
+    "max": 107,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A wan ghoul knight pet": {
+    "swings": 16,
+    "landed": 8,
+    "avg": 5.5,
+    "max": 21,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 2,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "A ghoul savant": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Symbol of Ryltan": 6,
+     "Bravery": 6
+    },
+    "loot": {}
+   },
+   "a froglok shin knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Froglok Poison Gland": 4,
+     "Froglok Meat": 2,
+     "Mesh Gauntlets +2": 1,
+     "Shin Gauntlets +2": 1,
+     "Froglok Leg": 1,
+     "Fine Steel Two Handed Sword +2": 1
+    }
+   },
+   "a shin ghoul knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 7,
+     "Shin Greaves +2": 2,
+     "Shin Greaves +1": 2,
+     "Fine Steel Morning Star +1": 1,
+     "Opal": 1,
+     "Fine Steel Long Sword +2": 1,
+     "Crystallized Sulfur": 1
+    }
+   },
+   "a tsu ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Rapier +1": 1,
+     "Undead Froglok Tongue": 1
+    }
+   },
+   "a deadly black widow": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Spider Venom Sac": 6,
+     "Spider Silk": 4,
+     "Spider Legs": 3,
+     "Pearl": 1,
+     "Flame Agate": 1,
+     "Mote of Minor Potential": 1,
+     "Amber": 1,
+     "Mithril Earring +1": 1
+    }
+   },
+   "a greater ice bones": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Crystallized Marrow": 3,
+     "Iced Bone Chips": 2,
+     "Fine Steel Two Handed Sword +1": 1,
+     "Bone Chips": 1,
+     "Mote of Minor Potential": 1
+    }
+   },
+   "a ghoul ritualist": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Embroidered Black Cape +1": 2,
+     "Fine Steel Dagger +1": 1
+    }
+   },
+   "a basalt gargoyle": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Gargoyle Eye": 2,
+     "Basalt Carapace +1": 2
+    }
+   },
+   "a ghoul supplier": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Light Burlap Sack": 2,
+     "Fine Steel Dagger +1": 1,
+     "Mote of Minor Potential": 1
+    }
+   },
+   "a ghoul assassin": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Guise of the Deceiver +1": 1,
+     "Mithril Earring +2": 1,
+     "Guise of the Deceiver +2": 1
+    }
+   },
+   "a vis ghoul knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Rapier +1": 1,
+     "Fine Steel Scimitar +1": 1,
+     "Fine Steel Spear +1": 1
+    }
+   },
+   "a ghoul cavalier": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Adamantite Epaulets +1": 2
+    }
+   },
+   "a wan ghoul knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 12,
+     "Mote of Minor Potential": 3,
+     "Fine Steel Dagger +1": 2,
+     "Fine Steel Two Handed Sword +1": 2,
+     "Fine Steel Great Staff +1": 1,
+     "Flame Agate": 1,
+     "Fine Steel Scimitar +1": 1,
+     "Fine Steel Short Sword +1": 1,
+     "Steel Knuckles +1": 1
+    }
+   },
+   "a zol ghoul knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 7,
+     "Fine Steel Two Handed Sword +1": 4,
+     "Fine Steel Spear +1": 2,
+     "Fine Steel Short Sword +2": 1,
+     "Pearl": 1,
+     "Mote of Lesser Potential": 1,
+     "Fine Steel Great Staff +1": 1,
+     "Fine Steel Long Sword +1": 1,
+     "Fine Steel Two Handed Sword +2": 1,
+     "Mote of Minor Potential": 1
+    }
+   },
+   "an urd ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 2,
+     "Fine Steel Spear +1": 1,
+     "Eye of Urd +1": 1,
+     "Fine Steel Dagger +1": 1,
+     "Pearl": 1
+    }
+   },
+   "a yun ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 3,
+     "Pearl": 1,
+     "Jade": 1
+    }
+   },
+   "a dar ghoul knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 7,
+     "Fine Steel Great Staff +1": 2,
+     "Fine Steel Two Handed Sword +1": 1,
+     "Fine Steel Spear +2": 1,
+     "Fine Steel Scimitar +1": 1,
+     "Fine Steel Dagger +1": 1,
+     "Mithril Earring +1": 1,
+     "Fine Steel Morning Star +2": 1
+    }
+   },
+   "a bok ghoul knight": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Essence of Rathe": 1
+    }
+   },
+   "a shin ghoul warrior": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Undead Froglok Tongue": 1
+    }
+   },
+   "a tal ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Spear +1": 2
+    }
+   },
+   "a ghoul executioner": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Executioners Hood +1": 1
+    }
+   },
+   "a ghoul scribe": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Rapier +1": 1,
+     "Topaz": 1,
+     "Gorgon Feather Quill": 1
+    }
+   },
+   "a ghoul sage": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Braided Cinch Cord +1": 1
+    }
+   },
+   "a ghoul sentinel": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Dark Mail Gauntlets +1": 1
+    }
+   },
+   "a frenzied ghoul": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Fine Steel Spear +1": 1,
+     "Moonstone Ring +1": 1,
+     "Torn Page of Magi`kot pg. 3": 1
+    }
+   },
+   "a bloodthirsty ghoul": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Torn Page of Magi`kot pg. 3": 2,
+     "Fine Steel Long Sword +2": 1
+    }
+   }
+  },
+  "zone_from": "stated by the collaborator, not read from the log"
+ },
+ {
+  "zone": "The Ruins of Old Guk",
+  "character": "Shara",
+  "difficulty_label": "Awakened",
+  "difficulty_num": 1,
+  "difficulty": 1,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "09 Aug 2026",
+  "window": "11:10-14:10",
+  "stamps": [
+   {
+    "at": "11:11",
+    "text": "D1 Awakened Lower Guk starting run, level 34 war brd ber",
+    "conditions": false
+   }
+  ],
+  "kills": 0,
+  "distinct": 0,
+  "kinds": [],
+  "drop_tiers": {
+   "1": 51,
+   "2": 10
+  },
+  "faction": {
+   "Frogloks of Guk": 178,
+   "Undead Frogloks of Guk": 170
+  },
+  "context": [
+   {
+    "at": "11:11",
+    "date": "09 Aug 2026",
+    "text": "D1 Awakened Lower Guk starting run, level 34 war brd ber"
+   }
+  ],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 5,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 1,
+   "scream_seconds": 21,
+   "stuns": {
+    "Lightning Bolt": {
+     "landed": 5,
+     "casters": {
+      "a tal ghoul wizard": 2,
+      "a tsu ghoul wizard": 1,
+      "an urd ghoul wizard": 1,
+      "a yun ghoul wizard": 1
+     }
+    },
+    "YOUR frost for 14 points of non-melee damage": {
+     "landed": 2,
+     "casters": {}
+    },
+    "Avenrae's thorns for 12 points of non-melee damage": {
+     "landed": 1,
+     "casters": {}
+    },
+    "Tishan's Clash": {
+     "landed": 1,
+     "casters": {
+      "a yun ghoul wizard": 1
+     }
+    },
+    "Celestial Health": {
+     "landed": 1,
+     "casters": {}
+    },
+    "Avenrae's thorns for 17 points of non-melee damage": {
+     "landed": 1,
+     "casters": {}
+    },
+    "Blessing of the Knight": {
+     "landed": 1,
+     "casters": {}
+    }
+   },
+   "resists": {
+    "Lightning Bolt": {
+     "a nok ghoul wizard": 1,
+     "an urd ghoul wizard": 1
+    },
+    "Instill": {
+     "an urd ghoul wizard": 6,
+     "a tal ghoul wizard": 2,
+     "a tsu ghoul wizard": 1,
+     "a yun ghoul wizard": 1,
+     "a ghoul sage": 1
+    },
+    "Screaming Terror": {
+     "a ghoul ritualist": 2
+    },
+    "Shadow Vortex": {
+     "a ghoul ritualist": 2
+    },
+    "Ghoul Root": {
+     "a dar ghoul knight": 1
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "you_hit": 2,
+  "you_miss": 3,
+  "mob_hit": 83,
+  "mob_miss": 849,
+  "mobs": {
+   "A froglok shin knight": {
+    "swings": 23,
+    "landed": 1,
+    "avg": 31.0,
+    "max": 31,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A wan ghoul knight": {
+    "swings": 287,
+    "landed": 10,
+    "avg": 15.3,
+    "max": 50,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Root": 5,
+     "Boil Blood": 2,
+     "Torbas' Acid Blast": 2,
+     "Scourge": 1
+    },
+    "loot": {}
+   },
+   "A zol ghoul knight": {
+    "swings": 99,
+    "landed": 3,
+    "avg": 36.3,
+    "max": 89,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A dar ghoul knight": {
+    "swings": 295,
+    "landed": 43,
+    "avg": 47.3,
+    "max": 106,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Heat Blood": 2,
+     "Shadow Vortex": 2,
+     "Engulfing Darkness": 2,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "The ghoul arch magus": {
+    "swings": 30,
+    "landed": 8,
+    "avg": 85.6,
+    "max": 117,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 13,
+     "Instill": 12,
+     "Bonds of Force": 2,
+     "Tishan's Clash": 1,
+     "Steelskin": 1
+    },
+    "loot": {}
+   },
+   "A shin ghoul knight": {
+    "swings": 136,
+    "landed": 16,
+    "avg": 16.3,
+    "max": 57,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A ghoul executioner": {
+    "swings": 5,
+    "landed": 1,
+    "avg": 24.0,
+    "max": 24,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A yun ghoul wizard": {
+    "swings": 6,
+    "landed": 1,
+    "avg": 45.0,
+    "max": 45,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 17,
+     "Lightning Bolt": 11,
+     "Tishan's Clash": 4,
+     "Leatherskin": 3
+    },
+    "loot": {}
+   },
+   "A nok ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Root": 4,
+     "Lightning Bolt": 4
+    },
+    "loot": {}
+   },
+   "A tsu ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 5,
+     "Lightning Bolt": 3
+    },
+    "loot": {}
+   },
+   "A greater ice bones": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Ice Bone Frost Burst": 40
+    },
+    "loot": {}
+   },
+   "A tal ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 19,
+     "Instill": 15,
+     "Tishan's Clash": 2
+    },
+    "loot": {}
+   },
+   "A ghoul ritualist": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Screaming Terror": 6,
+     "Shadow Vortex": 5,
+     "Negation of Life": 2,
+     "Shock of Poison": 1
+    },
+    "loot": {}
+   },
+   "A ghoul ritualist pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 8,
+     "Harm Touch": 1,
+     "Engulfing Darkness": 1,
+     "Cancelling of Life": 1
+    },
+    "loot": {}
+   },
+   "A ghoul cavalier": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 2,
+     "Cancelling of Life": 2,
+     "Engulfing Darkness": 1
+    },
+    "loot": {}
+   },
+   "A ghoul cavalier pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 3,
+     "Harm Touch": 1,
+     "Clinging Darkness": 1
+    },
+    "loot": {}
+   },
+   "A ghoul scribe": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Alacrity": 14,
+     "Feedback": 2,
+     "Instill": 2,
+     "Chaos Flux": 1
+    },
+    "loot": {}
+   },
+   "An urd ghoul wizard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 36,
+     "Lightning Bolt": 24,
+     "Tishan's Clash": 8,
+     "Leatherskin": 3,
+     "Major Shielding": 1
+    },
+    "loot": {}
+   },
+   "Hoptor Thaggelum": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shadow Vortex": 6,
+     "Harm Touch": 2,
+     "Negation of Life": 1
+    },
+    "loot": {
+     "Skull-Shaped Barbute +1": 2,
+     "Scalp of the Ghoul Lord +2": 2
+    }
+   },
+   "Hoptor Thaggelum pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 5,
+     "Disease Cloud": 2
+    },
+    "loot": {}
+   },
+   "A ghoul savant": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Bravery": 6,
+     "Symbol of Ryltan": 5
+    },
+    "loot": {}
+   },
+   "A ghoul scribe pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Root": 1
+    },
+    "loot": {}
+   },
+   "A ghoul sage": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lightning Bolt": 6,
+     "Instill": 1,
+     "Tishan's Clash": 1
+    },
+    "loot": {}
+   },
+   "A dar ghoul knight pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 3,
+     "Clinging Darkness": 2,
+     "Harm Touch": 1,
+     "Cancelling of Life": 1
+    },
+    "loot": {}
+   },
+   "A wan ghoul knight pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifespike": 2,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   }
+  }
  }
 ]

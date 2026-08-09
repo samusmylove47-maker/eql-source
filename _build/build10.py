@@ -17,7 +17,7 @@ zone reads as "this zone is fine". So coverage is stated at the top, every
 uncovered zone is listed by name, and the search says "not measured" rather
 than returning nothing.
 """
-import os, sys, json
+import os, sys, collections, json
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -67,12 +67,17 @@ for zone, z in measured.items():
             entry = next((e for e in index[fac]['moved_in']
                           if e['zone'] == zone and e['dir'] == direction), None)
             if not entry:
-                entry = dict(zone=zone, dir=direction, per_kill=None, biggest=None, mob=None)
+                entry = dict(zone=zone, dir=direction, per_kill=None, biggest=None,
+                             mob=None, seen=[])
                 index[fac]['moved_in'].append(entry)
+            entry['seen'].append(delta)
             if entry['biggest'] is None or abs(delta) > abs(entry['biggest']):
                 entry['biggest'], entry['mob'] = delta, mob
-            if entry['per_kill'] is None or abs(delta) < abs(entry['per_kill']):
-                entry['per_kill'] = delta
+            # The typical kill, not the gentlest one. Reporting the smallest
+            # observed delta as "a kill" understated Old Guk badly once the
+            # sample grew: sixteen mobs moved Frogloks of Guk by 5 and a single
+            # froglok slave moved it by 1, and the card led with the 1.
+            entry['per_kill'] = collections.Counter(entry['seen']).most_common(1)[0][0]
 
 covered = sorted(measured)
 uncovered = [z['title'] for z in ZONES
@@ -92,7 +97,11 @@ def unattributed(z):
     them once beneath the columns says what is actually true, and says it in
     one place rather than repeating it in both.
     """
-    known = set(z.get('falling') or []) | set(z.get('rising') or [])
+    # Capped factions count as known: their direction is in the message even
+    # though nothing moved. Leaving them out listed the same faction as
+    # 'direction known' and 'direction unknown' on one card.
+    known = (set(z.get('falling') or []) | set(z.get('rising') or [])
+             | set(z.get('capped_up') or []) | set(z.get('capped_down') or []))
     loose = [f for f in (z.get('factions_seen') or []) if f not in known]
     if not loose:
         return ''
@@ -112,6 +121,24 @@ def thin(kills):
 
 zone_cards = ''
 for zone, z in measured.items():
+    def capline(names, sign):
+        """Factions this zone pushes but could not move, because they are
+        already at their floor or ceiling for the character who logged it.
+
+        Direction without magnitude. Shown so a column is never empty when we
+        do in fact know which way a kill pushes - and marked, because a capped
+        reading is a fact about that character's standing as much as about the
+        zone.
+        """
+        if not names:
+            return ''
+        word = 'maximum' if sign == 'up' else 'minimum'
+        return ''.join(
+            f'<li class="{sign} capped"><b>{esc(f)}</b>'
+            f'<span class="fdelta">would {"rise" if sign == "up" else "fall"}, '
+            f'already at {word} for the character who logged this &mdash; '
+            f'direction known, size unmeasured</span></li>' for f in names)
+
     def facline(names, sign):
         if not names:
             return '<li class="fnone">nothing recorded</li>'
@@ -127,8 +154,13 @@ for zone, z in measured.items():
                         if x['zone'] == zone and x['dir'] != want)
             detail = ''
             if e:
+                spread = sorted(set(e.get('seen') or [e['per_kill']]), key=abs)
+                rng = ('' if len(spread) < 2 else
+                       f', {spread[0]:+d} to {spread[-1]:+d} across '
+                       f'{len(e["seen"])} mob types')
                 detail = (f'<span class="fdelta">{e["per_kill"]:+d} a kill'
-                          + (f', up to {e["biggest"]:+d} from {esc(e["mob"])}'
+                          + rng
+                          + (f', biggest {e["biggest"]:+d} from {esc(e["mob"])}'
                              if e['biggest'] != e['per_kill'] else '')
                           + (f' &middot; from {esc(e["mob"])}'
                              if e['biggest'] == e['per_kill'] and e['mob'] else '')
@@ -170,8 +202,8 @@ for zone, z in measured.items():
         &middot; {esc(z.get("date") or "")}{thin(z["kills"])}</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist">{facline(z["falling"], "down")}</ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist">{facline(z["rising"], "up")}</ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist">{facline(z["falling"], "down")}{capline(z.get("capped_down"), "down")}</ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist">{facline(z["rising"], "up")}{capline(z.get("capped_up"), "up")}</ul></div>
     </div>
     {unattributed(z)}
     {"<h4 class='fwarn'>Quest steps this undoes</h4><ul class='fsteps'>" + undone + "</ul>" if undone else ""}
