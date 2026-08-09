@@ -58,6 +58,13 @@ WH_CSS = """
 .inj-contact strong{color:#E6E9E4}
 .inj-contact a{color:#8FBEE4}
 .inj-contact .nolog{margin-top:7px;font-size:12.5px;color:#7D9096}
+.ph-note{margin:0 0 16px;padding:13px 15px;border-radius:4px;font-size:14px;line-height:1.6}
+.ph-note strong{display:block;margin-bottom:4px}
+.ph-yes{border-left:3px solid #5FA37E;background:rgba(95,163,126,.07);color:#AEB9B8}
+.ph-yes strong{color:#8FD3AD}
+.ph-maybe{border-left:3px solid #D9837C;background:rgba(201,69,58,.06);color:#9FADAC}
+.ph-maybe strong{color:#D9837C}
+.ph-note a{color:#8FBEE4}
 
 /* The trimmed plate blocks. Answer-first lists, a key chain drawn as a chain,
    and dangers that read as dangers. Injected because plates carry their own CSS. */
@@ -86,6 +93,27 @@ p.tight{color:#9FADAC;font-size:14px;line-height:1.6;margin:0}
 # The plates and tools are standalone pages with their own footers, so foot()
 # never reaches them - and they are the most-read pages on the site. A door only
 # on the pages nobody arrives at is not a door.
+# THE PLACEHOLDER STATEMENT
+# Spawn percentages on every survey are inherited classic data: they describe
+# the chance a named appears instead of its placeholder. Where placeholders are
+# gone the figure means nothing, and printing it unqualified sends someone to
+# camp an elemental for an evening.
+#
+# Confirmed removed on three zones and unconfirmed on the rest. Unconfirmed is
+# not "false" — nobody has looked. The two notes say different things on
+# purpose, and neither invents a status for a zone we have not seen.
+PH_CONFIRMED = """
+<div class="ph-note ph-yes"><strong>Named spawn every cycle. No placeholders.</strong>
+  The percentages below are inherited from classic, where a named shared its spawn point.
+  Historical, not current. Confirmed in play: REPLACE_SRC.
+  <a href="REL_learn/still-true.html">Evidence</a>.</div>"""
+
+PH_UNKNOWN = """
+<div class="ph-note ph-maybe"><strong>These percentages may mean nothing.</strong>
+  They assume placeholders, which are confirmed gone from three zones we have played.
+  <b>Nobody has checked this one</b>, so they stand unaltered and unendorsed.
+  <a href="REL_learn/still-true.html">What is confirmed</a>.</div>"""
+
 CONTACT = """
 <div class="inj-contact">
   <p><strong>Found something this page gets wrong, or something the wiki does?</strong>
@@ -127,7 +155,7 @@ def mark_withheld(h, slug):
 
 
 def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False,
-           wh_slug=None):
+           wh_slug=None, ph_zone=None):
     h = open(src, encoding='utf-8').read()
     if wh_slug:
         h, nwh = mark_withheld(h, wh_slug)
@@ -139,6 +167,18 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
     css = RETURN_CSS + (UNPIN if own_bar else '')
     h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + css + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
+    if ph_zone:
+        z_ = BY.get(ph_zone, {})
+        if z_.get('placeholders_removed'):
+            note = PH_CONFIRMED.replace('REPLACE_SRC', z_.get('placeholders_source') or 'our own play')
+        else:
+            note = PH_UNKNOWN
+        note = note.replace('REL_', rel)
+        # above the roster, which is the table the percentages live in
+        k = h.find('Named roster')
+        if k > 0:
+            k = h.find('</h2>', k) + len('</h2>')
+            h = h[:k] + note + h[k:]
     if '</footer>' in h:
         h = h.replace('</footer>', CONTACT.replace('REL_', rel) + '\n</footer>', 1)
     open(dst, 'w', encoding='utf-8', newline='\n').write(h)
@@ -154,7 +194,7 @@ for z in Z:
                  f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">Navigation map &rarr;</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
-           f"Plate {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s)
+           f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s)
 # ---- maps
 for s in MAPS:
     z = BY[s]

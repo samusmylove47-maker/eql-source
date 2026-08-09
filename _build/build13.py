@@ -153,34 +153,34 @@ ENTRIES = [
                 'a log from a raid at D3 or D4.',
          credit=''),
 
-    dict(status='open',
+    dict(status='changed',
          q='Do named mobs still have placeholders?',
-         classic='Named mobs share a spawn point with placeholder mobs. You kill the placeholder '
-                 'repeatedly until the named appears, and published spawn percentages describe '
-                 'how often it does.',
-         legends='<strong>Reported gone in the revamped dungeons</strong> &mdash; Befallen, '
-                 'Blackburrow and Najena &mdash; where the named is reported to spawn every cycle.',
-         note='The spawn percentages on our own Najena survey are almost certainly meaningless if '
-              'this holds. They are left printed and struck through rather than deleted, because '
-              'deleting them would hide what the source says.',
+         classic='A named shares its spawn point with a placeholder. You kill the placeholder '
+                 'repeatedly until the named appears, and published spawn percentages describe how '
+                 'often it does.',
+         legends='<strong>Gone in the revamped zones. The named spawns every cycle.</strong> '
+                 'Confirmed in play across Najena, Befallen and Blackburrow, and reported for '
+                 'Upper Guk. Every spawn percentage inherited from classic is historical wherever '
+                 'this holds.',
+         note='<strong>It has not been checked on every zone, and an unchecked zone is not a '
+              'disproved one.</strong> Seven of our ten surveys have no word either way, and '
+              'they say so on the page rather than borrowing the answer from the three that do. '
+              'The percentages there stand unaltered and unendorsed.',
          evidence=[
              ('T1', 'Revamp patch note, 23 June 2026',
               'Promises &ldquo;a striking lack of placeholders for named mobs&rdquo;.'),
-             ('Tier C', 'Avenrae, 9 August 2026',
-              'Ten or more consecutive cycles at The Tenderizer with no placeholder seen, plus '
-              'hours in Befallen and Blackburrow.'),
-             ('T5', 'eqlwiki <em>Category:Named Mobs</em>',
-              'States it plainly &mdash; but the sentence was added 10 July 2026, eighteen days '
-              'before launch, on a page whose oldest revision is a February 2019 Project 1999 '
-              'import. Intent, not observation.'),
+             ('Tier C', 'Avenrae, 9&ndash;10 August 2026',
+              'Ten or more consecutive cycles at The Tenderizer in Najena with no placeholder seen, '
+              'and hours in each of Befallen and Blackburrow with the named up every cycle. '
+              'Upper Guk reported the same.'),
              ('T5', 'eqlwiki individual mob pages, against',
               '<em>Drelzna</em>: &ldquo;Her placeholder is a necromancer that spawns in front of '
-              'the chair.&rdquo; Classic text nobody has revisited. The only source of the four '
-              'that disagrees.'),
+              'the chair.&rdquo; Classic text nobody has revisited, and the only source that '
+              'disagrees.'),
          ],
-         settle='A combat log across several consecutive cycles at one camp, showing the named on '
-                'every spawn. That is one evening&rsquo;s play and it closes the question outright.',
-         credit='Confirmed in play by Avenrae, 9 August 2026.'),
+         settle='Settled for Najena, Befallen and Blackburrow. <strong>Open for the other seven '
+                'surveys</strong> &mdash; each closes with one camp watched across several cycles.',
+         credit='Confirmed in play by Avenrae, 9 and 10 August 2026.'),
 
     dict(status='changed',
          q='Is the Per-Level Hunting Guide still good advice?',
