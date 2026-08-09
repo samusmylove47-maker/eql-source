@@ -913,7 +913,10 @@ page = head("Survey plots",
 </script>
 ''' + foot("../")
 
-open('public/dungeons/plots.html', 'w', encoding='utf-8', newline='\n').write(page)
-print(f"survey plots: {len(sections)} zones, {tot_plot} positions, {tot_regions} named regions, "
-      f"{tot_withheld} withheld, {tot_on_floor}/{tot_measured} on drawn floor, "
-      f"{plated} plates given a floor plan")
+# dungeons/plots.html was retired on 10 Aug 2026. It collected all ten drawings
+# on one page because that is what the plates needed. Every survey now carries its
+# own plan, with the height control and the drop panel, so the collection was a
+# second copy of ten drawings with no route to it. The page is still assembled
+# above because the same code computes the per-survey blocks; it is simply not
+# written out.
+print(f"floor plans: {plated} surveys carry one, {tot_on_floor} of {tot_measured} positions on drawn floor")
