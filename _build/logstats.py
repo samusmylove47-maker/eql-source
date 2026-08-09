@@ -141,7 +141,10 @@ CHATTER = re.compile(r'^(\w[\w`\'-]{2,23}) (?:tells|says) (?:the |your )?'
 GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins to cast a spell on you)')
 
 
-CHAR = re.compile(r'eqlog_([A-Za-z]+)_', re.I)
+# Filenames carry a date stamp so a rotated log cannot overwrite an earlier
+# one, and a trailing digit so two logs from the same character can coexist:
+#   eqlog_Avenrae_rivervale_2026-08-08-pm.txt  ->  Avenrae
+CHAR = re.compile(r'eqlog_([A-Za-z]+?)\d*_', re.I)
 
 
 def character_of(path):
@@ -151,6 +154,23 @@ def character_of(path):
     fights."""
     m = CHAR.search(os.path.basename(path))
     return m.group(1) if m else None
+
+
+# ZONE STATED BY THE COLLABORATOR, NOT INFERRED
+#
+# A log that begins mid-zone has no "You have entered" line, so its zone is
+# unknown however obvious it looks. The 8 August afternoon logs start at 14:22
+# and 14:34, after a client restart, and carried 411 and 5 kills against a null
+# zone — the largest single sample the project has, reaching no plate.
+#
+# Rather than guess from context, the zone is recorded here as a statement:
+# "The entire log took place inside Mistmoore", 8 Aug 2026. That is a person
+# telling us where they were, which is evidence, and it is written down as such
+# so a later reader can see it was asserted rather than parsed.
+ZONE_STATED = {
+    ('Avenrae', '08 Aug 2026', '14:34-16:43'): 'The Castle of Mistmoore',
+    ('Shara',   '08 Aug 2026', '14:22-15:33'): 'The Castle of Mistmoore',
+}
 
 
 def parse(path):
@@ -473,9 +493,51 @@ def build(src):
         for s in collect(parse(f), character_of(f)):
             if sum(s['kills'].values()) or s['dmg']:
                 sessions.append(summarise(s))
-    json.dump(sessions, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
+    # ACCUMULATE, NEVER REPLACE.
+    #
+    # This used to write whatever the current log folder produced, which is fine
+    # until a log rotates. EverQuest was restarted mid-afternoon on 8 August and
+    # began a fresh file at 14:34. Re-running against that alone silently
+    # deleted the morning's two Mistmoore sessions — 300 kills — because the
+    # output is a wholesale replacement. The raw log was recoverable that time;
+    # it will not always be.
+    #
+    # Sessions are keyed by character, date, window and zone. A re-parse of the
+    # same stretch replaces its own entry and nothing else is touched, so the
+    # committed record only ever grows.
+    existing = []
+    try:
+        existing = json.load(open('assets/measured.json', encoding='utf-8'))
+    except (OSError, ValueError):
+        pass
+
+    def keyof(sess):
+        # Deliberately NOT keyed on zone. A session's zone can be corrected —
+        # the 8 August afternoon runs went from null to Mistmoore once the
+        # collaborator said where they were — and keying on it meant the
+        # corrected session was added alongside the stale one rather than
+        # replacing it. Character, date and window identify a stretch of play
+        # uniquely and do not change under correction.
+        return (sess.get('character'), sess.get('date'), sess.get('window'))
+
+    for s in sessions:
+        if s.get('zone') is None:
+            stated = ZONE_STATED.get((s.get('character'), s.get('date'), s.get('window')))
+            if stated:
+                s['zone'] = stated
+                s['zone_from'] = 'stated by the collaborator, not read from the log'
+
+    merged = {keyof(s): s for s in existing}
+    fresh = {keyof(s): s for s in sessions}
+    kept = len([k for k in merged if k not in fresh])
+    merged.update(fresh)
+    out = sorted(merged.values(),
+                 key=lambda s: (s.get('date') or '', s.get('window') or ''))
+
+    json.dump(out, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
               indent=1)
-    print(f"{len(files)} log file(s) -> {len(sessions)} session(s) with combat")
+    print(f"{len(files)} log file(s) -> {len(sessions)} parsed, "
+          f"{kept} earlier session(s) preserved, {len(out)} total")
     for s in sessions:
         th, tm_ = s['you_hit'], s['you_miss']
         print(f"  {s.get('character') or '?'} | {s['zone']} D{s['difficulty']} "

@@ -13,7 +13,10 @@ fails, warns = [], []
 def fail(m): fails.append(m)
 def warn(m): warns.append(m)
 
-pages = [p for p in glob.glob("*.html") + glob.glob("*/*.html") if not p.startswith("_")]
+# Everything published lives under public/. Nothing outside it is deployed,
+# so nothing outside it is a page.
+pages = [p for p in glob.glob("public/*.html") + glob.glob("public/*/*.html")
+         if not os.path.basename(p).startswith("_")]
 if len(pages) < 20:
     fail(f"only {len(pages)} pages found — expected 20 or more. Did a build fail?")
 
@@ -57,7 +60,7 @@ else:
     accents, plates = {}, {}
     for z in Z:
         s = z["slug"]
-        if not os.path.exists(f"dungeons/{s}.html"):
+        if not os.path.exists(f"public/dungeons/{s}.html"):
             fail(f"zones-index lists '{s}' but dungeons/{s}.html does not exist")
         if not os.path.exists(f"_build/source/{s}.html"):
             warn(f"no source file for '{s}' — ./build.sh cannot regenerate it")
@@ -79,7 +82,7 @@ else:
             counts[lv] += 1
         if lv in ("partial", "none") and not z.get("verify_gate"):
             fail(f"{z['slug']} is {lv} but does not say which gate is open — name it in verify_gate")
-    for page in ("index.html", "dungeons/index.html"):
+    for page in ("public/index.html", "public/dungeons/index.html"):
         if os.path.exists(page):
             h = open(page, encoding="utf-8").read()
             claim = re.search(r"(\d+) verified to the full three-gate standard", h)
@@ -91,22 +94,22 @@ else:
     # than on the home page: the home page deliberately does not enumerate the
     # plates — that is what the index is for — so requiring it to link all ten
     # would force the page back into being a table of contents for itself.
-    if os.path.exists("dungeons/index.html"):
-        h = open("dungeons/index.html", encoding="utf-8").read()
+    if os.path.exists("public/dungeons/index.html"):
+        h = open("public/dungeons/index.html", encoding="utf-8").read()
         missing = [z["slug"] for z in Z if f'{z["slug"]}.html' not in h]
         if missing:
             fail(f"dungeons/index.html does not link {len(missing)} zone(s): {', '.join(missing)}")
 
 # 4. the 3D viewer must not depend on a CDN
-for p in glob.glob("raids/*.html"):
+for p in glob.glob("public/raids/*.html"):
     h = open(p, encoding="utf-8").read()
     if "cdnjs" in h or "unpkg" in h or "jsdelivr" in h:
         fail(f"{p} loads a script from a CDN — vendor it into assets/vendor/ instead")
-if not os.path.exists("assets/vendor/three.min.js"):
+if not os.path.exists("public/assets/vendor/three.min.js"):
     fail("assets/vendor/three.min.js is missing — the 3D viewer will not load")
 
 # 4b. tier discipline: the badge CSS must exist and the scale must be published
-css = open("assets/site.css", encoding="utf-8").read()
+css = open("public/assets/site.css", encoding="utf-8").read()
 for cls in (".tier", ".t1", ".t3", ".t5"):
     if cls not in css:
         fail(f"assets/site.css has lost {cls} — the source-tier badge system is load-bearing")
@@ -154,7 +157,7 @@ else:
     cfg = json.load(open("site.config.json", encoding="utf-8"))
     if not cfg.get("site_url") or "REPLACE-ME" in cfg["site_url"]:
         fail("site.config.json has no real site_url — the sitemap will be wrong")
-    if os.path.exists("sitemap.xml") and cfg["site_url"].rstrip("/") not in open("sitemap.xml", encoding="utf-8").read():
+    if os.path.exists("public/sitemap.xml") and cfg["site_url"].rstrip("/") not in open("public/sitemap.xml", encoding="utf-8").read():
         fail("sitemap.xml does not match site_url in site.config.json — run ./build.sh")
     for p_ in pages:
         h = open(p_, encoding="utf-8", errors="replace").read()

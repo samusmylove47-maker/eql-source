@@ -211,5 +211,5 @@ SCRIPT = '<script>window.__IX__=' + json.dumps(IX, separators=(",",":")) + ';</s
 page = head("The Index",
   "Search every item and named mob across the ten surveyed EverQuest Legends dungeons. Filter by class, slot and zone, and see exactly which mob drops what.",
   rel="../", extra=CSS) + bar("../") + BODY + foot("../").replace('</body>', SCRIPT + '\n</body>')
-open('tools/index-search.html','w',encoding='utf-8',newline='\n').write(page)
+open('public/tools/index-search.html','w',encoding='utf-8',newline='\n').write(page)
 print("The Index built:", len(page), "bytes")

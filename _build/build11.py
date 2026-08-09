@@ -229,6 +229,6 @@ You have entered The City of Guk 4 (Refined).</pre>
 </main>
 ''' + foot("../")
 
-open('learn/difficulty.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/learn/difficulty.html', 'w', encoding='utf-8', newline='\n').write(page)
 print(f"learn/difficulty.html written: {both} sessions cross-checked, "
       f"{len(seen)} tiers seen in our logs")

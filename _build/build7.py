@@ -159,5 +159,5 @@ page = head("How raid access works",
 ''' + foot("../")
 
 os.makedirs('learn', exist_ok=True)
-open('learn/raid-access.html', 'w', encoding='utf-8', newline='\n').write(page)
+open('public/learn/raid-access.html', 'w', encoding='utf-8', newline='\n').write(page)
 print("learn/raid-access.html written")

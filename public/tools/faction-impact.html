@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Faction impact checker — EQL Source</title>
+<meta name="description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from our own combat logs rather than assumed.">
+<meta property="og:title" content="Faction impact checker — EQL Source">
+<meta property="og:description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from our own combat logs rather than assumed.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+</head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../learn/raid-access.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+<section class="hero page">
+  <div class="shell">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
+      <a href="index.html">Tools</a> &nbsp;/&nbsp; Faction impact</p>
+    <h1 class="display">What tonight<br><em>costs you later.</em></h1>
+    <p class="hero-lede">Faction moves while you are not looking. You clear a zone for six hours and
+      find out afterwards that an unlock you had not started is now expensive, or that a vendor has
+      stopped speaking to you. This checks that before you commit the evening.</p>
+    <p class="hero-sig"><span>70 factions</span><span>6 zone measured</span>
+      <span>25 quest steps</span><span>16 races</span></p>
+  </div>
+</section>
+
+<div class="shell">
+  <div class="note warn"><strong>Read the coverage before you trust a silence.</strong> The faction
+    movement here is <em>measured from our own combat logs</em>, so it covers only zones we have
+    actually played and counted: <strong>Befallen, Blackburrow, Kerra Isle, The Castle of Mistmoore, The City of Guk, The Ruins of Old Guk</strong>. Every other
+    zone on this site is <strong>not measured</strong>, and this page will tell you so rather than
+    return an empty result that looks like good news. What a faction is <em>for</em> &mdash; which
+    races need it, which quest steps raise it &mdash; comes from the race unlock work and covers
+    everything we hold. <strong>An absent zone means we have not looked, never that it is safe.</strong></div>
+</div>
+
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell">
+    <div class="sechead"><span class="n">Search</span><div><h2 class="sec">Look up a faction</h2>
+      <p class="lede" style="margin:0">Type any faction, race or zone. It answers what raises it, what
+        needs it, and where we have seen it move.</p></div></div>
+    <input id="q" class="fsearch" type="search" placeholder="Mayong Mistmoore, High Elf, Bat Wings&hellip;"
+      autocomplete="off" aria-label="Search factions, races and quest steps">
+    <div id="res" class="fres" aria-live="polite"></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><span class="n">Measured</span><div><h2 class="sec">Zones we have counted</h2>
+      <p class="lede" style="margin:0">Faction movement recorded from play, with the size per kill and
+        the worst single mob. <span class="tier tM">TIER M</span></p></div></div>
+    
+  <article class="fzone">
+    <div class="fzhead">
+      <h3>Blackburrow</h3>
+      <span class="fzmeta">D2 &middot; measured across 42 kills
+        &middot; 04 Aug 2026</span>
+    </div>
+    <div class="fcols">
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
+    </div>
+    
+    
+    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+  </article>
+  <article class="fzone">
+    <div class="fzhead">
+      <h3>Befallen</h3>
+      <span class="fzmeta">D1 &middot; measured across 75 kills
+        &middot; 04 Aug 2026</span>
+    </div>
+    <div class="fcols">
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Burning Dead</b><span class="fdelta">-2 a kill, up to -5 from the thaumaturgist</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
+    </div>
+    
+    
+    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+  </article>
+  <article class="fzone">
+    <div class="fzhead">
+      <h3>The City of Guk</h3>
+      <span class="fzmeta">D4 &middot; measured across 16 kills
+        &middot; 04 Aug 2026</span>
+    </div>
+    <div class="fcols">
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill, up to -50 from the froglok shin lord</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
+    </div>
+    
+    
+    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+  </article>
+  <article class="fzone">
+    <div class="fzhead">
+      <h3>The Ruins of Old Guk</h3>
+      <span class="fzmeta">D1 &middot; measured across 20 kills
+        &middot; 05 Aug 2026</span>
+    </div>
+    <div class="fcols">
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+    </div>
+    
+    
+    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+  </article>
+  <article class="fzone">
+    <div class="fzhead">
+      <h3>Kerra Isle</h3>
+      <span class="fzmeta">D0 &middot; measured across 2 kills
+        &middot; 06 Aug 2026</span>
+    </div>
+    <div class="fcols">
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Heretics</b><span class="fdelta">-3 a kill, up to -5 from kerran tiger spahi</span><span class="fuse">required for Erudite</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Craftkeepers</b><span class="fdelta">+5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Crimson Hands</b><span class="fdelta">+5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Deepwater Knights</b><span class="fdelta">+5 a kill</span><span class="fuse">required for Erudite</span></li><li class="up"><b>Gate Callers</b><span class="fdelta">+5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+    </div>
+    <h4 class='fwarn'>Quest steps this undoes</h4><ul class='fsteps'><li><b>Kill 400 kobolds</b> raises Heretics &mdash; used for Erudite</li></ul>
+    <h4 class='fgood'>Quest steps this helps</h4><ul class='fsteps'><li><b>Kobold Molars (Good)</b> raises Deepwater Knights &mdash; used for Erudite</li><li><b>Kill Paineel heretics</b> raises Deepwater Knights &mdash; used for Erudite</li></ul>
+    
+  </article>
+  <article class="fzone">
+    <div class="fzhead">
+      <h3>The Castle of Mistmoore</h3>
+      <span class="fzmeta">D1 &middot; measured across 1018 kills
+        &middot; 08 Aug 2026</span>
+    </div>
+    <div class="fcols">
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Agents of Mistmoore</b><span class="fdelta">-4 a kill, up to -300 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Mayong Mistmoore</b><span class="fdelta">-4 a kill, up to -300 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Temple of Solusek Ro</b><span class="fdelta">-5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>King Tearis Thex</b><span class="fdelta">+5 a kill, up to +75 from Xicotl</span><span class="fuse">not required by any unlock, but raised by quest steps used for High Elf, Wood Elf</span></li><li class="up"><b>League of Antonican Bards</b><span class="fdelta">+5 a kill, up to +75 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Ring of Scale</b><span class="fdelta">+5 a kill, up to +15 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Shadowed Men</b><span class="fdelta">+5 a kill</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+    </div>
+    
+    <h4 class='fgood'>Quest steps this helps</h4><ul class='fsteps'><li><b>Muffin for Pandos</b> raises King Tearis Thex &mdash; used for High Elf, Wood Elf</li><li><b>Bat Wings</b> raises King Tearis Thex &mdash; used for High Elf</li></ul>
+    
+  </article>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><span class="n">Not measured</span><div><h2 class="sec">Where we cannot answer</h2></div></div>
+    <div class="note"><strong>These zones have plates but no faction measurement:</strong>
+      Najena, Lair of the Splitpaw, Crushbone, Nagafen's Lair, The Hole, The Warrens. Faction data for them would come from a combat log of an
+      hour in the zone &mdash; the same way the measured zone above was produced. Until then this page
+      has nothing to say about them, and says nothing rather than guessing.</div>
+  </div>
+</section>
+
+</main>
+<script>
+const FAC = {"Dreadguard Inner":{"raised_by":[{"step":"Bottle of Red Wine","delta":5,"zone":"Neriak Third Gate","npc":"Lokar To`Biath"}],"needed_by":["Dark Elf"],"moved_in":[]},"Dreadguard Outer":{"raised_by":[{"step":"Bottle of Red Wine","delta":5,"zone":"Neriak Third Gate","npc":"Lokar To`Biath"}],"needed_by":["Dark Elf"],"moved_in":[]},"Dark Bargainers":{"raised_by":[{"step":"Bottle of Red Wine","delta":10,"zone":"Neriak Third Gate","npc":"Lokar To`Biath"}],"needed_by":["Dark Elf"],"moved_in":[]},"Clerics of Tunare":{"raised_by":[{"step":"Muffin for Pandos","delta":5,"zone":"West Freeport","npc":"Pandos Flintside"}],"needed_by":["High Elf"],"moved_in":[]},"Soldiers of Tunare":{"raised_by":[{"step":"Muffin for Pandos","delta":5,"zone":"West Freeport","npc":"Pandos Flintside"}],"needed_by":["Wood Elf"],"moved_in":[]},"Faydark Champions":{"raised_by":[{"step":"Muffin for Pandos","delta":5,"zone":"West Freeport","npc":"Pandos Flintside"},{"step":"Bat Wings","delta":5,"zone":"South Felwithe","npc":"Niola Impholder"}],"needed_by":[],"moved_in":[]},"King Tearis Thex":{"raised_by":[{"step":"Muffin for Pandos","delta":5,"zone":"West Freeport","npc":"Pandos Flintside"},{"step":"Bat Wings","delta":5,"zone":"South Felwithe","npc":"Niola Impholder"}],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":5,"biggest":75,"mob":"Xicotl"}]},"Emerald Warriors":{"raised_by":[{"step":"Hogcaller's Inn, first step","delta":5,"zone":"West Freeport","npc":"Lady Shae"}],"needed_by":["Wood Elf"],"moved_in":[]},"Merchants of Felwithe":{"raised_by":[{"step":"Hogcaller's Inn, first step","delta":5,"zone":"West Freeport","npc":"Lady Shae"}],"needed_by":["High Elf"],"moved_in":[]},"Merchants of Kelethin":{"raised_by":[{"step":"Hogcaller's Inn, first step","delta":5,"zone":"West Freeport","npc":"Lady Shae"}],"needed_by":[],"moved_in":[]},"Keepers of the Art":{"raised_by":[{"step":"Bat Wings","delta":5,"zone":"South Felwithe","npc":"Niola Impholder"}],"needed_by":["High Elf"],"moved_in":[]},"Merchants of Qeynos":{"raised_by":[{"step":"Rohand's Brandy","delta":25,"zone":"Qeynos","npc":"Captain Rohand"},{"step":"Tonics for Groflah","delta":7,"zone":"East Freeport docks","npc":"Groflah Steadirt"}],"needed_by":["Human (Qeynos)"],"moved_in":[]},"Antonius Bayle":{"raised_by":[{"step":"Rohand's Brandy","delta":5,"zone":"Qeynos","npc":"Captain Rohand"}],"needed_by":[],"moved_in":[]},"Coalition of Tradefolk":{"raised_by":[{"step":"Rohand's Brandy","delta":5,"zone":"Qeynos","npc":"Captain Rohand"},{"step":"Tonics for Groflah","delta":10,"zone":"East Freeport docks","npc":"Groflah Steadirt"}],"needed_by":["Human (Freeport)"],"moved_in":[]},"Guards of Qeynos":{"raised_by":[{"step":"Rohand's Brandy","delta":5,"zone":"Qeynos","npc":"Captain Rohand"}],"needed_by":["Human (Qeynos)"],"moved_in":[]},"Corrupt Qeynos Guards":{"raised_by":[{"step":"Honey Mead for Trumpy","delta":5,"zone":"South Qeynos","npc":"Trumpy Irontoe"}],"needed_by":["Human (Qeynos)"],"moved_in":[]},"Circle of Unseen Hands":{"raised_by":[{"step":"Honey Mead for Trumpy","delta":5,"zone":"South Qeynos","npc":"Trumpy Irontoe"}],"needed_by":[],"moved_in":[]},"Kane Bayle":{"raised_by":[{"step":"Honey Mead for Trumpy","delta":5,"zone":"South Qeynos","npc":"Trumpy Irontoe"}],"needed_by":[],"moved_in":[]},"Storm Guard":{"raised_by":[{"step":"Tumpy Tonics","delta":5,"zone":"Kaladim","npc":"Trantor Everhot"}],"needed_by":["Dwarf"],"moved_in":[]},"Kazon Stormhammer":{"raised_by":[{"step":"Tumpy Tonics","delta":5,"zone":"Kaladim","npc":"Trantor Everhot"}],"needed_by":["Dwarf"],"moved_in":[]},"Merchants of Kaladim":{"raised_by":[{"step":"Tumpy Tonics","delta":5,"zone":"Kaladim","npc":"Trantor Everhot"}],"needed_by":["Dwarf"],"moved_in":[]},"Coalition Underground":{"raised_by":[{"step":"Tonics for Groflah","delta":10,"zone":"East Freeport docks","npc":"Groflah Steadirt"},{"step":"Message Intercept","delta":5,"zone":"West Commonlands \u2192 West Freeport","npc":"Mojax Hikspin, then Sir Lucan D`Lere"}],"needed_by":[],"moved_in":[]},"Knights of Truth":{"raised_by":[{"step":"Tonics for Groflah","delta":10,"zone":"East Freeport docks","npc":"Groflah Steadirt"}],"needed_by":["Human (Freeport)"],"moved_in":[]},"Freeport Militia":{"raised_by":[{"step":"Message Intercept","delta":25,"zone":"West Commonlands \u2192 West Freeport","npc":"Mojax Hikspin, then Sir Lucan D`Lere"}],"needed_by":[],"moved_in":[]},"King Ak'Anon":{"raised_by":[{"step":"Series C Black Boxes, first part","delta":5,"zone":"Ak'Anon","npc":"Manik Compolten, then any Series C clockwork"}],"needed_by":["Gnome"],"moved_in":[]},"Eldritch Collective":{"raised_by":[{"step":"Series C Black Boxes, first part","delta":5,"zone":"Ak'Anon","npc":"Manik Compolten, then any Series C clockwork"}],"needed_by":["Gnome"],"moved_in":[]},"Gem Choppers":{"raised_by":[{"step":"Series C Black Boxes, first part","delta":5,"zone":"Ak'Anon","npc":"Manik Compolten, then any Series C clockwork"}],"needed_by":["Gnome"],"moved_in":[]},"Merchants of Halas":{"raised_by":[{"step":"Lion Meat Shipment","delta":10,"zone":"West Karana \u2192 Halas","npc":"Teria O`Danos"},{"step":"Lion Delights to Iceberg","delta":5,"zone":"Everfrost Peaks tundra","npc":"Iceberg"}],"needed_by":["Barbarian"],"moved_in":[]},"Wolves of the North":{"raised_by":[{"step":"Lion Meat Shipment","delta":7,"zone":"West Karana \u2192 Halas","npc":"Teria O`Danos"},{"step":"Lion Delights to Iceberg","delta":5,"zone":"Everfrost Peaks tundra","npc":"Iceberg"}],"needed_by":["Barbarian"],"moved_in":[]},"Shamen of Justice":{"raised_by":[{"step":"Lion Meat Shipment","delta":7,"zone":"West Karana \u2192 Halas","npc":"Teria O`Danos"},{"step":"Lion Delights to Iceberg","delta":5,"zone":"Everfrost Peaks tundra","npc":"Iceberg"}],"needed_by":[],"moved_in":[]},"Rogues of the White Rose":{"raised_by":[{"step":"Lion Meat Shipment","delta":5,"zone":"West Karana \u2192 Halas","npc":"Teria O`Danos"},{"step":"Lion Delights to Iceberg","delta":5,"zone":"Everfrost Peaks tundra","npc":"Iceberg"}],"needed_by":["Barbarian"],"moved_in":[]},"Steel Warriors":{"raised_by":[{"step":"Lion Delights to Iceberg","delta":5,"zone":"Everfrost Peaks tundra","npc":"Iceberg"}],"needed_by":[],"moved_in":[]},"Guktan Suppliers":{"raised_by":[{"step":"Phosphorous Powder","delta":5,"zone":"Ruins of Old Guk \u2192 Rathe Mountains","npc":"Zok Zribb"}],"needed_by":["Froglok"],"moved_in":[]},"Protectors of Gukta":{"raised_by":[{"step":"Phosphorous Powder","delta":5,"zone":"Ruins of Old Guk \u2192 Rathe Mountains","npc":"Zok Zribb"}],"needed_by":["Froglok"],"moved_in":[]},"Guktan Elders":{"raised_by":[{"step":"Phosphorous Powder","delta":5,"zone":"Ruins of Old Guk \u2192 Rathe Mountains","npc":"Zok Zribb"}],"needed_by":["Froglok"],"moved_in":[]},"High Council of Gukta":{"raised_by":[{"step":"Phosphorous Powder","delta":5,"zone":"Ruins of Old Guk \u2192 Rathe Mountains","npc":"Zok Zribb"}],"needed_by":[],"moved_in":[]},"Lorekeepers of Gukta":{"raised_by":[{"step":"Phosphorous Powder","delta":5,"zone":"Ruins of Old Guk \u2192 Rathe Mountains","npc":"Zok Zribb"}],"needed_by":[],"moved_in":[]},"New Sebilisian Expedition":{"raised_by":[{"step":"High Quality Ore to Iktra","delta":5,"zone":"North Ro","npc":"Crusader Iktra"}],"needed_by":["Iksar"],"moved_in":[]},"Heretics":{"raised_by":[{"step":"Kill 400 kobolds","delta":5,"zone":"The Warrens / Stonebrunt Mountains","npc":"\u2014"}],"needed_by":["Erudite"],"moved_in":[{"zone":"Kerra Isle","per_kill":-3,"biggest":-5,"mob":"kerran tiger spahi"}]},"High Guard of Erudin":{"raised_by":[{"step":"Kill 400 kobolds","delta":5,"zone":"The Warrens / Stonebrunt Mountains","npc":"\u2014"},{"step":"Peacekeeper Staff, first step","delta":5,"zone":"Erudin \u2192 Toxxulia Forest","npc":"Lumi Stergnon, then Emil Parsini"}],"needed_by":[],"moved_in":[]},"Deepwater Knights":{"raised_by":[{"step":"Kobold Molars (Good)","delta":7,"zone":"Erudin","npc":"Tiam Khonsir"},{"step":"Kill Paineel heretics","delta":10,"zone":"Paineel","npc":"\u2014"}],"needed_by":["Erudite"],"moved_in":[{"zone":"Kerra Isle","per_kill":5,"biggest":5,"mob":"kerran tiger spahi"}]},"High Council of Erudin":{"raised_by":[{"step":"Kobold Molars (Good)","delta":5,"zone":"Erudin","npc":"Tiam Khonsir"},{"step":"Catman Alliance","delta":5,"zone":"The Warrens \u2192 Erudin","npc":"Aderius Rhenar, then Leraena Shelyrak"},{"step":"Peacekeeper Staff, first step","delta":5,"zone":"Erudin \u2192 Toxxulia Forest","npc":"Lumi Stergnon, then Emil Parsini"}],"needed_by":["Erudite"],"moved_in":[]},"to":{"raised_by":[{"step":"Kill Paineel heretics","delta":100,"zone":"Paineel","npc":"\u2014"}],"needed_by":[],"moved_in":[]},"Peace Keepers":{"raised_by":[{"step":"Catman Alliance","delta":5,"zone":"The Warrens \u2192 Erudin","npc":"Aderius Rhenar, then Leraena Shelyrak"}],"needed_by":[],"moved_in":[]},"Merchants of Erudin":{"raised_by":[{"step":"Peacekeeper Staff, first step","delta":5,"zone":"Erudin \u2192 Toxxulia Forest","npc":"Lumi Stergnon, then Emil Parsini"}],"needed_by":[],"moved_in":[]},"Merchants of Rivervale":{"raised_by":[{"step":"Bandages for Honeybugger","delta":5,"zone":"Misty Thicket","npc":"Joogl Honeybugger"}],"needed_by":["Halfling"],"moved_in":[]},"Guardians of the Vale":{"raised_by":[{"step":"Bandages for Honeybugger","delta":5,"zone":"Misty Thicket","npc":"Joogl Honeybugger"},{"step":"Cleric Supplies","delta":5,"zone":"East Commonlands \u2192 Rivervale","npc":"Beek Guinders"}],"needed_by":["Halfling"],"moved_in":[]},"Deeppockets":{"raised_by":[{"step":"Bandages for Honeybugger","delta":5,"zone":"Misty Thicket","npc":"Joogl Honeybugger"}],"needed_by":[],"moved_in":[]},"Mayor Gubbin":{"raised_by":[{"step":"Bandages for Honeybugger","delta":5,"zone":"Misty Thicket","npc":"Joogl Honeybugger"},{"step":"Cleric Supplies","delta":5,"zone":"East Commonlands \u2192 Rivervale","npc":"Beek Guinders"}],"needed_by":[],"moved_in":[]},"Priests of Mischief":{"raised_by":[{"step":"Cleric Supplies","delta":5,"zone":"East Commonlands \u2192 Rivervale","npc":"Beek Guinders"}],"needed_by":["Halfling"],"moved_in":[]},"Dark Ones":{"raised_by":[{"step":"More Help for Innoruuk","delta":5,"zone":"Commonlands \u2192 Grobb","npc":"Bregna"}],"needed_by":["Troll"],"moved_in":[]},"Shadowknights of Night Keep":{"raised_by":[{"step":"More Help for Innoruuk","delta":5,"zone":"Commonlands \u2192 Grobb","npc":"Bregna"}],"needed_by":[],"moved_in":[]},"Da Bashers":{"raised_by":[{"step":"Nerbilik's Grub Locker","delta":10,"zone":"Neriak Foreign Quarter \u2192 Ocean of Tears","npc":"Nerbilik"}],"needed_by":["Troll"],"moved_in":[]},"Grobb Merchants":{"raised_by":[{"step":"Nerbilik's Grub Locker","delta":5,"zone":"Neriak Foreign Quarter \u2192 Ocean of Tears","npc":"Nerbilik"}],"needed_by":["Troll"],"moved_in":[]},"Merchants of Oggok":{"raised_by":[{"step":"Oggok Fresh Baked Muffins","delta":5,"zone":"Oggok or The Feerrott","npc":"an innkeeper"}],"needed_by":["Ogre"],"moved_in":[]},"Oggok Guards":{"raised_by":[{"step":"Oggok Fresh Baked Muffins","delta":5,"zone":"Oggok or The Feerrott","npc":"an innkeeper"}],"needed_by":["Ogre"],"moved_in":[]},"Clurg":{"raised_by":[{"step":"Oggok Fresh Baked Muffins","delta":5,"zone":"Oggok or The Feerrott","npc":"an innkeeper"}],"needed_by":["Ogre"],"moved_in":[]},"Kelethin Merchants":{"raised_by":[],"needed_by":["Wood Elf"],"moved_in":[]},"The Freeport Militia":{"raised_by":[],"needed_by":["Human (Freeport)"],"moved_in":[]},"Burning Dead":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"Befallen","per_kill":-2,"biggest":-5,"mob":"the thaumaturgist"}]},"Frogloks of Guk":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The City of Guk","per_kill":-5,"biggest":-50,"mob":"the froglok shin lord"},{"zone":"The Ruins of Old Guk","per_kill":-5,"biggest":-5,"mob":"a froglok tsu shaman"}]},"Gate Callers":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"Kerra Isle","per_kill":5,"biggest":5,"mob":"kerran tiger spahi"}]},"Craftkeepers":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"Kerra Isle","per_kill":5,"biggest":5,"mob":"kerran tiger spahi"}]},"Crimson Hands":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"Kerra Isle","per_kill":5,"biggest":5,"mob":"kerran tiger spahi"}]},"Mayong Mistmoore":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":-4,"biggest":-300,"mob":"Xicotl"}]},"Agents of Mistmoore":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":-4,"biggest":-300,"mob":"Xicotl"}]},"League of Antonican Bards":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":5,"biggest":75,"mob":"Xicotl"}]},"Ring of Scale":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":5,"biggest":15,"mob":"Xicotl"}]},"Temple of Solusek Ro":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":-5,"biggest":-5,"mob":"Ssynthi"}]},"Shadowed Men":{"raised_by":[],"needed_by":[],"moved_in":[{"zone":"The Castle of Mistmoore","per_kill":5,"biggest":5,"mob":"Ssynthi"}]}};
+const RACES = {"DEF":"Dark Elf","ELF":"Wood Elf","HUMQ":"Human (Qeynos)","HIE":"High Elf","HEF":"Half Elf","GNM":"Gnome","DWF":"Dwarf","KER":"Kerran","HUMF":"Human (Freeport)","BAR":"Barbarian","FRG":"Froglok","IKS":"Iksar","ERU":"Erudite","TRL":"Troll","HFL":"Halfling","OGR":"Ogre"};
+const q = document.getElementById('q'), res = document.getElementById('res');
+function esc(s){return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'})[c]);}
+function card(name, f){
+  let h = '<article class="fcard"><h3>' + esc(name) + '</h3>';
+  if (f.needed_by.length) h += '<p class="fneed"><b>Needed for:</b> ' + f.needed_by.map(esc).join(', ') + '</p>';
+  else h += '<p class="fneed dim">No race unlock we track requires this.</p>';
+  if (f.raised_by.length) {
+    h += '<p class="fsub">Raised by</p><ul>';
+    f.raised_by.forEach(r => { h += '<li>' + esc(r.step) + ' <span class="d">' + (r.delta>0?'+':'') + r.delta +
+      (r.zone ? ' &middot; ' + esc(r.zone) : '') + '</span></li>'; });
+    h += '</ul>';
+  }
+  if (f.moved_in.length) {
+    h += '<p class="fsub">Seen moving in play</p><ul>';
+    f.moved_in.forEach(m => { h += '<li>' + esc(m.zone) + ' <span class="d">' + (m.per_kill>0?'+':'') + m.per_kill +
+      ' a kill' + (m.biggest !== m.per_kill ? ', up to ' + (m.biggest>0?'+':'') + m.biggest + ' from ' + esc(m.mob) : '') +
+      '</span></li>'; });
+    h += '</ul>';
+  } else {
+    h += '<p class="fsub dim">We have not measured this moving anywhere.</p>';
+  }
+  return h + '</article>';
+}
+function run(){
+  const t = q.value.trim().toLowerCase();
+  if (t.length < 2) { res.innerHTML = ''; return; }
+  const hits = Object.keys(FAC).filter(k =>
+    k.toLowerCase().includes(t) ||
+    FAC[k].needed_by.some(r => r.toLowerCase().includes(t)) ||
+    FAC[k].raised_by.some(r => (r.step + ' ' + (r.zone||'')).toLowerCase().includes(t)) ||
+    FAC[k].moved_in.some(m => m.zone.toLowerCase().includes(t)));
+  if (!hits.length) {
+    res.innerHTML = '<p class="fnothing">Nothing matches &ldquo;' + esc(q.value) +
+      '&rdquo;. That means we hold no record of it &mdash; not that it has no effect.</p>';
+    return;
+  }
+  res.innerHTML = hits.sort().slice(0, 24).map(k => card(k, FAC[k])).join('');
+}
+q.addEventListener('input', run);
+</script>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All survey plates</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

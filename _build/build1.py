@@ -148,7 +148,7 @@ home = head("Accurate, sourced and kept current",
 
 </main>
 ''' + foot()
-open('index.html','w',encoding='utf-8',newline='\n').write(home)
+open('public/index.html','w',encoding='utf-8',newline='\n').write(home)
 
 # ---------------------------------------------------------------- DUNGEONS
 drows = "\n".join(
@@ -266,6 +266,6 @@ dung = head("Dungeon survey plates",
 
 </main>
 ''' + foot("../")
-open('dungeons/index.html','w',encoding='utf-8',newline='\n').write(dung)
+open('public/dungeons/index.html','w',encoding='utf-8',newline='\n').write(dung)
 
 print("home + dungeons index written")
