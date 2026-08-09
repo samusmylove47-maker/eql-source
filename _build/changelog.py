@@ -4,6 +4,21 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="10 Aug 2026", title="Is it still true? &mdash; the register of inherited advice",
+         body="Almost everyone playing Legends played EverQuest, and arrives carrying twenty-five "
+              "years of habit. Some of it holds and some was quietly replaced, and <strong>the wiki "
+              "cannot tell you which is which, because large parts of the wiki are the old "
+              "text</strong>. One entry per piece of inherited advice, each with its evidence, its "
+              "date, and what it would take to settle it. Six to start: multiclass, difficulty not "
+              "raising mob levels, placeholders in the revamped dungeons, the Per-Level Hunting "
+              "Guide, underwater weapon types, and whether Paragon of Spirit stacks with Clarity. "
+              "<strong>Three are open, and that is the normal state rather than a failure.</strong> "
+              "The last of those exists because an AI assistant answered the stacking question by "
+              "citing eqlwiki's Buff Lines page for &ldquo;slots nine, ten and eleven&rdquo;. That "
+              "page describes slots 1&ndash;8 and a Layer 2, never mentions Paragon of Spirit, and "
+              "the spell has no wiki page at all &mdash; the URL returns 404. Asked to be more "
+              "certain, the same tool returned more sources and more specific detail: confidence "
+              "rose, evidence did not. That pattern is worth more than the spell"),
     dict(kind="Correction", date="10 Aug 2026", title="Najena's spawn percentages, and a T5 number in a structured field",
          body="Two faults on the flagship plate, both found by an outside reader and both worse than "
               "reported. <strong>The header carried a 19:00 zone respawn and argued it was "
