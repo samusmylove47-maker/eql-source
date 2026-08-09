@@ -92,9 +92,19 @@ def escapes_html(s):
         + (f'. Last thing cast before the call: <b>{esc(e["after"])}</b>' if e.get('after') else '')
         + '.</li>'
         for e in esc_list)
+    # An escape is only a judgement about a fight if the group was in a position
+    # to judge. Where the session carries a stated caveat — a client crashing,
+    # for one — that has to appear beside the list rather than under it, because
+    # "the group chose to leave" is exactly the wrong reading of a crash.
+    warn = ''
+    if s.get('caveat'):
+        warn = (f'<div class="cond" style="border-left-color:var(--acct)">'
+                f'<b>Read these against the conditions.</b> {esc(s["caveat"])}</div>')
+
     return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
             f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Fights broken off</h3>'
-            f'<ul style="margin:0 0 16px;padding-left:20px;color:#AEB9B8;font-size:14px;'
+            + warn
+            + f'<ul style="margin:0 0 16px;padding-left:20px;color:#AEB9B8;font-size:14px;'
             f'line-height:1.7">{items}</ul>'
             f'<p class="caveat" style="margin:0 0 18px">An escape is a judgement, not a verdict. '
             f'It records that this group at this level chose to leave, which is worth knowing and is '
@@ -178,6 +188,13 @@ def merge(sessions):
 
     out['stamps'] = [x for s in sessions for x in s.get('stamps', [])]
     out['escapes'] = [x for s in sessions for x in s.get('escapes', [])]
+
+    # A caveat on any merged part applies to the whole, because the merged
+    # figures include it. Dropping it here is how a warning recorded against
+    # the afternoon sessions failed to reach the page that averages them in.
+    cav = [s['caveat'] for s in sessions if s.get('caveat')]
+    if cav:
+        out['caveat'] = cav[0]
 
     mobs = {}
     for s in sessions:
