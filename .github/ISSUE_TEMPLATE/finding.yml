@@ -1,0 +1,98 @@
+name: A finding from play
+description: Something in EverQuest Legends that did not work the way a guide, the wiki, or twenty-five years of habit said it would.
+title: "[finding] "
+labels: ["finding", "unverified"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you — this is the most useful thing anyone can send us.
+
+        **Two things before you start.**
+
+        **Do not attach a combat log.** This repository is public and logs can
+        contain private party and guild chat. Say below that you have one and we
+        will ask for it directly.
+
+        **You do not need to be sure.** "I think X, and here is what I saw" is a
+        good submission. We will check it, and we publish what we cannot settle
+        as unsettled rather than guessing.
+  - type: textarea
+    id: saw
+    attributes:
+      label: What you saw
+      description: In your own words. The thing that made you go "hang on".
+      placeholder: I was underwater in Kedge Keep hitting things with a sword and it landed normally.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What you expected instead
+      description: Usually what classic EverQuest, Project 1999, or a guide led you to expect. This contrast is the whole point of the register.
+      placeholder: In classic, slashing and blunt were penalised underwater and you needed a piercing weapon.
+    validations:
+      required: true
+  - type: input
+    id: zone
+    attributes:
+      label: Zone and difficulty
+      description: The zone line prints both on entry, e.g. "You have entered The Castle of Mistmoore 1 (Awakened)".
+      placeholder: Kedge Keep, D1 (Awakened)
+    validations:
+      required: true
+  - type: input
+    id: when
+    attributes:
+      label: When
+      description: A date is enough. Patches move things, and an undated observation ages badly.
+      placeholder: 9 August 2026
+    validations:
+      required: true
+  - type: input
+    id: character
+    attributes:
+      label: Character, class trio and level
+      description: The active trio uses the level of its lowest class, which changes what a number means.
+      placeholder: Avenrae, war/brd/ber, 34
+    validations:
+      required: false
+  - type: dropdown
+    id: times
+    attributes:
+      label: How many times did you see it?
+      description: Once is "seen once", and we will publish it as that. Repetition is what turns an observation into a pattern.
+      options:
+        - Once
+        - A handful of times
+        - Ten or more times
+        - Every time, consistently
+    validations:
+      required: true
+  - type: checkboxes
+    id: evidence
+    attributes:
+      label: Evidence you are holding
+      description: Do not attach a log here. Tick what exists and we will ask.
+      options:
+        - label: A screenshot
+        - label: A combat log covering it
+        - label: Neither, this is from memory
+  - type: dropdown
+    id: repro
+    attributes:
+      label: Could you reproduce it if asked?
+      options:
+        - "Yes"
+        - "Probably"
+        - "No — one-off circumstances"
+    validations:
+      required: true
+  - type: input
+    id: credit
+    attributes:
+      label: How should we credit you?
+      description: Findings are credited by name on the entry. Leave blank to stay anonymous.
+      placeholder: Annalise
+    validations:
+      required: false
