@@ -25,6 +25,7 @@ TOOLS = [
 ]
 
 LEARN = [
+    dict(slug="still-true",  name="Is it still true?"),
     dict(slug="raid-access", name="How raid access works"),
     dict(slug="difficulty",  name="What difficulty changes"),
     dict(slug="deity",       name="Deity, and the level 11 lock"),
@@ -69,7 +70,7 @@ def bar(rel=""):
       <a href="{rel}tools/index-search.html">The Index</a>
       <a href="{rel}raids/index.html">Raids</a>
       <a href="{rel}dungeons/index.html">Dungeons</a>
-      <a href="{rel}learn/raid-access.html">Learn</a>
+      <a href="{rel}learn/still-true.html">Learn</a>
       <a href="{rel}sources.html">Accuracy</a>
     </nav>
   </div>
