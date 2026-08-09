@@ -58,6 +58,29 @@ WH_CSS = """
 .inj-contact strong{color:#E6E9E4}
 .inj-contact a{color:#8FBEE4}
 .inj-contact .nolog{margin-top:7px;font-size:12.5px;color:#7D9096}
+
+/* The trimmed plate blocks. Answer-first lists, a key chain drawn as a chain,
+   and dangers that read as dangers. Injected because plates carry their own CSS. */
+ul.why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.why li{padding:12px 15px;border:1px solid #2E3A41;border-left:3px solid var(--acc,#D9A227);
+  border-radius:4px;background:#151B1F;color:#AEB9B8;font-size:15px;line-height:1.55}
+ul.why b{color:#E6E9E4}
+ol.chain{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:0}
+ol.chain li{display:grid;grid-template-columns:minmax(140px,auto) 1fr auto;gap:12px;
+  align-items:baseline;padding:11px 14px;border:1px solid #2E3A41;border-bottom:0;
+  background:#151B1F;color:#8A9998;font-size:14px}
+ol.chain li:first-child{border-radius:4px 4px 0 0}
+ol.chain li:last-child{border-bottom:1px solid #2E3A41;border-radius:0 0 4px 4px}
+ol.chain b{color:#E6E9E4;font-size:15px}
+ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#7D9096}
+ol.chain .ck{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct,#E8C25F)}
+@media(max-width:640px){ol.chain li{grid-template-columns:1fr;gap:3px}}
+ul.danger-list,ul.tightlist{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+ul.danger-list li,ul.tightlist li{padding:11px 14px;border-left:3px solid #2E3A41;
+  background:rgba(255,255,255,.02);color:#9FADAC;font-size:14.5px;line-height:1.55}
+ul.danger-list li{border-left-color:#C9453A}
+ul.danger-list b,ul.tightlist b{color:#E6E9E4}
+p.tight{color:#9FADAC;font-size:14px;line-height:1.6;margin:0}
 </style>"""
 
 # The plates and tools are standalone pages with their own footers, so foot()
