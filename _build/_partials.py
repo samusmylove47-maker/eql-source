@@ -89,7 +89,7 @@ def foot(rel=""):
   <div class="shell">
     <div class="foot-grid">
       <div><h4>Dungeons</h4><ul>
-        <li><a href="{rel}dungeons/index.html">All survey plates</a></li>
+        <li><a href="{rel}dungeons/index.html">All surveys</a></li>
         <li><a href="{rel}dungeons/najena.html">Najena</a></li>
         <li><a href="{rel}dungeons/lowerguk.html">Lower Guk</a></li>
         <li><a href="{rel}dungeons/mistmoore.html">Castle Mistmoore</a></li>
@@ -106,6 +106,7 @@ def foot(rel=""):
 {_foot_links(LEARN, "learn", rel)}
       </ul></div>
       <div><h4>About</h4><ul>
+        <li><a href="{rel}archive/index.html">The original plates</a></li>
         <li><a href="{rel}sources.html">Sourcing standard</a></li>
         <li><a href="{rel}sources.html#gaps">Known gaps</a></li>
         <li><a href="{rel}sources.html#changelog">Change log</a></li>

@@ -75,7 +75,7 @@ RANGE = re.compile(r'\d\s*[–—]\s*\d')
 # COORDINATES WITHHELD FROM THE PLOT
 # ----------------------------------
 # These six are recorded on eqlwiki (read 8 Aug 2026) and are transcribed
-# faithfully on the Najena plate — the plate is not wrong about what the source
+# faithfully on the Najena survey — the survey is not wrong about what the source
 # says. They are withheld because the position itself cannot be right.
 #
 # Najena's geometry spans worldY −168..546. Every one of these sits south of
@@ -211,7 +211,7 @@ def layer_of(px, py, layers):
     Most recorded coordinates are two-value with no Z, so the storey cannot be
     read off the coordinate — it is inferred from which drawn floor the position
     sits nearest. Where storeys overlap in plan view this can only be a best
-    guess, and the plate says so rather than implying we know.
+    guess, and the survey says so rather than implying we know.
 
     Returns (index of nearest layer, distance to it).
     """
@@ -235,7 +235,7 @@ def route_order(dots, levels):
     and lands within a few per cent of optimal.
 
     THIS IS NOT A PATH. It is an order, drawn as straight lines between spawn
-    points. It does not know about walls, doors, locks or drops, and the plate
+    points. It does not know about walls, doors, locks or drops, and the survey
     must say so wherever the overlay appears. A route that looks like it walks
     through a wall is the drawing being honest about what it is, not an error.
     """
@@ -444,7 +444,7 @@ def build_plot(zone, pts, layers):
             f'stroke-linejoin="round">{esc(short)}</text></g>')
     # ---- the farming route -------------------------------------------------
     # An order to take the named in, not a path through the zone. Drawn hidden;
-    # the plate's control reveals it.
+    # the survey's control reveals it.
     tour, tour_len = route_order(dots, [p[4] for p in pts])
     route = ''
     if len(tour) > 2:
@@ -624,7 +624,7 @@ for z in Z:
         <p class="lede" style="margin:0">{len(pts)} of {zone_total} named mobs plotted
           &middot; {step}-unit grid &middot; levels {int(lo)}&ndash;{int(hi)} shown green through red.
           Dashed outlines group positions that sit near each other; they are not room shapes.</p></div>
-      <a class="link" href="{z['slug']}.html">Plate {z['plate']:02d} &rarr;</a></div>
+      <a class="link" href="{z['slug']}.html">Survey {z['plate']:02d} &rarr;</a></div>
     {height}
   </div>
   <div class="plotwrap">{svg}</div>
@@ -638,7 +638,7 @@ for z in Z:
     if layers:
         PLATE_QUEUE.append((z, svg, layers, len(pts), zone_on_floor, tour, tour_len, pts))
 
-# ---- the same drawing, put on each plate ---------------------------------
+# ---- the same drawing, put on each survey ---------------------------------
 # The plates are standalone pages with their own inline CSS and no link to
 # site.css, so the block carries its own styling rather than borrowing any.
 # build3.py has already written them by the time this runs, and regenerates
@@ -752,7 +752,7 @@ PLATE_JS = """
     var lv=m.dataset.lv? '<span class="dmeta">Level '+m.dataset.lv+'</span>' : '';
     var body = drops.length
       ? '<ul>'+drops.map(function(d){return '<li>'+d+'</li>';}).join('')+'</ul>'
-      : '<p class="dnone">No drops recorded for this mob on this plate. That means we '
+      : '<p class="dnone">No drops recorded for this mob on this survey. That means we '
         +'have not recorded any, not that it carries nothing.</p>';
     detail.innerHTML='<h3>'+m.dataset.name+'</h3>'+lv+body;
     detail.hidden=false;
@@ -768,7 +768,7 @@ PLATE_JS = """
 
 
 def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
-    """Put the floor plan on the plate itself, above its first section."""
+    """Put the floor plan on the survey itself, above its first section."""
     path = f"public/dungeons/{z['slug']}.html"
     if not os.path.exists(path):
         return False

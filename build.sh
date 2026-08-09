@@ -21,6 +21,7 @@ python3 _build/build10.py
 python3 _build/build11.py
 python3 _build/build12.py
 python3 _build/build13.py
+python3 _build/build14.py
 python3 _build/build404.py
 python3 _build/sitemap.py
 echo "Rebuilt. Commit and push, or drag the folder to Netlify."

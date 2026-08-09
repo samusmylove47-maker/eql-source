@@ -1,6 +1,6 @@
 # EQL Source — project rules
 
-A reference site for EverQuest Legends: dungeon survey plates, 3D raid
+A reference site for EverQuest Legends: dungeon surveys, 3D raid
 encounter guides, and progression tools. Static HTML, no server, no database.
 Netlify publishes on every merge to `main`.
 
@@ -298,7 +298,7 @@ Do not write around a gap. Name it instead.
 
 ## 8. Adding things
 
-**A new dungeon plate.** Add to `assets/zones-index.json` with the next plate
+**A new dungeon survey.** Add to `assets/zones-index.json` with the next plate
 number and an unused accent. Put `<slug>.html` in `_build/source/`. Run
 `./build.sh`. The plate grid reflows on its own; nothing in `site.css` needs a
 count updated. `check.py` fails if the home page stops linking a zone.
@@ -312,6 +312,23 @@ must state in place whether it is surveyed from `/loc` data or schematic.
 Addition / Correction / Source refresh. A fix must never read as new content.
 
 ---
+
+## 8b. The plates were retired on 10 Aug 2026
+
+The site began as ten hand-drawn coordinate plots and the guides were named for
+them. `_build/geometry.py` replaced them: the floor plans read the game's own
+`.s3d` meshes, separate the storeys, filter the named by storey, and check every
+coordinate against walkable floor at build time. That check caught six
+impossible Najena positions; the hand plots had nothing to check against.
+
+The guides are **Dungeon surveys** now. The ten originals live whole in
+`assets/archive-plates.json`, rendered by `_build/build14.py` at
+`/archive/index.html`, stored exactly as they last shipped. **Do not restore
+them to the guides and do not restyle them in the archive** — a restyled archive
+is not an archive.
+
+`plate` survives as a numeric field in `zones-index.json`. It is an identifier,
+not a label.
 
 ## 9. Current known gaps
 

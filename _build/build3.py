@@ -159,7 +159,7 @@ for z in Z:
 for s in MAPS:
     z = BY[s]
     extra = (f'<span class="ns-sep">/</span><a href="{s}.html" '
-             f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">&larr; Survey plate</a>')
+             f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">&larr; Survey</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}-map.html'), f'public/dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
            f"{z['title']} &middot; map", extra)

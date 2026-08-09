@@ -4,6 +4,22 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="10 Aug 2026", title="The plates are retired, and kept",
+         body="This site began as ten hand-built coordinate plots. Every named mob&rsquo;s "
+              "<code>/loc</code> read off the wiki, transformed into page space and drawn by hand "
+              "with a numbered legend beside it. The pages were called <em>plates</em> because that "
+              "is what they were. <strong>They are redundant now.</strong> The floor plans derived "
+              "from the game&rsquo;s own mesh archives are better in every direction that matters: "
+              "the walls are the game&rsquo;s walls rather than an outline drawn around some dots, "
+              "the storeys separate, the named filter by storey, and every coordinate is checked "
+              "against walkable floor at build time &mdash; which is how six impossible Najena "
+              "positions were caught and withheld. The hand plots could not have caught them, "
+              "because they had nothing to check against. So the guides are <strong>Dungeon "
+              "surveys</strong> from today, and the ten original plates move whole to "
+              "<a href=\"archive/index.html\">the archive</a>, stored exactly as they last "
+              "shipped. Not deleted and not tidied: they are the record of how the survey was done "
+              "before it could be done properly, and anyone who wants to judge whether we improved "
+              "or merely changed can put the two side by side"),
     dict(kind="Addition", date="10 Aug 2026", title="Is it still true? &mdash; the register of inherited advice",
          body="Almost everyone playing Legends played EverQuest, and arrives carrying twenty-five "
               "years of habit. Some of it holds and some was quietly replaced, and <strong>the wiki "
