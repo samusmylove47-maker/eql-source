@@ -204,6 +204,23 @@ if os.path.exists("build.sh"):
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 
+# ---- is public/ actually what the sources would produce? --------------------
+# A generator that crashes leaves the previous output in place, and every check
+# below passes against it. build.sh stamps a fingerprint of its inputs; if the
+# stamp does not match, the tree is stale and nothing else here means anything.
+try:
+    sys.path.insert(0, os.path.join(ROOT, "scripts"))
+    import stamp
+    want = stamp.fingerprint()
+    got = json.load(open("state/last-build.json", encoding="utf-8"))["inputs"]
+    if want != got:
+        fail("public/ is stale — a source changed since the last successful "
+             "./build.sh, or a generator crashed part way. Re-run ./build.sh")
+except FileNotFoundError:
+    warn("state/last-build.json is missing — run ./build.sh to stamp the tree")
+except Exception as e:
+    warn(f"could not verify build freshness: {type(e).__name__}: {e}")
+
 # ---- stray control characters in source ------------------------------------
 # Three separate times a regex has shipped with a literal backspace (0x08) where
 # a word-boundary escape was meant. It compiles, it matches nothing, and every check built on it
