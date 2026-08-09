@@ -204,6 +204,25 @@ if os.path.exists("build.sh"):
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 
+# ---- stray control characters in source ------------------------------------
+# Three separate times a regex has shipped with a literal backspace (0x08) where
+# a word-boundary escape was meant. It compiles, it matches nothing, and every check built on it
+# reports success exactly as it does when the site is clean. That is the worst
+# failure mode available, so it is caught here rather than remembered.
+CTRL = {8: "backspace, probably a word-boundary escape that lost its backslash",
+        1: "SOH, probably a group backreference that lost its backslash",
+        2: "STX, probably a group backreference that lost its backslash",
+        12: "formfeed", 7: "bell", 11: "vertical tab"}
+for src in sorted(glob.glob("_build/**/*.py", recursive=True) + glob.glob("scripts/*.py")):
+    try:
+        body = open(src, encoding="utf-8").read()
+    except OSError:
+        continue
+    for code, why in CTRL.items():
+        n = body.count(chr(code))
+        if n:
+            fail(f"{src} contains {n} literal control character(s) 0x{code:02x} — {why}")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of
