@@ -79,6 +79,8 @@ CSS = '''<style>
 .drops li{border-left:2px solid var(--line);padding:3px 0 3px 10px;font-size:14px;color:var(--dim)}
 .drops a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
+.src{margin:0;font-size:13px;color:var(--dim)}
+.src a{color:var(--dim)}
 </style>'''
 
 
@@ -130,11 +132,13 @@ for name, rows in by_item.items():
         f'{" &mdash; off " + esc(r["d"]) if r.get("d") else ""}'
         f'<span>Survey {r["p"]:02d} &middot; levels {esc(Z[r["z"]]["levels"].split(" (")[0])}'
         f' &middot; ZEM {Z[r["z"]]["zem"]}</span></li>' for r in rows)
+    # This line used to run fifteen words and appeared on all 446 item pages -
+    # 6,690 words of the same sentence, the largest single block of repeated text
+    # on the site. The survey is already linked above it; this only has to name
+    # whose figures they are.
     extra = (f'<h2 class="sec">Where it drops</h2><ul class="srcs">{zones}</ul>'
-             f'<p class="lede" style="margin-top:22px">Mined from '
-             f'{"the survey" if len(rows) == 1 else "the surveys"} listed above. '
-             f'Every figure on this page is the survey&rsquo;s own &mdash; '
-             f'<a href="../sources.html">where each came from</a>.</p>')
+             f'<p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. '
+             f'<a href="../sources.html">How we source</a>.</p>')
     desc = (f"{name} in EverQuest Legends: "
             + (f"{a['sr']}. " if a.get('sr') else "")
             + (f"{a['st'][:90]}. " if a.get('st') else "")
@@ -167,11 +171,9 @@ for nm in IX['named']:
         for d in drops)
     extra = (f'<h2 class="sec">What it drops</h2><ul class="drops">{dl}</ul>'
              if drops else
-             '<p class="lede">No drops recorded for this mob on its survey. That means we have '
-             'not recorded any, not that it carries nothing.</p>')
-    extra += (f'<p class="lede" style="margin-top:22px">From the '
-              f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])} survey</a>, '
-              f'where this mob sits in the named roster with its position and notes.</p>')
+             '<p class="lede">No drops recorded &mdash; a gap, not an empty mob.</p>')
+    extra += (f'<p class="src" style="margin-top:18px">From the '
+              f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])} survey</a>.</p>')
     desc = (f"{nm['n']} in {nm['zt']}, EverQuest Legends"
             + (f", level {nm['lv']}" if nm.get('lv') else "")
             + (f". {nm['no'][:100]}" if nm.get('no') else "."))

@@ -322,7 +322,12 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
         This used to sit on the surveys themselves. It belongs here, where someone
-        checking our working can find all ten in one place.</p></div></div>
+        checking our working can find all ten in one place.</p>
+      <p class="lede"><strong>The same split applies to almost every row.</strong> A wiki
+        page&rsquo;s infobox and its NPC and item tables are usually live Legends data, while its
+        narrative sections &mdash; Dangers, Benefits, Traveling &mdash; are imported prose from
+        before the game existed. Said once here rather than repeated under every zone
+        below.</p></div></div>
     {wiki_table}
     <p class="lede" style="margin:16px 0 0">{_nrev} of the ten rows carry a revision id; the rest
       say so. {_np99} of the ten pages began as Project 1999 imports, which by the provenance test in
