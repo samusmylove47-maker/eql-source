@@ -200,7 +200,8 @@ if os.path.exists("build.sh"):
     on_disk = {f"_build/{f_}" for f_ in os.listdir("_build")
                if f_.endswith(".py") and f_ not in ("_partials.py", "changelog.py",
                                                     "geometry.py", "logstats.py",
-                                                    "extract_faction.py", "withheld.py")}
+                                                    "extract_faction.py", "withheld.py",
+                                                    "ogcards.py")}
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 

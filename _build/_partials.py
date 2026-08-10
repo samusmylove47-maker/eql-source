@@ -41,7 +41,35 @@ def wordnum(n):
     return _WORDS.get(n, str(n))
 
 
-def head(title, desc, rel="", extra=""):
+SITE_URL = _cfg.get("site_url", "").rstrip("/")
+
+
+def head(title, desc, rel="", extra="", og="home", canon=None):
+    """Page head.
+
+    `og` names the share card in public/assets/og/. `canon` is the page's path
+    from the site root, without the .html — the host 301s .html to the
+    extensionless form, so that is the address a search engine should keep and
+    the one a canonical tag has to name.
+    """
+    # Share cards must be absolute: Discord and Twitter fetch them from their own
+    # servers, where a relative path resolves to nothing.
+    card = f"{SITE_URL}/assets/og/{og}.png" if SITE_URL else f"{rel}assets/og/{og}.png"
+    lines = [
+        f'<meta property="og:image" content="{card}">',
+        '<meta property="og:image:width" content="1200">',
+        '<meta property="og:image:height" content="630">',
+        f'<meta property="og:site_name" content="{SITE}">',
+        '<meta name="twitter:card" content="summary_large_image">',
+        f'<meta name="twitter:title" content="{title} — {SITE}">',
+        f'<meta name="twitter:description" content="{desc}">',
+        f'<meta name="twitter:image" content="{card}">',
+    ]
+    if canon is not None and SITE_URL:
+        lines.append(f'<link rel="canonical" href="{SITE_URL}/{canon}">')
+    social = "\n".join(lines) + "\n"
+    canonical = ""
+
     return f'''<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -52,7 +80,7 @@ def head(title, desc, rel="", extra=""):
 <meta property="og:title" content="{title} — {SITE}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+{social}{canonical}<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">

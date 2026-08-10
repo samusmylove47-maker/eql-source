@@ -214,7 +214,7 @@ for zone, z in measured.items():
 page = head("Faction impact checker",
   "What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it "
   "helps or costs. Measured from our own combat logs rather than assumed.",
-  rel="../") + bar("../") + f'''
+  rel="../", og="tools", canon="tools/faction-impact") + bar("../") + f'''
 <main>
 
 <section class="hero page">

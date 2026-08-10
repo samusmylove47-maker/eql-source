@@ -408,6 +408,6 @@ SCRIPT = r'''<script src="../assets/vendor/three.min.js"></script>
 
 page = head("Eye of Veeshan",
   "Interactive 3D raid guide for the Eye of Veeshan, final boss of the Plane of Sky: the pull-down to Island 7, tank rotation and the full component drop list. His hit points are a pre-launch import and this page says so.",
-  rel="../", extra=VIEWER_CSS) + bar("../") + BODY + foot("../").replace('</body>', SCRIPT + '\n</body>')
+  rel="../", extra=VIEWER_CSS, og="raids", canon="raids/eye-of-veeshan") + bar("../") + BODY + foot("../").replace('</body>', SCRIPT + '\n</body>')
 open('public/raids/eye-of-veeshan.html','w',encoding='utf-8',newline='\n').write(page)
 print("raid guide written:", len(page), "bytes")

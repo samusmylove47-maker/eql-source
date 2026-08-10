@@ -17,7 +17,7 @@ from _partials import head, bar, foot
 page = head("How raid access works",
   "Open-world raid bosses no longer spawn in EverQuest Legends. What replaced them, how the three "
   "instance types differ, and why a personal instance is not a solo raid.",
-  rel="../") + bar("../") + '''
+  rel="../", og="learn", canon="learn/raid-access") + bar("../") + '''
 <main>
 
 <section class="hero page">

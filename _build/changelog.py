@@ -4,6 +4,19 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="10 Aug 2026", title="Every page now has a share card and a canonical address",
+         body="Zero of the site&rsquo;s 33 pages carried an <code>og:image</code>. EverQuest "
+              "communities coordinate in Discord, and <strong>a link with no card is a link nobody "
+              "opens</strong> &mdash; so every page we wrote was invisible at the exact moment "
+              "somebody tried to share it. There are 17 cards now, drawn from the zone data itself: "
+              "name, level band, ZEM, respawn and verification state, so a card cannot drift from "
+              "the page it represents. <strong>Also fixed: no page had a canonical address.</strong> "
+              "Every internal link ends in <code>.html</code> and the host redirects it to the "
+              "extensionless form, which gave every page two addresses and let a search engine pick. "
+              "32 of 33 now name the right one &mdash; the 404 page deliberately does not. And "
+              "fifteen standalone pages had no description at all, so their embeds would have "
+              "carried a title and an image and no sentence; they take their subtitle now, with the "
+              "level band and respawn appended"),
     dict(kind="Correction", date="10 Aug 2026", title="Placeholders: the answer was in the patch notes the whole time",
          body="The developer patch note removes placeholders by name from <strong>eleven "
               "dungeons</strong> &mdash; The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the "

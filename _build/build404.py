@@ -14,7 +14,7 @@ from _partials import head, bar, foot
 
 page = head("Page not found",
   "That page is not here. The dungeon plates, tools and raid guides are all one click away.",
-  rel="") + bar("") + '''
+  rel="", og="home") + bar("") + '''
 <main>
 
 <section class="hero page">

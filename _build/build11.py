@@ -78,7 +78,7 @@ covered = sorted({s['zone'] for s in SESSIONS if s.get('zone')})
 page = head("What difficulty changes",
   "D0 to D4 in EverQuest Legends: what each tier scales, what it does not, how to read the tier off "
   "the zone line, and which parts nobody has pinned down yet.",
-  rel="../") + bar("../") + f'''
+  rel="../", og="learn", canon="learn/difficulty") + bar("../") + f'''
 <main>
 
 <section class="hero page">

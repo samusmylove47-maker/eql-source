@@ -97,7 +97,7 @@ cards = "\n".join(f'''
 page = head("Plane of Sky, island by island",
   "How to reach each Plane of Sky boss in EverQuest Legends with the fewest pulls, from a "
   "post-launch solo run. Spawn conditions, what goes wrong, and which islands punish mistakes.",
-  rel="../") + bar("../") + f'''
+  rel="../", og="raids", canon="raids/plane-of-sky") + bar("../") + f'''
 <main>
 
 <section class="hero page ember-hero">
