@@ -361,13 +361,17 @@ not a label.
 
 These close with evidence, not tidying.
 
-- **D4 encounter behaviour** — the tiers themselves are now documented in
-  `learn/difficulty.html`: names, what scales, and what EQL Tools measured.
-  D1 and D2 hit points are pinned; **D3 and D4 are not, by anyone**. And
-  **which class kits attach to which raid boss at D3+ is still unpublished** —
-  the biggest gap on the site. Needs combat logs from a raid at D3 or D4.
-  Our own logs now show two kits on *trash* at D1, which is earlier and lower
-  than the published claim about named mobs from D2.
+- **D4 encounter behaviour** — **half closed, 11 Aug 2026.** Master Yael was
+  killed at all five tiers in one session in the group instance of The Hole, and
+  `_build/raidstats.py` parses it into `assets/raids-measured.json`. The class
+  kit widens at **D3**, exactly where the published claim said it would: he
+  casts direct damage and control at D0–D2, and from D3 also heals himself,
+  fears, and applies damage over time. **He healed himself never at D0–D2, once
+  at D3, ten times at D4** — which needs no inference about spell names.
+  Damage to kill runs 75,369 / 85,415 / 139,117 / 227,690 / 242,060.
+  **That is one boss and one trio.** Which kits attach to the *plane* bosses at
+  D3+ is still unpublished, and D3/D4 hit points are still not pinned by anyone:
+  damage to kill is an upper bound, not HP.
 - **Plane of Sky geometry** — **half closed, 11 Aug 2026.** `_build/skyislands.py`
   reads `airplane.s3d` and measures 21 separate bodies of walkable floor across
   2,878 units of height, committed to `assets/sky-islands.json` and drawn as a

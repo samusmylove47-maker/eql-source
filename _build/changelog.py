@@ -4,6 +4,8 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="11 Aug 2026", title="The difficulty ramp, measured on one boss at all five tiers",
+         body="Master Yael killed at D0, D1, D2, D3 and D4 in a single session by one trio, in the group instance of The Hole. <strong>The class kit widens at D3</strong> &mdash; direct damage and control up to D2, then healing, fear and damage over time from D3. He healed himself <strong>never at D0, D1 and D2, once at D3 and ten times at D4</strong>, which needs no inference about spell names: the log says <em>healed itself</em>. That is the largest gap this site has listed, and it lands exactly where the published claim said it would. Damage to kill ran 75,369 / 85,415 / 139,117 / 227,690 / 242,060 &mdash; <strong>an upper bound on hit points, not a measurement of them</strong>, because he heals"),
     dict(kind="Correction", date="11 Aug 2026", title="One sentence was on 446 pages",
          body="A site-wide sweep for repeated text found <strong>12,195 words of it</strong>, and almost all of it was boilerplate on the item and named-mob pages. One fifteen-word sourcing sentence appeared on all 446 item pages &mdash; 6,690 words of the same line, the largest single block of repeated text on the site &mdash; and two more ran to 2,400 between them. All three are now short lines that say the same thing, and the survey they point at was already linked directly above. <strong>9,386 words gone, not one fact with them.</strong> Repetition across three or more pages is down to 1,880 words, nearly all of it single lines that have to exist on each page"),
     dict(kind="Correction", date="11 Aug 2026", title="Accuracy said the same thing twice",
