@@ -35,6 +35,12 @@ def text_of(html):
 
 SCRIPT_TAG = re.compile(r"<(script|style)\b.*?</\1>", re.S | re.I)
 
+# (page, anchor the rows start after, regex matching one row)
+LEDGERS = [
+    ("sources.html", 'id="changelog"', r'<div class="zrow".*?</div>'),
+    ("learn/still-true.html", "", r'<article class="st-entry".*?</article>'),
+]
+
 
 def page_words(path, key):
     """Words of readable prose on a built page.
@@ -44,18 +50,26 @@ def page_words(path, key):
     agree today would drift the first time either side changed what it strips.
     """
     h = open(path, encoding="utf-8", errors="replace").read()
-    # The change log is a ledger, not prose. It gains a row every time a
-    # correction is published and it is meant to: the whole reason pages were
-    # stripped of their revision histories was to move that record here. A
-    # ceiling this side of it would eventually forbid recording a correction,
-    # which is the opposite of what the ratchet is for. Only the rows after the
-    # anchor are exempt — `zrow` is the site's row class generally, so an
-    # unscoped strip would blind the ratchet on the home and dungeon indexes.
-    if key == "sources.html":
-        cut = h.find('id="changelog"')
-        if cut > 0:
-            h = h[:cut] + re.sub(r'<div class="zrow".*?</div>', " ",
-                                 h[cut:], flags=re.S)
+    # Ledgers are not prose. Two pages on this site exist to accumulate a record
+    # — the change log holds every correction, the register holds every finding
+    # — and both were given that job when the pages were stripped of their own
+    # revision histories. A word ceiling over a ledger eventually forbids
+    # recording a correction or a finding, which is the opposite of what the
+    # ratchet is for.
+    #
+    # So the ledger's rows are exempt and the rest of each page is not. Each
+    # entry names the anchor its rows start after, because these row classes are
+    # used elsewhere on the site and an unscoped strip would blind the ratchet on
+    # the home page and the dungeon index.
+    #
+    # This is the whole list. Adding to it means arguing that a third page is a
+    # ledger, which should be hard.
+    for ledger_key, anchor, row in LEDGERS:
+        if key != ledger_key:
+            continue
+        cut = h.find(anchor) if anchor else 0
+        if cut >= 0:
+            h = h[:cut] + re.sub(row, " ", h[cut:], flags=re.S)
     t = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]+>", " ", SCRIPT_TAG.sub(" ", h)))
     return len([w for w in t.split() if any(c.isalpha() for c in w)])
 
