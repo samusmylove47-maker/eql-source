@@ -4,6 +4,10 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="11 Aug 2026", title="The Plane of Sky, measured and redrawn",
+         body="Sky's teleporters form a <strong>ring</strong> &mdash; island 8 returns you to island 1 &mdash; so the six-boss circuit everyone runs is not a list to memorise, it is one and a half laps. The page is built on that, on the key chain, and on a thing nobody has published: <strong>the zone read from its own mesh</strong>. 21 separate bodies of walkable floor across <strong>2,878 units of height</strong>, drawn as a side elevation. It is deliberately unlabelled &mdash; the mesh says where every piece of floor is and cannot say which piece is island 4, and ten <code>/loc</code> readings would fix that permanently. The old page was one player's solo route framed by their trio and gear, which is a fact about a player rather than about the zone"),
+    dict(kind="Addition", date="11 Aug 2026", title="Contributors are credited in one place now",
+         body="Findings used to be credited inline, so a survey read a player's name in the middle of a sentence about loot. That buried the thanks and gave creators nothing back. Claims now carry what a reader needs to weigh them &mdash; the kind of source, the date, the tier badge &mdash; and <a href=\"credits.html\">every contributor is named once</a>, with a link to their own work where they have one. Wiki editor usernames stay inline: those are citations rather than credits, and the provenance test needs them"),
     dict(kind="Addition", date="11 Aug 2026", title="A planar gear tool, and 116 item records behind it",
          body="Your trio can wear planar armour from all three of its classes plus the two shared "
               "sets, so <strong>five sets compete for every slot</strong>. The tool shows that pool, "
@@ -11,14 +15,14 @@ ENTRIES = [
               "clicky effects, resistances &mdash; and lets you lock a target per slot, two for "
               "wrist. <strong>No weights to configure.</strong> Built on 116 pieces mined from the "
               "item records, with 1,219 blank fields kept blank rather than filled with zeroes. "
-              "The idea is BarakDur&rsquo;s, who did it by hand with an AI first"),
+              "The idea came from a guild member who did it by hand with an AI first &mdash; "
+              "<a href=\"credits.html\">credited here</a>"),
     dict(kind="Correction", date="11 Aug 2026", title="The planar class-group split is gone",
          body="Our Fear and Hate surveys divided every drop into two class groups, following the "
               "imported wiki tables. <strong>A guild loot guide lists them merged</strong> &mdash; "
               "slot-specific, not group-specific &mdash; and adds that any of those mobs can drop "
               "the matching Lustrous Russet or Midnight Clad piece. It also moves a turmoil toad "
-              "from Hands to Wrist. Both surveys corrected, credited to Skyfox, and flagged as one "
-              "pre-launch source. <strong>The haunted chest question is now settled:</strong> two "
+              "from Hands to Wrist. Both surveys corrected and flagged as one pre-launch source. <strong>The haunted chest question is now settled:</strong> two "
               "independent Legends-era accounts seven weeks apart, one post-launch, both say "
               "Lustrous Russet only, against the imported claim of any planar piece"),
     dict(kind="Addition", date="10 Aug 2026", title="Kedge Keep surveyed",
@@ -27,7 +31,7 @@ ENTRIES = [
               "&ldquo;Kedge has retained its original modifier for those willing to brave the "
               "depths.&rdquo; <strong>Four class epics converge on Phinigel Autropos</strong> "
               "&mdash; Wizard, Bard, Rogue and Magician &mdash; which makes it the place to test "
-              "whether Annalise&rsquo;s Fiery Avenger result generalises. The floor plan carries a "
+              "whether the Fiery Avenger result generalises. The floor plan carries a "
               "caveat we have not needed before: our plans draw walkable floor, and this is a zone "
               "you swim through, so it under-draws where you can actually go"),
     dict(kind="Correction", date="10 Aug 2026", title="Two counts were typed instead of printed",

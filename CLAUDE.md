@@ -368,8 +368,13 @@ These close with evidence, not tidying.
   the biggest gap on the site. Needs combat logs from a raid at D3 or D4.
   Our own logs now show two kits on *trash* at D1, which is earlier and lower
   than the published claim about named mobs from D2.
-- **Plane of Sky geometry** — never surveyed. The Eye of Veeshan model is
-  schematic and says so. Needs `/loc` readings.
+- **Plane of Sky geometry** — **half closed, 11 Aug 2026.** `_build/skyislands.py`
+  reads `airplane.s3d` and measures 21 separate bodies of walkable floor across
+  2,878 units of height, committed to `assets/sky-islands.json` and drawn as a
+  side elevation on the Sky page. What it cannot do is say which measured body is
+  which island: that lives in the teleporter network, not the mesh. **Ten `/loc`
+  readings, one per island, label the chart permanently.** The Eye of Veeshan
+  model is still schematic and still says so.
 - **Five Sky class tooltips** — Ranger, Rogue, Shadow Knight, Shaman, Wizard
   reward stat blocks unconfirmed for Legends. Turn-ins are current.
 - **Respawn ceilings** — the 28 July patch lowered maximums without publishing

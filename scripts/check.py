@@ -198,10 +198,13 @@ if os.path.exists("build.sh"):
         if not os.path.exists(g):
             fail(f"build.sh runs {g}, which does not exist")
     on_disk = {f"_build/{f_}" for f_ in os.listdir("_build")
-               if f_.endswith(".py") and f_ not in ("_partials.py", "changelog.py",
-                                                    "geometry.py", "logstats.py",
-                                                    "extract_faction.py", "withheld.py",
-                                                    "ogcards.py")}
+               if f_.endswith(".py") and f_ not in (
+                   "_partials.py", "changelog.py", "logstats.py",
+                   "extract_faction.py", "withheld.py", "ogcards.py",
+                   # Read the game's .s3d archives, so they are run by hand and
+                   # their output is committed. A rebuild has to work on a
+                   # machine with no EverQuest Legends install.
+                   "geometry.py", "skyislands.py")}
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 
