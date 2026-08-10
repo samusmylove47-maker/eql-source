@@ -441,6 +441,74 @@ it. It must never be the only source for a claim.
 
 ---
 
+## 6b. Ruling: Hate gets a layered floor plan, not the 3D engine
+
+Asked whether the Eye of Veeshan treatment suits Hate's multi-level city. **No,
+and the reason is that we already have something better for this particular
+problem.**
+
+`build4.py`'s 3D engine renders *encounters*: islands, markers, radius rings,
+phase arrays, a hand-rolled orbit control. Every model states in place whether it
+is surveyed or schematic, and the Eye of Veeshan one says schematic, because
+Plane of Sky has never been surveyed. It is hand-authored per boss.
+
+Hate's problem is not an encounter. It is navigation across roughly thirty
+near-identical buildings on a floor you cannot tell apart. The tool for that is
+`geometry.py` and `build6.py` — floor plans read from the game's own mesh, with a
+storey control that isolates one level at a time. **Using a schematic 3D model
+where measured geometry exists would be a downgrade dressed as an upgrade.**
+
+### What the mesh actually found
+
+`geometry.py` on `hateplane.s3d`, 10 Aug 2026:
+
+| Band | Height | Floor triangles | Separate pieces |
+|---|---|---|---|
+| Ground | z 0–60 | 5,636 | 523 |
+| **The roofs** | **z 88–98** | **3,329** | **367** |
+| Upper | z 109–187 | 10,533 | 782 |
+
+The middle band is the find. Ten units deep and broken into 367 disconnected
+pieces is what a set of rooftops looks like when you ask a computer where the
+walkable floor is — and it is exactly the surface Classic XP describes travelling
+on with levitate to avoid ground aggro. **Nobody publishes a map of Hate's roofs,
+because a flattened map cannot show one.** We can draw it as its own selectable
+storey, and that is the evolutionary step here — not a third dimension, a third
+*floor*.
+
+Plane of Fear separates into four bands, the top one at z 249–401 with only four
+boundary chains: a tall, simple structure, which is where Cazic Thule is
+published as standing. "Top of the Temple" is a layer on our plan.
+
+### The coordinates checked out, and that is worth recording
+
+`build6.py` measures every published coordinate against the floor our own
+geometry drew. Four plane-boss positions were added from the imported wiki pages,
+read as (Y, X):
+
+| Boss | Published | Read as (Y, X) | On drawn floor |
+|---|---|---|---|
+| Maestro of Rancor | (−82, 295) | 295, −82 | yes |
+| Dread | (−635, −1201) | −1201, −635 | yes |
+| Terror | (200, −365) | −365, 200 | yes |
+| Fright | (−636, −358) | −358, −636 | yes |
+
+**180 of 180 site-wide.** Two independent things had to be right for each of
+those to land — the coordinate and our mesh extraction — so this raises
+confidence in these four specific figures even though the pages carrying them are
+T5. It also settles the axis order, which was a guess before the check ran.
+
+### A limitation found while doing it
+
+`build6.py` skips any zone with no recorded coordinates (`if not pts: continue`),
+so a zone can have perfectly good mesh geometry and still get no floor plan.
+Plane of Fear hit this before its roster was added. **The plan is derived from the
+mesh, not from the points, and should draw either way.** Not fixed here because
+the guard also protects the plots page, and untangling the two late in a long
+change is how something else breaks.
+
+---
+
 ## 7. What we cannot answer, and what would settle it
 
 Each of these is one log, one screenshot or one `/who` away.

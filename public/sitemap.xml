@@ -14,6 +14,8 @@
   <url><loc>https://eqlsource.com/dungeons/nagafenslair.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/najena-map.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/najena.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/dungeons/planeoffear.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/dungeons/planeofhate.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/splitpaw-map.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/splitpaw.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/thehole.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -475,6 +477,7 @@
   <url><loc>https://eqlsource.com/named/a-dark-elf-noble.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/a-dark-librarian.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/a-deathly-usher.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/a-dracoliche.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/a-fallen-noble.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/a-frenzied-ghoul.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/a-froglok-crusader.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -537,12 +540,14 @@
   <url><loc>https://eqlsource.com/named/butler-syncall.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/caradon.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/cave-bat-lord.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/cazic-thule.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/chokehold.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/cmdr-windstream.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/commander-yarik.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/dark-huntress.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/dartain-the-lost.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/death-beetle.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/dread.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/drelzna.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/efreeti-lord-djarn.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/ekeros.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -552,6 +557,7 @@
   <url><loc>https://eqlsource.com/named/fire-giant-wizard.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/foodmaster-rargnar.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/footman-of-vzher.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/fright.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/garton-viswin.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/ghost-of-glohnor.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/gibartik.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -564,6 +570,8 @@
   <url><loc>https://eqlsource.com/named/imp-protector.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/index.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
   <url><loc>https://eqlsource.com/named/initiate-sirlis.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/innoruuk.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/irak-altil.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/irslak-the-wretched.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/jaeil-the-insane.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/jaeil-the-wretched.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -591,6 +599,7 @@
   <url><loc>https://eqlsource.com/named/lord-nagafen.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/lorekeeper-roggik.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/lost-crusader.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/maestro-of-rancor.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/magi-rokyl.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/maid-issis.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/mannan-of-the-sabertooth.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -651,6 +660,7 @@
   <url><loc>https://eqlsource.com/named/stonesoul-the-unmoving.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/targin-the-rock.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/teirdal-patrol.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/terror.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/tesch-val-devalnmak.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/tesch-val-kadvem.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/the-blood-artist.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -677,6 +687,7 @@
   <url><loc>https://eqlsource.com/named/verishe-mal-judge.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/warlord-drrig.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/warlord-skarlon.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/wraith-of-a-shissir.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/xicotl.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/zordak-ragefire.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/zordakalicus-ragefire.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>

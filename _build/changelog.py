@@ -4,6 +4,25 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="10 Aug 2026", title="Plane of Fear and Plane of Hate surveyed",
+         body="Surveys 11 and 12, and the first two written knowing that almost everything "
+              "published about them is Project 1999 text. Both carry armour tables by slot and "
+              "class group, and Hate carries the ten minibosses mapped onto the trash each one "
+              "upgrades. <strong>The floor plans are read from the game&rsquo;s own meshes.</strong> "
+              "Hate separates into three levels and the middle one &mdash; ten units deep, 367 "
+              "disconnected pieces &mdash; is the rooftops players cross with levitate to avoid "
+              "ground aggro. No flattened map can show that, and no one else publishes it. "
+              "Four published boss coordinates were checked against our own geometry and all four "
+              "land on drawn floor"),
+    dict(kind="Correction", date="10 Aug 2026", title="The plane boss pages are classic EverQuest",
+         body="Checked against the wiki&rsquo;s revision API rather than its page footers. Every "
+              "Fear and Hate boss page is a Project 1999 import &mdash; Cazic Thule and Innoruuk "
+              "both from <code>imported&gt;CrazyPro</code>. The Cazic Thule strategy recommends "
+              "&ldquo;several dozen melee and a dozen+ healers&rdquo; in a game that caps raids at "
+              "8, and every published respawn timer describes an open-world spawn the 16 June patch "
+              "note removed. One exception: Innoruuk carries 156,000 HP at D2 and 235,000 at D4, "
+              "the only difficulty-tiered plane-boss figure published anywhere. It is a pre-launch "
+              "beta edit with no stated method, so it prints badged and nothing is built on it"),
     dict(kind="Addition", date="10 Aug 2026", title="Every item and every named mob now has its own page",
          body="655 new addresses &mdash; <a href=\"items/index.html\">446 items</a> and "
               "<a href=\"named/index.html\">209 named mobs</a>, each carrying what we hold on it and "

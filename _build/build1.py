@@ -27,11 +27,20 @@ zrows = "\n".join(
       <span class="cell"><em>Map</em>{'yes' if z['slug'] in MAPS else '—'}</span>
       <span class="bar"></span></a>''' for z in Z)
 
-# Home page: ten colour objects rather than ten table rows. The contour rings
-# are anchored to a different corner per survey so the ten cards do not read as
-# one texture repeated — each looks like a different piece of the same map.
+# Home page: colour objects rather than table rows. The contour rings are
+# anchored to a different corner per survey so the cards do not read as one
+# texture repeated — each looks like a different piece of the same map.
+#
+# The list is ten long because the site had ten zones, and it was indexed
+# directly: the eleventh survey crashed the home page build. It cycles now, so
+# the eleventh reuses the first corner rather than stopping the build. Adding a
+# zone is meant to need no layout change, and this was the one place it did.
 _CORNERS = [("86%","118%"),("14%","112%"),("92%","104%"),("8%","120%"),("78%","110%"),
             ("20%","104%"),("94%","116%"),("10%","106%"),("70%","120%"),("30%","110%")]
+
+
+def corner(i):
+    return _CORNERS[i % len(_CORNERS)]
 
 def _gate(z):
     lv = z["verify_level"]
@@ -41,7 +50,7 @@ def _gate(z):
 
 plates = "\n".join(
   f'''    <a class="plate contour" href="dungeons/{z['slug']}.html"
-       style="--c:{z['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+       style="--c:{z['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
       <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
       <span class="num">{z['plate']:02d}</span>
       <h3 class="pt">{z['title']}</h3>
@@ -173,7 +182,7 @@ mapcards = "\n".join(
 # page rather than reproducing it.
 dplates = "\n".join(
   f'''      <a class="plate contour" href="{z['slug']}.html"
-         style="--c:{z['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+         style="--c:{z['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
         <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
         <span class="num">{z['plate']:02d}</span>
         <h3 class="pt">{z['title']}</h3>
@@ -236,7 +245,7 @@ else:
 
 mapcards = "\n".join(
   f'''      <a class="door contour" href="{s}-map.html"
-         style="--c:{BYS[s]['accent']};--cx:{_CORNERS[i][0]};--cy:{_CORNERS[i][1]}">
+         style="--c:{BYS[s]['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
         <span class="dq">Navigation map</span>
         <h3 class="dt">{BYS[s]['title']}</h3>
         <p class="dd">The companion you keep open while you are in the zone. Plotted routes, numbered

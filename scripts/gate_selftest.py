@@ -27,15 +27,24 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 
+_IX = json.load(open("assets/index-data.json", encoding="utf-8"))
+N_ITEMS, N_NAMED = len(_IX["items"]), len(_IX["named"])
+
+
 def check():
     r = subprocess.run([sys.executable, "scripts/check.py"], capture_output=True, text=True)
     return r.returncode, r.stdout
 
 
 CASES = [
-    ("count contradiction — 208 named against 209 in the data",
+    # The counts are read from the data, not typed, because this file typed them
+    # once and the case silently became a no-op the next time a zone was added —
+    # reported as TEST BROKEN rather than caught, which is the good failure, but
+    # it is still the same fault the gate exists to prevent.
+    ("count contradiction — one fewer named than the data holds",
      "public/tools/index.html",
-     lambda t: t.replace("452 items, 209 named", "452 items, 208 named")),
+     lambda t: t.replace(f"{N_ITEMS} items, {N_NAMED} named",
+                         f"{N_ITEMS} items, {N_NAMED - 1} named")),
 
     ("verification count off the ledger",
      "public/index.html",
