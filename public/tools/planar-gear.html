@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Planar gear targets — EQL Source</title>
+<meta name="description" content="Pick your three classes and target the best planar armour available to you across all three class sets plus Lustrous Russet and Midnight Clad. 116 pieces, every stat from the item's own record.">
+<meta property="og:title" content="Planar gear targets — EQL Source">
+<meta property="og:description" content="Pick your three classes and target the best planar armour available to you across all three class sets plus Lustrous Russet and Midnight Clad. 116 pieces, every stat from the item's own record.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Planar gear targets — EQL Source">
+<meta name="twitter:description" content="Pick your three classes and target the best planar armour available to you across all three class sets plus Lustrous Russet and Midnight Clad. 116 pieces, every stat from the item's own record.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
+<link rel="canonical" href="https://eqlsource.com/tools/planar-gear">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.pg-step{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 10px}
+.pg-classes{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
+.pg-c{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.03em;padding:7px 13px;border:1px solid var(--rule);
+  color:var(--mut);transition:all .12s;background:transparent}
+.pg-c:hover{color:var(--bone);border-color:var(--rule2)}
+.pg-c[aria-pressed="true"]{border-color:var(--bone);color:var(--ground);background:var(--bone)}
+.pg-c[disabled]{opacity:.32;cursor:not-allowed}
+.pg-presets{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 6px}
+.pg-p{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;padding:8px 12px;border:1px solid var(--rule);color:var(--mut)}
+.pg-p[aria-pressed="true"]{border-color:var(--instr);color:var(--instr);
+  background:color-mix(in srgb, var(--instr) 12%, transparent)}
+.pg-slot{border-top:1px solid var(--rule);padding:20px 0 6px}
+.pg-slot h3{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.03em;margin:0 0 3px;color:var(--bone)}
+.pg-sub{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--faint);
+  letter-spacing:.09em;text-transform:uppercase;margin:0 0 12px}
+.pg-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,268px),1fr));gap:8px}
+.pg-card{border:1px solid var(--rule);background:var(--panel);padding:12px 14px;
+  text-align:left;display:grid;gap:7px;transition:border-color .12s,background .12s}
+.pg-card:hover{border-color:var(--rule2)}
+.pg-card[aria-pressed="true"]{border-color:var(--ok);
+  background:color-mix(in srgb, var(--ok) 9%, var(--panel))}
+.pg-nm{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;
+  color:var(--bone);line-height:1.15;display:flex;justify-content:space-between;gap:10px}
+.pg-score{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--instr);flex:0 0 auto}
+.pg-card[aria-pressed="true"] .pg-score{color:var(--ok)}
+.pg-set{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint)}
+.pg-stats{display:flex;flex-wrap:wrap;gap:3px 8px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;color:var(--dim)}
+.pg-stats b{color:var(--bone);font-weight:500}
+.pg-fx{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--warn)}
+.pg-none{border:1px dashed var(--rule);padding:16px;color:var(--mut);font-size:14px}
+.pg-lock{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ok)}
+.pg-summary{position:sticky;bottom:0;background:rgba(14,19,21,.97);backdrop-filter:blur(10px);
+  border-top:1px solid var(--rule2);padding:13px 0;margin-top:26px;z-index:20}
+.pg-tot{display:flex;flex-wrap:wrap;gap:5px 16px;font-family:"IBM Plex Mono",monospace;
+  font-size:12px;color:var(--dim)}
+.pg-tot b{color:var(--bone)}
+.pg-warn{border-left:3px solid var(--warn);padding:3px 0 3px 14px;margin:14px 0;
+  color:var(--mut);font-size:13.5px;line-height:1.6}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../learn/still-true.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+<div class="shell">
+  <div class="page-head">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
+      <a href="index.html">Tools</a> &nbsp;/&nbsp; Planar gear</p>
+    <h1>Planar gear targets</h1>
+    <p class="lede">Your trio can wear planar armour from all three of its classes, plus the two
+      shared sets. That is five sets competing for every slot. Pick your three classes, choose
+      what you are optimising for, and lock a target for each slot.
+      <strong>116 pieces</strong> across
+      <strong>18 sets</strong>, every figure from the item&rsquo;s own record.</p>
+  </div>
+</div>
+
+<div class="shell">
+  <p class="pg-step">Step 1 &mdash; your three classes</p>
+  <div class="pg-classes" id="cls"></div>
+  <p class="pg-sub" id="clshint">Pick three.</p>
+
+  <p class="pg-step" style="margin-top:22px">Step 2 &mdash; what are you optimising for</p>
+  <div class="pg-presets" id="presets"></div>
+  <p class="pg-sub" id="phint"></p>
+</div>
+
+<div class="shell" id="slots"></div>
+
+<div class="pg-summary"><div class="shell">
+  <div class="pg-tot" id="tot"><span>Pick three classes to begin.</span></div>
+</div></div>
+
+<div class="shell">
+  <div class="note" style="margin-top:26px"><strong>Where these numbers come from.</strong>
+    Every stat is read from that item&rsquo;s own page on eqlwiki, mined 11 August 2026. A blank
+    on the source is shown as nothing here, never as a zero.
+    <strong>These are classic-era item records</strong> &mdash; they are the best available and
+    they have not been confirmed against Legends piece by piece. Where a set looks short, it is
+    short on the wiki: <span id="thin"></span></div>
+  <div class="note"><strong>One assumption, stated.</strong> The tool offers you any piece one of
+    your three classes can wear. That follows how multiclass works elsewhere in the game, but we
+    have not confirmed it for equipment specifically. If you find a piece your trio cannot equip,
+    <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">tell
+    us</a> and we will correct it.</div>
+  <div class="note"><strong>Wrist counts twice.</strong> You wear two, so the tool lets you lock
+    two. The planar sets carry no rings or earrings, so those slots are not offered rather than
+    guessed at.</div>
+</div>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All surveys</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../items/index.html">Every item</a></li>
+        <li><a href="../named/index.html">Every named mob</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/character.html">Character sheet</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+        <li><a href="../tools/planar-gear.html">Planar gear targets</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/still-true.html">Is it still true?</a></li>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../archive/index.html">The original plates</a></li>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+<script>window.__PG__={"items":[{"n":"Lustrous Russet Breastplate","s":"CHEST","ac":26,"str":15,"sta":15,"dex":15,"w":7.5,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM","BER"],"set":"Lustrous Russet","cls":null},{"n":"Lustrous Russet Helm","s":"HEAD","ac":15,"int":5,"cha":5,"w":4.5,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM"],"set":"Lustrous Russet","cls":null},{"n":"Lustrous Russet Boots","s":"FEET","ac":15,"agi":5,"wis":5,"int":5,"svdisease":15,"svpoison":15,"w":4.9,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM"],"set":"Lustrous Russet","cls":null},{"n":"Lustrous Russet Bracer","s":"WRIST","ac":9,"str":3,"dex":3,"svmagic":7,"svfire":7,"svcold":7,"w":3.0,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM","BER"],"set":"Lustrous Russet","cls":null},{"n":"Lustrous Russet Gauntlets","s":"HANDS","ac":12,"dex":5,"hp":50,"w":3.8,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM"],"set":"Lustrous Russet","cls":null},{"n":"Lustrous Russet Greaves","s":"LEGS","ac":15,"str":5,"sta":5,"agi":5,"w":5.6,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM"],"set":"Lustrous Russet","cls":null},{"n":"Lustrous Russet Vambraces","s":"ARMS","ac":15,"str":9,"dex":5,"w":4.9,"c":["WAR","CLR","PAL","RNG","SHD","BRD","ROG","SHM"],"set":"Lustrous Russet","cls":null},{"n":"Midnight Clad Straps","s":"CHEST","ac":10,"str":13,"sta":13,"wis":13,"int":13,"w":0.5,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Midnight Clad Headband","s":"HEAD","ac":2,"sta":10,"wis":10,"int":10,"w":0.1,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Midnight Clad Footwraps","s":"FEET","ac":6,"str":5,"sta":9,"svmagic":8,"svfire":8,"svcold":8,"w":0.1,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Midnight Clad Wristbands","s":"WRIST","ac":4,"sta":5,"dex":5,"wis":5,"w":0.1,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Midnight Clad Fistwraps","s":"HANDS","ac":5,"str":5,"dex":9,"int":5,"svmagic":7,"w":0.1,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Midnight Clad Leggings","s":"LEGS","ac":5,"sta":9,"wis":5,"int":5,"svfire":8,"w":0.1,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Midnight Clad Armbands","s":"ARMS","ac":5,"str":5,"sta":9,"int":5,"svcold":7,"svdisease":5,"svpoison":5,"w":0.1,"c":["DRU","MNK","ROG","NEC","WIZ","MAG","ENC","BST"],"set":"Midnight Clad","cls":null},{"n":"Ethereal Mist Chestplate","s":"CHEST","ac":28,"sta":15,"wis":15,"hp":25,"mana":25,"w":7.5,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Ethereal Mist Helm","s":"HEAD","ac":16,"str":5,"wis":5,"svdisease":13,"w":4.5,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Ethereal Mist Boots","s":"FEET","ac":15,"agi":5,"int":5,"svcold":7,"w":4.9,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Ethereal Mist Bracers","s":"WRIST","ac":9,"dex":9,"cha":9,"mana":20,"w":3.0,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Ethereal Mist Gauntlets","s":"HANDS","ac":12,"dex":5,"int":5,"svfire":7,"w":3.8,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Ethereal Mist Greaves","s":"LEGS","ac":15,"str":5,"agi":5,"wis":9,"svpoison":7,"w":5.6,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Ethereal Mist Vambraces","s":"ARMS","ac":15,"str":9,"svmagic":7,"w":4.9,"c":["CLR"],"set":"Ethereal Mist","cls":"CLR"},{"n":"Vermiculated Tunic","s":"CHEST","ac":15,"str":9,"sta":9,"wis":13,"hp":35,"svpoison":7,"w":9.0,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Vermiculated Crown","s":"HEAD","ac":7,"int":9,"cha":13,"mana":15,"w":6.0,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Vermiculated Boots","s":"FEET","ac":6,"str":5,"agi":13,"hp":15,"w":6.5,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Vermiculated Bracelet","s":"WRIST","ac":5,"wis":9,"mana":15,"svfire":7,"svcold":7,"w":3.5,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Vermiculated Gloves","s":"HANDS","ac":6,"dex":13,"int":5,"svdisease":7,"w":5.5,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Vermiculated Leggings","s":"LEGS","ac":8,"str":3,"wis":5,"svpoison":7,"w":7.0,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Vermiculated Armplates","s":"ARMS","ac":7,"agi":5,"dex":5,"svmagic":7,"w":5.0,"c":["DRU"],"set":"Vermiculated","cls":"DRU"},{"n":"Rune Etched Chestplate","s":"CHEST","ac":26,"sta":9,"wis":13,"mana":25,"w":7.5,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Rune Etched Helm","s":"HEAD","ac":14,"dex":5,"int":5,"svpoison":7,"w":4.5,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Rune Etched Boots","s":"FEET","ac":14,"agi":9,"hp":20,"svcold":7,"w":4.9,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Rune Etched Bracer","s":"WRIST","ac":9,"wis":5,"int":5,"cha":5,"w":3.0,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Rune Etched Gauntlets","s":"HANDS","ac":11,"str":5,"dex":5,"mana":20,"svfire":7,"w":3.8,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Rune Etched Greaves","s":"LEGS","ac":14,"str":5,"wis":5,"svdisease":7,"w":5.6,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Rune Etched Vambraces","s":"ARMS","ac":13,"str":5,"dex":3,"svmagic":7,"w":4.9,"c":["SHM"],"set":"Rune Etched","cls":"SHM"},{"n":"Shiverback-hide Jerkin","s":"CHEST","ac":11,"str":13,"agi":9,"dex":9,"w":0.5,"c":["MNK"],"set":"Shiverback-hide","cls":"MNK"},{"n":"Shiverback-hide Boots","s":"FEET","ac":6,"str":5,"sta":9,"agi":9,"w":0.1,"c":["MNK"],"set":"Shiverback-hide","cls":"MNK"},{"n":"Shiverback-hide Wristbands","s":"WRIST","ac":4,"sta":5,"agi":5,"dex":5,"svdisease":5,"svpoison":5,"w":0.1,"c":["MNK"],"set":"Shiverback-hide","cls":"MNK"},{"n":"Shiverback-hide Gloves","s":"HANDS","ac":5,"str":5,"dex":9,"int":5,"svmagic":7,"fx":"Serpent Sight","w":0.1,"c":["MNK"],"set":"Shiverback-hide","cls":"MNK"},{"n":"Shiverback-hide Leggings","s":"LEGS","ac":5,"agi":5,"wis":5,"svfire":7,"w":0.1,"c":["MNK"],"set":"Shiverback-hide","cls":"MNK"},{"n":"Shiverback-hide Armbands","s":"ARMS","ac":5,"str":5,"sta":9,"cha":5,"svcold":7,"w":0.1,"c":["MNK"],"set":"Shiverback-hide","cls":"MNK"},{"n":"Anthemion Wristguard","s":"WRIST","ac":4,"agi":5,"wis":5,"svdisease":5,"svpoison":5,"w":0.2,"c":["BST"],"set":"Anthemion","cls":"BST"},{"n":"Anthemion Armbands","s":"WRIST","ac":5,"str":5,"sta":4,"dex":9,"svcold":7,"w":0.2,"c":["BST"],"set":"Anthemion","cls":"BST"},{"n":"Thorny Vine Chestplate","s":"CHEST","ac":26,"str":9,"wis":13,"hp":50,"w":7.5,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Thorny Vine Helm","s":"HEAD","ac":14,"wis":5,"cha":9,"mana":10,"svcold":7,"w":4.5,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Thorny Vine Boots","s":"FEET","ac":14,"str":5,"sta":5,"agi":9,"svpoison":7,"w":4.9,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Thorny Vine Bracer","s":"WRIST","ac":9,"sta":5,"agi":5,"wis":5,"mana":10,"w":3.0,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Thorny Vine Gauntlets","s":"HANDS","ac":11,"str":9,"dex":9,"svfire":7,"w":3.8,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Thorny Vine Greaves","s":"LEGS","ac":14,"agi":9,"wis":5,"mana":15,"svdisease":7,"w":5.6,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Thorny Vine Vambraces","s":"ARMS","ac":13,"dex":9,"int":9,"svmagic":7,"w":4.9,"c":["RNG"],"set":"Thorny Vine","cls":"RNG"},{"n":"Valorium Chestplate","s":"CHEST","ac":30,"str":13,"sta":9,"wis":9,"w":7.5,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Valorium Helmet","s":"HEAD","ac":17,"wis":7,"mana":15,"svmagic":13,"w":4.5,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Valorium Boots","s":"FEET","ac":17,"sta":5,"int":5,"cha":9,"w":4.9,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Valorium Bracers","s":"WRIST","ac":10,"str":5,"dex":5,"mana":10,"svpoison":5,"w":3.0,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Valorium Gauntlets","s":"HANDS","ac":13,"str":5,"sta":5,"wis":5,"svdisease":10,"w":3.8,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Valorium Greaves","s":"LEGS","ac":17,"agi":9,"int":5,"svfire":10,"w":5.6,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Valorium Vambraces","s":"ARMS","ac":16,"str":5,"dex":9,"svcold":10,"w":4.9,"c":["PAL"],"set":"Valorium","cls":"PAL"},{"n":"Shadow Rage Sleeves","s":"ARMS","ac":10,"str":3,"sta":5,"dex":5,"w":3.9,"c":["BER"],"set":"Shadow Rage","cls":"BER"},{"n":"Shadow Rage Wristguard","s":"WRIST","ac":6,"str":4,"agi":4,"dex":4,"svfire":5,"svcold":5,"w":2.0,"c":["BER"],"set":"Shadow Rage","cls":"BER"},{"n":"Shadow Rage Leggings","s":"LEGS","ac":12,"agi":6,"wis":6,"svfire":2,"svdisease":8,"w":4.5,"c":["BER"],"set":"Shadow Rage","cls":"BER"},{"n":"Insidious Robe","s":"CHEST","ac":11,"sta":10,"dex":8,"int":13,"cha":3,"mana":35,"w":1.0,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Insidious Halo","s":"HEAD","ac":5,"int":7,"cha":20,"hp":10,"mana":10,"svmagic":10,"w":0.3,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Insidious Slippers","s":"FEET","ac":4,"agi":10,"cha":3,"hp":15,"svpoison":10,"w":0.7,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Insidious Manacle","s":"WRIST","ac":3,"str":3,"dex":3,"cha":2,"mana":15,"w":0.3,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Insidious Gloves","s":"HANDS","ac":4,"dex":10,"int":8,"cha":2,"mana":5,"svdisease":10,"w":0.4,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Insidious Pantaloons","s":"LEGS","ac":5,"str":3,"cha":3,"hp":15,"svcold":10,"w":0.7,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Insidious Sleeves","s":"ARMS","ac":4,"int":7,"cha":3,"hp":10,"svfire":10,"w":0.4,"c":["ENC"],"set":"Insidious","cls":"ENC"},{"n":"Apothic Robe","s":"CHEST","ac":11,"sta":12,"dex":5,"int":14,"mana":40,"w":1.0,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Apothic Crown","s":"HEAD","ac":5,"int":9,"cha":10,"hp":10,"mana":10,"svmagic":10,"w":0.3,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Apothic Boots","s":"FEET","ac":4,"agi":13,"hp":18,"svpoison":10,"w":0.7,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Apothic Warband","s":"WRIST","ac":3,"str":4,"dex":4,"mana":20,"w":0.3,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Apothic Gloves","s":"HANDS","ac":4,"dex":13,"int":7,"mana":12,"svdisease":10,"w":0.4,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Apothic Kilt","s":"LEGS","ac":5,"str":5,"hp":25,"svcold":10,"w":0.5,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Apothic Sleeves","s":"ARMS","ac":4,"int":7,"hp":18,"svfire":10,"w":0.4,"c":["MAG"],"set":"Apothic","cls":"MAG"},{"n":"Blighted Robe","s":"CHEST","ac":11,"sta":10,"dex":10,"int":13,"mana":40,"w":1.0,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Blighted Skullcap","s":"HEAD","ac":5,"wis":7,"int":8,"hp":10,"mana":20,"svmagic":10,"w":0.3,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Blighted Boots","s":"FEET","ac":4,"agi":14,"hp":5,"svpoison":10,"w":0.7,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Blighted Armband","s":"WRIST","ac":3,"str":4,"dex":5,"mana":15,"w":0.3,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Blighted Gloves","s":"HANDS","ac":4,"dex":10,"int":8,"mana":12,"svdisease":10,"w":0.4,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Blighted Trousers","s":"LEGS","ac":5,"str":3,"dex":4,"hp":10,"svcold":10,"w":0.7,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Blighted Sleeves","s":"ARMS","ac":5,"int":7,"hp":15,"svfire":10,"w":0.4,"c":["NEC"],"set":"Blighted","cls":"NEC"},{"n":"Carmine Robe","s":"CHEST","ac":11,"sta":14,"dex":7,"int":14,"mana":30,"w":1.0,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Carmine Turban","s":"HEAD","ac":5,"sta":5,"int":7,"cha":10,"hp":10,"mana":10,"svmagic":10,"w":0.3,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Carmine Boots","s":"FEET","ac":4,"agi":14,"hp":10,"svpoison":10,"w":0.7,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Carmine Trinket","s":"WRIST","ac":3,"str":2,"dex":6,"mana":15,"w":0.3,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Carmine Gloves","s":"HANDS","ac":4,"dex":12,"int":7,"mana":15,"svdisease":10,"w":0.4,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Carmine Pants","s":"LEGS","ac":5,"str":3,"sta":3,"hp":15,"svcold":10,"w":0.7,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Carmine Sleeves","s":"ARMS","ac":4,"int":7,"hp":20,"svfire":10,"w":0.4,"c":["WIZ"],"set":"Carmine","cls":"WIZ"},{"n":"Imbrued Platemail Breastplate","s":"CHEST","ac":29,"str":9,"dex":13,"cha":9,"svdisease":10,"w":7.5,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Imbrued Platemail Helm","s":"HEAD","ac":16,"wis":9,"cha":9,"svfire":10,"w":4.5,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Imbrued Platemail Boots","s":"FEET","ac":16,"str":5,"sta":9,"svcold":10,"w":4.9,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Imbrued Platemail Bracer","s":"WRIST","ac":11,"dex":3,"int":3,"hp":10,"w":3.0,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Imbrued Platemail Gauntlets","s":"HANDS","ac":14,"dex":5,"wis":5,"hp":10,"w":3.8,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Imbrued Platemail Greaves","s":"LEGS","ac":16,"str":5,"sta":9,"agi":9,"svmagic":10,"w":5.6,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Imbrued Platemail Vambraces","s":"ARMS","ac":16,"int":9,"svpoison":10,"w":4.9,"c":["BRD"],"set":"Imbrued Platemail","cls":"BRD"},{"n":"Umbral Platemail Breastplate","s":"CHEST","ac":30,"str":13,"sta":9,"dex":9,"w":7.5,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Umbral Platemail Helm","s":"HEAD","ac":17,"int":9,"hp":35,"svmagic":10,"w":4.5,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Umbral Platemail Boots","s":"FEET","ac":17,"str":5,"sta":5,"svdisease":13,"w":4.9,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Umbral Platemail Bracer","s":"WRIST","ac":10,"dex":5,"int":3,"w":3.0,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Umbral Platemail Gauntlets","s":"HANDS","ac":13,"str":5,"int":5,"mana":35,"svcold":10,"w":3.8,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Umbral Platemail Greaves","s":"LEGS","ac":17,"agi":5,"wis":5,"svpoison":13,"w":5.6,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Umbral Platemail Vambraces","s":"ARMS","ac":16,"str":5,"dex":5,"svfire":10,"w":4.9,"c":["SHD"],"set":"Umbral Platemail","cls":"SHD"},{"n":"Woven Shadow Chestplate","s":"CHEST","ac":26,"str":13,"agi":13,"dex":13,"w":7.5,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Woven Shadow Helm","s":"HEAD","ac":14,"str":5,"int":9,"svdisease":10,"w":4.5,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Woven Shadow Boots","s":"FEET","ac":14,"str":5,"agi":9,"w":4.9,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Woven Shadow Bracer","s":"WRIST","ac":9,"str":3,"agi":3,"dex":3,"svfire":5,"svcold":5,"w":3.0,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Woven Shadow Gauntlets","s":"HANDS","ac":11,"str":5,"dex":5,"svmagic":10,"w":3.8,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Woven Shadow Greaves","s":"LEGS","ac":14,"agi":5,"wis":5,"svdisease":10,"w":5.6,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Woven Shadow Vambraces","s":"ARMS","ac":13,"sta":5,"dex":5,"w":4.9,"c":["ROG"],"set":"Woven Shadow","cls":"ROG"},{"n":"Indicolite Breastplate","s":"CHEST","ac":35,"str":15,"sta":15,"dex":15,"w":7.5,"c":["WAR"],"set":"Indicolite","cls":"WAR"},{"n":"Indicolite Helm","s":"HEAD","ac":20,"int":5,"cha":5,"w":4.5,"c":["WAR"],"set":"Indicolite","cls":"WAR"},{"n":"Indicolite Boots","s":"FEET","ac":20,"agi":5,"wis":5,"int":5,"svdisease":15,"svpoison":15,"w":4.9,"c":["WAR"],"set":"Indicolite","cls":"WAR"},{"n":"Indicolite Bracer","s":"WRIST","ac":12,"str":3,"dex":3,"svmagic":7,"svfire":7,"svcold":7,"w":3.0,"c":["WAR"],"set":"Indicolite","cls":"WAR"},{"n":"Indicolite Gauntlets","s":"HANDS","ac":16,"sta":5,"dex":5,"hp":50,"w":3.8,"c":["WAR"],"set":"Indicolite","cls":"WAR"},{"n":"Indicolite Greaves","s":"LEGS","ac":20,"str":5,"sta":5,"agi":5,"w":5.6,"c":["WAR"],"set":"Indicolite","cls":"WAR"},{"n":"Indicolite Vambraces","s":"ARMS","ac":20,"str":9,"dex":5,"w":4.9,"c":["WAR"],"set":"Indicolite","cls":"WAR"}],"slots":["HEAD","CHEST","ARMS","WRIST","HANDS","LEGS","FEET"],"double":{"WRIST":2},"classes":["WAR","CLR","PAL","RNG","SHD","DRU","MNK","BRD","ROG","SHM","NEC","WIZ","MAG","ENC","BST","BER"],"classNames":{"WAR":"Warrior","CLR":"Cleric","PAL":"Paladin","RNG":"Ranger","SHD":"Shadow Knight","DRU":"Druid","MNK":"Monk","BRD":"Bard","ROG":"Rogue","SHM":"Shaman","NEC":"Necromancer","WIZ":"Wizard","MAG":"Magician","ENC":"Enchanter","BST":"Beastlord","BER":"Berserker"},"shared":["Lustrous Russet","Midnight Clad"],"setClass":{"Lustrous Russet":null,"Midnight Clad":null,"Ethereal Mist":"CLR","Vermiculated":"DRU","Rune Etched":"SHM","Anthemion":"BST","Thorny Vine":"RNG","Valorium":"PAL","Shadow Rage":"BER","Shiverback-hide":"MNK","Insidious":"ENC","Apothic":"MAG","Blighted":"NEC","Carmine":"WIZ","Imbrued Platemail":"BRD","Umbral Platemail":"SHD","Woven Shadow":"ROG","Indicolite":"WAR"},"thin":{"Shiverback-hide":6,"Anthemion":2,"Shadow Rage":3}};</script><script>
+(function(){
+  var D=window.__PG__, $=function(s){return document.querySelector(s)};
+  var KEY="eqlplanar:autosave";
+  var trio=[], preset="ac", picks={};
+
+  var PRESETS=[
+    {k:"ac",   n:"Highest AC",        h:"Straight armour class. What most people mean by best.",
+     f:function(i){return i.ac||0}},
+    {k:"cast", n:"Mana and casting",  h:"Mana plus INT plus WIS, for a trio that spends its time casting.",
+     f:function(i){return (i.mana||0)+(i.int||0)+(i.wis||0)}},
+    {k:"all",  n:"Most total stats",  h:"Every attribute added up, plus hit points. A generalist.",
+     f:function(i){return (i.str||0)+(i.sta||0)+(i.agi||0)+(i.dex||0)+(i.wis||0)+(i.int||0)+(i.cha||0)+(i.hp||0)}},
+    {k:"fx",   n:"Clicky effects first", h:"Anything with a named effect wins, then AC breaks the tie.",
+     f:function(i){return (i.fx?10000:0)+(i.ac||0)}},
+    {k:"save", n:"Resistances",       h:"All five saves added together.",
+     f:function(i){return (i.svmagic||0)+(i.svfire||0)+(i.svcold||0)+(i.svdisease||0)+(i.svpoison||0)}}
+  ];
+  var scorer=function(){for(var i=0;i<PRESETS.length;i++)if(PRESETS[i].k===preset)return PRESETS[i];return PRESETS[0]};
+
+  // ---- state travels in the URL, same as every other tool here -------------
+  function save(){
+    var s=trio.join(",")+"|"+preset+"|"+Object.keys(picks).map(function(k){
+      return k+"="+picks[k].join("~")}).join(";");
+    try{localStorage.setItem(KEY,s)}catch(e){}
+    history.replaceState(null,"","#"+encodeURIComponent(s));
+  }
+  function load(s){
+    if(!s)return false;
+    var p=s.split("|"); if(p.length<2)return false;
+    trio=p[0]?p[0].split(","):[]; preset=p[1]||"ac"; picks={};
+    (p[2]||"").split(";").forEach(function(chunk){
+      if(!chunk)return; var kv=chunk.split("="); if(kv.length<2)return;
+      picks[kv[0]]=kv[1].split("~").filter(Boolean);
+    });
+    return true;
+  }
+
+  function wearable(it){
+    if(!trio.length)return false;
+    for(var i=0;i<it.c.length;i++) if(trio.indexOf(it.c[i])>-1) return true;
+    return false;
+  }
+  function candidates(slot){
+    return D.items.filter(function(i){return i.s===slot && wearable(i)});
+  }
+  var STAT=[["ac","AC"],["str","STR"],["sta","STA"],["agi","AGI"],["dex","DEX"],
+            ["wis","WIS"],["int","INT"],["cha","CHA"],["hp","HP"],["mana","MANA"],
+            ["svmagic","MR"],["svfire","FR"],["svcold","CR"],["svdisease","DR"],["svpoison","PR"]];
+
+  function statLine(i){
+    return STAT.filter(function(s){return i[s[0]]!=null})
+      .map(function(s){return '<span>'+s[1]+' <b>'+i[s[0]]+'</b></span>'}).join("");
+  }
+
+  function drawClasses(){
+    $("#cls").innerHTML=D.classes.map(function(c){
+      var on=trio.indexOf(c)>-1;
+      var full=trio.length>=3 && !on;
+      return '<button class="pg-c" data-c="'+c+'" aria-pressed="'+on+'"'+(full?' disabled':'')+
+             ' title="'+D.classNames[c]+'">'+c+'</button>';
+    }).join("");
+    $("#clshint").textContent = trio.length<3
+      ? "Pick "+(3-trio.length)+" more."
+      : trio.map(function(c){return D.classNames[c]}).join(" · ");
+  }
+  function drawPresets(){
+    $("#presets").innerHTML=PRESETS.map(function(p){
+      return '<button class="pg-p" data-p="'+p.k+'" aria-pressed="'+(p.k===preset)+'">'+p.n+'</button>'
+    }).join("");
+    $("#phint").textContent=scorer().h;
+  }
+
+  function drawSlots(){
+    if(trio.length<3){ $("#slots").innerHTML=""; return; }
+    var sc=scorer();
+    $("#slots").innerHTML=D.slots.map(function(slot){
+      var n=D.double[slot]||1;
+      var list=candidates(slot).slice().sort(function(a,b){
+        var d=sc.f(b)-sc.f(a); return d||a.n.localeCompare(b.n)});
+      var chosen=picks[slot]||[];
+      var body = list.length ? '<div class="pg-cards">'+list.map(function(i){
+          var on=chosen.indexOf(i.n)>-1;
+          return '<button class="pg-card" data-slot="'+slot+'" data-n="'+i.n.replace(/"/g,"&quot;")+'"'+
+                 ' aria-pressed="'+on+'">'+
+                 '<span class="pg-nm">'+i.n+'<span class="pg-score">'+sc.f(i)+'</span></span>'+
+                 '<span class="pg-set">'+i.set+(i.cls?" · "+i.cls:" · shared")+'</span>'+
+                 '<span class="pg-stats">'+statLine(i)+'</span>'+
+                 (i.fx?'<span class="pg-fx">Effect: '+i.fx+'</span>':'')+
+                 (on?'<span class="pg-lock">Locked as your target</span>':'')+
+                 '</button>'}).join("")+'</div>'
+        : '<div class="pg-none">Nothing recorded for this slot that your trio can wear. That is a '+
+          'gap in the source, not an empty slot in the game.</div>';
+      return '<section class="pg-slot"><h3>'+slot+(n>1?' <span class="pg-score">wear '+n+'</span>':'')+'</h3>'+
+             '<p class="pg-sub">'+list.length+' available'+(n>1?' · lock up to '+n:'')+
+             (chosen.length?' · '+chosen.length+' locked':'')+'</p>'+body+'</section>';
+    }).join("");
+  }
+
+  function drawTotals(){
+    var tot={}, locked=0;
+    D.slots.forEach(function(s){
+      (picks[s]||[]).forEach(function(nm){
+        var it=D.items.filter(function(i){return i.n===nm&&i.s===s})[0];
+        if(!it)return; locked++;
+        STAT.forEach(function(st){ if(it[st[0]]!=null) tot[st[0]]=(tot[st[0]]||0)+it[st[0]] });
+      });
+    });
+    var slotsTotal=D.slots.reduce(function(a,s){return a+(D.double[s]||1)},0);
+    if(!locked){ $("#tot").innerHTML='<span>'+(trio.length<3?'Pick three classes to begin.'
+      :'Nothing locked yet. Click a card to set it as your target.')+'</span>'; return; }
+    $("#tot").innerHTML='<span><b>'+locked+'</b> of '+slotsTotal+' targets locked</span>'+
+      STAT.filter(function(s){return tot[s[0]]}).map(function(s){
+        return '<span>'+s[1]+' <b>'+tot[s[0]]+'</b></span>'}).join("");
+  }
+
+  function redraw(){ drawClasses(); drawPresets(); drawSlots(); drawTotals(); save(); }
+
+  document.addEventListener("click",function(e){
+    var c=e.target.closest("[data-c]");
+    if(c && !c.disabled){
+      var k=c.dataset.c, at=trio.indexOf(k);
+      if(at>-1) trio.splice(at,1); else if(trio.length<3) trio.push(k);
+      // a piece locked for a class you just dropped is no longer yours to want
+      Object.keys(picks).forEach(function(s){
+        picks[s]=picks[s].filter(function(nm){
+          var it=D.items.filter(function(i){return i.n===nm})[0];
+          return it && wearable(it)});
+        if(!picks[s].length) delete picks[s];
+      });
+      redraw(); return;
+    }
+    var p=e.target.closest("[data-p]");
+    if(p){ preset=p.dataset.p; redraw(); return; }
+    var card=e.target.closest(".pg-card");
+    if(card){
+      var slot=card.dataset.slot, nm=card.dataset.n, max=D.double[slot]||1;
+      var cur=picks[slot]||[], at=cur.indexOf(nm);
+      if(at>-1) cur.splice(at,1);
+      else { cur.push(nm); if(cur.length>max) cur.shift(); }
+      if(cur.length) picks[slot]=cur; else delete picks[slot];
+      redraw();
+    }
+  });
+
+  var thin=Object.keys(D.thin).map(function(s){
+    return s+" has "+D.thin[s]+" piece"+(D.thin[s]===1?"":"s")+" recorded"}).join(", ");
+  $("#thin").textContent = thin ? thin+". Beastlord and Berserker did not exist in classic "+
+    "EverQuest, which is why their sets are the least documented." : "every set is complete.";
+
+  if(!load(decodeURIComponent(location.hash.slice(1)))){
+    try{ load(localStorage.getItem(KEY)) }catch(e){}
+  }
+  redraw();
+})();
+</script>
+</body>
+</html>

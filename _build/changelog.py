@@ -4,6 +4,23 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="11 Aug 2026", title="A planar gear tool, and 116 item records behind it",
+         body="Your trio can wear planar armour from all three of its classes plus the two shared "
+              "sets, so <strong>five sets compete for every slot</strong>. The tool shows that pool, "
+              "ranks it by a named preset &mdash; highest AC, mana and casting, most total stats, "
+              "clicky effects, resistances &mdash; and lets you lock a target per slot, two for "
+              "wrist. <strong>No weights to configure.</strong> Built on 116 pieces mined from the "
+              "item records, with 1,219 blank fields kept blank rather than filled with zeroes. "
+              "The idea is BarakDur&rsquo;s, who did it by hand with an AI first"),
+    dict(kind="Correction", date="11 Aug 2026", title="The planar class-group split is gone",
+         body="Our Fear and Hate surveys divided every drop into two class groups, following the "
+              "imported wiki tables. <strong>A guild loot guide lists them merged</strong> &mdash; "
+              "slot-specific, not group-specific &mdash; and adds that any of those mobs can drop "
+              "the matching Lustrous Russet or Midnight Clad piece. It also moves a turmoil toad "
+              "from Hands to Wrist. Both surveys corrected, credited to Skyfox, and flagged as one "
+              "pre-launch source. <strong>The haunted chest question is now settled:</strong> two "
+              "independent Legends-era accounts seven weeks apart, one post-launch, both say "
+              "Lustrous Russet only, against the imported claim of any planar piece"),
     dict(kind="Addition", date="10 Aug 2026", title="Kedge Keep surveyed",
          body="Survey 13, and the highest experience rate we have recorded &mdash; <strong>ZEM 139, "
               "or 185%</strong>, which the 23 June patch note singles out as deliberate: "
