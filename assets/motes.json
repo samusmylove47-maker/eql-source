@@ -1,0 +1,123 @@
+{
+ "_comment": [
+  "Mote ranks and upgrade costs, from an infographic supplied 11 Aug 2026.",
+  "",
+  "Spell XP is 2^(rank-1). Item XP is the rank itself. Both formulas are",
+  "stated on the source and both reproduce its printed table exactly, which",
+  "is why they are computed here rather than transcribed - a transcription",
+  "can carry a typo, a formula that reproduces ten printed rows cannot.",
+  "",
+  "TIER: 3. The artefact is branded by a creator, not by the developers.",
+  "See _build/build21.py for the full reasoning."
+ ],
+ "motes": [
+  {
+   "rank": 1,
+   "name": "Mote of Infinitesimal Potential",
+   "spell_xp": 1,
+   "item_xp": 1
+  },
+  {
+   "rank": 2,
+   "name": "Mote of Minor Potential",
+   "spell_xp": 2,
+   "item_xp": 2
+  },
+  {
+   "rank": 3,
+   "name": "Mote of Lesser Potential",
+   "spell_xp": 4,
+   "item_xp": 3
+  },
+  {
+   "rank": 4,
+   "name": "Mote of Potential",
+   "spell_xp": 8,
+   "item_xp": 4
+  },
+  {
+   "rank": 5,
+   "name": "Mote of Major Potential",
+   "spell_xp": 16,
+   "item_xp": 5
+  },
+  {
+   "rank": 6,
+   "name": "Mote of Greater Potential",
+   "spell_xp": 32,
+   "item_xp": 6
+  },
+  {
+   "rank": 7,
+   "name": "Mote of Superior Potential",
+   "spell_xp": 64,
+   "item_xp": 7
+  },
+  {
+   "rank": 8,
+   "name": "Mote of Grand Potential",
+   "spell_xp": 128,
+   "item_xp": 8
+  },
+  {
+   "rank": 9,
+   "name": "Mote of Ascendant Potential",
+   "spell_xp": 256,
+   "item_xp": 9
+  },
+  {
+   "rank": 10,
+   "name": "Mote of Infinite Potential",
+   "spell_xp": 512,
+   "item_xp": 10
+  }
+ ],
+ "tier_costs": [
+  {
+   "tier": 1,
+   "xp": 1
+  },
+  {
+   "tier": 2,
+   "xp": 2
+  },
+  {
+   "tier": 3,
+   "xp": 4
+  },
+  {
+   "tier": 4,
+   "xp": 8
+  },
+  {
+   "tier": 5,
+   "xp": 16
+  },
+  {
+   "tier": 6,
+   "xp": 32
+  },
+  {
+   "tier": 7,
+   "xp": 64
+  },
+  {
+   "tier": 8,
+   "xp": 128
+  },
+  {
+   "tier": 9,
+   "xp": 256
+  },
+  {
+   "tier": 10,
+   "xp": 512
+  }
+ ],
+ "rules": {
+  "eligibility": "A mote may be used if its rank equals the item's current tier or is one above it.",
+  "conversion": "Any two motes combine into one of the next rank.",
+  "conversion_cost_to_items": "Item XP is the rank, so 2 x rank 5 (10) becomes 1 x rank 6 (6).",
+  "void_gems": "Three a week from raids. Each advances an item one full rank."
+ }
+}

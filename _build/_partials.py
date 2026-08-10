@@ -31,6 +31,7 @@ LEARN = [
     dict(slug="raid-access", name="How raid access works"),
     dict(slug="difficulty",  name="What difficulty changes"),
     dict(slug="deity",       name="Deity, and the level 11 lock"),
+    dict(slug="motes",      name="Motes, and what they are worth", foot="Motes"),
     dict(slug="reading-the-plans", name="How to read a floor plan",
          foot="Reading a floor plan"),
 ]

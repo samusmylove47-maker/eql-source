@@ -1,63 +1,70 @@
 [
  {
   "boss": "Lady Vox",
-  "zone": "The Permafrost Caverns - Group",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 0,
   "difficulty_label": "Base",
+  "date": "10 Aug 2026",
+  "zone": "The Permafrost Caverns - Group",
   "group_instance": true,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 58497,
+  "damage_high": 60139,
+  "damage_spread_pct": 2.7,
   "seconds": 267,
-  "damage_to_kill": 60139,
-  "self_healed": 90,
-  "self_heal_count": 1,
   "spells": {
    "Reckoning": 9,
    "Immobilize": 1,
    "Armor of the Faithful": 1
   },
   "spells_distinct": 3,
-  "melee_verbs": {
-   "bites": 43
-  },
-  "melee_hits": 43,
-  "melee_min": 78,
-  "melee_max": 213
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "bites"
+  ]
  },
  {
   "boss": "Lord Nagafen",
-  "zone": "Nagafen's Lair - Group 1 (Awakened)",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "date": "10 Aug 2026",
+  "zone": "Nagafen's Lair - Group 1 (Awakened)",
   "group_instance": true,
-  "seconds": 238,
-  "damage_to_kill": 78738,
-  "self_healed": 0,
-  "self_heal_count": 0,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 78738,
+  "damage_high": 78738,
+  "damage_spread_pct": 0.0,
+  "seconds": 239,
   "spells": {},
   "spells_distinct": 0,
-  "melee_verbs": {
-   "pierces": 73,
-   "cleaves": 12
-  },
-  "melee_hits": 85,
-  "melee_min": 87,
-  "melee_max": 228
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "pierces"
+  ]
  },
  {
   "boss": "Master Yael",
-  "zone": "The Ruins of Old Paineel - Group",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 0,
   "difficulty_label": "Base",
+  "date": "10 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group",
   "group_instance": true,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 74915,
+  "damage_high": 75369,
+  "damage_spread_pct": 0.6,
   "seconds": 179,
-  "damage_to_kill": 75369,
-  "self_healed": 0,
-  "self_heal_count": 0,
   "spells": {
    "Immobilize": 5,
    "Draught of Fire": 2,
@@ -68,25 +75,27 @@
    "Elnerick's Entombment of Ice": 1
   },
   "spells_distinct": 7,
-  "melee_verbs": {
-   "pierces": 30
-  },
-  "melee_hits": 30,
-  "melee_min": 72,
-  "melee_max": 189
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "pierces"
+  ]
  },
  {
   "boss": "Master Yael",
-  "zone": "The Ruins of Old Paineel - Group 1 (Awakened)",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "date": "10 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 1 (Awakened)",
   "group_instance": true,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 84824,
+  "damage_high": 85415,
+  "damage_spread_pct": 0.7,
   "seconds": 181,
-  "damage_to_kill": 85415,
-  "self_healed": 0,
-  "self_heal_count": 0,
   "spells": {
    "Immobilize": 4,
    "Draught of Fire": 2,
@@ -96,25 +105,27 @@
    "Markar's Discord": 1
   },
   "spells_distinct": 6,
-  "melee_verbs": {
-   "pierces": 39
-  },
-  "melee_hits": 39,
-  "melee_min": 68,
-  "melee_max": 198
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "pierces"
+  ]
  },
  {
   "boss": "Master Yael",
-  "zone": "The Ruins of Old Paineel - Group 2 (Adaptive)",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "date": "10 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 2 (Adaptive)",
   "group_instance": true,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 139117,
+  "damage_high": 139117,
+  "damage_spread_pct": 0.0,
   "seconds": 316,
-  "damage_to_kill": 139117,
-  "self_healed": 0,
-  "self_heal_count": 0,
   "spells": {
    "Immobilize": 3,
    "Elnerick's Entombment of Ice": 2,
@@ -123,26 +134,28 @@
    "Markar's Clash": 1
   },
   "spells_distinct": 5,
-  "melee_verbs": {
-   "pierces": 61,
-   "strikes": 20
-  },
-  "melee_hits": 81,
-  "melee_min": 69,
-  "melee_max": 207
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "pierces",
+   "strikes"
+  ]
  },
  {
   "boss": "Master Yael",
-  "zone": "The Ruins of Old Paineel - Group 3 (Fused)",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "date": "10 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 3 (Fused)",
   "group_instance": true,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 225552,
+  "damage_high": 227690,
+  "damage_spread_pct": 0.9,
   "seconds": 470,
-  "damage_to_kill": 227690,
-  "self_healed": 227,
-  "self_heal_count": 1,
   "spells": {
    "Immobilize": 11,
    "Shadow Vortex": 7,
@@ -155,25 +168,27 @@
    "Screaming Terror": 1
   },
   "spells_distinct": 9,
-  "melee_verbs": {
-   "pierces": 113
-  },
-  "melee_hits": 113,
-  "melee_min": 72,
-  "melee_max": 224
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "pierces"
+  ]
  },
  {
   "boss": "Master Yael",
-  "zone": "The Ruins of Old Paineel - Group 4 (Refined)",
-  "character": "Avenrae",
-  "date": "10 Aug 2026",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "date": "10 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 4 (Refined)",
   "group_instance": true,
+  "observers": [
+   "Avenrae",
+   "Shara"
+  ],
+  "damage_low": 234249,
+  "damage_high": 242060,
+  "damage_spread_pct": 3.2,
   "seconds": 587,
-  "damage_to_kill": 242060,
-  "self_healed": 220,
-  "self_heal_count": 10,
   "spells": {
    "Shadow Vortex": 7,
    "Immobilize": 5,
@@ -187,12 +202,11 @@
    "Gravity Flux": 1
   },
   "spells_distinct": 10,
-  "melee_verbs": {
-   "pierces": 78,
-   "hits": 104
-  },
-  "melee_hits": 182,
-  "melee_min": 76,
-  "melee_max": 234
+  "self_heal_low": 1,
+  "self_heal_high": 10,
+  "melee_verbs": [
+   "hits",
+   "pierces"
+  ]
  }
 ]

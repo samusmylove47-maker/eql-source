@@ -147,22 +147,68 @@ def fmt(f):
     }
 
 
+def merge(rows):
+    """One fight, however many clients logged it.
+
+    Two characters in the same group produce two logs of the same kill, and
+    publishing both as separate kills would double the sample and claim a
+    precision we do not have. Merged instead - and the disagreement between
+    clients is kept, because it turns out to be the most useful number here. A
+    client records only what it was in range to see, so two parses of one fight
+    differ by however much each missed. That difference is this method's error
+    bar, measured rather than assumed.
+    """
+    g = collections.defaultdict(list)
+    for r in rows:
+        g[(r['boss'], r['difficulty'], r['date'])].append(r)
+    out = []
+    for (boss, diff, date), obs in g.items():
+        dmg = [o['damage_to_kill'] for o in obs]
+        spells = {}
+        for o in obs:
+            for k, v in o['spells'].items():
+                spells[k] = max(spells.get(k, 0), v)
+        heals = [o['self_heal_count'] for o in obs]
+        out.append({
+            "boss": boss, "difficulty": diff,
+            "difficulty_label": obs[0]['difficulty_label'],
+            "date": date, "zone": obs[0]['zone'],
+            "group_instance": obs[0]['group_instance'],
+            "observers": sorted(o['character'] for o in obs),
+            "damage_low": min(dmg), "damage_high": max(dmg),
+            "damage_spread_pct": round((max(dmg) - min(dmg)) / max(dmg) * 100, 1),
+            "seconds": max(o['seconds'] for o in obs),
+            # union across clients: a spell one client missed still happened
+            "spells": dict(sorted(spells.items(), key=lambda kv: -kv[1])),
+            "spells_distinct": len(spells),
+            "self_heal_low": min(heals), "self_heal_high": max(heals),
+            "melee_verbs": sorted({v for o in obs for v in o['melee_verbs']}),
+        })
+    out.sort(key=lambda r: (r['boss'],
+                            r['difficulty'] if r['difficulty'] is not None else -1))
+    return out
+
+
 def main(src):
     logs = sorted(glob.glob(os.path.join(src, '*eqlog*.txt')))
     if not logs:
-        print(f"no logs under {src}")
+        print("no logs under " + src)
         return
-    out = []
-    for p in logs:
-        out += [fmt(f) for f in parse_log(p)]
-    out.sort(key=lambda r: (r['boss'], r['difficulty'] if r['difficulty'] is not None else -1))
+    raw = []
+    for path in logs:
+        raw += [fmt(f) for f in parse_log(path)]
+    out = merge(raw)
     json.dump(out, open('assets/raids-measured.json', 'w', encoding='utf-8',
-                        newline='\n'), indent=1)
-    print(f"raids-measured.json: {len(out)} boss kills from {len(logs)} log(s)")
+                        newline=chr(10)), indent=1)
+    print(f"raids-measured.json: {len(out)} fights from {len(raw)} client "
+          f"observations across {len(logs)} log(s)")
     for r in out:
-        print(f"   D{r['difficulty']} {r['boss']:<18} {r['damage_to_kill']:>9,} dmg  "
-              f"{r['seconds']:>4}s  {r['spells_distinct']:>2} spells  "
-              f"heal {r['self_healed']}")
+        rng = (f"{r['damage_low']:,}" if r['damage_low'] == r['damage_high']
+               else f"{r['damage_low']:,}-{r['damage_high']:,}")
+        print(f"   D{r['difficulty']} {r['boss']:<16} {rng:>19}  {r['seconds']:>4}s  "
+              f"{r['spells_distinct']:>2} spells  heals "
+              f"{r['self_heal_low']}-{r['self_heal_high']}  "
+              f"({len(r['observers'])} clients, {r['damage_spread_pct']}% apart)")
 
 
 if __name__ == '__main__':

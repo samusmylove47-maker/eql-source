@@ -41,20 +41,29 @@ def _kit(r):
 # Only what is NEW at each tier. Repeating the whole list five times cost 250
 # words and hid the finding; the widening is the point, so show the widening.
 def _new_rows():
+    """Only what is new at each tier: repeating the whole spell list five times
+    cost 250 words and hid the finding. The widening is the point."""
     seen, out = set(), []
     for r in YAEL:
         fresh = sorted(set(r["spells"]) - seen)
         seen |= set(r["spells"])
+        dmg = (f'{r["damage_low"]:,}' if r["damage_low"] == r["damage_high"]
+               else f'{r["damage_low"]:,}&ndash;{r["damage_high"]:,}')
+        heal = (str(r["self_heal_low"]) if r["self_heal_low"] == r["self_heal_high"]
+                else f'{r["self_heal_low"]}&ndash;{r["self_heal_high"]}')
         out.append(
             f'<tr><td class="nmob">D{r["difficulty"]} <span class="tier tM">M</span></td>'
-            f'<td class="lv">{r["damage_to_kill"]:,}</td>'
+            f'<td class="lv">{dmg}</td>'
             f'<td class="lv">{r["seconds"]}s</td>'
             f'<td class="lv">{r["spells_distinct"]}</td>'
-            f'<td class="lv">{r["self_heal_count"] or "&mdash;"}</td>'
+            f'<td class="lv">{heal if heal != "0" else "&mdash;"}</td>'
             f'<td>{", ".join(fresh) or "nothing new"}</td></tr>')
     return "".join(out)
 
 _yael_rows = _new_rows()
+_spreads = [r["damage_spread_pct"] for r in RAIDS if len(r["observers"]) > 1]
+_worst = max(_spreads) if _spreads else 0
+_nobs = sum(len(r["observers"]) for r in RAIDS)
 _first_multi = next((r["difficulty"] for r in YAEL if _kit(r)["heals"]), None)
 import os, sys, json, collections
 
@@ -239,9 +248,17 @@ You have entered The City of Guk 4 (Refined).</pre>
       That needs no inference about spell names: the log says <em>healed itself</em>, and a boss
       that heals is not running an evocation kit. The published claim was three classes from D3.
       This is that claim measured, and it lands exactly there.</div>
-    <div class="note"><strong>Damage to kill is not hit points.</strong> It is an upper bound &mdash;
-      he heals &mdash; and it carries one trio&rsquo;s gear and misses. A second trio running the
-      same five fights would separate the boss from us.</div>
+    <div class="note"><strong>Every fight was logged twice, from two clients in the same group.</strong>
+      That is where the ranges come from: a client records only what it was in range to see, so two
+      parses of one kill disagree by however much each missed &mdash; between nothing and {_worst}%
+      here, with two fights matching to the point. <strong>That spread is the method&rsquo;s error
+      bar, measured rather than assumed.</strong>
+      <br><br>It sharpened one claim and softened another. The healing pattern &mdash; none below
+      D3, some at and above it &mdash; is in <em>both</em> logs independently. The count at D4 is
+      not: one client logged ten self-heals and the other one, so the table gives a range and this
+      page claims no number.
+      <br><br><strong>And damage to kill is not hit points.</strong> He heals, so it is an upper
+      bound, and it carries this group&rsquo;s gear and misses.</div>
   </div>
 </section>
 
