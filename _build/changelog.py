@@ -4,6 +4,24 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="10 Aug 2026", title="Every item and every named mob now has its own page",
+         body="655 new addresses &mdash; <a href=\"items/index.html\">446 items</a> and "
+              "<a href=\"named/index.html\">209 named mobs</a>, each carrying what we hold on it and "
+              "linking back to the survey it was mined from. Until now all of it lived inside one "
+              "search box, so there was nothing to bookmark, paste into guild chat or link to. "
+              "The Index is unchanged and still the fastest way to filter"),
+    dict(kind="Correction", date="10 Aug 2026", title="Item stats read off a shared table row",
+         body="27 loot rows list several items behind a single stats cell, and splitting those rows "
+              "copied the one stats line onto each item &mdash; so <em>Red Dragon Scales</em> "
+              "carried a description of a tooth and a book of prayers. 90 items were affected. The "
+              "stats now say they describe the row rather than the item"),
+    dict(kind="Correction", date="10 Aug 2026", title="Two gaps closed, and neither was still open",
+         body="<strong>Placeholder removals</strong> was answered by the developers&rsquo; own patch "
+              "note, which names all eleven zones placeholders were removed from; it had been carried "
+              "as unresolved since launch. <strong>Five missing maps</strong> was closed when "
+              "<code>geometry.py</code> replaced the hand plots &mdash; all ten surveys have had a "
+              "floor plan read from the game meshes since 10 August. What the plans still lack is "
+              "room names, and that is what the gap says now"),
     dict(kind="Correction", date="10 Aug 2026", title="A third of the item catalogue had no class data",
          body="Building the levelling route surfaced it: <strong>160 of 452 items carried no class "
               "list</strong>, and every item in Castle Mistmoore and The Hole was affected. Three "

@@ -241,6 +241,29 @@ for src in sorted(glob.glob("_build/**/*.py", recursive=True) + glob.glob("scrip
         if n:
             fail(f"{src} contains {n} literal control character(s) 0x{code:02x} — {why}")
 
+# ---- every slug in the data has a page ---------------------------------------
+# The Index writes its links in the browser, from the `u` field, so the link
+# checker above never sees them: a missing item page would be a 404 nothing on
+# this site could detect. The slug is generated once in extract.py precisely so
+# the two sides cannot drift, and this proves they have not.
+try:
+    _ix = json.load(open("assets/index-data.json", encoding="utf-8"))
+except Exception as e:
+    fail(f"index-data.json unreadable: {e}")
+    _ix = {"items": [], "named": []}
+for _folder, _key in (("items", "items"), ("named", "named")):
+    _missing = sorted({r["u"] for r in _ix[_key]
+                       if not os.path.exists(f"public/{_folder}/{r['u']}.html")})
+    if _missing:
+        fail(f"The Index links {len(_missing)} {_folder} page(s) that do not "
+             f"exist: {', '.join(_missing[:4])}")
+    _orphan = sorted(set(os.path.basename(p)[:-5]
+                         for p in glob.glob(f"public/{_folder}/*.html"))
+                     - {r["u"] for r in _ix[_key]} - {"index"})
+    if _orphan:
+        fail(f"public/{_folder}/ holds {len(_orphan)} page(s) no longer in the "
+             f"data — a rename left them behind: {', '.join(_orphan[:4])}")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of

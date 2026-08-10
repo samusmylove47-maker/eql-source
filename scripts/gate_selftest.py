@@ -54,6 +54,15 @@ CASES = [
     ("a tool dropped from the footer",
      "public/index.html",
      lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact\.html">[^<]*</a></li>', "", t)),
+
+    # The change log is exempt from the prose ceiling, and that exemption is
+    # exactly the kind of hole that quietly turns a check off. This proves the
+    # rest of the page is still governed.
+    ("prose growing on the page that hosts the change log",
+     "public/sources.html",
+     lambda t: t.replace('<section class="band" id="changelog"',
+                         "<p>" + " ".join(["ballast"] * 100)
+                         + '</p><section class="band" id="changelog"')),
 ]
 
 
@@ -65,6 +74,19 @@ def mutate_zone_gate():
     Z[0]["verify_gate"] = "Gate 3, the room-list collision check, is still open"
     open(p, "w", encoding="utf-8", newline="\n").write(
         json.dumps(Z, indent=1, ensure_ascii=False) + "\n")
+    return p, orig
+
+
+def mutate_missing_item_page():
+    """An item page the data links to but that is not on disk.
+
+    The Index writes its links in the browser, so the link checker never sees
+    them and this is the only thing standing between a renamed item and 452
+    silent 404s. Moved rather than deleted, and put back in the finally.
+    """
+    p = "public/items/journeymans-boots.html"
+    orig = open(p, encoding="utf-8").read()
+    os.remove(p)
     return p, orig
 
 
@@ -91,14 +113,16 @@ def main():
         finally:
             open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
-    path, orig = mutate_zone_gate()
-    try:
-        rc, out = check()
-        hit = next((l.strip()[6:] for l in out.splitlines() if "FAIL" in l), "")
-        results.append(("a full zone still naming an open gate",
-                        "caught" if rc != 0 else "MISSED", hit[:110]))
-    finally:
-        open(path, "w", encoding="utf-8", newline="\n").write(orig)
+    for label, fn in (("a full zone still naming an open gate", mutate_zone_gate),
+                      ("an item page The Index links but that is not on disk",
+                       mutate_missing_item_page)):
+        path, orig = fn()
+        try:
+            rc, out = check()
+            hit = next((l.strip()[6:] for l in out.splitlines() if "FAIL" in l), "")
+            results.append((label, "caught" if rc != 0 else "MISSED", hit[:110]))
+        finally:
+            open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
     bad = 0
     for name, status, detail in results:

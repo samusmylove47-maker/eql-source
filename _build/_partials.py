@@ -122,6 +122,8 @@ def foot(rel=""):
         <li><a href="{rel}dungeons/najena.html">Najena</a></li>
         <li><a href="{rel}dungeons/lowerguk.html">Lower Guk</a></li>
         <li><a href="{rel}dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="{rel}items/index.html">Every item</a></li>
+        <li><a href="{rel}named/index.html">Every named mob</a></li>
       </ul></div>
       <div><h4>Raids</h4><ul>
         <li><a href="{rel}raids/index.html">Encounter index</a></li>
