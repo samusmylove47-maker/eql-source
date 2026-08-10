@@ -450,6 +450,99 @@ Note the Fear count: he says "four mini bosses, three of them are golems, one of
 them's the Dracoliche, and then good old CT himself" — which matches our five
 raid targets exactly, counted as four minibosses plus the boss.
 
+## 5d. Plane of Sky — Cavepig's keying guide, and a third access confirmation
+
+**Source.** "Cavepig's Guide to Enchanting in Sky — How to Key Yourself and Get
+Your First Clear, How to Speed Clear", **u/TimeToMakeTheDonuts3** (Cavepig on
+Rivervale, also braxxie99), r/EQLegends, ~6 August 2026, 174 upvotes. Flaired
+Top 1% Poster and Top 1% Commenter. Supplied as a saved page, 11 Aug 2026 —
+reddit.com is blocked from this environment both by fetch and by the browser, so
+this could not be read without it.
+
+**Tier C.** A named player describing his own play, post-launch, in detail, with
+a route he repeats. Nothing parsed, nothing counted. It is our **second
+independent post-launch account of Sky**, and the first from an enchanter.
+
+### What it settles
+
+**Access, now three sources deep.** "In the water just past the docks
+[in East Freeport], there's a rocky outcropping with a little crystal. Swim over
+there and click it." That agrees with eqlwiki's orb near −425, −1200 and with
+BrutallStatic's purple orb. **Sky has no voidling** — BrutallStatic says it had
+one in closed beta and lost it, and Cavepig's route never mentions one.
+
+**Ten islands, not seven.** "Islands 1-8, Island 1.5, and Efreeti island." Our
+`raids/plane-of-sky.html` covers islands 2–8 and prints "7 islands". It is not
+wrong about what it covers; it is silent about islands 1, 1.5 and the Efreeti
+content, which is where keying actually begins and ends.
+
+**Bosses, island by island** — every one matches the eqlwiki list, which is
+worth noting because that list is an import and this is live play:
+
+| Island | Boss | Also |
+|---|---|---|
+| 1 | Thunder Spirit Princess | **The Key Master — you buy 3 keys here** |
+| 1.5 | Noble Dojorn | a blade storm |
+| 2 | Protector of Sky | azaracks |
+| 3 | The Gorgalosk | heart harpie, avenging/watchful gazers, gusts of wind |
+| 4 | Keeper of Souls | **Overseer of Air**, an efreet at the windmill tower |
+| 5 | The Spiroc Lord | |
+| 6 | Bazzt Zzzt | the big bee dies into three forms; Bazzt Zzzt is the last |
+| 7 | Sister of the Spire | |
+| 8 | Eye of Veeshan | **The Hand of Veeshan**, which wanders |
+
+Two entries there are new to us entirely: **the Key Master** and **the Overseer
+of Air**. So is the detail that the bee boss dies into three successive forms.
+
+**"Do not see Invis (nothing does on Sky)."** A blanket zone rule, and the
+opposite of Fear and Hate, where see-invis is the main hazard.
+
+### The speed clear — six bosses
+
+Bee Island Boss, Sister of the Spire, Eye of Veeshan, Noble Dojorn, Overseer of
+Air, Hand of Veeshan. Route: in, buff, invis, teleport to 6, take the bee as a
+charm pet, up through 7 and 8, back to 1, up to 1.5, across 2–3–4, then 5–6–7–8.
+
+He reports "as few as 8-12 minutes" and says in the same sentence **"I didn't
+time it"**. Publish the route; do not publish the time as a figure.
+
+### Why it does not conflict with the page we already have
+
+Our Sky page is a warrior/rogue/shaman solo route leaning on slow and feign
+death, read 8 Aug 2026, badged T3 on one account. Cavepig is an enchanter
+leaning on charm, mesmerise and pacify, with a pet progression — Thunder Spirit
+Princess, then a shimmering meteor or heart harpie, then a bee — carried island
+to island. **Same zone, same bosses, two incompatible toolkits.** That is a
+strength: where they agree the structure is confirmed twice over, and where they
+differ it is because the trios differ, which is exactly the thing this game does
+that inherited guides cannot express.
+
+He is explicit about his own uncertainty on island 3 — "I'm sure there's a fancy
+way to clear this island. I always brute force it, which barely works" — and
+that hedge must survive into anything we publish from it.
+
+### Mote guidance, which is the first concrete use of the system we have seen
+
+Spell tiering priorities for an enchanter, from a player who has done it:
+Allure to tier 5–7, Pacify to 4+, Shiftless Deeds or Togor's to 6+,
+Mesmerization to 5–7. One AA named: Companion's Discipline, 2 points, for
+`/pet hold`.
+
+### Sky loot he says is safe to sell
+
+He lists items "not used for quests" — the four class bracelets (Cessation NEC,
+Distortion WIZ, Exertion MAG, Quiescence ENC), Blade of Abrogation, Stein of
+Flowing Ichor, Symbol of Marr, Treant Tear, Weight of the Gods, and seven belts.
+**Do not republish that as fact.** It is one player's read of which turn-ins
+exist, and a reader who vendors a quest component on our say-so has been badly
+served. The one item he singles out to keep — White Satin Gloves, −5 MR, for a
+pet loadout — is a useful lead either way.
+
+`Wind Rune` items auto-store into Currency, which is a Legends system detail we
+have nowhere else.
+
+---
+
 ## 6. Sources that look authoritative and are not
 
 There are at least three of these, and the family resemblance is the tell:
