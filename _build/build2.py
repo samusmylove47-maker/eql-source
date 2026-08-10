@@ -98,15 +98,6 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
-      <a class="card" href="route.html" style="--c:var(--ok)">
-        <div class="kicker">Any level to 50</div>
-        <h3 class="t">Levelling route</h3>
-        <p class="d">Pick your trio and a starting level. It orders the surveyed zones by the band
-          each covers and the experience each returns, shows what else is open at that level, and
-          lists what every stop drops that your three classes can actually use.</p>
-        <div class="chipline"><span class="pill">452 items filtered</span><span class="pill">Links every stop</span></div>
-        <div class="foot"><span>Built from our own surveys</span><span class="go">Open &rarr;</span></div></a>
-
       <a class="card" href="character.html" style="--c:var(--ok)">
         <div class="kicker">One sheet &middot; one link</div>
         <h3 class="t">Character sheet</h3>
