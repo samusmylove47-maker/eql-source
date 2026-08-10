@@ -82,7 +82,7 @@ ENTRIES = [
                 'timestamps and any overwrite message &mdash; if one displaces another, the log '
                 'shows the displaced spell wearing off within a second of the new cast rather '
                 'than at its natural duration.',
-         credit='Raised by Avenrae, 10 August 2026, after an AI assistant gave two confident and '
+         credit='Raised in our own play, 10 August 2026, after an AI assistant gave two confident and '
                 'differently-worded answers.'),
 
     dict(status='open',
@@ -100,7 +100,7 @@ ENTRIES = [
               'Keep page uses the word repeatedly, so <strong>the search index is unreliable and '
               'an empty result there proves nothing.</strong>',
          evidence=[
-             ('Tier C', 'Annalise, 9 August 2026',
+             ('Tier C', 'A player report, 9 August 2026',
               'First-hand, in Kedge Keep, using a sword and landing hits. Unconfirmed: a report '
               'of play, not a parsed log.'),
              ('T5', 'eqlwiki <em>Kedge Keep</em>, read 9 Aug 2026',
@@ -109,7 +109,7 @@ ENTRIES = [
          settle='One combat log line showing a slashing or blunt weapon landing normal damage on '
                 'a mob while submerged. If a penalty exists it should show as a visible drop in '
                 'average damage against the same mob type fought on land.',
-         credit='Found by Annalise, 9 August 2026.'),
+         credit='Credited on the credits page.'),
 
     dict(status='changed',
          q='Is a class-locked epic quest closed to everyone else?',
@@ -126,7 +126,7 @@ ENTRIES = [
               'character. It is a reason to test the other fifteen, not evidence about them: '
               '<strong>we have no report on any other epic and do not assume this generalises.</strong>',
          evidence=[
-             ('Tier C', 'Annalise (AnnaWulf), 10 August 2026',
+             ('Tier C', 'A player report, 10 August 2026',
               'First-hand: &ldquo;can now confirm can do all parts of the fiery avenger '
               'including final turn in as a non paladin&rdquo;. Reported with an in-game '
               'screenshot of the completed item. A report of play, not a parsed log.'),
@@ -137,7 +137,7 @@ ENTRIES = [
          settle='The same run on a second epic with a different class gate would show whether '
                 'this is the rule or one quest&rsquo;s wiring. A log of the final turn-in dialogue '
                 'would raise this from a report to a measurement.',
-         credit='Found by Annalise (AnnaWulf), 10 August 2026. She also raised the underwater '
+         credit='Credited on the credits page. The same player raised the underwater '
                 'weapon question above.'),
 
     dict(status='changed',
@@ -167,7 +167,8 @@ ENTRIES = [
          ],
          settle='Kill one boss at D0, then open the same boss at D1 and check whether the full '
                 'loot lockout applies or only the daily one.',
-         credit='Per-difficulty behaviour reported by Annalise (AnnaWulf), 10 August 2026.'),
+         credit='Per-difficulty behaviour reported by a player, 10 August 2026. Credited on the '
+                'credits page.'),
 
     dict(status='changed',
          q='Can you still plan a character around one class?',

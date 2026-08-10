@@ -1,202 +1,328 @@
-"""raids/plane-of-sky.html — island-by-island, for small groups.
+"""raids/plane-of-sky.html — the ring, the key chain, and the measured elevation.
 
-SOURCING. Nearly everything tactical on this page comes from one source: a
-post-launch video walkthrough by Archmage Flux, published 7 August 2026, in which
-the creator farms every island solo and says so. That is tier 3 — a named,
-dated, attributed account — and it is badged as such throughout.
+WHY THIS PAGE WAS REBUILT
+-------------------------
+The first version was one creator's solo route, framed by their trio, health
+pool and gear level. That framing is now out: a tactic that works for one trio
+at one gear level is not a fact about the zone, and printing it as the page's
+spine made the guide about a player rather than about Sky.
 
-Why that source is worth more here than the wiki: it is post-launch (the game
-launched 28 July 2026), it is first-hand play rather than inherited text, and the
-creator states their trio, their health pool and their gear level, which is what
-makes the advice interpretable. A tactic that works for one trio at one gear
-level is not a universal truth, and the page says so.
+What replaced it is the structure, which is true for everyone:
 
-WHAT IS DELIBERATELY ABSENT. No boss hit points, armour class or damage figures,
-except the one the source states from play. Every published stat block for these
-bosses traces to eqlwiki pages created in 2025 and early 2026, before the game
-existed — see the provenance test in CLAUDE.md.
+  THE RING. Sky's teleporters form a cycle - 1 to 2 to ... to 8, and 8 back to
+  1 - with island 1.5 hanging off it as a shortcut. Once you see that, the
+  six-boss circuit stops being a list of instructions to memorise and becomes
+  one and a half laps. Drawn, not described.
+
+  THE KEY CHAIN. Three keys bought from the Key Master on island 1, then every
+  boss drops the key to the next island. Gated progression, drawn as a chain.
+
+  THE ELEVATION. Read from airplane.s3d by _build/skyislands.py. 2,878 units of
+  vertical range across 21 separate bodies of walkable floor. CLAUDE.md has
+  carried "Plane of Sky geometry - never surveyed" as an open gap since this
+  site began, and this closes the measuring half of it.
+
+WHAT THE ELEVATION CANNOT DO, AND SAYS SO
+-----------------------------------------
+It cannot tell you which measured body is "island 4". That mapping lives in the
+teleporter network, not in the mesh, and no /loc reading from Sky exists to
+anchor it. The chart is drawn unlabelled and the page asks for the ten readings
+that would label it. Drawing a guess would be worth less than drawing nothing.
+
+NO NAMES, NO TIMES
+------------------
+Contributors are credited on credits.html, once, with a link to their work.
+Individual clear times and trio-specific experience do not appear at all - one
+source reported an 8-12 minute circuit and said in the same breath that they had
+not timed it.
 """
-import os, sys
+import os, sys, json, math
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
 
-# tier: the creator's own difficulty rating, presented as their judgement
-ISLANDS = [
-    dict(n=2, name="Protector of Sky", tier="B", c="var(--z02)",
-         spawn="Pull the azoraks near where you arrive. The boss spawns after a couple of kills.",
-         watch="Azoraks have a very large aggro radius. Wait until you can stand in the corner "
-               "without pulling more before you take the boss.",
-         note="Straightforward. Nothing here punishes a mistake badly."),
-    dict(n=3, name="Gorgalosk", tier="B", c="var(--z03)",
-         spawn="The boss can be started directly. It arrives with one add.",
-         watch="Two problems compound each other. Adds path into the boss room &mdash; through the "
-               "doorway, or patrolling in &mdash; and the boss resists slow more than most. The "
-               "trash also stuns.",
-         note="Fine when it goes well, genuinely nasty when it does not. The source reports more "
-              "avoidable deaths here than on any other island, from a slow resist arriving at the "
-              "same time as unexpected adds."),
-    dict(n=4, name="Keeper of Souls", tier="S", c="var(--z06)",
-         spawn="Wait until nothing is near the boss, then pull it to the island edge and fight "
-               "along the wall.",
-         watch="Nothing, if the pull is clean. The source reports the boss staying solo every time "
-               "it was pulled solo.",
-         note="Rated the easiest island of the eight. Low resist rate, no adds, no mechanics that "
-              "require positioning beyond the initial pull."),
-    dict(n=5, name="Spiroc Lord", tier="A", c="var(--z01)",
-         spawn="Pull a few spirocs to a corner. The Spiroc Guardian spawns after roughly two to "
-               "four kills. Kill the Guardian in that same corner, then move to the Lord.",
-         watch="The trash are rangers and druids, so expect damage shields and small heals rather "
-               "than burst. Invisibility or stealth gets you to the Lord without re-pulling.",
-         note="More to clear than the islands before it, but little that can go badly wrong. Fight "
-              "the Lord near the teleport."),
-    dict(n=6, name="Bazzt Zzzt", tier="B", c="var(--z01)",
-         spawn="From one specific position the boss can be pulled with a single bee. Kill that bee "
-               "by the teleport pad.",
-         watch="<strong>The boss splits into smaller adds.</strong> The source's route is to leave "
-               "at that moment &mdash; take the teleport to island 7, clear onward, and return "
-               "later to finish the boss from the island's east side, where it can be pulled alone.",
-         note="Described as the most technically demanding island other than the Eye. Pacification "
-              "gets the boss solo directly, but needs extended range to reach. Feign death serves "
-              "the same purpose. The drops are among the best in the game."),
-    dict(n=7, name="Sister of the Spire", tier="A", c="var(--z05)",
-         spawn="She can be walked up to and pulled directly. She often spawns alongside undine "
-               "spirits; solo, she is straightforward.",
-         watch="<strong>The drakes are the real danger, not the boss.</strong> They cast, and the "
-               "source reports fire damage approaching 2,000 on a character with a 5,600 health "
-               "pool. Adds are less frequent here than on island 3, but far more punishing.",
-         note="The source gives the Sister roughly 16,000 health from play, and describes her as "
-              "only mildly resistant. This is the one boss figure on this page taken from "
-              "observation rather than from a pre-launch wiki page."),
-    dict(n=8, name="Eye of Veeshan", tier="A", c="var(--ember)",
-         spawn="No trash. The source states it is not possible to pull adds on this island.",
-         watch="<strong>The entire fight turns on whether slow lands.</strong> Landed early, it is "
-               "comfortable. Resisted repeatedly, the boss hits hard enough that recovery from a "
-               "low health pool is unlikely.",
-         note="With feign death the risk largely disappears &mdash; attempt the slow, feign if it "
-              "resists, try again. Without it, a run of resists is the failure case. "
-              "<a href=\"eye-of-veeshan.html\">The 3D encounter guide</a> covers positioning and "
-              "the pull-down in detail."),
+SKY = json.load(open('assets/sky-islands.json', encoding='utf-8'))
+ISL = SKY['islands']
+
+# The ring. `key` is what the boss drops; island 1 is where you buy the first
+# three. Everything here is structure rather than tactics, and two independent
+# post-launch accounts agree on all of it.
+RING = [
+    dict(id="1",   boss="Thunder Spirit Princess", key="Key of Swords",
+         note="Where you arrive, and where the Key Master sells the first three keys."),
+    dict(id="2",   boss="Protector of Sky", key="Key of Misfortune",
+         note="Azaracks. Large aggro radius and a large social radius, so a pull tends to become "
+              "the island."),
+    dict(id="3",   boss="The Gorgalosk", key="Key of Beasts",
+         note="Gorgons, gazers and a heart harpie in the tower. Gusts of wind are invisible and "
+              "need see-invis to spot."),
+    dict(id="4",   boss="Keeper of Souls", key="Avian Key",
+         note="Pegasi, and adds that keep coming. The Overseer of Air stands at the windmill "
+              "tower and is one of the six on the circuit."),
+    dict(id="5",   boss="The Spiroc Lord", key="Key of the Swarm",
+         note="Spirocs have a low aggro radius and a high social one, so the outer edge is quiet "
+              "and the middle is not."),
+    dict(id="6",   boss="Bazzt Zzzt", key="Key of Scale",
+         note="Three bees. The middle one is the boss and dies into three successive forms; the "
+              "last of them drops the key."),
+    dict(id="7",   boss="Sister of the Spire", key="Veeshan's Key",
+         note="Nothing here aggros except the boss."),
+    dict(id="8",   boss="Eye of Veeshan", key="&mdash;",
+         note="The Hand of Veeshan wanders this island and is the last of the six."),
 ]
+SPUR = dict(id="1.5", boss="Noble Dojorn", key="&mdash;",
+            note="Off island 1, and it returns you to island 2. A blade storm guards it.")
 
-TIER_TONE = {"S": "var(--ok)", "A": "var(--instr)", "B": "var(--z01)"}
+CIRCUIT = ["6", "7", "8", "1", "1.5", "4", "8"]     # the six kills, in order taken
 
-cards = "\n".join(f'''
-      <article class="island contour" style="--c:{i['c']};--cx:{88 if i['n']%2 else 12}%;--cy:11{i['n']%3}%">
-        <span class="isl-n">Island {i['n']}</span>
-        <span class="isl-tier" style="--tc:{TIER_TONE[i['tier']]}">{i['tier']} tier</span>
-        <h3 class="isl-name">{i['name']}</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>{i['spawn']}</dd>
-          <dt>What catches people</dt><dd>{i['watch']}</dd>
-          <dt>In practice</dt><dd>{i['note']}</dd>
-        </dl>
-      </article>''' for i in ISLANDS)
+# ---------------------------------------------------------------- the ring SVG
+def ring_svg():
+    W = H = 560
+    cx = cy = W / 2
+    R = 196
+    pts = {}
+    n = len(RING)
+    for i, isl in enumerate(RING):
+        a = -math.pi / 2 + i * 2 * math.pi / n
+        pts[isl["id"]] = (cx + R * math.cos(a), cy + R * math.sin(a))
+    # 1.5 sits inside the arc between 1 and 2
+    a1 = -math.pi / 2
+    a2 = -math.pi / 2 + 2 * math.pi / n
+    am = (a1 + a2) / 2
+    pts["1.5"] = (cx + (R - 62) * math.cos(am), cy + (R - 62) * math.sin(am))
 
-page = head("Plane of Sky, island by island",
-  "How to reach each Plane of Sky boss in EverQuest Legends with the fewest pulls, from a "
-  "post-launch solo run. Spawn conditions, what goes wrong, and which islands punish mistakes.",
-  rel="../", og="raids", canon="raids/plane-of-sky") + bar("../") + f'''
+    out = [f'<svg viewBox="0 0 {W} {H}" role="img" '
+           f'aria-label="The Plane of Sky teleporter network, a ring of eight islands with '
+           f'island 1.5 as a spur">']
+    out.append('<defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" '
+               'markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>'
+               '</marker></defs>')
+    # ring arcs
+    for i in range(n):
+        a, b = RING[i]["id"], RING[(i + 1) % n]["id"]
+        (x1, y1), (x2, y2) = pts[a], pts[b]
+        out.append(f'<path class="edge" d="M{x1:.1f},{y1:.1f} A{R},{R} 0 0 1 {x2:.1f},{y2:.1f}" '
+                   f'marker-end="url(#ar)"/>')
+    # the spur, both directions
+    for a, b in (("1", "1.5"), ("1.5", "2")):
+        (x1, y1), (x2, y2) = pts[a], pts[b]
+        out.append(f'<line class="edge spur" x1="{x1:.1f}" y1="{y1:.1f}" x2="{x2:.1f}" '
+                   f'y2="{y2:.1f}" marker-end="url(#ar)"/>')
+    # nodes
+    for isl in RING + [SPUR]:
+        x, y = pts[isl["id"]]
+        big = isl["id"] != "1.5"
+        kill = isl["id"] in CIRCUIT
+        out.append(f'<g class="node{" kill" if kill else ""}" data-i="{isl["id"]}">')
+        out.append(f'<circle cx="{x:.1f}" cy="{y:.1f}" r="{26 if big else 19}"/>')
+        out.append(f'<text class="nid" x="{x:.1f}" y="{y + 5:.1f}">{isl["id"]}</text>')
+        lx = cx + (R + 46) * (x - cx) / max(1e-6, math.hypot(x - cx, y - cy))
+        ly = cy + (R + 46) * (y - cy) / max(1e-6, math.hypot(x - cx, y - cy))
+        if big:
+            out.append(f'<text class="nb" x="{lx:.1f}" y="{ly:.1f}">{isl["boss"]}</text>')
+        out.append('</g>')
+    out.append(f'<text class="ctr" x="{cx}" y="{cy - 6}">8 teleporters,</text>')
+    out.append(f'<text class="ctr" x="{cx}" y="{cy + 16}">one loop</text>')
+    out.append('</svg>')
+    return "".join(out)
+
+
+# --------------------------------------------------------- the elevation SVG
+def elev_svg():
+    W, H = 900, 380
+    pad = 46
+    xs = [i["cx"] for i in ISL]
+    zs = [i["z"][1] for i in ISL]
+    x0, x1 = min(xs), max(xs)
+    z0, z1 = SKY["zmin"], SKY["zmax"]
+    sx = lambda v: pad + (v - x0) / (x1 - x0) * (W - pad * 2)
+    sz = lambda v: H - pad - (v - z0) / (z1 - z0) * (H - pad * 2)
+    out = [f'<svg viewBox="0 0 {W} {H}" role="img" aria-label="Side elevation of the Plane of Sky, '
+           f'{len(ISL)} bodies of walkable floor across {z1 - z0:.0f} units of height">']
+    # height gridlines every 500 units
+    g = int(math.floor(z0 / 500) * 500)
+    while g <= z1:
+        y = sz(g)
+        out.append(f'<line class="grid" x1="{pad}" y1="{y:.1f}" x2="{W - pad}" y2="{y:.1f}"/>')
+        out.append(f'<text class="gl" x="{pad - 8}" y="{y + 4:.1f}">{g:+,}</text>')
+        g += 500
+    for i in ISL:
+        x, y = sx(i["cx"]), sz(i["z"][1])
+        r = max(4.0, min(26.0, math.sqrt(i["n"]) * 0.75))
+        out.append(f'<ellipse class="isl" cx="{x:.1f}" cy="{y:.1f}" rx="{r:.1f}" '
+                   f'ry="{max(2.5, r * 0.34):.1f}"><title>{i["n"]} floor triangles, '
+                   f'centre {i["cx"]:.0f}, {i["cy"]:.0f}, height {i["z"][1]:.0f}</title></ellipse>')
+    out.append(f'<text class="ax" x="{W - pad}" y="{H - 12}">west &rarr; east</text>')
+    out.append(f'<text class="ax" x="{pad}" y="{H - 12}">height in game units, read from the mesh</text>')
+    out.append('</svg>')
+    return "".join(out)
+
+
+CSS = '''<style>
+.sky-ring{max-width:620px;margin:0 auto}
+.sky-ring svg,.sky-elev svg{display:block;width:100%;height:auto;overflow:visible}
+.edge{fill:none;stroke:var(--rule2);stroke-width:1.6;color:var(--rule2)}
+.edge.spur{stroke-dasharray:5 4}
+.node circle{fill:var(--panel);stroke:var(--rule2);stroke-width:1.6}
+.node.kill circle{stroke:var(--ember,#D9762A);stroke-width:2.4;
+  fill:color-mix(in srgb, var(--ember,#D9762A) 14%, var(--panel))}
+.nid{font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:700;fill:var(--bone);
+  text-anchor:middle}
+.nb{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--dim);text-anchor:middle;
+  letter-spacing:.06em}
+.ctr{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;fill:var(--faint);
+  text-anchor:middle;text-transform:uppercase;letter-spacing:.08em}
+.sky-elev{border:1px solid var(--rule);background:var(--panel);padding:6px 4px;margin:var(--s-5) 0}
+.grid{stroke:var(--rule);stroke-width:1}
+.gl,.ax{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--faint)}
+.gl{text-anchor:end}
+.ax:last-of-type{text-anchor:start}
+.isl{fill:color-mix(in srgb, var(--instr) 62%, transparent);stroke:var(--instr);stroke-width:1}
+.chain{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.chain li{background:var(--panel);padding:13px 16px;display:grid;
+  grid-template-columns:44px minmax(0,1fr) minmax(0,150px);gap:6px 16px;align-items:baseline}
+.chain .i{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;color:var(--bone)}
+.chain .b{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;color:var(--bone)}
+.chain .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--instr);
+  letter-spacing:.05em;text-align:right}
+.chain .nt{grid-column:2/-1;color:var(--dim);font-size:14px;line-height:1.55;margin-top:2px}
+.chain li.kill{background:color-mix(in srgb, var(--ember,#D9762A) 7%, var(--panel))}
+@media(max-width:620px){.chain li{grid-template-columns:38px minmax(0,1fr)}.chain .k{text-align:left;grid-column:2}}
+.circuit{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:var(--s-5) 0 0;
+  font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--dim)}
+/* The ember accent is 3.84:1 as 13px text on this panel. The brief says lift a
+   derived variant rather than touch the accent, so the border stays ember and
+   the numeral is blended toward bone until it clears AA. */
+.circuit b{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;
+  border:1px solid var(--ember,#D9762A);font-weight:600;padding:0 6px;
+  color:color-mix(in srgb, var(--ember,#D9762A) 58%, var(--bone))}
+.circuit span{color:var(--faint)}
+</style>'''
+
+chain_rows = "\n".join(
+    f'''      <li{' class="kill"' if i["id"] in CIRCUIT else ''}>
+        <span class="i">{i["id"]}</span><span class="b">{i["boss"]}</span>
+        <span class="k">{i["key"]}</span>
+        <span class="nt">{i["note"]}</span></li>'''
+    for i in [RING[0], SPUR] + RING[1:])
+
+circuit_html = "".join(
+    (f'<b>{s}</b>' if k % 2 == 0 else '<span>&rarr;</span>')
+    for k, s in enumerate(sum([[c, ""] for c in CIRCUIT], [])[:-1]))
+
+page = (head("Plane of Sky",
+             "The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that "
+             "gates them, the six-boss circuit, and the first measured elevation of the zone.",
+             rel="../", extra=CSS, og="raids", canon="raids/plane-of-sky")
+        + bar("../") + f'''
 <main>
-
-<section class="hero page ember-hero">
+<section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
-    <h1 class="display">Every island,<br><em>fewest pulls.</em></h1>
-    <p class="hero-lede">What has to die before each boss appears, what tends to go wrong, and which
-      islands forgive a mistake. Written from a post-launch solo run rather than from inherited raid
-      text, and badged <span class="tier t3">T3</span> because it rests on one named account.</p>
-    <p class="hero-sig"><span>7 islands</span><span>Solo route</span><span>Post-launch</span><span>Read 8 Aug 2026</span></p>
-  </div>
-</section>
-
-<div class="shell">
-  <div class="note"><strong>Read the source's position before you use its advice.</strong> This comes
-    from a player running <em>warrior, rogue and shaman</em> with roughly 5,600 health after shaman
-    buffs, describing their own gear as middle of the road, playing alone. Slow and feign death appear
-    throughout because that trio has them. A trio without slow will find islands 3 and 8 substantially
-    harder than the ratings here suggest, and the ratings are that player's judgement rather than a
-    measurement.</div>
-</div>
-
-<section class="band" style="border-top:0;padding-top:0">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The islands</h2>
-      <p class="lede" style="margin:0">Ordered by progression. Each island's key drops from the boss
-        below it, so the route is fixed even when the tactics are not.</p></div></div>
-    <div class="islands">
-{cards}
-    </div>
+    <h1 class="display">Sky is a ring,<br><em>not a ladder.</em></h1>
+    <p class="hero-lede">Eight islands on a one-way teleporter loop, with a ninth hanging off it.
+      Island 8 returns you to island 1, which is why the six-boss circuit everyone runs is not a
+      list of instructions &mdash; it is one and a half laps.</p>
+    <p class="hero-sig"><span>{len(RING)} islands on the loop</span><span>3 keys bought, 6 dropped</span>
+      <span>{SKY["zmax"] - SKY["zmin"]:,.0f} units of height</span></p>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
-    <div class="split">
-      <div>
-        <div class="sechead"><div><h2 class="sec">What this changes</h2>
-          <p class="lede" style="margin:0">Three things in this account contradict how Plane of Sky is
-            usually described, and all three matter for a small group.</p></div></div>
-        <ol class="findings">
-          <li><b>It is a solo farm.</b> Every island here was cleared alone. Advice written for raids
-            of dozens does not merely over-prepare you &mdash; it sends you to the wrong islands and
-            the wrong pulls.</li>
-          <li><b>Slow is the deciding mechanic, not damage.</b> On islands 3 and 8 the fight is
-            decided by whether slow lands. That is a resist check, and no published hit point total
-            tells you anything about it.</li>
-          <li><b>The dangerous thing is rarely the boss.</b> On island 7 the drakes hit far harder
-            than the Sister. On island 3 the adds do more damage than the boss's own kit.</li>
-        </ol>
-      </div>
-      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:112%">
-        <h3 class="stdh">Still unknown</h3>
-        <p class="stdp">Named here rather than guessed at. Each closes with observation, not reading.</p>
-        <ul class="gatelist">
-          <li class="gaterow" style="--c:var(--warn)"><span class="gn">01</span>
-            <span class="gz">Boss health</span><span class="gl">unrecorded</span>
-            <span class="gs">Only the Sister of the Spire has a figure from play, roughly 16,000.
-              Every other published total traces to a pre-launch wiki import.</span></li>
-          <li class="gaterow" style="--c:var(--warn)"><span class="gn">02</span>
-            <span class="gz">Difficulty tier</span><span class="gl">unstated</span>
-            <span class="gs">The source does not say which difficulty these runs were at. D0 and D4
-              are different fights, so treat the ratings as a floor.</span></li>
-          <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
-            <span class="gz">Class kits at D3+</span><span class="gl">unpublished</span>
-            <span class="gs">Raid bosses run three classes from D3. Which kits attach to which Sky
-              boss is recorded nowhere. <a href="../learn/difficulty.html">What difficulty
-              changes</a> sets out what is known about the tiers and what is not.</span></li>
-        </ul>
-      </aside>
-    </div>
+    <div class="sechead"><div><h2 class="sec">The ring</h2>
+      <p class="lede" style="margin:0">Every teleporter runs one way. Ringed islands are the six
+        the standard circuit kills.</p></div></div>
+    <div class="sky-ring">{ring_svg()}</div>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><span class="n">Sourcing</span><div><h2 class="sec">Where this came from</h2></div></div>
-    <div class="note"><strong>&ldquo;Plane of Sky Speed Guide&rdquo;, Archmage Flux</strong>, published
-      7 August 2026, 9 minutes 4 seconds. <span class="tier t3">T3</span> &mdash; a named, dated,
-      first-hand account. Source of every spawn condition, route and hazard on this page, and of the
-      Sister of the Spire health figure. Chapter marks: island 2 at 0:00, island 3 at 0:46, island 4
-      at 1:59, island 5 at 2:42, island 6 at 3:49, island 7 at 5:49, island 8 at 7:32.
-      <a href="https://www.youtube.com/watch?v=jcx6Db-ACVE">Watch it</a>.</div>
-    <div class="note"><strong>everquestlegends.com patch notes, 16 June 2026.</strong>
-      <span class="tier t1">T1</span> Source of the Sky spawn restructure: bosses drop the key to the
-      next island, trash no longer drops key parts, and several bosses changed between static and
-      conditional spawns.</div>
-    <div class="note warn"><strong>What is not sourced here, and why there are so few numbers.</strong>
-      Every published hit point, armour class and damage figure for these bosses traces to eqlwiki
-      pages created between January 2025 and March 2026 &mdash; before EverQuest Legends existed. The
-      Spiroc Lord's page dates to January 2025; Bazzt Zzzt's to November 2025, never edited since.
-      Those are Project 1999 imports and this site does not print them as Legends fact. The single
-      exception is the Sister's health, which the source states from play.</div>
+    <div class="sechead"><div><h2 class="sec">The key chain</h2>
+      <p class="lede" style="margin:0">Three keys are bought from the Key Master on island 1.
+        After that every boss drops the key to the island above it, so the order is fixed even
+        where the tactics are not.</p></div></div>
+    <ul class="chain">
+{chain_rows}
+    </ul>
+    <div class="note"><strong>Nothing in the Plane of Sky sees through invisibility.</strong>
+      That is the opposite of Fear and Hate, where see-invis is the main hazard, and it is why the
+      circuit can skip most of the zone rather than clear it.</div>
   </div>
 </section>
 
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The six-boss circuit</h2>
+      <p class="lede" style="margin:0">The islands worth killing on a repeat run, in the order the
+        ring makes cheapest.</p></div></div>
+    <div class="circuit">{circuit_html}</div>
+    <p class="lede" style="margin-top:var(--s-5)">Bee island first, because the bee is the best
+      thing to take with you; then up through 7 and 8; then the loop returns you to 1 for the spur
+      at 1.5; then round again for the Overseer of Air on 4 and the Hand of Veeshan on 8.
+      <strong>Two visits to island 8, and they are different kills</strong> &mdash; the Eye on the
+      first pass, the Hand on the second.</p>
+    <div class="note"><strong>We do not publish a clear time.</strong> The one figure we have was
+      given by someone who said in the same sentence that they had not timed it, and a time is a
+      fact about a player rather than about the zone.</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">How high it actually is</h2>
+      <p class="lede" style="margin:0">Read from the zone&rsquo;s own mesh on 11 August 2026.
+        Nobody has published this before, and it is ours rather than anyone&rsquo;s drawing.</p></div></div>
+    <div class="sky-elev">{elev_svg()}</div>
+    <p class="lede"><strong>{len(ISL)} separate bodies of walkable floor across
+      {SKY["zmax"] - SKY["zmin"]:,.0f} units of height</strong>, from
+      {SKY["zmin"]:,.0f} to {SKY["zmax"]:,.0f}. Seen from the side, west to east. Each mark is
+      sized by how much floor it holds. For comparison, the deepest dungeon we have measured spans
+      about 600 units top to bottom.</p>
+    <div class="note danger"><strong>These are not labelled, and that is deliberate.</strong> The
+      mesh says exactly where every piece of floor is. It does not say which piece is
+      &ldquo;island 4&rdquo; &mdash; that lives in the teleporter network, and no
+      <code>/loc</code> reading from Sky exists to anchor it. <strong>Ten <code>/loc</code>
+      readings, one per island, would label this chart permanently.</strong> Drawing a guess would
+      be worth less than drawing nothing.</div>
+    <p class="lede">A body of floor is not always an island, either. A tower counts separately from
+      the ground it stands on, which is why there are {len(ISL)} marks and nine islands.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">What we do not know</h2></div></div>
+    <ul class="chain">
+      <li><span class="i">1</span><span class="b">Which measured body is which island</span>
+        <span class="k">10 /loc readings</span></li>
+      <li><span class="i">2</span><span class="b">What the tenth island is</span>
+        <span class="k">one sighting</span>
+        <span class="nt">One account counts ten, listing 1&ndash;8, 1.5 and an Efreeti island. We
+          can place the Overseer of Air at the windmill tower on 4, but whether the Efreeti island
+          is a separate place is unresolved.</span></li>
+      <li><span class="i">3</span><span class="b">Boss hit points at any difficulty</span>
+        <span class="k">a raid log</span>
+        <span class="nt">Every published stat block for these bosses traces to wiki pages created
+          before the game existed.</span></li>
+      <li><span class="i">4</span><span class="b">Which Sky drops are quest turn-ins</span>
+        <span class="k">a turn-in list</span>
+        <span class="nt">One account lists items said to be safe to sell. We are not republishing
+          it: a reader who vendors a quest component on our word has been badly served.</span></li>
+    </ul>
+    <p class="lede" style="margin-top:var(--s-5)">Everything tactical here came from players who
+      went and looked, and they are named on the <a href="../credits.html">credits page</a> with
+      links to their own work.</p>
+  </div>
+</section>
 </main>
-''' + foot("../")
+''' + foot("../"))
 
 open('public/raids/plane-of-sky.html', 'w', encoding='utf-8', newline='\n').write(page)
-print(f"raids/plane-of-sky.html written: {len(ISLANDS)} islands")
+print(f"raids/plane-of-sky.html rebuilt: ring of {len(RING)}, {len(ISL)} measured bodies, "
+      f"{SKY['zmax'] - SKY['zmin']:,.0f} units of height")

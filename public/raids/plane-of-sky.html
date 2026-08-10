@@ -3,18 +3,18 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Plane of Sky, island by island — EQL Source</title>
-<meta name="description" content="How to reach each Plane of Sky boss in EverQuest Legends with the fewest pulls, from a post-launch solo run. Spawn conditions, what goes wrong, and which islands punish mistakes.">
-<meta property="og:title" content="Plane of Sky, island by island — EQL Source">
-<meta property="og:description" content="How to reach each Plane of Sky boss in EverQuest Legends with the fewest pulls, from a post-launch solo run. Spawn conditions, what goes wrong, and which islands punish mistakes.">
+<title>Plane of Sky — EQL Source</title>
+<meta name="description" content="The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that gates them, the six-boss circuit, and the first measured elevation of the zone.">
+<meta property="og:title" content="Plane of Sky — EQL Source">
+<meta property="og:description" content="The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that gates them, the six-boss circuit, and the first measured elevation of the zone.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://eqlsource.com/assets/og/raids.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:site_name" content="EQL Source">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Plane of Sky, island by island — EQL Source">
-<meta name="twitter:description" content="How to reach each Plane of Sky boss in EverQuest Legends with the fewest pulls, from a post-launch solo run. Spawn conditions, what goes wrong, and which islands punish mistakes.">
+<meta name="twitter:title" content="Plane of Sky — EQL Source">
+<meta name="twitter:description" content="The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that gates them, the six-boss circuit, and the first measured elevation of the zone.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/raids.png">
 <link rel="canonical" href="https://eqlsource.com/raids/plane-of-sky">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +22,47 @@
 <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/site.css">
-</head>
+<style>
+.sky-ring{max-width:620px;margin:0 auto}
+.sky-ring svg,.sky-elev svg{display:block;width:100%;height:auto;overflow:visible}
+.edge{fill:none;stroke:var(--rule2);stroke-width:1.6;color:var(--rule2)}
+.edge.spur{stroke-dasharray:5 4}
+.node circle{fill:var(--panel);stroke:var(--rule2);stroke-width:1.6}
+.node.kill circle{stroke:var(--ember,#D9762A);stroke-width:2.4;
+  fill:color-mix(in srgb, var(--ember,#D9762A) 14%, var(--panel))}
+.nid{font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:700;fill:var(--bone);
+  text-anchor:middle}
+.nb{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--dim);text-anchor:middle;
+  letter-spacing:.06em}
+.ctr{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;fill:var(--faint);
+  text-anchor:middle;text-transform:uppercase;letter-spacing:.08em}
+.sky-elev{border:1px solid var(--rule);background:var(--panel);padding:6px 4px;margin:var(--s-5) 0}
+.grid{stroke:var(--rule);stroke-width:1}
+.gl,.ax{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--faint)}
+.gl{text-anchor:end}
+.ax:last-of-type{text-anchor:start}
+.isl{fill:color-mix(in srgb, var(--instr) 62%, transparent);stroke:var(--instr);stroke-width:1}
+.chain{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.chain li{background:var(--panel);padding:13px 16px;display:grid;
+  grid-template-columns:44px minmax(0,1fr) minmax(0,150px);gap:6px 16px;align-items:baseline}
+.chain .i{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;color:var(--bone)}
+.chain .b{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;color:var(--bone)}
+.chain .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--instr);
+  letter-spacing:.05em;text-align:right}
+.chain .nt{grid-column:2/-1;color:var(--dim);font-size:14px;line-height:1.55;margin-top:2px}
+.chain li.kill{background:color-mix(in srgb, var(--ember,#D9762A) 7%, var(--panel))}
+@media(max-width:620px){.chain li{grid-template-columns:38px minmax(0,1fr)}.chain .k{text-align:left;grid-column:2}}
+.circuit{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:var(--s-5) 0 0;
+  font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--dim)}
+/* The ember accent is 3.84:1 as 13px text on this panel. The brief says lift a
+   derived variant rather than touch the accent, so the border stays ember and
+   the numeral is blended toward bone until it clears AA. */
+.circuit b{display:inline-flex;align-items:center;justify-content:center;min-width:30px;height:30px;
+  border:1px solid var(--ember,#D9762A);font-weight:600;padding:0 6px;
+  color:color-mix(in srgb, var(--ember,#D9762A) 58%, var(--bone))}
+.circuit span{color:var(--faint)}
+</style></head>
 <body><header class="site-bar">
   <div class="shell">
     <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
@@ -38,178 +78,142 @@
   </div>
 </header>
 <main>
-
-<section class="hero page ember-hero">
+<section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
-    <h1 class="display">Every island,<br><em>fewest pulls.</em></h1>
-    <p class="hero-lede">What has to die before each boss appears, what tends to go wrong, and which
-      islands forgive a mistake. Written from a post-launch solo run rather than from inherited raid
-      text, and badged <span class="tier t3">T3</span> because it rests on one named account.</p>
-    <p class="hero-sig"><span>7 islands</span><span>Solo route</span><span>Post-launch</span><span>Read 8 Aug 2026</span></p>
-  </div>
-</section>
-
-<div class="shell">
-  <div class="note"><strong>Read the source's position before you use its advice.</strong> This comes
-    from a player running <em>warrior, rogue and shaman</em> with roughly 5,600 health after shaman
-    buffs, describing their own gear as middle of the road, playing alone. Slow and feign death appear
-    throughout because that trio has them. A trio without slow will find islands 3 and 8 substantially
-    harder than the ratings here suggest, and the ratings are that player's judgement rather than a
-    measurement.</div>
-</div>
-
-<section class="band" style="border-top:0;padding-top:0">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The islands</h2>
-      <p class="lede" style="margin:0">Ordered by progression. Each island's key drops from the boss
-        below it, so the route is fixed even when the tactics are not.</p></div></div>
-    <div class="islands">
-
-      <article class="island contour" style="--c:var(--z02);--cx:12%;--cy:112%">
-        <span class="isl-n">Island 2</span>
-        <span class="isl-tier" style="--tc:var(--z01)">B tier</span>
-        <h3 class="isl-name">Protector of Sky</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>Pull the azoraks near where you arrive. The boss spawns after a couple of kills.</dd>
-          <dt>What catches people</dt><dd>Azoraks have a very large aggro radius. Wait until you can stand in the corner without pulling more before you take the boss.</dd>
-          <dt>In practice</dt><dd>Straightforward. Nothing here punishes a mistake badly.</dd>
-        </dl>
-      </article>
-
-      <article class="island contour" style="--c:var(--z03);--cx:88%;--cy:110%">
-        <span class="isl-n">Island 3</span>
-        <span class="isl-tier" style="--tc:var(--z01)">B tier</span>
-        <h3 class="isl-name">Gorgalosk</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>The boss can be started directly. It arrives with one add.</dd>
-          <dt>What catches people</dt><dd>Two problems compound each other. Adds path into the boss room &mdash; through the doorway, or patrolling in &mdash; and the boss resists slow more than most. The trash also stuns.</dd>
-          <dt>In practice</dt><dd>Fine when it goes well, genuinely nasty when it does not. The source reports more avoidable deaths here than on any other island, from a slow resist arriving at the same time as unexpected adds.</dd>
-        </dl>
-      </article>
-
-      <article class="island contour" style="--c:var(--z06);--cx:12%;--cy:111%">
-        <span class="isl-n">Island 4</span>
-        <span class="isl-tier" style="--tc:var(--ok)">S tier</span>
-        <h3 class="isl-name">Keeper of Souls</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>Wait until nothing is near the boss, then pull it to the island edge and fight along the wall.</dd>
-          <dt>What catches people</dt><dd>Nothing, if the pull is clean. The source reports the boss staying solo every time it was pulled solo.</dd>
-          <dt>In practice</dt><dd>Rated the easiest island of the eight. Low resist rate, no adds, no mechanics that require positioning beyond the initial pull.</dd>
-        </dl>
-      </article>
-
-      <article class="island contour" style="--c:var(--z01);--cx:88%;--cy:112%">
-        <span class="isl-n">Island 5</span>
-        <span class="isl-tier" style="--tc:var(--instr)">A tier</span>
-        <h3 class="isl-name">Spiroc Lord</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>Pull a few spirocs to a corner. The Spiroc Guardian spawns after roughly two to four kills. Kill the Guardian in that same corner, then move to the Lord.</dd>
-          <dt>What catches people</dt><dd>The trash are rangers and druids, so expect damage shields and small heals rather than burst. Invisibility or stealth gets you to the Lord without re-pulling.</dd>
-          <dt>In practice</dt><dd>More to clear than the islands before it, but little that can go badly wrong. Fight the Lord near the teleport.</dd>
-        </dl>
-      </article>
-
-      <article class="island contour" style="--c:var(--z01);--cx:12%;--cy:110%">
-        <span class="isl-n">Island 6</span>
-        <span class="isl-tier" style="--tc:var(--z01)">B tier</span>
-        <h3 class="isl-name">Bazzt Zzzt</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>From one specific position the boss can be pulled with a single bee. Kill that bee by the teleport pad.</dd>
-          <dt>What catches people</dt><dd><strong>The boss splits into smaller adds.</strong> The source's route is to leave at that moment &mdash; take the teleport to island 7, clear onward, and return later to finish the boss from the island's east side, where it can be pulled alone.</dd>
-          <dt>In practice</dt><dd>Described as the most technically demanding island other than the Eye. Pacification gets the boss solo directly, but needs extended range to reach. Feign death serves the same purpose. The drops are among the best in the game.</dd>
-        </dl>
-      </article>
-
-      <article class="island contour" style="--c:var(--z05);--cx:88%;--cy:111%">
-        <span class="isl-n">Island 7</span>
-        <span class="isl-tier" style="--tc:var(--instr)">A tier</span>
-        <h3 class="isl-name">Sister of the Spire</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>She can be walked up to and pulled directly. She often spawns alongside undine spirits; solo, she is straightforward.</dd>
-          <dt>What catches people</dt><dd><strong>The drakes are the real danger, not the boss.</strong> They cast, and the source reports fire damage approaching 2,000 on a character with a 5,600 health pool. Adds are less frequent here than on island 3, but far more punishing.</dd>
-          <dt>In practice</dt><dd>The source gives the Sister roughly 16,000 health from play, and describes her as only mildly resistant. This is the one boss figure on this page taken from observation rather than from a pre-launch wiki page.</dd>
-        </dl>
-      </article>
-
-      <article class="island contour" style="--c:var(--ember);--cx:12%;--cy:112%">
-        <span class="isl-n">Island 8</span>
-        <span class="isl-tier" style="--tc:var(--instr)">A tier</span>
-        <h3 class="isl-name">Eye of Veeshan</h3>
-        <dl class="isl-body">
-          <dt>Getting the boss</dt><dd>No trash. The source states it is not possible to pull adds on this island.</dd>
-          <dt>What catches people</dt><dd><strong>The entire fight turns on whether slow lands.</strong> Landed early, it is comfortable. Resisted repeatedly, the boss hits hard enough that recovery from a low health pool is unlikely.</dd>
-          <dt>In practice</dt><dd>With feign death the risk largely disappears &mdash; attempt the slow, feign if it resists, try again. Without it, a run of resists is the failure case. <a href="eye-of-veeshan.html">The 3D encounter guide</a> covers positioning and the pull-down in detail.</dd>
-        </dl>
-      </article>
-    </div>
+    <h1 class="display">Sky is a ring,<br><em>not a ladder.</em></h1>
+    <p class="hero-lede">Eight islands on a one-way teleporter loop, with a ninth hanging off it.
+      Island 8 returns you to island 1, which is why the six-boss circuit everyone runs is not a
+      list of instructions &mdash; it is one and a half laps.</p>
+    <p class="hero-sig"><span>8 islands on the loop</span><span>3 keys bought, 6 dropped</span>
+      <span>2,878 units of height</span></p>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
-    <div class="split">
-      <div>
-        <div class="sechead"><div><h2 class="sec">What this changes</h2>
-          <p class="lede" style="margin:0">Three things in this account contradict how Plane of Sky is
-            usually described, and all three matter for a small group.</p></div></div>
-        <ol class="findings">
-          <li><b>It is a solo farm.</b> Every island here was cleared alone. Advice written for raids
-            of dozens does not merely over-prepare you &mdash; it sends you to the wrong islands and
-            the wrong pulls.</li>
-          <li><b>Slow is the deciding mechanic, not damage.</b> On islands 3 and 8 the fight is
-            decided by whether slow lands. That is a resist check, and no published hit point total
-            tells you anything about it.</li>
-          <li><b>The dangerous thing is rarely the boss.</b> On island 7 the drakes hit far harder
-            than the Sister. On island 3 the adds do more damage than the boss's own kit.</li>
-        </ol>
-      </div>
-      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:112%">
-        <h3 class="stdh">Still unknown</h3>
-        <p class="stdp">Named here rather than guessed at. Each closes with observation, not reading.</p>
-        <ul class="gatelist">
-          <li class="gaterow" style="--c:var(--warn)"><span class="gn">01</span>
-            <span class="gz">Boss health</span><span class="gl">unrecorded</span>
-            <span class="gs">Only the Sister of the Spire has a figure from play, roughly 16,000.
-              Every other published total traces to a pre-launch wiki import.</span></li>
-          <li class="gaterow" style="--c:var(--warn)"><span class="gn">02</span>
-            <span class="gz">Difficulty tier</span><span class="gl">unstated</span>
-            <span class="gs">The source does not say which difficulty these runs were at. D0 and D4
-              are different fights, so treat the ratings as a floor.</span></li>
-          <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
-            <span class="gz">Class kits at D3+</span><span class="gl">unpublished</span>
-            <span class="gs">Raid bosses run three classes from D3. Which kits attach to which Sky
-              boss is recorded nowhere. <a href="../learn/difficulty.html">What difficulty
-              changes</a> sets out what is known about the tiers and what is not.</span></li>
-        </ul>
-      </aside>
-    </div>
+    <div class="sechead"><div><h2 class="sec">The ring</h2>
+      <p class="lede" style="margin:0">Every teleporter runs one way. Ringed islands are the six
+        the standard circuit kills.</p></div></div>
+    <div class="sky-ring"><svg viewBox="0 0 560 560" role="img" aria-label="The Plane of Sky teleporter network, a ring of eight islands with island 1.5 as a spur"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><path class="edge" d="M280.0,84.0 A196,196 0 0 1 418.6,141.4" marker-end="url(#ar)"/><path class="edge" d="M418.6,141.4 A196,196 0 0 1 476.0,280.0" marker-end="url(#ar)"/><path class="edge" d="M476.0,280.0 A196,196 0 0 1 418.6,418.6" marker-end="url(#ar)"/><path class="edge" d="M418.6,418.6 A196,196 0 0 1 280.0,476.0" marker-end="url(#ar)"/><path class="edge" d="M280.0,476.0 A196,196 0 0 1 141.4,418.6" marker-end="url(#ar)"/><path class="edge" d="M141.4,418.6 A196,196 0 0 1 84.0,280.0" marker-end="url(#ar)"/><path class="edge" d="M84.0,280.0 A196,196 0 0 1 141.4,141.4" marker-end="url(#ar)"/><path class="edge" d="M141.4,141.4 A196,196 0 0 1 280.0,84.0" marker-end="url(#ar)"/><line class="edge spur" x1="280.0" y1="84.0" x2="331.3" y2="156.2" marker-end="url(#ar)"/><line class="edge spur" x1="331.3" y1="156.2" x2="418.6" y2="141.4" marker-end="url(#ar)"/><g class="node kill" data-i="1"><circle cx="280.0" cy="84.0" r="26"/><text class="nid" x="280.0" y="89.0">1</text><text class="nb" x="280.0" y="38.0">Thunder Spirit Princess</text></g><g class="node" data-i="2"><circle cx="418.6" cy="141.4" r="26"/><text class="nid" x="418.6" y="146.4">2</text><text class="nb" x="451.1" y="108.9">Protector of Sky</text></g><g class="node" data-i="3"><circle cx="476.0" cy="280.0" r="26"/><text class="nid" x="476.0" y="285.0">3</text><text class="nb" x="522.0" y="280.0">The Gorgalosk</text></g><g class="node kill" data-i="4"><circle cx="418.6" cy="418.6" r="26"/><text class="nid" x="418.6" y="423.6">4</text><text class="nb" x="451.1" y="451.1">Keeper of Souls</text></g><g class="node" data-i="5"><circle cx="280.0" cy="476.0" r="26"/><text class="nid" x="280.0" y="481.0">5</text><text class="nb" x="280.0" y="522.0">The Spiroc Lord</text></g><g class="node kill" data-i="6"><circle cx="141.4" cy="418.6" r="26"/><text class="nid" x="141.4" y="423.6">6</text><text class="nb" x="108.9" y="451.1">Bazzt Zzzt</text></g><g class="node kill" data-i="7"><circle cx="84.0" cy="280.0" r="26"/><text class="nid" x="84.0" y="285.0">7</text><text class="nb" x="38.0" y="280.0">Sister of the Spire</text></g><g class="node kill" data-i="8"><circle cx="141.4" cy="141.4" r="26"/><text class="nid" x="141.4" y="146.4">8</text><text class="nb" x="108.9" y="108.9">Eye of Veeshan</text></g><g class="node kill" data-i="1.5"><circle cx="331.3" cy="156.2" r="19"/><text class="nid" x="331.3" y="161.2">1.5</text></g><text class="ctr" x="280.0" y="274.0">8 teleporters,</text><text class="ctr" x="280.0" y="296.0">one loop</text></svg></div>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><span class="n">Sourcing</span><div><h2 class="sec">Where this came from</h2></div></div>
-    <div class="note"><strong>&ldquo;Plane of Sky Speed Guide&rdquo;, Archmage Flux</strong>, published
-      7 August 2026, 9 minutes 4 seconds. <span class="tier t3">T3</span> &mdash; a named, dated,
-      first-hand account. Source of every spawn condition, route and hazard on this page, and of the
-      Sister of the Spire health figure. Chapter marks: island 2 at 0:00, island 3 at 0:46, island 4
-      at 1:59, island 5 at 2:42, island 6 at 3:49, island 7 at 5:49, island 8 at 7:32.
-      <a href="https://www.youtube.com/watch?v=jcx6Db-ACVE">Watch it</a>.</div>
-    <div class="note"><strong>everquestlegends.com patch notes, 16 June 2026.</strong>
-      <span class="tier t1">T1</span> Source of the Sky spawn restructure: bosses drop the key to the
-      next island, trash no longer drops key parts, and several bosses changed between static and
-      conditional spawns.</div>
-    <div class="note warn"><strong>What is not sourced here, and why there are so few numbers.</strong>
-      Every published hit point, armour class and damage figure for these bosses traces to eqlwiki
-      pages created between January 2025 and March 2026 &mdash; before EverQuest Legends existed. The
-      Spiroc Lord's page dates to January 2025; Bazzt Zzzt's to November 2025, never edited since.
-      Those are Project 1999 imports and this site does not print them as Legends fact. The single
-      exception is the Sister's health, which the source states from play.</div>
+    <div class="sechead"><div><h2 class="sec">The key chain</h2>
+      <p class="lede" style="margin:0">Three keys are bought from the Key Master on island 1.
+        After that every boss drops the key to the island above it, so the order is fixed even
+        where the tactics are not.</p></div></div>
+    <ul class="chain">
+      <li class="kill">
+        <span class="i">1</span><span class="b">Thunder Spirit Princess</span>
+        <span class="k">Key of Swords</span>
+        <span class="nt">Where you arrive, and where the Key Master sells the first three keys.</span></li>
+      <li class="kill">
+        <span class="i">1.5</span><span class="b">Noble Dojorn</span>
+        <span class="k">&mdash;</span>
+        <span class="nt">Off island 1, and it returns you to island 2. A blade storm guards it.</span></li>
+      <li>
+        <span class="i">2</span><span class="b">Protector of Sky</span>
+        <span class="k">Key of Misfortune</span>
+        <span class="nt">Azaracks. Large aggro radius and a large social radius, so a pull tends to become the island.</span></li>
+      <li>
+        <span class="i">3</span><span class="b">The Gorgalosk</span>
+        <span class="k">Key of Beasts</span>
+        <span class="nt">Gorgons, gazers and a heart harpie in the tower. Gusts of wind are invisible and need see-invis to spot.</span></li>
+      <li class="kill">
+        <span class="i">4</span><span class="b">Keeper of Souls</span>
+        <span class="k">Avian Key</span>
+        <span class="nt">Pegasi, and adds that keep coming. The Overseer of Air stands at the windmill tower and is one of the six on the circuit.</span></li>
+      <li>
+        <span class="i">5</span><span class="b">The Spiroc Lord</span>
+        <span class="k">Key of the Swarm</span>
+        <span class="nt">Spirocs have a low aggro radius and a high social one, so the outer edge is quiet and the middle is not.</span></li>
+      <li class="kill">
+        <span class="i">6</span><span class="b">Bazzt Zzzt</span>
+        <span class="k">Key of Scale</span>
+        <span class="nt">Three bees. The middle one is the boss and dies into three successive forms; the last of them drops the key.</span></li>
+      <li class="kill">
+        <span class="i">7</span><span class="b">Sister of the Spire</span>
+        <span class="k">Veeshan's Key</span>
+        <span class="nt">Nothing here aggros except the boss.</span></li>
+      <li class="kill">
+        <span class="i">8</span><span class="b">Eye of Veeshan</span>
+        <span class="k">&mdash;</span>
+        <span class="nt">The Hand of Veeshan wanders this island and is the last of the six.</span></li>
+    </ul>
+    <div class="note"><strong>Nothing in the Plane of Sky sees through invisibility.</strong>
+      That is the opposite of Fear and Hate, where see-invis is the main hazard, and it is why the
+      circuit can skip most of the zone rather than clear it.</div>
   </div>
 </section>
 
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The six-boss circuit</h2>
+      <p class="lede" style="margin:0">The islands worth killing on a repeat run, in the order the
+        ring makes cheapest.</p></div></div>
+    <div class="circuit"><b>6</b><span>&rarr;</span><b>7</b><span>&rarr;</span><b>8</b><span>&rarr;</span><b>1</b><span>&rarr;</span><b>1.5</b><span>&rarr;</span><b>4</b><span>&rarr;</span><b>8</b></div>
+    <p class="lede" style="margin-top:var(--s-5)">Bee island first, because the bee is the best
+      thing to take with you; then up through 7 and 8; then the loop returns you to 1 for the spur
+      at 1.5; then round again for the Overseer of Air on 4 and the Hand of Veeshan on 8.
+      <strong>Two visits to island 8, and they are different kills</strong> &mdash; the Eye on the
+      first pass, the Hand on the second.</p>
+    <div class="note"><strong>We do not publish a clear time.</strong> The one figure we have was
+      given by someone who said in the same sentence that they had not timed it, and a time is a
+      fact about a player rather than about the zone.</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">How high it actually is</h2>
+      <p class="lede" style="margin:0">Read from the zone&rsquo;s own mesh on 11 August 2026.
+        Nobody has published this before, and it is ours rather than anyone&rsquo;s drawing.</p></div></div>
+    <div class="sky-elev"><svg viewBox="0 0 900 380" role="img" aria-label="Side elevation of the Plane of Sky, 21 bodies of walkable floor across 2878 units of height"><line class="grid" x1="46" y1="380.9" x2="854" y2="380.9"/><text class="gl" x="38" y="384.9">-1,500</text><line class="grid" x1="46" y1="330.9" x2="854" y2="330.9"/><text class="gl" x="38" y="334.9">-1,000</text><line class="grid" x1="46" y1="280.8" x2="854" y2="280.8"/><text class="gl" x="38" y="284.8">-500</text><line class="grid" x1="46" y1="230.8" x2="854" y2="230.8"/><text class="gl" x="38" y="234.8">+0</text><line class="grid" x1="46" y1="180.8" x2="854" y2="180.8"/><text class="gl" x="38" y="184.8">+500</text><line class="grid" x1="46" y1="130.7" x2="854" y2="130.7"/><text class="gl" x="38" y="134.7">+1,000</text><line class="grid" x1="46" y1="80.7" x2="854" y2="80.7"/><text class="gl" x="38" y="84.7">+1,500</text><ellipse class="isl" cx="209.1" cy="115.6" rx="9.8" ry="3.3"><title>171 floor triangles, centre -1036, -924, height 1151</title></ellipse><ellipse class="isl" cx="418.1" cy="121.9" rx="13.0" ry="4.4"><title>299 floor triangles, centre -245, -1436, height 1089</title></ellipse><ellipse class="isl" cx="46.0" cy="137.3" rx="5.6" ry="2.5"><title>56 floor triangles, centre -1653, -826, height 934</title></ellipse><ellipse class="isl" cx="217.4" cy="169.6" rx="12.7" ry="4.3"><title>286 floor triangles, centre -1004, 251, height 612</title></ellipse><ellipse class="isl" cx="332.0" cy="170.3" rx="10.6" ry="3.6"><title>198 floor triangles, centre -570, -915, height 605</title></ellipse><ellipse class="isl" cx="258.1" cy="180.0" rx="24.3" ry="8.3"><title>1054 floor triangles, centre -850, -380, height 508</title></ellipse><ellipse class="isl" cx="243.0" cy="202.9" rx="7.1" ry="2.5"><title>89 floor triangles, centre -908, 1002, height 279</title></ellipse><ellipse class="isl" cx="645.6" cy="222.2" rx="7.6" ry="2.6"><title>102 floor triangles, centre 617, 332, height 86</title></ellipse><ellipse class="isl" cx="781.2" cy="223.3" rx="4.2" ry="2.5"><title>31 floor triangles, centre 1130, -1251, height 75</title></ellipse><ellipse class="isl" cx="298.6" cy="225.7" rx="5.4" ry="2.5"><title>52 floor triangles, centre -697, 1019, height 51</title></ellipse><ellipse class="isl" cx="400.8" cy="226.5" rx="13.6" ry="4.6"><title>330 floor triangles, centre -310, 725, height 43</title></ellipse><ellipse class="isl" cx="646.6" cy="237.3" rx="4.7" ry="2.5"><title>39 floor triangles, centre 620, 330, height -65</title></ellipse><ellipse class="isl" cx="485.8" cy="239.6" rx="5.0" ry="2.5"><title>45 floor triangles, centre 12, 81, height -88</title></ellipse><ellipse class="isl" cx="672.7" cy="249.4" rx="21.1" ry="7.2"><title>790 floor triangles, centre 719, -552, height -186</title></ellipse><ellipse class="isl" cx="583.3" cy="252.3" rx="14.5" ry="4.9"><title>373 floor triangles, centre 381, 1108, height -215</title></ellipse><ellipse class="isl" cx="553.6" cy="255.5" rx="8.1" ry="2.8"><title>117 floor triangles, centre 268, 222, height -247</title></ellipse><ellipse class="isl" cx="471.5" cy="264.3" rx="11.9" ry="4.0"><title>252 floor triangles, centre -43, -38, height -334</title></ellipse><ellipse class="isl" cx="655.3" cy="279.6" rx="8.1" ry="2.8"><title>117 floor triangles, centre 653, 698, height -488</title></ellipse><ellipse class="isl" cx="403.4" cy="279.7" rx="12.3" ry="4.2"><title>268 floor triangles, centre -300, -563, height -488</title></ellipse><ellipse class="isl" cx="660.0" cy="282.3" rx="11.9" ry="4.0"><title>250 floor triangles, centre 671, 301, height -515</title></ellipse><ellipse class="isl" cx="854.0" cy="312.5" rx="13.8" ry="4.7"><title>340 floor triangles, centre 1406, 640, height -817</title></ellipse><text class="ax" x="854" y="368">west &rarr; east</text><text class="ax" x="46" y="368">height in game units, read from the mesh</text></svg></div>
+    <p class="lede"><strong>21 separate bodies of walkable floor across
+      2,878 units of height</strong>, from
+      -1,031 to 1,847. Seen from the side, west to east. Each mark is
+      sized by how much floor it holds. For comparison, the deepest dungeon we have measured spans
+      about 600 units top to bottom.</p>
+    <div class="note danger"><strong>These are not labelled, and that is deliberate.</strong> The
+      mesh says exactly where every piece of floor is. It does not say which piece is
+      &ldquo;island 4&rdquo; &mdash; that lives in the teleporter network, and no
+      <code>/loc</code> reading from Sky exists to anchor it. <strong>Ten <code>/loc</code>
+      readings, one per island, would label this chart permanently.</strong> Drawing a guess would
+      be worth less than drawing nothing.</div>
+    <p class="lede">A body of floor is not always an island, either. A tower counts separately from
+      the ground it stands on, which is why there are 21 marks and nine islands.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">What we do not know</h2></div></div>
+    <ul class="chain">
+      <li><span class="i">1</span><span class="b">Which measured body is which island</span>
+        <span class="k">10 /loc readings</span></li>
+      <li><span class="i">2</span><span class="b">What the tenth island is</span>
+        <span class="k">one sighting</span>
+        <span class="nt">One account counts ten, listing 1&ndash;8, 1.5 and an Efreeti island. We
+          can place the Overseer of Air at the windmill tower on 4, but whether the Efreeti island
+          is a separate place is unresolved.</span></li>
+      <li><span class="i">3</span><span class="b">Boss hit points at any difficulty</span>
+        <span class="k">a raid log</span>
+        <span class="nt">Every published stat block for these bosses traces to wiki pages created
+          before the game existed.</span></li>
+      <li><span class="i">4</span><span class="b">Which Sky drops are quest turn-ins</span>
+        <span class="k">a turn-in list</span>
+        <span class="nt">One account lists items said to be safe to sell. We are not republishing
+          it: a reader who vendors a quest component on our word has been badly served.</span></li>
+    </ul>
+    <p class="lede" style="margin-top:var(--s-5)">Everything tactical here came from players who
+      went and looked, and they are named on the <a href="../credits.html">credits page</a> with
+      links to their own work.</p>
+  </div>
+</section>
 </main>
 <footer class="site-foot">
   <div class="shell">
@@ -244,6 +248,7 @@
         <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
       </ul></div>
       <div><h4>About</h4><ul>
+        <li><a href="../credits.html">Credits</a></li>
         <li><a href="../archive/index.html">The original plates</a></li>
         <li><a href="../sources.html">Sourcing standard</a></li>
         <li><a href="../sources.html#gaps">Known gaps</a></li>
