@@ -4,6 +4,29 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="10 Aug 2026", title="Placeholders: the answer was in the patch notes the whole time",
+         body="The developer patch note removes placeholders by name from <strong>eleven "
+              "dungeons</strong> &mdash; The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the "
+              "Splitpaw, The Warrens, Castle Mistmoore, Upper Guk, Crushbone, Befallen, Blackburrow "
+              "and Najena. That is every zone this site surveys, plus Upper Guk. <strong>Named spawn "
+              "every cycle and every inherited spawn percentage on the site is historical.</strong> "
+              "We carried this as an open question for a day, weighing a wiki category page against "
+              "our own play, while the answer sat in a tier 1 source nobody had gone back to read. "
+              "The percentages stay printed rather than deleted &mdash; deleting what a source says "
+              "is how a record stops being checkable &mdash; but every survey now says plainly that "
+              "they describe nothing about the zone now. <strong>The same patch note lowers maximum "
+              "respawn times and publishes no figures</strong>, so every respawn here remains a "
+              "pre-patch ceiling and is labelled as one"),
+    dict(kind="Correction", date="10 Aug 2026", title="Ten source warnings become one table",
+         body="The Accuracy page carried ten near-identical prose blocks, each stating the same "
+              "four facts about a wiki page in a different order. They are one sorted table now, "
+              "with a revision column: zone, last edited, revision id, editor, whether the page "
+              "began as a Project 1999 import, and what that means for the survey. <strong>Where a "
+              "field was never established the cell says &ldquo;not recorded&rdquo;</strong> rather "
+              "than sitting empty, because an empty cell reads as nothing to report and that is a "
+              "different claim. Thirteen cells say it. Also removed: 355 words arguing that the "
+              "hand-drawn plots were internally consistent, which was a defence of drawings retired "
+              "the same day"),
     dict(kind="Correction", date="10 Aug 2026", title="The plates are retired, and kept",
          body="This site began as ten hand-built coordinate plots. Every named mob&rsquo;s "
               "<code>/loc</code> read off the wiki, transformed into page space and drawn by hand "

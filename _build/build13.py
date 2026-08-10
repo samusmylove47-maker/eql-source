@@ -158,29 +158,29 @@ ENTRIES = [
          classic='A named shares its spawn point with a placeholder. You kill the placeholder '
                  'repeatedly until the named appears, and published spawn percentages describe how '
                  'often it does.',
-         legends='<strong>Gone in the revamped zones. The named spawns every cycle.</strong> '
-                 'Confirmed in play across Najena, Befallen and Blackburrow, and reported for '
-                 'Upper Guk. Every spawn percentage inherited from classic is historical wherever '
-                 'this holds.',
-         note='<strong>It has not been checked on every zone, and an unchecked zone is not a '
-              'disproved one.</strong> Seven of our ten surveys have no word either way, and '
-              'they say so on the page rather than borrowing the answer from the three that do. '
-              'The percentages there stand unaltered and unendorsed.',
+         legends='<strong>Gone. The named spawns every cycle.</strong> The developer patch note '
+                 'removes placeholders by name from eleven dungeons, which is every zone this site '
+                 'surveys plus Upper Guk. <strong>Every spawn percentage inherited from classic is '
+                 'therefore historical</strong>, and the site prints them struck through rather than '
+                 'deleting them.',
+         note='We carried this as open while the patch note said it plainly the whole time. <strong>The lesson is about where we looked</strong>, not about the answer.',
          evidence=[
-             ('T1', 'Revamp patch note, 23 June 2026',
-              'Promises &ldquo;a striking lack of placeholders for named mobs&rdquo;.'),
-             ('Tier C', 'Avenrae, 9&ndash;10 August 2026',
-              'Ten or more consecutive cycles at The Tenderizer in Najena with no placeholder seen, '
-              'and hours in each of Befallen and Blackburrow with the named up every cycle. '
-              'Upper Guk reported the same.'),
+             ('T1', 'Developer patch notes',
+              '&ldquo;Removed placeholders from and lowered maximum respawn times in several '
+              'dungeons: The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The '
+              'Warrens, Castle Mistmoore, Upper Guk, Crushbone, Befallen, Blackburrow, Najena.&rdquo;'),
+             ('Tier C', 'Avenrae',
+              'Confirmed in play across these zones before this site existed, and again on '
+              '9 August 2026 across ten or more consecutive cycles at one camp.'),
              ('T5', 'eqlwiki individual mob pages, against',
               '<em>Drelzna</em>: &ldquo;Her placeholder is a necromancer that spawns in front of '
-              'the chair.&rdquo; Classic text nobody has revisited, and the only source that '
-              'disagrees.'),
+              'the chair.&rdquo; Classic text nobody has revisited. It is wrong.'),
          ],
-         settle='Settled for Najena, Befallen and Blackburrow. <strong>Open for the other seven '
-                'surveys</strong> &mdash; each closes with one camp watched across several cycles.',
-         credit='Confirmed in play by Avenrae, 9 and 10 August 2026.'),
+         settle='Settled by the patch note for all eleven named zones. <strong>What it does not '
+                'settle is the second half of its own sentence</strong> &mdash; maximum respawn '
+                'times were lowered and no figures were published, so every respawn on this site '
+                'is a pre-patch ceiling rather than a current value.',
+         credit='Patch note supplied by Avenrae, 10 August 2026.'),
 
     dict(status='changed',
          q='Is the Per-Level Hunting Guide still good advice?',

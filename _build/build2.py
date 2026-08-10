@@ -21,8 +21,31 @@ ZONES = json.load(open("assets/zones-index.json", encoding="utf-8"))
 # 4,033 words explaining which wiki revision a figure came from and why a marker
 # pair collides - true, useful to us, and not what a player standing at a zone
 # line needs. It lives here now, whole, and each survey links to its section.
-PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
 BYSLUG = {z["slug"]: z for z in ZONES}
+PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
+WP = json.load(open("assets/wiki-provenance.json", encoding="utf-8"))["zones"]
+
+# Ten prose blocks that each said the same four facts in a different order are
+# one table. "not recorded" is written into the cell rather than left blank,
+# because an empty cell reads as "nothing to report" and that is a different
+# claim from "we did not establish this".
+_rows = "".join(
+    f'<tr><td class="nmob"><a href="#zone-{s_}">{BYSLUG[s_]["title"]}</a></td>'
+    f'<td class="wp-date">{WP[s_]["edited"]}</td>'
+    f'<td class="wp-rev">{WP[s_]["revision"]}</td>'
+    f'<td>{WP[s_]["editor"]}</td>'
+    f'<td>{"<b>Project 1999 import</b>, " + WP[s_]["p99_origin"] if WP[s_]["p99_origin"] else "&mdash;"}</td>'
+    f'<td class="wp-note">{WP[s_]["note"]}</td></tr>'
+    for s_ in sorted(WP, key=lambda k: BYSLUG[k]["plate"]))
+
+wiki_table = f"""<div class="tw"><table class="wp">
+  <thead><tr><th>Zone</th><th>Wiki page last edited</th><th>Revision</th><th>Editor</th>
+    <th>Origin</th><th>What that means here</th></tr></thead>
+  <tbody>{_rows}</tbody>
+</table></div>"""
+_np99 = sum(1 for v in WP.values() if v["p99_origin"])
+_nrev = sum(1 for v in WP.values() if v["revision"] != "not recorded")
+
 prov_blocks = "".join(
     f'<div class="zprov" id="zone-{slug}" style="--c:{BYSLUG[slug]["accent"]}">'
     f'<h3>{BYSLUG[slug]["title"]}</h3>' + "".join(notes) + '</div>'
@@ -294,7 +317,12 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
         This used to sit on the surveys themselves. It belongs here, where someone
         checking our working can find all ten in one place.</p></div></div>
-    {prov_blocks}
+    {wiki_table}
+    <p class="lede" style="margin:16px 0 0">{_nrev} of the ten rows carry a revision id; the rest
+      say so. {_np99} of the ten pages began as Project 1999 imports, which by the provenance test in
+      our standard makes their prose tier 5 however current the infobox is. The per-zone detail
+      below is what did not fit in a cell.</p>
+{prov_blocks}
   </section>
 
   <section class="band" id="changelog">
