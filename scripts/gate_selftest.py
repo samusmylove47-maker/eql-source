@@ -63,6 +63,15 @@ CASES = [
      lambda t: t.replace('<section class="band" id="changelog"',
                          "<p>" + " ".join(["ballast"] * 100)
                          + '</p><section class="band" id="changelog"')),
+
+    # Same hole, second ledger. The register's entries are exempt; its prose
+    # is not, and each exemption has to be proved separately or the list in
+    # gate.py becomes a place to hide growth.
+    ("prose growing on the findings register",
+     "public/learn/still-true.html",
+     lambda t: t.replace('<article class="st-entry"',
+                         "<p>" + " ".join(["ballast"] * 100)
+                         + '</p><article class="st-entry"', 1)),
 ]
 
 

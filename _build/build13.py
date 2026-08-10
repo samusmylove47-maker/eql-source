@@ -112,6 +112,64 @@ ENTRIES = [
          credit='Found by Annalise, 9 August 2026.'),
 
     dict(status='changed',
+         q='Is a class-locked epic quest closed to everyone else?',
+         classic='On Live EverQuest and on Project 1999 a class epic is a class quest. The '
+                 'Fiery Avenger is the paladin epic, and the quest steps as well as the reward '
+                 'are understood to be paladin-only.',
+         legends='<strong>The quest is not class-locked. The reward still is.</strong> A '
+                 'non-paladin completed every step of the Fiery Avenger, final turn-in included. '
+                 'The item it returns is unchanged: <code>Class: PAL</code>, 2H Slashing, 33/44, '
+                 'Flame Shock combat effect at level 45, Virtuous Bash worn effect.',
+         note='So the two halves separate. <strong>Doing the quest and being able to hold the '
+              'reward are different permissions</strong>, and only the second is still a class '
+              'gate &mdash; which a trio carrying Paladin would clear. This is one epic, on one '
+              'character. It is a reason to test the other fifteen, not evidence about them: '
+              '<strong>we have no report on any other epic and do not assume this generalises.</strong>',
+         evidence=[
+             ('Tier C', 'Annalise (AnnaWulf), 10 August 2026',
+              'First-hand: &ldquo;can now confirm can do all parts of the fiery avenger '
+              'including final turn in as a non paladin&rdquo;. Reported with an in-game '
+              'screenshot of the completed item. A report of play, not a parsed log.'),
+             ('Tier C', 'Item inspection, 10 August 2026',
+              'The reward reads <code>Class: PAL</code>, <code>Race: ALL</code>, Lore Equipped, '
+              'No Trade. The class restriction on the item itself has not changed.'),
+         ],
+         settle='The same run on a second epic with a different class gate would show whether '
+                'this is the rule or one quest&rsquo;s wiring. A log of the final turn-in dialogue '
+                'would raise this from a report to a measurement.',
+         credit='Found by Annalise (AnnaWulf), 10 August 2026. She also raised the underwater '
+                'weapon question above.'),
+
+    dict(status='changed',
+         q='Does killing a raid boss lock you out for the week?',
+         classic='Classic EverQuest has no lockout at all. A boss has a spawn timer, and whoever '
+                 'is standing there when it pops gets the kill.',
+         legends='<strong>The lockout is per difficulty, not per boss.</strong> The patch notes '
+                 'establish a weekly bonus-loot lockout resetting Tuesdays at 8AM PST, and that a '
+                 'kill made while locked still returns one guaranteed drop from the boss&rsquo;s '
+                 'unique table. What they do not say is that D0 through D4 each carry their own '
+                 'lockout &mdash; so the same boss can be run once per tier.',
+         note='That reframes a raid week. A first clear at D0 costs nothing at D1 and above, so '
+              'there is no reason to open at a difficulty you are unsure of. <strong>The '
+              'per-difficulty part is a player report, not a patch note</strong>, and the notes '
+              'neither state it nor contradict it.',
+         evidence=[
+             ('T1', 'Patch notes, 23 June 2026',
+              '&ldquo;you will only receive 1 piece of loot per named raid creature that has its '
+              'own lockout. The raid bonus loot lockouts reset every Tuesday at 8AM PST.&rdquo;'),
+             ('T1', 'Patch notes, 28 July 2026',
+              '&ldquo;Killing a raid boss while you have a loot lockout will now give one '
+              'guaranteed drop from that boss&rsquo;s unique treasure tables.&rdquo;'),
+             ('Tier C', 'Annalise (AnnaWulf), 10 August 2026',
+              '&ldquo;weekly lock out per difficulty and then daily lock out for 1 loot item till '
+              'a tues reset&rdquo;. She also reports a D4 Lord Nagafen taking a long time even '
+              'with a group, and D1 hit-point pools being a drag solo.'),
+         ],
+         settle='Kill one boss at D0, then open the same boss at D1 and check whether the full '
+                'loot lockout applies or only the daily one.',
+         credit='Per-difficulty behaviour reported by Annalise (AnnaWulf), 10 August 2026.'),
+
+    dict(status='changed',
          q='Can you still plan a character around one class?',
          classic='Every character is one class, chosen at creation and permanent.',
          legends='<strong>No. Characters run three classes at once.</strong> Two at creation, a '
