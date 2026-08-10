@@ -53,22 +53,33 @@ standings we can derive, epic progress.
   and contradict the site's own promise of no account and nothing transmitted —
   which is a real differentiator against every site that wants a sign-up.
 
-### 2b. The route planner · 2–3 days
+### 2b. The route planner — **built, then cut, 10 August 2026**
 
-Give it a trio and a starting level; it returns an ordered route to 50.
+It worked and it was still wrong, and the reason is worth keeping.
 
-Every input already exists: `zones-index.json` has level bands, ZEM and
-respawn; `index-data.json` has 452 items with class restrictions and drop
-sources; the surveys carry camps, dangers and the *Getting there* sections. The
-five map pages hold ordered waypoint tables, which is why they are being kept
-until this is built.
+Ranking zones by level band and experience modifier is deterministic, and the
+three highest-modifier zones happen to tile levels 4 to 50 between them. So
+**every trio, from every starting level, got the same three stops**: The
+Warrens, Lair of the Splitpaw, The Hole. Adding "what else is open" alongside
+each window made it honest but did not make it different.
 
-Each stop links to its survey, and each stop lists **what that zone drops that
-this trio can actually use** — the join nobody else can make, because it needs
-our plate data and their planner cannot see it.
+The only way to make the output vary usefully is to encode nuance the data does
+not hold — which class combinations struggle where, what is worth a detour for
+whom, where a band is survivable in practice. **None of that can be derived;
+all of it would be hand-tuned, and hand-tuning is the collaborator's hours.**
 
-**Honesty constraint, same as the farming route:** it orders zones, it does not
-promise a walked path, and it says so where it is drawn.
+That is the test this project should apply to any tool: *does making it good
+cost the human time on an ongoing basis?* If yes, it is the wrong tool however
+well it is built. Automation that needs constant human correction is not
+automation.
+
+**Do not rebuild it** without new data that makes the output genuinely differ by
+trio — measured kill rates per class combination, or per-class difficulty
+ratings per zone. Neither exists today.
+
+What survived: the item class-data correction the build exposed. 160 of 452
+items had no usable class list and the parser was defaulting unreadable cells to
+"every class". That fix stands on its own.
 
 ## Phase 3 — The long tail · 2 days
 
