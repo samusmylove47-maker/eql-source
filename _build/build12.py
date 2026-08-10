@@ -68,7 +68,7 @@ page = head("Deity, and the level 11 lock",
   "Deity locks at level 11 in EverQuest Legends alongside race and primary class — and unlocks again "
   "for 500 Iridium. What the choice costs, what the published advice leaves out, and where the "
   "faction data simply stops.",
-  rel="../") + bar("../") + f'''
+  rel="../", og="learn", canon="learn/deity") + bar("../") + f'''
 <main>
 
 <section class="hero page">

@@ -81,7 +81,7 @@ chrows = "\n".join(
         <span class="cell"></span><span class="bar"></span></div>''' for e in ENTRIES)
 
 # ---------------------------------------------------------------- TOOLS
-tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../") + bar("../") + f'''
+tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../", og="tools", canon="tools/index") + bar("../") + f'''
 <main>
 
 <section class="hero page">
@@ -165,7 +165,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 open('public/tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 
 # ---------------------------------------------------------------- RAIDS
-raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest Legends raid bosses: positioning, radii, phase transitions and pull strategy rendered in space.", rel="../") + bar("../") + '''
+raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest Legends raid bosses: positioning, radii, phase transitions and pull strategy rendered in space.", rel="../", og="raids", canon="raids/index") + bar("../") + '''
 <main>
 
 <section class="hero page ember-hero">
@@ -234,7 +234,7 @@ raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest L
 open('public/raids/index.html','w',encoding='utf-8',newline='\n').write(raids)
 
 # ---------------------------------------------------------------- SOURCES
-src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.") + bar() + f'''
+src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.", og="sources", canon="sources") + bar() + f'''
 <main>
 
 <section class="hero page">

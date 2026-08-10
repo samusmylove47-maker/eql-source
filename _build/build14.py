@@ -91,7 +91,7 @@ CSS = '''<style>
 page = head("The original plates",
   "The ten hand-built coordinate plots EQL Source began with, kept whole after the "
   "mesh-derived floor plans replaced them in August 2026.",
-  rel="../", extra=CSS) + bar("../") + f'''
+  rel="../", extra=CSS, og="archive", canon="archive/index") + bar("../") + f'''
 <main>
 
 <section class="hero page">

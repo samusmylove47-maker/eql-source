@@ -181,6 +181,24 @@ def run(pages, fail, warn):
                 fail(f"{page} says a respawn of {got[0]}:{got[1]:02d} while the ledger "
                      f"says {want} — the same figure, two values")
 
+    # ---- 5c. every share card must exist and be the right size --------------
+    #
+    # og:image is an absolute URL, so nothing in the normal link check can see
+    # it. A page that points at a card we never generated shows a blank embed in
+    # Discord, which is worse than having no card at all: it looks broken rather
+    # than plain.
+    for p in pages:
+        h = open(p, encoding="utf-8", errors="replace").read()
+        m = re.search(r'<meta property="og:image" content="([^"]+)"', h)
+        if not m:
+            fail(f"{p} has no og:image - it will share as a bare link")
+            continue
+        name = m.group(1).rsplit("/", 1)[-1]
+        card = os.path.join("public", "assets", "og", name)
+        if not os.path.exists(card):
+            fail(f"{p} points at share card {name}, which does not exist. "
+                 f"Run python3 _build/ogcards.py")
+
     # ---- 6. prose may not grow -----------------------------------------------
     #
     # The site reached 67,752 words before anyone measured it. Not one page was

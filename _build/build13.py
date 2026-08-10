@@ -265,7 +265,7 @@ page = head("Is it still true?",
   "Inherited EverQuest advice tested against EverQuest Legends: what changed, what did not, and "
   "what nobody has established either way. Every entry names its evidence, its date and what would "
   "settle it.",
-  rel="../", extra=CSS) + bar("../") + f'''
+  rel="../", extra=CSS, og="learn", canon="learn/still-true") + bar("../") + f'''
 <main>
 
 <section class="hero page">

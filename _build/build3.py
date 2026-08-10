@@ -145,7 +145,7 @@ def mark_withheld(h, slug):
 
 
 def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False,
-           wh_slug=None, ph_zone=None):
+           wh_slug=None, ph_zone=None, og_card=None, canon=None):
     h = open(src, encoding='utf-8').read()
     if wh_slug:
         h, nwh = mark_withheld(h, wh_slug)
@@ -155,7 +155,54 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
         for a, b in subs:
             h = h.replace(a, b)
     css = RETURN_CSS + (UNPIN if own_bar else '')
-    h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + css + '</head>', 1)
+    # Surveys, maps and tools are standalone pages that never call head(), so
+    # their share cards and canonicals are injected here. Without this the
+    # ten most-read pages on the site were the ten with no card.
+    social = ""
+    zdata = BY.get(canon.split("/")[-1].replace("-map", "")) if canon else None
+    if og_card:
+        url = _CFG.get("site_url", "").rstrip("/")
+        img = f"{url}/assets/og/{og_card}.png"
+        title = re.search(r"<title>([^<]*)</title>", h)
+        title = title.group(1).strip() if title else SITE
+        desc = re.search(r'<meta name="description" content="([^"]*)"', h)
+        desc = desc.group(1) if desc else ""
+        if not desc:
+            # Fifteen of the seventeen standalone pages have no description of
+            # their own, so a Discord embed would carry a title and an image and
+            # no sentence. The subtitle is already the one-line summary of the
+            # page - it is what the subtitle is for.
+            sub = re.search(r'<p class="subtitle">(.*?)</p>', h, re.S)
+            if sub:
+                desc = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", sub.group(1))).strip()
+            if desc and zdata:
+                # Entities belong in HTML, not in a plain-text share snippet.
+                # A share snippet is plain text in an attribute: no entities, and
+                # no bare "<" for a parser to trip over.
+                clean = (lambda t: re.sub(r"&[a-z]+;", " ",
+                         t.replace("&le;", "at most ").replace("<=", "at most ")
+                          .replace("&ndash;", "-").replace("&mdash;", "-")
+                          .replace("&minus;", "-").replace("<", "")).strip())
+                desc = (f"{clean(desc)}. Levels {clean(zdata['levels'].split(' (')[0])}, "
+                        f"respawn {clean(zdata['respawn'] or 'not recorded')}. "
+                        f"Every figure sourced and dated.")
+            h = h.replace('<meta name="viewport"',
+                          f'<meta name="description" content="{desc}">'
+                          '<meta name="viewport"', 1)
+        social = (f'<meta property="og:title" content="{title}">'
+                  f'<meta property="og:description" content="{desc}">'
+                  f'<meta property="og:type" content="website">'
+                  f'<meta property="og:site_name" content="{SITE}">'
+                  f'<meta property="og:image" content="{img}">'
+                  f'<meta property="og:image:width" content="1200">'
+                  f'<meta property="og:image:height" content="630">'
+                  f'<meta name="twitter:card" content="summary_large_image">'
+                  f'<meta name="twitter:title" content="{title}">'
+                  f'<meta name="twitter:description" content="{desc}">'
+                  f'<meta name="twitter:image" content="{img}">')
+        if canon:
+            social += f'<link rel="canonical" href="{url}/{canon}">'
+    h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + social + css + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
     if ph_zone:
         z_ = BY.get(ph_zone, {})
@@ -180,7 +227,8 @@ for z in Z:
                  f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">Navigation map &rarr;</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
-           f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s)
+           f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s,
+           og_card=f"dungeons-{s}", canon=f"dungeons/{s}")
 # ---- maps
 for s in MAPS:
     z = BY[s]
@@ -188,20 +236,22 @@ for s in MAPS:
              f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">&larr; Survey</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}-map.html'), f'public/dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
-           f"{z['title']} &middot; map", extra)
+           f"{z['title']} &middot; map", extra,
+           og_card=f"dungeons-{s}", canon=f"dungeons/{s}-map")
 # ---- tools
 inject(os.path.join(SRC,'eql-sky-tracker.html'), 'public/tools/plane-of-sky.html', '../',
-       'Tools', 'tools/index.html', 'Plane of Sky tracker', own_bar=True)
+       'Tools', 'tools/index.html', 'Plane of Sky tracker', own_bar=True,
+       og_card='tools', canon='tools/plane-of-sky')
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/race-unlocks.html', '../',
        'Tools', 'tools/index.html', 'Race unlock tracker',
        extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
-       own_bar=True)
+       own_bar=True, og_card='tools', canon='tools/race-unlocks')
 # calculator = same app, boots on the calc tab, shares the same save key
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator.html', '../',
        'Tools', 'tools/index.html', 'Race &amp; primary calculator',
        extra='<span class="ns-sep">/</span><a href="race-unlocks.html">&larr; Race unlocks</a>',
        subs=[(' show("track");\n})();', ' show("calc");\n})();'),
              ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')],
-       own_bar=True)
+       own_bar=True, og_card='tools', canon='tools/combo-calculator')
 n += 3
 print(f"imported {n} pages")

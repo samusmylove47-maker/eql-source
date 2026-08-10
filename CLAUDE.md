@@ -193,6 +193,9 @@ _build/
   build3.py         imports plates and tools, injects chrome
   build4.py         raid encounter guides, contains the 3D engine
   build5.py         The Index tool
+  ogcards.py        Open Graph share cards, 1200x630 PNG, from zones-index.json.
+                    Run by hand like geometry.py: it needs Pillow, and a rebuild
+                    must work without it. Output committed under public/assets/og/
   geometry.py       zone floor plans from the game's own meshes. Reads .s3d
                     archives from the EverQuest Legends install, writes
                     assets/zone-geometry.json. Run by hand, not by build.sh: a
