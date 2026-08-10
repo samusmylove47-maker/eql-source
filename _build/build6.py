@@ -791,14 +791,10 @@ def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
     if len(tour) > 2:
         order = ' &rarr; '.join(pts[i][2] for i in tour)
         route_note = (
-            f'<p class="fp-route" hidden><strong>The route, in order.</strong> {order}. '
-            f'<span class="rlen">{tour_len:,.0f} units of straight-line travel.</span> '
-            f'<em>This is an order to take them in, not a path through the zone.</em> '
-            f'The lines run point to point and know nothing about walls, doors, locks '
-            f'or drops &mdash; a segment that appears to cross a wall is the drawing '
-            f'being honest about what it is. It starts at the lowest-level named as a '
-            f'stand-in for starting near the entrance, because the zone line is not '
-            f'recorded for every zone.</p>')
+            f'<p class="fp-route" hidden><strong>Order, not a path.</strong> {order}. '
+            f'<span class="rlen">{tour_len:,.0f} units straight-line.</span> '
+            f'<a href="../learn/reading-the-plans.html">Why the line crosses walls '
+            f'&rarr;</a></p>')
 
     lv = ''
     if len(layers) > 1:
@@ -817,17 +813,16 @@ def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
     block = (f'<section class="fplan">'
              f'<h2>Floor plan</h2>'
              f'<p class="fp-lede">Where the walkable floor ends, computed from the zone&rsquo;s own '
-             f'geometry in the game files, with the {npts} named mobs whose positions are on record '
+             f'geometry in the game files, with the {npts} named mob{"" if npts == 1 else "s"} whose '
+             f'position{"" if npts == 1 else "s"} {"is" if npts == 1 else "are"} on record '
              f'plotted on it.{levels_line}</p>'
              f'{toggles}{lv}<div class="fp-wrap">{svg}</div>'
              f'<div class="fp-detail" hidden aria-live="polite"></div>'
              f'{route_note}'
-             f'<p class="fp-note">A line marks the edge of the floor &mdash; a wall or a drop. '
-             f'Doors, locks and one-way drops are not marked, and a gap is as likely to be a ledge as '
-             f'a doorway. {on_floor} of these {npts} positions land on the drawn floor, which is worth '
-             f'stating because the coordinates and the geometry come from different sources and both '
-             f'have to be right for that to happen. This drawing is derived from the game&rsquo;s mesh '
-             f'and is not a copy of any published map.</p></section>')
+             f'<p class="fp-note">Lines are floor edges &mdash; a wall or a drop. '
+             f'<b>{on_floor} of {npts} recorded positions land on drawn floor.</b> '
+             f'<a href="../learn/reading-the-plans.html">What this plan does not '
+             f'mark &rarr;</a></p></section>')
 
     h = h.replace('</head>', PLATE_CSS + '</head>', 1)
     h = h.replace('<section>', block + '<section>', 1)
@@ -862,7 +857,7 @@ page = head("Survey plots",
 <div class="shell">
   <div class="note"><strong>How to read these.</strong> The floor plan is the outline of the walkable
     floor, computed from the zone&rsquo;s own geometry in the game files &mdash; where the line runs is
-    where the floor stops, at a wall or a drop. {tot_geo} of the ten zones carry one. It is our own
+    where the floor stops, at a wall or a drop. {tot_geo} of the {len(Z)} zones carry one. It is our own
     derivation and not a copy of any published map, so it shows where the floor ends and nothing else:
     <strong>doors, locks and one-way drops are not marked</strong>, and a gap in a line is as likely to
     be a ledge as a doorway.
@@ -879,7 +874,7 @@ page = head("Survey plots",
     <br><br>A dashed outline groups named mobs whose recorded positions sit close together &mdash; it
     means &ldquo;these are near each other&rdquo;, not &ldquo;this is a room&rdquo;. An outline is named
     only when at least two of its members&rsquo; notes independently mention the same place;
-    {tot_regions} groups across the ten zones cleared that bar, and the rest stay unnamed rather than
+    {tot_regions} groups across the {len(Z)} zones cleared that bar, and the rest stay unnamed rather than
     guessed at. <strong>Mob positions are not tied to a storey</strong>, because most recorded
     coordinates carry no height &mdash; every point stays visible whichever level you select.</div>
 </div>

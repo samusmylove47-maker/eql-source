@@ -198,5 +198,66 @@
   "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
   "placeholders_removed": true,
   "placeholders_source": "Developer patch notes: &ldquo;Removed placeholders from and lowered maximum respawn times in several dungeons&rdquo;, naming all ten of these zones and Upper Guk. Confirmed in play by Avenrae before this site existed, and again on 9 August 2026."
+ },
+ {
+  "plate": 11,
+  "slug": "planeoffear",
+  "title": "Plane of Fear",
+  "accent": "#8FB03A",
+  "levels": "46+ (monsters 48-51)",
+  "zem": 82.5,
+  "zem_pct": 110,
+  "respawn": "not recorded",
+  "who": "fearplane",
+  "adjacent": [
+   "The Feerrott"
+  ],
+  "verified": null,
+  "verify_level": "none",
+  "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh, but no coordinate on this page has been checked against it, no named position is recorded, and no figure is measured. Gates 1 to 3 are all unstarted.",
+  "respawn_note": "The published boss timers - 72 hours for the golems, 7 days for the dracoliche - describe an open-world spawn the 16 June 2026 patch note removed. They are not wrong so much as about a thing that no longer happens. Trash respawn is unrecorded by any source we have found.",
+  "placeholders_removed": false,
+  "placeholders_source": "eqlwiki states Fear has no rare mobs with placeholders at all, which is a different claim from the dungeon placeholder removal. Not in the 28 July patch note, which named eleven dungeons and neither plane. So nothing has been published either way for this zone and we do not assume the dungeon change applied here."
+ },
+ {
+  "plate": 12,
+  "slug": "planeofhate",
+  "title": "Plane of Hate",
+  "accent": "#C24FA8",
+  "levels": "46+ (monsters 48+)",
+  "zem": 86,
+  "zem_pct": 115,
+  "respawn": "not recorded",
+  "who": "hateplane",
+  "adjacent": [
+   "Oasis of Marr",
+   "Wizard port-in"
+  ],
+  "verified": null,
+  "verify_level": "none",
+  "verify_gate": "Nothing here is ours yet, and the zone has a second archive - hateplaneb - whose relationship to this one we have not established. Gates 1 to 3 are all unstarted.",
+  "respawn_note": "Innoruuk is published at 7 days and the Maestro at 3, both describing an open-world spawn the 16 June 2026 patch note removed. Trash respawn is unrecorded; one player reports haunted chests respawning slowly enough to outlast a full circuit of the zone.",
+  "placeholders_removed": false,
+  "placeholders_source": "Not in the 28 July patch note, which named eleven dungeons and neither plane. So nothing has been published either way for this zone and we do not assume the dungeon change applied here."
+ },
+ {
+  "plate": 13,
+  "slug": "kedgekeep",
+  "title": "Kedge Keep",
+  "accent": "#2FA5C9",
+  "levels": "32-50",
+  "zem": 139,
+  "zem_pct": 185,
+  "respawn": "not recorded",
+  "who": "kedge",
+  "adjacent": [
+   "Dagnor's Cauldron"
+  ],
+  "verified": null,
+  "verify_level": "none",
+  "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but no figure on this page is measured by us. Gates 1 to 3 are all unstarted.",
+  "respawn_note": "Phinigel Autropos is published at 12 hours, which describes an open-world spawn the 11 June 2026 patch note removed - he no longer spawns in the open world or in personal instances. Trash respawn is unrecorded by any source we have found.",
+  "placeholders_removed": false,
+  "placeholders_source": "Kedge Keep is not in the 28 July patch note listing eleven dungeons that had placeholders removed. Nothing has been published either way."
  }
 ]

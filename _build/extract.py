@@ -54,6 +54,20 @@ def norm_cls(raw):
         return ["ALL"]
     return [c for c in CLS if re.search(r"\b" + c + r"\b", r)]
 
+def slug(s):
+    """The address a name gets.
+
+    Computed once, here, and carried in the data. The Index renders its result
+    rows in the browser and build17 writes the files those rows link to; if each
+    derived the slug itself, one in JavaScript and one in Python, they would
+    agree until the first name with a character the two regard differently, and
+    then link to a 404 with nothing to catch it. One field, one answer.
+    """
+    s = re.sub(r'&[a-z]+;', ' ', s)
+    s = re.sub(r"[^A-Za-z0-9\s-]", '', s.lower())
+    return re.sub(r'[\s_]+', '-', s).strip('-')[:60]
+
+
 items, named = [], []
 for z in Z:
     src=f"_build/source/{z['slug']}.html"
@@ -85,9 +99,15 @@ for z in Z:
                 cls=col('class')
                 names=[x.strip() for x in c[0].split(' · ') if x.strip()]
                 slots_l=[x.strip() for x in slot.split(' · ')] if slot else []
+                # 27 of 389 loot rows list several items in one cell and share a
+                # single stats cell between them. Splitting the names is right;
+                # copying the stats onto each is not, because "Red Dragon Scales"
+                # then carries a line describing a Tooth and a book of Prayers.
+                # Flagged so a page can show the row rather than assert the stats.
                 for k,nm in enumerate(names):
                   sl=slots_l[k] if k<len(slots_l) else (slots_l[0] if slots_l else '')
                   items.append({"n":nm,"s":norm_slot(sl),"sr":sl,"st":g('stats')[:140],
+                              "shared":len(names)>1,
                               "c":norm_cls(cls),
                               "d":g('dropped by')[:110],"z":z['slug'],"zt":z['title'],
                               "a":z['accent'],"p":z['plate'],"lv":z['levels']})
@@ -105,6 +125,19 @@ for z in Z:
                               "fl":g('flr'),"rc":g('race / class'),
                               "no":(g('notes') or g('spawn & notes'))[:190],
                               "z":z['slug'],"zt":z['title'],"a":z['accent'],"p":z['plate']})
+
+for r in items: r["u"] = slug(r["n"])
+for r in named: r["u"] = slug(r["n"])
+
+# A slug collision would point two different names at one page, so it is a build
+# failure rather than a warning. Names that differ only in punctuation collide.
+for label, rows in (("item", items), ("named", named)):
+    bad = {}
+    for r in rows:
+        bad.setdefault(r["u"], set()).add(r["n"])
+    clash = {k: v for k, v in bad.items() if len(v) > 1}
+    if clash:
+        raise SystemExit(f"{label} slug collision: {clash}")
 
 # de-duplicate identical item rows within a zone
 seen=set(); clean=[]

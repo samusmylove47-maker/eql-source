@@ -30,6 +30,8 @@ LEARN = [
     dict(slug="raid-access", name="How raid access works"),
     dict(slug="difficulty",  name="What difficulty changes"),
     dict(slug="deity",       name="Deity, and the level 11 lock"),
+    dict(slug="reading-the-plans", name="How to read a floor plan",
+         foot="Reading a floor plan"),
 ]
 
 _WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",
@@ -122,6 +124,8 @@ def foot(rel=""):
         <li><a href="{rel}dungeons/najena.html">Najena</a></li>
         <li><a href="{rel}dungeons/lowerguk.html">Lower Guk</a></li>
         <li><a href="{rel}dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="{rel}items/index.html">Every item</a></li>
+        <li><a href="{rel}named/index.html">Every named mob</a></li>
       </ul></div>
       <div><h4>Raids</h4><ul>
         <li><a href="{rel}raids/index.html">Encounter index</a></li>

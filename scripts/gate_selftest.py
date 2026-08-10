@@ -27,15 +27,25 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 
+_IX = json.load(open("assets/index-data.json", encoding="utf-8"))
+N_ITEMS, N_NAMED = len(_IX["items"]), len(_IX["named"])
+N_ZONES = len(json.load(open("assets/zones-index.json", encoding="utf-8")))
+
+
 def check():
     r = subprocess.run([sys.executable, "scripts/check.py"], capture_output=True, text=True)
     return r.returncode, r.stdout
 
 
 CASES = [
-    ("count contradiction — 208 named against 209 in the data",
+    # The counts are read from the data, not typed, because this file typed them
+    # once and the case silently became a no-op the next time a zone was added —
+    # reported as TEST BROKEN rather than caught, which is the good failure, but
+    # it is still the same fault the gate exists to prevent.
+    ("count contradiction — one fewer named than the data holds",
      "public/tools/index.html",
-     lambda t: t.replace("452 items, 209 named", "452 items, 208 named")),
+     lambda t: t.replace(f"{N_ITEMS} items, {N_NAMED} named",
+                         f"{N_ITEMS} items, {N_NAMED - 1} named")),
 
     ("verification count off the ledger",
      "public/index.html",
@@ -54,6 +64,38 @@ CASES = [
     ("a tool dropped from the footer",
      "public/index.html",
      lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact\.html">[^<]*</a></li>', "", t)),
+
+    # The change log is exempt from the prose ceiling, and that exemption is
+    # exactly the kind of hole that quietly turns a check off. This proves the
+    # rest of the page is still governed.
+    ("prose growing on the page that hosts the change log",
+     "public/sources.html",
+     lambda t: t.replace('<section class="band" id="changelog"',
+                         "<p>" + " ".join(["ballast"] * 100)
+                         + '</p><section class="band" id="changelog"')),
+
+    # Same hole, second ledger. The register's entries are exempt; its prose
+    # is not, and each exemption has to be proved separately or the list in
+    # gate.py becomes a place to hide growth.
+    ("prose growing on the findings register",
+     "public/learn/still-true.html",
+     lambda t: t.replace('<article class="st-entry"',
+                         "<p>" + " ".join(["ballast"] * 100)
+                         + '</p><article class="st-entry"', 1)),
+
+    # Third ledger, same proof.
+    ("prose growing on the dungeon index",
+     "public/dungeons/index.html",
+     lambda t: t.replace('class="plates"',
+                         'class="x">' + " ".join(["ballast"] * 90)
+                         + '</div><div class="plates"', 1)),
+
+    # A count typed as a word rather than printed from the ledger. The dungeon
+    # index headline read "Ten zones, surveyed" while the ledger held thirteen,
+    # and nothing caught it because every count check matched digits only.
+    ("a zone count spelled out and left behind",
+     "public/dungeons/index.html",
+     lambda t: t.replace(f"{N_ZONES} zones,", "Ten zones,")),
 ]
 
 
@@ -65,6 +107,19 @@ def mutate_zone_gate():
     Z[0]["verify_gate"] = "Gate 3, the room-list collision check, is still open"
     open(p, "w", encoding="utf-8", newline="\n").write(
         json.dumps(Z, indent=1, ensure_ascii=False) + "\n")
+    return p, orig
+
+
+def mutate_missing_item_page():
+    """An item page the data links to but that is not on disk.
+
+    The Index writes its links in the browser, so the link checker never sees
+    them and this is the only thing standing between a renamed item and 452
+    silent 404s. Moved rather than deleted, and put back in the finally.
+    """
+    p = "public/items/journeymans-boots.html"
+    orig = open(p, encoding="utf-8").read()
+    os.remove(p)
     return p, orig
 
 
@@ -91,14 +146,16 @@ def main():
         finally:
             open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
-    path, orig = mutate_zone_gate()
-    try:
-        rc, out = check()
-        hit = next((l.strip()[6:] for l in out.splitlines() if "FAIL" in l), "")
-        results.append(("a full zone still naming an open gate",
-                        "caught" if rc != 0 else "MISSED", hit[:110]))
-    finally:
-        open(path, "w", encoding="utf-8", newline="\n").write(orig)
+    for label, fn in (("a full zone still naming an open gate", mutate_zone_gate),
+                      ("an item page The Index links but that is not on disk",
+                       mutate_missing_item_page)):
+        path, orig = fn()
+        try:
+            rc, out = check()
+            hit = next((l.strip()[6:] for l in out.splitlines() if "FAIL" in l), "")
+            results.append((label, "caught" if rc != 0 else "MISSED", hit[:110]))
+        finally:
+            open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
     bad = 0
     for name, status, detail in results:

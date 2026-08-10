@@ -48,7 +48,11 @@ DEFAULT_EQ = r"C:/Users/Public/Daybreak Game Company/Installed Games/EverQuest L
 SHORT = {'najena': 'najena', 'splitpaw': 'paw', 'crushbone': 'crushbone',
          'befallen': 'befallen', 'blackburrow': 'blackburrow', 'lowerguk': 'gukbottom',
          'nagafenslair': 'soldungb', 'thehole': 'hole', 'warrens': 'warrens',
-         'mistmoore': 'mistmoore'}
+         'mistmoore': 'mistmoore',
+         # The planes. hateplaneb is a separate 8.4MB archive whose relationship
+         # to hateplane we have not established - see docs/PLANES.md.
+         'planeoffear': 'fearplane', 'planeofhate': 'hateplane',
+         'kedgekeep': 'kedge'}
 
 FLOOR_N = 0.5      # normal z above this is floor rather than wall
 SNAP = 1.0         # vertex snap, world units

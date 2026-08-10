@@ -146,11 +146,9 @@ def control_html(s):
             f'<div class="cond">{lead}</div>'
             f'<div class="tw"><table><thead><tr><th>Spell</th><th>Stuns landed</th><th>Cast by</th></tr></thead>'
             f'<tbody>{rows}</tbody></table></div>'
-            f'<p class="caveat" style="margin:0 0 18px">Counted from what the log recorded, not '
-            f'from what a spell is assumed to do. Resist rates depend on the character&rsquo;s own '
-            f'resistances and alternate abilities, so treat these as what happened to one build '
-            f'rather than as a property of the mob. The useful part is the kill order: whatever '
-            f'casts the spell at the top of this table takes your turn away most often.</p>')
+            f'<p class="caveat" style="margin:0 0 18px"><b>Read this as a kill order.</b> '
+            f'Whatever casts the spell at the top takes your turn away most often. '
+            f'<a href="../learn/reading-the-plans.html#measured">Why it is not a property of the mob &rarr;</a></p>')
 
 
 def merge(sessions):
@@ -354,11 +352,9 @@ def section(sess_list, zone_title):
             for n, at, c in notes) if notes else '')
         + f'</div>{control_html(s)}{escapes_html(s)}{tables}'
         f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
-        f'session, not rates. A drop listed here was seen at least once and nothing more &mdash; no '
-        f'drop rate can be read from it. Damage and landing figures describe this trio, at this '
-        f'level, against these mobs, on this date; a different level or trio changes all of them. '
-        f'Mobs that never attacked us and never cast anything are absent, because a log records what '
-        f'happened rather than what was there. Spell names are as the game printed them.</p>'
+        f'session, not rates. A drop seen once is seen once, and figures describe this '
+        f'trio at this level on this date. '
+        f'<a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p>'
         f'</section>')
 
 

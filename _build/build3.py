@@ -99,10 +99,9 @@ p.tight{color:#9FADAC;font-size:14px;line-height:1.6;margin:0}
 # this note above it, because deleting what a source says is how a record stops
 # being checkable.
 PH_CONFIRMED = """
-<div class="ph-note ph-yes"><strong>Named spawn every cycle. There are no placeholders here.</strong>
-  The percentages in the roster below are inherited from classic, where a named shared its spawn
-  point with a placeholder. They are historical and describe nothing about this zone now.
-  <a href="REL_learn/still-true.html">The patch note, and what else changed</a>.</div>"""
+<div class="ph-note ph-yes"><strong>Named spawn every cycle. No placeholders here.</strong>
+  Percentages below are inherited classic data and describe nothing about this zone now.
+  <a href="REL_learn/reading-the-plans.html">Why they are still printed &rarr;</a></div>"""
 
 CONTACT = """
 <div class="inj-contact">

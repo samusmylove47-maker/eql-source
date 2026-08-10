@@ -238,22 +238,25 @@ not been written down by anyone yet.
 
 ---
 
-## P4 — Five missing navigation maps
+## ~~P4 — Five missing navigation maps~~ · struck 10 Aug 2026
 
-Crushbone, Befallen, Blackburrow, The Hole, The Warrens have plates but no map.
-Blackburrow first: it has an explicit three-floor structure, which makes it the
-strongest candidate for a 3D treatment rather than a flat plan.
+Superseded. `_build/geometry.py` reads the floor plans from the game's own
+meshes and covers all ten zones, so the five it named have had a map since the
+plates were retired. What the plans lack now is room names, which is a different
+piece of work and is recorded as a gap on Accuracy rather than a backlog item.
 
 ---
 
-## P5 — Close the verification gates
+## ~~P5 — Close the verification gates~~ · struck 10 Aug 2026
 
-Five plates are short of the full three-gate standard. `verify_gate` in
-`assets/zones-index.json` names the open gate for each. Use `/verify <zone>`.
+Done. All ten cleared all three gates on 9 Aug 2026 and `verify_gate` in
+`assets/zones-index.json` records the evidence for each. Gate 3 was rewritten
+that day — it had asked for a collision check against a room list that does not
+exist, and now asks that every coordinate land within 120 units of drawn floor.
+`docs/SOURCES.md` carries the reasoning and what the new gate is weaker at.
 
-Do not upgrade a `verify_level` without doing all three gates. `check.py` will
-catch a count that outruns the data, but it cannot catch a lie in the field
-itself.
+Still true, and worth keeping in view: do not upgrade a `verify_level` without
+doing the work, and "verified" means checked against source, not finished.
 
 ---
 

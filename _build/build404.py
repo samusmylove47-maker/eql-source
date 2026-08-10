@@ -10,11 +10,11 @@ import os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
-from _partials import head, bar, foot
+from _partials import head, bar, foot, TOOLS, wordnum
 
 page = head("Page not found",
   "That page is not here. The dungeon plates, tools and raid guides are all one click away.",
-  rel="", og="home") + bar("") + '''
+  rel="", og="home") + bar("") + f'''
 <main>
 
 <section class="hero page">
@@ -32,14 +32,14 @@ page = head("Page not found",
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
       <a class="card" href="dungeons/index.html" style="--c:var(--z01)">
-        <div class="kicker">Ten zones</div>
+        <div class="kicker">Every zone</div>
         <h3 class="t">Dungeon plates</h3>
         <p class="d">Every surveyed zone, each with a floor plan derived from the game&rsquo;s own
           geometry, its named mobs, and what they drop.</p>
         <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="tools/index.html" style="--c:var(--instr)">
-        <div class="kicker">Five trackers</div>
+        <div class="kicker">{wordnum(len(TOOLS))} trackers</div>
         <h3 class="t">Tools</h3>
         <p class="d">Progression trackers, The Index, and the faction impact checker. No account,
           nothing transmitted.</p>
