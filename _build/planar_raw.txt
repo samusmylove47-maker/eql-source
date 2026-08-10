@@ -1,0 +1,125 @@
+# Planar armour, mined from eqlwiki item infoboxes, 11 August 2026.
+# NAME | slot | ac | str | sta | agi | dex | wis | int | cha | hp | mana | svmagic | svfire | svcold | svdisease | svpoison | effect | weight | classes
+#
+# NR = the field is absent from the infobox. Absent is not zero, and the tool
+# prints "not recorded" rather than 0.
+#
+# Verified against the raw wikitext of Vermiculated Crown before the rest was
+# trusted: its CHA +13 / INT +9 / MANA +15 with no WIS is genuinely what the
+# source says, odd as that is for a druid piece. Do not "fix" it.
+Lustrous Russet Breastplate | CHEST | 26 | 15 | 15 | NR | 15 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 7.5 | WAR CLR PAL RNG SHD BRD ROG SHM BER
+Lustrous Russet Helm | HEAD | 15 | NR | NR | NR | NR | NR | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | 4.5 | WAR CLR PAL RNG SHD BRD ROG SHM
+Lustrous Russet Boots | FEET | 15 | NR | NR | 5 | NR | 5 | 5 | NR | NR | NR | NR | NR | NR | 15 | 15 | NR | 4.9 | WAR CLR PAL RNG SHD BRD ROG SHM
+Lustrous Russet Bracer | WRIST | 9 | 3 | NR | NR | 3 | NR | NR | NR | NR | NR | 7 | 7 | 7 | NR | NR | NR | 3.0 | WAR CLR PAL RNG SHD BRD ROG SHM BER
+Lustrous Russet Gauntlets | HANDS | 12 | NR | NR | NR | 5 | NR | NR | NR | 50 | NR | NR | NR | NR | NR | NR | NR | 3.8 | WAR CLR PAL RNG SHD BRD ROG SHM
+Lustrous Russet Greaves | LEGS | 15 | 5 | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 5.6 | WAR CLR PAL RNG SHD BRD ROG SHM
+Lustrous Russet Vambraces | ARMS | 15 | 9 | NR | NR | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 4.9 | WAR CLR PAL RNG SHD BRD ROG SHM
+Midnight Clad Straps | CHEST | 10 | 13 | 13 | NR | NR | 13 | 13 | NR | NR | NR | NR | NR | NR | NR | NR | NR | 0.5 | DRU MNK ROG NEC WIZ MAG ENC BST
+Midnight Clad Headband | HEAD | 2 | NR | 10 | NR | NR | 10 | 10 | NR | NR | NR | NR | NR | NR | NR | NR | NR | 0.1 | DRU MNK ROG NEC WIZ MAG ENC BST
+Midnight Clad Footwraps | FEET | 6 | 5 | 9 | NR | NR | NR | NR | NR | NR | NR | 8 | 8 | 8 | NR | NR | NR | 0.1 | DRU MNK ROG NEC WIZ MAG ENC BST
+Midnight Clad Wristbands | WRIST | 4 | NR | 5 | NR | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 0.1 | DRU MNK ROG NEC WIZ MAG ENC BST
+Midnight Clad Fistwraps | HANDS | 5 | 5 | NR | NR | 9 | NR | 5 | NR | NR | NR | 7 | NR | NR | NR | NR | NR | 0.1 | DRU MNK ROG NEC WIZ MAG ENC BST
+Midnight Clad Leggings | LEGS | 5 | NR | 9 | NR | NR | 5 | 5 | NR | NR | NR | NR | 8 | NR | NR | NR | NR | 0.1 | DRU MNK ROG NEC WIZ MAG ENC BST
+Midnight Clad Armbands | ARMS | 5 | 5 | 9 | NR | NR | NR | 5 | NR | NR | NR | NR | NR | 7 | 5 | 5 | NR | 0.1 | DRU MNK ROG NEC WIZ MAG ENC BST
+Ethereal Mist Chestplate | CHEST | 28 | NR | 15 | NR | NR | 15 | NR | NR | 25 | 25 | NR | NR | NR | NR | NR | NR | 7.5 | CLR
+Ethereal Mist Helm | HEAD | 16 | 5 | NR | NR | NR | 5 | NR | NR | NR | NR | NR | NR | NR | 13 | NR | NR | 4.5 | CLR
+Ethereal Mist Boots | FEET | 15 | NR | NR | 5 | NR | NR | 5 | NR | NR | NR | NR | NR | 7 | NR | NR | NR | 4.9 | CLR
+Ethereal Mist Bracers | WRIST | 9 | NR | NR | NR | 9 | NR | NR | 9 | NR | 20 | NR | NR | NR | NR | NR | NR | 3.0 | CLR
+Ethereal Mist Gauntlets | HANDS | 12 | NR | NR | NR | 5 | NR | 5 | NR | NR | NR | NR | 7 | NR | NR | NR | NR | 3.8 | CLR
+Ethereal Mist Greaves | LEGS | 15 | 5 | NR | 5 | NR | 9 | NR | NR | NR | NR | NR | NR | NR | NR | 7 | NR | 5.6 | CLR
+Ethereal Mist Vambraces | ARMS | 15 | 9 | NR | NR | NR | NR | NR | NR | NR | NR | 7 | NR | NR | NR | NR | NR | 4.9 | CLR
+Vermiculated Tunic | CHEST | 15 | 9 | 9 | NR | NR | 13 | NR | NR | 35 | NR | NR | NR | NR | NR | 7 | NR | 9.0 | DRU
+Vermiculated Crown | HEAD | 7 | NR | NR | NR | NR | NR | 9 | 13 | NR | 15 | NR | NR | NR | NR | NR | NR | 6.0 | DRU
+Vermiculated Boots | FEET | 6 | 5 | NR | 13 | NR | NR | NR | NR | 15 | NR | NR | NR | NR | NR | NR | NR | 6.5 | DRU
+Vermiculated Bracelet | WRIST | 5 | NR | NR | NR | NR | 9 | NR | NR | NR | 15 | NR | 7 | 7 | NR | NR | NR | 3.5 | DRU
+Vermiculated Gloves | HANDS | 6 | NR | NR | NR | 13 | NR | 5 | NR | NR | NR | NR | NR | NR | 7 | NR | NR | 5.5 | DRU
+Vermiculated Leggings | LEGS | 8 | 3 | NR | NR | NR | 5 | NR | NR | NR | NR | NR | NR | NR | NR | 7 | NR | 7.0 | DRU
+Vermiculated Armplates | ARMS | 7 | NR | NR | 5 | 5 | NR | NR | NR | NR | NR | 7 | NR | NR | NR | NR | NR | 5.0 | DRU
+Rune Etched Chestplate | CHEST | 26 | NR | 9 | NR | NR | 13 | NR | NR | NR | 25 | NR | NR | NR | NR | NR | NR | 7.5 | SHM
+Rune Etched Helm | HEAD | 14 | NR | NR | NR | 5 | NR | 5 | NR | NR | NR | NR | NR | NR | NR | 7 | NR | 4.5 | SHM
+Rune Etched Boots | FEET | 14 | NR | NR | 9 | NR | NR | NR | NR | 20 | NR | NR | NR | 7 | NR | NR | NR | 4.9 | SHM
+Rune Etched Bracer | WRIST | 9 | NR | NR | NR | NR | 5 | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | 3.0 | SHM
+Rune Etched Gauntlets | HANDS | 11 | 5 | NR | NR | 5 | NR | NR | NR | NR | 20 | NR | 7 | NR | NR | NR | NR | 3.8 | SHM
+Rune Etched Greaves | LEGS | 14 | 5 | NR | NR | NR | 5 | NR | NR | NR | NR | NR | NR | NR | 7 | NR | NR | 5.6 | SHM
+Rune Etched Vambraces | ARMS | 13 | 5 | NR | NR | 3 | NR | NR | NR | NR | NR | 7 | NR | NR | NR | NR | NR | 4.9 | SHM
+Shiverback-hide Jerkin | CHEST | 11 | 13 | NR | 9 | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 0.5 | MNK
+Shiverback-hide Boots | FEET | 6 | 5 | 9 | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 0.1 | MNK
+Shiverback-hide Wristbands | WRIST | 4 | NR | 5 | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | 5 | 5 | NR | 0.1 | MNK
+Shiverback-hide Gloves | HANDS | 5 | 5 | NR | NR | 9 | NR | 5 | NR | NR | NR | 7 | NR | NR | NR | NR | Serpent Sight | 0.1 | MNK
+Shiverback-hide Leggings | LEGS | 5 | NR | NR | 5 | NR | 5 | NR | NR | NR | NR | NR | 7 | NR | NR | NR | NR | 0.1 | MNK
+Shiverback-hide Armbands | ARMS | 5 | 5 | 9 | NR | NR | NR | NR | 5 | NR | NR | NR | NR | 7 | NR | NR | NR | 0.1 | MNK
+Anthemion Wristguard | WRIST | 4 | NR | NR | 5 | NR | 5 | NR | NR | NR | NR | NR | NR | NR | 5 | 5 | NR | 0.2 | BST
+Anthemion Armbands | WRIST | 5 | 5 | 4 | NR | 9 | NR | NR | NR | NR | NR | NR | NR | 7 | NR | NR | NR | 0.2 | BST
+Thorny Vine Chestplate | CHEST | 26 | 9 | NR | NR | NR | 13 | NR | NR | 50 | NR | NR | NR | NR | NR | NR | NR | 7.5 | RNG
+Thorny Vine Helm | HEAD | 14 | NR | NR | NR | NR | 5 | NR | 9 | NR | 10 | NR | NR | 7 | NR | NR | NR | 4.5 | RNG
+Thorny Vine Boots | FEET | 14 | 5 | 5 | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 7 | NR | 4.9 | RNG
+Thorny Vine Bracer | WRIST | 9 | NR | 5 | 5 | NR | 5 | NR | NR | NR | 10 | NR | NR | NR | NR | NR | NR | 3.0 | RNG
+Thorny Vine Gauntlets | HANDS | 11 | 9 | NR | NR | 9 | NR | NR | NR | NR | NR | NR | 7 | NR | NR | NR | NR | 3.8 | RNG
+Thorny Vine Greaves | LEGS | 14 | NR | NR | 9 | NR | 5 | NR | NR | NR | 15 | NR | NR | NR | 7 | NR | NR | 5.6 | RNG
+Thorny Vine Vambraces | ARMS | 13 | NR | NR | NR | 9 | NR | 9 | NR | NR | NR | 7 | NR | NR | NR | NR | NR | 4.9 | RNG
+Valorium Chestplate | CHEST | 30 | 13 | 9 | NR | NR | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 7.5 | PAL
+Valorium Helmet | HEAD | 17 | NR | NR | NR | NR | 7 | NR | NR | NR | 15 | 13 | NR | NR | NR | NR | NR | 4.5 | PAL
+Valorium Boots | FEET | 17 | NR | 5 | NR | NR | NR | 5 | 9 | NR | NR | NR | NR | NR | NR | NR | NR | 4.9 | PAL
+Valorium Bracers | WRIST | 10 | 5 | NR | NR | 5 | NR | NR | NR | NR | 10 | NR | NR | NR | NR | 5 | NR | 3.0 | PAL
+Valorium Gauntlets | HANDS | 13 | 5 | 5 | NR | NR | 5 | NR | NR | NR | NR | NR | NR | NR | 10 | NR | NR | 3.8 | PAL
+Valorium Greaves | LEGS | 17 | NR | NR | 9 | NR | NR | 5 | NR | NR | NR | NR | 10 | NR | NR | NR | NR | 5.6 | PAL
+Valorium Vambraces | ARMS | 16 | 5 | NR | NR | 9 | NR | NR | NR | NR | NR | NR | NR | 10 | NR | NR | NR | 4.9 | PAL
+Shadow Rage Sleeves | ARMS | 10 | 3 | 5 | NR | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 3.9 | BER
+Shadow Rage Wristguard | WRIST | 6 | 4 | NR | 4 | 4 | NR | NR | NR | NR | NR | NR | 5 | 5 | NR | NR | NR | 2.0 | BER
+Shadow Rage Leggings | LEGS | 12 | NR | NR | 6 | NR | 6 | NR | NR | NR | NR | NR | 2 | NR | 8 | NR | NR | 4.5 | BER
+Insidious Robe | CHEST | 11 | NR | 10 | NR | 8 | NR | 13 | 3 | NR | 35 | NR | NR | NR | NR | NR | NR | 1.0 | ENC
+Insidious Halo | HEAD | 5 | NR | NR | NR | NR | NR | 7 | 20 | 10 | 10 | 10 | NR | NR | NR | NR | NR | 0.3 | ENC
+Insidious Slippers | FEET | 4 | NR | NR | 10 | NR | NR | NR | 3 | 15 | NR | NR | NR | NR | NR | 10 | NR | 0.7 | ENC
+Insidious Manacle | WRIST | 3 | 3 | NR | NR | 3 | NR | NR | 2 | NR | 15 | NR | NR | NR | NR | NR | NR | 0.3 | ENC
+Insidious Gloves | HANDS | 4 | NR | NR | NR | 10 | NR | 8 | 2 | NR | 5 | NR | NR | NR | 10 | NR | NR | 0.4 | ENC
+Insidious Pantaloons | LEGS | 5 | 3 | NR | NR | NR | NR | NR | 3 | 15 | NR | NR | NR | 10 | NR | NR | NR | 0.7 | ENC
+Insidious Sleeves | ARMS | 4 | NR | NR | NR | NR | NR | 7 | 3 | 10 | NR | NR | 10 | NR | NR | NR | NR | 0.4 | ENC
+Apothic Robe | CHEST | 11 | NR | 12 | NR | 5 | NR | 14 | NR | NR | 40 | NR | NR | NR | NR | NR | NR | 1.0 | MAG
+Apothic Crown | HEAD | 5 | NR | NR | NR | NR | NR | 9 | 10 | 10 | 10 | 10 | NR | NR | NR | NR | NR | 0.3 | MAG
+Apothic Boots | FEET | 4 | NR | NR | 13 | NR | NR | NR | NR | 18 | NR | NR | NR | NR | NR | 10 | NR | 0.7 | MAG
+Apothic Warband | WRIST | 3 | 4 | NR | NR | 4 | NR | NR | NR | NR | 20 | NR | NR | NR | NR | NR | NR | 0.3 | MAG
+Apothic Gloves | HANDS | 4 | NR | NR | NR | 13 | NR | 7 | NR | NR | 12 | NR | NR | NR | 10 | NR | NR | 0.4 | MAG
+Apothic Kilt | LEGS | 5 | 5 | NR | NR | NR | NR | NR | NR | 25 | NR | NR | NR | 10 | NR | NR | NR | 0.5 | MAG
+Apothic Sleeves | ARMS | 4 | NR | NR | NR | NR | NR | 7 | NR | 18 | NR | NR | 10 | NR | NR | NR | NR | 0.4 | MAG
+Blighted Robe | CHEST | 11 | NR | 10 | NR | 10 | NR | 13 | NR | NR | 40 | NR | NR | NR | NR | NR | NR | 1.0 | NEC
+Blighted Skullcap | HEAD | 5 | NR | NR | NR | NR | 7 | 8 | NR | 10 | 20 | 10 | NR | NR | NR | NR | NR | 0.3 | NEC
+Blighted Boots | FEET | 4 | NR | NR | 14 | NR | NR | NR | NR | 5 | NR | NR | NR | NR | NR | 10 | NR | 0.7 | NEC
+Blighted Armband | WRIST | 3 | 4 | NR | NR | 5 | NR | NR | NR | NR | 15 | NR | NR | NR | NR | NR | NR | 0.3 | NEC
+Blighted Gloves | HANDS | 4 | NR | NR | NR | 10 | NR | 8 | NR | NR | 12 | NR | NR | NR | 10 | NR | NR | 0.4 | NEC
+Blighted Trousers | LEGS | 5 | 3 | NR | NR | 4 | NR | NR | NR | 10 | NR | NR | NR | 10 | NR | NR | NR | 0.7 | NEC
+Blighted Sleeves | ARMS | 5 | NR | NR | NR | NR | NR | 7 | NR | 15 | NR | NR | 10 | NR | NR | NR | NR | 0.4 | NEC
+Carmine Robe | CHEST | 11 | NR | 14 | NR | 7 | NR | 14 | NR | NR | 30 | NR | NR | NR | NR | NR | NR | 1.0 | WIZ
+Carmine Turban | HEAD | 5 | NR | 5 | NR | NR | NR | 7 | 10 | 10 | 10 | 10 | NR | NR | NR | NR | NR | 0.3 | WIZ
+Carmine Boots | FEET | 4 | NR | NR | 14 | NR | NR | NR | NR | 10 | NR | NR | NR | NR | NR | 10 | NR | 0.7 | WIZ
+Carmine Trinket | WRIST | 3 | 2 | NR | NR | 6 | NR | NR | NR | NR | 15 | NR | NR | NR | NR | NR | NR | 0.3 | WIZ
+Carmine Gloves | HANDS | 4 | NR | NR | NR | 12 | NR | 7 | NR | NR | 15 | NR | NR | NR | 10 | NR | NR | 0.4 | WIZ
+Carmine Pants | LEGS | 5 | 3 | 3 | NR | NR | NR | NR | NR | 15 | NR | NR | NR | 10 | NR | NR | NR | 0.7 | WIZ
+Carmine Sleeves | ARMS | 4 | NR | NR | NR | NR | NR | 7 | NR | 20 | NR | NR | 10 | NR | NR | NR | NR | 0.4 | WIZ
+Imbrued Platemail Breastplate | CHEST | 29 | 9 | NR | NR | 13 | NR | NR | 9 | NR | NR | NR | NR | NR | 10 | NR | NR | 7.5 | BRD
+Imbrued Platemail Helm | HEAD | 16 | NR | NR | NR | NR | 9 | NR | 9 | NR | NR | NR | 10 | NR | NR | NR | NR | 4.5 | BRD
+Imbrued Platemail Boots | FEET | 16 | 5 | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | 10 | NR | NR | NR | 4.9 | BRD
+Imbrued Platemail Bracer | WRIST | 11 | NR | NR | NR | 3 | NR | 3 | NR | 10 | NR | NR | NR | NR | NR | NR | NR | 3.0 | BRD
+Imbrued Platemail Gauntlets | HANDS | 14 | NR | NR | NR | 5 | 5 | NR | NR | 10 | NR | NR | NR | NR | NR | NR | NR | 3.8 | BRD
+Imbrued Platemail Greaves | LEGS | 16 | 5 | 9 | 9 | NR | NR | NR | NR | NR | NR | 10 | NR | NR | NR | NR | NR | 5.6 | BRD
+Imbrued Platemail Vambraces | ARMS | 16 | NR | NR | NR | NR | NR | 9 | NR | NR | NR | NR | NR | NR | NR | 10 | NR | 4.9 | BRD
+Umbral Platemail Breastplate | CHEST | 30 | 13 | 9 | NR | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 7.5 | SHD
+Umbral Platemail Helm | HEAD | 17 | NR | NR | NR | NR | NR | 9 | NR | 35 | NR | 10 | NR | NR | NR | NR | NR | 4.5 | SHD
+Umbral Platemail Boots | FEET | 17 | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 13 | NR | NR | 4.9 | SHD
+Umbral Platemail Bracer | WRIST | 10 | NR | NR | NR | 5 | NR | 3 | NR | NR | NR | NR | NR | NR | NR | NR | NR | 3.0 | SHD
+Umbral Platemail Gauntlets | HANDS | 13 | 5 | NR | NR | NR | NR | 5 | NR | NR | 35 | NR | NR | 10 | NR | NR | NR | 3.8 | SHD
+Umbral Platemail Greaves | LEGS | 17 | NR | NR | 5 | NR | 5 | NR | NR | NR | NR | NR | NR | NR | NR | 13 | NR | 5.6 | SHD
+Umbral Platemail Vambraces | ARMS | 16 | 5 | NR | NR | 5 | NR | NR | NR | NR | NR | NR | 10 | NR | NR | NR | NR | 4.9 | SHD
+Woven Shadow Chestplate | CHEST | 26 | 13 | NR | 13 | 13 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 7.5 | ROG
+Woven Shadow Helm | HEAD | 14 | 5 | NR | NR | NR | NR | 9 | NR | NR | NR | NR | NR | NR | 10 | NR | NR | 4.5 | ROG
+Woven Shadow Boots | FEET | 14 | 5 | NR | 9 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 4.9 | ROG
+Woven Shadow Bracer | WRIST | 9 | 3 | NR | 3 | 3 | NR | NR | NR | NR | NR | NR | 5 | 5 | NR | NR | NR | 3.0 | ROG
+Woven Shadow Gauntlets | HANDS | 11 | 5 | NR | NR | 5 | NR | NR | NR | NR | NR | 10 | NR | NR | NR | NR | NR | 3.8 | ROG
+Woven Shadow Greaves | LEGS | 14 | NR | NR | 5 | NR | 5 | NR | NR | NR | NR | NR | NR | NR | 10 | NR | NR | 5.6 | ROG
+Woven Shadow Vambraces | ARMS | 13 | NR | 5 | NR | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 4.9 | ROG
+Indicolite Breastplate | CHEST | 35 | 15 | 15 | NR | 15 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 7.5 | WAR
+Indicolite Helm | HEAD | 20 | NR | NR | NR | NR | NR | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | 4.5 | WAR
+Indicolite Boots | FEET | 20 | NR | NR | 5 | NR | 5 | 5 | NR | NR | NR | NR | NR | NR | 15 | 15 | NR | 4.9 | WAR
+Indicolite Bracer | WRIST | 12 | 3 | NR | NR | 3 | NR | NR | NR | NR | NR | 7 | 7 | 7 | NR | NR | NR | 3.0 | WAR
+Indicolite Gauntlets | HANDS | 16 | NR | 5 | NR | 5 | NR | NR | NR | 50 | NR | NR | NR | NR | NR | NR | NR | 3.8 | WAR
+Indicolite Greaves | LEGS | 20 | 5 | 5 | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 5.6 | WAR
+Indicolite Vambraces | ARMS | 20 | 9 | NR | NR | 5 | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | NR | 4.9 | WAR

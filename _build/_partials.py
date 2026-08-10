@@ -23,6 +23,7 @@ TOOLS = [
     dict(slug="race-unlocks",     name="Race unlock tracker"),
     dict(slug="combo-calculator", name="Race and primary calculator"),
     dict(slug="faction-impact",   name="Faction impact checker"),
+    dict(slug="planar-gear",      name="Planar gear targets"),
 ]
 
 LEARN = [
