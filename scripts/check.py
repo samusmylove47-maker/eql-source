@@ -204,7 +204,11 @@ if os.path.exists("build.sh"):
                    # Read the game's .s3d archives, so they are run by hand and
                    # their output is committed. A rebuild has to work on a
                    # machine with no EverQuest Legends install.
-                   "geometry.py", "skyislands.py")}
+                   "geometry.py", "skyislands.py",
+                   # Reads combat logs out of state/logs/, which are
+                   # gitignored because they can carry private chat. Run
+                   # by hand; only the derived counts are committed.
+                   "raidstats.py")}
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 

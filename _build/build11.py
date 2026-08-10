@@ -24,6 +24,38 @@ their page: it is the difficulty question answered for a reader of this site,
 crediting their numbers, adding the part we measured, and linking out for the
 rest. If a reader wants the full scaling tables they should go and read theirs.
 """
+import json as _json
+RAIDS = _json.load(open('assets/raids-measured.json', encoding='utf-8'))
+YAEL = sorted([r for r in RAIDS if r['boss'] == 'Master Yael'],
+              key=lambda r: r['difficulty'])
+# Spells that are not direct damage or control. A boss casting these is not
+# running an evocation kit, and that is the whole finding - so the test is
+# stated in code rather than asserted in prose.
+_HEALS = {'Healing Light', 'Sacred Echo', 'Bond of Death'}
+_DOT_FEAR = {'Screaming Terror', 'Insidious Retrogression', 'Ignite Blood', 'Shadow Vortex'}
+
+def _kit(r):
+    sp = set(r['spells'])
+    return dict(heals=sorted(sp & _HEALS), dots=sorted(sp & _DOT_FEAR))
+
+# Only what is NEW at each tier. Repeating the whole list five times cost 250
+# words and hid the finding; the widening is the point, so show the widening.
+def _new_rows():
+    seen, out = set(), []
+    for r in YAEL:
+        fresh = sorted(set(r["spells"]) - seen)
+        seen |= set(r["spells"])
+        out.append(
+            f'<tr><td class="nmob">D{r["difficulty"]} <span class="tier tM">M</span></td>'
+            f'<td class="lv">{r["damage_to_kill"]:,}</td>'
+            f'<td class="lv">{r["seconds"]}s</td>'
+            f'<td class="lv">{r["spells_distinct"]}</td>'
+            f'<td class="lv">{r["self_heal_count"] or "&mdash;"}</td>'
+            f'<td>{", ".join(fresh) or "nothing new"}</td></tr>')
+    return "".join(out)
+
+_yael_rows = _new_rows()
+_first_multi = next((r["difficulty"] for r in YAEL if _kit(r)["heals"]), None)
 import os, sys, json, collections
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -185,6 +217,31 @@ You have entered The City of Guk 4 (Refined).</pre>
         </ul>
       </aside>
     </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><span class="n">Ours</span>
+      <div><h2 class="sec">The ramp, measured on one boss at all five tiers</h2>
+      <p class="lede" style="margin:0">Master Yael, in the group instance of The Hole, killed once
+        at every difficulty on 10 August 2026 by one trio in one session. Same boss, same players,
+        five settings &mdash; which is the only way to see what the tier actually changes.</p></div></div>
+    <div class="scroller"><table>
+      <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
+        <th>Self-heals</th><th>What he cast</th></tr></thead>
+      <tbody>{_yael_rows}</tbody>
+    </table></div>
+    <div class="note"><strong>The kit widens at D3.</strong> D0 to D2 is direct damage and
+      control &mdash; evocation, one kit. From D3 he also heals, fears and applies damage over time.
+      <span class="tier tM">TIER M</span>
+      <br><br><strong>He healed himself never at D0, D1 and D2, once at D3, ten times at D4.</strong>
+      That needs no inference about spell names: the log says <em>healed itself</em>, and a boss
+      that heals is not running an evocation kit. The published claim was three classes from D3.
+      This is that claim measured, and it lands exactly there.</div>
+    <div class="note"><strong>Damage to kill is not hit points.</strong> It is an upper bound &mdash;
+      he heals &mdash; and it carries one trio&rsquo;s gear and misses. A second trio running the
+      same five fights would separate the boss from us.</div>
   </div>
 </section>
 
