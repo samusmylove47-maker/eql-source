@@ -170,17 +170,22 @@ site and the docs strike them together rather than one of them lagging.
 
 ## Sequence and what it needs from the collaborator
 
-| Phase | Days | Needs |
+| Phase | Needs | Status |
 |---|---|---|
-| 1 Arrival | 0.5 | Nothing |
-| 2a Character sheet | 1 | Nothing |
-| 2b Route planner | 2–3 | A sanity read on one generated route before the other nine |
-| 3 Long tail | 2 | Nothing |
+| 1 Arrival | Nothing | Done, PR #47 |
+| 2a Character sheet | Nothing | Done, PR #48 |
+| 2b Route planner | A sanity read before the other nine | Built, then cut, PR #49 |
+| 3 Long tail | Nothing | Done, PR #50 |
 
-**About a week of working days, four pull requests.** Nothing in it is blocked
-on anything outside the repository.
+The plan is finished. It ran four pull requests, one of which was a retreat.
 
-The one thing that would genuinely accelerate the result is play data for zones
-we have not measured, because the route planner is only as good as the surveys
-underneath it. That is not on the critical path — it makes the same product
-better rather than making it arrive sooner.
+**What is left is not more building.** Every remaining item on this site is
+blocked on evidence rather than on work: what class kits attach to which raid
+boss at D3 and D4, `/loc` readings for Plane of Sky, the five Sky class tooltips,
+the druid and wizard port levels, and room names for the floor plans. None of
+those close by writing code, and all of them close with one log, one screenshot
+or one `/loc`.
+
+The two open findings — Annalise's underwater weapon-type report and the Paragon
+of Spirit stacking claim — are in the same position, and both are one session of
+play away from settled.
