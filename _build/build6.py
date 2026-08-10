@@ -863,7 +863,7 @@ page = head("Survey plots",
 <div class="shell">
   <div class="note"><strong>How to read these.</strong> The floor plan is the outline of the walkable
     floor, computed from the zone&rsquo;s own geometry in the game files &mdash; where the line runs is
-    where the floor stops, at a wall or a drop. {tot_geo} of the ten zones carry one. It is our own
+    where the floor stops, at a wall or a drop. {tot_geo} of the {len(Z)} zones carry one. It is our own
     derivation and not a copy of any published map, so it shows where the floor ends and nothing else:
     <strong>doors, locks and one-way drops are not marked</strong>, and a gap in a line is as likely to
     be a ledge as a doorway.
@@ -880,7 +880,7 @@ page = head("Survey plots",
     <br><br>A dashed outline groups named mobs whose recorded positions sit close together &mdash; it
     means &ldquo;these are near each other&rdquo;, not &ldquo;this is a room&rdquo;. An outline is named
     only when at least two of its members&rsquo; notes independently mention the same place;
-    {tot_regions} groups across the ten zones cleared that bar, and the rest stay unnamed rather than
+    {tot_regions} groups across the {len(Z)} zones cleared that bar, and the rest stay unnamed rather than
     guessed at. <strong>Mob positions are not tied to a storey</strong>, because most recorded
     coordinates carry no height &mdash; every point stays visible whichever level you select.</div>
 </div>

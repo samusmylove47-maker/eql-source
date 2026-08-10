@@ -239,5 +239,25 @@
   "respawn_note": "Innoruuk is published at 7 days and the Maestro at 3, both describing an open-world spawn the 16 June 2026 patch note removed. Trash respawn is unrecorded; one player reports haunted chests respawning slowly enough to outlast a full circuit of the zone.",
   "placeholders_removed": false,
   "placeholders_source": "Not in the 28 July patch note, which named eleven dungeons and neither plane. So nothing has been published either way for this zone and we do not assume the dungeon change applied here."
+ },
+ {
+  "plate": 13,
+  "slug": "kedgekeep",
+  "title": "Kedge Keep",
+  "accent": "#2FA5C9",
+  "levels": "32-50",
+  "zem": 139,
+  "zem_pct": 185,
+  "respawn": "not recorded",
+  "who": "kedge",
+  "adjacent": [
+   "Dagnor's Cauldron"
+  ],
+  "verified": null,
+  "verify_level": "none",
+  "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but no figure on this page is measured by us. Gates 1 to 3 are all unstarted.",
+  "respawn_note": "Phinigel Autropos is published at 12 hours, which describes an open-world spawn the 11 June 2026 patch note removed - he no longer spawns in the open world or in personal instances. Trash respawn is unrecorded by any source we have found.",
+  "placeholders_removed": false,
+  "placeholders_source": "Kedge Keep is not in the 28 July patch note listing eleven dungeons that had placeholders removed. Nothing has been published either way."
  }
 ]

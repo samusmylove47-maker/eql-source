@@ -132,7 +132,7 @@ SECTIONS = [
     ("home", BONE, "EVERQUEST LEGENDS", "Sourced. Dated.",
      [("Surveys", str(len(Z))), ("Items indexed", "452"), ("Named recorded", "209")],
      "every claim names its source and the date it was read"),
-    ("dungeons", BONE, "DUNGEON SURVEYS", "Ten zones, surveyed",
+    ("dungeons", BONE, "DUNGEON SURVEYS", "Every zone, surveyed",
      [("Floor plans", "from the game meshes"), ("Coordinates", "checked at build time")],
      "walls drawn from the game's own files"),
     ("tools", INSTR, "TOOLS", "No account. Nothing sent.",

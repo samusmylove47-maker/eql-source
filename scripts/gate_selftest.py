@@ -29,6 +29,7 @@ os.chdir(ROOT)
 
 _IX = json.load(open("assets/index-data.json", encoding="utf-8"))
 N_ITEMS, N_NAMED = len(_IX["items"]), len(_IX["named"])
+N_ZONES = len(json.load(open("assets/zones-index.json", encoding="utf-8")))
 
 
 def check():
@@ -81,6 +82,20 @@ CASES = [
      lambda t: t.replace('<article class="st-entry"',
                          "<p>" + " ".join(["ballast"] * 100)
                          + '</p><article class="st-entry"', 1)),
+
+    # Third ledger, same proof.
+    ("prose growing on the dungeon index",
+     "public/dungeons/index.html",
+     lambda t: t.replace('class="plates"',
+                         'class="x">' + " ".join(["ballast"] * 90)
+                         + '</div><div class="plates"', 1)),
+
+    # A count typed as a word rather than printed from the ledger. The dungeon
+    # index headline read "Ten zones, surveyed" while the ledger held thirteen,
+    # and nothing caught it because every count check matched digits only.
+    ("a zone count spelled out and left behind",
+     "public/dungeons/index.html",
+     lambda t: t.replace(f"{N_ZONES} zones,", "Ten zones,")),
 ]
 
 

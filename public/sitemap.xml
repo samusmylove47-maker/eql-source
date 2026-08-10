@@ -6,6 +6,7 @@
   <url><loc>https://eqlsource.com/dungeons/blackburrow.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/crushbone.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/index.html</loc><lastmod>2026-08-10</lastmod><priority>0.8</priority></url>
+  <url><loc>https://eqlsource.com/dungeons/kedgekeep.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/lowerguk-map.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/lowerguk.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/mistmoore-map.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -539,11 +540,14 @@
   <url><loc>https://eqlsource.com/named/brother-hayle.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/butler-syncall.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/caradon.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/cauldronboil.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/cauldronbubble.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/cave-bat-lord.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/cazic-thule.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/chokehold.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/cmdr-windstream.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/commander-yarik.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/coralyn-kelpmaiden.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/dark-huntress.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/dartain-the-lost.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/death-beetle.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -553,14 +557,20 @@
   <url><loc>https://eqlsource.com/named/ekeros.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/emperor-crush.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/enynti.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/estrella-of-gloomwater.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/ferocious-hammerhead.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/fierce-impaler.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/fire-giant-warrior.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/fire-giant-wizard.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/foodmaster-rargnar.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/footman-of-vzher.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/frenzied-bull-shark.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/frenzied-cauldron-shark.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/fright.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/garton-viswin.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/ghost-of-glohnor.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/gibartik.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/golden-haired-mermaid.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/grodl-ripclaw.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/guano-harvester.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/gynok-moltor.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -626,6 +636,7 @@
   <url><loc>https://eqlsource.com/named/orc-warden.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/orc-warlord.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/packmaster-dledsh.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/phinigel-autropos.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/polzin-mrid.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/priest-amiaz.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/prince-bragnar.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -643,6 +654,9 @@
   <url><loc>https://eqlsource.com/named/sabertooth-clan-necromancer.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/sabertooth-overseer.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/schnozz-the-flighty.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/seahorse-matriarch.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/seahorse-patriarch.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/shellara-ebbhunter.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/skeleton-lrodd.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/slaythe-the-slayer.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/slizik-the-mighty.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
@@ -683,6 +697,7 @@
   <url><loc>https://eqlsource.com/named/trazdon.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/ulrik-the-devout.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/unbound-flame.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/named/undertow.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/verishe-mal-executioner.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/verishe-mal-judge.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/named/warlord-drrig.html</loc><lastmod>2026-08-10</lastmod><priority>0.6</priority></url>

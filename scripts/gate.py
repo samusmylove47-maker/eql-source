@@ -39,7 +39,35 @@ SCRIPT_TAG = re.compile(r"<(script|style)\b.*?</\1>", re.S | re.I)
 LEDGERS = [
     ("sources.html", 'id="changelog"', r'<div class="zrow".*?</div>'),
     ("learn/still-true.html", "", r'<article class="st-entry".*?</article>'),
+    # The dungeon index is one card per zone plus a paragraph of introduction.
+    # Its word count rises every time a survey is added, so a ceiling over the
+    # cards forbids adding a zone — the same shape as the other two. The
+    # introduction is still governed.
+    ("dungeons/index.html", 'class="plates"', r'<a class="plate[^"]*"[^>]*>.*?</a>'),
 ]
+
+
+def without_ledger_rows(h, key):
+    """Drop the append-only rows from a ledger page.
+
+    A ledger records what was true when the row was written. The change log
+    entry for 9 August says "All ten zones are now fully verified" and that was
+    correct on the day — rewriting it when the site reached thirteen zones would
+    be falsifying the record to satisfy a checker. So the count rules and the
+    prose ceiling both read ledger pages with their rows removed, and both still
+    govern everything around them.
+    """
+    for ledger_key, anchor, row in LEDGERS:
+        if key != ledger_key:
+            continue
+        cut = h.find(anchor) if anchor else 0
+        if cut >= 0:
+            h = h[:cut] + re.sub(row, " ", h[cut:], flags=re.S)
+    return h
+
+
+def page_key(path):
+    return path.replace(os.sep, "/").replace("public/", "")
 
 
 def page_words(path, key):
@@ -64,12 +92,7 @@ def page_words(path, key):
     #
     # This is the whole list. Adding to it means arguing that a third page is a
     # ledger, which should be hard.
-    for ledger_key, anchor, row in LEDGERS:
-        if key != ledger_key:
-            continue
-        cut = h.find(anchor) if anchor else 0
-        if cut >= 0:
-            h = h[:cut] + re.sub(row, " ", h[cut:], flags=re.S)
+    h = without_ledger_rows(h, key)
     t = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]+>", " ", SCRIPT_TAG.sub(" ", h)))
     return len([w for w in t.split() if any(c.isalpha() for c in w)])
 
@@ -88,10 +111,52 @@ def run(pages, fail, warn):
     truth = {
         "named recorded": len(IX["named"]),
         "items indexed": len(IX["items"]),
+        "zones surveyed": len(Z),
+        "tools listed": None,          # filled below, once _partials is importable
     }
+    try:
+        from _partials import TOOLS as _T
+        truth["tools listed"] = len(_T)
+    except Exception:
+        truth.pop("tools listed")
+
+    # Spelled-out counts are how this one got through. The dungeon index headline
+    # read "Ten zones, surveyed" with thirteen in the ledger, and the 404 offered
+    # "Five trackers" against a six-tool registry, because both were typed into a
+    # template while every other count on the page was printed from data. Words
+    # and digits are both checked now.
+    WORDNUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+               "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+               "twelve": 12, "thirteen": 13, "fourteen": 14, "fifteen": 15}
+
+    def as_int(tok):
+        tok = tok.replace(",", "").strip().lower()
+        return int(tok) if tok.isdigit() else WORDNUM.get(tok)
+
     LABELLED = [
         (re.compile(r"(\d[\d,]*)\s+items?,\s*(\d[\d,]*)\s+named"), ("items indexed", "named recorded")),
     ]
+    # "N trackers" was a rule here for one commit and was withdrawn. The tools
+    # index legitimately writes "including the two trackers" meaning the other
+    # two, not the total, and no regex tells that apart from a headline count.
+    # A check that blocks correct prose gets switched off, which is worse than
+    # not having it: the tool count is printed from the TOOLS registry
+    # everywhere it means a total, and check 6 already fails a registry that
+    # disagrees with the footers.
+    SINGLE = [
+        (re.compile(r"\b([\w,]+)\s+(?:zones?|surveys?)\s*,?\s*surveyed\b", re.I), "zones surveyed"),
+    ]
+    for p in pages:
+        raw = open(p, encoding="utf-8", errors="replace").read()
+        t = text_of(without_ledger_rows(raw, page_key(p)))
+        for rx, label in SINGLE:
+            if label not in truth:
+                continue
+            for m in rx.finditer(t):
+                n = as_int(m.group(1))
+                if n is not None and n != truth[label]:
+                    fail(f"{p} says {m.group(1)!r} for '{label}' but the data holds "
+                         f"{truth[label]} — print the count, never type it")
     for p in pages:
         t = text_of(open(p, encoding="utf-8", errors="replace").read())
         for rx, labels in LABELLED:

@@ -8,6 +8,9 @@ from _partials import head, bar, foot
 # claimed 389 items while this very file shipped 452 to the counter beside it.
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 NITEMS, NNAMED = len(IX['items']), len(IX['named'])
+# The zone count is printed too. It was typed as "ten" in two sentences on
+# this page and stayed at ten when the site reached thirteen.
+NZONES = len(json.load(open('assets/zones-index.json', encoding='utf-8')))
 
 CSS = '''<style>
 .ix-controls{position:sticky;top:58px;z-index:30;background:rgba(14,19,21,.96);
@@ -77,7 +80,7 @@ BODY = f'''
   <div class="page-head">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; <a href="index.html">Tools</a> &nbsp;/&nbsp; The Index</p>
     <h1>The Index</h1>
-    <p class="lede">Every item and every named mob recorded across the ten surveyed dungeons, in one searchable
+    <p class="lede">Every item and every named mob recorded across the {NZONES} surveyed dungeons, in one searchable
       place. Ask it where something drops, what a zone holds for your classes, or which named you still have not
       met. <strong>{NITEMS} items and {NNAMED} named</strong>, each tied back to the survey it came from.</p>
     <p class="lede">Every name here opens its own page. You can also browse the full
@@ -106,7 +109,7 @@ BODY = f'''
 <div class="shell">
   <div class="ix-results" id="results"></div>
   <div class="note" style="margin-top:34px"><strong>What this is and is not.</strong> It indexes the loot and named
-    tables from our own surveys &mdash; so its coverage is exactly the ten zones we have surveyed, not the whole
+    tables from our own surveys &mdash; so its coverage is exactly the {NZONES} zones we have surveyed, not the whole
     game. Stats are quoted as the survey records them, which means anything the survey flagged as uncertain is uncertain
     here too. Follow the zone link to read the surrounding context before you plan a night around a drop.</div>
   <div class="note sig"><strong>Looking for a gear upgrade check against your own inventory?</strong>

@@ -261,7 +261,7 @@ dung = head("Dungeon surveys",
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
-    <h1 class="display">Ten zones,<br><em>surveyed.</em></h1>
+    <h1 class="display">{wordnum(len(Z))} zones,<br><em>surveyed.</em></h1>
     <p class="hero-lede">Each shipping a deep-reference survey and, where built, a navigation map
       companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
       coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the

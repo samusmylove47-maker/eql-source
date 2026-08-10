@@ -4,6 +4,21 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="10 Aug 2026", title="Kedge Keep surveyed",
+         body="Survey 13, and the highest experience rate we have recorded &mdash; <strong>ZEM 139, "
+              "or 185%</strong>, which the 23 June patch note singles out as deliberate: "
+              "&ldquo;Kedge has retained its original modifier for those willing to brave the "
+              "depths.&rdquo; <strong>Four class epics converge on Phinigel Autropos</strong> "
+              "&mdash; Wizard, Bard, Rogue and Magician &mdash; which makes it the place to test "
+              "whether Annalise&rsquo;s Fiery Avenger result generalises. The floor plan carries a "
+              "caveat we have not needed before: our plans draw walkable floor, and this is a zone "
+              "you swim through, so it under-draws where you can actually go"),
+    dict(kind="Correction", date="10 Aug 2026", title="Two counts were typed instead of printed",
+         body="The dungeon index headline read &ldquo;Ten zones, surveyed&rdquo; with thirteen in "
+              "the ledger, and the 404 page offered &ldquo;Five trackers&rdquo; against a six-tool "
+              "registry. Both were spelled out as words in templates, and every count check the "
+              "build had matched digits only. Both now print from the data, and the gate reads "
+              "words as well as numerals"),
     dict(kind="Addition", date="10 Aug 2026", title="Plane of Fear and Plane of Hate surveyed",
          body="Surveys 11 and 12, and the first two written knowing that almost everything "
               "published about them is Project 1999 text. Both carry armour tables by slot and "
