@@ -4,6 +4,33 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Correction", date="10 Aug 2026", title="A third of the item catalogue had no class data",
+         body="Building the levelling route surfaced it: <strong>160 of 452 items carried no class "
+              "list</strong>, and every item in Castle Mistmoore and The Hole was affected. Three "
+              "faults, all in the extractor. Some surveys head that column &ldquo;Classes&rdquo; "
+              "and others &ldquo;Classes &amp; races&rdquo;, and an exact-match lookup returned "
+              "nothing for the second kind. A <code>&lt;br&gt;</code> between the classes and the "
+              "races was flattened away, turning &ldquo;WAR PAL RNG SHD&rdquo; into "
+              "&ldquo;SHDall&rdquo; and hiding the last class on every such row. And worst, "
+              "<strong>a cell the parser could not read defaulted to ALL</strong> &mdash; inventing "
+              "permission for every class to use an item whenever the parse failed. Earthshaker "
+              "read as usable by everyone; it is WAR PAL RNG SHD. The Index&rsquo;s class filter "
+              "was silently dropping a third of the catalogue. 157 items still have no class list "
+              "and now say so: they come from quest-component tables that carry no class column at "
+              "all, which is a real absence rather than a parse failure"),
+    dict(kind="Addition", date="10 Aug 2026", title="A levelling route for your trio, any level to 50",
+         body="Pick three classes and a starting level. It walks the levels, and for each window "
+              "names the zone returning the most experience, what else is open at that level with "
+              "how many items each holds for your trio, and what the stop itself drops that you can "
+              "use. Every stop links to its survey. <strong>The first version ranked on experience "
+              "alone and produced three stops for an entire career</strong>, because the three "
+              "highest-modifier zones happen to tile levels 4 to 50 between them &mdash; a "
+              "defensible answer to &ldquo;where is experience fastest&rdquo; and a useless answer "
+              "to &ldquo;where should I go&rdquo;. It is not our place to decide that a haste belt "
+              "beats a faster kill, so each window shows both and you pick. <strong>There is no "
+              "hours estimate anywhere on it</strong>: the zone modifier multiplies experience per "
+              "kill and is not a rate, we have measured kills per hour for nobody, and a figure "
+              "invented from that would be exactly the thing this site exists to refuse"),
     dict(kind="Addition", date="10 Aug 2026", title="One character sheet, one link",
          body="The site had three save states &mdash; the race tracker, the Plane of Sky tracker, "
               "and the calculator sharing the race tracker&rsquo;s key. Three links to keep, three "

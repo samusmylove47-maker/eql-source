@@ -31,11 +31,28 @@ def norm_slot(raw):
     if re.search(r"\bno drop\b|\blore\b", r, re.I): return "Other"
     return "Other"
 def norm_cls(raw):
-    r=(raw or "").upper()
-    if not r: return []
-    if re.search(r"\bALL\b", r): return ["ALL"]
-    found=[c for c in CLS if re.search(r"\b"+c+r"\b", r)]
-    return found or ["ALL"]
+    """Classes an item allows, from a cell that usually also carries races.
+
+    Two rules earned the hard way:
+
+    - The races clause is dropped first. "WAR PAL RNG SHD | all races" contains
+      ALL, and reading that as "every class" is exactly backwards.
+    - A cell we cannot parse returns [], never ["ALL"]. The old default claimed
+      every class could use an item whenever the parse failed, which invents a
+      permission and is the worst direction to be wrong in.
+    """
+    r = (raw or "").upper()
+    if not r:
+        return []
+    r = r.split("|")[0]                      # classes sit before the races clause
+    r = re.sub(r"\bALL RACES\b", " ", r)
+    if re.search(r"\bALL EXCEPT\b|\bEXCEPT\b", r):
+        tail = r.split("EXCEPT", 1)[1]
+        excl = [c for c in CLS if re.search(r"\b" + c + r"\b", tail)]
+        return [c for c in CLS if c not in excl] if excl else []
+    if re.match(r"^\s*ALL\b", r) or re.search(r"\bALL SIXTEEN\b|\bALL CLASSES\b", r):
+        return ["ALL"]
+    return [c for c in CLS if re.search(r"\b" + c + r"\b", r)]
 
 items, named = [], []
 for z in Z:
@@ -54,8 +71,18 @@ for z in Z:
                 c=cells(r)
                 if len(c)<3: continue
                 g=lambda k,d='': c[ix[k]] if k in ix and ix[k]<len(c) else d
-                slot=g('slot / type') or g('slot')
-                cls=g('classes')
+                # Headers are not uniform across the surveys: some say "Classes",
+                # others "Classes & races", and an exact lookup silently returned
+                # nothing for 160 of 452 items - every item in Mistmoore and The
+                # Hole. The Index's class filter was dropping a third of the
+                # catalogue without saying so. Match the column, not its wording.
+                def col(*words, default=''):
+                    for k, i in ix.items():
+                        if all(w in k for w in words) and i < len(c):
+                            return c[i]
+                    return default
+                slot=col('slot') or g('slot')
+                cls=col('class')
                 names=[x.strip() for x in c[0].split(' · ') if x.strip()]
                 slots_l=[x.strip() for x in slot.split(' · ')] if slot else []
                 for k,nm in enumerate(names):

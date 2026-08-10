@@ -18,6 +18,7 @@ TAG  = _cfg.get("site_tagline", "Survey")
 # name would wrap; where they are the same, `foot` is omitted.
 TOOLS = [
     dict(slug="character",        name="Character sheet"),
+    dict(slug="route",            name="Levelling route"),
     dict(slug="index-search",     name="The Index"),
     dict(slug="plane-of-sky",     name="Plane of Sky tracker"),
     dict(slug="race-unlocks",     name="Race unlock tracker"),
