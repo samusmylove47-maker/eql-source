@@ -141,6 +141,46 @@ def run(pages, fail, warn):
                          f"search snippets and Discord embeds")
                     break
 
+    # ---- 5b. a zone's respawn may not be contradicted on its own page --------
+    #
+    # Befallen shipped "4:27" in four places against a ledger of 4:30, was
+    # corrected, and then a spelled-out "4 minute 27 second" survived the fix
+    # because it matched no digit pattern. Twice is a class of fault, not an
+    # accident, so it is checked in both forms.
+    WORDNUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+               "seven": 7, "eight": 8, "nine": 9, "ten": 10}
+    for z in Z:
+        page = f"public/dungeons/{z['slug']}.html"
+        want = (z.get("respawn") or "").strip()
+        if not want or not os.path.exists(page):
+            continue
+        m = re.match(r"(?:&le;|<=)?\s*(\d+):(\d\d)$", want)
+        if not m:
+            continue
+        wmin, wsec = int(m.group(1)), int(m.group(2))
+        t = text_of(open(page, encoding="utf-8", errors="replace").read())
+        seen = set()
+        # Only durations the page itself calls a respawn. Without this the check
+        # reads "4 min recast" off an item and reports it as a respawn, which is
+        # the sort of noise that gets a checker switched off.
+        NEAR = re.compile(r"respawn|spawn timer|turns over|repop", re.I)
+
+        def near_respawn(at):
+            return bool(NEAR.search(t[max(0, at - 90):at + 90]))
+
+        for mm in re.finditer(r"\b(\d+)\s*(?:minute|min)s?\s*(?:(\d+)\s*(?:second|sec)s?)?", t):
+            if near_respawn(mm.start()):
+                seen.add((int(mm.group(1)), int(mm.group(2) or 0)))
+        for mm in re.finditer(r"\b(\w+)\s+minute\s+(\w+)\s+second", t, re.I):
+            a1, b1 = WORDNUM.get(mm.group(1).lower()), WORDNUM.get(mm.group(2).lower())
+            if a1 and near_respawn(mm.start()):
+                seen.add((a1, b1 or 0))
+        for got in seen:
+            # only flag values close enough to be the same claim said differently
+            if got != (wmin, wsec) and abs(got[0] - wmin) <= 1 and got[0] > 0:
+                fail(f"{page} says a respawn of {got[0]}:{got[1]:02d} while the ledger "
+                     f"says {want} — the same figure, two values")
+
     # ---- 6. prose may not grow -----------------------------------------------
     #
     # The site reached 67,752 words before anyone measured it. Not one page was
