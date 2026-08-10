@@ -62,8 +62,6 @@ WH_CSS = """
 .ph-note strong{display:block;margin-bottom:4px}
 .ph-yes{border-left:3px solid #5FA37E;background:rgba(95,163,126,.07);color:#AEB9B8}
 .ph-yes strong{color:#8FD3AD}
-.ph-maybe{border-left:3px solid #D9837C;background:rgba(201,69,58,.06);color:#9FADAC}
-.ph-maybe strong{color:#D9837C}
 .ph-note a{color:#8FBEE4}
 
 /* The trimmed plate blocks. Answer-first lists, a key chain drawn as a chain,
@@ -95,24 +93,16 @@ p.tight{color:#9FADAC;font-size:14px;line-height:1.6;margin:0}
 # on the pages nobody arrives at is not a door.
 # THE PLACEHOLDER STATEMENT
 # Spawn percentages on every survey are inherited classic data: they describe
-# the chance a named appears instead of its placeholder. Where placeholders are
-# gone the figure means nothing, and printing it unqualified sends someone to
-# camp an elemental for an evening.
-#
-# Confirmed removed on three zones and unconfirmed on the rest. Unconfirmed is
-# not "false" — nobody has looked. The two notes say different things on
-# purpose, and neither invents a status for a zone we have not seen.
+# the chance a named appears instead of its placeholder. The developer patch
+# note removed placeholders from all ten of these zones and Upper Guk, so every
+# percentage on the site is historical. It is printed rather than deleted, with
+# this note above it, because deleting what a source says is how a record stops
+# being checkable.
 PH_CONFIRMED = """
-<div class="ph-note ph-yes"><strong>Named spawn every cycle. No placeholders.</strong>
-  The percentages below are inherited from classic, where a named shared its spawn point.
-  Historical, not current. Confirmed in play: REPLACE_SRC.
-  <a href="REL_learn/still-true.html">Evidence</a>.</div>"""
-
-PH_UNKNOWN = """
-<div class="ph-note ph-maybe"><strong>These percentages may mean nothing.</strong>
-  They assume placeholders, which are confirmed gone from three zones we have played.
-  <b>Nobody has checked this one</b>, so they stand unaltered and unendorsed.
-  <a href="REL_learn/still-true.html">What is confirmed</a>.</div>"""
+<div class="ph-note ph-yes"><strong>Named spawn every cycle. There are no placeholders here.</strong>
+  The percentages in the roster below are inherited from classic, where a named shared its spawn
+  point with a placeholder. They are historical and describe nothing about this zone now.
+  <a href="REL_learn/still-true.html">The patch note, and what else changed</a>.</div>"""
 
 CONTACT = """
 <div class="inj-contact">
@@ -169,11 +159,7 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
     if ph_zone:
         z_ = BY.get(ph_zone, {})
-        if z_.get('placeholders_removed'):
-            note = PH_CONFIRMED.replace('REPLACE_SRC', z_.get('placeholders_source') or 'our own play')
-        else:
-            note = PH_UNKNOWN
-        note = note.replace('REL_', rel)
+        note = PH_CONFIRMED.replace('REL_', rel)
         # above the roster, which is the table the percentages live in
         k = h.find('Named roster')
         if k > 0:

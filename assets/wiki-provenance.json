@@ -1,0 +1,88 @@
+{
+ "_comment": [
+  "Where each survey's structured data comes from, one row per zone.",
+  "",
+  "This replaced ten near-identical prose blocks on sources.html that each said",
+  "'Source warning. The wiki's X page was last edited...' in a slightly different",
+  "order. The facts are the same shape every time, so they belong in a table.",
+  "",
+  "'not recorded' means we did not establish it, and it is written rather than",
+  "left blank so an empty cell can never be read as 'nothing to report'. Filling",
+  "one in takes one API call against the page's history.",
+  "",
+  "p99_origin: the page began as a Project 1999 import. Per CLAUDE.md's provenance",
+  "test its prose is tier 5 until proven otherwise, however current the infobox is."
+ ],
+ "zones": {
+  "najena": {
+   "edited": "30 July 2026, 11:01",
+   "revision": "not recorded",
+   "editor": "not recorded",
+   "p99_origin": "30 July 2025",
+   "note": "One of ten edits made that morning. The Map section was expanded separately on 6 and 24 July. The freshest zone page in the project."
+  },
+  "splitpaw": {
+   "edited": "2 June 2026",
+   "revision": "not recorded",
+   "editor": "not recorded",
+   "p99_origin": null,
+   "note": "Six weeks before the revamp, so the page predates the changes it describes."
+  },
+  "crushbone": {
+   "edited": "14 July 2026",
+   "revision": "157369",
+   "editor": "Mandlz",
+   "p99_origin": null,
+   "note": "Touched again on launch day, 28 July."
+  },
+  "befallen": {
+   "edited": "5 August 2026",
+   "revision": "166594",
+   "editor": "Grumpymixon",
+   "p99_origin": null,
+   "note": "The survey recorded 7 June until 8 August. The footer was two months stale and the page had gained the Ebon Scythe in the meantime."
+  },
+  "blackburrow": {
+   "edited": "4 August 2026",
+   "revision": "165754",
+   "editor": "Piano",
+   "p99_origin": null,
+   "note": "The August edits are images only, so the content dates from 4 July."
+  },
+  "lowerguk": {
+   "edited": "10 July 2026, 16:14",
+   "revision": "not recorded",
+   "editor": "not recorded",
+   "p99_origin": "2 August 2025",
+   "note": "Five revisions since import. An earlier revision was served on first fetch and had to be diffed against the current one — that check is what surfaced the respawn correction."
+  },
+  "nagafenslair": {
+   "edited": "5 July 2026, 19:43",
+   "revision": "not recorded",
+   "editor": "not recorded",
+   "p99_origin": "date not recorded",
+   "note": "Infobox and the NPC and item tables are live Legends data. Dangers, Benefits and Traveling remain imported prose."
+  },
+  "thehole": {
+   "edited": "8 August 2026, 21:25",
+   "revision": "168060",
+   "editor": "Mandlz",
+   "p99_origin": null,
+   "note": "Edited six times that day. The survey had recorded 15 July, three weeks behind. Slizik the Mighty gained a coordinate in the gap."
+  },
+  "warrens": {
+   "edited": "16 May 2026",
+   "revision": "126176",
+   "editor": "Clowd",
+   "p99_origin": "12 February 2024",
+   "note": "Oldest revision by P99Wiki>MalleSnow. Three edits since. A Project 1999 import by the provenance test, and the survey says so in prose."
+  },
+  "mistmoore": {
+   "edited": "not recorded",
+   "revision": "not recorded",
+   "editor": "not recorded",
+   "p99_origin": "date not recorded",
+   "note": "Titled Mistmoore Castle on the wiki, not Castle Mistmoore. Infobox and tables are live Legends data; the narrative is classic prose written in the first person by a Project 1999 contributor."
+  }
+ }
+}
