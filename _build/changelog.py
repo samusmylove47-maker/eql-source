@@ -4,6 +4,21 @@
 #
 # kind: "Correction" | "Addition" | "Source refresh"
 ENTRIES = [
+    dict(kind="Addition", date="10 Aug 2026", title="One character sheet, one link",
+         body="The site had three save states &mdash; the race tracker, the Plane of Sky tracker, "
+              "and the calculator sharing the race tracker&rsquo;s key. Three links to keep, three "
+              "things to lose, and <strong>nobody keeps three links</strong>. The character sheet "
+              "carries all of it in one address: name, race, primary class, trio, level, race "
+              "unlock progress and Sky progress. Open that link on another machine and the sheet "
+              "rebuilds &mdash; <strong>and so do both trackers</strong>, because the sheet writes "
+              "their state back for them. Still no account and still nothing transmitted: "
+              "everything after the <code>#</code> stays in the browser and is never sent here. "
+              "<strong>What it deliberately does not do is decode the Sky bitfield.</strong> "
+              "Parsing that structure out of the tracker gave 200 components where the tool itself "
+              "reports 222, and a count that might be wrong is worse than no count, so the sheet "
+              "shows the trio and links out for the detail. Epic progress is absent for the same "
+              "reason &mdash; the site holds no structured epic data, and a checklist invented from "
+              "loot tables would be a guess"),
     dict(kind="Addition", date="10 Aug 2026", title="Every page now has a share card and a canonical address",
          body="Zero of the site&rsquo;s 33 pages carried an <code>og:image</code>. EverQuest "
               "communities coordinate in Discord, and <strong>a link with no card is a link nobody "

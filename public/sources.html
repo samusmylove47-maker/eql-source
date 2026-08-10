@@ -136,6 +136,10 @@
       <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
     <div class="ztable">
       <div class="zrow" style="--c:var(--bone)"><span class="pn">NEW</span>
+        <span><span class="zt">One character sheet, one link</span><span class="zs">The site had three save states &mdash; the race tracker, the Plane of Sky tracker, and the calculator sharing the race tracker&rsquo;s key. Three links to keep, three things to lose, and <strong>nobody keeps three links</strong>. The character sheet carries all of it in one address: name, race, primary class, trio, level, race unlock progress and Sky progress. Open that link on another machine and the sheet rebuilds &mdash; <strong>and so do both trackers</strong>, because the sheet writes their state back for them. Still no account and still nothing transmitted: everything after the <code>#</code> stays in the browser and is never sent here. <strong>What it deliberately does not do is decode the Sky bitfield.</strong> Parsing that structure out of the tracker gave 200 components where the tool itself reports 222, and a count that might be wrong is worse than no count, so the sheet shows the trio and links out for the detail. Epic progress is absent for the same reason &mdash; the site holds no structured epic data, and a checklist invented from loot tables would be a guess</span></span>
+        <span class="cell zonesub"><em>Type</em>Addition</span><span class="cell"><em>Date</em>10 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--bone)"><span class="pn">NEW</span>
         <span><span class="zt">Every page now has a share card and a canonical address</span><span class="zs">Zero of the site&rsquo;s 33 pages carried an <code>og:image</code>. EverQuest communities coordinate in Discord, and <strong>a link with no card is a link nobody opens</strong> &mdash; so every page we wrote was invisible at the exact moment somebody tried to share it. There are 17 cards now, drawn from the zone data itself: name, level band, ZEM, respawn and verification state, so a card cannot drift from the page it represents. <strong>Also fixed: no page had a canonical address.</strong> Every internal link ends in <code>.html</code> and the host redirects it to the extensionless form, which gave every page two addresses and let a search engine pick. 32 of 33 now name the right one &mdash; the 404 page deliberately does not. And fifteen standalone pages had no description at all, so their embeds would have carried a title and an image and no sentence; they take their subtitle now, with the level band and respawn appended</span></span>
         <span class="cell zonesub"><em>Type</em>Addition</span><span class="cell"><em>Date</em>10 Aug 2026</span>
         <span class="cell"></span><span class="bar"></span></div>
@@ -238,6 +242,7 @@
         <li><a href="raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
       </ul></div>
       <div><h4>Tools</h4><ul>
+        <li><a href="tools/character.html">Character sheet</a></li>
         <li><a href="tools/index-search.html">The Index</a></li>
         <li><a href="tools/plane-of-sky.html">Plane of Sky tracker</a></li>
         <li><a href="tools/race-unlocks.html">Race unlock tracker</a></li>

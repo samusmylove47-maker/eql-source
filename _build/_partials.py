@@ -17,6 +17,7 @@ TAG  = _cfg.get("site_tagline", "Survey")
 # `name` is the display name. `foot` is the shorter footer label where the full
 # name would wrap; where they are the same, `foot` is omitted.
 TOOLS = [
+    dict(slug="character",        name="Character sheet"),
     dict(slug="index-search",     name="The Index"),
     dict(slug="plane-of-sky",     name="Plane of Sky tracker"),
     dict(slug="race-unlocks",     name="Race unlock tracker"),
