@@ -98,6 +98,15 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
+      <a class="card" href="character.html" style="--c:var(--ok)">
+        <div class="kicker">One sheet &middot; one link</div>
+        <h3 class="t">Character sheet</h3>
+        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
+          Bookmark it, paste it into guild chat, open it on another machine and everything is where
+          you left it &mdash; including the two trackers, which it fills in for you.</p>
+        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
+        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
+
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
         <h3 class="t">The Index</h3>
