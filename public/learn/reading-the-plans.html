@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to read a floor plan — EQL Source</title>
+<meta name="description" content="What the floor plans on the EverQuest Legends dungeon surveys draw, what they deliberately leave out, and what the route line is and is not.">
+<meta property="og:title" content="How to read a floor plan — EQL Source">
+<meta property="og:description" content="What the floor plans on the EverQuest Legends dungeon surveys draw, what they deliberately leave out, and what the route line is and is not.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/dungeons.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="How to read a floor plan — EQL Source">
+<meta name="twitter:description" content="What the floor plans on the EverQuest Legends dungeon surveys draw, what they deliberately leave out, and what the route line is and is not.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons.png">
+<link rel="canonical" href="https://eqlsource.com/learn/reading-the-plans">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.rp h2{margin-top:var(--s-7)}
+.rp .q{border-left:3px solid var(--instr);padding:2px 0 2px 18px;margin:var(--s-5) 0;
+  font-family:"Saira Condensed",sans-serif;font-size:clamp(18px,3.2vw,23px);
+  font-weight:500;line-height:1.3;color:var(--bone);max-width:58ch}
+.rp .kv{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.rp .kv li{background:var(--panel);padding:13px 16px;display:grid;
+  grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:6px 20px}
+.rp .kv b{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint)}
+.rp .kv span{color:var(--dim);font-size:14.5px;line-height:1.55}
+@media(max-width:640px){.rp .kv li{grid-template-columns:1fr}}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../learn/still-true.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero page">
+  <div class="shell rp">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
+      <a href="still-true.html">Learn</a> &nbsp;/&nbsp; Reading a floor plan</p>
+    <h1 class="display">How to read<br><em>a floor plan.</em></h1>
+    <p class="hero-lede">13 of our 13 surveys carry one. They are not redrawn from
+      published maps &mdash; they are computed from the zone&rsquo;s own geometry in the game
+      files. That makes them trustworthy in a specific way and useless in a few others, and it
+      is worth knowing which is which before you follow one into a dungeon.</p>
+  </div>
+</section>
+
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell rp">
+
+    <h2 class="sec">What the line is</h2>
+    <p class="lede">A line marks the edge of the walkable floor &mdash; a wall, or a drop.
+      Nothing more than that.</p>
+    <ul class="kv">
+      <li><b>Not marked</b><span>Doors, locks, and one-way drops. A gap in a line is as likely
+        to be a ledge you fall off as a doorway you walk through.</span></li>
+      <li><b>Not a published map</b><span>It is derived from the game&rsquo;s mesh. It is our own
+        computation of where the floor ends, not a copy of anyone&rsquo;s drawing.</span></li>
+      <li><b>Walkable floor only</b><span>Surfaces a standing character could stand on. In a zone
+        you swim through &mdash; Kedge Keep especially &mdash; large parts of where you can
+        actually go have no floor under them, so the plan under-draws the space.</span></li>
+      <li><b>Storeys are separated</b><span>Where a zone stacks, each band of height is its own
+        layer and the control above the plan isolates one at a time. A flattened map cannot show
+        you a room that sits directly above another one.</span></li>
+    </ul>
+
+    <h2 class="sec">The check that runs on every coordinate</h2>
+    <p class="lede">Under each plan is a line like &ldquo;18 of these 18 positions land on the
+      drawn floor&rdquo;. That sentence is doing more work than it looks.</p>
+    <p>The coordinates come from published <code>/loc</code> records. The floor comes from the
+      game&rsquo;s mesh. <strong>They are two completely independent sources, and both have to be
+      right for a point to land on floor.</strong> When the count is short, one of them is wrong
+      and the survey says so rather than drawing the point anyway.</p>
+    <p>It has already earned its keep: the check caught six impossible positions in Najena that
+      the old hand-drawn plots had no way to test, because a hand-drawn plot has nothing to be
+      checked against.</p>
+
+    <h2 class="sec">The route line, and what it is not</h2>
+    <p class="q">It is an order to take them in, not a path through the zone.</p>
+    <p>Where a survey offers a farming route, the line runs from named mob to named mob in a
+      sensible order. <strong>It knows nothing about walls, doors, locks or drops.</strong> A
+      segment that appears to cross a wall is the drawing being honest about what it is: a
+      sequence, drawn straight, not a route anyone walked.</p>
+    <p>It starts at the lowest-level named mob as a stand-in for starting near the entrance,
+      because the zone line is not recorded for every zone. The distance quoted is straight-line
+      travel and will always be shorter than the walk.</p>
+
+    <h2 class="sec">Spawn percentages you will see in the rosters</h2>
+    <p>Where a roster carries a percentage, it is inherited from classic EverQuest, where a named
+      mob shared its spawn point with a placeholder and the number described how often you got
+      the one you wanted.</p>
+    <p><strong>The 28 July 2026 patch note removed placeholders from eleven dungeons.</strong>
+      In those zones the named mob spawns every cycle, and the inherited percentage describes
+      nothing about the zone now. Each survey says in place which case it is in. Where nothing
+      has been published either way, it says that instead of guessing.</p>
+
+    <h2 class="sec" id="measured">What a combat log can and cannot tell you</h2>
+    <p class="lede">Four surveys carry figures measured from our own play. They are the strongest
+      evidence on the site and they generalise to almost nothing.</p>
+    <ul class="kv">
+      <li><b>A drop seen once</b><span>is seen once. One session is a sample, not a rate, and no
+        drop rate can be read from it. Where a survey says a thing dropped, that is a count.</span></li>
+      <li><b>Damage figures</b><span>describe that trio, at that level, against those mobs, on
+        that date. A different level or a different trio changes all of them.</span></li>
+      <li><b>Resist rates</b><span>depend on the character&rsquo;s own resistances and alternate
+        abilities. Treat a spell table as what happened to one build, not as a property of the
+        mob. The useful part is the kill order.</span></li>
+      <li><b>Absent mobs</b><span>are not missing. A log records what happened, so anything that
+        never attacked us and never cast anything does not appear.</span></li>
+      <li><b>Spell names</b><span>are printed exactly as the game printed them.</span></li>
+      <li><b>Never a combined average</b><span>for a mob that backstabs. Our Mistmoore log has
+        familiars hitting for 1&ndash;38 in melee and 100&ndash;143 from behind; one number
+        across both describes neither.</span></li>
+    </ul>
+
+    <h2 class="sec">Why there are no invented maps here</h2>
+    <p>An image model will draw a convincing dungeon map, with a legend and a scale bar and a
+      compass rose, and every spatial relationship in it will be invented. We tested one against
+      the zone it claimed to depict: the position it printed for its boss, twice, sat
+      <strong>210 units outside the zone&rsquo;s entire extent</strong> and 458 units from any
+      geometry at all.</p>
+    <p>The archives are on your disk and ours. <strong>We would rather read the map than imagine
+      it</strong>, and everything on these plans is read.</p>
+
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All surveys</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../items/index.html">Every item</a></li>
+        <li><a href="../named/index.html">Every named mob</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/character.html">Character sheet</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/still-true.html">Is it still true?</a></li>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../archive/index.html">The original plates</a></li>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

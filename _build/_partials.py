@@ -30,6 +30,8 @@ LEARN = [
     dict(slug="raid-access", name="How raid access works"),
     dict(slug="difficulty",  name="What difficulty changes"),
     dict(slug="deity",       name="Deity, and the level 11 lock"),
+    dict(slug="reading-the-plans", name="How to read a floor plan",
+         foot="Reading a floor plan"),
 ]
 
 _WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",

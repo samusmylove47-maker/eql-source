@@ -422,6 +422,34 @@ argument for the 3D treatment than any reasoning of our own.
 
 ---
 
+### 5c. A second Tier C source, and what it corrects
+
+"How to Start Raiding in EverQuest Legends | Every Voidling Location",
+**BrutallStatic**, 13 July 2026, 21,801 views. Transcript read 11 Aug 2026.
+
+Opens by confirming the tier 1 reading outright: "raid bosses are not available
+to kill in either public instances or even personal instances. Raid bosses are
+actually going to be in their own raid instance."
+
+| Claim | Effect on our pages |
+|---|---|
+| The voidling flow: hail it, click the highlighted **danger**, choose D0–D4 and solo or multiplayer, spin it up | New. Nothing published described the interaction |
+| **Hate minibosses are alternates** — "sometimes you'll get a Lord of Ire, sometimes you get a Lord of Loathing" | **Corrects our Hate guide**, whose table read as a roster. Fixed: it is a pool |
+| The Oasis sword is described as **flaming**, the wiki says **black** | Both now printed, neither picked |
+| **Plane of Sky has no voidling.** It had one in closed beta and lost it; entry is a purple orb in East Freeport | Our Sky material should not describe a voidling |
+| Sky is "how you unlock other primary classes without visiting the cash shop" | Ties Sky to the race/class unlock trackers |
+| Sky respawn "I think... 1-hour" — **he hedges it himself** | Do not publish |
+| Permafrost is planned to become a 35–50 zone | Future change, unannounced elsewhere |
+| Pacify works **without line of sight** | Practical, and it generalises beyond these zones |
+| Loadout can be swapped in starter zones — level a bard, swap in for Selo's travel speed | Belongs in `learn/`, not a zone page |
+| Nagafen **runs away at D0** and only at D0 | Difficulty-specific behaviour, first we have seen documented |
+| Vox comes with a priest add, so two healers | Encounter detail |
+| Master Yael is "the easiest boss ever… doesn't drop that much stuff" | Sets expectations |
+
+Note the Fear count: he says "four mini bosses, three of them are golems, one of
+them's the Dracoliche, and then good old CT himself" — which matches our five
+raid targets exactly, counted as four minibosses plus the boss.
+
 ## 6. Sources that look authoritative and are not
 
 There are at least three of these, and the family resemblance is the tell:
