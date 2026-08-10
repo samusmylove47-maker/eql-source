@@ -302,18 +302,15 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Respawn ceilings</h3>
         <p class="d">The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
           the pre-patch timer as a ceiling rather than a current value.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Placeholder removals</h3>
-        <p class="d">If placeholders are gone entirely, published spawn percentages may no longer mean anything.
-          Unresolved, and it affects how every named roster should be written.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Travel</div><h3 class="t">Druid and wizard port levels</h3>
         <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
           translocators, so it is weighted lower, but the conflict is open.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
         <p class="d">The zone has never been surveyed, so the Eye of Veeshan model is schematic rather than measured.
           A handful of <code>/loc</code> readings from islands 7 and 8 would fix it. The page says so in place.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Five missing maps</h3>
-        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have surveys but no navigation
-          map companion. Blackburrow is next; its explicit three-floor structure suits a 3D treatment.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
+        <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
+          labels. Which chamber is which is still something you work out from the named roster.</p></div>
       {gates_card}
       <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
         <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another

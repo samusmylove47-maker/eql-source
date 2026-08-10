@@ -95,18 +95,15 @@
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Respawn ceilings</h3>
         <p class="d">The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
           the pre-patch timer as a ceiling rather than a current value.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Placeholder removals</h3>
-        <p class="d">If placeholders are gone entirely, published spawn percentages may no longer mean anything.
-          Unresolved, and it affects how every named roster should be written.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Travel</div><h3 class="t">Druid and wizard port levels</h3>
         <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
           translocators, so it is weighted lower, but the conflict is open.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
         <p class="d">The zone has never been surveyed, so the Eye of Veeshan model is schematic rather than measured.
           A handful of <code>/loc</code> readings from islands 7 and 8 would fix it. The page says so in place.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Five missing maps</h3>
-        <p class="d">Crushbone, Befallen, Blackburrow, The Hole and The Warrens have surveys but no navigation
-          map companion. Blackburrow is next; its explicit three-floor structure suits a 3D treatment.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
+        <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
+          labels. Which chamber is which is still something you work out from the named roster.</p></div>
       <div class="card" style="--c:var(--ok)"><div class="kicker">Dungeons</div><h3 class="t">Verification gates, all cleared</h3><p class="d">All ten surveys have passed all three gates, and the evidence for each is recorded on the <a href="dungeons/index.html" style="color:var(--ok)">plates page</a>. That is not the same as complete. It means each survey has been checked against its live source and every coordinate lands somewhere a player can stand &mdash; the gaps listed here are what remains.</p></div>
       <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
         <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another
@@ -135,6 +132,18 @@
     <div class="sechead"><span class="n">04</span><div><h2 class="sec">Change log</h2>
       <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
     <div class="ztable">
+      <div class="zrow" style="--c:var(--bone)"><span class="pn">NEW</span>
+        <span><span class="zt">Every item and every named mob now has its own page</span><span class="zs">655 new addresses &mdash; <a href="items/index.html">446 items</a> and <a href="named/index.html">209 named mobs</a>, each carrying what we hold on it and linking back to the survey it was mined from. Until now all of it lived inside one search box, so there was nothing to bookmark, paste into guild chat or link to. The Index is unchanged and still the fastest way to filter</span></span>
+        <span class="cell zonesub"><em>Type</em>Addition</span><span class="cell"><em>Date</em>10 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
+        <span><span class="zt">Item stats read off a shared table row</span><span class="zs">27 loot rows list several items behind a single stats cell, and splitting those rows copied the one stats line onto each item &mdash; so <em>Red Dragon Scales</em> carried a description of a tooth and a book of prayers. 90 items were affected. The stats now say they describe the row rather than the item</span></span>
+        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>10 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
+      <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
+        <span><span class="zt">Two gaps closed, and neither was still open</span><span class="zs"><strong>Placeholder removals</strong> was answered by the developers&rsquo; own patch note, which names all eleven zones placeholders were removed from; it had been carried as unresolved since launch. <strong>Five missing maps</strong> was closed when <code>geometry.py</code> replaced the hand plots &mdash; all ten surveys have had a floor plan read from the game meshes since 10 August. What the plans still lack is room names, and that is what the gap says now</span></span>
+        <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>10 Aug 2026</span>
+        <span class="cell"></span><span class="bar"></span></div>
       <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>
         <span><span class="zt">A third of the item catalogue had no class data</span><span class="zs">Building the levelling route surfaced it: <strong>160 of 452 items carried no class list</strong>, and every item in Castle Mistmoore and The Hole was affected. Three faults, all in the extractor. Some surveys head that column &ldquo;Classes&rdquo; and others &ldquo;Classes &amp; races&rdquo;, and an exact-match lookup returned nothing for the second kind. A <code>&lt;br&gt;</code> between the classes and the races was flattened away, turning &ldquo;WAR PAL RNG SHD&rdquo; into &ldquo;SHDall&rdquo; and hiding the last class on every such row. And worst, <strong>a cell the parser could not read defaulted to ALL</strong> &mdash; inventing permission for every class to use an item whenever the parse failed. Earthshaker read as usable by everyone; it is WAR PAL RNG SHD. The Index&rsquo;s class filter was silently dropping a third of the catalogue. 157 items still have no class list and now say so: they come from quest-component tables that carry no class column at all, which is a real absence rather than a parse failure</span></span>
         <span class="cell zonesub"><em>Type</em>Correction</span><span class="cell"><em>Date</em>10 Aug 2026</span>
@@ -239,6 +248,8 @@
         <li><a href="dungeons/najena.html">Najena</a></li>
         <li><a href="dungeons/lowerguk.html">Lower Guk</a></li>
         <li><a href="dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="items/index.html">Every item</a></li>
+        <li><a href="named/index.html">Every named mob</a></li>
       </ul></div>
       <div><h4>Raids</h4><ul>
         <li><a href="raids/index.html">Encounter index</a></li>

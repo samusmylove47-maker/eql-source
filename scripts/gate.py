@@ -33,6 +33,33 @@ def text_of(html):
     return WS.sub(" ", STRIP.sub(" ", html))
 
 
+SCRIPT_TAG = re.compile(r"<(script|style)\b.*?</\1>", re.S | re.I)
+
+
+def page_words(path, key):
+    """Words of readable prose on a built page.
+
+    Lives here, and is imported by scripts/prose_budget.py, because a ceiling
+    measured one way and enforced another is not a ceiling. Two counts that
+    agree today would drift the first time either side changed what it strips.
+    """
+    h = open(path, encoding="utf-8", errors="replace").read()
+    # The change log is a ledger, not prose. It gains a row every time a
+    # correction is published and it is meant to: the whole reason pages were
+    # stripped of their revision histories was to move that record here. A
+    # ceiling this side of it would eventually forbid recording a correction,
+    # which is the opposite of what the ratchet is for. Only the rows after the
+    # anchor are exempt — `zrow` is the site's row class generally, so an
+    # unscoped strip would blind the ratchet on the home and dungeon indexes.
+    if key == "sources.html":
+        cut = h.find('id="changelog"')
+        if cut > 0:
+            h = h[:cut] + re.sub(r'<div class="zrow".*?</div>', " ",
+                                 h[cut:], flags=re.S)
+    t = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]+>", " ", SCRIPT_TAG.sub(" ", h)))
+    return len([w for w in t.split() if any(c.isalpha() for c in w)])
+
+
 def run(pages, fail, warn):
     Z = json.load(open("assets/zones-index.json", encoding="utf-8"))
     IX = json.load(open("assets/index-data.json", encoding="utf-8"))
@@ -215,15 +242,12 @@ def run(pages, fail, warn):
         budget = None
         warn("assets/prose-budget.json is missing — prose growth is unchecked")
     if budget is not None:
-        SCRIPT = re.compile(r"<(script|style)\b.*?</\1>", re.S | re.I)
         for p in pages:
             key = p.replace(os.sep, "/").replace("public/", "")
             cap = budget.get(key)
             if cap is None:
                 continue
-            h = open(p, encoding="utf-8", errors="replace").read()
-            t = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]+>", " ", SCRIPT.sub(" ", h)))
-            n = len([w for w in t.split() if any(c.isalpha() for c in w)])
+            n = page_words(p, key)
             if n > cap + 40:          # a little slack for a genuine new fact
                 fail(f"{key} has grown to {n:,} words against a ceiling of {cap:,}. "
                      f"Cut something, or move it to Accuracy, Learn or the change log")
