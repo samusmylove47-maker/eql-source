@@ -13,6 +13,37 @@ So each check is exercised against the real fault it was written for. Every one
 of these mutations is a fault that actually shipped and was found by an outside
 reader on 9 August 2026.
 
+WHY EVERY CASE NAMES THE MESSAGE IT EXPECTS
+-------------------------------------------
+Until 11 August 2026 a case passed when check.py failed *at all*. That is the
+same weakness one level up: a mutation that trips some other check reads exactly
+like a mutation the intended check caught, and this file would report it as
+proof.
+
+It was not hypothetical. Two of the eleven cases were proving the wrong thing:
+
+  - The open-gate case mutates assets/zones-index.json, which is a build input,
+    so the staleness check fires and sorts first. The case reported
+    "public/ is stale — a source changed since the last successful ./build.sh"
+    as its evidence that a full zone may not name an open gate.
+  - Removing an item page trips two ordinary broken-link failures, because the
+    A–Z hub links it with a real href. The slug check it was written for — the
+    one that catches the links The Index writes in the browser, which no link
+    checker can see — fired third and was never read.
+
+Both checks turned out to be alive. Nothing here had shown that, which is this
+file's only job.
+
+So each case carries `expect`: a distinctive fragment of the message its check
+prints. A case passes only when some failure line contains that fragment. Other
+failures alongside it are fine and ignored — the staleness one above cannot be
+avoided, because proving that check requires changing a build input. What is no
+longer possible is a case passing on someone else's failure.
+
+`expect` is matched against check.py's output rather than gate.py being made to
+tag each failure with a check id, because half these cases exercise checks that
+live in check.py, not in the gate. One mechanism covers both.
+
 Run by hand before trusting the gate, and after touching scripts/gate.py:
 
     python3 scripts/gate_selftest.py
@@ -37,31 +68,63 @@ def check():
     return r.returncode, r.stdout
 
 
+def failures(out):
+    """Every blocker check.py printed, in order, stripped of the FAIL prefix.
+
+    All of them, not the first. Reading only the first is how two cases came to
+    be proved by the staleness check and the link checker.
+    """
+    return [l.strip()[6:].strip() for l in out.splitlines() if l.strip().startswith("FAIL")]
+
+
+def judge(expect, rc, out):
+    """Did the check this case is about fire? Not: did anything fire.
+
+    `expect` is kept ASCII on purpose. check.py's messages carry em dashes, and
+    a pipe on Windows round-trips through cp1252 — a fragment that spans one
+    would match or not depending on the console encoding, which is a worse
+    failure than the one this file exists to prevent.
+    """
+    got = failures(out)
+    for line in got:
+        if expect in line:
+            return "caught", line
+    if rc == 0:
+        return "MISSED", f"nothing failed at all; expected {expect!r}"
+    return "WRONG CHECK", (f"expected {expect!r}, but what failed was: "
+                           + " | ".join(got))
+
+
 CASES = [
     # The counts are read from the data, not typed, because this file typed them
     # once and the case silently became a no-op the next time a zone was added —
     # reported as TEST BROKEN rather than caught, which is the good failure, but
     # it is still the same fault the gate exists to prevent.
     ("count contradiction — one fewer named than the data holds",
+     f"says {N_NAMED - 1} for 'named recorded' but the data holds {N_NAMED}",
      "public/tools/index.html",
      lambda t: t.replace(f"{N_ITEMS} items, {N_NAMED} named",
                          f"{N_ITEMS} items, {N_NAMED - 1} named")),
 
     ("verification count off the ledger",
+     "claims 8 fully verified; the ledger says",
      "public/index.html",
      lambda t: re.sub(r"(\d+) fully verified", "8 fully verified", t, count=1)),
 
     ("a withheld coordinate reprinted in the roster",
+     "prints a coordinate for 'Rathyl', which is withheld",
      "public/dungeons/najena.html",
      lambda t: t.replace('<td class="nmob">Rathyl</td><td class="loc"><span class="wh">withheld</span></td>',
                          '<td class="nmob">Rathyl</td><td class="loc">&minus;670, &minus;119</td>')),
 
     ("metadata asserting a figure the body hedges",
+     "asserts 32,000 flatly in its meta description",
      "public/raids/eye-of-veeshan.html",
      lambda t: t.replace('content="Interactive 3D raid guide for the Eye of Veeshan',
                          'content="32,000 HP. Interactive 3D raid guide for the Eye of Veeshan')),
 
     ("a tool dropped from the footer",
+     "footer does not link tools/faction-impact.html",
      "public/index.html",
      lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact\.html">[^<]*</a></li>', "", t)),
 
@@ -69,6 +132,7 @@ CASES = [
     # exactly the kind of hole that quietly turns a check off. This proves the
     # rest of the page is still governed.
     ("prose growing on the page that hosts the change log",
+     "sources.html has grown to",
      "public/sources.html",
      lambda t: t.replace('<section class="band" id="changelog"',
                          "<p>" + " ".join(["ballast"] * 100)
@@ -78,6 +142,7 @@ CASES = [
     # is not, and each exemption has to be proved separately or the list in
     # gate.py becomes a place to hide growth.
     ("prose growing on the findings register",
+     "learn/still-true.html has grown to",
      "public/learn/still-true.html",
      lambda t: t.replace('<article class="st-entry"',
                          "<p>" + " ".join(["ballast"] * 100)
@@ -85,6 +150,7 @@ CASES = [
 
     # Third ledger, same proof.
     ("prose growing on the dungeon index",
+     "dungeons/index.html has grown to",
      "public/dungeons/index.html",
      lambda t: t.replace('class="plates"',
                          'class="x">' + " ".join(["ballast"] * 90)
@@ -94,13 +160,20 @@ CASES = [
     # index headline read "Ten zones, surveyed" while the ledger held thirteen,
     # and nothing caught it because every count check matched digits only.
     ("a zone count spelled out and left behind",
+     f"says 'Ten' for 'zones surveyed' but the data holds {N_ZONES}",
      "public/dungeons/index.html",
      lambda t: t.replace(f"{N_ZONES} zones,", "Ten zones,")),
 ]
 
 
 def mutate_zone_gate():
-    """A zone marked full while its gate text still names an open gate."""
+    """A zone marked full while its gate text still names an open gate.
+
+    This also makes public/ stale, because zones-index.json is a build input and
+    build.sh stamps its inputs. That staleness failure is collateral and is
+    ignored; `expect` names the open-gate message instead. For two months it was
+    the only thing this case actually proved.
+    """
     p = "assets/zones-index.json"
     orig = open(p, encoding="utf-8").read()
     Z = json.loads(orig)
@@ -116,6 +189,11 @@ def mutate_missing_item_page():
     The Index writes its links in the browser, so the link checker never sees
     them and this is the only thing standing between a renamed item and 452
     silent 404s. Moved rather than deleted, and put back in the finally.
+
+    The A–Z hub does link this one with a real href, so the ordinary link check
+    fails first and twice. Those are collateral: `expect` names the slug check,
+    which is the one that would still fire for an item reachable only through
+    The Index.
     """
     p = "public/items/journeymans-boots.html"
     orig = open(p, encoding="utf-8").read()
@@ -123,15 +201,27 @@ def mutate_missing_item_page():
     return p, orig
 
 
+SPECIAL = [
+    ("a full zone still naming an open gate",
+     "is marked full but its verify_gate still names an open gate",
+     mutate_zone_gate),
+    ("an item page The Index links but that is not on disk",
+     "items page(s) that do not exist: journeymans-boots",
+     mutate_missing_item_page),
+]
+
+
 def main():
-    code, _ = check()
+    code, out = check()
     if code != 0:
         print("The tree does not pass before mutation. Fix that first — the "
               "self-test cannot tell a real failure from a caught one.")
+        for f in failures(out):
+            print(f"    {f}")
         return 1
 
     results = []
-    for name, path, fn in CASES:
+    for name, expect, path, fn in CASES:
         orig = open(path, encoding="utf-8").read()
         try:
             new = fn(orig)
@@ -141,27 +231,23 @@ def main():
                 continue
             open(path, "w", encoding="utf-8", newline="\n").write(new)
             rc, out = check()
-            hit = next((l.strip()[6:] for l in out.splitlines() if "FAIL" in l), "")
-            results.append((name, "caught" if rc != 0 else "MISSED", hit[:110]))
+            results.append((name,) + judge(expect, rc, out))
         finally:
             open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
-    for label, fn in (("a full zone still naming an open gate", mutate_zone_gate),
-                      ("an item page The Index links but that is not on disk",
-                       mutate_missing_item_page)):
+    for label, expect, fn in SPECIAL:
         path, orig = fn()
         try:
             rc, out = check()
-            hit = next((l.strip()[6:] for l in out.splitlines() if "FAIL" in l), "")
-            results.append((label, "caught" if rc != 0 else "MISSED", hit[:110]))
+            results.append((label,) + judge(expect, rc, out))
         finally:
             open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
     bad = 0
     for name, status, detail in results:
         print(f"  [{status:11}] {name}")
-        if detail and status == "caught":
-            print(f"                {detail}")
+        if detail:
+            print(f"                {detail[:200]}")
         if status != "caught":
             bad += 1
 
@@ -170,9 +256,12 @@ def main():
         print("\nThe tree does not pass after restoring. Something was left mutated.")
         return 1
     if bad:
-        print(f"\n{bad} check(s) did not catch their fault. The gate is not doing its job.")
+        print(f"\n{bad} case(s) did not see the check they were written for fail. "
+              f"Either that check is dead, or this file is now testing something "
+              f"else — both are blockers.")
         return 1
-    print(f"\nAll {len(results)} gate checks caught their fault, and the tree is clean.")
+    print(f"\nAll {len(results)} cases saw the check they were written for fail, "
+          f"and the tree is clean.")
     return 0
 
 
