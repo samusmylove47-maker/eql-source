@@ -208,7 +208,11 @@ if os.path.exists("build.sh"):
                    # Reads combat logs out of state/logs/, which are
                    # gitignored because they can carry private chat. Run
                    # by hand; only the derived counts are committed.
-                   "raidstats.py")}
+                   "raidstats.py",
+                   # Reads inventory dumps out of state/inventory/, gitignored
+                   # because they are a named person's account contents. Run
+                   # by hand; only name-to-item-ID is committed.
+                   "inventory.py")}
     for g in sorted(on_disk - set(gens)):
         warn(f"{g} exists but build.sh never runs it")
 
@@ -274,6 +278,47 @@ for _folder, _key in (("items", "items"), ("named", "named")):
     if _orphan:
         fail(f"public/{_folder}/ holds {len(_orphan)} page(s) no longer in the "
              f"data — a rename left them behind: {', '.join(_orphan[:4])}")
+
+# ---- the curated corrections have not gone stale ----------------------------
+# assets/catalogue-fixes.json says of itself: "check.py fails if a name here no
+# longer appears in the data, so this file cannot rot quietly." It did not.
+# There was no such check, so the file could have rotted in exactly the silence
+# it claimed to be protected from - and a fix keyed to a name that a survey has
+# since re-worded does nothing at all, invisibly.
+#
+# Every left-hand key must still be reachable: a fragment or group by that name
+# in the mined data, an alias or split by the name it renames FROM, and a
+# resolved fragment by the name it renames TO.
+try:
+    _fx = json.load(open("assets/catalogue-fixes.json", encoding="utf-8"))
+except Exception as e:
+    fail(f"catalogue-fixes.json unreadable: {e}")
+    _fx = {}
+_item_names = {r["n"] for r in _ix["items"]}
+_named_names = {r["n"] for r in _ix["named"]}
+_resolved = {k: v["name"] for k, v in _fx.get("fragment_resolved", {}).items()}
+# A fix that RENAMES is checked against the survey sources, not the mined data:
+# by the time the data exists the old name has already been replaced, so
+# looking for it downstream would fail every rename that is working correctly.
+# A fix that only LABELS - fragments, groups - survives into the data and is
+# checked there.
+_srctext = ""
+for _p in glob.glob("_build/source/*.html"):
+    _srctext += open(_p, encoding="utf-8").read()
+for _label, _keys, _pool, _where in (
+        ("fragment", set(_fx.get("fragments", {})), _item_names, "the mined data"),
+        ("group", set(_fx.get("groups", [])), _item_names, "the mined data"),
+        ("resolved fragment", set(_resolved.values()), _item_names, "the mined data"),
+        ("alias", set(_fx.get("aliases", {})), None, "any survey source"),
+        ("split", set(_fx.get("split_named", {})), None, "any survey source")):
+    if _pool is not None:
+        _stale = sorted(k for k in _keys if k not in _pool)
+    else:
+        _stale = sorted(k for k in _keys if k not in _srctext)
+    if _stale:
+        fail(f"catalogue-fixes.json lists {len(_stale)} {_label}(s) that no "
+             f"longer appear in {_where}, so the correction does nothing: "
+             f"{', '.join(repr(s) for s in _stale[:4])}")
 
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts

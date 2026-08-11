@@ -71,6 +71,11 @@ def slug(s):
 FIX = json.load(open("assets/catalogue-fixes.json", encoding="utf-8"))
 FRAGMENTS, GROUPS = FIX["fragments"], set(FIX["groups"])
 ALIASES, SPLITS = FIX["aliases"], FIX["split_named"]
+# A fragment whose full name a dump has since confirmed is not a fragment any
+# more - it is an ordinary item that we could not name. Renamed here, before
+# anything downstream sees it, so the slug, the page, The Index and the share
+# card all agree without any of them knowing this ever happened.
+RESOLVED = {k: v["name"] for k, v in FIX.get("fragment_resolved", {}).items()}
 
 items, named = [], []
 for z in Z:
@@ -110,6 +115,7 @@ for z in Z:
                 # Flagged so a page can show the row rather than assert the stats.
                 for k,nm in enumerate(names):
                   sl=slots_l[k] if k<len(slots_l) else (slots_l[0] if slots_l else '')
+                  nm = RESOLVED.get(nm, nm)
                   kind = ("fragment" if nm in FRAGMENTS else
                           "group" if nm in GROUPS else "item")
                   items.append({"n":nm,"s":norm_slot(sl),"sr":sl,"st":g('stats')[:140],

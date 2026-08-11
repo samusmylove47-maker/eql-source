@@ -24,6 +24,7 @@ TOOLS = [
     dict(slug="combo-calculator", name="Race and primary calculator"),
     dict(slug="faction-impact",   name="Faction impact checker"),
     dict(slug="planar-gear",      name="Planar gear targets"),
+    dict(slug="inventory",        name="What have I got?", foot="Inventory reader"),
 ]
 
 # `blurb` is what the Learn hub prints under each title. It lives here so the
