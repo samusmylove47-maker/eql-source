@@ -118,8 +118,22 @@ log their absence as a defect.
   that mob type carries two kits at D1, on trash, not on a named. The log cannot
   tell whether one individual does both.
 
+  **Replicated in a second zone, 10 Aug 2026.** `An imp protector` in Nagafen's
+  Lair at D1 backstabbed 103 times while casting Dry Bone Fire Burst 379 times,
+  plus Greater Healing, Allure and Tashania. Same shape as Mistmoore, nearly
+  three times the sample. `A lava beetle` there does it too, 15 backstabs
+  alongside heals and roots.
+
+  **At D0, trash runs one kit each, not two.** In The Ruins of Old Paineel at
+  base difficulty, 11 Aug 2026, `An elemental capturer` backstabbed and never
+  cast; `An elemental channeler` cast Superior Healing and never backstabbed;
+  `An elemental wizard` cast Lightning Bolt and never backstabbed. So the class
+  *kits* reach trash at D0 — but a mob carrying two of them is a D1 observation,
+  and the distinction is worth keeping.
+
   Damage separates the same way: those familiars hit for 1–38 in melee and
-  100–143 from behind. Never publish a combined average for a mob that
+  100–143 from behind, and the imp protector 45 on average in melee against 175
+  from behind, max 405. Never publish a combined average for a mob that
   backstabs.
 
   The tiers are named in game, and the zone line prints the name on entry —
@@ -133,12 +147,31 @@ log their absence as a defect.
   | **D3** | Fused |
   | **D4** | Refined |
 
-  Loot gives the same answer independently: items drop at `+N` and the modal `N`
-  is the difficulty. Read the *dropped* value, not the created one — `looted a
-  Keg Mallet +2 … to create a Keg Mallet +4` is a `+2` drop. The two readings
-  agreed on our 8 Aug Mistmoore session, which is why both are kept and reported
-  separately rather than collapsed: when they disagree, the difficulty is
-  unresolved and the page must say so.
+  Loot gives the same answer independently, and **the difficulty is the *lowest*
+  tier that drops, not the commonest.** Measured 11 Aug 2026 across the 52
+  sessions whose difficulty a numbered zone line states on its own: the minimum
+  matched every one, the mode matched 50. In 1,742 upgradeable drops carrying an
+  independent difficulty, **not one landed below the zone's tier.** Above it,
+  about 19% at D1 and under 1% at D2 and D3.
+
+  It is a roll, not a property of the item — `Fine Steel Rapier` dropped +1
+  forty-three times, +2 eleven times and +3 once, all in D1 zones. Named mobs do
+  not roll higher than trash. Befallen rolls above tier 19.5% of the time at D1
+  and zero times in 115 drops at D3, so it is not a zone effect either.
+
+  **A bare item is the tier-0 form**, so it has to be counted as `+0`, or every
+  open-world session reads as D1. Read the *dropped* value, not the created one
+  — `looted a Keg Mallet +2 … to create a Keg Mallet +4` is a `+2` drop.
+
+  Both readings stay in `measured.json` as `drop_tier_floor` and
+  `drop_tier_modal`, reported separately rather than collapsed: when the loot
+  and the zone line disagree, the difficulty is unresolved and the page must say
+  so. Where a session has no zone line at all, the floor is what names its
+  difficulty.
+
+  **Not every "You have entered" line names a zone.** `an area where levitation
+  effects do not function` is an effect boundary, and parsing it as a zone
+  invented one.
 
 Inherited lines like "you need a full group of level 50s" came from a game where
 neither was true. Unreliable in both directions. Mark them.

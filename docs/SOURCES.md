@@ -35,9 +35,28 @@ figure rests on. A drop seen once is "seen once", never a drop rate.
   1 (Awakened).` The parenthesised word is the difficulty tier name:
   **D0 Base/Normal, D1 Awakened, D2 Adaptive, D3 Fused, D4 Refined.** Supplied by
   the collaborator, 8 Aug 2026.
-- Difficulty is separately readable from loot: items drop at `+N`, and the modal
-  `N` is the difficulty. Read the *dropped* value, not the created one —
-  `looted a Keg Mallet +2 ... to create a Keg Mallet +4` is a `+2` drop.
+- Difficulty is separately readable from loot: items drop at `+N`, and the
+  **lowest** `N` is the difficulty — not the modal, which is what this said
+  until 11 Aug 2026. **Difficulty is a floor.** In 1,742 upgradeable drops from
+  sessions whose difficulty a numbered zone line stated independently, not one
+  item fell below the zone's tier; about 19% rolled above it at D1 and under 1%
+  at D2 and D3. The floor identified the tier in 52 of 52 sessions and the modal
+  in 50.
+  - It is a roll and not a property of the item: `Fine Steel Rapier` dropped
+    `+1` 43 times, `+2` 11 times and `+3` once, all in D1 zones. Named mobs do
+    not roll higher than trash (20.7% against 18.6%), and Befallen rolls above
+    tier 19.5% of the time at D1 and zero times in 115 drops at D3, so it is
+    neither a named-mob nor a zone effect.
+  - **A bare item is the `+0` form** and has to be counted as one, or every
+    open-world session reads as D1. Which names can carry a tier is only
+    answerable across the whole corpus, so `retier()` in `logstats.py` scores
+    every session against every item ever seen suffixed. Trash excludes itself:
+    `Gnoll Fang` is never seen with a `+N` by anyone.
+  - The practical gain is small samples. Three drops settle it; a modal value
+    needs an evening. One session dropped four items, three of them rolled up,
+    and the mode said D2 where the zone line and the floor both said D1.
+  - Read the *dropped* value, not the created one —
+    `looted a Keg Mallet +2 ... to create a Keg Mallet +4` is a `+2` drop.
 - **Both readings are kept, and reported separately.** They are independent —
   one comes from the zone name, the other from what dropped — so agreement is
   worth something. They agreed on the 8 Aug Mistmoore session: the line said

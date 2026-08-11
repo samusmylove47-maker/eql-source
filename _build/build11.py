@@ -103,6 +103,32 @@ for s in SESSIONS:
         both += 1
         agree += 1 if s['difficulty_label_agrees'] else 0
 
+# THE LOOT FLOOR, COUNTED HERE RATHER THAN TYPED INTO THE PROSE
+# The page used to say the tier is "the +N most things arrive at", which is the
+# mode. It is the minimum. Every figure in that paragraph is printed from these
+# counters, so a later session that breaks the rule changes the sentence
+# instead of leaving it standing.
+floor_ok = floor_n = 0
+below = at_tier = above = 0
+for s in SESSIONS:
+    # only sessions whose difficulty came from the zone line, never from loot -
+    # scoring the loot rule against a difficulty derived from loot proves
+    # nothing
+    if s.get('difficulty_from') not in ('zone line, numbered', 'zone line'):
+        continue
+    d, tiers = s.get('difficulty'), s.get('drop_tiers') or {}
+    if d is None or not tiers:
+        continue
+    floor_n += 1
+    floor_ok += 1 if min(int(k) for k in tiers) == d else 0
+    for k, v in tiers.items():
+        k = int(k)
+        below += v if k < d else 0
+        at_tier += v if k == d else 0
+        above += v if k > d else 0
+drops_total = below + at_tier + above
+above_pct = round(100 * above / max(1, drops_total))
+
 rows = ''
 for n, name, note in TIERS:
     e = seen.get(n)
@@ -171,12 +197,15 @@ You have entered Befallen 3 (Fused).
 You have entered The City of Guk 4 (Refined).</pre>
     <p>A zone line with no number and no name is the open world, D0. <strong>Both readings agreed in
       every session where both were present &mdash; {agree} of {both}, no disagreements</strong>
-      <span class="tier tM">TIER M</span>. That is worth stating because it means you never have to
-      guess or remember: the answer is in your own log, and it is checkable against itself.</p>
-    <p>Loot gives a third, independent reading. Items drop pre-upgraded, and the tier you are on is
-      the <code>+N</code> most things arrive at &mdash; a night at Awakened is a pile of <code>+1</code>.
-      Read the <em>dropped</em> value rather than the created one: <em>looted a Keg Mallet +2 &hellip;
-      to create a Keg Mallet +4</em> is a <code>+2</code> drop.</p>
+      <span class="tier tM">TIER M</span>. So you never have to remember which setting you picked.</p>
+    <p>Loot gives a third reading, and <strong>difficulty is a floor</strong>: your tier is the
+      <em>lowest</em> <code>+N</code> you see, not the commonest. In {drops_total:,} upgradeable
+      drops where the zone line stated the tier on its own, <strong>not one item dropped below
+      it</strong> <span class="tier tM">TIER M</span>, and about {above_pct}% rolled above &mdash;
+      so anything over the floor is luck, and <strong>three drops settle it</strong>. The floor
+      named the tier in {floor_ok} of {floor_n} sessions; the commonest value missed two. Read the
+      <em>dropped</em> value, not the created one: <em>looted a Keg Mallet +2 &hellip; to create a
+      Keg Mallet +4</em> is a <code>+2</code>, and a bare item is the <code>+0</code>.</p>
   </div>
 </section>
 
@@ -199,10 +228,9 @@ You have entered The City of Guk 4 (Refined).</pre>
           <li><b>Experience</b> &times;1.15 / &times;1.30 / &times;1.45 / &times;1.60 across Awakened
             to Refined on multiplayer tuning; &times;1.10 / &times;1.20 / &times;1.30 / &times;1.40
             solo. Whether the bonus is currently live is one of the things they mark unpinned.</li>
-          <li><b>Loot is the same table</b> What changes is the condition it arrives in: D0 drops the
-            base item, D4 the same item at +4, with a chance of better. A +4 is worth sixteen base
-            copies of upgrade progress, so the tier decides how far a drop carries you rather than
-            what drops.</li>
+          <li><b>Loot is the same table</b> The tier decides the condition, not what drops. A +4 is
+            worth sixteen base copies of upgrade progress, so it decides how far a drop carries you
+            &mdash; measured above.</li>
           <li><b>Every tier is its own lockout</b> Loot lockouts track per difficulty, so the same
             named can be worth killing again on another setting.</li>
         </ol>
@@ -234,8 +262,8 @@ You have entered The City of Guk 4 (Refined).</pre>
     <div class="sechead"><span class="n">Ours</span>
       <div><h2 class="sec">The ramp, measured on one boss at all five tiers</h2>
       <p class="lede" style="margin:0">Master Yael, in the group instance of The Hole, killed once
-        at every difficulty on 10 August 2026 by one trio in one session. Same boss, same players,
-        five settings &mdash; which is the only way to see what the tier actually changes.</p></div></div>
+        at every difficulty on 10 August 2026 by one trio in one session &mdash; same boss, same
+        players, five settings.</p></div></div>
     <div class="scroller"><table>
       <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
         <th>Self-heals</th><th>What he cast</th></tr></thead>
