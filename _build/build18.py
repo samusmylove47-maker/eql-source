@@ -53,7 +53,7 @@ def page():
 <section class="hero page">
   <div class="shell rp">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="still-true.html">Learn</a> &nbsp;/&nbsp; Reading a floor plan</p>
+      <a href="index.html">Learn</a> &nbsp;/&nbsp; Reading a floor plan</p>
     <h1 class="display">How to read<br><em>a floor plan.</em></h1>
     <p class="hero-lede">{NGEO} of our {NZONES} surveys carry one. They are not redrawn from
       published maps &mdash; they are computed from the zone&rsquo;s own geometry in the game
