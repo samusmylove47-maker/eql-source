@@ -1109,7 +1109,7 @@
   "The Ruins of Old Guk": {
    "difficulty": 1,
    "date": "05 Aug 2026",
-   "kills": 238,
+   "kills": 416,
    "per_mob": {
     "a froglok tsu shaman": {
      "Frogloks of Guk": -5
@@ -1143,6 +1143,9 @@
     },
     "a dar ghoul knight": {
      "Frogloks of Guk": 1
+    },
+    "a zol ghoul knight": {
+     "Frogloks of Guk": 2
     }
    },
    "factions": [
@@ -1677,6 +1680,388 @@
     "High Elf",
     "Wood Elf"
    ]
+  },
+  "The Southern Desert of Ro": {
+   "difficulty": 0,
+   "date": "09 Aug 2026",
+   "kills": 2,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Feerrott": {
+   "difficulty": 0,
+   "date": "09 Aug 2026",
+   "kills": 0,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Temple of Cazic-Thule": {
+   "difficulty": 2,
+   "date": "09 Aug 2026",
+   "kills": 77,
+   "per_mob": {
+    "a lizard broodling": {
+     "Allize Taeew": -10,
+     "Allize Volew": 5
+    },
+    "a lizard zealot": {
+     "Allize Taeew": -33,
+     "Allize Volew": 5
+    },
+    "Avatar of Fear": {
+     "Allize Taeew": -150,
+     "Allize Volew": 15
+    },
+    "a lizard fanatic": {
+     "Allize Taeew": -31,
+     "Allize Volew": 5
+    },
+    "a lizard justicar": {
+     "Allize Taeew": -30,
+     "Allize Volew": 5
+    },
+    "Cazic Cenobite": {
+     "Allize Taeew": -36,
+     "Allize Volew": 5
+    },
+    "a lizard protector": {
+     "Allize Taeew": -28,
+     "Allize Volew": 5
+    },
+    "a lizard judicator": {
+     "Allize Taeew": -33,
+     "Allize Volew": 5
+    }
+   },
+   "factions": [
+    "Allize Taeew",
+    "Allize Volew"
+   ],
+   "capped": {
+    "Allize Taeew": "down"
+   },
+   "factions_seen": [
+    "Allize Taeew",
+    "Allize Volew"
+   ],
+   "falling": [
+    "Allize Taeew"
+   ],
+   "rising": [
+    "Allize Volew"
+   ],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Paineel": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 1,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Ruins of Old Paineel": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 203,
+   "per_mob": {
+    "an elemental warrior": {
+     "Minions of Underfoot": -3
+    },
+    "an elemental crusader": {
+     "Minions of Underfoot": -3
+    },
+    "a rock golem": {
+     "Minions of Underfoot": -3
+    },
+    "an elemental channeler": {
+     "Minions of Underfoot": -3
+    },
+    "an elemental deceiver": {
+     "Minions of Underfoot": -3
+    },
+    "an elemental visier": {
+     "Minions of Underfoot": -3
+    },
+    "an elemental capturer": {
+     "Minions of Underfoot": -3
+    },
+    "a flighty fiend": {
+     "Minions of Underfoot": -3
+    },
+    "an elemental wizard": {
+     "Minions of Underfoot": -3
+    },
+    "muck covered elemental": {
+     "Minions of Underfoot": -3
+    }
+   },
+   "factions": [
+    "Minions of Underfoot"
+   ],
+   "capped": {
+    "Minions of Underfoot": "down"
+   },
+   "factions_seen": [
+    "Minions of Underfoot"
+   ],
+   "falling": [
+    "Minions of Underfoot"
+   ],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Nagafen's Lair": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 284,
+   "per_mob": {
+    "a kobold king": {
+     "Kobolds of Fire Pit": -3,
+     "Solusek Mining Co.": 5
+    },
+    "a greater kobold": {
+     "Kobolds of Fire Pit": -3,
+     "Solusek Mining Co.": 5
+    },
+    "Targin the Rock": {
+     "Kobolds of Fire Pit": -10,
+     "Solusek Mining Co.": 5
+    },
+    "a kobold priest": {
+     "Kobolds of Fire Pit": -3,
+     "Solusek Mining Co.": 5
+    },
+    "a greater kobold shaman": {
+     "Kobolds of Fire Pit": -3,
+     "Solusek Mining Co.": 5
+    },
+    "a kobold noble": {
+     "Kobolds of Fire Pit": -3,
+     "Solusek Mining Co.": 5
+    },
+    "a kobold champion": {
+     "Kobolds of Fire Pit": -3,
+     "Solusek Mining Co.": 5
+    },
+    "a guano harvester": {
+     "Goblins of Fire Peak": -3,
+     "Tribe Vrodak": 5
+    }
+   },
+   "factions": [
+    "Goblins of Fire Peak",
+    "Kobolds of Fire Pit",
+    "Solusek Mining Co.",
+    "Tribe Vrodak"
+   ],
+   "factions_seen": [
+    "Goblins of Fire Peak",
+    "Kobolds of Fire Pit",
+    "Solusek Mining Co.",
+    "Tribe Vrodak"
+   ],
+   "falling": [
+    "Goblins of Fire Peak",
+    "Kobolds of Fire Pit"
+   ],
+   "rising": [
+    "Solusek Mining Co.",
+    "Tribe Vrodak"
+   ],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Nagafen's Lair - Group": {
+   "difficulty": 1,
+   "date": "10 Aug 2026",
+   "kills": 6,
+   "per_mob": {
+    "a fire giant warrior": {
+     "Nagafen": -12,
+     "Solusek Mining Co.": 5,
+     "Vox": -1
+    },
+    "a fire giant wizard": {
+     "Nagafen": -7,
+     "Solusek Mining Co.": 5,
+     "Vox": -1
+    }
+   },
+   "factions": [
+    "Nagafen",
+    "Solusek Mining Co.",
+    "Vox"
+   ],
+   "factions_seen": [
+    "Nagafen",
+    "Solusek Mining Co.",
+    "Vox"
+   ],
+   "falling": [
+    "Nagafen",
+    "Vox"
+   ],
+   "rising": [
+    "Solusek Mining Co."
+   ],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Ruins of Old Paineel - Group": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 3,
+   "per_mob": {
+    "a flighty fiend": {
+     "Minions of Underfoot": -3
+    },
+    "Master Yael": {
+     "Minions of Underfoot": -500
+    }
+   },
+   "factions": [
+    "Minions of Underfoot"
+   ],
+   "factions_seen": [
+    "Minions of Underfoot"
+   ],
+   "falling": [
+    "Minions of Underfoot"
+   ],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Permafrost Keep": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 0,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [
+    "Nagafen",
+    "Vox"
+   ],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Permafrost Caverns - Group": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 5,
+   "per_mob": {
+    "a priest of Nagafen": {
+     "Nagafen": -200,
+     "Solusek Mining Co.": 30,
+     "Vox": -10
+    },
+    "an ice giant": {
+     "Vox": -21,
+     "Nagafen": -1
+    },
+    "Lady Vox": {
+     "Vox": -500,
+     "Nagafen": -25
+    },
+    "an ice giant priest": {
+     "Vox": -19,
+     "Nagafen": -1
+    }
+   },
+   "factions": [
+    "Nagafen",
+    "Solusek Mining Co.",
+    "Vox"
+   ],
+   "factions_seen": [
+    "Nagafen",
+    "Solusek Mining Co.",
+    "Vox"
+   ],
+   "falling": [
+    "Nagafen",
+    "Vox"
+   ],
+   "rising": [
+    "Solusek Mining Co."
+   ],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Northern Desert of Ro": {
+   "difficulty": 0,
+   "date": "10 Aug 2026",
+   "kills": 0,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
   }
  }
 }

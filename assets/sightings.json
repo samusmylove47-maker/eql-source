@@ -877,6 +877,21 @@
     ]
    }
   ],
+  "Fire Giant Warrior": [
+   {
+    "item": "Throwing Boulder",
+    "n": 13,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Splitpaw Sharpshooter": [
    {
     "item": "Sharpshooter's Bandana",
@@ -935,6 +950,61 @@
       "zone": "Blackburrow",
       "difficulty": 2,
       "label": "Adaptive",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Efreeti Lord Djarn": [
+   {
+    "item": "Golden Efreeti Boots",
+    "n": 11,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "item": "Djarns Amethyst Ring",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Fine Steel Spear",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Shara"
      }
     ]
@@ -1754,6 +1824,34 @@
     ]
    }
   ],
+  "death beetle": [
+   {
+    "item": "Black Chitin Leggings",
+    "n": 8,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Death Scarab Gland",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Tranixx Darkpaw": [
    {
     "item": "Onyx Earring",
@@ -1836,6 +1934,69 @@
     ]
    }
   ],
+  "lava duct crawler": [
+   {
+    "item": "Spider Legs",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Spider Silk",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Asaka L`Rei": [
    {
     "item": "Enchanted Fine Steel Morning Star",
@@ -1888,6 +2049,21 @@
       "difficulty": 3,
       "label": "Fused",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Imp Protector": [
+   {
+    "item": "Fine Steel Spear",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
@@ -1985,10 +2161,135 @@
     ]
    }
   ],
+  "Master Yael": [
+   {
+    "item": "Loam Encrusted Robe",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Serpent's Tooth",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Earthshaker",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "a ghoul cavalier": [
+   {
+    "item": "Adamantite Epaulets",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Fine Steel Spear",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "a ghoul scribe": [
    {
     "item": "Parchment of Flayed Skin",
-    "n": 4,
+    "n": 5,
     "sessions": [
      {
       "date": "06 Aug 2026",
@@ -1996,12 +2297,19 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    },
    {
     "item": "Gorgon Feather Quill",
-    "n": 3,
+    "n": 4,
     "sessions": [
      {
       "date": "05 Aug 2026",
@@ -2015,6 +2323,13 @@
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
       "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
@@ -2036,6 +2351,43 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "kobold noble": [
+   {
+    "item": "Staff of Writhing",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Fire Giant Wizard": [
+   {
+    "item": "Throwing Boulder",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
@@ -2093,6 +2445,76 @@
       "difficulty": 3,
       "label": null,
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "a ghoul ritualist": [
+   {
+    "item": "Embroidered Black Cape",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "a ghoul sentinel": [
+   {
+    "item": "Dark Mail Gauntlets",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Brigandine Tunic",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Undead Froglok Tongue",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
@@ -2203,6 +2625,34 @@
     ]
    }
   ],
+  "Lord Nagafen": [
+   {
+    "item": "Cloak of Flames",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Hierophant`s Crook",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Splitpaw Sentry": [
    {
     "item": "Crude Arrow",
@@ -2218,9 +2668,31 @@
     ]
    }
   ],
-  "a ghoul cavalier": [
+  "Targin the Rock": [
    {
-    "item": "Adamantite Epaulets",
+    "item": "Code of Zan Fi",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "a ghoul sage": [
+   {
+    "item": "Braided Cinch Cord",
     "n": 2,
     "sessions": [
      {
@@ -2229,20 +2701,53 @@
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Runed Cowl",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Undead Froglok Tongue",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
   ],
-  "a ghoul ritualist": [
+  "a ghoul savant": [
    {
-    "item": "Embroidered Black Cape",
+    "item": "Enameled Black Mace",
     "n": 2,
     "sessions": [
      {
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
-      "label": null,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
@@ -2257,6 +2762,136 @@
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Thick Banded Belt",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "lava guardian": [
+   {
+    "item": "Gold Ring",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Jade",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Flame Agate",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "noxious spider": [
+   {
+    "item": "Green Silken Drape",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Golden Chitin Bracer",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Spider Silk",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "stone spider": [
+   {
+    "item": "Brown Chitin Protector",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Spider Silk",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
       "label": null,
       "character": "Avenrae"
      }
@@ -2403,6 +3038,62 @@
     ]
    }
   ],
+  "King Tranix": [
+   {
+    "item": "Polished Mithril Torque",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Throwing Boulder",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Magus Rokyl": [
+   {
+    "item": "Polished Mithril Mask",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Throwing Boulder",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Mannan of the Sabertooth": [
    {
     "item": "Spiked Collar",
@@ -2461,6 +3152,21 @@
     ]
    }
   ],
+  "Warlord Skarlon": [
+   {
+    "item": "Throwing Boulder",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "a frenzied ghoul": [
    {
     "item": "Fine Steel Spear",
@@ -2504,30 +3210,58 @@
     ]
    }
   ],
-  "a ghoul sage": [
+  "guano harvester": [
    {
-    "item": "Braided Cinch Cord",
+    "item": "Cloak of Shadows",
     "n": 1,
     "sessions": [
      {
-      "date": "09 Aug 2026",
-      "zone": "The Ruins of Old Guk",
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
       "difficulty": 1,
-      "label": null,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Large Soiled Bag",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
    }
   ],
-  "a ghoul sentinel": [
+  "kobold champion": [
    {
-    "item": "Dark Mail Gauntlets",
+    "item": "Painbringer",
     "n": 1,
     "sessions": [
      {
-      "date": "09 Aug 2026",
-      "zone": "The Ruins of Old Guk",
-      "difficulty": 1,
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "kobold priest": [
+   {
+    "item": "Mithril Breastplate",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
       "label": null,
       "character": "Avenrae"
      }
@@ -2989,6 +3723,73 @@
     ]
    }
   ],
+  "Throwing Boulder": [
+   {
+    "mob": "Fire Giant Warrior",
+    "n": 13,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Fire Giant Wizard",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "King Tranix",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Magus Rokyl",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Warlord Skarlon",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Sharpshooter's Bandana": [
    {
     "mob": "Splitpaw Sharpshooter",
@@ -3085,6 +3886,28 @@
       "zone": "Befallen",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Golden Efreeti Boots": [
+   {
+    "mob": "Efreeti Lord Djarn",
+    "n": 11,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Shara"
      }
     ]
@@ -3607,6 +4430,21 @@
     ]
    }
   ],
+  "Black Chitin Leggings": [
+   {
+    "mob": "death beetle",
+    "n": 8,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Bone Chips": [
    {
     "mob": "An Elf Skeleton",
@@ -3647,6 +4485,35 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Spider Legs": [
+   {
+    "mob": "lava duct crawler",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -3729,6 +4596,19 @@
     ]
    },
    {
+    "mob": "Imp Protector",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
     "mob": "An imp familiar",
     "n": 2,
     "sessions": [
@@ -3745,6 +4625,26 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Efreeti Lord Djarn",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
      }
     ]
    },
@@ -3809,6 +4709,19 @@
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
       "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "a ghoul cavalier",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
@@ -4167,6 +5080,78 @@
     ]
    }
   ],
+  "Loam Encrusted Robe": [
+   {
+    "mob": "Master Yael",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Serpent's Tooth": [
+   {
+    "mob": "Master Yael",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Mistmoore Battle Drums": [
    {
     "mob": "Mynthi Davissi",
@@ -4260,6 +5245,72 @@
     ]
    }
   ],
+  "Adamantite Epaulets": [
+   {
+    "mob": "a ghoul cavalier",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Parchment of Flayed Skin": [
+   {
+    "mob": "a ghoul scribe",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "06 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Staff of Writhing": [
+   {
+    "mob": "kobold noble",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Shimmering Ruby Stiletto": [
    {
     "mob": "Korven Nisere",
@@ -4304,17 +5355,93 @@
     ]
    }
   ],
-  "Parchment of Flayed Skin": [
+  "Gorgon Feather Quill": [
    {
     "mob": "a ghoul scribe",
     "n": 4,
     "sessions": [
      {
-      "date": "06 Aug 2026",
+      "date": "05 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Spider Silk": [
+   {
+    "mob": "lava duct crawler",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "noxious spider",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "stone spider",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -4493,23 +5620,23 @@
     ]
    }
   ],
-  "Gorgon Feather Quill": [
+  "Embroidered Black Cape": [
    {
-    "mob": "a ghoul scribe",
+    "mob": "a ghoul ritualist",
     "n": 3,
     "sessions": [
-     {
-      "date": "05 Aug 2026",
-      "zone": "The Ruins of Old Guk",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
      {
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
       "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
@@ -4533,6 +5660,54 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ]
+   },
+   {
+    "mob": "a ghoul sage",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "a ghoul sentinel",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Dark Mail Gauntlets": [
+   {
+    "mob": "a ghoul sentinel",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
@@ -4638,6 +5813,21 @@
     ]
    }
   ],
+  "Djarns Amethyst Ring": [
+   {
+    "mob": "Efreeti Lord Djarn",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Diamondine Earring": [
    {
     "mob": "Lasna Cheroon",
@@ -4704,6 +5894,21 @@
     ]
    }
   ],
+  "Cloak of Flames": [
+   {
+    "mob": "Lord Nagafen",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Flame Agate": [
    {
     "mob": "Maid Issis",
@@ -4734,6 +5939,41 @@
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
       "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "lava guardian",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Earthshaker": [
+   {
+    "mob": "Master Yael",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -4791,6 +6031,28 @@
     ]
    }
   ],
+  "Code of Zan Fi": [
+   {
+    "mob": "Targin the Rock",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
   "Bronze Rapier": [
    {
     "mob": "The Thaumaturgist",
@@ -4832,9 +6094,9 @@
     ]
    }
   ],
-  "Adamantite Epaulets": [
+  "Braided Cinch Cord": [
    {
-    "mob": "a ghoul cavalier",
+    "mob": "a ghoul sage",
     "n": 2,
     "sessions": [
      {
@@ -4843,20 +6105,42 @@
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
+     },
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
   ],
-  "Embroidered Black Cape": [
+  "Enameled Black Mace": [
    {
-    "mob": "a ghoul ritualist",
+    "mob": "a ghoul savant",
     "n": 2,
     "sessions": [
      {
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
-      "label": null,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Brigandine Tunic": [
+   {
+    "mob": "a ghoul sentinel",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "09 Aug 2026",
+      "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
@@ -4871,6 +6155,125 @@
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Gold Ring": [
+   {
+    "mob": "lava guardian",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "An Elf Skeleton",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "06 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "mob": "Princess Cherista",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Jade": [
+   {
+    "mob": "lava guardian",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "A dark elf noble",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Princess Cherista",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Green Silken Drape": [
+   {
+    "mob": "noxious spider",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Brown Chitin Protector": [
+   {
+    "mob": "stone spider",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
       "label": null,
       "character": "Avenrae"
      }
@@ -4907,34 +6310,6 @@
     ]
    }
   ],
-  "Jade": [
-   {
-    "mob": "A dark elf noble",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "mob": "Princess Cherista",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Shara"
-     }
-    ]
-   }
-  ],
   "Crested Mistmoore Shield": [
    {
     "mob": "A glyphed ghoul",
@@ -4961,34 +6336,6 @@
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
-     }
-    ]
-   }
-  ],
-  "Gold Ring": [
-   {
-    "mob": "An Elf Skeleton",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "06 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "mob": "Princess Cherista",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
      }
     ]
    }
@@ -5034,6 +6381,51 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Polished Mithril Torque": [
+   {
+    "mob": "King Tranix",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Hierophant`s Crook": [
+   {
+    "mob": "Lord Nagafen",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Polished Mithril Mask": [
+   {
+    "mob": "Magus Rokyl",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      }
     ]
    }
@@ -5113,7 +6505,7 @@
     ]
    }
   ],
-  "Braided Cinch Cord": [
+  "Runed Cowl": [
    {
     "mob": "a ghoul sage",
     "n": 1,
@@ -5122,28 +6514,118 @@
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
-      "label": null,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
    }
   ],
-  "Dark Mail Gauntlets": [
+  "Thick Banded Belt": [
    {
-    "mob": "a ghoul sentinel",
+    "mob": "a ghoul supplier",
     "n": 1,
     "sessions": [
      {
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Death Scarab Gland": [
+   {
+    "mob": "death beetle",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Cloak of Shadows": [
+   {
+    "mob": "guano harvester",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Large Soiled Bag": [
+   {
+    "mob": "guano harvester",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Painbringer": [
+   {
+    "mob": "kobold champion",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
       "label": null,
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Mithril Breastplate": [
+   {
+    "mob": "kobold priest",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Golden Chitin Bracer": [
+   {
+    "mob": "noxious spider",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Avenrae"
      }
     ]
    }
   ]
  },
- "pairs": 112,
- "excluded_trash_drops": 1711
+ "pairs": 153,
+ "excluded_trash_drops": 2387
 }

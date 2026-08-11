@@ -70,6 +70,21 @@ DIFFICULTY = {'base': 0, 'normal': 0, 'base / normal': 0,
               'awakened': 1, 'adaptive': 2, 'fused': 3, 'refined': 4}
 
 ZONE = re.compile(r'You have entered (.+?)\.\s*$')
+# ...but not every "You have entered" line names a zone. The game uses the same
+# wording for an in-zone effect boundary:
+#
+#     You have entered an area where levitation effects do not function.
+#
+# That was parsed as a zone called "an area where levitation effects do not
+# function", which started a session, inherited the D0 fallback for an
+# unnumbered line, and then disagreed with its own loot. It was the single
+# session in 52 where the drop tiers contradicted the stated difficulty, and it
+# contradicted a zone that does not exist. Shara's log for the same window
+# (10 Aug 18:05-18:12) reads The Ruins of Old Paineel - Group 1 (Awakened).
+#
+# A real zone name is a place. These are conditions, and they all read "an area
+# where ...".
+NOT_A_ZONE = re.compile(r'^an area where ', re.I)
 STAMP = re.compile(r'ATTN Claude:\s*(.+?)\'?\s*$')
 SLAIN_BY_YOU = re.compile(r'^You have slain (.+?)!')
 SLAIN = re.compile(r'^(.+?) has been slain')
@@ -311,6 +326,8 @@ def collect(rows, character=None):
             sessions.append(cur)
         prev = when
         m = ZONE.search(x)
+        if m and NOT_A_ZONE.match(m.group(1).strip()):
+            m = None
         if m:
             raw = m.group(1).strip()
             diff = dnum = None
@@ -477,9 +494,31 @@ def summarise(s):
     # An unnumbered, unlabelled zone line is the open world, which is D0.
     if d_named is None and d_num is None and s['zone']:
         d_named = 0
-    d_loot = None
+    # THE LOOT READING IS A FLOOR, NOT AN AVERAGE
+    #
+    # This read the modal +N. Measured on 11 Aug 2026 across the 52 sessions
+    # whose difficulty is stated independently by a numbered zone line, the
+    # modal matched 50 times and the minimum matched 51 of 51 — the one failure
+    # being the phantom zone filtered above, not a real disagreement.
+    #
+    # The reason is that difficulty sets a hard floor and items sometimes roll
+    # above it. In 1,742 upgradeable drops carrying an independent difficulty,
+    # not one landed below the zone's tier. Above it: about 19% at D1, under 1%
+    # at D2 and D3. The same item proves it is a roll rather than a property of
+    # the item — Fine Steel Rapier dropped +1 forty-three times, +2 eleven times
+    # and +3 once, all in D1 zones.
+    #
+    # So the minimum is the better estimator and it is better on small samples,
+    # which is where it matters: a session with three drops has a 0.7% chance of
+    # all three rolling up at D1, while a mode needs far more to settle.
+    #
+    # Both are kept. Where they disagree the mode is the thing to distrust, but
+    # a page that wants to say "and it was mostly +1" needs it.
+    d_loot = d_loot_modal = None
     if s['drop_tiers']:
-        d_loot = int(max(s['drop_tiers'].items(), key=lambda kv: kv[1])[0])
+        tiers = {int(k): v for k, v in s['drop_tiers'].items()}
+        d_loot = min(tiers)
+        d_loot_modal = max(tiers.items(), key=lambda kv: kv[1])[0]
     agree = None if (d_named is None or d_loot is None) else (d_named == d_loot)
 
     out = dict(zone=s['zone'], character=s.get('character'),
@@ -550,6 +589,63 @@ def summarise(s):
     return out
 
 
+BARE_PLUS = re.compile(r'\s*\+(\d+)\s*$')
+
+
+def retier(all_sessions):
+    """Recount every session's drop tiers over the whole corpus, and let a bare
+    item count as tier 0.
+
+    THE PROBLEM THIS FIXES
+    ----------------------
+    A base item prints with no suffix. "Fine Steel Rapier" is the tier-0 form of
+    "Fine Steel Rapier +1". Counting only the suffixed ones meant a D0 session
+    saw no tier-0 drops at all, so its floor read as +1 and every open-world
+    session looked like D1.
+
+    Whether a name can carry a tier is not answerable from one session — you
+    have to have seen that item suffixed at least once, anywhere. So this runs
+    across the merged corpus, including sessions restored from logs that no
+    longer exist. Those sessions keep their per-mob loot lists, which is all
+    this needs; nothing is re-read from a raw log and nothing is invented.
+
+    Trash is excluded automatically and for free: Gnoll Fang and Amber are never
+    seen with a +N by anyone, so they are not upgradeable and never counted.
+    """
+    def base(n):
+        return BARE_PLUS.sub('', n).strip()
+
+    upgradeable = set()
+    for s in all_sessions:
+        for _mob, rec in (s.get('mobs') or {}).items():
+            for item in (rec.get('loot') or {}):
+                if BARE_PLUS.search(item):
+                    upgradeable.add(base(item))
+
+    for s in all_sessions:
+        tiers = collections.Counter()
+        for _mob, rec in (s.get('mobs') or {}).items():
+            for item, n in (rec.get('loot') or {}).items():
+                if base(item) not in upgradeable:
+                    continue
+                m = BARE_PLUS.search(item)
+                tiers[int(m.group(1)) if m else 0] += n
+        if not tiers:
+            continue
+        s['drop_tiers'] = {str(k): v for k, v in sorted(tiers.items())}
+        s['drop_tier_floor'] = min(tiers)
+        s['drop_tier_modal'] = max(tiers.items(), key=lambda kv: kv[1])[0]
+        # Only a session with no zone line to read takes its difficulty from
+        # loot. Where the zone line stated it, the zone line stands and the
+        # loot reading is left beside it as corroboration.
+        if s.get('difficulty_from') == 'loot tier':
+            s['difficulty'] = s['drop_tier_floor']
+        stated = s.get('difficulty')
+        s['difficulty_agrees'] = (None if stated is None
+                                  else stated == s['drop_tier_floor'])
+    return all_sessions
+
+
 def build(src):
     files = ([src] if os.path.isfile(src)
              else [os.path.join(src, f) for f in sorted(os.listdir(src)) if f.endswith('.txt')])
@@ -602,6 +698,7 @@ def build(src):
     merged.update(fresh)
     out = sorted(merged.values(),
                  key=lambda s: (s.get('date') or '', s.get('window') or ''))
+    retier(out)
 
     json.dump(out, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
               indent=1)

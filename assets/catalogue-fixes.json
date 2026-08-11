@@ -18,7 +18,15 @@
   "GROUPS are row headings, not items: a cell reading 'Bronze weapon line' names",
   "a family whose members are listed beside it.",
   "",
-  "ALIASES merge one entity that the source spells two ways.",
+  "ALIASES merge one entity that the source spells two ways. The bar is that",
+  "the two spellings describe the SAME record, not two records that share a",
+  "story. Zordak Ragefire was aliased to Zordakalicus Ragefire here and that",
+  "was wrong: the survey gives them different levels (60 and 54), different",
+  "locations, different races (HUMAN MERCHANT and LAVA DRAGON) and different",
+  "behaviour (a non-aggressive vendor and a triggered spawn). They are one",
+  "character in the Cleric epic and two entries in the game, and merging them",
+  "pointed both rows at one page, so whichever built last erased the other.",
+  "Withdrawn 11 Aug 2026. A shared surname is not a spelling variant.",
   "",
   "To add a case: put the exact mined name on the left. scripts/check.py fails",
   "if a name here no longer appears in the data, so this file cannot rot quietly."
@@ -41,9 +49,7 @@
   "Opolla ring line",
   "small bronze armour"
  ],
- "aliases": {
-  "Zordak Ragefire": "Zordakalicus Ragefire"
- },
+ "aliases": {},
  "split_named": {
   "A Nisch / Tesch Val Guard": ["A Nisch Val Guard", "A Tesch Val Guard"]
  }

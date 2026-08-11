@@ -351,8 +351,13 @@ def section(sess_list, zone_title):
             if at else f'<br><b>Noted at the time:</b> {esc(n)}'
             for n, at, c in notes) if notes else '')
         + f'</div>{control_html(s)}{escapes_html(s)}{tables}'
-        f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
-        f'session, not rates. A drop seen once is seen once, and figures describe this '
+        # "counts from one session" was typed, so a page merging three sessions
+        # printed "3 sessions" in its header and "one session" in its caveat.
+        # The same fault the propagation gate exists for, in a sentence about
+        # not over-reading evidence.
+        f'<p class="caveat"><strong>What this is and is not.</strong> These are counts'
+        f'{" from one session" if s.get("sessions_merged", 1) < 2 else ""}, not rates. '
+        f'A drop seen once is seen once, and figures describe this '
         f'trio at this level on this date. '
         f'<a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p>'
         f'</section>')
