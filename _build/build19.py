@@ -170,6 +170,9 @@ CSS = '''<style>
 .pg-tot{display:flex;flex-wrap:wrap;gap:5px 16px;font-family:"IBM Plex Mono",monospace;
   font-size:12px;color:var(--dim)}
 .pg-tot b{color:var(--bone)}
+.pg-t{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:#D9A227;border:1px solid rgba(217,162,39,.45);
+  border-radius:2px;padding:1px 5px;margin-left:7px;white-space:nowrap}
 .pg-warn{border-left:3px solid var(--warn);padding:3px 0 3px 14px;margin:14px 0;
   color:var(--mut);font-size:13.5px;line-height:1.6}
 </style>'''
@@ -190,10 +193,17 @@ BODY = f'''
 </div>
 
 <div class="shell">
+  <div class="note" style="margin-bottom:18px"><strong>Every stat here is
+    <span class="tier t3">T3</span> &mdash; a classic-era item record, not confirmed against
+    Legends piece by piece.</strong> That matters more in this tool than in a table: a ranking
+    tells you what to chase, and the ranking is only as good as the records under it. The badge
+    repeats on every card and on your locked total so it is never off screen when you decide.</div>
   <p class="pg-step">Step 1 &mdash; your three classes</p>
   <div class="pg-classes" id="cls"></div>
   <p class="pg-sub" id="clshint">Pick three.</p>
 
+    <p class="lede" style="margin-top:8px">Want the whole of every set rather than a ranking?
+      <a href="../sets/index.html">All 18 sets, piece by piece &rarr;</a></p>
   <p class="pg-step" style="margin-top:22px">Step 2 &mdash; what are you optimising for</p>
   <div class="pg-presets" id="presets"></div>
   <p class="pg-sub" id="phint"></p>
@@ -295,7 +305,8 @@ SCRIPT = ('<script>window.__PG__=' + json.dumps(DATA, separators=(",", ":")) + '
     $("#presets").innerHTML=PRESETS.map(function(p){
       return '<button class="pg-p" data-p="'+p.k+'" aria-pressed="'+(p.k===preset)+'">'+p.n+'</button>'
     }).join("");
-    $("#phint").textContent=scorer().h;
+    $("#phint").innerHTML=scorer().h+
+      ' <span class="pg-t">Scored from T3 data</span>';
   }
 
   function drawSlots(){
@@ -311,7 +322,8 @@ SCRIPT = ('<script>window.__PG__=' + json.dumps(DATA, separators=(",", ":")) + '
           return '<button class="pg-card" data-slot="'+slot+'" data-n="'+i.n.replace(/"/g,"&quot;")+'"'+
                  ' aria-pressed="'+on+'">'+
                  '<span class="pg-nm">'+i.n+'<span class="pg-score">'+sc.f(i)+'</span></span>'+
-                 '<span class="pg-set">'+i.set+(i.cls?" · "+i.cls:" · shared")+'</span>'+
+                 '<span class="pg-set">'+i.set+(i.cls?" · "+i.cls:" · shared")+
+                 '<span class="pg-t">T3</span></span>'+
                  '<span class="pg-stats">'+statLine(i)+'</span>'+
                  (i.fx?'<span class="pg-fx">Effect: '+i.fx+'</span>':'')+
                  (on?'<span class="pg-lock">Locked as your target</span>':'')+
@@ -337,6 +349,7 @@ SCRIPT = ('<script>window.__PG__=' + json.dumps(DATA, separators=(",", ":")) + '
     if(!locked){ $("#tot").innerHTML='<span>'+(trio.length<3?'Pick three classes to begin.'
       :'Nothing locked yet. Click a card to set it as your target.')+'</span>'; return; }
     $("#tot").innerHTML='<span><b>'+locked+'</b> of '+slotsTotal+' targets locked</span>'+
+      '<span class="pg-t">T3 &mdash; classic-era item records</span>'+
       STAT.filter(function(s){return tot[s[0]]}).map(function(s){
         return '<span>'+s[1]+' <b>'+tot[s[0]]+'</b></span>'}).join("");
   }
