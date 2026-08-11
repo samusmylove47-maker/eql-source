@@ -9,9 +9,10 @@ nothing, and the gate reported "All checks passed" exactly as it does when the
 site is clean. **A dead check is indistinguishable from a passing one**, and the
 whole point of the gate is that it fails when the site is wrong.
 
-So each check is exercised against the real fault it was written for. Every one
-of these mutations is a fault that actually shipped and was found by an outside
-reader on 9 August 2026.
+So each check is exercised against the real fault it was written for. Most of
+these mutations are faults that actually shipped and were found by an outside
+reader on 9 August 2026. The catalogue-fixes cases at the end trace to a
+different miss: a guard that file claimed to have and did not.
 
 WHY EVERY CASE NAMES THE MESSAGE IT EXPECTS
 -------------------------------------------
@@ -163,6 +164,82 @@ CASES = [
      f"says 'Ten' for 'zones surveyed' but the data holds {N_ZONES}",
      "public/dungeons/index.html",
      lambda t: t.replace(f"{N_ZONES} zones,", "Ten zones,")),
+
+    # ---- the curated corrections have not gone stale -------------------------
+    #
+    # assets/catalogue-fixes.json ends by saying "scripts/check.py fails if a
+    # name here no longer appears in the data, so this file cannot rot quietly."
+    # For a long time no such check existed, so the file was free to rot in
+    # exactly the silence it claimed to be protected from. The check arrived on
+    # 11 August 2026. These cases are what stop it going the same way, and the
+    # sequence — a guard asserted, absent, then added unproven — is the reason
+    # to be strict about it.
+    #
+    # A CASE PER LABEL, NOT PER CODE PATH.
+    #
+    # The five labels share two lookups: fragments, groups and resolved
+    # fragments are checked against the mined data, aliases and splits against
+    # the survey sources. Two cases would cover both lookups. But each label
+    # reads a different key out of the file, so one mistyped .get() would empty
+    # one label's key set and leave that label reporting success for ever while
+    # the other four still worked. An empty set is the dead check in its purest
+    # form: nothing to iterate, nothing to fail, nothing to see.
+    #
+    # Mutating this file also makes public/ stale, since it is a build input and
+    # extract.py reads it. That failure is collateral and ignored, the same as
+    # the open-gate case below.
+    #
+    # `expect` carries the stale name rather than just the label, because
+    # "1 fragment(s)" and "1 resolved fragment(s)" are one word apart and a
+    # count away from matching each other.
+    ("a fragment fix keyed to a name the survey has since re-worded",
+     "fragment(s) that no longer appear in the mined data, so the correction "
+     "does nothing: 'Skin of the Gnoll'",
+     "assets/catalogue-fixes.json",
+     lambda t: t.replace('"Skin": "Blackburrow Gnoll Pelt"',
+                         '"Skin of the Gnoll": "Blackburrow Gnoll Pelt"')),
+
+    ("a group heading fix keyed to a name the survey has since re-worded",
+     "group(s) that no longer appear in the mined data, so the correction "
+     "does nothing: 'Bronze weapon range'",
+     "assets/catalogue-fixes.json",
+     # The prose above the data spells this one in single quotes, so the
+     # double-quoted form only ever matches the entry itself.
+     lambda t: t.replace('"Bronze weapon line"', '"Bronze weapon range"')),
+
+    # The resolved fragments are the newest entries and the ones most likely to
+    # move: each retires a fragment on the strength of one inventory dump, and
+    # the name it retires it to is the game's, not ours.
+    ("a resolved fragment whose full name is not in the data",
+     "resolved fragment(s) that no longer appear in the mined data, so the "
+     "correction does nothing: 'Torn Page of Mastery Flame'",
+     "assets/catalogue-fixes.json",
+     lambda t: t.replace('"name": "Torn Page of Mastery Fire"',
+                         '"name": "Torn Page of Mastery Flame"')),
+
+    ("a split fix keyed to a row no survey source holds",
+     "split(s) that no longer appear in any survey source, so the correction "
+     "does nothing: 'A Nisch / Tesch Val Sentry'",
+     "assets/catalogue-fixes.json",
+     lambda t: t.replace('"A Nisch / Tesch Val Guard": [',
+                         '"A Nisch / Tesch Val Sentry": [')),
+
+    # This one ADDS a key rather than re-wording one, because `aliases` is empty:
+    # its only entry, Zordak Ragefire aliased to Zordakalicus Ragefire, was
+    # withdrawn on 11 August 2026 as a wrong merge.
+    #
+    # An empty dict is why the case is worth having rather than why it should be
+    # skipped. While the dict is empty a mistyped .get("aliases") reports success
+    # and looks identical to a working check, so the branch would be found broken
+    # only by whoever adds the first real alias — and they would find it by the
+    # correction silently doing nothing, which is the fault this check exists to
+    # prevent.
+    ("an alias fix naming a mob no survey source mentions",
+     "alias(s) that no longer appear in any survey source, so the correction "
+     "does nothing: 'A Ghoul That No Survey Names'",
+     "assets/catalogue-fixes.json",
+     lambda t: t.replace('"aliases": {},',
+                         '"aliases": {"A Ghoul That No Survey Names": "A Ghoul"},')),
 ]
 
 
