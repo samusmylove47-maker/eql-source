@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Motes, and what they are worth — EQL Source</title>
+<meta name="description" content="The ten mote ranks in EverQuest Legends, what each is worth to a spell and to an item, and why converting motes upward can cost you item upgrade XP.">
+<meta property="og:title" content="Motes, and what they are worth — EQL Source">
+<meta property="og:description" content="The ten mote ranks in EverQuest Legends, what each is worth to a spell and to an item, and why converting motes upward can cost you item upgrade XP.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Motes, and what they are worth — EQL Source">
+<meta name="twitter:description" content="The ten mote ranks in EverQuest Legends, what each is worth to a spell and to an item, and why converting motes upward can cost you item upgrade XP.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
+<link rel="canonical" href="https://eqlsource.com/learn/motes">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.mt{border-collapse:collapse;width:100%;font-size:14px;margin:var(--s-5) 0}
+.mt th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--faint);text-align:left;padding:10px 12px;
+  border-bottom:1px solid var(--rule2);white-space:nowrap}
+.mt td{padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:baseline}
+.mt tr:last-child td{border-bottom:0}
+.mt .r{font-family:"IBM Plex Mono",monospace;text-align:right;white-space:nowrap}
+.mt .nm{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;color:var(--bone)}
+.mt .sx{color:var(--instr)}
+.mt .ix{color:var(--ok)}
+.costbar{display:flex;flex-wrap:wrap;gap:1px;margin:var(--s-5) 0;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.costbar div{background:var(--panel);padding:9px 13px;flex:1 1 78px;text-align:center}
+.costbar b{display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.14em;color:var(--faint)}
+.costbar span{font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;color:var(--bone)}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../learn/still-true.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero page">
+  <div class="shell">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
+      <a href="still-true.html">Learn</a> &nbsp;/&nbsp; Motes</p>
+    <h1 class="display">Spells scale doubled.<br><em>Items scale flat.</em></h1>
+    <p class="hero-lede">That one difference decides every mote decision you will make. A mote is
+      worth <strong>2<sup>rank&minus;1</sup></strong> to a spell and <strong>exactly its rank</strong>
+      to an item &mdash; so a rank 10 mote is 512 spell XP and 10 item XP. Everything below follows
+      from it.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The ten ranks</h2></div></div>
+    <table class="mt">
+      <thead><tr><th>Rank</th><th>Mote</th><th class="r">Spell XP</th><th class="r">Item XP</th></tr></thead>
+      <tbody><tr><td class="r">1</td><td class="nm">Mote of Infinitesimal Potential</td><td class="r sx">1</td><td class="r ix">1</td></tr><tr><td class="r">2</td><td class="nm">Mote of Minor Potential</td><td class="r sx">2</td><td class="r ix">2</td></tr><tr><td class="r">3</td><td class="nm">Mote of Lesser Potential</td><td class="r sx">4</td><td class="r ix">3</td></tr><tr><td class="r">4</td><td class="nm">Mote of Potential</td><td class="r sx">8</td><td class="r ix">4</td></tr><tr><td class="r">5</td><td class="nm">Mote of Major Potential</td><td class="r sx">16</td><td class="r ix">5</td></tr><tr><td class="r">6</td><td class="nm">Mote of Greater Potential</td><td class="r sx">32</td><td class="r ix">6</td></tr><tr><td class="r">7</td><td class="nm">Mote of Superior Potential</td><td class="r sx">64</td><td class="r ix">7</td></tr><tr><td class="r">8</td><td class="nm">Mote of Grand Potential</td><td class="r sx">128</td><td class="r ix">8</td></tr><tr><td class="r">9</td><td class="nm">Mote of Ascendant Potential</td><td class="r sx">256</td><td class="r ix">9</td></tr><tr><td class="r">10</td><td class="nm">Mote of Infinite Potential</td><td class="r sx">512</td><td class="r ix">10</td></tr></tbody>
+    </table>
+    <p class="src">Table <span class="tier t3">T3</span> &mdash; see the sourcing note at the foot
+      of this page.</p>
+
+    <h3 class="sec" style="font-size:19px">What each upgrade tier costs</h3>
+    <div class="costbar"><div><b>T1</b><span>1</span></div><div><b>T2</b><span>2</span></div><div><b>T3</b><span>4</span></div><div><b>T4</b><span>8</span></div><div><b>T5</b><span>16</span></div><div><b>T6</b><span>32</span></div><div><b>T7</b><span>64</span></div><div><b>T8</b><span>128</span></div><div><b>T9</b><span>256</span></div><div><b>T10</b><span>512</span></div></div>
+    <p class="lede">The cost curve doubles too, so a spell mote and a spell tier scale together.
+      An item does not: its tiers double while its motes stay flat, which is why high tiers get
+      expensive in a way spells never do.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The rule that saves you the most</h2>
+      <p class="lede" style="margin:0">Always spend the lowest mote you are allowed to.</p></div></div>
+    <div class="note"><strong>You may use a mote equal to your item&rsquo;s current tier, or one
+      rank above it. Nothing else.</strong> A tier 5 item takes rank 5 or rank 6 motes; rank 4 is
+      too low to apply and rank 7 too high. <span class="tier t3">T3</span></div>
+    <div class="note danger"><strong>Converting upward destroys item XP.</strong> Two motes make
+      one of the next rank, and to a spell that is free &mdash; two rank 5s are 32 spell XP and one
+      rank 6 is 32. To an <em>item</em> it is a loss: two rank 5s are <strong>10</strong> item XP
+      and the rank 6 they become is <strong>6</strong>. <strong>Four item XP gone, every
+      time.</strong> Convert for spells; never convert to feed an item.</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Void Gems</h2></div></div>
+    <p class="lede">A raid reward, three a week, and each one advances an item a full rank
+      outright. Because item tiers double in cost while motes stay flat, a gem is worth least at
+      low tiers and most at high ones &mdash; the guide&rsquo;s advice is motes through +7 and gems
+      for +8, +9 and +10. <span class="tier t3">T3</span></p>
+    <div class="note"><strong>This is probably the token the patch notes call Void-touched
+      Potential</strong>, which the 28 July note describes as earned up to three times a week from
+      raid activities through voidlings. Same cadence, same source. <strong>Nobody has said the two
+      names are one thing, so we do not.</strong></div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Where this came from, and one thing that does not fit</h2></div></div>
+    <div class="note"><strong>Sourcing.</strong> An infographic, the <em>EverQuest Legends Mote
+      &amp; Upgrade Guide</em>, supplied to us on 11 August 2026 and described as released by the
+      developers in their Discord. <strong>The artefact itself is branded by a creator</strong>
+      &mdash; it carries a YouTube channel name and URL, top and bottom, and no developer mark.
+      Developers sharing a creator&rsquo;s work is not the same as writing it, and the difference is
+      two tiers, so everything here is badged <span class="tier t3">T3</span>. Show us the
+      developers wrote it and the badges come off. The creator is on our
+      <a href="../credits.html">credits page</a>.</div>
+    <div class="note warn"><strong>One claim does not fit the patch notes.</strong> The guide shows
+      ten mote ranks. The 21 June 2026 note says the conversion construct
+      &ldquo;can only accept ranks 1-8&rdquo;. Either it was extended since, or ranks 9 and 10
+      exist but cannot be reached by converting. <strong>We do not know which, and one attempt to
+      convert two rank 8 motes would answer it.</strong></div>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All surveys</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../items/index.html">Every item</a></li>
+        <li><a href="../named/index.html">Every named mob</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/character.html">Character sheet</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+        <li><a href="../tools/planar-gear.html">Planar gear targets</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/still-true.html">Is it still true?</a></li>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="../learn/motes.html">Motes</a></li>
+        <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../credits.html">Credits</a></li>
+        <li><a href="../archive/index.html">The original plates</a></li>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

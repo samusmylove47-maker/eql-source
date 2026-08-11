@@ -26,6 +26,9 @@ from _partials import head, bar, foot
 
 # name, link (or None), what they gave us. One line each, newest first-ish.
 PEOPLE = [
+    ("THE GAME IS", "https://www.youtube.com/@THEGAMEIS",
+     "The mote and upgrade guide &mdash; what a mote is worth to a spell against an item, "
+     "and why converting them upward costs you."),
     ("Cavepig", "https://www.reddit.com/r/EQLegends/comments/1vg8x7l/cavepigs_guide_to_enchanting_in_sky_how_to_key/",
      "Keying and speed-clearing the Plane of Sky. The Key Master, the Overseer of Air, "
      "and the island count our own page was short of."),
