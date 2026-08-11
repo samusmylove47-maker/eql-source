@@ -26,7 +26,6 @@
   <url><loc>https://eqlsource.com/items/2h-battle-axe.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/2h-hammer.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/a-broom.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://eqlsource.com/items/a-dark-cauldron.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/a-dark-reaver.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/a-shovel.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/a-split-paw.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
@@ -36,8 +35,6 @@
   <url><loc>https://eqlsource.com/items/adamantite-epaulets.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/advisor-robe.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/amethyst-bracelet.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://eqlsource.com/items/an-elven-charm-necklace.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
-  <url><loc>https://eqlsource.com/items/an-executioners-axe.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/antiqued-silver-band.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/armband-of-serrated-teeth.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/ashenwood-short-spear.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
@@ -144,6 +141,7 @@
   <url><loc>https://eqlsource.com/items/dagger-of-marnek.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/damask-armor-full-set.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/damask-robe.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/items/dark-cauldron.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/dark-circlet.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/dark-gold-sr-apprentice-robe.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/dark-mail-coat.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
@@ -180,6 +178,7 @@
   <url><loc>https://eqlsource.com/items/elemental-binder.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/elven-charm-necklace.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/embroidered-black-cape.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/items/embroidered-black-sleeves.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/emissary-mask.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/enameled-black-chestplate.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/enameled-black-mace.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
@@ -191,6 +190,7 @@
   <url><loc>https://eqlsource.com/items/essence-of-a-ghost.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/essence-of-moonlight.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/exceptional-ratman-blood.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/items/executioners-axe.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/executioners-hood.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/eye-of-jin.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/eye-of-kor.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
@@ -296,6 +296,7 @@
   <url><loc>https://eqlsource.com/items/mistmoore-granite.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/mithril-breastplate.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/mithril-frog-totem.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/items/mithril-greaves.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/mithril-runed-tunic.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/mithril-two-handed-sword.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/mithril-vambraces.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
@@ -440,6 +441,8 @@
   <url><loc>https://eqlsource.com/items/torn-burnt-book.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/torn-elvish-tapestry.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/torn-page-of-magikot-pg-1.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/items/torn-page-of-mastery-fire.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/items/torn-page-of-mastery-water.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/torn-page-of-mastery.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/traveling-sollerets.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/treasure-hunters-satchel.html</loc><lastmod>2026-08-11</lastmod><priority>0.6</priority></url>

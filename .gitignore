@@ -12,3 +12,9 @@ __pycache__/
 # in assets/measured.json are committed.
 state/logs/
 *eqlog*.txt
+
+# Inventory dumps are a named character's holdings. They carry no chat, but they
+# are still a person's account contents and nobody asked for them to be public.
+# inventory.py commits only the impersonal half: item name to numeric ID.
+state/inventory/
+*-Inventory.txt

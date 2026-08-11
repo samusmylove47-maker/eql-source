@@ -977,7 +977,7 @@
     ]
    },
    {
-    "item": "Djarns Amethyst Ring",
+    "item": "Djarn's Amethyst Ring",
     "n": 2,
     "sessions": [
      {
@@ -3153,6 +3153,19 @@
    }
   ],
   "Warlord Skarlon": [
+   {
+    "item": "Mithril Greaves",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   },
    {
     "item": "Throwing Boulder",
     "n": 1,
@@ -5813,7 +5826,7 @@
     ]
    }
   ],
-  "Djarns Amethyst Ring": [
+  "Djarn's Amethyst Ring": [
    {
     "mob": "Efreeti Lord Djarn",
     "n": 2,
@@ -6475,6 +6488,21 @@
     ]
    }
   ],
+  "Mithril Greaves": [
+   {
+    "mob": "Warlord Skarlon",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Moonstone Ring": [
    {
     "mob": "a frenzied ghoul",
@@ -6626,6 +6654,6 @@
    }
   ]
  },
- "pairs": 153,
- "excluded_trash_drops": 2387
+ "pairs": 154,
+ "excluded_trash_drops": 2386
 }

@@ -15,6 +15,18 @@
   "is attached to the row it came from, suppressed from the A-Z, and printed on",
   "the parent's page as what the source actually says.",
   "",
+  "FRAGMENT_RESOLVED is that rule being retired one entry at a time, on",
+  "evidence. An /outputfile inventory dump is the game's own record of an item",
+  "name, so where a dump holds the full name, the fragment stops being a",
+  "fragment and becomes an ordinary item with its own page. Four are resolved",
+  "and the guess would have been wrong twice: the format is 'Torn Page of",
+  "Mastery Fire' with no colon, and 'Sleeves' beside an Embroidered Black Cape",
+  "is an Embroidered Black SLEEVES, a different garment, not the cape.",
+  "",
+  "Earth and Wind stay unresolved deliberately. We now know the naming format",
+  "from two confirmed siblings, and applying it to the other two would be a",
+  "pattern inference rather than a reading. They are one dump away.",
+  "",
   "GROUPS are row headings, not items: a cell reading 'Bronze weapon line' names",
   "a family whose members are listed beside it.",
   "",
@@ -33,13 +45,31 @@
  ],
  "fragments": {
   "Earth": "Torn Page of Mastery",
-  "Water": "Torn Page of Mastery",
-  "Fire": "Torn Page of Mastery",
   "Wind": "Torn Page of Mastery",
   "Skin": "Blackburrow Gnoll Pelt",
-  "Sleeves": "Embroidered Black Cape",
-  "Greaves": "Mithril Vambraces",
   "pg. 3": "Torn Page of Magi`kot pg. 1"
+ },
+ "fragment_resolved": {
+  "Fire": {
+   "name": "Torn Page of Mastery Fire",
+   "id": 28027,
+   "source": "inventory dump, 11 Aug 2026"
+  },
+  "Water": {
+   "name": "Torn Page of Mastery Water",
+   "id": 28030,
+   "source": "inventory dump, 11 Aug 2026"
+  },
+  "Greaves": {
+   "name": "Mithril Greaves",
+   "id": 4412,
+   "source": "inventory dump, 11 Aug 2026"
+  },
+  "Sleeves": {
+   "name": "Embroidered Black Sleeves",
+   "id": 1362,
+   "source": "inventory dump, 11 Aug 2026"
+  }
  },
  "groups": [
   "Bronze weapon line",
