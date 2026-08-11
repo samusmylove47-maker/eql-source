@@ -68,6 +68,10 @@ def slug(s):
     return re.sub(r'[\s_]+', '-', s).strip('-')[:60]
 
 
+FIX = json.load(open("assets/catalogue-fixes.json", encoding="utf-8"))
+FRAGMENTS, GROUPS = FIX["fragments"], set(FIX["groups"])
+ALIASES, SPLITS = FIX["aliases"], FIX["split_named"]
+
 items, named = [], []
 for z in Z:
     src=f"_build/source/{z['slug']}.html"
@@ -106,7 +110,11 @@ for z in Z:
                 # Flagged so a page can show the row rather than assert the stats.
                 for k,nm in enumerate(names):
                   sl=slots_l[k] if k<len(slots_l) else (slots_l[0] if slots_l else '')
+                  kind = ("fragment" if nm in FRAGMENTS else
+                          "group" if nm in GROUPS else "item")
                   items.append({"n":nm,"s":norm_slot(sl),"sr":sl,"st":g('stats')[:140],
+                              "kind":kind,
+                              **({"parent":FRAGMENTS[nm]} if kind=="fragment" else {}),
                               "shared":len(names)>1,
                               "c":norm_cls(cls),
                               "d":g('dropped by')[:110],"z":z['slug'],"zt":z['title'],
@@ -121,10 +129,11 @@ for z in Z:
                 g=lambda k,d='': c[ix[k]] if k in ix and ix[k]<len(c) else d
                 nm=g(nk)
                 if not nm or nm in ('#',''): continue
-                named.append({"n":nm,"lv":g('lvl'),"loc":g('loc (y, x)'),
-                              "fl":g('flr'),"rc":g('race / class'),
-                              "no":(g('notes') or g('spawn & notes'))[:190],
-                              "z":z['slug'],"zt":z['title'],"a":z['accent'],"p":z['plate']})
+                for nm in SPLITS.get(nm, [ALIASES.get(nm, nm)]):
+                  named.append({"n":nm,"lv":g('lvl'),"loc":g('loc (y, x)'),
+                                "fl":g('flr'),"rc":g('race / class'),
+                                "no":(g('notes') or g('spawn & notes'))[:190],
+                                "z":z['slug'],"zt":z['title'],"a":z['accent'],"p":z['plate']})
 
 for r in items: r["u"] = slug(r["n"])
 for r in named: r["u"] = slug(r["n"])

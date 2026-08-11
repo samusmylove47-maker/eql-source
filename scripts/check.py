@@ -259,14 +259,18 @@ except Exception as e:
     fail(f"index-data.json unreadable: {e}")
     _ix = {"items": [], "named": []}
 for _folder, _key in (("items", "items"), ("named", "named")):
+    # Fragments are deliberately page-less: they are not items. See
+    # assets/catalogue-fixes.json for why, and build17.py for where they print.
     _missing = sorted({r["u"] for r in _ix[_key]
-                       if not os.path.exists(f"public/{_folder}/{r['u']}.html")})
+                       if r.get("kind") != "fragment"
+                       and not os.path.exists(f"public/{_folder}/{r['u']}.html")})
     if _missing:
         fail(f"The Index links {len(_missing)} {_folder} page(s) that do not "
              f"exist: {', '.join(_missing[:4])}")
     _orphan = sorted(set(os.path.basename(p)[:-5]
                          for p in glob.glob(f"public/{_folder}/*.html"))
-                     - {r["u"] for r in _ix[_key]} - {"index"})
+                     - {r["u"] for r in _ix[_key] if r.get("kind") != "fragment"}
+                     - {"index"})
     if _orphan:
         fail(f"public/{_folder}/ holds {len(_orphan)} page(s) no longer in the "
              f"data — a rename left them behind: {', '.join(_orphan[:4])}")

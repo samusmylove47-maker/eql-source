@@ -1,0 +1,50 @@
+{
+ "_comment": [
+  "Hand-curated corrections to what the survey mine produces. Small on purpose:",
+  "everything here is a case where the source markup is genuinely ambiguous and",
+  "no rule reads it correctly, so the decision is recorded rather than inferred.",
+  "",
+  "FRAGMENTS. A loot cell like 'Mithril Vambraces <br> Greaves' means two items",
+  "sharing a prefix, and 'Torn Page of Mastery <br> Earth · Water · Fire · Wind'",
+  "means one item with four variants. Splitting on the separator produced items",
+  "called Earth, Fire, Water, Wind, Skin, Sleeves, Greaves and 'pg. 3' - each",
+  "with its own page, canonical URL and share card.",
+  "",
+  "We do NOT reconstruct the full names. 'Mithril Greaves' is a guess and",
+  "'Torn Page of Mastery: Earth' invents a naming format. Instead the fragment",
+  "is attached to the row it came from, suppressed from the A-Z, and printed on",
+  "the parent's page as what the source actually says.",
+  "",
+  "GROUPS are row headings, not items: a cell reading 'Bronze weapon line' names",
+  "a family whose members are listed beside it.",
+  "",
+  "ALIASES merge one entity that the source spells two ways.",
+  "",
+  "To add a case: put the exact mined name on the left. scripts/check.py fails",
+  "if a name here no longer appears in the data, so this file cannot rot quietly."
+ ],
+ "fragments": {
+  "Earth": "Torn Page of Mastery",
+  "Water": "Torn Page of Mastery",
+  "Fire": "Torn Page of Mastery",
+  "Wind": "Torn Page of Mastery",
+  "Skin": "Blackburrow Gnoll Pelt",
+  "Sleeves": "Embroidered Black Cape",
+  "Greaves": "Mithril Vambraces",
+  "pg. 3": "Torn Page of Magi`kot pg. 1"
+ },
+ "groups": [
+  "Bronze weapon line",
+  "Fine steel weapons",
+  "Scroll volumes 2–4",
+  "Damask Armor — full set",
+  "Opolla ring line",
+  "small bronze armour"
+ ],
+ "aliases": {
+  "Zordak Ragefire": "Zordakalicus Ragefire"
+ },
+ "split_named": {
+  "A Nisch / Tesch Val Guard": ["A Nisch Val Guard", "A Tesch Val Guard"]
+ }
+}

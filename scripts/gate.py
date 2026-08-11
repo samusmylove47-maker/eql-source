@@ -44,6 +44,11 @@ LEDGERS = [
     # cards forbids adding a zone — the same shape as the other two. The
     # introduction is still governed.
     ("dungeons/index.html", 'class="plates"', r'<a class="plate[^"]*"[^>]*>.*?</a>'),
+    # Same shape again: the tools index is one card per tool. A ceiling over the
+    # cards forbids shipping a tool, and the tool that exposed it had been built,
+    # registered and footer-linked while its card was never written - so the
+    # count printed seven and the grid rendered six.
+    ("tools/index.html", 'class="cards c2"', r'<a class="card"[^>]*>.*?</a>'),
 ]
 
 
@@ -93,6 +98,14 @@ def page_words(path, key):
     # This is the whole list. Adding to it means arguing that a third page is a
     # ledger, which should be hard.
     h = without_ledger_rows(h, key)
+    # Chrome is not this page's prose. The footer and the nav are identical on
+    # every one of 700-odd pages, so counting them meant adding a single footer
+    # link raised the word count of the entire site at once — and the page that
+    # tripped its ceiling was whichever happened to be closest to it, which is
+    # a ratchet measuring the wrong thing and blaming the wrong page.
+    h = re.sub(r"<footer\b.*?</footer>", " ", h, flags=re.S | re.I)
+    h = re.sub(r'<header class="site-bar".*?</header>', " ", h, flags=re.S | re.I)
+    h = re.sub(r'<div class="ns-bar".*?</div>', " ", h, flags=re.S | re.I)
     t = re.sub(r"&[a-z]+;", " ", re.sub(r"<[^>]+>", " ", SCRIPT_TAG.sub(" ", h)))
     return len([w for w in t.split() if any(c.isalpha() for c in w)])
 
@@ -146,9 +159,17 @@ def run(pages, fail, warn):
     SINGLE = [
         (re.compile(r"\b([\w,]+)\s+(?:zones?|surveys?)\s*,?\s*surveyed\b", re.I), "zones surveyed"),
     ]
+    # The <head> is where hand-typed facts survived longest. Body counts were
+    # made to print from data on 10 Aug; the meta descriptions beside them still
+    # said "ten surveyed dungeons" the next day, and metadata is the only text
+    # most readers ever see - it is the Discord embed and the search snippet.
+    META = re.compile(r'<meta[^>]+(?:name|property)="(?:description|og:description|'
+                      r'twitter:description)"[^>]+content="([^"]*)"')
     for p in pages:
         raw = open(p, encoding="utf-8", errors="replace").read()
         t = text_of(without_ledger_rows(raw, page_key(p)))
+        for m in META.finditer(raw):
+            t += " " + m.group(1)
         for rx, label in SINGLE:
             if label not in truth:
                 continue
