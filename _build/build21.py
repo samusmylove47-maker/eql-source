@@ -77,7 +77,7 @@ page = (head("Motes, and what they are worth",
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="still-true.html">Learn</a> &nbsp;/&nbsp; Motes</p>
+      <a href="index.html">Learn</a> &nbsp;/&nbsp; Motes</p>
     <h1 class="display">Spells scale doubled.<br><em>Items scale flat.</em></h1>
     <p class="hero-lede">That one difference decides every mote decision you will make. A mote is
       worth <strong>2<sup>rank&minus;1</sup></strong> to a spell and <strong>exactly its rank</strong>

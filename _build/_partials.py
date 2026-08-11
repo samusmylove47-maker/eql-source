@@ -26,14 +26,28 @@ TOOLS = [
     dict(slug="planar-gear",      name="Planar gear targets"),
 ]
 
+# `blurb` is what the Learn hub prints under each title. It lives here so the
+# hub, the footer and the nav all read one list — six Learn pages existed and
+# the header's Learn link went to one article, with no way to see the rest.
 LEARN = [
-    dict(slug="still-true",  name="Is it still true?"),
-    dict(slug="raid-access", name="How raid access works"),
-    dict(slug="difficulty",  name="What difficulty changes"),
-    dict(slug="deity",       name="Deity, and the level 11 lock"),
-    dict(slug="motes",      name="Motes, and what they are worth", foot="Motes"),
+    dict(slug="still-true", name="Is it still true?",
+         blurb="Inherited advice, tested against Legends. What classic did, what happens now, "
+               "the evidence with tiers and dates, and what would settle the open ones."),
+    dict(slug="difficulty", name="What difficulty changes",
+         blurb="D0 to D4 does not raise mob levels. What it does raise, and one boss measured at "
+               "all five tiers showing where the class kit widens."),
+    dict(slug="motes", name="Motes, and what they are worth", foot="Motes",
+         blurb="Spells scale doubled, items scale flat. That one difference decides every mote "
+               "decision, including why converting them upward costs you."),
+    dict(slug="raid-access", name="How raid access works",
+         blurb="Instances, lockouts and voidlings. Which door gives you the boss and which gives "
+               "you an empty zone."),
+    dict(slug="deity", name="Deity, and the level 11 lock",
+         blurb="The third permanent choice, and how permanent it actually is."),
     dict(slug="reading-the-plans", name="How to read a floor plan",
-         foot="Reading a floor plan"),
+         foot="Reading a floor plan",
+         blurb="What the floor plans draw, what they deliberately leave out, and what a combat "
+               "log can and cannot tell you."),
 ]
 
 _WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",
@@ -104,12 +118,13 @@ def bar(rel=""):
     <a class="mark" href="{rel}index.html"><span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
+      <a href="{rel}dungeons/index.html">Dungeons</a>
+      <a href="{rel}raids/index.html">Raids</a>
       <a href="{rel}tools/index.html">Tools</a>
       <a href="{rel}tools/index-search.html">The Index</a>
-      <a href="{rel}raids/index.html">Raids</a>
-      <a href="{rel}dungeons/index.html">Dungeons</a>
-      <a href="{rel}learn/still-true.html">Learn</a>
+      <a href="{rel}learn/index.html">Learn</a>
       <a href="{rel}sources.html">Accuracy</a>
+      <a href="{rel}search.html" class="nav-find">Search</a>
     </nav>
   </div>
 </header>'''
@@ -146,6 +161,7 @@ def foot(rel=""):
 {_foot_links(LEARN, "learn", rel)}
       </ul></div>
       <div><h4>About</h4><ul>
+        <li><a href="{rel}search.html">Search the site</a></li>
         <li><a href="{rel}credits.html">Credits</a></li>
         <li><a href="{rel}archive/index.html">The original plates</a></li>
         <li><a href="{rel}sources.html">Sourcing standard</a></li>
