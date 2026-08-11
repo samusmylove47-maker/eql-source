@@ -21,7 +21,7 @@ prevent becoming acceptable again.
 
 Imported and run by scripts/check.py.
 """
-import json, os, re, sys
+import fnmatch, json, os, re, sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_build"))
 
@@ -49,6 +49,22 @@ LEDGERS = [
     # registered and footer-linked while its card was never written - so the
     # count printed seven and the grid rendered six.
     ("tools/index.html", 'class="cards c2"', r'<a class="card"[^>]*>.*?</a>'),
+    # MEASURED TABLES ARE A LEDGER; THE WORDS AROUND THEM ARE NOT.
+    #
+    # A survey's "Measured in play" section is a table per thing measured - the
+    # mobs fought, the spells that landed, the drops seen. Every new session
+    # adds rows, so a word ceiling over them means the ceiling falls every time
+    # we play and eventually forbids logging another night in a zone we have
+    # already logged. That is backwards: more evidence is the goal.
+    #
+    # This exempts only the table ROWS, and only inside the measured section.
+    # The conditions paragraph above them, the prose explaining what a figure
+    # does and does not mean, and the entire survey before it stay governed. So
+    # the ceiling still bites on writing more, and never on measuring more.
+    ("dungeons/*.html", '<section class="meas">', r"<tr>.*?</tr>"),
+    # The faction tool is one card per zone we have faction data for. Same
+    # shape: a ceiling over the cards forbids measuring an eleventh zone.
+    ("tools/faction-impact.html", "", r'<article class="fzone">.*?</article>'),
 ]
 
 
@@ -63,7 +79,10 @@ def without_ledger_rows(h, key):
     govern everything around them.
     """
     for ledger_key, anchor, row in LEDGERS:
-        if key != ledger_key:
+        # A glob so one rule can cover every survey. Written as an exact match
+        # first, thirteen surveys meant thirteen near-identical entries and the
+        # fourteenth zone would have shipped without one.
+        if key != ledger_key and not fnmatch.fnmatch(key, ledger_key):
             continue
         cut = h.find(anchor) if anchor else 0
         if cut >= 0:

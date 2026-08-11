@@ -34,13 +34,27 @@ def esc(s):
 ALIASES = {
     'ruinsoldguk': 'lowerguk',
     'cityguk': 'upperguk',
+    # The Hole's long name. 94 kills of measured data sat unattached to the
+    # survey for it, reported as unmatched every build and read past.
+    #
+    # The right-hand side is the NORMALISED key, not the slug. They coincide for
+    # Lower Guk and do not for The Hole, whose title normalises to 'hole' once
+    # the article is stripped - so an alias written as 'thehole' matches nothing
+    # and fails exactly like no alias at all.
+    'ruinsoldpaineel': 'hole',
 }
+
+# A public group instance appends " - Group" to the zone name. It is the same
+# zone, so it belongs on the same survey; the difficulty and the window already
+# distinguish the sessions from each other.
+GROUP_SUFFIX = re.compile(r'\s*-\s*group\s*$', re.I)
 
 
 def key(name):
     """Zone names differ between the game and the site: 'The Castle of
     Mistmoore' against 'Castle Mistmoore'. Strip the articles and join up."""
-    s = re.sub(r'\b(the|of|a|an)\b', ' ', (name or '').lower())
+    s = GROUP_SUFFIX.sub('', (name or ''))
+    s = re.sub(r'\b(the|of|a|an)\b', ' ', s.lower())
     s = re.sub(r'[^a-z0-9]', '', s)
     return ALIASES.get(s, s)
 
@@ -250,6 +264,26 @@ def section(sess_list, zone_title):
             if z.get('difficulty') == best.get('difficulty')
             and z.get('character') == best.get('character')]
     s = merge(sorted(same, key=lambda z: (z['date'], z['window'])))
+
+    # NAME WHAT IS MEASURED AND NOT SHOWN.
+    # Only the largest group renders, so a zone logged at two difficulties
+    # published one and dropped the other in silence - The Hole had 70 kills at
+    # Base, two named mobs and their drops among them, that no page mentioned.
+    # Rendering every group would repeat this whole section's framing per block.
+    # Naming the remainder costs a sentence and turns a silent loss into a
+    # stated one, which is the rule everywhere else on this site.
+    rest = collections.Counter()
+    for z in sess_list:
+        if z in same or not z['kills']:
+            continue
+        rest[(z.get('difficulty'), z.get('character'))] += z['kills']
+    also = ''
+    if rest:
+        bits = ', '.join(
+            f'{n} at D{d}' + (f' from {esc(c)}&rsquo;s log' if c != s.get('character') else '')
+            for (d, c), n in sorted(rest.items(), key=lambda kv: -kv[1]))
+        also = (f' <b>Also measured here and not shown below:</b> {bits}. '
+                f'Conditions differ, so those kills are not averaged into these figures.')
     # Stamps used to be bare strings and are now {at, text, conditions}; accept
     # either so an older measured.json still renders.
     def txt(v):
@@ -345,14 +379,19 @@ def section(sess_list, zone_title):
         + f'Zone entered as <b>{esc(zone_title)} ({diff})</b>. '
         + f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '
         + f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
-        + f'Faction moved: {facs}.'
+        + f'Faction moved: {facs}.{also}'
         + (''.join(
             f'<br><b>{"Conditions changed at" if c else "Noted at"} {esc(at)}:</b> {esc(n)}'
             if at else f'<br><b>Noted at the time:</b> {esc(n)}'
             for n, at, c in notes) if notes else '')
         + f'</div>{control_html(s)}{escapes_html(s)}{tables}'
-        f'<p class="caveat"><strong>What this is and is not.</strong> These are counts from one '
-        f'session, not rates. A drop seen once is seen once, and figures describe this '
+        # "counts from one session" was typed, so a page merging three sessions
+        # printed "3 sessions" in its header and "one session" in its caveat.
+        # The same fault the propagation gate exists for, in a sentence about
+        # not over-reading evidence.
+        f'<p class="caveat"><strong>What this is and is not.</strong> These are counts'
+        f'{" from one session" if s.get("sessions_merged", 1) < 2 else ""}, not rates. '
+        f'A drop seen once is seen once, and figures describe this '
         f'trio at this level on this date. '
         f'<a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p>'
         f'</section>')

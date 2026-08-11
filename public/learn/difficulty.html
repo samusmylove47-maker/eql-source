@@ -51,7 +51,7 @@
       condition your loot arrives in. The con colour of a mob is the same at every tier, which is
       exactly why the setting catches people out.</p>
     <p class="hero-sig"><span>5 tiers</span><span>D4 is the maximum</span>
-      <span>21 of 28 sessions cross-checked</span></p>
+      <span>42 of 66 sessions cross-checked</span></p>
   </div>
 </section>
 
@@ -75,7 +75,7 @@
         our logs print them on entry &mdash; two sources that did not derive from each other.</p></div></div>
     <div class="tw"><table class="dtable">
       <thead><tr><th>Tier</th><th>Name</th><th>Note</th><th>In our logs</th></tr></thead>
-      <tbody><tr><td class="dn">D0</td><td class="dname">Base / Normal</td><td class="dnote">the open world, and what you get if you never touch the setting</td><td><b>2</b> sessions, 4 kills, 2 zones</td></tr><tr><td class="dn">D1</td><td class="dname">Awakened</td><td class="dnote">the first instanced tier</td><td><b>16</b> sessions, 1325 kills, 3 zones</td></tr><tr><td class="dn">D2</td><td class="dname">Adaptive</td><td class="dnote">&mdash;</td><td><b>3</b> sessions, 68 kills, 1 zone</td></tr><tr><td class="dn">D3</td><td class="dname">Fused</td><td class="dnote">&mdash;</td><td><b>4</b> sessions, 29 kills, 2 zones</td></tr><tr><td class="dn">D4</td><td class="dname">Refined</td><td class="dnote">the current maximum</td><td><b>3</b> sessions, 19 kills, 2 zones</td></tr></tbody>
+      <tbody><tr><td class="dn">D0</td><td class="dname">Base / Normal</td><td class="dnote">the open world, and what you get if you never touch the setting</td><td><b>19</b> sessions, 116 kills, 11 zones</td></tr><tr><td class="dn">D1</td><td class="dname">Awakened</td><td class="dnote">the first instanced tier</td><td><b>29</b> sessions, 1894 kills, 7 zones</td></tr><tr><td class="dn">D2</td><td class="dname">Adaptive</td><td class="dnote">&mdash;</td><td><b>5</b> sessions, 75 kills, 3 zones</td></tr><tr><td class="dn">D3</td><td class="dname">Fused</td><td class="dnote">&mdash;</td><td><b>7</b> sessions, 87 kills, 4 zones</td></tr><tr><td class="dn">D4</td><td class="dname">Refined</td><td class="dnote">the current maximum</td><td><b>6</b> sessions, 32 kills, 4 zones</td></tr></tbody>
     </table></div>
   </div>
 </section>
@@ -89,13 +89,16 @@ You have entered Blackburrow 2 (Adaptive).
 You have entered Befallen 3 (Fused).
 You have entered The City of Guk 4 (Refined).</pre>
     <p>A zone line with no number and no name is the open world, D0. <strong>Both readings agreed in
-      every session where both were present &mdash; 21 of 21, no disagreements</strong>
-      <span class="tier tM">TIER M</span>. That is worth stating because it means you never have to
-      guess or remember: the answer is in your own log, and it is checkable against itself.</p>
-    <p>Loot gives a third, independent reading. Items drop pre-upgraded, and the tier you are on is
-      the <code>+N</code> most things arrive at &mdash; a night at Awakened is a pile of <code>+1</code>.
-      Read the <em>dropped</em> value rather than the created one: <em>looted a Keg Mallet +2 &hellip;
-      to create a Keg Mallet +4</em> is a <code>+2</code> drop.</p>
+      every session where both were present &mdash; 42 of 42, no disagreements</strong>
+      <span class="tier tM">TIER M</span>. So you never have to remember which setting you picked.</p>
+    <p>Loot gives a third reading, and <strong>difficulty is a floor</strong>: your tier is the
+      <em>lowest</em> <code>+N</code> you see, not the commonest. In 1,742 upgradeable
+      drops where the zone line stated the tier on its own, <strong>not one item dropped below
+      it</strong> <span class="tier tM">TIER M</span>, and about 13% rolled above &mdash;
+      so anything over the floor is luck, and <strong>three drops settle it</strong>. The floor
+      named the tier in 52 of 52 sessions; the commonest value missed two. Read the
+      <em>dropped</em> value, not the created one: <em>looted a Keg Mallet +2 &hellip; to create a
+      Keg Mallet +4</em> is a <code>+2</code>, and a bare item is the <code>+0</code>.</p>
   </div>
 </section>
 
@@ -118,10 +121,9 @@ You have entered The City of Guk 4 (Refined).</pre>
           <li><b>Experience</b> &times;1.15 / &times;1.30 / &times;1.45 / &times;1.60 across Awakened
             to Refined on multiplayer tuning; &times;1.10 / &times;1.20 / &times;1.30 / &times;1.40
             solo. Whether the bonus is currently live is one of the things they mark unpinned.</li>
-          <li><b>Loot is the same table</b> What changes is the condition it arrives in: D0 drops the
-            base item, D4 the same item at +4, with a chance of better. A +4 is worth sixteen base
-            copies of upgrade progress, so the tier decides how far a drop carries you rather than
-            what drops.</li>
+          <li><b>Loot is the same table</b> The tier decides the condition, not what drops. A +4 is
+            worth sixteen base copies of upgrade progress, so it decides how far a drop carries you
+            &mdash; measured above.</li>
           <li><b>Every tier is its own lockout</b> Loot lockouts track per difficulty, so the same
             named can be worth killing again on another setting.</li>
         </ol>
@@ -153,8 +155,8 @@ You have entered The City of Guk 4 (Refined).</pre>
     <div class="sechead"><span class="n">Ours</span>
       <div><h2 class="sec">The ramp, measured on one boss at all five tiers</h2>
       <p class="lede" style="margin:0">Master Yael, in the group instance of The Hole, killed once
-        at every difficulty on 10 August 2026 by one trio in one session. Same boss, same players,
-        five settings &mdash; which is the only way to see what the tier actually changes.</p></div></div>
+        at every difficulty on 10 August 2026 by one trio in one session &mdash; same boss, same
+        players, five settings.</p></div></div>
     <div class="scroller"><table>
       <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
         <th>Self-heals</th><th>What he cast</th></tr></thead>
@@ -197,8 +199,8 @@ You have entered The City of Guk 4 (Refined).</pre>
       individual carries both kits cannot be told apart from two individuals carrying one each. And
       this is one zone on one night. It does not contradict the published claim about named mobs; it
       suggests the behaviour starts earlier and lower than the claim implies.</div>
-    <p class="lede">Measured so far across 6 zones:
-      Befallen, Blackburrow, Kerra Isle, The Castle of Mistmoore, The City of Guk, The Ruins of Old Guk. Each plate carries its own figures under
+    <p class="lede">Measured so far across 17 zones:
+      Befallen, Blackburrow, Kerra Isle, Nagafen's Lair, Nagafen's Lair - Group, Paineel, Permafrost Keep, Temple of Cazic-Thule, The Castle of Mistmoore, The City of Guk, The Feerrott, The Northern Desert of Ro, The Permafrost Caverns - Group, The Ruins of Old Guk, The Ruins of Old Paineel, The Ruins of Old Paineel - Group, The Southern Desert of Ro. Each plate carries its own figures under
       <em>Measured in play</em>.</p>
   </div>
 </section>
@@ -212,7 +214,7 @@ You have entered The City of Guk 4 (Refined).</pre>
       rarer than it should be. <strong>Go and read it</strong> if you want the mote grades, the
       lockout timings and the full tables &mdash; this page deliberately does not reproduce them.</div>
     <div class="note"><strong>Our own combat logs</strong> <span class="tier tM">TIER M</span>
-      28 sessions across two characters, parsed by our own <code>logstats.py</code>.
+      66 sessions across two characters, parsed by our own <code>logstats.py</code>.
       Source of the zone-line reading, the loot-tier correspondence and the multiclass observation.
       Every figure derived from them appears with the character, level, zone, tier and sample size
       beside it.</div>
