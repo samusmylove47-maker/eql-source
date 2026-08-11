@@ -254,7 +254,7 @@ mapcards = "\n".join(
       </a>''' for i, s in enumerate(sorted(MAPS)))
 
 dung = head("Dungeon surveys",
-  "Ten revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
+  f"{len(Z)} revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
   rel="../", og="dungeons", canon="dungeons/index") + bar("../") + f'''
 <main>
 

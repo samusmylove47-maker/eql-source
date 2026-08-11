@@ -7,7 +7,15 @@ from _partials import head, bar, foot
 # in it, so the sentence and the tool can never disagree. They did: the page
 # claimed 389 items while this very file shipped 452 to the counter beside it.
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
+# Fragments are not items and have no page, so they are not searchable things.
+# They stay in index-data.json as a record of what the source row said, and are
+# printed on their parent's page - see assets/catalogue-fixes.json.
+IX['items'] = [i for i in IX['items'] if i.get('kind') != 'fragment']
 NITEMS, NNAMED = len(IX['items']), len(IX['named'])
+# Two counts, both true, and the site published them for a day without saying
+# which was which: 444 rows because six items drop in two zones each, 438 pages
+# because a page is per name.
+NPAGES = len({i['n'] for i in IX['items']})
 # The zone count is printed too. It was typed as "ten" in two sentences on
 # this page and stayed at ten when the site reached thirteen.
 NZONES = len(json.load(open('assets/zones-index.json', encoding='utf-8')))
@@ -82,7 +90,7 @@ BODY = f'''
     <h1>The Index</h1>
     <p class="lede">Every item and every named mob recorded across the {NZONES} surveyed dungeons, in one searchable
       place. Ask it where something drops, what a zone holds for your classes, or which named you still have not
-      met. <strong>{NITEMS} items and {NNAMED} named</strong>, each tied back to the survey it came from.</p>
+      met. <strong>{NPAGES} items and {NNAMED} named</strong>, each tied back to the survey it came from.</p>
     <p class="lede">Every name here opens its own page. You can also browse the full
       <a href="../items/index.html">A to Z of items</a> or the
       <a href="../named/index.html">A to Z of named mobs</a>.</p>
@@ -110,7 +118,7 @@ BODY = f'''
   <div class="ix-results" id="results"></div>
   <div class="note" style="margin-top:34px"><strong>What this is and is not.</strong> It indexes the loot and named
     tables from our own surveys &mdash; so its coverage is exactly the {NZONES} zones we have surveyed, not the whole
-    game. Stats are quoted as the survey records them, which means anything the survey flagged as uncertain is uncertain
+    game. {NPAGES} items, {NITEMS} rows: six drop in two zones. Stats are quoted as the survey records them, which means anything the survey flagged as uncertain is uncertain
     here too. Follow the zone link to read the surrounding context before you plan a night around a drop.</div>
   <div class="note sig"><strong>Looking for a gear upgrade check against your own inventory?</strong>
     <a href="https://eqltools.com/gear" style="color:var(--bone)">EQL Tools has one</a> that reads your inventory file
@@ -220,7 +228,7 @@ SCRIPT = '<script>window.__IX__=' + json.dumps(IX, separators=(",",":")) + ';</s
 </script>'''
 
 page = head("The Index",
-  "Search every item and named mob across the ten surveyed EverQuest Legends dungeons. Filter by class, slot and zone, and see exactly which mob drops what.",
+  f"Search every item and named mob across the {NZONES} surveyed EverQuest Legends dungeons. Filter by class, slot and zone, and see exactly which mob drops what.",
   rel="../", extra=CSS, og="tools", canon="tools/index-search") + bar("../") + BODY + foot("../").replace('</body>', SCRIPT + '\n</body>')
 open('public/tools/index-search.html','w',encoding='utf-8',newline='\n').write(page)
 print("The Index built:", len(page), "bytes")

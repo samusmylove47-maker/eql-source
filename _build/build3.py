@@ -143,6 +143,65 @@ def mark_withheld(h, slug):
     return h, hits
 
 
+
+# ---------------------------------------------------------------------------
+# THE RETRACTION HAS TO REACH THE ROW
+#
+# The placeholder question was settled at tier 1 on 10 Aug: the patch note names
+# eleven dungeons placeholders were removed from. Every affected survey grew a
+# header saying so. The roster rows underneath kept saying "Placeholder is an
+# earth elemental" in bold and present tense, three lines below a header saying
+# there are none.
+#
+# That is the shape of every remaining defect an outside reader has found here:
+# a decision reaches the authored layer and stops at the boundary with the
+# generated one. The header is written by hand; the rows come out of the mine.
+# Nothing connected them.
+#
+# This connects them. `placeholders_removed` already existed in zones-index.json
+# and nothing read it. Now the renderer reads it and marks every placeholder
+# assertion in a roster cell as historical, so the header is a summary of the
+# table rather than a disclaimer about it.
+PH_CLAIM = re.compile(
+    # "there are none here" and "not a placeholder" are the corrected form
+    # and must not be struck. Only a bare present-tense assertion is marked.
+    r'(?<!not a )(?<!are no )'
+    + chr(92) + 'b'
+    + r'([Pp]laceholders? (?:is|are) [^<.]{2,70}?)(?=[.<])')
+PH_MARK_CSS = """<style>
+.ph-old{text-decoration:line-through;text-decoration-color:#C9453A;
+  text-decoration-thickness:1px;color:#7D9096}
+.ph-old-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:#D46C64;border:1px solid #6A2F2B;border-radius:2px;
+  padding:1px 4px;margin-left:5px;white-space:nowrap;text-decoration:none;display:inline-block}
+</style>"""
+
+
+def mark_placeholders(h, slug):
+    """Strike placeholder claims in roster cells where the patch note removed them."""
+    z = BY.get(slug)
+    if not z or not z.get('placeholders_removed'):
+        return h, 0
+    n = 0
+
+    def one(m):
+        nonlocal n
+        n += 1
+        return (f'<span class="ph-old" title="Historical. The 28 July 2026 patch note '
+                f'removed placeholders from this zone.">{m.group(1)}</span>'
+                f'<span class="ph-old-tag">was</span>')
+
+    # only inside the roster's notes cells, never in body prose
+    def cell(cm):
+        return '<td class="src">' + PH_CLAIM.sub(one, cm.group(1)) + '</td>'
+
+    h = re.sub(r'<td class="src">(.*?)</td>', cell, h, flags=re.S)
+    return h, n
+
+
+PH_MARKED = []
+
+
 def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False,
            wh_slug=None, ph_zone=None, og_card=None, canon=None):
     h = open(src, encoding='utf-8').read()
@@ -153,6 +212,11 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
     if subs:
         for a, b in subs:
             h = h.replace(a, b)
+    if ph_zone:
+        h, nph = mark_placeholders(h, ph_zone)
+        if nph:
+            h = h.replace('</head>', PH_MARK_CSS + '</head>', 1)
+            PH_MARKED.append((ph_zone, nph))
     css = RETURN_CSS + (UNPIN if own_bar else '')
     # Surveys, maps and tools are standalone pages that never call head(), so
     # their share cards and canonicals are injected here. Without this the
@@ -253,4 +317,7 @@ inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator
              ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')],
        own_bar=True, og_card='tools', canon='tools/combo-calculator')
 n += 3
+if PH_MARKED:
+    tot=sum(n for _,n in PH_MARKED)
+    print(f'placeholder claims struck as historical: {tot} across {len(PH_MARKED)} surveys')
 print(f"imported {n} pages")

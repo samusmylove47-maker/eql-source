@@ -111,12 +111,25 @@ os.makedirs('public/items', exist_ok=True)
 os.makedirs('public/named', exist_ok=True)
 
 # ---- items, one page per distinct name --------------------------------------
+# Fragments are not items. A loot cell reading "Mithril Vambraces <br> Greaves"
+# was split into two, and "Greaves" got a page, a canonical URL and a share card.
+# They are suppressed here and printed on their parent's page instead, as what
+# the source row actually says. See assets/catalogue-fixes.json.
+FRAG = collections.defaultdict(list)
+for it in IX['items']:
+    if it.get('kind') == 'fragment':
+        FRAG[it['parent']].append(it['n'])
+
 by_item = collections.OrderedDict()
 for it in IX['items']:
+    if it.get('kind') == 'fragment':
+        continue
     by_item.setdefault(it['n'], []).append(it)
 
 drops_by_mob = collections.defaultdict(list)
 for it in IX['items']:
+    if it.get('kind') == 'fragment':
+        continue                      # no page to link to
     src = (it.get('d') or '').split('·')[0].strip()
     if src:
         drops_by_mob[(it['z'], src)].append(it)
@@ -136,7 +149,12 @@ for name, rows in by_item.items():
     # 6,690 words of the same sentence, the largest single block of repeated text
     # on the site. The survey is already linked above it; this only has to name
     # whose figures they are.
-    extra = (f'<h2 class="sec">Where it drops</h2><ul class="srcs">{zones}</ul>'
+    also = sorted(set(FRAG.get(name, [])))
+    also_html = (f'<p class="src" style="margin-top:14px"><b>The source row also lists:</b> '
+                 f'{", ".join(esc(x) for x in also)}. We have not reconstructed full names for '
+                 f'these &mdash; the row elides a shared prefix and guessing it would invent an '
+                 f'item.</p>') if also else ''
+    extra = (f'<h2 class="sec">Where it drops</h2><ul class="srcs">{zones}</ul>{also_html}'
              f'<p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. '
              f'<a href="../sources.html">How we source</a>.</p>')
     desc = (f"{name} in EverQuest Legends: "
@@ -155,6 +173,9 @@ for name, rows in by_item.items():
         ("Classes", esc(cls_txt) if cls_txt else None),
         ("Zones", esc(', '.join(sorted({r['zt'] for r in rows})))),
     ]
+    if a.get('kind') == 'group':
+        facts.insert(0, ("What this is",
+                         "A family named by the survey row, not a single item"))
     s = slug(name)
     open(f'public/items/{s}.html', 'w', encoding='utf-8', newline='\n').write(
         page("item", name, "Item", a['a'], facts, extra, desc[:180], f"items/{s}"))
@@ -246,17 +267,17 @@ def hub(fname, title, desc, blurb, entries, folder):
 
 
 hub('index.html', 'Every item',
-    f'An A to Z list of all {n_items} items recorded across the ten surveyed '
+    f'An A to Z list of all {n_items} items recorded across the {len(Z)} surveyed '
     'EverQuest Legends dungeons, each linking to what drops it and where.',
-    f'Every one of the {n_items} items the ten dungeon surveys record, and the '
+    f'Every one of the {n_items} items the {len(Z)} dungeon surveys record, and the '
     'zone each drops in.',
     [(esc(n), slug(n), esc(', '.join(sorted({r["zt"] for r in rows}))))
      for n, rows in by_item.items()], 'items')
 
 hub('index.html', 'Every named mob',
-    f'An A to Z list of all {n_named} named mobs recorded across the ten '
+    f'An A to Z list of all {n_named} named mobs recorded across the {len(Z)} '
     'surveyed EverQuest Legends dungeons, with level, position and drops.',
-    f'Every one of the {n_named} named mobs the ten dungeon surveys record, and '
+    f'Every one of the {n_named} named mobs the {len(Z)} dungeon surveys record, and '
     'the zone each spawns in.',
     [(esc(m['n']), slug(m['n']), esc(m['zt'])) for m in IX['named']], 'named')
 

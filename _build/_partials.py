@@ -49,7 +49,7 @@ def wordnum(n):
 SITE_URL = _cfg.get("site_url", "").rstrip("/")
 
 
-def head(title, desc, rel="", extra="", og="home", canon=None):
+def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
     """Page head.
 
     `og` names the share card in public/assets/og/. `canon` is the page's path
@@ -72,6 +72,10 @@ def head(title, desc, rel="", extra="", og="home", canon=None):
     ]
     if canon is not None and SITE_URL:
         lines.append(f'<link rel="canonical" href="{SITE_URL}/{canon}">')
+    # The archive republishes coordinates we have since established are wrong.
+    # Keeping it verbatim is right; letting a search engine land a reader on it
+    # is not - "kept verbatim" was allowed to override "marked on sight".
+    robots_tag = f'<meta name="robots" content="{robots}">' if robots else ""
     social = "\n".join(lines) + "\n"
     canonical = ""
 
@@ -80,6 +84,7 @@ def head(title, desc, rel="", extra="", og="home", canon=None):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+{robots_tag}
 <title>{title} — {SITE}</title>
 <meta name="description" content="{desc}">
 <meta property="og:title" content="{title} — {SITE}">

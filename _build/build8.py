@@ -224,10 +224,10 @@ page = (head("Plane of Sky",
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
     <h1 class="display">Sky is a ring,<br><em>not a ladder.</em></h1>
-    <p class="hero-lede">Eight islands on a one-way teleporter loop, with a ninth hanging off it.
+    <p class="hero-lede"><strong>Eight islands on a one-way teleporter loop, with a ninth hanging off it &mdash; and one more nobody has placed.</strong>
       Island 8 returns you to island 1, which is why the six-boss circuit everyone runs is not a
       list of instructions &mdash; it is one and a half laps.</p>
-    <p class="hero-sig"><span>{len(RING)} islands on the loop</span><span>3 keys bought, 6 dropped</span>
+    <p class="hero-sig"><span>{len(RING)} on the loop, {len(RING)+1} you can stand on</span><span>3 keys bought, 6 dropped</span>
       <span>{SKY["zmax"] - SKY["zmin"]:,.0f} units of height</span></p>
   </div>
 </section>
@@ -287,11 +287,12 @@ page = (head("Plane of Sky",
     <div class="note danger"><strong>These are not labelled, and that is deliberate.</strong> The
       mesh says exactly where every piece of floor is. It does not say which piece is
       &ldquo;island 4&rdquo; &mdash; that lives in the teleporter network, and no
-      <code>/loc</code> reading from Sky exists to anchor it. <strong>Ten <code>/loc</code>
-      readings, one per island, would label this chart permanently.</strong> Drawing a guess would
+      <code>/loc</code> reading from Sky exists to anchor it. <strong>One <code>/loc</code> per island &mdash; {len(RING)+1} of them, or
+      {len(RING)+2} if the Efreeti island is a separate place &mdash; would label this chart
+      permanently.</strong> Drawing a guess would
       be worth less than drawing nothing.</div>
-    <p class="lede">A body of floor is not always an island, either. A tower counts separately from
-      the ground it stands on, which is why there are {len(ISL)} marks and nine islands.</p>
+    <p class="lede">A body of floor is not always an island: a tower counts separately from the ground
+      it stands on, which is why there are {len(ISL)} marks and {len(RING)+1} places to stand.</p>
   </div>
 </section>
 

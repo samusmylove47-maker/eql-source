@@ -56,7 +56,7 @@ if N_OPEN:
     gates_card = (
         '<div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div>'
         '<h3 class="t">Verification gates</h3>'
-        f'<p class="d">{wordnum(N_OPEN)} of the ten surveys have not cleared the full '
+        f'<p class="d">{wordnum(N_OPEN)} of the {len(ZONES)} surveys have not cleared the full '
         'three-gate standard. Which gate is open is listed against each zone on the '
         '<a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>')
 else:
@@ -110,12 +110,12 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
         <h3 class="t">The Index</h3>
-        <p class="d">Every item and named mob recorded across the ten surveyed dungeons, searchable in one place.
+        <p class="d">Every item and named mob recorded across the {len(ZONES)} surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
           links back to the survey it was mined from, so you can read the surrounding context before planning a night
           around it.</p>
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
-        <div class="foot"><span>Built from our own plates</span><span class="go">Open &rarr;</span></div></a>
+        <div class="foot"><span>Built from our own surveys</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="plane-of-sky.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; all 560 trios</div>
@@ -145,6 +145,16 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
           assumed, so it states plainly which zones we have measured and which we have not.</p>
         <div class="chipline"><span class="pill">Measured</span><span class="pill">Coverage stated</span></div>
         <div class="foot"><span>From our own logs</span><span class="go">Open &rarr;</span></div></a>
+
+      <a class="card" href="planar-gear.html" style="--c:var(--warn)">
+        <div class="kicker">Endgame &middot; five sets per slot</div>
+        <h3 class="t">Planar gear targets</h3>
+        <p class="d">A trio can wear planar armour from all three of its classes plus the two shared sets, so
+          five sets compete for every slot and holding that in your head is genuinely hard. Pick three classes,
+          choose what you are optimising for from five named presets, and lock a target per slot. No weights to
+          configure. Built from 116 item records with every blank left blank.</p>
+        <div class="chipline"><span class="pill">116 pieces</span><span class="pill">No configuring</span></div>
+        <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
         <div class="kicker">Planning</div>
