@@ -31,6 +31,10 @@ python3 _build/build14.py
 python3 _build/build15.py
 python3 _build/sightings.py
 python3 _build/build17.py
+# Joins the catalogue, the measured sightings and the planar sets, so it runs
+# after sightings.py has written the second of those and build17.py has made
+# the item pages it links to.
+python3 _build/build25.py
 python3 _build/build404.py
 # Search indexes the built pages, so it has to run after every generator that
 # writes one. Keep it last but for the sitemap.
