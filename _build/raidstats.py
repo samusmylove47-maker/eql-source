@@ -25,6 +25,25 @@ and made D4 look *cheaper* than D2. Zoning ends a fight. Every total below was
 checked a second time by a separate pass that finds the zone line and the death
 line by raw line number and sums between them, with no state machine at all.
 
+WHO WAS ACTUALLY THERE
+----------------------
+The damage line names its attacker, and for a month nothing read it. Every
+figure in this file was published as the work of our own trio - the difficulty
+page said Master Yael was "killed once at every difficulty by one trio in one
+session" - and every one of those kills was a **public pick-up raid**. Five or
+six players landed hits on each; our character dealt 13-19% of the damage.
+
+The damage totals were never wrong. They sum every attacker, which is what
+damage-to-kill means, and the D4 arithmetic was re-checked line by line and
+comes to 242,060 exactly. What was wrong was the sentence beside them, and it
+was wrong in the direction that misleads hardest: a reader planning to take a
+duo into The Hole at D4 would have read "one trio did this" and believed it.
+
+So every fight now records how many attackers there were and what share was
+ours. Names are counted and thrown away - other players are not named on this
+site outside the credits - but the count and the share go in the record, where
+a page cannot restate them wrongly.
+
 DAMAGE TO KILL IS NOT HIT POINTS
 --------------------------------
 It is the damage that had to be dealt, which is what a raid actually cares
@@ -64,9 +83,32 @@ def tier_of(zone):
     return int(m.group(1)), m.group(2)
 
 
+# The verb sits between the attacker and the boss, and the game inflects it per
+# weapon and class. Stripping it is what turns "<name> cleaves" and "<name>"
+# into one attacker instead of two. A real name is not used even in a comment:
+# the whole point of counting attackers rather than listing them is that other
+# players are not named by this project outside the credits.
+OURS = set()   # every character we hold a log for; filled by main()
+
+MELEE_VERB = re.compile(
+    r'\s+(?:hits?|slashe?s?|bashe?s?|crushe?s?|pierces?|bites?|kicks?|punches|'
+    r'gores?|mauls?|slices?|backstabs?|frenzies on|strikes?|claws?|slams?|'
+    r'cleaves?|smites?|shoots?|rends?|stings?|lashes?)$', re.I)
+
+
+def attacker_name(prefix):
+    """The attacker from a damage line's prefix, verb removed."""
+    return MELEE_VERB.sub('', prefix.strip()).strip() or '(unnamed)'
+
+
 def parse_log(path):
     boss_re = {b: dict(
         dmg=re.compile(rf'\b{re.escape(b)} for (\d+) points? of damage\.$'),
+        # Who swung. The damage line names its attacker before the verb, and
+        # until 11 Aug 2026 nothing read it - so five-player pick-up raids were
+        # recorded and published as "one trio in one session". See WHO WAS
+        # ACTUALLY THERE in the module docstring.
+        attacker=re.compile(rf'^(.*?) \b{re.escape(b)} for \d+ points? of damage\.$'),
         spell=re.compile(rf'^{re.escape(b)} has taken (\d+) damage from (.+?)\.$'),
         slain=re.compile(rf'^(?:{re.escape(b)} has been slain by|You have slain {re.escape(b)})'),
         cast=re.compile(rf'^{re.escape(b)} begins casting (.+?)\.$'),
@@ -78,6 +120,11 @@ def parse_log(path):
     char = char.group(1) if char else "unknown"
     zone = None
     open_fights = {}
+    # When the boss was first seen doing anything in this zone. A fight opens on
+    # the first damage dealt TO the boss, so if the boss was already swinging or
+    # casting well before that, we arrived after it had been engaged and the
+    # damage total is a floor rather than the cost of the fight.
+    first_active = {}
     done = []
     for line in open(path, encoding='utf-8', errors='replace'):
         m = TS.match(line.rstrip('\n'))
@@ -88,18 +135,27 @@ def parse_log(path):
         if z:
             if not z.group(1).startswith(NOT_A_ZONE):
                 open_fights.clear()          # zoning ends every fight in progress
+                first_active.clear()
                 zone = z.group(1)
             continue
         for boss, rx in boss_re.items():
             if boss not in b:
                 continue
+            if boss not in open_fights and boss not in first_active and (
+                    rx['melee'].match(b) or rx['cast'].match(b)):
+                first_active[boss] = ts
             d = rx['dmg'].search(b) or rx['spell'].match(b)
             if d:
                 f = open_fights.setdefault(boss, dict(
                     boss=boss, zone=zone, character=char, start=ts, damage=0,
                     healed=0, heal_count=0, casts=collections.Counter(),
-                    melee_verbs=collections.Counter(), melee_hits=[]))
+                    melee_verbs=collections.Counter(), melee_hits=[],
+                    by=collections.Counter(),
+                    active_since=first_active.get(boss)))
                 f['damage'] += int(d.group(1))
+                a = rx['attacker'].match(b)
+                if a:
+                    f['by'][attacker_name(a.group(1))] += int(d.group(1))
                 break
             f = open_fights.get(boss)
             if f is None:
@@ -130,8 +186,36 @@ def fmt(f):
                 - t(f['start'], '%a %b %d %H:%M:%S %Y')).total_seconds())
     num, label = tier_of(f['zone'])
     hits = f['melee_hits']
+    # WHO WAS ACTUALLY THERE.
+    # Names are counted and thrown away. Other players do not get named on this
+    # site outside the credits, so the record carries how many there were and
+    # what share was ours, which is all a reader needs to judge the figure.
+    # A mob or a pet is written with an article, exactly as in logstats.py; a
+    # player name is not.
+    # OURS is every character we hold a log for. A log calls its own character
+    # "You" and names the rest, so without that set the share came out as one
+    # character's contribution and the partner read as a stranger.
+    late = None
+    if f.get('active_since'):
+        late = int((t(f['start'], '%a %b %d %H:%M:%S %Y')
+                    - t(f['active_since'], '%a %b %d %H:%M:%S %Y')).total_seconds())
+        late = late if late > 0 else None
+    by = f.get('by') or {}
+    total = sum(by.values()) or 1
+    mine = {'You', 'YOUR', f['character']} | set(OURS)
+    ours = sum(v for k, v in by.items() if k in mine)
+    others = [k for k in by
+              if k not in mine and not re.match(r'^(a|an|the)\s', k, re.I)]
     return {
         "boss": f['boss'], "zone": f['zone'], "character": f['character'],
+        "attackers": 1 + len(others),
+        "other_players": len(others),
+        "our_damage_share_pct": round(100 * ours / total, 1),
+        # >20s of the boss acting before we landed a hit means we arrived after
+        # it was engaged, and the damage total is a floor. 20s absorbs a normal
+        # opening where the boss swings first.
+        "joined_late_seconds": late,
+        "damage_is_floor": late is not None and late > 20,
         "date": t(f['end'], '%a %b %d %H:%M:%S %Y').strftime('%d %b %Y'),
         "difficulty": num, "difficulty_label": label,
         "group_instance": " - Group" in (f['zone'] or ""),
@@ -175,6 +259,18 @@ def merge(rows):
             "date": date, "zone": obs[0]['zone'],
             "group_instance": obs[0]['group_instance'],
             "observers": sorted(o['character'] for o in obs),
+            # The largest attacker count any client saw, and the smallest share
+            # of the damage ours turned out to be. Both are the cautious
+            # direction: a client that was out of position undercounts both.
+            "attackers": max(o.get('attackers', 1) for o in obs),
+            "other_players": max(o.get('other_players', 0) for o in obs),
+            "our_damage_share_pct": max(o.get('our_damage_share_pct', 0.0)
+                                        for o in obs),
+            # A floor only if EVERY client that saw the fight joined it late.
+            # One client in position from the start saw the whole thing.
+            "damage_is_floor": all(o.get('damage_is_floor') for o in obs),
+            "joined_late_seconds": min((o.get('joined_late_seconds') or 0)
+                                       for o in obs) or None,
             "damage_low": min(dmg), "damage_high": max(dmg),
             "damage_spread_pct": round((max(dmg) - min(dmg)) / max(dmg) * 100, 1),
             "seconds": max(o['seconds'] for o in obs),
@@ -194,6 +290,10 @@ def main(src):
     if not logs:
         print("no logs under " + src)
         return
+    for p in logs:
+        m = re.search(r'eqlog_([^_]+)_', os.path.basename(p))
+        if m:
+            OURS.add(m.group(1))
     raw = []
     for path in logs:
         raw += [fmt(f) for f in parse_log(path)]
@@ -208,6 +308,7 @@ def main(src):
         print(f"   D{r['difficulty']} {r['boss']:<16} {rng:>19}  {r['seconds']:>4}s  "
               f"{r['spells_distinct']:>2} spells  heals "
               f"{r['self_heal_low']}-{r['self_heal_high']}  "
+              f"{r['attackers']} attackers, ours {r['our_damage_share_pct']}%  "
               f"({len(r['observers'])} clients, {r['damage_spread_pct']}% apart)")
 
 

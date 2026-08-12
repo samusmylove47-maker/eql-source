@@ -65,6 +65,12 @@ LEDGERS = [
     # The faction tool is one card per zone we have faction data for. Same
     # shape: a ceiling over the cards forbids measuring an eleventh zone.
     ("tools/faction-impact.html", "", r'<article class="fzone">.*?</article>'),
+    # The difficulty explainer's measured tables: one row per boss kill at one
+    # tier. They grew from five rows to twelve the day we parsed two more
+    # bosses, and a ceiling over them means the page can never report a third.
+    # Anchored AFTER the ramp heading so the fixed five-row table of tier names
+    # higher up stays governed, along with every word of the prose.
+    ("learn/difficulty.html", "The ramp, measured", r"<tr>.*?</tr>"),
 ]
 
 
