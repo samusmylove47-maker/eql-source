@@ -10,6 +10,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 21.5,
+  "damage_is_floor": false,
+  "joined_late_seconds": 4,
   "damage_low": 58497,
   "damage_high": 60139,
   "damage_spread_pct": 2.7,
@@ -27,6 +32,107 @@
   ]
  },
  {
+  "boss": "Lady Vox",
+  "difficulty": 1,
+  "difficulty_label": "Awakened",
+  "date": "11 Aug 2026",
+  "zone": "The Permafrost Caverns - Group 1 (Awakened)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 44.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": 294,
+  "damage_low": 25370,
+  "damage_high": 25370,
+  "damage_spread_pct": 0.0,
+  "seconds": 125,
+  "spells": {
+   "Immobilize": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "crushes"
+  ]
+ },
+ {
+  "boss": "Lady Vox",
+  "difficulty": 2,
+  "difficulty_label": "Adaptive",
+  "date": "11 Aug 2026",
+  "zone": "The Permafrost Caverns - Group 2 (Adaptive)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 28.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 62,
+  "damage_low": 124646,
+  "damage_high": 124646,
+  "damage_spread_pct": 0.0,
+  "seconds": 418,
+  "spells": {
+   "Retribution": 11,
+   "Immobilize": 10,
+   "Negation of Life": 3,
+   "Shadow Vortex": 3,
+   "Word Divine": 1,
+   "Life Leech": 1,
+   "Dooming Darkness": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "bites"
+  ]
+ },
+ {
+  "boss": "Lady Vox",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "11 Aug 2026",
+  "zone": "The Permafrost Caverns - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 7,
+  "other_players": 6,
+  "our_damage_share_pct": 38.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": 31,
+  "damage_low": 175850,
+  "damage_high": 175850,
+  "damage_spread_pct": 0.0,
+  "seconds": 817,
+  "spells": {
+   "Shadow Vortex": 11,
+   "Immobilize": 9,
+   "Screaming Terror": 6,
+   "Insidious Retrogression": 3,
+   "Ignite Blood": 2,
+   "Torbas' Poison Blast": 1,
+   "Bond of Death": 1,
+   "Cascading Darkness": 1,
+   "Retribution": 1
+  },
+  "spells_distinct": 9,
+  "self_heal_low": 10,
+  "self_heal_high": 10,
+  "melee_verbs": [
+   "pierces"
+  ]
+ },
+ {
   "boss": "Lord Nagafen",
   "difficulty": 1,
   "difficulty_label": "Awakened",
@@ -37,6 +143,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 19.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": 5,
   "damage_low": 78738,
   "damage_high": 78738,
   "damage_spread_pct": 0.0,
@@ -51,6 +162,70 @@
   ]
  },
  {
+  "boss": "Lord Nagafen",
+  "difficulty": 1,
+  "difficulty_label": "Awakened",
+  "date": "11 Aug 2026",
+  "zone": "Nagafen's Lair - Group 1 (Awakened)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 37.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 26,
+  "damage_low": 74583,
+  "damage_high": 74583,
+  "damage_spread_pct": 0.0,
+  "seconds": 229,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "pierces"
+  ]
+ },
+ {
+  "boss": "Lord Nagafen",
+  "difficulty": 2,
+  "difficulty_label": "Adaptive",
+  "date": "11 Aug 2026",
+  "zone": "Nagafen's Lair - Group 2 (Adaptive)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 7,
+  "other_players": 6,
+  "our_damage_share_pct": 43.6,
+  "damage_is_floor": false,
+  "joined_late_seconds": 1,
+  "damage_low": 121279,
+  "damage_high": 121279,
+  "damage_spread_pct": 0.0,
+  "seconds": 492,
+  "spells": {
+   "Tangling Weeds": 14,
+   "Ensnaring Roots": 9,
+   "Careless Lightning": 6,
+   "Scorching Arrow": 4,
+   "Invoke Lightning": 2,
+   "Immolate": 1,
+   "Call of Flame": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bites",
+   "cleaves"
+  ]
+ },
+ {
   "boss": "Master Yael",
   "difficulty": 0,
   "difficulty_label": "Base",
@@ -61,6 +236,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 19.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
   "damage_low": 74915,
   "damage_high": 75369,
   "damage_spread_pct": 0.6,
@@ -92,6 +272,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 13.5,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
   "damage_low": 84824,
   "damage_high": 85415,
   "damage_spread_pct": 0.7,
@@ -113,6 +298,39 @@
  },
  {
   "boss": "Master Yael",
+  "difficulty": 1,
+  "difficulty_label": "Awakened",
+  "date": "11 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 1 (Awakened)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 37.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 6,
+  "damage_low": 74582,
+  "damage_high": 74582,
+  "damage_spread_pct": 0.0,
+  "seconds": 193,
+  "spells": {
+   "Draught of Fire": 6,
+   "Immobilize": 4,
+   "Draught of Jiva": 2,
+   "Frozen Harpoon": 1,
+   "Mana Detonation": 1
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "slashes"
+  ]
+ },
+ {
+  "boss": "Master Yael",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
   "date": "10 Aug 2026",
@@ -122,6 +340,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 7,
+  "other_players": 6,
+  "our_damage_share_pct": 18.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
   "damage_low": 139117,
   "damage_high": 139117,
   "damage_spread_pct": 0.0,
@@ -143,6 +366,42 @@
  },
  {
   "boss": "Master Yael",
+  "difficulty": 2,
+  "difficulty_label": "Adaptive",
+  "date": "11 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 2 (Adaptive)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 34.3,
+  "damage_is_floor": false,
+  "joined_late_seconds": 6,
+  "damage_low": 126554,
+  "damage_high": 126554,
+  "damage_spread_pct": 0.0,
+  "seconds": 275,
+  "spells": {
+   "Immobilize": 13,
+   "Force": 3,
+   "Elnerick's Entombment of Ice": 3,
+   "Rend": 3,
+   "Bonds of Force": 2,
+   "Wrath of Al`Kabor": 1,
+   "Superior Healing": 1,
+   "Mana Detonation": 1
+  },
+  "spells_distinct": 8,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "slashes"
+  ]
+ },
+ {
+  "boss": "Master Yael",
   "difficulty": 3,
   "difficulty_label": "Fused",
   "date": "10 Aug 2026",
@@ -152,6 +411,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 18.5,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
   "damage_low": 225552,
   "damage_high": 227690,
   "damage_spread_pct": 0.9,
@@ -185,6 +449,11 @@
    "Avenrae",
    "Shara"
   ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 17.7,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
   "damage_low": 234249,
   "damage_high": 242060,
   "damage_spread_pct": 3.2,

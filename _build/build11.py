@@ -26,8 +26,79 @@ rest. If a reader wants the full scaling tables they should go and read theirs.
 """
 import json as _json
 RAIDS = _json.load(open('assets/raids-measured.json', encoding='utf-8'))
-YAEL = sorted([r for r in RAIDS if r['boss'] == 'Master Yael'],
+# Printed from the record rather than typed, because a typed version of exactly
+# this fact was wrong for a month.
+def _yael_party(rows):
+    atk = sorted({r.get('attackers') for r in rows if r.get('attackers')})
+    share = [r.get('our_damage_share_pct') for r in rows
+             if r.get('our_damage_share_pct') is not None]
+    if not atk:
+        return 'multi', 'an unrecorded share of'
+    span = (str(atk[0]) if len(atk) == 1 else f'{atk[0]}&ndash;{atk[-1]}')
+    lo, hi = (round(min(share)), round(max(share))) if share else (0, 0)
+    return span, (str(lo) if lo == hi else f'{lo}&ndash;{hi}')
+
+
+# The ramp is ONE session at five tiers - that is what makes it a comparison.
+# Later kills of the same boss are replication and are reported apart from it;
+# dropping them into the table gave two D1 rows and two D2 rows under a heading
+# that said "killed once at every difficulty".
+_ALL_YAEL = [r for r in RAIDS if r['boss'] == 'Master Yael']
+_RAMP_DATE = '10 Aug 2026'
+YAEL = sorted([r for r in _ALL_YAEL if r['date'] == _RAMP_DATE],
               key=lambda r: r['difficulty'])
+REPEATS = sorted([r for r in _ALL_YAEL if r['date'] != _RAMP_DATE],
+                 key=lambda r: r['difficulty'])
+_yael_atk, _yael_share = _yael_party(_ALL_YAEL)
+
+# Self-healing by tier, across every boss we have logged. Counted here because
+# the sentence this replaces - "he healed himself never at D0, D1 and D2" - was
+# typed from one session and a later kill of the same boss at D2 contradicted it.
+_heal_tiers = sorted({r['difficulty'] for r in RAIDS
+                      if r.get('self_heal_high') and r['difficulty'] is not None})
+_heal_lowest = _heal_tiers[0] if _heal_tiers else None
+_yael_heal_tiers = sorted({r['difficulty'] for r in _ALL_YAEL
+                           if r.get('self_heal_high') and r['difficulty'] is not None})
+_yael_heal_low = _yael_heal_tiers[0] if _yael_heal_tiers else None
+_sp = [r['spells_distinct'] for r in YAEL]
+_spell_span = f"{min(_sp)}&ndash;{max(_sp)}" if _sp else "several"
+
+# The repeats are kept visible rather than dropped, and the comparison against
+# the ramp is computed rather than described.
+if REPEATS:
+    _ramp_at = {r['difficulty']: r for r in YAEL}
+    _bits = []
+    for r in REPEATS:
+        base = _ramp_at.get(r['difficulty'])
+        d = r['damage_low']
+        if base:
+            pct = round(100 * (d - base['damage_low']) / base['damage_low'])
+            _bits.append(f"D{r['difficulty']} again at {d:,} "
+                         f"({pct:+d}% against the ramp)")
+        else:
+            _bits.append(f"D{r['difficulty']} at {d:,}")
+    _repeat_note = (
+        '<p class="src" style="margin:var(--s-5) 0 0"><strong>Killed again on '
+        + REPEATS[0]['date'] + ' by a different group:</strong> ' + '; '.join(_bits)
+        + '. Kept out of the table because the comparison above is one session at five '
+          'settings, and a second group on another night is a different measurement.</p>')
+else:
+    _repeat_note = ''
+
+# The other two bosses. Shown because the corrections above cite them - a reader
+# told "Lady Vox heals itself at D0" should be able to see the row.
+_OTHERS = sorted([r for r in RAIDS if r['boss'] != 'Master Yael'],
+                 key=lambda r: (r['boss'], r['difficulty']))
+_other_rows = ''.join(
+    '<tr><td class="nmob">{b}</td><td class="lv">D{d}</td><td class="lv">{dm}{fl}</td>'
+    '<td class="lv">{s}s</td><td class="lv">{sp}</td><td class="lv">{h}</td></tr>'.format(
+        b=r['boss'], d=r['difficulty'],
+        dm=(f"{r['damage_low']:,}" if r['damage_low'] == r['damage_high']
+            else f"{r['damage_low']:,}&ndash;{r['damage_high']:,}"),
+        fl=(' <em>floor</em>' if r.get('damage_is_floor') else ''),
+        s=r['seconds'], sp=r['spells_distinct'],
+        h=(r['self_heal_high'] or '&mdash;'))
+    for r in _OTHERS)
 # Spells that are not direct damage or control. A boss casting these is not
 # running an evocation kit, and that is the whole finding - so the test is
 # stated in code rather than asserted in prose.
@@ -248,9 +319,9 @@ You have entered The City of Guk 4 (Refined).</pre>
             <span class="gz">Whether the XP bonus is live</span><span class="gl">unresolved</span>
             <span class="gs">Listed by EQL Tools as an open question against the current patch.</span></li>
           <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
-            <span class="gz">Which kits attach to which raid boss</span><span class="gl">unpublished</span>
-            <span class="gs">Bosses run three classes from D3. Which three, for which boss, is
-              recorded nowhere. Needs combat logs from a raid at D3 or D4.</span></li>
+            <span class="gz">Which kits attach to which raid boss</span><span class="gl">part measured</span>
+            <span class="gs">Three bosses logged to D3 or D4 below, by spell name. What is still
+              unpublished anywhere is the <em>plane</em> bosses.</span></li>
         </ul>
       </aside>
     </div>
@@ -262,31 +333,46 @@ You have entered The City of Guk 4 (Refined).</pre>
     <div class="sechead"><span class="n">Ours</span>
       <div><h2 class="sec">The ramp, measured on one boss at all five tiers</h2>
       <p class="lede" style="margin:0">Master Yael, in the group instance of The Hole, killed once
-        at every difficulty on 10 August 2026 by one trio in one session &mdash; same boss, same
-        players, five settings.</p></div></div>
+        at every difficulty on 10 August 2026 in a single session &mdash; same boss, same group,
+        five settings.</p>
+      <p class="src" style="margin:8px 0 0"><strong>These were {_yael_atk}-player raids, not a
+        trio.</strong> This said &ldquo;one trio&rdquo; until 11 August and it was wrong &mdash;
+        our characters dealt {_yael_share}% of the damage, the rest came from other players.
+        <strong>Damage to kill counts everyone</strong>, so the figures stand; read them as what
+        the fight costs a raid.</p></div></div>
     <div class="scroller"><table>
       <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
         <th>Self-heals</th><th>What he cast</th></tr></thead>
       <tbody>{_yael_rows}</tbody>
     </table></div>
-    <div class="note"><strong>The kit widens at D3.</strong> D0 to D2 is direct damage and
-      control &mdash; evocation, one kit. From D3 he also heals, fears and applies damage over time.
-      <span class="tier tM">TIER M</span>
-      <br><br><strong>He healed himself never at D0, D1 and D2, once at D3, ten times at D4.</strong>
-      That needs no inference about spell names: the log says <em>healed itself</em>, and a boss
-      that heals is not running an evocation kit. The published claim was three classes from D3.
-      This is that claim measured, and it lands exactly there.</div>
-    <div class="note"><strong>Every fight was logged twice, from two clients in the same group.</strong>
-      That is where the ranges come from: a client records only what it was in range to see, so two
-      parses of one kill disagree by however much each missed &mdash; between nothing and {_worst}%
-      here, with two fights matching to the point. <strong>That spread is the method&rsquo;s error
-      bar, measured rather than assumed.</strong>
-      <br><br>It sharpened one claim and softened another. The healing pattern &mdash; none below
-      D3, some at and above it &mdash; is in <em>both</em> logs independently. The count at D4 is
-      not: one client logged ten self-heals and the other one, so the table gives a range and this
-      page claims no number.
-      <br><br><strong>And damage to kill is not hit points.</strong> He heals, so it is an upper
-      bound, and it carries this group&rsquo;s gear and misses.</div>
+    {_repeat_note}
+    <div class="note"><strong>The kit broadens as the tier rises.</strong> Across this session he
+      casts {_spell_span} distinct spells from D0 to D4, and the heals, fear and damage over time
+      appear in the upper half. <span class="tier tM">TIER M</span>
+      <br><br><strong>Corrected 11 August.</strong> This claimed the kit widens <em>at D3</em> and
+      that he healed himself <em>never at D0, D1 and D2</em>. Both were read off this one session
+      and later kills contradict the second: the same boss healed itself at D{_yael_heal_low} on
+      another kill, and <strong>Lady Vox heals itself at D{_heal_lowest}</strong>, in the open
+      world. Self-healing is not gated behind a tier &mdash; the tier decides how <em>much</em> of
+      the kit turns up.
+      <br><br><strong>And &ldquo;ten times at D4&rdquo; was ten log lines, not ten decisions:</strong>
+      one effect ticking every six seconds for the same 22 hit points, the same shape Lady Vox
+      shows at her top tier.</div>
+    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other two bosses</h3>
+    <p class="lede" style="margin:0">Same shape, different bosses, all public raids. A row marked
+      <em>floor</em> is one we joined after the boss was already engaged, so the log never saw the
+      opening and the figure is a lower bound rather than the cost of the fight.</p>
+    <div class="scroller"><table>
+      <thead><tr><th>Boss</th><th>Tier</th><th>Damage to kill</th><th>Fight</th>
+        <th>Spells</th><th>Self-heals</th></tr></thead>
+      <tbody>{_other_rows}</tbody>
+    </table></div>
+    <div class="note"><strong>Where the ranges come from.</strong> Several fights were logged from
+      two clients at once, and two parses of one kill differ by whatever each missed &mdash;
+      between nothing and {_worst}% here. <strong>That spread is the method&rsquo;s error bar,
+      measured rather than assumed</strong>, and it is why the D4 self-heal count is a range.
+      <br><br><strong>Damage to kill is not hit points.</strong> These bosses heal, so it is an
+      upper bound carrying the raid&rsquo;s gear and misses with it.</div>
   </div>
 </section>
 

@@ -394,17 +394,38 @@ not a label.
 
 These close with evidence, not tidying.
 
-- **D4 encounter behaviour** — **half closed, 11 Aug 2026.** Master Yael was
-  killed at all five tiers in one session in the group instance of The Hole, and
-  `_build/raidstats.py` parses it into `assets/raids-measured.json`. The class
-  kit widens at **D3**, exactly where the published claim said it would: he
-  casts direct damage and control at D0–D2, and from D3 also heals himself,
-  fears, and applies damage over time. **He healed himself never at D0–D2, once
-  at D3, ten times at D4** — which needs no inference about spell names.
-  Damage to kill runs 75,369 / 85,415 / 139,117 / 227,690 / 242,060.
-  **That is one boss and one trio.** Which kits attach to the *plane* bosses at
-  D3+ is still unpublished, and D3/D4 hit points are still not pinned by anyone:
-  damage to kill is an upper bound, not HP.
+- **D4 encounter behaviour** — **partly closed, and partly retracted 11 Aug 2026.**
+  Master Yael was killed at all five tiers in one session in the group instance
+  of The Hole, parsed by `_build/raidstats.py` into `assets/raids-measured.json`.
+  Damage to kill runs 75,369 / 85,415 / 139,117 / 227,690 / 242,060, and those
+  figures are sound — the D4 total was re-checked line by line.
+
+  **Two things published beside them were not, and the same fault caused both:
+  a figure printed from data with a sentence typed next to it.**
+
+  **These were not trio kills.** Every raid-boss fight in every log we hold is a
+  **public pick-up raid of 5–7 players**, and our own characters dealt 13–44% of
+  the damage. "Killed by one trio" was never true of any of them. `raidstats.py`
+  now records `attackers` and `our_damage_share_pct` per fight so no page can
+  restate it wrongly. **Other players are never named on the site outside the
+  credits**, so the count and the share are recorded and the names discarded.
+
+  **Self-healing is not gated at D3.** "He healed himself never at D0–D2" was
+  read off one session. A later D2 kill of the same boss shows one self-heal
+  (`Superior Healing`, 210 hp), and **Lady Vox heals itself at D0**, in the open
+  world. What the tier raises is how much of the kit appears, not whether a
+  heal is in it. **And "ten times at D4" is ten log lines of one effect ticking
+  every six seconds for the same 22 hit points** — a recurring drain, not ten
+  decisions. The same shape appears on Vox at her top tier.
+
+  Which kits attach to the *plane* bosses at D3+ is still unpublished, and
+  D3/D4 hit points are still not pinned by anyone: damage to kill is an upper
+  bound, not HP.
+
+  **The general lesson, because it has now cost two retractions in one day:**
+  a log records what its own character witnessed and who else was present. Read
+  both before describing a fight, and never let a hand-typed sentence sit beside
+  a generated figure without checking it against the same data.
 - **Plane of Sky geometry** — **half closed, 11 Aug 2026.** `_build/skyislands.py`
   reads `airplane.s3d` and measures 21 separate bodies of walkable floor across
   2,878 units of height, committed to `assets/sky-islands.json` and drawn as a
