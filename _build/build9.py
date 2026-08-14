@@ -279,9 +279,17 @@ def section(sess_list, zone_title):
         rest[(z.get('difficulty'), z.get('character'))] += z['kills']
     also = ''
     if rest:
+        # Capped at three. Unbounded, this line grows every time the zone is
+        # played again - it reached six entries on Nagafen's Lair and pushed
+        # the page through its prose ceiling, which would have meant raising
+        # the ceiling every session forever. The total is still stated.
+        ranked = sorted(rest.items(), key=lambda kv: -kv[1])
         bits = ', '.join(
             f'{n} at D{d}' + (f' from {esc(c)}&rsquo;s log' if c != s.get('character') else '')
-            for (d, c), n in sorted(rest.items(), key=lambda kv: -kv[1]))
+            for (d, c), n in ranked[:3])
+        extra = sum(n for _k, n in ranked[3:])
+        if extra:
+            bits += f', and {extra} more across {len(ranked) - 3} other runs'
         also = (f' <b>Also measured here and not shown below:</b> {bits}. '
                 f'Conditions differ, so those kills are not averaged into these figures.')
     # Stamps used to be bare strings and are now {at, text, conditions}; accept

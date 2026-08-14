@@ -1700,7 +1700,7 @@
   "The Feerrott": {
    "difficulty": 0,
    "date": "09 Aug 2026",
-   "kills": 0,
+   "kills": 5,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -1794,7 +1794,7 @@
   "The Ruins of Old Paineel": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 203,
+   "kills": 290,
    "per_mob": {
     "an elemental warrior": {
      "Minions of Underfoot": -3
@@ -1850,7 +1850,7 @@
   "Nagafen's Lair": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 284,
+   "kills": 291,
    "per_mob": {
     "a kobold king": {
      "Kobolds of Fire Pit": -3,
@@ -1915,7 +1915,7 @@
   "Nagafen's Lair - Group": {
    "difficulty": 1,
    "date": "10 Aug 2026",
-   "kills": 6,
+   "kills": 31,
    "per_mob": {
     "a fire giant warrior": {
      "Nagafen": -12,
@@ -1926,6 +1926,13 @@
      "Nagafen": -7,
      "Solusek Mining Co.": 5,
      "Vox": -1
+    },
+    "Warlord Skarlon": {
+     "Nagafen": -12,
+     "Solusek Mining Co.": 5
+    },
+    "King Tranix": {
+     "Solusek Mining Co.": 5
     }
    },
    "factions": [
@@ -1933,6 +1940,10 @@
     "Solusek Mining Co.",
     "Vox"
    ],
+   "capped": {
+    "Vox": "down",
+    "Nagafen": "down"
+   },
    "factions_seen": [
     "Nagafen",
     "Solusek Mining Co.",
@@ -1955,7 +1966,7 @@
   "The Ruins of Old Paineel - Group": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 3,
+   "kills": 6,
    "per_mob": {
     "a flighty fiend": {
      "Minions of Underfoot": -3
@@ -1967,6 +1978,9 @@
    "factions": [
     "Minions of Underfoot"
    ],
+   "capped": {
+    "Minions of Underfoot": "down"
+   },
    "factions_seen": [
     "Minions of Underfoot"
    ],
@@ -2003,7 +2017,7 @@
   "The Permafrost Caverns - Group": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 5,
+   "kills": 25,
    "per_mob": {
     "a priest of Nagafen": {
      "Nagafen": -200,
@@ -2014,13 +2028,17 @@
      "Vox": -21,
      "Nagafen": -1
     },
-    "Lady Vox": {
-     "Vox": -500,
-     "Nagafen": -25
-    },
     "an ice giant priest": {
      "Vox": -19,
      "Nagafen": -1
+    },
+    "an ice giant magus": {
+     "Vox": -19,
+     "Nagafen": -1
+    },
+    "Lady Vox": {
+     "Vox": -409,
+     "Nagafen": -25
     }
    },
    "factions": [
@@ -2028,6 +2046,9 @@
     "Solusek Mining Co.",
     "Vox"
    ],
+   "capped": {
+    "Vox": "down"
+   },
    "factions_seen": [
     "Nagafen",
     "Solusek Mining Co.",
@@ -2051,6 +2072,146 @@
    "difficulty": 0,
    "date": "10 Aug 2026",
    "kills": 0,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Plane of Fear": {
+   "difficulty": 4,
+   "date": "12 Aug 2026",
+   "kills": 195,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Plane of Fear - Group": {
+   "difficulty": 2,
+   "date": "12 Aug 2026",
+   "kills": 19,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Plane of Hate": {
+   "difficulty": 4,
+   "date": "12 Aug 2026",
+   "kills": 46,
+   "per_mob": {
+    "an ire ghast": {
+     "Inhabitants of Hate": -10
+    },
+    "a haunted chest": {
+     "Inhabitants of Hate": -5
+    },
+    "a loathling lich": {
+     "Inhabitants of Hate": -10
+    },
+    "an abhorrent": {
+     "Inhabitants of Hate": -10
+    },
+    "a forsaken revenant": {
+     "Inhabitants of Hate": -30
+    },
+    "Cleric of Innoruuk": {
+     "Inhabitants of Hate": -50
+    },
+    "a spite golem": {
+     "Inhabitants of Hate": -10
+    },
+    "Ashenbone Broodmaster": {
+     "Inhabitants of Hate": -50
+    },
+    "a revultant rat": {
+     "Inhabitants of Hate": -10
+    }
+   },
+   "factions": [
+    "Inhabitants of Hate"
+   ],
+   "capped": {
+    "Inhabitants of Hate": "down"
+   },
+   "factions_seen": [
+    "Inhabitants of Hate"
+   ],
+   "falling": [
+    "Inhabitants of Hate"
+   ],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Rathe Mountains": {
+   "difficulty": 0,
+   "date": "12 Aug 2026",
+   "kills": 3,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Plane of Hate - Group": {
+   "difficulty": 4,
+   "date": "12 Aug 2026",
+   "kills": 2,
+   "per_mob": {},
+   "factions": [],
+   "capped": {
+    "Inhabitants of Hate": "down"
+   },
+   "factions_seen": [
+    "Inhabitants of Hate"
+   ],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [
+    "Inhabitants of Hate"
+   ],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Oasis of Marr": {
+   "difficulty": 0,
+   "date": "13 Aug 2026",
+   "kills": 2,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
