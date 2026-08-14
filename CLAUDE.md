@@ -94,6 +94,26 @@ Najena is exactly that today — infobox 4:50, prose "19 minutes", same page.
 **Never** cite Project 1999 or Allakhazam as current Legends fact. Historical
 context only.
 
+### Provenance attaches to a claim, not to a page
+
+`assets/sky.json` is the model, built 14 Aug 2026 after an audit found six
+classic haste figures inside a badge that said **verified**.
+
+**A boolean per page or per class will always lie eventually.** The Sky
+tracker's `v` covered a class's turn-ins, givers, reward names, slots and stat
+blocks at once — thirty-odd claims read from different pages on different days —
+so a stat block nobody had checked inherited a badge the turn-ins had earned.
+
+Each claim now names a source id, and `sources` carries that source's tier, URL,
+revision and read-date. **Verified is derived and cannot be typed**: a claim
+counts when its source is tier 2 or better and nothing is marked against it.
+Applying that rule dropped the verified class count from eleven to five, and
+Warrior fell out immediately — its stat blocks came from a page whose own
+turn-ins we had already rejected as classic.
+
+Do this for any dataset where one flag would otherwise cover several
+independently-checkable claims.
+
 ### Badge everything below tier 2
 
 Tiers 1 and 2 print plain. **Tiers 3, 4 and 5 carry a visible badge wherever the
@@ -242,6 +262,12 @@ _build/
                     assets/zone-geometry.json. Run by hand, not by build.sh: a
                     rebuild must work on a machine without the game. The .s3d
                     files are Daybreak's and are never committed
+  skydata.py        validates assets/sky.json and DERIVES which Sky claims are
+                    verified. Run by build.sh before anything renders it, so a
+                    malformed dataset, a claim naming a source that does not
+                    exist, or a moved invariant fails the build. `--from-html`
+                    re-extracts from the tracker source; a one-time escape
+                    hatch, not part of the build
   extract.py        mines the surveys into index-data.json. Also assigns every
                     item and named mob its slug, so The Index (which links in
                     the browser) and build17.py cannot disagree about addresses

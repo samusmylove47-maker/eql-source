@@ -6,6 +6,10 @@ cd "$(dirname "$0")"
 # extract.py mines the originals in _build/source/, so it depends on nothing
 # else and must run FIRST: the pages below print their counts from its output
 # rather than carrying numbers typed by hand.
+# Validates assets/sky.json and exits non-zero if it is malformed, if a claim
+# names a source that does not exist, or if a dataset invariant moved. Runs
+# before anything renders it.
+python3 _build/skydata.py
 python3 _build/extract.py
 python3 _build/build1.py
 python3 _build/build2.py

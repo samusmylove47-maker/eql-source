@@ -302,9 +302,14 @@ for s in MAPS:
            f"{z['title']} &middot; map", extra,
            og_card=f"dungeons-{s}", canon=f"dungeons/{s}-map")
 # ---- tools
+# The Sky dataset is substituted here rather than typed into the page. See
+# _build/skydata.py for why that mattered enough to change.
+_sky = json.dumps(json.load(open('assets/sky.json', encoding='utf-8')),
+                  separators=(',', ':'), ensure_ascii=False)
 inject(os.path.join(SRC,'eql-sky-tracker.html'), 'public/tools/plane-of-sky.html', '../',
        'Tools', 'tools/index.html', 'Plane of Sky tracker', own_bar=True,
-       og_card='tools', canon='tools/plane-of-sky')
+       og_card='tools', canon='tools/plane-of-sky',
+       subs=[('/*__SKY_DATA__*/null', _sky)])
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/race-unlocks.html', '../',
        'Tools', 'tools/index.html', 'Race unlock tracker',
        extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
