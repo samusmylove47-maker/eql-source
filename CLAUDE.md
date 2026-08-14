@@ -2,7 +2,11 @@
 
 A reference site for EverQuest Legends: dungeon surveys, 3D raid
 encounter guides, and progression tools. Static HTML, no server, no database.
-Netlify publishes on every merge to `main`.
+**Cloudflare** publishes on every merge to `main` — the host is a Worker with
+static assets, configured by `wrangler.jsonc`. This file said *Netlify* until
+14 August 2026 and it was wrong: `curl -I https://eqlsource.com` answers
+`Server: cloudflare`. `netlify.toml` is still in the repo and its headers and
+redirects are **inert**; treat it as history until it is removed deliberately.
 
 Read this before your first edit in a session. For what to do, read `HANDOFF.md`
 then `docs/BACKLOG.md`. For design work, `docs/DESIGN.md` is binding.

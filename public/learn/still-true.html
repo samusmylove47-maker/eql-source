@@ -81,8 +81,8 @@
       The wiki cannot tell you which is which, because large parts of the wiki <em>are</em> the old
       text. This page is the register: one entry per piece of inherited advice, each with its
       evidence, its date, and what it would take to settle it.</p>
-    <p class="hero-sig"><span>8 entries</span>
-      <span>6 changed</span><span>2 open</span>
+    <p class="hero-sig"><span>10 entries</span>
+      <span>7 changed</span><span>3 open</span>
       <span>Every gap named</span></p>
   </div>
 </section>
@@ -99,6 +99,36 @@
   <article class="st-entry" id="q1" style="--c:var(--instr)">
     <div class="st-head">
       <span class="st-status">Open</span>
+      <h3>Is haste a percentage, or a flat attack-speed value?</h3>
+    </div>
+    <div class="st-split">
+      <div><h4>What classic did</h4><p>A percentage that divides weapon delay. The formula everyone quotes is <code>new delay = delay / (1 + haste)</code>, with haste as a decimal, and item tooltips read <em>Haste +41%</em>.</p></div>
+      <div><h4>What Legends does</h4><p><strong>The two best sources in this community disagree, and we were republishing one of them without noticing.</strong> EQL Tools states that slow and haste in Legends are <em>flat values on an attack-speed stat</em> &mdash; a mob at 100 attack speed with 60 haste sits at 160, and the numbers add rather than compounding. eqlwiki&rsquo;s own <em>Haste Guide</em>, edited 4 August 2026, still carries the classic percentage formula and cites classic-era raid content around it.</p></div>
+    </div>
+    <p class="st-note">This is not an abstract question for us. <strong>Six Plane of Sky reward tooltips on this site carry percentage haste</strong> &mdash; five of them the identical <em>+41%</em>, which is a copied constant rather than five readings &mdash; and they sat inside the tier our tracker labelled verified. They are marked suspect in place now rather than deleted. An outside audit found this on 14 August 2026 and it was right.</p>
+    <h4 class="st-evh">The evidence</h4>
+    <ul class="st-ev"><li><span class="ev-t">T3</span><span class="ev-s">EQL Tools <em>Slow, haste &amp; crowd control</em>, read 14 Aug 2026</span><span class="ev-d">States flat attack-speed values for Legends, with a worked example.</span></li><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki <em>Haste Guide</em>, read 14 Aug 2026</span><span class="ev-d">Classic percentage formula, and the surrounding content describes classic-era raid targets. Last edited 4 Aug 2026, which is after launch and does not by itself make the mechanic current.</span></li></ul>
+    <p class="st-settle"><strong>What would settle it.</strong> One screenshot of a Legends haste item tooltip. If it reads a bare number rather than a percentage, EQL Tools is right and every percentage figure on this site is a classic import.</p>
+    <p class="st-credit">Found by an outside audit of this site, 14 August 2026, which caught it inside our own verified tier before we did.</p>
+  </article>
+  <article class="st-entry" id="q2" style="--c:var(--warn-t)">
+    <div class="st-head">
+      <span class="st-status">Changed</span>
+      <h3>Do Journeyman&rsquo;s Boots still come from a quest, or do they drop?</h3>
+    </div>
+    <div class="st-split">
+      <div><h4>What classic did</h4><p>On Live in 1999 the boots were made a quest reward on 13 October, and Project 1999 text records that they &ldquo;formerly dropped from Drelzna in Najena&rdquo; before that change. That sentence is imported into eqlwiki&rsquo;s Drelzna page, where it sits inside a structured NPC record and reads like current data.</p></div>
+      <div><h4>What Legends does</h4><p><strong>They drop from Drelzna, and there is no quest.</strong> Reported by our collaborator on 14 August 2026: seen dropping for other players and confirmed by guildmates. eqlwiki&rsquo;s <em>item</em> record agrees, naming Najena and Drelzna as the source.</p></div>
+    </div>
+    <p class="st-note">This is the shape of mistake this register exists for, and an auditor made it in front of us: reading the classic sentence inside the structured NPC page and grading our survey against it. The survey had read the item record and was right. <strong>A tier 5 sentence inside a tier 2 container is the most dangerous object in this ecosystem</strong>, because it wears the wrong clothes.</p>
+    <h4 class="st-evh">The evidence</h4>
+    <ul class="st-ev"><li><span class="ev-t">C</span><span class="ev-s">Our collaborator, 14 Aug 2026</span><span class="ev-d">Has not killed Drelzna personally; has seen the boots drop for others and had it confirmed by guildmates. First-hand but unparsed, so tier C.</span></li><li><span class="ev-t">T2</span><span class="ev-s">eqlwiki <em>Journeyman&rsquo;s Boots</em> item record</span><span class="ev-d">Names Najena and Drelzna as the source.</span></li><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki <em>Drelzna</em> NPC page</span><span class="ev-d">Carries the Project 1999 sentence about the 1999 quest change, verbatim.</span></li></ul>
+    <p class="st-settle"><strong>What would settle it.</strong> One combat log line showing the loot. We have never killed Drelzna in any session we hold, so this stays tier C until a parse replaces it.</p>
+    <p class="st-credit">Reported by our collaborator, 14 August 2026.</p>
+  </article>
+  <article class="st-entry" id="q3" style="--c:var(--instr)">
+    <div class="st-head">
+      <span class="st-status">Open</span>
       <h3>Does Paragon of Spirit stack with Clarity and bard regeneration songs?</h3>
     </div>
     <div class="st-split">
@@ -111,7 +141,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> Cast Paragon of Spirit, then have a bard sing Cantata of Replenishment and an enchanter cast Clarity on the same target. <strong>A screenshot of the buff bar showing all three at once settles it outright.</strong> The combat log adds the timestamps and any overwrite message &mdash; if one displaces another, the log shows the displaced spell wearing off within a second of the new cast rather than at its natural duration.</p>
     <p class="st-credit">Raised in our own play, 10 August 2026, after an AI assistant gave two confident and differently-worded answers.</p>
   </article>
-  <article class="st-entry" id="q2" style="--c:var(--instr)">
+  <article class="st-entry" id="q4" style="--c:var(--instr)">
     <div class="st-head">
       <span class="st-status">Open</span>
       <h3>Do slashing and blunt weapons still suffer underwater?</h3>
@@ -126,7 +156,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> One combat log line showing a slashing or blunt weapon landing normal damage on a mob while submerged. If a penalty exists it should show as a visible drop in average damage against the same mob type fought on land.</p>
     <p class="st-credit">Credited on the credits page.</p>
   </article>
-  <article class="st-entry" id="q3" style="--c:var(--warn-t)">
+  <article class="st-entry" id="q5" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
       <h3>Is a class-locked epic quest closed to everyone else?</h3>
@@ -141,7 +171,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> The same run on a second epic with a different class gate would show whether this is the rule or one quest&rsquo;s wiring. A log of the final turn-in dialogue would raise this from a report to a measurement.</p>
     <p class="st-credit">Credited on the credits page. The same player raised the underwater weapon question above.</p>
   </article>
-  <article class="st-entry" id="q4" style="--c:var(--warn-t)">
+  <article class="st-entry" id="q6" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
       <h3>Does killing a raid boss lock you out for the week?</h3>
@@ -156,7 +186,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> Kill one boss at D0, then open the same boss at D1 and check whether the full loot lockout applies or only the daily one.</p>
     <p class="st-credit">Per-difficulty behaviour reported by a player, 10 August 2026. Credited on the credits page.</p>
   </article>
-  <article class="st-entry" id="q5" style="--c:var(--warn-t)">
+  <article class="st-entry" id="q7" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
       <h3>Can you still plan a character around one class?</h3>
@@ -171,7 +201,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> Settled.</p>
     
   </article>
-  <article class="st-entry" id="q6" style="--c:var(--warn-t)">
+  <article class="st-entry" id="q8" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
       <h3>Does raising the difficulty just make mobs higher level?</h3>
@@ -186,7 +216,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> Settled for D1 and D2. <strong>D3 and D4 hit points are pinned by nobody</strong>, and which class kits attach to which raid boss at D3+ is unpublished. That needs a log from a raid at D3 or D4.</p>
     
   </article>
-  <article class="st-entry" id="q7" style="--c:var(--warn-t)">
+  <article class="st-entry" id="q9" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
       <h3>Do named mobs still have placeholders?</h3>
@@ -201,7 +231,7 @@
     <p class="st-settle"><strong>What would settle it.</strong> Settled by the patch note for all eleven named zones. <strong>What it does not settle is the second half of its own sentence</strong> &mdash; maximum respawn times were lowered and no figures were published, so every respawn on this site is a pre-patch ceiling rather than a current value.</p>
     <p class="st-credit">Patch note supplied by Avenrae, 10 August 2026.</p>
   </article>
-  <article class="st-entry" id="q8" style="--c:var(--warn-t)">
+  <article class="st-entry" id="q10" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
       <h3>Is the Per-Level Hunting Guide still good advice?</h3>
