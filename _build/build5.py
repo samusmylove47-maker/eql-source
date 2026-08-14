@@ -11,11 +11,15 @@ IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 # They stay in index-data.json as a record of what the source row said, and are
 # printed on their parent's page - see assets/catalogue-fixes.json.
 IX['items'] = [i for i in IX['items'] if i.get('kind') != 'fragment']
-NITEMS, NNAMED = len(IX['items']), len(IX['named'])
+# Counted once, in extract.py. Filtering fragments here and not groups was why
+# this page printed 441 while the home page printed 451: two files, two
+# definitions, neither of them reading the `kind` field that exists to settle it.
+NITEMS = IX['counts']['item_rows']
+NNAMED = IX['counts']['named_pages']
 # Two counts, both true, and the site published them for a day without saying
-# which was which: 444 rows because six items drop in two zones each, 438 pages
+# which was which: rows, because some items drop in two zones, against pages,
 # because a page is per name.
-NPAGES = len({i['n'] for i in IX['items']})
+NPAGES = IX['counts']['item_pages']
 # The zone count is printed too. It was typed as "ten" in two sentences on
 # this page and stayed at ten when the site reached thirteen.
 NZONES = len(json.load(open('assets/zones-index.json', encoding='utf-8')))

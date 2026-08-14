@@ -9,7 +9,10 @@ Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 # Counts are read from the mined data, never typed. The Index once published
 # "389 items" while the data held 452 and its own counter said so on screen.
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
-NITEMS, NNAMED = len(IX['items']), len(IX['named'])
+# From extract.py's own count, not counted again here. Counting the raw rows
+# put groups and fragments in the total and printed 451 beside The Index's 441.
+NITEMS = IX['counts']['item_pages']
+NNAMED = IX['counts']['named_pages']
 MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
 BYS = {z['slug']: z for z in Z}
 

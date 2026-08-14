@@ -164,7 +164,30 @@ for it in items:
 order=SLOTS[:-1]+TYPES+["Other"]
 slots=[s for s in order if any(i['s']==s for i in clean)]
 classes=[c for c in ["ALL"]+CLS if any(c in i['c'] for i in clean)]
-json.dump({"items":clean,"named":named,"slots":slots,"classes":classes},
+# ONE DEFINITION OF "HOW MANY ITEMS", COUNTED HERE.
+#
+# Three generators counted this three ways and published two different figures:
+# the home page counted every row including groups and fragments (451), The
+# Index filtered fragments but not groups (441), and the A-Z counted the pages
+# it had just written. An outside audit raised this on 11 August as 452 against
+# 446; the numbers moved and the disagreement did not, because the fix was
+# applied to the numbers rather than to the definition.
+#
+# `kind` already says what a thing is. These counts read it, and every page
+# prints from here instead of counting for itself.
+_items = [i for i in clean if i.get('kind') == 'item']
+counts = {
+    "item_pages":   len({i['n'] for i in _items}),   # one page per name
+    "item_rows":    len(_items),                     # a name in two zones is two rows
+    "item_groups":  len({i['n'] for i in clean if i.get('kind') == 'group'}),
+    "item_fragments": len({i['n'] for i in clean if i.get('kind') == 'fragment'}),
+    "named_pages":  len({n['n'] for n in named}),
+    "named_rows":   len(named),
+}
+json.dump({"items":clean,"named":named,"slots":slots,"classes":classes,
+           "counts":counts},
           open('assets/index-data.json','w',encoding='utf-8',newline='\n'), separators=(',',':'))
-print(f"index-data.json: {len(clean)} items, {len(named)} named, "
+print(f"index-data.json: {counts['item_pages']} item pages "
+      f"({counts['item_rows']} rows, {counts['item_groups']} groups, "
+      f"{counts['item_fragments']} fragments), {counts['named_pages']} named, "
       f"{len(slots)} slots, {len(classes)} class tags")

@@ -171,7 +171,14 @@ for it in IX['items']:
     if src:
         drops_by_mob[(it['z'], src)].append(it)
 
-n_items = 0
+# Counted by extract.py so this page cannot disagree with the home page or The
+# Index, which it did. n_items below still counts what this loop writes, and
+# check.py compares the two - if they ever part, one of them is wrong and we
+# want to know rather than to pick.
+n_items_declared = IX['counts']['item_pages']
+n_groups_declared = IX['counts']['item_groups']
+GROUP_NAMES = {i['n'] for i in IX['items'] if i.get('kind') == 'group'}
+n_items = n_groups = 0
 for name, rows in by_item.items():
     a = rows[0]
     cls = a['c']
@@ -217,7 +224,10 @@ for name, rows in by_item.items():
     s = slug(name)
     open(f'public/items/{s}.html', 'w', encoding='utf-8', newline='\n').write(
         page("item", name, "Item", a['a'], facts, extra, desc[:180], f"items/{s}"))
-    n_items += 1
+    if name in GROUP_NAMES:
+        n_groups += 1
+    else:
+        n_items += 1
 
 # ---- named mobs -------------------------------------------------------------
 n_named = 0
@@ -309,7 +319,8 @@ hub('index.html', 'Every item',
     f'An A to Z list of all {n_items} items recorded across the {len(Z)} surveyed '
     'EverQuest Legends dungeons, each linking to what drops it and where.',
     f'Every one of the {n_items} items the {len(Z)} dungeon surveys record, and the '
-    'zone each drops in.',
+    f'zone each drops in &mdash; plus {n_groups} families the surveys name as a line '
+    'rather than piece by piece.',
     [(esc(n), slug(n), esc(', '.join(sorted({r["zt"] for r in rows}))))
      for n, rows in by_item.items()], 'items')
 
@@ -320,5 +331,11 @@ hub('index.html', 'Every named mob',
     'the zone each spawns in.',
     [(esc(display(m['n'])), slug(m['n']), esc(m['zt'])) for m in IX['named']], 'named')
 
-print(f"item and mob pages: {n_items} items, {n_named} named "
-      f"({n_items + n_named + 2} new crawlable addresses, hubs included)")
+if (n_items, n_groups) != (n_items_declared, n_groups_declared):
+    raise SystemExit(
+        f"build17: wrote {n_items} item and {n_groups} family pages, but "
+        f"extract.py counts {n_items_declared} and {n_groups_declared}. One of "
+        f"them is wrong; do not publish a number until they agree.")
+print(f"item and mob pages: {n_items} items + {n_groups} families, "
+      f"{n_named} named ({n_items + n_groups + n_named + 2} new crawlable "
+      f"addresses, hubs included)")
