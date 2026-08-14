@@ -52,6 +52,65 @@ TONE = {'changed': 'var(--warn-t)', 'same': 'var(--ok)', 'open': 'var(--instr)'}
 
 ENTRIES = [
     dict(status='open',
+         q='Is haste a percentage, or a flat attack-speed value?',
+         classic='A percentage that divides weapon delay. The formula everyone quotes is '
+                 '<code>new delay = delay / (1 + haste)</code>, with haste as a decimal, and '
+                 'item tooltips read <em>Haste +41%</em>.',
+         legends='<strong>The two best sources in this community disagree, and we were '
+                 'republishing one of them without noticing.</strong> EQL Tools states that '
+                 'slow and haste in Legends are <em>flat values on an attack-speed stat</em> '
+                 '&mdash; a mob at 100 attack speed with 60 haste sits at 160, and the numbers '
+                 'add rather than compounding. eqlwiki&rsquo;s own <em>Haste Guide</em>, edited '
+                 '4 August 2026, still carries the classic percentage formula and cites '
+                 'classic-era raid content around it.',
+         note='This is not an abstract question for us. <strong>Six Plane of Sky reward '
+              'tooltips on this site carry percentage haste</strong> &mdash; five of them the '
+              'identical <em>+41%</em>, which is a copied constant rather than five readings '
+              '&mdash; and they sat inside the tier our tracker labelled verified. They are '
+              'marked suspect in place now rather than deleted. An outside audit found this on '
+              '14 August 2026 and it was right.',
+         evidence=[
+             ('T3', 'EQL Tools <em>Slow, haste &amp; crowd control</em>, read 14 Aug 2026',
+              'States flat attack-speed values for Legends, with a worked example.'),
+             ('T5', 'eqlwiki <em>Haste Guide</em>, read 14 Aug 2026',
+              'Classic percentage formula, and the surrounding content describes classic-era '
+              'raid targets. Last edited 4 Aug 2026, which is after launch and does not by '
+              'itself make the mechanic current.'),
+         ],
+         settle='One screenshot of a Legends haste item tooltip. If it reads a bare number '
+                'rather than a percentage, EQL Tools is right and every percentage figure on '
+                'this site is a classic import.',
+         credit='Found by an outside audit of this site, 14 August 2026, which caught it '
+                'inside our own verified tier before we did.'),
+    dict(status='changed',
+         q='Do Journeyman&rsquo;s Boots still come from a quest, or do they drop?',
+         classic='On Live in 1999 the boots were made a quest reward on 13 October, and '
+                 'Project 1999 text records that they &ldquo;formerly dropped from Drelzna in '
+                 'Najena&rdquo; before that change. That sentence is imported into '
+                 'eqlwiki&rsquo;s Drelzna page, where it sits inside a structured NPC record '
+                 'and reads like current data.',
+         legends='<strong>They drop from Drelzna, and there is no quest.</strong> Reported by '
+                 'our collaborator on 14 August 2026: seen dropping for other players and '
+                 'confirmed by guildmates. eqlwiki&rsquo;s <em>item</em> record agrees, naming '
+                 'Najena and Drelzna as the source.',
+         note='This is the shape of mistake this register exists for, and an auditor made it '
+              'in front of us: reading the classic sentence inside the structured NPC page and '
+              'grading our survey against it. The survey had read the item record and was '
+              'right. <strong>A tier 5 sentence inside a tier 2 container is the most '
+              'dangerous object in this ecosystem</strong>, because it wears the wrong clothes.',
+         evidence=[
+             ('C', 'Our collaborator, 14 Aug 2026',
+              'Has not killed Drelzna personally; has seen the boots drop for others and had '
+              'it confirmed by guildmates. First-hand but unparsed, so tier C.'),
+             ('T2', 'eqlwiki <em>Journeyman&rsquo;s Boots</em> item record',
+              'Names Najena and Drelzna as the source.'),
+             ('T5', 'eqlwiki <em>Drelzna</em> NPC page',
+              'Carries the Project 1999 sentence about the 1999 quest change, verbatim.'),
+         ],
+         settle='One combat log line showing the loot. We have never killed Drelzna in any '
+                'session we hold, so this stays tier C until a parse replaces it.',
+         credit='Reported by our collaborator, 14 August 2026.'),
+    dict(status='open',
          q='Does Paragon of Spirit stack with Clarity and bard regeneration songs?',
          classic='On Live EverQuest and on Project 1999 the beastlord line is widely reported to '
                  'occupy its own buff slots, so it stacks with enchanter Clarity and with bard '

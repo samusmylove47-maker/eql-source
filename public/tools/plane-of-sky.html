@@ -139,6 +139,12 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--pa);backg
 .q .rw{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.015em;line-height:1.04;margin:0 0 3px}
 .q .slot{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--pa);margin-bottom:7px}
 .q .st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.55;margin:0 0 11px}
+/* A figure we have reason to believe is a classic import rather than a Legends
+   stat. Kept visible and marked rather than deleted - a marked suspect value is
+   more useful than a hole, and the marking is the product. */
+.q .susn{font-size:12px;line-height:1.5;color:#E0A56B;border-left:2px solid #E0A56B;
+  padding:6px 0 6px 11px;margin:0 0 11px}
+.q .susn strong{color:#F0C89A}
 .q .st.unk{color:var(--warn)}
 .q .say{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--dim);border-top:1px solid var(--line);padding-top:9px;margin-bottom:9px;line-height:1.5;overflow-wrap:anywhere}
 .q .say b{color:var(--mut);font-weight:500}
@@ -258,7 +264,8 @@ footer ul{padding-left:18px;max-width:82ch}footer li{margin-bottom:7px}
   <h3>Where this comes from</h3>
   <ul>
     <li><strong>Turn-ins, all sixteen classes</strong> — eqprogression.com, Plane of Sky Quests / Class Unlocks, read 4 Aug 2026. This is the Legends-simplified structure: a wind rune plus one or two named items, rather than the three or four classic asked for.</li>
-    <li><strong>Reward tooltips</strong> — eqlwiki.com/Plane_of_Sky, revision 151528 (28 Jun 2026). Verified for Bard, Beastlord, Berserker, Cleric, Druid, Enchanter, Magician, Monk, Necromancer and Paladin. Warrior tooltips are cross-read from eqlwiki.com/Warrior_Plane_of_Sky_Tests; that page's <em>turn-ins</em> are still classic and are not used here.</li>
+    <li><strong>Reward tooltips</strong> — eqlwiki.com/Plane_of_Sky, revision 151528 (28 Jun 2026). Read for <span id="vlist">eleven classes</span>. Warrior tooltips are cross-read from eqlwiki.com/Warrior_Plane_of_Sky_Tests; that page's <em>turn-ins</em> are still classic and are not used here.
+      <br><strong>&ldquo;Read&rdquo; is not &ldquo;verified&rdquo;, and this list said the wrong thing until 14 August 2026.</strong> It named ten classes while eleven carried the flag, and the flag itself is one boolean covering a class&rsquo;s turn-ins, rewards, stat blocks and drop sources at once &mdash; so a stat block nobody had checked inherited a badge earned by turn-ins that had been. <strong>Six reward stat blocks carry classic percentage haste and are marked suspect in place</strong>; Legends uses a flat attack-speed value. The list below now prints from the data rather than being typed beside it.</li>
     <li><strong>Flagged in red</strong> — Ranger, Rogue, Shadow Knight, Shaman and Wizard reward tooltips have no confirmed Legends-era stat block. A few partial lines come from the EQL Build Forge item snapshot dated 2 Aug 2026, and two shaman entries show classic numbers. The turn-ins for these classes are still Legends-current; only the stats are unverified. Read them in game and the gap closes.</li>
     <li><strong>Also unconfirmed</strong> — the sub-tester dialogue chain for Ranger, Rogue, Shadow Knight, Shaman and Wizard, and the Gem of Invigoration source on the warrior's Test of Smash.</li>
     <li><strong>A conflict worth knowing</strong> — the wiki's Dangers section says boss NPCs no longer death touch, while the island walkthroughs below it still describe death touch rotations on Keeper of Souls, Spiroc Lord, Bazzt Zzzt, Sister of the Spire and Eye of Veeshan. The Dangers line is the Legends-era edit; the walkthrough prose is inherited classic text. Assume no death touch, but do not stake a corpse recovery on it.</li>
@@ -298,11 +305,11 @@ BST:{label:"Beastlord",abbr:"BST",hub:"Animist Kratho",armor:"Leather",v:1,q:[
  {n:"Test of Azarack",g:"Animist Kratho",say:"azarack",r:"Azarack Skin Wristwraps",s:"Wrist",st:"AC 5 · HP +35 · End +10 · STR +5 · STA +5 · DEX +5 · click Whirl Bolt (240s)",it:[D("Azarack Skin","2","Protector of Sky (boss)"),R("Wind Rune Heda")]},
  {n:"Test of Claw",g:"Animist Kratho",say:"claw",r:"Windhowl + Spirit Render",s:"Primary / Secondary",st:"Windhowl H2H 12 / 22 · HP +55 · End +25 · proc Herikol's Soothing — paired with Spirit Render H2H 10 / 23 · HP 25 · Mana 25 · proc Sha's Lethargy",it:[D("Sphinx Claw","7","Sister of the Spire (boss)"),D("Mithril Bands","8","Eye of Veeshan (final boss)"),E("Brass Knuckles"),R("Wind Rune Izah")]},
  {n:"Test of Harpy",g:"Animist Kratho",say:"harpy",r:"Griffin-Hide Armguards",s:"Arms",st:"AC 6 · STA +4 · WIS +3 · End +15 · all five resists +5",it:[D("Leather Cord","3","Gorgalosk (boss)"),R("Wind Rune Kala")]},
- {n:"Test of Wind",g:"Animist Kratho",say:"wind",r:"Diaphonous Waistband",s:"Waist",st:"AC 5 · STR +5 · WIS +10 · DEX +10 · Haste +41%",haste:41,it:[D("Silken Wrap","6","Bazzt Zzzt (boss)"),R("Wind Rune Geza")]}]},
+ {n:"Test of Wind",g:"Animist Kratho",say:"wind",r:"Diaphonous Waistband",s:"Waist",st:"AC 5 · STR +5 · WIS +10 · DEX +10 · Haste +41%",sus:"classic percentage haste; Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat",haste:41,it:[D("Silken Wrap","6","Bazzt Zzzt (boss)"),R("Wind Rune Geza")]}]},
 BER:{label:"Berserker",abbr:"BER",hub:"Stragen The Hewer",armor:"Chain",v:1,q:[
  {n:"Test of Sharpness",g:"Stragen The Hewer",say:"sharpness",r:"Skycleaver",s:"Primary",st:"2H Slash 30 / 35 · Dmg Bonus 24 · STA +5 · DEX +10 · SV DISEASE +5 · combat effect Haste",it:[D("Djinni War Blade","7","Sister of the Spire (boss)"),E("Efreeti Standard"),R("Wind Rune Jaka")]},
  {n:"Test of Will",g:"Stragen The Hewer",say:"will",r:"Molten Coil",s:"Finger",st:"AC 5 · Mana −55 · STR +6 · STA +5 · AGI +5 · DEX +6 · CHA +10 · SV FIRE +5",it:[D("Pulsating Ruby","6","Bazzt Zzzt (boss)"),R("Wind Rune Ena")]},
- {n:"Test of Ferocity",g:"Stragen The Hewer",say:"ferocity",r:"Sash of Ferocity",s:"Waist",st:"AC 10 · STR +6 · DEX +5 · SV MAGIC +5 · Haste +41%",haste:41,it:[D("High Quality Raiment","5","The Spiroc Lord (boss)"),R("Wind Rune Ozah")]},
+ {n:"Test of Ferocity",g:"Stragen The Hewer",say:"ferocity",r:"Sash of Ferocity",s:"Waist",st:"AC 10 · STR +6 · DEX +5 · SV MAGIC +5 · Haste +41%",sus:"classic percentage haste; Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat",haste:41,it:[D("High Quality Raiment","5","The Spiroc Lord (boss)"),R("Wind Rune Ozah")]},
  {n:"Test of Burden",g:"Stragen The Hewer",say:"burden",r:"Shroud of the Sky",s:"Shoulders",st:"AC 8 · HP +25 · End +25 · STR +7 · WIS +7 · DEX +7 · click Raging Strength (120s)",it:[D("Feathered Cape","3","Gorgalosk (boss)"),R("Wind Rune Azia")]},
  {n:"Test of Blood",g:"Stragen The Hewer",say:"blood",r:"Blood-Drawn Runes",s:"Chest",st:"HP +55 · End +25 · STR +10 · STA +10 · AGI +5 · DEX +10 · HP Regen +10",it:[D("Azarack Blood","2","Protector of Sky (boss)"),R("Wind Rune Lena")]},
  {n:"Test of Fools Errand",g:"Stragen The Hewer",say:"fools errand",r:"Cudgel of the Fool",s:"Primary",st:"2H Blunt 45 / 52 · Dmg Bonus 40 · INT −7 · proc Fury of the Chosen",it:[D("Jester's Mask","4","Keeper of Souls (boss)"),E("Efreeti Great Staff"),R("Wind Rune Dena")]}]},
@@ -317,7 +324,7 @@ DRU:{label:"Druid",abbr:"DRU",hub:"Strandar Pinemist",armor:"Leather",v:1,q:[
  {n:"Test of Wolf",g:"Will Treewalker",say:"choose Will → wolf",r:"Drake-Hide Mask",s:"Face",st:"AC 4 · STR +10 · DEX +10 · WIS +10 · AGI +10 · MANA +10 · SV MAGIC +7",it:[D("Worn Leather Mask","3","Gorgalosk (boss)"),R("Wind Rune Meda")]},
  {n:"Test of Bear",g:"Will Treewalker",say:"choose Will → bear",r:"Nature Walker's Mantle",s:"Shoulders",st:"AC 6 · DEX +4 · WIS +4 · AGI +4 · MANA +50",it:[D("Mantle of Woven Grass","4","Keeper of Souls (boss)"),R("Wind Rune Kala")]},
  {n:"Test of Tree",g:"Will Treewalker",say:"choose Will → tree",r:"Shillelagh",s:"Primary",st:"1H Blunt 10 / 25 · AC 2 · CHA +4 · WIS +9 · AGI +2 · MANA +50 · SV FIRE +5",it:[D("Spiroc Battle Staff","5","The Spiroc Lord (boss)"),D("Efreeti Statuette","4","soul / essence griffons"),R("Wind Rune Azia")]},
- {n:"Test of The Bee",g:"Fenalla Moonshadow",say:"choose Fenalla → bee",r:"Honeycomb Belt",s:"Waist",st:"AC 6 · CHA +2 · WIS +8 · MANA +75 · Haste +26%",haste:26,it:[D("Divine Honeycomb","6","Bazzt Zzzt (boss)"),R("Wind Rune Dena")]},
+ {n:"Test of The Bee",g:"Fenalla Moonshadow",say:"choose Fenalla → bee",r:"Honeycomb Belt",s:"Waist",st:"AC 6 · CHA +2 · WIS +8 · MANA +75 · Haste +26%",sus:"classic percentage haste; Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat",haste:26,it:[D("Divine Honeycomb","6","Bazzt Zzzt (boss)"),R("Wind Rune Dena")]},
  {n:"Test of Eagle",g:"Fenalla Moonshadow",say:"choose Fenalla → eagle",r:"Spiroc Banisher Focus",s:"Primary / Secondary",st:"STR −2 · DEX −2 · WIS +20 · AGI −2 · MANA +10",it:[D("Ethereal Ruby","7","Sister of the Spire (boss)"),D("Spiroc Elder's Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Ena")]},
  {n:"Test of Nature",g:"Fenalla Moonshadow",say:"choose Fenalla → nature",r:"Espri",s:"Primary",st:"1H Slash 10 / 23 · DEX +9 · WIS +9 · MANA +50 · proc Combust",it:[D("Storm Sky Opal","8","Eye of Veeshan (final boss)"),E("Efreeti Scimitar"),R("Wind Rune Izah")]}]},
 ENC:{label:"Enchanter",abbr:"ENC",hub:"Enchanter Jolas",armor:"Silk",v:1,q:[
@@ -341,7 +348,7 @@ MNK:{label:"Monk",abbr:"MNK",hub:"Holwin",armor:"Leather",v:1,q:[
  {n:"Test of Speed",g:"Ton Po",say:"Ton Po → speed",r:"Sandals of Alacrity",s:"Feet",st:"AC 6 · STR +10 · AGI +10 · HP +20 · Alacrity (2 charges)",it:[D("Dove Slippers","5","The Spiroc Lord (boss)"),R("Wind Rune Jaka")]},
  {n:"Test of Tears",g:"Wu the Enlightened",say:"Wu → tears",r:"Ton Po's Shoulder Wraps",s:"Shoulders",st:"AC 8 · STR +4 · DEX +4 · AGI +4 · all five resists +10",it:[D("Silken Wrap","6","Bazzt Zzzt (boss)"),R("Wind Rune Beza")]},
  {n:"Test of Fists",g:"Wu the Enlightened",say:"Wu → fists",r:"Wu's Fist of Mastery",s:"Primary / Secondary",st:"1H Blunt 16 / 22 · NO DROP but tooltip carries no LORE flag",it:[D("Nebulous Sapphire","7","Sister of the Spire (boss)"),E("Brass Knuckles"),R("Wind Rune Neza")]},
- {n:"Test of Tranquility",g:"Wu the Enlightened",say:"Wu → tranquility",r:"Golden Sash of Tranquility",s:"Waist",st:"AC 5 · Haste +41% · STR +15 · DEX +15 · AGI +15",haste:41,it:[D("Tear of Quellious","8","Eye of Veeshan (final boss)"),R("Wind Rune Lena")]}]},
+ {n:"Test of Tranquility",g:"Wu the Enlightened",say:"Wu → tranquility",r:"Golden Sash of Tranquility",s:"Waist",st:"AC 5 · Haste +41% · STR +15 · DEX +15 · AGI +15",sus:"classic percentage haste; Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat",haste:41,it:[D("Tear of Quellious","8","Eye of Veeshan (final boss)"),R("Wind Rune Lena")]}]},
 NEC:{label:"Necromancer",abbr:"NEC",hub:"Drakis Bloodcaster",armor:"Silk",v:1,q:[
  {n:"Test of Flight",g:"Jzil Gsix",say:"choose Jzil → flight",r:"Bloody Griffon-Hide Wrist Guard",s:"Wrist",st:"AC 5 · DEX +5 · CHA +10 · INT +5 · AGI +5 · MANA +25 · Levitate (10 charges)",it:[D("Griffon's Beak","3","Gorgalosk (boss)"),R("Wind Rune Lena")]},
  {n:"Test of Power",g:"Jzil Gsix",say:"choose Jzil → power",r:"Cloak of Spiroc Feathers",s:"Back",st:"AC 6 · STR +5 · STA +6 · INT +5 · MANA +50",it:[D("Black Silk Cape","4","Keeper of Souls (boss)"),R("Wind Rune Neza")]},
@@ -350,7 +357,7 @@ NEC:{label:"Necromancer",abbr:"NEC",hub:"Drakis Bloodcaster",armor:"Silk",v:1,q:
  {n:"Test of Finger",g:"Dugaas Helpyre",say:"choose Dugaas → finger",r:"Band of Wailing Winds",s:"Finger",st:"AC 2 · INT +5 · MANA +50 · Invoke Fear (3 charges)",it:[D("Ring of Veeshan","7","Sister of the Spire (boss)"),R("Wind Rune Caza")]},
  {n:"Test of Hands",g:"Dugaas Helpyre",say:"choose Dugaas → hands",r:"Gorgon Head Staff",s:"Primary",st:"2H Blunt 14 / 41 · INT +15 · MANA +75 · SV DISEASE +25 · proc Tishan's Clash",it:[D("Gorgon Head","3","Gorgalosk (boss)"),E("Efreeti Great Staff"),R("Wind Rune Fana")]}]},
 PAL:{label:"Paladin",abbr:"PAL",hub:"Dason Goldblade",armor:"Plate",v:1,q:[
- {n:"Test of Spirit",g:"Dirkog Steelhand",say:"tested by Dirkog → spirit",r:"Girdle of Faith",s:"Waist",st:"AC 10 · STR +6 · WIS +6 · AGI +6 · Haste +41%",haste:41,it:[D("Ivory Sky Diamond","5","The Spiroc Lord (boss)"),R("Wind Rune Lena")]},
+ {n:"Test of Spirit",g:"Dirkog Steelhand",say:"tested by Dirkog → spirit",r:"Girdle of Faith",s:"Waist",st:"AC 10 · STR +6 · WIS +6 · AGI +6 · Haste +41%",sus:"classic percentage haste; Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat",haste:41,it:[D("Ivory Sky Diamond","5","The Spiroc Lord (boss)"),R("Wind Rune Lena")]},
  {n:"Test of Sacrifice",g:"Gregori Lightbringer",say:"tested by Gregori → sacrifice",r:"Aldryn, Blade of the Ocean",s:"Primary",st:"1H Slash 20 / 26 · STR +10 · STA +10 · WIS +8",it:[D("Bixie Sword Blade","6","Bazzt Zzzt (boss)"),R("Wind Rune Ozah")]},
  {n:"Test of Love",g:"Gregori Lightbringer",say:"tested by Gregori → love",r:"Thelvorn, Blade of Light",s:"Primary",st:"1H Slash 20 / 26 · WIS +15 · proc Dismiss Summoned",it:[D("Golden Hilt","7","drake / sphinx / spirit trash"),D("Sphinx Claw","7","Sister of the Spire (boss)"),R("Wind Rune Geza")]},
  {n:"Test of Compassion",g:"Gregori Lightbringer",say:"tested by Gregori → compassion",r:"Truvinan",s:"Primary",st:"2H Slash 32 / 40 · proc Dismiss Undead",it:[D("Large Sky Diamond","8","Eye of Veeshan (final boss)"),E("Efreeti Zweihander"),R("Wind Rune Izah")]}]},
@@ -387,7 +394,7 @@ WAR:{label:"Warrior",abbr:"WAR",hub:"Torgon Blademaster",armor:"Plate",v:1,q:[
  {n:"Test of Skill",g:"Falorn",say:"tested by Falorn → test of blades → skill",r:"Azure Ruby Ring",s:"Finger",st:"AC 5 · STR +6 · DEX +9 · STA +6",it:[D("Azure Ring","3","Gorgalosk (boss)"),R("Wind Rune Neza")]},
  {n:"Test of Force",g:"Falorn",say:"… test of blades → force",r:"Pauldrons of the Blue Sky",s:"Shoulders",st:"AC 12 · STR +8 · DEX +10 · STA +7 · AGI +10 · Spirit of Cheetah (3 charges)",it:[D("Spiroc Air Totem","5","The Spiroc Lord (boss)"),R("Wind Rune Beza")]},
  {n:"Test of Strength",g:"Falorn",say:"… test of blades → strength",r:"Runed Wind Amulet",s:"Neck",st:"AC 6 · STR +7 · AGI +7 · HP +40",it:[D("Stone Amulet","4","Keeper of Souls (boss)"),R("Wind Rune Azia")]},
- {n:"Test of Think",g:"Ogog",say:"tested by ogog → ready for ogog → think",r:"Belt of the Four Winds",s:"Waist",st:"AC 5 · STR +12 · DEX +6 · STA +12 · AGI +6 · SV MAGIC +5 · Haste +41%",haste:41,it:[E("Efreeti Belt"),D("Wind Tablet","6","Bazzt Zzzt (boss)"),R("Wind Rune Fana")]},
+ {n:"Test of Think",g:"Ogog",say:"tested by ogog → ready for ogog → think",r:"Belt of the Four Winds",s:"Waist",st:"AC 5 · STR +12 · DEX +6 · STA +12 · AGI +6 · SV MAGIC +5 · Haste +41%",sus:"classic percentage haste; Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat",haste:41,it:[E("Efreeti Belt"),D("Wind Tablet","6","Bazzt Zzzt (boss)"),R("Wind Rune Fana")]},
  {n:"Test of Smash",g:"Ogog",say:"… ready for ogog → smash",r:"Dagas",s:"Primary / Secondary",st:"1H Slash 11 / 21 · AC 20 · STR +3 · AGI +2 · HP +100 · Lore Equipped",it:[D("Djinni War Blade","7","Sister of the Spire (boss)"),D("Gem of Invigoration","7","drake / sphinx / spirit trash","source unconfirmed"),R("Wind Rune Jaka")]},
  {n:"Test of Bash",g:"Ogog",say:"… ready for ogog → bash",r:"Fangol",s:"Primary",st:"2H Slash 29 / 35 · STR +3 · DEX +10 · STA +10 · SV POISON +5 · proc Fangol's Breath",it:[E("Efreeti Battle Axe"),D("Ethereal Emerald","8","Eye of Veeshan (final boss)"),R("Wind Rune Dena")]}]},
 WIZ:{label:"Wizard",abbr:"WIZ",hub:"Wizard Schrock",armor:"Silk",v:0,q:[
@@ -656,6 +663,7 @@ function card(c,q,qi){
     <h3 class="rw">${esc(q.r)}</h3>
     <div class="slot">${esc(q.s)}</div>
     <p class="st ${q.st?"":"unk"}">${q.st?esc(q.st):"Legends tooltip not yet verified — turn-ins below are current"}</p>
+    ${q.sus?`<p class="susn"><strong>Suspect figure.</strong> ${esc(q.sus)}. <span class="tier t5">T5</span></p>`:""}
     <div class="say"><b>Say:</b> ${esc(q.say)}</div>
     <ul class="comps">${comps}</ul>
     <div class="foot">
@@ -711,6 +719,16 @@ $("#btn-copy").onclick=async()=>{
   $("#btn-copy").textContent=ok?"Copied":"Press Ctrl+C";
   setTimeout(()=>{$("#btn-copy").textContent="Copy link";},1800);};
 document.addEventListener("keydown",e=>{if(e.key==="Escape")$("#share").classList.add("hidden");});
+
+/* The sourcing note used to name the read classes in prose. It said ten while
+   eleven carried the flag - the same fault the rest of this site keeps finding,
+   a list typed beside the data it describes. Printed from CLASSES now, so it
+   cannot drift again. */
+(function(){
+  const el=document.getElementById("vlist"); if(!el) return;
+  const names=Object.keys(CLASSES).filter(k=>CLASSES[k].v).map(k=>CLASSES[k].label).sort();
+  el.textContent=names.slice(0,-1).join(", ")+" and "+names[names.length-1];
+})();
 
 (async()=>{
   let ok=decodeState(location.hash);
