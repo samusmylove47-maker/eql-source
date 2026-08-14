@@ -61,6 +61,19 @@ def main():
     for i in IX['items']:
         if i.get('kind') != 'fragment':
             items.setdefault(key(i['n']), i['n'])
+
+    # THE PLANAR SETS ARE A SECOND CATALOGUE.
+    # index-data.json is mined from the dungeon surveys, so it does not contain
+    # a single planar armour piece - those live in planar.json and are rendered
+    # by the gear tool and /sets/. Matching against the surveys alone threw all
+    # 86 measured planar set drops away as "trash", including the first
+    # evidence anyone has of WHICH boss drops which set. The gear tool could
+    # say what to chase and never where.
+    try:
+        for i in json.load(open('assets/planar.json', encoding='utf-8'))['items']:
+            items.setdefault(key(i['n']), i['n'])
+    except (OSError, ValueError, KeyError):
+        pass
     named = {}
     for n in IX['named']:
         named.setdefault(key(n['n']), n['n'])
@@ -79,9 +92,22 @@ def main():
                 if ik not in items:
                     unmatched += count
                     continue
-                if mk not in named:
-                    continue
-                p = pair[(named[mk], items[ik])]
+                # A MOB WE HAVE NOT SURVEYED STILL DROPPED THE THING.
+                # This required the mob to already appear in a survey roster,
+                # which meant measured evidence could only ever confirm what we
+                # had typed and never add to it. Every Plane of Fear and Plane
+                # of Hate boss failed that test - we have rosters for nine of
+                # them and killed twenty - so the first measured drops anyone
+                # has for Innoruuk's court were discarded on the way past.
+                #
+                # measured.json's mob table has already applied the "is it a
+                # mob" test, so a name here is evidence, not a guess. Where we
+                # have a roster the roster's spelling wins, for consistency
+                # with the rest of the site; otherwise the log names it and the
+                # pair is marked so a page can say where the name came from.
+                off_roster = mk not in named
+                p = pair[(named.get(mk, mob), items[ik])]
+                p['off_roster'] = off_roster
                 p['n'] += count
                 if stamp not in p['sessions']:
                     p['sessions'].append(stamp)
@@ -89,8 +115,11 @@ def main():
     by_named = collections.defaultdict(list)
     by_item = collections.defaultdict(list)
     for (mob, item), v in sorted(pair.items(), key=lambda kv: (-kv[1]['n'], kv[0])):
-        by_named[mob].append({'item': item, 'n': v['n'], 'sessions': v['sessions']})
-        by_item[item].append({'mob': mob, 'n': v['n'], 'sessions': v['sessions']})
+        rec = {'n': v['n'], 'sessions': v['sessions']}
+        if v.get('off_roster'):
+            rec['off_roster'] = True     # named by the log, not by a survey
+        by_named[mob].append(dict(item=item, **rec))
+        by_item[item].append(dict(mob=mob, **rec))
 
     out = {
         '_comment': [

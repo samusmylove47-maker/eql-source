@@ -65,9 +65,21 @@ NOT_A_ZONE = ('an area where',)
 
 # The bosses worth tracking. Anything else in a log is a grinding session and
 # belongs to logstats.py.
+# EXACTLY as the game writes them. "Cazic Thule" and "Innoruuk" were guesses
+# and neither ever matched a line: the game writes "Cazic-Thule" with a hyphen
+# and "Innoruuk, the Prince of Hate" in full. Both gods were killed on 12 and 13
+# August and this file recorded nothing, because a boss whose name is wrong is
+# indistinguishable from a boss nobody fought.
 BOSSES = ["Master Yael", "Lord Nagafen", "Lady Vox", "Phinigel Autropos",
-          "Cazic Thule", "Innoruuk", "Maestro of Rancor", "Fright", "Dread",
-          "Terror", "a dracoliche"]
+          "a dracoliche",
+          # Plane of Fear
+          "Cazic-Thule", "Dread", "Fright", "Terror",
+          # Plane of Hate
+          "Innoruuk, the Prince of Hate", "Avatar of Abhorrence",
+          "Maestro of Rancor", "Lord of Ire", "Lord of Loathing",
+          "Master of Spite", "Mistress of Scorn", "High Priest M`kari",
+          "Magi P`tasa", "Grandmaster R`tal", "Coercer T`vala",
+          "Ashenbone Broodmaster"]
 
 TIER_NAME = {"1": "Awakened", "2": "Adaptive", "3": "Fused", "4": "Refined"}
 
@@ -208,14 +220,18 @@ def fmt(f):
               if k not in mine and not re.match(r'^(a|an|the)\s', k, re.I)]
     return {
         "boss": f['boss'], "zone": f['zone'], "character": f['character'],
+        # Needed to tell one fight logged twice from the same boss killed twice.
+        "start_ts": f['start'],
         "attackers": 1 + len(others),
         "other_players": len(others),
         "our_damage_share_pct": round(100 * ours / total, 1),
-        # >20s of the boss acting before we landed a hit means we arrived after
-        # it was engaged, and the damage total is a floor. 20s absorbs a normal
-        # opening where the boss swings first.
+        # Late RELATIVE TO THE FIGHT, not in absolute seconds. A flat 20s
+        # threshold marked a 273-second kill as partial because the boss was
+        # already swinging at somebody when we arrived, which is simply what
+        # walking into a fifteen-player raid looks like. Missing a quarter of
+        # the fight is what makes a total a floor.
         "joined_late_seconds": late,
-        "damage_is_floor": late is not None and late > 20,
+        "damage_is_floor": late is not None and secs and late > max(20, 0.25 * secs),
         "date": t(f['end'], '%a %b %d %H:%M:%S %Y').strftime('%d %b %Y'),
         "difficulty": num, "difficulty_label": label,
         "group_instance": " - Group" in (f['zone'] or ""),
@@ -242,11 +258,43 @@ def merge(rows):
     differ by however much each missed. That difference is this method's error
     bar, measured rather than assumed.
     """
-    g = collections.defaultdict(list)
+    # SAME FIGHT, NOT SAME DAY.
+    # This keyed on (boss, difficulty, date) alone, which was right while we
+    # killed each boss once per tier per night. In the planes the raid killed
+    # the same lieutenant several times in an evening, and two separate kills
+    # merged into one "fight" with a fabricated range - Lord of Ire published
+    # as "61,014-401,708, two clients 84.8% apart" on a night when only one
+    # character was logging at all.
+    #
+    # Two clients of ONE fight start within seconds of each other and are
+    # different characters. The same character killing a boss twice is always
+    # two fights, however close together.
+    def same_fight(a, b):
+        if a['character'] == b['character']:
+            return False
+        try:
+            ta = datetime.datetime.strptime(a['start_ts'], '%a %b %d %H:%M:%S %Y')
+            tb = datetime.datetime.strptime(b['start_ts'], '%a %b %d %H:%M:%S %Y')
+        except (KeyError, ValueError):
+            return True          # no timestamps: fall back to the old behaviour
+        return abs((ta - tb).total_seconds()) <= 120
+
+    buckets = collections.defaultdict(list)
     for r in rows:
-        g[(r['boss'], r['difficulty'], r['date'])].append(r)
+        bucket = buckets[(r['boss'], r['difficulty'], r['date'])]
+        for grp in bucket:
+            if any(same_fight(r, o) for o in grp):
+                grp.append(r)
+                break
+        else:
+            bucket.append([r])
+    # flatten to one entry per fight, so the loop below is unchanged
+    g = []
+    for (boss, diff, date), groups in buckets.items():
+        for obs in groups:
+            g.append((boss, diff, date, obs))
     out = []
-    for (boss, diff, date), obs in g.items():
+    for boss, diff, date, obs in g:
         dmg = [o['damage_to_kill'] for o in obs]
         spells = {}
         for o in obs:
@@ -280,6 +328,34 @@ def merge(rows):
             "self_heal_low": min(heals), "self_heal_high": max(heals),
             "melee_verbs": sorted({v for o in obs for v in o['melee_verbs']}),
         })
+    # A CLIENT THAT SAW FEW ATTACKERS SAW LITTLE OF THE FIGHT.
+    #
+    # Joining late is not the only way to under-witness a raid. In a fifteen
+    # player raid spread across a plane, a client in the wrong place logs a
+    # fraction of the damage without ever being late.
+    #
+    # The evidence is in the file itself. Where two kills of one boss at one
+    # tier were both witnessed with a similar attacker count, the totals agree:
+    # Master Yael at D1, six attackers both times, 1.1x apart. Where one kill
+    # saw two attackers and the other twelve, they are 60x apart. So the
+    # attacker count is the tell, and the fullest view of a boss at a tier is
+    # the one to trust.
+    best = {}
+    for r in out:
+        k = (r['boss'], r['difficulty'])
+        if r['attackers'] > best.get(k, (0,))[0]:
+            best[k] = (r['attackers'], r['damage_low'])
+    for r in out:
+        k = (r['boss'], r['difficulty'])
+        fuller = best.get(k, (0, 0))[0]
+        if r['attackers'] < fuller:
+            r['damage_is_floor'] = True
+            r['partial_reason'] = (
+                f"saw {r['attackers']} attackers where another kill of this boss "
+                f"at this tier saw {fuller}")
+        elif r.get('damage_is_floor'):
+            r['partial_reason'] = (
+                f"joined {r.get('joined_late_seconds')}s after the boss was engaged")
     out.sort(key=lambda r: (r['boss'],
                             r['difficulty'] if r['difficulty'] is not None else -1))
     return out

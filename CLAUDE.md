@@ -418,9 +418,26 @@ These close with evidence, not tidying.
   every six seconds for the same 22 hit points** — a recurring drain, not ten
   decisions. The same shape appears on Vox at her top tier.
 
-  Which kits attach to the *plane* bosses at D3+ is still unpublished, and
+  **The plane-boss half closed 14 Aug 2026.** Cazic-Thule was killed at D2, D3
+  and D4 and Innoruuk at D3 and D4, along with ten of Innoruuk's court, and
+  every spell each cast is in `assets/raids-measured.json`. Cazic-Thule runs a
+  shadow-knight-flavoured kit — `Harm Touch`, `Life Leech`, `Dooming Darkness`,
+  `Shadow Vortex` — and **heals itself sixteen times at D2**, which is the
+  strongest evidence yet that self-healing is not tier-gated. Innoruuk mixes
+  wizard (`Ice Comet`, `Wrath of Al`Kabor`), shaman (`Malosi`, `Plague`,
+  `Gale of Poison`) and priest (`Superior Healing`) in one fight, which is the
+  published triple-class claim showing up in a log for the first time.
+
   D3/D4 hit points are still not pinned by anyone: damage to kill is an upper
   bound, not HP.
+
+  **A single client under-witnesses a large raid, and the attacker count is how
+  you tell.** Where two kills of one boss at one tier were both logged with a
+  similar attacker count the totals agree — Master Yael at D1, six attackers
+  both times, 1.1x apart. Where one client saw two attackers and the other
+  twelve, the same boss at the same tier came out **60x apart**. `raidstats.py`
+  marks the thinner view `damage_is_floor` and records why. Trust the fullest
+  view of a boss at a tier and treat the rest as lower bounds.
 
   **The general lesson, because it has now cost two retractions in one day:**
   a log records what its own character witnessed and who else was present. Read

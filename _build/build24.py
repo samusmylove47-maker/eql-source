@@ -25,6 +25,35 @@ from _partials import head, bar, foot
 
 P = json.load(open('assets/planar.json', encoding='utf-8'))
 ITEMS, SETCLASS = P['items'], P['setClass']
+
+# WHERE EACH SET ACTUALLY DROPS.
+# Every stat here is a classic-era item record read off a wiki page. Until 14
+# August nothing on this site could say where a single one of these pieces
+# comes from in Legends - the tool ranked 116 pieces and could not name one
+# source. These are our own kills: a count of what we watched drop, and from
+# what. A count, never a rate.
+def _keyname(s):
+    s = re.sub(r'\s*\+\d+\s*$', '', s or '')
+    s = re.sub(r'^(a|an|the)\s+', '', s.strip(), flags=re.I)
+    return re.sub(r'[^a-z0-9]+', '', s.lower())
+
+
+SET_DROPS = collections.defaultdict(collections.Counter)   # set -> mob -> n
+SET_ZONES = collections.defaultdict(collections.Counter)   # set -> zone -> n
+try:
+    _S = json.load(open('assets/sightings.json', encoding='utf-8'))
+    _byname = {_keyname(i['n']): i['set'] for i in ITEMS}
+    for _item, _rows in _S.get('by_item', {}).items():
+        _set = _byname.get(_keyname(_item))
+        if not _set:
+            continue
+        for _r in _rows:
+            SET_DROPS[_set][_r['mob']] += _r['n']
+            for _s in _r.get('sessions', []):
+                if _s.get('zone'):
+                    SET_ZONES[_set][_s['zone']] += 1
+except (OSError, ValueError):
+    pass
 CLASS_NAME = P['classNames']
 SLOTS = P['slots']
 
@@ -43,6 +72,10 @@ order = sorted(by_set, key=lambda s: (SETCLASS.get(s) is not None,
 
 def slug(s):
     return re.sub(r'[^a-z0-9]+', '-', s.lower()).strip('-')
+
+
+def esc_mob(s):
+    return (str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;'))
 
 
 CSS = '''<style>
@@ -66,6 +99,9 @@ CSS = '''<style>
   text-transform:uppercase;padding:6px 10px;border:1px solid var(--rule);color:var(--mut);
   text-decoration:none}
 .setnav a:hover{border-color:var(--bone);color:var(--bone)}
+.seen{font-size:13.5px;color:var(--dim);margin:6px 0 0;line-height:1.55;max-width:76ch}
+.seen b{color:var(--bone)}
+.seen.none{color:var(--faint);font-style:italic}
 .tw{overflow-x:auto}
 </style>'''
 
@@ -92,9 +128,21 @@ for s in order:
             f'{"Beastlord and Berserker did not exist in classic EverQuest, which is why their "
                "sets are the least documented." if cls in ("BST", "BER") else
                "The rest are not on the source."}</p>')
+    drops = SET_DROPS.get(s)
+    if drops:
+        top = drops.most_common(6)
+        zones = ', '.join(z for z, _ in SET_ZONES.get(s, collections.Counter()).most_common(2))
+        seen = ('<p class="seen"><b>We have watched this drop</b> '
+                + ', '.join(f'{esc_mob(m)} &times;{n}' for m, n in top)
+                + (f' &mdash; {esc_mob(zones)}' if zones else '')
+                + '. <span class="tier tM">TIER M</span> Counts from our own kills, '
+                  'never a rate.</p>')
+    else:
+        seen = ('<p class="seen none">We have not watched any piece of this set drop. '
+                'That is a gap in our logs, not evidence the set is hard to get.</p>')
     blocks.append(
         f'<section class="setblk" id="{slug(s)}">'
-        f'<h2>{s}</h2><p class="who">{who} &middot; {len(rows)} recorded</p>'
+        f'<h2>{s}</h2><p class="who">{who} &middot; {len(rows)} recorded</p>{seen}'
         f'<div class="tw"><table class="ps">'
         f'<thead><tr><th>Piece</th><th>Slot</th><th>Stats</th></tr></thead>'
         f'<tbody>{body}</tbody></table></div>{note}</section>')

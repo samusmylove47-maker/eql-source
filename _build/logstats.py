@@ -88,6 +88,10 @@ NOT_A_ZONE = re.compile(r'^an area where ', re.I)
 STAMP = re.compile(r'ATTN Claude:\s*(.+?)\'?\s*$')
 SLAIN_BY_YOU = re.compile(r'^You have slain (.+?)!')
 SLAIN = re.compile(r'^(.+?) has been slain')
+# "<someone> <verb> a|an|the <something> for N points" - one person hitting a
+# mob. Both melee and spell damage lines take this shape.
+ATTACKS_A_MOB = re.compile(
+    rf'^(.{{1,44}}?) (?:{VERBS}(?:es|s)?|hit) (?:a|an|the)\s.+? for \d+ points?', re.I)
 HIT_YOU = re.compile(rf'^(.{{1,44}}?) ({VERBS}(?:es|s)?) YOU for (\d+)')
 MISS_YOU = re.compile(rf'^(.{{1,44}}?) tries to {VERBS} YOU, but')
 YOU_HIT = re.compile(rf'^You {VERBS}(?:es|s)? (.+?) for (\d+)')
@@ -278,6 +282,29 @@ def collect(rows, character=None):
             m = rx.match(x)
             if m:
                 players.add(m.group(1).strip())
+
+    # THE ONE THAT CAUGHT NOBODY UNTIL WE RAIDED WITH STRANGERS.
+    # Healing us, chatting and group-casting all identify a companion. A
+    # stranger in a public raid does none of them, so three of them - one of
+    # whom died and so produced "<name> has been slain" - reached the named-mob
+    # table of two published pages.
+    #
+    # Positive evidence again, and it is unambiguous: THEY ATTACK MOBS AND
+    # NEVER ATTACK US. Nothing hostile to us spends a raid hitting the same
+    # things we are hitting. A pet does, but a pet is written with an article
+    # and a person's name never is.
+    attacks_mobs, attacks_us = set(), set()
+    for _w, x in rows:
+        m = ATTACKS_A_MOB.match(x)
+        if m:
+            who = m.group(1).strip()
+            if not ARTICLE.match(who) and not who.startswith('You'):
+                attacks_mobs.add(who)
+        for rx in (HIT_YOU, MISS_YOU):
+            m = rx.match(x)
+            if m:
+                attacks_us.add(m.group(1).strip())
+    players |= (attacks_mobs - attacks_us)
     mobs -= players
 
     # Character context is usually stamped before zoning in — the trio and level
@@ -391,7 +418,13 @@ def collect(rows, character=None):
             cur['_scream_at'] = None
         m = RESISTED.match(x)
         if m:
-            ctl['resists'][m.group(2).strip()][m.group(1).strip()] += 1
+            # A resist line names whoever shrugged the spell off, and in a
+            # public raid that is often another player. The resist table is
+            # about what MOBS resist, and a stranger's name has no business in
+            # it or anywhere else outside the credits.
+            who = m.group(1).strip()
+            if who in mobs:
+                ctl['resists'][m.group(2).strip()][who] += 1
 
         m = FACTION_D.search(x)
         if m:
