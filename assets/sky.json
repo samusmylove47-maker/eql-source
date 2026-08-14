@@ -109,6 +109,24 @@
   "1",
   "any"
  ],
+ "order": [
+  "BRD",
+  "BST",
+  "BER",
+  "CLR",
+  "DRU",
+  "ENC",
+  "MAG",
+  "MNK",
+  "NEC",
+  "PAL",
+  "RNG",
+  "ROG",
+  "SHD",
+  "SHM",
+  "WAR",
+  "WIZ"
+ ],
  "efreeti": {
   "islands": [
    "1.5",
