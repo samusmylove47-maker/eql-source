@@ -135,6 +135,12 @@ def build(raw):
                        reward=facet(FLAT), stats=stats)))
         classes[code] = dict(label=c['label'], abbr=c['abbr'], hub=c['hub'],
                              armor=c['armor'], quests=quests)
+    # The order the class picker lists them in. This was a separate top-level
+    # constant sitting just past CLASSES, it went out with the block that was
+    # replaced, and the picker rendered nothing for a day because ORDER.map on
+    # an undefined ORDER throws before a single button is built. It belongs
+    # with the data it orders.
+    order = sorted(raw['CLASSES'], key=lambda k: raw['CLASSES'][k]['label'])
     return dict(
         _comment=[
             "The Plane of Sky dataset, with a source recorded per claim.",
@@ -145,7 +151,7 @@ def build(raw):
             "'verified' is derived, never typed. See skydata.py for why.",
         ],
         sources=SOURCES,
-        islands=raw['ISLANDS'], ladder=raw['LADDER'],
+        islands=raw['ISLANDS'], ladder=raw['LADDER'], order=order,
         efreeti=dict(islands=raw['EF'], mobs=raw['EFM']),
         classes=classes)
 
@@ -198,6 +204,16 @@ def validate(sky):
         if got[k] != want:
             bad.append(f"invariant {k}: {got[k]}, expected {want}. If this is a "
                        f"deliberate correction, update INVARIANTS and say why.")
+    # The page reads these keys off the top of the dataset. A missing one is
+    # not a data problem, it is a blank tool - which is exactly how the class
+    # picker shipped empty.
+    for k in ('sources', 'islands', 'ladder', 'order', 'efreeti', 'classes'):
+        if k not in sky:
+            bad.append(f"sky.json has no {k!r}; the tracker reads it at load")
+    if set(sky.get('order', [])) != set(sky['classes']):
+        bad.append("order and classes disagree: "
+                   f"{sorted(set(sky['classes']) - set(sky.get('order', [])))} missing "
+                   f"from order")
     slots = collections.Counter()
     for code, c in sky['classes'].items():
         for q in c['quests']:

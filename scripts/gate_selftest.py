@@ -97,6 +97,17 @@ def judge(expect, rc, out):
 
 
 CASES = [
+    # A tool whose data constant went missing. The Sky tracker shipped on 14
+    # August with ORDER undefined: the class picker rendered nothing, the trio
+    # could never reach three, the Build button was permanently disabled, and
+    # check.py passed all 721 pages because nothing here runs a page's
+    # JavaScript. The check that catches it is narrow on purpose; this proves
+    # it is alive.
+    ("a tool's data constant is undefined",
+     "script uses 1 undefined constant(s)",
+     "public/tools/plane-of-sky.html",
+     lambda t: t.replace("const ORDER   = SKY.order;", "", 1)),
+
     # The counts are read from the data, not typed, because this file typed them
     # once and the case silently became a no-op the next time a zone was added —
     # reported as TEST BROKEN rather than caught, which is the good failure, but

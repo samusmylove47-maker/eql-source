@@ -279,6 +279,66 @@ for _folder, _key in (("items", "items"), ("named", "named")):
         fail(f"public/{_folder}/ holds {len(_orphan)} page(s) no longer in the "
              f"data — a rename left them behind: {', '.join(_orphan[:4])}")
 
+# ---- a tool's data constants are all defined --------------------------------
+# On 14 August the Sky tracker's dataset moved out of the page into sky.json.
+# ORDER - the class picker's display order - was a separate top-level constant
+# sitting just past the block that moved, and it went with it. `ORDER.map(...)`
+# on an undefined ORDER throws before a single button is built, so the picker
+# rendered nothing, the trio could never reach three, and the Build button was
+# permanently disabled. **check.py passed all 721 pages while the tool was
+# unusable**, because every check here reads the DOM the page ships and none of
+# them run its JavaScript.
+#
+# This is the cheap 90%: the data constants in these tools are ALL CAPS by
+# convention, so every all-caps identifier the script uses must be declared
+# somewhere in that script. It would have caught ORDER instantly. It does not
+# replace opening the page, and nothing here should be read as proof a tool
+# works - only that it cannot fail this particular way again.
+_JS_GLOBALS = {"JSON", "Math", "Object", "Array", "String", "Number", "Boolean",
+               "Date", "RegExp", "Map", "Set", "Promise", "URL", "URLSearchParams",
+               "Error", "TypeError", "NaN", "Infinity", "IDBKeyRange", "DOMParser",
+               "TextEncoder", "TextDecoder", "Intl", "BigInt", "Symbol", "Proxy",
+               "Reflect", "WeakMap", "WeakSet", "ArrayBuffer", "Uint8Array"}
+_DECL = re.compile(r"\b(?:const|let|var|function|class)\s+([A-Z][A-Z0-9_]{1,})\b")
+# `const EF=[...],EFM="..."` declares two. The second has no keyword in front of
+# it, so it has to be matched separately or it reads as an undefined reference.
+_DECL2 = re.compile(r"[,;]\s*([A-Z][A-Z0-9_]{1,})\s*=")
+_USE = re.compile(r"(?<![.\w$'\"])([A-Z][A-Z0-9_]{1,})\b")
+
+
+def _strip_js(js):
+    """Comments and string literals are not code. Section banners like
+    /* ===== DATA ===== */ and hex colours inside strings were read as
+    references by the first version, which reported 54 faults and zero real
+    ones."""
+    js = re.sub(r"/\*.*?\*/", " ", js, flags=re.S)
+    js = re.sub(r"(?m)//[^\n]*$", " ", js)
+    # Escaped quotes matter: a single \" inside an embedded JSON blob desyncs a
+    # naive "[^"]*" and exposes the whole rest of the line as if it were code,
+    # which reported nineteen faults in a page that had none.
+    js = re.sub(r'"(?:[^"\\\n]|\\.)*"', '""', js)
+    js = re.sub(r"'(?:[^'\\\n]|\\.)*'", '""', js)
+    js = re.sub(r"`(?:[^`\\]|\\.)*`", '""', js, flags=re.S)
+    js = re.sub(r"#[0-9A-Fa-f]{3,8}\b", " ", js)
+    return js
+
+
+for _p in sorted(glob.glob("public/tools/*.html")):
+    _h = open(_p, encoding="utf-8").read()
+    for _m in re.finditer(r"<script\b[^>]*>(.*?)</script>", _h, re.S | re.I):
+        _js = _strip_js(_m.group(1))
+        if len(_js) < 400:
+            continue
+        _declared = set(_DECL.findall(_js)) | set(_DECL2.findall(_js)) | _JS_GLOBALS
+        # a key inside an object literal is not a reference to anything
+        _stripped = re.sub(r"\b([A-Z][A-Z0-9_]{1,})\s*:", "", _js)
+        _used = set(_USE.findall(_stripped))
+        _missing = sorted(_used - _declared)
+        if _missing:
+            fail(f"{page_key(_p) if 'page_key' in dir() else _p}: script uses "
+                 f"{len(_missing)} undefined constant(s) — the tool will throw "
+                 f"before it renders: {', '.join(_missing[:5])}")
+
 # ---- the curated corrections have not gone stale ----------------------------
 # assets/catalogue-fixes.json says of itself: "check.py fails if a name here no
 # longer appears in the data, so this file cannot rot quietly." It did not.
