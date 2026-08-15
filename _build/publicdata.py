@@ -160,6 +160,12 @@ def build_sightings():
 # -------------------------------------------------------------- zones --------
 def build_zones():
     z = json.load(open('assets/zones-index.json', encoding='utf-8'))
+    # Adding an optional field to a v1 file is allowed by the contract on the
+    # file itself: readers ignore keys they do not know. Removing one is not.
+    try:
+        cov = json.load(open('assets/coverage.json', encoding='utf-8'))['zones']
+    except (OSError, ValueError, KeyError):
+        cov = {}
     return wrap(
         'zones', '1.0.0', 'Surveyed dungeons',
         'The zones we have surveyed, with the level band, the experience '
@@ -168,9 +174,18 @@ def build_zones():
                          zem=x.get('zem'), plate=x.get('plate'),
                          verify_level=x.get('verify_level'),
                          verify_gate=x.get('verify_gate'),
+                         coverage=cov.get(x['slug'], {}).get('facets'),
+                         coverage_score=cov.get(x['slug'], {}).get('score'),
                          url=f"{SITE}/dungeons/{x['slug']}") for x in z]),
-        notes=["`verify_level` is full, partial or none. Anything not full "
-               "names its open gate in `verify_gate`.",
+        notes=["`coverage` is the useful one: how much of what a PLAYER needs "
+               "we hold for the zone - bosses, loot, difficulty behaviour, "
+               "which inherited advice is wrong, and farming value. Each facet "
+               "is `measured` from our own logs, `sourced` from a document, or "
+               "`none`. Computed, never typed.",
+               "`verify_level` is sourcing hygiene and a coordinate check, not "
+               "a measure of usefulness. Its third gate asks whether plotted "
+               "coordinates land on drawn floor, so a zone with no plotted "
+               "coordinates can never pass it however much we play there.",
                "Verified means checked against source. It does not mean "
                "complete."])
 

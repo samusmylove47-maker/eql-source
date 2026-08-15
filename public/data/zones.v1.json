@@ -20,7 +20,8 @@
   "Values change as evidence improves. That is the product working, not a breach — watch `hash` if you cache."
  ],
  "notes": [
-  "`verify_level` is full, partial or none. Anything not full names its open gate in `verify_gate`.",
+  "`coverage` is the useful one: how much of what a PLAYER needs we hold for the zone - bosses, loot, difficulty behaviour, which inherited advice is wrong, and farming value. Each facet is `measured` from our own logs, `sourced` from a document, or `none`. Computed, never typed.",
+  "`verify_level` is sourcing hygiene and a coordinate check, not a measure of usefulness. Its third gate asks whether plotted coordinates land on drawn floor, so a zone with no plotted coordinates can never pass it however much we play there.",
   "Verified means checked against source. It does not mean complete."
  ],
  "data": {
@@ -33,6 +34,29 @@
     "plate": 1,
     "verify_level": "full",
     "verify_gate": null,
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "17 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "sourced",
+      "detail": "65 items listed, none seen by us"
+     },
+     "difficulty": {
+      "level": "none",
+      "detail": "never played at a recorded difficulty"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "2 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "sourced",
+      "detail": "ZEM 119, respawn 4:50"
+     }
+    },
+    "coverage_score": 4,
     "url": "https://eqlsource.com/dungeons/najena"
    },
    {
@@ -43,6 +67,29 @@
     "plate": 2,
     "verify_level": "full",
     "verify_gate": null,
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "17 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "sourced",
+      "detail": "24 items listed, none seen by us"
+     },
+     "difficulty": {
+      "level": "none",
+      "detail": "never played at a recorded difficulty"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "sourced",
+      "detail": "ZEM 128, respawn <=22:00"
+     }
+    },
+    "coverage_score": 4,
     "url": "https://eqlsource.com/dungeons/splitpaw"
    },
    {
@@ -53,6 +100,29 @@
     "plate": 3,
     "verify_level": "full",
     "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full and roster re-compared; history from the API — last edited 14 July 2026, revision 157369, by Mandlz; all 18 coordinates land on drawn floor.",
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "19 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "sourced",
+      "detail": "35 items listed, none seen by us"
+     },
+     "difficulty": {
+      "level": "none",
+      "detail": "never played at a recorded difficulty"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "sourced",
+      "detail": "ZEM 119, respawn <=9:00"
+     }
+    },
+    "coverage_score": 4,
     "url": "https://eqlsource.com/dungeons/crushbone"
    },
    {
@@ -63,6 +133,29 @@
     "plate": 4,
     "verify_level": "full",
     "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — all 15 named on the wiki are on the plate and its key items including the Ebon Scythe are indexed; history from the API, last edited 5 August 2026, revision 166594, by Grumpymixon, where the plate had recorded 7 June; all 18 coordinates land on drawn floor.",
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "19 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "40 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D1, D3, D4"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 119, respawn 4:30, 75 mob types measured"
+     }
+    },
+    "coverage_score": 8,
     "url": "https://eqlsource.com/dungeons/befallen"
    },
    {
@@ -73,6 +166,29 @@
     "plate": 5,
     "verify_level": "full",
     "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — all 16 named on the wiki are on the plate and respawn agrees at 22:00; history from the API, revision 165754, 4 August 2026, by Piano, though the only August edits are images so the content dates from 4 July; all 17 coordinates land on drawn floor. Two differ trivially from the wiki — Refugee Splitpaw (mnk) by 13 units, Splitpaw Sharpshooter by 4 — and both readings land on floor, so neither can be shown wrong and both are left as recorded.",
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "18 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "28 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D2, D3"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 119, respawn 22:00, 45 mob types measured"
+     }
+    },
+    "coverage_score": 8,
     "url": "https://eqlsource.com/dungeons/blackburrow"
    },
    {
@@ -83,6 +199,29 @@
     "plate": 6,
     "verify_level": "full",
     "verify_gate": null,
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "25 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "33 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D0, D1"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "3 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 86, respawn 9:28, 87 mob types measured"
+     }
+    },
+    "coverage_score": 8,
     "url": "https://eqlsource.com/dungeons/lowerguk"
    },
    {
@@ -93,6 +232,29 @@
     "plate": 7,
     "verify_level": "full",
     "verify_gate": null,
+    "coverage": {
+     "bosses": {
+      "level": "measured",
+      "detail": "1 boss fought and parsed across 5 kills, tiers D1–D4"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "39 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D0, D1, D2, D3, D4"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "1 inherited claim badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 86, respawn <=22:00, 48 mob types measured"
+     }
+    },
+    "coverage_score": 9,
     "url": "https://eqlsource.com/dungeons/nagafenslair"
    },
    {
@@ -103,6 +265,29 @@
     "plate": 8,
     "verify_level": "full",
     "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — every named mob the wiki lists is on the plate and respawn agrees at 7:48; history from the API, six edits on 8 August, latest revision 168060 at 21:25 by Mandlz, where the plate had recorded 15 July; all 18 coordinates land on drawn floor.",
+    "coverage": {
+     "bosses": {
+      "level": "measured",
+      "detail": "1 boss fought and parsed across 7 kills, tiers D0–D4"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "13 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D0, D1, D2, D3, D4"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 128, respawn 7:48, 38 mob types measured"
+     }
+    },
+    "coverage_score": 9,
     "url": "https://eqlsource.com/dungeons/thehole"
    },
    {
@@ -113,6 +298,29 @@
     "plate": 9,
     "verify_level": "full",
     "verify_gate": "All three gates cleared 9 Aug 2026. Page fetched in full — all 17 named on the wiki are on the plate, respawn agrees at 6:40 and the level range at 4-25; history from the API, current revision 126176, 16 May 2026, by Clowd, and the oldest is 12 February 2024 by P99Wiki>MalleSnow, so the page is a Project 1999 import by the provenance test and the plate already says so in prose; all 19 coordinates land on drawn floor.",
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "19 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "sourced",
+      "detail": "59 items listed, none seen by us"
+     },
+     "difficulty": {
+      "level": "none",
+      "detail": "never played at a recorded difficulty"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "sourced",
+      "detail": "ZEM 128, respawn <=6:40"
+     }
+    },
+    "coverage_score": 4,
     "url": "https://eqlsource.com/dungeons/warrens"
    },
    {
@@ -123,6 +331,29 @@
     "plate": 10,
     "verify_level": "full",
     "verify_gate": null,
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "24 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "40 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D1 only"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "0 inherited claims badged, placeholder model retracted in place"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 121 mob types measured"
+     }
+    },
+    "coverage_score": 8,
     "url": "https://eqlsource.com/dungeons/mistmoore"
    },
    {
@@ -133,6 +364,29 @@
     "plate": 11,
     "verify_level": "none",
     "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded for this zone, so there is nothing to check against the floor. Gates 1 and 2 are done - every boss page was checked against the MediaWiki revision API on 10 Aug 2026 and every one is a Project 1999 import. WHAT IS OURS: 10 measured sessions, 214 kills, 58 mob types, and 16 boss fights including Cazic-Thule at Adaptive, Fused and Refined with his full spell kit.",
+    "coverage": {
+     "bosses": {
+      "level": "measured",
+      "detail": "5 bosses fought and parsed across 18 kills, tiers D2–D4"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "50 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D1, D2, D3, D4"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "4 inherited claims badged"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 82.5, respawn not recorded, 58 mob types measured"
+     }
+    },
+    "coverage_score": 9,
     "url": "https://eqlsource.com/dungeons/planeoffear"
    },
    {
@@ -143,6 +397,29 @@
     "plate": 12,
     "verify_level": "none",
     "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded, so there is nothing to check against the floor. Gates 1 and 2 are done - the boss pages were checked against the revision API on 10 Aug 2026 and are Project 1999 imports. The zone has a second archive, hateplaneb, whose relationship to this one we have not established. WHAT IS OURS: 5 measured sessions, 48 kills, 42 mob types, and 24 boss fights including Innoruuk at Fused and Refined and ten of his court, with which boss drops which planar set.",
+    "coverage": {
+     "bosses": {
+      "level": "measured",
+      "detail": "12 bosses fought and parsed across 24 kills, tiers D3–D4"
+     },
+     "loot": {
+      "level": "measured",
+      "detail": "47 items watched dropping here"
+     },
+     "difficulty": {
+      "level": "measured",
+      "detail": "played and parsed at D1, D3, D4"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "4 inherited claims badged"
+     },
+     "farming": {
+      "level": "measured",
+      "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
+     }
+    },
+    "coverage_score": 9,
     "url": "https://eqlsource.com/dungeons/planeofhate"
    },
    {
@@ -153,9 +430,32 @@
     "plate": 13,
     "verify_level": "none",
     "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but we have never logged a session in this zone: no kill, no drop and no boss fight is measured. This one is accurate.",
+    "coverage": {
+     "bosses": {
+      "level": "sourced",
+      "detail": "14 named on the roster, none fought by us"
+     },
+     "loot": {
+      "level": "none",
+      "detail": "no loot recorded"
+     },
+     "difficulty": {
+      "level": "none",
+      "detail": "never played at a recorded difficulty"
+     },
+     "inherited": {
+      "level": "sourced",
+      "detail": "2 inherited claims badged"
+     },
+     "farming": {
+      "level": "sourced",
+      "detail": "ZEM 139, respawn not recorded"
+     }
+    },
+    "coverage_score": 3,
     "url": "https://eqlsource.com/dungeons/kedgekeep"
    }
   ]
  },
- "hash": "c1aa055362bc7324"
+ "hash": "4447fe2f57940f41"
 }

@@ -11,6 +11,10 @@ cd "$(dirname "$0")"
 # before anything renders it.
 python3 _build/skydata.py
 python3 _build/extract.py
+# Grades each zone on what a PLAYER needs - bosses, loot, difficulty,
+# inherited advice, farming value - computed from the measured data.
+# Runs before build1, which prints it on the plate cards.
+python3 _build/coverage.py
 python3 _build/build1.py
 python3 _build/build2.py
 python3 _build/build3.py
