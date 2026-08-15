@@ -109,6 +109,693 @@
   ]
  },
  {
+  "boss": "Bazzt Zzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 6.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 1,
+  "damage_low": 23321,
+  "damage_high": 23321,
+  "damage_spread_pct": 0.0,
+  "seconds": 45,
+  "spells": {
+   "Rotting Flesh": 1
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "slashes"
+  ]
+ },
+ {
+  "boss": "Bazzt Zzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 3,
+  "other_players": 2,
+  "our_damage_share_pct": 47.9,
+  "damage_is_floor": true,
+  "joined_late_seconds": 7,
+  "damage_low": 26158,
+  "damage_high": 26158,
+  "damage_spread_pct": 0.0,
+  "seconds": 431,
+  "spells": {
+   "Rotting Flesh": 4
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Bazzt Zzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 17.7,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 23769,
+  "damage_high": 23769,
+  "damage_spread_pct": 0.0,
+  "seconds": 64,
+  "spells": {
+   "Rotting Flesh": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 5.8,
+  "damage_is_floor": false,
+  "joined_late_seconds": 2,
+  "damage_low": 18171,
+  "damage_high": 18171,
+  "damage_spread_pct": 0.0,
+  "seconds": 31,
+  "spells": {
+   "Deadly Poison": 19
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "stings"
+  ]
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 6.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 138,
+  "damage_low": 16385,
+  "damage_high": 16385,
+  "damage_spread_pct": 0.0,
+  "seconds": 36,
+  "spells": {
+   "Deadly Poison": 32
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "joined 138s after the boss was engaged"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 18.9,
+  "damage_is_floor": true,
+  "joined_late_seconds": 174,
+  "damage_low": 17914,
+  "damage_high": 17914,
+  "damage_spread_pct": 0.0,
+  "seconds": 103,
+  "spells": {
+   "Deadly Poison": 50
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "joined 174s after the boss was engaged"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 19.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": 363,
+  "damage_low": 18153,
+  "damage_high": 18153,
+  "damage_spread_pct": 0.0,
+  "seconds": 37,
+  "spells": {
+   "Deadly Poison": 31
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "joined 363s after the boss was engaged"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 23.7,
+  "damage_is_floor": true,
+  "joined_late_seconds": 401,
+  "damage_low": 8136,
+  "damage_high": 8136,
+  "damage_spread_pct": 0.0,
+  "seconds": 14,
+  "spells": {
+   "Deadly Poison": 18
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "joined 401s after the boss was engaged"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 24.3,
+  "damage_is_floor": true,
+  "joined_late_seconds": 419,
+  "damage_low": 10935,
+  "damage_high": 10935,
+  "damage_spread_pct": 0.0,
+  "seconds": 26,
+  "spells": {
+   "Deadly Poison": 8
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 49.7,
+  "damage_is_floor": true,
+  "joined_late_seconds": 2,
+  "damage_low": 13023,
+  "damage_high": 13023,
+  "damage_spread_pct": 0.0,
+  "seconds": 60,
+  "spells": {
+   "Deadly Poison": 34
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Bazzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 17.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 2,
+  "damage_low": 20280,
+  "damage_high": 20280,
+  "damage_spread_pct": 0.0,
+  "seconds": 29,
+  "spells": {
+   "Deadly Poison": 13
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Bizazzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 20.8,
+  "damage_is_floor": false,
+  "joined_late_seconds": 1,
+  "damage_low": 9912,
+  "damage_high": 9912,
+  "damage_spread_pct": 0.0,
+  "seconds": 81,
+  "spells": {
+   "Deadly Poison": 43
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ]
+ },
+ {
+  "boss": "Bzizzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 2,
+  "other_players": 1,
+  "our_damage_share_pct": 63.4,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 614,
+  "damage_high": 614,
+  "damage_spread_pct": 0.0,
+  "seconds": 3,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "stings"
+  ]
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 18.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": 3,
+  "damage_low": 13226,
+  "damage_high": 13226,
+  "damage_spread_pct": 0.0,
+  "seconds": 27,
+  "spells": {
+   "Deadly Poison": 39
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ]
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 2.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 32,
+  "damage_low": 10370,
+  "damage_high": 10370,
+  "damage_spread_pct": 0.0,
+  "seconds": 130,
+  "spells": {
+   "Deadly Poison": 139
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 2,
+  "self_heal_high": 2,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "slashes",
+   "stings"
+  ]
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 7.3,
+  "damage_is_floor": true,
+  "joined_late_seconds": 204,
+  "damage_low": 6783,
+  "damage_high": 6783,
+  "damage_spread_pct": 0.0,
+  "seconds": 186,
+  "spells": {
+   "Deadly Poison": 60
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 2,
+  "self_heal_high": 2,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "slashes",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 43.1,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 12834,
+  "damage_high": 12834,
+  "damage_spread_pct": 0.0,
+  "seconds": 31,
+  "spells": {
+   "Deadly Poison": 27
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 61.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 2,
+  "damage_low": 13068,
+  "damage_high": 13068,
+  "damage_spread_pct": 0.0,
+  "seconds": 235,
+  "spells": {
+   "Deadly Poison": 205
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 11.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 5,
+  "damage_low": 17394,
+  "damage_high": 17394,
+  "damage_spread_pct": 0.0,
+  "seconds": 51,
+  "spells": {
+   "Deadly Poison": 57
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
+ },
+ {
+  "boss": "Bzzazzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 8.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 148,
+  "damage_low": 11195,
+  "damage_high": 11195,
+  "damage_spread_pct": 0.0,
+  "seconds": 116,
+  "spells": {
+   "Deadly Poison": 61
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "stings"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
+ },
+ {
+  "boss": "Bzzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 11.8,
+  "damage_is_floor": false,
+  "joined_late_seconds": 1,
+  "damage_low": 10596,
+  "damage_high": 10596,
+  "damage_spread_pct": 0.0,
+  "seconds": 35,
+  "spells": {
+   "Deadly Poison": 20
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "stings"
+  ]
+ },
+ {
+  "boss": "Bzzzt",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 49.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": 1,
+  "damage_low": 17099,
+  "damage_high": 17099,
+  "damage_spread_pct": 0.0,
+  "seconds": 82,
+  "spells": {
+   "Deadly Poison": 49
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "stings"
+  ]
+ },
+ {
   "boss": "Cazic-Thule",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
@@ -481,6 +1168,91 @@
   ]
  },
  {
+  "boss": "Eye of Veeshan",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 42.3,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 18914,
+  "damage_high": 18914,
+  "damage_spread_pct": 0.0,
+  "seconds": 47,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "claws"
+  ]
+ },
+ {
+  "boss": "Eye of Veeshan",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 51.9,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 20109,
+  "damage_high": 20109,
+  "damage_spread_pct": 0.0,
+  "seconds": 85,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "claws",
+   "cleaves"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Eye of Veeshan",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 34.8,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 15267,
+  "damage_high": 15267,
+  "damage_spread_pct": 0.0,
+  "seconds": 55,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "claws"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
   "boss": "Fright",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
@@ -632,6 +1404,67 @@
    "kicks",
    "pet"
   ]
+ },
+ {
+  "boss": "Gorgalosk",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 28.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 20361,
+  "damage_high": 20361,
+  "damage_spread_pct": 0.0,
+  "seconds": 159,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "claws",
+   "cleaves",
+   "kicks"
+  ]
+ },
+ {
+  "boss": "Gorgalosk",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 5.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 18457,
+  "damage_high": 18457,
+  "damage_spread_pct": 0.0,
+  "seconds": 57,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "claws",
+   "cleaves",
+   "kicks"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
   "boss": "Grandmaster R`tal",
@@ -843,6 +1676,67 @@
    "bashes",
    "hits"
   ]
+ },
+ {
+  "boss": "Keeper of Souls",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 29.2,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 22322,
+  "damage_high": 22322,
+  "damage_spread_pct": 0.0,
+  "seconds": 62,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ]
+ },
+ {
+  "boss": "Keeper of Souls",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 40.2,
+  "damage_is_floor": true,
+  "joined_late_seconds": 3,
+  "damage_low": 19006,
+  "damage_high": 19006,
+  "damage_spread_pct": 0.0,
+  "seconds": 67,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
   "boss": "Lady Vox",
@@ -1845,6 +2739,312 @@
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
  },
  {
+  "boss": "Noble Dojorn",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 34.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": 4,
+  "damage_low": 22041,
+  "damage_high": 22041,
+  "damage_spread_pct": 0.0,
+  "seconds": 50,
+  "spells": {
+   "Efreeti Fire": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "punches"
+  ]
+ },
+ {
+  "boss": "Noble Dojorn",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 3,
+  "other_players": 2,
+  "our_damage_share_pct": 63.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": 1,
+  "damage_low": 17516,
+  "damage_high": 17516,
+  "damage_spread_pct": 0.0,
+  "seconds": 82,
+  "spells": {
+   "Efreeti Fire": 3
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "crushes"
+  ],
+  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Noble Dojorn",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 36.8,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 15723,
+  "damage_high": 15723,
+  "damage_spread_pct": 0.0,
+  "seconds": 48,
+  "spells": {
+   "Efreeti Fire": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "pierces",
+   "punches"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Overseer of Air",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 21.3,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 16272,
+  "damage_high": 16272,
+  "damage_spread_pct": 0.0,
+  "seconds": 42,
+  "spells": {
+   "Efreeti Fire": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "pierces"
+  ]
+ },
+ {
+  "boss": "Overseer of Air",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 10.2,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 6504,
+  "damage_high": 6504,
+  "damage_spread_pct": 0.0,
+  "seconds": 38,
+  "spells": {
+   "Efreeti Fire": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "pierces"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Protector of Sky",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 7,
+  "other_players": 6,
+  "our_damage_share_pct": 19.1,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 16350,
+  "damage_high": 16350,
+  "damage_spread_pct": 0.0,
+  "seconds": 24,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "hits"
+  ]
+ },
+ {
+  "boss": "Protector of Sky",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 30.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 11996,
+  "damage_high": 11996,
+  "damage_spread_pct": 0.0,
+  "seconds": 39,
+  "spells": {},
+  "spells_distinct": 0,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "hits"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 7"
+ },
+ {
+  "boss": "Sister of the Spire",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 29.5,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 10197,
+  "damage_high": 10197,
+  "damage_spread_pct": 0.0,
+  "seconds": 37,
+  "spells": {
+   "Entomb in Ice": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ]
+ },
+ {
+  "boss": "Sister of the Spire",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 3,
+  "other_players": 2,
+  "our_damage_share_pct": 43.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 10016,
+  "damage_high": 10016,
+  "damage_spread_pct": 0.0,
+  "seconds": 38,
+  "spells": {
+   "Entomb in Ice": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "kicks",
+   "slashes"
+  ],
+  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Sister of the Spire",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 37.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 7,
+  "damage_low": 6388,
+  "damage_high": 6388,
+  "damage_spread_pct": 0.0,
+  "seconds": 52,
+  "spells": {
+   "Entomb in Ice": 3
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "kicks",
+   "slashes"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
   "boss": "Terror",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
@@ -2030,6 +3230,75 @@
    "kicks",
    "pet"
   ]
+ },
+ {
+  "boss": "The Spiroc Lord",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 21.7,
+  "damage_is_floor": false,
+  "joined_late_seconds": 5,
+  "damage_low": 18505,
+  "damage_high": 18505,
+  "damage_spread_pct": 0.0,
+  "seconds": 44,
+  "spells": {
+   "Ensnare": 3,
+   "Careless Lightning": 1,
+   "Ensnaring Roots": 1,
+   "Call of Flame": 1,
+   "Greater Spiroc Thunder": 1
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "slashes"
+  ]
+ },
+ {
+  "boss": "The Spiroc Lord",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 34.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 4,
+  "damage_low": 22691,
+  "damage_high": 22691,
+  "damage_spread_pct": 0.0,
+  "seconds": 49,
+  "spells": {
+   "Ensnaring Roots": 1,
+   "Ensnare": 1,
+   "Careless Lightning": 1,
+   "Greater Healing": 1,
+   "Greater Spiroc Thunder": 1,
+   "Chloroplast": 1,
+   "Scorching Arrow": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "slashes"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
   "boss": "a dracoliche",

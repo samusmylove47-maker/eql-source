@@ -2172,10 +2172,12 @@
   "The Rathe Mountains": {
    "difficulty": 0,
    "date": "12 Aug 2026",
-   "kills": 3,
+   "kills": 36,
    "per_mob": {},
    "factions": [],
-   "factions_seen": [],
+   "factions_seen": [
+    "Protectors of Gukta"
+   ],
    "falling": [],
    "rising": [],
    "capped_up": [],
@@ -2212,6 +2214,22 @@
    "difficulty": 0,
    "date": "13 Aug 2026",
    "kills": 2,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Plane of Sky": {
+   "difficulty": 0,
+   "date": "14 Aug 2026",
+   "kills": 31,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],

@@ -1,172 +1,88 @@
-# Handoff — current state
+# Handoff — 15 August 2026
 
-**EQL Source** is a reference site for EverQuest Legends, live at
-https://eqlsource.netlify.app.
-
-Read this, then `CLAUDE.md` (the rules), then `docs/BACKLOG.md` (the work).
+Read `CLAUDE.md` first. This file is the current state and the open work.
 
 ---
 
-## Orient first
+## The one thing to understand before you touch anything
 
-```bash
-./build.sh
-```
+The collaborator corrected the project's direction on 14 August and it matters
+more than any task below:
 
-```bash
-python3 scripts/check.py
-```
+> *Few people playing EQ Legends care about plot coordinates… trash monsters are
+> irrelevant. Players only care about bosses, unless it's for farming
+> experience… What our site needs to carry is only data that players care
+> about.*
 
-Then look at `index.html`, `tools/index-search.html` and
-`raids/eye-of-veeshan.html` — a generated marketing page, a data tool, and a 3D
-interactive. That is the range.
+The previous session had drifted into verifying things nobody needed. The
+verification grade literally measured whether plotted coordinates landed on
+drawn floor, so Plane of Fear scored **zero** while holding Cazic-Thule parsed
+at three difficulties.
 
-Report what you found before editing anything.
+`docs/WHAT-COUNTS.md` records the correction. Zones are now graded on
+**bosses, loot, difficulty behaviour, inherited-advice marking and farming
+value**, computed by `_build/coverage.py`. A zone improves by being played, not
+by being edited.
 
----
-
-## What exists
-
-**Five tools.** Plane of Sky class-unlock tracker (95 quests, all 560 trios),
-race unlock tracker (16 races, merged faction routes), race-and-primary
-calculator, The Index (452 items and 208 named mobs across the ten plates), and
-the **Faction Impact Checker** — what grinding a zone does to your standing and
-which unlocks that helps or costs. All client-side, no account, no server.
-
-**Ten dungeon survey plates**, each carrying a floor plan derived from the
-game's own zone mesh, with a height control where the zone stacks. Plus five
-hand-written navigation maps. Plates are hand-written HTML in `_build/source/`;
-the floor plan and any measured sections are injected at build time.
-
-**One 3D raid encounter guide** — Eye of Veeshan, on vendored Three.js with a
-hand-rolled orbit control.
-
-**Zone geometry, ours.** `_build/geometry.py` reads the `.s3d` archives from an
-EverQuest Legends install, parses the `.wld` mesh, keeps up-facing triangles and
-traces the floor boundary. Output is `assets/zone-geometry.json`, committed. The
-archives are Daybreak's and are never committed, and the extraction is run by
-hand so a rebuild works without the game installed. 174 of 174 recorded mob
-positions land on the drawn floor — a real check, since coordinates and geometry
-come from unrelated sources.
-
-**Measured play.** `_build/logstats.py` turns combat logs into
-`assets/measured.json`: per-mob damage, land rates, casts, loot with `+N` tiers,
-faction and experience per kill, control effects, and fights the group broke off.
-`build9.py` writes it onto the matching plate. Logs are gitignored; only the
-derived counts are committed.
-
-**A published accuracy standard** — a five-tier source scale plus **tier M** for
-measured logs, with tiers 3 to 5 carrying visible badges. This is the reason the
-site exists.
+**When proposing work, say who it is for.** "This helps a player pick a camp
+tonight" is a reason. "This makes the data more defensible" is one too — but
+only when a player would feel the difference.
 
 ---
 
-## The three jobs, in priority order
+## Open pull requests
 
-### Job 1 — Aesthetic uplift
-The design is disciplined but monotonous: every section is a heading followed by
-a row of equal-weight cards, and the page reads grey. `docs/DESIGN.md` is a full
-brief with testable direction, and it says which parts are load-bearing and
-which are open. Do not freestyle it.
+- **#78 — Plane of Sky, measured.** Committed, pushed, awaiting merge.
 
-### Job 2 — New sections and tools
-`docs/BACKLOG.md`, prioritised with acceptance criteria. The Faction Impact
-Checker is **built**. The **Difficulty primer** is now the top item and is much
-better supplied than it was: the tier names are known (D0 Base/Normal, D1
-Awakened, D2 Adaptive, D3 Fused, D4 Refined), every log self-identifies its
-difficulty two independent ways, and there is measured evidence of multiclass
-behaviour on trash at D1.
+## Immediate work, in the collaborator's order
 
-### Job 3 — Close verification gaps
-**Done, 9 Aug 2026.** All ten plates have cleared all three gates, and the
-evidence for each is recorded in `verify_gate`. Gate 3 was rewritten that day
-because the old one asked for a collision check against a room list the project
-does not hold; it now asks that every coordinate land on drawn floor, and 176 of
-176 do. `docs/SOURCES.md` carries the reasoning, including what the new gate is
-weaker at. `/verify <zone>` still walks the standard, and re-running it is how a
-zone gets re-checked after its wiki page changes.
+1. **Kedge Keep.** Logs arriving. It is the only zone at 3/10 and the only one
+   with zero measured sessions. `verify_gate` says "nothing here is ours yet"
+   and that is currently accurate.
 
----
+2. **Castle Mistmoore is being revamped on Tuesday 18 August.** We hold 1,008
+   pre-revamp kills across 65 mob types there. **Capture the before/after** —
+   nobody else in this community can make that comparison, and the window
+   closes when the patch lands.
 
-## How to work here
+3. **Rewrite the Plane of Sky page.** `docs/SKY-MEASURED.md` has the findings.
+   The page describes a full-raid zone; three attackers kill its bosses in
+   under 90 seconds. This is a rewrite, not an edit. The strategy brief from the
+   video transcript is sound and stays; the rest is old.
 
-**Build, then check, then commit.** `check.py` is a blocker, never a warning. It
-catches broken links, missing chrome, duplicate zone accents, CDN dependencies,
-and any page claiming more verified plates than the data supports.
+4. **Age-stamp the outgrown zones.** Najena, Splitpaw, Crushbone, The Warrens
+   sit at 4/10 — fully verified under the old standard, never played with
+   logging on. The collaborator's wording: *"updated as of XX/XX — any new
+   information since has not been verified."* **Generate it from the last
+   measured session date** so it cannot go stale by hand.
 
-**The published site is `public/`, and nothing else is deployed.** Generators
-write into it; `assets/*.json`, `_build/`, `docs/`, `scripts/`, `state/` and the
-project docs stay at the root and never reach a host. This replaced a list of
-twelve blacklist rules that only worked while someone remembered to extend it —
-on 8 August 2026 Cloudflare served `CLAUDE.md`, `build.sh` and `docs/BACKLOG.md`
-publicly because those rules were Netlify-specific and did not travel. Host
-**The host is a Worker with static assets, not Pages.** Cloudflare connected
-the repository to a Worker and deploys it with `npx wrangler deploy`, so there
-is no "build output directory" field anywhere in its dashboard — looking for
-one wastes time, and three sets of instructions failed that way. The equivalent
-lives in `wrangler.jsonc` as `assets.directory: ./public`, in the repository
-where it is reviewable. `netlify.toml` keeps `publish = "public"` so moving
-back costs nothing.
+## Standing rules learned the hard way this week
 
-**Never edit generated files.** `dungeons/`, `tools/`, `raids/index.html`,
-`index.html` and `sources.html` are output. Edit `_build/source/` and the
-generators in `_build/`. A rebuild silently discards work done in the wrong
-place, and `check.py` will not catch it.
+- **Never publish a drop rate.** A drop seen once is seen once.
+- **Read who was in the fight.** Every raid-boss kill in every log we hold is a
+  public pick-up raid of 5–15 players, not our trio. `raidstats.py` records
+  `attackers` and `our_damage_share_pct` for this reason.
+- **Other players are never named** outside the credits. Counted, then discarded.
+- **A log records what its own character witnessed.** Where the attacker count
+  is thin, the damage is a floor, not a measurement.
+- **Run `node scripts/toolsmoke.js` after touching anything a tool reads**, and
+  `scripts/toolrender.js` before and after any data migration. A tool shipped
+  dead for a day with 721 green checks because nothing ran its JavaScript.
+- **Do not write regex escapes through a bash heredoc.** It ate `\b` five times.
+  Use the Write tool or a file.
 
-**Branch for content, push freely for fixes.** Anything that changes a published
-claim goes through a pull request. Build fixes and design work can go straight
-to `main` once `check.py` passes.
+## Health
 
-**One task per conversation.**
+723 pages pass `check.py`. 17 gate self-test cases. 8 tools run under the smoke
+test. Public data contract live at `/data/` with a shape guard.
 
-**Measured data is not rebuilt by `build.sh`.** `logstats.py` and `geometry.py`
-read things that live outside the repository — combat logs and the game install
-— so they are run by hand and their JSON output is committed. `build.sh` reads
-that JSON and degrades cleanly when it is missing.
+Four material errors were made and corrected this week — a dead tool shipped, a
+committed asset emptied on a false premise, a wrong invariant claim from a bad
+regex, and a drop figure using the wrong denominator. Three were caught after
+committing. Slow down at data migrations specifically.
 
----
+## Logs
 
-## Slash commands
-
-| Command | Does |
-|---|---|
-| `/newzone <zone>` | Adds a survey plate — accents, spectrum count, change log |
-| `/verify <zone>` | Walks the three-gate verification standard |
-| `/gaps` | Reviews every open gap and what evidence would close it |
-| `/ship` | Build, check, commit, push, with a correction log entry if needed |
-
----
-
-## Things that will bite you
-
-**The stale-revision trap.** A wiki fetch can silently return an old revision, or
-an empty page reported as success. Both have happened here — The Hole's plate was
-once built from an empty fetch and thrown away. Always compare the `oldid` in the
-fetched footer against the API's current revision.
-
-**Verification counts.** Three sources of truth once disagreed and the site
-published the highest. `verify_level` in `assets/zones-index.json` is explicit
-and `check.py` guards it. Do not derive a count from "has a date in the field".
-
-**Do not clone EQL Tools.** https://eqltools.com is a sibling site with
-client-mined data, log parsing and 3D zone geometry. We cannot match their data
-pipeline. We link to them. Our layer is quests, factions, routes and tactics.
-
-**The tools are single-file apps** with inline CSS and JS, imported wholesale.
-They do not use `assets/site.css`. Restyling the site needs a separate pass for
-them, and their internal palettes should stay recognisably theirs.
-
-**Regex escapes written by tooling.** A `` word boundary was once written
-into a generator as a literal backspace byte (U+0008). It is invisible in an
-editor and in a diff, the regex compiles without complaint, and it silently
-matches nothing. If a pattern that obviously should match does not, check the
-bytes before you check your logic.
-
-**Test the middle, not just the extremes.** The measured tables passed at 1920px
-and at 390px and scrolled the whole page sideways at 700px, because the mobile
-stack started below the width at which the table stopped fitting. Wide content
-belongs in its own `overflow-x` container.
-
-**Windows build.** `build.sh` calls `python3`, which Windows does not ship. Any
-new `open()` in a generator must name `encoding='utf-8'` and, for writes,
-`newline='\n'`, or the output is corrupted silently.
+`state/logs/` is gitignored and holds copies through 15 Aug. The collaborator
+deletes the game-side logs after each scan, so **secure and parse before
+confirming**. Everything derived is committed; the raw logs are never published.

@@ -79,7 +79,14 @@ BOSSES = ["Master Yael", "Lord Nagafen", "Lady Vox", "Phinigel Autropos",
           "Maestro of Rancor", "Lord of Ire", "Lord of Loathing",
           "Master of Spite", "Mistress of Scorn", "High Priest M`kari",
           "Magi P`tasa", "Grandmaster R`tal", "Coercer T`vala",
-          "Ashenbone Broodmaster"]
+          "Ashenbone Broodmaster",
+          # Plane of Sky. All six loop bosses plus the efreeti line, killed
+          # 14-15 Aug 2026. The bee island runs several named variants rather
+          # than one, which no source we hold mentions.
+          "Bazzt Zzzt", "Gorgalosk", "Protector of Sky", "Keeper of Souls",
+          "Sister of the Spire", "Eye of Veeshan", "Noble Dojorn",
+          "Overseer of Air", "The Spiroc Lord", "Thunder Spirit Princess",
+          "Bazzzazzt", "Bzzazzt", "Bzzzt", "Bizazzzt", "Bzizzzt"]
 
 TIER_NAME = {"1": "Awakened", "2": "Adaptive", "3": "Fused", "4": "Refined"}
 
