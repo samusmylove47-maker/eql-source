@@ -1,4 +1,4 @@
-# Handoff — 15 August 2026
+# Handoff — 15 August 2026 (evening)
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
@@ -14,72 +14,99 @@ more than any task below:
 > experience… What our site needs to carry is only data that players care
 > about.*
 
-The previous session had drifted into verifying things nobody needed. The
-verification grade literally measured whether plotted coordinates landed on
-drawn floor, so Plane of Fear scored **zero** while holding Cazic-Thule parsed
-at three difficulties.
+`docs/WHAT-COUNTS.md` records the correction. Zones are graded on **bosses,
+loot, difficulty behaviour, inherited-advice marking and farming value**,
+computed by `_build/coverage.py`. A zone improves by being played, not edited.
 
-`docs/WHAT-COUNTS.md` records the correction. Zones are now graded on
-**bosses, loot, difficulty behaviour, inherited-advice marking and farming
-value**, computed by `_build/coverage.py`. A zone improves by being played, not
-by being edited.
-
-**When proposing work, say who it is for.** "This helps a player pick a camp
-tonight" is a reason. "This makes the data more defensible" is one too — but
-only when a player would feel the difference.
+**When proposing work, say who it is for.**
 
 ---
 
 ## Open pull requests
 
-- **#78 — Plane of Sky, measured.** Committed, pushed, awaiting merge.
+- **Plane of Sky, rewritten.** Branch `feat/sky-rewrite-measured`. Pushed,
+  awaiting review and merge.
+
+## What that branch did, and the one thing to check first
+
+`raids/plane-of-sky.html` said the zone needs a full raid. It does not, and the
+page now leads with the measurement: 43 fights, 15 bosses, median 4 attackers,
+biggest boss 26,158 damage against Cazic-Thule's 382,035.
+
+**Check this before anything else:** the branch also changed
+`_build/raidstats.py`, which **moves published figures in Plane of Fear**.
+The parser matched boss names case-sensitively, so a name whose article is
+lowercase lost its slain line and the fight never closed. `a dracoliche` was
+published at **1,287** damage at Adaptive and **14,483** at Fused. It is
+actually **85,671** and **285,202**, plus a Refined kill at **362,687** we held
+no record of at all. Same fault hid `the Hand of Veeshan` entirely. Both are in
+the change log as a Correction. If you disagree with that call, it is one commit
+to revert — but the old figures are wrong.
 
 ## Immediate work, in the collaborator's order
 
-1. **Kedge Keep.** Logs arriving. It is the only zone at 3/10 and the only one
-   with zero measured sessions. `verify_gate` says "nothing here is ours yet"
-   and that is currently accurate.
+1. **Castle Mistmoore is revamped on Tuesday 18 August.** Three days. We hold
+   1,008 pre-revamp kills across 65 mob types. The "before" data is already
+   parsed and committed; **what is missing is a frozen, labelled baseline** an
+   after-patch parse can be diffed against rather than silently averaged into.
+   Do that before Tuesday. More pre-patch play is the collaborator's call, not
+   ours.
 
-2. **Castle Mistmoore is being revamped on Tuesday 18 August.** We hold 1,008
-   pre-revamp kills across 65 mob types there. **Capture the before/after** —
-   nobody else in this community can make that comparison, and the window
-   closes when the patch lands.
+2. **Kedge Keep.** Still blocked, and the previous handoff was optimistic:
+   **no Kedge logs have arrived.** The newest log
+   (`eqlog_Avenrae_rivervale_2026-08-15.txt`, scanned this morning) has no Kedge
+   or Siren zone line anywhere in it, and `measured.json`'s latest session is
+   14 August. It remains the only zone at 3/10 with zero measured sessions.
 
-3. **Rewrite the Plane of Sky page.** `docs/SKY-MEASURED.md` has the findings.
-   The page describes a full-raid zone; three attackers kill its bosses in
-   under 90 seconds. This is a rewrite, not an edit. The strategy brief from the
-   video transcript is sound and stays; the rest is old.
+3. **Age-stamp the outgrown zones.** Najena, Splitpaw, Crushbone, The Warrens at
+   4/10 — fully verified under the old standard, never played with logging on.
+   Wording: *"updated as of XX/XX — any new information since has not been
+   verified."* **Generate it from the last measured session date** so it cannot
+   go stale by hand.
 
-4. **Age-stamp the outgrown zones.** Najena, Splitpaw, Crushbone, The Warrens
-   sit at 4/10 — fully verified under the old standard, never played with
-   logging on. The collaborator's wording: *"updated as of XX/XX — any new
-   information since has not been verified."* **Generate it from the last
-   measured session date** so it cannot go stale by hand.
+4. **`sightings.py` is losing evidence.** Now `docs/BACKLOG.md` P0, with
+   acceptance criteria. It discards every measured drop whose item is not in a
+   catalogue mined from the dungeon surveys plus the planar sets, so **all 148
+   Plane of Sky loot lines were thrown away** and `sightings.json` held no Sky
+   drop at all. `_build/skyloot.py` works around it for Sky only; every other
+   unsurveyed zone is still losing drops silently. This is a migration across a
+   dataset five builders and the public contract read — run
+   `scripts/toolrender.js` before and after.
 
-## Standing rules learned the hard way this week
+## Standing rules learned the hard way
 
 - **Never publish a drop rate.** A drop seen once is seen once.
 - **Read who was in the fight.** Every raid-boss kill in every log we hold is a
-  public pick-up raid of 5–15 players, not our trio. `raidstats.py` records
-  `attackers` and `our_damage_share_pct` for this reason.
+  public pick-up raid, not our trio.
 - **Other players are never named** outside the credits. Counted, then discarded.
 - **A log records what its own character witnessed.** Where the attacker count
   is thin, the damage is a floor, not a measurement.
-- **Run `node scripts/toolsmoke.js` after touching anything a tool reads**, and
-  `scripts/toolrender.js` before and after any data migration. A tool shipped
-  dead for a day with 721 green checks because nothing ran its JavaScript.
-- **Do not write regex escapes through a bash heredoc.** It ate `\b` five times.
-  Use the Write tool or a file.
+- **Never let a hand-typed sentence sit beside a generated figure.** Two
+  retractions came from that. The Sky page renders every figure from
+  `assets/sky-loot.json`.
+- **A findings doc can be as wrong as a page.** `docs/SKY-MEASURED.md` carried
+  four errors into this session — a boss listed as killed that appears **zero**
+  times in the log, a missing key drop, a missing efreeti source, and a pointer
+  to drop tables that were not in the file it named. All four are corrected in
+  place rather than deleted. Re-check a findings doc against the data before
+  building on it.
+- **Run `node scripts/toolsmoke.js`** after touching anything a tool reads, and
+  `scripts/toolrender.js` before and after any data migration.
+- **Do not write regex escapes through a bash heredoc.** Use the Write tool.
 
 ## Health
 
-723 pages pass `check.py`. 17 gate self-test cases. 8 tools run under the smoke
-test. Public data contract live at `/data/` with a shape guard.
+723 pages pass `check.py`. **19** gate self-test cases, up from 17. 8 tools run
+under the smoke test. Public data contract live at `/data/`.
 
-Four material errors were made and corrected this week — a dead tool shipped, a
-committed asset emptied on a false premise, a wrong invariant claim from a bad
-regex, and a drop figure using the wrong denominator. Three were caught after
-committing. Slow down at data migrations specifically.
+**Two new gate cases, because this one nearly shipped.** `build4.py`'s `BODY` is
+a plain triple-quoted string — it carries the 3D engine's JavaScript, so it can
+never be an f-string — and f-string syntax written into it renders as itself.
+`raids/eye-of-veeshan.html` published the literal text `{EYE_FULL:,}` in its
+stat block **and passed all 723 checks**, because every check reads what a page
+says and none asked whether it had finished rendering. `gate.py` check 5d now
+refuses both `{...}` and `@@TOKEN@@` leaks, and the self-test proves it for each.
+Caught by opening the page, which remains the only way.
 
 ## Logs
 

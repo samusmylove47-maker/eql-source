@@ -86,7 +86,12 @@ BOSSES = ["Master Yael", "Lord Nagafen", "Lady Vox", "Phinigel Autropos",
           "Bazzt Zzzt", "Gorgalosk", "Protector of Sky", "Keeper of Souls",
           "Sister of the Spire", "Eye of Veeshan", "Noble Dojorn",
           "Overseer of Air", "The Spiroc Lord", "Thunder Spirit Princess",
-          "Bazzzazzt", "Bzzazzt", "Bzzzt", "Bizazzzt", "Bzizzzt"]
+          "Bazzzazzt", "Bzzazzt", "Bzzzt", "Bizazzzt", "Bzizzzt",
+          # Its article is part of the name and is lowercase, unlike "The
+          # Spiroc Lord" two lines up. It was left out of this list until 15
+          # Aug 2026, so the zone's own island-8 wanderer had a full loot table
+          # in measured.json - the whole efreeti line - and no fight at all.
+          "the Hand of Veeshan"]
 
 TIER_NAME = {"1": "Awakened", "2": "Adaptive", "3": "Fused", "4": "Refined"}
 
@@ -120,20 +125,39 @@ def attacker_name(prefix):
     return MELEE_VERB.sub('', prefix.strip()).strip() or '(unnamed)'
 
 
+def boss_pat(b):
+    """The boss name as a pattern, tolerating sentence capitalisation.
+
+    A name whose own article is lowercase gets capitalised when it opens a
+    line, so the game writes "hits the Hand of Veeshan for 409 points" mid-line
+    and "The Hand of Veeshan has been slain by" at the start of one. Matching
+    either spelling literally loses half the fight, and losing the slain line
+    loses the fight entirely. Every other boss here begins with a capital
+    already - "The Spiroc Lord" is written that way in both positions - so this
+    returns the plain escape for them and changes nothing.
+    """
+    e = re.escape(b)
+    return f'[{b[0].upper()}{b[0]}]{e[1:]}' if b[:1].islower() else e
+
+
 def parse_log(path):
     boss_re = {b: dict(
-        dmg=re.compile(rf'\b{re.escape(b)} for (\d+) points? of damage\.$'),
+        dmg=re.compile(rf'\b{boss_pat(b)} for (\d+) points? of damage\.$'),
         # Who swung. The damage line names its attacker before the verb, and
         # until 11 Aug 2026 nothing read it - so five-player pick-up raids were
         # recorded and published as "one trio in one session". See WHO WAS
         # ACTUALLY THERE in the module docstring.
-        attacker=re.compile(rf'^(.*?) \b{re.escape(b)} for \d+ points? of damage\.$'),
-        spell=re.compile(rf'^{re.escape(b)} has taken (\d+) damage from (.+?)\.$'),
-        slain=re.compile(rf'^(?:{re.escape(b)} has been slain by|You have slain {re.escape(b)})'),
-        cast=re.compile(rf'^{re.escape(b)} begins casting (.+?)\.$'),
-        heal=re.compile(rf'^{re.escape(b)} healed itself for (\d+) hit points by (.+?)\.$'),
-        melee=re.compile(rf'^{re.escape(b)} (\w+) .+? for (\d+) points? of damage\.$'),
+        attacker=re.compile(rf'^(.*?) \b{boss_pat(b)} for \d+ points? of damage\.$'),
+        spell=re.compile(rf'^{boss_pat(b)} has taken (\d+) damage from (.+?)\.$'),
+        slain=re.compile(rf'^(?:{boss_pat(b)} has been slain by|You have slain {boss_pat(b)})'),
+        cast=re.compile(rf'^{boss_pat(b)} begins casting (.+?)\.$'),
+        heal=re.compile(rf'^{boss_pat(b)} healed itself for (\d+) hit points by (.+?)\.$'),
+        melee=re.compile(rf'^{boss_pat(b)} (\w+) .+? for (\d+) points? of damage\.$'),
     ) for b in BOSSES}
+    # The cheap prefilter below is a case-sensitive substring test, so it has to
+    # know the same thing boss_pat does or it discards the lines before any
+    # pattern sees them.
+    boss_sub = {b: (b if not b[:1].islower() else b[1:]) for b in BOSSES}
 
     char = re.search(r'eqlog_([^_]+)_', os.path.basename(path))
     char = char.group(1) if char else "unknown"
@@ -158,7 +182,7 @@ def parse_log(path):
                 zone = z.group(1)
             continue
         for boss, rx in boss_re.items():
-            if boss not in b:
+            if boss_sub[boss] not in b:
                 continue
             if boss not in open_fights and boss not in first_active and (
                     rx['melee'].match(b) or rx['cast'].match(b)):

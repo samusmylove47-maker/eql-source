@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Plane of Sky — EQL Source</title>
-<meta name="description" content="The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that gates them, the six-boss circuit, and the first measured elevation of the zone.">
+<meta name="description" content="The Plane of Sky measured: 43 boss fights at base difficulty, a median of four attackers, the ring of eight islands, and the key chain confirmed against the log.">
 <meta property="og:title" content="Plane of Sky — EQL Source">
-<meta property="og:description" content="The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that gates them, the six-boss circuit, and the first measured elevation of the zone.">
+<meta property="og:description" content="The Plane of Sky measured: 43 boss fights at base difficulty, a median of four attackers, the ring of eight islands, and the key chain confirmed against the log.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://eqlsource.com/assets/og/raids.png">
 <meta property="og:image:width" content="1200">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="EQL Source">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Plane of Sky — EQL Source">
-<meta name="twitter:description" content="The Plane of Sky as a ring: eight islands on a teleporter loop, the key chain that gates them, the six-boss circuit, and the first measured elevation of the zone.">
+<meta name="twitter:description" content="The Plane of Sky measured: 43 boss fights at base difficulty, a median of four attackers, the ring of eight islands, and the key chain confirmed against the log.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/raids.png">
 <link rel="canonical" href="https://eqlsource.com/raids/plane-of-sky">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,6 +31,9 @@
 .node circle{fill:var(--panel);stroke:var(--rule2);stroke-width:1.6}
 .node.kill circle{stroke:var(--ember,#D9762A);stroke-width:2.4;
   fill:color-mix(in srgb, var(--ember,#D9762A) 14%, var(--panel))}
+/* An island whose boss we have never found. Dashed rather than absent: the
+   teleporter is there, the boss is the thing we cannot vouch for. */
+.node.unseen circle{stroke-dasharray:4 3;fill:var(--panel)}
 .nid{font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:700;fill:var(--bone);
   text-anchor:middle}
 .nb{font-family:"IBM Plex Mono",monospace;font-size:10px;fill:var(--dim);text-anchor:middle;
@@ -52,8 +55,15 @@
 .chain .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--instr);
   letter-spacing:.05em;text-align:right}
 .chain .nt{grid-column:2/-1;color:var(--dim);font-size:14px;line-height:1.55;margin-top:2px}
+.chain .ev{grid-column:2/-1;margin-top:6px}
 .chain li.kill{background:color-mix(in srgb, var(--ember,#D9762A) 7%, var(--panel))}
 @media(max-width:620px){.chain li{grid-template-columns:38px minmax(0,1fr)}.chain .k{text-align:left;grid-column:2}}
+.ok,.gap{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.1em;
+  text-transform:uppercase}
+.ok{color:var(--ok)}
+.gap{color:var(--warn-t,#D9A227)}
+.once{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);font-weight:400}
 .circuit{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:var(--s-5) 0 0;
   font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--dim)}
 /* The ember accent is 3.84:1 as 13px text on this panel. The brief says lift a
@@ -63,6 +73,14 @@
   border:1px solid var(--ember,#D9762A);font-weight:600;padding:0 6px;
   color:color-mix(in srgb, var(--ember,#D9762A) 58%, var(--bone))}
 .circuit span{color:var(--faint)}
+.scale{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);
+  overflow:hidden;margin:var(--s-5) 0 0}
+.scale div{background:var(--panel);padding:14px 16px}
+.scale .n{font-family:"Saira Condensed",sans-serif;font-size:27px;font-weight:700;
+  color:var(--bone);line-height:1.1}
+.scale .l{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);color:var(--dim);
+  letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
 </style></head>
 <body><header class="site-bar">
   <div class="shell">
@@ -84,68 +102,135 @@
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
-    <h1 class="display">Sky is a ring,<br><em>not a ladder.</em></h1>
-    <p class="hero-lede"><strong>Eight islands on a one-way teleporter loop, with a ninth hanging off it &mdash; and one more nobody has placed.</strong>
-      Island 8 returns you to island 1, which is why the six-boss circuit everyone runs is not a
-      list of instructions &mdash; it is one and a half laps.</p>
-    <p class="hero-sig"><span>8 on the loop, 9 you can stand on</span><span>3 keys bought, 6 dropped</span>
-      <span>2,878 units of height</span></p>
+    <h1 class="display">Sky is not a<br><em>raid zone.</em></h1>
+    <p class="hero-lede"><strong>Every reference in this community described a zone that needs a
+      full raid, and so did this page until today.</strong> Over two nights we recorded
+      43 fights against 15 of its bosses. The median fight had
+      4 attackers, the thinnest had 2, and the
+      most expensive boss in the zone cost 26,158 damage.</p>
+    <p class="hero-sig"><span>43 fights, 15 bosses</span>
+      <span>median 4 attackers</span>
+      <span>all at base difficulty</span></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">What a Sky boss costs</h2>
+      <p class="lede" style="margin:0">Measured from our own combat logs on 14 and 15 August 2026.
+        <span class="tier tM">TIER M</span></p></div></div>
+    <div class="scale">
+      <div><p class="n">26,158</p><p class="l">Dearest boss in Sky</p></div>
+      <div><p class="n">382,035</p><p class="l">Cazic-Thule at Refined</p></div>
+      <div><p class="n">15&times;</p><p class="l">The difference</p></div>
+    </div>
+    <p class="lede" style="margin-top:var(--s-5)">The hardest thing in Sky dies to whoever happens
+      to be standing there.</p>
+    <div class="tw"><table class="dtable">
+      <thead><tr><th>Boss</th><th>Fights</th><th>Damage to kill</th><th>Fight</th>
+        <th>Attackers</th><th>Exp each</th></tr></thead>
+      <tbody>
+<tr><td class="dname">Bazzt Zzzt</td><td class="dn">3</td><td class="dn">26,158&nbsp;<em>or more</em></td><td class="dn">45&ndash;431s</td><td class="dn">3&ndash;6</td><td class="dn">0.61%</td></tr>
+<tr><td class="dname">The Spiroc Lord</td><td class="dn">2</td><td class="dn">22,691&nbsp;<em>or more</em></td><td class="dn">44&ndash;49s</td><td class="dn">4&ndash;6</td><td class="dn">0.46%</td></tr>
+<tr><td class="dname">Keeper of Souls</td><td class="dn">2</td><td class="dn">22,322</td><td class="dn">62&ndash;67s</td><td class="dn">4&ndash;5</td><td class="dn">0.41%</td></tr>
+<tr><td class="dname">Noble Dojorn</td><td class="dn">3</td><td class="dn">22,041</td><td class="dn">48&ndash;82s</td><td class="dn">3&ndash;6</td><td class="dn">0.61%</td></tr>
+<tr><td class="dname">The Hand of Veeshan</td><td class="dn">2</td><td class="dn">21,974</td><td class="dn">52&ndash;74s</td><td class="dn">4&ndash;6</td><td class="dn">0.46%</td></tr>
+<tr><td class="dname">Gorgalosk</td><td class="dn">2</td><td class="dn">20,361</td><td class="dn">57&ndash;159s</td><td class="dn">4&ndash;5</td><td class="dn">0.55%</td></tr>
+<tr><td class="dname">Bazzzazzt</td><td class="dn">8</td><td class="dn">20,280&nbsp;<em>or more</em></td><td class="dn">14&ndash;103s</td><td class="dn">4&ndash;6</td><td class="dn">0.43%</td></tr>
+<tr><td class="dname">Eye of Veeshan</td><td class="dn">3</td><td class="dn">20,109&nbsp;<em>or more</em></td><td class="dn">47&ndash;85s</td><td class="dn">4&ndash;6</td><td class="dn">0.66%</td></tr>
+<tr><td class="dname">Bzzazzt</td><td class="dn">7</td><td class="dn">17,394&nbsp;<em>or more</em></td><td class="dn">27&ndash;235s</td><td class="dn">4&ndash;5</td><td class="dn">0.61%</td></tr>
+<tr><td class="dname">Bzzzt</td><td class="dn">2</td><td class="dn">17,099</td><td class="dn">35&ndash;82s</td><td class="dn">5</td><td class="dn">0.55%</td></tr>
+<tr><td class="dname">Protector of Sky</td><td class="dn">2</td><td class="dn">16,350</td><td class="dn">24&ndash;39s</td><td class="dn">4&ndash;7</td><td class="dn">&mdash;</td></tr>
+<tr><td class="dname">Overseer of Air</td><td class="dn">2</td><td class="dn">16,272</td><td class="dn">38&ndash;42s</td><td class="dn">4&ndash;6</td><td class="dn">&mdash;</td></tr>
+<tr><td class="dname">Sister of the Spire</td><td class="dn">3</td><td class="dn">10,197</td><td class="dn">37&ndash;52s</td><td class="dn">3&ndash;6</td><td class="dn">0.57%</td></tr>
+<tr><td class="dname">Bizazzzt <span class="once">once</span></td><td class="dn">1</td><td class="dn">9,912</td><td class="dn">81s</td><td class="dn">5</td><td class="dn">&mdash;</td></tr>
+<tr><td class="dname">Bzizzzt <span class="once">once</span></td><td class="dn">1</td><td class="dn">614</td><td class="dn">3s</td><td class="dn">2</td><td class="dn">&mdash;</td></tr>
+      </tbody></table></div>
+    <div class="note"><strong>Damage to kill is not hit points.</strong> It is the damage that had
+      to be dealt, which is what you actually plan around, and it sits above the boss&rsquo;s health
+      rather than measuring it. Where a row reads <em>or more</em> we joined after the boss was
+      engaged and the figure is a floor. Where it reads <em>once</em> we have a single fight and no
+      way to tell a cheap boss from a kill we arrived at the end of &mdash; Bzizzzt&rsquo;s only
+      record is 614 damage over three seconds, and its siblings take twenty thousand.</div>
+    <div class="note danger"><strong>Every one of these fights is at base difficulty.</strong>
+      D0 is the only tier we have played Sky at, so nothing on this page describes Awakened or
+      above. Difficulty raises how much of a boss&rsquo;s class kit appears, and on this evidence
+      we cannot say what that does here.</div>
+    <div class="note"><strong>None of these were our trio alone.</strong> Every Sky fight in the
+      logs is a public pick-up raid of 2 to 7
+      players. The site&rsquo;s owner reports the zone can be soloed
+      <span class="tier tc">TIER C</span>; our thinnest logged fight is
+      2 attackers, so that stands unconfirmed until a one-attacker kill
+      appears in a log.</div>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">The ring</h2>
-      <p class="lede" style="margin:0">Every teleporter runs one way. Ringed islands are the six
-        the standard circuit kills.</p></div></div>
-    <div class="sky-ring"><svg viewBox="0 0 560 560" role="img" aria-label="The Plane of Sky teleporter network, a ring of eight islands with island 1.5 as a spur"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><path class="edge" d="M280.0,84.0 A196,196 0 0 1 418.6,141.4" marker-end="url(#ar)"/><path class="edge" d="M418.6,141.4 A196,196 0 0 1 476.0,280.0" marker-end="url(#ar)"/><path class="edge" d="M476.0,280.0 A196,196 0 0 1 418.6,418.6" marker-end="url(#ar)"/><path class="edge" d="M418.6,418.6 A196,196 0 0 1 280.0,476.0" marker-end="url(#ar)"/><path class="edge" d="M280.0,476.0 A196,196 0 0 1 141.4,418.6" marker-end="url(#ar)"/><path class="edge" d="M141.4,418.6 A196,196 0 0 1 84.0,280.0" marker-end="url(#ar)"/><path class="edge" d="M84.0,280.0 A196,196 0 0 1 141.4,141.4" marker-end="url(#ar)"/><path class="edge" d="M141.4,141.4 A196,196 0 0 1 280.0,84.0" marker-end="url(#ar)"/><line class="edge spur" x1="280.0" y1="84.0" x2="331.3" y2="156.2" marker-end="url(#ar)"/><line class="edge spur" x1="331.3" y1="156.2" x2="418.6" y2="141.4" marker-end="url(#ar)"/><g class="node kill" data-i="1"><circle cx="280.0" cy="84.0" r="26"/><text class="nid" x="280.0" y="89.0">1</text><text class="nb" x="280.0" y="38.0">Thunder Spirit Princess</text></g><g class="node" data-i="2"><circle cx="418.6" cy="141.4" r="26"/><text class="nid" x="418.6" y="146.4">2</text><text class="nb" x="451.1" y="108.9">Protector of Sky</text></g><g class="node" data-i="3"><circle cx="476.0" cy="280.0" r="26"/><text class="nid" x="476.0" y="285.0">3</text><text class="nb" x="522.0" y="280.0">The Gorgalosk</text></g><g class="node kill" data-i="4"><circle cx="418.6" cy="418.6" r="26"/><text class="nid" x="418.6" y="423.6">4</text><text class="nb" x="451.1" y="451.1">Keeper of Souls</text></g><g class="node" data-i="5"><circle cx="280.0" cy="476.0" r="26"/><text class="nid" x="280.0" y="481.0">5</text><text class="nb" x="280.0" y="522.0">The Spiroc Lord</text></g><g class="node kill" data-i="6"><circle cx="141.4" cy="418.6" r="26"/><text class="nid" x="141.4" y="423.6">6</text><text class="nb" x="108.9" y="451.1">Bazzt Zzzt</text></g><g class="node kill" data-i="7"><circle cx="84.0" cy="280.0" r="26"/><text class="nid" x="84.0" y="285.0">7</text><text class="nb" x="38.0" y="280.0">Sister of the Spire</text></g><g class="node kill" data-i="8"><circle cx="141.4" cy="141.4" r="26"/><text class="nid" x="141.4" y="146.4">8</text><text class="nb" x="108.9" y="108.9">Eye of Veeshan</text></g><g class="node kill" data-i="1.5"><circle cx="331.3" cy="156.2" r="19"/><text class="nid" x="331.3" y="161.2">1.5</text></g><text class="ctr" x="280.0" y="274.0">8 teleporters,</text><text class="ctr" x="280.0" y="296.0">one loop</text></svg></div>
+      <p class="lede" style="margin:0">Every teleporter runs one way. Ringed islands are the ones
+        the standard circuit kills; a dashed ring is a boss we have never found.</p></div></div>
+    <div class="sky-ring"><svg viewBox="0 0 560 560" role="img" aria-label="The Plane of Sky teleporter network, a ring of eight islands with island 1.5 as a spur"><defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="currentColor"/></marker></defs><path class="edge" d="M280.0,84.0 A196,196 0 0 1 418.6,141.4" marker-end="url(#ar)"/><path class="edge" d="M418.6,141.4 A196,196 0 0 1 476.0,280.0" marker-end="url(#ar)"/><path class="edge" d="M476.0,280.0 A196,196 0 0 1 418.6,418.6" marker-end="url(#ar)"/><path class="edge" d="M418.6,418.6 A196,196 0 0 1 280.0,476.0" marker-end="url(#ar)"/><path class="edge" d="M280.0,476.0 A196,196 0 0 1 141.4,418.6" marker-end="url(#ar)"/><path class="edge" d="M141.4,418.6 A196,196 0 0 1 84.0,280.0" marker-end="url(#ar)"/><path class="edge" d="M84.0,280.0 A196,196 0 0 1 141.4,141.4" marker-end="url(#ar)"/><path class="edge" d="M141.4,141.4 A196,196 0 0 1 280.0,84.0" marker-end="url(#ar)"/><line class="edge spur" x1="280.0" y1="84.0" x2="331.3" y2="156.2" marker-end="url(#ar)"/><line class="edge spur" x1="331.3" y1="156.2" x2="418.6" y2="141.4" marker-end="url(#ar)"/><g class="node kill unseen" data-i="1"><circle cx="280.0" cy="84.0" r="26"/><text class="nid" x="280.0" y="89.0">1</text><text class="nb" x="280.0" y="38.0">Thunder Spirit Princess</text></g><g class="node" data-i="2"><circle cx="418.6" cy="141.4" r="26"/><text class="nid" x="418.6" y="146.4">2</text><text class="nb" x="451.1" y="108.9">Protector of Sky</text></g><g class="node" data-i="3"><circle cx="476.0" cy="280.0" r="26"/><text class="nid" x="476.0" y="285.0">3</text><text class="nb" x="522.0" y="280.0">Gorgalosk</text></g><g class="node kill" data-i="4"><circle cx="418.6" cy="418.6" r="26"/><text class="nid" x="418.6" y="423.6">4</text><text class="nb" x="451.1" y="451.1">Keeper of Souls</text></g><g class="node" data-i="5"><circle cx="280.0" cy="476.0" r="26"/><text class="nid" x="280.0" y="481.0">5</text><text class="nb" x="280.0" y="522.0">The Spiroc Lord</text></g><g class="node kill" data-i="6"><circle cx="141.4" cy="418.6" r="26"/><text class="nid" x="141.4" y="423.6">6</text><text class="nb" x="108.9" y="451.1">Bazzt Zzzt</text></g><g class="node kill" data-i="7"><circle cx="84.0" cy="280.0" r="26"/><text class="nid" x="84.0" y="285.0">7</text><text class="nb" x="38.0" y="280.0">Sister of the Spire</text></g><g class="node kill" data-i="8"><circle cx="141.4" cy="141.4" r="26"/><text class="nid" x="141.4" y="146.4">8</text><text class="nb" x="108.9" y="108.9">Eye of Veeshan</text></g><g class="node kill" data-i="1.5"><circle cx="331.3" cy="156.2" r="19"/><text class="nid" x="331.3" y="161.2">1.5</text></g><text class="ctr" x="280.0" y="274.0">8 teleporters,</text><text class="ctr" x="280.0" y="296.0">one loop</text></svg></div>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The key chain</h2>
+    <div class="sechead"><div><h2 class="sec">The key chain, confirmed</h2>
       <p class="lede" style="margin:0">Three keys are bought from the Key Master on island 1.
-        After that every boss drops the key to the island above it, so the order is fixed even
-        where the tactics are not.</p></div></div>
+        After that every boss drops the key to the island above it. The chain was inherited from
+        two post-launch accounts and had never been checked against a log.</p></div></div>
     <ul class="chain">
       <li class="kill">
         <span class="i">1</span><span class="b">Thunder Spirit Princess</span>
         <span class="k">Key of Swords</span>
-        <span class="nt">Where you arrive, and where the Key Master sells the first three keys.</span></li>
+        <span class="nt">Where you arrive, and where the Key Master sells the first three keys.</span>
+        <span class="ev"><span class="gap">not seen</span></span></li>
       <li class="kill">
         <span class="i">1.5</span><span class="b">Noble Dojorn</span>
         <span class="k">&mdash;</span>
-        <span class="nt">Off island 1, and it returns you to island 2. A blade storm guards it.</span></li>
+        <span class="nt">Off island 1, and it returns you to island 2. A blade storm guards it.</span>
+        <span class="ev"></span></li>
       <li>
         <span class="i">2</span><span class="b">Protector of Sky</span>
         <span class="k">Key of Misfortune</span>
-        <span class="nt">Azaracks. Large aggro radius and a large social radius, so a pull tends to become the island.</span></li>
+        <span class="nt">Azaracks. Large aggro radius and a large social radius, so a pull tends to become the island.</span>
+        <span class="ev"><span class="ok">confirmed &times;2</span> <span class="tier tM">M</span></span></li>
       <li>
-        <span class="i">3</span><span class="b">The Gorgalosk</span>
+        <span class="i">3</span><span class="b">Gorgalosk</span>
         <span class="k">Key of Beasts</span>
-        <span class="nt">Gorgons, gazers and a heart harpie in the tower. Gusts of wind are invisible and need see-invis to spot.</span></li>
+        <span class="nt">Gorgons, gazers and a heart harpie in the tower. Gusts of wind are invisible and need see-invis to spot.</span>
+        <span class="ev"><span class="ok">confirmed &times;2</span> <span class="tier tM">M</span></span></li>
       <li class="kill">
         <span class="i">4</span><span class="b">Keeper of Souls</span>
         <span class="k">Avian Key</span>
-        <span class="nt">Pegasi, and adds that keep coming. The Overseer of Air stands at the windmill tower and is one of the six on the circuit.</span></li>
+        <span class="nt">Pegasi, and adds that keep coming. The Overseer of Air stands at the windmill tower and is a separate kill on the same island.</span>
+        <span class="ev"><span class="ok">confirmed &times;2</span> <span class="tier tM">M</span></span></li>
       <li>
         <span class="i">5</span><span class="b">The Spiroc Lord</span>
         <span class="k">Key of the Swarm</span>
-        <span class="nt">Spirocs have a low aggro radius and a high social one, so the outer edge is quiet and the middle is not.</span></li>
+        <span class="nt">Spirocs have a low aggro radius and a high social one, so the outer edge is quiet and the middle is not. The Spiroc Guardian is here too.</span>
+        <span class="ev"><span class="ok">confirmed &times;2</span> <span class="tier tM">M</span></span></li>
       <li class="kill">
         <span class="i">6</span><span class="b">Bazzt Zzzt</span>
         <span class="k">Key of Scale</span>
-        <span class="nt">Three bees. The middle one is the boss and dies into three successive forms; the last of them drops the key.</span></li>
+        <span class="nt">Bees, and more of them than any source we hold lists &mdash; six named variants went down here.</span>
+        <span class="ev"><span class="ok">confirmed &times;3</span> <span class="tier tM">M</span></span></li>
       <li class="kill">
         <span class="i">7</span><span class="b">Sister of the Spire</span>
         <span class="k">Veeshan's Key</span>
-        <span class="nt">Nothing here aggros except the boss.</span></li>
+        <span class="nt">Nothing here aggros except the boss.</span>
+        <span class="ev"><span class="ok">confirmed &times;3</span> <span class="tier tM">M</span></span></li>
       <li class="kill">
         <span class="i">8</span><span class="b">Eye of Veeshan</span>
         <span class="k">&mdash;</span>
-        <span class="nt">The Hand of Veeshan wanders this island and is the last of the six.</span></li>
+        <span class="nt">The Hand of Veeshan wanders this island and is the last of the circuit.</span>
+        <span class="ev"></span></li>
     </ul>
+    <p class="lede" style="margin-top:var(--s-5)"><strong>Six of the seven predicted drops
+      landed, each from exactly the boss the chain names.</strong> The seventh is unchecked rather
+      than wrong: we never found the Thunder Spirit Princess, so the Key of Swords has no
+      measurement behind it either way.</p>
     <div class="note"><strong>Nothing in the Plane of Sky sees through invisibility.</strong>
       That is the opposite of Fear and Hate, where see-invis is the main hazard, and it is why the
       circuit can skip most of the zone rather than clear it.</div>
@@ -154,18 +239,54 @@
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The six-boss circuit</h2>
+    <div class="sechead"><div><h2 class="sec">The circuit, and the bee island</h2>
       <p class="lede" style="margin:0">The islands worth killing on a repeat run, in the order the
         ring makes cheapest.</p></div></div>
     <div class="circuit"><b>6</b><span>&rarr;</span><b>7</b><span>&rarr;</span><b>8</b><span>&rarr;</span><b>1</b><span>&rarr;</span><b>1.5</b><span>&rarr;</span><b>4</b><span>&rarr;</span><b>8</b></div>
-    <p class="lede" style="margin-top:var(--s-5)">Bee island first, because the bee is the best
-      thing to take with you; then up through 7 and 8; then the loop returns you to 1 for the spur
-      at 1.5; then round again for the Overseer of Air on 4 and the Hand of Veeshan on 8.
-      <strong>Two visits to island 8, and they are different kills</strong> &mdash; the Eye on the
-      first pass, the Hand on the second.</p>
+    <p class="lede" style="margin-top:var(--s-5)">Bee island first, then up through 7 and 8; the
+      loop returns you to 1 for the spur at 1.5; then round again for the Overseer of Air on 4 and
+      the Hand of Veeshan on 8. <strong>Two visits to island 8, and they are different kills</strong>
+      &mdash; the Eye on the first pass, the Hand on the second.</p>
+    <p class="lede"><strong>Island 6 runs six named bees, not one.</strong> No source we hold
+      mentions this, and they are not one mob in successive forms as this page said until today:
+      the Key of Scale came off Bazzt Zzzt itself, three times.</p>
+    <div class="tw"><table class="dtable">
+      <thead><tr><th>Bee</th><th>Fights</th><th>Damage to kill</th><th>Seen dropping</th></tr></thead>
+      <tbody>
+<tr><td class="dname">Bazzt Zzzt</td><td class="dn">3</td><td class="dn">26,158&nbsp;<em>or more</em></td><td class="dnote">Key of Scale, Belt of Tranquility, Divine Honeycomb</td></tr>
+<tr><td class="dname">Bazzzazzt</td><td class="dn">8</td><td class="dn">20,280&nbsp;<em>or more</em></td><td class="dnote">Bracelet of Cessation, Mote of Minor Potential, Belt of Contention</td></tr>
+<tr><td class="dname">Bzzazzt</td><td class="dn">7</td><td class="dn">17,394&nbsp;<em>or more</em></td><td class="dnote">Wind Rune Dena</td></tr>
+<tr><td class="dname">Bzzzt</td><td class="dn">2</td><td class="dn">17,099</td><td class="dnote">Bracelet of Quiescence, Belt of Virtue, Wind Rune Beza</td></tr>
+<tr><td class="dname">Bizazzzt <span class="once">once</span></td><td class="dn">1</td><td class="dn">9,912</td><td class="dnote">Symbol of Marr, Wind Rune Beza</td></tr>
+<tr><td class="dname">Bzizzzt <span class="once">once</span></td><td class="dn">1</td><td class="dn">614</td><td class="dnote">Belt of the Pine</td></tr>
+      </tbody></table></div>
+    <div class="note"><strong>Do not bring poison to the bees.</strong> They cast Deadly Poison at
+      us constantly and we resisted it 164 times across four of the six variants
+      <span class="tier tM">M</span>. That is the largest resist count in the zone by a wide
+      margin, and it is the one piece of the bee island that changes what you pack.</div>
     <div class="note"><strong>We do not publish a clear time.</strong> The one figure we have was
       given by someone who said in the same sentence that they had not timed it, and a time is a
       fact about a player rather than about the zone.</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Where the efreeti gear comes from</h2>
+      <p class="lede" style="margin:0">An audit on 14 August 2026 flagged the source of the efreeti
+        line as unresolved between this site and eqlegendstools. Three mobs dropped it in front of
+        us. <span class="tier tM">TIER M</span></p></div></div>
+    <div class="tw"><table class="dtable">
+      <thead><tr><th>Dropped by</th><th>Seen</th></tr></thead>
+      <tbody>
+<tr><td class="dname">Noble Dojorn</td><td class="dnote">Efreeti Standard &times;2, Efreeti Wind Staff, Efreeti Battle Axe, Golden Efreeti Vambraces, Efreeti War Axe</td></tr>
+<tr><td class="dname">Overseer of Air</td><td class="dnote">Efreeti War Axe &times;2, Golden Efreeti Bracers, Efreeti War Spear, Efreeti Magi Staff, Efreeti Battle Axe</td></tr>
+<tr><td class="dname">The Hand of Veeshan</td><td class="dnote">Efreeti Mace, Efreeti Magi Staff, Efreeti War Staff, Golden Efreeti Vambraces, Efreeti Wind Staff, Efreeti Battle Axe</td></tr>
+      </tbody></table></div>
+    <p class="lede" style="margin-top:var(--s-5)">All three stand on the back half of the circuit
+      &mdash; the spur at 1.5, the windmill tower on 4, and island 8. <strong>This is what we
+      watched drop over two nights, not a drop rate</strong>, and it does not rule out sources we
+      did not kill.</p>
   </div>
 </section>
 
@@ -183,12 +304,13 @@
     <div class="note danger"><strong>These are not labelled, and that is deliberate.</strong> The
       mesh says exactly where every piece of floor is. It does not say which piece is
       &ldquo;island 4&rdquo; &mdash; that lives in the teleporter network, and no
-      <code>/loc</code> reading from Sky exists to anchor it. <strong>One <code>/loc</code> per island &mdash; 9 of them, or
-      10 if the Efreeti island is a separate place &mdash; would label this chart
-      permanently.</strong> Drawing a guess would
-      be worth less than drawing nothing.</div>
-    <p class="lede">A body of floor is not always an island: a tower counts separately from the ground
-      it stands on, which is why there are 21 marks and 9 places to stand.</p>
+      <code>/loc</code> reading from Sky exists to anchor it. <strong>One <code>/loc</code> per
+      island &mdash; 9 of them, or 10 if the Efreeti island is a separate
+      place &mdash; would label this chart permanently.</strong> Drawing a guess would be worth
+      less than drawing nothing.</div>
+    <p class="lede">A body of floor is not always an island: a tower counts separately from the
+      ground it stands on, which is why there are 21 marks and 9 places to
+      stand.</p>
   </div>
 </section>
 
@@ -196,25 +318,36 @@
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">What we do not know</h2></div></div>
     <ul class="chain">
-      <li><span class="i">1</span><span class="b">Which measured body is which island</span>
-        <span class="k">10 /loc readings</span></li>
-      <li><span class="i">2</span><span class="b">What the tenth island is</span>
+      <li><span class="i">1</span><span class="b">Anything about Sky above D0</span>
+        <span class="k">one logged run</span>
+        <span class="nt">All 43 fights are at base difficulty. One session at Awakened
+          would say whether the tiers change this zone the way they change a dungeon.</span></li>
+      <li><span class="i">2</span><span class="b">The Thunder Spirit Princess</span>
+        <span class="k">one kill</span>
+        <span class="nt">Island 1&rsquo;s boss, and the only one on the ring that has never
+          appeared in a log of ours &mdash; not killed, not seen, not named. Its key is the one
+          link in the chain still unconfirmed.</span></li>
+      <li><span class="i">3</span><span class="b">Which measured body is which island</span>
+        <span class="k">9 /loc readings</span></li>
+      <li><span class="i">4</span><span class="b">Whether there is a tenth island</span>
         <span class="k">one sighting</span>
-        <span class="nt">One account counts ten, listing 1&ndash;8, 1.5 and an Efreeti island. We
-          can place the Overseer of Air at the windmill tower on 4, but whether the Efreeti island
-          is a separate place is unresolved.</span></li>
-      <li><span class="i">3</span><span class="b">Boss hit points at any difficulty</span>
-        <span class="k">a raid log</span>
-        <span class="nt">Every published stat block for these bosses traces to wiki pages created
-          before the game existed.</span></li>
-      <li><span class="i">4</span><span class="b">Which Sky drops are quest turn-ins</span>
+        <span class="nt">One account counts ten, listing 1&ndash;8, 1.5 and an Efreeti island.
+          The efreeti gear does not settle it: we watched it drop on three islands that are
+          already on the ring, which is evidence about where the gear comes from and none at all
+          about whether a tenth place exists.</span></li>
+      <li><span class="i">5</span><span class="b">Boss hit points at any difficulty</span>
+        <span class="k">nobody has these</span>
+        <span class="nt">Damage to kill bounds them from above, and every published stat block for
+          these bosses traces to wiki pages created before the game existed.</span></li>
+      <li><span class="i">6</span><span class="b">Which Sky drops are quest turn-ins</span>
         <span class="k">a turn-in list</span>
         <span class="nt">One account lists items said to be safe to sell. We are not republishing
           it: a reader who vendors a quest component on our word has been badly served.</span></li>
     </ul>
-    <p class="lede" style="margin-top:var(--s-5)">Everything tactical here came from players who
-      went and looked, and they are named on the <a href="../credits.html">credits page</a> with
-      links to their own work.</p>
+    <p class="lede" style="margin-top:var(--s-5)">The measured half of this page comes from
+      180 looted items and 43 parsed fights across
+      14 Aug 2026 and 15 Aug 2026. The tactics came from players who went and looked, named on
+      the <a href="../credits.html">credits page</a>.</p>
   </div>
 </section>
 </main>

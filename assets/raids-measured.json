@@ -3313,17 +3313,64 @@
   "attackers": 2,
   "other_players": 1,
   "our_damage_share_pct": 92.1,
-  "damage_is_floor": false,
-  "joined_late_seconds": null,
-  "damage_low": 1287,
-  "damage_high": 1287,
+  "damage_is_floor": true,
+  "joined_late_seconds": 4,
+  "damage_low": 2103,
+  "damage_high": 2103,
   "damage_spread_pct": 0.0,
   "seconds": 67,
-  "spells": {},
-  "spells_distinct": 0,
+  "spells": {
+   "Superior Healing": 7,
+   "Efflorescing Heal": 3,
+   "Chloroplast": 3,
+   "Engulfing Roots": 1,
+   "Rotting Flesh": 1,
+   "Cascading Darkness": 1,
+   "Dragon Fear": 1,
+   "Paralyzing Earth": 1
+  },
+  "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
-  "melee_verbs": []
+  "melee_verbs": [
+   "pet",
+   "pierces"
+  ],
+  "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 3"
+ },
+ {
+  "boss": "a dracoliche",
+  "difficulty": 2,
+  "difficulty_label": "Adaptive",
+  "date": "12 Aug 2026",
+  "zone": "The Plane of Fear - Group 2 (Adaptive)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 3,
+  "other_players": 2,
+  "our_damage_share_pct": 50.9,
+  "damage_is_floor": false,
+  "joined_late_seconds": 73,
+  "damage_low": 85671,
+  "damage_high": 85671,
+  "damage_spread_pct": 0.0,
+  "seconds": 516,
+  "spells": {
+   "Dragon Fear": 14,
+   "Rotting Flesh": 13,
+   "Shadow Vortex": 6,
+   "Ensnare": 4,
+   "Paralyzing Earth": 1,
+   "Screaming Terror": 1
+  },
+  "spells_distinct": 6,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "pierces"
+  ]
  },
  {
   "boss": "a dracoliche",
@@ -3338,16 +3385,168 @@
   "attackers": 7,
   "other_players": 6,
   "our_damage_share_pct": 23.3,
-  "damage_is_floor": false,
-  "joined_late_seconds": null,
-  "damage_low": 14483,
-  "damage_high": 14483,
+  "damage_is_floor": true,
+  "joined_late_seconds": 6,
+  "damage_low": 15155,
+  "damage_high": 15155,
   "damage_spread_pct": 0.0,
   "seconds": 58,
-  "spells": {},
-  "spells_distinct": 0,
+  "spells": {
+   "Malaisement": 4,
+   "Rotting Flesh": 2,
+   "Insidious Retrogression": 2,
+   "Ignite Blood": 1,
+   "Ensnaring Roots": 1,
+   "Torbas' Poison Blast": 1,
+   "Greater Healing": 1,
+   "Dragon Fear": 1,
+   "Paralyzing Earth": 1
+  },
+  "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
-  "melee_verbs": []
+  "melee_verbs": [
+   "pet",
+   "slashes"
+  ],
+  "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 12"
+ },
+ {
+  "boss": "a dracoliche",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "12 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 12,
+  "other_players": 11,
+  "our_damage_share_pct": 15.2,
+  "damage_is_floor": false,
+  "joined_late_seconds": 64,
+  "damage_low": 285202,
+  "damage_high": 285202,
+  "damage_spread_pct": 0.0,
+  "seconds": 294,
+  "spells": {
+   "Dragon Fear": 8,
+   "Rotting Flesh": 8,
+   "Tangling Weeds": 7,
+   "Malaisement": 5,
+   "Insidious Retrogression": 3,
+   "Ignite Blood": 2,
+   "Bond of Death": 1,
+   "Paralyzing Earth": 1
+  },
+  "spells_distinct": 8,
+  "self_heal_low": 10,
+  "self_heal_high": 10,
+  "melee_verbs": [
+   "slashes"
+  ]
+ },
+ {
+  "boss": "a dracoliche",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "12 Aug 2026",
+  "zone": "The Plane of Fear - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 15,
+  "other_players": 14,
+  "our_damage_share_pct": 7.3,
+  "damage_is_floor": false,
+  "joined_late_seconds": 9,
+  "damage_low": 362687,
+  "damage_high": 362687,
+  "damage_spread_pct": 0.0,
+  "seconds": 401,
+  "spells": {
+   "Rotting Flesh": 11,
+   "Dragon Fear": 10,
+   "Tangling Weeds": 8,
+   "Malaisement": 5,
+   "Insidious Retrogression": 3,
+   "Greater Healing": 3,
+   "Paralyzing Earth": 3,
+   "Ignite Blood": 2,
+   "Ensnaring Roots": 2,
+   "Bond of Death": 1,
+   "Infectious Cloud": 1,
+   "Torbas' Poison Blast": 1
+  },
+  "spells_distinct": 12,
+  "self_heal_low": 19,
+  "self_heal_high": 19,
+  "melee_verbs": [
+   "pet",
+   "slashes"
+  ]
+ },
+ {
+  "boss": "the Hand of Veeshan",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "14 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 37.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 21974,
+  "damage_high": 21974,
+  "damage_spread_pct": 0.0,
+  "seconds": 52,
+  "spells": {
+   "Efreeti Fire": 2
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "pierces"
+  ]
+ },
+ {
+  "boss": "the Hand of Veeshan",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "15 Aug 2026",
+  "zone": "The Plane of Sky",
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 47.7,
+  "damage_is_floor": true,
+  "joined_late_seconds": null,
+  "damage_low": 13832,
+  "damage_high": 13832,
+  "damage_spread_pct": 0.0,
+  "seconds": 74,
+  "spells": {
+   "Efreeti Fire": 3
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "punches"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  }
 ]

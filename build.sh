@@ -22,6 +22,9 @@ python3 _build/build4.py
 python3 _build/build5.py
 python3 _build/build6.py
 python3 _build/build7.py
+# The Plane of Sky's measured half. Derives from measured.json and
+# raids-measured.json, so it must run before build8.py renders it.
+python3 _build/skyloot.py
 python3 _build/build8.py
 python3 _build/extract_faction.py
 python3 _build/build9.py
