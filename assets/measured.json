@@ -46978,5 +46978,1255 @@
   },
   "drop_tier_floor": 1,
   "drop_tier_modal": 1
+ },
+ {
+  "zone": "The Rathe Mountains",
+  "character": "Avenrae",
+  "difficulty_label": "Fused",
+  "difficulty_num": 3,
+  "difficulty": 3,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": null,
+  "date": "14 Aug 2026",
+  "window": "18:21-21:01",
+  "stamps": [],
+  "kills": 33,
+  "distinct": 5,
+  "kinds": [
+   "a Teir`Dal Priest",
+   "a Teir`Dal Spellbinder",
+   "a Troll Greenblood",
+   "a Troll Marauder",
+   "a lizardman warrior"
+  ],
+  "drop_tiers": {},
+  "faction": {
+   "Protectors of Gukta": 40
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 0,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {
+    "Root": {
+     "a Teir`Dal Priest": 1
+    },
+    "Lifetap": {
+     "a Troll Marauder": 1
+    },
+    "Harm Touch": {
+     "a Troll Marauder": 1
+    },
+    "Frost Bolt": {
+     "a Teir`Dal Priest": 3
+    },
+    "Shock of Fire": {
+     "a Teir`Dal Priest": 1
+    },
+    "Stun": {
+     "a Troll Greenblood": 1
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "you_hit": 140,
+  "you_miss": 19,
+  "mob_hit": 0,
+  "mob_miss": 55,
+  "mobs": {
+   "A Teir`Dal Priest": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Frost Bolt": 24,
+     "Root": 16,
+     "Shock of Fire": 13,
+     "Fire Bolt": 5,
+     "Suffocating Sphere": 1
+    },
+    "loot": {}
+   },
+   "A Teir`Dal Spellbinder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Furor": 20,
+     "Stun": 9,
+     "Strike": 9,
+     "Light Healing": 6,
+     "Harm Touch": 1,
+     "Burst of Flame": 1,
+     "Courage": 1,
+     "Burst of Fire": 1
+    },
+    "loot": {}
+   },
+   "A Troll Marauder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifetap": 29,
+     "Harm Touch": 13,
+     "Drowsy": 9,
+     "Sicken": 5,
+     "Disease Cloud": 2,
+     "Burst of Flame": 2,
+     "Frost Rift": 2,
+     "Frost Bolt": 1
+    },
+    "loot": {}
+   },
+   "A Troll Greenblood": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaotic Feedback": 2,
+     "Frost Bolt": 1,
+     "Stun": 1,
+     "Furor": 1,
+     "Healing": 1
+    },
+    "loot": {}
+   },
+   "A basalt drake": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Major Shielding": 1,
+     "Shield of Fire": 1
+    },
+    "loot": {}
+   },
+   "An obsidian drake": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Drake Breath": 3,
+     "Shock of Blades": 3,
+     "Burn": 3
+    },
+    "loot": {}
+   },
+   "A basilisk": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Stone Breath": 4,
+     "Tangling Weeds": 2,
+     "Burst of Fire": 2
+    },
+    "loot": {}
+   },
+   "a Troll Greenblood": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Troll Greenblood Insignia": 41
+    }
+   },
+   "a Troll Marauder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Troll Basher Insignia": 40
+    }
+   },
+   "a Teir`Dal Spellbinder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Teir`Dal Arcane Insignia": 40
+    }
+   },
+   "a Teir`Dal Priest": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Teir`Dal Priest Insignia": 40
+    }
+   }
+  }
+ },
+ {
+  "zone": "The Plane of Sky",
+  "character": "Avenrae",
+  "difficulty_label": null,
+  "difficulty_num": null,
+  "difficulty": 0,
+  "difficulty_from": "zone line",
+  "difficulty_label_agrees": null,
+  "difficulty_agrees": true,
+  "date": "14 Aug 2026",
+  "window": "21:07-01:07",
+  "stamps": [],
+  "kills": 31,
+  "distinct": 19,
+  "kinds": [
+   "Bazzt Zzzt",
+   "Bazzzazzt",
+   "Bzzazzt",
+   "Bzzzt",
+   "Eye of Veeshan",
+   "Gorgalosk",
+   "Keeper of Souls",
+   "Noble Dojorn",
+   "Sister of the Spire",
+   "The Spiroc Lord",
+   "a soul harvester",
+   "a soul tamer",
+   "a spiroc vanquisher",
+   "a spiroc walker",
+   "an avenging gazer",
+   "an azarack",
+   "an essence carrier",
+   "an essence tamer",
+   "the Hand of Veeshan"
+  ],
+  "drop_tiers": {
+   "0": 39,
+   "1": 27,
+   "2": 1
+  },
+  "faction": {},
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 187,
+   "lockout_lines": 297,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {
+    "Blessing of the Lord Commander": {
+     "landed": 4,
+     "casters": {}
+    },
+    "Stone Breath": {
+     "landed": 3,
+     "casters": {
+      "Gorgalosk": 2,
+      "a gorgalask": 1
+     }
+    },
+    "Entomb in Ice": {
+     "landed": 3,
+     "casters": {
+      "Sister of the Spire": 3
+     }
+    },
+    "Envenomed Bolt": {
+     "landed": 1,
+     "casters": {}
+    },
+    "Doraleous's thorns for 21 points of non-melee damage": {
+     "landed": 1,
+     "casters": {}
+    },
+    "Discordant Mind": {
+     "landed": 1,
+     "casters": {
+      "a watchful guard": 1
+     }
+    },
+    "Bzzazzt": {
+     "landed": 1,
+     "casters": {}
+    }
+   },
+   "resists": {
+    "Draught of Fire": {
+     "an avenging gazer": 3
+    },
+    "Stone Breath": {
+     "Gorgalosk": 10
+    },
+    "Mana Sink": {
+     "an avenging gazer": 11
+    },
+    "Darkness": {
+     "a spiroc vanquisher": 8
+    },
+    "Spiroc Thunder": {
+     "a spiroc vanquisher": 3
+    },
+    "Ensnare": {
+     "The Spiroc Guardian": 2
+    },
+    "Stone Spider Stun": {
+     "The Spiroc Lord": 2
+    },
+    "Ensnaring Roots": {
+     "The Spiroc Lord": 2
+    },
+    "Call of Flame": {
+     "The Spiroc Lord": 1
+    },
+    "Deadly Poison": {
+     "Bzzazzt": 72,
+     "Bazzzazzt": 52,
+     "Bzzzt": 29,
+     "Bizazzzt": 11
+    },
+    "Rotting Flesh": {
+     "Bazzt Zzzt": 1
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {
+   "an azarack": 0.299,
+   "Gorgalosk": 0.552,
+   "an avenging gazer": 0.4,
+   "Keeper of Souls": 0.414,
+   "a soul harvester": 0.318,
+   "a soul tamer": 0.36,
+   "a spiroc vanquisher": 0.387,
+   "The Spiroc Lord": 0.456,
+   "Bzzazzt": 0.612,
+   "Sister of the Spire": 0.566,
+   "Eye of Veeshan": 0.657,
+   "Bazzzazzt": 0.435,
+   "Bzzzt": 0.552,
+   "Bazzt Zzzt": 0.608,
+   "Noble Dojorn": 0.608,
+   "a spiroc walker": 0.28,
+   "an essence carrier": 0.318,
+   "an essence tamer": 0.36,
+   "the Hand of Veeshan": 0.456
+  },
+  "you_hit": 4093,
+  "you_miss": 2911,
+  "mob_hit": 2183,
+  "mob_miss": 2926,
+  "mobs": {
+   "A blade storm": {
+    "swings": 230,
+    "landed": 122,
+    "avg": 138.3,
+    "max": 295,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Noble Dojorn": {
+    "swings": 41,
+    "landed": 25,
+    "avg": 119.4,
+    "max": 264,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Efreeti Fire": 9
+    },
+    "loot": {
+     "Efreeti Standard": 2,
+     "Blade of Abrogation": 1,
+     "Efreeti Wind Staff": 1,
+     "Efreeti Battle Axe": 1,
+     "Golden Efreeti Vambraces": 1,
+     "Stein of Flowing Ichor +1": 1,
+     "Efreeti War Axe": 1
+    }
+   },
+   "An azarack": {
+    "swings": 280,
+    "landed": 132,
+    "avg": 89.6,
+    "max": 221,
+    "backstabs": 17,
+    "backstab_avg": 259.1,
+    "backstab_max": 586,
+    "casts": {},
+    "loot": {}
+   },
+   "Protector of Sky": {
+    "swings": 21,
+    "landed": 11,
+    "avg": 80.9,
+    "max": 177,
+    "backstabs": 1,
+    "backstab_avg": 188.0,
+    "backstab_max": 188,
+    "casts": {},
+    "loot": {
+     "Key of Misfortune": 2,
+     "Belt of Concordance": 2,
+     "Belt of Contention +1": 1,
+     "Bracelet of Cessation +1": 1,
+     "Wind Rune Ena": 1,
+     "Wind Rune Geza": 1,
+     "Wind Rune Heda": 1,
+     "Wind Rune Neza": 1,
+     "Wind Rune Ozah": 1
+    }
+   },
+   "A gorgalask": {
+    "swings": 32,
+    "landed": 16,
+    "avg": 95.9,
+    "max": 232,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A crystaline cloud": {
+    "swings": 31,
+    "landed": 14,
+    "avg": 101.2,
+    "max": 235,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Air Elemental Attack": 5
+    },
+    "loot": {}
+   },
+   "Gorgalosk": {
+    "swings": 50,
+    "landed": 21,
+    "avg": 111.7,
+    "max": 345,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Key of Beasts": 2,
+     "Belt of Tranquility +1": 1,
+     "Bracelet of Exertion": 1,
+     "Gorgon Head": 1,
+     "Whitened Treant Fists": 1,
+     "Griffon Talon": 1,
+     "Belt of Contention +1": 1
+    }
+   },
+   "Heart harpie": {
+    "swings": 163,
+    "landed": 71,
+    "avg": 115.3,
+    "max": 360,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Dooming Darkness": 11,
+     "Life Leech": 8,
+     "Shadow Vortex": 4,
+     "Negation of Life": 3,
+     "Harm Touch": 2
+    },
+    "loot": {}
+   },
+   "An essence tamer": {
+    "swings": 936,
+    "landed": 421,
+    "avg": 101.2,
+    "max": 307,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A soul carrier": {
+    "swings": 188,
+    "landed": 84,
+    "avg": 62.1,
+    "max": 183,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Keeper of Souls": {
+    "swings": 13,
+    "landed": 2,
+    "avg": 94.5,
+    "max": 144,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Avian Key": 2,
+     "Fine Velvet Cloak": 2,
+     "Woven Skull Cap": 2,
+     "Small Shield": 2,
+     "Black Silk Cape +1": 1,
+     "Blade of Abrogation": 1,
+     "Blade of Abrogation +1": 1,
+     "Stone Amulet": 1,
+     "Belt of Iniquity +1": 1,
+     "Belt of the Pine +1": 1
+    }
+   },
+   "An essence carrier": {
+    "swings": 1274,
+    "landed": 511,
+    "avg": 90.9,
+    "max": 278,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "An essence harvester": {
+    "swings": 117,
+    "landed": 52,
+    "avg": 80.8,
+    "max": 183,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Whirl Until You Hurl": 22
+    },
+    "loot": {}
+   },
+   "A soul harvester": {
+    "swings": 451,
+    "landed": 194,
+    "avg": 73.6,
+    "max": 278,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A soul tamer": {
+    "swings": 422,
+    "landed": 188,
+    "avg": 81.9,
+    "max": 307,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Overseer of Air": {
+    "swings": 30,
+    "landed": 12,
+    "avg": 119.2,
+    "max": 332,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Efreeti Fire": 4
+    },
+    "loot": {
+     "Fine Steel Dagger": 3,
+     "Efreeti War Axe": 2,
+     "Fine Steel Dagger +1": 1,
+     "Mote of Infinitesimal Potential": 1,
+     "Golden Efreeti Bracers": 1,
+     "Wind Rune Beza": 1,
+     "Efreeti War Spear": 1,
+     "Efreeti Magi Staff": 1,
+     "Efreeti Battle Axe +1": 1
+    }
+   },
+   "A spiroc vanquisher": {
+    "swings": 173,
+    "landed": 59,
+    "avg": 72.3,
+    "max": 192,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 20
+    },
+    "loot": {}
+   },
+   "A spiroc expulser": {
+    "swings": 47,
+    "landed": 18,
+    "avg": 75.9,
+    "max": 143,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 6,
+     "Greater Healing": 5,
+     "Ensnare": 2,
+     "Chloroplast": 2,
+     "Enveloping Roots": 2,
+     "Healing Water": 1,
+     "Spirit of Wolf": 1,
+     "Dustdevil": 1
+    },
+    "loot": {}
+   },
+   "A spiroc revolter": {
+    "swings": 54,
+    "landed": 18,
+    "avg": 66.5,
+    "max": 192,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 7,
+     "Greater Healing": 4,
+     "Tangling Weeds": 3,
+     "Spirit of Wolf": 1
+    },
+    "loot": {}
+   },
+   "The Spiroc Lord": {
+    "swings": 30,
+    "landed": 17,
+    "avg": 131.1,
+    "max": 308,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Spiroc Thunder": 4,
+     "Ensnare": 4,
+     "Ensnaring Roots": 3,
+     "Call of Flame": 2,
+     "Careless Lightning": 2,
+     "Nature's Precision": 1,
+     "Greater Healing": 1,
+     "Chloroplast": 1,
+     "Scorching Arrow": 1
+    },
+    "loot": {
+     "Key of the Swarm": 2,
+     "Belt of Tranquility": 1,
+     "Spiroc Battle Staff": 1,
+     "Spiroc Wingblade +1": 1,
+     "Wind Rune Ena": 1,
+     "Dove Slippers": 1
+    }
+   },
+   "Bzzazzt": {
+    "swings": 49,
+    "landed": 24,
+    "avg": 68.7,
+    "max": 91,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Deadly Poison": 890
+    },
+    "loot": {
+     "Wind Rune Dena": 1
+    }
+   },
+   "Bazzzazzt": {
+    "swings": 39,
+    "landed": 11,
+    "avg": 57.6,
+    "max": 101,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Deadly Poison": 233
+    },
+    "loot": {
+     "Bracelet of Cessation": 2,
+     "Mote of Minor Potential": 2,
+     "Belt of Contention": 1,
+     "Bixie Essence": 1,
+     "Whitened Treant Fists": 1,
+     "Weight of the Gods": 1,
+     "Symbol of Marr": 1,
+     "Bracelet of Quiescence": 1,
+     "Stein of Flowing Ichor": 1,
+     "Wind Rune Geza": 1
+    }
+   },
+   "Bazzt Zzzt": {
+    "swings": 25,
+    "landed": 12,
+    "avg": 74.5,
+    "max": 159,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Rotting Flesh": 9
+    },
+    "loot": {
+     "Key of Scale": 3,
+     "Belt of Tranquility": 1,
+     "Divine Honeycomb": 1,
+     "Whitened Treant Fists": 1,
+     "Symbol of Marr": 1,
+     "Pulsating Ruby": 1,
+     "Belt of Transience": 1,
+     "Blade of Abrogation": 1,
+     "Large Diamond": 1,
+     "White Satin Gloves": 1
+    }
+   },
+   "Sister of the Spire": {
+    "swings": 70,
+    "landed": 21,
+    "avg": 78.3,
+    "max": 174,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Entomb in Ice": 8
+    },
+    "loot": {
+     "Veeshan's Key": 3,
+     "Mote of Lesser Potential": 1,
+     "Belt of Virtue": 1,
+     "Sphinxian Ring +1": 1,
+     "Treant Tear": 1,
+     "Wind Rune Fana": 1,
+     "Belt of Contention +1": 1,
+     "Belt of Transience": 1,
+     "Djinni Aura": 1,
+     "Wind Rune Jaka": 1,
+     "Belt of Iniquity +1": 1,
+     "Bracelet of Distortion +1": 1,
+     "Ring of Veeshan +1": 1
+    }
+   },
+   "The Hand of Veeshan": {
+    "swings": 31,
+    "landed": 15,
+    "avg": 125.8,
+    "max": 369,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Efreeti Fire": 5
+    },
+    "loot": {}
+   },
+   "Bzzzt": {
+    "swings": 19,
+    "landed": 6,
+    "avg": 109.3,
+    "max": 141,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Deadly Poison": 107
+    },
+    "loot": {
+     "Bracelet of Quiescence": 1,
+     "Belt of Virtue": 1,
+     "Wind Rune Beza": 1,
+     "Mote of Infinitesimal Potential": 1,
+     "Belt of Iniquity": 1
+    }
+   },
+   "A greater sphinx": {
+    "swings": 55,
+    "landed": 25,
+    "avg": 128.3,
+    "max": 287,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Celerity": 10,
+     "Tashania": 7,
+     "Immobilize": 5,
+     "Cajoling Whispers": 4,
+     "Gravity Flux": 3,
+     "Feedback": 1
+    },
+    "loot": {}
+   },
+   "Eye of Veeshan": {
+    "swings": 134,
+    "landed": 37,
+    "avg": 71.6,
+    "max": 173,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Large Sky Sapphire": 1,
+     "Ethereal Emerald": 1,
+     "Wind Rune Kala": 1,
+     "Large Sky Diamond": 1
+    }
+   },
+   "An undine spirit": {
+    "swings": 9,
+    "landed": 2,
+    "avg": 40.0,
+    "max": 68,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Superior Healing": 6,
+     "Force": 4,
+     "Retribution": 3,
+     "Sacred Echo": 3,
+     "Instill": 1
+    },
+    "loot": {}
+   },
+   "A gust of wind": {
+    "swings": 47,
+    "landed": 19,
+    "avg": 74.2,
+    "max": 197,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Air Elemental Attack": 6
+    },
+    "loot": {}
+   },
+   "A spiroc banisher": {
+    "swings": 4,
+    "landed": 3,
+    "avg": 74.3,
+    "max": 110,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 2
+    },
+    "loot": {}
+   },
+   "A spiroc caller": {
+    "swings": 11,
+    "landed": 6,
+    "avg": 102.3,
+    "max": 149,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 3,
+     "Greater Healing": 3,
+     "Ensnare": 1,
+     "Enveloping Roots": 1,
+     "Firestrike": 1
+    },
+    "loot": {}
+   },
+   "Torgon Blademaster": {
+    "swings": 5,
+    "landed": 2,
+    "avg": 277.5,
+    "max": 283,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Thalik Silenthand": {
+    "swings": 4,
+    "landed": 3,
+    "avg": 81.7,
+    "max": 129,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Stragen The Hewer": {
+    "swings": 5,
+    "landed": 3,
+    "avg": 85.3,
+    "max": 105,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Animist Kratho": {
+    "swings": 4,
+    "landed": 3,
+    "avg": 231.7,
+    "max": 259,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Sarkis Ebonblade": {
+    "swings": 5,
+    "landed": 3,
+    "avg": 144.3,
+    "max": 235,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "An avenging gazer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Mana Sink": 92,
+     "Beholder Dispel": 17,
+     "Immobilize": 14,
+     "Draught of Fire": 10,
+     "Mana Detonation": 3,
+     "Lure of Frost": 3,
+     "Elnerick's Entombment of Ice": 2,
+     "Rend": 1
+    },
+    "loot": {}
+   },
+   "A watchful guard": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Mana Sink": 31,
+     "Tashania": 6,
+     "Beholder Dispel": 5,
+     "Allure": 3,
+     "Immobilize": 2,
+     "Shiftless Deeds": 1,
+     "Discordant Mind": 1
+    },
+    "loot": {}
+   },
+   "The Spiroc Guardian": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 4,
+     "Superior Healing": 4,
+     "Ensnare": 2,
+     "Ice": 1,
+     "Engulfing Roots": 1,
+     "Dustdevil": 1
+    },
+    "loot": {
+     "Mote of Infinitesimal Potential": 1,
+     "Wind Rune Jaka": 1
+    }
+   },
+   "Bizazzzt": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Deadly Poison": 61
+    },
+    "loot": {
+     "Symbol of Marr": 1,
+     "Symbol of Marr +1": 1,
+     "Wind Rune Beza": 1
+    }
+   },
+   "Bzizzzt": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Deadly Poison": 1
+    },
+    "loot": {
+     "Belt of the Pine": 1
+    }
+   },
+   "A spiroc arbiter": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Spiroc Thunder": 13,
+     "Ensnare": 9,
+     "Enveloping Roots": 5,
+     "Dustdevil": 4,
+     "Firestrike": 1,
+     "Spirit of Wolf": 1
+    },
+    "loot": {}
+   },
+   "A spiroc walker": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Swarm of Pain": 2,
+     "Spiroc Thunder": 2,
+     "Invoke Lightning": 1,
+     "Careless Lightning": 1
+    },
+    "loot": {}
+   },
+   "an azarack": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Wind Rune Ozah": 1,
+     "Wind Rune Caza": 1,
+     "Wind Rune Kala": 1,
+     "Mote of Infinitesimal Potential": 1,
+     "Wind Rune Neza": 1
+    }
+   },
+   "an essence carrier": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Whitened Treant Fists +1": 3,
+     "Belt of Concordance": 2,
+     "Bracelet of Cessation": 2,
+     "Griffenne Blood": 2,
+     "Belt of the Pine": 2,
+     "Stein of Flowing Ichor": 2,
+     "Bracelet of Exertion": 1,
+     "Bracelet of Quiescence +2": 1,
+     "Wind Rune Ena": 1,
+     "Treant Tear +1": 1,
+     "Wind Rune Jaka": 1,
+     "Bracelet of Quiescence": 1,
+     "Wind Rune Izah": 1,
+     "Belt of the Pine +1": 1,
+     "Belt of Transience": 1,
+     "Bracelet of Cessation +1": 1,
+     "Belt of Iniquity": 1,
+     "Wind Rune Azia": 1,
+     "Belt of Contention": 1
+    }
+   },
+   "an essence tamer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Griffenne Blood": 6,
+     "Wind Rune Ozah": 2,
+     "Bracelet of Distortion +1": 1,
+     "Treant Tear": 1,
+     "Wind Rune Neza": 1,
+     "Velium Gemmed Rune": 1,
+     "Wind Rune Ena": 1
+    }
+   },
+   "a soul harvester": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Belt of Concordance": 2,
+     "Treant Tear +1": 1,
+     "Complex Velium Gemmed Rune": 1,
+     "Symbol of Marr +1": 1,
+     "Bracelet of Quiescence": 1,
+     "Whitened Treant Fists": 1
+    }
+   },
+   "a spiroc vanquisher": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Wind Rune Kala": 1
+    }
+   },
+   "the Hand of Veeshan": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Bracelet of Quiescence": 1,
+     "Efreeti Mace": 1,
+     "Efreeti Magi Staff": 1,
+     "Efreeti War Staff": 1,
+     "Stein of Flowing Ichor": 1,
+     "Belt of Concordance": 1,
+     "White Satin Gloves": 1,
+     "Golden Efreeti Vambraces": 1,
+     "Efreeti Wind Staff": 1,
+     "Efreeti Battle Axe": 1
+    }
+   },
+   "a spiroc walker": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Wind Rune Neza": 1
+    }
+   },
+   "a soul tamer": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Velium Gemmed Rune": 1,
+     "Belt of Transience": 1
+    }
+   }
+  },
+  "drop_tier_floor": 0,
+  "drop_tier_modal": 0
  }
 ]
