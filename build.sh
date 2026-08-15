@@ -45,6 +45,10 @@ python3 _build/build25.py
 python3 _build/build404.py
 # Search indexes the built pages, so it has to run after every generator that
 # writes one. Keep it last but for the sitemap.
+# The public data contract. Runs after every generator that writes the
+# assets it reads, and before the sitemap so /data/ is listed.
+python3 _build/publicdata.py
+python3 _build/build27.py
 python3 _build/build23.py
 python3 _build/sitemap.py
 python3 scripts/stamp.py

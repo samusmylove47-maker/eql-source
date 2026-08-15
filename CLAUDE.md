@@ -278,6 +278,14 @@ _build/
                     item and named mob its slug, so The Index (which links in
                     the browser) and build17.py cannot disagree about addresses
   build17.py        the item and named-mob pages, and their two A–Z hubs
+  publicdata.py     public/data/*.vN.json — the datasets as a PUBLIC CONTRACT.
+                    Generated FROM assets/, never symlinked to it: the internal
+                    shapes change whenever a generator needs them to, and the
+                    published ones may not. Fields are never removed and never
+                    retyped; a breaking change gets a new version at a new URL
+                    and the old one stays up. check.py declares the v1 shape and
+                    fails the build if a field goes missing or a dataset empties
+  build27.py        data/index.html — the human half of that contract
   sitemap.py        sitemap + robots
   source/           the real originals. Edit these
 docs/

@@ -168,6 +168,7 @@ def foot(rel=""):
       </ul></div>
       <div><h4>About</h4><ul>
         <li><a href="{rel}search.html">Search the site</a></li>
+        <li><a href="{rel}data/index.html">Public data</a></li>
         <li><a href="{rel}credits.html">Credits</a></li>
         <li><a href="{rel}archive/index.html">The original plates</a></li>
         <li><a href="{rel}sources.html">Sourcing standard</a></li>
