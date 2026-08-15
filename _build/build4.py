@@ -1,8 +1,28 @@
-import os, sys
+import os, sys, json
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 from _partials import head, bar, foot
+
+# WE HAVE KILLED HIM NOW, AND THE PAGE HAS TO SAY SO.
+# This page was written when the Eye was a boss nobody here had fought, and its
+# whole frame is the logistics of keying a raid to island 8. Three kills on
+# 14-15 August 2026 contradict that frame, and one of them contradicts the
+# imported stat block outright: our fullest complete view of the fight is 18,914
+# damage, and damage to kill sits ABOVE hit points. A 32,000 hit point boss
+# cannot die to it. The figure stays on the page, marked, because a marked
+# source figure is more useful than a hole - but it no longer stands unopposed.
+EYE = [f for f in json.load(open('assets/raids-measured.json', encoding='utf-8'))
+       if f['boss'] == 'Eye of Veeshan']
+EYE_M = next(b for b in json.load(open('assets/sky-loot.json', encoding='utf-8'))['bosses']
+             if b['boss'] == 'Eye of Veeshan')
+EYE_N = len(EYE)
+EYE_ATK = (min(f['attackers'] for f in EYE), max(f['attackers'] for f in EYE))
+EYE_SEC = (min(f['seconds'] for f in EYE), max(f['seconds'] for f in EYE))
+# The fullest view is the one the parser did not mark a floor: a fight we joined
+# late tells us the total is at least N, which bounds nothing from above.
+EYE_FULL = max((f['damage_low'] for f in EYE if not f.get('damage_is_floor')), default=None)
+EYE_MAX = max(f['damage_low'] for f in EYE)
 
 VIEWER_CSS = '''<style>
 .enc{background:var(--panel);border:1px solid var(--rule);margin:26px 0}
@@ -60,20 +80,32 @@ BODY = '''
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
     <p class="eyebrow" style="color:var(--ember-t)">Island 8 &middot; Butterfly Island &middot; final boss</p>
     <h1>Eye of<br>Veeshan</h1>
-    <p class="lede">Mechanically among the simplest fights in the zone. Logistically among the hardest, because
-      reaching him means keying your entire raid to the top of a nine-island stack where a single knockback destroys
-      every key a player is carrying. Most guilds never fight him on his own island at all.</p>
+    <p class="lede">Mechanically among the simplest fights in the zone, and <strong>we have now killed him
+      @@EYE_N@@ times with @@EYE_ATK_LO@@ to @@EYE_ATK_HI@@ attackers, in @@EYE_SEC_LO@@ to @@EYE_SEC_HI@@
+      seconds</strong> <span class="tier tM">TIER M</span>. What is hard here is the logistics, not the
+      boss: reaching him means keying everyone to the top of a nine-island stack where a single knockback
+      destroys every key a player is carrying.</p>
   </div>
 
   <section class="band" style="border-top:0;padding-top:clamp(28px,4vw,44px)">
     <dl class="statline">
-      <div class="stx"><dt>Hit points</dt><dd>32,000 <span class="tier t5">T5</span><small>pre-launch import &mdash; see sourcing</small></dd></div>
-      <div class="stx"><dt>Melee damage</dt><dd>? <span class="tier t5">T5</span><small>sources give 865 and 200 &mdash; see sourcing</small></dd></div>
+      <div class="stx"><dt>Hit points</dt><dd class="disputed">32,000 <span class="tier t5">T5</span><small>pre-launch import &mdash; our own kills contradict it, see below</small></dd></div>
+      <div class="stx"><dt>Damage to kill</dt><dd>@@EYE_FULL@@ <span class="tier tM">M</span><small>fullest of @@EYE_N@@ kills, base difficulty</small></dd></div>
+      <div class="stx"><dt>Melee damage</dt><dd>@@EYE_MAXHIT@@ max <span class="tier tM">M</span><small>@@EYE_AVG@@ average over @@EYE_LANDED@@ hits on one character</small></dd></div>
       <div class="stx"><dt>Island</dt><dd>8<small>Butterfly</small></dd></div>
       <div class="stx"><dt>Key</dt><dd>Veeshan&rsquo;s<small>from island 7 Sirran</small></dd></div>
       <div class="stx"><dt>Trash</dt><dd>None<small>the Hand, if up</small></dd></div>
       <div class="stx"><dt>Death touch</dt><dd>?<small>sources conflict &mdash; see below</small></dd></div>
     </dl>
+
+    <div class="note"><strong>The 32,000 cannot be right.</strong> Damage to kill counts every attacker and
+      sits <em>above</em> a boss&rsquo;s health rather than measuring it, so a boss that dies to
+      @@EYE_FULL@@ damage does not have 32,000 hit points. That is our fullest view of @@EYE_N@@ kills on
+      14&ndash;15 August 2026, all at base difficulty <span class="tier tM">TIER M</span>. <strong>It is
+      evidence against the figure rather than a replacement for it</strong> &mdash; a client log records
+      only what one character witnessed, so a total can be short but never long, and we still cannot tell
+      you what the number actually is. The imported figure stays on the page, struck, because a marked
+      source figure is more useful than a hole.</div>
 
     <div class="note warn"><strong>The one thing to settle before you pull.</strong> The wiki&rsquo;s Dangers section
       states plainly that boss NPCs no longer death touch. The Island 8 walkthrough directly below it describes a tank
@@ -101,7 +133,7 @@ BODY = '''
       <canvas id="stage" tabindex="0" role="img" aria-label="Three-dimensional schematic of Plane of Sky islands 7 and 8 showing raid positioning for the Eye of Veeshan encounter. Focus this diagram and use the arrow keys to orbit, plus and minus to zoom."></canvas>
       <div class="enc-legend">
         <div class="lg"><span class="nm"><span class="sw" style="background:#C4482E"></span>Eye of Veeshan</span>
-          <span class="ds">32,000 HP, unverified for Legends</span></div>
+          <span class="ds">died to @@EYE_FULL@@ damage, base difficulty</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#7FB2C7"></span>Main tank</span>
           <span class="ds">rotation of three to four</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#E6E9E4"></span>Raid stack</span>
@@ -231,7 +263,13 @@ BODY = '''
       bosses run three classes from D3, and a single-class stat block is a classic stat block.
       <br><br>
       Both figures now carry a <span class="tier t5">T5</span> badge, and the tanking section no longer reasons from
-      either. What replaces them is in-game observation: time the fight and count the swings.</div>
+      either. What replaces them is in-game observation: time the fight and count the swings.
+      <br><br>
+      <strong>Done, 14&ndash;15 August 2026.</strong> The Eye swung at one of our characters @@EYE_SWINGS@@
+      times and landed @@EYE_LANDED@@, for @@EYE_AVG@@ on average and
+      @@EYE_MAXHIT@@ at most <span class="tier tM">TIER M</span>. That is nearer the lower of the two
+      inherited figures than the higher, but it <strong>does not settle them</strong>: mitigation differs per target,
+      and what a boss does to one character is not what it does to a tank.</div>
     <div class="note"><strong>eqprogression.com</strong>, Plane of Sky Quests / Class Unlocks, read 4 August 2026.
       Source of the component-to-reward mapping in the loot table.</div>
     <div class="note warn"><strong>Not sourced, and stated as unknown:</strong> whether death touch is live at launch,
@@ -405,6 +443,24 @@ SCRIPT = r'''<script src="../assets/vendor/three.min.js"></script>
   setTimeout(resize,120);
 })();
 </script>'''
+
+# BODY is a plain string, not an f-string, because it carries the 3D engine's
+# JavaScript and every brace in it would need doubling. The measured figures are
+# substituted by name instead. A leaked token renders as literal @@EYE_FULL@@ on
+# the page, which scripts/gate.py now refuses to publish - the first version of
+# this shipped "{EYE_FULL:,}" straight to the page and passed 723 checks.
+MEASURED = {
+    '@@EYE_N@@': str(EYE_N),
+    '@@EYE_FULL@@': f'{EYE_FULL:,}',
+    '@@EYE_ATK_LO@@': str(EYE_ATK[0]), '@@EYE_ATK_HI@@': str(EYE_ATK[1]),
+    '@@EYE_SEC_LO@@': str(EYE_SEC[0]), '@@EYE_SEC_HI@@': str(EYE_SEC[1]),
+    '@@EYE_SWINGS@@': str(EYE_M['melee_swings']),
+    '@@EYE_LANDED@@': str(EYE_M['melee_landed']),
+    '@@EYE_AVG@@': str(EYE_M['melee_avg']),
+    '@@EYE_MAXHIT@@': str(EYE_M['melee_max']),
+}
+for _k, _v in MEASURED.items():
+    BODY = BODY.replace(_k, _v)
 
 page = head("Eye of Veeshan",
   "Interactive 3D raid guide for the Eye of Veeshan, final boss of the Plane of Sky: the pull-down to Island 7, tank rotation and the full component drop list. His hit points are a pre-launch import and this page says so.",

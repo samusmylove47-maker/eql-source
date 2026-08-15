@@ -351,6 +351,31 @@ def run(pages, fail, warn):
             fail(f"{p} points at share card {name}, which does not exist. "
                  f"Run python3 _build/ogcards.py")
 
+    # ---- 5d. a template placeholder may not reach a reader -------------------
+    #
+    # raids/eye-of-veeshan.html shipped the literal text "{EYE_FULL:,}" in its
+    # stat block on 15 Aug 2026 and passed all 723 checks. Its BODY is a plain
+    # triple-quoted string - it carries the 3D engine's JavaScript, so it can
+    # never be an f-string - and f-string syntax written into it is not a syntax
+    # error anywhere. It renders as itself.
+    #
+    # Nothing here looked for that, because every other check reads what a page
+    # SAYS rather than whether it finished rendering. The shapes below are the
+    # ones a generator on this site can leak: an f-string field, a str.format
+    # slot, and the @@TOKEN@@ convention build4.py now uses instead. Scripts and
+    # styles are stripped first - a CSS rule and a JS object are full of braces
+    # and none of them are placeholders.
+    LEAKED = re.compile(
+        r"@@[A-Z][A-Z0-9_]*@@"                      # @@EYE_FULL@@
+        r"|\{[A-Za-z_]\w*(?:\[[^\]{}]*\]|\.\w+)*(?::[^{}]*)?\}")   # {EYE_FULL:,}
+    for p in pages:
+        h = open(p, encoding="utf-8", errors="replace").read()
+        t = text_of(SCRIPT_TAG.sub(" ", h))
+        for m in LEAKED.finditer(t):
+            fail(f"{p} shipped an unrendered placeholder {m.group(0)!r} - the "
+                 f"generator wrote template syntax into a plain string")
+            break
+
     # ---- 6. prose may not grow -----------------------------------------------
     #
     # The site reached 67,752 words before anyone measured it. Not one page was

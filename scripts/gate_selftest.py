@@ -140,6 +140,24 @@ CASES = [
      "public/index.html",
      lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact\.html">[^<]*</a></li>', "", t)),
 
+    # This one shipped. build4.py's BODY carries the 3D engine's JavaScript, so
+    # it can never be an f-string, and f-string syntax written into it renders as
+    # itself: the Eye's stat block published the literal text "{EYE_FULL:,}" on
+    # 15 August 2026 and all 723 checks passed. Every other check reads what a
+    # page says; none asked whether it had finished rendering.
+    ("an f-string placeholder left unrendered",
+     "shipped an unrendered placeholder",
+     "public/raids/eye-of-veeshan.html",
+     lambda t: t.replace("18,914 <span", "{EYE_FULL:,} <span", 1)),
+
+    # The same fault in the other notation build4.py now uses. Two shapes, two
+    # cases: a check that caught only the one we happened to hit last would go
+    # dead the first time a generator picked the other convention.
+    ("an @@TOKEN@@ placeholder left unrendered",
+     "shipped an unrendered placeholder",
+     "public/raids/eye-of-veeshan.html",
+     lambda t: t.replace("18,914 <span", "@@EYE_FULL@@ <span", 1)),
+
     # The change log is exempt from the prose ceiling, and that exemption is
     # exactly the kind of hole that quietly turns a check off. This proves the
     # rest of the page is still governed.

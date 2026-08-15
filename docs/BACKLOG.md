@@ -8,6 +8,42 @@ flag the gap, not to invent the number.
 
 ---
 
+## P0 — `sightings.py` is discarding every drop from an unsurveyed zone
+
+**Found 15 August 2026, while rewriting the Plane of Sky page.**
+
+`sightings.py` keeps a measured drop only where the item matches a catalogue
+mined from the dungeon surveys plus `planar.json`. **The Plane of Sky is
+neither**, so all **148 Sky loot lines across 74 distinct items** — the whole
+key chain, the whole efreeti line — were discarded as vendor trash, and
+`assets/sightings.json` contained not one Sky drop. `docs/SKY-MEASURED.md` said
+the per-boss drop tables were in that file. They were never in it.
+
+This is the same fault the file already documents and fixed **on the mob side**
+in August: measured evidence could only ever confirm what we had already typed,
+never add to it. It was fixed for mobs and left standing for items.
+
+`_build/skyloot.py` works around it for Sky only. Every other zone we have not
+surveyed is still losing its drops silently, and **a generator that discards
+evidence without counting what it discarded looks exactly like one that found
+nothing**.
+
+**Acceptance:**
+
+- `sightings.py` reports how many drops it discarded and from which zones, so
+  the loss is visible in the build output rather than inferred a month later.
+- An item dropped by a named mob is kept even where no catalogue lists it,
+  marked so a page can say the name came from the log — mirroring `off_roster`
+  on the mob side.
+- Vendor trash stays excluded. That filter is doing real work and removing it
+  wholesale would bury the signal.
+- `scripts/toolrender.js` run before and after, and diffed: `sightings.json`
+  feeds five builders and the public data contract, so this is a migration and
+  the handoff's "slow down at data migrations" applies.
+- `_build/skyloot.py` reassessed once this lands — it may become redundant.
+
+---
+
 ## P0 — Aesthetic uplift
 
 See `docs/DESIGN.md` for the full brief. Break it into these commits:
