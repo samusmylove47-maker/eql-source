@@ -391,6 +391,36 @@ try:
 except Exception as e:                      # a broken gate must not pass silently
     fail(f"the propagation gate did not run: {type(e).__name__}: {e}")
 
+# ---- the tools actually run ------------------------------------------------
+# Everything above reads the HTML a page ships. None of it runs the page's
+# JavaScript, which is how the Sky tracker shipped with an empty class picker
+# and a green check. scripts/toolsmoke.js executes each tool under a stub DOM
+# and asserts it neither throws nor renders nothing.
+#
+# Skipped, loudly, where node is absent: this must not become a check that
+# quietly does nothing on a machine without a JS runtime.
+try:
+    _node = subprocess.run(["node", "--version"], capture_output=True, text=True)
+    _have_node = _node.returncode == 0
+except (OSError, FileNotFoundError):
+    _have_node = False
+if not _have_node:
+    warn("node is not on PATH, so the tool smoke test did not run. The tools "
+         "are unverified in this build: run scripts/toolsmoke.js where node is "
+         "available before trusting it.")
+else:
+    _r = subprocess.run(["node", os.path.join(ROOT, "scripts", "toolsmoke.js")],
+                        capture_output=True, text=True, cwd=ROOT)
+    if _r.returncode != 0:
+        for _line in (_r.stdout or "").splitlines():
+            _line = _line.strip()
+            if _line.startswith("[THREW") or _line.startswith("[RENDERED"):
+                fail("tool smoke test: " + _line)
+            elif _line and not _line.startswith("[") and "failed" in _line:
+                fail("tool smoke test: " + _line)
+        if not any("tool smoke test" in f for f in fails):
+            fail(f"tool smoke test failed: {(_r.stderr or _r.stdout)[:300]}")
+
 print(f"checked {len(pages)} pages")
 for w in warns: print(f"  WARN  {w}")
 for f in fails: print(f"  FAIL  {f}")

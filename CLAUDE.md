@@ -281,6 +281,11 @@ docs/
   AUTOMATION.md     how the twice-daily refresh works
 scripts/
   check.py          validation. Run before every commit
+  toolsmoke.js      runs each tool's JavaScript under a stub DOM and asserts it
+                    neither throws nor renders nothing. Called by check.py;
+                    skipped with a WARN where node is absent. Every other check
+                    reads the HTML a page ships, which is how a tool with a dead
+                    class picker passed 721 green checks on 14 Aug 2026
   gate.py           the propagation gate, run by check.py
   gate_selftest.py  proves the gate still catches each fault it was built for
   prose_budget.py   lowers the prose ceilings after a trim. Run by hand
@@ -308,6 +313,21 @@ After changing `scripts/gate.py`, also run:
 ```bash
 python3 scripts/gate_selftest.py
 ```
+
+**After touching anything a tool's JavaScript reads — a data file, a constant,
+an injected blob — run the tools:**
+
+```bash
+node scripts/toolsmoke.js
+```
+
+`check.py` calls it, so a normal run covers you. Run it directly when you want
+the per-tool detail. It executes each tool under a stub DOM and asserts it
+neither throws nor renders nothing. **It cannot tell you a tool looks right or
+that a click does the right thing** — only that the script runs and the page
+fills. That is the exact gap that let a tracker ship with an empty class picker
+and every other check green, and it is all this closes. Opening the page is
+still the only way to know it works.
 
 After a deliberate trim, lower the prose ceilings to match and commit them with
 the trim:
