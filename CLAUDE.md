@@ -292,6 +292,12 @@ scripts/
                     skipped with a WARN where node is absent. Every other check
                     reads the HTML a page ships, which is how a tool with a dead
                     class picker passed 721 green checks on 14 Aug 2026
+  contamination.py  scans OUR OWN published content for classic EverQuest
+                    conventions and writes assets/contamination.json, rendered
+                    at learn/contamination.html. Hand-run. Points at eqlsource
+                    and nowhere else: a scanner that only finds other people's
+                    rot is an attack ad. If it is ever pointed outward it comes
+                    here first and the result publishes either way
   toolrender.js     dumps what a tool actually renders, so a refactor can be
                     proved to change nothing. Run it before and after any change
                     that moves data a tool reads, and diff. toolsmoke says the
