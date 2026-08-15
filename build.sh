@@ -30,6 +30,9 @@ python3 _build/build19.py
 python3 _build/build20.py
 python3 _build/build21.py
 python3 _build/build22.py
+# The contamination report. Reads assets/contamination.json, which
+# scripts/contamination.py writes by hand - the scan is not part of the build.
+python3 _build/build26.py
 python3 _build/build24.py
 python3 _build/build14.py
 python3 _build/build15.py

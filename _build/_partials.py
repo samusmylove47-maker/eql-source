@@ -49,6 +49,10 @@ LEARN = [
          foot="Reading a floor plan",
          blurb="What the floor plans draw, what they deliberately leave out, and what a combat "
                "log can and cannot tell you."),
+    dict(slug="contamination", name="What the scanner finds here",
+         foot="Contamination",
+         blurb="We scan our own pages for Project 1999 conventions and publish what turns up. "
+               "Pointed at us, not at anybody else."),
 ]
 
 _WORDS = {1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six",
