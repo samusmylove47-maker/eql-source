@@ -56,10 +56,14 @@ const TOOLS = [
     note: 'zone cards are server-rendered; the script only filters' },
   { file: 'character.html', fills: null,
     note: 'renders from saved state, empty on a first visit' },
-  { file: 'race-unlocks.html', fills: null,
-    note: 'renders from saved state' },
-  { file: 'combo-calculator.html', fills: null,
-    note: 'same app as race-unlocks, boots on the calculator tab' },
+  /* These two boot straight onto a tab and fill its pane from the race data,
+   * with no saved state needed. Listed as load-only until 14 Aug 2026, which
+   * meant the migration of their dataset out of the markup was covered by no
+   * assertion at all - the weakest moment to be running blind. */
+  { file: 'race-unlocks.html', fills: 'pane-track', expect: '<',
+    note: 'the tracker pane, filled from the race data on boot' },
+  { file: 'combo-calculator.html', fills: 'pane-calc', expect: '<',
+    note: 'same app, boots onto the calculator tab' },
   { file: 'inventory.html', fills: null,
     note: 'waits for a paste; nothing renders on load by design' },
 ];

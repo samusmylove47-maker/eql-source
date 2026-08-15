@@ -244,6 +244,12 @@ assets/
   site.css          the entire design system, one file
   zones-index.json  DRIVES ALL NAVIGATION. Edit this, rebuild, everything updates
   index-data.json   GENERATED — mined from the plates by _build/extract.py
+  faction-data.json GENERATED — mined by _build/extract_faction.py OUT OF
+                    _build/source/eql-race-unlocks.html, plus the measured half
+                    from the logs. The tool source is the truth and this file
+                    is downstream of it. Read as a second hand-maintained copy
+                    on 14 Aug 2026 and "de-duplicated" the wrong way round,
+                    which emptied it: the extractor had nothing left to mine
   zone-geometry.json  floor plans derived from the game meshes. Committed data,
                     NOT a build step — see _build/geometry.py
   vendor/three.min.js   r128, vendored. Do not switch to a CDN
@@ -286,6 +292,10 @@ scripts/
                     skipped with a WARN where node is absent. Every other check
                     reads the HTML a page ships, which is how a tool with a dead
                     class picker passed 721 green checks on 14 Aug 2026
+  toolrender.js     dumps what a tool actually renders, so a refactor can be
+                    proved to change nothing. Run it before and after any change
+                    that moves data a tool reads, and diff. toolsmoke says the
+                    pane is full; only this says it is full of the same thing
   gate.py           the propagation gate, run by check.py
   gate_selftest.py  proves the gate still catches each fault it was built for
   prose_budget.py   lowers the prose ceilings after a trim. Run by hand
