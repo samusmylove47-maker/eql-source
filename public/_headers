@@ -11,6 +11,19 @@
 /assets/*
   Cache-Control: public, max-age=3600
 
+# THE PUBLIC DATA CONTRACT.
+# These files exist to be read by other people's tools, from other origins, so
+# they need CORS or the whole point is lost — a browser-side consumer would get
+# nothing but an opaque failure. Verified live: this host honours _headers.
+#
+# Cached for an hour and revalidated. The datasets carry a content `hash` so a
+# consumer can cache on that instead and skip the transfer entirely.
+/data/*
+  Access-Control-Allow-Origin: *
+  Access-Control-Allow-Methods: GET, HEAD, OPTIONS
+  Cache-Control: public, max-age=3600, must-revalidate
+  X-Content-Type-Options: nosniff
+
 # Guides change several times a day. Never let a stale page stick.
 /dungeons/*
   Cache-Control: public, max-age=0, must-revalidate

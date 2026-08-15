@@ -391,6 +391,75 @@ try:
 except Exception as e:                      # a broken gate must not pass silently
     fail(f"the propagation gate did not run: {type(e).__name__}: {e}")
 
+# ---- the public data contract is intact -------------------------------------
+# /data/*.vN.json is published as a promise: fields are never removed and never
+# change type, because other people's tools read them. That promise is only
+# worth anything if something enforces it, so the shape is declared here rather
+# than left to whoever next edits _build/publicdata.py.
+#
+# Adding a key is fine and needs no change here. Removing one, or renaming it,
+# should fail loudly and require a deliberate decision to publish a v2.
+_CONTRACT = {
+    "sky.v1.json": dict(
+        top={"name", "version", "title", "description", "source", "schema",
+             "terms", "stability", "notes", "data", "hash"},
+        data={"sources", "islands", "ladder", "order", "efreeti", "classes"}),
+    "sightings.v1.json": dict(
+        top={"name", "version", "title", "description", "source", "schema",
+             "terms", "stability", "notes", "data", "hash"},
+        data={"items"}),
+    "zones.v1.json": dict(
+        top={"name", "version", "title", "description", "source", "schema",
+             "terms", "stability", "notes", "data", "hash"},
+        data={"zones"}),
+    "items.v1.json": dict(
+        top={"name", "version", "title", "description", "source", "schema",
+             "terms", "stability", "notes", "data", "hash"},
+        data={"items"}),
+}
+try:
+    _idx = json.load(open("public/data/index.json", encoding="utf-8"))
+except Exception as e:
+    fail(f"public/data/index.json unreadable: {e}")
+    _idx = {"datasets": []}
+_listed = set()
+for _d in _idx.get("datasets", []):
+    _fname = _d["url"].rsplit("/", 1)[-1]
+    _listed.add(_fname)
+    _p = os.path.join("public", "data", _fname)
+    if not os.path.exists(_p):
+        fail(f"the data index lists {_fname}, which is not on disk")
+        continue
+    try:
+        _body = json.load(open(_p, encoding="utf-8"))
+    except ValueError as e:
+        fail(f"public/data/{_fname} is not valid JSON: {e}")
+        continue
+    _want = _CONTRACT.get(_fname)
+    if not _want:
+        fail(f"public/data/{_fname} is published with no declared contract in "
+             f"check.py — add one before shipping it, or consumers have no "
+             f"promise to rely on")
+        continue
+    _missing = sorted(_want["top"] - set(_body))
+    if _missing:
+        fail(f"{_fname} has lost top-level field(s) {_missing} — that breaks "
+             f"the v1 contract. Publish a v2 instead of changing v1")
+    _missing = sorted(_want["data"] - set(_body.get("data") or {}))
+    if _missing:
+        fail(f"{_fname} data has lost field(s) {_missing} — that breaks the v1 "
+             f"contract. Publish a v2 instead of changing v1")
+    # An empty dataset is the failure faction-data.json had: still valid JSON,
+    # still the right shape, and carrying nothing.
+    for _k, _v in (_body.get("data") or {}).items():
+        if isinstance(_v, (dict, list)) and len(_v) == 0:
+            fail(f"{_fname}: data.{_k} is empty. A published dataset that lost "
+                 f"its contents is worse than one that failed to build")
+for _extra in sorted(set(os.path.basename(p) for p in glob.glob("public/data/*.json"))
+                     - _listed - {"index.json"}):
+    fail(f"public/data/{_extra} is published but not listed in index.json, so "
+         f"nobody can discover it")
+
 # ---- the tools actually run ------------------------------------------------
 # Everything above reads the HTML a page ships. None of it runs the page's
 # JavaScript, which is how the Sky tracker shipped with an empty class picker

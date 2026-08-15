@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Public data — EQL Source</title>
+<meta name="description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, drops we have watched happen, surveyed zones and item IDs.">
+<meta property="og:title" content="Public data — EQL Source">
+<meta property="og:description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, drops we have watched happen, surveyed zones and item IDs.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Public data — EQL Source">
+<meta name="twitter:description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, drops we have watched happen, surveyed zones and item IDs.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
+<link rel="canonical" href="https://eqlsource.com/data/index">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css">
+<style>
+.dt .ds{border-top:1px solid var(--rule);padding:var(--s-5) 0}
+.dt .ds:last-of-type{border-bottom:1px solid var(--rule)}
+.dt .ds h3{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;
+  text-transform:uppercase;letter-spacing:.02em;margin:0;color:var(--bone)}
+.dt .ds .u{font-family:"IBM Plex Mono",monospace;font-size:12.5px;margin:6px 0 0}
+.dt .ds .u a{color:var(--instr);text-decoration:none;border-bottom:1px solid transparent}
+.dt .ds .u a:hover{border-color:var(--instr)}
+.dt .ds .m{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--faint);margin:5px 0 0}
+.dt .ds p{margin:9px 0 0;color:var(--dim);font-size:14.5px;line-height:1.6;max-width:70ch}
+.dt .ds ul{margin:9px 0 0;padding-left:18px;color:var(--faint);font-size:13.5px;line-height:1.6;max-width:72ch}
+.dt pre{background:#10151A;border:1px solid var(--rule);border-radius:4px;padding:14px 16px;
+  overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--dim);
+  line-height:1.6;margin:var(--s-5) 0 0}
+.dt .promise{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.dt .promise li{background:var(--panel);padding:13px 16px;color:var(--dim);font-size:14px;line-height:1.55}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../learn/index.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+      <a href="../search.html" class="nav-find">Search</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="hero page">
+  <div class="shell dt">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Public data</p>
+    <h1 class="display">Take the data.<br><em>Please.</em></h1>
+    <p class="hero-lede">Nobody in this community publishes machine-readable data, so every
+      tool re-transcribes the same wiki pages and inherits the same 1999 errors doing it.
+      Here is ours: 4 datasets, versioned, with a source recorded per claim. Free to
+      use, no key, no rate limit, CORS open.</p>
+    <p class="hero-sig"><span>4 datasets</span>
+      <span>305 KB total</span>
+      <span>no key required</span></p>
+  </div>
+</section>
+
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell dt">
+    <pre>curl https://eqlsource.com/data/index.json</pre>
+
+    <h2 class="sec">What is here</h2>
+    <div class="ds">
+      <h3>Plane of Sky class unlock quests</h3>
+      <p class="u"><a href="https://eqlsource.com/data/sky.v1.json">https://eqlsource.com/data/sky.v1.json</a></p>
+      <p class="m">v1.0.0 &middot; 125 KB &middot; hash c8d41d080e92f873</p>
+      <p>Every Plane of Sky test for all sixteen classes, with the turn-ins, the island each component drops on, and a source recorded per claim.</p>
+    </div><div class="ds">
+      <h3>Drops we have watched happen</h3>
+      <p class="u"><a href="https://eqlsource.com/data/sightings.v1.json">https://eqlsource.com/data/sightings.v1.json</a></p>
+      <p class="m">v1.0.0 &middot; 163 KB &middot; hash 8d93a88718ef7283</p>
+      <p>Every item we have personally seen drop, the mob it came from, and how many times. Parsed from our own combat logs.</p>
+    </div><div class="ds">
+      <h3>Surveyed dungeons</h3>
+      <p class="u"><a href="https://eqlsource.com/data/zones.v1.json">https://eqlsource.com/data/zones.v1.json</a></p>
+      <p class="m">v1.0.0 &middot; 6 KB &middot; hash 25600b38a1dc6390</p>
+      <p>The zones we have surveyed, with the level band, the experience modifier and how far verification has got.</p>
+    </div><div class="ds">
+      <h3>Item names and game IDs</h3>
+      <p class="u"><a href="https://eqlsource.com/data/items.v1.json">https://eqlsource.com/data/items.v1.json</a></p>
+      <p class="m">v1.0.0 &middot; 9 KB &middot; hash 519cde8b25db1101</p>
+      <p>Item name to the game's own numeric item ID, read from `/outputfile inventory` dumps.</p>
+    </div>
+
+    <h2 class="sec">What we promise</h2>
+    <ul class="promise"><li>Fields in a vN file are never removed and never change type.</li><li>New optional fields may be added; ignore keys you do not recognise.</li><li>A breaking change gets a new version at a new URL. The old one stays up.</li><li>Values change as evidence improves. That is the product working, not a breach — watch `hash` if you cache.</li></ul>
+
+    <h2 class="sec">What you may do with it</h2>
+    <div class="note"><strong>Use it, credit EQL Source, and read the provenance before you trust a value.</strong>
+      <br><br><strong>The measured data is ours.</strong> The measured data — drop sightings, damage figures, spell lists — is our own parsed play. Freely usable with attribution.
+      <br><br><strong>The inherited data is not.</strong> Fields sourced from community wikis carry their tier and source. Those values are not ours to license; respect the original source and do not present a tier 5 figure as fact.
+      <br><br><strong>No warranty.</strong> None. This is a fan project and the game is actively patched. Every dataset here states what it does not know.</div>
+
+    <h2 class="sec">What this data is not good for</h2>
+    <div class="note"><strong>Drop rates.</strong> The sightings file is a count of what we
+      watched happen, and a drop seen once is seen once. There is no denominator in it and
+      you cannot compute one. If you publish a percentage from this, you have invented it.
+      <br><br><strong>Anything marked below tier 2.</strong> Every claim carries its tier.
+      A tier 5 figure is inherited Project 1999 prose that nobody has checked against
+      Legends, and roughly a third of what any reference in this space publishes is that.
+      <a href="../learn/contamination.html">We scan ourselves for it</a> and publish what
+      turns up. Read the provenance before you present a number as fact.
+      <br><br><strong>Completeness.</strong> Thirteen dungeons of far more, one plane of
+      three surveyed in depth, and a sample of a few dozen play sessions. Everything here
+      states what it does not know; that is the most useful field in the file.</div>
+
+    <h2 class="sec">If you build something with it</h2>
+    <p style="color:var(--dim);font-size:15px;line-height:1.65;max-width:70ch;margin:var(--s-5) 0 0">
+      Tell us and we will link it. If a field you need is missing, or a shape is awkward to
+      consume, <a href="https://github.com/samusmylove47-maker/eql-source/issues/new">open an
+      issue</a> &mdash; the point of publishing this is that it gets used, and a schema
+      nobody can use is a press release.
+      <br><br>And if you find something wrong in it, that is the most useful thing anyone
+      can send us. Every finding is credited by name on <a href="../credits.html">the credits
+      page</a>.</p>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All surveys</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../items/index.html">Every item</a></li>
+        <li><a href="../named/index.html">Every named mob</a></li>
+        <li><a href="../sets/index.html">Every planar set</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+        <li><a href="../raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/character.html">Character sheet</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+        <li><a href="../tools/planar-gear.html">Planar gear targets</a></li>
+        <li><a href="../tools/inventory.html">Inventory reader</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/still-true.html">Is it still true?</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="../learn/motes.html">Motes</a></li>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
+        <li><a href="../learn/contamination.html">Contamination</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../search.html">Search the site</a></li>
+        <li><a href="../data/index.html">Public data</a></li>
+        <li><a href="../credits.html">Credits</a></li>
+        <li><a href="../archive/index.html">The original plates</a></li>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+{
+ "name": "index",
+ "version": "1.0.0",
+ "title": "EQL Source public data",
+ "description": "Versioned, per-claim-sourced EverQuest Legends data, free to consume. Nobody else in this community publishes any, so we do.",
+ "source": "https://eqlsource.com",
+ "terms": {
+  "summary": "Use it, credit EQL Source, and read the provenance before you trust a value.",
+  "attribution": "EQL Source, https://eqlsource.com",
+  "measured": "The measured data — drop sightings, damage figures, spell lists — is our own parsed play. Freely usable with attribution.",
+  "inherited": "Fields sourced from community wikis carry their tier and source. Those values are not ours to license; respect the original source and do not present a tier 5 figure as fact.",
+  "warranty": "None. This is a fan project and the game is actively patched. Every dataset here states what it does not know.",
+  "unofficial": "Not affiliated with or endorsed by Daybreak Game Company, Game Jawn or Darkpaw Studios."
+ },
+ "stability": [
+  "Fields in a vN file are never removed and never change type.",
+  "New optional fields may be added; ignore keys you do not recognise.",
+  "A breaking change gets a new version at a new URL. The old one stays up.",
+  "Values change as evidence improves. That is the product working, not a breach — watch `hash` if you cache."
+ ],
+ "contact": "https://eqlsource.com/credits",
+ "datasets": [
+  {
+   "name": "sky",
+   "version": "1.0.0",
+   "title": "Plane of Sky class unlock quests",
+   "description": "Every Plane of Sky test for all sixteen classes, with the turn-ins, the island each component drops on, and a source recorded per claim.",
+   "url": "https://eqlsource.com/data/sky.v1.json",
+   "bytes": 128301,
+   "hash": "c8d41d080e92f873"
+  },
+  {
+   "name": "sightings",
+   "version": "1.0.0",
+   "title": "Drops we have watched happen",
+   "description": "Every item we have personally seen drop, the mob it came from, and how many times. Parsed from our own combat logs.",
+   "url": "https://eqlsource.com/data/sightings.v1.json",
+   "bytes": 167302,
+   "hash": "8d93a88718ef7283"
+  },
+  {
+   "name": "zones",
+   "version": "1.0.0",
+   "title": "Surveyed dungeons",
+   "description": "The zones we have surveyed, with the level band, the experience modifier and how far verification has got.",
+   "url": "https://eqlsource.com/data/zones.v1.json",
+   "bytes": 6972,
+   "hash": "25600b38a1dc6390"
+  },
+  {
+   "name": "items",
+   "version": "1.0.0",
+   "title": "Item names and game IDs",
+   "description": "Item name to the game's own numeric item ID, read from `/outputfile inventory` dumps.",
+   "url": "https://eqlsource.com/data/items.v1.json",
+   "bytes": 9774,
+   "hash": "519cde8b25db1101"
+  }
+ ]
+}
