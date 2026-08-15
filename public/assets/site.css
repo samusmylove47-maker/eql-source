@@ -872,3 +872,9 @@ h1.display em{color:var(--z01)}
 .dcode{background:var(--surface-0);border:1px solid var(--rule);border-radius:var(--r);
   padding:var(--s-4);overflow-x:auto;font-family:"IBM Plex Mono",monospace;
   font-size:var(--t-sm);color:var(--mut);line-height:1.7;margin:var(--s-4) 0}
+
+/* The player-value grade on a plate card. The three verification gates measure
+   sourcing hygiene and a coordinate check; this measures what somebody playing
+   tonight can actually get from the zone. See docs/WHAT-COUNTS.md. */
+.plate .meta .cov{color:var(--acc,#9FB0B4)}
+.plate .meta .cov b{color:inherit;font-weight:700}

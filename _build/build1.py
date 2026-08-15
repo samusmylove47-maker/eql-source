@@ -45,11 +45,32 @@ _CORNERS = [("86%","118%"),("14%","112%"),("92%","104%"),("8%","120%"),("78%","1
 def corner(i):
     return _CORNERS[i % len(_CORNERS)]
 
+try:
+    COV = json.load(open('assets/coverage.json', encoding='utf-8'))['zones']
+except (OSError, ValueError, KeyError):
+    COV = {}
+
+
 def _gate(z):
     lv = z["verify_level"]
     label = {"full":"all three gates cleared","partial":"partial — "+(z.get("verify_gate") or ""),
              "none":"not verified — "+(z.get("verify_gate") or "")}[lv]
     return f'<span class="gate {lv}" title="{label}"></span>'
+
+
+def _cov(z):
+    """What a PLAYER can get from this zone, which is not what the three gates
+    measure. Gate 3 asks whether a coordinate lands on drawn floor - a build
+    input for our own maps - so Plane of Fear scored zero with both its gods
+    parsed at three difficulties. See docs/WHAT-COUNTS.md."""
+    c = COV.get(z['slug'])
+    if not c:
+        return ''
+    got = [k for k, f in c['facets'].items() if f['level'] == 'measured']
+    tip = '; '.join(f"{k}: {f['detail']}" for k, f in c['facets'].items())
+    return (f'<span class="cov" title="{tip}">'
+            f'<b>{c["score"]}</b>/{c["max_score"]}'
+            + (f' &middot; {len(got)} measured' if got else '') + '</span>')
 
 plates = "\n".join(
   f'''    <a class="plate contour" href="dungeons/{z['slug']}.html"
@@ -57,7 +78,7 @@ plates = "\n".join(
       <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
       <span class="num">{z['plate']:02d}</span>
       <h3 class="pt">{z['title']}</h3>
-      <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{'<span>Map <b>yes</b></span>' if z['slug'] in MAPS else ''}</span>
+      <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
     </a>''' for i, z in enumerate(Z))
 
 nfull = sum(1 for z in Z if z["verify_level"]=="full")
@@ -189,7 +210,7 @@ dplates = "\n".join(
         <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
         <span class="num">{z['plate']:02d}</span>
         <h3 class="pt">{z['title']}</h3>
-        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{'<span>Map <b>yes</b></span>' if z['slug'] in MAPS else ''}</span>
+        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
       </a>''' for i, z in enumerate(Z))
 
 # The open gates, generated rather than written out five times by hand. Sorted

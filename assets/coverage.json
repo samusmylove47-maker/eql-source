@@ -1,0 +1,411 @@
+{
+ "_comment": [
+  "How much of what a player needs each zone carries, computed from the",
+  "measured data rather than typed. See docs/WHAT-COUNTS.md.",
+  "",
+  "A zone improves this by being played, not by being edited.",
+  "verify_level still exists and is sourcing hygiene, not the headline."
+ ],
+ "zones": {
+  "najena": {
+   "title": "Najena",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "17 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "sourced",
+     "detail": "65 items listed, none seen by us"
+    },
+    "difficulty": {
+     "level": "none",
+     "detail": "never played at a recorded difficulty"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "2 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "sourced",
+     "detail": "ZEM 119, respawn 4:50"
+    }
+   },
+   "score": 4,
+   "max_score": 10,
+   "kills": 0,
+   "bosses": []
+  },
+  "splitpaw": {
+   "title": "Lair of the Splitpaw",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "17 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "sourced",
+     "detail": "24 items listed, none seen by us"
+    },
+    "difficulty": {
+     "level": "none",
+     "detail": "never played at a recorded difficulty"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "sourced",
+     "detail": "ZEM 128, respawn <=22:00"
+    }
+   },
+   "score": 4,
+   "max_score": 10,
+   "kills": 0,
+   "bosses": []
+  },
+  "crushbone": {
+   "title": "Crushbone",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "19 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "sourced",
+     "detail": "35 items listed, none seen by us"
+    },
+    "difficulty": {
+     "level": "none",
+     "detail": "never played at a recorded difficulty"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "sourced",
+     "detail": "ZEM 119, respawn <=9:00"
+    }
+   },
+   "score": 4,
+   "max_score": 10,
+   "kills": 0,
+   "bosses": []
+  },
+  "befallen": {
+   "title": "Befallen",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "19 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "40 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D1, D3, D4"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 119, respawn 4:30, 75 mob types measured"
+    }
+   },
+   "score": 8,
+   "max_score": 10,
+   "kills": 75,
+   "bosses": []
+  },
+  "blackburrow": {
+   "title": "Blackburrow",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "18 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "28 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D2, D3"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 119, respawn 22:00, 45 mob types measured"
+    }
+   },
+   "score": 8,
+   "max_score": 10,
+   "kills": 42,
+   "bosses": []
+  },
+  "lowerguk": {
+   "title": "Lower Guk",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "25 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "33 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D0, D1"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "3 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 86, respawn 9:28, 87 mob types measured"
+    }
+   },
+   "score": 8,
+   "max_score": 10,
+   "kills": 416,
+   "bosses": []
+  },
+  "nagafenslair": {
+   "title": "Nagafen's Lair",
+   "facets": {
+    "bosses": {
+     "level": "measured",
+     "detail": "1 boss fought and parsed across 5 kills, tiers D1–D4"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "39 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D0, D1, D2, D3, D4"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "1 inherited claim badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 86, respawn <=22:00, 48 mob types measured"
+    }
+   },
+   "score": 9,
+   "max_score": 10,
+   "kills": 322,
+   "bosses": [
+    "Lord Nagafen"
+   ]
+  },
+  "thehole": {
+   "title": "The Hole",
+   "facets": {
+    "bosses": {
+     "level": "measured",
+     "detail": "1 boss fought and parsed across 7 kills, tiers D0–D4"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "13 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D0, D1, D2, D3, D4"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 128, respawn 7:48, 38 mob types measured"
+    }
+   },
+   "score": 9,
+   "max_score": 10,
+   "kills": 296,
+   "bosses": [
+    "Master Yael"
+   ]
+  },
+  "warrens": {
+   "title": "The Warrens",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "19 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "sourced",
+     "detail": "59 items listed, none seen by us"
+    },
+    "difficulty": {
+     "level": "none",
+     "detail": "never played at a recorded difficulty"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "sourced",
+     "detail": "ZEM 128, respawn <=6:40"
+    }
+   },
+   "score": 4,
+   "max_score": 10,
+   "kills": 0,
+   "bosses": []
+  },
+  "mistmoore": {
+   "title": "Castle Mistmoore",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "24 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "40 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D1 only"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "0 inherited claims badged, placeholder model retracted in place"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 121 mob types measured"
+    }
+   },
+   "score": 8,
+   "max_score": 10,
+   "kills": 1018,
+   "bosses": []
+  },
+  "planeoffear": {
+   "title": "Plane of Fear",
+   "facets": {
+    "bosses": {
+     "level": "measured",
+     "detail": "5 bosses fought and parsed across 18 kills, tiers D2–D4"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "50 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D1, D2, D3, D4"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "4 inherited claims badged"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 82.5, respawn not recorded, 58 mob types measured"
+    }
+   },
+   "score": 9,
+   "max_score": 10,
+   "kills": 214,
+   "bosses": [
+    "Cazic-Thule",
+    "Dread",
+    "Fright",
+    "Terror",
+    "a dracoliche"
+   ]
+  },
+  "planeofhate": {
+   "title": "Plane of Hate",
+   "facets": {
+    "bosses": {
+     "level": "measured",
+     "detail": "12 bosses fought and parsed across 24 kills, tiers D3–D4"
+    },
+    "loot": {
+     "level": "measured",
+     "detail": "47 items watched dropping here"
+    },
+    "difficulty": {
+     "level": "measured",
+     "detail": "played and parsed at D1, D3, D4"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "4 inherited claims badged"
+    },
+    "farming": {
+     "level": "measured",
+     "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
+    }
+   },
+   "score": 9,
+   "max_score": 10,
+   "kills": 48,
+   "bosses": [
+    "Ashenbone Broodmaster",
+    "Avatar of Abhorrence",
+    "Coercer T`vala",
+    "Grandmaster R`tal",
+    "High Priest M`kari",
+    "Innoruuk, the Prince of Hate",
+    "Lord of Ire",
+    "Lord of Loathing",
+    "Maestro of Rancor",
+    "Magi P`tasa",
+    "Master of Spite",
+    "Mistress of Scorn"
+   ]
+  },
+  "kedgekeep": {
+   "title": "Kedge Keep",
+   "facets": {
+    "bosses": {
+     "level": "sourced",
+     "detail": "14 named on the roster, none fought by us"
+    },
+    "loot": {
+     "level": "none",
+     "detail": "no loot recorded"
+    },
+    "difficulty": {
+     "level": "none",
+     "detail": "never played at a recorded difficulty"
+    },
+    "inherited": {
+     "level": "sourced",
+     "detail": "2 inherited claims badged"
+    },
+    "farming": {
+     "level": "sourced",
+     "detail": "ZEM 139, respawn not recorded"
+    }
+   },
+   "score": 3,
+   "max_score": 10,
+   "kills": 0,
+   "bosses": []
+  }
+ }
+}
