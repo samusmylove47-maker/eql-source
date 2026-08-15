@@ -132,7 +132,7 @@
     "zem": 82.5,
     "plate": 11,
     "verify_level": "none",
-    "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh, but no coordinate on this page has been checked against it, no named position is recorded, and no figure is measured. Gates 1 to 3 are all unstarted.",
+    "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded for this zone, so there is nothing to check against the floor. Gates 1 and 2 are done - every boss page was checked against the MediaWiki revision API on 10 Aug 2026 and every one is a Project 1999 import. WHAT IS OURS: 10 measured sessions, 214 kills, 58 mob types, and 16 boss fights including Cazic-Thule at Adaptive, Fused and Refined with his full spell kit.",
     "url": "https://eqlsource.com/dungeons/planeoffear"
    },
    {
@@ -142,7 +142,7 @@
     "zem": 86,
     "plate": 12,
     "verify_level": "none",
-    "verify_gate": "Nothing here is ours yet, and the zone has a second archive - hateplaneb - whose relationship to this one we have not established. Gates 1 to 3 are all unstarted.",
+    "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded, so there is nothing to check against the floor. Gates 1 and 2 are done - the boss pages were checked against the revision API on 10 Aug 2026 and are Project 1999 imports. The zone has a second archive, hateplaneb, whose relationship to this one we have not established. WHAT IS OURS: 5 measured sessions, 48 kills, 42 mob types, and 24 boss fights including Innoruuk at Fused and Refined and ten of his court, with which boss drops which planar set.",
     "url": "https://eqlsource.com/dungeons/planeofhate"
    },
    {
@@ -152,10 +152,10 @@
     "zem": 139,
     "plate": 13,
     "verify_level": "none",
-    "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but no figure on this page is measured by us. Gates 1 to 3 are all unstarted.",
+    "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but we have never logged a session in this zone: no kill, no drop and no boss fight is measured. This one is accurate.",
     "url": "https://eqlsource.com/dungeons/kedgekeep"
    }
   ]
  },
- "hash": "25600b38a1dc6390"
+ "hash": "c1aa055362bc7324"
 }
