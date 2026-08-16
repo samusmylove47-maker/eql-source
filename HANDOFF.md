@@ -99,7 +99,7 @@ to revert — but the old figures are wrong.
 723 pages pass `check.py`. **19** gate self-test cases, up from 17. 8 tools run
 under the smoke test. Public data contract live at `/data/`.
 
-**Two new gate cases, because this one nearly shipped.** `build4.py`'s `BODY` is
+**Two new gate cases, because this one nearly shipped.** The withdrawn `build4.py`'s `BODY` was
 a plain triple-quoted string — it carries the 3D engine's JavaScript, so it can
 never be an f-string — and f-string syntax written into it renders as itself.
 `raids/eye-of-veeshan.html` published the literal text `{EYE_FULL:,}` in its

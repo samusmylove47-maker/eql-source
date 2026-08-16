@@ -129,11 +129,14 @@ CASES = [
      lambda t: t.replace('<td class="nmob">Rathyl</td><td class="loc"><span class="wh">withheld</span></td>',
                          '<td class="nmob">Rathyl</td><td class="loc">&minus;670, &minus;119</td>')),
 
+    # Retargeted 17 Aug 2026: this case used raids/eye-of-veeshan.html, which was
+    # withdrawn. Plane of Hate carries a badged figure in its body and so
+    # exercises the same rule — the check is about the badge and the metadata,
+    # not about that one page.
     ("metadata asserting a figure the body hedges",
-     "asserts 32,000 flatly in its meta description",
-     "public/raids/eye-of-veeshan.html",
-     lambda t: t.replace('content="Interactive 3D raid guide for the Eye of Veeshan',
-                         'content="32,000 HP. Interactive 3D raid guide for the Eye of Veeshan')),
+     "asserts 375 flatly in its meta description",
+     "public/dungeons/planeofhate.html",
+     lambda t: re.sub(r'(<meta name="description" content=")', r'\g<1>375 damage. ', t, count=1)),
 
     # The bug this shipped with. _build/plans.py parsed /loc with a plain
     # `-?\d+`, and 141 recorded coordinates use U+2212 MINUS SIGN, so every
@@ -153,23 +156,23 @@ CASES = [
      "public/index.html",
      lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact\.html">[^<]*</a></li>', "", t)),
 
-    # This one shipped. build4.py's BODY carries the 3D engine's JavaScript, so
+    # This one shipped. the withdrawn build4.py's BODY carried the 3D engine's JavaScript, so
     # it can never be an f-string, and f-string syntax written into it renders as
     # itself: the Eye's stat block published the literal text "{EYE_FULL:,}" on
     # 15 August 2026 and all 723 checks passed. Every other check reads what a
     # page says; none asked whether it had finished rendering.
     ("an f-string placeholder left unrendered",
      "shipped an unrendered placeholder",
-     "public/raids/eye-of-veeshan.html",
-     lambda t: t.replace("18,914 <span", "{EYE_FULL:,} <span", 1)),
+     "public/raids/plane-of-sky.html",
+     lambda t: t.replace("26,158", "{BIGGEST:,}", 1)),
 
-    # The same fault in the other notation build4.py now uses. Two shapes, two
+    # The same fault in the other notation that generator used. Two shapes, two
     # cases: a check that caught only the one we happened to hit last would go
     # dead the first time a generator picked the other convention.
     ("an @@TOKEN@@ placeholder left unrendered",
      "shipped an unrendered placeholder",
-     "public/raids/eye-of-veeshan.html",
-     lambda t: t.replace("18,914 <span", "@@EYE_FULL@@ <span", 1)),
+     "public/raids/plane-of-sky.html",
+     lambda t: t.replace("26,158", "@@BIGGEST@@", 1)),
 
     # The change log is exempt from the prose ceiling, and that exemption is
     # exactly the kind of hole that quietly turns a check off. This proves the

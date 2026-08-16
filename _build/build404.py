@@ -48,7 +48,7 @@ page = head("Page not found",
       <a class="card" href="raids/index.html" style="--c:var(--ember)">
         <div class="kicker">Encounters</div>
         <h3 class="t">Raids</h3>
-        <p class="d">Plane of Sky island by island, and the Eye of Veeshan as a 3D model you can
+        <p class="d">The Plane of Sky island by island, with every boss we have
           turn.</p>
         <div class="foot"><span>Built from play</span><span class="go">Open &rarr;</span></div></a>
 

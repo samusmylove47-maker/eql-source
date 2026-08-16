@@ -1,13 +1,34 @@
-# Header rules in the portable format read by Cloudflare Pages (and by Netlify,
-# which prefers netlify.toml where the two overlap — they are kept equivalent so
-# it does not matter which the host reads).
+# Header rules in the portable format read by Cloudflare Workers static assets.
 #
-# Kept in step with netlify.toml by hand. If you change one, change the other.
+# netlify.toml also exists and its headers are INERT — the host has been a
+# Cloudflare Worker since before 14 Aug 2026 and only this file is read. It is
+# not kept in step any more; CLAUDE.md records it as history pending deliberate
+# removal. Changing netlify.toml changes nothing a reader will ever receive.
 
+# EVERY PAGE REVALIDATES. Reported 17 Aug 2026: clicking the masthead returned
+# the home page as it had been before a redesign. The href was correct and the
+# deployed file was correct — the reader's browser simply never asked again.
+#
+# Only /dungeons/, /raids/, /learn/ and /tools/ had a revalidate rule. The site
+# ROOT had none, and neither did /items/, /named/, /archive/, /sets/, or the
+# top-level pages, so the single most-visited page on the site was the one most
+# free to go stale. With no Cache-Control at all a browser falls back to
+# heuristic caching off Last-Modified, which for a page edited days ago means
+# hours.
+#
+# This is the default now, and the four rules further down are redundant with
+# it; they are kept because a future narrowing of this rule should not silently
+# un-fix the guides.
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Cache-Control: public, max-age=0, must-revalidate
 
+# Assets may cache, because the one that changes with every redesign now
+# carries a content hash in its URL (assets/site.css?v=…, see _partials.py), so
+# a changed stylesheet is a different cache key rather than a stale hit. The
+# unhashed assets here — zone plans, share cards, the vendored three.js — change
+# rarely, and an hour of staleness on them costs a reader nothing.
 /assets/*
   Cache-Control: public, max-age=3600
 
