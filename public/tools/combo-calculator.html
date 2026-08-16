@@ -7,7 +7,7 @@
 <meta name="description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Grey ramp and --warn lifted so every step clears WCAG AA (4.5:1) on the
    darkest panel it lands on. --dim previously bottomed out at 3.22:1. Raising
@@ -20,7 +20,7 @@
 body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
-h1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:clamp(38px,7.6vw,80px);line-height:.88;letter-spacing:-.015em;margin:0 0 8px;text-transform:uppercase}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(32px,5.4vw,64px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
 h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(23px,4.2vw,32px);line-height:1;margin:0 0 6px}
 h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
 h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:18px;letter-spacing:.04em;margin:0 0 8px}
@@ -143,7 +143,14 @@ footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);color:v
 footer h3{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{margin-bottom:7px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
-<link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Race &amp; Primary Calculator — EverQuest Legends"><meta property="og:description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/tools.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Race &amp; Primary Calculator — EverQuest Legends"><meta name="twitter:description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class."><meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png"><link rel="canonical" href="https://eqlsource.com/tools/combo-calculator">
+<style>:root{--surface-0:#0B0704;--surface-1:#191309;--surface-2:#282013;--ground:var(--surface-0);--panel:var(--surface-1);--panel2:var(--surface-2);--rule:#544833;--rule2:#6B5C46;--line:var(--rule);--ink:var(--bone);--bone:#F2EADA;--txt:#DFD6C4;--mut:#B5AA95;--dim:#9A8F7C;--faint:#978C7C;--ok:#5FA37E;--warn:#C9453A;--warn-t:#D46C64;--ember:#C4482E;--ember-t:#D76C55;--instr:#7FB2C7;--brass:#C9922E;--brass-t:#D9A63F;--lava:#FF2800;--lava-t:#FF6A4D;--r:4px;--speed:.16s;}</style><style>
+.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
+  background:rgba(255,255,255,.02)}
+.inj-contact p{margin:0;color:#B0A9A2;font-size:14px;line-height:1.6}
+.inj-contact strong{color:var(--bone)}
+.inj-contact a{color:#8FBEE4}
+.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
+</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Race &amp; Primary Calculator — EverQuest Legends"><meta property="og:description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/tools.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Race &amp; Primary Calculator — EverQuest Legends"><meta name="twitter:description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class."><meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png"><link rel="canonical" href="https://eqlsource.com/tools/combo-calculator">
 <style>
 .ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
