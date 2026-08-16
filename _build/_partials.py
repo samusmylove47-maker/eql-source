@@ -1,8 +1,35 @@
 # Shared HTML partials for every page on the site.
-import json, os
+import json, os, hashlib
 _cfg = json.load(open("site.config.json", encoding="utf-8")) if os.path.exists("site.config.json") else {}
 SITE = _cfg.get("site_name", "EQL Source")
 TAG  = _cfg.get("site_tagline", "Survey")
+
+
+def _asset_v(path):
+    """A short content hash, appended to the stylesheet URL.
+
+    WHY THIS EXISTS, 16 Aug 2026
+    ----------------------------
+    assets/site.css is one stable URL that every page on the site loads, and it
+    had no version on it. A browser that had seen the old file kept serving it:
+    the whole repalette, the display face and both pieces of survey art were
+    invisible in a browser that had loaded the site once before, and the page
+    rendered as unstyled black shapes over a bare headline. It took a
+    stylesheet-by-stylesheet inspection to find, because the site was correct
+    and only the reader's copy was stale.
+
+    Cloudflare publishes on every merge to main, so this is not a local
+    annoyance: it is what every returning visitor would have seen after a
+    redesign. The hash changes only when the file does, so an unchanged
+    stylesheet still caches for as long as the host says.
+    """
+    try:
+        return hashlib.sha1(open(path, 'rb').read()).hexdigest()[:8]
+    except OSError:
+        return ''
+
+
+CSS_V = _asset_v('public/assets/site.css')
 
 # ---------------------------------------------------------------------------
 # The site's own navigation registries. Nothing here may be typed twice.
@@ -113,7 +140,7 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="{rel}assets/site.css">
+<link rel="stylesheet" href="{rel}assets/site.css{'?v=' + CSS_V if CSS_V else ''}">
 {extra}</head>
 <body>'''
 
