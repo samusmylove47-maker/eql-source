@@ -134,12 +134,18 @@ if os.path.exists("index.html"):
 # service of hierarchy. Removed: a checker should catch breakage, not opinions.
 #
 # What is checked instead is the constraint that is actually load-bearing — the
-# three typefaces. A fourth is the usual way a considered site starts to drift.
-FACES = {"Saira Condensed", "IBM Plex Mono", "Public Sans"}
+# typeface count. A face too many is the usual way a considered site drifts.
+#
+# Cinzel was added on 16 Aug 2026 and the count went from three to four. That is
+# a decision, not drift: it is an inscriptional Roman capital, it holds the top
+# two display levels only, and Saira Condensed stays underneath it as the
+# workhorse. The site read as documentation rather than as a reference for this
+# game, and a display face with an actual point of view is most of the fix.
+FACES = {"Cinzel", "Saira Condensed", "IBM Plex Mono", "Public Sans"}
 declared = set(re.findall(r'font-family:\s*"([^"]+)"', css))
 extra = declared - FACES
 if extra:
-    warn(f"assets/site.css uses {sorted(extra)} beyond the three site faces")
+    warn(f"assets/site.css uses {sorted(extra)} beyond the four site faces")
 if "cdnjs" in css or "unpkg" in css:
     fail("assets/site.css references a CDN")
 
@@ -201,10 +207,14 @@ if os.path.exists("build.sh"):
                if f_.endswith(".py") and f_ not in (
                    "_partials.py", "changelog.py", "logstats.py",
                    "extract_faction.py", "withheld.py", "ogcards.py",
+                   # Imported by the page generators rather than run: it turns
+                   # the committed zone geometry into drawable SVG. Nothing to
+                   # schedule, so an orphan warning here would be permanent.
+                   "heroart.py",
                    # Read the game's .s3d archives, so they are run by hand and
                    # their output is committed. A rebuild has to work on a
                    # machine with no EverQuest Legends install.
-                   "geometry.py", "skyislands.py",
+                   "geometry.py", "skyislands.py", "palette.py",
                    # Reads combat logs out of state/logs/, which are
                    # gitignored because they can carry private chat. Run
                    # by hand; only the derived counts are committed.

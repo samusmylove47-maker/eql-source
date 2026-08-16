@@ -13,18 +13,18 @@ MAPS = ["najena","splitpaw","lowerguk","nagafenslair","mistmoore"]
 
 RETURN_CSS = """
 <style>
-.ns-bar{background:#161D21;border-bottom:1px solid #293439;padding:11px 22px;display:flex;
+.ns-bar{background:#14100A;border-bottom:1px solid #2c2419;padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:#AEB9B8;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
-.ns-bar a:hover{color:#E6E9E4;border-color:#E6E9E4}
+.ns-bar a{color:#B5AA95;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:#F2EADA;border-color:#F2EADA}
 .ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
- letter-spacing:.13em;color:#E6E9E4;text-decoration:none;border:0}
+ letter-spacing:.13em;color:#F2EADA;text-decoration:none;border:0}
 /* These carried the pre-AA greys. #4E5C61 measured 2.46:1 on this bar. The
    values here mirror assets/site.css's ramp; they are duplicated rather than
    referenced because this chrome is injected into standalone tool pages. */
-.ns-bar .ns-sep{color:#7D9096}
-.ns-bar .ns-tag{margin-left:auto;color:#7D9096}
+.ns-bar .ns-sep{color:#8D8272}
+.ns-bar .ns-tag{margin-left:auto;color:#8D8272}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
 """
@@ -32,7 +32,7 @@ RETURN_CSS = """
 def bar_html(rel, crumb, crumb_href, here, extra=""):
     return (f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{SITE}</a>'
             f'<span class="ns-sep">/</span><a href="{rel}{crumb_href}">{crumb}</a>'
-            f'<span class="ns-sep">/</span><span style="color:#D5DBD8">{here}</span>'
+            f'<span class="ns-sep">/</span><span style="color:#DFD6C4">{here}</span>'
             f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>')
 
 # Pages that already have a sticky bar of their own. Both bars pin to top:0,
@@ -47,7 +47,7 @@ WH_CSS = """
   text-transform:uppercase;color:#D9837C;border-bottom:1px dotted #D9837C}
 .whnote{margin:14px 0 0;padding:12px 14px;border-left:3px solid #C9453A;
   background:rgba(201,69,58,.06);color:#9FADAC;font-size:14px;line-height:1.55}
-.whnote strong{color:#E6E9E4}
+.whnote strong{color:#F2EADA}
 .disputed{text-decoration:line-through;text-decoration-color:#D9837C;
   text-decoration-thickness:2px;color:#8A9998}
 .ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.62}
@@ -55,12 +55,12 @@ WH_CSS = """
 .inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #2E3A41;border-radius:4px;
   background:rgba(255,255,255,.02)}
 .inj-contact p{margin:0;color:#9FADAC;font-size:14px;line-height:1.6}
-.inj-contact strong{color:#E6E9E4}
+.inj-contact strong{color:#F2EADA}
 .inj-contact a{color:#8FBEE4}
-.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:#7D9096}
+.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:#8D8272}
 .ph-note{margin:0 0 16px;padding:13px 15px;border-radius:4px;font-size:14px;line-height:1.6}
 .ph-note strong{display:block;margin-bottom:4px}
-.ph-yes{border-left:3px solid #5FA37E;background:rgba(95,163,126,.07);color:#AEB9B8}
+.ph-yes{border-left:3px solid #5FA37E;background:rgba(95,163,126,.07);color:#B5AA95}
 .ph-yes strong{color:#8FD3AD}
 .ph-note a{color:#8FBEE4}
 
@@ -68,23 +68,23 @@ WH_CSS = """
    and dangers that read as dangers. Injected because plates carry their own CSS. */
 ul.why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
 ul.why li{padding:12px 15px;border:1px solid #2E3A41;border-left:3px solid var(--acc,#D9A227);
-  border-radius:4px;background:#151B1F;color:#AEB9B8;font-size:15px;line-height:1.55}
-ul.why b{color:#E6E9E4}
+  border-radius:4px;background:#151B1F;color:#B5AA95;font-size:15px;line-height:1.55}
+ul.why b{color:#F2EADA}
 ol.chain{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:0}
 ol.chain li{display:grid;grid-template-columns:minmax(140px,auto) 1fr auto;gap:12px;
   align-items:baseline;padding:11px 14px;border:1px solid #2E3A41;border-bottom:0;
   background:#151B1F;color:#8A9998;font-size:14px}
 ol.chain li:first-child{border-radius:4px 4px 0 0}
 ol.chain li:last-child{border-bottom:1px solid #2E3A41;border-radius:0 0 4px 4px}
-ol.chain b{color:#E6E9E4;font-size:15px}
-ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#7D9096}
+ol.chain b{color:#F2EADA;font-size:15px}
+ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#8D8272}
 ol.chain .ck{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct,#E8C25F)}
 @media(max-width:640px){ol.chain li{grid-template-columns:1fr;gap:3px}}
 ul.danger-list,ul.tightlist{list-style:none;margin:0;padding:0;display:grid;gap:9px}
 ul.danger-list li,ul.tightlist li{padding:11px 14px;border-left:3px solid #2E3A41;
   background:rgba(255,255,255,.02);color:#9FADAC;font-size:14.5px;line-height:1.55}
 ul.danger-list li{border-left-color:#C9453A}
-ul.danger-list b,ul.tightlist b{color:#E6E9E4}
+ul.danger-list b,ul.tightlist b{color:#F2EADA}
 p.tight{color:#9FADAC;font-size:14px;line-height:1.6;margin:0}
 </style>"""
 
@@ -170,7 +170,7 @@ PH_CLAIM = re.compile(
     + r'([Pp]laceholders? (?:is|are) [^<.]{2,70}?)(?=[.<])')
 PH_MARK_CSS = """<style>
 .ph-old{text-decoration:line-through;text-decoration-color:#C9453A;
-  text-decoration-thickness:1px;color:#7D9096}
+  text-decoration-thickness:1px;color:#8D8272}
 .ph-old-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
   text-transform:uppercase;color:#D46C64;border:1px solid #6A2F2B;border-radius:2px;
   padding:1px 4px;margin-left:5px;white-space:nowrap;text-decoration:none;display:inline-block}
@@ -287,7 +287,7 @@ for z in Z:
     extra = ''
     if s in MAPS:
         extra = (f'<span class="ns-sep">/</span><a href="{s}-map.html" '
-                 f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">Navigation map &rarr;</a>')
+                 f'style="color:color-mix(in srgb, {z["accent"]} 56%, #F2EADA)">Navigation map &rarr;</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
            f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s,
@@ -296,7 +296,7 @@ for z in Z:
 for s in MAPS:
     z = BY[s]
     extra = (f'<span class="ns-sep">/</span><a href="{s}.html" '
-             f'style="color:color-mix(in srgb, {z["accent"]} 56%, #E6E9E4)">&larr; Survey</a>')
+             f'style="color:color-mix(in srgb, {z["accent"]} 56%, #F2EADA)">&larr; Survey</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}-map.html'), f'public/dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
            f"{z['title']} &middot; map", extra,

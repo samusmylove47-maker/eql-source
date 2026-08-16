@@ -41,8 +41,8 @@ except ImportError:
     sys.exit("Pillow is not installed. This is a by-hand tool: pip install Pillow")
 
 W, H = 1200, 630
-BG, INK, DIM, FAINT = "#10161A", "#E6E9E4", "#AEB9B8", "#7D9096"
-BONE, INSTR, EMBER = "#D5DBD8", "#5C93C4", "#C4623A"
+BG, INK, DIM, FAINT = "#10161A", "#F2EADA", "#B5AA95", "#8D8272"
+BONE, INSTR, EMBER = "#DFD6C4", "#5C93C4", "#C4623A"
 
 FONTS = {
     "display": r"C:\Windows\Fonts\FRAMDCN.TTF",

@@ -4,6 +4,28 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot, TOOLS, wordnum
+import heroart
+
+# THE HOME PAGE'S ART IS A REAL DUNGEON.
+# Najena's walkable floor, read out of the game's own mesh. It is the one piece
+# of imagery this site can honestly own: screenshots are Daybreak's, stock
+# fantasy art is nobody's, and generated art is exactly what a guildmate meant
+# when they called the site AI slop. This is a measurement, like every figure
+# on the page, and it carries its source line for the same reason they do.
+HERO_ZONE = 'najena'
+_hp, _hw, _hh = heroart.paths(HERO_ZONE, box=1000, precision=0)
+_hstat = heroart.stats(HERO_ZONE)
+# Stagger the draw-in so it reads as a survey rather than a switch being
+# thrown. Delays are assigned here rather than by nth-child, which would need
+# one CSS rule per path.
+hero_art = (f'<div class="hero-art" aria-hidden="true">'
+            f'<svg viewBox="0 0 {_hw} {_hh}" preserveAspectRatio="xMidYMid meet">'
+            + "".join(f'<path d="{d}" style="--d:{i * 14}ms"/>'
+                      for i, d in enumerate(_hp))
+            + '</svg></div>')
+hero_src = (f'<p class="hero-src">Najena, drawn from the game&rsquo;s own mesh &mdash; '
+            f'<b>{_hstat["paths"]} paths, {_hstat["points"]:,} points</b>, '
+            f'{_hstat["layers"]} storeys</p>')
 
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 # Counts are read from the mined data, never typed. The Index once published
@@ -99,14 +121,16 @@ home = head("Accurate, sourced and kept current",
 <main>
 
 <section class="hero">
+  {hero_art}
   <div class="shell">
     <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
-    <h1 class="display">The reference<br>that shows<br><em>its working.</em></h1>
-    <p class="hero-lede">Legends moves every week, and most of what the community reads about it is
-      classic EverQuest text in a Legends-shaped hole. Every figure here names the page it came from
-      and the day it was read. Every gap says so out loud.</p>
+    <h1 class="display">Norrath,<br><em>measured.</em></h1>
+    <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
+      a Legends-shaped hole. We go in with the log running and write down what actually happened.
+      Every figure names its source and the day it was read, and every gap says so out loud.</p>
     <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
   </div>
+  {hero_src}
 </section>
 
 <section class="band doors">

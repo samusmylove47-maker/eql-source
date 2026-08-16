@@ -15,24 +15,34 @@
   /* ---- surfaces: three levels, and only three ----------------------------
      0 is the page, 1 is a panel resting on it, 2 is a panel lifted off it —
      hover states, input wells, table heads. Anything needing a fourth level
-     is a sign the layout, not the palette, is wrong. */
-  --surface-0:#0E1315;
-  --surface-1:#161D21;
-  --surface-2:#1E262B;
+     is a sign the layout, not the palette, is wrong.
+
+     THESE ARE MEASURED, NOT CHOSEN. Until 16 Aug 2026 the ground was #0E1315:
+     hue 193, a cool slate. _build/palette.py reads the DXT1 endpoint colours
+     out of every zone texture in the game's own .s3d archives, and Norrath's
+     grounds come back at hue 15–30 — a warm umber-black — across 2.6 million
+     samples. 62% of all saturated colour in the game art is warm. The site was
+     the wrong temperature, provably, and that is most of why it read as a
+     developer tool rather than as a reference for this game. See
+     assets/norrath-palette.json. */
+  --surface-0:#0B0704;
+  --surface-1:#14100A;
+  --surface-2:#1E1810;
   --ground:var(--surface-0);   /* legacy names, kept so callers do not churn */
   --panel:var(--surface-1);
   --panel2:var(--surface-2);
 
-  --rule:#293439;              /* hairline between surfaces */
-  --rule2:#3A484F;             /* hairline that needs to be seen */
+  --rule:#2C2419;              /* hairline between surfaces */
+  --rule2:#453A29;             /* hairline that needs to be seen */
 
   /* ---- text: every step clears WCAG AA (4.5:1) on the darkest surface it is
-     ever drawn on. Ratios given against --surface-2 / --surface-0. ---------- */
-  --bone:#E6E9E4;
-  --txt:#D5DBD8;               /* 10.94 / 13.32 */
-  --mut:#AEB9B8;               /*  7.63 /  9.29 */
-  --dim:#96A3A3;               /*  5.90 /  7.18 */
-  --faint:#7D9096;             /*  4.61 /  5.61 */
+     ever drawn on. Ratios given against --surface-2 / --surface-0. Warmed to
+     parchment to sit on the measured ground; every step re-checked. -------- */
+  --bone:#F2EADA;              /* 14.71 / 16.78 */
+  --txt:#DFD6C4;               /* 12.20 / 13.91 */
+  --mut:#B5AA95;               /*  7.67 /  8.74 */
+  --dim:#9A8F7C;               /*  5.53 /  6.30 */
+  --faint:#8D8272;             /*  4.67 /  5.32 */
 
   /* ---- signal colours. The plain token is for rules, borders and bars; the
      -t variant is the same hue lifted to 4.5:1 for text. --------------------- */
@@ -40,6 +50,17 @@
   --warn:#C9453A;      --warn-t:#D46C64;
   --ember:#C4482E;     --ember-t:#D76C55;
   --instr:#7FB2C7;
+
+  /* ---- torchlight. The chrome's own accent, and the one thing that makes the
+     frame feel lit rather than printed. Taken from the warm mid-tones that
+     dominate Norrath's textures — leather, aged bronze, lamplit stone. ------ */
+  --brass:#C9922E;     --brass-t:#D9A63F;      /* 6.40 / 7.94 on surface-2 */
+
+  /* ---- the blaze. #FF2800 is not a design choice: it is 17% of every
+     light-band sample in the measured game art, and it is Nagafen's lava. It
+     is the loudest colour Norrath owns, so it is used once per page at most —
+     a live figure, a warning, the thing the eye should land on first. ------- */
+  --lava:#FF2800;      --lava-t:#FF6A4D;
 
   /* ---- the ten zone accents. Permanent identity, never reassigned. Where one
      must carry text, blend toward --bone at the point of use. --------------- */
@@ -113,12 +134,12 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hidden{display:none!important}
 
 /* ---------- masthead ---------- */
-.site-bar{position:sticky;top:0;z-index:80;background:rgba(14,19,21,.9);
+.site-bar{position:sticky;top:0;z-index:80;background:rgba(11,7,4,.88);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
 .site-bar .shell{display:flex;align-items:center;gap:var(--s-4);height:var(--bar-h)}
 .mark{display:flex;align-items:baseline;gap:9px;text-decoration:none;flex:0 0 auto}
-.mark .m1{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-lg);
-  letter-spacing:.13em;text-transform:uppercase;color:var(--bone);line-height:1}
+.mark .m1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--t-md);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--bone);line-height:1}
 .mark .m2{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-widest);text-transform:uppercase;color:var(--faint)}
 .site-nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
@@ -143,13 +164,25 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:var(--t-xs);
   letter-spacing:var(--tr-widest);text-transform:uppercase;color:var(--dim);margin:0 0 var(--s-4)}
 .eyebrow b{color:var(--bone);font-weight:500}
-h1.display{font-family:"Saira Condensed",sans-serif;font-weight:700;
-  font-size:var(--t-hero);line-height:.84;letter-spacing:-.022em;
-  text-transform:uppercase;margin:0;color:var(--bone)}
-h1.display em{font-style:normal;color:var(--faint)}
-h2.sec{font-family:"Saira Condensed",sans-serif;font-weight:700;
-  font-size:var(--t-h2);line-height:.94;letter-spacing:-.012em;
-  text-transform:uppercase;margin:0 0 var(--s-3);color:var(--bone)}
+/* THE DISPLAY TIER IS CUT, NOT SET.
+   Cinzel is an inscriptional Roman capital — the letterform of things carved
+   into stone, which is what a dungeon is made of and what this site is about.
+   It replaces Saira Condensed at the top two levels only; Saira stays as the
+   workhorse for card titles, figures and table headings, where a wide
+   inscriptional face would cost the density this site needs.
+   Different face, different metrics: Cinzel wants air and positive tracking
+   where a condensed grotesque wanted tight negative tracking, and it sets much
+   wider, so the hero ceiling comes down from 104px to 76px to keep a
+   three-word headline on three lines. */
+h1.display{font-family:"Cinzel",Georgia,serif;font-weight:700;
+  font-size:clamp(34px,5.6vw,76px);line-height:1.02;letter-spacing:.005em;
+  text-transform:uppercase;margin:0;color:var(--bone);text-wrap:balance}
+/* Colour is set further down, where the headline's gradient treatment lives.
+   Setting it here too only creates a rule that never wins. */
+h1.display em{font-style:normal}
+h2.sec{font-family:"Cinzel",Georgia,serif;font-weight:600;
+  font-size:clamp(24px,3.6vw,40px);line-height:1.08;letter-spacing:.012em;
+  text-transform:uppercase;margin:0 0 var(--s-3);color:var(--bone);text-wrap:balance}
 h3{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-lg);
   letter-spacing:.04em;text-transform:uppercase;margin:0 0 var(--s-2);color:var(--bone)}
 .lede{font-size:var(--t-lede);color:var(--mut);max-width:var(--measure);
@@ -337,15 +370,51 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
    out before it reaches the text so it never costs contrast. */
 .hero{position:relative;overflow:hidden;padding:clamp(36px,5.2vw,72px) 0 0;
   background:
-    radial-gradient(120% 90% at 12% 0%, rgba(126,178,199,.055) 0%, transparent 60%),
+    radial-gradient(120% 90% at 12% 0%, rgba(201,146,46,.07) 0%, transparent 62%),
     linear-gradient(180deg, var(--surface-1) 0%, var(--surface-0) 78%)}
 .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(to right, rgba(230,233,228,.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(230,233,228,.05) 1px, transparent 1px);
+    linear-gradient(to right, rgba(242,234,218,.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(242,234,218,.045) 1px, transparent 1px);
   background-size:96px 96px;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 72%);
   mask-image:linear-gradient(180deg,#000 0%,transparent 72%)}
+
+/* ---------- the survey drawing ----------------------------------------------
+   The home page's art is a real dungeon: the walkable floor of Najena, read out
+   of the game's own mesh by _build/geometry.py and drawn by _build/heroart.py.
+   It draws itself in on load, because that is what the site does — goes in and
+   writes down what is there.
+
+   It sits behind the type and bleeds off the right edge. Below 900px it drops
+   to a faint texture rather than competing with the headline for a narrow
+   column. */
+.hero-art{position:absolute;inset:0 -6% 0 auto;width:min(64%,860px);
+  pointer-events:none;z-index:0;
+  -webkit-mask-image:radial-gradient(78% 82% at 62% 46%,#000 32%,transparent 78%);
+  mask-image:radial-gradient(78% 82% at 62% 46%,#000 32%,transparent 78%)}
+.hero-art svg{width:100%;height:100%;overflow:visible}
+.hero-art path{fill:none;stroke:var(--brass);stroke-width:1.1;
+  stroke-linejoin:round;stroke-linecap:round;opacity:.42;
+  stroke-dasharray:2600;stroke-dashoffset:2600;
+  animation:survey 2.4s cubic-bezier(.22,.61,.36,1) forwards;
+  animation-delay:var(--d,0s)}
+@keyframes survey{to{stroke-dashoffset:0}}
+/* The global reduced-motion rule kills every animation, which would leave each
+   path stroked at full offset — that is to say invisible. The drawing has to
+   arrive already drawn instead. */
+@media (prefers-reduced-motion:reduce){
+  .hero-art path{stroke-dashoffset:0;animation:none}
+}
+.hero-src{position:absolute;right:var(--gut);bottom:var(--s-4);z-index:1;
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--faint);
+  text-align:right;margin:0;max-width:min(46ch,60vw)}
+.hero-src b{color:var(--brass-t);font-weight:500}
+@media(max-width:900px){
+  .hero-art{inset:0;width:100%;opacity:.5}
+  .hero-src{position:static;text-align:left;margin:var(--s-5) 0 0;max-width:none}
+}
 .hero .shell{position:relative;z-index:1}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
   gap:clamp(var(--s-5),5vw,var(--s-8));align-items:end}
@@ -489,8 +558,8 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 /* ---------- a fine grain, to stop large dark fields reading as dead flat --- */
 body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.032;
   background-image:
-    repeating-linear-gradient(0deg, rgba(230,233,228,.9) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(230,233,228,.55) 0 1px, transparent 1px 4px);
+    repeating-linear-gradient(0deg, rgba(242,234,218,.9) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, rgba(242,234,218,.55) 0 1px, transparent 1px 4px);
   mix-blend-mode:overlay}
 @media (prefers-reduced-motion:reduce){body::after{opacity:.02}}
 
