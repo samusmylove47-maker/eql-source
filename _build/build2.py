@@ -215,14 +215,15 @@ raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest L
         <div class="chipline"><span class="pill">7 islands</span><span class="pill">Solo</span></div>
         <div class="foot"><span>Sourced, badged T3</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="eye-of-veeshan.html" style="--c:var(--ember)">
-        <div class="kicker">Island 8 &middot; Butterfly Island &middot; final boss</div>
+      <div class="card" style="--c:var(--warn)">
+        <div class="kicker">Withdrawn &middot; 17 August 2026</div>
         <h3 class="t">Eye of Veeshan</h3>
-        <p class="d">Mechanically one of the simplest fights in the zone and
-          logistically one of the hardest, because getting to him means keying your entire raid to Island 8 &mdash;
-          unless you pull him down instead.</p>
-        <div class="chipline"><span class="pill live">3D model</span><span class="pill">Pull strategy</span><span class="pill">Tank rotation</span></div>
-        <div class="foot"><span>Full guide</span><span class="go">Open &rarr;</span></div></a>
+        <p class="d">This was a 3D encounter guide built around pulling the boss down to island 7 to
+          avoid keying a raid to island 8. <strong>Nobody needs to do that.</strong> The site&rsquo;s
+          owner has killed it about ten times and has always killed it where it spawns. The tactic
+          was inherited Project 1999 text and we published it as current.</p>
+        <div class="chipline"><span class="pill">Retracted</span><span class="pill">See the change log</span></div>
+        <div class="foot"><span>What we measured lives on the Sky page</span></div></div>
 
       <div class="card" style="--c:var(--dim)">
         <div class="kicker">Queued &middot; islands 5, 6, 7, 4, 3</div>
@@ -316,7 +317,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
         <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
           translocators, so it is weighted lower, but the conflict is open.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
-        <p class="d">The zone has never been surveyed, so the Eye of Veeshan model is schematic rather than measured.
+        <p class="d">The zone has never been surveyed at ground level, so island positions are not plotted.
           A handful of <code>/loc</code> readings from islands 7 and 8 would fix it. The page says so in place.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
         <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no

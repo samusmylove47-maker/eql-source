@@ -333,9 +333,16 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 
 /* ---------- page header for interior pages ---------- */
 .page-head{padding:clamp(44px,7vw,86px) 0 clamp(26px,4vw,40px);border-bottom:1px solid var(--rule)}
-.page-head h1{font-family:"Saira Condensed",sans-serif;font-weight:700;
-  font-size:var(--t-h1);line-height:.86;letter-spacing:var(--tr-tight);
-  text-transform:uppercase;margin:0 0 var(--s-3);color:var(--bone)}
+/* The second h1. This was the display face's blind spot: h1.display moved to
+   Cinzel on 16 Aug and this rule did not, so the raid and survey pages — the
+   deepest content on the site — set their headline in the old condensed face
+   while every other page used the new one. Two h1 rules, two faces, one site.
+   Same metrics as h1.display, for the same reason: an inscriptional capital
+   wants air and positive tracking where a condensed grotesque wanted neither. */
+.page-head h1{font-family:"Cinzel",Georgia,serif;font-weight:700;
+  font-size:clamp(34px,5.6vw,72px);line-height:1.04;letter-spacing:.005em;
+  text-transform:uppercase;margin:0 0 var(--s-3);color:var(--bone);
+  text-wrap:balance}
 .crumb{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--faint);margin-bottom:var(--s-4)}
 .crumb a{color:var(--mut);text-decoration:none}

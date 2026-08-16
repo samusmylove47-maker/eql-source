@@ -52,12 +52,6 @@ WH_CSS = """
   text-decoration-thickness:2px;color:#9C958E}
 .ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.62}
 .ph-ev li{margin:0 0 7px}
-.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
-  background:rgba(255,255,255,.02)}
-.inj-contact p{margin:0;color:#B0A9A2;font-size:14px;line-height:1.6}
-.inj-contact strong{color:var(--bone)}
-.inj-contact a{color:#8FBEE4}
-.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
 .ph-note{margin:0 0 16px;padding:13px 15px;border-radius:4px;font-size:14px;line-height:1.6}
 .ph-note strong{display:block;margin-bottom:4px}
 .ph-yes{border-left:3px solid var(--ok);background:rgba(95,163,126,.07);color:var(--mut)}
@@ -102,6 +96,53 @@ PH_CONFIRMED = """
 <div class="ph-note ph-yes"><strong>Named spawn every cycle. No placeholders here.</strong>
   Percentages below are inherited classic data and describe nothing about this zone now.
   <a href="REL_learn/reading-the-plans.html">Why they are still printed &rarr;</a></div>"""
+
+
+# THE INJECTED CHROME USES TOKENS, AND THESE PAGES HAVE NONE.
+# The twenty-one imported pages carry their own stylesheets and never load
+# site.css, so every var(--bone), var(--faint), var(--rule) in the chrome this
+# file injects resolved to nothing at all. It fails silently, exactly as
+# --line and --ink did on the entity pages.
+#
+# Rather than type the palette a third time, the tokens are read out of
+# site.css itself. If a token changes there it changes here on the next build.
+def _tokens_from_site_css():
+    try:
+        css = open('public/assets/site.css', encoding='utf-8').read()
+        block = re.search(r':root\{(.*?)\}', css, re.S).group(1)
+    except (OSError, AttributeError):
+        return ''
+    keep = ('--surface-0', '--surface-1', '--surface-2', '--ground', '--panel',
+            '--panel2', '--rule', '--rule2', '--line', '--ink', '--bone',
+            '--txt', '--mut', '--dim', '--faint', '--ok', '--warn', '--warn-t',
+            '--ember', '--ember-t', '--instr', '--brass', '--brass-t',
+            '--lava', '--lava-t', '--r', '--speed')
+    # Strip comments BEFORE splitting. site.css documents nearly every token
+    # inline, so a declaration arrives as "/* why this value */\n  --bone:#F2EADA"
+    # and splitting on ':' hands back the comment rather than the name. The
+    # first version of this matched nothing at all and emitted an empty block,
+    # which looks identical to working.
+    block = re.sub(r'/\*.*?\*/', '', block, flags=re.S)
+    out = []
+    for decl in block.split(';'):
+        if ':' not in decl:
+            continue
+        name, _, value = decl.partition(':')
+        if name.strip() in keep:
+            out.append(f'{name.strip()}:{value.strip()};')
+    return '<style>:root{' + ''.join(out) + '}</style>' if out else ''
+
+
+TOKENS_CSS = _tokens_from_site_css()
+
+CONTACT_CSS = """<style>
+.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
+  background:rgba(255,255,255,.02)}
+.inj-contact p{margin:0;color:#B0A9A2;font-size:14px;line-height:1.6}
+.inj-contact strong{color:var(--bone)}
+.inj-contact a{color:#8FBEE4}
+.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
+</style>"""
 
 CONTACT = """
 <div class="inj-contact">
@@ -265,7 +306,18 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
                   f'<meta name="twitter:image" content="{img}">')
         if canon:
             social += f'<link rel="canonical" href="{url}/{canon}">'
-    h = h.replace('</head>', f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">' + social + css + '</head>', 1)
+    # Tokens first. These twenty-one pages are the hand-written originals: they
+    # carry their own stylesheets and never load site.css, so every var(--bone),
+    # var(--faint) and var(--rule) in the chrome injected here resolved to
+    # nothing at all. It fails silently, exactly the way --line and --ink did on
+    # the entity pages. CONTACT_CSS travels with them because the contact block
+    # itself is injected unconditionally further down, while its stylesheet used
+    # to ride along with the withheld-coordinate block — so any page with no
+    # withheld coordinate got the markup and none of the styling, and its links
+    # rendered in the browser's default blue on a dark ground.
+    h = h.replace('</head>', TOKENS_CSS + CONTACT_CSS
+                  + f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">'
+                  + social + css + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
     if ph_zone:
         z_ = BY.get(ph_zone, {})

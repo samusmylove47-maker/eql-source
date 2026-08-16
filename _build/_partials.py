@@ -185,7 +185,6 @@ def foot(rel=""):
       <div><h4>Raids</h4><ul>
         <li><a href="{rel}raids/index.html">Encounter index</a></li>
         <li><a href="{rel}raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
-        <li><a href="{rel}raids/eye-of-veeshan.html">Eye of Veeshan</a></li>
       </ul></div>
       <div><h4>Tools</h4><ul>
 {_foot_links(TOOLS, "tools", rel)}
