@@ -376,6 +376,58 @@ def run(pages, fail, warn):
                  f"generator wrote template syntax into a plain string")
             break
 
+    # ---- 5e. a plotted position must agree with the zone's own floor plan ----
+    #
+    # The locator on the item and named pages and the floor plan on the survey
+    # pages describe the same mob from the same /loc, through two different code
+    # paths. They must land in the same place.
+    #
+    # They did not. _build/plans.py parsed coordinates with a plain `-?\d+`,
+    # and 141 of the recorded /locs use U+2212 MINUS SIGN rather than ASCII
+    # hyphen, so every negative coordinate read as positive: 46 of 60 checked
+    # marks disagreed with the floor plan by up to 1,508 units. Nothing looked
+    # wrong — a dot on a dungeon plan looks correct wherever it is. build6.py
+    # had already found and documented this hazard, which is exactly why the
+    # agreement needs a check rather than a comment.
+    try:
+        sys.path.insert(0, os.path.join(os.getcwd(), "_build"))
+        from plans import locate as _loc
+        PB = json.load(open("assets/zone-plan-bounds.json", encoding="utf-8"))["zones"]
+        named = {(n["z"], n["n"]): n for n in IX["named"]}
+        checked = off = 0
+        for p in pages:
+            slug = os.path.basename(p)[:-5]
+            if os.path.dirname(p).replace("\\", "/").split("/")[-1] != "dungeons":
+                continue
+            if slug not in PB:
+                continue
+            h = open(p, encoding="utf-8", errors="replace").read()
+            for blk in re.findall(r'<g class="mk"[^>]*>(.*?)</g>', h, re.S):
+                c = re.search(r'cx="(-?[\d.]+)"\s+cy="(-?[\d.]+)"', blk)
+                t = re.search(r">([^<]+)</text>", blk)
+                if not c or not t:
+                    continue
+                n = named.get((slug, t.group(1).strip()))
+                if not n:
+                    continue
+                pos = _loc(PB[slug], n.get("loc") or "")
+                if not pos:
+                    continue
+                b = PB[slug]
+                dx = b["x0"] + pos[0] / 100 * b["w"] - float(c.group(1))
+                dy = b["y0"] + pos[1] / 100 * b["h"] - float(c.group(2))
+                checked += 1
+                if (dx * dx + dy * dy) ** .5 > 1.0:
+                    off += 1
+                    if off <= 3:
+                        fail(f"{slug}/{t.group(1).strip()}: the page locator and the floor "
+                             f"plan disagree by {(dx*dx+dy*dy)**.5:.0f} game units — "
+                             f"check the coordinate parser, not the drawing")
+        if checked and off > 3:
+            fail(f"{off} plotted positions disagree with their floor plan in total")
+    except (OSError, ValueError, KeyError, ImportError):
+        pass          # no plans yet is not a failure; a wrong plan is
+
     # ---- 6. prose may not grow -----------------------------------------------
     #
     # The site reached 67,752 words before anyone measured it. Not one page was

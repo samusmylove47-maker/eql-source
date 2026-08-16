@@ -44,6 +44,9 @@ python3 _build/build24.py
 python3 _build/build14.py
 python3 _build/build15.py
 python3 _build/sightings.py
+# One shared locator plan per zone, plus the bounds build17.py needs to
+# turn a recorded /loc into a position on it.
+python3 _build/plans.py
 python3 _build/build17.py
 # Joins the catalogue, the measured sightings and the planar sets, so it runs
 # after sightings.py has written the second of those and build17.py has made

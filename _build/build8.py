@@ -210,9 +210,29 @@ def elev_svg():
                    f'centre {i["cx"]:.0f}, {i["cy"]:.0f}, height {i["z"][1]:.0f}</title></ellipse>')
     out.append(f'<text class="ax" x="{W - pad}" y="{H - 12}">west &rarr; east</text>')
     out.append(f'<text class="ax" x="{pad}" y="{H - 12}">height in game units, read from the mesh</text>')
+    # VERTICAL EXAGGERATION, STATED.
+    # The two axes are not at the same scale and never were: the horizontal
+    # spans 3,059 units across the same drawing width that the vertical uses
+    # for 2,878, so height is drawn at 0.38 of its true relative size and Sky
+    # reads 2.6x flatter than it is. Every section drawing in every surveying
+    # discipline prints this figure, for exactly this reason. Without it the
+    # chart is an invented proportion, which is the one thing this site does
+    # not publish - and it had been live since 11 Aug 2026.
+    # Computed from the scales themselves so it cannot drift from the drawing.
+    px_x = (W - pad * 2) / (x1 - x0)
+    px_z = (H - pad * 2) / (z1 - z0)
+    ve = px_z / px_x
+    out.append(f'<text class="ax ve" x="{W - pad}" y="{pad - 16}">'
+               f'vertical exaggeration &times;{ve:.2f}</text>')
     out.append('</svg>')
     return "".join(out)
 
+
+# The elevation drawing's vertical exaggeration, from the same numbers the
+# drawing scales by. The page states it in prose as well as on the chart, and
+# both read this rather than either typing it.
+_EXS = [i["cx"] for i in ISL]
+ELEV_VE = ((380 - 92) / (SKY["zmax"] - SKY["zmin"])) / ((900 - 92) / (max(_EXS) - min(_EXS)))
 
 # ------------------------------------------------------------- the cost table
 def cost_rows():
@@ -308,6 +328,11 @@ CSS = '''<style>
 .gl,.ax{font-family:"IBM Plex Mono",monospace;font-size:9.5px;fill:var(--faint)}
 .gl{text-anchor:end}
 .ax:last-of-type{text-anchor:start}
+/* The exaggeration figure is not a footnote — it governs how the whole drawing
+   should be read, so it sits at the top edge in the brass the chrome uses for
+   its own apparatus. text-anchor is set explicitly because the :last-of-type
+   rule above would otherwise left-anchor it off the drawing. */
+.ve{text-anchor:end!important;fill:var(--brass-t);letter-spacing:.08em}
 .isl{fill:color-mix(in srgb, var(--instr) 62%, transparent);stroke:var(--instr);stroke-width:1}
 .chain{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
   background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
@@ -490,6 +515,11 @@ page = (head("Plane of Sky",
       {SKY["zmin"]:,.0f} to {SKY["zmax"]:,.0f}. Seen from the side, west to east. Each mark is
       sized by how much floor it holds. For comparison, the deepest dungeon we have measured spans
       about 600 units top to bottom.</p>
+    <div class="note"><strong>The two axes are not at the same scale.</strong> Height is drawn at
+      {ELEV_VE:.2f} of its true size against the horizontal, so <strong>Sky reads about
+      {1/ELEV_VE:.1f} times flatter here than it is</strong>. That is normal for a section drawing
+      and it is why surveyors print the figure on the drawing rather than in a caption. It had been
+      missing from this chart since 11 August 2026, which made the proportion an invented one.</div>
     <div class="note danger"><strong>These are not labelled, and that is deliberate.</strong> The
       mesh says exactly where every piece of floor is. It does not say which piece is
       &ldquo;island 4&rdquo; &mdash; that lives in the teleporter network, and no

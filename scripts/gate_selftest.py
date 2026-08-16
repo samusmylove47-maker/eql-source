@@ -135,6 +135,19 @@ CASES = [
      lambda t: t.replace('content="Interactive 3D raid guide for the Eye of Veeshan',
                          'content="32,000 HP. Interactive 3D raid guide for the Eye of Veeshan')),
 
+    # The bug this shipped with. _build/plans.py parsed /loc with a plain
+    # `-?\d+`, and 141 recorded coordinates use U+2212 MINUS SIGN, so every
+    # negative one read as positive and the mark landed in the opposite corner.
+    # Nothing looked wrong: a dot on a dungeon plan looks right wherever it is.
+    # Mutating a plotted circle away from its /loc proves the agreement check
+    # is alive.
+    ("a plotted position that disagrees with its floor plan",
+     "the page locator and the floor plan disagree",
+     "public/dungeons/najena.html",
+     lambda t: re.sub(r'(<g class="mk"[^>]*>.*?<circle[^>]*cx=")(-?[\d.]+)',
+                      lambda m: m.group(1) + str(float(m.group(2)) + 300),
+                      t, count=1, flags=re.S)),
+
     ("a tool dropped from the footer",
      "footer does not link tools/faction-impact.html",
      "public/index.html",

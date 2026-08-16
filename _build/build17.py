@@ -78,6 +78,26 @@ def esc(s):
 
 CSS = '''<style>
 .ent{max-width:74ch}
+.ent-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,246px);
+  gap:var(--s-6);align-items:start}
+@media(max-width:760px){.ent-top{grid-template-columns:1fr}}
+.locator{margin:20px 0 0;display:flex;flex-direction:column;gap:8px}
+.loc-plan{position:relative;display:block;border:1px solid var(--rule);
+  border-radius:4px;background:var(--surface-1);padding:10px;overflow:hidden}
+.loc-fit{position:relative;display:block;line-height:0}
+.loc-plan img{width:100%;height:auto;display:block;opacity:.8}
+/* The mark is the point of the whole thing: it is where the mob actually
+   stands, from its recorded /loc. Drawn as a survey station rather than a pin —
+   a ring with a centre dot, which is what a plotted position looks like on a
+   real plan and what the site's own floor plans already use. */
+.loc-mark{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;
+  border:1.5px solid var(--c);border-radius:50%;
+  box-shadow:0 0 0 2px var(--surface-1)}
+.loc-mark::after{content:"";position:absolute;inset:3.5px;border-radius:50%;
+  background:var(--c)}
+.locator figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);line-height:1.6}
+.locator figcaption b{color:color-mix(in srgb, var(--c) 58%, var(--bone));font-weight:500}
 .ent .facts{list-style:none;margin:20px 0 0;padding:0;display:grid;
   grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px 22px}
 .ent .facts div{padding:9px 0;border-top:1px solid var(--line)}
@@ -121,7 +141,49 @@ def seen_block(rows, label):
             f'<a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p>')
 
 
-def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon):
+
+# THE LOCATOR. 674 of the site's pages had no graphic of any kind, and these are
+# the pages a search engine lands a stranger on. Each now shows the zone it
+# belongs to, drawn from the game's own mesh — and where we hold a named mob's
+# /loc, a mark on that drawing showing where it actually stands.
+#
+# The plan is a shared file per zone (public/assets/plans/<slug>.svg), not
+# inline SVG: a reader working through several items from one dungeon fetches
+# it once. See _build/plans.py, which also writes the bounds this reads.
+try:
+    _PB = json.load(open('assets/zone-plan-bounds.json', encoding='utf-8'))['zones']
+except (OSError, ValueError, KeyError):
+    _PB = {}
+sys.path.insert(0, os.path.join(ROOT, '_build'))
+from plans import locate as _locate
+
+
+def locator(zslug, ztitle, loc=None):
+    """The zone plan, with a position mark where one can be placed honestly."""
+    if not zslug or zslug not in _PB:
+        return ''
+    pos = _locate(_PB.get(zslug), loc) if loc else None
+    mark = ''
+    if pos:
+        mark = (f'<span class="loc-mark" style="left:{pos[0]}%;top:{pos[1]}%"></span>')
+    # A mob we hold no usable /loc for gets the plan and no mark, and the
+    # caption says which — an unmarked plan is a gap stated, not a gap hidden.
+    cap = (f'{esc(ztitle)} &middot; <b>/loc {esc(loc)}</b>' if pos
+           else f'{esc(ztitle)} &middot; position not recorded' if loc is not None
+           else esc(ztitle))
+    # No loading="lazy": this sits at the top of the page and is the first
+    # graphic a reader sees, so deferring it delays the largest paint for no
+    # gain. width/height carry the plan's real aspect so the box is reserved
+    # at its true shape and the page does not shift when it arrives.
+    b = _PB[zslug]
+    return (f'<figure class="locator">'
+            f'<span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/{zslug}.svg" alt="" '
+            f'width="{b["w"]:.0f}" height="{b["h"]:.0f}" decoding="async">{mark}</span></span>'
+            f'<figcaption>{cap}<br>Floor from the game&rsquo;s own mesh</figcaption>'
+            f'</figure>')
+
+def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon,
+         locator_html=''):
     rows = ''.join(
         f'<div><dt>{k}</dt><dd{" class=\'none\'" if v is None else ""}>'
         f'{v if v is not None else "not recorded"}</dd></div>'
@@ -134,7 +196,10 @@ def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon):
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="../tools/index-search.html">The Index</a> &nbsp;/&nbsp; {eyebrow}</p>
     <h1 class="display">{esc(title)}</h1>
-    <dl class="facts">{rows}</dl>
+    <div class="ent-top">
+      <dl class="facts">{rows}</dl>
+      {locator_html}
+    </div>
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
@@ -223,7 +288,8 @@ for name, rows in by_item.items():
                          "A family named by the survey row, not a single item"))
     s = slug(name)
     open(f'public/items/{s}.html', 'w', encoding='utf-8', newline='\n').write(
-        page("item", name, "Item", a['a'], facts, extra, desc[:180], f"items/{s}"))
+        page("item", name, "Item", a['a'], facts, extra, desc[:180], f"items/{s}",
+             locator(a['z'], a['zt'])))
     if name in GROUP_NAMES:
         n_groups += 1
     else:
@@ -256,7 +322,8 @@ for nm in IX['named']:
     if nm.get('no'):
         facts.append(("Notes", esc(nm['no'])))
     open(f'public/named/{s}.html', 'w', encoding='utf-8', newline='\n').write(
-        page("named", nm['n'], "Named mob", nm['a'], facts, extra, desc[:180], f"named/{s}"))
+        page("named", nm['n'], "Named mob", nm['a'], facts, extra, desc[:180], f"named/{s}",
+             locator(nm['z'], nm['zt'], nm.get('loc') or '')))
     n_named += 1
 
 # ---- the two hub pages ------------------------------------------------------

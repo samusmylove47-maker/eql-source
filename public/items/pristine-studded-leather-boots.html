@@ -25,6 +25,26 @@
 <link rel="stylesheet" href="../assets/site.css?v=db06cef2">
 <style>
 .ent{max-width:74ch}
+.ent-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,246px);
+  gap:var(--s-6);align-items:start}
+@media(max-width:760px){.ent-top{grid-template-columns:1fr}}
+.locator{margin:20px 0 0;display:flex;flex-direction:column;gap:8px}
+.loc-plan{position:relative;display:block;border:1px solid var(--rule);
+  border-radius:4px;background:var(--surface-1);padding:10px;overflow:hidden}
+.loc-fit{position:relative;display:block;line-height:0}
+.loc-plan img{width:100%;height:auto;display:block;opacity:.8}
+/* The mark is the point of the whole thing: it is where the mob actually
+   stands, from its recorded /loc. Drawn as a survey station rather than a pin —
+   a ring with a centre dot, which is what a plotted position looks like on a
+   real plan and what the site's own floor plans already use. */
+.loc-mark{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;
+  border:1.5px solid var(--c);border-radius:50%;
+  box-shadow:0 0 0 2px var(--surface-1)}
+.loc-mark::after{content:"";position:absolute;inset:3.5px;border-radius:50%;
+  background:var(--c)}
+.locator figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);line-height:1.6}
+.locator figcaption b{color:color-mix(in srgb, var(--c) 58%, var(--bone));font-weight:500}
 .ent .facts{list-style:none;margin:20px 0 0;padding:0;display:grid;
   grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px 22px}
 .ent .facts div{padding:9px 0;border-top:1px solid var(--line)}
@@ -70,7 +90,10 @@
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="../tools/index-search.html">The Index</a> &nbsp;/&nbsp; Item</p>
     <h1 class="display">Pristine Studded Leather Boots</h1>
-    <dl class="facts"><div><dt>Slot</dt><dd>Feet</dd></div><div><dt>Stats</dt><dd>AC 6 · AGI 5 · SV Cold 3</dd></div><div><dt>Classes</dt><dd>Warrior, Cleric, Paladin, Ranger, Shadow Knight, Druid, Monk, Bard, Rogue, Shaman, Beastlord, Berserker</dd></div><div><dt>Zones</dt><dd>Befallen</dd></div></dl>
+    <div class="ent-top">
+      <dl class="facts"><div><dt>Slot</dt><dd>Feet</dd></div><div><dt>Stats</dt><dd>AC 6 · AGI 5 · SV Cold 3</dd></div><div><dt>Classes</dt><dd>Warrior, Cleric, Paladin, Ranger, Shadow Knight, Druid, Monk, Bard, Rogue, Shaman, Beastlord, Berserker</dd></div><div><dt>Zones</dt><dd>Befallen</dd></div></dl>
+      <figure class="locator"><span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/befallen.svg" alt="" width="540" height="1098" decoding="async"></span></span><figcaption>Befallen<br>Floor from the game&rsquo;s own mesh</figcaption></figure>
+    </div>
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
