@@ -64,19 +64,19 @@ CSS = """
 .meas{margin:34px 0 10px}
 .meas h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
   letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
-.meas .cond{border-left:2px solid var(--accd);background:#161C21;padding:12px 16px;
-  margin:0 0 18px;color:#AEB9B8;font-size:14px}
-.meas .cond b{color:#E6E9E4}
+.meas .cond{border-left:2px solid var(--accd);background:#201A15;padding:12px 16px;
+  margin:0 0 18px;color:var(--mut);font-size:14px}
+.meas .cond b{color:var(--bone)}
 .meas .tw{overflow-x:auto;margin:0 0 14px;-webkit-overflow-scrolling:touch}
 .meas table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px}
 .meas th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:#9FB0B4;font-weight:500;
-  border-bottom:1px solid #2E3A41;padding:0 12px 7px 0}
-.meas td{border-bottom:1px solid #232D32;padding:9px 12px 9px 0;vertical-align:top}
-.meas td.n{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:#C9D1CF}
-.meas .mob{color:#E6E9E4;font-weight:600}
-.meas .sub{display:block;color:#8A9998;font-size:12.5px;margin-top:3px}
-.meas .caveat{color:#7D9096;font-size:13.5px;margin:0;max-width:80ch}
+  letter-spacing:.14em;text-transform:uppercase;color:#B6ABA1;font-weight:500;
+  border-bottom:1px solid #40372D;padding:0 12px 7px 0}
+.meas td{border-bottom:1px solid #322A23;padding:9px 12px 9px 0;vertical-align:top}
+.meas td.n{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:#D3CFCB}
+.meas .mob{color:var(--bone);font-weight:600}
+.meas .sub{display:block;color:#9C958E;font-size:12.5px;margin-top:3px}
+.meas .caveat{color:var(--faint);font-size:13.5px;margin:0;max-width:80ch}
 .tierM{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);border-radius:3px;
   color:var(--acct);vertical-align:2px}
@@ -84,7 +84,7 @@ CSS = """
   .meas table{min-width:0}
   .meas table,.meas thead,.meas tbody,.meas tr,.meas td,.meas th{display:block}
   .meas thead{display:none}.meas td{border:0;padding:2px 0}
-  .meas tr{border-bottom:1px solid #232D32;padding:10px 0;display:block}}
+  .meas tr{border-bottom:1px solid #322A23;padding:10px 0;display:block}}
 </style>"""
 
 
@@ -118,7 +118,7 @@ def escapes_html(s):
     return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
             f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Fights broken off</h3>'
             + warn
-            + f'<ul style="margin:0 0 16px;padding-left:20px;color:#AEB9B8;font-size:14px;'
+            + f'<ul style="margin:0 0 16px;padding-left:20px;color:var(--mut);font-size:14px;'
             f'line-height:1.7">{items}</ul>'
             f'<p class="caveat" style="margin:0 0 18px">An escape is a judgement, not a verdict. '
             f'It records that this group at this level chose to leave, which is worth knowing and is '

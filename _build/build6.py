@@ -421,7 +421,7 @@ def build_plot(zone, pts, layers):
             ex = lx if anchor == 'middle' else (lx - fs * 0.2 if anchor == 'start' else lx + fs * 0.2)
             leaders.append(f'<line class="mklead" x1="{px:.0f}" y1="{py:.0f}" x2="{ex:.0f}" '
                            f'y2="{ly + fs*0.28:.0f}" '
-                           f'stroke="#5C6B70" stroke-width="1" vector-effect="non-scaling-stroke"/>')
+                           f'stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/>')
         col = band_colour(lev, lo, hi)
         # Everything the reader might want to filter or read on click travels
         # with the marker, so the page needs no second data structure and the
@@ -437,10 +437,10 @@ def build_plot(zone, pts, layers):
             f' aria-label="{esc(name)}{f", level {lev_txt}" if lev_txt else ""}'
             f'{f". Drops {len(drops)} recorded items." if drops else ". No drops recorded."}">'
             f'<circle cx="{px:.0f}" cy="{py:.0f}" r="{r_dot:.1f}" fill="{col}" '
-            f'fill-opacity=".95" stroke="#0E1315" stroke-width="1.5" vector-effect="non-scaling-stroke"/>'
+            f'fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/>'
             f'<text class="mklbl" x="{lx:.0f}" y="{ly:.0f}" text-anchor="{anchor}" '
-            f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#E6E9E4" '
-            f'style="paint-order:stroke" stroke="#10161A" stroke-width="{fs*0.42:.1f}" '
+            f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#F2EADA" '
+            f'style="paint-order:stroke" stroke="#191410" stroke-width="{fs*0.42:.1f}" '
             f'stroke-linejoin="round">{esc(short)}</text></g>')
     # ---- the farming route -------------------------------------------------
     # An order to take the named in, not a path through the zone. Drawn hidden;
@@ -456,7 +456,7 @@ def build_plot(zone, pts, layers):
             f'<text class="rnum" x="{dots[i][0]:.0f}" y="{dots[i][1] - r_dot*2.6:.0f}" '
             f'text-anchor="middle" font-family="IBM Plex Mono, monospace" '
             f'font-size="{fs*0.86:.0f}" fill="#E8B04B" style="paint-order:stroke" '
-            f'stroke="#10161A" stroke-width="{fs*0.36:.1f}">{k+1}</text>'
+            f'stroke="#191410" stroke-width="{fs*0.36:.1f}">{k+1}</text>'
             for k, i in enumerate(tour))
         route = (f'<g class="route" hidden><polyline points="{pl}" fill="none" '
                  f'stroke="#E8B04B" stroke-width="2" stroke-opacity=".75" '
@@ -485,41 +485,41 @@ def build_plot(zone, pts, layers):
     gx = (int(x0 // step) + 1) * step
     while gx < x1:
         g.append(f'<line x1="{gx:.0f}" y1="{y0:.0f}" x2="{gx:.0f}" y2="{y1:.0f}" '
-                 f'stroke="#232D32" stroke-width="1" vector-effect="non-scaling-stroke"/>')
+                 f'stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/>')
         gx += step
     gy = (int(y0 // step) + 1) * step
     while gy < y1:
         g.append(f'<line x1="{x0:.0f}" y1="{gy:.0f}" x2="{x1:.0f}" y2="{gy:.0f}" '
-                 f'stroke="#232D32" stroke-width="1" vector-effect="non-scaling-stroke"/>')
+                 f'stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/>')
         gy += step
 
     # scale bar bottom-left, north arrow bottom-right, both inside the strip
     sbx, sby = x0 + pad * 0.7, y1 - strip * 0.30
     scale = (f'<g><line x1="{sbx:.0f}" y1="{sby:.0f}" x2="{sbx+step:.0f}" y2="{sby:.0f}" '
-             f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+             f'stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/>'
              f'<line x1="{sbx:.0f}" y1="{sby-span*0.012:.0f}" x2="{sbx:.0f}" y2="{sby+span*0.012:.0f}" '
-             f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+             f'stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/>'
              f'<line x1="{sbx+step:.0f}" y1="{sby-span*0.012:.0f}" x2="{sbx+step:.0f}" y2="{sby+span*0.012:.0f}" '
-             f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+             f'stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/>'
              f'<text x="{sbx+step/2:.0f}" y="{sby-span*0.024:.0f}" text-anchor="middle" '
-             f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#AEB9B8">'
+             f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#B5AA95">'
              f'{step} units</text></g>')
     ncx = x1 - pad * 0.7 - span * 0.02
     nb = y1 - strip * 0.16
     ntop = y1 - strip * 0.88
     compass = (f'<g><line x1="{ncx:.0f}" y1="{nb-fs*1.5:.0f}" x2="{ncx:.0f}" y2="{ntop+span*0.018:.0f}" '
-               f'stroke="#AEB9B8" stroke-width="2" vector-effect="non-scaling-stroke"/>'
+               f'stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/>'
                f'<path d="M{ncx:.0f},{ntop:.0f} L{ncx-span*0.014:.0f},{ntop+span*0.026:.0f} '
-               f'L{ncx+span*0.014:.0f},{ntop+span*0.026:.0f} Z" fill="#AEB9B8"/>'
+               f'L{ncx+span*0.014:.0f},{ntop+span*0.026:.0f} Z" fill="#B5AA95"/>'
                f'<text x="{ncx:.0f}" y="{nb:.0f}" text-anchor="middle" '
-               f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#AEB9B8">N</text></g>')
+               f'font-family="IBM Plex Mono, monospace" font-size="{fs:.0f}" fill="#B5AA95">N</text></g>')
 
     svg = (f'<svg class="plotsvg" viewBox="{x0:.0f} {y0:.0f} {w:.0f} {h:.0f}" role="img" '
            f'aria-label="Survey plot of {esc(zone["title"])}. {len(pts)} recorded named-mob positions, '
            f'labelled in place and coloured by level. Dashed outlines group positions that sit close '
            f'together; they are not room shapes. North is up, west is left. Every position is also '
            f'listed as text beneath the plot.">'
-           f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#10161A"/>'
+           f'<rect x="{x0:.0f}" y="{y0:.0f}" width="{w:.0f}" height="{h:.0f}" fill="#191410"/>'
            + ''.join(g) + ''.join(geo) + ''.join(regions) + ''.join(rlabels) + route
            + ''.join(marks)
            + scale + compass + '</svg>')
@@ -648,52 +648,52 @@ PLATE_CSS = """
 .fplan{margin:38px 0 10px}
 .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
   letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
-.fp-lede{color:#9FADAC;margin:0 0 16px;max-width:66ch}
-.fp-wrap{border:1px solid #2E3A41;background:#10161A;overflow:hidden;border-radius:4px}
+.fp-lede{color:#B0A9A2;margin:0 0 16px;max-width:66ch}
+.fp-wrap{border:1px solid #40372D;background:#191410;overflow:hidden;border-radius:4px}
 .fp-wrap svg{display:block;height:min(96vh,1000px);width:auto;max-width:100%;margin:0 auto}
 @media(max-width:900px){.fp-wrap svg{height:auto;width:100%}}
 .fp-levels{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:0 0 14px}
 .fp-levels .lab{align-self:center;font-family:"IBM Plex Mono",monospace;font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase;color:#7D9096;margin-right:4px}
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:4px}
 .fp-levels button{display:flex;flex-direction:column;gap:2px;padding:8px 12px;cursor:pointer;
-  background:#1A2126;border:1px solid #2E3A41;border-radius:4px;color:#AEB9B8;
+  background:#251F19;border:1px solid #40372D;border-radius:4px;color:var(--mut);
   font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1}
-.fp-levels button span{font-size:10px;color:#9FB0B4}
-.fp-levels button:hover{color:#E6E9E4;border-color:var(--accd)}
+.fp-levels button span{font-size:10px;color:#B6ABA1}
+.fp-levels button:hover{color:var(--bone);border-color:var(--accd)}
 .fp-levels button:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-.fp-levels button.on{background:color-mix(in srgb, var(--acc) 16%, #1A2126);
-  border-color:var(--accd);color:#E6E9E4}
-.fp-note{color:#7D9096;font-size:13.5px;margin:12px 0 0;max-width:78ch}
+.fp-levels button.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);
+  border-color:var(--accd);color:var(--bone)}
+.fp-note{color:var(--faint);font-size:13.5px;margin:12px 0 0;max-width:78ch}
 .lyr{transition:stroke-opacity .18s}
 .lyr.mute{stroke-opacity:.07}
 @media(prefers-reduced-motion:reduce){.lyr{transition:none}}
 .fp-toggles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
-.fp-t{padding:7px 13px;cursor:pointer;background:#1A2126;border:1px solid #2E3A41;
-  border-radius:4px;color:#AEB9B8;font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+.fp-t{padding:7px 13px;cursor:pointer;background:#251F19;border:1px solid #40372D;
+  border-radius:4px;color:var(--mut);font-family:"IBM Plex Mono",monospace;font-size:12.5px;
   letter-spacing:.04em}
-.fp-t:hover{color:#E6E9E4;border-color:var(--accd)}
+.fp-t:hover{color:var(--bone);border-color:var(--accd)}
 .fp-t:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-.fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #1A2126);border-color:var(--accd);
-  color:#E6E9E4}
+.fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
+  color:var(--bone)}
 .fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
 .plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
 .mk{cursor:pointer}
-.mk:focus-visible circle{stroke:#E6E9E4;stroke-width:3}
+.mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
 .mk.dim{opacity:.14}
-.mk.sel circle{stroke:#E6E9E4;stroke-width:3}
-.fp-detail{margin:12px 0 0;padding:13px 15px;border:1px solid #2E3A41;border-radius:4px;
-  background:#151B1F}
+.mk.sel circle{stroke:var(--bone);stroke-width:3}
+.fp-detail{margin:12px 0 0;padding:13px 15px;border:1px solid #40372D;border-radius:4px;
+  background:#1E1914}
 .fp-detail h3{margin:0 0 3px;font-family:"Saira Condensed",sans-serif;font-weight:600;
-  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:#E6E9E4}
-.fp-detail .dmeta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#7D9096;
+  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--bone)}
+.fp-detail .dmeta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);
   letter-spacing:.06em;text-transform:uppercase}
 .fp-detail ul{margin:9px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.fp-detail li{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#C6D0CE;
-  background:#1A2126;border:1px solid #2E3A41;border-radius:3px;padding:3px 8px}
-.fp-detail .dnone{color:#9FADAC;font-size:13.5px;margin:8px 0 0}
+.fp-detail li{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#D2CDC8;
+  background:#251F19;border:1px solid #40372D;border-radius:3px;padding:3px 8px}
+.fp-detail .dnone{color:#B0A9A2;font-size:13.5px;margin:8px 0 0}
 .fp-route{margin:12px 0 0;padding:12px 14px;border-left:3px solid #E8B04B;
-  background:rgba(232,176,75,.06);color:#9FADAC;font-size:13.5px;line-height:1.6}
-.fp-route strong,.fp-route .rlen{color:#E6E9E4}
+  background:rgba(232,176,75,.06);color:#B0A9A2;font-size:13.5px;line-height:1.6}
+.fp-route strong,.fp-route .rlen{color:var(--bone)}
 .fp-route em{color:#F2DDAE;font-style:normal}
 </style>"""
 

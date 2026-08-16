@@ -91,11 +91,14 @@ Do not change these. They are the identity.
   ten zone accents, instrument blue for tools, ember for raids.
 - **Each zone owns its accent permanently.** `check.py` fails on duplicates.
 - **The plate cards** — one per zone, accent-washed, plate number cropped by the
-  card edge, contour rings anchored to a different corner on each. This is the
-  home page's signature and the visual language the rest of the page extends.
-- **The tier badges**, `.tier` with `.t1`–`.t5`.
-- **Three typefaces**, no more: Saira Condensed (display), IBM Plex Mono (data
-  and labels), Public Sans (prose).
+  card edge, and **the zone's own floor plan drawn from the game's mesh**. This
+  is the site's signature and the visual language the rest of the page extends.
+  *(The contour rings that used to sit here were a radial gradient encoding
+  nothing, and they were removed on 16 Aug 2026 — see §11.)*
+- **The tier badges**, `.tier` with `.t1`–`.t5`, plus `.tM` for measured and
+  `.tc` for a first-hand report.
+- **Four typefaces**, no more: Cinzel (display), Saira Condensed (the
+  condensed workhorse), IBM Plex Mono (data and labels), Public Sans (prose).
 - **WCAG AA on all text.** The site now measures clean across 11,942 text nodes
   on 25 pages. Do not regress it. Accents that fail as text get a lifted variant;
   the accent itself is never reassigned.
@@ -148,12 +151,20 @@ justify its absence as restraint.
 
 ## 5. What stays out
 
-- No fourth typeface.
-- No colour outside the system.
-- No illustration, stock art, or generated imagery.
+Four of these were relaxed on 16 August 2026 by the person who owns the site.
+See §11; the reasoning is recorded there rather than quietly edited out here.
+
+- ~~No fourth typeface.~~ **Four now.** Cinzel holds the top two display
+  levels. Saira Condensed stays as the workhorse beneath it.
+- No colour outside the system — **and the system is now measured rather than
+  chosen.** See §11.
+- No stock art and no generated imagery. **Derived geometry is not either of
+  those** and is now the site's primary art.
 - No icon set. The site has no need for icons and they date badly.
-- Nothing that shouts: no oversized hero gradient, no glow, no glass, no
-  animated background.
+- Nothing that shouts: no glow, no glass, no gratuitous motion. ~~No animated
+  background.~~ **One animation is allowed and only one**: the survey drawing
+  draws itself in, because that is what the site does to a zone. It respects
+  `prefers-reduced-motion` and arrives already drawn.
 - No framework. Hand-written CSS in `assets/site.css`. No CDN — `check.py`
   fails the build on one.
 
@@ -300,3 +311,78 @@ the project succeeds is the wrong signature.
 
 The zone accents themselves were never the problem and are more prominent now
 than they were — as fields on the plate cards rather than as bars.
+
+---
+
+## 11. Cartography — the direction, 16 August 2026
+
+**Directed by the collaborator, not proposed by a session.** Recorded here
+because the rest of this document was written by earlier sessions and parts of
+it were actively preventing what was asked for. Their words:
+
+> *Our site still looks like an AI/Claude prompted website… This site is bare,
+> utility focused, and human eyes glaze over when they see the landing page…
+> I need this website to look good, to be pretty… Research the themes and art
+> of everquest legends… I feel sad every time a guildmate or colleague tells me
+> our website looks plain, bland, bare, or "ai slop".*
+
+Then, after the first pass: *"I love the cartography theme. Lean further into
+this."*
+
+### The palette is measured, not chosen
+
+`_build/palette.py` reads DXT1 endpoint colours out of every zone texture in
+the game's own `.s3d` archives — 2.6 million samples across 14 zones, written
+to `assets/norrath-palette.json`.
+
+**Norrath's grounds are hue 15–30 and 62% of its saturated colour is warm.**
+The site's ground was `#0E1315`: hue 193, a cool slate. That was not a matter
+of taste. It was the wrong colour, measurably, and it is most of why the frame
+read as a developer tool rather than as a reference for this game.
+
+This is the same standard the rest of the site is held to. A colour is now a
+measurement of the art with a source and a date, exactly as a zone's height in
+game units is a measurement of the mesh. **No game art is extracted, converted
+or published** — only colour values, which are a reading of the work and not a
+copy of it.
+
+### The art is real geometry
+
+Screenshots are Daybreak's. Stock fantasy art is nobody's. Generated art is
+precisely what got the site called slop. What we hold that nobody else does is
+`assets/zone-geometry.json`: the walkable floor of thirteen zones, derived from
+the game's own meshes.
+
+Drawn as line work it is genuinely beautiful, it is unmistakably Norrath
+because it *is* Norrath, and it cannot be faked by a competitor or a template.
+`_build/heroart.py` turns it into SVG. It carries a source line wherever it
+appears, for the same reason every figure does.
+
+**The rule that follows from this:** a decorative mark should encode something
+true. The device this replaced — `.contour`, a radial-gradient of concentric
+rings — read as contour lines and encoded nothing. On a site that will not
+print an unsourced respawn timer, its prettiest object was an invented map.
+Ornament that imitates evidence is worse here than no ornament.
+
+### Structure must be visible
+
+Measured 16 August 2026: the entire structural vocabulary — every surface
+change, hairline and elevation — sat in a **1.04–1.31:1** band. `--rule`
+appears 48 times and was 1.31:1. A page whose every boundary is invisible reads
+as a wall of text however good the palette is.
+
+`--rule` is 2.25:1 and `--rule2` clears 3:1, the WCAG 1.4.11 bar for a non-text
+boundary that carries meaning. **Hierarchy needs a third axis beyond size and
+colour, and edge weight is it.**
+
+### WCAG AA is not relaxed by any of this
+
+It is the one constraint that did not move. When the palette rotated, relative
+luminance was solved back to the original so that no contrast ratio changed by
+construction (`_build/warmshift.py`, worst change anywhere 0.033). Verified
+after the pass: **5,880 elements across 10 page types, zero failures.**
+
+Where an accent fails as text, a lifted variant is derived at the point of use.
+**The ten zone accents are still never reassigned.** Re-deriving them from the
+measured palette was tested and rejected: four zones collapsed onto the same
+teal, because they share a moss texture.

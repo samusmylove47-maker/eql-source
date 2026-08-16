@@ -4,6 +4,28 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot, TOOLS, wordnum
+import heroart
+
+# THE HOME PAGE'S ART IS A REAL DUNGEON.
+# Najena's walkable floor, read out of the game's own mesh. It is the one piece
+# of imagery this site can honestly own: screenshots are Daybreak's, stock
+# fantasy art is nobody's, and generated art is exactly what a guildmate meant
+# when they called the site AI slop. This is a measurement, like every figure
+# on the page, and it carries its source line for the same reason they do.
+HERO_ZONE = 'najena'
+_hp, _hw, _hh = heroart.paths(HERO_ZONE, box=1000, precision=0)
+_hstat = heroart.stats(HERO_ZONE)
+# Stagger the draw-in so it reads as a survey rather than a switch being
+# thrown. Delays are assigned here rather than by nth-child, which would need
+# one CSS rule per path.
+hero_art = (f'<div class="hero-art" aria-hidden="true">'
+            f'<svg viewBox="0 0 {_hw} {_hh}" preserveAspectRatio="xMidYMid meet">'
+            + "".join(f'<path d="{d}" style="--d:{i * 14}ms"/>'
+                      for i, d in enumerate(_hp))
+            + '</svg></div>')
+hero_src = (f'<p class="hero-src">Najena, drawn from the game&rsquo;s own mesh &mdash; '
+            f'<b>{_hstat["paths"]} paths, {_hstat["points"]:,} points</b>, '
+            f'{_hstat["layers"]} storeys</p>')
 
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 # Counts are read from the mined data, never typed. The Index once published
@@ -72,11 +94,31 @@ def _cov(z):
             f'<b>{c["score"]}</b>/{c["max_score"]}'
             + (f' &middot; {len(got)} measured' if got else '') + '</span>')
 
+# THE PLATE CARDS CARRY THEIR OWN ZONE, DRAWN.
+#
+# Until now every card wore the same ornament: `.contour`, a CSS
+# repeating-radial-gradient of concentric rings. It read as contour lines and
+# it was not one — a decorative layer inventing a map, on a site that will not
+# print a respawn timer it has not read in a source. The prettiest thing on the
+# home page was the least true thing on it.
+#
+# Each card now carries the real walkable floor of its own zone, from the
+# game's mesh. Thirteen of them cost 22 KB gzipped, which is less than one
+# small image, and every card is a different shape because every dungeon is.
+def plate_art(slug):
+    d, w, h = heroart.paths(slug, box=100, precision=0, max_paths=60)
+    if not d:
+        return ''
+    return (f'<span class="plate-art" aria-hidden="true">'
+            f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="xMidYMid meet">'
+            + "".join(f'<path d="{p}"/>' for p in d) + '</svg></span>')
+
+
 plates = "\n".join(
-  f'''    <a class="plate contour" href="dungeons/{z['slug']}.html"
-       style="--c:{z['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
-      <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
-      <span class="num">{z['plate']:02d}</span>
+  f'''    <a class="plate" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
+      {plate_art(z['slug'])}
+      <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
+      <span class="num" aria-hidden="true">{z['plate']:02d}</span>
       <h3 class="pt">{z['title']}</h3>
       <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
     </a>''' for i, z in enumerate(Z))
@@ -99,14 +141,16 @@ home = head("Accurate, sourced and kept current",
 <main>
 
 <section class="hero">
+  {hero_art}
   <div class="shell">
     <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
-    <h1 class="display">The reference<br>that shows<br><em>its working.</em></h1>
-    <p class="hero-lede">Legends moves every week, and most of what the community reads about it is
-      classic EverQuest text in a Legends-shaped hole. Every figure here names the page it came from
-      and the day it was read. Every gap says so out loud.</p>
+    <h1 class="display">Norrath,<br><em>measured.</em></h1>
+    <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
+      a Legends-shaped hole. We go in with the log running and write down what actually happened.
+      Every figure names its source and the day it was read, and every gap says so out loud.</p>
     <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
   </div>
+  {hero_src}
 </section>
 
 <section class="band doors">
@@ -143,6 +187,18 @@ home = head("Accurate, sourced and kept current",
     <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; boss fights
       rendered in three dimensions, because a paragraph about where to stand has never been as clear as
       being shown.</p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The atlas</h2>
+      <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
+        No two are the same shape because no two dungeons are.</p></div>
+      <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
+    <div class="plates">
+{plates}
+    </div>
   </div>
 </section>
 
@@ -203,12 +259,16 @@ mapcards = "\n".join(
   [z['slug'] for z in Z if z['slug'] in MAPS])
 
 # The survey cards live here, on the surveys page. The home page links to this
-# page rather than reproducing it.
+# page rather than reproducing it.  NOT ANY MORE, 16 Aug 2026: it did not
+# reproduce it and it did not link it either. The home page never showed a
+# single zone — the site's entire subject was invisible from its front door,
+# which is most of why a visitor's eye slid off it. The atlas is on both pages
+# now, and this is the same card.
 dplates = "\n".join(
-  f'''      <a class="plate contour" href="{z['slug']}.html"
-         style="--c:{z['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
-        <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
-        <span class="num">{z['plate']:02d}</span>
+  f'''      <a class="plate" href="{z['slug']}.html" style="--c:{z['accent']}">
+        {plate_art(z['slug'])}
+        <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
+        <span class="num" aria-hidden="true">{z['plate']:02d}</span>
         <h3 class="pt">{z['title']}</h3>
         <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
       </a>''' for i, z in enumerate(Z))

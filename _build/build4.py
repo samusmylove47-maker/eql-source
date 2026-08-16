@@ -35,7 +35,7 @@ VIEWER_CSS = '''<style>
 /* The pressed tint darkens the background, so the raw ember label came out at
    3.25:1 — the active button was harder to read than the inactive ones. */
 .ph[aria-pressed="true"]{border-color:var(--ember);color:var(--ember-t);background:rgba(196,72,46,.1)}
-#stage{width:100%;height:clamp(360px,54vh,600px);display:block;background:#0A0E10;cursor:grab;touch-action:none}
+#stage{width:100%;height:clamp(360px,54vh,600px);display:block;background:#070402;cursor:grab;touch-action:none}
 #stage:active{cursor:grabbing}
 .enc-legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));gap:1px;
   background:var(--rule);border-top:1px solid var(--rule)}
@@ -136,11 +136,11 @@ BODY = '''
           <span class="ds">died to @@EYE_FULL@@ damage, base difficulty</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#7FB2C7"></span>Main tank</span>
           <span class="ds">rotation of three to four</span></div>
-        <div class="lg"><span class="nm"><span class="sw" style="background:#E6E9E4"></span>Raid stack</span>
+        <div class="lg"><span class="nm"><span class="sw" style="background:var(--bone)"></span>Raid stack</span>
           <span class="ds">melee in, casters back</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#D9A227"></span>Bait / puller</span>
           <span class="ds">eats the first touch</span></div>
-        <div class="lg"><span class="nm"><span class="sw" style="background:#5FA37E"></span>Ashtray portal</span>
+        <div class="lg"><span class="nm"><span class="sw" style="background:var(--ok)"></span>Ashtray portal</span>
           <span class="ds">one-way, keyed</span></div>
       </div>
       <p class="enc-note"><strong>This model is schematic, not surveyed.</strong> Island proportions and the vertical

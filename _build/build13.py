@@ -348,8 +348,8 @@ counts = {k: sum(1 for e in ENTRIES if e['status'] == k) for k in LABEL}
 body = ''.join(entry_html(e, i + 1) for i, e in enumerate(ENTRIES))
 
 CSS = '''<style>
-.st-entry{border:1px solid #2E3A41;border-left:3px solid var(--c);border-radius:4px;
-  padding:20px 22px;margin:0 0 18px;background:#151B1F}
+.st-entry{border:1px solid #40372D;border-left:3px solid var(--c);border-radius:4px;
+  padding:20px 22px;margin:0 0 18px;background:#1E1914}
 .st-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:0 0 14px}
 .st-status{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--c);border:1px solid var(--c);border-radius:3px;
