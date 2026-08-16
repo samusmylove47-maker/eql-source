@@ -20,7 +20,7 @@ _hstat = heroart.stats(HERO_ZONE)
 # one CSS rule per path.
 hero_art = (f'<div class="hero-art" aria-hidden="true">'
             f'<svg viewBox="0 0 {_hw} {_hh}" preserveAspectRatio="xMidYMid meet">'
-            + "".join(f'<path d="{d}" style="--d:{i * 14}ms"/>'
+            + "".join(f'<path {heroart.SAFE_ATTRS} d="{d}" style="--d:{i * 14}ms"/>'
                       for i, d in enumerate(_hp))
             + '</svg></div>')
 hero_src = (f'<p class="hero-src">Najena, drawn from the game&rsquo;s own mesh &mdash; '
@@ -111,7 +111,8 @@ def plate_art(slug):
         return ''
     return (f'<span class="plate-art" aria-hidden="true">'
             f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="xMidYMid meet">'
-            + "".join(f'<path d="{p}"/>' for p in d) + '</svg></span>')
+            + "".join(f'<path {heroart.SAFE_ATTRS} d="{p}"/>' for p in d)
+            + '</svg></span>')
 
 
 plates = "\n".join(

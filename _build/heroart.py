@@ -107,6 +107,17 @@ def paths(slug, box=1000, layer=None, max_paths=None, precision=1):
     return [d for d, _n in out], box, box
 
 
+# An SVG path with no CSS defaults to fill:black, stroke:none. When the
+# stylesheet failed to load on 16 Aug 2026 the home page's survey drawing
+# rendered as a solid black mass covering the hero, with the headline buried
+# under it — a stylesheet problem that looked like catastrophic page damage.
+# Every drawing this module produces carries its own fill and stroke as
+# presentation attributes, so CSS styles it but is not required to make it
+# safe. Presentation attributes lose to any CSS rule, so this changes nothing
+# when the stylesheet is present.
+SAFE_ATTRS = 'fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke"'
+
+
 def stats(slug):
     g = load()
     if slug not in g:
