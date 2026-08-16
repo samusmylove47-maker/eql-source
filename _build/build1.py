@@ -94,11 +94,31 @@ def _cov(z):
             f'<b>{c["score"]}</b>/{c["max_score"]}'
             + (f' &middot; {len(got)} measured' if got else '') + '</span>')
 
+# THE PLATE CARDS CARRY THEIR OWN ZONE, DRAWN.
+#
+# Until now every card wore the same ornament: `.contour`, a CSS
+# repeating-radial-gradient of concentric rings. It read as contour lines and
+# it was not one — a decorative layer inventing a map, on a site that will not
+# print a respawn timer it has not read in a source. The prettiest thing on the
+# home page was the least true thing on it.
+#
+# Each card now carries the real walkable floor of its own zone, from the
+# game's mesh. Thirteen of them cost 22 KB gzipped, which is less than one
+# small image, and every card is a different shape because every dungeon is.
+def plate_art(slug):
+    d, w, h = heroart.paths(slug, box=100, precision=0, max_paths=60)
+    if not d:
+        return ''
+    return (f'<span class="plate-art" aria-hidden="true">'
+            f'<svg viewBox="0 0 {w} {h}" preserveAspectRatio="xMidYMid meet">'
+            + "".join(f'<path d="{p}"/>' for p in d) + '</svg></span>')
+
+
 plates = "\n".join(
-  f'''    <a class="plate contour" href="dungeons/{z['slug']}.html"
-       style="--c:{z['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
-      <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
-      <span class="num">{z['plate']:02d}</span>
+  f'''    <a class="plate" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
+      {plate_art(z['slug'])}
+      <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
+      <span class="num" aria-hidden="true">{z['plate']:02d}</span>
       <h3 class="pt">{z['title']}</h3>
       <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
     </a>''' for i, z in enumerate(Z))
@@ -170,6 +190,18 @@ home = head("Accurate, sourced and kept current",
   </div>
 </section>
 
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The atlas</h2>
+      <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
+        No two are the same shape because no two dungeons are.</p></div>
+      <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
+    <div class="plates">
+{plates}
+    </div>
+  </div>
+</section>
+
 <section class="band ledger">
   <div class="shell">
     <div class="split">
@@ -227,12 +259,16 @@ mapcards = "\n".join(
   [z['slug'] for z in Z if z['slug'] in MAPS])
 
 # The survey cards live here, on the surveys page. The home page links to this
-# page rather than reproducing it.
+# page rather than reproducing it.  NOT ANY MORE, 16 Aug 2026: it did not
+# reproduce it and it did not link it either. The home page never showed a
+# single zone — the site's entire subject was invisible from its front door,
+# which is most of why a visitor's eye slid off it. The atlas is on both pages
+# now, and this is the same card.
 dplates = "\n".join(
-  f'''      <a class="plate contour" href="{z['slug']}.html"
-         style="--c:{z['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
-        <span class="lvl">{z['levels'].split(' (')[0]}</span>{_gate(z)}
-        <span class="num">{z['plate']:02d}</span>
+  f'''      <a class="plate" href="{z['slug']}.html" style="--c:{z['accent']}">
+        {plate_art(z['slug'])}
+        <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
+        <span class="num" aria-hidden="true">{z['plate']:02d}</span>
         <h3 class="pt">{z['title']}</h3>
         <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
       </a>''' for i, z in enumerate(Z))

@@ -74,14 +74,37 @@ def paths(slug, box=1000, layer=None, max_paths=None, precision=1):
         for line in l['lines']:
             if len(line) < 2:
                 continue
-            d = 'M' + ' L'.join(f'{fx(p[0])},{fy(p[1])}' for p in line)
-            out.append(d)
+            # DECIMATE AFTER ROUNDING, NOT BEFORE.
+            # Once a point is rounded to the output grid, a run of points that
+            # land on the same coordinate draws nothing and costs bytes. At the
+            # miniature sizes used on the plate cards most of a path is exactly
+            # that: Plane of Hate is 1,672 paths and 8,864 points, and inlining
+            # thirteen zones un-decimated came to 140 KB on one page.
+            pts = []
+            for p in line:
+                xy = (fx(p[0]), fy(p[1]))
+                if not pts or xy != pts[-1]:
+                    pts.append(xy)
+            # A point on the straight line between its neighbours is not doing
+            # any work either. Dropping those is lossless at this resolution.
+            if len(pts) > 2:
+                keep = [pts[0]]
+                for a, b, c in zip(pts, pts[1:], pts[2:]):
+                    if (b[0] - a[0]) * (c[1] - a[1]) != (b[1] - a[1]) * (c[0] - a[0]):
+                        keep.append(b)
+                keep.append(pts[-1])
+                pts = keep
+            if len(pts) < 2:
+                continue
+            out.append(('M' + ' L'.join(f'{x},{y}' for x, y in pts), len(pts)))
+
     if max_paths:
-        # Keep the longest paths: they carry the zone's silhouette, and dropping
-        # the short ones thins the clutter without changing what it looks like.
-        out.sort(key=len, reverse=True)
+        # Keep the paths with the most surviving detail: they carry the zone's
+        # silhouette, and dropping the stubs thins clutter without changing
+        # what it looks like.
+        out.sort(key=lambda t: -t[1])
         out = out[:max_paths]
-    return out, box, box
+    return [d for d, _n in out], box, box
 
 
 def stats(slug):

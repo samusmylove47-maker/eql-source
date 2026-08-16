@@ -136,11 +136,11 @@ BODY = '''
           <span class="ds">died to @@EYE_FULL@@ damage, base difficulty</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#7FB2C7"></span>Main tank</span>
           <span class="ds">rotation of three to four</span></div>
-        <div class="lg"><span class="nm"><span class="sw" style="background:#F2EADA"></span>Raid stack</span>
+        <div class="lg"><span class="nm"><span class="sw" style="background:var(--bone)"></span>Raid stack</span>
           <span class="ds">melee in, casters back</span></div>
         <div class="lg"><span class="nm"><span class="sw" style="background:#D9A227"></span>Bait / puller</span>
           <span class="ds">eats the first touch</span></div>
-        <div class="lg"><span class="nm"><span class="sw" style="background:#5FA37E"></span>Ashtray portal</span>
+        <div class="lg"><span class="nm"><span class="sw" style="background:var(--ok)"></span>Ashtray portal</span>
           <span class="ds">one-way, keyed</span></div>
       </div>
       <p class="enc-note"><strong>This model is schematic, not surveyed.</strong> Island proportions and the vertical

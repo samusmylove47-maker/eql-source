@@ -13,18 +13,18 @@ MAPS = ["najena","splitpaw","lowerguk","nagafenslair","mistmoore"]
 
 RETURN_CSS = """
 <style>
-.ns-bar{background:#14100A;border-bottom:1px solid #2c2419;padding:11px 22px;display:flex;
+.ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:#B5AA95;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
-.ns-bar a:hover{color:#F2EADA;border-color:#F2EADA}
+.ns-bar a{color:var(--mut);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:var(--bone);border-color:var(--bone)}
 .ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
- letter-spacing:.13em;color:#F2EADA;text-decoration:none;border:0}
-/* These carried the pre-AA greys. #4E5C61 measured 2.46:1 on this bar. The
+ letter-spacing:.13em;color:var(--bone);text-decoration:none;border:0}
+/* These carried the pre-AA greys. #62584F measured 2.46:1 on this bar. The
    values here mirror assets/site.css's ramp; they are duplicated rather than
    referenced because this chrome is injected into standalone tool pages. */
-.ns-bar .ns-sep{color:#8D8272}
-.ns-bar .ns-tag{margin-left:auto;color:#8D8272}
+.ns-bar .ns-sep{color:var(--faint)}
+.ns-bar .ns-tag{margin-left:auto;color:var(--faint)}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
 """
@@ -32,7 +32,7 @@ RETURN_CSS = """
 def bar_html(rel, crumb, crumb_href, here, extra=""):
     return (f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{SITE}</a>'
             f'<span class="ns-sep">/</span><a href="{rel}{crumb_href}">{crumb}</a>'
-            f'<span class="ns-sep">/</span><span style="color:#DFD6C4">{here}</span>'
+            f'<span class="ns-sep">/</span><span style="color:var(--txt)">{here}</span>'
             f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>')
 
 # Pages that already have a sticky bar of their own. Both bars pin to top:0,
@@ -45,47 +45,47 @@ WH_CSS = """
 <style>
 .wh{font-family:"IBM Plex Mono",monospace;font-size:.82em;letter-spacing:.06em;
   text-transform:uppercase;color:#D9837C;border-bottom:1px dotted #D9837C}
-.whnote{margin:14px 0 0;padding:12px 14px;border-left:3px solid #C9453A;
-  background:rgba(201,69,58,.06);color:#9FADAC;font-size:14px;line-height:1.55}
-.whnote strong{color:#F2EADA}
+.whnote{margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--warn);
+  background:rgba(201,69,58,.06);color:#B0A9A2;font-size:14px;line-height:1.55}
+.whnote strong{color:var(--bone)}
 .disputed{text-decoration:line-through;text-decoration-color:#D9837C;
-  text-decoration-thickness:2px;color:#8A9998}
+  text-decoration-thickness:2px;color:#9C958E}
 .ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.62}
 .ph-ev li{margin:0 0 7px}
-.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #2E3A41;border-radius:4px;
+.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
   background:rgba(255,255,255,.02)}
-.inj-contact p{margin:0;color:#9FADAC;font-size:14px;line-height:1.6}
-.inj-contact strong{color:#F2EADA}
+.inj-contact p{margin:0;color:#B0A9A2;font-size:14px;line-height:1.6}
+.inj-contact strong{color:var(--bone)}
 .inj-contact a{color:#8FBEE4}
-.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:#8D8272}
+.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
 .ph-note{margin:0 0 16px;padding:13px 15px;border-radius:4px;font-size:14px;line-height:1.6}
 .ph-note strong{display:block;margin-bottom:4px}
-.ph-yes{border-left:3px solid #5FA37E;background:rgba(95,163,126,.07);color:#B5AA95}
+.ph-yes{border-left:3px solid var(--ok);background:rgba(95,163,126,.07);color:var(--mut)}
 .ph-yes strong{color:#8FD3AD}
 .ph-note a{color:#8FBEE4}
 
 /* The trimmed plate blocks. Answer-first lists, a key chain drawn as a chain,
    and dangers that read as dangers. Injected because plates carry their own CSS. */
 ul.why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-ul.why li{padding:12px 15px;border:1px solid #2E3A41;border-left:3px solid var(--acc,#D9A227);
-  border-radius:4px;background:#151B1F;color:#B5AA95;font-size:15px;line-height:1.55}
-ul.why b{color:#F2EADA}
+ul.why li{padding:12px 15px;border:1px solid #40372D;border-left:3px solid var(--acc,#D9A227);
+  border-radius:4px;background:#1E1914;color:var(--mut);font-size:15px;line-height:1.55}
+ul.why b{color:var(--bone)}
 ol.chain{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:0}
 ol.chain li{display:grid;grid-template-columns:minmax(140px,auto) 1fr auto;gap:12px;
-  align-items:baseline;padding:11px 14px;border:1px solid #2E3A41;border-bottom:0;
-  background:#151B1F;color:#8A9998;font-size:14px}
+  align-items:baseline;padding:11px 14px;border:1px solid #40372D;border-bottom:0;
+  background:#1E1914;color:#9C958E;font-size:14px}
 ol.chain li:first-child{border-radius:4px 4px 0 0}
-ol.chain li:last-child{border-bottom:1px solid #2E3A41;border-radius:0 0 4px 4px}
-ol.chain b{color:#F2EADA;font-size:15px}
-ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#8D8272}
+ol.chain li:last-child{border-bottom:1px solid #40372D;border-radius:0 0 4px 4px}
+ol.chain b{color:var(--bone);font-size:15px}
+ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint)}
 ol.chain .ck{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct,#E8C25F)}
 @media(max-width:640px){ol.chain li{grid-template-columns:1fr;gap:3px}}
 ul.danger-list,ul.tightlist{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-ul.danger-list li,ul.tightlist li{padding:11px 14px;border-left:3px solid #2E3A41;
-  background:rgba(255,255,255,.02);color:#9FADAC;font-size:14.5px;line-height:1.55}
-ul.danger-list li{border-left-color:#C9453A}
-ul.danger-list b,ul.tightlist b{color:#F2EADA}
-p.tight{color:#9FADAC;font-size:14px;line-height:1.6;margin:0}
+ul.danger-list li,ul.tightlist li{padding:11px 14px;border-left:3px solid #40372D;
+  background:rgba(255,255,255,.02);color:#B0A9A2;font-size:14.5px;line-height:1.55}
+ul.danger-list li{border-left-color:var(--warn)}
+ul.danger-list b,ul.tightlist b{color:var(--bone)}
+p.tight{color:#B0A9A2;font-size:14px;line-height:1.6;margin:0}
 </style>"""
 
 # The plates and tools are standalone pages with their own footers, so foot()
@@ -169,10 +169,10 @@ PH_CLAIM = re.compile(
     + chr(92) + 'b'
     + r'([Pp]laceholders? (?:is|are) [^<.]{2,70}?)(?=[.<])')
 PH_MARK_CSS = """<style>
-.ph-old{text-decoration:line-through;text-decoration-color:#C9453A;
-  text-decoration-thickness:1px;color:#8D8272}
+.ph-old{text-decoration:line-through;text-decoration-color:var(--warn);
+  text-decoration-thickness:1px;color:var(--faint)}
 .ph-old-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
-  text-transform:uppercase;color:#D46C64;border:1px solid #6A2F2B;border-radius:2px;
+  text-transform:uppercase;color:var(--warn-t);border:1px solid #6A2F2B;border-radius:2px;
   padding:1px 4px;margin-left:5px;white-space:nowrap;text-decoration:none;display:inline-block}
 </style>"""
 

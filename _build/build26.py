@@ -60,7 +60,7 @@ CSS = '''<style>
 .cn .score div{background:var(--panel);padding:15px 20px;flex:1 1 150px}
 .cn .score b{display:block;font-family:"Saira Condensed",sans-serif;font-size:30px;
   font-weight:700;color:var(--bone);line-height:1}
-.cn .score b.good{color:#5FA37E}
+.cn .score b.good{color:var(--ok)}
 .cn .score span{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--faint);display:block;margin-top:6px}
 </style>'''

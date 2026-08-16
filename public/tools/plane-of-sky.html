@@ -14,7 +14,7 @@
    17 labels below the legibility floor. Raising --dim alone would have collided
    with --mut, so the whole ramp moved up to keep three distinguishable greys.
    --warn is now text-safe; it was 2.97:1 on --panel2. Accents are unchanged. */
-:root{--acc:#4FA3D1;--accd:#2c5e79;--pa:#4FA3D1;--bg:#12171A;--panel:#1A2126;--panel2:#232C32;--line:#2E3A41;--txt:#D5DBD8;--mut:#A6B3B2;--dim:#8B9999;--ok:#5FA37E;--warn:#D8776F;--gold:#D9A227}
+:root{--acc:#4FA3D1;--accd:#2c5e79;--pa:#4FA3D1;--bg:#1A1612;--panel:#251F19;--panel2:#312A22;--line:#40372D;--txt:#DCD9D6;--mut:#B6AFA9;--dim:#9C958E;--ok:#5FA37E;--warn:#D8776F;--gold:#D9A227}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
@@ -138,7 +138,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--pa);backg
 .q .qn{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--mut);flex:1;min-width:120px}
 .q .rw{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:.015em;line-height:1.04;margin:0 0 3px}
 .q .slot{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--pa);margin-bottom:7px}
-.q .st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#B9C2C0;line-height:1.55;margin:0 0 11px}
+.q .st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.55;margin:0 0 11px}
 /* A figure we have reason to believe is a classic import rather than a Legends
    stat. Kept visible and marked rather than deleted - a marked suspect value is
    more useful than a hole, and the marking is the product. */
@@ -185,23 +185,23 @@ footer ul{padding-left:18px;max-width:82ch}footer li{margin-bottom:7px}
 </style>
 <link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Plane of Sky Tracker — EverQuest Legends"><meta property="og:description" content="Build your EverQuest Legends trio, see every Plane of Sky class-unlock quest it needs, and track components island by island."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/tools.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Plane of Sky Tracker — EverQuest Legends"><meta name="twitter:description" content="Build your EverQuest Legends trio, see every Plane of Sky class-unlock quest it needs, and track components island by island."><meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png"><link rel="canonical" href="https://eqlsource.com/tools/plane-of-sky">
 <style>
-.ns-bar{background:#14100A;border-bottom:1px solid #2c2419;padding:11px 22px;display:flex;
+.ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:#B5AA95;text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
-.ns-bar a:hover{color:#F2EADA;border-color:#F2EADA}
+.ns-bar a{color:var(--mut);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
+.ns-bar a:hover{color:var(--bone);border-color:var(--bone)}
 .ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
- letter-spacing:.13em;color:#F2EADA;text-decoration:none;border:0}
-/* These carried the pre-AA greys. #4E5C61 measured 2.46:1 on this bar. The
+ letter-spacing:.13em;color:var(--bone);text-decoration:none;border:0}
+/* These carried the pre-AA greys. #62584F measured 2.46:1 on this bar. The
    values here mirror assets/site.css's ramp; they are duplicated rather than
    referenced because this chrome is injected into standalone tool pages. */
-.ns-bar .ns-sep{color:#8D8272}
-.ns-bar .ns-tag{margin-left:auto;color:#8D8272}
+.ns-bar .ns-sep{color:var(--faint)}
+.ns-bar .ns-tag{margin-left:auto;color:var(--faint)}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
 <style>.ns-bar{position:static}</style></head>
 <body>
-<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../tools/index.html">Tools</a><span class="ns-sep">/</span><span style="color:#DFD6C4">Plane of Sky tracker</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../tools/index.html">Tools</a><span class="ns-sep">/</span><span style="color:var(--txt)">Plane of Sky tracker</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
 <div class="wrap">
 
 <!-- ============ BUILDER ============ -->

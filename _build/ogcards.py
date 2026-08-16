@@ -41,7 +41,7 @@ except ImportError:
     sys.exit("Pillow is not installed. This is a by-hand tool: pip install Pillow")
 
 W, H = 1200, 630
-BG, INK, DIM, FAINT = "#10161A", "#F2EADA", "#B5AA95", "#8D8272"
+BG, INK, DIM, FAINT = "#191410", "#F2EADA", "#B5AA95", "#8D8272"
 BONE, INSTR, EMBER = "#DFD6C4", "#5C93C4", "#C4623A"
 
 FONTS = {

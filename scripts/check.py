@@ -211,6 +211,11 @@ if os.path.exists("build.sh"):
                    # the committed zone geometry into drawable SVG. Nothing to
                    # schedule, so an orphan warning here would be permanent.
                    "heroart.py",
+                   # Rewrites _build/source/*.html in place, so it is hand-run
+                   # like prose_budget.py. A script that rewrites its own
+                   # inputs on every build eventually rewrites something it
+                   # should not.
+                   "warmshift.py",
                    # Read the game's .s3d archives, so they are run by hand and
                    # their output is committed. A rebuild has to work on a
                    # machine with no EverQuest Legends install.
