@@ -325,6 +325,21 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
     if ph_zone:
         z_ = BY.get(ph_zone, {})
         note = PH_CONFIRMED.replace('REL_', rel)
+        # ONLY WHERE THERE ARE PERCENTAGES TO EXPLAIN.
+        #
+        # This fired on every survey unconditionally. Once the spawn
+        # percentages came out of the Castle Mistmoore roster, the page carried
+        # a note reading "percentages below are inherited classic data" above a
+        # table with no percentages in it, and a link inviting the reader to
+        # find out why they were still printed. A cold reader hunted for what
+        # it was warning them about.
+        #
+        # The note is worth keeping where the percentages remain: deleting what
+        # a source says is how a record stops being checkable. It just has to
+        # be about something.
+        roster = h[h.find('Named roster'):] if 'Named roster' in h else ''
+        if not re.search(r'>\s*~?\d{1,3}%', roster):
+            note = ''
         # above the roster, which is the table the percentages live in
         k = h.find('Named roster')
         if k > 0:
