@@ -61,7 +61,11 @@ LEDGERS = [
     # The conditions paragraph above them, the prose explaining what a figure
     # does and does not mean, and the entire survey before it stay governed. So
     # the ceiling still bites on writing more, and never on measuring more.
-    ("dungeons/*.html", '<section class="meas">', r"<tr>.*?</tr>"),
+    # Anchor on the OPENING of the tag, not the whole tag. Adding id="measured"
+    # to it broke the match outright and five surveys blew their ceilings at
+    # once, because every measured row started counting as prose. An anchor
+    # that a new attribute can silently turn off is not an anchor.
+    ("dungeons/*.html", '<section class="meas"', r"<tr>.*?</tr>"),
     # The faction tool is one card per zone we have faction data for. Same
     # shape: a ceiling over the cards forbids measuring an eleventh zone.
     ("tools/faction-impact.html", "", r'<article class="fzone">.*?</article>'),

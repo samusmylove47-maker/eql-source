@@ -368,7 +368,7 @@ def section(sess_list, zone_title):
                  'so treat the difficulty as unresolved')
 
     return (
-        f'<section class="meas">'
+        f'<section class="meas" id="measured">'
         f'<h2>Measured in play <span class="tierM">TIER M</span></h2>'
         f'<div class="cond">'
         f'<b>{("One session" if s.get("sessions_merged", 1) < 2 else str(s["sessions_merged"]) + " sessions")}, '
