@@ -124,6 +124,68 @@ CSS = '''<style>
 </style>'''
 
 
+# THE FIELDS THAT DECIDE ANYTHING.
+#
+# An item page used to print one word in its Slot row - "Primary" - because
+# extract.py kept the first token of a cell reading "Primary · 1H Slash ·
+# 15 / 46 · lore · no drop". So the surveys' 159 "no drop" markings reached none
+# of the item pages, no weapon carried a damage or a delay, and two weapons could
+# not be compared anywhere on the site. extract.py now parses the whole cell;
+# these render it.
+#
+# THE RULE THAT MATTERS MOST IS THE NEGATIVE ONE. Tradeability is the fact that
+# decides whether a guildmate can hand you the item, so its row is always
+# present - but where the survey records no restriction the row says
+# "not recorded" and the page says in words that silence is not permission.
+# There is no code path anywhere below that prints "tradeable".
+
+NOT_RECORDED = ('<em style="color:var(--faint)">not recorded &mdash; the survey '
+                'names no restriction, which is not the same as recording that '
+                'there is none</em>')
+FROM_ROW = ('<em style="color:var(--faint)"> &mdash; from a row listing several '
+            'items behind one cell, so this describes the row</em>')
+
+
+def trade_row(a):
+    """The tradeability dd. Never absent, never guessed."""
+    if a.get('tf'):
+        return ', '.join(esc(f) for f in a['tf']) + (FROM_ROW if a.get('rowdesc') else '')
+    if a.get('tfs'):
+        # One row writes its restriction into the stats cell, and writes it
+        # alongside a note that another flag was removed. Parsing that into a
+        # flag would assert the wrong one half the time, so the page points at
+        # the survey's own words instead of paraphrasing them.
+        return ('<em style="color:var(--faint)">recorded in the stats line below, '
+                'not the slot column &mdash; read it there</em>')
+    return NOT_RECORDED
+
+
+def weapon_rows(a):
+    """Damage, delay and the ratio derived from them. Nothing without both."""
+    out = []
+    if a.get('wt'):
+        out.append(("Weapon type", esc(a['wt']) + (FROM_ROW if a.get('rowdesc') else '')))
+    dmg, dly = a.get('dmg'), a.get('dly')
+    if dmg is not None and dly is not None and dly:
+        # Derived, and only where both inputs are present. Damage per unit of
+        # delay is how two weapons are compared; it is arithmetic on the
+        # survey's own two figures, not a figure from anywhere.
+        out.append(("Damage / delay",
+                    f'{dmg} / {dly} <span style="color:var(--faint)">'
+                    f'&middot; ratio {dmg / dly:.2f}, derived</span>'))
+    elif dmg is not None or dly is not None:
+        out.append(("Damage / delay",
+                    f'{dmg if dmg is not None else "not recorded"} / '
+                    f'{dly if dly is not None else "not recorded"}'))
+    if a.get('bs') is not None:
+        out.append(("Backstab", str(a['bs'])))
+    if a.get('rng') is not None:
+        out.append(("Range", str(a['rng'])))
+    if a.get('ch'):
+        out.append(("Charges", esc(a['ch'])))
+    return out
+
+
 def seen_block(rows, label):
     """Tier M sightings. A count of times watched, never a rate."""
     if not rows:
@@ -264,7 +326,19 @@ for name, rows in by_item.items():
                  f'these &mdash; the row elides a shared prefix and guessing it would invent an '
                  f'item.</p>') if also else ''
     seen = seen_block(SIGHT['by_item'].get(name, []), 'Seen dropping, in our logs')
+    # The cell every field above was read out of, printed whole. A parser that
+    # drops a fact looks exactly like a survey that never recorded it, and this
+    # line is the only thing on the page that can tell the two apart.
+    verbatim = (f'<p class="src" style="margin-top:18px"><b>As '
+                f'{esc(rows[0]["zt"])} records it:</b> '
+                f'&ldquo;{esc(a["sr"])}&rdquo;</p>') if a.get('sr') else ''
+    caveat = ('' if a.get('tf') or a.get('tfs') else
+              '<p class="src" style="margin-top:8px">The survey records no trade '
+              'restriction for this item. <b>Read that as unrecorded, not as '
+              'tradeable</b> &mdash; it may be No Drop and unnoted. One screenshot '
+              'of the item description would settle it.</p>')
     extra = (f'<h2 class="sec">Where it drops</h2><ul class="srcs">{zones}</ul>{seen}{also_html}'
+             f'{verbatim}{caveat}'
              f'<p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. '
              f'<a href="../sources.html">How we source</a>.</p>')
     desc = (f"{name} in EverQuest Legends: "
@@ -272,7 +346,14 @@ for name, rows in by_item.items():
             + (f"{a['st'][:90]}. " if a.get('st') else "")
             + f"Drops in {', '.join(sorted({r['zt'] for r in rows}))}.")
     facts = [
-        ("Slot", esc(a['sr']) if a.get('sr') else None),
+        ("Slot", esc(a['sl']) if a.get('sl') else None),
+        *weapon_rows(a),
+        # Always present, and "not recorded" where the survey is silent. This is
+        # the row a reader came for: it decides whether the item can be handed
+        # over, and it used to be missing from all 442 pages without a trace.
+        ("Tradeability", trade_row(a)),
+        ("Also flagged", ', '.join(esc(f) for f in a['hf']) if a.get('hf') else None),
+        ("What it is for", esc(a['use']) if a.get('use') else None),
         # Where a loot row listed several items behind one stats cell, the stats
         # describe the row and not this item. Say which rather than assert them.
         ("Stats" if not a.get('shared') else "Stats, from a shared row",
@@ -283,6 +364,12 @@ for name, rows in by_item.items():
         ("Classes", esc(cls_txt) if cls_txt else None),
         ("Zones", esc(', '.join(sorted({r['zt'] for r in rows})))),
     ]
+    # A row whose value is None prints "not recorded", which is right for Slot,
+    # Stats and Classes and noise for a Range on a breastplate. Those rows are
+    # built above only where the survey has something to put in them.
+    facts = [(k, v) for k, v in facts
+             if v is not None or k in ("Slot", "Stats", "Stats, from a shared row",
+                                       "Classes")]
     if a.get('kind') == 'group':
         facts.insert(0, ("What this is",
                          "A family named by the survey row, not a single item"))

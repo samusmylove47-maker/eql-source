@@ -239,7 +239,7 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "39 items watched dropping here"
+      "detail": "40 items watched dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -272,7 +272,7 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "13 items watched dropping here"
+      "detail": "14 items watched dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -367,11 +367,11 @@
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "5 bosses fought and parsed across 21 kills, tiers D2–D4"
+      "detail": "5 bosses fought and parsed across 22 kills, tiers D2–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "50 items watched dropping here"
+      "detail": "56 items watched dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -400,11 +400,11 @@
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "12 bosses fought and parsed across 24 kills, tiers D3–D4"
+      "detail": "12 bosses fought and parsed across 59 kills, tiers D1–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "47 items watched dropping here"
+      "detail": "70 items watched dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -416,7 +416,7 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
+      "detail": "ZEM 86, respawn not recorded, 46 mob types measured"
      }
     },
     "coverage_score": 9,
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "6d57a8fef5fa37b2"
+ "hash": "0063d82f325bfcfc"
 }

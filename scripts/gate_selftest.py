@@ -100,6 +100,30 @@ def judge(expect, rc, out):
                            + " | ".join(got))
 
 
+def _sub_first_number(text, placeholder):
+    """Swap the first comma-formatted figure on a page for an unrendered token.
+
+    These two cases used to name a literal - "26,158", the biggest Plane of Sky
+    boss damage on the day they were written. Four more Sky sessions were parsed
+    on 17 August, the figure moved, and both mutations silently stopped applying.
+    A self-test that cannot apply its mutation reports the check as broken, which
+    is the correct alarm, but the cause was the test pinning itself to data that
+    was always going to change.
+
+    So it targets the SHAPE instead. Any page rendering a measured figure has
+    one, and the check under test is about placeholders reaching a page rather
+    than about any particular number.
+
+    Anchored inside <b>, which is how the measured figures render. A bare
+    number pattern matched SVG path coordinates first — "0,150" in a polyline —
+    and a placeholder buried in path data is not what the check looks at.
+    """
+    m = re.search(r"<b>\d{1,3},\d{3}</b>", text)
+    if not m:
+        return text
+    return text[:m.start()] + "<b>" + placeholder + "</b>" + text[m.end():]
+
+
 CASES = [
     # A tool whose data constant went missing. The Sky tracker shipped on 14
     # August with ORDER undefined: the class picker rendered nothing, the trio
@@ -176,7 +200,7 @@ CASES = [
     ("an f-string placeholder left unrendered",
      "shipped an unrendered placeholder",
      "public/raids/plane-of-sky.html",
-     lambda t: t.replace("26,158", "{BIGGEST:,}", 1)),
+     lambda t: _sub_first_number(t, "{BIGGEST:,}")),
 
     # The same fault in the other notation that generator used. Two shapes, two
     # cases: a check that caught only the one we happened to hit last would go
@@ -184,7 +208,7 @@ CASES = [
     ("an @@TOKEN@@ placeholder left unrendered",
      "shipped an unrendered placeholder",
      "public/raids/plane-of-sky.html",
-     lambda t: t.replace("26,158", "@@BIGGEST@@", 1)),
+     lambda t: _sub_first_number(t, "@@BIGGEST@@")),
 
     # The change log is exempt from the prose ceiling, and that exemption is
     # exactly the kind of hole that quietly turns a check off. This proves the

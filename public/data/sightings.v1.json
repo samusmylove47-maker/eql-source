@@ -60,6 +60,38 @@
      ]
     },
     {
+     "mob": "an ice giant priest",
+     "seen": 18,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
      "mob": "an ice giant magus",
      "seen": 16,
      "off_roster": true,
@@ -82,28 +114,85 @@
      ]
     },
     {
-     "mob": "an ice giant priest",
-     "seen": 14,
-     "off_roster": true,
+     "mob": "King Tranix",
+     "seen": 7,
+     "off_roster": false,
      "sessions": [
       {
        "date": "10 Aug 2026",
-       "zone": "The Permafrost Caverns - Group",
-       "difficulty": 0
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Permafrost Caverns - Group",
+       "zone": "Nagafen's Lair - Group",
        "difficulty": 1
       },
       {
        "date": "11 Aug 2026",
-       "zone": "The Permafrost Caverns - Group",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
        "difficulty": 2
       },
       {
        "date": "11 Aug 2026",
-       "zone": "The Permafrost Caverns - Group",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Magus Rokyl",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
        "difficulty": 3
       }
      ]
@@ -126,70 +215,6 @@
       {
        "date": "11 Aug 2026",
        "zone": "The Permafrost Caverns - Group",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "King Tranix",
-     "seen": 5,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "Magus Rokyl",
-     "seen": 5,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
        "difficulty": 3
       }
      ]
@@ -913,39 +938,10 @@
      ]
     }
    ],
-   "Enchanted Fine Steel Rapier": [
-    {
-     "mob": "Korven Nisere",
-     "seen": 25,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "04 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      },
-      {
-       "date": "04 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 3
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 3
-      }
-     ]
-    }
-   ],
    "Drop of Mercury": [
     {
      "mob": "an elemental crusader",
-     "seen": 25,
+     "seen": 36,
      "off_roster": true,
      "sessions": [
       {
@@ -965,7 +961,22 @@
       },
       {
        "date": "11 Aug 2026",
+       "zone": "Northern Felwithe",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
        "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       },
       {
@@ -977,7 +988,7 @@
     },
     {
      "mob": "an elemental warrior",
-     "seen": 17,
+     "seen": 33,
      "off_roster": true,
      "sessions": [
       {
@@ -997,7 +1008,17 @@
       },
       {
        "date": "11 Aug 2026",
+       "zone": "Northern Felwithe",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
        "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       },
       {
@@ -1014,7 +1035,7 @@
     },
     {
      "mob": "an elemental channeler",
-     "seen": 5,
+     "seen": 11,
      "off_roster": true,
      "sessions": [
       {
@@ -1029,7 +1050,22 @@
       },
       {
        "date": "11 Aug 2026",
+       "zone": "Northern Felwithe",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
        "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       },
       {
@@ -1041,9 +1077,14 @@
     },
     {
      "mob": "an elemental deceiver",
-     "seen": 3,
+     "seen": 8,
      "off_roster": true,
      "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
       {
        "date": "10 Aug 2026",
        "zone": "The Ruins of Old Paineel",
@@ -1053,12 +1094,49 @@
        "date": "11 Aug 2026",
        "zone": null,
        "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental visier",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
       }
      ]
     },
     {
      "mob": "Stonesoul the Unmoving",
-     "seen": 2,
+     "seen": 4,
      "off_roster": false,
      "sessions": [
       {
@@ -1070,23 +1148,40 @@
        "date": "13 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental visier",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
       },
       {
        "date": "13 Aug 2026",
        "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental wizard",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Master Yael",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
       }
      ]
     },
@@ -1113,16 +1208,33 @@
        "difficulty": 0
       }
      ]
-    },
+    }
+   ],
+   "Enchanted Fine Steel Rapier": [
     {
-     "mob": "an elemental wizard",
-     "seen": 1,
-     "off_roster": true,
+     "mob": "Korven Nisere",
+     "seen": 25,
+     "off_roster": false,
      "sessions": [
       {
-       "date": "13 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
+       "date": "04 Aug 2026",
+       "zone": "Befallen",
        "difficulty": 1
+      },
+      {
+       "date": "04 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 3
+      },
+      {
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 1
+      },
+      {
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 3
       }
      ]
     }
@@ -1674,6 +1786,113 @@
        "difficulty": 1
       }
      ]
+    },
+    {
+     "mob": "a decaying skeleton",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Greater Faydark",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "dry bones skeleton",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Oasis of Marr",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Apothic Robe": [
+    {
+     "mob": "Amygdalan warrior",
+     "seen": 13,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Magi P`tasa",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
     }
    ],
    "Sacrificial Dagger": [
@@ -2076,6 +2295,35 @@
      ]
     }
    ],
+   "Giant Bat Wing": [
+    {
+     "mob": "a sonic bat",
+     "seen": 11,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Cape of Midnight Mist": [
     {
      "mob": "Butler Syncall",
@@ -2273,11 +2521,121 @@
      ]
     }
    ],
-   "Giant Bat Wing": [
+   "Elemental Binder": [
     {
-     "mob": "a sonic bat",
+     "mob": "an elemental channeler",
      "seen": 10,
      "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental warrior",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental deceiver",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental visier",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Spider Legs": [
+    {
+     "mob": "lava duct crawler",
+     "seen": 10,
+     "off_roster": false,
      "sessions": [
       {
        "date": "10 Aug 2026",
@@ -2287,12 +2645,34 @@
       {
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
-       "difficulty": 1
+       "difficulty": 0
       },
       {
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
        "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "a deadly black widow",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
       }
      ]
     }
@@ -2363,6 +2743,57 @@
        "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Umbral Platemail Breastplate": [
+    {
+     "mob": "Amygdalan warrior",
+     "seen": 9,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
       }
      ]
     }
@@ -2502,47 +2933,6 @@
      ]
     }
    ],
-   "Spider Legs": [
-    {
-     "mob": "lava duct crawler",
-     "seen": 9,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      }
-     ]
-    },
-    {
-     "mob": "a deadly black widow",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Chipped Bone Rod": [
     {
      "mob": "A Necro Theurgist",
@@ -2579,12 +2969,17 @@
      ]
     }
    ],
-   "Apothic Robe": [
+   "Blighted Robe": [
     {
      "mob": "Amygdalan warrior",
      "seen": 8,
      "off_roster": true,
      "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
       {
        "date": "12 Aug 2026",
        "zone": "The Plane of Fear",
@@ -2598,7 +2993,7 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 3
+       "difficulty": 2
       },
       {
        "date": "13 Aug 2026",
@@ -2609,25 +3004,28 @@
     },
     {
      "mob": "Amygdalan knight",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "Magi P`tasa",
-     "seen": 1,
+     "seen": 7,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
+       "zone": "The Plane of Fear",
        "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
       }
      ]
     }
@@ -2651,6 +3049,45 @@
       {
        "date": "07 Aug 2026",
        "zone": "Befallen",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Loam Encrusted Robe": [
+    {
+     "mob": "Master Yael",
+     "seen": 8,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
        "difficulty": 1
       }
      ]
@@ -2699,7 +3136,7 @@
      ]
     }
    ],
-   "Blighted Robe": [
+   "Carmine Robe": [
     {
      "mob": "Amygdalan warrior",
      "seen": 7,
@@ -2723,7 +3160,12 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 4
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
       }
      ]
     },
@@ -2733,9 +3175,48 @@
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
+       "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Serpent's Tooth": [
+    {
+     "mob": "Master Yael",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
        "difficulty": 4
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
       }
      ]
     }
@@ -2843,6 +3324,35 @@
      ]
     }
    ],
+   "Ethereal Mist Gauntlets": [
+    {
+     "mob": "a scareling",
+     "seen": 7,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Giant Bat Fur": [
     {
      "mob": "a sonic bat",
@@ -2862,9 +3372,9 @@
      ]
     }
    ],
-   "Elemental Binder": [
+   "Living Heart of a Brell Minion": [
     {
-     "mob": "an elemental channeler",
+     "mob": "an elemental warrior",
      "seen": 7,
      "off_roster": true,
      "sessions": [
@@ -2875,36 +3385,65 @@
       },
       {
        "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
-      },
-      {
-       "date": "11 Aug 2026",
        "zone": null,
        "difficulty": 1
       },
       {
-       "date": "13 Aug 2026",
+       "date": "11 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       }
      ]
     },
     {
-     "mob": "an elemental warrior",
-     "seen": 5,
+     "mob": "a rock golem",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Northern Felwithe",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": null,
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental channeler",
+     "seen": 3,
      "off_roster": true,
      "sessions": [
       {
        "date": "10 Aug 2026",
        "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "an elemental crusader",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
       {
        "date": "10 Aug 2026",
        "zone": "The Ruins of Old Paineel",
@@ -2912,18 +3451,25 @@
       },
       {
        "date": "11 Aug 2026",
-       "zone": null,
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       }
      ]
     },
     {
-     "mob": "an elemental visier",
+     "mob": "a flighty fiend",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental deceiver",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -2931,6 +3477,93 @@
        "date": "10 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental harvester",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Spider Silk": [
+    {
+     "mob": "lava duct crawler",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "a deadly black widow",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "noxious spider",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "stone spider",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
       }
      ]
     }
@@ -3475,6 +4108,137 @@
      ]
     }
    ],
+   "Midnight Clad Straps": [
+    {
+     "mob": "Amygdalan warrior",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "phoboplasm",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Woven Shadow Chestplate": [
+    {
+     "mob": "Amygdalan warrior",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Mallet Head": [
     {
      "mob": "An Elf Skeleton",
@@ -3547,6 +4311,74 @@
      ]
     }
    ],
+   "Valorium Helmet": [
+    {
+     "mob": "Cleric of Innoruuk",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Polished Mithril Torque": [
+    {
+     "mob": "King Tranix",
+     "seen": 6,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
    "Maid Issis Fang": [
     {
      "mob": "Maid Issis",
@@ -3566,70 +4398,36 @@
      ]
     }
    ],
-   "Loam Encrusted Robe": [
+   "Imbrued Platemail Greaves": [
     {
-     "mob": "Master Yael",
+     "mob": "Mistress of Scorn",
      "seen": 6,
-     "off_roster": false,
+     "off_roster": true,
      "sessions": [
       {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 3
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Serpent's Tooth": [
-    {
-     "mob": "Master Yael",
-     "seen": 6,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       },
       {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -3677,6 +4475,127 @@
       {
        "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Holy Dirt of Brell": [
+    {
+     "mob": "a rock golem",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental warrior",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental crusader",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": null,
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental channeler",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental deceiver",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Northern Felwithe",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Rocksoul",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a flighty fiend",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       }
      ]
@@ -4203,278 +5122,6 @@
      ]
     }
    ],
-   "Holy Dirt of Brell": [
-    {
-     "mob": "an elemental warrior",
-     "seen": 6,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": null,
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a rock golem",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental crusader",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": null,
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Rocksoul",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a flighty fiend",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental channeler",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
-      }
-     ]
-    },
-    {
-     "mob": "an elemental deceiver",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Living Heart of a Brell Minion": [
-    {
-     "mob": "an elemental warrior",
-     "seen": 6,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": null,
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a rock golem",
-     "seen": 5,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": null,
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental channeler",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
-      }
-     ]
-    },
-    {
-     "mob": "a flighty fiend",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental crusader",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental deceiver",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "an elemental harvester",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Spider Silk": [
-    {
-     "mob": "lava duct crawler",
-     "seen": 6,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      }
-     ]
-    },
-    {
-     "mob": "a deadly black widow",
-     "seen": 4,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "noxious spider",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "stone spider",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      }
-     ]
-    }
-   ],
    "Illegible Scroll": [
     {
      "mob": "A dark librarian",
@@ -4490,6 +5137,211 @@
        "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Imbrued Platemail Breastplate": [
+    {
+     "mob": "Amygdalan warrior",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Indicolite Breastplate": [
+    {
+     "mob": "Amygdalan warrior",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Innoruuk`s Chosen",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Lustrous Russet Helm": [
+    {
+     "mob": "Cleric of Innoruuk",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Thorny Vine Helm": [
+    {
+     "mob": "Cleric of Innoruuk",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Vermiculated Crown": [
+    {
+     "mob": "Cleric of Innoruuk",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -4533,6 +5385,69 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Apothic Kilt": [
+    {
+     "mob": "Magi P`tasa",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Polished Mithril Mask": [
+    {
+     "mob": "Magus Rokyl",
+     "seen": 5,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -4631,6 +5546,156 @@
        "date": "07 Aug 2026",
        "zone": "Blackburrow",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Carmine Trinket": [
+    {
+     "mob": "a fetid fiend",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a revultant rat",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a spinechiller spider",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Midnight Clad Wristbands": [
+    {
+     "mob": "a fetid fiend",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "a revultant rat",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "phoboplasm",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a loathling lich",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a spinechiller spider",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
       }
      ]
     }
@@ -4884,21 +5949,110 @@
      ]
     }
    ],
-   "Ethereal Mist Gauntlets": [
+   "Fiery Jewel of the Underfoot": [
     {
-     "mob": "a scareling",
+     "mob": "a rock golem",
+     "seen": 5,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental warrior",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Northern Felwithe",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "an elemental crusader",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental harvester",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elemental visier",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Valorium Vambraces": [
+    {
+     "mob": "an ire ghast",
      "seen": 5,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       },
       {
        "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a forsaken revenant",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -4922,10 +6076,160 @@
      ]
     }
    ],
-   "Woven Shadow Chestplate": [
+   "Woven Shadow Gauntlets": [
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a turmoil toad",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a worry wraith",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "an abhorrent",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Ethereal Mist Helm": [
+    {
+     "mob": "Cleric of Innoruuk",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "High Priest M`kari",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Insidious Robe": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Amygdalan knight",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
     {
      "mob": "Amygdalan warrior",
-     "seen": 4,
+     "seen": 3,
      "off_roster": true,
      "sessions": [
       {
@@ -4936,7 +6240,7 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 2
+       "difficulty": 1
       },
       {
        "date": "13 Aug 2026",
@@ -4946,31 +6250,31 @@
      ]
     }
    ],
-   "Polished Mithril Torque": [
+   "Indicolite Boots": [
     {
-     "mob": "King Tranix",
+     "mob": "Grandmaster R`tal",
      "seen": 4,
-     "off_roster": false,
+     "off_roster": true,
      "sessions": [
       {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       },
       {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -4994,17 +6298,36 @@
      ]
     }
    ],
-   "Polished Mithril Mask": [
+   "Selo`s Drums of the March": [
     {
-     "mob": "Magus Rokyl",
+     "mob": "Lord Nagafen",
      "seen": 4,
      "off_roster": false,
      "sessions": [
       {
-       "date": "10 Aug 2026",
+       "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 1
       },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Torn, burnt book": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 4,
+     "off_roster": false,
+     "sessions": [
       {
        "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
@@ -5019,6 +6342,35 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Earthshaker": [
+    {
+     "mob": "Master Yael",
+     "seen": 4,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
       }
      ]
     }
@@ -5170,6 +6522,216 @@
      ]
     }
    ],
+   "Imbrued Platemail Bracer": [
+    {
+     "mob": "a fetid fiend",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a revultant rat",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a loathling lich",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a spinechiller spider",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Indicolite Bracer": [
+    {
+     "mob": "a fetid fiend",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a loathling lich",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Innoruuk`s Chosen",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a spinechiller spider",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Woven Shadow Bracer": [
+    {
+     "mob": "a fetid fiend",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Gorgon Feather Quill": [
     {
      "mob": "a ghoul scribe",
@@ -5225,12 +6787,17 @@
      ]
     }
    ],
-   "Indicolite Breastplate": [
+   "Rune Etched Gauntlets": [
     {
-     "mob": "Amygdalan warrior",
-     "seen": 3,
+     "mob": "a shiverback",
+     "seen": 4,
      "off_roster": true,
      "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
@@ -5240,25 +6807,33 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
       }
      ]
     },
     {
-     "mob": "Innoruuk`s Chosen",
-     "seen": 1,
+     "mob": "Master of Spite",
+     "seen": 3,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
-    }
-   ],
-   "Midnight Clad Straps": [
+    },
     {
-     "mob": "Amygdalan warrior",
+     "mob": "a scareling",
      "seen": 3,
      "off_roster": true,
      "sessions": [
@@ -5270,72 +6845,55 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 2
+       "difficulty": 1
       },
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 1
+       "difficulty": 2
       }
      ]
-    },
+    }
+   ],
+   "Anthemion Wristguard": [
     {
-     "mob": "phoboplasm",
-     "seen": 2,
+     "mob": "an abhorrent",
+     "seen": 4,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       },
       {
        "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 2
-      }
-     ]
-    },
-    {
-     "mob": "Amygdalan knight",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
       {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     }
    ],
-   "Umbral Platemail Breastplate": [
+   "Anthemion Armbands": [
     {
-     "mob": "Amygdalan warrior",
-     "seen": 3,
+     "mob": "an ire ghast",
+     "seen": 4,
      "off_roster": true,
      "sessions": [
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       },
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "Amygdalan knight",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -5364,9 +6922,9 @@
      ]
     }
    ],
-   "Vermiculated Crown": [
+   "Insidious Slippers": [
     {
-     "mob": "Cleric of Innoruuk",
+     "mob": "Coercer T`vala",
      "seen": 3,
      "off_roster": true,
      "sessions": [
@@ -5378,7 +6936,12 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
-       "difficulty": 1
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -5438,9 +7001,26 @@
        "difficulty": 4
       }
      ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
     }
    ],
-   "Selo`s Drums of the March": [
+   "Gold Plated Koshigatana": [
     {
      "mob": "Lord Nagafen",
      "seen": 3,
@@ -5451,20 +7031,6 @@
        "zone": "Nagafen's Lair - Group",
        "difficulty": 1
       },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
-      }
-     ]
-    }
-   ],
-   "Torn, burnt book": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 3,
-     "off_roster": false,
-     "sessions": [
       {
        "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
@@ -5497,26 +7063,52 @@
      ]
     }
    ],
-   "Earthshaker": [
+   "Rune Etched Greaves": [
     {
-     "mob": "Master Yael",
+     "mob": "Master of Spite",
      "seen": 3,
-     "off_roster": false,
+     "off_roster": true,
      "sessions": [
       {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 4
       },
       {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Imbrued Platemail Vambraces": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a forsaken revenant",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -5818,6 +7410,37 @@
      ]
     }
    ],
+   "Shiverback-hide Boots": [
+    {
+     "mob": "a boogeyman",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a phantasm",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Bronze Bracers": [
     {
      "mob": "a deathly herald",
@@ -5902,7 +7525,7 @@
      ]
     }
    ],
-   "Indicolite Bracer": [
+   "Apothic Warband": [
     {
      "mob": "a fetid fiend",
      "seen": 3,
@@ -5921,24 +7544,41 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 2
+       "difficulty": 4
       }
      ]
     },
     {
-     "mob": "Grandmaster R`tal",
+     "mob": "Magi P`tasa",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
        "zone": "The Plane of Hate - Group",
-       "difficulty": 3
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a spinechiller spider",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
       },
       {
        "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
+       "zone": "The Plane of Fear",
+       "difficulty": 3
       }
      ]
     },
@@ -5948,26 +7588,14 @@
      "off_roster": true,
      "sessions": [
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a spinechiller spider",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     }
    ],
-   "Midnight Clad Wristbands": [
+   "Umbral Platemail Bracer": [
     {
      "mob": "a fetid fiend",
      "seen": 3,
@@ -5986,30 +7614,18 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 3
+       "difficulty": 1
       }
      ]
     },
     {
-     "mob": "a revultant rat",
-     "seen": 1,
+     "mob": "a loathling lich",
+     "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
        "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a spinechiller spider",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
        "difficulty": 4
       }
      ]
@@ -6049,6 +7665,78 @@
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Shiverback-hide Jerkin": [
+    {
+     "mob": "a glare lord",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "a tentacle tormentor",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Thorny Vine Chestplate": [
+    {
+     "mob": "a glare lord",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "a tentacle tormentor",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
       }
      ]
     }
@@ -6103,6 +7791,160 @@
      ]
     }
    ],
+   "Blighted Armband": [
+    {
+     "mob": "a loathling lich",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a fetid fiend",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a revultant rat",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Lustrous Russet Gauntlets": [
+    {
+     "mob": "a scareling",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a shiverback",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Shiverback-hide Gloves": [
+    {
+     "mob": "a scareling",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a shiverback",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Vermiculated Gloves": [
+    {
+     "mob": "a scareling",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
    "Barbed Armplates": [
     {
      "mob": "a shadowknight",
@@ -6141,7 +7983,7 @@
      ]
     }
    ],
-   "Lustrous Russet Gauntlets": [
+   "Thorny Vine Gauntlets": [
     {
      "mob": "a shiverback",
      "seen": 3,
@@ -6155,12 +7997,161 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "a scareling",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Imbrued Platemail Gauntlets": [
+    {
+     "mob": "a turmoil toad",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a frightfinger",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Apothic Gloves": [
+    {
+     "mob": "a worry wraith",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
        "difficulty": 1
       },
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Magi P`tasa",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a turmoil toad",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Rune Etched Bracer": [
+    {
+     "mob": "an abhorrent",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Master of Spite",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a haunted chest",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
       }
      ]
     }
@@ -6179,14 +8170,41 @@
      ]
     }
    ],
-   "Anthemion Armbands": [
+   "Carmine Sleeves": [
     {
-     "mob": "an ire ghast",
+     "mob": "an ashenbone drake",
      "seen": 3,
      "off_roster": true,
      "sessions": [
       {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a forsaken revenant",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
        "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
@@ -6264,80 +8282,6 @@
      ]
     }
    ],
-   "Imbrued Platemail Breastplate": [
-    {
-     "mob": "Amygdalan knight",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Amygdalan warrior",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 2
-      }
-     ]
-    }
-   ],
-   "Insidious Robe": [
-    {
-     "mob": "Amygdalan warrior",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "Coercer T`vala",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Amygdalan knight",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Bloodstone Eyepatch": [
     {
      "mob": "An imp familiar",
@@ -6357,7 +8301,67 @@
      ]
     }
    ],
-   "Lustrous Russet Helm": [
+   "Woven Shadow Vambraces": [
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a forsaken revenant",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "an abhorrent",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an ashenbone drake",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Rune Etched Helm": [
     {
      "mob": "Cleric of Innoruuk",
      "seen": 2,
@@ -6365,6 +8369,11 @@
      "sessions": [
       {
        "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
@@ -6391,9 +8400,14 @@
     },
     {
      "mob": "a fetid fiend",
-     "seen": 1,
+     "seen": 2,
      "off_roster": true,
      "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
@@ -6409,6 +8423,20 @@
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Insidious Pantaloons": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
@@ -6434,13 +8462,18 @@
     },
     {
      "mob": "an ashenbone drake",
-     "seen": 1,
+     "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -6455,6 +8488,80 @@
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Indicolite Gauntlets": [
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Innoruuk`s Chosen",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "an elite dragoon",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Indicolite Helm": [
+    {
+     "mob": "Innoruuk`s Chosen",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -6516,6 +8623,20 @@
      ]
     }
    ],
+   "Bladestopper": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
    "Cloak of Flames": [
     {
      "mob": "Lord Nagafen",
@@ -6554,6 +8675,120 @@
      ]
     }
    ],
+   "Red Dragon Scales": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Treasure Hunter`s Satchel": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Apothic Boots": [
+    {
+     "mob": "Magi P`tasa",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a gorgon",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Rokyls Channelling Crystal": [
+    {
+     "mob": "Magus Rokyl",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Rune Etched Boots": [
+    {
+     "mob": "Master of Spite",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a phantasm",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Rune Etched Vambraces": [
     {
      "mob": "Master of Spite",
@@ -6585,10 +8820,27 @@
      ]
     }
    ],
-   "Imbrued Platemail Greaves": [
+   "Imbrued Platemail Helm": [
     {
      "mob": "Mistress of Scorn",
      "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a spite golem",
+     "seen": 1,
      "off_roster": true,
      "sessions": [
       {
@@ -6952,181 +9204,6 @@
      ]
     }
    ],
-   "Apothic Warband": [
-    {
-     "mob": "a fetid fiend",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a spinechiller spider",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "Magi P`tasa",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Carmine Trinket": [
-    {
-     "mob": "a fetid fiend",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a revultant rat",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a spinechiller spider",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Imbrued Platemail Bracer": [
-    {
-     "mob": "a fetid fiend",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "a revultant rat",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a spinechiller spider",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Carmine Sleeves": [
-    {
-     "mob": "a forsaken revenant",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "an ashenbone drake",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Midnight Clad Fistwraps": [
     {
      "mob": "a frightfinger",
@@ -7137,6 +9214,47 @@
        "date": "12 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a turmoil toad",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "phoboplasm",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 2
+      }
+     ]
+    },
+    {
+     "mob": "a worry wraith",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
       }
      ]
     }
@@ -7202,7 +9320,7 @@
      ]
     }
    ],
-   "Shiverback-hide Jerkin": [
+   "Lustrous Russet Breastplate": [
     {
      "mob": "a glare lord",
      "seen": 2,
@@ -7214,9 +9332,9 @@
        "difficulty": 4
       },
       {
-       "date": "13 Aug 2026",
+       "date": "12 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 3
+       "difficulty": 4
       }
      ]
     },
@@ -7225,6 +9343,25 @@
      "seen": 1,
      "off_roster": true,
      "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Rune Etched Chestplate": [
+    {
+     "mob": "a glare lord",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
@@ -7248,6 +9385,109 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Vermiculated Tunic": [
+    {
+     "mob": "a glare lord",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "a tentacle tormentor",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Umbral Platemail Boots": [
+    {
+     "mob": "a gorgon",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Ethereal Mist Vambraces": [
+    {
+     "mob": "a haunted chest",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "an ire ghast",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a forsaken revenant",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -7278,60 +9518,36 @@
      ]
     }
    ],
-   "Blighted Armband": [
-    {
-     "mob": "a loathling lich",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a revultant rat",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Fiery Jewel of the Underfoot": [
+   "Bow of the Underfoot": [
     {
      "mob": "a rock golem",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
-       "date": "10 Aug 2026",
+       "date": "11 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       },
       {
-       "date": "11 Aug 2026",
+       "date": "13 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
       }
      ]
-    },
+    }
+   ],
+   "Mudman Enforcer": [
     {
-     "mob": "an elemental harvester",
-     "seen": 1,
+     "mob": "a rock golem",
+     "seen": 2,
      "off_roster": true,
      "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel",
+       "difficulty": 0
+      },
       {
        "date": "13 Aug 2026",
        "zone": "The Ruins of Old Paineel",
@@ -7386,43 +9602,17 @@
     },
     {
      "mob": "an abhorrent",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Shiverback-hide Gloves": [
-    {
-     "mob": "a scareling",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       },
       {
        "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a shiverback",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
@@ -7443,6 +9633,30 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "a fetid fiend",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a shiverback",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
       }
      ]
     }
@@ -7466,52 +9680,21 @@
      ]
     }
    ],
-   "Rune Etched Gauntlets": [
+   "Midnight Clad Headband": [
     {
-     "mob": "a shiverback",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    }
-   ],
-   "Thorny Vine Gauntlets": [
-    {
-     "mob": "a shiverback",
+     "mob": "a spite golem",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       },
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "a scareling",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 2
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -7530,21 +9713,45 @@
      ]
     }
    ],
-   "Woven Shadow Gauntlets": [
+   "Ethereal Mist Chestplate": [
     {
-     "mob": "a turmoil toad",
+     "mob": "a tentacle tormentor",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Lustrous Russet Bracer": [
+    {
+     "mob": "an abhorrent",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     },
     {
-     "mob": "Avatar of Abhorrence",
+     "mob": "a haunted chest",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -7554,47 +9761,40 @@
        "difficulty": 4
       }
      ]
-    },
-    {
-     "mob": "a worry wraith",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "an abhorrent",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      }
-     ]
     }
    ],
-   "Apothic Gloves": [
+   "Indicolite Vambraces": [
     {
-     "mob": "a worry wraith",
+     "mob": "an ashenbone drake",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
        "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 1
       }
      ]
     }
    ],
-   "Valorium Vambraces": [
+   "Lustrous Russet Vambraces": [
     {
      "mob": "an ire ghast",
      "seen": 2,
@@ -7606,14 +9806,14 @@
        "difficulty": 4
       },
       {
-       "date": "13 Aug 2026",
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     },
     {
-     "mob": "a forsaken revenant",
+     "mob": "a haunted chest",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -7733,20 +9933,6 @@
      ]
     }
    ],
-   "Carmine Robe": [
-    {
-     "mob": "Amygdalan warrior",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Crested Helm": [
     {
      "mob": "An avenging caitiff",
@@ -7775,136 +9961,98 @@
      ]
     }
    ],
-   "Woven Shadow Vambraces": [
+   "Woven Shadow Boots": [
     {
      "mob": "Avatar of Abhorrence",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     },
     {
-     "mob": "a forsaken revenant",
+     "mob": "a gorgon",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Woven Shadow Greaves": [
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     }
    ],
-   "Ethereal Mist Helm": [
+   "Woven Shadow Helm": [
     {
      "mob": "Cleric of Innoruuk",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "13 Aug 2026",
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
     }
    ],
-   "Rune Etched Helm": [
+   "Insidious Halo": [
     {
-     "mob": "Cleric of Innoruuk",
+     "mob": "Coercer T`vala",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Thorny Vine Helm": [
-    {
-     "mob": "Cleric of Innoruuk",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Valorium Helmet": [
-    {
-     "mob": "Cleric of Innoruuk",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Indicolite Gauntlets": [
-    {
-     "mob": "Grandmaster R`tal",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "an elite dragoon",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
+       "date": "15 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
     }
    ],
-   "Indicolite Helm": [
+   "Ethereal Mist Bracers": [
     {
-     "mob": "Grandmaster R`tal",
+     "mob": "High Priest M`kari",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "13 Aug 2026",
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
-    },
+    }
+   ],
+   "Shadow Rage Leggings": [
     {
      "mob": "Innoruuk`s Chosen",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -7937,62 +10085,6 @@
      ]
     }
    ],
-   "Gold Plated Koshigatana": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Red Dragon Scales": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Treasure Hunter`s Satchel": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
-      }
-     ]
-    }
-   ],
-   "Apothic Boots": [
-    {
-     "mob": "Magi P`tasa",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Apothic Crown": [
     {
      "mob": "Magi P`tasa",
@@ -8005,18 +10097,16 @@
        "difficulty": 4
       }
      ]
-    }
-   ],
-   "Rokyls Channelling Crystal": [
+    },
     {
-     "mob": "Magus Rokyl",
+     "mob": "a spite golem",
      "seen": 1,
-     "off_roster": false,
+     "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -8035,93 +10125,27 @@
      ]
     }
    ],
-   "Rune Etched Bracer": [
-    {
-     "mob": "Master of Spite",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a haunted chest",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "an abhorrent",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Rune Etched Greaves": [
-    {
-     "mob": "Master of Spite",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Imbrued Platemail Helm": [
+   "Imbrued Platemail Boots": [
     {
      "mob": "Mistress of Scorn",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
+       "date": "15 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
     },
     {
-     "mob": "a spite golem",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Imbrued Platemail Vambraces": [
-    {
-     "mob": "Mistress of Scorn",
+     "mob": "a gorgon",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
+       "zone": "The Plane of Fear",
        "difficulty": 4
       }
      ]
@@ -8155,23 +10179,9 @@
      ]
     }
    ],
-   "Shiverback-hide Boots": [
+   "Vermiculated Boots": [
     {
      "mob": "a boogeyman",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Umbral Platemail Bracer": [
-    {
-     "mob": "a fetid fiend",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -8179,6 +10189,32 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Blighted Sleeves": [
+    {
+     "mob": "a forsaken revenant",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "an ashenbone drake",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -8249,12 +10285,50 @@
      ]
     },
     {
+     "mob": "a shiverback",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "an ire ghast",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
        "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Thorny Vine Vambraces": [
+    {
+     "mob": "a forsaken revenant",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "an ire ghast",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
@@ -8278,32 +10352,6 @@
    "Carmine Gloves": [
     {
      "mob": "a frightfinger",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Imbrued Platemail Gauntlets": [
-    {
-     "mob": "a frightfinger",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a turmoil toad",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -8352,74 +10400,6 @@
       {
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Lustrous Russet Breastplate": [
-    {
-     "mob": "a glare lord",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Rune Etched Chestplate": [
-    {
-     "mob": "a glare lord",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Thorny Vine Chestplate": [
-    {
-     "mob": "a glare lord",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
-      }
-     ]
-    }
-   ],
-   "Vermiculated Tunic": [
-    {
-     "mob": "a glare lord",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "a tentacle tormentor",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
        "difficulty": 1
       }
      ]
@@ -8479,34 +10459,6 @@
      ]
     }
    ],
-   "Imbrued Platemail Boots": [
-    {
-     "mob": "a gorgon",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Umbral Platemail Boots": [
-    {
-     "mob": "a gorgon",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Vermiculated Bracelet": [
     {
      "mob": "a gorgon",
@@ -8521,42 +10473,16 @@
      ]
     }
    ],
-   "Woven Shadow Boots": [
-    {
-     "mob": "a gorgon",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Ethereal Mist Vambraces": [
+   "Lustrous Russet Greaves": [
     {
      "mob": "a haunted chest",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "an ire ghast",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
+       "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
-       "difficulty": 4
+       "difficulty": 1
       }
      ]
     }
@@ -8603,20 +10529,6 @@
      ]
     }
    ],
-   "Rune Etched Boots": [
-    {
-     "mob": "a phantasm",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Ruined Sword Hilt": [
     {
      "mob": "a revenant",
@@ -8631,23 +10543,23 @@
      ]
     }
    ],
-   "Mudman Enforcer": [
+   "Carmine Turban": [
     {
-     "mob": "a rock golem",
+     "mob": "a spite golem",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel",
-       "difficulty": 0
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
    ],
-   "Vermiculated Gloves": [
+   "Blighted Gloves": [
     {
-     "mob": "a scareling",
+     "mob": "a turmoil toad",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -8655,34 +10567,6 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Midnight Clad Headband": [
-    {
-     "mob": "a spite golem",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Ethereal Mist Chestplate": [
-    {
-     "mob": "a tentacle tormentor",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 3
       }
      ]
     }
@@ -8710,34 +10594,6 @@
       {
        "date": "12 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Anthemion Wristguard": [
-    {
-     "mob": "an abhorrent",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Lustrous Russet Bracer": [
-    {
-     "mob": "an abhorrent",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
@@ -8771,28 +10627,14 @@
      ]
     }
    ],
-   "Lustrous Russet Vambraces": [
+   "Vermiculated Armplates": [
     {
      "mob": "an ire ghast",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Thorny Vine Vambraces": [
-    {
-     "mob": "an ire ghast",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
@@ -8899,5 +10741,5 @@
    ]
   }
  },
- "hash": "8d93a88718ef7283"
+ "hash": "3ea40f4b9b974a38"
 }

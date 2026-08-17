@@ -4,6 +4,10 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json, re, shutil, os
 from withheld import WITHHELD, REASON, MARK
+# Phrases a survey must not type for itself — the experience ranking above all.
+# See _build/derived.py for why one typed superlative became four typed
+# ordinals before this existed.
+import derived
 _CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json"), encoding="utf-8"))
 SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
@@ -343,6 +347,7 @@ for z in Z:
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
            f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s,
+           subs=derived.tokens(s),
            og_card=f"dungeons-{s}", canon=f"dungeons/{s}")
 # ---- maps
 for s in MAPS:

@@ -21,7 +21,7 @@ prevent becoming acceptable again.
 
 Imported and run by scripts/check.py.
 """
-import fnmatch, json, os, re, sys
+import fnmatch, glob, json, os, re, sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_build"))
 
@@ -128,6 +128,19 @@ def page_words(path, key):
     # link raised the word count of the entire site at once — and the page that
     # tripped its ceiling was whichever happened to be closest to it, which is
     # a ratchet measuring the wrong thing and blaming the wrong page.
+    # A DRAWING IS NOT PROSE, AND ITS LABELS ARE PART OF THE DRAWING.
+    #
+    # The floor plans name every mob they plot, inside <svg> as <text>. Counting
+    # those made the ratchet fall every time a named mob's position was
+    # recorded — so plotting an eighteenth mob on Crushbone spent 18 words of a
+    # budget meant to govern writing, and a zone with more named mobs was
+    # penalised for having more evidence. Crushbone's plan section read 700
+    # words, of which the map's own labels were most.
+    #
+    # Same reasoning as the ledger rows above: the ceiling must bite on writing
+    # more and never on measuring or drawing more. Everything outside the <svg>
+    # — the lede, the legend, the caveats under it — stays governed.
+    h = re.sub(r"<svg\b.*?</svg>", " ", h, flags=re.S | re.I)
     h = re.sub(r"<footer\b.*?</footer>", " ", h, flags=re.S | re.I)
     h = re.sub(r'<header class="site-bar".*?</header>', " ", h, flags=re.S | re.I)
     h = re.sub(r'<div class="ns-bar".*?</div>', " ", h, flags=re.S | re.I)
@@ -256,6 +269,47 @@ def run(pages, fail, warn):
         if z.get("zem_pct") != want:
             fail(f"{z['slug']}: zem_pct is {z.get('zem_pct')} but ZEM {z['zem']} gives {want} "
                  f"— a derived figure may not disagree with what it derives from")
+
+    # ---- 3c. a ranking claim may not be typed beside the data it ranks ------
+    #
+    # A cold reader found The Ruins of Old Paineel calling itself "the highest
+    # zone experience modifier in the game" in its H1, its meta description and
+    # both share cards. Kedge Keep is 139; The Hole is 128, level with two
+    # others. Rule 3b above was already guarding zem_pct against zem and could
+    # not see this, because the fault was in prose rather than in a field.
+    #
+    # The first repair replaced one typed superlative with four typed ordinals
+    # — the same fault with better arithmetic. So the ordinals are derived now
+    # (_build/derived.py, substituted by build3.py), and this refuses a survey
+    # SOURCE that types one by hand again.
+    #
+    # It reads the sources rather than the built pages on purpose: the built
+    # page is supposed to contain the phrase, having had the token filled in.
+    # Deliberately narrow. The first draft flagged "the highest camp in the
+    # dungeon" (about depth) and "highest of the three planes" (true, and
+    # bounded to a named set it does rank). A gate that cries wolf gets its
+    # exemptions widened until it catches nothing, so it only fires on an
+    # unbounded ordinal sitting within 60 characters of the modifier itself.
+    RANK_WORD = re.compile(
+        r'\b(?:joint\s+)?(?:highest|second[- ]highest|third[- ]highest|second|third)\b',
+        re.I)
+    ZEM_NEAR = re.compile(r'\b(?:ZEM|experience (?:modifier|rate))\b', re.I)
+    # A claim that names the set it ranks over is answerable and may stay.
+    BOUNDED = re.compile(
+        r'\bon this site\b|\bwe have (?:recorded|measured)\b|\bof the \w+ planes?\b'
+        r'|\bof our \d+ surveys\b|\bof the (?:three|four|five)\b|\bin the dungeon\b',
+        re.I)
+    for src in sorted(glob.glob('_build/source/*.html')):
+        raw = open(src, encoding='utf-8').read()
+        for m in RANK_WORD.finditer(raw):
+            window = raw[max(0, m.start() - 60):m.end() + 60]
+            if not ZEM_NEAR.search(window):
+                continue
+            if BOUNDED.search(raw[max(0, m.start() - 90):m.end() + 90]):
+                continue
+            fail(f"{src} types {m.group(0)!r} beside an experience figure. "
+                 f"Use @@ZEM_RANK@@ — the ranking is derived in "
+                 f"_build/derived.py so it cannot go stale silently")
 
     # ---- 4. withheld coordinates may not reach a page -----------------------
     #

@@ -215,11 +215,31 @@ if os.path.exists("build.sh"):
                    # evidence out of measured.json so four pages cannot carry a
                    # stale copy of it again.
                    "backstab.py",
+                   # The same idea asked of a zone rather than of one claim:
+                   # rate, roster, hazards and loot read out of the measured
+                   # sessions at build time. backstab.py answers "is this
+                   # sentence still true"; this answers "what is this zone
+                   # worth", and both are imported by the pages that cite them.
+                   "zonestats.py",
+                   # Substituted into every survey by build3.py: the
+                   # experience ranking and the measured-boss counts, so a
+                   # page cannot type an ordinal that goes stale in silence.
+                   "derived.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it
                    # should not.
                    "warmshift.py",
+                   # Draws the Mistmoore chart from zone-geometry.json and the
+                   # recorded /loc values, and writes it back into
+                   # _build/source/mistmoore-map.html between sentinels. Same
+                   # reason as warmshift.py: build3.py imports that page
+                   # verbatim and takes no substitutions, so the drawing has to
+                   # live in the authored file — but a build step that rewrote
+                   # an authored page every run would fight its author. Re-run
+                   # it after any change to the geometry or the coordinates and
+                   # diff; if the page moves, the page was stale.
+                   "mistmoorecarto.py",
                    # Read the game's .s3d archives, so they are run by hand and
                    # their output is committed. A rebuild has to work on a
                    # machine with no EverQuest Legends install.

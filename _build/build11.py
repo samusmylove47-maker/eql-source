@@ -87,12 +87,28 @@ else:
 
 # The other two bosses. Shown because the corrections above cite them - a reader
 # told "Lady Vox heals itself at D0" should be able to see the row.
+# A fight whose difficulty NOTHING resolved sorts last and prints as unresolved.
+#
+# The Eye of Veeshan, killed 15 August 2026, is the first: the Plane of Sky
+# carries no numbered zone line and the kill dropped nothing that carried an
+# independent tier, so neither of the two readings CLAUDE.md describes fired.
+# That is a real state and the rules are explicit about it - when the loot and
+# the zone line cannot agree, the difficulty is unresolved and the page says so.
+#
+# Sorting on it crashed the build outright, which is the better failure. The
+# temptation is to default the tier to 0 and lose the distinction between
+# "measured at base" and "we do not know"; a boss at an unknown tier is exactly
+# the row a reader must not misread as a D0 measurement.
 _OTHERS = sorted([r for r in RAIDS if r['boss'] != 'Master Yael'],
-                 key=lambda r: (r['boss'], r['difficulty']))
+                 key=lambda r: (r['boss'], -1 if r['difficulty'] is None
+                                else r['difficulty']))
 _other_rows = ''.join(
-    '<tr><td class="nmob">{b}</td><td class="lv">D{d}</td><td class="lv">{dm}{fl}</td>'
+    '<tr><td class="nmob">{b}</td><td class="lv">{d}</td><td class="lv">{dm}{fl}</td>'
     '<td class="lv">{s}s</td><td class="lv">{sp}</td><td class="lv">{h}</td></tr>'.format(
-        b=r['boss'], d=r['difficulty'],
+        b=r['boss'],
+        d=('D%d' % r['difficulty'] if r['difficulty'] is not None
+           else '<span class="unk" title="No numbered zone line, and nothing '
+                'dropped carrying an independent tier">not resolved</span>'),
         dm=(f"{r['damage_low']:,}" if r['damage_low'] == r['damage_high']
             else f"{r['damage_low']:,}&ndash;{r['damage_high']:,}"),
         fl=(' <em>floor</em>' if r.get('damage_is_floor') else ''),

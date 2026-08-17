@@ -190,7 +190,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "39 items watched dropping here"
+     "detail": "40 items watched dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -207,7 +207,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 322,
+   "kills": 323,
    "bosses": [
     "Lord Nagafen"
    ]
@@ -221,7 +221,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "13 items watched dropping here"
+     "detail": "14 items watched dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -238,7 +238,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 296,
+   "kills": 382,
    "bosses": [
     "Master Yael"
    ]
@@ -306,11 +306,11 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "5 bosses fought and parsed across 21 kills, tiers D2–D4"
+     "detail": "5 bosses fought and parsed across 22 kills, tiers D2–D4"
     },
     "loot": {
      "level": "measured",
-     "detail": "50 items watched dropping here"
+     "detail": "56 items watched dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -327,7 +327,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 214,
+   "kills": 291,
    "bosses": [
     "Cazic-Thule",
     "Dread",
@@ -341,11 +341,11 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "12 bosses fought and parsed across 24 kills, tiers D3–D4"
+     "detail": "12 bosses fought and parsed across 59 kills, tiers D1–D4"
     },
     "loot": {
      "level": "measured",
-     "detail": "47 items watched dropping here"
+     "detail": "70 items watched dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -357,12 +357,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
+     "detail": "ZEM 86, respawn not recorded, 46 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 48,
+   "kills": 92,
    "bosses": [
     "Ashenbone Broodmaster",
     "Avatar of Abhorrence",
