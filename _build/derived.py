@@ -193,7 +193,13 @@ def _mist():
 
 
 def _fmt(v, places=3):
-    return f'{v:.{places}f}'.rstrip('0').rstrip('.')
+    """Fixed places, never trimmed.
+
+    Trailing zeros were being stripped, so one experience figure printed 0.200
+    in the ranked table and 0.2 in the sentence introducing it. A reader
+    checking one against the other sees two numbers.
+    """
+    return f'{v:.{places}f}'
 
 
 def mist_tokens():
