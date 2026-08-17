@@ -49,7 +49,7 @@
      },
      "inherited": {
       "level": "sourced",
-      "detail": "5 inherited claims badged, placeholder model retracted in place"
+      "detail": "3 inherited claims badged, placeholder model retracted in place"
      },
      "farming": {
       "level": "sourced",
@@ -214,7 +214,7 @@
      },
      "inherited": {
       "level": "sourced",
-      "detail": "4 inherited claims badged, placeholder model retracted in place"
+      "detail": "3 inherited claims badged, placeholder model retracted in place"
      },
      "farming": {
       "level": "measured",
@@ -334,7 +334,7 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "24 named on the roster, none measured"
+      "detail": "23 named on the roster, none measured"
      },
      "loot": {
       "level": "measured",
@@ -379,7 +379,7 @@
      },
      "inherited": {
       "level": "sourced",
-      "detail": "4 inherited claims badged"
+      "detail": "5 inherited claims badged"
      },
      "farming": {
       "level": "measured",
@@ -445,7 +445,7 @@
      },
      "inherited": {
       "level": "sourced",
-      "detail": "2 inherited claims badged"
+      "detail": "3 inherited claims badged"
      },
      "farming": {
       "level": "sourced",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "e5388b4f46bd765e"
+ "hash": "9ccb68b87a450128"
 }

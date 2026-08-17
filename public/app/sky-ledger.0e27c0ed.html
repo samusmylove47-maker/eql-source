@@ -150,6 +150,9 @@ html.native #app{max-height:100vh;width:100vw}
 /* Brass means "type this at the NPC". An item list is not dialogue, so it must
    not look like it — bone, and it wraps rather than truncating. */
 .say code.give{color:var(--bone);white-space:normal;line-height:1.45}
+/* where both print, the list needs a hair of air under the phrase to read as a
+   second statement rather than a wrapped continuation of it */
+.say code + code.give{margin-top:3px}
 
 /* ═══ item rows ═══ */
 .it{display:flex;gap:7px;padding:2px 9px 3px 10px;align-items:flex-start;font-size:11.5px}
@@ -1682,29 +1685,35 @@ function renderList(c) {
 
     if (!done && r) {
       if (r.ready) {
-        /* Ready needs one thing from the overlay: who to walk to and what to
-           say. The pieces are in your bags — listing them again is four lines
-           of screen the game wanted.
-           EXCEPT for the five classes whose tester dialogue has never been
-           confirmed for Legends. There the dataset has no phrase to give, and
-           printing that it has none is a line of screen that helps nobody.
-           Those quests show WHAT TO HAND OVER instead, which is the next most
-           useful thing to know standing at the NPC. The caveat itself is not
-           lost — it moves to the tooltip. */
+        /* Ready needs three things from the overlay: who to walk to, what to
+           say, and what to hand over. An earlier version printed the phrase
+           INSTEAD of the pieces, on the reasoning that the pieces are already
+           in your bags — but a Sky bag is full of look-alike parts, and the
+           owner wants the list on screen. Both print now: the phrase, then the
+           pieces on their own line under it.
+           Five classes have no confirmed Legends tester dialogue. There the
+           dataset has no phrase to give, printing that it has none helps
+           nobody, so those quests show the pieces alone and the caveat moves
+           to the tooltip. */
+        const who = q.giver || hubOf(q);
+        const unconfirmed = "The exact dialogue for this class's tester chain has never been confirmed "
+          + "for Legends, so this tool will not invent one. Hail the NPC and read the "
+          + "options — and if you note what works, it can be added with a source.";
         const s = el("div", "say");
         s.appendChild(el("b", null, "→ " + hubOf(q)));
         if (q.giver && q.giver !== hubOf(q)) s.appendChild(document.createTextNode(" via " + q.giver));
         s.appendChild(document.createTextNode("  "));
         if (knownSay(q)) {
-          s.appendChild(el("code", null, q.say));
-          s.title = "Say this to " + (q.giver || hubOf(q)) + " to start the turn-in.";
+          const say = el("code", null, q.say);
+          say.title = "Say this to " + who + " to start the turn-in.";
+          s.appendChild(say);
+          s.title = "Say the phrase to " + who + ", then hand over the pieces listed under it.";
         } else {
-          s.appendChild(el("code", "give", q.items.map((it) => it.name).join(", ")));
-          s.title = "Hand these to " + (q.giver || hubOf(q)) + ".\n\n"
-            + "The exact dialogue for this class's tester chain has never been confirmed "
-            + "for Legends, so this tool will not invent one. Hail the NPC and read the "
-            + "options — and if you note what works, it can be added with a source.";
+          s.title = unconfirmed;
         }
+        const give = el("code", "give", q.items.map((it) => it.name).join(", "));
+        give.title = "Hand these to " + who + "." + (knownSay(q) ? "" : "\n\n" + unconfirmed);
+        s.appendChild(give);
         box.appendChild(s);
       } else {
         const miss = r.need.filter((n) => !n.have);

@@ -171,6 +171,8 @@ def tokens(slug):
     ]
     if slug == 'mistmoore':
         out += mist_tokens()
+    if slug == 'thehole':
+        out += hole_tokens()
     return out
 
 
@@ -564,4 +566,55 @@ def mist_tokens():
         ('@@M_DRUMS@@', str(_seen('Mynthi Davissi', 'Mistmoore Battle Drums'))),
         ('@@M_BRACERS_MORE@@', WORDS.get(max(len(bracers) - 1, 0),
                                          str(max(len(bracers) - 1, 0)))),
+    ]
+
+
+# ---------------------------------------------------------------------------
+# The Hole's backstabbing trash.
+#
+# The survey carried: "Backstabs land for 348. Elemental capturers hit that
+# figure; the weaker deceivers run around 248 with a maximum near 300."
+#
+# NONE OF THOSE THREE FIGURES IS IN assets/measured.json, and the ranking is
+# backwards. Across the Paineel sessions the deceiver's hardest recorded
+# backstab is the LARGER of the two, so "the weaker deceivers" describes an
+# order the data does not hold. Same fault as the Mistmoore familiars in
+# _build/backstab.py, and the same fix: the page asks for a token, the token
+# reads the dataset, and a re-parse moves the sentence on the next build.
+#
+# The two names are the claim's own scope. The zone's hardest backstab belongs
+# to a muck covered elemental, which is a named and a different claim.
+# ---------------------------------------------------------------------------
+HOLE_ROGUES = ('An elemental capturer', 'An elemental deceiver')
+
+
+def _hole_backstab():
+    """Melee and backstab maxima for the two rogue trash types, from the parse."""
+    p = zonestats.profile('Paineel')
+    if not p:
+        return None
+    rec = {m['name']: m for m in zonestats.backstabbers(p)}
+    got = [rec[n] for n in HOLE_ROGUES if n in rec]
+    if not got:
+        return None
+    melee = max(m['melee_max'] for m in got)
+    back = max(m['backstab_max'] for m in got)
+    if not melee or not back:
+        return None
+    return dict(melee=melee, backstab=back, ratio=back / melee)
+
+
+def hole_tokens():
+    b = _hole_backstab()
+    if not b:
+        # Never a typed fallback figure. A missing parse says so and the
+        # sentence reads as a gap, which is the house rule for every other
+        # number on the site.
+        return [('@@H_BACKSTAB@@', 'Their damage from behind is not recorded'),
+                ('@@H_BS_RATIO@@', 'an unrecorded multiple of')]
+    return [
+        ('@@H_BACKSTAB@@',
+         f"They melee up to {b['melee']} and backstab up to {b['backstab']}"),
+        ('@@H_BS_RATIO@@',
+         f"about {WORDS.get(round(b['ratio']), round(b['ratio']))} times"),
     ]

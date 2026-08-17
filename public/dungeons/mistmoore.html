@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Mayong's stronghold — the population changes at dawn and dusk. Levels 20-45, respawn at most 22:00 plus dawn/dusk repop. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="The population changes at dawn and dusk. Levels 20-45, respawn at most 22:00 plus dawn/dusk repop. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Castle Mistmoore — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -358,7 +358,7 @@ body .meas#measured::before{content:"From the log"}
 .inj-contact strong{color:var(--bone)}
 .inj-contact a{color:#8FBEE4}
 .inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
-</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Castle Mistmoore — Survey | EverQuest Legends"><meta property="og:description" content="Mayong's stronghold — the population changes at dawn and dusk. Levels 20-45, respawn at most 22:00 plus dawn/dusk repop. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-mistmoore.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Castle Mistmoore — Survey | EverQuest Legends"><meta name="twitter:description" content="Mayong's stronghold — the population changes at dawn and dusk. Levels 20-45, respawn at most 22:00 plus dawn/dusk repop. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-mistmoore.png"><link rel="canonical" href="https://eqlsource.com/dungeons/mistmoore">
+</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Castle Mistmoore — Survey | EverQuest Legends"><meta property="og:description" content="The population changes at dawn and dusk. Levels 20-45, respawn at most 22:00 plus dawn/dusk repop. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-mistmoore.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Castle Mistmoore — Survey | EverQuest Legends"><meta name="twitter:description" content="The population changes at dawn and dusk. Levels 20-45, respawn at most 22:00 plus dawn/dusk repop. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-mistmoore.png"><link rel="canonical" href="https://eqlsource.com/dungeons/mistmoore">
 <style>
 .ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
@@ -407,6 +407,18 @@ body .meas#measured::before{content:"From the log"}
 .fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
   color:var(--bone)}
 .fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
+/* THE `hidden` ATTRIBUTE DOES NOT HIDE AN SVG ELEMENT. It is an HTML attribute:
+   the rule that honours it lives in the browser's HTML stylesheet, and `.hidden`
+   is an IDL property of HTMLElement, which SVGGElement is not. So the route
+   group shipped with `hidden` set and a computed display of `inline` — the line
+   and its numbered stops were drawn on every plan, always, while the button
+   flipped a property nothing read. The sibling HTML note beside it honoured
+   `hidden` correctly, which is why half the control appeared to work.
+   The numerals had no explanation on screen because the note they belong to was
+   the half that stayed hidden. Two changes, and both are needed: this rule makes
+   the attribute mean something here, and the handler below sets the ATTRIBUTE
+   rather than the property. */
+svg .route[hidden]{display:none}
 .plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
 .mk{cursor:pointer}
 .mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
@@ -461,11 +473,11 @@ body .meas#measured::before{content:"From the log"}
 <header class="mast">
   <p class="eyebrow">Dungeon survey</p>
   <div class="title"><h1>Castle Mistmoore</h1><span class="leader"></span><span class="plateno">10</span></div>
-  <p class="subtitle">Mayong's stronghold — the population changes at dawn and dusk</p>
-  <p class="deck">Levels run 20 to 45, with Mayong above them. Come for the bard instruments, the focus items and the epic pelt. <strong>A train is what kills people</strong>, funnelling into the one corridor out. Everything below is D1 Awakened; D0 and D2 to D4 are unmeasured.</p>
+  <p class="subtitle">The population changes at dawn and dusk</p>
+  <p class="deck">Levels run 20 to 45, with the roaming Dark Huntress above them. Come for the bard instruments, the focus items and the epic pelt. <strong>A train is what kills people</strong>, funnelling into the one corridor out. Everything below is D1 Awakened; D0 and D2 to D4 are unmeasured.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>mistmoore</dd></div>
-    <div class="cell"><dt>Mob levels</dt><dd>20&ndash;45<small>Mayong ~53</small></dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>20&ndash;45<small>Dark Huntress 50</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>97<small>129% — was 90</small></dd></div>
     <div class="cell"><dt>Difficulty</dt><dd>D1 Awakened<small>verified at this tier</small></dd></div>
     <div class="cell"><dt>Respawn</dt><dd>&le;22 min<small>trash. Named vary, to four hours</small></dd></div>
@@ -519,7 +531,6 @@ body .meas#measured::before{content:"From the log"}
   <table>
     <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob"><a href="../named/mayong-mistmoore.html">Mayong Mistmoore</a></td><td class="loc"><span style="color:#D46C64">unrecorded</span></td><td class="lv">~53</td><td class="cls">? / ?</td><td class="src">Behind the coffin, in the tomb. Level and coordinate unconfirmed.<span class="tag warn">unconfirmed</span></td></tr>
       <tr><td class="nmob"><a href="../named/dark-huntress.html">Dark Huntress</a></td><td class="loc"><span style="color:#D46C64">random</span></td><td class="lv">50</td><td class="cls">HUMAN<br>NEC</td><td class="src"><strong>Aggressive and spell-resistant.</strong> Spawns anywhere, buffs itself, hunts. Loot unrecorded.<span class="tag warn">roams</span></td></tr>
       <tr><td class="nmob"><a href="../named/black-dire.html">Black Dire</a></td><td class="loc">90, &minus;166, &minus;222</td><td class="lv">45</td><td class="cls">WOLF ELEMENTAL<br>SHD</td><td class="src"><strong>Spawns at the canyon’s end when an advisor dies.</strong> Hits in the 200s, quads, harm touches.<span class="tag warn">quads + HT</span></td></tr>
       <tr><td class="nmob"><a href="../named/an-undead-knight.html">An undead knight</a></td><td class="loc">&minus;36, 365, &minus;263</td><td class="lv">40</td><td class="cls">SKELETON<br>?</td><td class="src">Loot unrecorded.</td></tr>
@@ -559,7 +570,6 @@ body .meas#measured::before{content:"From the log"}
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it"><a href="../items/fanged-skull-stiletto.html">Fanged Skull Stiletto</a></td><td class="st">Primary / Secondary<br>Pierce <strong>12</strong> / 22<br>backstab 12</td><td class="st">&mdash;</td><td class="cls">ALL except CLR PAL DRU MNK SHM</td><td class="src">Mayong Mistmoore <span class="tag warn">unconfirmed loc</span></td></tr>
       <tr><td class="it"><a href="../items/chestplate-of-the-dark-flame.html">Chestplate of the Dark Flame</a></td><td class="st">Chest · lore</td><td class="st"><strong>AC 19</strong> · STR +9</td><td class="cls">WAR PAL SHD<br>not IKS</td><td class="src">Garton Viswin &middot; <em>rare</em></td></tr>
       <tr><td class="it"><a href="../items/crested-spaulders.html">Crested Spaulders</a></td><td class="st">Shoulders</td><td class="st"><strong>AC 11</strong> · STA +6</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG</td><td class="src">An avenging caitiff &middot; <em>common</em></td></tr>
       <tr><td class="it"><a href="../items/crested-mistmoore-shield.html">Crested Mistmoore Shield</a></td><td class="st">Secondary · lore</td><td class="st">AC 10 · DEX +6<br><strong>+10 Disease / Magic / Poison</strong></td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM</td><td class="src">A glyphed ghoul &middot; <em>rare</em></td></tr>
@@ -686,7 +696,12 @@ body .meas#measured::before{content:"From the log"}
       b.classList.toggle('on', on);
       if(b.dataset.t==='names'){ svg.classList.toggle('nonames', !on); }
       if(b.dataset.t==='route'){
-        if(route) route.hidden=!on;
+        // setAttribute, not .hidden: the route is an SVG group and does not
+        // carry the HTML property. See the stylesheet note above.
+        if(route){
+          if(on) route.removeAttribute('hidden');
+          else route.setAttribute('hidden','');
+        }
         if(rnote) rnote.hidden=!on;
       }
     });

@@ -6,371 +6,466 @@
 <title>Plane of Fear — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#8FB03A;--accd:#5A7024;--acct:color-mix(in srgb, #8FB03A 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}.cell{background:#251F19;padding:11px 13px}.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}.legend ol{list-style:none;margin:0;padding:0}.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}.legend.n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}.legend.lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
-tbody tr:last-child td{border-bottom:0}.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}.cls.all{color:#5FA37E}.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}.tag.warn{border-color:#C9453A;color:#D46C64}.tag.new{border-color:#5FA37E;color:#5FA37E}.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}.camp.band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}.camp p{font-size:13.5px;margin:0 0 9px}.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}.link.step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}.link.who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}.link.gives{font-size:12.5px;color:#9C958E}.link.gives b{color:var(--acct);font-weight:600}.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+/* THE PLANE OF FEAR SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore survey: a graticule fixed behind the
+   page, a translucent sheet sliding over it, a neatline with an inner rule, and
+   section kickers hanging in the left margin. The MECHANISM is copied; the
+   colour is not. The Plane of Fear owns #8FB03A permanently and no other zone
+   may use it.
+
+   Self-contained: this page never loads assets/site.css. Token names are
+   prefixed --pf- because build3.py appends site.css's :root AFTER this block and
+   an unprefixed --mut or --txt would be silently overwritten. --acc, --accd and
+   --acct are deliberately NOT prefixed: the injected chrome reads them and
+   site.css does not define them.
+
+   Contrast, computed against the lightest ground this page can produce (a
+   graticule crossing under the lamplight, seen through the sheet, #1D180E):
+   ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 8.01, warn 5.16,
+   brass 6.43, brass-t 7.98, ok 5.91. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 7.04 / 4.53 / 5.65 / 7.01 / 5.20. */
+:root{
+  --acc:#8FB03A;--accd:#4F6120;--acct:#9EB952;
+  --pf-g:#120E08;          /* the plotting table */
+  --pf-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --pf-ink:#F2EADA;--pf-txt:#DFD6C4;--pf-mut:#B5AA95;--pf-dim:#9A8F7C;
+  --pf-warn:#D46C64;--pf-brass:#C9922E;--pf-brass-t:#D9A63F;--pf-ok:#5FA37E;
+  --pf-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --pf-r2:#7A6950;         /* a boundary that carries meaning */
+  --pf-2xs:10px;--pf-xs:11.5px;--pf-sm:13.5px;--pf-base:15.5px;--pf-md:18.5px;
+  --pf-lg:22px;--pf-h2:clamp(24px,3.6vw,36px);--pf-h1:clamp(38px,6.6vw,74px);
+  --pf-rad:4px;
+  --pf-s1:4px;--pf-s2:8px;--pf-s3:12px;--pf-s4:16px;
+  --pf-s5:24px;--pf-s6:32px;--pf-s7:48px;--pf-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--pf-g)}
+body{margin:0;background:transparent;color:var(--pf-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--pf-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint.
+
+   Major and minor rules share ONE 152px period per axis instead of two stacked
+   gradients: stacking makes the crossings compound, and the compounding is what
+   eats text contrast. And every stop terminates in rgba(228,210,174,0) rather
+   than the keyword transparent, because older WebKit premultiplies transparent
+   as transparent BLACK and draws a grey seam down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head, the zone's own ink bleeding up from the foot, and a
+   vignette that ONLY darkens, so it cannot cost contrast anywhere. The two
+   washes are anchored at opposite ends and both fall to zero by 62%, so they
+   never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(143,176,58,.045) 0%, rgba(143,176,58,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--pf-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--pf-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--pf-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--pf-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is what makes a column of figures read as instrument output. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--pf-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--pf-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--pf-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--pf-s2);
+  text-wrap:balance;color:var(--pf-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--pf-lg);letter-spacing:.03em;margin:var(--pf-s5) 0 var(--pf-s2);color:var(--pf-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--pf-mut);font-size:var(--pf-md);margin:0 0 var(--pf-s5);max-width:60ch}
+.cm{color:var(--pf-dim);font-size:var(--pf-sm);line-height:1.6;margin:var(--pf-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--pf-r1);padding-left:var(--pf-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--pf-s7) 0 var(--pf-s5);margin-bottom:var(--pf-s2);
+  border-bottom:1px solid var(--pf-r2)}
+.eyebrow{font-size:var(--pf-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--pf-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--pf-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--pf-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--pf-md);
+  color:var(--pf-mut);letter-spacing:.02em;margin:var(--pf-s2) 0 var(--pf-s3);
+  text-transform:uppercase}
+.deck{color:var(--pf-txt);margin:0 0 var(--pf-s5);max-width:66ch}
+.deck strong{color:var(--pf-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--pf-r1);border-left:1px solid var(--pf-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--pf-p);padding:var(--pf-s3);
+  border-right:1px solid var(--pf-r1);border-bottom:1px solid var(--pf-r1)}
+.cell dt{font-size:var(--pf-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--pf-dim);margin:0 0 var(--pf-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--pf-lg);
+  font-weight:600;color:var(--pf-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--pf-xs);font-weight:400;
+  color:var(--pf-mut);display:block;letter-spacing:0}
+.jump{margin:var(--pf-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--pf-s1) var(--pf-s4);font-size:var(--pf-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--pf-mut);text-decoration:none;border-bottom:1px solid var(--pf-r1)}
+.jump a:hover{color:var(--pf-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column.
+   The kicker names what the section is MADE OF; numbered headings are a
+   generated-site tell and are not coming back. */
+section{margin-top:var(--pf-s7);position:relative}
+.kick{font-size:var(--pf-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--pf-dim);margin:0 0 var(--pf-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--pf-r2);padding-left:var(--pf-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--pf-s4) 0}
+.scroller table{min-width:700px}
+.scroller.narrow table{min-width:460px}
+table{border-collapse:collapse;width:100%;font-size:var(--pf-sm);
+  border-top:2px solid var(--pf-brass)}
+th{font-size:var(--pf-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--pf-mut);
+  text-align:left;padding:var(--pf-s2) var(--pf-s3) var(--pf-s2) 0;background:none;
+  border-bottom:1px solid var(--pf-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--pf-s3) var(--pf-s3) var(--pf-s3) 0;border-bottom:1px solid var(--pf-r1);
+  vertical-align:top;background:none}
+tbody tr:last-child td{border-bottom:0}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(143,176,58,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--pf-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--pf-sm);text-align:right;white-space:nowrap;color:var(--pf-txt)}
+th.lv{text-align:right}
+.slot{font-family:"Saira Condensed",sans-serif;font-size:var(--pf-base);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--acct);white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--pf-base);font-weight:600;
+  letter-spacing:.02em;color:var(--pf-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--pf-base);font-weight:600;
+  letter-spacing:.02em;color:var(--pf-ink)}
+/* The colour is inherited rather than set, so every contrast ratio measured on
+   this sheet is unchanged and the underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--pf-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--pf-xs);color:var(--pf-mut);letter-spacing:.04em;line-height:1.45}
+.st{font-size:var(--pf-xs);color:var(--pf-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--pf-sm);color:var(--pf-mut)}
+.si{font-size:var(--pf-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--pf-warn)}
+.si.no{color:var(--pf-dim)}
+.tag{font-size:var(--pf-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--pf-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--pf-warn)}
+.tier{font-size:var(--pf-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid currentColor;
+  border-radius:2px;color:var(--pf-dim);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+.tier.t3{color:var(--pf-brass-t)}
+.tier.t5{color:var(--pf-warn)}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--pf-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--pf-base);
+  letter-spacing:.02em;color:var(--pf-ink);padding:var(--pf-s3) var(--pf-s5) var(--pf-s3) 0;
+  border-bottom:1px solid var(--pf-r1)}
+.key dd{margin:0;font-size:var(--pf-sm);color:var(--pf-mut);padding:var(--pf-s3) 0;
+  border-bottom:1px solid var(--pf-r1)}
+.key strong{color:var(--pf-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not five identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--pf-s5) 0 0;padding:0 0 0 var(--pf-s5);
+  border-left:2px solid var(--pf-warn);max-width:74ch}
+ul.hz li{padding:var(--pf-s4) 0;border-top:1px solid var(--pf-r1);color:var(--pf-mut);
+  font-size:var(--pf-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--pf-base);
+  color:var(--pf-warn);margin-bottom:var(--pf-s1)}
+ul.hz strong{color:var(--pf-ink)}
+
+.note{border-left:1px solid var(--pf-r1);padding:var(--pf-s1) 0 var(--pf-s1) var(--pf-s4);
+  margin:var(--pf-s5) 0 0;color:var(--pf-mut);font-size:var(--pf-sm);max-width:68ch}
+.note strong{color:var(--pf-ink)}
+.quote{border-left:3px solid var(--accd);margin:var(--pf-s4) 0;padding:var(--pf-s2) 0 var(--pf-s2) var(--pf-s4);
+  font-family:"Saira Condensed",sans-serif;font-size:var(--pf-lg);font-weight:600;
+  line-height:1.25;color:var(--pf-ink);max-width:56ch}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--pf-s8);padding-top:var(--pf-s5);border-top:1px solid var(--pf-r2);
+  color:var(--pf-mut);font-size:var(--pf-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.quote{border-left:3px solid var(--accd);margin:18px 0;padding:10px 0 10px 18px;font-family:"Saira Condensed",sans-serif;font-size:clamp(19px,3.4vw,25px);font-weight:500;line-height:1.25;color:#E6E9E4;max-width:60ch}
-.why{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:13px;max-width:78ch}
-.why li{border-left:2px solid #40372D;padding:2px 0 2px 16px}
-.why b{color:#E6E9E4}
-.cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#9C958E;display:block;margin-top:2px}
-.ck{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--acct);display:block}
-.tier{font-size:9.5px;letter-spacing:.12em;padding:1px 5px;border:1px solid currentColor;border-radius:2px;font-family:"IBM Plex Mono",monospace;white-space:nowrap;text-transform:uppercase}
-.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
-.tc{color:#8FBEE4;border-color:#8FBEE4}
+.imprint{font-size:var(--pf-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pf-dim);margin:var(--pf-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one step
+   higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .meas table{border-top:2px solid var(--pf-brass)}
+body .meas td{border-bottom:1px solid var(--pf-r1)}   /* its #322A23 is 1.4:1 */
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+body .fp-wrap{border-radius:var(--pf-rad)}
+/* One heading level, one rule. The two injected sections carry their own h2
+   treatments, four points smaller than every other heading on the page and with
+   four times the tracking. */
+body .meas,body .fplan{margin-top:var(--pf-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--pf-h2);letter-spacing:.005em;line-height:1}
+/* The spine rail would otherwise have holes at both ends: the injected sections
+   are the first and the last on the page and neither carries a kicker. Their
+   generators are not this file's to edit, so the labels are set here, in the
+   same register as the authored four. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--pf-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--pf-dim);display:block;margin:0 0 var(--pf-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 11 · through The Feerrott, Antonica</p>
-  <h1>Plane of Fear</h1>
-  <p class="subtitle">Four armour slots, five raid targets, and a published strategy written for a different game</p>
+  <p class="eyebrow">Dungeon survey &middot; through The Feerrott</p>
+  <div class="title"><h1>Plane of Fear</h1><span class="leader"></span><span class="plateno">11</span></div>
+  <p class="subtitle">Four armour slots, and a published strategy written for a different game</p>
+  <p class="deck">A one-way portal in the Feerrott spectre caves, monsters at 48 to 51, and a hard
+    level gate at 46. Come for four of the seven planar armour slots &mdash; <strong>Chest, Wrist,
+    Hands and Feet, and every ordinary mob here drops one of them</strong>. The raid targets are
+    instance-only and almost every number published about them is classic EverQuest.
+    <strong>Arriving alone is what kills people</strong>: the portal is guarded, and there is no
+    ordinary way out.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>fearplane</dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>48&ndash;51<small>source hedges the 48</small></dd></div>
     <div class="cell"><dt>Minimum level</dt><dd>46<small>hard gate</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>82.5<small>110% &mdash; was 75</small></dd></div>
-    <div class="cell"><dt>Zone respawn</dt><dd>not recorded<small>by anyone</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>not recorded<small>by anyone</small></dd></div>
+    <div class="cell"><dt>Raid targets</dt><dd>Instance<small>since 16 June 2026</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>&minus;1139, 1282</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>The Feerrott<small>one way in</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>None ordinary<small>Gate, a port, or dying</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#open">Still open</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
+<main>
+
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why">
-    <li><b>Four of the seven planar armour slots.</b> Fear drops Chest, Wrist, Hands and Feet.
-      Hate drops Head, Arms, Wrist and Legs. If you want a full set you are visiting both, and
-      Wrist is the one slot either plane can give you.</li>
-    <li><b>A 110% ZEM with the raid bosses moved out.</b> The seven plane bosses stopped spawning
-      in the open world and in personal instances on 16 June, so the zone you walk into now is
-      trash and minibosses at a raised experience rate. That is the whole basis of the 46+
-      levelling reputation, and it is a developer change rather than a community theory.</li>
-    <li><b>Phoboplasm drops any planar armour</b> &mdash; including Hate-only pieces. It is the one
-      mob in either plane that ignores the group split.</li>
-    <li><b>Come for the armour, not the bosses.</b> The five raid targets are instance-only and
-      almost nothing published about them describes Legends. Section 02 is not throat-clearing;
-      on this zone it is the most useful thing on the page.</li>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Four bands of floor. You arrive in the south-west and the Temple climbs away
+    from it.</p>
+  <dl class="key">
+    <dt>A portal in the spectre caves</dt><dd>The Feerrott, and the only door in. One way, level 46
+      and up, and <strong>guarded on the far side</strong>. <strong>There is also a race line at the
+      portal</strong> <span class="tier t5">T5</span></dd>
+    <dt>The south-west corner at &minus;1139, 1282</dt><dd>Where you arrive, and where succor and
+      evacuate put you. Your reset button</dd>
+    <dt>A stepped temple</dt><dd>The fourth and highest band on the plan. Cazic Thule at the top of
+      it, and the Temple exit portal here</dd>
+  </dl>
+  <p class="cm">Camps, pull points and escape lines are unrecorded. There are no placeholders here,
+    but a spawn point can hold more than one type &mdash; a spinechiller spider where you expected a
+    scareling.</p>
+</section>
+
+<section>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>Do not zone in alone</b> The portal is guarded, the guard sees invisibility, and it is
+      <strong>on you immediately</strong>. <span class="tier t5">T5</span></li>
+    <li><b>There is no ordinary way out</b> Gate, a port, or dying. Succor returns you to
+      &minus;1139, 1282. The Temple exit portal is the worse route.</li>
+    <li><b>Invisibility is unreliable</b> Much of the population sees through it, and
+      <strong>a turmoil toad sees through all of it</strong>. The drops table marks each type.
+      <span class="tier t5">T5</span></li>
+    <li><b>The level 51s summon</b> So do Irak Altil and the Wraith. Distance is not an escape from
+      those. <span class="tier t5">T5</span></li>
+    <li><b>Cazic Thule calls the whole zone</b> The hotfix of 24 June 2026 reads: &ldquo;Cazic-Thule
+      now properly calls for his minions when he is engaged in an instance of the Plane of
+      Fear.&rdquo; <strong>Zone-wide social aggro, stated by the developers</strong> &mdash; the only
+      boss mechanic here they have confirmed outright.</li>
   </ul>
 </section>
 
 <section>
-  <h2><span class="num">02</span>What the sources are, and why it matters here</h2>
-  <p class="lede">Every page this survey leans on has its revision history checked. On Fear that
-    check comes back worse than on any surveyed zone.</p>
-
-  <p>The eqlwiki Plane of Fear page was created on 9 March 2026 by <code>P99Wiki&gt;RibbonRMX</code>
-    &mdash; an import from the Project 1999 wiki, four months before EverQuest Legends existed. The
-    Cazic Thule page is the same story: <code>imported&gt;CrazyPro</code>, 29 March 2026. Both were
-    edited afterwards by named editors, and none of those edits describe a measurement.</p>
-
-  <p>The tell is not subtle. The published Cazic Thule strategy says, word for word:</p>
-
-  <blockquote class="quote">It&rsquo;s recommended to have several dozen melee and a dozen+ healers.</blockquote>
-
-  <p><b>Legends caps a raid at 8.</b> The same page discusses the Velious-era revamp of the zone and
-    chain-CH healing rotations. This is not a stale page. It is a correct description of a different
-    game, and following it here is not possible.</p>
-
-  <p>So this survey badges nearly everything, and the badges mean what they say. Where a figure is
-    measured or the developers&rsquo;, it prints plain.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>What</th><th>Standing</th></tr></thead>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">The 16 June patch note names five of these as raid targets and takes them out of
+    the open world and personal instances. Who is here is settled; the numbers are not.</p>
+  <div class="note">The eqlwiki Plane of Fear page was created 9 March 2026 by
+    <code>P99Wiki&gt;RibbonRMX</code>, the Cazic Thule page by <code>imported&gt;CrazyPro</code> on
+    29 March 2026 &mdash; both Project 1999 imports predating EverQuest Legends, and no later edit
+    describes a measurement. The published strategy says, word for word:</div>
+  <p class="quote">It&rsquo;s recommended to have several dozen melee and a dozen+ healers.</p>
+  <p class="src"><strong>Legends caps a raid at 8.</strong> That is a correct description of a
+    different game, and following it here is not possible.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Zone rules, instances, lockouts, ZEM</td>
-        <td>Developer patch notes. Prints plain.</td></tr>
-      <tr><td class="nmob">The floor plan below</td>
-        <td>Computed from the game&rsquo;s own mesh. Prints plain.</td></tr>
-      <tr><td class="nmob">Armour tables <span class="tier t3">T3</span></td>
-        <td>Named editor, maintained through July 2026, and they list Beastlord and Berserker sets
-          &mdash; classes Project 1999 does not have. Somebody rebuilt these for a sixteen-class
-          game. The strongest material on the page.</td></tr>
-      <tr><td class="nmob">Mob abilities and sees-invis <span class="tier t5">T5</span></td>
-        <td>Imported. Useful shape, unverified detail.</td></tr>
-      <tr><td class="nmob">Boss stats and strategy <span class="tier t5">T5</span></td>
-        <td>Classic EverQuest. See section 06.</td></tr>
+      <tr><td class="nmob"><a href="../named/cazic-thule.html">Cazic Thule</a></td><td class="loc">not recorded</td><td class="lv">70</td><td class="cls">DEITY<br>SHD</td><td class="src">Top of the Temple, the fourth band on the plan. Published at AC 400 and 450,000 HP, 2 attacks a round, 223&ndash;603 a hit. Avatar Power is a top-slot dispel; Panic fears a random target. <strong>The published strategy is classic EverQuest and unusable here.</strong><span class="tag warn">T5 stats</span></td></tr>
+      <tr><td class="nmob"><a href="../named/a-dracoliche.html">a dracoliche</a></td><td class="loc">not recorded</td><td class="lv">58</td><td class="cls">DRAGON SKELETON<br>SHD</td><td class="src">Wanders. <strong>Not undead</strong>, despite the model. AC 600, 175,000 HP published. Deadly Lifetap, Rotting Flesh, summons, unmezzable, uncharmable, unstunnable, unfearable. Small hitbox that melee reportedly struggle to connect with.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/dread.html">Dread</a></td><td class="loc">&minus;1201, &minus;635</td><td class="lv">55</td><td class="cls">GOLEM<br>WAR</td><td class="src">AC 376, 32,500 HP published, max hit about 450. Cazic Touch, Scarab Storm, Enrage, summons, triple attack.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/terror.html">Terror</a></td><td class="loc">&minus;365, 200</td><td class="lv">55</td><td class="cls">GOLEM<br>WAR</td><td class="src">AC 397, 32,000 HP published, 168&ndash;453 a hit. <strong>Frost Breath is a dispel and will break charm on a pet.</strong> A 56-point lifetap proc, Enrage, summons, triple attack.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/fright.html">Fright</a></td><td class="loc">&minus;358, &minus;636</td><td class="lv">55</td><td class="cls">GOLEM<br>WAR</td><td class="src">Cazic Touch, Enrage, summons, triple attack. <strong>No AC, no hit points and no attack count are recorded by anyone</strong>, classic sources included, and its damage is written as &ldquo;437?&rdquo;.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/wraith-of-a-shissir.html">Wraith of a Shissir</a></td><td class="loc">not recorded</td><td class="lv">55</td><td class="cls">GORGON<br>WAR</td><td class="src">Always 55. Stun up to 15 seconds, summons, sees invisible. Carries the Head of the Serpent, an Enchanter epic component. The source spells it Shissir in its table and Shissar in its prose.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/irak-altil.html">Irak Altil</a></td><td class="loc">not recorded</td><td class="lv">51</td><td class="cls">SKELETON, UNDEAD<br>WAR</td><td class="src">Always 51. Quads and summons. Named in the classic strategy as a charm target, which is advice written for a game with different charm rules.<span class="tag warn">T5</span></td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
+  <p class="src">Coordinates are the published pair read as (Y, X), checked against the drawn floor
+    &mdash; that result prints under the plan above. <strong>Legends raid bosses run three classes
+    from D3 and every one of these is listed with a single class</strong>, which alone dates the
+    table. @@FEAR_MEASURED@@ have been killed and parsed at the higher tiers.
+    <a href="../learn/difficulty.html">What the difficulty tiers change, measured &rarr;</a></p>
+  <div class="note"><strong>Every published respawn timer here describes something that no longer
+    happens</strong> &mdash; 72 hours for the golems, 7 days for the dracoliche, all of it the
+    open-world spawn the 16 June patch removed. Access is governed instead by the raid instance and
+    the weekly loot lockout, which resets Tuesdays at 8AM PST; a kill made while locked still returns
+    one guaranteed drop from the boss&rsquo;s unique table (28 July patch note). Instances cost no
+    experience &mdash; the 23 June patch note raised instanced Fear, Hate and Sky to match the open
+    world &mdash; and drops match the tier you are in, with a diminishing chance to roll higher
+    (29 July hotfix).</div>
 </section>
 
 <section>
-  <h2><span class="num">03</span>Getting in, and not getting out</h2>
-  <p class="lede">One way in, no ordinary way out, and a welcome party that sees invisibility.</p>
-  <ol class="chain">
-    <li><b>The Feerrott, spectre caves</b> <span class="cm">one-way portal</span>
-      <span class="ck">level 46+</span> &rarr; you arrive in the south-west</li>
-    <li><b>The portal is guarded</b> <span class="cm">see-invis, immediate</span>
-      <span class="ck">do not zone in alone</span></li>
-    <li><b>Leaving means Gate, a port, or dying</b> <span class="cm">or the Temple exit portal</span>
-      <span class="ck">the Temple route is worse</span></li>
-  </ol>
-  <p class="tight"><b>Succor and evacuate put you at &minus;1139, 1282</b>, the south-west corner by
-    the zone-in. That is your reset button and it is worth knowing before you need it. There is a
-    race line at the Feerrott portal. <span class="tier t5">T5</span></p>
-  <div class="note">The imported page recommends a charged Leatherfoot Raider Skullcap and advises
-    against binding in the zone. Both are classic-era advice about a classic-era corpse run, and
-    neither is confirmed to apply. Treat them as leads, not instructions.</div>
-</section>
-
-<section>
-  <h2><span class="num">04</span>Your armour, slot by slot</h2>
-  <p class="lede">Every ordinary mob in Fear drops planar armour for one slot. Find your slot,
-    then hunt any mob on that row.</p>
-  <div class="note"><b>The class-group split is gone, and one mob moved.</b> A Legends-era guild loot
-    guide lists these mobs merged rather than divided into two class groups, and puts
-    <em>a turmoil toad</em> at <b>Wrist</b> where the imported table has it at Hands. It also states
-    every listed mob can drop the matching <b>Lustrous Russet</b> or <b>Midnight Clad</b> piece for
-    its slot. A guild loot guide, 18 June 2026 &mdash; pre-launch, and one source (<a href="../credits.html">credits</a>).
-    <a href="../tools/planar-gear.html">The gear tool &rarr;</a> works from the item records, which
-    are unaffected either way.</div>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Slot</th>
-      <th>Group 1 &mdash; CLR DRU SHM BST RNG PAL BER MNK<br><small>plus Lustrous Russet</small></th>
-      <th>Group 2 &mdash; ENC MAG NEC WIZ BRD SHD ROG WAR<br><small>plus Midnight Clad</small></th></tr></thead>
+  <p class="kick">Slot by slot</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Every ordinary mob here drops planar armour for one slot. Find your slot, then hunt
+    anything on those rows.</p>
+  <div class="note"><strong>The class-group split is gone, and one mob moved.</strong> A guild loot
+    guide of 18 June 2026 lists these mobs merged rather than split into class groups, moves
+    <em>a turmoil toad</em> to Wrist from Hands, and says every listed mob can also drop the matching
+    <strong>Lustrous Russet</strong> or <strong>Midnight Clad</strong> piece for its slot.
+    Pre-launch, and one source (<a href="../credits.html">credits</a>). The Group column is the
+    imported reading, printed beside it. <a href="../tools/planar-gear.html">The gear tool &rarr;</a>
+    works from the item records, unaffected either way.</div>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Slot</th><th>Mob</th><th>Group</th><th>Type</th><th>Class</th><th>Sees invis</th><th>Abilities</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Chest</td><td>a glare lord<br>a tentacle tormentor</td>
-        <td>amygdalan knight<br>amygdalan warrior</td></tr>
-      <tr><td class="nmob">Wrist</td><td>a decrepit warder<br>a samhain</td>
-        <td>a fetid fiend<br>a spinechiller spider</td></tr>
-      <tr><td class="nmob">Hands</td><td>a scareling<br>a shiverback</td>
-        <td>a frightfinger<br>a turmoil toad<br>a worry wraith</td></tr>
-      <tr><td class="nmob">Feet</td><td>a boogeyman<br>a phantasm</td>
-        <td>a gorgon<br>a nightmare</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">a glare lord</td><td class="lv">1</td><td class="st">Evil Eye</td><td class="cls">MAG</td><td class="si no">no</td><td class="st">AoE Recant Magic, magician spells</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">a tentacle tormentor</td><td class="lv">1</td><td class="st">Tentacle</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">AoE Recant Magic, knockback, lifetap</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">amygdalan knight</td><td class="lv">2</td><td class="st">Denizen</td><td class="cls">SHD</td><td class="si no">no</td><td class="st">Harm Touch, Mana Sink, skeleton pet</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">amygdalan warrior</td><td class="lv">2</td><td class="st">Denizen</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">Mana Sink, high MR</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a decrepit warder</td><td class="lv">1</td><td class="st">not recorded</td><td class="cls">not recorded</td><td class="si no">not recorded</td><td class="st">not recorded</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a samhain</td><td class="lv">1</td><td class="st">Scarecrow, undead</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">frequent melee stun proc</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a fetid fiend</td><td class="lv">2</td><td class="st">Zombie, undead</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">melee disease DoT proc</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a spinechiller spider</td><td class="lv">2</td><td class="st">Spider</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">300 cold DoT</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a turmoil toad</td><td class="lv">2</td><td class="st">Froglok Ghoul, undead</td><td class="cls">WAR</td><td class="si">all</td><td class="st">Ghoul Root, Panic. The guild guide moves it here from Hands</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a scareling</td><td class="lv">1</td><td class="st">Imp</td><td class="cls">ROG</td><td class="si">yes</td><td class="st">backstab, Scareling Step</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a shiverback</td><td class="lv">1</td><td class="st">Gorilla, animal</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">hits hard and fast</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a frightfinger</td><td class="lv">2</td><td class="st">Crawling Hand</td><td class="cls">WIZ</td><td class="si">maybe</td><td class="st">damage shield, wizard spells</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a worry wraith</td><td class="lv">2</td><td class="st">Will O&rsquo; Wisp</td><td class="cls">ENC</td><td class="si">maybe</td><td class="st">enchanter spells</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a boogeyman</td><td class="lv">1</td><td class="st">Ghoul, undead</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">Ghoul Root</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a phantasm</td><td class="lv">1</td><td class="st">Spectre, undead</td><td class="cls">WIZ</td><td class="si">yes</td><td class="st">damage shield, wizard spells, stun</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a gorgon</td><td class="lv">2</td><td class="st">Gorgon</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">stun to 15s</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a nightmare</td><td class="lv">2</td><td class="st">Unicorn, <strong>not</strong> an animal</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">blind, fear</td></tr>
+      <tr><td class="slot">All Midnight Clad</td><td class="nmob">phoboplasm</td><td class="lv">&mdash;</td><td class="st">Gelatinous Cube</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">Phobocancel. <strong>Ignores the group split</strong></td></tr>
     </tbody>
-  </table></div>
-  <p class="src">Armour table <span class="tier t3">T3</span> &mdash; eqlwiki, maintained by editor
-    Mazirian through 16 July 2026.</p>
-
-  <p class="tight"><b>Lustrous Russet and Midnight Clad are the two shared sets, and this is now
-    confirmed from the item records themselves.</b> Every Russet piece reads
-    <code>WAR CLR PAL RNG SHD BRD ROG SHM</code> and every Midnight Clad piece reads
-    <code>DRU MNK ROG NEC WIZ MAG ENC BST</code> &mdash; chain and plate against cloth and leather,
-    with Rogue the only class on both lists. Between them they cover all sixteen classes.
-    <b>Phoboplasms drop Midnight Clad; haunted chests in Hate drop Lustrous Russet.</b></p>
-
-  <div class="note"><b>A gap, named rather than smoothed over.</b> <em>a decrepit warder</em> appears in the
-    armour table as a Group 1 Wrist drop and then appears nowhere else on the source page &mdash; no
-    level, no abilities, no sees-invis. A whole mob type is missing its record.</div>
+  </table>
+  </div>
+  <p class="src">Armour columns <span class="tier t3">T3</span> &mdash; eqlwiki, maintained by editor
+    Mazirian through 16 July 2026, and they list Beastlord and Berserker sets, which are classes
+    Project 1999 does not have. Abilities, types and sees-invis <span class="tier t5">T5</span> &mdash;
+    imported. <strong>Group 1 is CLR DRU SHM BST RNG PAL BER MNK; Group 2 is ENC MAG NEC WIZ BRD SHD
+    ROG WAR.</strong></p>
+  <p class="src"><strong>The two shared sets are confirmed from the item records themselves.</strong>
+    Every Lustrous Russet piece reads <code>WAR CLR PAL RNG SHD BRD ROG SHM</code>, every Midnight
+    Clad piece <code>DRU MNK ROG NEC WIZ MAG ENC BST</code>. Rogue is the only class on both, and
+    between them they cover all sixteen. Haunted chests in the Plane of Hate drop Lustrous
+    Russet.</p>
+  <div class="note"><strong>Phoboplasm is the exception, and this half is measured rather than
+    read.</strong> It drops Midnight Clad for <strong>Arms and Legs</strong> as well as for the four
+    Fear slots &mdash; and Arms and Legs are slots the tables give to the Plane of Hate. So a Fear
+    mob can hand you two Hate pieces. <strong>No Lustrous Russet has been recorded from it</strong>,
+    which makes the split it ignores the slot, not the set.</div>
+  <div class="note"><strong>A gap, named rather than smoothed over.</strong> <em>a decrepit
+    warder</em> appears in the armour table as a Group 1 Wrist drop and nowhere else on the source
+    page &mdash; no level, no abilities, no sees-invis. A whole mob type is missing its record.</div>
 </section>
 
 <section>
-  <h2><span class="num">05</span>The population</h2>
-  <p class="lede">Twenty mob types. Non-raid mobs run 48&ndash;51 and the level 51s summon. There are
-    no placeholders here, but a spawn point can hold more than one type &mdash; a spinechiller
-    spider where you expected a scareling.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Mob</th><th>Sees invis</th><th>Type</th><th>Class</th><th>Abilities</th><th>Gives</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">amygdalan knight</td><td>no</td><td>Denizen</td><td>Shadow Knight</td>
-        <td>Harm Touch, Mana Sink, skeleton pet</td><td>Chest &middot; G2</td></tr>
-      <tr><td class="nmob">amygdalan warrior</td><td>no</td><td>Denizen</td><td>Warrior</td>
-        <td>Mana Sink, high MR</td><td>Chest &middot; G2</td></tr>
-      <tr><td class="nmob">a boogeyman</td><td>YES</td><td>Ghoul, undead</td><td>Warrior</td>
-        <td>Ghoul Root</td><td>Feet &middot; G1</td></tr>
-      <tr><td class="nmob">a fetid fiend</td><td>YES</td><td>Zombie, undead</td><td>Warrior</td>
-        <td>melee disease DoT proc</td><td>Wrist &middot; G2</td></tr>
-      <tr><td class="nmob">a frightfinger</td><td>maybe</td><td>Crawling Hand</td><td>Wizard</td>
-        <td>damage shield, wizard spells</td><td>Hands &middot; G2</td></tr>
-      <tr><td class="nmob">a glare lord</td><td>no</td><td>Evil Eye</td><td>Magician</td>
-        <td>AoE Recant Magic, magician spells</td><td>Chest &middot; G1</td></tr>
-      <tr><td class="nmob">a gorgon</td><td>no</td><td>Gorgon</td><td>Warrior</td>
-        <td>stun to 15s</td><td>Feet &middot; G2</td></tr>
-      <tr><td class="nmob">Irak Altil</td><td>?</td><td>Skeleton, undead</td><td>Warrior</td>
-        <td>quads, summons &middot; always 51</td><td>&mdash;</td></tr>
-      <tr><td class="nmob">a nightmare</td><td>no</td><td>Unicorn, <b>not</b> an animal</td><td>Warrior</td>
-        <td>blind, fear</td><td>Feet &middot; G2</td></tr>
-      <tr><td class="nmob">a phantasm</td><td>YES</td><td>Spectre, undead</td><td>Wizard</td>
-        <td>damage shield, wizard spells, stun</td><td>Feet &middot; G1</td></tr>
-      <tr><td class="nmob">phoboplasm</td><td>no</td><td>Gelatinous Cube</td><td>Warrior</td>
-        <td>Phobocancel</td><td><b>all Midnight Clad</b></td></tr>
-      <tr><td class="nmob">a samhain</td><td>YES</td><td>Scarecrow, undead</td><td>Warrior</td>
-        <td>frequent melee stun proc</td><td>Wrist &middot; G1</td></tr>
-      <tr><td class="nmob">a scareling</td><td>YES</td><td>Imp</td><td>Rogue</td>
-        <td>backstab, Scareling Step</td><td>Hands &middot; G1</td></tr>
-      <tr><td class="nmob">a shiverback</td><td>YES</td><td>Gorilla, animal</td><td>Warrior</td>
-        <td>hits hard and fast</td><td>Hands &middot; G1</td></tr>
-      <tr><td class="nmob">a spinechiller spider</td><td>YES</td><td>Spider</td><td>Warrior</td>
-        <td>300 cold DoT</td><td>Wrist &middot; G2</td></tr>
-      <tr><td class="nmob">a tentacle tormentor</td><td>no</td><td>Tentacle</td><td>Warrior</td>
-        <td>AoE Recant Magic, knockback, lifetap</td><td>Chest &middot; G1</td></tr>
-      <tr><td class="nmob">a turmoil toad</td><td>ALL</td><td>Froglok Ghoul, undead</td><td>Warrior</td>
-        <td>Ghoul Root, Panic</td><td>Wrist &middot; G2</td></tr>
-      <tr><td class="nmob">a worry wraith</td><td>maybe</td><td>Will O&rsquo; Wisp</td><td>Enchanter</td>
-        <td>enchanter spells</td><td>Hands &middot; G2</td></tr>
-      <tr><td class="nmob">Wraith of a Shissir</td><td>YES</td><td>Gorgon</td><td>Warrior</td>
-        <td>stun to 15s, summons &middot; always 55</td><td>Enchanter epic component</td></tr>
-      <tr><td class="nmob">a decrepit warder</td><td>not recorded</td><td>not recorded</td><td>not recorded</td>
-        <td>not recorded</td><td>Wrist &middot; G1</td></tr>
-    </tbody>
-  </table></div>
-  <p class="src">Population table <span class="tier t5">T5</span> &mdash; imported, unverified for
-    Legends. Backstab on <em>a scareling</em> is worth noting: two class kits on ordinary trash at
-    D1 are measured in Castle Mistmoore, so a rogue ability on a trash type is normal here
-    rather than surprising.</p>
-  <div class="note">The source spells this mob <em>Wraith of a Shissir</em> in its table and
-    <em>Wraith of a Shissar</em> in its prose, and hedges its own level range as
-    &ldquo;48(49?)&ndash;51&rdquo;. Both are inherited here rather than picking a side.</div>
-</section>
-
-<section>
-  <h2><span class="num">06</span>The five raid targets</h2>
-  <p class="lede">Instance-only since 16 June. The roster below is confirmed by the developers; the
-    numbers beside it are not.</p>
-
-  <p>The patch note of 16 June names them: <em>Fright, Terror, Dread, a dracoliche</em> and
-    <em>Cazic Thule</em> no longer spawn in the open world or in personal instances of the Plane of
-    Fear. That list matches the wiki&rsquo;s roster exactly, so <b>who</b> is here is settled. Every
-    published statistic about them is classic EverQuest.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">Cazic Thule</td><td class="loc">not recorded</td><td class="lv">70</td>
-        <td class="cls">DEITY<br>SHD</td>
-        <td class="src">Top of the Temple &mdash; the fourth band on the floor plan above. Raid
-          instance only since 16 June 2026. Published at AC 400 and 450,000 HP, 2 attacks a round,
-          223&ndash;603 a hit. <strong>Zone-wide social aggro is confirmed by patch note</strong>
-          &mdash; see below. Avatar Power is a top-slot dispel; Panic fears a random target.
-          <strong>The published strategy is classic EverQuest and unusable here.</strong><span class="tag warn">T5 stats</span></td></tr>
-      <tr><td class="nmob">a dracoliche</td><td class="loc">not recorded</td><td class="lv">58</td>
-        <td class="cls">DRAGON SKELETON<br>SHD</td>
-        <td class="src">Wanders. <strong>Not undead</strong>, despite the model. AC 600,
-          175,000 HP published. Deadly Lifetap, Rotting Flesh, summons, unmezzable, uncharmable,
-          unstunnable, unfearable. Small hitbox that melee reportedly struggle to
-          connect with.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Dread</td><td class="loc">-1201, -635</td><td class="lv">55</td>
-        <td class="cls">GOLEM<br>WAR</td>
-        <td class="src">AC 376, 32,500 HP published, max hit about 450. Cazic Touch, Scarab Storm,
-          Enrage, summons, triple attack. The published 72-hour respawn describes an open-world
-          spawn removed on 16 June.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Terror</td><td class="loc">-365, 200</td><td class="lv">55</td>
-        <td class="cls">GOLEM<br>WAR</td>
-        <td class="src">AC 397, 32,000 HP published, 168&ndash;453 a hit. <strong>Frost Breath is a
-          dispel and will break charm on a pet.</strong> Also a 56-point lifetap proc, Enrage,
-          summons, triple attack.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Fright</td><td class="loc">-358, -636</td><td class="lv">55</td>
-        <td class="cls">GOLEM<br>WAR</td>
-        <td class="src">Cazic Touch, Enrage, summons, triple attack. <strong>No AC, no hit points
-          and no attack count are recorded by anyone</strong>, classic sources included, and its
-          damage is written as &ldquo;437?&rdquo;. One of the five is essentially
-          unrecorded.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Wraith of a Shissir</td><td class="loc">not recorded</td><td class="lv">55</td>
-        <td class="cls">GORGON<br>WAR</td>
-        <td class="src">Always level 55. Stun up to 15 seconds, summons. Carries the Head of the
-          Serpent, an Enchanter epic component. The source spells it Shissir in one place and
-          Shissar in another.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Irak Altil</td><td class="loc">not recorded</td><td class="lv">51</td>
-        <td class="cls">SKELETON<br>WAR</td>
-        <td class="src">Always level 51. Quads and summons. Named in the classic strategy as a charm
-          target for extra damage, which is advice written for a game with different charm
-          rules.<span class="tag warn">T5</span></td></tr>
-    </tbody>
-  </table></div>
-  <p class="src">Coordinates are the published pair read as (Y, X). Every coordinate on this site is
-    checked against the drawn floor, and the result of that check for these three is printed under
-    the floor plan at the top of this page.</p>
-
-  <p class="tight"><b>One boss mechanic here is not classic text.</b> The hotfix of 24 June 2026
-    reads: &ldquo;Cazic-Thule now properly calls for his minions when he is engaged in an instance of
-    the Plane of Fear.&rdquo; That is the developers confirming zone-wide social aggro, in a Legends
-    instance. It is the only boss mechanic here the developers have stated outright.</p>
-
-  <div class="note danger"><b>Every published respawn timer for these five is about something that
-    no longer happens.</b> 72 hours for the golems, 7 days for the dracoliche &mdash; those describe
-    an open-world spawn the 16 June patch removed. What governs access now is the raid instance and
-    the weekly loot lockout, which resets Tuesdays at 8AM PST.</div>
-
-  <p class="tight">Raid bosses in Legends run three classes from D3, and every one of these is listed
-    with a single class. That alone dates the table. <b>Which kits they actually run is no longer
-    unpublished.</b> @@FEAR_MEASURED@@ raid targets named above have been killed and parsed at the
-    higher tiers, and every spell each cast is on record.
-    <a href="../learn/difficulty.html">What the difficulty tiers change, measured
-    &rarr;</a> counts those fights out of the data rather than restating a figure. What nobody
-    has pinned is hit points: damage to kill bounds them from above and no more.</p>
-</section>
-
-<section>
-  <h2><span class="num">07</span>Levelling, plat and AA at 46+</h2>
-  <p class="lede">The reputation is real and it has a mechanical basis, but nobody has published a
-    rate.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>What</th><th>Where it comes from</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">ZEM 82.5, or 110%</td>
-        <td>Zone infobox. The 23 June patch note also raised instanced Hate, Fear and Sky to match
-          the open world, so an instance costs you no experience.</td></tr>
-      <tr><td class="nmob">Bosses out of the open world</td>
-        <td>16 June patch note. The zone is trash and minibosses now.</td></tr>
-      <tr><td class="nmob">Loot scales with difficulty</td>
-        <td>29 July hotfix: drops match the tier you are in, with a diminishing chance to roll
-          higher.</td></tr>
-      <tr><td class="nmob">A lockout kill is not a wasted kill</td>
-        <td>28 July patch note: killing a raid boss while locked still gives one guaranteed drop
-          from its unique table.</td></tr>
-      <tr><td class="nmob">AA gain is reported as strong</td>
-        <td>A creator farming the Plane of <em>Hate</em> describes it that way. That is Hate, not
-          Fear, and no rate is published for either.</td></tr>
-    </tbody>
-  </table></div>
-
-  <p class="tight"><b>No plat-per-hour or AA-per-hour figure is printed here, because none has been
-    measured.</b> No source publishes either for this zone at any difficulty.</p>
-  <p class="tight">One creator who has farmed both notes only that &ldquo;the ads in fear can kind of
-    get annoying&rdquo; compared with Hate. Hate also carries the
-    higher ZEM &mdash; 86 against 82.5. If you are choosing purely on experience, Hate is ahead.</p>
-</section>
-
-<section>
-  <h2><span class="num">08</span>What we do not know</h2>
-  <p class="lede">Each of these closes with one log, one screenshot or one <code>/loc</code>. None of
-    them closes by writing more prose.</p>
-  <div class="scroller"><table>
+  <p class="kick">Named gaps</p>
+  <h2 id="open">Still open</h2>
+  <p class="lede">Each closes with one log, one screenshot or one <code>/con</code>.</p>
+  <div class="scroller">
+  <table>
     <thead><tr><th>Open question</th><th>What settles it</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Boss hit points at D0&ndash;D4</td>
-        <td>Still open, and the measured kills do not close it &mdash; damage to kill bounds hit
-          points from above and no more. Not one figure in section 06 is Legends-era. Innoruuk in
-          Hate is the only plane boss with difficulty-tiered HP published anywhere, and even that is
-          a beta-era edit.</td></tr>
-      <tr><td class="nmob">Which class kits attach to bosses at D3+</td>
-        <td><b>Measured.</b> These bosses have been killed and parsed at the higher tiers, and every
-          spell each cast is recorded. <a href="../learn/difficulty.html">The measured difficulty
-          page &rarr;</a></td></tr>
-      <tr><td class="nmob">Fright&rsquo;s stats</td><td>Unrecorded by anyone, classic sources included.</td></tr>
-      <tr><td class="nmob">Trash respawn</td><td>Two passes through the same camp with timestamps.</td></tr>
-      <tr><td class="nmob"><em>a decrepit warder</em></td><td>A single <code>/con</code> and a look at what it drops.</td></tr>
-      <tr><td class="nmob">Whether the mob levels are 48 or 49 at the low end</td>
-        <td>The source hedges it. A handful of <code>/con</code> readings.</td></tr>
-      <tr><td class="nmob">Plat, motes and AA per hour</td><td>A measured parse. Nobody has published these.</td></tr>
+      <tr><td class="nmob">Boss hit points at D0&ndash;D4</td><td class="src">Not one figure in the roster is Legends-era, and the measured kills do not close it: damage to kill bounds hit points from above and no more.</td></tr>
+      <tr><td class="nmob">Fright&rsquo;s stats</td><td class="src">Unrecorded by anyone, classic sources included.</td></tr>
+      <tr><td class="nmob"><em>a decrepit warder</em></td><td class="src">A single <code>/con</code> and a look at what it drops.</td></tr>
+      <tr><td class="nmob">Whether the low end of the mob band is 48 or 49</td><td class="src">The source hedges it. A handful of <code>/con</code> readings.</td></tr>
+      <tr><td class="nmob">Trash respawn</td><td class="src">Two passes through the same camp with timestamps.</td></tr>
+      <tr><td class="nmob">Plat, motes and AA per hour</td><td class="src">A measured parse. Nothing is published for this zone at any difficulty, and the one report of strong AA gain describes the Plane of Hate.</td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
+  <p class="cm">If you are choosing between the planes purely on experience, the Plane of Hate carries
+    a higher ZEM, 86 against 82.5.</p>
 </section>
 
+</main>
+
+<footer><p class="src-line">This survey has no per-zone sourcing block yet. <a href="../sources.html">How this site grades its sources</a>.</p>
+<p class="imprint">Plate 11 &middot; Plane of Fear &middot; through The Feerrott, Antonica &middot; floor derived from fearplane.s3d &middot; north up, west left</p></footer>
+
+</div>
 </div>
 </body>
 </html>

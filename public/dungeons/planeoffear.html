@@ -2,41 +2,268 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Four armour slots, five raid targets, and a published strategy written for a different game. Levels 46+, respawn not recorded. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Four armour slots, and a published strategy written for a different game. Levels 46+, respawn not recorded. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Plane of Fear — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#8FB03A;--accd:#5A7024;--acct:color-mix(in srgb, #8FB03A 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}.cell{background:#251F19;padding:11px 13px}.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}.legend ol{list-style:none;margin:0;padding:0}.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}.legend.n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}.legend.lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
-tbody tr:last-child td{border-bottom:0}.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}.cls.all{color:#5FA37E}.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}.tag.warn{border-color:#C9453A;color:#D46C64}.tag.new{border-color:#5FA37E;color:#5FA37E}.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}.camp.band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}.camp p{font-size:13.5px;margin:0 0 9px}.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}.link.step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}.link.who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}.link.gives{font-size:12.5px;color:#9C958E}.link.gives b{color:var(--acct);font-weight:600}.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+/* THE PLANE OF FEAR SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore survey: a graticule fixed behind the
+   page, a translucent sheet sliding over it, a neatline with an inner rule, and
+   section kickers hanging in the left margin. The MECHANISM is copied; the
+   colour is not. The Plane of Fear owns #8FB03A permanently and no other zone
+   may use it.
+
+   Self-contained: this page never loads assets/site.css. Token names are
+   prefixed --pf- because build3.py appends site.css's :root AFTER this block and
+   an unprefixed --mut or --txt would be silently overwritten. --acc, --accd and
+   --acct are deliberately NOT prefixed: the injected chrome reads them and
+   site.css does not define them.
+
+   Contrast, computed against the lightest ground this page can produce (a
+   graticule crossing under the lamplight, seen through the sheet, #1D180E):
+   ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 8.01, warn 5.16,
+   brass 6.43, brass-t 7.98, ok 5.91. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 7.04 / 4.53 / 5.65 / 7.01 / 5.20. */
+:root{
+  --acc:#8FB03A;--accd:#4F6120;--acct:#9EB952;
+  --pf-g:#120E08;          /* the plotting table */
+  --pf-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --pf-ink:#F2EADA;--pf-txt:#DFD6C4;--pf-mut:#B5AA95;--pf-dim:#9A8F7C;
+  --pf-warn:#D46C64;--pf-brass:#C9922E;--pf-brass-t:#D9A63F;--pf-ok:#5FA37E;
+  --pf-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --pf-r2:#7A6950;         /* a boundary that carries meaning */
+  --pf-2xs:10px;--pf-xs:11.5px;--pf-sm:13.5px;--pf-base:15.5px;--pf-md:18.5px;
+  --pf-lg:22px;--pf-h2:clamp(24px,3.6vw,36px);--pf-h1:clamp(38px,6.6vw,74px);
+  --pf-rad:4px;
+  --pf-s1:4px;--pf-s2:8px;--pf-s3:12px;--pf-s4:16px;
+  --pf-s5:24px;--pf-s6:32px;--pf-s7:48px;--pf-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--pf-g)}
+body{margin:0;background:transparent;color:var(--pf-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--pf-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint.
+
+   Major and minor rules share ONE 152px period per axis instead of two stacked
+   gradients: stacking makes the crossings compound, and the compounding is what
+   eats text contrast. And every stop terminates in rgba(228,210,174,0) rather
+   than the keyword transparent, because older WebKit premultiplies transparent
+   as transparent BLACK and draws a grey seam down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head, the zone's own ink bleeding up from the foot, and a
+   vignette that ONLY darkens, so it cannot cost contrast anywhere. The two
+   washes are anchored at opposite ends and both fall to zero by 62%, so they
+   never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(143,176,58,.045) 0%, rgba(143,176,58,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--pf-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--pf-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--pf-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--pf-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is what makes a column of figures read as instrument output. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--pf-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--pf-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--pf-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--pf-s2);
+  text-wrap:balance;color:var(--pf-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--pf-lg);letter-spacing:.03em;margin:var(--pf-s5) 0 var(--pf-s2);color:var(--pf-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--pf-mut);font-size:var(--pf-md);margin:0 0 var(--pf-s5);max-width:60ch}
+.cm{color:var(--pf-dim);font-size:var(--pf-sm);line-height:1.6;margin:var(--pf-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--pf-r1);padding-left:var(--pf-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--pf-s7) 0 var(--pf-s5);margin-bottom:var(--pf-s2);
+  border-bottom:1px solid var(--pf-r2)}
+.eyebrow{font-size:var(--pf-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--pf-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--pf-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--pf-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--pf-md);
+  color:var(--pf-mut);letter-spacing:.02em;margin:var(--pf-s2) 0 var(--pf-s3);
+  text-transform:uppercase}
+.deck{color:var(--pf-txt);margin:0 0 var(--pf-s5);max-width:66ch}
+.deck strong{color:var(--pf-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--pf-r1);border-left:1px solid var(--pf-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--pf-p);padding:var(--pf-s3);
+  border-right:1px solid var(--pf-r1);border-bottom:1px solid var(--pf-r1)}
+.cell dt{font-size:var(--pf-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--pf-dim);margin:0 0 var(--pf-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--pf-lg);
+  font-weight:600;color:var(--pf-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--pf-xs);font-weight:400;
+  color:var(--pf-mut);display:block;letter-spacing:0}
+.jump{margin:var(--pf-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--pf-s1) var(--pf-s4);font-size:var(--pf-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--pf-mut);text-decoration:none;border-bottom:1px solid var(--pf-r1)}
+.jump a:hover{color:var(--pf-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column.
+   The kicker names what the section is MADE OF; numbered headings are a
+   generated-site tell and are not coming back. */
+section{margin-top:var(--pf-s7);position:relative}
+.kick{font-size:var(--pf-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--pf-dim);margin:0 0 var(--pf-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--pf-r2);padding-left:var(--pf-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--pf-s4) 0}
+.scroller table{min-width:700px}
+.scroller.narrow table{min-width:460px}
+table{border-collapse:collapse;width:100%;font-size:var(--pf-sm);
+  border-top:2px solid var(--pf-brass)}
+th{font-size:var(--pf-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--pf-mut);
+  text-align:left;padding:var(--pf-s2) var(--pf-s3) var(--pf-s2) 0;background:none;
+  border-bottom:1px solid var(--pf-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--pf-s3) var(--pf-s3) var(--pf-s3) 0;border-bottom:1px solid var(--pf-r1);
+  vertical-align:top;background:none}
+tbody tr:last-child td{border-bottom:0}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(143,176,58,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--pf-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--pf-sm);text-align:right;white-space:nowrap;color:var(--pf-txt)}
+th.lv{text-align:right}
+.slot{font-family:"Saira Condensed",sans-serif;font-size:var(--pf-base);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--acct);white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--pf-base);font-weight:600;
+  letter-spacing:.02em;color:var(--pf-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--pf-base);font-weight:600;
+  letter-spacing:.02em;color:var(--pf-ink)}
+/* The colour is inherited rather than set, so every contrast ratio measured on
+   this sheet is unchanged and the underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--pf-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--pf-xs);color:var(--pf-mut);letter-spacing:.04em;line-height:1.45}
+.st{font-size:var(--pf-xs);color:var(--pf-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--pf-sm);color:var(--pf-mut)}
+.si{font-size:var(--pf-2xs);letter-spacing:.1em;text-transform:uppercase;color:var(--pf-warn)}
+.si.no{color:var(--pf-dim)}
+.tag{font-size:var(--pf-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--pf-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--pf-warn)}
+.tier{font-size:var(--pf-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid currentColor;
+  border-radius:2px;color:var(--pf-dim);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+.tier.t3{color:var(--pf-brass-t)}
+.tier.t5{color:var(--pf-warn)}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--pf-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--pf-base);
+  letter-spacing:.02em;color:var(--pf-ink);padding:var(--pf-s3) var(--pf-s5) var(--pf-s3) 0;
+  border-bottom:1px solid var(--pf-r1)}
+.key dd{margin:0;font-size:var(--pf-sm);color:var(--pf-mut);padding:var(--pf-s3) 0;
+  border-bottom:1px solid var(--pf-r1)}
+.key strong{color:var(--pf-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not five identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--pf-s5) 0 0;padding:0 0 0 var(--pf-s5);
+  border-left:2px solid var(--pf-warn);max-width:74ch}
+ul.hz li{padding:var(--pf-s4) 0;border-top:1px solid var(--pf-r1);color:var(--pf-mut);
+  font-size:var(--pf-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--pf-base);
+  color:var(--pf-warn);margin-bottom:var(--pf-s1)}
+ul.hz strong{color:var(--pf-ink)}
+
+.note{border-left:1px solid var(--pf-r1);padding:var(--pf-s1) 0 var(--pf-s1) var(--pf-s4);
+  margin:var(--pf-s5) 0 0;color:var(--pf-mut);font-size:var(--pf-sm);max-width:68ch}
+.note strong{color:var(--pf-ink)}
+.quote{border-left:3px solid var(--accd);margin:var(--pf-s4) 0;padding:var(--pf-s2) 0 var(--pf-s2) var(--pf-s4);
+  font-family:"Saira Condensed",sans-serif;font-size:var(--pf-lg);font-weight:600;
+  line-height:1.25;color:var(--pf-ink);max-width:56ch}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--pf-s8);padding-top:var(--pf-s5);border-top:1px solid var(--pf-r2);
+  color:var(--pf-mut);font-size:var(--pf-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.quote{border-left:3px solid var(--accd);margin:18px 0;padding:10px 0 10px 18px;font-family:"Saira Condensed",sans-serif;font-size:clamp(19px,3.4vw,25px);font-weight:500;line-height:1.25;color:#E6E9E4;max-width:60ch}
-.why{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:13px;max-width:78ch}
-.why li{border-left:2px solid #40372D;padding:2px 0 2px 16px}
-.why b{color:#E6E9E4}
-.cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#9C958E;display:block;margin-top:2px}
-.ck{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--acct);display:block}
-.tier{font-size:9.5px;letter-spacing:.12em;padding:1px 5px;border:1px solid currentColor;border-radius:2px;font-family:"IBM Plex Mono",monospace;white-space:nowrap;text-transform:uppercase}
-.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
-.tc{color:#8FBEE4;border-color:#8FBEE4}
+.imprint{font-size:var(--pf-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--pf-dim);margin:var(--pf-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one step
+   higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .meas table{border-top:2px solid var(--pf-brass)}
+body .meas td{border-bottom:1px solid var(--pf-r1)}   /* its #322A23 is 1.4:1 */
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+body .fp-wrap{border-radius:var(--pf-rad)}
+/* One heading level, one rule. The two injected sections carry their own h2
+   treatments, four points smaller than every other heading on the page and with
+   four times the tracking. */
+body .meas,body .fplan{margin-top:var(--pf-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--pf-h2);letter-spacing:.005em;line-height:1}
+/* The spine rail would otherwise have holes at both ends: the injected sections
+   are the first and the last on the page and neither carries a kicker. Their
+   generators are not this file's to edit, so the labels are set here, in the
+   same register as the authored four. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--pf-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--pf-dim);display:block;margin:0 0 var(--pf-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 <style>:root{--surface-0:#0B0704;--surface-1:#191309;--surface-2:#282013;--ground:var(--surface-0);--panel:var(--surface-1);--panel2:var(--surface-2);--rule:#544833;--rule2:#6B5C46;--line:var(--rule);--ink:var(--bone);--bone:#F2EADA;--txt:#DFD6C4;--mut:#B5AA95;--dim:#9A8F7C;--faint:#978C7C;--ok:#5FA37E;--warn:#C9453A;--warn-t:#D46C64;--ember:#C4482E;--ember-t:#D76C55;--instr:#7FB2C7;--brass:#C9922E;--brass-t:#D9A63F;--lava:#FF2800;--lava-t:#FF6A4D;--r:4px;--speed:.16s;}</style><style>
 .inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
@@ -45,7 +272,7 @@ footer h3{margin-top:0}
 .inj-contact strong{color:var(--bone)}
 .inj-contact a{color:#8FBEE4}
 .inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
-</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Plane of Fear — Survey | EverQuest Legends"><meta property="og:description" content="Four armour slots, five raid targets, and a published strategy written for a different game. Levels 46+, respawn not recorded. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-planeoffear.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Plane of Fear — Survey | EverQuest Legends"><meta name="twitter:description" content="Four armour slots, five raid targets, and a published strategy written for a different game. Levels 46+, respawn not recorded. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-planeoffear.png"><link rel="canonical" href="https://eqlsource.com/dungeons/planeoffear">
+</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Plane of Fear — Survey | EverQuest Legends"><meta property="og:description" content="Four armour slots, and a published strategy written for a different game. Levels 46+, respawn not recorded. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-planeoffear.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Plane of Fear — Survey | EverQuest Legends"><meta name="twitter:description" content="Four armour slots, and a published strategy written for a different game. Levels 46+, respawn not recorded. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-planeoffear.png"><link rel="canonical" href="https://eqlsource.com/dungeons/planeoffear">
 <style>
 .ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
@@ -94,6 +321,18 @@ footer h3{margin-top:0}
 .fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
   color:var(--bone)}
 .fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
+/* THE `hidden` ATTRIBUTE DOES NOT HIDE AN SVG ELEMENT. It is an HTML attribute:
+   the rule that honours it lives in the browser's HTML stylesheet, and `.hidden`
+   is an IDL property of HTMLElement, which SVGGElement is not. So the route
+   group shipped with `hidden` set and a computed display of `inline` — the line
+   and its numbered stops were drawn on every plan, always, while the button
+   flipped a property nothing read. The sibling HTML note beside it honoured
+   `hidden` correctly, which is why half the control appeared to work.
+   The numerals had no explanation on screen because the note they belong to was
+   the half that stayed hidden. Two changes, and both are needed: this rule makes
+   the attribute mean something here, and the handler below sets the ATTRIBUTE
+   rather than the property. */
+svg .route[hidden]{display:none}
 .plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
 .mk{cursor:pointer}
 .mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
@@ -143,336 +382,213 @@ footer h3{margin-top:0}
 <body>
 <div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:var(--txt)">Survey 11 &middot; Plane of Fear</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 11 · through The Feerrott, Antonica</p>
-  <h1>Plane of Fear</h1>
-  <p class="subtitle">Four armour slots, five raid targets, and a published strategy written for a different game</p>
+  <p class="eyebrow">Dungeon survey &middot; through The Feerrott</p>
+  <div class="title"><h1>Plane of Fear</h1><span class="leader"></span><span class="plateno">11</span></div>
+  <p class="subtitle">Four armour slots, and a published strategy written for a different game</p>
+  <p class="deck">A one-way portal in the Feerrott spectre caves, monsters at 48 to 51, and a hard
+    level gate at 46. Come for four of the seven planar armour slots &mdash; <strong>Chest, Wrist,
+    Hands and Feet, and every ordinary mob here drops one of them</strong>. The raid targets are
+    instance-only and almost every number published about them is classic EverQuest.
+    <strong>Arriving alone is what kills people</strong>: the portal is guarded, and there is no
+    ordinary way out.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>fearplane</dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>48&ndash;51<small>source hedges the 48</small></dd></div>
     <div class="cell"><dt>Minimum level</dt><dd>46<small>hard gate</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>82.5<small>110% &mdash; was 75</small></dd></div>
-    <div class="cell"><dt>Zone respawn</dt><dd>not recorded<small>by anyone</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>not recorded<small>by anyone</small></dd></div>
+    <div class="cell"><dt>Raid targets</dt><dd>Instance<small>since 16 June 2026</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>&minus;1139, 1282</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>The Feerrott<small>one way in</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>None ordinary<small>Gate, a port, or dying</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#open">Still open</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
+<main>
+
 <section class="fplan"><h2>Floor plan</h2><p class="fp-lede">Where the walkable floor ends, computed from the zone&rsquo;s own geometry in the game files, with the 3 named mobs whose positions are on record plotted on it. This zone has 4 levels and they overlap when flattened, so the control above isolates one at a time.</p><div class="fp-toggles"><button type="button" class="fp-t on" data-t="names" aria-pressed="true">Names</button><button type="button" class="fp-t" data-t="route" aria-pressed="false">Farming route</button></div><div class="fp-levels"><span class="lab">Height</span><button type="button" data-lyr="all" class="on" aria-pressed="true">All<span>4 levels</span></button><button type="button" data-lyr="3" aria-pressed="false">4<span>249 to 401</span></button><button type="button" data-lyr="2" aria-pressed="false">3<span>121 to 201</span></button><button type="button" data-lyr="1" aria-pressed="false">2<span>52 to 119</span></button><button type="button" data-lyr="0" aria-pressed="false">1<span>-54 to 44</span></button></div><div class="fp-wrap"><svg class="plotsvg" viewBox="-1649 -1658 3300 3750" role="img" aria-label="Survey plot of Plane of Fear. 3 recorded named-mob positions, labelled in place and coloured by level. Dashed outlines group positions that sit close together; they are not room shapes. North is up, west is left. Every position is also listed as text beneath the plot."><rect x="-1649" y="-1658" width="3300" height="3750" fill="#191410"/><line x1="-1500" y1="-1658" x2="-1500" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1000" y1="-1658" x2="-1000" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-500" y1="-1658" x2="-500" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="-1658" x2="0" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="500" y1="-1658" x2="500" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="1000" y1="-1658" x2="1000" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="1500" y1="-1658" x2="1500" y2="2092" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="-1500" x2="1651" y2="-1500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="-1000" x2="1651" y2="-1000" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="-500" x2="1651" y2="-500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="0" x2="1651" y2="0" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="500" x2="1651" y2="500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="1000" x2="1651" y2="1000" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="1500" x2="1651" y2="1500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1649" y1="2000" x2="1651" y2="2000" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><g class="lyr" data-lyr="0" data-z0="-54" data-z1="44" fill="none" stroke="#8FB03A" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="-849,-108 -824,-108 -824,-133 -849,-108 -824,-83 -824,-33 -799,-58 -799,42 -824,17 -824,67 -849,92 -899,92 -899,42 -949,-8 -949,-58 -899,-58 -899,-108 -849,-108"/><polyline points="-849,492 -824,542 -799,542 -799,592 -824,567 -824,592 -849,542 -949,542 -949,492 -899,492 -899,442 -849,442 -849,492"/><polyline points="1301,-308 1351,-308 1301,-358 1301,-308 1251,-308 1251,-283 1301,-283 1301,-308"/><polyline points="1001,-308 1051,-308 1051,-358 1101,-358 1101,-308 1151,-308 1126,-283 1176,-283 1201,-258 1201,-208 1151,-208 1151,-158 1101,-208 1101,-158 1051,-208 1001,-208 1001,-258 976,-283 1026,-283 1001,-308"/><polyline points="-549,-258 -549,-158 -499,-158 -499,-208 -449,-208 -449,-283 -424,-283 -449,-258 -474,-283 -499,-283 -549,-308 -599,-308 -574,-283 -599,-283 -549,-258"/><polyline points="801,1042 826,1067 826,1017 851,992 901,992 901,1042 951,1092 951,1142 901,1142 901,1192 826,1192 826,1217 851,1242 851,1192 826,1167 826,1117 801,1142 801,1042"/><polyline points="-299,-558 -274,-583 -249,-558 -199,-558 -149,-538 -188,-508 -175,-484 -199,-465 -203,-462 -222,-481 -208,-458 -249,-461 -249,-441 -274,-430 -260,-419 -274,-433 -274,-442 -253,-458 -274,-460 -274,-558 -136,-558 -274,-421 -274,-460 -258,-467 -274,-483 -274,-533 -349,-558 -349,-595 -299,-558"/><polyline points="-649,592 -649,642 -599,642 -399,842 -449,842 -449,892 -499,892 -499,942 -549,942 -549,842 -599,817 -574,817 -599,792 -549,792 -549,542 -499,542 -549,492 -549,392 -499,392 -499,342 -449,342 -449,267 -424,267 -449,292 -474,267 -499,267 -549,242 -549,267 -574,267 -549,292 -549,392 -599,392 -549,492 -599,492 -599,542 -649,542 -649,592"/><polyline points="901,42 951,42 951,-8 901,-58 901,-108 851,-108 826,-133 801,-108 751,-108 751,-58 701,-58 701,-8 751,42 751,92 801,92 826,142 826,117 851,92 901,92 901,42"/><polyline points="101,-308 151,-283 151,-258 251,-158 251,-283 101,-283 101,-308 76,-283 26,-283 51,-258 1,-258 1,-158 51,-108 101,-108 101,-58 201,42 201,92 251,92 276,142 276,117 301,92 351,92 351,42 401,42 401,-8 301,-8 276,-58 276,-33 251,-58 251,-8 -49,-8 1,42 1,-158 -49,-208 -99,-208 -99,-258 -149,-308 -99,-308 -99,-358 -49,-358 -49,-408 1,-408 51,-358 101,-358 101,-308"/><polyline points="-999,-283 -999,-258 -1024,-283 -1049,-283 -1099,-308 -1099,-408 -1149,-408 -1149,-358 -1199,-358 -1199,-308 -1174,-283 -1149,-283 -1099,-258 -1099,-208 -1049,-158 -1049,-208 -999,-208 -999,-258 -949,-258 -974,-283 -999,-283"/><polyline points="-1299,-8 -1149,92 -1249,-8 -1199,-8 -1199,-108 -1099,-108 -1099,-58 -1049,-8 -1099,-8 -1099,142 -1049,192 -999,192 -999,242 -974,267 -999,292 -999,342 -1049,342 -1049,392 -1099,392 -1149,342 -1199,342 -1199,267 -1249,292 -1199,292 -1174,267 -1124,267 -1149,242 -1099,242 -1099,142 -1299,-8"/><polyline points="1001,-758 1051,-758 1101,-708 1101,-758 1201,-708 1151,-758 1201,-758 1201,-808 1251,-808 1226,-833 1251,-833 1201,-858 1201,-908 1151,-908 1151,-958 1051,-958 1051,-908 1001,-908 1001,-858 976,-833 1001,-808 1001,-758"/><polyline points="-799,892 -799,942 -849,942 -899,892 -899,742 -849,742 -849,692 -799,692 -699,792 -699,842 -749,842 -749,892 -799,892"/><polyline points="-824,-408 -799,-408 -699,-308 -699,-258 -749,-258 -749,-208 -799,-208 -799,-158 -824,-158 -824,-233 -874,-283 -949,-283 -949,-308 -899,-308 -899,-358 -849,-358 -849,-408 -824,-408"/><polyline points="-1149,742 -1149,792 -1174,817 -1199,792 -1199,742 -1149,742"/><polyline points="-274,-1158 -274,-1150 -293,-1158 -274,-1133 -299,-1158 -299,-1108 -399,-1108 -399,-1158 -349,-1158 -364,-1173 -360,-1186 -349,-1199 -338,-1198 -299,-1208 -299,-1222 -274,-1233 -286,-1246 -274,-1246 -249,-1208 -199,-1208 -199,-1158 -221,-1158 -249,-1169 -249,-1158 -274,-1158"/><polyline points="1201,842 1226,817 1201,817 1201,892 1151,892 1151,942 1101,942 1051,892 1051,942 1001,892 1001,842 976,817 1001,792 1001,742 1051,742 1051,692 1101,692 1101,792 1151,792 1126,817 1176,817 1201,842"/><polyline points="826,-1183 826,-1133 801,-1158 801,-1108 701,-1108 751,-1058 751,-1008 801,-1008 801,-1058 826,-1058 826,-1083 851,-1058 851,-1108 901,-1058 901,-1108 951,-1058 951,-1108 901,-1158 901,-1208 851,-1208 826,-1183"/><polyline points="51,342 101,342 101,292 151,292 126,267 151,267 101,242 101,192 51,192 1,142 -49,142 -49,192 -99,192 -99,242 -149,242 -99,292 -99,342 -49,342 1,392 51,392 51,342"/><polyline points="351,267 401,267 401,292 351,292 351,342 301,342 301,392 276,392 276,317 226,267 251,267 251,242 276,217 326,267 351,267"/><polyline points="-599,-1308 -536,-1246 -549,-1246 -549,-1258 -499,-1258 -499,-1308 -599,-1308"/><polyline points="-274,1317 -274,1342 -299,1292 -299,1242 -249,1242 -199,1292 -249,1292 -249,1342 -274,1317"/><polyline points="801,-858 826,-883 876,-833 851,-808 826,-808 826,-783 776,-833 801,-833 801,-858"/><polyline points="-899,-908 -899,-858 -949,-858 -949,-808 -899,-808 -849,-658 -899,-833 -849,-708 -824,-708 -824,-696 -802,-708 -824,-708 -804,-713 -798,-708 -788,-747 -776,-735 -749,-758 -749,-808 -699,-808 -699,-858 -799,-958 -849,-958 -849,-908 -899,-908"/><polyline points="-1199,992 -1199,1092 -1149,1092 -1099,1142 -1099,1192 -999,1192 -999,1092 -949,1092 -999,1042 -999,992 -1049,992 -1099,942 -1099,992 -1199,992"/><polyline points="1151,-1308 1151,-1258 1101,-1258 1051,-1308 1151,-1308"/><polyline points="-824,-421 -824,-283 -686,-283 -686,-421 -824,-421"/><polyline points="-1299,1092 -1299,1142 -1249,1142 -1249,1092 -1299,1092"/><polyline points="401,-808 401,-758 301,-758 301,-708 276,-708 276,-833 376,-833 401,-808"/><polyline points="801,-1258 826,-1258 826,-1333 801,-1308 751,-1308 801,-1258"/><polyline points="1094,-600 1132,-646 1209,-582 1145,-506 1068,-570 1081,-585 1142,-534 1181,-580 1135,-618 1084,-558 1076,-558 1066,-567 1094,-600"/><polyline points="-1249,-958 -1149,-908 -1149,-958 -1099,-958 -1099,-908 -1074,-833 -1099,-833 -824,-833 -824,-971 -773,-971 -686,-833 -809,-833 -686,-696 -686,-558 -549,-558 -686,-696 -824,-762 -1099,-833 -1099,-808 -1124,-833 -1224,-833 -1249,-858 -1124,-833 -1249,-958"/><polyline points="-824,-1333 -824,-1258 -849,-1258 -899,-1308 -849,-1308 -824,-1333"/><polyline points="-1199,-658 -1099,-658 -1099,-708 -949,-558 -999,-558 -999,-458 -1099,-458 -1099,-558 -1299,-558 -1299,-408 -1249,-558 -1199,-608 -1199,-658"/><polyline points="1,-1008 101,-1008 101,-1058 151,-1108 51,-1208 51,-1258 1,-1258 1,-992 276,-1108 -49,-1108 1,-1058 1,-1008"/><polyline points="251,-1458 301,-1458 276,-1433 251,-1458"/><polyline points="751,442 801,442 826,417 826,392 851,442 901,442 901,492 951,542 951,592 901,592 901,642 851,642 826,617 826,567 801,592 801,542 701,542 701,492 751,492 751,442"/><polyline points="826,1267 826,1317 801,1342 801,1242 826,1242 826,1267"/><polyline points="551,892 551,942 601,992 651,992 651,1042 701,1092 651,1092 651,1192 551,1192 551,1242 501,1192 451,1192 451,1142 401,1092 551,1092 551,942 501,892 451,892 451,842 401,817 426,817 401,792 451,792 451,742 501,742 501,692 551,692 551,792 601,792 576,817 601,842 551,842 551,892"/><polyline points="-1199,792 -1199,817 -1224,817 -1199,792"/><polyline points="551,-808 551,-708 601,-708 601,-758 651,-758 651,-808 701,-808 651,-858 601,-1008 551,-908 551,-958 501,-958 501,-908 451,-908 451,-858 476,-833 501,-833 551,-808"/><polyline points="501,-658 551,-658 551,-608 601,-558 551,-558 964,-558 826,-833 826,-421 826,-508 901,-508 901,-558 951,-558 901,-608 901,-658 851,-658 826,-708 826,-683 801,-658 751,-658 751,-608 701,-608 701,-558 751,-508 751,-458 801,-458 826,-421 551,-558 551,-508 501,-558 451,-558 451,-658 501,-658"/><polyline points="980,-415 988,-414 990,-406 985,-400 977,-402 975,-409 980,-415"/><polyline points="-274,667 -249,692 -249,642 -199,642 -199,542 -149,592 -149,542 -199,442 -249,442 -274,392 -274,417 -299,392 -299,442 -349,442 -349,492 -399,492 -399,542 -349,592 -349,642 -299,642 -274,667"/><polyline points="-199,1092 -149,1092 -99,1142 -99,1192 -49,1192 1,1242 1,1192 101,1192 101,1092 151,1092 101,1042 101,992 51,992 1,942 1,1092 -149,1092 -149,1042 -199,1092 -249,1092 -249,1142 -274,1117 -299,1142 -299,1092 -399,1092 -349,992 -299,992 -274,942 -249,942 -199,1092"/><polyline points="-99,892 -49,892 1,942 1,842 51,842 26,817 51,792 1,792 1,692 -49,692 -49,742 -99,742 -99,792 -149,792 -99,817 -149,817 -99,842 -99,892"/><polyline points="501,-1108 551,-1108 551,-1058 501,-1108"/><polyline points="276,1242 301,1242 351,1292 301,1292 301,1342 276,1317 251,1342 251,1242 276,1242"/><polyline points="-549,92 -549,-8 -274,-8 -274,117 -249,92 -199,92 -199,42 -149,42 -149,-8 -199,-58 -199,-108 -249,-108 -274,-158 -274,-133 -299,-108 -349,-108 -349,-58 -399,-58 -399,-8 -299,-8 -299,42 -274,-8 -549,129 -599,92 -549,92"/><polyline points="351,-1158 401,-1108 401,-1058 351,-1058 351,-1008 301,-1008 276,-1033 276,-1058 251,-1108 251,-1158 276,-1133 276,-1258 301,-1208 351,-1208 351,-1158"/><polyline points="-208,-1084 -208,-1049 -244,-1049 -244,-1084 -208,-1084"/><polyline points="964,-409 974,-420 970,-433 956,-436 947,-425 951,-411 964,-409"/><polyline points="276,542 276,567 251,542 151,542 151,492 201,442 251,442 251,392 276,417 276,517 301,492 301,542 276,542"/><polyline points="176,-833 201,-833 251,-1008 201,-858 151,-858 151,-833 176,-833"/><polyline points="301,992 351,992 351,1042 401,1092 301,1092 301,1142 276,1117 251,1142 251,1042 276,1067 276,1017 301,992 276,992 276,942 301,992"/><polyline points="-1149,542 -1099,592 -1099,611 -1056,592 -1031,592 -999,598 -999,542 -1049,542 -1099,492 -1099,679 -962,542 -1149,542"/><polyline points="-274,867 -249,842 -249,817 -224,817 -274,767 -274,792 -299,792 -324,817 -274,867"/><polyline points="-687,187 -675,180 -663,187 -663,201 -675,208 -687,201 -687,187"/><polyline points="-1149,-1508 -1099,-1458 -1149,-1458 -1199,-1508 -1149,-1508"/><polyline points="-82,-558 -72,-581 -98,-558 -49,-558 1,-508 1,-558 51,-558 1,-608 1,-696 -23,-696 1,-658 -28,-687 -43,-652 -49,-658 -49,-636 -70,-658 -90,-608 -94,-608 -93,-602 -96,-605 -99,-587 -118,-577 -132,-558 -111,-558 -108,-567 -98,-558 -51,-696 -82,-558 1,-558 1,-696 -25,-696 -82,-558"/><polyline points="1101,1042 1151,1092 1201,1092 1201,1192 1101,1192 1101,1142 1051,1092 1101,1092 1101,1042"/><polyline points="-183,-728 -183,-693 -148,-693 -148,-728 -183,-728"/><polyline points="1301,-58 1351,-8 1351,42 1301,42 1251,-8 1251,-58 1301,-58"/><polyline points="251,942 276,942 276,842 301,842 301,817 326,817 276,767 276,717 251,692 251,742 201,742 201,792 151,792 151,842 251,942"/><polyline points="-274,-408 -274,-328 -298,-421 -274,-421 -274,-328 -224,-283 -249,-283 -249,-258 -274,-233 -299,-258 -299,-283 -399,-283 -399,-308 -349,-308 -349,-399 -299,-358 -299,-408"/><polyline points="1,592 1,642 101,642 101,542 51,542 1,492 1,542 -49,542 1,592"/><polyline points="1451,792 1451,817 1476,817 1451,792"/><polyline points="776,267 801,267 801,242 826,242 826,217 876,267 851,292 826,292 826,317 776,267"/><polyline points="1101,142 1226,267 1201,267 1201,242 1176,267 1101,267 1101,392 1151,442 1201,442 1201,542 1151,492 1151,542 1101,492 1101,392 1001,392 1001,292 976,267 1001,242 1001,142 1101,267 1001,92 1101,192 1101,142"/><polyline points="826,-1233 851,-1208 826,-1208 826,-1233"/><polyline points="-1099,1242 -1099,1342 -1149,1292 -1149,1242 -1099,1242"/><polyline points="-1299,267 -1274,267 -1299,242 -1324,267 -1299,267"/><polyline points="-849,1242 -849,1292 -799,1342 -799,1292 -749,1292 -799,1242 -849,1242"/><polyline points="-1299,817 -1249,817 -1249,842 -1299,842 -1324,817 -1299,817"/><polyline points="626,-283 651,-283 601,-308 651,-308 651,-358 601,-358 551,-408 501,-408 501,-358 451,-358 451,-308 476,-283 501,-283 551,-258 551,-158 601,-158 601,-208 651,-208 601,-258 651,-258 626,-283"/><polyline points="-274,317 -249,292 -249,267 -224,267 -274,217 -274,142 -299,142 -299,192 -349,192 -349,242 -399,242 -399,267 -324,267 -274,317"/><polyline points="819,-283 839,-266 852,-281 775,-345 711,-269 788,-205 854,-283 843,-283 834,-291 785,-233 739,-271 778,-317 819,-283"/><polyline points="1301,817 1326,817 1351,842 1351,817 1301,792 1251,792 1251,817 1301,817"/><polyline points="-1349,-833 -1299,-808 -1249,-808 -1249,-833 -1349,-833"/><polyline points="1051,-8 1101,42 1101,-8 1051,-8"/><polyline points="826,692 826,767 876,817 826,867 826,992 851,992 826,942 801,942 701,842 701,792 751,792 751,742 801,742 801,692 826,692"/><polyline points="1,-833 1,-732 -12,-833 -32,-833 -36,-808 -9,-808 -3,-762 1,-808 1,-708 51,-708 51,-758 101,-758 101,-808 76,-833 26,-833 51,-858 1,-858 1,-958 -12,-971 1,-971 1,-958 -38,-947 -49,-908 -53,-912 -99,-908 -99,-858 -136,-846 -136,-833 -149,-833 -149,-822 -136,-833 -99,-833 -99,-858 -74,-833 -40,-833 -136,-971 1,-853 1,-971 -48,-971 1,-853"/><polyline points="1301,292 1301,342 1251,292 1251,267 1326,267 1351,292 1301,292"/><polyline points="-568,-547 -568,-512 -533,-512 -533,-547 -568,-547"/><polyline points="-1349,-1108 -1299,-1108 -1249,-1008 -1349,-1108"/><polyline points="251,-1308 276,-1333 276,-1258 251,-1258 201,-1308 251,-1308"/><polyline points="1301,-608 1301,-558 1351,-558 1301,-608"/><polyline points="1051,542 1101,542 1101,592 1051,542"/><polyline points="151,-558 201,-508 201,-458 251,-458 276,-433 301,-458 351,-458 351,-508 401,-508 401,-558 301,-558 276,-608 276,-633 251,-658 201,-658 201,-608 151,-608 151,-558"/><polyline points="501,267 551,292 551,392 601,392 601,342 651,342 651,267 676,267 651,242 651,192 601,192 551,142 501,142 501,192 451,192 451,242 476,267 501,267"/><polyline points="-824,-608 -799,-558 -799,-508 -824,-533 -824,-508 -849,-558 -824,-558 -824,-608"/><polyline points="-499,-1008 -482,-1008 -460,-1019 -449,-1032 -449,-1108 -499,-1108 -549,-1149 -543,-1152 -549,-1158 -549,-1149 -578,-1137 -549,-1108 -549,-1008 -499,-1008"/><polyline points="414,-8 551,-8 551,42 501,-8 451,-8 451,-108 551,-108 551,-58 601,-8 551,-8 551,-146 414,-146 414,-8 276,-8 276,267 414,-8"/><polyline points="-685,-86 -685,6 -665,6 -665,-66 -605,-66 -605,-6 -685,-6 -685,14 -585,14 -585,-86 -685,-86"/><polyline points="551,442 551,492 601,542 651,542 651,642 551,642 551,592 501,542 451,542 451,442 551,442"/><polyline points="251,-308 276,-333 276,-308 251,-308"/><polyline points="-1299,542 -1249,542 -1249,592 -1299,592 -1299,542 -1249,442 -1299,492 -1299,542"/><polyline points="-824,-696 -796,-696 -824,-762 -824,-696"/><polyline points="1101,-1058 1151,-1108 1051,-1108 1101,-1058"/><polyline points="-49,-1308 1,-1308 1,-1258 -49,-1308"/><polyline points="-745,374 -665,374 -665,394 -745,394 -745,454 -685,454 -685,370 -665,370 -665,474 -765,474 -765,374 -745,374"/><polyline points="-1099,-1058 -1099,-1008 -999,-1008 -999,-1108 -949,-1108 -1099,-1308 -1149,-1108 -1099,-1058"/><polyline points="-639,190 -639,198 -646,202 -653,198 -653,190 -646,186 -639,190"/><polyline points="1088,-421 1101,-408 1101,-421 1088,-421"/><polyline points="-549,1042 -499,1092 -449,1092 -449,1192 -549,1192 -549,1242 -599,1192 -649,1192 -649,1142 -699,1092 -649,1092 -649,992 -549,992 -549,1042"/><polyline points="-1449,-858 -1449,-808 -1424,-833 -1449,-858"/><polyline points="-1349,-283 -1299,-258 -1249,-258 -1249,-283 -1349,-283"/><polyline points="1251,1092 1351,1092 1301,1042 1251,1042 1251,1092"/><polyline points="-799,-1208 -749,-1208 -749,-1158 -699,-1108 -799,-1108 -799,-1058 -849,-1108 -849,-1158 -824,-1133 -824,-1233 -799,-1208"/><polyline points="1251,-1158 1301,-1108 1251,-1108 1301,-1058 1301,-1108 1351,-1108 1301,-1158 1251,-1158"/><polyline points="-274,-1458 -274,-1433 -249,-1458 -274,-1458"/><polyline points="-1499,1042 -1449,1042 -1449,1092 -1499,1042"/><polyline points="-799,1092 -799,1142 -824,1117 -849,1142 -849,1042 -824,1067 -824,1042 -799,1092"/><polyline points="426,267 451,242 451,267 426,267"/><polyline points="-696,190 -696,198 -703,202 -710,198 -710,190 -703,186 -696,190"/><polyline points="276,-158 276,-156 251,-158 276,-158"/><polyline points="-149,-558 -139,-548 -136,-558 -149,-558"/><polyline points="826,-1433 851,-1458 826,-1483 801,-1458 826,-1433"/><polyline points="-1224,-283 -1199,-283 -1199,-308 -1249,-308 -1224,-283"/><polyline points="651,-1208 651,-1158 701,-1108 551,-1108 551,-1258 601,-1208 651,-1208"/><polyline points="251,-758 276,-833 276,-958 251,-958 201,-833 251,-833 251,-758"/><polyline points="101,-833 126,-833 151,-808 101,-808 101,-833"/><polyline points="-499,-8 -449,-8 -449,92 -499,92 -499,-8"/><polyline points="1051,1292 1101,1342 1101,1242 1051,1242 1051,1292"/><polyline points="-1449,817 -1424,817 -1449,792 -1449,817"/><polyline points="-799,142 -799,192 -824,217 -824,142 -799,142"/><polyline points="-824,679 -824,1092 -962,817 -824,679"/><polyline points="-549,-971 -412,-971 -412,-1108 -549,-1108 -549,-971"/><polyline points="-849,92 -824,92 -824,117 -849,92"/><polyline points="1,-283 276,-146 276,-283 1,-283"/><polyline points="931,-446 936,-452 944,-450 947,-443 942,-437 934,-438 931,-446"/><polyline points="-799,267 -799,292 -824,317 -874,267 -824,267 -824,217 -799,242 -799,267"/><polyline points="1101,-283 1101,-8 1151,-8 1101,-58 1101,-8 964,-283 1101,-283"/><polyline points="-824,-1108 -716,-1108 -824,-1383 -824,-1108"/><polyline points="826,642 826,667 851,692 851,642 826,642"/><polyline points="-689,-558 -675,-540 -649,-558 -689,-558"/><polyline points="-412,-283 -274,-283 -274,-328 -412,-373 -412,-283"/><polyline points="276,-983 301,-1008 276,-1008 276,-983"/><polyline points="451,-1358 551,-1258 501,-1258 451,-1358"/><polyline points="-412,-1121 -399,-1108 -412,-1108 -274,-1108 -274,-1180 -412,-1207 -412,-1121"/><polyline points="376,-833 451,-858 451,-833 376,-833"/><polyline points="1201,-283 1226,-283 1201,-258 1201,-283"/><polyline points="-1374,817 -1099,817 -1099,679 -1374,817"/><polyline points="-662,-1026 -627,-1026 -627,-1061 -662,-1061 -662,-1026"/><polyline points="251,-708 251,-658 276,-658 276,-683 251,-708"/><polyline points="-412,-558 -399,-558 -412,-571 -412,-558"/></g><g class="lyr" data-lyr="1" data-z0="52" data-z1="119" fill="none" stroke="#8FB03A" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="-599,-1508 -549,-1508 -499,-1458 -599,-1458 -649,-1508 -599,-1508"/><polyline points="-1499,-558 -1449,-508 -1449,-558 -1499,-558"/><polyline points="-1030,801 -1017,801 -1017,793 -1053,793 -1053,801 -1030,801"/><polyline points="276,-1483 301,-1458 251,-1458 201,-1508 251,-1508 276,-1483"/><polyline points="1501,-558 1501,-508 1451,-558 1501,-558"/><polyline points="1301,-308 1351,-308 1351,-283 1301,-283 1301,-308"/><polyline points="-274,1442 -249,1442 -274,1417 -274,1442 -299,1442 -274,1492 -274,1442"/><polyline points="1451,817 1476,817 1501,842 1451,817"/><polyline points="-412,-659 -252,-659 -252,-959 -562,-959 -562,-659 -412,-659"/><polyline points="883,-318 911,-352 947,-379 993,-398 1003,-447 1024,-486 1084,-558 1076,-558 1066,-567 1009,-499 973,-472 927,-453 917,-404 896,-364 834,-291 843,-283 854,-283 883,-318"/><polyline points="-824,-1508 -749,-1508 -699,-1458 -699,-1508 -649,-1458 -649,-1508 -749,-1508 -749,-1458 -799,-1458 -824,-1433 -899,-1508 -824,-1508"/><polyline points="898,-1002 898,-967 863,-967 863,-1002 898,-1002"/><polyline points="-1047,793 -1042,793 -1042,801 -1047,801"/><polyline points="1151,542 1251,542 1201,492 1201,542 1151,492 1151,592 1101,542 1101,492 1151,542"/><polyline points="251,-308 301,-308 276,-333 276,-283 251,-258 251,-308"/><polyline points="-665,326 -665,370 -685,370 -685,282 -694,238 -718,194 -694,150 -685,106 -685,6 -665,6 -665,106 -655,150 -631,194 -655,238 -665,282 -665,326"/><polyline points="-1031,592 -999,642 -1099,642 -1099,611 -1056,592 -1031,592"/><polyline points="-1020,793 -1025,793 -1025,801 -1020,801"/><polyline points="-1149,1442 -1099,1492 -1099,1442 -1149,1442"/><polyline points="-1499,-958 -1449,-908 -1499,-908 -1499,-958"/><polyline points="-1499,742 -1449,792 -1449,892 -1499,892 -1449,942 -1499,942 -1449,992 -1499,992 -1449,1042 -1499,1042 -1449,1092 -1499,1092 -1449,1142 -1499,1142 -1499,742"/><polyline points="-274,-1458 -249,-1458 -249,-1508 -199,-1458 -199,-1508 -149,-1458 -149,-1508 -99,-1458 -99,-1508 -49,-1458 51,-1458 51,-1508 -349,-1508 -274,-1433 -274,-1458"/><polyline points="201,-1508 201,-1458 151,-1508 201,-1508"/><polyline points="451,-1508 501,-1458 601,-1458 601,-1508 401,-1508 451,-1458 451,-1508"/><polyline points="701,-1508 751,-1508 801,-1458 826,-1483 851,-1458 901,-1458 901,-1508 951,-1458 951,-1508 1001,-1458 1001,-1508 1051,-1458 1151,-1458 1151,-1508 751,-1508 751,-1458 701,-1508 651,-1508 701,-1458 701,-1508"/><polyline points="1451,-833 1451,-808 1501,-758 1501,-858 1476,-833 1451,-833"/><polyline points="-663,187 -663,201 -675,208 -687,201 -687,187 -675,180 -663,187"/><polyline points="551,1442 551,1492 601,1492 601,1442 551,1442"/><polyline points="-999,-1508 -949,-1458 -949,-1508 -999,-1508"/><polyline points="-1061,786 -1061,809 -1006,809 -1006,786 -1061,786"/><polyline points="951,-411 965,-409 974,-420 970,-433 956,-435 947,-425 951,-411"/><polyline points="1451,1042 1501,1042 1501,1142 1451,1092 1451,1042"/><polyline points="-397,706 -397,741 -362,741 -362,706 -397,706"/><polyline points="-1016,793 -1016,801 -1014,801 -1014,793 -1016,793"/><polyline points="301,-1508 351,-1508 401,-1458 401,-1508 351,-1508 351,-1458 301,-1508"/><polyline points="-1499,-1258 -1449,-1258 -1499,-1308 -1499,-1258"/><polyline points="1451,242 1501,242 1501,342 1451,292 1451,242"/><polyline points="-279,-788 -240,-788 -240,-818 -279,-818 -279,-788"/><polyline points="101,-1508 151,-1458 151,-1508 101,-1508"/><polyline points="-1249,-1508 -1199,-1458 -1199,-1508 -1299,-1508 -1249,-1458 -1249,-1508"/><polyline points="-1499,-1108 -1449,-1058 -1499,-1058 -1499,-1108"/><polyline points="1451,-8 1501,42 1501,-8 1451,-8"/><polyline points="-599,1442 -599,1492 -549,1492 -549,1442 -599,1442"/><polyline points="276,1442 301,1442 351,1492 251,1492 251,1442 276,1442"/><polyline points="1451,542 1501,542 1501,592 1451,542"/><polyline points="-449,1442 -399,1492 -449,1492 -449,1442"/></g><g class="lyr" data-lyr="2" data-z0="121" data-z1="201" fill="none" stroke="#8FB03A" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="-1499,-558 -1449,-508 -1499,-508 -1499,-558 -1449,-558 -1449,-608 -1499,-658 -1499,-558"/><polyline points="-1499,-1358 -1449,-1308 -1499,-1308 -1499,-1408 -1474,-1383 -1499,-1358"/><polyline points="-1005,801 -990,801 -990,793 -1005,793 -1005,801"/><polyline points="-1030,801 -1000,801 -1000,793 -1030,793"/><polyline points="1451,-258 1501,-208 1501,-308 1451,-308 1476,-283 1451,-283 1451,-258"/><polyline points="-1064,793 -1059,793 -1059,801 -1075,801 -1075,793 -1064,793"/><polyline points="-274,1442 -249,1442 -199,1492 -274,1492 -274,1442"/><polyline points="-500,-740 -500,-720 -490,-720 -450,-730 -440,-760 -420,-760 -420,-720 -320,-720 -320,-860 -410,-860 -410,-780 -430,-780 -430,-870 -330,-870 -330,-890 -310,-890 -310,-910 -279,-910 -279,-890 -290,-890 -290,-870 -320,-870 -320,-850 -290,-850 -290,-780 -310,-780 -310,-810 -330,-810 -330,-790 -310,-760 -310,-720 -360,-720 -360,-760 -330,-760 -350,-780 -350,-810 -390,-810 -390,-770 -370,-770 -370,-720 -410,-720 -430,-730 -430,-770 -410,-770 -410,-790 -450,-790 -450,-700 -510,-700 -510,-740 -520,-750 -520,-790 -480,-790 -480,-810 -520,-810 -520,-910 -480,-910 -480,-860 -450,-810 -420,-810 -420,-830 -440,-830 -440,-833 -440,-763 -368,-763 -368,-795 -371,-795 -371,-765 -437,-765 -437,-844 -371,-844 -371,-813 -368,-813 -368,-847 -440,-847 -440,-833 -440,-860 -470,-860 -470,-920 -440,-920 -420,-900 -420,-850 -400,-850 -400,-880 -410,-880 -410,-920 -370,-920 -370,-880 -380,-880 -380,-850 -350,-850 -350,-870 -360,-870 -360,-920 -330,-920 -330,-890 -490,-890 -490,-830"/><polyline points="-1499,1142 -1449,1192 -1499,1192 -1449,1242 -1499,1242 -1499,1142"/><polyline points="1401,-1508 1451,-1458 1451,-1508 1301,-1508 1351,-1458 1401,-1508"/><polyline points="-470,-830 -470,-870 -450,-870 -450,-820 -490,-820 -490,-770 -460,-770 -460,-750 -470,-747"/><polyline points="951,1442 951,1492 1001,1492 951,1442"/><polyline points="339,622 339,648 351,648 351,622 339,622"/><polyline points="374,-214 377,-219 371,-229 359,-229 353,-219 359,-209 371,-209 374,-214"/><polyline points="-299,1442 -274,1492 -299,1492 -299,1442"/><polyline points="-645,204 -632,214 -637,222 -664,210 -657,205 -656,196 -645,204"/><polyline points="351,-219 358,-231 372,-231 379,-219 372,-207 358,-207 351,-219"/><polyline points="-1033,801 -1054,801 -1054,793 -1033,793"/><polyline points="1151,-1508 1201,-1508 1251,-1458 1251,-1508 1201,-1508 1201,-1458 1151,-1508"/><polyline points="-799,1492 -749,1492 -799,1442 -824,1442 -824,1417 -849,1442 -849,1492 -899,1442 -899,1492 -799,1492"/><polyline points="-686,211 -713,222 -718,213 -694,195 -693,204 -686,210"/><polyline points="1185,639 1216,639 1216,654 1185,654 1185,639"/><polyline points="-1499,342 -1449,392 -1499,392 -1449,442 -1499,442 -1499,342 -1449,342 -1449,242 -1499,192 -1499,342"/><polyline points="1188,642 1213,642 1188,642"/><polyline points="337,619 337,651 353,651 353,619 337,619"/><polyline points="851,1492 901,1492 851,1442 801,1442 801,1492 851,1492"/><polyline points="360,-210 370,-210 375,-219 370,-228 360,-228 354,-219 360,-210"/><polyline points="-1499,-458 -1499,-408 -1449,-408 -1499,-458"/><polyline points="978,-430 994,-455 987,-461 965,-441 974,-438 978,-430"/><polyline points="-1449,-283 -1424,-283 -1499,-358 -1499,-258 -1449,-208 -1499,-208 -1499,-258 -1449,-258 -1449,-283"/><polyline points="-1499,-1008 -1449,-958 -1499,-958 -1499,-1008"/><polyline points="601,1442 651,1492 701,1492 651,1442 651,1492 601,1492 601,1442"/><polyline points="1198,641 1214,641 1214,652 1187,652 1187,641 1198,641"/><polyline points="940,-426 942,-417 914,-426 915,-435 945,-434 940,-426"/><polyline points="1051,1492 1151,1492 1101,1442 1051,1442 1051,1492"/><polyline points="-1499,-1458 -1449,-1408 -1499,-1408 -1499,-1458 -1449,-1458 -1449,-1508 -1399,-1458 -1399,-1508 -1499,-1508 -1499,-1458"/><polyline points="-1007,793 -1007,801 -991,801 -991,793 -1007,793"/><polyline points="1451,1492 1501,1492 1501,1442 1451,1442 1451,1492"/><polyline points="-1349,-1508 -1299,-1508 -1299,-1458 -1349,-1508 -1374,-1508 -1349,-1458 -1349,-1508"/><polyline points="360,-219 363,-223 367,-223 370,-219 367,-215 363,-215 360,-219"/><polyline points="-1044,793 -1044,801 -1040,801 -1045,801 -1045,793 -1040,793 -1044,793"/><polyline points="1501,-1508 1501,-1408 1451,-1508 1501,-1508"/><polyline points="-683,177 -675,174 -666,177 -670,147 -680,147 -683,177"/><polyline points="-1399,-1508 -1374,-1508 -1374,-1483 -1399,-1508"/><polyline points="-1076,801 -1061,801 -1061,793 -1076,793 -1076,801"/><polyline points="-1073,793 -1073,801 -1055,801 -1066,801 -1066,793 -1055,793 -1073,793"/><polyline points="-499,-1508 -499,-1458 -549,-1508 -499,-1508 -449,-1458 -449,-1508 -399,-1458 -399,-1508 -499,-1508"/><polyline points="-1011,793 -993,793 -993,801 -1011,801"/><polyline points="-1499,1342 -1474,1367 -1499,1367 -1499,1342 -1449,1342 -1499,1292 -1499,1342"/><polyline points="-1349,1492 -1299,1492 -1349,1442 -1349,1492"/><polyline points="-343,-818 -343,-788 -279,-788 -279,-818 -343,-818"/><polyline points="51,1442 101,1492 151,1492 101,1442 101,1492 -49,1492 -49,1442 51,1442"/><polyline points="976,-378 981,-380 974,-409 968,-403 958,-403 972,-376 976,-378"/><polyline points="1251,1442 1301,1492 1351,1492 1301,1442 1301,1492 1251,1492 1251,1442"/><polyline points="-1099,1442 -1049,1492 -1099,1492 -1099,1442"/><polyline points="-1499,-758 -1449,-708 -1499,-708 -1449,-658 -1499,-658 -1499,-758 -1449,-758 -1499,-808 -1499,-758"/><polyline points="501,1442 501,1492 551,1492 501,1442"/><polyline points="-1499,1442 -1499,1492 -1399,1492 -1499,1392 -1499,1442"/><polyline points="401,1442 451,1492 401,1492 401,1442"/><polyline points="350,623 350,648 350,623"/><polyline points="-1249,1442 -1199,1492 -1249,1492 -1249,1442"/><polyline points="-1499,592 -1449,592 -1499,542 -1499,592"/><polyline points="361,-209 369,-210 361,-209"/></g><g class="lyr" data-lyr="3" data-z0="249" data-z1="401" fill="none" stroke="#8FB03A" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="-1388,817 -1388,1395 1428,1395 1428,-1397 -1388,-1397 -1388,817"/><polyline points="-371,-844 -371,-765 -437,-765 -437,-844 -371,-844"/><polyline points="-362,-833 -362,-756 -446,-756 -446,-855 -362,-855 -362,-833"/><polyline points="-368,-813 -368,-795 -371,-795 -371,-813 -368,-813"/></g><g class="route" hidden><polyline points="635,1201 636,358 -200,365" fill="none" stroke="#E8B04B" stroke-width="2" stroke-opacity=".75" stroke-dasharray="7 5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle class="rstop" cx="635" cy="1201" r="57.0" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="635" y="1123" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="62" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="25.9">1</text><circle class="rstop" cx="636" cy="358" r="57.0" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="636" y="280" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="62" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="25.9">2</text><circle class="rstop" cx="-200" cy="365" r="57.0" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-200" y="287" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="62" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="25.9">3</text></g><line class="mklead" x1="-200" y1="365" x2="-200" y2="263" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="635" y1="1201" x2="635" y2="1099" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="636" y1="358" x2="636" y2="256" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><g class="mk" data-name="Terror" data-lv="55" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Terror, level 55. No drops recorded."><circle cx="-200" cy="365" r="30.0" fill="#7FB2C7" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-200" y="243" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="72" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="30.2" stroke-linejoin="round">Terror</text></g><g class="mk" data-name="Dread" data-lv="55" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Dread, level 55. No drops recorded."><circle cx="635" cy="1201" r="30.0" fill="#7FB2C7" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="635" y="1079" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="72" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="30.2" stroke-linejoin="round">Dread</text></g><g class="mk" data-name="Fright" data-lv="55" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Fright, level 55. No drops recorded."><circle cx="636" cy="358" r="30.0" fill="#7FB2C7" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="636" y="236" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="72" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="30.2" stroke-linejoin="round">Fright</text></g><g><line x1="-1544" y1="1957" x2="-1044" y2="1957" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="-1544" y1="1921" x2="-1544" y2="1993" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="-1044" y1="1921" x2="-1044" y2="1993" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><text x="-1294" y="1885" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="72" fill="#B5AA95">500 units</text></g><g><line x1="1486" y1="1912" x2="1486" y2="1750" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><path d="M1486,1696 L1444,1774 L1528,1774 Z" fill="#B5AA95"/><text x="1486" y="2020" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="72" fill="#B5AA95">N</text></g></svg></div><div class="fp-detail" hidden aria-live="polite"></div><p class="fp-route" hidden><strong>Order, not a path.</strong> Dread &rarr; Fright &rarr; Terror. <span class="rlen">1,679 units straight-line.</span> <a href="../learn/reading-the-plans.html">Why the line crosses walls &rarr;</a></p><p class="fp-note">Lines are floor edges &mdash; a wall or a drop. <b>3 of 3 recorded positions land on drawn floor.</b> <a href="../learn/reading-the-plans.html">What this plan does not mark &rarr;</a></p></section><section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why">
-    <li><b>Four of the seven planar armour slots.</b> Fear drops Chest, Wrist, Hands and Feet.
-      Hate drops Head, Arms, Wrist and Legs. If you want a full set you are visiting both, and
-      Wrist is the one slot either plane can give you.</li>
-    <li><b>A 110% ZEM with the raid bosses moved out.</b> The seven plane bosses stopped spawning
-      in the open world and in personal instances on 16 June, so the zone you walk into now is
-      trash and minibosses at a raised experience rate. That is the whole basis of the 46+
-      levelling reputation, and it is a developer change rather than a community theory.</li>
-    <li><b>Phoboplasm drops any planar armour</b> &mdash; including Hate-only pieces. It is the one
-      mob in either plane that ignores the group split.</li>
-    <li><b>Come for the armour, not the bosses.</b> The five raid targets are instance-only and
-      almost nothing published about them describes Legends. Section 02 is not throat-clearing;
-      on this zone it is the most useful thing on the page.</li>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Four bands of floor. You arrive in the south-west and the Temple climbs away
+    from it.</p>
+  <dl class="key">
+    <dt>A portal in the spectre caves</dt><dd>The Feerrott, and the only door in. One way, level 46
+      and up, and <strong>guarded on the far side</strong>. <strong>There is also a race line at the
+      portal</strong> <span class="tier t5">T5</span></dd>
+    <dt>The south-west corner at &minus;1139, 1282</dt><dd>Where you arrive, and where succor and
+      evacuate put you. Your reset button</dd>
+    <dt>A stepped temple</dt><dd>The fourth and highest band on the plan. Cazic Thule at the top of
+      it, and the Temple exit portal here</dd>
+  </dl>
+  <p class="cm">Camps, pull points and escape lines are unrecorded. There are no placeholders here,
+    but a spawn point can hold more than one type &mdash; a spinechiller spider where you expected a
+    scareling.</p>
+</section>
+
+<section>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>Do not zone in alone</b> The portal is guarded, the guard sees invisibility, and it is
+      <strong>on you immediately</strong>. <span class="tier t5">T5</span></li>
+    <li><b>There is no ordinary way out</b> Gate, a port, or dying. Succor returns you to
+      &minus;1139, 1282. The Temple exit portal is the worse route.</li>
+    <li><b>Invisibility is unreliable</b> Much of the population sees through it, and
+      <strong>a turmoil toad sees through all of it</strong>. The drops table marks each type.
+      <span class="tier t5">T5</span></li>
+    <li><b>The level 51s summon</b> So do Irak Altil and the Wraith. Distance is not an escape from
+      those. <span class="tier t5">T5</span></li>
+    <li><b>Cazic Thule calls the whole zone</b> The hotfix of 24 June 2026 reads: &ldquo;Cazic-Thule
+      now properly calls for his minions when he is engaged in an instance of the Plane of
+      Fear.&rdquo; <strong>Zone-wide social aggro, stated by the developers</strong> &mdash; the only
+      boss mechanic here they have confirmed outright.</li>
   </ul>
 </section>
 
 <section>
-  <h2><span class="num">02</span>What the sources are, and why it matters here</h2>
-  <p class="lede">Every page this survey leans on has its revision history checked. On Fear that
-    check comes back worse than on any surveyed zone.</p>
-
-  <p>The eqlwiki Plane of Fear page was created on 9 March 2026 by <code>P99Wiki&gt;RibbonRMX</code>
-    &mdash; an import from the Project 1999 wiki, four months before EverQuest Legends existed. The
-    Cazic Thule page is the same story: <code>imported&gt;CrazyPro</code>, 29 March 2026. Both were
-    edited afterwards by named editors, and none of those edits describe a measurement.</p>
-
-  <p>The tell is not subtle. The published Cazic Thule strategy says, word for word:</p>
-
-  <blockquote class="quote">It&rsquo;s recommended to have several dozen melee and a dozen+ healers.</blockquote>
-
-  <p><b>Legends caps a raid at 8.</b> The same page discusses the Velious-era revamp of the zone and
-    chain-CH healing rotations. This is not a stale page. It is a correct description of a different
-    game, and following it here is not possible.</p>
-
-  <p>So this survey badges nearly everything, and the badges mean what they say. Where a figure is
-    measured or the developers&rsquo;, it prints plain.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>What</th><th>Standing</th></tr></thead>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">The 16 June patch note names five of these as raid targets and takes them out of
+    the open world and personal instances. Who is here is settled; the numbers are not.</p>
+  <div class="note">The eqlwiki Plane of Fear page was created 9 March 2026 by
+    <code>P99Wiki&gt;RibbonRMX</code>, the Cazic Thule page by <code>imported&gt;CrazyPro</code> on
+    29 March 2026 &mdash; both Project 1999 imports predating EverQuest Legends, and no later edit
+    describes a measurement. The published strategy says, word for word:</div>
+  <p class="quote">It&rsquo;s recommended to have several dozen melee and a dozen+ healers.</p>
+  <p class="src"><strong>Legends caps a raid at 8.</strong> That is a correct description of a
+    different game, and following it here is not possible.</p>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Zone rules, instances, lockouts, ZEM</td>
-        <td>Developer patch notes. Prints plain.</td></tr>
-      <tr><td class="nmob">The floor plan below</td>
-        <td>Computed from the game&rsquo;s own mesh. Prints plain.</td></tr>
-      <tr><td class="nmob">Armour tables <span class="tier t3">T3</span></td>
-        <td>Named editor, maintained through July 2026, and they list Beastlord and Berserker sets
-          &mdash; classes Project 1999 does not have. Somebody rebuilt these for a sixteen-class
-          game. The strongest material on the page.</td></tr>
-      <tr><td class="nmob">Mob abilities and sees-invis <span class="tier t5">T5</span></td>
-        <td>Imported. Useful shape, unverified detail.</td></tr>
-      <tr><td class="nmob">Boss stats and strategy <span class="tier t5">T5</span></td>
-        <td>Classic EverQuest. See section 06.</td></tr>
+      <tr><td class="nmob"><a href="../named/cazic-thule.html">Cazic Thule</a></td><td class="loc">not recorded</td><td class="lv">70</td><td class="cls">DEITY<br>SHD</td><td class="src">Top of the Temple, the fourth band on the plan. Published at AC 400 and 450,000 HP, 2 attacks a round, 223&ndash;603 a hit. Avatar Power is a top-slot dispel; Panic fears a random target. <strong>The published strategy is classic EverQuest and unusable here.</strong><span class="tag warn">T5 stats</span></td></tr>
+      <tr><td class="nmob"><a href="../named/a-dracoliche.html">a dracoliche</a></td><td class="loc">not recorded</td><td class="lv">58</td><td class="cls">DRAGON SKELETON<br>SHD</td><td class="src">Wanders. <strong>Not undead</strong>, despite the model. AC 600, 175,000 HP published. Deadly Lifetap, Rotting Flesh, summons, unmezzable, uncharmable, unstunnable, unfearable. Small hitbox that melee reportedly struggle to connect with.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/dread.html">Dread</a></td><td class="loc">&minus;1201, &minus;635</td><td class="lv">55</td><td class="cls">GOLEM<br>WAR</td><td class="src">AC 376, 32,500 HP published, max hit about 450. Cazic Touch, Scarab Storm, Enrage, summons, triple attack.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/terror.html">Terror</a></td><td class="loc">&minus;365, 200</td><td class="lv">55</td><td class="cls">GOLEM<br>WAR</td><td class="src">AC 397, 32,000 HP published, 168&ndash;453 a hit. <strong>Frost Breath is a dispel and will break charm on a pet.</strong> A 56-point lifetap proc, Enrage, summons, triple attack.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/fright.html">Fright</a></td><td class="loc">&minus;358, &minus;636</td><td class="lv">55</td><td class="cls">GOLEM<br>WAR</td><td class="src">Cazic Touch, Enrage, summons, triple attack. <strong>No AC, no hit points and no attack count are recorded by anyone</strong>, classic sources included, and its damage is written as &ldquo;437?&rdquo;.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/wraith-of-a-shissir.html">Wraith of a Shissir</a></td><td class="loc">not recorded</td><td class="lv">55</td><td class="cls">GORGON<br>WAR</td><td class="src">Always 55. Stun up to 15 seconds, summons, sees invisible. Carries the Head of the Serpent, an Enchanter epic component. The source spells it Shissir in its table and Shissar in its prose.<span class="tag warn">T5</span></td></tr>
+      <tr><td class="nmob"><a href="../named/irak-altil.html">Irak Altil</a></td><td class="loc">not recorded</td><td class="lv">51</td><td class="cls">SKELETON, UNDEAD<br>WAR</td><td class="src">Always 51. Quads and summons. Named in the classic strategy as a charm target, which is advice written for a game with different charm rules.<span class="tag warn">T5</span></td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
+  <p class="src">Coordinates are the published pair read as (Y, X), checked against the drawn floor
+    &mdash; that result prints under the plan above. <strong>Legends raid bosses run three classes
+    from D3 and every one of these is listed with a single class</strong>, which alone dates the
+    table. five of the seven have been killed and parsed at the higher tiers.
+    <a href="../learn/difficulty.html">What the difficulty tiers change, measured &rarr;</a></p>
+  <div class="note"><strong>Every published respawn timer here describes something that no longer
+    happens</strong> &mdash; 72 hours for the golems, 7 days for the dracoliche, all of it the
+    open-world spawn the 16 June patch removed. Access is governed instead by the raid instance and
+    the weekly loot lockout, which resets Tuesdays at 8AM PST; a kill made while locked still returns
+    one guaranteed drop from the boss&rsquo;s unique table (28 July patch note). Instances cost no
+    experience &mdash; the 23 June patch note raised instanced Fear, Hate and Sky to match the open
+    world &mdash; and drops match the tier you are in, with a diminishing chance to roll higher
+    (29 July hotfix).</div>
 </section>
 
 <section>
-  <h2><span class="num">03</span>Getting in, and not getting out</h2>
-  <p class="lede">One way in, no ordinary way out, and a welcome party that sees invisibility.</p>
-  <ol class="chain">
-    <li><b>The Feerrott, spectre caves</b> <span class="cm">one-way portal</span>
-      <span class="ck">level 46+</span> &rarr; you arrive in the south-west</li>
-    <li><b>The portal is guarded</b> <span class="cm">see-invis, immediate</span>
-      <span class="ck">do not zone in alone</span></li>
-    <li><b>Leaving means Gate, a port, or dying</b> <span class="cm">or the Temple exit portal</span>
-      <span class="ck">the Temple route is worse</span></li>
-  </ol>
-  <p class="tight"><b>Succor and evacuate put you at &minus;1139, 1282</b>, the south-west corner by
-    the zone-in. That is your reset button and it is worth knowing before you need it. There is a
-    race line at the Feerrott portal. <span class="tier t5">T5</span></p>
-  <div class="note">The imported page recommends a charged Leatherfoot Raider Skullcap and advises
-    against binding in the zone. Both are classic-era advice about a classic-era corpse run, and
-    neither is confirmed to apply. Treat them as leads, not instructions.</div>
-</section>
-
-<section>
-  <h2><span class="num">04</span>Your armour, slot by slot</h2>
-  <p class="lede">Every ordinary mob in Fear drops planar armour for one slot. Find your slot,
-    then hunt any mob on that row.</p>
-  <div class="note"><b>The class-group split is gone, and one mob moved.</b> A Legends-era guild loot
-    guide lists these mobs merged rather than divided into two class groups, and puts
-    <em>a turmoil toad</em> at <b>Wrist</b> where the imported table has it at Hands. It also states
-    every listed mob can drop the matching <b>Lustrous Russet</b> or <b>Midnight Clad</b> piece for
-    its slot. A guild loot guide, 18 June 2026 &mdash; pre-launch, and one source (<a href="../credits.html">credits</a>).
-    <a href="../tools/planar-gear.html">The gear tool &rarr;</a> works from the item records, which
-    are unaffected either way.</div>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Slot</th>
-      <th>Group 1 &mdash; CLR DRU SHM BST RNG PAL BER MNK<br><small>plus Lustrous Russet</small></th>
-      <th>Group 2 &mdash; ENC MAG NEC WIZ BRD SHD ROG WAR<br><small>plus Midnight Clad</small></th></tr></thead>
+  <p class="kick">Slot by slot</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Every ordinary mob here drops planar armour for one slot. Find your slot, then hunt
+    anything on those rows.</p>
+  <div class="note"><strong>The class-group split is gone, and one mob moved.</strong> A guild loot
+    guide of 18 June 2026 lists these mobs merged rather than split into class groups, moves
+    <em>a turmoil toad</em> to Wrist from Hands, and says every listed mob can also drop the matching
+    <strong>Lustrous Russet</strong> or <strong>Midnight Clad</strong> piece for its slot.
+    Pre-launch, and one source (<a href="../credits.html">credits</a>). The Group column is the
+    imported reading, printed beside it. <a href="../tools/planar-gear.html">The gear tool &rarr;</a>
+    works from the item records, unaffected either way.</div>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Slot</th><th>Mob</th><th>Group</th><th>Type</th><th>Class</th><th>Sees invis</th><th>Abilities</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Chest</td><td>a glare lord<br>a tentacle tormentor</td>
-        <td>amygdalan knight<br>amygdalan warrior</td></tr>
-      <tr><td class="nmob">Wrist</td><td>a decrepit warder<br>a samhain</td>
-        <td>a fetid fiend<br>a spinechiller spider</td></tr>
-      <tr><td class="nmob">Hands</td><td>a scareling<br>a shiverback</td>
-        <td>a frightfinger<br>a turmoil toad<br>a worry wraith</td></tr>
-      <tr><td class="nmob">Feet</td><td>a boogeyman<br>a phantasm</td>
-        <td>a gorgon<br>a nightmare</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">a glare lord</td><td class="lv">1</td><td class="st">Evil Eye</td><td class="cls">MAG</td><td class="si no">no</td><td class="st">AoE Recant Magic, magician spells</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">a tentacle tormentor</td><td class="lv">1</td><td class="st">Tentacle</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">AoE Recant Magic, knockback, lifetap</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">amygdalan knight</td><td class="lv">2</td><td class="st">Denizen</td><td class="cls">SHD</td><td class="si no">no</td><td class="st">Harm Touch, Mana Sink, skeleton pet</td></tr>
+      <tr><td class="slot">Chest</td><td class="nmob">amygdalan warrior</td><td class="lv">2</td><td class="st">Denizen</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">Mana Sink, high MR</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a decrepit warder</td><td class="lv">1</td><td class="st">not recorded</td><td class="cls">not recorded</td><td class="si no">not recorded</td><td class="st">not recorded</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a samhain</td><td class="lv">1</td><td class="st">Scarecrow, undead</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">frequent melee stun proc</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a fetid fiend</td><td class="lv">2</td><td class="st">Zombie, undead</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">melee disease DoT proc</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a spinechiller spider</td><td class="lv">2</td><td class="st">Spider</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">300 cold DoT</td></tr>
+      <tr><td class="slot">Wrist</td><td class="nmob">a turmoil toad</td><td class="lv">2</td><td class="st">Froglok Ghoul, undead</td><td class="cls">WAR</td><td class="si">all</td><td class="st">Ghoul Root, Panic. The guild guide moves it here from Hands</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a scareling</td><td class="lv">1</td><td class="st">Imp</td><td class="cls">ROG</td><td class="si">yes</td><td class="st">backstab, Scareling Step</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a shiverback</td><td class="lv">1</td><td class="st">Gorilla, animal</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">hits hard and fast</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a frightfinger</td><td class="lv">2</td><td class="st">Crawling Hand</td><td class="cls">WIZ</td><td class="si">maybe</td><td class="st">damage shield, wizard spells</td></tr>
+      <tr><td class="slot">Hands</td><td class="nmob">a worry wraith</td><td class="lv">2</td><td class="st">Will O&rsquo; Wisp</td><td class="cls">ENC</td><td class="si">maybe</td><td class="st">enchanter spells</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a boogeyman</td><td class="lv">1</td><td class="st">Ghoul, undead</td><td class="cls">WAR</td><td class="si">yes</td><td class="st">Ghoul Root</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a phantasm</td><td class="lv">1</td><td class="st">Spectre, undead</td><td class="cls">WIZ</td><td class="si">yes</td><td class="st">damage shield, wizard spells, stun</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a gorgon</td><td class="lv">2</td><td class="st">Gorgon</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">stun to 15s</td></tr>
+      <tr><td class="slot">Feet</td><td class="nmob">a nightmare</td><td class="lv">2</td><td class="st">Unicorn, <strong>not</strong> an animal</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">blind, fear</td></tr>
+      <tr><td class="slot">All Midnight Clad</td><td class="nmob">phoboplasm</td><td class="lv">&mdash;</td><td class="st">Gelatinous Cube</td><td class="cls">WAR</td><td class="si no">no</td><td class="st">Phobocancel. <strong>Ignores the group split</strong></td></tr>
     </tbody>
-  </table></div>
-  <p class="src">Armour table <span class="tier t3">T3</span> &mdash; eqlwiki, maintained by editor
-    Mazirian through 16 July 2026.</p>
-
-  <p class="tight"><b>Lustrous Russet and Midnight Clad are the two shared sets, and this is now
-    confirmed from the item records themselves.</b> Every Russet piece reads
-    <code>WAR CLR PAL RNG SHD BRD ROG SHM</code> and every Midnight Clad piece reads
-    <code>DRU MNK ROG NEC WIZ MAG ENC BST</code> &mdash; chain and plate against cloth and leather,
-    with Rogue the only class on both lists. Between them they cover all sixteen classes.
-    <b>Phoboplasms drop Midnight Clad; haunted chests in Hate drop Lustrous Russet.</b></p>
-
-  <div class="note"><b>A gap, named rather than smoothed over.</b> <em>a decrepit warder</em> appears in the
-    armour table as a Group 1 Wrist drop and then appears nowhere else on the source page &mdash; no
-    level, no abilities, no sees-invis. A whole mob type is missing its record.</div>
+  </table>
+  </div>
+  <p class="src">Armour columns <span class="tier t3">T3</span> &mdash; eqlwiki, maintained by editor
+    Mazirian through 16 July 2026, and they list Beastlord and Berserker sets, which are classes
+    Project 1999 does not have. Abilities, types and sees-invis <span class="tier t5">T5</span> &mdash;
+    imported. <strong>Group 1 is CLR DRU SHM BST RNG PAL BER MNK; Group 2 is ENC MAG NEC WIZ BRD SHD
+    ROG WAR.</strong></p>
+  <p class="src"><strong>The two shared sets are confirmed from the item records themselves.</strong>
+    Every Lustrous Russet piece reads <code>WAR CLR PAL RNG SHD BRD ROG SHM</code>, every Midnight
+    Clad piece <code>DRU MNK ROG NEC WIZ MAG ENC BST</code>. Rogue is the only class on both, and
+    between them they cover all sixteen. Haunted chests in the Plane of Hate drop Lustrous
+    Russet.</p>
+  <div class="note"><strong>Phoboplasm is the exception, and this half is measured rather than
+    read.</strong> It drops Midnight Clad for <strong>Arms and Legs</strong> as well as for the four
+    Fear slots &mdash; and Arms and Legs are slots the tables give to the Plane of Hate. So a Fear
+    mob can hand you two Hate pieces. <strong>No Lustrous Russet has been recorded from it</strong>,
+    which makes the split it ignores the slot, not the set.</div>
+  <div class="note"><strong>A gap, named rather than smoothed over.</strong> <em>a decrepit
+    warder</em> appears in the armour table as a Group 1 Wrist drop and nowhere else on the source
+    page &mdash; no level, no abilities, no sees-invis. A whole mob type is missing its record.</div>
 </section>
 
 <section>
-  <h2><span class="num">05</span>The population</h2>
-  <p class="lede">Twenty mob types. Non-raid mobs run 48&ndash;51 and the level 51s summon. There are
-    no placeholders here, but a spawn point can hold more than one type &mdash; a spinechiller
-    spider where you expected a scareling.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Mob</th><th>Sees invis</th><th>Type</th><th>Class</th><th>Abilities</th><th>Gives</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">amygdalan knight</td><td>no</td><td>Denizen</td><td>Shadow Knight</td>
-        <td>Harm Touch, Mana Sink, skeleton pet</td><td>Chest &middot; G2</td></tr>
-      <tr><td class="nmob">amygdalan warrior</td><td>no</td><td>Denizen</td><td>Warrior</td>
-        <td>Mana Sink, high MR</td><td>Chest &middot; G2</td></tr>
-      <tr><td class="nmob">a boogeyman</td><td>YES</td><td>Ghoul, undead</td><td>Warrior</td>
-        <td>Ghoul Root</td><td>Feet &middot; G1</td></tr>
-      <tr><td class="nmob">a fetid fiend</td><td>YES</td><td>Zombie, undead</td><td>Warrior</td>
-        <td>melee disease DoT proc</td><td>Wrist &middot; G2</td></tr>
-      <tr><td class="nmob">a frightfinger</td><td>maybe</td><td>Crawling Hand</td><td>Wizard</td>
-        <td>damage shield, wizard spells</td><td>Hands &middot; G2</td></tr>
-      <tr><td class="nmob">a glare lord</td><td>no</td><td>Evil Eye</td><td>Magician</td>
-        <td>AoE Recant Magic, magician spells</td><td>Chest &middot; G1</td></tr>
-      <tr><td class="nmob">a gorgon</td><td>no</td><td>Gorgon</td><td>Warrior</td>
-        <td>stun to 15s</td><td>Feet &middot; G2</td></tr>
-      <tr><td class="nmob">Irak Altil</td><td>?</td><td>Skeleton, undead</td><td>Warrior</td>
-        <td>quads, summons &middot; always 51</td><td>&mdash;</td></tr>
-      <tr><td class="nmob">a nightmare</td><td>no</td><td>Unicorn, <b>not</b> an animal</td><td>Warrior</td>
-        <td>blind, fear</td><td>Feet &middot; G2</td></tr>
-      <tr><td class="nmob">a phantasm</td><td>YES</td><td>Spectre, undead</td><td>Wizard</td>
-        <td>damage shield, wizard spells, stun</td><td>Feet &middot; G1</td></tr>
-      <tr><td class="nmob">phoboplasm</td><td>no</td><td>Gelatinous Cube</td><td>Warrior</td>
-        <td>Phobocancel</td><td><b>all Midnight Clad</b></td></tr>
-      <tr><td class="nmob">a samhain</td><td>YES</td><td>Scarecrow, undead</td><td>Warrior</td>
-        <td>frequent melee stun proc</td><td>Wrist &middot; G1</td></tr>
-      <tr><td class="nmob">a scareling</td><td>YES</td><td>Imp</td><td>Rogue</td>
-        <td>backstab, Scareling Step</td><td>Hands &middot; G1</td></tr>
-      <tr><td class="nmob">a shiverback</td><td>YES</td><td>Gorilla, animal</td><td>Warrior</td>
-        <td>hits hard and fast</td><td>Hands &middot; G1</td></tr>
-      <tr><td class="nmob">a spinechiller spider</td><td>YES</td><td>Spider</td><td>Warrior</td>
-        <td>300 cold DoT</td><td>Wrist &middot; G2</td></tr>
-      <tr><td class="nmob">a tentacle tormentor</td><td>no</td><td>Tentacle</td><td>Warrior</td>
-        <td>AoE Recant Magic, knockback, lifetap</td><td>Chest &middot; G1</td></tr>
-      <tr><td class="nmob">a turmoil toad</td><td>ALL</td><td>Froglok Ghoul, undead</td><td>Warrior</td>
-        <td>Ghoul Root, Panic</td><td>Wrist &middot; G2</td></tr>
-      <tr><td class="nmob">a worry wraith</td><td>maybe</td><td>Will O&rsquo; Wisp</td><td>Enchanter</td>
-        <td>enchanter spells</td><td>Hands &middot; G2</td></tr>
-      <tr><td class="nmob">Wraith of a Shissir</td><td>YES</td><td>Gorgon</td><td>Warrior</td>
-        <td>stun to 15s, summons &middot; always 55</td><td>Enchanter epic component</td></tr>
-      <tr><td class="nmob">a decrepit warder</td><td>not recorded</td><td>not recorded</td><td>not recorded</td>
-        <td>not recorded</td><td>Wrist &middot; G1</td></tr>
-    </tbody>
-  </table></div>
-  <p class="src">Population table <span class="tier t5">T5</span> &mdash; imported, unverified for
-    Legends. Backstab on <em>a scareling</em> is worth noting: two class kits on ordinary trash at
-    D1 are measured in Castle Mistmoore, so a rogue ability on a trash type is normal here
-    rather than surprising.</p>
-  <div class="note">The source spells this mob <em>Wraith of a Shissir</em> in its table and
-    <em>Wraith of a Shissar</em> in its prose, and hedges its own level range as
-    &ldquo;48(49?)&ndash;51&rdquo;. Both are inherited here rather than picking a side.</div>
-</section>
-
-<section>
-  <h2><span class="num">06</span>The five raid targets</h2>
-  <p class="lede">Instance-only since 16 June. The roster below is confirmed by the developers; the
-    numbers beside it are not.</p>
-
-  <p>The patch note of 16 June names them: <em>Fright, Terror, Dread, a dracoliche</em> and
-    <em>Cazic Thule</em> no longer spawn in the open world or in personal instances of the Plane of
-    Fear. That list matches the wiki&rsquo;s roster exactly, so <b>who</b> is here is settled. Every
-    published statistic about them is classic EverQuest.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">Cazic Thule</td><td class="loc">not recorded</td><td class="lv">70</td>
-        <td class="cls">DEITY<br>SHD</td>
-        <td class="src">Top of the Temple &mdash; the fourth band on the floor plan above. Raid
-          instance only since 16 June 2026. Published at AC 400 and 450,000 HP, 2 attacks a round,
-          223&ndash;603 a hit. <strong>Zone-wide social aggro is confirmed by patch note</strong>
-          &mdash; see below. Avatar Power is a top-slot dispel; Panic fears a random target.
-          <strong>The published strategy is classic EverQuest and unusable here.</strong><span class="tag warn">T5 stats</span></td></tr>
-      <tr><td class="nmob">a dracoliche</td><td class="loc">not recorded</td><td class="lv">58</td>
-        <td class="cls">DRAGON SKELETON<br>SHD</td>
-        <td class="src">Wanders. <strong>Not undead</strong>, despite the model. AC 600,
-          175,000 HP published. Deadly Lifetap, Rotting Flesh, summons, unmezzable, uncharmable,
-          unstunnable, unfearable. Small hitbox that melee reportedly struggle to
-          connect with.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Dread</td><td class="loc">-1201, -635</td><td class="lv">55</td>
-        <td class="cls">GOLEM<br>WAR</td>
-        <td class="src">AC 376, 32,500 HP published, max hit about 450. Cazic Touch, Scarab Storm,
-          Enrage, summons, triple attack. The published 72-hour respawn describes an open-world
-          spawn removed on 16 June.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Terror</td><td class="loc">-365, 200</td><td class="lv">55</td>
-        <td class="cls">GOLEM<br>WAR</td>
-        <td class="src">AC 397, 32,000 HP published, 168&ndash;453 a hit. <strong>Frost Breath is a
-          dispel and will break charm on a pet.</strong> Also a 56-point lifetap proc, Enrage,
-          summons, triple attack.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Fright</td><td class="loc">-358, -636</td><td class="lv">55</td>
-        <td class="cls">GOLEM<br>WAR</td>
-        <td class="src">Cazic Touch, Enrage, summons, triple attack. <strong>No AC, no hit points
-          and no attack count are recorded by anyone</strong>, classic sources included, and its
-          damage is written as &ldquo;437?&rdquo;. One of the five is essentially
-          unrecorded.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Wraith of a Shissir</td><td class="loc">not recorded</td><td class="lv">55</td>
-        <td class="cls">GORGON<br>WAR</td>
-        <td class="src">Always level 55. Stun up to 15 seconds, summons. Carries the Head of the
-          Serpent, an Enchanter epic component. The source spells it Shissir in one place and
-          Shissar in another.<span class="tag warn">T5</span></td></tr>
-      <tr><td class="nmob">Irak Altil</td><td class="loc">not recorded</td><td class="lv">51</td>
-        <td class="cls">SKELETON<br>WAR</td>
-        <td class="src">Always level 51. Quads and summons. Named in the classic strategy as a charm
-          target for extra damage, which is advice written for a game with different charm
-          rules.<span class="tag warn">T5</span></td></tr>
-    </tbody>
-  </table></div>
-  <p class="src">Coordinates are the published pair read as (Y, X). Every coordinate on this site is
-    checked against the drawn floor, and the result of that check for these three is printed under
-    the floor plan at the top of this page.</p>
-
-  <p class="tight"><b>One boss mechanic here is not classic text.</b> The hotfix of 24 June 2026
-    reads: &ldquo;Cazic-Thule now properly calls for his minions when he is engaged in an instance of
-    the Plane of Fear.&rdquo; That is the developers confirming zone-wide social aggro, in a Legends
-    instance. It is the only boss mechanic here the developers have stated outright.</p>
-
-  <div class="note danger"><b>Every published respawn timer for these five is about something that
-    no longer happens.</b> 72 hours for the golems, 7 days for the dracoliche &mdash; those describe
-    an open-world spawn the 16 June patch removed. What governs access now is the raid instance and
-    the weekly loot lockout, which resets Tuesdays at 8AM PST.</div>
-
-  <p class="tight">Raid bosses in Legends run three classes from D3, and every one of these is listed
-    with a single class. That alone dates the table. <b>Which kits they actually run is no longer
-    unpublished.</b> five of the seven raid targets named above have been killed and parsed at the
-    higher tiers, and every spell each cast is on record.
-    <a href="../learn/difficulty.html">What the difficulty tiers change, measured
-    &rarr;</a> counts those fights out of the data rather than restating a figure. What nobody
-    has pinned is hit points: damage to kill bounds them from above and no more.</p>
-</section>
-
-<section>
-  <h2><span class="num">07</span>Levelling, plat and AA at 46+</h2>
-  <p class="lede">The reputation is real and it has a mechanical basis, but nobody has published a
-    rate.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>What</th><th>Where it comes from</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">ZEM 82.5, or 110%</td>
-        <td>Zone infobox. The 23 June patch note also raised instanced Hate, Fear and Sky to match
-          the open world, so an instance costs you no experience.</td></tr>
-      <tr><td class="nmob">Bosses out of the open world</td>
-        <td>16 June patch note. The zone is trash and minibosses now.</td></tr>
-      <tr><td class="nmob">Loot scales with difficulty</td>
-        <td>29 July hotfix: drops match the tier you are in, with a diminishing chance to roll
-          higher.</td></tr>
-      <tr><td class="nmob">A lockout kill is not a wasted kill</td>
-        <td>28 July patch note: killing a raid boss while locked still gives one guaranteed drop
-          from its unique table.</td></tr>
-      <tr><td class="nmob">AA gain is reported as strong</td>
-        <td>A creator farming the Plane of <em>Hate</em> describes it that way. That is Hate, not
-          Fear, and no rate is published for either.</td></tr>
-    </tbody>
-  </table></div>
-
-  <p class="tight"><b>No plat-per-hour or AA-per-hour figure is printed here, because none has been
-    measured.</b> No source publishes either for this zone at any difficulty.</p>
-  <p class="tight">One creator who has farmed both notes only that &ldquo;the ads in fear can kind of
-    get annoying&rdquo; compared with Hate. Hate also carries the
-    higher ZEM &mdash; 86 against 82.5. If you are choosing purely on experience, Hate is ahead.</p>
-</section>
-
-<section>
-  <h2><span class="num">08</span>What we do not know</h2>
-  <p class="lede">Each of these closes with one log, one screenshot or one <code>/loc</code>. None of
-    them closes by writing more prose.</p>
-  <div class="scroller"><table>
+  <p class="kick">Named gaps</p>
+  <h2 id="open">Still open</h2>
+  <p class="lede">Each closes with one log, one screenshot or one <code>/con</code>.</p>
+  <div class="scroller">
+  <table>
     <thead><tr><th>Open question</th><th>What settles it</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Boss hit points at D0&ndash;D4</td>
-        <td>Still open, and the measured kills do not close it &mdash; damage to kill bounds hit
-          points from above and no more. Not one figure in section 06 is Legends-era. Innoruuk in
-          Hate is the only plane boss with difficulty-tiered HP published anywhere, and even that is
-          a beta-era edit.</td></tr>
-      <tr><td class="nmob">Which class kits attach to bosses at D3+</td>
-        <td><b>Measured.</b> These bosses have been killed and parsed at the higher tiers, and every
-          spell each cast is recorded. <a href="../learn/difficulty.html">The measured difficulty
-          page &rarr;</a></td></tr>
-      <tr><td class="nmob">Fright&rsquo;s stats</td><td>Unrecorded by anyone, classic sources included.</td></tr>
-      <tr><td class="nmob">Trash respawn</td><td>Two passes through the same camp with timestamps.</td></tr>
-      <tr><td class="nmob"><em>a decrepit warder</em></td><td>A single <code>/con</code> and a look at what it drops.</td></tr>
-      <tr><td class="nmob">Whether the mob levels are 48 or 49 at the low end</td>
-        <td>The source hedges it. A handful of <code>/con</code> readings.</td></tr>
-      <tr><td class="nmob">Plat, motes and AA per hour</td><td>A measured parse. Nobody has published these.</td></tr>
+      <tr><td class="nmob">Boss hit points at D0&ndash;D4</td><td class="src">Not one figure in the roster is Legends-era, and the measured kills do not close it: damage to kill bounds hit points from above and no more.</td></tr>
+      <tr><td class="nmob">Fright&rsquo;s stats</td><td class="src">Unrecorded by anyone, classic sources included.</td></tr>
+      <tr><td class="nmob"><em>a decrepit warder</em></td><td class="src">A single <code>/con</code> and a look at what it drops.</td></tr>
+      <tr><td class="nmob">Whether the low end of the mob band is 48 or 49</td><td class="src">The source hedges it. A handful of <code>/con</code> readings.</td></tr>
+      <tr><td class="nmob">Trash respawn</td><td class="src">Two passes through the same camp with timestamps.</td></tr>
+      <tr><td class="nmob">Plat, motes and AA per hour</td><td class="src">A measured parse. Nothing is published for this zone at any difficulty, and the one report of strong AA gain describes the Plane of Hate.</td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
+  <p class="cm">If you are choosing between the planes purely on experience, the Plane of Hate carries
+    a higher ZEM, 86 against 82.5.</p>
 </section>
 
+<section class="meas" id="measured"><h2>Measured in play <span class="tierM">TIER M</span></h2><div class="cond"><b>Plane of Fear, run at D1, Awakened.</b> Everything below was observed in the live game rather than read from a source: what these mobs cast, what they hit for, and what they dropped. Upgradeable drops here ran +1 to +2.</div><h3 style="font-family:'Saira Condensed',sans-serif;text-transform:uppercase;font-size:17px;letter-spacing:.04em;margin:18px 0 8px">What takes control away</h3><div class="cond"><b>Stuns here arrive as spells, not as melee.</b> Stunning melee attacks were shrugged off and the spells landed anyway, so an immunity to stunning <em>melee</em> attacks does nothing about them.</div><div class="tw"><table><thead><tr><th>Spell</th><th>Cast by</th></tr></thead><tbody><tr><td><span class="mob">Stone Breath</span></td><td>a gorgon</td></tr><tr><td><span class="mob">Specter Stun</span></td><td>a phantasm</td></tr><tr><td><span class="mob">Tishan's Clash</span></td><td>a frightfinger</td></tr><tr><td><span class="mob">Chaos Flux</span></td><td>a samhain</td></tr></tbody></table></div><p class="caveat" style="margin:0 0 18px"><b>Read this as a kill order.</b> Whatever casts the spell at the top takes your turn away most often. <a href="../learn/reading-the-plans.html#measured">Why it is not a property of the mob &rarr;</a></p><h3 style="font-family:'Saira Condensed',sans-serif;text-transform:uppercase;font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Named</h3><div class="tw"><table><thead><tr><th>Mob</th><th>Damage dealt</th><th>Dropped</th></tr></thead><tbody><tr><td><span class="mob">Amygdalan knight</span><span class="sub">casts: Shadow Vortex, Negation of Life, Harm Touch, Animate Dead</span></td><td class="n">25.3 avg &middot; 63 max</td><td>Nautilus Shield +1, Fire Emerald, Crystallized Sulfur</td></tr><tr><td><span class="mob">Amygdalan knight pet</span><span class="sub">casts: Lifespike, Harm Touch, Cancelling of Life</span></td><td class="n">1.4 avg &middot; 4 max</td><td>&mdash;</td></tr><tr><td><span class="mob">Amygdalan warrior</span><span class="sub">no casts seen</span></td><td class="n">31 avg &middot; 131 max</td><td>Crystallized Sulfur, Blighted Robe +1, Woven Shadow Chestplate +1, Apothic Robe +1, Amygdalan Tendril +1, Indicolite Breastplate +1</td></tr><tr><td><span class="mob">Phoboplasm</span><span class="sub">no casts seen</span></td><td class="n">58.2 avg &middot; 149 max</td><td>Midnight Clad Armbands +1, Crystallized Sulfur, Midnight Clad Footwraps +2</td></tr></tbody></table></div><p class="trash">Ordinary mobs are not itemised here. These ordinary mobs backstab: <b>a scareling</b>. Backstab is a rogue ability, so ordinary mobs here carry class kits. A backstab averages more damage than the same mob&rsquo;s melee.</p><p class="caveat"><strong>What this is and is not.</strong> Observations, not rates. A drop seen once is not a drop rate, and nothing here is a probability. Damage is what the mob dealt against the armour it met, so treat the maximum as the shape of the hit rather than a constant. <a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p></section></main>
+
+<footer><p class="src-line">This survey has no per-zone sourcing block yet. <a href="../sources.html">How this site grades its sources</a>.</p>
+<p class="imprint">Plate 11 &middot; Plane of Fear &middot; through The Feerrott, Antonica &middot; floor derived from fearplane.s3d &middot; north up, west left</p>
+<div class="inj-contact">
+  <p><strong>Found something this page gets wrong, or something the wiki does?</strong>
+    That is the most useful thing anyone can send us, and every finding is credited by name.
+    <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+    a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+  <p class="nolog">Please do not attach a combat log to a public issue &mdash; they can carry
+    private chat. Say you have one and we will ask.</p>
+</div>
+</footer>
+
+</div>
 </div>
 
 <script>
@@ -517,7 +633,12 @@ footer h3{margin-top:0}
       b.classList.toggle('on', on);
       if(b.dataset.t==='names'){ svg.classList.toggle('nonames', !on); }
       if(b.dataset.t==='route'){
-        if(route) route.hidden=!on;
+        // setAttribute, not .hidden: the route is an SVG group and does not
+        // carry the HTML property. See the stylesheet note above.
+        if(route){
+          if(on) route.removeAttribute('hidden');
+          else route.setAttribute('hidden','');
+        }
         if(rnote) rnote.hidden=!on;
       }
     });
@@ -541,5 +662,5 @@ footer h3{margin-top:0}
     });
   });
 })();
-</script><section class="meas" id="measured"><h2>Measured in play <span class="tierM">TIER M</span></h2><div class="cond"><b>Plane of Fear, run at D1, Awakened.</b> Everything below was observed in the live game rather than read from a source: what these mobs cast, what they hit for, and what they dropped. Upgradeable drops here ran +1 to +2.</div><h3 style="font-family:'Saira Condensed',sans-serif;text-transform:uppercase;font-size:17px;letter-spacing:.04em;margin:18px 0 8px">What takes control away</h3><div class="cond"><b>Stuns here arrive as spells, not as melee.</b> Stunning melee attacks were shrugged off and the spells landed anyway, so an immunity to stunning <em>melee</em> attacks does nothing about them.</div><div class="tw"><table><thead><tr><th>Spell</th><th>Cast by</th></tr></thead><tbody><tr><td><span class="mob">Stone Breath</span></td><td>a gorgon</td></tr><tr><td><span class="mob">Specter Stun</span></td><td>a phantasm</td></tr><tr><td><span class="mob">Tishan's Clash</span></td><td>a frightfinger</td></tr><tr><td><span class="mob">Chaos Flux</span></td><td>a samhain</td></tr></tbody></table></div><p class="caveat" style="margin:0 0 18px"><b>Read this as a kill order.</b> Whatever casts the spell at the top takes your turn away most often. <a href="../learn/reading-the-plans.html#measured">Why it is not a property of the mob &rarr;</a></p><h3 style="font-family:'Saira Condensed',sans-serif;text-transform:uppercase;font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Named</h3><div class="tw"><table><thead><tr><th>Mob</th><th>Damage dealt</th><th>Dropped</th></tr></thead><tbody><tr><td><span class="mob">Amygdalan knight</span><span class="sub">casts: Shadow Vortex, Negation of Life, Harm Touch, Animate Dead</span></td><td class="n">25.3 avg &middot; 63 max</td><td>Nautilus Shield +1, Fire Emerald, Crystallized Sulfur</td></tr><tr><td><span class="mob">Amygdalan knight pet</span><span class="sub">casts: Lifespike, Harm Touch, Cancelling of Life</span></td><td class="n">1.4 avg &middot; 4 max</td><td>&mdash;</td></tr><tr><td><span class="mob">Amygdalan warrior</span><span class="sub">no casts seen</span></td><td class="n">31 avg &middot; 131 max</td><td>Crystallized Sulfur, Blighted Robe +1, Woven Shadow Chestplate +1, Apothic Robe +1, Amygdalan Tendril +1, Indicolite Breastplate +1</td></tr><tr><td><span class="mob">Phoboplasm</span><span class="sub">no casts seen</span></td><td class="n">58.2 avg &middot; 149 max</td><td>Midnight Clad Armbands +1, Crystallized Sulfur, Midnight Clad Footwraps +2</td></tr></tbody></table></div><p class="trash">Ordinary mobs are not itemised here. These ordinary mobs backstab: <b>a scareling</b>. Backstab is a rogue ability, so ordinary mobs here carry class kits. A backstab averages more damage than the same mob&rsquo;s melee.</p><p class="caveat"><strong>What this is and is not.</strong> Observations, not rates. A drop seen once is not a drop rate, and nothing here is a probability. Damage is what the mob dealt against the armour it met, so treat the maximum as the shape of the hit rather than a constant. <a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p></section></body>
+</script></body>
 </html>

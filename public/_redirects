@@ -40,3 +40,12 @@
 /dungeons/lowerguk-map.html      /dungeons/lowerguk.html      301
 /dungeons/nagafenslair-map.html  /dungeons/nagafenslair.html  301
 /dungeons/mistmoore-map.html     /dungeons/mistmoore.html     301
+
+# A named-mob page and an item page were withdrawn 17 Aug 2026 because neither
+# subject is in the game: no measured session in Castle Mistmoore has ever seen
+# Mayong Mistmoore as a mob, and the stiletto attributed to him has never been
+# recorded dropping. Both had been published, indexed and listed in the sitemap,
+# so they go to the survey that used to carry them rather than to a 404. The
+# faction named after Mayong is real and the survey still names it.
+/named/mayong-mistmoore.html      /dungeons/mistmoore.html  301
+/items/fanged-skull-stiletto.html /dungeons/mistmoore.html  301
