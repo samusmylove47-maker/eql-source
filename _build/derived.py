@@ -181,9 +181,19 @@ def tokens(slug):
 # 4.68 hours of parsed log for. These tokens are what the page prints instead of
 # a wiki summary, and every one is read from assets/measured.json at build time.
 # ---------------------------------------------------------------------------
+import re
+
 import zonestats
 
 MIST = dict(zone='Mistmoore', min_kills=50)
+
+# The party stamp the log carries at the head of a session:
+# "Avenrae BRD WAR BER. Level 26. Mistmoore Castle." A level is only read out of
+# a stamp that names a character and a trio, because the same session's chat
+# also says "these are level 4 we are level 26" and a loose /level \d+/ picks up
+# the mob's level as readily as ours. Where two stamps disagree the level is
+# unresolved and nothing is printed.
+_LEVEL_STAMP = re.compile(r'\b[A-Z][a-z]+(?:\s+[A-Z]{3}){2,3}\.\s*Level\s+(\d+)\b')
 
 
 def _mist():
@@ -200,6 +210,58 @@ def _fmt(v, places=3):
     checking one against the other sees two numbers.
     """
     return f'{v:.{places}f}'
+
+
+def _mist_level(p):
+    """The level the experience figures were earned at, read from the log."""
+    seen = {int(m.group(1))
+            for c in (p.get('context') or [])
+            for m in _LEVEL_STAMP.finditer(c.get('text') or '')}
+    return str(seen.pop()) if len(seen) == 1 else 'not recorded'
+
+
+WORDS_CAP = {1: 'One', 2: 'Two', 3: 'Three', 4: 'Four', 5: 'Five', 6: 'Six',
+             7: 'Seven', 8: 'Eight', 9: 'Nine', 10: 'Ten'}
+
+
+def _exp_rows(mobs):
+    """A ledger column: mob type, experience a kill. Rows, not a sentence.
+
+    The survey used to type these twelve figures beside the dataset they came
+    from, which is the fault CLAUDE.md section 3 records and _build/backstab.py
+    exists to prevent. A re-parse now moves the table on the next build.
+    """
+    return ''.join(f'<tr><td class="nmob">{m["name"]}</td>'
+                   f'<td class="lv">{_fmt(m["exp_per_kill"])}</td></tr>'
+                   for m in mobs)
+
+
+def _bs_rows(bs):
+    """The backstab ledger, including the spell list that makes it two kits."""
+    out = []
+    for m in bs:
+        casts = ', '.join(w for w, _n in
+                          sorted(m['casts'].items(), key=lambda t: -t[1])[:4])
+        out.append(f'<tr><td class="nmob">{m["name"]}</td>'
+                   f'<td class="lv">{m["backstabs"]}</td>'
+                   f'<td class="lv">{m["backstab_max"]}</td>'
+                   f'<td class="lv">{m["melee_max"]}</td>'
+                   f'<td class="st">{casts or "&mdash;"}</td></tr>')
+    return ''.join(out)
+
+
+def _haste_clause(by_name):
+    """Mynthi Davissi's two hastes, counted rather than remembered.
+
+    A shaman haste and an enchanter haste in one fight is the page's evidence
+    that a named ran two class kits at D1. The counts were typed beside the log
+    they came from; they are read out of it now.
+    """
+    casts = (by_name.get('Mynthi Davissi') or {}).get('casts') or {}
+    a, q = casts.get('Alacrity'), casts.get('Quickness')
+    if a and q:
+        return f'cast Alacrity {a} times and Quickness {q} times'
+    return 'is logged casting neither haste in the sessions we hold'
 
 
 def mist_tokens():
@@ -240,4 +302,16 @@ def mist_tokens():
         ('@@M_CAITIFF_RANK@@', str(caitiff) if caitiff else 'not recorded'),
         ('@@M_CAITIFF_XP@@', _fmt(next(m['exp_per_kill'] for m in ranked
                                        if m['name'].lower() == 'an avenging caitiff'))),
+        ('@@M_LEVEL@@', _mist_level(p)),
+        # The ranked ledgers and the backstab ledger, read out of the dataset
+        # rather than typed under it.
+        ('@@M_WORTH_ROWS@@', _exp_rows(ranked[:6])),
+        ('@@M_SKIP_ROWS@@', _exp_rows(ranked[:-7:-1])),
+        # A backstabbing type that also casts is running two class kits. Counted
+        # from the same records the table prints, so the sentence and the table
+        # cannot disagree.
+        ('@@M_BS_DUAL@@', WORDS_CAP.get(sum(1 for m in bs if m['casts']),
+                                        str(sum(1 for m in bs if m['casts'])))),
+        ('@@M_BS_ROWS@@', _bs_rows(bs)),
+        ('@@M_MYNTHI_HASTE@@', _haste_clause({m['name']: m for m in p['mobs']})),
     ]
