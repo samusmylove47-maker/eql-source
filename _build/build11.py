@@ -99,6 +99,14 @@ _other_rows = ''.join(
         s=r['seconds'], sp=r['spells_distinct'],
         h=(r['self_heal_high'] or '&mdash;'))
     for r in _OTHERS)
+
+# Both of these were typed beside the table they describe and both were wrong.
+# "Three bosses logged to D3 or D4" against 20 in the data, and "the other two
+# bosses" against a table of 34.
+_N_OTHER = len({r['boss'] for r in _OTHERS})
+_N_HIGH = len({r['boss'] for r in RAIDS if r['difficulty'] in (3, 4)})
+_PLANES = sorted({r['boss'] for r in RAIDS if r['difficulty'] in (3, 4)
+                  and r['boss'] in ('Cazic-Thule', 'Innoruuk, the Prince of Hate')})
 # Spells that are not direct damage or control. A boss casting these is not
 # running an evocation kit, and that is the whole finding - so the test is
 # stated in code rather than asserted in prose.
@@ -179,7 +187,7 @@ for s in SESSIONS:
 # mode. It is the minimum. Every figure in that paragraph is printed from these
 # counters, so a later session that breaks the rule changes the sentence
 # instead of leaving it standing.
-floor_ok = floor_n = 0
+floor_ok = floor_n = modal_ok = 0
 below = at_tier = above = 0
 for s in SESSIONS:
     # only sessions whose difficulty came from the zone line, never from loot -
@@ -192,6 +200,10 @@ for s in SESSIONS:
         continue
     floor_n += 1
     floor_ok += 1 if min(int(k) for k in tiers) == d else 0
+    # The modal reading, scored over the SAME sessions as the floor. "The
+    # commonest value missed two" was typed beside a computed floor figure and
+    # was wrong: it misses three.
+    modal_ok += 1 if max(tiers.items(), key=lambda kv: kv[1])[0] == str(d) else 0
     for k, v in tiers.items():
         k = int(k)
         below += v if k < d else 0
@@ -274,7 +286,8 @@ You have entered The City of Guk 4 (Refined).</pre>
       drops where the zone line stated the tier on its own, <strong>not one item dropped below
       it</strong> <span class="tier tM">TIER M</span>, and about {above_pct}% rolled above &mdash;
       so anything over the floor is luck, and <strong>three drops settle it</strong>. The floor
-      named the tier in {floor_ok} of {floor_n} sessions; the commonest value missed two. Read the
+      named the tier in {floor_ok} of {floor_n} sessions; the commonest value missed
+      {floor_n - modal_ok}. Read the
       <em>dropped</em> value, not the created one: <em>looted a Keg Mallet +2 &hellip; to create a
       Keg Mallet +4</em> is a <code>+2</code>, and a bare item is the <code>+0</code>.</p>
   </div>
@@ -320,8 +333,8 @@ You have entered The City of Guk 4 (Refined).</pre>
             <span class="gs">Listed by EQL Tools as an open question against the current patch.</span></li>
           <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
             <span class="gz">Which kits attach to which raid boss</span><span class="gl">part measured</span>
-            <span class="gs">Three bosses logged to D3 or D4 below, by spell name. What is still
-              unpublished anywhere is the <em>plane</em> bosses.</span></li>
+            <span class="gs">{_N_HIGH} bosses logged at D3 or D4 below, Cazic-Thule and Innoruuk
+              among them. <em>Hit points</em> remain unpinned.</span></li>
         </ul>
       </aside>
     </div>
@@ -358,7 +371,7 @@ You have entered The City of Guk 4 (Refined).</pre>
       <br><br><strong>And &ldquo;ten times at D4&rdquo; was ten log lines, not ten decisions:</strong>
       one effect ticking every six seconds for the same 22 hit points, the same shape Lady Vox
       shows at her top tier.</div>
-    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other two bosses</h3>
+    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other {_N_OTHER} bosses</h3>
     <p class="lede" style="margin:0">Same shape, different bosses, all public raids. A row marked
       <em>floor</em> is one we joined after the boss was already engaged, so the log never saw the
       opening and the figure is a lower bound rather than the cost of the fight.</p>
