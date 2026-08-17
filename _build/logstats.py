@@ -59,6 +59,29 @@ import os, sys, re, json, collections, datetime
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
+
+def _span_minutes(start, end):
+    """Minutes between two "HH:MM" stamps from the same session.
+
+    Returns None rather than a guess when either stamp is missing or malformed,
+    because a duration is the denominator of every rate on the page and a
+    wrong one is worse than an absent one.
+
+    A session that runs past midnight ends with a smaller clock reading than it
+    started with. The parser splits on gaps longer than GAP, so a genuine
+    wrap is short, and one day is added. A session cannot legitimately be
+    negative, and it is not this function's job to invent a length for one.
+    """
+    try:
+        h1, m1 = (int(x) for x in start.split(':'))
+        h2, m2 = (int(x) for x in end.split(':'))
+    except (AttributeError, ValueError):
+        return None
+    span = (h2 * 60 + m2) - (h1 * 60 + m1)
+    if span < 0:
+        span += 24 * 60
+    return span
+
 TS = re.compile(r'^\[(\w{3}) (\w{3}) (\d{2}) (\d{2}):(\d{2}):(\d{2}) (\d{4})\]\s*(.*)$')
 VERBS = (r'(?:hit|slash|bash|crush|pierce|bite|claw|kick|punch|gore|maul|slice|'
          r'backstab|frenzy|strike)')
@@ -568,8 +591,16 @@ def summarise(s):
                                         else d_num == d_named),
                difficulty_agrees=agree, date=s['date'],
                window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
+               minutes=_span_minutes(s['start'], s['end']),
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
                kinds=sorted(s['kills']),
+               # The per-type kill counts were computed and then thrown away,
+               # which left every "what is worth killing here" question
+               # unanswerable from the dataset: exp_by_mob gives a rate per
+               # kill and nothing said how often that kill happened. Kept now
+               # so density and experience can be multiplied out at build time
+               # rather than estimated in prose.
+               kills_by_mob=dict(s['kills'].most_common()),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
                # Context is offered from the whole file so a trio stamped before
@@ -593,6 +624,16 @@ def summarise(s):
                faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
                faction_capped_by_mob={k: v for k, v in s.get('cap_by_mob', {}).items()},
                exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
+               # How many kills each mean was taken over. A mean of 3.025 from
+               # one kill and the same mean from ninety are not the same claim,
+               # and without this the page cannot tell a reader which it has.
+               exp_samples_by_mob={k: len(v) for k, v in s.get('exp_by_mob', {}).items() if v},
+               # Experience the client itself printed, summed over the kills it
+               # could be attached to. An UNDER-COUNT by construction: a gain
+               # line more than a second from a kill line is not attributed to
+               # any mob, so this is a floor for the session, never a total.
+               exp_attributed=round(sum(sum(v) for v in s.get('exp_by_mob', {}).values()), 3),
+               exp_attributed_kills=sum(len(v) for v in s.get('exp_by_mob', {}).values()),
                you_hit=s['you_hit'], you_miss=s['you_miss'],
                mob_hit=mh, mob_miss=mm, mobs={})
     for name, v in s['dmg'].items():
@@ -733,6 +774,24 @@ def build(src):
     merged.update(fresh)
     out = sorted(merged.values(),
                  key=lambda s: (s.get('date') or '', s.get('window') or ''))
+
+    # Back-fill the duration on preserved records.
+    #
+    # Sessions kept from an earlier parse cannot be re-summarised: their raw
+    # logs are gone. The seven Castle Mistmoore sessions of 8 August are the
+    # case that matters — EverQuest rotated the file that afternoon and the
+    # only surviving copy of 1,018 kills is this dataset.
+    #
+    # A duration is not new information about those sessions. It is arithmetic
+    # on the window they already carry, so deriving it here is reading the
+    # record, not inventing one. Everything else the newer parse records —
+    # per-type kill counts, attributed experience — genuinely cannot be
+    # recovered, and stays absent rather than being estimated.
+    for s in out:
+        if s.get('minutes') is None and s.get('window'):
+            start, _, end = (s['window'] or '').partition('-')
+            s['minutes'] = _span_minutes(start, end)
+
     retier(out)
 
     json.dump(out, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),
