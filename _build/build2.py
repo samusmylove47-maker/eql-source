@@ -25,6 +25,10 @@ ZONES = json.load(open("assets/zones-index.json", encoding="utf-8"))
 # pair collides - true, useful to us, and not what a player standing at a zone
 # line needs. It lives here now, whole, and each survey links to its section.
 BYSLUG = {z["slug"]: z for z in ZONES}
+
+# Sky Ledger's dataset counts, read out of assets/sky-ledger.json rather than
+# typed. _build/skyledger.py counts them from the tool's own sky.json.
+SLD = json.load(open("assets/sky-ledger.json", encoding="utf-8"))["dataset"]
 PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
 WP = json.load(open("assets/wiki-provenance.json", encoding="utf-8"))["zones"]
 
@@ -91,9 +95,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
     <h1 class="display">{wordnum(len(TOOLS))} trackers,<br><em>no account.</em></h1>
-    <p class="hero-lede">No login, no server holding your data. Everything you tick is packed into the
-      page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and
-      the sheet rebuilds exactly. They autosave in your browser too, so day to day you can just come back.</p>
+    <p class="hero-lede">No login, no server holding your data. What you tick is packed into the page
+      URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
+      <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
+      tick anything.</p>
     <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
   </div>
 </section>
@@ -118,17 +123,18 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
           links back to the survey it was mined from, so you can read the surrounding context before planning a night
           around it.</p>
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
-        <div class="foot"><span>Built from our own surveys</span><span class="go">Open &rarr;</span></div></a>
+        <div class="foot"><span>Built from the surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="plane-of-sky.html" style="--c:var(--instr)">
-        <div class="kicker">Progression &middot; all 560 trios</div>
-        <h3 class="t">Plane of Sky tracker</h3>
-        <p class="d">Pick your three classes and it builds the character sheet: every class-unlock test the trio owes,
-          each component tagged with the island and boss that drops it, and an island ladder that recounts what is left
-          as you tick things off. Includes slot-competition analysis, because three classes means three item pools
-          fighting over the same equipment slots.</p>
-        <div class="chipline"><span class="pill">95 quests</span><span class="pill">222 components</span><span class="pill">16 classes</span></div>
-        <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
+        <div class="kicker">Progression &middot; reads your combat log</div>
+        <h3 class="t">Sky Ledger</h3>
+        <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
+          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
+          once</strong> &mdash; {SLD['contested']} of the {SLD['items']} items are wanted by more than one test, so holding one does
+          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
+          replaces the tracker published here before it.</p>
+        <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
@@ -144,10 +150,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <h3 class="t">Faction impact checker</h3>
         <p class="d">Faction moves while you are not looking, and you find out hours later when a vendor stops
           speaking to you. Name a zone, a faction or a race and it says what rises, what falls, how far per kill,
-          and which unlocks that helps or costs. The movement is counted from our own combat logs rather than
-          assumed, so it states plainly which zones we have measured and which we have not.</p>
+          and which unlocks that helps or costs. The movement is counted from parsed combat logs rather than
+          assumed, so it states plainly which zones are measured and which are not.</p>
         <div class="chipline"><span class="pill">Measured</span><span class="pill">Coverage stated</span></div>
-        <div class="foot"><span>From our own logs</span><span class="go">Open &rarr;</span></div></a>
+        <div class="foot"><span>Measured in play</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="planar-gear.html" style="--c:var(--warn)">
         <div class="kicker">Endgame &middot; five sets per slot</div>
@@ -171,23 +177,22 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="kicker">Lookup</div>
         <h3 class="t">What have I got?</h3>
         <p class="d">Paste the wall of tab-separated text <code>/outputfile inventory</code> writes and read it
-          back as a list of what you carry, with the item&rsquo;s page, its zone, its planar set and where we have
-          watched the thing drop ourselves. Nothing is uploaded; the parse happens in the page.</p>
+          back as a list of what you carry, with the item&rsquo;s page, its zone, its planar set and where the
+          thing has been measured dropping. Nothing is uploaded; the parse happens in the page.</p>
         <div class="chipline"><span class="pill">Nothing uploaded</span><span class="pill">No gear score</span></div>
         <div class="foot"><span>Paste and read</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
-    <div class="note sig"><strong>Where these stop, and who to go to next.</strong> These are progression and
-      reference tools built on quest, faction and survey data. For client-mined numbers, combat log parsing, spellbook
-      diffing, AA planning and 3D zone geometry, <a href="https://eqltools.com" style="color:var(--bone)">EQL Tools</a>
-      is excellent and does all of it properly. We link rather than duplicate; there is no sense in shipping a worse
-      copy of a tool that already exists.</div>
-    <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> They are two views of the
-      same sheet, so a race you mark unlocked in the tracker is treated as available by the calculator straight away.
-      The Plane of Sky tracker keeps its own separate save.</div>
+    <div class="note sig"><strong>Where these stop.</strong> Client-mined numbers, spellbook
+      diffing, AA planning and 3D zone geometry belong to other tools. What is built here is what
+      nobody else holds &mdash; quests, factions, routes, measured play, and a Sky tracker that
+      knows a turn-in piece can only be spent once.</div>
+    <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> A race you mark unlocked
+      in the tracker is available in the calculator straight away. Sky Ledger keeps its own, because what it holds is
+      read from your log rather than ticked.</div>
     <div class="note"><strong>On privacy.</strong> Nothing is transmitted anywhere. The autosave uses your browser&rsquo;s
       own storage and the share link carries a compressed bitfield in the URL fragment &mdash; the part of a URL that is
-      never sent to a server. A fully filled sheet comes out around ninety characters.</div>
+      never sent to a server.</div>
   </section>
 </div>
 </main>
@@ -197,57 +202,142 @@ open('public/tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 # ---------------------------------------------------------------- RAIDS
 # The Sky figures, read rather than typed. See CLAUDE.md: a number typed beside
 # data drifts from it, and this page carried four of them.
+#
+# What is NOT read from here any more: fight counts, attacker medians and the
+# thinnest fight. They measured an evening rather than the zone, and the claim
+# they were propping up - that Sky is not a raid zone - stands on the cost
+# comparison below, which is a comparison between two bosses.
 try:
     _SL = json.load(open('assets/sky-loot.json', encoding='utf-8'))
-    _SF = _SL['fights']
     _SKY_BIGGEST = max(b['damage_max'] for b in _SL['bosses'])
+    _SKY_KEYS = len(_SL['keys'])
     _CT = max((f['damage_low'] for f in json.load(open('assets/raids-measured.json', encoding='utf-8'))
                if f['boss'] == 'Cazic-Thule' and f['difficulty'] == 4), default=None)
     _SKY_RATIO = round(_CT / _SKY_BIGGEST) if _CT else None
 except (OSError, ValueError, KeyError):
-    _SF, _SKY_BIGGEST, _SKY_RATIO = {}, None, None
+    _SKY_BIGGEST, _SKY_RATIO, _SKY_KEYS = None, None, 0
 
-_ORD = {2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven'}
+# The encounters written up, as a registry rather than as a hand-counted
+# sentence. "One zone is written up in full" and the card beside it were two
+# statements of the same fact, free to disagree the day a second page lands.
+#
+# The island count is deliberately NOT here. It belongs to _build/build8.py,
+# which holds the ring the count comes from; typing 9 in a second file is the
+# propagation fault scripts/gate.py exists to catch, and this page carried it
+# three times over — "9", "9 islands", "Nine islands".
+RAID_PAGES = [dict(slug="plane-of-sky", name="The Plane of Sky")]
 
-raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what every boss cost us to kill, and the order to do it in.", rel="../", og="raids", canon="raids/index") + bar("../") + f'''
-<main>
+# THE RAIDS INDEX IS ON THE MISTMOORE SHEET FORMAT, at the smallest size that
+# still reads as the same object as raids/plane-of-sky.html: the graticule, the
+# neatline, and the masthead grammar of eyebrow, Cinzel title, subtitle and
+# deck. No spine and no kickers — this page has one section, and marginalia on
+# a single card is decoration rather than structure.
+#
+# Ember stays the raids accent. The ember hero this replaced was the same idea
+# said louder, and the two could not both lead the page.
+RAIDS_CSS = '''<style>
+:root{--acc:var(--ember);--acct:var(--ember-t)}
+html{background:var(--surface-0)}
+body{background:transparent}
+/* The graticule. One 152px period per axis rather than two stacked gradients,
+   because stacked periods compound at the crossings and the compounding eats
+   text contrast. Every stop terminates in rgba(228,210,174,0) and never in the
+   keyword transparent, which older WebKit premultiplies as transparent BLACK
+   and draws as a grey seam down each rule. site.css already owns body::after
+   for the site-wide grain, so the washes ride on main.raidx::before. */
+body::before,main.raidx::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+main.raidx::before{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(196,72,46,.045) 0%, rgba(196,72,46,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,main.raidx::before{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+.sky-wrap{max-width:1200px;margin:0 auto;padding:var(--s-6) clamp(10px,2vw,26px) var(--s-8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--s-8);
+  background:rgba(11,7,4,.58);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
+.sheet::before{content:"";position:absolute;inset:var(--s-2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+.mast{padding:var(--s-7) 0 var(--s-5);border-bottom:1px solid var(--rule2)}
+.mast .eyebrow{font-size:var(--t-2xs);letter-spacing:var(--tr-widest);color:var(--acct);
+  margin:0 0 var(--s-4)}
+.title{display:flex;align-items:flex-end;gap:var(--s-4)}
+.mast h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(38px,6.6vw,74px);
+  line-height:1.02;letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;
+  color:var(--bone)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--rule2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-md);
+  color:var(--mut);letter-spacing:.02em;margin:var(--s-2) 0 var(--s-3);text-transform:uppercase}
+.deck{color:var(--txt);margin:0 0 var(--s-5);max-width:66ch}
+.deck strong{color:var(--bone)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:0;
+  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.strip .cell{background:var(--panel);padding:var(--s-3);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.strip dt{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--dim);margin:0 0 var(--s-1)}
+.strip dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);
+  font-weight:600;color:var(--bone);line-height:1.15}
+.strip dd small{font-family:"Public Sans",sans-serif;font-size:var(--t-xs);font-weight:400;
+  color:var(--mut);display:block;letter-spacing:0;line-height:1.4}
+.sheet .cards{margin-top:var(--s-6)}
+.sheet .note{max-width:var(--measure-wide)}
+</style>'''
 
-<section class="hero page ember-hero">
-  <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
-    <h1 class="display">Raid<br><em>encounters.</em></h1>
-    <p class="hero-lede">One zone is written up in full. We publish an encounter when we have
-      fought it ourselves and can say what it cost &mdash; not when we can find a description of
-      it somewhere else.</p>
+raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what each boss costs to kill, and the order to do it in.", rel="../", extra=RAIDS_CSS, og="raids", canon="raids/index") + bar("../") + f'''
+<main class="raidx">
+<div class="sky-wrap">
+<div class="sheet">
+
+<header class="mast">
+  <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
+  <p class="eyebrow">Encounter index</p>
+  <div class="title"><h1>Raid encounters</h1><span class="leader"></span>
+    <span class="plateno">{len(RAID_PAGES)}</span></div>
+  <p class="subtitle">Written up once it has been fought and measured here</p>
+  <p class="deck">An encounter is published because someone killed it, not because a description
+    exists elsewhere. <strong>Sky is not a raid zone, whatever else you have read</strong> &mdash;
+    its dearest boss costs about a {_SKY_RATIO}th of what Cazic-Thule costs at Refined, and every
+    boss on the ring is measured below that.</p>
+  <dl class="strip">
+    <div class="cell"><dt>Key chain</dt><dd>{_SKY_KEYS} keys<small>confirmed in play</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>Base<small>D0, the only tier measured</small></dd></div>
+    <div class="cell"><dt>Dearest boss</dt><dd>{_SKY_BIGGEST:,}<small>damage to kill, in Sky</small></dd></div>
+  </dl>
+</header>
+
+<section>
+  <div class="cards c2">
+    <a class="card" href="plane-of-sky.html" style="--c:var(--ember)">
+      <div class="kicker">Complete &middot; island by island</div>
+      <h3 class="t">The Plane of Sky</h3>
+      <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
+        every island through to the Eye and the Hand of Veeshan. What each boss costs to kill,
+        where the efreeti gear comes from, and how high the place actually is.</p>
+      <div class="chipline"><span class="pill">Key chain confirmed</span><span class="pill">Measured in play</span></div>
+      <div class="foot"><span>Base difficulty</span><span class="go">Open &rarr;</span></div></a>
   </div>
+
+  <div class="note warn"><strong>Difficulty does not raise mob levels.</strong> D0&ndash;D4 makes
+    mobs run player-style class kits, widens aggro ranges and pre-upgrades loot. Named mobs are
+    often multiclass from D2, and raid bosses start appearing triple-class at D3. Nothing
+    measured here reaches above D0.</div>
 </section>
 
-<div class="shell">
-  <section class="band" style="border-top:0;padding-top:0">
-    <div class="cards c2">
-      <a class="card figured" href="plane-of-sky.html" style="--c:var(--z01)">
-        <span class="fig">9</span>
-        <div class="kicker">Complete &middot; island by island</div>
-        <h3 class="t">The Plane of Sky</h3>
-        <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
-          every island through to the Eye and the Hand of Veeshan. Nine islands, six of the seven
-          key drops confirmed against our own logs, and what each boss actually cost to kill.</p>
-        <div class="chipline"><span class="pill">9 islands</span><span class="pill">{_SF.get('n','?')} fights measured</span></div>
-        <div class="foot"><span>Measured at base difficulty</span><span class="go">Open &rarr;</span></div></a>
-    </div>
-
-    <div class="note"><strong>Sky is not a raid zone, whatever else you have read.</strong> We
-      killed {_SF.get('bosses','?')} of its bosses {_SF.get('n','?')} times with a median of
-      {_ORD.get(_SF.get('attackers_median'), _SF.get('attackers_median'))} attackers and a thinnest
-      fight of {_ORD.get(_SF.get('attackers_min'), _SF.get('attackers_min'))}. The most expensive
-      boss in the zone costs about a {_SKY_RATIO}th of Cazic-Thule at Refined.</div>
-
-    <div class="note warn"><strong>Everything here is base difficulty.</strong> D0&ndash;D4 does
-      <em>not</em> raise mob levels &mdash; it makes mobs run player-style class kits, widens aggro
-      ranges and pre-upgrades loot. Named mobs are often multiclass from D2 and raid bosses start
-      appearing triple-class at D3. <strong>We have never played Sky above D0</strong>, so nothing
-      on that page describes Awakened or above, and it says so where the figures are.</div>
-  </section>
+</div>
 </div>
 </main>
 ''' + foot("../")
@@ -274,17 +364,12 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <div class="sechead"><span class="n">01</span><div><h2 class="sec">The hierarchy</h2></div></div>
     <div class="cards c2">
       <div class="card" style="--c:var(--ok)"><div class="kicker">Tier M &middot; strongest</div>
-        <h3 class="t">Our own combat logs</h3>
-        <p class="d">First-hand instrument data: what happened, in the live game, on a dated session, to a named
-          character, parsed rather than remembered. <strong>It outranks every read source for what it directly
-          measures, and generalises to nothing beyond its stated conditions.</strong> Always published with trio,
-          level, zone, difficulty, date and sample size. One session is a sample, not a rate.</p></div>
-      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier C &middot; off the ramp</div>
-        <h3 class="t">A named first-hand report</h3>
-        <p class="d">A player saying they played this last night and it did not work the way the wiki says. Not
-          tier M &mdash; nothing was parsed, and recollection is not a log. Not a reading of a document either, so
-          it sits below M and above tier 3. <strong>Our own play reports are tier C, not tier M</strong>; exempting
-          ourselves would corrupt the scale fastest.</p></div>
+        <h3 class="t">Measured combat logs</h3>
+        <p class="d">First-hand instrument data, parsed rather than remembered. <strong>It outranks every read
+          source for what it directly measures, and generalises to nothing beyond its stated conditions.</strong>
+          The zone and difficulty are published with it; a single observation is a sighting, not a rate.
+          <strong>The badge is the claim that it was measured</strong> &mdash; the session behind it is
+          not published.</p></div>
       <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest read source</div>
         <h3 class="t">Official patch notes</h3>
         <p class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
@@ -332,7 +417,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
         <p class="d">The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
           <code>/loc</code> per island &mdash; nine readings &mdash; would label the elevation chart permanently
-          and let us draw each island properly.</strong> The page says so in place.</p></div>
+          and let each island be drawn properly.</strong> The page says so in place.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
         <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
           labels. Which chamber is which is still something you work out from the named roster.</p></div>
@@ -347,7 +432,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
         This used to sit on the surveys themselves. It belongs here, where someone
-        checking our working can find them in one place. <strong>It covers the original ten surveys</strong>;
+        checking the working can find it in one place. <strong>It covers the original ten surveys</strong>;
         Plane of Fear, Plane of Hate and Kedge Keep were added later and are not in it yet.</p>
       <p class="lede"><strong>The same split applies to almost every row.</strong> A wiki
         page&rsquo;s infobox and its NPC and item tables are usually live Legends data, while its
@@ -357,8 +442,8 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     {wiki_table}
     <p class="lede" style="margin:16px 0 0">{_nrev} of the ten rows carry a revision id; the rest
       say so. {_np99} of the ten pages began as Project 1999 imports, which by the provenance test in
-      our standard makes their prose tier 5 however current the infobox is. The per-zone detail
-      below is what did not fit in a cell.</p>
+      the standard above makes their prose tier 5 however current the infobox is. The per-zone
+      detail below is what did not fit in a cell.</p>
 {prov_blocks}
   </section>
 

@@ -46,8 +46,13 @@ const ROOT = path.resolve(__dirname, '..');
  * DOM id that must contain `expect` afterwards. Omit `fills` for a tool that
  * legitimately renders nothing until the reader does something. */
 const TOOLS = [
-  { file: 'plane-of-sky.html', fills: 'classgrid', expect: '<button',
-    note: 'the class picker — the control that broke' },
+  /* tools/plane-of-sky.html was withdrawn on 17 Aug 2026 — Sky Ledger replaced
+   * it. Its page here is a description with no application in it, and the
+   * application itself lives in public/app/ with its own test suite in its own
+   * repository. Listed so this file stays parallel to the TOOLS registry in
+   * _build/_partials.py; it reports as skipped, which is the honest answer. */
+  { file: 'sky-ledger.html', fills: null,
+    note: 'a description page — the app it links is tested in its own repo' },
   { file: 'planar-gear.html', fills: 'cls', expect: '<button',
     note: 'the class chooser' },
   { file: 'index-search.html', fills: 'results', expect: '<',

@@ -702,6 +702,18 @@ PLATE_CSS = """
 .fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
   color:var(--bone)}
 .fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
+/* THE `hidden` ATTRIBUTE DOES NOT HIDE AN SVG ELEMENT. It is an HTML attribute:
+   the rule that honours it lives in the browser's HTML stylesheet, and `.hidden`
+   is an IDL property of HTMLElement, which SVGGElement is not. So the route
+   group shipped with `hidden` set and a computed display of `inline` — the line
+   and its numbered stops were drawn on every plan, always, while the button
+   flipped a property nothing read. The sibling HTML note beside it honoured
+   `hidden` correctly, which is why half the control appeared to work.
+   The numerals had no explanation on screen because the note they belong to was
+   the half that stayed hidden. Two changes, and both are needed: this rule makes
+   the attribute mean something here, and the handler below sets the ATTRIBUTE
+   rather than the property. */
+svg .route[hidden]{display:none}
 .plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
 .mk{cursor:pointer}
 .mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
@@ -766,7 +778,12 @@ PLATE_JS = """
       b.classList.toggle('on', on);
       if(b.dataset.t==='names'){ svg.classList.toggle('nonames', !on); }
       if(b.dataset.t==='route'){
-        if(route) route.hidden=!on;
+        // setAttribute, not .hidden: the route is an SVG group and does not
+        // carry the HTML property. See the stylesheet note above.
+        if(route){
+          if(on) route.removeAttribute('hidden');
+          else route.setAttribute('hidden','');
+        }
         if(rnote) rnote.hidden=!on;
       }
     });

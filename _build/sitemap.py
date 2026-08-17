@@ -11,6 +11,12 @@ pages=[]
 for p in sorted(glob.glob("public/*.html")+glob.glob("public/*/*.html")):
     p=p.replace(os.sep,"/")   # Windows globs return backslashes; URLs must not
     p=p[len("public/"):]
+    # public/app/ is the Sky Ledger application, served verbatim under a
+    # content hash. The hash changes with every release, so listing it would
+    # publish a URL that stops existing - and the page a reader should find is
+    # tools/sky-ledger.html, which describes it and links it.
+    if p.startswith("app/"):
+        continue
     pri="1.0" if p=="index.html" else ("0.8" if p.endswith("index.html") else "0.6")
     pages.append(f"  <url><loc>{DOMAIN}/{p}</loc><lastmod>{today}</lastmod><priority>{pri}</priority></url>")
 open("public/sitemap.xml","w",encoding="utf-8",newline="\n").write(

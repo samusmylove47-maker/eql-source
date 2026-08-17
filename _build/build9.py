@@ -1,9 +1,21 @@
 """Measured-in-play sections, from assets/measured.json onto the surveys.
 
-Reads what logstats.py counted and writes it into the matching plate, under the
-floor plan. Nothing here interprets: it prints what was measured with the
-conditions attached, because a figure from one session is a fact about that
-session and not a property of the zone.
+Reads what logstats.py counted and writes a ZONE REFERENCE into the matching
+plate, under the floor plan: which mobs cast what, which backstab, which stuns
+land and what casts them, and what dropped.
+
+WHAT THIS SECTION IS NOT ALLOWED TO PUBLISH. Not session counts, dates, windows
+or hours played. Not character names, levels or trios. Not kill counts, swing
+counts, hit rates, per-mob sighting counts or per-tier loot tallies. Not party
+chat, not disconnections, not fights broken off. Every one of those is a fact
+about one player's evening rather than about the zone, and the site is generic.
+
+The TIER M badge on the heading already says the claim was verified in play. A
+sentence whose only job is to prove the measurement happened is therefore
+redundant, and it goes. What survives is the finding, stated without the count:
+"stuns here arrive as spells, not as melee", never "882 shrugged off, 296
+landed". The counts still drive the ordering and the selection; they just do not
+reach the page.
 
 Runs after build6.py, which has already injected the floor plan. Both write into
 pages build3.py regenerates from _build/source every build, so neither
@@ -88,77 +100,49 @@ CSS = """
 </style>"""
 
 
-def escapes_html(s):
-    """Fights the group broke off.
-
-    A wiki records what a mob is. It does not record the moment a group decided
-    a fight was lost, which is the judgement a reader actually wants, and a
-    combat log is the only place it exists. Printed with what was engaged and
-    what had just been cast, and with no claim that the fight is unwinnable —
-    only that this group, at this level, chose to leave it.
-    """
-    esc_list = s.get('escapes') or []
-    if not esc_list:
-        return ''
-    items = ''.join(
-        f'<li><b>{esc(e["at"])}</b> &mdash; {esc(e["by"])} took the group out'
-        + (f', with <b>{esc(", ".join(e["engaged"]))}</b> engaged' if e.get('engaged') else '')
-        + (f'. Last thing cast before the call: <b>{esc(e["after"])}</b>' if e.get('after') else '')
-        + '.</li>'
-        for e in esc_list)
-    # An escape is only a judgement about a fight if the group was in a position
-    # to judge. Where the session carries a stated caveat — a client crashing,
-    # for one — that has to appear beside the list rather than under it, because
-    # "the group chose to leave" is exactly the wrong reading of a crash.
-    warn = ''
-    if s.get('caveat'):
-        warn = (f'<div class="cond" style="border-left-color:var(--acct)">'
-                f'<b>Read these against the conditions.</b> {esc(s["caveat"])}</div>')
-
-    return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
-            f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Fights broken off</h3>'
-            + warn
-            + f'<ul style="margin:0 0 16px;padding-left:20px;color:var(--mut);font-size:14px;'
-            f'line-height:1.7">{items}</ul>'
-            f'<p class="caveat" style="margin:0 0 18px">An escape is a judgement, not a verdict. '
-            f'It records that this group at this level chose to leave, which is worth knowing and is '
-            f'written down nowhere else &mdash; but it is not evidence the fight cannot be won, and '
-            f'the number of mobs engaged is usually the reason rather than the named itself.</p>')
+H3 = ('<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
+      'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">{}</h3>')
 
 
 def control_html(s):
-    """What takes control away from you, and what cast it.
+    """What takes control away from you, and what casts it.
 
-    The most actionable thing in a log, and it took a death to find. Counted by
-    what the log says happened rather than by what a spell is assumed to be:
+    The most actionable thing in a zone, and it took a death to find. Read from
+    what the log says happened rather than from what a spell is assumed to be:
     Screaming Terror was taken for a fear spell and produced no fear behaviour
     at all, only a scream and a lockout.
+
+    The counts order the table and are not printed. How often a spell landed is
+    a fact about how long one player stood in front of it; WHICH spells stun and
+    WHAT casts them is a fact about the zone.
     """
     c = s.get('control') or {}
     stuns = c.get('stuns') or {}
-    if not stuns and not c.get('melee_stuns_avoided'):
+    if not stuns:
         return ''
+    ranked = sorted(stuns.items(), key=lambda kv: -kv[1]['landed'])
     rows = ''.join(
         f'<tr><td><span class="mob">{esc(sp)}</span></td>'
-        f'<td class="n">{d["landed"]}</td>'
-        f'<td>{esc(", ".join(f"{k} ({v})" for k, v in list(d["casters"].items())[:6])) or "&mdash;"}</td></tr>'
-        for sp, d in stuns.items())
-    total = sum(d['landed'] for d in stuns.values())
-    lead = (f'<b>{c.get("melee_stuns_avoided", 0)}</b> stunning melee attacks were shrugged off, '
-            f'and <b>{total}</b> stuns landed anyway &mdash; <b>every one of them from a spell</b>. '
-            f'That gap is the point: an immunity to stunning <em>melee</em> attacks does nothing '
-            f'about a spell, and the character being measured carried exactly that immunity.')
+        f'<td>{esc(", ".join(list(d["casters"])[:6])) or "&mdash;"}</td></tr>'
+        for sp, d in ranked)
+    # The melee/spell contrast only holds where stunning melee attacks were in
+    # fact shrugged off. Without that half there is no gap to point at, so the
+    # sentence weakens rather than asserting something the data does not show.
+    if c.get('melee_stuns_avoided'):
+        lead = ('<b>Stuns here arrive as spells, not as melee.</b> Stunning melee attacks were '
+                'shrugged off and the spells landed anyway, so an immunity to stunning '
+                '<em>melee</em> attacks does nothing about them.')
+    else:
+        lead = '<b>These are the spells that take a turn away from you here.</b>'
     if c.get('screams'):
-        lead += (f' Screaming Terror landed {c["screams"]} times for '
-                 f'<b>{c["scream_seconds"]} seconds</b> of being unable to act.')
-    if c.get('fear_lines') == 0 and c.get('screams'):
-        lead += (' It produced <b>no fear behaviour whatsoever</b> &mdash; no fleeing, nothing '
-                 'the log calls fear &mdash; so despite the name it reads as a stun, and '
-                 'fear protection does not appear to touch it.')
-    return (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
-            f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">What takes control away</h3>'
-            f'<div class="cond">{lead}</div>'
-            f'<div class="tw"><table><thead><tr><th>Spell</th><th>Stuns landed</th><th>Cast by</th></tr></thead>'
+        lead += ' Screaming Terror locks you out of acting.'
+        if c.get('fear_lines') == 0:
+            lead += (' It produces <b>no fear behaviour whatsoever</b> &mdash; no fleeing, nothing '
+                     'that behaves like fear &mdash; so despite the name it reads as a stun, and '
+                     'fear protection does not appear to touch it.')
+    return (H3.format('What takes control away')
+            + f'<div class="cond">{lead}</div>'
+            f'<div class="tw"><table><thead><tr><th>Spell</th><th>Cast by</th></tr></thead>'
             f'<tbody>{rows}</tbody></table></div>'
             f'<p class="caveat" style="margin:0 0 18px"><b>Read this as a kill order.</b> '
             f'Whatever casts the spell at the top takes your turn away most often. '
@@ -177,19 +161,11 @@ def merge(sessions):
     if len(sessions) == 1:
         return sessions[0]
     out = dict(sessions[0])
-    # Sessions can span days. Shara's Befallen runs at D1 cover 4, 6 and 7
-    # August, and the character's level may well have moved between them, which
-    # changes every hit rate in the table. They are still merged — the samples
-    # are small individually — but the span is stated and the page carries a
-    # caveat rather than presenting three days as one afternoon.
-    dates = sorted({s['date'] for s in sessions})
-    out['days'] = len(dates)
-    out['date'] = dates[0] if len(dates) == 1 else f"{dates[0]} to {dates[-1]}"
-    out['window'] = (f"{sessions[0]['window'].split('-')[0]}-{sessions[-1]['window'].split('-')[-1]}"
-                     if len(dates) == 1 else f"{len(sessions)} sittings")
+    # Sessions can span days, and the merged figures are the sum. None of the
+    # dates, windows or per-session totals reach the page — they select and
+    # order, nothing more — so the span needs no caveat any more: the page never
+    # claims a period in the first place.
     out['kills'] = sum(s['kills'] for s in sessions)
-    out['you_hit'] = sum(s['you_hit'] for s in sessions)
-    out['you_miss'] = sum(s['you_miss'] for s in sessions)
     out['sessions_merged'] = len(sessions)
 
     for key in ('drop_tiers', 'faction'):
@@ -198,19 +174,23 @@ def merge(sessions):
             c.update(s.get(key) or {})
         out[key] = dict(c.most_common()) if key == 'faction' else dict(sorted(c.items()))
 
-    out['stamps'] = [x for s in sessions for x in s.get('stamps', [])]
-    out['escapes'] = [x for s in sessions for x in s.get('escapes', [])]
-
-    # A caveat on any merged part applies to the whole, because the merged
-    # figures include it. Dropping it here is how a warning recorded against
-    # the afternoon sessions failed to reach the page that averages them in.
-    cav = [s['caveat'] for s in sessions if s.get('caveat')]
-    if cav:
-        out['caveat'] = cav[0]
-
-    mobs = {}
+    # ONE MOB TYPE, ONE ROW, WHATEVER CASE THE LOG WROTE IT IN.
+    #
+    # The parser records a mob under the capitalisation of the line it came
+    # from: "A deathly usher backstabs YOU" and "You have slain a deathly
+    # usher" are the same creature and were becoming two rows. Across the
+    # Castle Mistmoore sessions that turned 66 real types into 121, and the
+    # measured section published "113 ordinary mob types" for a zone holding
+    # about 58 — a count nobody typed, derived from data that had been split
+    # in half.
+    #
+    # Keyed on the lower-case name; the display name is whichever form the log
+    # used first, so nothing invents a capitalisation the game does not use.
+    mobs, shown = {}, {}
     for s in sessions:
-        for name, d in s['mobs'].items():
+        for raw, d in s['mobs'].items():
+            name = raw.lower()
+            shown.setdefault(name, raw)
             m = mobs.setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
                                            backstabs=0, backstab_avg=None, backstab_max=None,
                                            casts=collections.Counter(), loot=collections.Counter(),
@@ -232,7 +212,8 @@ def merge(sessions):
         m['casts'] = dict(m['casts'].most_common())
         m['loot'] = dict(m['loot'].most_common())
         del m['_dmg'], m['_bdmg']
-    out['mobs'] = mobs
+    # Back to the log's own capitalisation for display.
+    out['mobs'] = {shown[k]: v for k, v in mobs.items()}
     # Unique names, not the sum of per-session counts: the same gargoyle type
     # appearing in both halves of an afternoon is one kind of mob, not two.
     kinds = {k for s in sessions for k in (s.get('kinds') or [])}
@@ -256,104 +237,88 @@ def merge(sessions):
 
 
 def section(sess_list, zone_title):
-    # Merge only what was measured under the same conditions: same difficulty
-    # and the same character. A healer's log and a tank's describe different
-    # fights from different sides, and averaging them would describe neither.
+    # Merge only what was observed under the same conditions: same difficulty,
+    # and the same vantage point. A healer's view of a fight and a tank's are
+    # different fights, and averaging them would describe neither.
     best = max(sess_list, key=lambda z: z['kills'])
     same = [z for z in sess_list
             if z.get('difficulty') == best.get('difficulty')
             and z.get('character') == best.get('character')]
     s = merge(sorted(same, key=lambda z: (z['date'], z['window'])))
 
-    # NAME WHAT IS MEASURED AND NOT SHOWN.
-    # Only the largest group renders, so a zone logged at two difficulties
-    # published one and dropped the other in silence - The Hole had 70 kills at
-    # Base, two named mobs and their drops among them, that no page mentioned.
-    # Rendering every group would repeat this whole section's framing per block.
-    # Naming the remainder costs a sentence and turns a silent loss into a
-    # stated one, which is the rule everywhere else on this site.
-    rest = collections.Counter()
-    for z in sess_list:
-        if z in same or not z['kills']:
-            continue
-        rest[(z.get('difficulty'), z.get('character'))] += z['kills']
-    also = ''
-    if rest:
-        # Capped at three. Unbounded, this line grows every time the zone is
-        # played again - it reached six entries on Nagafen's Lair and pushed
-        # the page through its prose ceiling, which would have meant raising
-        # the ceiling every session forever. The total is still stated.
-        ranked = sorted(rest.items(), key=lambda kv: -kv[1])
-        bits = ', '.join(
-            f'{n} at D{d}' + (f' from {esc(c)}&rsquo;s log' if c != s.get('character') else '')
-            for (d, c), n in ranked[:3])
-        extra = sum(n for _k, n in ranked[3:])
-        if extra:
-            bits += f', and {extra} more across {len(ranked) - 3} other runs'
-        also = (f' <b>Also measured here and not shown below:</b> {bits}. '
-                f'Conditions differ, so those kills are not averaged into these figures.')
-    # Stamps used to be bare strings and are now {at, text, conditions}; accept
-    # either so an older measured.json still renders.
-    def txt(v):
-        return v['text'] if isinstance(v, dict) else v
-
-    CLASSES = r'\b(BRD|WAR|CLR|SHM|NEC|DRU|ROG|MNK|BER|PAL|SHD|RNG|WIZ|MAG|ENC|BST)\b'
-    stamps = s.get('context') or s['stamps']
-    who = next((txt(x) for x in stamps if re.search(CLASSES, txt(x))), None)
-    # Only stamps that state a condition reach the page. The rest is party chat:
-    # "I will provide her logs separate later" was being republished as though
-    # it described the fight.
-    notes = [(txt(x), x.get('at') if isinstance(x, dict) else None, True)
-             for x in s['stamps']
-             if txt(x) != who and isinstance(x, dict) and x.get('conditions')]
+    # Runs at other difficulties are not merged in and are not listed either.
+    # The line that listed them was a per-run kill tally, which is the diary
+    # this section no longer keeps; what it protected against — a silent loss —
+    # is covered by the heading, which now states the difficulty these
+    # observations belong to instead of implying they cover the zone entire.
 
     named, trash = [], []
     for name, d in s['mobs'].items():
         (trash if ARTICLE.match(name) else named).append((name, d))
-    named.sort(key=lambda kv: -(kv[1]['swings'] or 0))
-    trash.sort(key=lambda kv: -(kv[1]['swings'] or 0))
+    # Alphabetical. Ordering by how often a mob swung at us ranked the table by
+    # where one player happened to stand; a reference sorts by name.
+    named.sort(key=lambda kv: kv[0].lower())
 
     def rows(items):
         out = []
         for name, d in items:
             if not d['swings'] and not d['casts'] and not d['loot']:
                 continue
-            land = f"{100*d['landed']/d['swings']:.0f}%" if d['swings'] else '&mdash;'
+            # Damage is the mob's, so it stays. Swings and landing rates are the
+            # player's afternoon, so they do not. A backstabber never gets a
+            # combined average — the two numbers describe two different attacks.
             dmg = (f"{d['avg']:g} avg &middot; {d['max']} max" if d['avg'] is not None
                    else 'not measured')
             if d.get('backstabs'):
                 dmg += (f'<span class="sub">backstab {d["backstab_avg"]:g} avg &middot; '
-                        f'{d["backstab_max"]} max, seen {d["backstabs"]}&times;</span>')
+                        f'{d["backstab_max"]} max</span>')
             casts = ', '.join(f'{esc(k)}' for k in list(d['casts'])[:6]) or '&mdash;'
             loot = ', '.join(esc(k) for k in list(d['loot'])[:6]) or '&mdash;'
             out.append(
                 f'<tr><td><span class="mob">{esc(name)}</span>'
-                f'<span class="sub">{"seen casting: " + casts if d["casts"] else "no casts logged"}</span></td>'
-                f'<td class="n">{d["swings"] or "&mdash;"}</td><td class="n">{land}</td>'
+                f'<span class="sub">{"casts: " + casts if d["casts"] else "no casts seen"}</span></td>'
                 f'<td class="n">{dmg}</td><td>{loot}</td></tr>')
         return ''.join(out)
 
-    hdr = ('<tr><th>Mob</th><th>Swings at us</th><th>Landed</th>'
-           '<th>Damage</th><th>Dropped</th></tr>')
+    hdr = '<tr><th>Mob</th><th>Damage dealt</th><th>Dropped</th></tr>'
     tables = ''
     if named:
-        tables += (f'<h3 style="font-family:\'Saira Condensed\',sans-serif;text-transform:uppercase;'
-                   f'font-size:17px;letter-spacing:.04em;margin:18px 0 8px">Named</h3>'
-                   f'<div class="tw"><table><thead>{hdr}</thead><tbody>{rows(named)}</tbody></table></div>')
+        tables += (H3.format('Named')
+                   + f'<div class="tw"><table><thead>{hdr}</thead>'
+                   f'<tbody>{rows(named)}</tbody></table></div>')
     if trash:
-        tsw = sum(d['swings'] or 0 for _n, d in trash)
-        tld = sum(d['landed'] or 0 for _n, d in trash)
-        rate = f'{100*tld/tsw:.0f}%' if tsw else 'not measured'
-        # Ordinary mobs stop being itemised here. Sixty rows of "a dark elf
-        # noble" was the largest block on a measured section, and nobody plans
-        # an evening around trash damage averages. The aggregate keeps the scale.
-        tables += (f'<p class="trash">Plus <b>{len(trash)}</b> ordinary mob types over '
-                   f'<b>{tsw:,}</b> swings, landing {rate}. Not itemised.</p>')
+        # Ordinary mobs are not itemised: sixty rows of "a dark elf noble" was
+        # the largest block on any survey and nobody plans a run around it. The
+        # one thing worth carrying out is which of them backstab, because a
+        # backstabber hits several times harder from behind and the ordinary
+        # ones doing it is the finding this site holds and others do not.
+        bs = sorted(n for n, d in trash if d.get('backstabs'))
+        line = 'Ordinary mobs are not itemised here.'
+        if bs:
+            # The log's own capitalisation is right at the head of a row and
+            # wrong in the middle of a sentence: "A gypsy musician" mid-clause
+            # reads as a new sentence starting. Only the leading article moves.
+            shown = ', '.join(f'<b>{esc(n[0].lower() + n[1:] if ARTICLE.match(n) else n)}</b>'
+                              for n in bs[:8])
+            # "runs far above their melee" was the first draft and one mob broke
+            # it: a forsaken revenant's biggest backstab is smaller than its
+            # biggest swing. The average holds for every backstabber measured,
+            # so the average is what the sentence claims.
+            line += (f' These ordinary mobs backstab: {shown}'
+                     + (', among others.' if len(bs) > 8 else '.')
+                     + ' Backstab is a rogue ability, so ordinary mobs here carry class kits. '
+                       'A backstab averages more damage than the same mob&rsquo;s melee.')
+        tables += f'<p class="trash">{line}</p>'
 
-    yh, ym = s['you_hit'], s['you_miss']
-    hitrate = f"{100*yh/(yh+ym):.1f}%" if (yh + ym) else 'not measured'
-    tiers = ', '.join(f'+{k} &times;{v}' for k, v in s['drop_tiers'].items()) or 'none recorded'
-    facs = ', '.join(esc(f) for f in list(s['faction'])[:8]) or 'none recorded'
+    tk = sorted(int(k) for k in (s.get('drop_tiers') or {}))
+    if not tk:
+        tiers = 'No upgradeable drops recorded here.'
+    elif len(tk) == 1:
+        tiers = f'Upgradeable drops here came in at +{tk[0]}.'
+    else:
+        tiers = f'Upgradeable drops here ran +{tk[0]} to +{tk[-1]}.'
+    facs = ', '.join(esc(f) for f in list(s['faction'])[:8])
+    facs = f' Killing here moves faction with {facs}.' if facs else ''
     d, lab = s.get('difficulty'), s.get('difficulty_label')
     if lab and d is not None:
         diff = f'D{d}, {esc(lab)}'
@@ -368,39 +333,18 @@ def section(sess_list, zone_title):
                  'so treat the difficulty as unresolved')
 
     return (
-        f'<section class="meas">'
+        f'<section class="meas" id="measured">'
         f'<h2>Measured in play <span class="tierM">TIER M</span></h2>'
         f'<div class="cond">'
-        f'<b>{("One session" if s.get("sessions_merged", 1) < 2 else str(s["sessions_merged"]) + " sessions")}, '
-        f'{esc(s["date"])}, {esc(s["window"])}.</b> '
-        + f'Measured from <b>{esc(s.get("character") or "an unnamed character")}</b>&rsquo;s log. '
-        + (f'<b>Measured across {s["days"]} days</b>, so the character&rsquo;s level may have '
-           f'changed within the span &mdash; treat the landing rates as an average over that '
-           f'range rather than a figure for one level. ' if s.get('days', 1) > 1 else '')
-        # A stamp is party chat, so it reaches everyone's log. Shara's Befallen
-        # runs carried "Avenrae BRD WAR BER" and were printing it as though it
-        # described the character whose log this is. It only describes the
-        # subject when it names them.
-        + (f'<b>{esc(who)}</b> ' if who and s.get('character')
-           and who.lower().startswith(str(s['character']).lower())
-           else (f'Party context noted in chat at the time: <em>{esc(who)}</em> ' if who else ''))
-        + f'Zone entered as <b>{esc(zone_title)} ({diff})</b>. '
-        + f'{s["kills"]} kills across {s["distinct"]} kinds of mob; our own swings landed '
-        + f'<b>{hitrate}</b> of the time ({yh + ym} attempts). Drops seen: {tiers}. '
-        + f'Faction moved: {facs}.{also}'
-        + (''.join(
-            f'<br><b>{"Conditions changed at" if c else "Noted at"} {esc(at)}:</b> {esc(n)}'
-            if at else f'<br><b>Noted at the time:</b> {esc(n)}'
-            for n, at, c in notes) if notes else '')
-        + f'</div>{control_html(s)}{escapes_html(s)}{tables}'
-        # "counts from one session" was typed, so a page merging three sessions
-        # printed "3 sessions" in its header and "one session" in its caveat.
-        # The same fault the propagation gate exists for, in a sentence about
-        # not over-reading evidence.
-        f'<p class="caveat"><strong>What this is and is not.</strong> These are counts'
-        f'{" from one session" if s.get("sessions_merged", 1) < 2 else ""}, not rates. '
-        f'A drop seen once is seen once, and figures describe this '
-        f'trio at this level on this date. '
+        f'<b>{esc(zone_title)}, run at {diff}.</b> '
+        f'Everything below was observed in the live game rather than read from a '
+        f'source: what these mobs cast, what they hit for, and what they dropped. '
+        f'{tiers}{facs}'
+        f'</div>{control_html(s)}{tables}'
+        f'<p class="caveat"><strong>What this is and is not.</strong> Observations, not '
+        f'rates. A drop seen once is not a drop rate, and nothing here is a probability. '
+        f'Damage is what the mob dealt against the armour it met, so treat the maximum as '
+        f'the shape of the hit rather than a constant. '
         f'<a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p>'
         f'</section>')
 
@@ -426,6 +370,16 @@ def main():
         if not os.path.exists(path):
             continue
         h = open(path, encoding='utf-8').read()
+        # RUNNING THIS TWICE MUST NOT PUBLISH THE SECTION TWICE.
+        #
+        # Injection is append-only and relies on build3.py having regenerated
+        # the page first, which is true inside build.sh and not true of anyone
+        # running this file on its own. A second copy is not merely untidy: the
+        # prose ceiling exempts the measured table rows only inside the FIRST
+        # measured section, so the duplicate's rows all count as prose and four
+        # surveys blow their ceilings at once. Strip any previous copy first.
+        h = re.sub(r'<section class="meas" id="measured">.*?</section>', '', h, flags=re.S)
+        h = h.replace(CSS, '')
         block = section(lst, by_key[key(next(x['zone'] for x in lst))]['title'])
         if '</main>' in h:
             h = h.replace('</main>', block + '</main>', 1)

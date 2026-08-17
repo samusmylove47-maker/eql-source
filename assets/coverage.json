@@ -12,19 +12,19 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "17 named on the roster, none fought by us"
+     "detail": "17 named on the roster, none measured"
     },
     "loot": {
      "level": "sourced",
-     "detail": "65 items listed, none seen by us"
+     "detail": "65 items listed, none measured"
     },
     "difficulty": {
      "level": "none",
-     "detail": "never played at a recorded difficulty"
+     "detail": "no measured difficulty"
     },
     "inherited": {
      "level": "sourced",
-     "detail": "4 inherited claims badged, placeholder model retracted in place"
+     "detail": "3 inherited claims badged, placeholder model retracted in place"
     },
     "farming": {
      "level": "sourced",
@@ -41,15 +41,15 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "17 named on the roster, none fought by us"
+     "detail": "17 named on the roster, none measured"
     },
     "loot": {
      "level": "sourced",
-     "detail": "24 items listed, none seen by us"
+     "detail": "24 items listed, none measured"
     },
     "difficulty": {
      "level": "none",
-     "detail": "never played at a recorded difficulty"
+     "detail": "no measured difficulty"
     },
     "inherited": {
      "level": "sourced",
@@ -70,15 +70,15 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "19 named on the roster, none fought by us"
+     "detail": "19 named on the roster, none measured"
     },
     "loot": {
      "level": "sourced",
-     "detail": "35 items listed, none seen by us"
+     "detail": "35 items listed, none measured"
     },
     "difficulty": {
      "level": "none",
-     "detail": "never played at a recorded difficulty"
+     "detail": "no measured difficulty"
     },
     "inherited": {
      "level": "sourced",
@@ -99,15 +99,15 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "19 named on the roster, none fought by us"
+     "detail": "19 named on the roster, none measured"
     },
     "loot": {
      "level": "measured",
-     "detail": "40 items watched dropping here"
+     "detail": "40 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D1, D3, D4"
+     "detail": "measured at D1, D3, D4"
     },
     "inherited": {
      "level": "sourced",
@@ -115,7 +115,7 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 119, respawn 4:30, 75 mob types measured"
+     "detail": "ZEM 119, respawn 4:30, 63 mob types measured"
     }
    },
    "score": 8,
@@ -128,15 +128,15 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "18 named on the roster, none fought by us"
+     "detail": "18 named on the roster, none measured"
     },
     "loot": {
      "level": "measured",
-     "detail": "28 items watched dropping here"
+     "detail": "28 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D2, D3"
+     "detail": "measured at D2, D3"
     },
     "inherited": {
      "level": "sourced",
@@ -144,7 +144,7 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 119, respawn 22:00, 45 mob types measured"
+     "detail": "ZEM 119, respawn 22:00, 38 mob types measured"
     }
    },
    "score": 8,
@@ -157,23 +157,23 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "25 named on the roster, none fought by us"
+     "detail": "25 named on the roster, none measured"
     },
     "loot": {
      "level": "measured",
-     "detail": "33 items watched dropping here"
+     "detail": "33 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D0, D1"
+     "detail": "measured at D0, D1"
     },
     "inherited": {
      "level": "sourced",
-     "detail": "4 inherited claims badged, placeholder model retracted in place"
+     "detail": "3 inherited claims badged, placeholder model retracted in place"
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 86, respawn 9:28, 87 mob types measured"
+     "detail": "ZEM 86, respawn 9:28, 58 mob types measured"
     }
    },
    "score": 8,
@@ -186,15 +186,15 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "1 boss fought and parsed across 5 kills, tiers D1–D4"
+     "detail": "1 boss measured, tiers D1–D4"
     },
     "loot": {
      "level": "measured",
-     "detail": "39 items watched dropping here"
+     "detail": "40 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D0, D1, D2, D3, D4"
+     "detail": "measured at D0, D1, D2, D3, D4"
     },
     "inherited": {
      "level": "sourced",
@@ -202,12 +202,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 86, respawn <=22:00, 48 mob types measured"
+     "detail": "ZEM 86, respawn <=22:00, 35 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 322,
+   "kills": 323,
    "bosses": [
     "Lord Nagafen"
    ]
@@ -217,15 +217,15 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "1 boss fought and parsed across 7 kills, tiers D0–D4"
+     "detail": "1 boss measured, tiers D0–D4"
     },
     "loot": {
      "level": "measured",
-     "detail": "13 items watched dropping here"
+     "detail": "14 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D0, D1, D2, D3, D4"
+     "detail": "measured at D0, D1, D2, D3, D4"
     },
     "inherited": {
      "level": "sourced",
@@ -233,12 +233,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 128, respawn 7:48, 38 mob types measured"
+     "detail": "ZEM 128, respawn 7:48, 26 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 296,
+   "kills": 382,
    "bosses": [
     "Master Yael"
    ]
@@ -248,15 +248,15 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "19 named on the roster, none fought by us"
+     "detail": "19 named on the roster, none measured"
     },
     "loot": {
      "level": "sourced",
-     "detail": "59 items listed, none seen by us"
+     "detail": "59 items listed, none measured"
     },
     "difficulty": {
      "level": "none",
-     "detail": "never played at a recorded difficulty"
+     "detail": "no measured difficulty"
     },
     "inherited": {
      "level": "sourced",
@@ -277,15 +277,15 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "24 named on the roster, none fought by us"
+     "detail": "23 named on the roster, none measured"
     },
     "loot": {
      "level": "measured",
-     "detail": "40 items watched dropping here"
+     "detail": "40 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D1 only"
+     "detail": "measured at D1 only"
     },
     "inherited": {
      "level": "sourced",
@@ -293,7 +293,7 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 121 mob types measured"
+     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 67 mob types measured"
     }
    },
    "score": 8,
@@ -306,28 +306,28 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "5 bosses fought and parsed across 21 kills, tiers D2–D4"
+     "detail": "5 bosses measured, tiers D2–D4"
     },
     "loot": {
      "level": "measured",
-     "detail": "50 items watched dropping here"
+     "detail": "56 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D1, D2, D3, D4"
+     "detail": "measured at D1, D2, D3, D4"
     },
     "inherited": {
      "level": "sourced",
-     "detail": "4 inherited claims badged"
+     "detail": "5 inherited claims badged"
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 82.5, respawn not recorded, 58 mob types measured"
+     "detail": "ZEM 82.5, respawn not recorded, 47 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 214,
+   "kills": 291,
    "bosses": [
     "Cazic-Thule",
     "Dread",
@@ -341,15 +341,15 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "12 bosses fought and parsed across 24 kills, tiers D3–D4"
+     "detail": "12 bosses measured, tiers D1–D4"
     },
     "loot": {
      "level": "measured",
-     "detail": "47 items watched dropping here"
+     "detail": "70 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
-     "detail": "played and parsed at D1, D3, D4"
+     "detail": "measured at D1, D3, D4"
     },
     "inherited": {
      "level": "sourced",
@@ -357,12 +357,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
+     "detail": "ZEM 86, respawn not recorded, 41 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 48,
+   "kills": 92,
    "bosses": [
     "Ashenbone Broodmaster",
     "Avatar of Abhorrence",
@@ -383,7 +383,7 @@
    "facets": {
     "bosses": {
      "level": "sourced",
-     "detail": "14 named on the roster, none fought by us"
+     "detail": "14 named on the roster, none measured"
     },
     "loot": {
      "level": "none",
@@ -391,11 +391,11 @@
     },
     "difficulty": {
      "level": "none",
-     "detail": "never played at a recorded difficulty"
+     "detail": "no measured difficulty"
     },
     "inherited": {
      "level": "sourced",
-     "detail": "2 inherited claims badged"
+     "detail": "3 inherited claims badged"
     },
     "farming": {
      "level": "sourced",

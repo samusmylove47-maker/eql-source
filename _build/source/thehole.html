@@ -6,150 +6,384 @@
 <title>The Hole — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#8C7BE0;--accd:#4e4382;--acct:color-mix(in srgb, #8C7BE0 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE SURVEY SHEET — The Hole
+   ------------------------------------------------------------------
+   The mechanism is Castle Mistmoore's: a graticule fixed behind the page, a
+   translucent sheet sliding over it, a neatline with an inner rule, and the
+   section kickers hanging in the left margin. Copied deliberately. What is NOT
+   copied is the colour: this zone owns #8C7BE0 permanently and no other zone
+   may use it.
+
+   Everything here is self-contained: this page never loads assets/site.css.
+   Token names are prefixed --sv- because build3.py appends site.css's :root
+   AFTER this block, and an unprefixed --mut or --txt would be silently
+   overwritten by it. --acc, --accd and --acct are deliberately NOT prefixed:
+   the injected chrome reads them and site.css does not define them.
+
+   Contrast, computed rather than eyeballed, against the lightest ground the
+   page can produce (a graticule crossing under the lamplight, seen through the
+   sheet, #1D180E): ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 5.84,
+   warn 5.16, brass 7.98, link 8.97. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 5.14 / 4.53 / 7.01 / 7.88. --acct is the
+   accent lifted 12% toward bone, because the accent itself measures 5.07 on
+   the sheet and 4.46 on the panel; the accent is never reassigned. */
+:root{
+  --acc:#8C7BE0;--accd:#4e4382;--acct:#9888DF;
+  --sv-g:#120E08;          /* the plotting table */
+  --sv-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --sv-ink:#F2EADA;--sv-txt:#DFD6C4;--sv-mut:#B5AA95;--sv-dim:#9A8F7C;
+  --sv-warn:#D46C64;--sv-brass:#C9922E;--sv-brass-t:#D9A63F;--sv-ok:#5FA37E;
+  --sv-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --sv-r2:#7A6950;         /* a boundary that carries meaning, 3.34:1 */
+  /* One type scale. Anything not on it is a bug. */
+  --sv-2xs:10px;--sv-xs:11.5px;--sv-sm:13.5px;--sv-base:15.5px;--sv-md:18.5px;
+  --sv-lg:22px;
+  --sv-h2:clamp(24px,3.6vw,36px);--sv-h1:clamp(38px,6.6vw,74px);
+  --sv-rad:4px;
+  /* And one spacing scale, for the same reason. */
+  --sv-s1:4px;--sv-s2:8px;--sv-s3:12px;--sv-s4:16px;
+  --sv-s5:24px;--sv-s6:32px;--sv-s7:48px;--sv-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--sv-g)}
+body{margin:0;background:transparent;color:var(--sv-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--sv-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint on a
+   document carrying a 1,000px drawing.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast — with one period
+   only two rules can ever coincide. And every stop terminates in
+   rgba(228,210,174,0) rather than the keyword transparent, because older
+   WebKit premultiplies transparent as transparent BLACK and draws a grey seam
+   down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens — so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(140,123,224,.045) 0%, rgba(140,123,224,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--sv-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--sv-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--sv-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--sv-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is the single change that makes a column of figures read as instrument
+   output rather than as a web table. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--sv-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--sv-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--sv-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--sv-s2);
+  text-wrap:balance;color:var(--sv-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--sv-lg);letter-spacing:.03em;margin:var(--sv-s5) 0 var(--sv-s2);color:var(--sv-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--sv-mut);font-size:var(--sv-md);margin:0 0 var(--sv-s5);max-width:60ch}
+.cm{color:var(--sv-dim);font-size:var(--sv-sm);line-height:1.6;margin:var(--sv-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--sv-r1);padding-left:var(--sv-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--sv-s7) 0 var(--sv-s5);margin-bottom:var(--sv-s2);
+  border-bottom:1px solid var(--sv-r2)}
+.eyebrow{font-size:var(--sv-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--sv-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--sv-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--sv-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--sv-md);
+  color:var(--sv-mut);letter-spacing:.02em;margin:var(--sv-s2) 0 var(--sv-s3);
+  text-transform:uppercase}
+/* THE DECK. The answer to "should I go tonight", above the first chart rather
+   than reverse-engineered from tables. */
+.deck{color:var(--sv-txt);margin:0 0 var(--sv-s5);max-width:66ch}
+.deck strong{color:var(--sv-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--sv-r1);border-left:1px solid var(--sv-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--sv-p);padding:var(--sv-s3);
+  border-right:1px solid var(--sv-r1);border-bottom:1px solid var(--sv-r1)}
+.cell dt{font-size:var(--sv-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--sv-dim);margin:0 0 var(--sv-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--sv-lg);
+  font-weight:600;color:var(--sv-ink)}
+.cell dd a{color:var(--acct);text-decoration:none;border-bottom:1px solid var(--accd)}
+.cell dd a:hover{border-color:var(--acct)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--sv-xs);font-weight:400;
+  color:var(--sv-mut);display:block;letter-spacing:0}
+/* A long document with one id in it and no way down it. */
+.jump{margin:var(--sv-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--sv-s1) var(--sv-s4);font-size:var(--sv-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--sv-mut);text-decoration:none;border-bottom:1px solid var(--sv-r1)}
+.jump a:hover{color:var(--sv-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column
+   — a rail the eye reads as a plate before it reads a word. The kicker names
+   what the section is MADE OF; numbered headings are a generated-site tell and
+   are not coming back. */
+section{margin-top:var(--sv-s7);position:relative}
+.kick{font-size:var(--sv-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--sv-dim);margin:0 0 var(--sv-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--sv-r2);padding-left:var(--sv-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--sv-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--sv-sm);
+  border-top:2px solid var(--sv-brass)}
+th{font-size:var(--sv-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--sv-mut);
+  text-align:left;padding:var(--sv-s2) var(--sv-s3) var(--sv-s2) 0;background:none;
+  border-bottom:1px solid var(--sv-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--sv-s3) var(--sv-s3) var(--sv-s3) 0;border-bottom:1px solid var(--sv-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(140,123,224,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--sv-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--sv-sm);text-align:right;white-space:nowrap;color:var(--sv-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--sv-base);font-weight:600;
+  letter-spacing:.02em;color:var(--sv-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--sv-base);font-weight:600;
+  letter-spacing:.02em;color:var(--sv-ink)}
+.cls{font-size:var(--sv-xs);color:var(--sv-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--sv-ok)}
+.st{font-size:var(--sv-xs);color:var(--sv-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--sv-sm);color:var(--sv-mut)}
+.tag{font-size:var(--sv-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--sv-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--sv-warn)}
+/* The tier mark. Styling an existing mark is not the same as grading a plate:
+   the surveys stay deliberately ungraded. */
+.tier{font-size:var(--sv-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--sv-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--sv-base);
+  letter-spacing:.02em;color:var(--sv-ink);padding:var(--sv-s3) var(--sv-s5) var(--sv-s3) 0;
+  border-bottom:1px solid var(--sv-r1)}
+.key dd{margin:0;font-size:var(--sv-sm);color:var(--sv-mut);padding:var(--sv-s3) 0;
+  border-bottom:1px solid var(--sv-r1)}
+.key strong{color:var(--sv-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not six identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--sv-s5) 0 0;padding:0 0 0 var(--sv-s5);
+  border-left:2px solid var(--sv-warn);max-width:74ch}
+ul.hz li{padding:var(--sv-s4) 0;border-top:1px solid var(--sv-r1);color:var(--sv-mut);
+  font-size:var(--sv-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--sv-base);
+  color:var(--sv-warn);margin-bottom:var(--sv-s1)}
+ul.hz strong{color:var(--sv-ink)}
+
+.note{border-left:1px solid var(--sv-r1);padding:var(--sv-s1) 0 var(--sv-s1) var(--sv-s4);
+  margin:var(--sv-s5) 0 0;color:var(--sv-mut);font-size:var(--sv-sm);max-width:68ch}
+.note strong{color:var(--sv-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--sv-s8);padding-top:var(--sv-s5);border-top:1px solid var(--sv-r2);
+  color:var(--sv-mut);font-size:var(--sv-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--sv-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sv-dim);margin:var(--sv-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one
+   step higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .meas table{border-top:2px solid var(--sv-brass)}
+body .meas td{border-bottom:1px solid var(--sv-r1)}   /* its #322A23 is 1.4:1 */
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+body .fp-wrap{border-radius:var(--sv-rad)}
+/* build3.py injects the placeholder note above the roster unconditionally, but
+   its stylesheet travels only with a zone that has a withheld coordinate. This
+   zone has none, so the note has always rendered here as unstyled body text. */
+body .ph-note{margin:0 0 var(--sv-s4);padding:var(--sv-s3) var(--sv-s4);
+  border-left:3px solid var(--sv-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--sv-rad);color:var(--sv-mut);font-size:var(--sv-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--sv-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* One heading level, one rule. Both injected sections set their own h2 size,
+   which is smaller than every other heading on the sheet, with four times the
+   tracking and a shorter margin above. */
+body .meas,body .fplan{margin-top:var(--sv-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--sv-h2);letter-spacing:.005em;line-height:1}
+/* THE SPINE RAIL WOULD OTHERWISE HAVE HOLES AT BOTH ENDS. The two injected
+   sections are the first on the page and the last, and neither carries a
+   kicker of its own. Their generators are not this file's to edit, so the
+   label is set here, in the same register as the authored four. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--sv-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--sv-dim);display:block;margin:0 0 var(--sv-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 08 · Paineel, Odus</p>
-  <h1>The Hole</h1>
-  <p class="subtitle">The Ruins of Old Paineel — highest zone experience modifier in the game</p>
+  <p class="eyebrow">Dungeon survey &middot; Paineel, Odus</p>
+  <div class="title"><h1>The Hole</h1><span class="leader"></span><span class="plateno">08</span></div>
+  <p class="subtitle">The Ruins of Old Paineel &mdash; a shaft you cannot climb back out of</p>
+  <p class="deck">Levels run 39 to 56 and deepen as you descend. Come for the Loam Encrusted and Withered Leather sets, the AC 20 Imbued Granite Spauldors off ordinary trash, and the six epics that route through here. <strong>Levitate does not work</strong> &mdash; entering through the waterfall strips it and drops you at Master Yael's feet for lethal damage. Its experience modifier is @@ZEM_RANK@@.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>hole</dd></div>
-    <div class="cell"><dt>Mob levels</dt><dd>39–56</dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>39&ndash;56</dd></div>
     <div class="cell"><dt>ZEM</dt><dd>128<small>171% — was 100</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>&le;21:30<small>max lowered 28 Jul</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd><a href="#measured">Measured</a><small>the tier is stated with the log</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>7:48<small>eqlwiki rev 157133, 14 Jul 2026</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>640, &minus;1050</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Paineel<small>+ Neriak 3rd, Erudin</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Paineel<small>+ Neriak 3rd, Erudin</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
-
-
-
-
-
+<main>
 
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>The highest zone experience modifier in the game.</b> ZEM 128, across a 39&ndash;56 band.</li><li><b>Earthshaker.</b> A 37/70 two-hander with an Earthquake proc at 45, alongside Brell&rsquo;s Girdle and the full Loam Encrusted caster set.</li><li><b>Levitate does not work here.</b> Entering through the waterfall strips it and you fall for lethal damage at Master Yael&rsquo;s feet, at the very bottom of the zone.</li><li><b>You cannot climb back onto the entry ledge.</b> Once you are down, you are down.</li></ul>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">One shaft, and a city at the bottom of it. Both entrances are inside Paineel.</p>
+  <dl class="key">
+    <dt>A waterfall in Paineel</dt><dd>The fast way in, and the lethal way. <strong>It strips levitate as you pass</strong></dd>
+    <dt>A small locked boulder past the newbie area</dt><dd>The safe way in. Lockpicking, or the Hole Key</dd>
+    <dt>A room with three teleport pads</dt><dd>Room 16, behind a hidden wall. <strong>Left to Paineel, middle to Neriak Third Gate, right to Erudin</strong></dd>
+    <dt>A locked door on the east end of the observation tower</dt><dd>Room 15. <strong>The Hole Key does not open it</strong></dd>
+    <dt>A chest that fights back</dt><dd>A mimic, in the Secret Vault. It carries the Cell Key</dd>
+    <dt>A ghost that cons indifferent</dt><dd>The Ghost of Kindle. Every other ghost here aggroes, and it shares a room with several</dd>
+    <dt>The floor of the pit</dt><dd>Master Yael, with Nortlav the Scalekeeper beside him</dd>
+  </dl>
+  <p class="cm">Evil races can buy the key from Rallia Hapera in Paineel at 941, 770, for roughly 100 to 120 platinum. Small races, wolf form and some illusions squeeze through the rocks instead, at the risk of drowning; ducking through the corner of the door reportedly works for any race.</p>
 </section>
 
 <section>
-  <h2><span class="num">02</span>Named roster</h2>
-  <p class="lede">Spawn percentages and respawn timers below are the wiki's pre-patch figures. The 28 July placeholder removal should improve turnover across the board, so treat every rate here as a floor.</p>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>The shaft is one-way</b> <strong>Levitate does not work here.</strong> The waterfall strips it and you fall for lethal damage at the bottom; the outer shaft is the same. <strong>You cannot climb back onto the entry ledge</strong> without a teleport, the key, or Gravity Flux cast on you as you walk backwards into it.</li>
+    <li><b>Master Yael sees through invisibility</b> And <strong>death touches.</strong> While he is up, sneak and hide are the only stealth that work.</li>
+    <li><b>Magic crowd control is the wrong plan</b> Revenants and wanderers are extremely magic resistant and <strong>the top-level ones cannot be mezzed or charmed at all.</strong> Rock golems resist heavily too.</li>
+    <li><b>Elemental healers complete heal at 40%</b> Channelers and harvesters both, and harvesters nuke for 500 or more. Crusaders quick-heal near 30% and need a stun at 20% &mdash; and <strong>since 28 July that stun cannot be chained.</strong></li>
+    <li><b>The trash backstabs</b> Elemental capturers and deceivers are rogues in a zone where groups watch for casters. <strong>@@H_BACKSTAB@@</strong> &mdash; @@H_BS_RATIO@@ as hard from behind as from the front.</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Respawn timers below are the wiki's pre-patch figures.</p>
   <div class="scroller">
   <table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Class</th><th>Spawn &amp; notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
       <tr><td class="nmob">Master Yael</td><td class="loc">800, 200</td><td class="lv">56</td><td class="cls">ELEMENTAL<br>WIZ</td><td class="src">Bottom of the pit. <strong>Death touches. Sees through invisibility. Casts Ice Comet.</strong> Raid instance only.<span class="tag warn">death touch</span></td></tr>
-      <tr><td class="nmob">Mummy of Glohnor</td><td class="loc">820, 465, &minus;680</td><td class="lv">56</td><td class="cls">SKELETON<br>WAR</td><td class="src">Triggered by handing the Dark Shroud to the Ghost of Glohnor. May appear at the ghost's spot, near the graveyard, at the docks, or downstairs. Shadow Knight epic.</td></tr>
-      <tr><td class="nmob">Dartain the Lost</td><td class="loc">851, 514</td><td class="lv">55&ndash;56</td><td class="cls">ERUDITE<br>NEC</td><td class="src">One of the original Heretics of Paineel. Carries the best two items in the zone outside the raid instance.</td></tr>
-      <tr><td class="nmob">Jaeil the Wretched</td><td class="loc">238, 873</td><td class="lv">55</td><td class="cls">ERUDITE<br>WAR</td><td class="src">50%, roughly six-hour respawn (wiki marks this uncertain). Ranger epic — drops the Rune of Coruscation.</td></tr>
-      <tr><td class="nmob">Jaeil the Insane</td><td class="loc">238, 873</td><td class="lv">55</td><td class="cls">ERUDITE<br>NEC</td><td class="src">Spawned by giving Jaeil the Wretched the Shiny Tin Bowl. <strong>Slowable, comfortably one-groupable, and repeatable</strong> with another bowl. Drops the Soulbound Hammer.</td></tr>
-      <tr><td class="nmob">Keeper of the Tombs</td><td class="loc">807, 569</td><td class="lv">55</td><td class="cls">ERUDITE GHOST<br>SHD</td><td class="src">100% spawn on a <strong>one-week respawn.</strong> An easy kill for one group of 55+, but bring crowd control — the pulls on the way in come in groups.<span class="tag warn">1 week</span></td></tr>
-      <tr><td class="nmob">Initiate Sirlis</td><td class="loc">952, 424 &middot; 825, 552<br>760, 573</td><td class="lv">55</td><td class="cls">ERUDITE GHOST<br>NEC</td><td class="src">34% at each of three points. Spawns in place of a revenant or a wanderer.</td></tr>
-      <tr><td class="nmob">Polzin Mrid</td><td class="loc">216, &minus;63</td><td class="lv">55</td><td class="cls">ERUDITE GHOST<br>ENC</td><td class="src">50%. Mushroom Cellar. The last step of the Enchanter epic. Loot table unconfirmed on the wiki.</td></tr>
-      <tr><td class="nmob">Kyrenna</td><td class="loc">420, &minus;190</td><td class="lv">55</td><td class="cls">HUMAN<br>CLR</td><td class="src">Triggered beside Caradon by handing him the Cell Key. <strong>Caradon does not need to be killed</strong> — he will aggro, but Kyrenna can be feign-death split away from him.</td></tr>
-      <tr><td class="nmob">Caradon</td><td class="loc">420, &minus;190</td><td class="lv">55</td><td class="cls">HUMAN<br>PAL</td><td class="src">Three-day spawn. Quest NPC in the north-east cell of the Ratman Jail. Drops nothing himself.</td></tr>
-      <tr><td class="nmob">A ratman guard</td><td class="loc">room 13<br><span style="color:#D46C64">listed loc is wrong</span></td><td class="lv">55</td><td class="cls">RATMAN<br>WAR</td><td class="src">Does not spawn 100% of the time, and the wiki flags its own coordinate as incorrect. Significantly harder than the surrounding rats — come prepared.<span class="tag warn">bad loc</span></td></tr>
-      <tr><td class="nmob">Slizik the Mighty</td><td class="loc">372, &minus;88</td><td class="lv">54</td><td class="cls">RATMAN<br>WAR</td><td class="src">Rats do not assist elementals and the reverse also holds, so the jail can be worked independently of the city. Faction consequences unverified on the wiki.</td></tr>
-      <tr><td class="nmob">Commander Yarik</td><td class="loc">641, 535 &middot; 703, 556</td><td class="lv">53</td><td class="cls">ERUDITE GHOST<br>SHD</td><td class="src">50%. <strong>Harm Touches for 511.</strong> Spawns in place of a revenant or wanderer.<span class="tag warn">511 HT</span></td></tr>
-      <tr><td class="nmob">High Scale Kirn</td><td class="loc">&minus;16, 266, &minus;246</td><td class="lv">53</td><td class="cls">IKSAR<br>WAR</td><td class="src">Room 3. The wiki marks the coordinate uncertain. Drops the Engraved Ring.</td></tr>
-      <tr><td class="nmob">Nortlav the Scalekeeper</td><td class="loc">bottom, beside Yael</td><td class="lv">52</td><td class="cls">ERUDITE<br>WAR</td><td class="src"><strong>Procs Deadly Lifetap — a 1500 HP frontal lifetap</strong>, the same effect as the Sleeper's Tomb original. The alternative source for Red Dragon Scales.<span class="tag warn">1500 lifetap</span></td></tr>
-      <tr><td class="nmob">The Ghost of Kindle</td><td class="loc">950, 410</td><td class="lv">52</td><td class="cls">ERUDITE GHOST<br>CLR</td><td class="src">100%. <strong>Cons indifferent and does not aggro</strong>, unlike every other ghost here — but shares a room with several that do.</td></tr>
+      <tr><td class="nmob">Mummy of Glohnor</td><td class="loc">820, 465, &minus;680</td><td class="lv">56</td><td class="cls">SKELETON<br>WAR</td><td class="src">Triggered by handing the Dark Shroud to the Ghost of Glohnor. Appears at the ghost's spot, the graveyard, the docks or downstairs. Shadow knight epic.</td></tr>
+      <tr><td class="nmob">Dartain the Lost</td><td class="loc">851, 514</td><td class="lv">55&ndash;56</td><td class="cls">ERUDITE<br>NEC</td><td class="src">A Heretic of Paineel. <strong>Carries the best two items in the zone outside the raid instance.</strong></td></tr>
+      <tr><td class="nmob">Jaeil the Wretched</td><td class="loc">238, 873</td><td class="lv">55</td><td class="cls">ERUDITE<br>WAR</td><td class="src">50%, roughly six hours (the wiki marks this uncertain). Ranger epic.<span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Jaeil the Insane</td><td class="loc">238, 873</td><td class="lv">55</td><td class="cls">ERUDITE<br>NEC</td><td class="src">Spawned by giving Jaeil the Wretched the Shiny Tin Bowl. <strong>Slowable, comfortably one-groupable, and repeatable</strong> with another bowl.</td></tr>
+      <tr><td class="nmob">Keeper of the Tombs</td><td class="loc">807, 569</td><td class="lv">55</td><td class="cls">ERUDITE GHOST<br>SHD</td><td class="src">100% on a <strong>one-week respawn.</strong> One group of 55+ can take him; the pulls in come in groups.<span class="tag warn">1 week</span></td></tr>
+      <tr><td class="nmob">Initiate Sirlis</td><td class="loc">952, 424 &middot; 825, 552<br>760, 573</td><td class="lv">55</td><td class="cls">ERUDITE GHOST<br>NEC</td><td class="src">34% at each of three points, in place of a revenant or a wanderer.</td></tr>
+      <tr><td class="nmob">Polzin Mrid</td><td class="loc">216, &minus;63</td><td class="lv">55</td><td class="cls">ERUDITE GHOST<br>ENC</td><td class="src">50%. Mushroom Cellar. The last step of the enchanter epic. <strong>Loot table unconfirmed.</strong><span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Kyrenna</td><td class="loc">420, &minus;190</td><td class="lv">55</td><td class="cls">HUMAN<br>CLR</td><td class="src">Triggered beside Caradon by handing him the Cell Key. <strong>Caradon does not need to be killed</strong> &mdash; he aggroes, but Kyrenna can be feign-death split away.</td></tr>
+      <tr><td class="nmob">Caradon</td><td class="loc">420, &minus;190</td><td class="lv">55</td><td class="cls">HUMAN<br>PAL</td><td class="src">Three-day spawn, in the north-east cell of the Ratman Jail. Drops nothing himself.</td></tr>
+      <tr><td class="nmob">A ratman guard</td><td class="loc">room 13<br><span style="color:#D46C64">listed loc is wrong</span></td><td class="lv">55</td><td class="cls">RATMAN<br>WAR</td><td class="src">Does not spawn every cycle, and the wiki flags its own coordinate as incorrect. <strong>Significantly harder than the surrounding rats.</strong><span class="tag warn">bad loc</span></td></tr>
+      <tr><td class="nmob">Slizik the Mighty</td><td class="loc">372, &minus;88</td><td class="lv">54</td><td class="cls">RATMAN<br>WAR</td><td class="src"><strong>Rats and elementals do not assist each other</strong>, so the jail works independently of the city. Faction consequences unverified.<span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Commander Yarik</td><td class="loc">641, 535 &middot; 703, 556</td><td class="lv">53</td><td class="cls">ERUDITE GHOST<br>SHD</td><td class="src">50%. <strong>Harm touches for 511.</strong> Revenant / wanderer pool.<span class="tag warn">511 HT</span></td></tr>
+      <tr><td class="nmob">High Scale Kirn</td><td class="loc">&minus;16, 266, &minus;246</td><td class="lv">53</td><td class="cls">IKSAR<br>WAR</td><td class="src">Room 3. The wiki marks the coordinate uncertain.<span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Nortlav the Scalekeeper</td><td class="loc">bottom, beside Yael</td><td class="lv">52</td><td class="cls">ERUDITE<br>WAR</td><td class="src"><strong>Procs Deadly Lifetap &mdash; a 1500 HP frontal lifetap</strong>, the same effect as the Sleeper's Tomb original. The alternative source for Red Dragon Scales.<span class="tag warn">1500 lifetap</span></td></tr>
+      <tr><td class="nmob">The Ghost of Kindle</td><td class="loc">950, 410</td><td class="lv">52</td><td class="cls">ERUDITE GHOST<br>CLR</td><td class="src">100%. <strong>Cons indifferent and does not aggro</strong>, unlike every other ghost here &mdash; but shares a room with several that do.</td></tr>
       <tr><td class="nmob">Ulrik the Devout</td><td class="loc">800, 488</td><td class="lv">51</td><td class="cls">ERUDITE GHOST<br>SHD</td><td class="src">50%. Revenant / wanderer pool.</td></tr>
-      <tr><td class="nmob">Niltoth the Unholy</td><td class="loc">revenant / wanderer pool</td><td class="lv">51</td><td class="cls">ERUDITE GHOST<br>NEC</td><td class="src">Spawns in place of a revenant or a wanderer.</td></tr>
-      <tr><td class="nmob">Irslak the Wretched</td><td class="loc">revenant / wanderer pool</td><td class="lv">50</td><td class="cls">ERUDITE GHOST<br>NEC</td><td class="src">Spawns in place of a revenant or a wanderer.</td></tr>
+      <tr><td class="nmob">Niltoth the Unholy</td><td class="loc">revenant / wanderer pool</td><td class="lv">51</td><td class="cls">ERUDITE GHOST<br>NEC</td><td class="src">In place of a revenant or a wanderer.</td></tr>
+      <tr><td class="nmob">Irslak the Wretched</td><td class="loc">revenant / wanderer pool</td><td class="lv">50</td><td class="cls">ERUDITE GHOST<br>NEC</td><td class="src">In place of a revenant or a wanderer.</td></tr>
       <tr><td class="nmob">The Stone Caller</td><td class="loc">any elemental wizard point</td><td class="lv">50</td><td class="cls">ELEMENTAL<br>WIZ</td><td class="src">Restricted to elemental <em>wizard</em> points specifically. Drops caster research scrolls.</td></tr>
       <tr><td class="nmob">Ghost of Glohnor</td><td class="loc">various</td><td class="lv">49&ndash;50</td><td class="cls">ERUDITE GHOST<br>WAR</td><td class="src">Non-hostile. Kill fallen erudites to spawn him; turning in the Dark Shroud spawns the Mummy and despawns him.</td></tr>
       <tr><td class="nmob">Muck covered elemental</td><td class="loc">any elemental point</td><td class="lv">49&ndash;50</td><td class="cls">ELEMENTAL<br>ROG</td><td class="src">Multiple copies can be up at once.</td></tr>
-      <tr><td class="nmob">Bejeweled elemental</td><td class="loc">any elemental point</td><td class="lv">49</td><td class="cls">ELEMENTAL<br>WIZ</td><td class="src">Two Loam Encrusted pieces. Multiple copies can be up at once.</td></tr>
-      <tr><td class="nmob">Rocksoul</td><td class="loc">any elemental point</td><td class="lv">49</td><td class="cls">ELEMENTAL<br>ROG</td><td class="src">Two Loam Encrusted pieces. Multiple copies can be up at once.</td></tr>
+      <tr><td class="nmob">Bejeweled elemental</td><td class="loc">any elemental point</td><td class="lv">49</td><td class="cls">ELEMENTAL<br>WIZ</td><td class="src">Two Loam Encrusted pieces. Multiple copies at once.</td></tr>
+      <tr><td class="nmob">Rocksoul</td><td class="loc">any elemental point</td><td class="lv">49</td><td class="cls">ELEMENTAL<br>ROG</td><td class="src">Two Loam Encrusted pieces. Multiple copies at once.</td></tr>
       <tr><td class="nmob">Stonegrinder Minion</td><td class="loc">any elemental point</td><td class="lv">49</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src">Multiple copies can be up at once.</td></tr>
-      <tr><td class="nmob">Gibartik</td><td class="loc">any elemental point</td><td class="lv">48&ndash;49</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src">Two Loam Encrusted pieces. Multiple copies can be up at once.</td></tr>
-      <tr><td class="nmob">Stonesoul the Unmoving</td><td class="loc">any elemental point</td><td class="lv">44&ndash;46</td><td class="cls">ELEMENTAL<br>CLR</td><td class="src">The lowest-level elemental named. Multiple copies can be up at once.</td></tr>
-      <tr><td class="nmob">A mimic</td><td class="loc">&minus;20, 265</td><td class="lv">43&ndash;47</td><td class="cls">MIMIC<br>WAR</td><td class="src">A chest that fights back, in the Secret Vault. Drops the <strong>Cell Key</strong> for Caradon — but not on every kill.</td></tr>
-      <tr><td class="nmob">Kejar the Mighty</td><td class="loc">&minus;43, 228</td><td class="lv">41&ndash;42</td><td class="cls">IMP<br>WAR</td><td class="src">100%, <strong>no placeholder even before the patch.</strong> Spawns and despawns on a 20-minute real-time cycle. Starts the Shiny Robe of the Underfoot quest.</td></tr>
+      <tr><td class="nmob">Gibartik</td><td class="loc">any elemental point</td><td class="lv">48&ndash;49</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src">Two Loam Encrusted pieces. Multiple copies at once.</td></tr>
+      <tr><td class="nmob">Stonesoul the Unmoving</td><td class="loc">any elemental point</td><td class="lv">44&ndash;46</td><td class="cls">ELEMENTAL<br>CLR</td><td class="src">The lowest-level elemental named.</td></tr>
+      <tr><td class="nmob">A mimic</td><td class="loc">&minus;20, 265</td><td class="lv">43&ndash;47</td><td class="cls">MIMIC<br>WAR</td><td class="src">A chest that fights back, in the Secret Vault. Drops the <strong>Cell Key</strong> &mdash; but not on every kill.</td></tr>
+      <tr><td class="nmob">Kejar the Mighty</td><td class="loc">&minus;43, 228</td><td class="lv">41&ndash;42</td><td class="cls">IMP<br>WAR</td><td class="src">100%. <strong>Spawns and despawns on a 20-minute real-time cycle.</strong> Starts the Shiny Robe of the Underfoot quest.</td></tr>
       <tr><td class="nmob">Schnozz the Flighty</td><td class="loc">&minus;28, 247</td><td class="lv">41</td><td class="cls">IMP<br>WAR</td><td class="src">50%. Kejar's twin. Runes and words only, no faction hit.</td></tr>
     </tbody>
   </table>
   </div>
-
-  
 </section>
 
 <section>
-  <h2><span class="num">03</span>Loot table</h2>
-  <p class="lede">The wiki lists 67 items dropping in this zone. Weapon lines read damage / delay. As of 29 July, every roll is gated to your difficulty tier or better, with a diminishing chance at higher tiers.</p>
+  <p class="kick">Five registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. Three sets assemble from ordinary clearing rather than a camp.</p>
+  <div class="note"><strong>Rare and common are the wiki's words, not measured rates.</strong> What we have watched drop here is in <a href="#measured">Measured in play</a>.</div>
+
   <h3>Chase items</h3>
   <div class="scroller">
   <table>
@@ -175,9 +409,9 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Four of the five best items are behind the raid instance.</strong> Master Yael has been raid-instance-only since 11 June, so Earthshaker, Brell's Girdle, the Loam Encrusted Robe and Serpent's Tooth are not open-world drops. Everything else on this page is. The two standouts reachable by a single group are <strong>Dartain the Lost</strong>, who carries both the AC 22 Imbued Shield of Paineel and the Tome of Miragul, and the <strong>AC 20 Imbued Granite Spauldors</strong> with +10 to every resist, which comes off ordinary revenants, wanderers and rock golems.</div>
+  <div class="note">Everything not tagged <em>raid</em> above is an open-world drop.</div>
 
-  <h3>Loam Encrusted — the caster set, twelve slots</h3>
+  <h3>Loam Encrusted &mdash; the caster set, twelve slots</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Piece</th><th>Slot</th><th>Stats</th><th>Dropped by</th></tr></thead>
@@ -197,30 +431,30 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note">All Loam Encrusted pieces are <strong>NEC WIZ MAG ENC</strong>, races <strong>HUM ERU HIE DEF GNM IKS</strong>. Eleven of the twelve slots come off the elemental named pool, which spawns anywhere an elemental spawns — so the set assembles from ordinary clearing rather than from any fixed camp. Only the robe is gated behind the raid instance.</div>
+  <div class="note">All twelve are <strong>NEC WIZ MAG ENC</strong>, races <strong>HUM ERU HIE DEF GNM IKS</strong>. Eleven come off the elemental named pool, which spawns anywhere an elemental does; <strong>only the robe is behind the raid instance.</strong></div>
 
-  <h3>Withered Leather — the priest set, eleven slots</h3>
+  <h3>Withered Leather &mdash; the priest set, eleven slots</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Piece</th><th>Slot</th><th>Stats</th><th>Dropped by</th></tr></thead>
     <tbody>
       <tr><td class="it">Withered Leather Tunic</td><td class="st">Chest</td><td class="st">AC 11 · WIS +4 · <strong>MANA +90</strong> · SV Magic +10</td><td class="src">Dartain the Lost</td></tr>
-      <tr><td class="it">Withered Leather Skullcap</td><td class="st">Head</td><td class="st">AC 6 · STR +3 · WIS +2 · MANA +20<br><span style="color:#9C958E">not DWF HFL GNM</span></td><td class="src">Commander Yarik</td></tr>
+      <tr><td class="it">Withered Leather Skullcap</td><td class="st">Head</td><td class="st">AC 6 · STR +3 · WIS +2 · MANA +20<br><span style="color:#B5AA95">not DWF HFL GNM</span></td><td class="src">Commander Yarik</td></tr>
       <tr><td class="it">Withered Leather Leggings</td><td class="st">Legs</td><td class="st">AC 6 · WIS +4 · AGI +8 · MANA +5 · SV Disease +10</td><td class="src">Initiate Sirlis</td></tr>
       <tr><td class="it">Withered Leather Cloak</td><td class="st">Back</td><td class="st">AC 5 · STR +5 · STA +8 · MANA +15</td><td class="src">Initiate Sirlis</td></tr>
       <tr><td class="it">Withered Leather Boots</td><td class="st">Feet</td><td class="st">AC 5 · DEX +8 · WIS +3 · <strong>HP +40</strong> · MANA +5 · SV Poison +10</td><td class="src">Ulrik the Devout</td></tr>
-      <tr><td class="it">Withered Leather Gorget</td><td class="st">Neck</td><td class="st">AC 4 · WIS +3 · MANA +5 · +3 all resists<br><span style="color:#9C958E">not DWF HFL GNM</span></td><td class="src">Ulrik the Devout</td></tr>
+      <tr><td class="it">Withered Leather Gorget</td><td class="st">Neck</td><td class="st">AC 4 · WIS +3 · MANA +5 · +3 all resists<br><span style="color:#B5AA95">not DWF HFL GNM</span></td><td class="src">Ulrik the Devout</td></tr>
       <tr><td class="it">Withered Leather Gloves</td><td class="st">Hands</td><td class="st">AC 5 · <strong>MANA +35</strong> · SV Cold +10</td><td class="src">Niltoth the Unholy</td></tr>
       <tr><td class="it">Withered Leather Belt</td><td class="st">Waist</td><td class="st">AC 4 · STR +3 · <strong>MANA +40</strong> · +3 all resists</td><td class="src">Irslak the Wretched</td></tr>
-      <tr><td class="it">Withered Leather Wristbands</td><td class="st">Wrist</td><td class="st">AC 3 · STR +3 · STA +2 · WIS +5 · MANA +5<br><span style="color:#9C958E">magic only, not lore</span></td><td class="src">Irslak the Wretched</td></tr>
+      <tr><td class="it">Withered Leather Wristbands</td><td class="st">Wrist</td><td class="st">AC 3 · STR +3 · STA +2 · WIS +5 · MANA +5<br><span style="color:#B5AA95">magic only, not lore</span></td><td class="src">Irslak the Wretched</td></tr>
       <tr><td class="it">Withered Leather Sleeves</td><td class="st">Arms</td><td class="st">AC 5 · WIS +4 · MANA +10 · SV Fire +10</td><td class="src">Revenants · wanderers</td></tr>
       <tr><td class="it">Withered Leather Shoulderpads</td><td class="st">Shoulders</td><td class="st">AC 4 · STR +5 · STA +5 · MANA +15 · +3 all resists</td><td class="src">Revenants · wanderers</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note">Withered Leather is <strong>CLR DRU SHM</strong> throughout, all races except where noted. Like the Loam set it comes off the undead named pool rather than fixed camps, and the wiki adds that <strong>most named in the zone will drop Withered Leather pieces at some point</strong> regardless of the table above. There is no chest-slot alternative in this bracket carrying MANA +90.</div>
+  <div class="note">Withered Leather is <strong>CLR DRU SHM</strong> throughout, all races except where noted. <strong>Most named in the zone drop pieces at some point</strong>, whatever the table says.</div>
 
-  <h3>Paineel Steel — the plate set, ten slots</h3>
+  <h3>Paineel Steel &mdash; the plate set, ten slots</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Piece</th><th>Slot</th><th>AC</th><th>Dropped by</th></tr></thead>
@@ -238,7 +472,7 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note">The eight armour pieces are <strong>WAR CLR PAL RNG SHD BRD SHM</strong>, all races except DWF TRL OGR HFL GNM <strong>and IKS</strong>. Two exceptions worth knowing: the <strong>Paineel Splinted Cloak</strong> carries the same class list but <strong>does not exclude Iksar</strong>, and the <strong>Cracked Paineel Shield</strong> has a wider list that adds <strong>MNK and ROG</strong>. No stats anywhere in the set, pure armour class — but a 22 AC breastplate off common trash is a real find for anyone gearing a plate class in this bracket.</div>
+  <div class="note">The eight armour pieces are <strong>WAR CLR PAL RNG SHD BRD SHM</strong>, all races except DWF TRL OGR HFL GNM and IKS. Two exceptions: the <strong>Splinted Cloak does not exclude Iksar</strong>, and the <strong>Cracked Shield adds MNK and ROG</strong>. No stats anywhere in the set.</div>
 
   <h3>Epic and quest components</h3>
   <div class="scroller">
@@ -248,7 +482,7 @@ footer h3{margin-top:0}
       <tr><td class="it">Tainted Darksteel Sword</td><td class="st">Paladin epic · 1H Slash 5 / 30 · PAL only</td><td class="src">Keeper of the Tombs</td></tr>
       <tr><td class="it">Rune of Coruscation</td><td class="st">Ranger epic</td><td class="src">Jaeil the Wretched</td></tr>
       <tr><td class="it">Soulbound Hammer</td><td class="st">Ranger epic · 1H Blunt 2 / 50 · RNG only</td><td class="src">Jaeil the Insane</td></tr>
-      <tr><td class="it">Head of Glohnor · Glohnor wrappings</td><td class="st">Shadow Knight epic</td><td class="src">Mummy of Glohnor</td></tr>
+      <tr><td class="it">Head of Glohnor · Glohnor wrappings</td><td class="st">Shadow knight epic</td><td class="src">Mummy of Glohnor</td></tr>
       <tr><td class="it">Heart of Kyrenna · Blood of Kyrenna</td><td class="st">Epic chain</td><td class="src">Kyrenna</td></tr>
       <tr><td class="it">Cell Key</td><td class="st">Given to Caradon to spawn Kyrenna</td><td class="src">A mimic <em>(not every kill)</em></td></tr>
       <tr><td class="it">Engraved Ring</td><td class="st">Finger · CHA +5 · no drop</td><td class="src">High Scale Kirn</td></tr>
@@ -257,39 +491,21 @@ footer h3{margin-top:0}
       <tr><td class="it">Fusible Earthen Ore</td><td class="st">Quest component · no drop</td><td class="src">Master Yael <span class="tag warn">raid</span></td></tr>
       <tr><td class="it">Dirt of Underfoot · Holy Dirt of Brell<br>Living Heart of a Brell Minion<br>Fiery Jewel of the Underfoot<br>Drop of Mercury</td><td class="st">Quest components</td><td class="src">Various</td></tr>
       <tr><td class="it">Ruined Sword Hilt · Gold lined heretic cloak</td><td class="st">Quest components · no drop</td><td class="src">Revenants · wanderers</td></tr>
-      <tr><td class="it">Red Dragon Scales</td><td class="st">Raid component</td><td class="src">Nortlav the Scalekeeper<br><span style="color:#9C958E">wiki flags this as Fear / Hate 2.0 era</span></td></tr>
+      <tr><td class="it">Red Dragon Scales</td><td class="st">Raid component</td><td class="src">Nortlav the Scalekeeper<br><span style="color:#B5AA95">wiki flags this as Fear / Hate 2.0 era</span></td></tr>
       <tr><td class="it">Bone Chips</td><td class="st">Summoning component</td><td class="src">A fallen erudite</td></tr>
       <tr><td class="it">Shiny Hunk of Metal</td><td class="st">Shiny Robe quest reward, lore</td><td class="src">Kejar the Mighty <em>quest</em></td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Six epics route through this zone.</strong> The wiki's related-quest list names the Paladin, Ranger, Shadow Knight, Enchanter, Magician and Shaman epics, plus the Shiny Robe of the Underfoot. That is the real reason to learn the layout: sooner or later most classes have a reason to be down here.</div>
+  <div class="note"><strong>Six epics route through this zone</strong> &mdash; paladin, ranger, shadow knight, enchanter, magician and shaman &mdash; plus the Shiny Robe of the Underfoot.</div>
 </section>
 
-<section>
-  <h2><span class="num">04</span>Dangers</h2>
-  <div class="note danger"><strong>Levitate does not work in The Hole.</strong> Entering through the waterfall in Paineel strips it, and you fall for lethal damage at Master Yael's feet at the very bottom of the zone. The same applies to descending the outer shaft around the castle.</div>
-  <div class="note danger"><strong>You cannot climb back onto the entry ledge.</strong> Once you step off the first ledge you need either a teleport out or the key to escape. One workaround exists: walk backwards into the ledge while someone casts Gravity Flux on you and you land on top of it.</div>
-  <div class="note danger"><strong>Master Yael sees through invisibility and death touches.</strong> If he is up, sneak and hide are the only stealth that work — otherwise leave by another route. He also casts Ice Comet.</div>
-  <div class="note danger"><strong>Revenants and wanderers are extremely magic resistant, and the top-level ones cannot be mezzed or charmed at all.</strong> The wiki advises against mezzing wanderers for crowd control even where it lands. Rock golems are very magic resistant too. Between them, magic-based crowd control and nukes are the wrong plan for the Undead Tower.</div>
-  <div class="note danger"><strong>Elemental healers Complete Heal at 40%.</strong> Channelers and harvesters both do it, and harvesters carry a magic nuke that lands for 500 or more. Elemental crusaders quick-heal themselves around 30% and need a stun to push them into flee mode at 20% — and since 28 July you cannot chain that stun.</div>
-  <div class="note danger"><strong>Backstabs land for 348.</strong> Elemental capturers hit that figure; the weaker deceivers run around 248 with a maximum near 300. These are rogue-class mobs in a zone where most groups are watching for casters.</div>
-</section>
+</main>
 
-<section>
-  <h2><span class="num">05</span>Getting there</h2>
-  <ul class="tight">
-    <li>Two entrances, both inside <strong>Paineel</strong>. The waterfall hole is the fast way and the lethal way. The safe way is a <strong>small locked boulder</strong> in the area just past the newbie zone.</li>
-    <li>The boulder needs lockpicking, or the key — evil races can buy it from <strong>Rallia Hapera in Paineel at (941, 770)</strong> for a large sum, around 100 to 120 platinum.</li>
-    <li>Small races, wolf form and some illusions can squeeze through the rocks instead, though drowning is a real risk. Any race can also push through the corner of the door by working mouse-look rapidly; ducking, and ducking mid-jump, reportedly works often.</li>
-    <li><strong>The portal room is room 16</strong>, reached through a hidden wall, and holds three pads: <strong>left to Paineel</strong> (Observation Tower), <strong>middle to Neriak Third Gate</strong> (top of the Cleric guild), <strong>right to Erudin</strong>. This is why the zone counts Neriak Third Gate and Erudin as adjacent.</li>
-    <li>Note that room 15, the Entry Observation Tower, has a locked door on its east end that <strong>the Hole Key does not open.</strong></li>
-    <li>Succor and evacuate drop you at <code>640, &minus;1050</code>, the zone line to Paineel.</li>
-  </ul>
-</section>
+<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-thehole">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 08 &middot; The Hole &middot; Paineel, Odus &middot; floor derived from hole.s3d &middot; north up, west left</p></footer>
 
-<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-thehole">Where each one came from, and what is still open</a>.</p></footer>
-
+</div>
 </div>
 </body>
 </html>

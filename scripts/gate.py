@@ -21,7 +21,7 @@ prevent becoming acceptable again.
 
 Imported and run by scripts/check.py.
 """
-import fnmatch, json, os, re, sys
+import fnmatch, glob, json, os, re, sys
 
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_build"))
 
@@ -61,7 +61,11 @@ LEDGERS = [
     # The conditions paragraph above them, the prose explaining what a figure
     # does and does not mean, and the entire survey before it stay governed. So
     # the ceiling still bites on writing more, and never on measuring more.
-    ("dungeons/*.html", '<section class="meas">', r"<tr>.*?</tr>"),
+    # Anchor on the OPENING of the tag, not the whole tag. Adding id="measured"
+    # to it broke the match outright and five surveys blew their ceilings at
+    # once, because every measured row started counting as prose. An anchor
+    # that a new attribute can silently turn off is not an anchor.
+    ("dungeons/*.html", '<section class="meas"', r"<tr>.*?</tr>"),
     # The faction tool is one card per zone we have faction data for. Same
     # shape: a ceiling over the cards forbids measuring an eleventh zone.
     ("tools/faction-impact.html", "", r'<article class="fzone">.*?</article>'),
@@ -91,8 +95,26 @@ def without_ledger_rows(h, key):
         if key != ledger_key and not fnmatch.fnmatch(key, ledger_key):
             continue
         cut = h.find(anchor) if anchor else 0
-        if cut >= 0:
-            h = h[:cut] + re.sub(row, " ", h[cut:], flags=re.S)
+        if cut < 0:
+            continue
+        # THE EXEMPTION ENDS WHERE ITS SECTION ENDS.
+        #
+        # It used to run to the end of the file, which was harmless only while
+        # every ledger sat last on its page. On 17 August the measured section
+        # moved to the top of the Castle Mistmoore survey, and the exemption
+        # anchored on it swallowed the nine tables below — the named roster,
+        # every loot table, the landmarks. The ceiling went on passing while
+        # governing almost nothing, which is the shape of a dead check.
+        #
+        # A section-scoped strip cannot do that: moving a ledger changes what
+        # it exempts by nothing. Where the anchor is not a <section> the end is
+        # the end of the file, as before, because those ledgers are the page.
+        end = len(h)
+        if anchor.startswith('<section'):
+            close = h.find('</section>', cut)
+            if close >= 0:
+                end = close
+        h = h[:cut] + re.sub(row, " ", h[cut:end], flags=re.S) + h[end:]
     return h
 
 
@@ -128,6 +150,19 @@ def page_words(path, key):
     # link raised the word count of the entire site at once — and the page that
     # tripped its ceiling was whichever happened to be closest to it, which is
     # a ratchet measuring the wrong thing and blaming the wrong page.
+    # A DRAWING IS NOT PROSE, AND ITS LABELS ARE PART OF THE DRAWING.
+    #
+    # The floor plans name every mob they plot, inside <svg> as <text>. Counting
+    # those made the ratchet fall every time a named mob's position was
+    # recorded — so plotting an eighteenth mob on Crushbone spent 18 words of a
+    # budget meant to govern writing, and a zone with more named mobs was
+    # penalised for having more evidence. Crushbone's plan section read 700
+    # words, of which the map's own labels were most.
+    #
+    # Same reasoning as the ledger rows above: the ceiling must bite on writing
+    # more and never on measuring or drawing more. Everything outside the <svg>
+    # — the lede, the legend, the caveats under it — stays governed.
+    h = re.sub(r"<svg\b.*?</svg>", " ", h, flags=re.S | re.I)
     h = re.sub(r"<footer\b.*?</footer>", " ", h, flags=re.S | re.I)
     h = re.sub(r'<header class="site-bar".*?</header>', " ", h, flags=re.S | re.I)
     h = re.sub(r'<div class="ns-bar".*?</div>', " ", h, flags=re.S | re.I)
@@ -243,6 +278,99 @@ def run(pages, fail, warn):
         g = (z.get("verify_gate") or "").lower()
         if z["verify_level"] == "full" and ("is still open" in g or "still open:" in g):
             fail(f"{z['slug']} is marked full but its verify_gate still names an open gate")
+
+    # ---- 3b. a derived figure must equal what it derives from ---------------
+    #
+    # zem_pct is ZEM/75 as a percentage and is stored rather than computed, so
+    # it can drift from the number it comes from. Lair of the Splitpaw carried
+    # 170 for a ZEM of 128 while The Hole and The Warrens carried 171 for the
+    # identical 128 — and the survey then claimed 170% was "highest of the set"
+    # when Kedge Keep publishes 185%. One stored figure, two published errors.
+    for z in Z:
+        want = round(z["zem"] / 75 * 100)
+        if z.get("zem_pct") != want:
+            fail(f"{z['slug']}: zem_pct is {z.get('zem_pct')} but ZEM {z['zem']} gives {want} "
+                 f"— a derived figure may not disagree with what it derives from")
+
+    # ---- 3c. a ranking claim may not be typed beside the data it ranks ------
+    #
+    # A cold reader found The Ruins of Old Paineel calling itself "the highest
+    # zone experience modifier in the game" in its H1, its meta description and
+    # both share cards. Kedge Keep is 139; The Hole is 128, level with two
+    # others. Rule 3b above was already guarding zem_pct against zem and could
+    # not see this, because the fault was in prose rather than in a field.
+    #
+    # The first repair replaced one typed superlative with four typed ordinals
+    # — the same fault with better arithmetic. So the ordinals are derived now
+    # (_build/derived.py, substituted by build3.py), and this refuses a survey
+    # SOURCE that types one by hand again.
+    #
+    # It reads the sources rather than the built pages on purpose: the built
+    # page is supposed to contain the phrase, having had the token filled in.
+    # Deliberately narrow. The first draft flagged "the highest camp in the
+    # dungeon" (about depth) and "highest of the three planes" (true, and
+    # bounded to a named set it does rank). A gate that cries wolf gets its
+    # exemptions widened until it catches nothing, so it only fires on an
+    # unbounded ordinal sitting within 60 characters of the modifier itself.
+    RANK_WORD = re.compile(
+        r'\b(?:joint\s+)?(?:highest|second[- ]highest|third[- ]highest|second|third)\b',
+        re.I)
+    ZEM_NEAR = re.compile(r'\b(?:ZEM|experience (?:modifier|rate))\b', re.I)
+    # A claim that names the set it ranks over is answerable and may stay.
+    BOUNDED = re.compile(
+        r'\bon this site\b|\bwe have (?:recorded|measured)\b|\bof the \w+ planes?\b'
+        r'|\bof our \d+ surveys\b|\bof the (?:three|four|five)\b|\bin the dungeon\b',
+        re.I)
+    for src in sorted(glob.glob('_build/source/*.html')):
+        raw = open(src, encoding='utf-8').read()
+        for m in RANK_WORD.finditer(raw):
+            window = raw[max(0, m.start() - 60):m.end() + 60]
+            if not ZEM_NEAR.search(window):
+                continue
+            if BOUNDED.search(raw[max(0, m.start() - 90):m.end() + 90]):
+                continue
+            fail(f"{src} types {m.group(0)!r} beside an experience figure. "
+                 f"Use @@ZEM_RANK@@ — the ranking is derived in "
+                 f"_build/derived.py so it cannot go stale silently")
+
+    # ---- 3d. a figure in the metadata must appear in the page ---------------
+    #
+    # The Sky Ledger tool page typed 95 into its meta description while its body
+    # read the same quantity from the dataset twelve lines later — in a file
+    # whose own docstring is headed "EVERY FIGURE ON THIS PAGE IS READ, NOT
+    # TYPED". Rule 5 below could not catch it: that one fires where metadata
+    # asserts what the body HEDGES, and here both stated the same number from
+    # two different origins, free to drift apart on the next dataset change.
+    #
+    # Metadata is the only text a reader gets uncaveated — it is what travels on
+    # a share card — and this fault shipped once before, when the meta
+    # descriptions still said "ten surveyed dungeons" the day after the body
+    # started printing that count from data.
+    #
+    # So: a figure the description states must appear somewhere on the page. A
+    # level band is exempt, because "Levels 24-49" is a range the body renders
+    # as two separate cells, and those were the only three false positives
+    # across all 722 pages.
+    RANGE = re.compile(r"\d+\s*[-–—]\s*\d+")
+    NUMBER = re.compile(r"\b\d[\d,]+\b")
+    for path in pages:
+        h = open(path, encoding="utf-8", errors="replace").read()
+        m = re.search(r'<meta name="description" content="([^"]*)"', h)
+        if not m:
+            continue
+        desc = m.group(1)
+        ranges = "".join(RANGE.findall(desc))
+        body = re.sub(r"<[^>]+>", " ",
+                      re.sub(r"<head\b.*?</head>", " ", h, flags=re.S | re.I))
+        body = body.replace(",", "")
+        for num in set(NUMBER.findall(desc)):
+            if num in ranges:
+                continue
+            if num.replace(",", "") in body or num in body:
+                continue
+            fail(f"{page_key(path)} states {num!r} in its meta description and "
+                 f"never on the page. Metadata is what travels on a share card; "
+                 f"derive it from the same source the body uses")
 
     # ---- 4. withheld coordinates may not reach a page -----------------------
     #

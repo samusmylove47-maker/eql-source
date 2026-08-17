@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Public data — EQL Source</title>
-<meta name="description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, drops we have watched happen, surveyed zones and item IDs.">
+<meta name="description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, measured drop sources, surveyed zones and item IDs.">
 <meta property="og:title" content="Public data — EQL Source">
-<meta property="og:description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, drops we have watched happen, surveyed zones and item IDs.">
+<meta property="og:description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, measured drop sources, surveyed zones and item IDs.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
 <meta property="og:image:width" content="1200">
@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="EQL Source">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Public data — EQL Source">
-<meta name="twitter:description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, drops we have watched happen, surveyed zones and item IDs.">
+<meta name="twitter:description" content="Versioned, per-claim-sourced EverQuest Legends data, free to consume. Plane of Sky quests with provenance, measured drop sources, surveyed zones and item IDs.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
 <link rel="canonical" href="https://eqlsource.com/data/index">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=8756621c">
+<link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
 <style>
 .dt .ds{border-top:1px solid var(--rule);padding:var(--s-5) 0}
 .dt .ds:last-of-type{border-bottom:1px solid var(--rule)}
@@ -67,7 +67,7 @@
       Here is ours: 4 datasets, versioned, with a source recorded per claim. Free to
       use, no key, no rate limit, CORS open.</p>
     <p class="hero-sig"><span>4 datasets</span>
-      <span>313 KB total</span>
+      <span>351 KB total</span>
       <span>no key required</span></p>
   </div>
 </section>
@@ -83,14 +83,14 @@
       <p class="m">v1.0.0 &middot; 125 KB &middot; hash c8d41d080e92f873</p>
       <p>Every Plane of Sky test for all sixteen classes, with the turn-ins, the island each component drops on, and a source recorded per claim.</p>
     </div><div class="ds">
-      <h3>Drops we have watched happen</h3>
+      <h3>Measured drop sources</h3>
       <p class="u"><a href="https://eqlsource.com/data/sightings.v1.json">https://eqlsource.com/data/sightings.v1.json</a></p>
-      <p class="m">v1.0.0 &middot; 163 KB &middot; hash 8d93a88718ef7283</p>
-      <p>Every item we have personally seen drop, the mob it came from, and how many times. Parsed from our own combat logs.</p>
+      <p class="m">v1.0.0 &middot; 201 KB &middot; hash 1fb7dad3694443ff</p>
+      <p>Which mobs have been measured dropping which items, parsed from combat logs. Each row carries the sighting count behind it.</p>
     </div><div class="ds">
       <h3>Surveyed dungeons</h3>
       <p class="u"><a href="https://eqlsource.com/data/zones.v1.json">https://eqlsource.com/data/zones.v1.json</a></p>
-      <p class="m">v1.0.0 &middot; 15 KB &middot; hash 39bb8ea2c9376107</p>
+      <p class="m">v1.0.0 &middot; 15 KB &middot; hash 9ccb68b87a450128</p>
       <p>The zones we have surveyed, with the level band, the experience modifier and how far verification has got.</p>
     </div><div class="ds">
       <h3>Item names and game IDs</h3>
@@ -104,13 +104,13 @@
 
     <h2 class="sec">What you may do with it</h2>
     <div class="note"><strong>Use it, credit EQL Source, and read the provenance before you trust a value.</strong>
-      <br><br><strong>The measured data is ours.</strong> The measured data — drop sightings, damage figures, spell lists — is our own parsed play. Freely usable with attribution.
+      <br><br><strong>The measured data is ours.</strong> The measured data — drop sightings, damage figures, spell lists — is parsed from this project's own combat logs. Freely usable with attribution.
       <br><br><strong>The inherited data is not.</strong> Fields sourced from community wikis carry their tier and source. Those values are not ours to license; respect the original source and do not present a tier 5 figure as fact.
       <br><br><strong>No warranty.</strong> None. This is a fan project and the game is actively patched. Every dataset here states what it does not know.</div>
 
     <h2 class="sec">What this data is not good for</h2>
-    <div class="note"><strong>Drop rates.</strong> The sightings file is a count of what we
-      watched happen, and a drop seen once is seen once. There is no denominator in it and
+    <div class="note"><strong>Drop rates.</strong> The sightings file is a count of measured
+      drops, and a drop seen once is seen once. There is no denominator in it and
       you cannot compute one. If you publish a percentage from this, you have invented it.
       <br><br><strong>Anything marked below tier 2.</strong> Every claim carries its tier.
       A tier 5 figure is inherited Project 1999 prose that nobody has checked against
@@ -118,9 +118,9 @@
       <a href="../learn/contamination.html">We scan ourselves for it</a> and publish what
       turns up. Read the provenance before you present a number as fact.
       <br><br><strong>Completeness.</strong> Thirteen zones of far more &mdash; ten dungeons and
-      two of the planes &mdash; plus the Plane of Sky written up separately, and a sample of a few
-      dozen play sessions. Everything here states what it does not know; that is the most useful
-      field in the file.</div>
+      two of the planes &mdash; plus the Plane of Sky written up separately, and a limited sample
+      of measured play behind it. Everything here states what it does not know; that is the most
+      useful field in the file.</div>
 
     <h2 class="sec">If you build something with it</h2>
     <p style="color:var(--dim);font-size:15px;line-height:1.65;max-width:70ch;margin:var(--s-5) 0 0">
@@ -153,7 +153,7 @@
       <div><h4>Tools</h4><ul>
         <li><a href="../tools/character.html">Character sheet</a></li>
         <li><a href="../tools/index-search.html">The Index</a></li>
-        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
         <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>

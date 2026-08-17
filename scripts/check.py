@@ -15,8 +15,16 @@ def warn(m): warns.append(m)
 
 # Everything published lives under public/. Nothing outside it is deployed,
 # so nothing outside it is a page.
+#
+# public/app/ is the exception and is not a page at all: it holds the Sky Ledger
+# browser build, copied in verbatim by _build/skyledger.py under a content hash.
+# It is a self-contained application with its own chrome, its own stylesheet and
+# no favicon of ours, so every check below would fail it for not being one of
+# our pages. Excluding it is only safe because it is checked on its own terms
+# further down — an exclusion with nothing behind it is how a blind spot starts.
 pages = [p for p in glob.glob("public/*.html") + glob.glob("public/*/*.html")
-         if not os.path.basename(p).startswith("_")]
+         if not os.path.basename(p).startswith("_")
+         and not p.replace(os.sep, "/").startswith("public/app/")]
 if len(pages) < 20:
     fail(f"only {len(pages)} pages found — expected 20 or more. Did a build fail?")
 
@@ -211,11 +219,35 @@ if os.path.exists("build.sh"):
                    # the committed zone geometry into drawable SVG. Nothing to
                    # schedule, so an orphan warning here would be permanent.
                    "heroart.py",
+                   # Also imported, not run: it reads the Mistmoore backstab
+                   # evidence out of measured.json so four pages cannot carry a
+                   # stale copy of it again.
+                   "backstab.py",
+                   # The same idea asked of a zone rather than of one claim:
+                   # rate, roster, hazards and loot read out of the measured
+                   # sessions at build time. backstab.py answers "is this
+                   # sentence still true"; this answers "what is this zone
+                   # worth", and both are imported by the pages that cite them.
+                   "zonestats.py",
+                   # Substituted into every survey by build3.py: the
+                   # experience ranking and the measured-boss counts, so a
+                   # page cannot type an ordinal that goes stale in silence.
+                   "derived.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it
                    # should not.
                    "warmshift.py",
+                   # Draws the Mistmoore chart from zone-geometry.json and the
+                   # recorded /loc values, and writes it back into
+                   # _build/source/mistmoore-map.html between sentinels. Same
+                   # reason as warmshift.py: build3.py imports that page
+                   # verbatim and takes no substitutions, so the drawing has to
+                   # live in the authored file — but a build step that rewrote
+                   # an authored page every run would fight its author. Re-run
+                   # it after any change to the geometry or the coordinates and
+                   # diff; if the page moves, the page was stale.
+                   "mistmoorecarto.py",
                    # Read the game's .s3d archives, so they are run by hand and
                    # their output is committed. A rebuild has to work on a
                    # machine with no EverQuest Legends install.
@@ -394,6 +426,51 @@ for _label, _keys, _pool, _where in (
         fail(f"catalogue-fixes.json lists {len(_stale)} {_label}(s) that no "
              f"longer appear in {_where}, so the correction does nothing: "
              f"{', '.join(repr(s) for s in _stale[:4])}")
+
+# ---- the served application is the one we say it is -------------------------
+# public/app/ is excluded from the page checks above because it is not a page.
+# This is what stands in their place, and it is the check the stylesheet needed
+# and did not have on 16 Aug 2026: an asset served under a stable URL goes stale
+# in a reader's cache silently, and a stale copy of a log parser is not visibly
+# stale — it runs, it fills the page, and it is simply the old build.
+#
+# So: the record must exist, the file it names must be on disk, its name must
+# still be a hash of its own contents, no earlier build may still be sitting
+# there, and some page must link it. A hashed URL that nothing points at is a
+# 176 KB file nobody can reach.
+try:
+    _sl = json.load(open("assets/sky-ledger.json", encoding="utf-8"))
+except Exception as e:
+    fail(f"assets/sky-ledger.json unreadable: {e} — the Sky Ledger pages "
+         f"print every figure from it and cannot build without it")
+    _sl = None
+if _sl:
+    import hashlib
+    _app = _sl["app"]
+    _served = os.path.join("public", "app", _app["file"])
+    if not os.path.exists(_served):
+        fail(f"assets/sky-ledger.json names {_app['file']}, which is not in "
+             f"public/app/. Run python3 _build/skyledger.py")
+    else:
+        _blob = open(_served, "rb").read()
+        _got = hashlib.sha1(_blob).hexdigest()
+        if not _app["file"].endswith(f".{_got[:8]}.html"):
+            fail(f"public/app/{_app['file']} hashes to {_got[:8]}, so its URL "
+                 f"no longer describes its contents — a cache would serve the "
+                 f"wrong build. Re-run python3 _build/skyledger.py")
+        if _got != _app["sha1"] or len(_blob) != _app["bytes"]:
+            fail(f"public/app/{_app['file']} does not match the sha1 or the "
+                 f"byte count recorded in assets/sky-ledger.json")
+    _stale = sorted(os.path.basename(p) for p in glob.glob("public/app/sky-ledger.*.html")
+                    if os.path.basename(p) != _app["file"])
+    if _stale:
+        fail(f"public/app/ still holds {len(_stale)} earlier Sky Ledger "
+             f"build(s): {', '.join(_stale)}. A hashed URL only stops a stale "
+             f"cache if the stale file stops being served")
+    _linked = any(_app["file"] in open(p, encoding="utf-8", errors="replace").read()
+                  for p in pages)
+    if not _linked:
+        fail(f"public/app/{_app['file']} is served but no page links it")
 
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts

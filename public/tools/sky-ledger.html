@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Sky Ledger — EQL Source</title>
+<meta name="description" content="Sky Ledger reads your EverQuest Legends combat log and says which of the 95 Plane of Sky class-unlock tests you can hand in now. Runs in a browser with no install, or as an overlay on the game.">
+<meta property="og:title" content="Sky Ledger — EQL Source">
+<meta property="og:description" content="Sky Ledger reads your EverQuest Legends combat log and says which of the 95 Plane of Sky class-unlock tests you can hand in now. Runs in a browser with no install, or as an overlay on the game.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sky Ledger — EQL Source">
+<meta name="twitter:description" content="Sky Ledger reads your EverQuest Legends combat log and says which of the 95 Plane of Sky class-unlock tests you can hand in now. Runs in a browser with no install, or as an overlay on the game.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
+<link rel="canonical" href="https://eqlsource.com/tools/sky-ledger">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
+<style>
+.dlrow{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 10px;max-width:none}
+.dl{flex:1 1 260px;display:block;padding:15px 17px;text-decoration:none;
+  border:1px solid var(--rule2);border-left:3px solid var(--brass);
+  background:var(--surface-2);border-radius:4px;transition:border-color .15s,background .15s}
+.dl:hover{background:#31281a;border-color:var(--brass)}
+.dl b{display:block;font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
+.dl span{display:block;margin-top:3px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;color:var(--mut);letter-spacing:.02em}
+.dl.alt{border-left-color:var(--instr)}
+.dl.alt:hover{border-color:var(--instr)}
+
+/* Two doors, and they are not equals: one runs the thing, one explains it. */
+.slrun{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
+  gap:var(--s-4);margin:var(--s-6) 0 0}
+.slrun>a,.slrun>div{display:block;background:var(--surface-1);border:1px solid var(--rule2);
+  border-radius:var(--r);padding:var(--s-5) var(--s-5) var(--s-4);text-decoration:none;
+  border-top:3px solid var(--c,var(--instr))}
+.slrun a:hover{background:var(--surface-2);border-color:var(--instr)}
+.slrun h3{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
+  text-transform:uppercase;letter-spacing:.015em;color:var(--bone);margin:0 0 6px}
+.slrun p{margin:0;color:var(--mut);font-size:var(--t-base);line-height:1.55}
+.slrun .m{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.13em;
+  text-transform:uppercase;color:var(--faint);margin:10px 0 0}
+.slrun .go{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--instr)}
+
+/* The claims. Big mono figure, small caption — the numbers ARE the argument. */
+.slfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr));
+  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);
+  overflow:hidden;margin:var(--s-5) 0 0}
+.slfacts div{background:var(--surface-1);padding:var(--s-4) 18px}
+.slfacts b{display:block;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xl);
+  font-weight:600;color:var(--bone);line-height:1.15}
+.slfacts span{display:block;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.13em;text-transform:uppercase;color:var(--faint);margin-top:7px}
+.slfacts em{display:block;font-style:normal;color:var(--mut);font-size:var(--t-sm);
+  line-height:1.5;margin-top:9px}
+
+/* The honest-limits list. One row per thing the tool refuses to guess at. */
+.sllim{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.sllim li{background:var(--surface-1);padding:14px 18px;color:var(--mut);
+  font-size:var(--t-base);line-height:1.6}
+.sllim b{color:var(--bone)}
+.sllim code{font-family:"IBM Plex Mono",monospace;font-size:.92em;color:var(--txt)}
+
+.slkeys{width:100%;border-collapse:collapse;font-size:var(--t-sm);margin:var(--s-4) 0 0}
+.slkeys td{border-bottom:1px solid var(--rule);padding:9px var(--s-4) 9px 0;color:var(--mut)}
+.slkeys td:first-child{font-family:"IBM Plex Mono",monospace;color:var(--instr);
+  white-space:nowrap;width:1%}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../learn/index.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+      <a href="../search.html" class="nav-find">Search</a>
+    </nav>
+  </div>
+</header>
+<main>
+
+<section class="hero page">
+  <div class="shell">
+    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
+      <a href="index.html">Tools</a> &nbsp;/&nbsp; Sky Ledger</p>
+    <h1 class="display">Sky Ledger.</h1>
+    <p class="hero-lede">It reads your own combat log and works out which of the
+      95 Plane of Sky class-unlock tests you can hand in right now, and what the
+      missing pieces drop from. Run it in a browser with nothing to install, or as an
+      overlay on top of the game. <strong>Nothing is uploaded</strong> &mdash; there is no
+      server to upload to.</p>
+    <p class="hero-sig"><span>95 tests</span><span>222 turn-in slots</span><span>16 classes</span><span>v1.1.0</span></p>
+  </div>
+</section>
+
+<div class="shell">
+
+  <section class="band" style="border-top:0;padding-top:0">
+    <div class="slrun">
+      <a href="../app/sky-ledger.dadeed9c.html" style="--c:var(--instr)">
+        <h3>Run it in your browser</h3>
+        <p>One file, 176 KB, served from this site. Chrome or Edge on desktop can
+          follow your log file live; Firefox and Safari cannot, so drop the log on
+          the panel for a one-off read.</p>
+        <p class="m">Build dadeed9c &middot; nothing installed &middot; nothing sent</p>
+        <span class="go">Open the app &rarr;</span>
+      </a>
+      <a href="#overlay" style="--c:var(--brass)">
+        <h3>Put it over the game</h3>
+        <p>The browser build cannot pass clicks through to the game and can only fake
+          transparency. The Electron shell fixes both, with two global hotkeys and a
+          continuous opacity slider.</p>
+        <p class="m">Windows &middot; portable &middot; no download published yet</p>
+        <span class="go">What that needs &rarr;</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="sechead"><span class="n">01</span><div><h2 class="sec">A piece can only be spent once</h2>
+      <p class="lede" style="margin:0">This is the whole reason it is promoted here, and it is
+        a correctness property rather than a feature.</p></div></div>
+    <p class="lede"><strong>29 of the 128 turn-in items are wanted by more than one
+      test</strong>, and all 15 wind runes are among them &mdash; one of them is asked for by
+      7 separate tests. Hold one and exactly one test can be completed with it.
+      Sky Ledger pools what you hold, spends each unit on the test closest to completion, and
+      marks the contested pieces with how short you are.</p>
+    <p class="lede"><strong>Every other tracker counts that item against every test that wants
+      it</strong>, and tells you several quests are ready when one is. Ours did. That is what a
+      checklist does when it has no idea what else is on the list, and it is not fixable by
+      ticking more carefully.</p>
+    <div class="slfacts">
+  <div><b>29 of 128</b><span>Turn-in items wanted twice or more</span>
+    <em>One held piece finishes one test. Every other tracker, ours included,
+      counted it against all of them.</em></div>
+  <div><b>&lt;28% &middot; 0/9</b><span>How a dry streak prints</span>
+    <em>Never <code>0%</code>. Nine kills with no drop bounds the rate; it does not
+      measure it, and <code>0%</code> would tell you to stop farming.</em></div>
+  <div><b>Counted &middot; discarded</b><span>Two figures, never merged</span>
+    <em>Kills it cannot place print as their own number rather than folding
+      quietly into the total.</em></div>
+</div>
+  </section>
+
+  <section class="band">
+    <div class="sechead"><span class="n">02</span><div><h2 class="sec">It holds this site's standard on its own</h2>
+      <p class="lede" style="margin:0">Arrived at separately, by the same person, which is worth
+        saying plainly rather than presenting as a coincidence.</p></div></div>
+    <ul class="sllim">
+      <li><b>It refuses to publish a drop rate it cannot measure.</b> No site publishes
+        community drop rates for Sky, so it does not print one. It prints what your log has
+        seen: drops over kills of that mob, with the sample size attached.</li>
+      <li><b>A dry streak is a ceiling, not a zero.</b> Nine kills with no drop reads
+        <code>&lt;28% &middot; 0/9</code>. Zero successes in nine trials bounds the rate and does
+        not measure it &mdash; the same reasoning as the <code>damage_is_floor</code> marker on
+        the raid figures here.</li>
+      <li><b>It reports what it threw away.</b> Kills it could not place, bag sales whose
+        contents the client never named, trades it would not guess at. The tally it discarded
+        prints beside the tally it kept. The strip hides itself when there is nothing to
+        admit.</li>
+      <li><b>Its parsing is checked against the client's own string table.</b>
+        <code>You have slain %1!</code> is id 12113 in <code>eqstr_us.txt</code>, read out of the
+        install &mdash; the same class of evidence as our floor plans being read out of the
+        <code>.s3d</code> meshes rather than drawn by hand.</li>
+      <li><b>It understands Legends instancing.</b> A zone arrives as
+        <code>The Plane of Sky 3 (Fused)</code>. That <code>&lt;n&gt; (&lt;Tier&gt;)</code> suffix
+        is not in any client string file and classic EverQuest never had it, so an exact match
+        against a zone name could never see it.</li>
+      <li><b><code>X died.</code> names no killer, so it is never counted as yours.</b> Those
+        lines are reported rather than guessed at.</li>
+    </ul>
+  </section>
+
+  <section class="band">
+    <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it will not tell you</h2>
+      <p class="lede" style="margin:0">Its own limits, in our type. They are limits of the log,
+        mostly, and none of them are fixable by trying harder.</p></div></div>
+    <ul class="sllim">
+      <li><b>The log only knows what happened while it was running.</b> Anything looted before
+        <code>/log on</code> is invisible. An <code>/outputfile inventory</code> dump at a banker
+        covers that; the tool takes the larger of the two counts rather than adding them, so one
+        item never reads as two.</li>
+      <li><b>Wind runes can never have a measured rate.</b> They drop zone-wide from anything and
+        they are alternate currency, so no log can count them. They are entered by hand and
+        labelled as such.</li>
+      <li><b>A sold bag is a hole the log cannot fill.</b>
+        <code>You receive &hellip; for the contents of your bag.</code> never names what was
+        inside, so those items may still read as held. The tool says so rather than pretending
+        otherwise.</li>
+      <li><b>A closed trade is not proof of a turn-in.</b> Walk the wrong class's pieces to the
+        wrong giver and they come straight back, one refusal per item, and the trade still
+        closes. Refusals only count when the line names your character.</li>
+      <li><b>Five classes carry a <code>?</code>.</b> Ranger, Rogue, Shadow Knight, Shaman and
+        Wizard have no confirmed Legends-era reward stat blocks. Their turn-ins are current; the
+        stat numbers may still be classic. <a href="../sources.html#gaps">The same gap is open
+        here</a>, because the data came from us.</li>
+      <li><b>Two items have sources that disagree.</b> The Efreeti Great Staff and the Efreeti
+        Statuette are attributed differently by us and by eqlegendstools. Both are marked in the
+        panel rather than silently resolved.</li>
+    </ul>
+  </section>
+
+  <section class="band" id="overlay">
+    <div class="sechead"><span class="n">04</span><div><h2 class="sec">The overlay</h2>
+      <p class="lede" style="margin:0">The same application in an Electron shell, so it can sit on
+        top of the game instead of beside it.</p></div></div>
+    <p class="lede">Both hotkeys are global, so they work while the game has focus. Position,
+      size, opacity and click-through are remembered between runs. Exclusive fullscreen draws
+      over every other window, this one included &mdash; use Windowed or Borderless.</p>
+    <table class="slkeys">
+      <tr><td>Ctrl+Shift+O</td><td>show and hide the panel</td></tr>
+      <tr><td>Ctrl+Shift+L</td><td>click-through &mdash; the panel stops eating clicks</td></tr>
+      <tr><td>slider</td><td>opacity, continuous from 15% to 100% rather than fixed steps</td></tr>
+    </table>
+    <p class="dlrow"><a class="dl" href="https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-windows.zip"><b>Download the overlay</b><span>Windows &middot; 100.5 MB &middot; unzip and run, no installer</span></a><a class="dl alt" href="https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-browser-only.zip"><b>Or the single file</b><span>One HTML page &middot; 0.1 MB &middot; opens in any browser</span></a></p>
+    <p class="cm">Both carry build dadeed9c, the same one served above. Exclusive fullscreen
+      draws over every window including this one &mdash; use Windowed or Borderless.</p>
+  </section>
+
+  <section class="band">
+    <div class="sechead"><span class="n">05</span><div><h2 class="sec">Who made it, and what it replaced</h2></div></div>
+    <div class="note sig"><strong>Sky Ledger is a separate project</strong>, with its own test
+      suite and its own documentation. It is served here rather than rebuilt here.</div>
+    <div class="note"><strong>Our own Plane of Sky tracker is withdrawn.</strong> It is the tool
+      Sky Ledger supersedes, and running both would only ask a reader to pick. Its quest data
+      lives on: <a href="../data/index.html">the Sky dataset is published</a> with a source
+      recorded per claim, and Sky Ledger&rsquo;s own dataset was extracted from it. The zone
+      itself is written up at <a href="../raids/plane-of-sky.html">Plane of Sky, island by
+      island</a>.</div>
+    <div class="note"><strong>Credit where the parsing came from.</strong> The log-line cases that
+      break naive counting &mdash; the autosell tail, combine consumption, upgrade-tier suffixes,
+      and handbacks that name the player &mdash; were identified by <b>sowoky</b> in
+      eqltools.com&rsquo;s <code>sky-core</code>, and reimplemented rather than copied. Two of
+      them appear in no client string file at all, so they could only ever have been found by
+      reading a real log. Quest data was cross-checked against
+      eqlegendstools.com and loadoutlegends.com, which agree
+      independently at 95 tests, 222 turn-in slots and 128 unique items.</div>
+  </section>
+
+</div>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All surveys</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../items/index.html">Every item</a></li>
+        <li><a href="../named/index.html">Every named mob</a></li>
+        <li><a href="../sets/index.html">Every planar set</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/character.html">Character sheet</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+        <li><a href="../tools/planar-gear.html">Planar gear targets</a></li>
+        <li><a href="../tools/inventory.html">Inventory reader</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/still-true.html">Is it still true?</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="../learn/motes.html">Motes</a></li>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
+        <li><a href="../learn/contamination.html">Contamination</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../search.html">Search the site</a></li>
+        <li><a href="../data/index.html">Public data</a></li>
+        <li><a href="../credits.html">Credits</a></li>
+        <li><a href="../archive/index.html">The original plates</a></li>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>

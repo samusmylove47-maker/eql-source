@@ -6,161 +6,389 @@
 <title>The Warrens — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#B5793C;--accd:#644321;--acct:color-mix(in srgb, #B5793C 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE SURVEY SHEET — The Warrens
+   ------------------------------------------------------------------
+   The mechanism is Castle Mistmoore's: a graticule fixed behind the page, a
+   translucent sheet sliding over it, a neatline with an inner rule, and the
+   section kickers hanging in the left margin. Copied deliberately. What is NOT
+   copied is the colour: this zone owns #B5793C permanently and no other zone
+   may use it.
+
+   Everything here is self-contained: this page never loads assets/site.css.
+   Token names are prefixed --sv- because build3.py appends site.css's :root
+   AFTER this block, and an unprefixed --mut or --txt would be silently
+   overwritten by it. --acc, --accd and --acct are deliberately NOT prefixed:
+   the injected chrome reads them and site.css does not define them.
+
+   Contrast, computed rather than eyeballed, against the lightest ground the
+   page can produce (a graticule crossing under the lamplight, seen through the
+   sheet, #1D180E): ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 5.85,
+   warn 5.16, brass 7.98, link 8.97. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 5.14 / 4.53 / 7.01 / 7.88. --acct is the
+   accent lifted 15% toward bone, because the accent itself measures 4.85 on
+   the sheet and 4.26 on the panel; the accent is never reassigned. */
+:root{
+  --acc:#B5793C;--accd:#644321;--acct:#BE8A54;
+  --sv-g:#120E08;          /* the plotting table */
+  --sv-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --sv-ink:#F2EADA;--sv-txt:#DFD6C4;--sv-mut:#B5AA95;--sv-dim:#9A8F7C;
+  --sv-warn:#D46C64;--sv-brass:#C9922E;--sv-brass-t:#D9A63F;--sv-ok:#5FA37E;
+  --sv-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --sv-r2:#7A6950;         /* a boundary that carries meaning, 3.34:1 */
+  /* One type scale. Anything not on it is a bug. */
+  --sv-2xs:10px;--sv-xs:11.5px;--sv-sm:13.5px;--sv-base:15.5px;--sv-md:18.5px;
+  --sv-lg:22px;
+  --sv-h2:clamp(24px,3.6vw,36px);--sv-h1:clamp(38px,6.6vw,74px);
+  --sv-rad:4px;
+  /* And one spacing scale, for the same reason. */
+  --sv-s1:4px;--sv-s2:8px;--sv-s3:12px;--sv-s4:16px;
+  --sv-s5:24px;--sv-s6:32px;--sv-s7:48px;--sv-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--sv-g)}
+body{margin:0;background:transparent;color:var(--sv-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--sv-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint on a
+   document carrying a 1,000px drawing.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast — with one period
+   only two rules can ever coincide. And every stop terminates in
+   rgba(228,210,174,0) rather than the keyword transparent, because older
+   WebKit premultiplies transparent as transparent BLACK and draws a grey seam
+   down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens — so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(181,121,60,.045) 0%, rgba(181,121,60,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--sv-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--sv-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--sv-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--sv-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is the single change that makes a column of figures read as instrument
+   output rather than as a web table. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--sv-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--sv-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--sv-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--sv-s2);
+  text-wrap:balance;color:var(--sv-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--sv-lg);letter-spacing:.03em;margin:var(--sv-s5) 0 var(--sv-s2);color:var(--sv-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--sv-mut);font-size:var(--sv-md);margin:0 0 var(--sv-s5);max-width:60ch}
+.cm{color:var(--sv-dim);font-size:var(--sv-sm);line-height:1.6;margin:var(--sv-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--sv-r1);padding-left:var(--sv-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--sv-s7) 0 var(--sv-s5);margin-bottom:var(--sv-s2);
+  border-bottom:1px solid var(--sv-r2)}
+.eyebrow{font-size:var(--sv-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--sv-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--sv-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--sv-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--sv-md);
+  color:var(--sv-mut);letter-spacing:.02em;margin:var(--sv-s2) 0 var(--sv-s3);
+  text-transform:uppercase}
+/* THE DECK. The answer to "should I go tonight", above the first chart rather
+   than reverse-engineered from tables. */
+.deck{color:var(--sv-txt);margin:0 0 var(--sv-s5);max-width:66ch}
+.deck strong{color:var(--sv-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--sv-r1);border-left:1px solid var(--sv-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--sv-p);padding:var(--sv-s3);
+  border-right:1px solid var(--sv-r1);border-bottom:1px solid var(--sv-r1)}
+.cell dt{font-size:var(--sv-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--sv-dim);margin:0 0 var(--sv-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--sv-lg);
+  font-weight:600;color:var(--sv-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--sv-xs);font-weight:400;
+  color:var(--sv-mut);display:block;letter-spacing:0}
+/* A long document with one id in it and no way down it. */
+.jump{margin:var(--sv-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--sv-s1) var(--sv-s4);font-size:var(--sv-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--sv-mut);text-decoration:none;border-bottom:1px solid var(--sv-r1)}
+.jump a:hover{color:var(--sv-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column
+   — a rail the eye reads as a plate before it reads a word. The kicker names
+   what the section is MADE OF; numbered headings are a generated-site tell and
+   are not coming back. */
+section{margin-top:var(--sv-s7);position:relative}
+.kick{font-size:var(--sv-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--sv-dim);margin:0 0 var(--sv-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--sv-r2);padding-left:var(--sv-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--sv-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--sv-sm);
+  border-top:2px solid var(--sv-brass)}
+th{font-size:var(--sv-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--sv-mut);
+  text-align:left;padding:var(--sv-s2) var(--sv-s3) var(--sv-s2) 0;background:none;
+  border-bottom:1px solid var(--sv-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--sv-s3) var(--sv-s3) var(--sv-s3) 0;border-bottom:1px solid var(--sv-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(181,121,60,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--sv-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--sv-sm);text-align:right;white-space:nowrap;color:var(--sv-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--sv-base);font-weight:600;
+  letter-spacing:.02em;color:var(--sv-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--sv-base);font-weight:600;
+  letter-spacing:.02em;color:var(--sv-ink)}
+.cls{font-size:var(--sv-xs);color:var(--sv-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--sv-ok)}
+.st{font-size:var(--sv-xs);color:var(--sv-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--sv-sm);color:var(--sv-mut)}
+.tag{font-size:var(--sv-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--sv-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--sv-warn)}
+/* The tier mark. Styling an existing mark is not the same as grading a plate:
+   the surveys stay deliberately ungraded. */
+.tier{font-size:var(--sv-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--sv-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--sv-base);
+  letter-spacing:.02em;color:var(--sv-ink);padding:var(--sv-s3) var(--sv-s5) var(--sv-s3) 0;
+  border-bottom:1px solid var(--sv-r1)}
+.key dd{margin:0;font-size:var(--sv-sm);color:var(--sv-mut);padding:var(--sv-s3) 0;
+  border-bottom:1px solid var(--sv-r1)}
+.key strong{color:var(--sv-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not six identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--sv-s5) 0 0;padding:0 0 0 var(--sv-s5);
+  border-left:2px solid var(--sv-warn);max-width:74ch}
+ul.hz li{padding:var(--sv-s4) 0;border-top:1px solid var(--sv-r1);color:var(--sv-mut);
+  font-size:var(--sv-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--sv-base);
+  color:var(--sv-warn);margin-bottom:var(--sv-s1)}
+ul.hz strong{color:var(--sv-ink)}
+
+.note{border-left:1px solid var(--sv-r1);padding:var(--sv-s1) 0 var(--sv-s1) var(--sv-s4);
+  margin:var(--sv-s5) 0 0;color:var(--sv-mut);font-size:var(--sv-sm);max-width:68ch}
+.note strong{color:var(--sv-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--sv-s8);padding-top:var(--sv-s5);border-top:1px solid var(--sv-r2);
+  color:var(--sv-mut);font-size:var(--sv-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--sv-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sv-dim);margin:var(--sv-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one
+   step higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .fp-wrap{border-radius:var(--sv-rad)}
+/* build3.py injects the placeholder note above the roster unconditionally, but
+   its stylesheet travels only with a zone that has a withheld coordinate. This
+   zone has none, so the note has always rendered here as unstyled body text. */
+body .ph-note{margin:0 0 var(--sv-s4);padding:var(--sv-s3) var(--sv-s4);
+  border-left:3px solid var(--sv-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--sv-rad);color:var(--sv-mut);font-size:var(--sv-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--sv-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* One heading level, one rule. The injected floor plan sets its own h2 size,
+   which is smaller than every other heading on the sheet, with four times the
+   tracking and a shorter margin above. */
+body .fplan{margin-top:var(--sv-s7)}
+body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--sv-h2);letter-spacing:.005em;line-height:1}
+/* THE SPINE RAIL WOULD OTHERWISE HAVE A HOLE AT THE TOP. The floor plan is the
+   first section on the page and carries no kicker of its own; its generator is
+   not this file's to edit, so the label is set here, in the same register as
+   the authored four. No measured section is set below, because no logged
+   session covers this zone. */
+body .fplan::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--sv-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--sv-dim);display:block;margin:0 0 var(--sv-s2);
+  content:"The zone, drawn"}
+@media(min-width:1080px){
+  body .fplan::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 09 · Paineel, Odus</p>
-  <h1>The Warrens</h1>
-  <p class="subtitle">Clan Kolbok — levels 4 to 25 in one zone, and it counts as outdoors</p>
+  <p class="eyebrow">Dungeon survey &middot; Paineel, Odus</p>
+  <div class="title"><h1>The Warrens</h1><span class="leader"></span><span class="plateno">09</span></div>
+  <p class="subtitle">Clan Kolbok &mdash; a whole early career in one zone, and it counts as outdoors</p>
+  <p class="deck">Levels run 4 to 25 without leaving the zone. Come for the Cold Iron set off King Gragnar, the Crown of the Forlorn, and the Muglwump's seven no-drop pieces. <strong>The entrance is the whole problem</strong> &mdash; the kobold density that makes it good hunting is also the worst train risk here. Its experience modifier is @@ZEM_RANK@@.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>warrens</dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>4&ndash;25</dd></div>
     <div class="cell"><dt>ZEM</dt><dd>128<small>171% — was 150</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>&le;6:40<small>max lowered 28 Jul</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>Not measured<small>no logged session covers this zone</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>&le;6:40<small>pre-patch ceiling</small></dd></div>
+    <div class="cell"><dt>Terrain</dt><dd>Outdoors<small>unusual for a dungeon</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>748, &minus;930</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Paineel<small>+ Stonebrunt Mtns</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Paineel<small>+ Stonebrunt Mountains</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+  </ul>
 </header>
 
-
-
-
-
-
+<main>
 
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>Levels 4 to 25 in one zone.</b> A whole early career without moving, at ZEM 128.</li><li><b>It counts as outdoors.</b> Unusual for a dungeon, and it changes what works here.</li><li><b>The Cold Iron set, off King Gragnar.</b> Chest, helm, gauntlets and vambraces, AC 17 down to AC 8.</li><li><b>The entrance is the whole problem.</b> The kobold density that makes it good hunting is also the worst train risk in the zone. Crowd control or a real group, not optional.</li></ul>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">A kobold clan hall, a jail, a kitchen and a bat cave, west of Paineel.</p>
+  <dl class="key">
+    <dt>A small pool-filled room near the Paineel newbie area</dt><dd>The entrance. It shares its approach with The Hole</dd>
+    <dt>A throne room with two kobolds in it</dt><dd>King Gragnar and High Shaman Drogik. <strong>Expect to fight both</strong></dd>
+    <dt>A pit in Warlord Drrig's room</dt><dd>A <strong>one-way drop</strong> into the Batling Caves, and the route to Krode the Diviner</dd>
+    <dt>Ten fixed spawn points clustered mid-zone</dt><dd>The batlings: wizards and shamans, no melee at all</dd>
+    <dt>A kitchen</dt><dd>Smithy Rrarrgin and Foodmaster Rargnar, the two rarest named here</dd>
+    <dt>A jail holding three prisoners</dt><dd>Jailer Mkrarrg, an Erudite man, an Erudite woman and a Kerran</dd>
+    <dt>A break in the west wall</dt><dd>Stonebrunt Mountains &mdash; and the only route into it, so traffic passes through</dd>
+  </dl>
+  <p class="cm">You can bind right outside the entrance. Good characters can reach it: the obstacles are the skeletons in Toxxulia Forest and the Paineel newbie guards, unaggressive unless you walk close. One documented hazard on the approach &mdash; a high-level necromancer is sometimes in the passageway and attacks any good character passing in front of him.</p>
 </section>
 
 <section>
-  <h2><span class="num">02</span>Named roster</h2>
-  <p class="lede">Spawn percentages and respawn timers are the wiki's figures as of 16 May 2026 and predate the 28 July placeholder removal. Treat every rate here as a floor.</p>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>The entrance area</b> Wandering kobolds add to fights regularly, and this is where trains start. <strong>Crowd control or a real group is required, not optional.</strong></li>
+    <li><b>The batlings are casters</b> Wizards and shamans <strong>with no melee at all</strong>, on ten fixed spawn points clustered tightly. A pull that brings two is a pull against two casters.</li>
+    <li><b>Two harm touches in the throne room</b> King Gragnar for around <strong>240</strong> at level 24, Prince Bragnar for <strong>181</strong> at 18. At these levels a 240-point opener removes a tank's cushion before the first heal lands.</li>
+    <li><b>Diseased kobolds</b> The proc lasts a very long time &mdash; the duration is the problem, not the damage. Bring Cure Disease or fight the room debuffed.</li>
+    <li><b>A pack leader may see through invisibility</b> Recorded as an open question, not a fact. <strong>Invisibility is the usual way past the entrance crush</strong>, so treat it as unreliable until someone confirms it.</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Respawn timers below are the wiki's figures as of 16 May 2026 and predate the 28 July patch.</p>
   <div class="scroller">
   <table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">The Muglwump</td><td class="loc">584, 279</td><td class="lv">25</td><td class="cls">OLD FROGLOK TADPOLE<br>WAR</td><td class="src">100%, <strong>35-minute respawn.</strong> Rampages, and functions as a <strong>low-level raid boss</strong> — the deepest fight in the zone and the widest loot table.<span class="tag warn">rampage</span></td></tr>
-      <tr><td class="nmob">King Gragnar</td><td class="loc">184, 335</td><td class="lv">24</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, 48-minute respawn. <strong>Harm Touches for around 240 and lifetaps for 13.</strong> Carries the entire Cold Iron set.<span class="tag warn">240 HT</span></td></tr>
-      <tr><td class="nmob">The Mighty Bear Paw</td><td class="loc">&minus;282, 947</td><td class="lv">24</td><td class="cls">WALRUS MAN<br>WAR</td><td class="src">50%. The far west end, past the bat caves. Drops Bear Paw's Pelt, Ice of Velious and Words of Discernment.</td></tr>
-      <tr><td class="nmob">High Shaman Drogik</td><td class="loc">213, 310</td><td class="lv">22&ndash;23</td><td class="cls">KOBOLD<br>SHM</td><td class="src">100%, 48-minute respawn. Shares the Throne Room with King Gragnar — expect to fight both.</td></tr>
+      <tr><td class="nmob">The Muglwump</td><td class="loc">584, 279</td><td class="lv">25</td><td class="cls">OLD FROGLOK TADPOLE<br>WAR</td><td class="src">100%, <strong>35-minute respawn.</strong> Rampages. A <strong>low-level raid boss</strong>, and the widest loot table here.<span class="tag warn">rampage</span></td></tr>
+      <tr><td class="nmob">King Gragnar</td><td class="loc">184, 335</td><td class="lv">24</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, 48-minute respawn. <strong>Harm touches for around 240 and lifetaps for 13.</strong> Carries the Cold Iron set.<span class="tag warn">240 HT</span></td></tr>
+      <tr><td class="nmob">The Mighty Bear Paw</td><td class="loc">&minus;282, 947</td><td class="lv">24</td><td class="cls">WALRUS MAN<br>WAR</td><td class="src">50%. The far west end, past the bat caves.</td></tr>
+      <tr><td class="nmob">High Shaman Drogik</td><td class="loc">213, 310</td><td class="lv">22&ndash;23</td><td class="cls">KOBOLD<br>SHM</td><td class="src">100%, 48-minute respawn. <strong>Shares the Throne Room with King Gragnar.</strong></td></tr>
       <tr><td class="nmob">Cave Bat Lord</td><td class="loc">&minus;107, 801</td><td class="lv">22</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%, 48-minute respawn. Does not always drop the hat. <strong>No nearby bat will assist him.</strong></td></tr>
       <tr><td class="nmob">Grodl Ripclaw</td><td class="loc">620, 300</td><td class="lv">21&ndash;22</td><td class="cls">KOBOLD<br>WAR</td><td class="src">50%. Spawns next to the Muglwump; <strong>placeholder is a filthy rat.</strong> May carry more than one piece of loot.</td></tr>
-      <tr><td class="nmob">Warlord Drrig</td><td class="loc">345, 100</td><td class="lv">21</td><td class="cls">KOBOLD<br>WAR</td><td class="src">25%. <strong>Placeholder is a Kobold Brawler</strong>, confirmed. The best weapon spread of any single named here.</td></tr>
-      <tr><td class="nmob">Huntmaster Furgrl</td><td class="loc">53, 981</td><td class="lv">20</td><td class="cls">KOBOLD<br>RNG</td><td class="src">48-minute respawn. The only source of the Forlorn Bow and Forlorn Arrow.</td></tr>
-      <tr><td class="nmob">Prince Bragnar</td><td class="loc">337, &minus;159</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, <strong>57-minute respawn</strong> — the longest in the zone. <strong>Harm Touches for 181.</strong> Three Forlorn pieces plus the Bamboo Splint Coat.<span class="tag warn">181 HT</span></td></tr>
-      <tr><td class="nmob">Packmaster Dledsh</td><td class="loc">317, &minus;954</td><td class="lv">18</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100% on a 16-minute timer, but the <strong>placeholder is a frenzied rat and the observed rate was two spawns in eighty-five kills.</strong> The wiki flags it as a rare NPC — the hardest named here to see.<span class="tag warn">very rare</span></td></tr>
-      <tr><td class="nmob">Krode the Diviner</td><td class="loc">425, 233</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src">50%. <strong>Bottom of a pit among mischievous batlings</strong> — reachable via the one-way drop from Warlord Drrig's room.</td></tr>
-      <tr><td class="nmob">Lorekeeper Roggik</td><td class="loc">327, 163</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src"><strong>17%</strong> on a 48-minute respawn — the lowest percentage in the zone.</td></tr>
-      <tr><td class="nmob">Jailer Mkrarrg</td><td class="loc">219, &minus;720</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%. Observed dropping <strong>three Bronze Shackle Keys at once.</strong> Cons green but still gave experience at level 24. Guards an Erudite male, an Erudite female and a Kerran.</td></tr>
-      <tr><td class="nmob">Trainer Daxgrr</td><td class="loc">305, &minus;763</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%, 20-minute respawn. Loot table not itemised on the wiki.</td></tr>
-      <tr><td class="nmob">Koajin</td><td class="loc">286, &minus;1124</td><td class="lv">15</td><td class="cls">KERRA<br>WAR</td><td class="src">A Kerran craftsman captured by the Erudites of Paineel and imprisoned with the kobolds. Drops nothing.</td></tr>
-      <tr><td class="nmob">Smithy Rrarrgin</td><td class="loc">659, &minus;856</td><td class="lv">14</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>10%</strong>, 20-minute respawn. Kitchen. Large Empty Crate, Ye Auld Ball Peen Hammer, Bronze Wakizashi.</td></tr>
-      <tr><td class="nmob">Foodmaster Rargnar</td><td class="loc">674, &minus;823</td><td class="lv">13</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>7%</strong>, 20-minute respawn — lowest rate paired with the shortest timer. Kitchen.</td></tr>
-      <tr><td class="nmob">Aderius Rhenar</td><td class="loc">272, &minus;1110</td><td class="lv">10</td><td class="cls">ERUDITE<br>CLR</td><td class="src">100%. Quest giver for <strong>Catman Alliance</strong>. Field note: conned green and <em>ready to attack</em> a level 30 troll shadow knight holding indifferent Paineel faction — approach carefully.</td></tr>
+      <tr><td class="nmob">Warlord Drrig</td><td class="loc">345, 100</td><td class="lv">21</td><td class="cls">KOBOLD<br>WAR</td><td class="src">25%. <strong>Placeholder is a Kobold Brawler.</strong> The best weapon spread of any single named here.</td></tr>
+      <tr><td class="nmob">Huntmaster Furgrl</td><td class="loc">53, 981</td><td class="lv">20</td><td class="cls">KOBOLD<br>RNG</td><td class="src">48-minute respawn. The only source of the Forlorn Bow and Arrow.</td></tr>
+      <tr><td class="nmob">Prince Bragnar</td><td class="loc">337, &minus;159</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, <strong>57-minute respawn</strong> &mdash; the longest here. <strong>Harm touches for 181.</strong><span class="tag warn">181 HT</span></td></tr>
+      <tr><td class="nmob">Packmaster Dledsh</td><td class="loc">317, &minus;954</td><td class="lv">18</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100% on a 16-minute timer, but the <strong>placeholder is a frenzied rat and it comes up far more rarely than the timer suggests.</strong><span class="tag warn">very rare</span></td></tr>
+      <tr><td class="nmob">Krode the Diviner</td><td class="loc">425, 233</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src">50%. <strong>Bottom of a pit among mischievous batlings</strong>, by the one-way drop from Warlord Drrig's room.</td></tr>
+      <tr><td class="nmob">Lorekeeper Roggik</td><td class="loc">327, 163</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src"><strong>17%</strong> on a 48-minute respawn &mdash; the lowest percentage in the zone.</td></tr>
+      <tr><td class="nmob">Jailer Mkrarrg</td><td class="loc">219, &minus;720</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%. Drops <strong>three Bronze Shackle Keys at once.</strong> Guards an Erudite male, an Erudite female and a Kerran.</td></tr>
+      <tr><td class="nmob">Trainer Daxgrr</td><td class="loc">305, &minus;763</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%, 20-minute respawn. <strong>Loot table not itemised on the wiki.</strong><span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Koajin</td><td class="loc">286, &minus;1124</td><td class="lv">15</td><td class="cls">KERRA<br>WAR</td><td class="src">A Kerran craftsman held with the kobold prisoners. Drops nothing.</td></tr>
+      <tr><td class="nmob">Smithy Rrarrgin</td><td class="loc">659, &minus;856</td><td class="lv">14</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>10%</strong>, 20-minute respawn. Kitchen.</td></tr>
+      <tr><td class="nmob">Foodmaster Rargnar</td><td class="loc">674, &minus;823</td><td class="lv">13</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>7%</strong>, 20-minute respawn &mdash; the lowest rate paired with the shortest timer. Kitchen.</td></tr>
+      <tr><td class="nmob">Aderius Rhenar</td><td class="loc">272, &minus;1110</td><td class="lv">10</td><td class="cls">ERUDITE<br>CLR</td><td class="src">100%. Quest giver for <strong>Catman Alliance</strong>. Cons green, but cons <em>ready to attack</em> even at indifferent Paineel faction.</td></tr>
       <tr><td class="nmob">An Erudite Prisoner</td><td class="loc">303, &minus;1009</td><td class="lv">6</td><td class="cls">ERUDITE<br>WIZ</td><td class="src">100%. Starts the <strong>Erudite Prisoners</strong> quest at minimum level 10.</td></tr>
     </tbody>
   </table>
   </div>
-
-  
 </section>
 
 <section>
-  <h2><span class="num">03</span>Loot table</h2>
-  <p class="lede">The wiki lists 75 items dropping here. Weapon lines read damage / delay. The zone has a signature look: the armour is bamboo splint, soft wicker and cold iron, and almost every weapon is a bokken, naginata, tachi, wakizashi, katana, yari or jutte.</p>
+  <p class="kick">Five registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. The armour is bamboo splint, soft wicker and cold iron, and almost every weapon is a bokken, naginata, tachi, wakizashi, katana, yari or jutte.</p>
+  <div class="note"><strong>Rare, common and uncommon are the wiki's words, not measured rates.</strong> No logged session covers this zone, so nothing here is measured.</div>
 
-  <h3>Cold Iron — the plate set, King Gragnar</h3>
+  <h3>Cold Iron &mdash; the plate set, King Gragnar</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Piece</th><th>Slot</th><th>Stats</th><th>Dropped by</th></tr></thead>
     <tbody>
       <tr><td class="it">Cold Iron Breastplate</td><td class="st">Chest</td><td class="st"><strong>AC 17</strong> · SV Magic +3</td><td class="src">King Gragnar</td></tr>
-      <tr><td class="it">Cold Iron Helm</td><td class="st">Head</td><td class="st"><strong>AC 10</strong> · SV Magic +2<br><span style="color:#9C958E">HUM BAR ERU ELF HIE DEF HEF only</span></td><td class="src">King Gragnar</td></tr>
+      <tr><td class="it">Cold Iron Helm</td><td class="st">Head</td><td class="st"><strong>AC 10</strong> · SV Magic +2<br><span style="color:#B5AA95">HUM BAR ERU ELF HIE DEF HEF only</span></td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Gauntlets</td><td class="st">Hands</td><td class="st">AC 9 · SV Magic +1</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Vambraces</td><td class="st">Arms</td><td class="st">AC 8 · SV Magic +2</td><td class="src">King Gragnar</td></tr>
-      <tr><td class="it">Cold Iron Boots</td><td class="st">Feet</td><td class="st">AC 8 · SV Magic +1</td><td class="src"><strong>Warlord Drrig</strong> — not Gragnar</td></tr>
+      <tr><td class="it">Cold Iron Boots</td><td class="st">Feet</td><td class="st">AC 8 · SV Magic +1</td><td class="src"><strong>Warlord Drrig</strong> &mdash; not Gragnar</td></tr>
       <tr><td class="it">Cold Iron Girdle</td><td class="st">Waist</td><td class="st">AC 7 · SV Magic +1</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Bracers</td><td class="st">Wrist</td><td class="st">AC 7 · SV Magic +1 · magic item</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Collar</td><td class="st">Head</td><td class="st">AC 6 · SV Magic +1</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Mask</td><td class="st">Face</td><td class="st">AC 5 · SV Magic +1</td><td class="src">King Gragnar · Warlord Drrig</td></tr>
-      <tr><td class="it">Cold Iron Shackle</td><td class="st">Wrist</td><td class="st">AC 4<br><span style="color:#9C958E">wider list: adds RNG ROG SHM</span></td><td class="src">Aderius Rhenar</td></tr>
+      <tr><td class="it">Cold Iron Shackle</td><td class="st">Wrist</td><td class="st">AC 4<br><span style="color:#B5AA95">wider list: adds RNG ROG SHM</span></td><td class="src">Aderius Rhenar</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note">Cold Iron is <strong>WAR CLR PAL SHD BRD</strong>, all races except DWF TRL OGR HFL GNM and IKS. Two oddities: the <strong>Collar occupies the Head slot</strong> rather than the neck, so it competes with the Helm rather than complementing it, and the Helm has a <strong>narrower race list</strong> than the rest of the set. Eight of the ten pieces come off a single 100% named on a 48-minute timer, which makes King Gragnar the most efficient armour camp in the bracket — and the <strong>Cold Iron quest</strong> takes the set's components further.</div>
+  <div class="note">Cold Iron is <strong>WAR CLR PAL SHD BRD</strong>, all races except DWF TRL OGR HFL GNM and IKS. Two oddities: <strong>the Collar occupies the Head slot</strong>, so it competes with the Helm, and the Helm carries a narrower race list than the rest.</div>
 
-  <h3>Forlorn — the prince and king's regalia</h3>
+  <h3>Forlorn &mdash; the prince and king's regalia</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
@@ -176,9 +404,9 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>The Crown of the Forlorn is the standout.</strong> AC 5 with STR +5, HP +20 and SV Magic +5 on a head slot, open to every class except the pure casters and druids, off a 100% named on a 48-minute timer. HP +20 at this level is well out of band. The <strong>Forlorn Naginata at 15 / 46</strong> is likewise the best two-hander in the zone by a clear margin over the Blood Crusted sword's 10 / 47.</div>
+  <div class="note"><strong>HP +20 on a head slot is well out of band at this level</strong>, and the Crown is open to every class but the pure casters and druids. The <strong>Naginata at 15 / 46</strong> is the best two-hander here, over the Blood Crusted sword's 10 / 47.</div>
 
-  <h3>The Muglwump — seven items, equal chance</h3>
+  <h3>The Muglwump &mdash; seven items, equal chance</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Restriction</th></tr></thead>
@@ -193,7 +421,7 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Every Muglwump drop is no-drop and every one is narrowly gated.</strong> Two are Erudite-only, one is enchanter-only, one magician-only, one necromancer and wizard. The wiki states all seven roll at <strong>equal chance</strong>, so a given group has roughly a one-in-seven shot at the piece it actually wants — and the Etched Chitin Shield's Rune I effect needs a Cat's Eye Agate brought along to fire at all. Budget several 35-minute cycles.</div>
+  <div class="note"><strong>Every Muglwump drop is no-drop and narrowly gated</strong>, and all seven roll at equal chance &mdash; so a group has roughly a one-in-seven shot at the piece it wants. The Etched Chitin Shield's Rune I needs a Cat's Eye Agate brought along to fire at all.</div>
 
   <h3>Bamboo splint, and everything else</h3>
   <div class="scroller">
@@ -237,7 +465,7 @@ footer h3{margin-top:0}
     <thead><tr><th>Item</th><th>Used for</th><th>Dropped by</th></tr></thead>
     <tbody>
       <tr><td class="it">Kobold Molar</td><td class="st">Kobold Molars, good and evil versions</td><td class="src">Various kobolds</td></tr>
-      <tr><td class="it">Bronze Shackle Key</td><td class="st">Frees the prisoners</td><td class="src">Jailer Mkrarrg <em>(three at once, observed)</em></td></tr>
+      <tr><td class="it">Bronze Shackle Key</td><td class="st">Frees the prisoners</td><td class="src">Jailer Mkrarrg <em>(three at once)</em></td></tr>
       <tr><td class="it">Cold Iron Shackle</td><td class="st">The Cold Iron quest</td><td class="src">Aderius Rhenar</td></tr>
       <tr><td class="it">Tiny Pouch of Bone Dice</td><td class="st">Miranda's Dice — reward is a Ball of Burlap Yarn,<br>4 charges of Snare</td><td class="src">Prince Bragnar</td></tr>
       <tr><td class="it">Odd Bone Necklace</td><td class="st">Quellious Symbol Quests</td><td class="src">A lesser shaman</td></tr>
@@ -254,33 +482,15 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Three quests start in this zone.</strong> Catman Alliance from Aderius Rhenar at level 1, which pays coin and faction and links to Erudin; Erudite Prisoners from a prisoner at level 10; and Miranda's Dice at level 18, which sends you to Prince Bragnar for the bone dice and pays a Ball of Burlap Yarn carrying four charges of Snare. The <strong>Quellious Symbol</strong> chain and the <strong>Cold Iron</strong> quest both draw components from here as well.</div>
+  <div class="note"><strong>Three quests start here:</strong> Catman Alliance at level 1, Erudite Prisoners at 10, Miranda's Dice at 18. The <strong>Quellious Symbol</strong> chain and the <strong>Cold Iron</strong> quest both draw components from here.</div>
 </section>
 
-<section>
-  <h2><span class="num">04</span>Dangers</h2>
-  <div class="note danger"><strong>The entrance area is the whole problem.</strong> The kobold density that makes it good hunting also makes it the worst train risk in the zone, and wandering kobolds add to fights on a regular basis. Crowd control or a real group is required, not optional.</div>
-  <div class="note danger"><strong>The batlings are wizards and shamans, with no melee at all.</strong> Ten fixed 100% spawn points cluster them tightly in the middle of the zone. A pull that brings two is a pull against two casters at once, and Krode the Diviner sits at the bottom of their pit.</div>
-  <div class="note danger"><strong>Diseased kobolds proc a disease that lasts a very long time.</strong> The wiki singles out the duration rather than the damage. Bring Cure Disease or plan to fight the rest of the room debuffed.</div>
-  <div class="note danger"><strong>Two harm touches in the throne room bracket.</strong> King Gragnar hits for around 240 at level 24 and Prince Bragnar for 181 at level 18. Both are shadow knights, and Gragnar also lifetaps. At these levels a 240-point opener can remove a tank's cushion before the first heal lands.</div>
-  <div class="note danger"><strong>A pack leader may see through invisibility.</strong> The wiki records this as an open question rather than a fact, with five spawn points at 33% each. Invisibility is the usual way past the entrance crush, so treat it as unreliable until confirmed.</div>
-  <div class="note danger"><strong>Warlord Drrig's room has a one-way pit.</strong> The drop to the Batling Caves cannot be climbed back up. It is the intended route to Krode, but it puts you among the casters with no retreat.</div>
-</section>
+</main>
 
-<section>
-  <h2><span class="num">05</span>Getting there</h2>
-  <ul class="tight">
-    <li>The entrance sits in a <strong>small pool-filled room near the Paineel newbie area</strong>, on the way to the Hole entrance. The two dungeons share an approach.</li>
-    <li><strong>Good characters can reach it.</strong> The obstacles are the skeletons in Toxxulia Forest near the Paineel entrance, and the Paineel newbie-area guards — which the wiki describes as very unaggressive and unlikely to act unless you walk close to them.</li>
-    <li><strong>One documented hazard on the approach:</strong> a relatively high-level necromancer is sometimes found in the passageway and will attack any good character who passes in front of him. Be invisible if he is up.</li>
-    <li><strong>You can bind right outside</strong> the entrance, which combined with the 6:40 spawn timer makes this a strong long-session zone.</li>
-    <li>The only other exit is west, where the kobolds have broken through into the <strong>Stonebrunt Mountains</strong>. That is also the sole route into Stonebrunt, so traffic passes through.</li>
-    <li>Succor and evacuate drop you at <code>748, &minus;930</code>, the zone line to Paineel.</li>
-  </ul>
-</section>
+<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-warrens">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 09 &middot; The Warrens &middot; Paineel, Odus &middot; floor derived from warrens.s3d &middot; north up, west left</p></footer>
 
-<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-warrens">Where each one came from, and what is still open</a>.</p></footer>
-
+</div>
 </div>
 </body>
 </html>

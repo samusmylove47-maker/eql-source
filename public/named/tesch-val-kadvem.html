@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=8756621c">
+<link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
 <style>
 .ent{max-width:74ch}
 .ent-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,246px);
@@ -66,6 +66,10 @@
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
 .drops.seen li{border-left-color:var(--ok)}
 .drops.seen b{color:var(--ink)}
+/* The badge carries the whole provenance claim for the block below it, so it
+   sits in the heading rather than in a sentence. Raised off the middle: the
+   heading is uppercase, and middle aligns to x-height, which reads low. */
+.ent h2.sec .tier{margin-left:9px;vertical-align:.24em}
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style></head>
@@ -97,7 +101,7 @@
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
-  <div class="shell ent" style="--c:#45A6A0"><h2 class="sec">What it drops</h2><ul class="drops"><li><a href="../items/vacra-av-svim.html">Vacra Av Svim</a><span>Secondary 8 / 31 &middot; AGI 6 · HP 5</span></li><li><a href="../items/fine-steel-scimitar.html">Fine Steel Scimitar</a><span>1H Slash &middot; —</span></li></ul><p class="src" style="margin-top:18px">From the <a href="../dungeons/splitpaw.html">Lair of the Splitpaw survey</a>.</p></div>
+  <div class="shell ent" style="--c:#45A6A0"><h2 class="sec">What it drops</h2><ul class="drops"><li><a href="../items/vacra-av-svim.html">Vacra Av Svim</a><span>Secondary 8 / 31 · no drop &middot; AGI 6 · HP 5</span></li><li><a href="../items/fine-steel-scimitar.html">Fine Steel Scimitar</a><span>1H Slash &middot; —</span></li></ul><p class="src" style="margin-top:18px">From the <a href="../dungeons/splitpaw.html">Lair of the Splitpaw survey</a>.</p></div>
 </section>
 </main>
 <footer class="site-foot">
@@ -119,7 +123,7 @@
       <div><h4>Tools</h4><ul>
         <li><a href="../tools/character.html">Character sheet</a></li>
         <li><a href="../tools/index-search.html">The Index</a></li>
-        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
         <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>

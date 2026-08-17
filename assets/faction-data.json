@@ -1684,7 +1684,7 @@
   "The Southern Desert of Ro": {
    "difficulty": 0,
    "date": "09 Aug 2026",
-   "kills": 2,
+   "kills": 3,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -1794,7 +1794,7 @@
   "The Ruins of Old Paineel": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 290,
+   "kills": 375,
    "per_mob": {
     "an elemental warrior": {
      "Minions of Underfoot": -3
@@ -1850,7 +1850,7 @@
   "Nagafen's Lair": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 291,
+   "kills": 292,
    "per_mob": {
     "a kobold king": {
      "Kobolds of Fire Pit": -3,
@@ -1966,7 +1966,7 @@
   "The Ruins of Old Paineel - Group": {
    "difficulty": 0,
    "date": "10 Aug 2026",
-   "kills": 6,
+   "kills": 7,
    "per_mob": {
     "a flighty fiend": {
      "Minions of Underfoot": -3
@@ -2084,10 +2084,33 @@
    "damages": [],
    "helps": []
   },
+  "Northern Felwithe": {
+   "difficulty": 0,
+   "date": "11 Aug 2026",
+   "kills": 14,
+   "per_mob": {},
+   "factions": [],
+   "capped": {
+    "Minions of Underfoot": "down"
+   },
+   "factions_seen": [
+    "Minions of Underfoot"
+   ],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [
+    "Minions of Underfoot"
+   ],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
   "The Plane of Fear": {
    "difficulty": 4,
    "date": "12 Aug 2026",
-   "kills": 195,
+   "kills": 270,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2103,7 +2126,7 @@
   "The Plane of Fear - Group": {
    "difficulty": 2,
    "date": "12 Aug 2026",
-   "kills": 19,
+   "kills": 21,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2119,7 +2142,7 @@
   "The Plane of Hate": {
    "difficulty": 4,
    "date": "12 Aug 2026",
-   "kills": 46,
+   "kills": 74,
    "per_mob": {
     "an ire ghast": {
      "Inhabitants of Hate": -10
@@ -2172,11 +2195,15 @@
   "The Rathe Mountains": {
    "difficulty": 0,
    "date": "12 Aug 2026",
-   "kills": 36,
+   "kills": 128,
    "per_mob": {},
    "factions": [],
    "factions_seen": [
-    "Protectors of Gukta"
+    "Broken Skull Clan",
+    "DaBashers",
+    "Green Blood Knights",
+    "Protectors of Gukta",
+    "Shadowknights of Night Keep"
    ],
    "falling": [],
    "rising": [],
@@ -2190,7 +2217,7 @@
   "The Plane of Hate - Group": {
    "difficulty": 4,
    "date": "12 Aug 2026",
-   "kills": 2,
+   "kills": 18,
    "per_mob": {},
    "factions": [],
    "capped": {
@@ -2213,7 +2240,23 @@
   "The Oasis of Marr": {
    "difficulty": 0,
    "date": "13 Aug 2026",
-   "kills": 2,
+   "kills": 3,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "The Greater Faydark": {
+   "difficulty": 0,
+   "date": "14 Aug 2026",
+   "kills": 3,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2229,7 +2272,7 @@
   "The Plane of Sky": {
    "difficulty": 0,
    "date": "14 Aug 2026",
-   "kills": 31,
+   "kills": 123,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],

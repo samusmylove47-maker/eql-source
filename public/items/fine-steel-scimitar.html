@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=8756621c">
+<link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
 <style>
 .ent{max-width:74ch}
 .ent-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,246px);
@@ -66,6 +66,10 @@
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
 .drops.seen li{border-left-color:var(--ok)}
 .drops.seen b{color:var(--ink)}
+/* The badge carries the whole provenance claim for the block below it, so it
+   sits in the heading rather than in a sentence. Raised off the middle: the
+   heading is uppercase, and middle aligns to x-height, which reads low. */
+.ent h2.sec .tier{margin-left:9px;vertical-align:.24em}
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style></head>
@@ -91,13 +95,13 @@
       <a href="../tools/index-search.html">The Index</a> &nbsp;/&nbsp; Item</p>
     <h1 class="display">Fine Steel Scimitar</h1>
     <div class="ent-top">
-      <dl class="facts"><div><dt>Slot</dt><dd>1H Slash</dd></div><div><dt>Stats</dt><dd>—</dd></div><div><dt>Classes</dt><dd class='none'>not recorded</dd></div><div><dt>Zones</dt><dd>Lair of the Splitpaw</dd></div></dl>
+      <dl class="facts"><div><dt>Slot</dt><dd class='none'>not recorded</dd></div><div><dt>Weapon type</dt><dd>1H Slash</dd></div><div><dt>Tradeability</dt><dd><em style="color:var(--faint)">not recorded &mdash; the survey names no restriction, which is not the same as recording that there is none</em></dd></div><div><dt>Stats</dt><dd>—</dd></div><div><dt>Classes</dt><dd class='none'>not recorded</dd></div><div><dt>Zones</dt><dd>Lair of the Splitpaw</dd></div></dl>
       <figure class="locator"><span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/splitpaw.svg" alt="" width="902" height="1763" decoding="async"></span></span><figcaption>Lair of the Splitpaw<br>Floor from the game&rsquo;s own mesh</figcaption></figure>
     </div>
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
-  <div class="shell ent" style="--c:#45A6A0"><h2 class="sec">Where it drops</h2><ul class="srcs"><li><b><a href="../dungeons/splitpaw.html">Lair of the Splitpaw</a></b> &mdash; off Tesch Val Kadvem · L39<span>Survey 02 &middot; levels 25-28 entrance ramping to 40-42 deep; named exceed &middot; ZEM 128</span></li></ul><h2 class="sec">Seen dropping, in our logs</h2><ul class="drops seen"><li><b>a wan ghoul knight</b><span>seen 6&times; &middot; 05 Aug 2026 D1 &middot; 06 Aug 2026 D1 &middot; 09 Aug 2026 D1</span></li><li><b>a Teir`Dal rogue</b><span>seen 4&times; &middot; 04 Aug 2026 D1 &middot; 04 Aug 2026 D4 &middot; 07 Aug 2026 D1</span></li><li><b>A deathly usher</b><span>seen 3&times; &middot; 08 Aug 2026 D1 &middot; 08 Aug 2026 D1</span></li><li><b>a glyphed guard</b><span>seen 3&times; &middot; 08 Aug 2026 D1 &middot; 08 Aug 2026 D1</span></li><li><b>Fire Giant Warrior</b><span>seen 2&times; &middot; 11 Aug 2026 D1 &middot; 11 Aug 2026 D2</span></li><li><b>a Teir`Dal ranger</b><span>seen 2&times; &middot; 04 Aug 2026 D1 &middot; 07 Aug 2026 D1</span></li><li><b>a deathly herald</b><span>seen 2&times; &middot; 08 Aug 2026 D1 &middot; 08 Aug 2026 D1</span></li><li><b>a zol ghoul knight</b><span>seen 2&times; &middot; 09 Aug 2026 D1</span></li><li><b>Butler Syncall</b><span>seen 1&times; &middot; 08 Aug 2026 D1</span></li><li><b>Hoptor Thaggelum</b><span>seen 1&times; &middot; 09 Aug 2026 D1</span></li><li><b>a Teir`Dal priest</b><span>seen 1&times; &middot; 04 Aug 2026 D1</span></li><li><b>a dar ghoul knight</b><span>seen 1&times; &middot; 09 Aug 2026 D1</span></li><li><b>a froglok shin knight</b><span>seen 1&times; &middot; 05 Aug 2026 D1</span></li><li><b>a froglok ton knight</b><span>seen 1&times; &middot; 04 Aug 2026 D4</span></li><li><b>a greater kobold</b><span>seen 1&times; &middot; 10 Aug 2026 D1</span></li><li><b>a shin ghoul knight</b><span>seen 1&times; &middot; 06 Aug 2026 D1</span></li><li><b>a vis ghoul knight</b><span>seen 1&times; &middot; 09 Aug 2026 D1</span></li><li><b>a will sapper</b><span>seen 1&times; &middot; 08 Aug 2026 D1</span></li></ul><p class="src">Counted from our own combat logs. <b>A count, not a rate</b> &mdash; a drop seen once is seen once. <a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p><p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. <a href="../sources.html">How we source</a>.</p></div>
+  <div class="shell ent" style="--c:#45A6A0"><h2 class="sec">Where it drops</h2><ul class="srcs"><li><b><a href="../dungeons/splitpaw.html">Lair of the Splitpaw</a></b> &mdash; off Tesch Val Kadvem · L39<span>Survey 02 &middot; levels 25-28 entrance ramping to 40-42 deep; named exceed &middot; ZEM 128</span></li></ul><h2 class="sec">Dropped by <span class="tier tM">TIER M</span></h2><ul class="drops seen"><li><b>A wan ghoul knight</b><span>Recorded at D1</span></li><li><b>A Teir`Dal rogue</b><span>Recorded at D1, D3, D4</span></li><li><b>A deathly usher</b><span>Recorded at D1</span></li><li><b>A glyphed guard</b><span>Recorded at D1</span></li><li><b>A Teir`Dal ranger</b><span>Recorded at D1</span></li><li><b>A deathly herald</b><span>Recorded at D1</span></li><li><b>A zol ghoul knight</b><span>Recorded at D1</span></li><li><b>Fire Giant Warrior</b><span>Recorded at D1, D2</span></li><li><b>A Teir`Dal priest</b><span>Recorded at D1</span></li><li><b>A dar ghoul knight</b><span>Recorded at D1</span></li><li><b>A froglok shin knight</b><span>Recorded at D1</span></li><li><b>A froglok ton knight</b><span>Recorded at D4</span></li><li><b>A greater kobold</b><span>Recorded at D1</span></li><li><b>A shin ghoul knight</b><span>Recorded at D1</span></li><li><b>A vis ghoul knight</b><span>Recorded at D1</span></li><li><b>A will sapper</b><span>Recorded at D1</span></li><li><b>Butler Syncall</b><span>Recorded at D1</span></li><li><b>Hoptor Thaggelum</b><span>Recorded at D1</span></li></ul><p class="src"><b>Observed, not a rate</b> &mdash; no kill count sits behind this, and the tiers are those recorded rather than the only ones that drop it. <a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p><p class="src" style="margin-top:18px"><b>As Lair of the Splitpaw records it:</b> &ldquo;1H Slash&rdquo;</p><p class="src" style="margin-top:8px">The survey records no trade restriction for this item. <b>Read that as unrecorded, not as tradeable</b> &mdash; it may be No Drop and unnoted. One screenshot of the item description would settle it.</p><p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. <a href="../sources.html">How we source</a>.</p></div>
 </section>
 </main>
 <footer class="site-foot">
@@ -119,7 +123,7 @@
       <div><h4>Tools</h4><ul>
         <li><a href="../tools/character.html">Character sheet</a></li>
         <li><a href="../tools/index-search.html">The Index</a></li>
-        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
         <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>

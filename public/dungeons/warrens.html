@@ -2,77 +2,275 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Clan Kolbok — levels 4 to 25 in one zone, and it counts as outdoors. Levels 4-25, respawn at most 6:40. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Clan Kolbok - a whole early career in one zone, and it counts as outdoors. Levels 4-25, respawn at most 6:40. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Warrens — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#B5793C;--accd:#644321;--acct:color-mix(in srgb, #B5793C 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE SURVEY SHEET — The Warrens
+   ------------------------------------------------------------------
+   The mechanism is Castle Mistmoore's: a graticule fixed behind the page, a
+   translucent sheet sliding over it, a neatline with an inner rule, and the
+   section kickers hanging in the left margin. Copied deliberately. What is NOT
+   copied is the colour: this zone owns #B5793C permanently and no other zone
+   may use it.
+
+   Everything here is self-contained: this page never loads assets/site.css.
+   Token names are prefixed --sv- because build3.py appends site.css's :root
+   AFTER this block, and an unprefixed --mut or --txt would be silently
+   overwritten by it. --acc, --accd and --acct are deliberately NOT prefixed:
+   the injected chrome reads them and site.css does not define them.
+
+   Contrast, computed rather than eyeballed, against the lightest ground the
+   page can produce (a graticule crossing under the lamplight, seen through the
+   sheet, #1D180E): ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 5.85,
+   warn 5.16, brass 7.98, link 8.97. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 5.14 / 4.53 / 7.01 / 7.88. --acct is the
+   accent lifted 15% toward bone, because the accent itself measures 4.85 on
+   the sheet and 4.26 on the panel; the accent is never reassigned. */
+:root{
+  --acc:#B5793C;--accd:#644321;--acct:#BE8A54;
+  --sv-g:#120E08;          /* the plotting table */
+  --sv-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --sv-ink:#F2EADA;--sv-txt:#DFD6C4;--sv-mut:#B5AA95;--sv-dim:#9A8F7C;
+  --sv-warn:#D46C64;--sv-brass:#C9922E;--sv-brass-t:#D9A63F;--sv-ok:#5FA37E;
+  --sv-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --sv-r2:#7A6950;         /* a boundary that carries meaning, 3.34:1 */
+  /* One type scale. Anything not on it is a bug. */
+  --sv-2xs:10px;--sv-xs:11.5px;--sv-sm:13.5px;--sv-base:15.5px;--sv-md:18.5px;
+  --sv-lg:22px;
+  --sv-h2:clamp(24px,3.6vw,36px);--sv-h1:clamp(38px,6.6vw,74px);
+  --sv-rad:4px;
+  /* And one spacing scale, for the same reason. */
+  --sv-s1:4px;--sv-s2:8px;--sv-s3:12px;--sv-s4:16px;
+  --sv-s5:24px;--sv-s6:32px;--sv-s7:48px;--sv-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--sv-g)}
+body{margin:0;background:transparent;color:var(--sv-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--sv-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint on a
+   document carrying a 1,000px drawing.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast — with one period
+   only two rules can ever coincide. And every stop terminates in
+   rgba(228,210,174,0) rather than the keyword transparent, because older
+   WebKit premultiplies transparent as transparent BLACK and draws a grey seam
+   down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens — so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(181,121,60,.045) 0%, rgba(181,121,60,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--sv-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--sv-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--sv-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--sv-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is the single change that makes a column of figures read as instrument
+   output rather than as a web table. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--sv-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--sv-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--sv-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--sv-s2);
+  text-wrap:balance;color:var(--sv-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--sv-lg);letter-spacing:.03em;margin:var(--sv-s5) 0 var(--sv-s2);color:var(--sv-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--sv-mut);font-size:var(--sv-md);margin:0 0 var(--sv-s5);max-width:60ch}
+.cm{color:var(--sv-dim);font-size:var(--sv-sm);line-height:1.6;margin:var(--sv-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--sv-r1);padding-left:var(--sv-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--sv-s7) 0 var(--sv-s5);margin-bottom:var(--sv-s2);
+  border-bottom:1px solid var(--sv-r2)}
+.eyebrow{font-size:var(--sv-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--sv-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--sv-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--sv-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--sv-md);
+  color:var(--sv-mut);letter-spacing:.02em;margin:var(--sv-s2) 0 var(--sv-s3);
+  text-transform:uppercase}
+/* THE DECK. The answer to "should I go tonight", above the first chart rather
+   than reverse-engineered from tables. */
+.deck{color:var(--sv-txt);margin:0 0 var(--sv-s5);max-width:66ch}
+.deck strong{color:var(--sv-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--sv-r1);border-left:1px solid var(--sv-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--sv-p);padding:var(--sv-s3);
+  border-right:1px solid var(--sv-r1);border-bottom:1px solid var(--sv-r1)}
+.cell dt{font-size:var(--sv-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--sv-dim);margin:0 0 var(--sv-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--sv-lg);
+  font-weight:600;color:var(--sv-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--sv-xs);font-weight:400;
+  color:var(--sv-mut);display:block;letter-spacing:0}
+/* A long document with one id in it and no way down it. */
+.jump{margin:var(--sv-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--sv-s1) var(--sv-s4);font-size:var(--sv-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--sv-mut);text-decoration:none;border-bottom:1px solid var(--sv-r1)}
+.jump a:hover{color:var(--sv-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column
+   — a rail the eye reads as a plate before it reads a word. The kicker names
+   what the section is MADE OF; numbered headings are a generated-site tell and
+   are not coming back. */
+section{margin-top:var(--sv-s7);position:relative}
+.kick{font-size:var(--sv-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--sv-dim);margin:0 0 var(--sv-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--sv-r2);padding-left:var(--sv-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--sv-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--sv-sm);
+  border-top:2px solid var(--sv-brass)}
+th{font-size:var(--sv-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--sv-mut);
+  text-align:left;padding:var(--sv-s2) var(--sv-s3) var(--sv-s2) 0;background:none;
+  border-bottom:1px solid var(--sv-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--sv-s3) var(--sv-s3) var(--sv-s3) 0;border-bottom:1px solid var(--sv-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(181,121,60,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--sv-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--sv-sm);text-align:right;white-space:nowrap;color:var(--sv-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--sv-base);font-weight:600;
+  letter-spacing:.02em;color:var(--sv-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--sv-base);font-weight:600;
+  letter-spacing:.02em;color:var(--sv-ink)}
+.cls{font-size:var(--sv-xs);color:var(--sv-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--sv-ok)}
+.st{font-size:var(--sv-xs);color:var(--sv-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--sv-sm);color:var(--sv-mut)}
+.tag{font-size:var(--sv-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--sv-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--sv-warn)}
+/* The tier mark. Styling an existing mark is not the same as grading a plate:
+   the surveys stay deliberately ungraded. */
+.tier{font-size:var(--sv-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--sv-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--sv-base);
+  letter-spacing:.02em;color:var(--sv-ink);padding:var(--sv-s3) var(--sv-s5) var(--sv-s3) 0;
+  border-bottom:1px solid var(--sv-r1)}
+.key dd{margin:0;font-size:var(--sv-sm);color:var(--sv-mut);padding:var(--sv-s3) 0;
+  border-bottom:1px solid var(--sv-r1)}
+.key strong{color:var(--sv-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not six identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--sv-s5) 0 0;padding:0 0 0 var(--sv-s5);
+  border-left:2px solid var(--sv-warn);max-width:74ch}
+ul.hz li{padding:var(--sv-s4) 0;border-top:1px solid var(--sv-r1);color:var(--sv-mut);
+  font-size:var(--sv-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--sv-base);
+  color:var(--sv-warn);margin-bottom:var(--sv-s1)}
+ul.hz strong{color:var(--sv-ink)}
+
+.note{border-left:1px solid var(--sv-r1);padding:var(--sv-s1) 0 var(--sv-s1) var(--sv-s4);
+  margin:var(--sv-s5) 0 0;color:var(--sv-mut);font-size:var(--sv-sm);max-width:68ch}
+.note strong{color:var(--sv-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--sv-s8);padding-top:var(--sv-s5);border-top:1px solid var(--sv-r2);
+  color:var(--sv-mut);font-size:var(--sv-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--sv-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--sv-dim);margin:var(--sv-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one
+   step higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .fp-wrap{border-radius:var(--sv-rad)}
+/* build3.py injects the placeholder note above the roster unconditionally, but
+   its stylesheet travels only with a zone that has a withheld coordinate. This
+   zone has none, so the note has always rendered here as unstyled body text. */
+body .ph-note{margin:0 0 var(--sv-s4);padding:var(--sv-s3) var(--sv-s4);
+  border-left:3px solid var(--sv-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--sv-rad);color:var(--sv-mut);font-size:var(--sv-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--sv-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* One heading level, one rule. The injected floor plan sets its own h2 size,
+   which is smaller than every other heading on the sheet, with four times the
+   tracking and a shorter margin above. */
+body .fplan{margin-top:var(--sv-s7)}
+body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--sv-h2);letter-spacing:.005em;line-height:1}
+/* THE SPINE RAIL WOULD OTHERWISE HAVE A HOLE AT THE TOP. The floor plan is the
+   first section on the page and carries no kicker of its own; its generator is
+   not this file's to edit, so the label is set here, in the same register as
+   the authored four. No measured section is set below, because no logged
+   session covers this zone. */
+body .fplan::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--sv-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--sv-dim);display:block;margin:0 0 var(--sv-s2);
+  content:"The zone, drawn"}
+@media(min-width:1080px){
+  body .fplan::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 <style>
 .ph-old{text-decoration:line-through;text-decoration-color:var(--warn);
@@ -87,7 +285,7 @@ footer h3{margin-top:0}
 .inj-contact strong{color:var(--bone)}
 .inj-contact a{color:#8FBEE4}
 .inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
-</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="The Warrens — Survey | EverQuest Legends"><meta property="og:description" content="Clan Kolbok — levels 4 to 25 in one zone, and it counts as outdoors. Levels 4-25, respawn at most 6:40. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-warrens.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="The Warrens — Survey | EverQuest Legends"><meta name="twitter:description" content="Clan Kolbok — levels 4 to 25 in one zone, and it counts as outdoors. Levels 4-25, respawn at most 6:40. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-warrens.png"><link rel="canonical" href="https://eqlsource.com/dungeons/warrens">
+</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="The Warrens — Survey | EverQuest Legends"><meta property="og:description" content="Clan Kolbok - a whole early career in one zone, and it counts as outdoors. Levels 4-25, respawn at most 6:40. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-warrens.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="The Warrens — Survey | EverQuest Legends"><meta name="twitter:description" content="Clan Kolbok - a whole early career in one zone, and it counts as outdoors. Levels 4-25, respawn at most 6:40. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-warrens.png"><link rel="canonical" href="https://eqlsource.com/dungeons/warrens">
 <style>
 .ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
@@ -136,6 +334,18 @@ footer h3{margin-top:0}
 .fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
   color:var(--bone)}
 .fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
+/* THE `hidden` ATTRIBUTE DOES NOT HIDE AN SVG ELEMENT. It is an HTML attribute:
+   the rule that honours it lives in the browser's HTML stylesheet, and `.hidden`
+   is an IDL property of HTMLElement, which SVGGElement is not. So the route
+   group shipped with `hidden` set and a computed display of `inline` — the line
+   and its numbered stops were drawn on every plan, always, while the button
+   flipped a property nothing read. The sibling HTML note beside it honoured
+   `hidden` correctly, which is why half the control appeared to work.
+   The numerals had no explanation on screen because the note they belong to was
+   the half that stayed hidden. Two changes, and both are needed: this rule makes
+   the attribute mean something here, and the handler below sets the ATTRIBUTE
+   rather than the property. */
+svg .route[hidden]{display:none}
 .plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
 .mk{cursor:pointer}
 .mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
@@ -159,93 +369,123 @@ footer h3{margin-top:0}
 <body>
 <div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:var(--txt)">Survey 09 &middot; The Warrens</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 09 · Paineel, Odus</p>
-  <h1>The Warrens</h1>
-  <p class="subtitle">Clan Kolbok — levels 4 to 25 in one zone, and it counts as outdoors</p>
+  <p class="eyebrow">Dungeon survey &middot; Paineel, Odus</p>
+  <div class="title"><h1>The Warrens</h1><span class="leader"></span><span class="plateno">09</span></div>
+  <p class="subtitle">Clan Kolbok &mdash; a whole early career in one zone, and it counts as outdoors</p>
+  <p class="deck">Levels run 4 to 25 without leaving the zone. Come for the Cold Iron set off King Gragnar, the Crown of the Forlorn, and the Muglwump's seven no-drop pieces. <strong>The entrance is the whole problem</strong> &mdash; the kobold density that makes it good hunting is also the worst train risk here. Its experience modifier is joint second-highest of our 13 surveys, behind Kedge Keep.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>warrens</dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>4&ndash;25</dd></div>
     <div class="cell"><dt>ZEM</dt><dd>128<small>171% — was 150</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>&le;6:40<small>max lowered 28 Jul</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>Not measured<small>no logged session covers this zone</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>&le;6:40<small>pre-patch ceiling</small></dd></div>
+    <div class="cell"><dt>Terrain</dt><dd>Outdoors<small>unusual for a dungeon</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>748, &minus;930</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Paineel<small>+ Stonebrunt Mtns</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Paineel<small>+ Stonebrunt Mountains</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+  </ul>
 </header>
 
-
-
-
-
-
+<main>
 
 <section class="fplan"><h2>Floor plan</h2><p class="fp-lede">Where the walkable floor ends, computed from the zone&rsquo;s own geometry in the game files, with the 19 named mobs whose positions are on record plotted on it. This zone is a single level, so there is nothing to separate.</p><div class="fp-toggles"><button type="button" class="fp-t on" data-t="names" aria-pressed="true">Names</button><button type="button" class="fp-t" data-t="route" aria-pressed="false">Farming route</button></div><div class="fp-wrap"><svg class="plotsvg" viewBox="-1396 -1056 3230 1960" role="img" aria-label="Survey plot of The Warrens. 19 recorded named-mob positions, labelled in place and coloured by level. Dashed outlines group positions that sit close together; they are not room shapes. North is up, west is left. Every position is also listed as text beneath the plot."><rect x="-1396" y="-1056" width="3230" height="1960" fill="#191410"/><line x1="-1000" y1="-1056" x2="-1000" y2="904" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-500" y1="-1056" x2="-500" y2="904" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="-1056" x2="0" y2="904" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="500" y1="-1056" x2="500" y2="904" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="1000" y1="-1056" x2="1000" y2="904" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="1500" y1="-1056" x2="1500" y2="904" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1396" y1="-1000" x2="1834" y2="-1000" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1396" y1="-500" x2="1834" y2="-500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1396" y1="0" x2="1834" y2="0" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-1396" y1="500" x2="1834" y2="500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><g class="lyr" data-lyr="0" data-z0="-95" data-z1="-22" fill="none" stroke="#B5793C" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="166,-324 170,-320 164,-308 164,-300 224,-300 224,-316 232,-316 232,-308 384,-308 384,-380 372,-380 376,-380 376,-388 384,-388 384,-404 396,-420 408,-428 424,-428 444,-412 452,-396 476,-392 476,-384 508,-356 510,-346 500,-346 500,-312 516,-288 576,-252 624,-236 624,-288 576,-288 560,-312 560,-346 550,-346 552,-352 556,-356 576,-356 592,-360 632,-392 644,-398 686,-400 686,-410 692,-404 688,-396 764,-396 764,-448 844,-448 844,-584 866,-584 866,-580 878,-580 882,-576 852,-574 852,-496 856,-496 856,-492 852,-492 852,-432 856,-432 856,-428 772,-428 772,-352 768,-352 768,-356 660,-356 660,-240 664,-240 664,-236 660,-236 648,-204 648,-180 660,-148 684,-148 704,-184 708,-184 708,-180 768,-180 768,-176 760,-176 760,-128 840,-128 844,-148 842,-204 856,-208 848,-228 848,-244 852,-260 864,-280 860,-284 852,-276 888,-274 900,-256 964,-256 964,-260 968,-260 968,-256 1056,-256 1056,-331 1060,-331 1060,-312 1088,-312 1088,-292 1072,-292 1072,-256 1128,-256 1128,-352 1060,-352 1060,-341 1056,-341 1056,-360 1064,-364 1064,-416 1008,-416 980,-408 968,-408 968,-400 964,-400 964,-404 940,-404 940,-428 936,-428 936,-432 940,-432 940,-456 880,-456 880,-452 876,-452 876,-492 872,-492 872,-496 948,-496 948,-550 972,-550 960,-548 960,-496 1000,-496 1002,-502 1002,-488 1032,-488 1032,-514 1000,-512 1000,-522 1002,-518 1032,-518 1032,-544 1002,-544 1000,-532 1000,-548 982,-548 1000,-550 1000,-574 928,-574 928,-536 908,-536 908,-574 896,-574 892,-578 908,-580 908,-584 1000,-584 1006,-736 1062,-744 1062,-688 1006,-688 1004,-678 1004,-688 992,-694 960,-696 960,-816 898,-816 888,-804 880,-800 860,-808 836,-808 834,-800 828,-832 836,-864 826,-900 800,-916 756,-916 716,-900 688,-896 676,-888 676,-756 672,-748 651,-730 624,-727 592,-713 528,-712 528,-716 548,-716 548,-760 522,-760 522,-833 483,-833 483,-863 459,-863 459,-809 498,-809 498,-760 472,-760 472,-716 492,-716 492,-712 392,-712 360,-696 360,-672 310,-670 310,-676 265,-676 264,-688 256,-704 256,-708 272,-720 264,-720 264,-788 176,-788 176,-812 216,-812 216,-892 120,-892 120,-940 8,-940 8,-812 120,-812 120,-788 -40,-788 -40,-560 104,-560 104,-536 120,-536 120,-472 -56,-472 -56,-700 -184,-700 -184,-688 -200,-688 -200,-704 -180,-736 -180,-756 -188,-772 -204,-780 -248,-776 -272,-760 -280,-772 -344,-772 -380,-760 -408,-744 -426,-718 -427,-703 -440,-680 -440,-624 -408,-612 -384,-612 -372,-604 -352,-576 -324,-548 -296,-532 -228,-532 -220,-554 -220,-550 -213,-550 -220,-548 -220,-524 -228,-520 -244,-524 -268,-524 -268,-496 -244,-496 -236,-500 -220,-496 -220,-456 -148,-456 -148,-416 -152,-416 -152,-448 -244,-448 -244,-376 -152,-376 -152,-400 -148,-400 -148,-352 -36,-352 -34,-320 -74,-320 -74,-300 -48,-299 -36,-290 -30,-278 -21,-270 -4,-266 -4,-368 -78,-368 -76,-388 -71,-388 -73,-372 -56,-372 -56,-386 -61,-386 -56,-388 -56,-408 -100,-408 -100,-370 -94,-368 -132,-368 -132,-472 -196,-472 -196,-496 -188,-500 -172,-496 -148,-496 -148,-524 -172,-524 -180,-520 -196,-524 -196,-548 -203,-548 -196,-550 -196,-574 -220,-574 -220,-607 -228,-623 -244,-628 -271,-652 -272,-660 -280,-672 -288,-704 -280,-716 -264,-724 -244,-740 -236,-736 -236,-728 -248,-704 -248,-664 -232,-648 -212,-640 -200,-640 -200,-648 -184,-648 -184,-636 -120,-636 -120,-408 12,-408 12,-392 -72,-392 -72,-320 8,-320 8,-278 4,-278 4,-284 -208,-284 -208,-308 -204,-308 -204,-288 -156,-288 -156,-296 -152,-296 -152,-288 -92,-288 -92,-306 -76,-306 -76,-320 -92,-320 -92,-356 -108,-356 -108,-352 -132,-348 -132,-344 -152,-344 -152,-306 -156,-306 -156,-340 -184,-340 -184,-328 -204,-328 -204,-318 -208,-318 -208,-344 -348,-344 -348,-16 -208,-16 -208,-42 -204,-42 -204,-12 -188,-12 -188,-8 -356,-8 -356,-124 -516,-124 -516,-12 -596,-12 -596,8 -612,24 -676,24 -696,32 -720,60 -728,64 -737,64 -760,56 -780,40 -812,24 -820,24 -840,40 -856,44 -868,52 -884,36 -912,24 -912,-24 -936,-48 -960,-48 -960,-60 -1008,-60 -1008,-48 -1020,-48 -1044,-36 -1056,0 -1056,24 -1046,40 -1042,64 -1032,80 -1040,112 -1088,100 -1100,92 -1112,76 -1160,76 -1160,152 -1184,152 -1184,176 -1136,176 -1136,100 -1112,100 -1100,112 -1076,124 -1028,136 -1004,132 -964,152 -956,152 -960,160 -960,180 -952,204 -964,212 -984,212 -984,240 -968,268 -968,276 -956,300 -948,304 -936,304 -928,300 -924,276 -928,268 -936,264 -948,264 -956,256 -964,224 -956,224 -940,216 -916,228 -892,224 -884,216 -880,204 -884,180 -892,172 -876,140 -868,144 -856,160 -840,156 -824,160 -812,180 -800,184 -792,180 -780,160 -752,140 -737,116 -728,116 -720,112 -696,84 -676,76 -656,76 -636,96 -596,96 -596,144 -344,144 -344,72 -196,72 -196,40 -84,40 -84,-20 -87,-35 -99,-42 -112,-42 -112,-32 -116,-32 -116,-68 -204,-68 -204,-52 -208,-52 -208,-76 -28,-76 -28,-256 4,-256 4,-268 8,-268 8,-257 40,-257 42,-320 120,-320 120,-392 76,-392 76,-408 184,-408 184,-620 160,-620 160,-636 180,-636 180,-692 160,-692 160,-724 128,-724 128,-732 208,-732 208,-576 235,-576 249,-584 264,-608 265,-620 310,-620 310,-626 360,-624 362,-600 384,-576 464,-576 488,-555 512,-543 528,-543 513,-543 513,-539 536,-539 513,-539 520,-522 540,-522 547,-539 536,-539 547,-539 547,-543 532,-543 556,-544 568,-532 676,-532 676,-624 679,-648 697,-691 708,-704 758,-704 796,-712 808,-732 825,-752 834,-772 834,-780 836,-772 860,-768 868,-777 876,-780 890,-772 904,-772 920,-780 922,-768 914,-758 882,-756 875,-749 875,-721 861,-721 847,-728 840,-728 840,-707 882,-707 889,-714 889,-742 914,-740 922,-726 910,-714 910,-646 963,-642 992,-644 1004,-652 1004,-660 1006,-652 1076,-652 1092,-660 1104,-676 1104,-752 1092,-768 1076,-776 992,-776 976,-768 964,-752 966,-698 964,-636 960,-628 800,-628 800,-552 776,-552 776,-548 774,-552 774,-568 792,-568 792,-640 800,-640 800,-634 876,-634 876,-684 800,-684 800,-660 744,-660 744,-596 720,-596 720,-500 774,-500 774,-508 800,-508 800,-492 720,-492 720,-440 688,-440 692,-432 688,-426 686,-436 650,-436"/><polyline points="876,-392 872,-344 864,-324 772,-324 772,-336 768,-336 768,-332 720,-332 720,-328 732,-328 732,-324 740,-316 760,-316 768,-308 768,-288 760,-280 700,-280 692,-288 692,-316 696,-328 704,-328 704,-332 684,-332 684,-280 700,-272 700,-268 704,-268 704,-272 748,-272 748,-248 744,-248 744,-232 748,-232 748,-228 788,-228 788,-180 784,-180 784,-176 806,-176 804,-228 808,-244 816,-260 852,-300 860,-316 880,-316 900,-324 964,-324 964,-276 968,-276 968,-280 1032,-280 1032,-299 1028,-299 1028,-287 975,-288 976,-337 1000,-337 1000,-320 1028,-321 1028,-309 1032,-309 1032,-360 968,-376 968,-384 964,-384 964,-380 916,-380 916,-428 920,-428 920,-432 880,-432 880,-436 876,-436 876,-432 872,-432 872,-428 876,-428 876,-392"/><polyline points="759,-848 783,-812 784,-808 780,-805 764,-806 736,-828 732,-840 759,-848"/><polyline points="16,-721 16,-712 40,-712 40,-644 16,-644 16,-620 104,-620 104,-636 48,-636 48,-724 80,-724 80,-732 16,-732 16,-721"/><polyline points="372,-388 376,-388 372,-388"/><polyline points="336,-388 336,-380 328,-380 328,-388 336,-388"/><polyline points="-880,80 -876,64 -900,56 -924,40 -936,48 -960,48 -984,36 -996,36 -1009,40 -1012,64 -1021,76 -1028,112 -992,112 -964,124 -944,140 -924,136 -912,140 -900,152 -888,132 -884,116 -888,92 -880,80"/><polyline points="162,-326 152,-328 152,-344 162,-346 170,-352 164,-364 164,-372 224,-372 224,-356 232,-356 232,-364 280,-364 280,-380 292,-380 288,-380 288,-388 292,-388 280,-388 280,-404 288,-444 316,-488 336,-500 408,-500 424,-496 452,-480 504,-492 560,-492 576,-488 592,-476 612,-448 632,-438 632,-492 648,-492 648,-516 688,-516 688,-448 642,-448 644,-438"/><polyline points="-732,82 -732,88 -732,82"/><polyline points="700,-204 704,-200 708,-200 708,-204 764,-204 764,-212 748,-212 748,-208 708,-208 708,-232 720,-232 720,-248 704,-248 704,-252 700,-252 700,-248 680,-240 700,-204 700,-189"/><polyline points="772,-776 752,-769 738,-756 740,-748 758,-732 767,-740 783,-764 784,-772 780,-775"/><polyline points="14,-14 14,14 -14,14 -14,-14 14,-14"/><polyline points="312,-396 328,-396 312,-396"/><polyline points="776,-520 776,-516 776,-520"/><polyline points="516,-492 536,-492 536,-496 540,-496 540,-512 536,-520 508,-520 504,-512 504,-496 536,-496 508,-496 508,-492 516,-492"/><polyline points="546,-348 548,-346 546,-348"/><polyline points="538,-346 540,-348 538,-346"/><polyline points="520,-348 522,-346 520,-348"/><polyline points="512,-348 514,-346 512,-348"/><polyline points="240,-324 240,-316 240,-324"/><polyline points="865,-428 860,-428 865,-428"/><polyline points="-316,-668 -312,-676 -309,-676 -304,-672 -304,-667 -296,-664 -296,-660 -288,-652 -304,-652 -304,-660 -316,-668"/><polyline points="-21,-320 -19,-322 -21,-320"/><polyline points="516,-348 518,-346 516,-348"/><polyline points="524,-348 526,-346 524,-348"/><polyline points="528,-346 531,-348 528,-346"/><polyline points="216,-332 216,-316 216,-332"/><polyline points="216,-354 216,-340 216,-354"/><polyline points="534,-348 536,-346 534,-348"/><polyline points="310,-660 312,-658 310,-660"/><polyline points="288,-396 304,-396 288,-396"/><polyline points="542,-348 544,-346 542,-348"/><polyline points="288,-372 304,-372 288,-372"/><polyline points="310,-638 312,-636 310,-638"/><polyline points="240,-356 240,-340 240,-356"/></g><path d="M-389,-124L-341,-690L239,-326Z" fill="#B5793C" fill-opacity=".07" stroke="#B5793C" stroke-opacity=".34" stroke-width="1.5" stroke-dasharray="7 5" vector-effect="non-scaling-stroke"/><path d="M-1013,-127L-720,103L-964,361Z" fill="#B5793C" fill-opacity=".07" stroke="#B5793C" stroke-opacity=".34" stroke-width="1.5" stroke-dasharray="7 5" vector-effect="non-scaling-stroke"/><path d="M642,-197L683,-317L992,-388L1205,-289L1191,-268Z" fill="#B5793C" fill-opacity=".07" stroke="#B5793C" stroke-opacity=".34" stroke-width="1.5" stroke-dasharray="7 5" vector-effect="non-scaling-stroke"/><line x1="856" y1="-659" x2="823" y2="-674" stroke="#B5793C" stroke-opacity=".3" stroke-width="1.5" stroke-dasharray="7 5" vector-effect="non-scaling-stroke"/><g class="route" hidden><polyline points="1009,-303 1110,-272 1124,-286 954,-317 856,-659 823,-674 763,-305 720,-219 159,-337 -100,-345 -163,-327 -233,-425 -279,-584 -300,-620 -310,-213 -335,-184 -801,107 -947,282 -981,-53" fill="none" stroke="#E8B04B" stroke-width="2" stroke-opacity=".75" stroke-dasharray="7 5" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><circle class="rstop" cx="1009" cy="-303" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="1009" y="-363" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">1</text><circle class="rstop" cx="1110" cy="-272" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="1110" y="-332" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">2</text><circle class="rstop" cx="1124" cy="-286" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="1124" y="-346" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">3</text><circle class="rstop" cx="954" cy="-317" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="954" y="-377" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">4</text><circle class="rstop" cx="856" cy="-659" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="856" y="-719" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">5</text><circle class="rstop" cx="823" cy="-674" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="823" y="-734" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">6</text><circle class="rstop" cx="763" cy="-305" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="763" y="-365" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">7</text><circle class="rstop" cx="720" cy="-219" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="720" y="-279" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">8</text><circle class="rstop" cx="159" cy="-337" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="159" y="-397" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">9</text><circle class="rstop" cx="-100" cy="-345" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-100" y="-405" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">10</text><circle class="rstop" cx="-163" cy="-327" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-163" y="-387" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">11</text><circle class="rstop" cx="-233" cy="-425" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-233" y="-485" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">12</text><circle class="rstop" cx="-279" cy="-584" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-279" y="-644" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">13</text><circle class="rstop" cx="-300" cy="-620" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-300" y="-680" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">14</text><circle class="rstop" cx="-310" cy="-213" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-310" y="-273" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">15</text><circle class="rstop" cx="-335" cy="-184" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-335" y="-244" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">16</text><circle class="rstop" cx="-801" cy="107" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-801" y="47" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">17</text><circle class="rstop" cx="-947" cy="282" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-947" y="222" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">18</text><circle class="rstop" cx="-981" cy="-53" r="43.9" fill="none" stroke="#E8B04B" stroke-width="1.6" vector-effect="non-scaling-stroke"/><text class="rnum" x="-981" y="-113" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="48" fill="#E8B04B" style="paint-order:stroke" stroke="#191410" stroke-width="20.0">19</text></g><line class="mklead" x1="-981" y1="-53" x2="-981" y2="-131" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-947" y1="282" x2="-947" y2="424" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-801" y1="107" x2="-729" y2="90" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-335" y1="-184" x2="-335" y2="-42" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-310" y1="-213" x2="-397" y2="-319" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-300" y1="-620" x2="-300" y2="-698" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-279" y1="-584" x2="-210" y2="-484" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-233" y1="-425" x2="-317" y2="-442" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-163" y1="-327" x2="-79" y2="-227" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="-100" y1="-345" x2="-149" y2="-203" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="159" y1="-337" x2="234" y2="-354" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="720" y1="-219" x2="720" y2="-77" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="763" y1="-305" x2="838" y2="-411" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="823" y1="-674" x2="823" y2="-752" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="856" y1="-659" x2="856" y2="-517" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="954" y1="-317" x2="1063" y2="-301" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="1009" y1="-303" x2="1058" y2="-161" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="1110" y1="-272" x2="1017" y2="-184" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><line class="mklead" x1="1124" y1="-286" x2="1124" y2="-26" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><g class="mk" data-name="Huntmaster Furgrl" data-lv="20" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Huntmaster Furgrl, level 20. No drops recorded."><circle cx="-981" cy="-53" r="23.1" fill="#D17630" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-981" y="-147" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Huntmaster Furgrl</text></g><g class="mk" data-name="The Mighty Bear Paw" data-lv="24" data-lyr="0" data-drops="Ice of Velious · Words of Discernment" tabindex="0" role="button" aria-label="The Mighty Bear Paw, level 24. Drops 2 recorded items."><circle cx="-947" cy="282" r="23.1" fill="#CB4F38" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-947" y="409" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">The Mighty Bear Paw</text></g><g class="mk" data-name="Cave Bat Lord" data-lv="22" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Cave Bat Lord, level 22. No drops recorded."><circle cx="-801" cy="107" r="23.1" fill="#CE6234" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-718" y="74" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Cave Bat Lord</text></g><g class="mk" data-name="King Gragnar" data-lv="24" data-lyr="0" data-drops="Bronze Katana · Bronze Wakizashi" tabindex="0" role="button" aria-label="King Gragnar, level 24. Drops 2 recorded items."><circle cx="-335" cy="-184" r="23.1" fill="#CB4F38" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-335" y="-57" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">King Gragnar</text></g><g class="mk" data-name="High Shaman Drogik" data-lv="22–23" data-lyr="0" data-drops="Bamboo Splint Coat · Bamboo Splint Neckguard" tabindex="0" role="button" aria-label="High Shaman Drogik, level 22–23. Drops 2 recorded items."><circle cx="-310" cy="-213" r="23.1" fill="#CD5D35" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-408" y="-335" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">High Shaman Drogik</text></g><g class="mk" data-name="Grodl Ripclaw" data-lv="21–22" data-lyr="0" data-drops="Brawler's Belt · Blood Cured Wraps · Globe of the Everburning Flame" tabindex="0" role="button" aria-label="Grodl Ripclaw, level 21–22. Drops 3 recorded items."><circle cx="-300" cy="-620" r="23.1" fill="#CF6733" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-300" y="-714" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Grodl Ripclaw</text></g><g class="mk" data-name="The Muglwump" data-lv="25" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="The Muglwump, level 25. No drops recorded."><circle cx="-279" cy="-584" r="23.1" fill="#C9453A" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-199" y="-500" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">The Muglwump</text></g><g class="mk" data-name="Krode the Diviner" data-lv="18" data-lyr="0" data-drops="Diviner's Bowl" tabindex="0" role="button" aria-label="Krode the Diviner, level 18. Drops 1 recorded items."><circle cx="-233" cy="-425" r="23.1" fill="#D58A2C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-328" y="-458" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Krode the Diviner</text></g><g class="mk" data-name="Lorekeeper Roggik" data-lv="18" data-lyr="0" data-drops="Dusty Kobold Scroll" tabindex="0" role="button" aria-label="Lorekeeper Roggik, level 18. Drops 1 recorded items."><circle cx="-163" cy="-327" r="23.1" fill="#D58A2C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-68" y="-243" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Lorekeeper Roggik</text></g><g class="mk" data-name="Warlord Drrig" data-lv="21" data-lyr="0" data-drops="Bronze Tachi" tabindex="0" role="button" aria-label="Warlord Drrig, level 21. Drops 1 recorded items."><circle cx="-100" cy="-345" r="23.1" fill="#D06C32" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-160" y="-219" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Warlord Drrig</text></g><g class="mk" data-name="Prince Bragnar" data-lv="18" data-lyr="0" data-drops="Tiny Pouch of Bone Dice" tabindex="0" role="button" aria-label="Prince Bragnar, level 18. Drops 1 recorded items."><circle cx="159" cy="-337" r="23.1" fill="#D58A2C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="245" y="-370" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Prince Bragnar</text></g><g class="mk" data-name="Jailer Mkrarrg" data-lv="15" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Jailer Mkrarrg, level 15. No drops recorded."><circle cx="720" cy="-219" r="23.1" fill="#D3A22C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="720" y="-92" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Jailer Mkrarrg</text></g><g class="mk" data-name="Trainer Daxgrr" data-lv="15" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Trainer Daxgrr, level 15. No drops recorded."><circle cx="763" cy="-305" r="23.1" fill="#D3A22C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="849" y="-427" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Trainer Daxgrr</text></g><g class="mk" data-name="Foodmaster Rargnar" data-lv="13" data-lyr="0" data-drops="Bamboo Bokken" tabindex="0" role="button" aria-label="Foodmaster Rargnar, level 13. Drops 1 recorded items."><circle cx="823" cy="-674" r="23.1" fill="#B9A23E" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="823" y="-768" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Foodmaster Rargnar</text></g><g class="mk" data-name="Smithy Rrarrgin" data-lv="14" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Smithy Rrarrgin, level 14. No drops recorded."><circle cx="856" cy="-659" r="23.1" fill="#C6A235" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="856" y="-532" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Smithy Rrarrgin</text></g><g class="mk" data-name="Packmaster Dledsh" data-lv="18" data-lyr="0" data-drops="Packmaster's Lash" tabindex="0" role="button" aria-label="Packmaster Dledsh, level 18. Drops 1 recorded items."><circle cx="954" cy="-317" r="23.1" fill="#D58A2C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="1074" y="-317" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Packmaster Dledsh</text></g><g class="mk" data-name="An Erudite Prisoner" data-lv="6" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="An Erudite Prisoner, level 6. No drops recorded."><circle cx="1009" cy="-303" r="23.1" fill="#5FA37E" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="1069" y="-177" text-anchor="start" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">An Erudite Prisoner</text></g><g class="mk" data-name="Aderius Rhenar" data-lv="10" data-lyr="0" data-drops="Cold Iron Shackle" tabindex="0" role="button" aria-label="Aderius Rhenar, level 10. Drops 1 recorded items."><circle cx="1110" cy="-272" r="23.1" fill="#92A359" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="1006" y="-199" text-anchor="end" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Aderius Rhenar</text></g><g class="mk" data-name="Koajin" data-lv="15" data-lyr="0" data-drops="" tabindex="0" role="button" aria-label="Koajin, level 15. No drops recorded."><circle cx="1124" cy="-286" r="23.1" fill="#D3A22C" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="1124" y="-42" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="23.3" stroke-linejoin="round">Koajin</text></g><g><line x1="-1315" y1="800" x2="-815" y2="800" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="-1315" y1="773" x2="-1315" y2="828" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="-815" y1="773" x2="-815" y2="828" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><text x="-1065" y="745" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#B5AA95">500 units</text></g><g><line x1="1707" y1="766" x2="1707" y2="641" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><path d="M1707,599 L1674,659 L1739,659 Z" fill="#B5AA95"/><text x="1707" y="849" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="55" fill="#B5AA95">N</text></g></svg></div><div class="fp-detail" hidden aria-live="polite"></div><p class="fp-route" hidden><strong>Order, not a path.</strong> An Erudite Prisoner &rarr; Aderius Rhenar &rarr; Koajin &rarr; Packmaster Dledsh &rarr; Smithy Rrarrgin &rarr; Foodmaster Rargnar &rarr; Trainer Daxgrr &rarr; Jailer Mkrarrg &rarr; Prince Bragnar &rarr; Warlord Drrig &rarr; Lorekeeper Roggik &rarr; Krode the Diviner &rarr; The Muglwump &rarr; Grodl Ripclaw &rarr; High Shaman Drogik &rarr; King Gragnar &rarr; Cave Bat Lord &rarr; The Mighty Bear Paw &rarr; Huntmaster Furgrl. <span class="rlen">3,945 units straight-line.</span> <a href="../learn/reading-the-plans.html">Why the line crosses walls &rarr;</a></p><p class="fp-note">Lines are floor edges &mdash; a wall or a drop. <b>19 of 19 recorded positions land on drawn floor.</b> <a href="../learn/reading-the-plans.html">What this plan does not mark &rarr;</a></p></section><section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>Levels 4 to 25 in one zone.</b> A whole early career without moving, at ZEM 128.</li><li><b>It counts as outdoors.</b> Unusual for a dungeon, and it changes what works here.</li><li><b>The Cold Iron set, off King Gragnar.</b> Chest, helm, gauntlets and vambraces, AC 17 down to AC 8.</li><li><b>The entrance is the whole problem.</b> The kobold density that makes it good hunting is also the worst train risk in the zone. Crowd control or a real group, not optional.</li></ul>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">A kobold clan hall, a jail, a kitchen and a bat cave, west of Paineel.</p>
+  <dl class="key">
+    <dt>A small pool-filled room near the Paineel newbie area</dt><dd>The entrance. It shares its approach with The Hole</dd>
+    <dt>A throne room with two kobolds in it</dt><dd>King Gragnar and High Shaman Drogik. <strong>Expect to fight both</strong></dd>
+    <dt>A pit in Warlord Drrig's room</dt><dd>A <strong>one-way drop</strong> into the Batling Caves, and the route to Krode the Diviner</dd>
+    <dt>Ten fixed spawn points clustered mid-zone</dt><dd>The batlings: wizards and shamans, no melee at all</dd>
+    <dt>A kitchen</dt><dd>Smithy Rrarrgin and Foodmaster Rargnar, the two rarest named here</dd>
+    <dt>A jail holding three prisoners</dt><dd>Jailer Mkrarrg, an Erudite man, an Erudite woman and a Kerran</dd>
+    <dt>A break in the west wall</dt><dd>Stonebrunt Mountains &mdash; and the only route into it, so traffic passes through</dd>
+  </dl>
+  <p class="cm">You can bind right outside the entrance. Good characters can reach it: the obstacles are the skeletons in Toxxulia Forest and the Paineel newbie guards, unaggressive unless you walk close. One documented hazard on the approach &mdash; a high-level necromancer is sometimes in the passageway and attacks any good character passing in front of him.</p>
 </section>
 
 <section>
-  <h2><span class="num">02</span>Named roster</h2>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>The entrance area</b> Wandering kobolds add to fights regularly, and this is where trains start. <strong>Crowd control or a real group is required, not optional.</strong></li>
+    <li><b>The batlings are casters</b> Wizards and shamans <strong>with no melee at all</strong>, on ten fixed spawn points clustered tightly. A pull that brings two is a pull against two casters.</li>
+    <li><b>Two harm touches in the throne room</b> King Gragnar for around <strong>240</strong> at level 24, Prince Bragnar for <strong>181</strong> at 18. At these levels a 240-point opener removes a tank's cushion before the first heal lands.</li>
+    <li><b>Diseased kobolds</b> The proc lasts a very long time &mdash; the duration is the problem, not the damage. Bring Cure Disease or fight the room debuffed.</li>
+    <li><b>A pack leader may see through invisibility</b> Recorded as an open question, not a fact. <strong>Invisibility is the usual way past the entrance crush</strong>, so treat it as unreliable until someone confirms it.</li>
+  </ul>
+</section>
+
+<section>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
 <div class="ph-note ph-yes"><strong>Named spawn every cycle. No placeholders here.</strong>
   Percentages below are inherited classic data and describe nothing about this zone now.
   <a href="../learn/reading-the-plans.html">Why they are still printed &rarr;</a></div>
-  <p class="lede">Spawn percentages and respawn timers are the wiki's figures as of 16 May 2026 and predate the 28 July placeholder removal. Treat every rate here as a floor.</p>
+  <p class="lede">Respawn timers below are the wiki's figures as of 16 May 2026 and predate the 28 July patch.</p>
   <div class="scroller">
   <table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">The Muglwump</td><td class="loc">584, 279</td><td class="lv">25</td><td class="cls">OLD FROGLOK TADPOLE<br>WAR</td><td class="src">100%, <strong>35-minute respawn.</strong> Rampages, and functions as a <strong>low-level raid boss</strong> — the deepest fight in the zone and the widest loot table.<span class="tag warn">rampage</span></td></tr>
-      <tr><td class="nmob">King Gragnar</td><td class="loc">184, 335</td><td class="lv">24</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, 48-minute respawn. <strong>Harm Touches for around 240 and lifetaps for 13.</strong> Carries the entire Cold Iron set.<span class="tag warn">240 HT</span></td></tr>
-      <tr><td class="nmob">The Mighty Bear Paw</td><td class="loc">&minus;282, 947</td><td class="lv">24</td><td class="cls">WALRUS MAN<br>WAR</td><td class="src">50%. The far west end, past the bat caves. Drops Bear Paw's Pelt, Ice of Velious and Words of Discernment.</td></tr>
-      <tr><td class="nmob">High Shaman Drogik</td><td class="loc">213, 310</td><td class="lv">22&ndash;23</td><td class="cls">KOBOLD<br>SHM</td><td class="src">100%, 48-minute respawn. Shares the Throne Room with King Gragnar — expect to fight both.</td></tr>
+      <tr><td class="nmob">The Muglwump</td><td class="loc">584, 279</td><td class="lv">25</td><td class="cls">OLD FROGLOK TADPOLE<br>WAR</td><td class="src">100%, <strong>35-minute respawn.</strong> Rampages. A <strong>low-level raid boss</strong>, and the widest loot table here.<span class="tag warn">rampage</span></td></tr>
+      <tr><td class="nmob">King Gragnar</td><td class="loc">184, 335</td><td class="lv">24</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, 48-minute respawn. <strong>Harm touches for around 240 and lifetaps for 13.</strong> Carries the Cold Iron set.<span class="tag warn">240 HT</span></td></tr>
+      <tr><td class="nmob">The Mighty Bear Paw</td><td class="loc">&minus;282, 947</td><td class="lv">24</td><td class="cls">WALRUS MAN<br>WAR</td><td class="src">50%. The far west end, past the bat caves.</td></tr>
+      <tr><td class="nmob">High Shaman Drogik</td><td class="loc">213, 310</td><td class="lv">22&ndash;23</td><td class="cls">KOBOLD<br>SHM</td><td class="src">100%, 48-minute respawn. <strong>Shares the Throne Room with King Gragnar.</strong></td></tr>
       <tr><td class="nmob">Cave Bat Lord</td><td class="loc">&minus;107, 801</td><td class="lv">22</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%, 48-minute respawn. Does not always drop the hat. <strong>No nearby bat will assist him.</strong></td></tr>
       <tr><td class="nmob">Grodl Ripclaw</td><td class="loc">620, 300</td><td class="lv">21&ndash;22</td><td class="cls">KOBOLD<br>WAR</td><td class="src">50%. Spawns next to the Muglwump; <strong><span class="ph-old" title="Historical. The 28 July 2026 patch note removed placeholders from this zone.">placeholder is a filthy rat</span><span class="ph-old-tag">was</span>.</strong> May carry more than one piece of loot.</td></tr>
-      <tr><td class="nmob">Warlord Drrig</td><td class="loc">345, 100</td><td class="lv">21</td><td class="cls">KOBOLD<br>WAR</td><td class="src">25%. <strong><span class="ph-old" title="Historical. The 28 July 2026 patch note removed placeholders from this zone.">Placeholder is a Kobold Brawler</span><span class="ph-old-tag">was</span></strong>, confirmed. The best weapon spread of any single named here.</td></tr>
-      <tr><td class="nmob">Huntmaster Furgrl</td><td class="loc">53, 981</td><td class="lv">20</td><td class="cls">KOBOLD<br>RNG</td><td class="src">48-minute respawn. The only source of the Forlorn Bow and Forlorn Arrow.</td></tr>
-      <tr><td class="nmob">Prince Bragnar</td><td class="loc">337, &minus;159</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, <strong>57-minute respawn</strong> — the longest in the zone. <strong>Harm Touches for 181.</strong> Three Forlorn pieces plus the Bamboo Splint Coat.<span class="tag warn">181 HT</span></td></tr>
-      <tr><td class="nmob">Packmaster Dledsh</td><td class="loc">317, &minus;954</td><td class="lv">18</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100% on a 16-minute timer, but the <strong>placeholder is a frenzied rat and the observed rate was two spawns in eighty-five kills.</strong> The wiki flags it as a rare NPC — the hardest named here to see.<span class="tag warn">very rare</span></td></tr>
-      <tr><td class="nmob">Krode the Diviner</td><td class="loc">425, 233</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src">50%. <strong>Bottom of a pit among mischievous batlings</strong> — reachable via the one-way drop from Warlord Drrig's room.</td></tr>
-      <tr><td class="nmob">Lorekeeper Roggik</td><td class="loc">327, 163</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src"><strong>17%</strong> on a 48-minute respawn — the lowest percentage in the zone.</td></tr>
-      <tr><td class="nmob">Jailer Mkrarrg</td><td class="loc">219, &minus;720</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%. Observed dropping <strong>three Bronze Shackle Keys at once.</strong> Cons green but still gave experience at level 24. Guards an Erudite male, an Erudite female and a Kerran.</td></tr>
-      <tr><td class="nmob">Trainer Daxgrr</td><td class="loc">305, &minus;763</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%, 20-minute respawn. Loot table not itemised on the wiki.</td></tr>
-      <tr><td class="nmob">Koajin</td><td class="loc">286, &minus;1124</td><td class="lv">15</td><td class="cls">KERRA<br>WAR</td><td class="src">A Kerran craftsman captured by the Erudites of Paineel and imprisoned with the kobolds. Drops nothing.</td></tr>
-      <tr><td class="nmob">Smithy Rrarrgin</td><td class="loc">659, &minus;856</td><td class="lv">14</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>10%</strong>, 20-minute respawn. Kitchen. Large Empty Crate, Ye Auld Ball Peen Hammer, Bronze Wakizashi.</td></tr>
-      <tr><td class="nmob">Foodmaster Rargnar</td><td class="loc">674, &minus;823</td><td class="lv">13</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>7%</strong>, 20-minute respawn — lowest rate paired with the shortest timer. Kitchen.</td></tr>
-      <tr><td class="nmob">Aderius Rhenar</td><td class="loc">272, &minus;1110</td><td class="lv">10</td><td class="cls">ERUDITE<br>CLR</td><td class="src">100%. Quest giver for <strong>Catman Alliance</strong>. Field note: conned green and <em>ready to attack</em> a level 30 troll shadow knight holding indifferent Paineel faction — approach carefully.</td></tr>
+      <tr><td class="nmob">Warlord Drrig</td><td class="loc">345, 100</td><td class="lv">21</td><td class="cls">KOBOLD<br>WAR</td><td class="src">25%. <strong><span class="ph-old" title="Historical. The 28 July 2026 patch note removed placeholders from this zone.">Placeholder is a Kobold Brawler</span><span class="ph-old-tag">was</span>.</strong> The best weapon spread of any single named here.</td></tr>
+      <tr><td class="nmob">Huntmaster Furgrl</td><td class="loc">53, 981</td><td class="lv">20</td><td class="cls">KOBOLD<br>RNG</td><td class="src">48-minute respawn. The only source of the Forlorn Bow and Arrow.</td></tr>
+      <tr><td class="nmob">Prince Bragnar</td><td class="loc">337, &minus;159</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHD</td><td class="src">100%, <strong>57-minute respawn</strong> &mdash; the longest here. <strong>Harm touches for 181.</strong><span class="tag warn">181 HT</span></td></tr>
+      <tr><td class="nmob">Packmaster Dledsh</td><td class="loc">317, &minus;954</td><td class="lv">18</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100% on a 16-minute timer, but the <strong><span class="ph-old" title="Historical. The 28 July 2026 patch note removed placeholders from this zone.">placeholder is a frenzied rat and it comes up far more rarely than the timer suggests</span><span class="ph-old-tag">was</span>.</strong><span class="tag warn">very rare</span></td></tr>
+      <tr><td class="nmob">Krode the Diviner</td><td class="loc">425, 233</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src">50%. <strong>Bottom of a pit among mischievous batlings</strong>, by the one-way drop from Warlord Drrig's room.</td></tr>
+      <tr><td class="nmob">Lorekeeper Roggik</td><td class="loc">327, 163</td><td class="lv">18</td><td class="cls">KOBOLD<br>SHM</td><td class="src"><strong>17%</strong> on a 48-minute respawn &mdash; the lowest percentage in the zone.</td></tr>
+      <tr><td class="nmob">Jailer Mkrarrg</td><td class="loc">219, &minus;720</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%. Drops <strong>three Bronze Shackle Keys at once.</strong> Guards an Erudite male, an Erudite female and a Kerran.</td></tr>
+      <tr><td class="nmob">Trainer Daxgrr</td><td class="loc">305, &minus;763</td><td class="lv">15</td><td class="cls">KOBOLD<br>WAR</td><td class="src">100%, 20-minute respawn. <strong>Loot table not itemised on the wiki.</strong><span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob">Koajin</td><td class="loc">286, &minus;1124</td><td class="lv">15</td><td class="cls">KERRA<br>WAR</td><td class="src">A Kerran craftsman held with the kobold prisoners. Drops nothing.</td></tr>
+      <tr><td class="nmob">Smithy Rrarrgin</td><td class="loc">659, &minus;856</td><td class="lv">14</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>10%</strong>, 20-minute respawn. Kitchen.</td></tr>
+      <tr><td class="nmob">Foodmaster Rargnar</td><td class="loc">674, &minus;823</td><td class="lv">13</td><td class="cls">KOBOLD<br>WAR</td><td class="src"><strong>7%</strong>, 20-minute respawn &mdash; the lowest rate paired with the shortest timer. Kitchen.</td></tr>
+      <tr><td class="nmob">Aderius Rhenar</td><td class="loc">272, &minus;1110</td><td class="lv">10</td><td class="cls">ERUDITE<br>CLR</td><td class="src">100%. Quest giver for <strong>Catman Alliance</strong>. Cons green, but cons <em>ready to attack</em> even at indifferent Paineel faction.</td></tr>
       <tr><td class="nmob">An Erudite Prisoner</td><td class="loc">303, &minus;1009</td><td class="lv">6</td><td class="cls">ERUDITE<br>WIZ</td><td class="src">100%. Starts the <strong>Erudite Prisoners</strong> quest at minimum level 10.</td></tr>
     </tbody>
   </table>
   </div>
-
-  
 </section>
 
 <section>
-  <h2><span class="num">03</span>Loot table</h2>
-  <p class="lede">The wiki lists 75 items dropping here. Weapon lines read damage / delay. The zone has a signature look: the armour is bamboo splint, soft wicker and cold iron, and almost every weapon is a bokken, naginata, tachi, wakizashi, katana, yari or jutte.</p>
+  <p class="kick">Five registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. The armour is bamboo splint, soft wicker and cold iron, and almost every weapon is a bokken, naginata, tachi, wakizashi, katana, yari or jutte.</p>
+  <div class="note"><strong>Rare, common and uncommon are the wiki's words, not measured rates.</strong> No logged session covers this zone, so nothing here is measured.</div>
 
-  <h3>Cold Iron — the plate set, King Gragnar</h3>
+  <h3>Cold Iron &mdash; the plate set, King Gragnar</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Piece</th><th>Slot</th><th>Stats</th><th>Dropped by</th></tr></thead>
     <tbody>
       <tr><td class="it">Cold Iron Breastplate</td><td class="st">Chest</td><td class="st"><strong>AC 17</strong> · SV Magic +3</td><td class="src">King Gragnar</td></tr>
-      <tr><td class="it">Cold Iron Helm</td><td class="st">Head</td><td class="st"><strong>AC 10</strong> · SV Magic +2<br><span style="color:#9C958E">HUM BAR ERU ELF HIE DEF HEF only</span></td><td class="src">King Gragnar</td></tr>
+      <tr><td class="it">Cold Iron Helm</td><td class="st">Head</td><td class="st"><strong>AC 10</strong> · SV Magic +2<br><span style="color:#B5AA95">HUM BAR ERU ELF HIE DEF HEF only</span></td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Gauntlets</td><td class="st">Hands</td><td class="st">AC 9 · SV Magic +1</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Vambraces</td><td class="st">Arms</td><td class="st">AC 8 · SV Magic +2</td><td class="src">King Gragnar</td></tr>
-      <tr><td class="it">Cold Iron Boots</td><td class="st">Feet</td><td class="st">AC 8 · SV Magic +1</td><td class="src"><strong>Warlord Drrig</strong> — not Gragnar</td></tr>
+      <tr><td class="it">Cold Iron Boots</td><td class="st">Feet</td><td class="st">AC 8 · SV Magic +1</td><td class="src"><strong>Warlord Drrig</strong> &mdash; not Gragnar</td></tr>
       <tr><td class="it">Cold Iron Girdle</td><td class="st">Waist</td><td class="st">AC 7 · SV Magic +1</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Bracers</td><td class="st">Wrist</td><td class="st">AC 7 · SV Magic +1 · magic item</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Collar</td><td class="st">Head</td><td class="st">AC 6 · SV Magic +1</td><td class="src">King Gragnar</td></tr>
       <tr><td class="it">Cold Iron Mask</td><td class="st">Face</td><td class="st">AC 5 · SV Magic +1</td><td class="src">King Gragnar · Warlord Drrig</td></tr>
-      <tr><td class="it">Cold Iron Shackle</td><td class="st">Wrist</td><td class="st">AC 4<br><span style="color:#9C958E">wider list: adds RNG ROG SHM</span></td><td class="src">Aderius Rhenar</td></tr>
+      <tr><td class="it">Cold Iron Shackle</td><td class="st">Wrist</td><td class="st">AC 4<br><span style="color:#B5AA95">wider list: adds RNG ROG SHM</span></td><td class="src">Aderius Rhenar</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note">Cold Iron is <strong>WAR CLR PAL SHD BRD</strong>, all races except DWF TRL OGR HFL GNM and IKS. Two oddities: the <strong>Collar occupies the Head slot</strong> rather than the neck, so it competes with the Helm rather than complementing it, and the Helm has a <strong>narrower race list</strong> than the rest of the set. Eight of the ten pieces come off a single 100% named on a 48-minute timer, which makes King Gragnar the most efficient armour camp in the bracket — and the <strong>Cold Iron quest</strong> takes the set's components further.</div>
+  <div class="note">Cold Iron is <strong>WAR CLR PAL SHD BRD</strong>, all races except DWF TRL OGR HFL GNM and IKS. Two oddities: <strong>the Collar occupies the Head slot</strong>, so it competes with the Helm, and the Helm carries a narrower race list than the rest.</div>
 
-  <h3>Forlorn — the prince and king's regalia</h3>
+  <h3>Forlorn &mdash; the prince and king's regalia</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
@@ -261,9 +501,9 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>The Crown of the Forlorn is the standout.</strong> AC 5 with STR +5, HP +20 and SV Magic +5 on a head slot, open to every class except the pure casters and druids, off a 100% named on a 48-minute timer. HP +20 at this level is well out of band. The <strong>Forlorn Naginata at 15 / 46</strong> is likewise the best two-hander in the zone by a clear margin over the Blood Crusted sword's 10 / 47.</div>
+  <div class="note"><strong>HP +20 on a head slot is well out of band at this level</strong>, and the Crown is open to every class but the pure casters and druids. The <strong>Naginata at 15 / 46</strong> is the best two-hander here, over the Blood Crusted sword's 10 / 47.</div>
 
-  <h3>The Muglwump — seven items, equal chance</h3>
+  <h3>The Muglwump &mdash; seven items, equal chance</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Restriction</th></tr></thead>
@@ -278,7 +518,7 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Every Muglwump drop is no-drop and every one is narrowly gated.</strong> Two are Erudite-only, one is enchanter-only, one magician-only, one necromancer and wizard. The wiki states all seven roll at <strong>equal chance</strong>, so a given group has roughly a one-in-seven shot at the piece it actually wants — and the Etched Chitin Shield's Rune I effect needs a Cat's Eye Agate brought along to fire at all. Budget several 35-minute cycles.</div>
+  <div class="note"><strong>Every Muglwump drop is no-drop and narrowly gated</strong>, and all seven roll at equal chance &mdash; so a group has roughly a one-in-seven shot at the piece it wants. The Etched Chitin Shield's Rune I needs a Cat's Eye Agate brought along to fire at all.</div>
 
   <h3>Bamboo splint, and everything else</h3>
   <div class="scroller">
@@ -322,7 +562,7 @@ footer h3{margin-top:0}
     <thead><tr><th>Item</th><th>Used for</th><th>Dropped by</th></tr></thead>
     <tbody>
       <tr><td class="it">Kobold Molar</td><td class="st">Kobold Molars, good and evil versions</td><td class="src">Various kobolds</td></tr>
-      <tr><td class="it">Bronze Shackle Key</td><td class="st">Frees the prisoners</td><td class="src">Jailer Mkrarrg <em>(three at once, observed)</em></td></tr>
+      <tr><td class="it">Bronze Shackle Key</td><td class="st">Frees the prisoners</td><td class="src">Jailer Mkrarrg <em>(three at once)</em></td></tr>
       <tr><td class="it">Cold Iron Shackle</td><td class="st">The Cold Iron quest</td><td class="src">Aderius Rhenar</td></tr>
       <tr><td class="it">Tiny Pouch of Bone Dice</td><td class="st">Miranda's Dice — reward is a Ball of Burlap Yarn,<br>4 charges of Snare</td><td class="src">Prince Bragnar</td></tr>
       <tr><td class="it">Odd Bone Necklace</td><td class="st">Quellious Symbol Quests</td><td class="src">A lesser shaman</td></tr>
@@ -339,32 +579,13 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Three quests start in this zone.</strong> Catman Alliance from Aderius Rhenar at level 1, which pays coin and faction and links to Erudin; Erudite Prisoners from a prisoner at level 10; and Miranda's Dice at level 18, which sends you to Prince Bragnar for the bone dice and pays a Ball of Burlap Yarn carrying four charges of Snare. The <strong>Quellious Symbol</strong> chain and the <strong>Cold Iron</strong> quest both draw components from here as well.</div>
+  <div class="note"><strong>Three quests start here:</strong> Catman Alliance at level 1, Erudite Prisoners at 10, Miranda's Dice at 18. The <strong>Quellious Symbol</strong> chain and the <strong>Cold Iron</strong> quest both draw components from here.</div>
 </section>
 
-<section>
-  <h2><span class="num">04</span>Dangers</h2>
-  <div class="note danger"><strong>The entrance area is the whole problem.</strong> The kobold density that makes it good hunting also makes it the worst train risk in the zone, and wandering kobolds add to fights on a regular basis. Crowd control or a real group is required, not optional.</div>
-  <div class="note danger"><strong>The batlings are wizards and shamans, with no melee at all.</strong> Ten fixed 100% spawn points cluster them tightly in the middle of the zone. A pull that brings two is a pull against two casters at once, and Krode the Diviner sits at the bottom of their pit.</div>
-  <div class="note danger"><strong>Diseased kobolds proc a disease that lasts a very long time.</strong> The wiki singles out the duration rather than the damage. Bring Cure Disease or plan to fight the rest of the room debuffed.</div>
-  <div class="note danger"><strong>Two harm touches in the throne room bracket.</strong> King Gragnar hits for around 240 at level 24 and Prince Bragnar for 181 at level 18. Both are shadow knights, and Gragnar also lifetaps. At these levels a 240-point opener can remove a tank's cushion before the first heal lands.</div>
-  <div class="note danger"><strong>A pack leader may see through invisibility.</strong> The wiki records this as an open question rather than a fact, with five spawn points at 33% each. Invisibility is the usual way past the entrance crush, so treat it as unreliable until confirmed.</div>
-  <div class="note danger"><strong>Warlord Drrig's room has a one-way pit.</strong> The drop to the Batling Caves cannot be climbed back up. It is the intended route to Krode, but it puts you among the casters with no retreat.</div>
-</section>
-
-<section>
-  <h2><span class="num">05</span>Getting there</h2>
-  <ul class="tight">
-    <li>The entrance sits in a <strong>small pool-filled room near the Paineel newbie area</strong>, on the way to the Hole entrance. The two dungeons share an approach.</li>
-    <li><strong>Good characters can reach it.</strong> The obstacles are the skeletons in Toxxulia Forest near the Paineel entrance, and the Paineel newbie-area guards — which the wiki describes as very unaggressive and unlikely to act unless you walk close to them.</li>
-    <li><strong>One documented hazard on the approach:</strong> a relatively high-level necromancer is sometimes found in the passageway and will attack any good character who passes in front of him. Be invisible if he is up.</li>
-    <li><strong>You can bind right outside</strong> the entrance, which combined with the 6:40 spawn timer makes this a strong long-session zone.</li>
-    <li>The only other exit is west, where the kobolds have broken through into the <strong>Stonebrunt Mountains</strong>. That is also the sole route into Stonebrunt, so traffic passes through.</li>
-    <li>Succor and evacuate drop you at <code>748, &minus;930</code>, the zone line to Paineel.</li>
-  </ul>
-</section>
+</main>
 
 <footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-warrens">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 09 &middot; The Warrens &middot; Paineel, Odus &middot; floor derived from warrens.s3d &middot; north up, west left</p>
 <div class="inj-contact">
   <p><strong>Found something this page gets wrong, or something the wiki does?</strong>
     That is the most useful thing anyone can send us, and every finding is credited by name.
@@ -375,6 +596,7 @@ footer h3{margin-top:0}
 </div>
 </footer>
 
+</div>
 </div>
 
 <script>
@@ -419,7 +641,12 @@ footer h3{margin-top:0}
       b.classList.toggle('on', on);
       if(b.dataset.t==='names'){ svg.classList.toggle('nonames', !on); }
       if(b.dataset.t==='route'){
-        if(route) route.hidden=!on;
+        // setAttribute, not .hidden: the route is an SVG group and does not
+        // carry the HTML property. See the stylesheet note above.
+        if(route){
+          if(on) route.removeAttribute('hidden');
+          else route.setAttribute('hidden','');
+        }
         if(rnote) rnote.hidden=!on;
       }
     });

@@ -6,268 +6,426 @@
 <title>Kedge Keep — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#2FA5C9;--accd:#1B657A;--acct:color-mix(in srgb, #2FA5C9 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}.cell{background:#251F19;padding:11px 13px}.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}.legend ol{list-style:none;margin:0;padding:0}.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}.legend.n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}.legend.lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
-tbody tr:last-child td{border-bottom:0}.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}.cls.all{color:#5FA37E}.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}.tag.warn{border-color:#C9453A;color:#D46C64}.tag.new{border-color:#5FA37E;color:#5FA37E}.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}.camp.band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}.camp p{font-size:13.5px;margin:0 0 9px}.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}.link.step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}.link.who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}.link.gives{font-size:12.5px;color:#9C958E}.link.gives b{color:var(--acct);font-weight:600}.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+/* THE KEDGE KEEP SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore survey: a graticule fixed behind the
+   page, a translucent sheet sliding over it, a neatline with an inner rule, and
+   section kickers hanging in the left margin. The MECHANISM is copied; the
+   colour is not. Kedge Keep owns #2FA5C9 permanently and no other zone may use
+   it.
+
+   Self-contained: this page never loads assets/site.css. Token names are
+   prefixed --kk- because build3.py appends site.css's :root AFTER this block and
+   an unprefixed --mut or --txt would be silently overwritten. --acc, --accd and
+   --acct are deliberately NOT prefixed: the injected chrome reads them and
+   site.css does not define them.
+
+   Contrast, computed against the lightest ground this page can produce (a
+   graticule crossing under the lamplight, seen through the sheet, #1D180E):
+   ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 6.99, warn 5.16,
+   brass 6.43, brass-t 7.98, ok 5.91. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 6.15 / 4.53 / 5.65 / 7.01 / 5.20. */
+:root{
+  --acc:#2FA5C9;--accd:#1A5B6F;--acct:#4CAFCC;
+  --kk-g:#120E08;          /* the plotting table */
+  --kk-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --kk-ink:#F2EADA;--kk-txt:#DFD6C4;--kk-mut:#B5AA95;--kk-dim:#9A8F7C;
+  --kk-warn:#D46C64;--kk-brass:#C9922E;--kk-brass-t:#D9A63F;--kk-ok:#5FA37E;
+  --kk-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --kk-r2:#7A6950;         /* a boundary that carries meaning */
+  --kk-2xs:10px;--kk-xs:11.5px;--kk-sm:13.5px;--kk-base:15.5px;--kk-md:18.5px;
+  --kk-lg:22px;--kk-h2:clamp(24px,3.6vw,36px);--kk-h1:clamp(38px,6.6vw,74px);
+  --kk-rad:4px;
+  --kk-s1:4px;--kk-s2:8px;--kk-s3:12px;--kk-s4:16px;
+  --kk-s5:24px;--kk-s6:32px;--kk-s7:48px;--kk-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--kk-g)}
+body{margin:0;background:transparent;color:var(--kk-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--kk-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint.
+
+   Major and minor rules share ONE 152px period per axis instead of two stacked
+   gradients: stacking makes the crossings compound, and the compounding is what
+   eats text contrast. And every stop terminates in rgba(228,210,174,0) rather
+   than the keyword transparent, because older WebKit premultiplies transparent
+   as transparent BLACK and draws a grey seam down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head, the zone's own ink bleeding up from the foot, and a
+   vignette that ONLY darkens, so it cannot cost contrast anywhere. The two
+   washes are anchored at opposite ends and both fall to zero by 62%, so they
+   never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(47,165,201,.045) 0%, rgba(47,165,201,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--kk-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--kk-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--kk-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--kk-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is what makes a column of figures read as instrument output. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--kk-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--kk-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--kk-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--kk-s2);
+  text-wrap:balance;color:var(--kk-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--kk-lg);letter-spacing:.03em;margin:var(--kk-s5) 0 var(--kk-s2);color:var(--kk-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--kk-mut);font-size:var(--kk-md);margin:0 0 var(--kk-s5);max-width:60ch}
+.cm{color:var(--kk-dim);font-size:var(--kk-sm);line-height:1.6;margin:var(--kk-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--kk-r1);padding-left:var(--kk-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--kk-s7) 0 var(--kk-s5);margin-bottom:var(--kk-s2);
+  border-bottom:1px solid var(--kk-r2)}
+.eyebrow{font-size:var(--kk-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--kk-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--kk-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--kk-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--kk-md);
+  color:var(--kk-mut);letter-spacing:.02em;margin:var(--kk-s2) 0 var(--kk-s3);
+  text-transform:uppercase}
+.deck{color:var(--kk-txt);margin:0 0 var(--kk-s5);max-width:66ch}
+.deck strong{color:var(--kk-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--kk-r1);border-left:1px solid var(--kk-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--kk-p);padding:var(--kk-s3);
+  border-right:1px solid var(--kk-r1);border-bottom:1px solid var(--kk-r1)}
+.cell dt{font-size:var(--kk-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--kk-dim);margin:0 0 var(--kk-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--kk-lg);
+  font-weight:600;color:var(--kk-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--kk-xs);font-weight:400;
+  color:var(--kk-mut);display:block;letter-spacing:0}
+.jump{margin:var(--kk-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--kk-s1) var(--kk-s4);font-size:var(--kk-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--kk-mut);text-decoration:none;border-bottom:1px solid var(--kk-r1)}
+.jump a:hover{color:var(--kk-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column.
+   The kicker names what the section is MADE OF; numbered headings are a
+   generated-site tell and are not coming back. */
+section{margin-top:var(--kk-s7);position:relative}
+.kick{font-size:var(--kk-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--kk-dim);margin:0 0 var(--kk-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--kk-r2);padding-left:var(--kk-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--kk-s4) 0}
+.scroller table{min-width:700px}
+.scroller.narrow table{min-width:460px}
+table{border-collapse:collapse;width:100%;font-size:var(--kk-sm);
+  border-top:2px solid var(--kk-brass)}
+th{font-size:var(--kk-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--kk-mut);
+  text-align:left;padding:var(--kk-s2) var(--kk-s3) var(--kk-s2) 0;background:none;
+  border-bottom:1px solid var(--kk-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--kk-s3) var(--kk-s3) var(--kk-s3) 0;border-bottom:1px solid var(--kk-r1);
+  vertical-align:top;background:none}
+tbody tr:last-child td{border-bottom:0}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(47,165,201,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--kk-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--kk-sm);text-align:right;white-space:nowrap;color:var(--kk-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--kk-base);font-weight:600;
+  letter-spacing:.02em;color:var(--kk-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--kk-base);font-weight:600;
+  letter-spacing:.02em;color:var(--kk-ink)}
+/* The colour is inherited rather than set, so every contrast ratio measured on
+   this sheet is unchanged and the underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--kk-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--kk-xs);color:var(--kk-mut);letter-spacing:.04em;line-height:1.45}
+.st{font-size:var(--kk-xs);color:var(--kk-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--kk-sm);color:var(--kk-mut)}
+.tag{font-size:var(--kk-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--kk-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--kk-warn)}
+.tier{font-size:var(--kk-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid currentColor;
+  border-radius:2px;color:var(--kk-dim);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+.tier.t3{color:var(--kk-brass-t)}
+.tier.t5{color:var(--kk-warn)}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--kk-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--kk-base);
+  letter-spacing:.02em;color:var(--kk-ink);padding:var(--kk-s3) var(--kk-s5) var(--kk-s3) 0;
+  border-bottom:1px solid var(--kk-r1)}
+.key dd{margin:0;font-size:var(--kk-sm);color:var(--kk-mut);padding:var(--kk-s3) 0;
+  border-bottom:1px solid var(--kk-r1)}
+.key strong{color:var(--kk-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not five identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--kk-s5) 0 0;padding:0 0 0 var(--kk-s5);
+  border-left:2px solid var(--kk-warn);max-width:74ch}
+ul.hz li{padding:var(--kk-s4) 0;border-top:1px solid var(--kk-r1);color:var(--kk-mut);
+  font-size:var(--kk-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--kk-base);
+  color:var(--kk-warn);margin-bottom:var(--kk-s1)}
+ul.hz strong{color:var(--kk-ink)}
+
+.note{border-left:1px solid var(--kk-r1);padding:var(--kk-s1) 0 var(--kk-s1) var(--kk-s4);
+  margin:var(--kk-s5) 0 0;color:var(--kk-mut);font-size:var(--kk-sm);max-width:68ch}
+.note strong{color:var(--kk-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--kk-s8);padding-top:var(--kk-s5);border-top:1px solid var(--kk-r2);
+  color:var(--kk-mut);font-size:var(--kk-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.quote{border-left:3px solid var(--accd);margin:18px 0;padding:10px 0 10px 18px;font-family:"Saira Condensed",sans-serif;font-size:clamp(19px,3.4vw,25px);font-weight:500;line-height:1.25;color:#E6E9E4;max-width:60ch}
-.why{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:13px;max-width:78ch}
-.why li{border-left:2px solid #40372D;padding:2px 0 2px 16px}
-.why b{color:#E6E9E4}
-.cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#9C958E;display:block;margin-top:2px}
-.ck{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--acct);display:block}
-.tier{font-size:9.5px;letter-spacing:.12em;padding:1px 5px;border:1px solid currentColor;border-radius:2px;font-family:"IBM Plex Mono",monospace;white-space:nowrap;text-transform:uppercase}
-.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
-.tc{color:#8FBEE4;border-color:#8FBEE4}
+.imprint{font-size:var(--kk-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--kk-dim);margin:var(--kk-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one step
+   higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .fp-wrap{border-radius:var(--kk-rad)}
+/* One heading level, one rule. build6.py's own h2 treatment renders the first
+   and largest heading a reader meets four points smaller than every other
+   heading on the page, with four times the tracking. */
+body .fplan{margin-top:var(--kk-s7)}
+body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--kk-h2);letter-spacing:.005em;line-height:1}
+/* The spine rail would otherwise have a hole exactly where it establishes
+   itself: the injected plan is the first section on the page and carries no
+   kicker of its own. Its generator is not this file's to edit, so the label is
+   set here, in the same register as the authored four. */
+body .fplan::before{
+  content:"The zone, drawn";
+  font-family:"IBM Plex Mono",monospace;font-size:var(--kk-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--kk-dim);display:block;margin:0 0 var(--kk-s2)}
+@media(min-width:1080px){
+  body .fplan::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 13 · through Dagnor&rsquo;s Cauldron, Odus</p>
-  <h1>Kedge Keep</h1>
-  <p class="subtitle">The highest experience rate on this site, four class epics off one boss, and a weapon rule that no longer applies</p>
+  <p class="eyebrow">Dungeon survey &middot; through Dagnor&rsquo;s Cauldron</p>
+  <div class="title"><h1>Kedge Keep</h1><span class="leader"></span><span class="plateno">13</span></div>
+  <p class="subtitle">Underwater from end to end &mdash; four class epics converge on one boss</p>
+  <p class="deck">A flooded keep under the lake at Dagnor&rsquo;s Cauldron, levels 32 to 50. Come for
+    the experience &mdash; ZEM 139 is @@ZEM_RANK@@ &mdash; and for Phinigel Autropos, who gates
+    components for four class epics. <strong>Water breathing is not optional</strong>, and succor
+    strands you in a caged room far from the exit. Nothing here is measured: no session in this zone
+    has been logged.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>kedge</dd></div>
-    <div class="cell"><dt>Mob levels</dt><dd>32&ndash;50</dd></div>
-    <div class="cell"><dt>ZEM</dt><dd>139<small>185% &mdash; highest we have recorded</small></dd></div>
-    <div class="cell"><dt>Zone respawn</dt><dd>not recorded</dd></div>
-    <div class="cell"><dt>Succor</dt><dd>14, 100<small>a caged room, far from the exit</small></dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Dagnor&rsquo;s Cauldron<small>swim down</small></dd></div>
-    <div class="cell"><dt>Requirement</dt><dd>Water breathing<small>not optional</small></dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>32&ndash;50<small>Phinigel 53</small></dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>139<small>185%</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>Unmeasured<small>no logged session</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>not recorded</dd></div>
+    <div class="cell"><dt>Requirement</dt><dd>Water breathing<small>item, spell or song</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>14, 100<small>a caged room</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Dagnor&rsquo;s Cauldron</dd></div>
   </dl>
+  <p class="cm">The 23 June patch note singles the zone out: &ldquo;Kedge has retained its original
+    modifier for those willing to brave the depths.&rdquo;</p>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#open">Still open</a></li>
+  </ul>
 </header>
 
+<main>
+
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why">
-    <li><b>ZEM 139, or 185%.</b> The highest figure on this site &mdash; ahead of Najena at 159%
-      and far ahead of the planes. The 23 June patch note singles the zone out:
-      &ldquo;Kedge has retained its original modifier for those willing to brave the depths.&rdquo;
-      That is the developers saying the rate is the reward for the inconvenience.</li>
-    <li><b>Four class epics converge on one boss.</b> Phinigel Autropos carries components for the
-      Wizard, Bard, Rogue and Magician epics. No other single mob we have surveyed gates four.</li>
-    <li><b>Blunt and slashing weapons appear to work here.</b> On Live EverQuest and Project 1999
-      the underwater penalty made piercing the only sensible choice. A player of ours reports
-      landing normal hits with a sword. Section 02.</li>
-    <li><b>You cannot come here without water breathing.</b> Not a difficulty setting &mdash; the
-      whole dungeon is underwater and a corpse recovery without it is close to impossible.</li>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Three bands of floor across six hundred units of height, and open water between
+    them.</p>
+  <dl class="key">
+    <dt>A broken entrance in the depths</dt><dd>The southern tip of the lake in Dagnor&rsquo;s
+      Cauldron. Swim down; there is no other door</dd>
+    <dt>A caged room at 14, 100</dt><dd>Where succor drops you, and <strong>a long way from the
+      exit</strong></dd>
+    <dt>Water above you and below you</dt><dd>The plan draws walkable floor, and much of where you
+      can swim has none under it. <strong>It under-draws this zone more than any other on the
+      site</strong> &mdash; the skeleton of the building, not the map</dd>
+  </dl>
+  <div class="scroller narrow">
+  <table>
+    <thead><tr><th>Band</th><th>Height</th><th class="lv">Floor found</th><th class="lv">Pieces</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">High</td><td class="st">z 336 to 364</td><td class="lv">94</td><td class="lv">3</td></tr>
+      <tr><td class="nmob">Main</td><td class="st">z &minus;112 to 84</td><td class="lv">1,193</td><td class="lv">16</td></tr>
+      <tr><td class="nmob">Deep</td><td class="st">z &minus;238 to &minus;140</td><td class="lv">116</td><td class="lv">6</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cm">Floor found is triangles of walkable mesh. Camps, pull points and escape lines
+    are unrecorded.</p>
+</section>
+
+<section>
+  <p class="kick">Four hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>No water breathing, no zone</b> Item, spell or bard song, before you swim down.
+      <strong>A corpse recovery without it is close to impossible.</strong></li>
+    <li><b>Succor is not a way out</b> Elsewhere evacuate lands you at the zone line. Here it lands
+      you at 14, 100 &mdash; <strong>a caged room distant from the exit.</strong>
+      <span class="tier t5">T5</span></li>
+    <li><b>Phinigel takes your options away</b> Summons, uncharmable, unfearable, unmezzable, sees
+      invisible, immune to run-speed changes, and a belly caster. <span class="tier t5">T5</span></li>
+    <li><b>The piercing-only rule is inherited, not sourced</b> Classic EverQuest penalised
+      slashing and blunt underwater and <strong>no citable record carries that rule</strong>. A
+      player fighting here on 9 August 2026 landed normal hits with a sword.</li>
   </ul>
 </section>
 
 <section>
-  <h2><span class="num">02</span>The weapon rule, and why it is our headline</h2>
-  <p class="lede">This is the one claim on the page that came from our own community rather than
-    from a wiki, and it is the reason to read the zone afresh.</p>
-  <p>Classic EverQuest penalised slashing and blunt weapons underwater, which made piercing the
-    default in water zones and shaped every inherited opinion about what to bring here.
-    <b>We have never sourced that rule to a citable record</b>, and we say so rather than repeating
-    it as established.</p>
-  <p><b>In Legends it appears not to apply.</b> A player fighting here on 9 August 2026 reports landing normal hits with a sword. <span class="tier tc">C</span></p>
-  <p class="tight">The eqlwiki Kedge Keep page carries <code>{{Classic Era}}</code>, discusses
-    breathing at length, and says nothing whatever about weapon types underwater &mdash; it neither
-    confirms nor denies. So the only Legends-era evidence points one way, and it is one player&rsquo;s
-    report rather than a parsed log.</p>
-  <div class="note"><b>What would settle it:</b> one combat log line showing a slashing or blunt
-    weapon landing normal damage while submerged. If a penalty exists it should show as a visible
-    drop in average damage against the same mob type fought on land. Until then this stays an open
-    question on <a href="../learn/still-true.html">the register</a>, credited on the <a href="../credits.html">credits page</a>.</div>
-</section>
-
-<section>
-  <h2><span class="num">03</span>What the sources are</h2>
-  <p class="lede">Better than the planes, and still mostly imported.</p>
-  <p>The eqlwiki Kedge Keep page was created on <b>21 August 2024</b> by
-    <code>P99Wiki&gt;Cconley717</code> &mdash; a Project 1999 import from nearly two years before
-    EverQuest Legends existed. The Phinigel Autropos page carries <code>{{Classic Era}}</code> and a
-    single undifferentiated hit-point figure.</p>
-  <p><b>One edit stands out.</b> On <b>8 August 2026</b>, after launch, editor Mandlz added a Raid
-    Instance section describing Phinigel as a Legends raid encounter entered by hailing a voidling,
-    with solo and multiplayer instances sharing a lockout. That is genuinely current material and it
-    is the most recent Legends-era editing we have found on any zone we have surveyed this week. It
-    carries no edit comment and states no method, so it is <span class="tier t3">T3</span> rather
-    than tier 2 &mdash; but it is not classic text.</p>
-  <p class="tight">The section also leaves two of its own fields as <b>TBD</b>: level of monsters
-    and types of monsters in the raid instance. We are not going to fill those in for them.</p>
-</section>
-
-<section>
-  <h2><span class="num">04</span>Getting in, and staying alive in it</h2>
-  <ol class="chain">
-    <li><b>Dagnor&rsquo;s Cauldron, southern tip of the lake</b> <span class="cm">swim down</span>
-      <span class="ck">a broken entrance in the depths</span></li>
-    <li><b>Water breathing first</b> <span class="cm">item, spell or bard song</span>
-      <span class="ck">there is no version of this zone without it</span></li>
-    <li><b>Succor puts you at 14, 100</b> <span class="cm">a caged room</span>
-      <span class="ck">a long way from the exit &mdash; know this before you press it</span></li>
-  </ol>
-  <p class="tight"><b>Succor here is not a way out.</b> On most of the zones we survey, evacuate
-    drops you at or near the zone line. The published succor point for Kedge is a caged room distant
-    from the exit, so evacuating solves the fight you are losing and starts a different
-    problem. <span class="tier t5">T5</span></p>
-</section>
-
-<section>
-  <h2><span class="num">05</span>The shape of the zone, and what our plan can and cannot show</h2>
-  <p class="lede">The floor plan above is computed from the game&rsquo;s own mesh. On this zone,
-    more than any other we have drawn, it needs a caveat.</p>
-  <div class="scroller"><table>
-    <thead><tr><th>Band</th><th>Height</th><th>Floor found</th><th>Separate pieces</th></tr></thead>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Fourteen named, and only Phinigel has a published position or level.</p>
+  <div class="note">The eqlwiki page was created <strong>21 August 2024</strong> by
+    <code>P99Wiki&gt;Cconley717</code>, and the Phinigel page carries <code>{{Classic Era}}</code>.
+    One edit stands out: editor Mandlz added a Raid Instance section on <strong>8 August 2026</strong>,
+    the most recent Legends-era editing on any surveyed zone. No edit comment, no method, and the
+    instance&rsquo;s monster levels and types left blank. <span class="tier t3">T3</span></div>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Deep</td><td>z &minus;238 to &minus;140</td><td>116 triangles</td><td>6</td></tr>
-      <tr><td class="nmob">Main</td><td>z &minus;112 to 84</td><td>1,193 triangles</td><td>16</td></tr>
-      <tr><td class="nmob">High</td><td>z 336 to 364</td><td>94 triangles</td><td>3</td></tr>
+      <tr><td class="nmob"><a href="../named/phinigel-autropos.html">Phinigel Autropos</a></td><td class="loc">111, 37</td><td class="lv">53</td><td class="cls">KEDGE<br>WIZ</td><td class="src"><strong>Raid instance only since 11 June 2026</strong>, entered by hailing a voidling. AC 454, HP published as &ldquo;18k&rdquo;, 3 attacks a round at 84% speed, 205 a hit. Solo and multiplayer instances <strong>share a lockout</strong>. The published 12-hour respawn describes an open-world spawn that no longer happens.<span class="tag warn">T5 stats</span></td></tr>
+      <tr><td class="nmob"><a href="../named/cauldronbubble.html">Cauldronbubble</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Sharkbone Warhammer &middot; <em>common</em>. Hammerhead Helm &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/cauldronboil.html">Cauldronboil</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Sharkjaw Cutlass &middot; <em>common</em>. Kedgemail Gauntlets &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/coralyn-kelpmaiden.html">Coralyn Kelpmaiden</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Sharkbone Warhammer &middot; <em>common</em>. Sharkskin Drum &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/estrella-of-gloomwater.html">Estrella of Gloomwater</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Rod of Drones and Lamentation Blade &middot; <em>common</em>. Prayer Shawl &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/ferocious-hammerhead.html">Ferocious Hammerhead</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Wand of Shadow &middot; <em>common</em>. Driftwood Treasure Chest &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/fierce-impaler.html">Fierce Impaler</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Gloomwater Harpoon &middot; <em>common</em>. Darksea Harpoon &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/frenzied-bull-shark.html">Frenzied Bull Shark</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Abalone Gorget &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/frenzied-cauldron-shark.html">Frenzied Cauldron Shark</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Shark Tooth &middot; <em>common</em>. Abalone Gorget &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/golden-haired-mermaid.html">Golden Haired Mermaid</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Lock of Hair &mdash; a quest component rather than an upgrade</td></tr>
+      <tr><td class="nmob"><a href="../named/seahorse-matriarch.html">Seahorse Matriarch</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Rod of Health &middot; <em>common</em>. Shield of Prexus &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/seahorse-patriarch.html">Seahorse Patriarch</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Wand of Ice &middot; <em>common</em>. Seahorse Scale Cloak &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/shellara-ebbhunter.html">Shellara Ebbhunter</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Gloomwater Arrow &middot; <em>common</em>. Pearlescent Mask &middot; <em>rare</em></td></tr>
+      <tr><td class="nmob"><a href="../named/undertow.html">Undertow</a></td><td class="loc">not recorded</td><td class="lv">?</td><td class="cls">not recorded</td><td class="src">Blazing Wand &middot; <em>common</em>. Squallsurge Shawl &middot; <em>rare</em></td></tr>
     </tbody>
-  </table></div>
-  <p class="tight"><b>Six hundred units of vertical range across three separated bands.</b> The
-    source page says the zone &ldquo;extends vertically as well as horizontally&rdquo;, and our own
-    extraction agrees with it independently &mdash; which is worth saying, because the two come from
-    completely different places.</p>
-  <div class="note danger"><b>The caveat, and it is a real one.</b> Our floor plans draw
-    <em>walkable floor</em> &mdash; the surfaces a standing character could stand on. Kedge Keep is a
-    zone you <em>swim</em> through. Large parts of where you can actually go are open water with no
-    floor beneath them, so <b>this plan under-draws the navigable space more than any other on the
-    site.</b> Read it as the skeleton of the building, not as the map of where you may move.</div>
+  </table>
+  </div>
+  <p class="src">Roster and drops <span class="tier t5">T5</span> &mdash; imported.
+    <strong>Rare and common are the source&rsquo;s own words, not measured rates.</strong></p>
 </section>
 
 <section>
-  <h2><span class="num">06</span>The named roster</h2>
-  <p class="lede">Fourteen named. Only Phinigel has a published position; the rest we list without
-    one rather than inventing coordinates.</p>
-  <div class="scroller"><table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">Phinigel Autropos</td><td class="loc">111, 37</td><td class="lv">53</td>
-        <td class="cls">KEDGE<br>WIZ</td>
-        <td class="src">The zone boss, and the reason four classes come here &mdash; see 07. Raid
-          instance only since 11 June 2026. AC 454, HP published as &ldquo;18k&rdquo;, 3 attacks a
-          round at 84% speed, 205 a hit. Summons, uncharmable, unfearable, unmezzable, sees invis,
-          belly caster, immune to run-speed changes. The published 12-hour respawn describes an
-          open-world spawn that no longer happens.<span class="tag warn">T5 stats</span></td></tr>
-      <tr><td class="nmob">Cauldronbubble</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Sharkbone Warhammer (common) &middot; Hammerhead Helm (rare)</td></tr>
-      <tr><td class="nmob">Cauldronboil</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Sharkjaw Cutlass (common) &middot; Kedgemail Gauntlets (rare)</td></tr>
-      <tr><td class="nmob">Coralyn Kelpmaiden</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Sharkbone Warhammer (common) &middot; Sharkskin Drum (rare)</td></tr>
-      <tr><td class="nmob">Estrella of Gloomwater</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Rod of Drones (common) &middot; Lamentation Blade (common) &middot; Prayer Shawl (rare)</td></tr>
-      <tr><td class="nmob">Ferocious Hammerhead</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Wand of Shadow (common) &middot; Driftwood Treasure Chest (rare)</td></tr>
-      <tr><td class="nmob">Fierce Impaler</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Gloomwater Harpoon (common) &middot; Darksea Harpoon (rare)</td></tr>
-      <tr><td class="nmob">Frenzied Bull Shark</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Abalone Gorget (rare)</td></tr>
-      <tr><td class="nmob">Frenzied Cauldron Shark</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Shark Tooth (common) &middot; Abalone Gorget (rare)</td></tr>
-      <tr><td class="nmob">Golden Haired Mermaid</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Lock of Hair &mdash; a quest component rather than an upgrade</td></tr>
-      <tr><td class="nmob">Seahorse Matriarch</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Rod of Health (common) &middot; Shield of Prexus (rare)</td></tr>
-      <tr><td class="nmob">Seahorse Patriarch</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Wand of Ice (common) &middot; Seahorse Scale Cloak (rare)</td></tr>
-      <tr><td class="nmob">Shellara Ebbhunter</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Gloomwater Arrow (common) &middot; Pearlescent Mask (rare)</td></tr>
-      <tr><td class="nmob">Undertow</td><td class="loc">not recorded</td><td class="lv">?</td>
-        <td class="cls">not recorded</td>
-        <td class="src">Blazing Wand (common) &middot; Squallsurge Shawl (rare)</td></tr>
-    </tbody>
-  </table></div>
-  <p class="src">Roster and drops <span class="tier t5">T5</span> &mdash; imported. The
-    common/rare split is the source&rsquo;s own wording and is not a measured rate.
-    <b>No level is published for any named but Phinigel</b>, and we would rather print thirteen
-    question marks than thirteen guesses.</p>
-</section>
-
-<section>
-  <h2><span class="num">07</span>Phinigel Autropos, and the four epics</h2>
-  <p class="lede">One boss gates components for four class epics. That makes this the most
-    contested single kill of any zone we have surveyed.</p>
-  <div class="scroller"><table>
+  <p class="kick">One boss, four epics</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Everything below comes off Phinigel Autropos. No other surveyed mob gates four
+    class epics.</p>
+  <div class="scroller narrow">
+  <table>
     <thead><tr><th>Drop</th><th>What it feeds</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Blue Crystal Staff</td><td>Wizard epic</td></tr>
-      <tr><td class="nmob">Kedge Backbone</td><td>Bard epic</td></tr>
-      <tr><td class="nmob">Robe of the Kedge</td><td>Rogue epic</td></tr>
-      <tr><td class="nmob">Staff of Elemental Mastery: Water</td><td>Magician epic</td></tr>
-      <tr><td class="nmob">Trident of the Seven Seas</td><td>not an epic component</td></tr>
-      <tr><td class="nmob">Rod of Malisement</td><td>not an epic component</td></tr>
-      <tr><td class="nmob">Wand of Mana Tapping</td><td>not an epic component</td></tr>
-      <tr><td class="nmob">Fusible Coral Ore</td><td>Fusibility Research</td></tr>
+      <tr><td class="it">Blue Crystal Staff</td><td class="st">Wizard epic</td></tr>
+      <tr><td class="it">Kedge Backbone</td><td class="st">Bard epic</td></tr>
+      <tr><td class="it">Robe of the Kedge</td><td class="st">Rogue epic</td></tr>
+      <tr><td class="it">Staff of Elemental Mastery: Water</td><td class="st">Magician epic</td></tr>
+      <tr><td class="it">Fusible Coral Ore</td><td class="st">Fusibility Research</td></tr>
+      <tr><td class="it">Trident of the Seven Seas</td><td class="st">Not an epic component</td></tr>
+      <tr><td class="it">Rod of Malisement</td><td class="st">Not an epic component</td></tr>
+      <tr><td class="it">Wand of Mana Tapping</td><td class="st">Not an epic component</td></tr>
+      <tr><td class="it">The Family Chest Straps</td><td class="st">Linked to this mob by the source page, with no chain named</td></tr>
     </tbody>
-  </table></div>
-  <p class="tight">The page also links <em>The Family Chest Straps</em> to this mob.</p>
-
-  <h3>Why the Fiery Avenger finding matters here more than anywhere</h3>
-  <p class="tight">On 10 August 2026 a player completed <b>every step of the paladin epic, final turn-in included, as a non-paladin</b>. The reward is still flagged <code>Class: PAL</code>, so
-    holding it and earning it have come apart. <span class="tier tc">C</span></p>
-  <p class="tight"><b>Kedge Keep is where that question gets expensive.</b> If the same is true of
-    the four epics gated behind Phinigel, then who may run them is a far wider group than the class
-    names suggest &mdash; and in a game where a character carries three classes at once, that is not
-    an exotic edge case. <b>We have one epic on one character and we are not going to generalise
-    from it.</b> Testing any one of these four would settle it, and this is the obvious place to
-    test.</p>
-  <div class="note"><b>Access.</b> Phinigel stopped spawning in the open world and in personal
-    instances on 11 June 2026. He is reached by hailing a voidling, and the raid section notes that
-    solo and multiplayer instances <b>share a lockout</b> &mdash; so running the solo version does
-    not leave the group version free that week. <span class="tier t3">T3</span></div>
+  </table>
+  </div>
+  <div class="note"><strong>Who may run an epic is open, and this is where it gets expensive.</strong>
+    On 10 August 2026 a player completed every step of the paladin epic, final turn-in included,
+    <strong>as a non-paladin</strong>; the reward is still flagged <code>Class: PAL</code>. If that
+    holds for the four gated here, far more characters may run them than the class names suggest.
+    One report does not generalise, and testing any one of these four would settle it.</div>
+  <p class="cm">Every other named drops one common and one rare piece. Those are listed in the roster
+    above rather than repeated here.</p>
 </section>
 
 <section>
-  <h2><span class="num">08</span>What we do not know</h2>
-  <div class="scroller"><table>
+  <p class="kick">Named gaps</p>
+  <h2 id="open">Still open</h2>
+  <p class="lede">Each closes with one log, one <code>/con</code> or one attempt.</p>
+  <div class="scroller">
+  <table>
     <thead><tr><th>Open question</th><th>What settles it</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Whether slashing and blunt really are unpenalised</td>
-        <td>One log line of a sword landing normal damage while submerged, against the same mob type
-          fought on land.</td></tr>
-      <tr><td class="nmob">Whether a non-wizard can finish the wizard epic</td>
-        <td>One attempt. The paladin epic is already reported done this way.</td></tr>
-      <tr><td class="nmob">Phinigel&rsquo;s hit points at D0&ndash;D4</td>
-        <td>A raid log. &ldquo;18k&rdquo; is one classic figure for a five-tier game.</td></tr>
-      <tr><td class="nmob">Levels for thirteen of the fourteen named</td>
-        <td>A <code>/con</code> each.</td></tr>
-      <tr><td class="nmob">Whether the raid instance changes the population</td>
-        <td>The source&rsquo;s own raid section leaves both fields as TBD.</td></tr>
-      <tr><td class="nmob">Trash respawn</td><td>Two passes through one camp with timestamps.</td></tr>
-      <tr><td class="nmob">Whether the ZEM survived launch</td>
-        <td>The 139 figure and the patch note agree, and neither is post-launch measured. An
-          experience parse over a known number of kills would confirm it.</td></tr>
+      <tr><td class="nmob">Whether slashing and blunt really are unpenalised</td><td class="src">One log line of a sword landing normal damage while submerged, against a mob type also fought on land.</td></tr>
+      <tr><td class="nmob">Whether a non-wizard can finish the wizard epic</td><td class="src">One attempt. The paladin epic is already reported done that way.</td></tr>
+      <tr><td class="nmob">Phinigel&rsquo;s hit points at D0&ndash;D4</td><td class="src">A raid log. &ldquo;18k&rdquo; is one classic figure for a five-tier game.</td></tr>
+      <tr><td class="nmob">Levels for thirteen of the fourteen named</td><td class="src">A <code>/con</code> each.</td></tr>
+      <tr><td class="nmob">Whether the raid instance changes the population</td><td class="src">The source leaves both fields blank.</td></tr>
+      <tr><td class="nmob">Trash respawn</td><td class="src">Two passes through one camp with timestamps.</td></tr>
+      <tr><td class="nmob">Whether the ZEM survived launch</td><td class="src">The figure and the patch note agree, and neither is post-launch measured. An experience parse over a known number of kills.</td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
 </section>
 
+</main>
+
+<footer><p class="src-line">This survey has no per-zone sourcing block yet. <a href="../sources.html">How this site grades its sources</a>.</p>
+<p class="imprint">Plate 13 &middot; Kedge Keep &middot; Dagnor&rsquo;s Cauldron, Faydwer &middot; floor derived from kedge.s3d &middot; north up, west left</p></footer>
+
+</div>
 </div>
 </body>
 </html>

@@ -114,31 +114,31 @@ for z in Z:
     if distinct_bosses:
         f_boss = facet('measured',
                        f"{len(distinct_bosses)} boss{'es' if len(distinct_bosses) > 1 else ''} "
-                       f"fought and parsed across {len(bf)} kills"
+                       f"measured"
                        + (f", tiers D{btiers[0]}–D{btiers[-1]}" if len(btiers) > 1 else
                           (f", D{btiers[0]}" if btiers else "")))
     elif named_in_roster.get(slug):
         f_boss = facet('sourced', f"{named_in_roster[slug]} named on the roster, "
-                                  f"none fought by us")
+                                  f"none measured")
     else:
         f_boss = facet('none', 'no named mobs recorded')
 
     # 2. LOOT — what drops, and whether we watched it
     if drops.get(slug):
-        f_loot = facet('measured', f"{len(drops[slug])} items watched dropping here")
+        f_loot = facet('measured', f"{len(drops[slug])} items recorded dropping here")
     elif loot_in_roster.get(slug):
-        f_loot = facet('sourced', f"{loot_in_roster[slug]} items listed, none seen by us")
+        f_loot = facet('sourced', f"{loot_in_roster[slug]} items listed, none measured")
     else:
         f_loot = facet('none', 'no loot recorded')
 
     # 3. DIFFICULTY — the thing that has no classic equivalent at all
     t = sorted(tiers.get(slug, ()))
     if len(t) > 1:
-        f_diff = facet('measured', "played and parsed at D" + ", D".join(str(x) for x in t))
+        f_diff = facet('measured', "measured at D" + ", D".join(str(x) for x in t))
     elif len(t) == 1:
-        f_diff = facet('measured', f"played and parsed at D{t[0]} only")
+        f_diff = facet('measured', f"measured at D{t[0]} only")
     else:
-        f_diff = facet('none', 'never played at a recorded difficulty')
+        f_diff = facet('none', 'no measured difficulty')
 
     # 4. INHERITED — is the classic advice on this page marked as classic
     page = f"public/dungeons/{slug}.html"

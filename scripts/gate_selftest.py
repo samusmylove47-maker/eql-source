@@ -100,6 +100,30 @@ def judge(expect, rc, out):
                            + " | ".join(got))
 
 
+def _sub_first_number(text, placeholder):
+    """Swap the first comma-formatted figure on a page for an unrendered token.
+
+    These two cases used to name a literal - "26,158", the biggest Plane of Sky
+    boss damage on the day they were written. Four more Sky sessions were parsed
+    on 17 August, the figure moved, and both mutations silently stopped applying.
+    A self-test that cannot apply its mutation reports the check as broken, which
+    is the correct alarm, but the cause was the test pinning itself to data that
+    was always going to change.
+
+    So it targets the SHAPE instead. Any page rendering a measured figure has
+    one, and the check under test is about placeholders reaching a page rather
+    than about any particular number.
+
+    Anchored inside <b>, which is how the measured figures render. A bare
+    number pattern matched SVG path coordinates first — "0,150" in a polyline —
+    and a placeholder buried in path data is not what the check looks at.
+    """
+    m = re.search(r"<b>\d{1,3},\d{3}</b>", text)
+    if not m:
+        return text
+    return text[:m.start()] + "<b>" + placeholder + "</b>" + text[m.end():]
+
+
 CASES = [
     # A tool whose data constant went missing. The Sky tracker shipped on 14
     # August with ORDER undefined: the class picker rendered nothing, the trio
@@ -107,10 +131,15 @@ CASES = [
     # check.py passed all 721 pages because nothing here runs a page's
     # JavaScript. The check that catches it is narrow on purpose; this proves
     # it is alive.
+    # Retargeted 17 Aug 2026: the case used tools/plane-of-sky.html, which was
+    # withdrawn when Sky Ledger replaced it. RORDER is the same shape of
+    # constant in the same shape of tool — a top-level display order the render
+    # reads on its first statement — so removing it reproduces the fault
+    # exactly. The check is about a tool's data constants, not about that page.
     ("a tool's data constant is undefined",
      "script uses 1 undefined constant(s)",
-     "public/tools/plane-of-sky.html",
-     lambda t: t.replace("const ORDER   = SKY.order;", "", 1)),
+     "public/tools/race-unlocks.html",
+     lambda t: t.replace('const RORDER=["DEF"', 'const RORDER_UNUSED=["DEF"', 1)),
 
     # The counts are read from the data, not typed, because this file typed them
     # once and the case silently became a no-op the next time a zone was added —
@@ -155,6 +184,14 @@ CASES = [
                       lambda m: m.group(1) + str(float(m.group(2)) + 300),
                       t, count=1, flags=re.S)),
 
+    # The stored percentage that disagreed with its own ZEM. Splitpaw shipped
+    # 170 where 128/75 rounds to 171, and the survey built a "highest of the
+    # set" claim on it while another zone published 185%.
+    ("a derived percentage that disagrees with its ZEM",
+     "a derived figure may not disagree with what it derives from",
+     "assets/zones-index.json",
+     lambda t: t.replace('"zem_pct": 171', '"zem_pct": 170', 1)),
+
     ("a tool dropped from the footer",
      "footer does not link tools/faction-impact.html",
      "public/index.html",
@@ -168,7 +205,7 @@ CASES = [
     ("an f-string placeholder left unrendered",
      "shipped an unrendered placeholder",
      "public/raids/plane-of-sky.html",
-     lambda t: t.replace("26,158", "{BIGGEST:,}", 1)),
+     lambda t: _sub_first_number(t, "{BIGGEST:,}")),
 
     # The same fault in the other notation that generator used. Two shapes, two
     # cases: a check that caught only the one we happened to hit last would go
@@ -176,7 +213,17 @@ CASES = [
     ("an @@TOKEN@@ placeholder left unrendered",
      "shipped an unrendered placeholder",
      "public/raids/plane-of-sky.html",
-     lambda t: t.replace("26,158", "@@BIGGEST@@", 1)),
+     lambda t: _sub_first_number(t, "@@BIGGEST@@")),
+
+    # A dataset figure typed into the metadata. The Sky Ledger tool page said 95
+    # in its description while its body read the same quantity from the data, so
+    # the two were free to drift on the next dataset change. Metadata is the
+    # only text a reader gets uncaveated, and it is what a share card carries.
+    ("a figure in the metadata that is nowhere on the page",
+     "in its meta description and never on the page",
+     "public/tools/sky-ledger.html",
+     lambda t: t.replace('name="description" content="',
+                         'name="description" content="4242 tests. ', 1)),
 
     # The change log is exempt from the prose ceiling, and that exemption is
     # exactly the kind of hole that quietly turns a check off. This proves the

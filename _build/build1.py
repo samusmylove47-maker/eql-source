@@ -128,6 +128,69 @@ nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
 nnone = sum(1 for z in Z if z["verify_level"]=="none")
 
+# THE PROMOTED TOOL.
+# Sky Ledger goes directly under the hero and the atlas moves down. It is not a
+# card in a row of equals: what it does that no other Sky tracker does — spend a
+# held turn-in piece once instead of counting it against every test that wants
+# it — is a correctness property, and the tracker it replaced was ours.
+#
+# Both figures are read out of assets/sky-ledger.json, which _build/skyledger.py
+# counts from the Ledger's own dataset. The tool's README types "three quests"
+# about an item its data wants twice; that is the exact reason nothing here is
+# typed beside the data it claims to come from.
+SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
+# The overlay door. A release exists now, so the home page offers the download
+# directly rather than routing a reader through the tool page to find out there
+# is nothing to download. Falls back to the tool page where no release is
+# recorded, so a build without the Ledger repo still produces a working link.
+_SL_REL = (SL.get('release') or {}).get('overlay') or {}
+SL_OVERLAY_HREF = _SL_REL.get('url') or 'tools/sky-ledger.html'
+SL_OVERLAY_LABEL = (f'Download the overlay &middot; {_SL_REL["mb"]} MB &rarr;'
+                    if _SL_REL.get('mb') else 'The overlay &rarr;')
+
+SL_APP, SL_DS = SL['app'], SL['dataset']
+
+feature = f'''
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <div>
+          <p class="eyebrow">Plane of Sky &middot; <b>reads your own log</b></p>
+          <h2 class="feath">Sky Ledger</h2>
+          <p class="featlede">It follows your combat log while you play and says which of the
+            {SL_DS['quests']} Plane of Sky class-unlock tests you can hand in <strong>now</strong> &mdash; and what
+            the missing pieces drop from. In a browser with nothing to install, or as an
+            overlay on the game.</p>
+          <p class="featsub"><strong>It knows a turn-in piece can only be spent once.</strong>
+            {SL_DS['contested']} of its {SL_DS['items']} turn-in items are wanted by more than one test. Holding one
+            does not make several quests ready, and every other tracker &mdash; including the
+            one this replaces, which was ours &mdash; counts it against all of them. It also
+            refuses to print a drop rate it cannot measure: a dry streak reads as a bound,
+            <code>&lt;28% &middot; 0/9</code>, never <code>0%</code>.</p>
+          <div class="featdoors">
+            <a class="featdoor lead" href="app/{SL_APP['file']}">Run it in your browser &rarr;</a>
+            <a class="featdoor" href="{SL_OVERLAY_HREF}">{SL_OVERLAY_LABEL}</a>
+            <a class="featdoor" href="tools/sky-ledger.html">What it does &rarr;</a>
+          </div>
+        </div>
+        <ul class="featclaims">
+          <li><b>{SL_DS['contested']} of {SL_DS['items']}</b>
+            <span class="lab">Turn-in items wanted twice or more</span>
+            <span class="why">One piece finishes one test. It pools what you hold and spends
+              each unit on the test closest to done.</span></li>
+          <li><b>&lt;28% &middot; 0/9</b>
+            <span class="lab">How a dry streak prints</span>
+            <span class="why">Zero drops in nine kills bounds the rate; it does not measure
+              it. <code>0%</code> would tell you to stop farming.</span></li>
+        </ul>
+      </div>
+      <p class="featfoot">No install &middot; nothing uploaded &middot; build {SL_APP['hash']} &middot; {SL_APP['kb']} KB</p>
+    </div>
+  </div>
+</section>
+'''
+
 from changelog import ENTRIES, TONE
 
 recent = "\n".join(
@@ -153,7 +216,7 @@ home = head("Accurate, sourced and kept current",
   </div>
   {hero_src}
 </section>
-
+{feature}
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>
@@ -172,7 +235,7 @@ home = head("Accurate, sourced and kept current",
         <span class="dq">I am going into a zone</span>
         <h3 class="dt">The surveys</h3>
         <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
-          and coordinates re-derived from <code>/loc</code> records. Navigation maps where they exist.</p>
+          and coordinates re-derived from <code>/loc</code> records.</p>
         <span class="dgo">{len(Z)} surveys, {len(MAPS)} maps &rarr;</span>
       </a>
 
@@ -186,7 +249,7 @@ home = head("Accurate, sourced and kept current",
 
     </div>
     <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; one zone
-      written up in full, measured from our own logs.</p>
+      written up in full, measured in play.</p>
   </div>
 </section>
 
@@ -249,14 +312,6 @@ drows = "\n".join(
       <span class="cell"><em>Verified</em>{ {'full':'full','partial':'partial','none':'not yet'}[z['verify_level']] }</span>
       <span class="bar"></span></a>''' for z in Z)
 
-mapcards = "\n".join(
-  f'''      <a class="card" href="{s}-map.html" style="--c:{[z for z in Z if z['slug']==s][0]['accent']}">
-        <div class="kicker">Navigation map</div>
-        <h3 class="t">{[z for z in Z if z['slug']==s][0]['title']}</h3>
-        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
-          so it stays usable on a second monitor.</p>
-        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>''' for s in
-  [z['slug'] for z in Z if z['slug'] in MAPS])
 
 # The survey cards live here, on the surveys page. The home page links to this
 # page rather than reproducing it.  NOT ANY MORE, 16 Aug 2026: it did not
@@ -284,7 +339,7 @@ if _open:
                f"{npart} are partial and {nnone} are not verified at all. Partial surveys are "
                f"complete and useful; they have simply not cleared every gate. Which gate is open "
                f"is recorded per zone rather than averaged into a single number that would "
-               f"flatter us.")
+               f"read better than the truth.")
     asidec, asideh = "var(--warn)", "Open gates"
 else:
     verdict = (f"By that standard <strong>all {len(Z)} are verified</strong>, as of 9 August 2026. "
@@ -302,7 +357,7 @@ _ORDER = {"none": 0, "partial": 1, "full": 2}
 # reader needs in order to judge the word "verified".
 _CLEARED = [
   ("Source read in full", "Every survey's wiki page was fetched whole and its roster re-compared "
-   "against ours, not sampled. It is how Kelynn was found missing from Crushbone."),
+   "against the survey, not sampled. It is how Kelynn was found missing from Crushbone."),
   ("History from the API", "Edit history taken from MediaWiki, never the page footer. Footers were "
    "stale on four of the first five zones checked; Befallen's was two months out."),
   ("Coordinates on drawn floor", "All 176 plotted positions land within 120 units of walkable floor "
@@ -327,15 +382,6 @@ else:
         <span class="gl">cleared</span>
       </li>''' for i, (title, what) in enumerate(_CLEARED))
 
-mapcards = "\n".join(
-  f'''      <a class="door contour" href="{s}-map.html"
-         style="--c:{BYS[s]['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
-        <span class="dq">Navigation map</span>
-        <h3 class="dt">{BYS[s]['title']}</h3>
-        <p class="dd">The companion you keep open while you are in the zone. Plotted routes, numbered
-          camps and the pulls that matter, kept short enough to stay usable on a second monitor.</p>
-        <span class="dgo">Open the map &rarr;</span>
-      </a>''' for i, s in enumerate(sorted(MAPS)))
 
 dung = head("Dungeon surveys",
   f"{len(Z)} revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
@@ -384,17 +430,6 @@ dung = head("Dungeon surveys",
   </div>
 </section>
 
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">Navigation maps</h2>
-      <p class="lede" style="margin:0">{len(MAPS)} of the {len(Z)} surveys have one:
-        {", ".join(BYS[m]["title"] for m in sorted(MAPS, key=lambda m: BYS[m]["plate"]))}.
-        The rest have a floor plan drawn from the game&rsquo;s mesh but no route map yet.</p></div></div>
-    <div class="doorgrid">
-{mapcards}
-    </div>
-  </div>
-</section>
 
 </main>
 ''' + foot("../")

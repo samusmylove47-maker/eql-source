@@ -46,8 +46,10 @@ difficulty is unresolved instead of choosing.
 
 BACKSTAB
 --------
-Kept apart from ordinary swings. Mistmoore's familiars hit for 1-38 in melee and
-100-143 from behind, so a combined average of "10.5, max 143" describes neither.
+Kept apart from ordinary swings. Mistmoore's familiars hit up to 39 in melee and
+up to 168 from behind, so a combined average describes neither. (This docstring
+said "1-38 and 100-143" until 17 Aug 2026, which was stale and, at the low end,
+impossible: one session's backstabs average 38.8.)
 It is also the clearest class evidence in a log: a spell list can belong to one
 broad caster kit, but backstab is a rogue ability, and a mob type doing both is
 running two kits.
@@ -56,6 +58,118 @@ import os, sys, re, json, collections, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
+
+
+def _merge_mob_case(sessions):
+    """One mob type, one entry, whatever case the log wrote it in.
+
+    EverQuest capitalises a creature's name at the start of a line and not in
+    the middle, so "A pledge familiar backstabs YOU" and "You have slain a
+    pledge familiar" name the same thing twice. Every session was carrying both
+    — one holding the swings, the other the loot and the spell list, each
+    looking complete and neither being so.
+
+    In Castle Mistmoore that split 66 real mob types into 121, and the measured
+    section published "113 ordinary mob types" for a zone with about 58. Nobody
+    typed that figure; it was counted off data that had been halved.
+
+    Merged onto the lower-case key and displayed in whichever form the log used
+    first, so no capitalisation is invented. Runs over preserved records too:
+    their raw logs are gone and this is arithmetic on what they already hold,
+    not new information about them.
+    """
+    for s in sessions:
+        mobs = s.get('mobs') or {}
+        if not mobs:
+            continue
+        out, shown = {}, {}
+        for raw, rec in mobs.items():
+            key = raw.lower()
+            shown.setdefault(key, raw)
+            cur = out.get(key)
+            if cur is None:
+                out[key] = dict(rec)
+                continue
+            for f in ('swings', 'landed', 'backstabs'):
+                cur[f] = (cur.get(f) or 0) + (rec.get(f) or 0)
+            for f in ('max', 'backstab_max'):
+                vals = [v for v in (cur.get(f), rec.get(f)) if v is not None]
+                cur[f] = max(vals) if vals else None
+            for f in ('casts', 'loot'):
+                merged = dict(cur.get(f) or {})
+                for k, v in (rec.get(f) or {}).items():
+                    merged[k] = merged.get(k, 0) + v
+                cur[f] = merged
+            # A mean is only meaningful against the hits it was taken over, and
+            # one of the two entries always has none. Keep whichever side
+            # actually landed blows; never average two means.
+            for mean, over in (('avg', 'landed'), ('backstab_avg', 'backstabs')):
+                if (rec.get(over) or 0) > (cur.get(over) or 0) - (rec.get(over) or 0):
+                    if rec.get(mean) is not None:
+                        cur[mean] = rec[mean]
+        s['mobs'] = {shown[k]: v for k, v in out.items()}
+
+
+def _repair_stun_causes(sessions):
+    """Move mis-attributed stun causes into an explicit unattributed count.
+
+    The stun handler used to accept any "... by X." tail as the spell that
+    stunned us, and a damage shield ends in exactly that shape, so
+    "Avenrae's thorns for 24 points of non-melee damage" was filed as a spell.
+
+    Sessions parsed since the handler was tightened cannot produce these. The
+    ones that can are the preserved records whose raw logs are gone — the seven
+    Castle Mistmoore sessions among them — and those cannot be re-parsed.
+
+    So they are repaired in place, and the repair is deliberately conservative.
+    THE STUN IS REAL: "You are stunned!" was in the log. Only the cause was
+    read wrongly. Deleting the entry would quietly lower a hazard count on a
+    page about how dangerous a zone is. The count is kept and moved to
+    stuns_cause_unread, which a page can print as "cause not recorded" — the
+    honest statement, and the one this project's rules ask for.
+
+    Two shapes are rejected: a name carrying its own damage sentence, and a
+    name that is one of our own characters, which arrives the same way.
+    """
+    ours = {s.get('character') for s in sessions if s.get('character')}
+    for s in sessions:
+        ctl = s.get('control') or {}
+        stuns = ctl.get('stuns')
+        if not stuns:
+            continue
+        keep, moved = {}, 0
+        for spell, rec in stuns.items():
+            landed = (rec or {}).get('landed', 0)
+            if 'points of' in spell or spell in ours or any(c.isdigit() for c in spell):
+                moved += landed
+            else:
+                keep[spell] = rec
+        if moved:
+            ctl['stuns'] = keep
+            ctl['stuns_cause_unread'] = ctl.get('stuns_cause_unread', 0) + moved
+
+
+def _span_minutes(start, end):
+    """Minutes between two "HH:MM" stamps from the same session.
+
+    Returns None rather than a guess when either stamp is missing or malformed,
+    because a duration is the denominator of every rate on the page and a
+    wrong one is worse than an absent one.
+
+    A session that runs past midnight ends with a smaller clock reading than it
+    started with. The parser splits on gaps longer than GAP, so a genuine
+    wrap is short, and one day is added. A session cannot legitimately be
+    negative, and it is not this function's job to invent a length for one.
+    """
+    try:
+        h1, m1 = (int(x) for x in start.split(':'))
+        h2, m2 = (int(x) for x in end.split(':'))
+    except (AttributeError, ValueError):
+        return None
+    span = (h2 * 60 + m2) - (h1 * 60 + m1)
+    if span < 0:
+        span += 24 * 60
+    return span
 
 TS = re.compile(r'^\[(\w{3}) (\w{3}) (\d{2}) (\d{2}):(\d{2}):(\d{2}) (\d{4})\]\s*(.*)$')
 VERBS = (r'(?:hit|slash|bash|crush|pierce|bite|claw|kick|punch|gore|maul|slice|'
@@ -181,6 +295,12 @@ GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins t
 # one, and a trailing digit so two logs from the same character can coexist:
 #   eqlog_Avenrae_rivervale_2026-08-08-pm.txt  ->  Avenrae
 CHAR = re.compile(r'eqlog_([A-Za-z]+?)\d*_', re.I)
+
+# The one shape a stunning spell actually takes in the log. Caster, then the
+# spell that stunned us. See the note at the stun handler for why the looser
+# "by X at end of line" match had to go.
+STUN_CAUSE = re.compile(
+    r'^(.{1,44}?) hit you for \d+ points of [\w\s]*?damage by ([A-Z][^.]*?)\.?\s*$')
 
 
 def character_of(path):
@@ -401,14 +521,25 @@ def collect(rows, character=None):
         if STUN_LANDED.match(x):
             cur['_stun_at'] = when
         elif cur.get('_stun_at') and (when - cur['_stun_at']).total_seconds() <= 2:
-            # the line after "You are stunned!" names what did it
-            sp = BY_SPELL.search(x)
+            # The line after "You are stunned!" names what did it — but only if
+            # it is a spell landing on us. BY_SPELL alone anchors on "by X" at
+            # end of line, and a damage shield ends the same way, so
+            # "You are pierced by Avenrae's thorns for 24 points of non-melee
+            # damage." was being filed as a stunning spell called "Avenrae's
+            # thorns for 24 points of non-melee damage". Mistmoore's table
+            # carried six such entries, and a spell name that is a whole
+            # sentence is the tell.
+            #
+            # Requiring the full form ties the spell to the caster that cast
+            # it, and it costs nothing: every genuine stun in the corpus is a
+            # "hit you for N points of ... damage by SPELL." line. Lines with
+            # no spell at all — "Your mind fills with fear." — correctly
+            # record a stun with no cause rather than borrowing one.
+            sp = STUN_CAUSE.match(x)
             if sp:
-                spell = sp.group(1).strip()
+                spell = sp.group(2).strip()
                 ctl['stuns'][spell] += 1
-                who = re.match(r'^(.{1,44}?) hit you for', x)
-                if who:
-                    ctl['stun_casters'][spell][who.group(1).strip()] += 1
+                ctl['stun_casters'][spell][sp.group(1).strip()] += 1
                 cur['_stun_at'] = None
         if SCREAM_START.match(x):
             ctl['screams'] += 1
@@ -566,8 +697,16 @@ def summarise(s):
                                         else d_num == d_named),
                difficulty_agrees=agree, date=s['date'],
                window=f"{s['start']}-{s['end']}", stamps=s['stamps'],
+               minutes=_span_minutes(s['start'], s['end']),
                kills=sum(s['kills'].values()), distinct=len(s['kills']),
                kinds=sorted(s['kills']),
+               # The per-type kill counts were computed and then thrown away,
+               # which left every "what is worth killing here" question
+               # unanswerable from the dataset: exp_by_mob gives a rate per
+               # kill and nothing said how often that kill happened. Kept now
+               # so density and experience can be multiplied out at build time
+               # rather than estimated in prose.
+               kills_by_mob=dict(s['kills'].most_common()),
                drop_tiers=dict(sorted(s['drop_tiers'].items())),
                faction=dict(s['faction'].most_common()),
                # Context is offered from the whole file so a trio stamped before
@@ -591,12 +730,22 @@ def summarise(s):
                faction_by_mob={k: v for k, v in s.get('fac_by_mob', {}).items()},
                faction_capped_by_mob={k: v for k, v in s.get('cap_by_mob', {}).items()},
                exp_by_mob={k: round(sum(v)/len(v), 3) for k, v in s.get('exp_by_mob', {}).items() if v},
+               # How many kills each mean was taken over. A mean of 3.025 from
+               # one kill and the same mean from ninety are not the same claim,
+               # and without this the page cannot tell a reader which it has.
+               exp_samples_by_mob={k: len(v) for k, v in s.get('exp_by_mob', {}).items() if v},
+               # Experience the client itself printed, summed over the kills it
+               # could be attached to. An UNDER-COUNT by construction: a gain
+               # line more than a second from a kill line is not attributed to
+               # any mob, so this is a floor for the session, never a total.
+               exp_attributed=round(sum(sum(v) for v in s.get('exp_by_mob', {}).values()), 3),
+               exp_attributed_kills=sum(len(v) for v in s.get('exp_by_mob', {}).values()),
                you_hit=s['you_hit'], you_miss=s['you_miss'],
                mob_hit=mh, mob_miss=mm, mobs={})
     for name, v in s['dmg'].items():
         h, ms = s['mob_hit'].get(name, 0), s['mob_miss'].get(name, 0)
         # Backstab is kept apart from ordinary swings. Mistmoore's familiars hit
-        # for 1-38 in melee and 100-143 from behind; averaging the two together
+        # up to 39 in melee and up to 168 from behind; averaging the two together
         # reports "10.5 average, 143 maximum", which describes neither and hides
         # the thing a reader actually needs to know.
         plain = [d for verb, d in v if verb != 'backstabs']
@@ -731,6 +880,26 @@ def build(src):
     merged.update(fresh)
     out = sorted(merged.values(),
                  key=lambda s: (s.get('date') or '', s.get('window') or ''))
+
+    # Back-fill the duration on preserved records.
+    #
+    # Sessions kept from an earlier parse cannot be re-summarised: their raw
+    # logs are gone. The seven Castle Mistmoore sessions of 8 August are the
+    # case that matters — EverQuest rotated the file that afternoon and the
+    # only surviving copy of 1,018 kills is this dataset.
+    #
+    # A duration is not new information about those sessions. It is arithmetic
+    # on the window they already carry, so deriving it here is reading the
+    # record, not inventing one. Everything else the newer parse records —
+    # per-type kill counts, attributed experience — genuinely cannot be
+    # recovered, and stays absent rather than being estimated.
+    for s in out:
+        if s.get('minutes') is None and s.get('window'):
+            start, _, end = (s['window'] or '').partition('-')
+            s['minutes'] = _span_minutes(start, end)
+    _merge_mob_case(out)
+    _repair_stun_causes(out)
+
     retier(out)
 
     json.dump(out, open('assets/measured.json', 'w', encoding='utf-8', newline='\n'),

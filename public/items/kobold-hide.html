@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Kobold Hide — EQL Source</title>
-<meta name="description" content="Kobold Hide in EverQuest Legends: Drops in The Warrens.">
+<meta name="description" content="Kobold Hide in EverQuest Legends: Tradeskill and quest components. Drops in The Warrens.">
 <meta property="og:title" content="Kobold Hide — EQL Source">
-<meta property="og:description" content="Kobold Hide in EverQuest Legends: Drops in The Warrens.">
+<meta property="og:description" content="Kobold Hide in EverQuest Legends: Tradeskill and quest components. Drops in The Warrens.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://eqlsource.com/assets/og/dungeons.png">
 <meta property="og:image:width" content="1200">
@@ -15,14 +15,14 @@
 <meta property="og:site_name" content="EQL Source">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Kobold Hide — EQL Source">
-<meta name="twitter:description" content="Kobold Hide in EverQuest Legends: Drops in The Warrens.">
+<meta name="twitter:description" content="Kobold Hide in EverQuest Legends: Tradeskill and quest components. Drops in The Warrens.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons.png">
 <link rel="canonical" href="https://eqlsource.com/items/kobold-hide">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=8756621c">
+<link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
 <style>
 .ent{max-width:74ch}
 .ent-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,246px);
@@ -66,6 +66,10 @@
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
 .drops.seen li{border-left-color:var(--ok)}
 .drops.seen b{color:var(--ink)}
+/* The badge carries the whole provenance claim for the block below it, so it
+   sits in the heading rather than in a sentence. Raised off the middle: the
+   heading is uppercase, and middle aligns to x-height, which reads low. */
+.ent h2.sec .tier{margin-left:9px;vertical-align:.24em}
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style></head>
@@ -91,13 +95,13 @@
       <a href="../tools/index-search.html">The Index</a> &nbsp;/&nbsp; Item</p>
     <h1 class="display">Kobold Hide</h1>
     <div class="ent-top">
-      <dl class="facts"><div><dt>Slot</dt><dd class='none'>not recorded</dd></div><div><dt>Stats, from a shared row</dt><dd class='none'>not recorded</dd></div><div><dt>Classes</dt><dd class='none'>not recorded</dd></div><div><dt>Zones</dt><dd>The Warrens</dd></div></dl>
+      <dl class="facts"><div><dt>Slot</dt><dd class='none'>not recorded</dd></div><div><dt>Tradeability</dt><dd><em style="color:var(--faint)">not recorded &mdash; the survey names no restriction, which is not the same as recording that there is none</em></dd></div><div><dt>Also flagged</dt><dd>Tradeskill, Quest</dd></div><div><dt>What it is for</dt><dd>Tradeskill and quest components</dd></div><div><dt>Stats, from a shared row</dt><dd class='none'>not recorded</dd></div><div><dt>Classes</dt><dd class='none'>not recorded</dd></div><div><dt>Zones</dt><dd>The Warrens</dd></div></dl>
       <figure class="locator"><span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/warrens.svg" alt="" width="2451" height="1383" decoding="async"></span></span><figcaption>The Warrens<br>Floor from the game&rsquo;s own mesh</figcaption></figure>
     </div>
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
-  <div class="shell ent" style="--c:#B5793C"><h2 class="sec">Where it drops</h2><ul class="srcs"><li><b><a href="../dungeons/warrens.html">The Warrens</a></b> &mdash; off Kobolds throughout<span>Survey 09 &middot; levels 4-25 &middot; ZEM 128</span></li></ul><p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. <a href="../sources.html">How we source</a>.</p></div>
+  <div class="shell ent" style="--c:#B5793C"><h2 class="sec">Where it drops</h2><ul class="srcs"><li><b><a href="../dungeons/warrens.html">The Warrens</a></b> &mdash; off Kobolds throughout<span>Survey 09 &middot; levels 4-25 &middot; ZEM 128</span></li></ul><p class="src" style="margin-top:18px"><b>As The Warrens records it:</b> &ldquo;Tradeskill and quest components&rdquo;</p><p class="src" style="margin-top:8px">The survey records no trade restriction for this item. <b>Read that as unrecorded, not as tradeable</b> &mdash; it may be No Drop and unnoted. One screenshot of the item description would settle it.</p><p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. <a href="../sources.html">How we source</a>.</p></div>
 </section>
 </main>
 <footer class="site-foot">
@@ -119,7 +123,7 @@
       <div><h4>Tools</h4><ul>
         <li><a href="../tools/character.html">Character sheet</a></li>
         <li><a href="../tools/index-search.html">The Index</a></li>
-        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
         <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>

@@ -6,116 +6,324 @@
 <title>Lower Guk — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#7FA84F;--accd:#4c6630;--acct:color-mix(in srgb, #7FA84F 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE LOWER GUK SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore sheet, in this zone's own ink. A
+   graticule is fixed behind the page, the sheet is translucent over it, and a
+   neatline with an inner rule frames the whole thing.
+
+   Everything here is self-contained: this page never loads assets/site.css.
+   Token names are prefixed --lg- because build3.py appends site.css's :root
+   AFTER this block, and an unprefixed --mut or --txt would be silently
+   overwritten by it. --acc, --accd and --acct are deliberately NOT prefixed:
+   the injected chrome and the injected floor plan read them, and site.css does
+   not define them.
+
+   Contrast, computed against the composited ground rather than eyeballed. The
+   lightest ground the page can produce is a graticule crossing under the
+   lamplight seen through the sheet, #1D180E: ink 14.78, txt 12.25, mut 7.70,
+   dim 5.55, accent 6.41, warn 5.16, brass 7.98, ok 5.91. On the panel #2A2318
+   the same list reads 12.99 / 10.76 / 6.77 / 4.88 / 5.63 / 4.53 / 7.01 / 5.20,
+   and on an accent-tinted hover row #242213 it reads 13.38 / 11.09 / 6.97 /
+   5.03 / 5.81 / 4.67 / 5.82 / 5.36. This zone's accent clears AA as text on all
+   three, so it is used unlifted and --acct carries the same value. */
+:root{
+  --acc:#7FA84F;--accd:#4c6630;--acct:#7FA84F;
+  --lg-g:#120E08;          /* the plotting table */
+  --lg-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --lg-ink:#F2EADA;--lg-txt:#DFD6C4;--lg-mut:#B5AA95;--lg-dim:#9A8F7C;
+  --lg-warn:#D46C64;--lg-brass:#C9922E;--lg-brass-t:#D9A63F;--lg-ok:#5FA37E;
+  --lg-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --lg-r2:#7A6950;         /* a boundary that carries meaning */
+  /* One type scale. Anything not on it is a bug. */
+  --lg-2xs:10px;--lg-xs:11.5px;--lg-sm:13.5px;--lg-base:15.5px;--lg-md:18.5px;
+  --lg-lg:22px;
+  --lg-h2:clamp(24px,3.6vw,36px);--lg-h1:clamp(38px,6.6vw,74px);
+  --lg-rad:4px;
+  /* And one spacing scale, for the same reason. The two clamp() gutters below
+     are responsive measurements rather than steps and stay as they are. */
+  --lg-s1:4px;--lg-s2:8px;--lg-s3:12px;--lg-s4:16px;
+  --lg-s5:24px;--lg-s6:32px;--lg-s7:48px;--lg-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--lg-g)}
+body{margin:0;background:transparent;color:var(--lg-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--lg-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint on a
+   document carrying a 1,000px drawing.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast — with one period
+   only two rules can ever coincide. And every stop terminates in
+   rgba(228,210,174,0) rather than the keyword transparent, because older
+   WebKit premultiplies transparent as transparent BLACK and draws a grey seam
+   down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens — so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(127,168,79,.045) 0%, rgba(127,168,79,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--lg-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--lg-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--lg-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--lg-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is the single change that makes a column of figures read as instrument
+   output rather than as a web table. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--lg-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--lg-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--lg-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--lg-s2);
+  text-wrap:balance;color:var(--lg-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--lg-lg);letter-spacing:.03em;margin:var(--lg-s5) 0 var(--lg-s2);color:var(--lg-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--lg-mut);font-size:var(--lg-md);margin:0 0 var(--lg-s5);max-width:60ch}
+.cm{color:var(--lg-dim);font-size:var(--lg-sm);line-height:1.6;margin:var(--lg-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--lg-r1);padding-left:var(--lg-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--lg-s7) 0 var(--lg-s5);margin-bottom:var(--lg-s2);
+  border-bottom:1px solid var(--lg-r2)}
+.eyebrow{font-size:var(--lg-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--lg-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--lg-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--lg-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--lg-md);
+  color:var(--lg-mut);letter-spacing:.02em;margin:var(--lg-s2) 0 var(--lg-s3);
+  text-transform:uppercase}
+/* THE DECK. Who the zone is for, what to come for, and what it costs to be
+   wrong here — above the first chart rather than reverse-engineered from
+   tables. */
+.deck{color:var(--lg-txt);margin:0 0 var(--lg-s5);max-width:66ch}
+.deck strong{color:var(--lg-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--lg-r1);border-left:1px solid var(--lg-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--lg-p);padding:var(--lg-s3);
+  border-right:1px solid var(--lg-r1);border-bottom:1px solid var(--lg-r1)}
+.cell dt{font-size:var(--lg-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--lg-dim);margin:0 0 var(--lg-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--lg-lg);
+  font-weight:600;color:var(--lg-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--lg-xs);font-weight:400;
+  color:var(--lg-mut);display:block;letter-spacing:0}
+.jump{margin:var(--lg-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--lg-s1) var(--lg-s4);font-size:var(--lg-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--lg-mut);text-decoration:none;border-bottom:1px solid var(--lg-r1)}
+.jump a:hover{color:var(--lg-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column
+   — a rail the eye reads as a plate before it reads a word. The kicker names
+   what the section is MADE OF; numbered headings are a generated-site tell and
+   are not coming back. Below the breakpoint the kicker sits inline. */
+section{margin-top:var(--lg-s7);position:relative}
+.kick{font-size:var(--lg-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--lg-dim);margin:0 0 var(--lg-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--lg-r2);padding-left:var(--lg-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--lg-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--lg-sm);
+  border-top:2px solid var(--lg-brass)}
+th{font-size:var(--lg-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--lg-mut);
+  text-align:left;padding:var(--lg-s2) var(--lg-s3) var(--lg-s2) 0;background:none;
+  border-bottom:1px solid var(--lg-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--lg-s3) var(--lg-s3) var(--lg-s3) 0;border-bottom:1px solid var(--lg-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(127,168,79,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--lg-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--lg-sm);text-align:right;white-space:nowrap;color:var(--lg-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--lg-base);font-weight:600;
+  letter-spacing:.02em;color:var(--lg-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--lg-base);font-weight:600;
+  letter-spacing:.02em;color:var(--lg-ink)}
+.cls{font-size:var(--lg-xs);color:var(--lg-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--lg-ok)}
+.st{font-size:var(--lg-xs);color:var(--lg-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--lg-sm);color:var(--lg-mut)}
+.tag{font-size:var(--lg-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--lg-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--lg-warn)}
+/* The tier mark. Styling an existing mark is not the same as grading a plate:
+   the surveys stay deliberately ungraded. */
+.tier{font-size:var(--lg-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--lg-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--lg-base);
+  letter-spacing:.02em;color:var(--lg-ink);padding:var(--lg-s3) var(--lg-s5) var(--lg-s3) 0;
+  border-bottom:1px solid var(--lg-r1)}
+.key dd{margin:0;font-size:var(--lg-sm);color:var(--lg-mut);padding:var(--lg-s3) 0;
+  border-bottom:1px solid var(--lg-r1)}
+.key strong{color:var(--lg-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not a stack of identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--lg-s5) 0 0;padding:0 0 0 var(--lg-s5);
+  border-left:2px solid var(--lg-warn);max-width:74ch}
+ul.hz li{padding:var(--lg-s4) 0;border-top:1px solid var(--lg-r1);color:var(--lg-mut);
+  font-size:var(--lg-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--lg-base);
+  color:var(--lg-warn);margin-bottom:var(--lg-s1)}
+ul.hz strong{color:var(--lg-ink)}
+
+.note{border-left:1px solid var(--lg-r1);padding:var(--lg-s1) 0 var(--lg-s1) var(--lg-s4);
+  margin:var(--lg-s5) 0 0;color:var(--lg-mut);font-size:var(--lg-sm);max-width:68ch}
+.note strong{color:var(--lg-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--lg-s8);padding-top:var(--lg-s5);border-top:1px solid var(--lg-r2);
+  color:var(--lg-mut);font-size:var(--lg-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--lg-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--lg-dim);margin:var(--lg-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one
+   step higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .fp-wrap{border-radius:var(--lg-rad)}
+body .ph-note{margin:0 0 var(--lg-s4);padding:var(--lg-s3) var(--lg-s4);
+  border-left:3px solid var(--lg-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--lg-rad);color:var(--lg-mut);font-size:var(--lg-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--lg-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* One heading level, one rule. The generators set their own h2 size, which
+   rendered the first and largest heading a reader meets at 28px against 36px
+   everywhere else, with four times the tracking. */
+body .meas,body .fplan{margin-top:var(--lg-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--lg-h2);letter-spacing:.005em;line-height:1}
+body .meas table{border-top:2px solid var(--lg-brass)}
+body .meas td{border-bottom:1px solid var(--lg-r1)}
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+/* THE SPINE RAIL MUST NOT HAVE HOLES AT THE ENDS. The injected sections carry
+   no kicker of their own and their generators are not this file's to edit, so
+   the label is set here, in the same register as the authored four. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--lg-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--lg-dim);display:block;margin:0 0 var(--lg-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 06 · Innothule Swamp, Antonica</p>
-  <h1>Lower Guk</h1>
-  <p class="subtitle">Two warring sides, a clan ladder that tells you every level, and the best loot in the bracket</p>
+  <p class="eyebrow">Dungeon survey &middot; from Upper Guk</p>
+  <div class="title"><h1>Lower Guk</h1><span class="leader"></span><span class="plateno">06</span></div>
+  <p class="subtitle">Two warring sides, and a clan ladder that cons the whole zone by name</p>
+  <p class="deck">Levels run 24 to 49, and a froglok&rsquo;s clan name gives you its band before you target it. Come for the loot &mdash; the Flowing Black Silk Sash, the Mithril Two-Handed Sword and the Crown of the Froglok Kings are the best in the bracket &mdash; and not for the levelling, since the experience modifier is @@ZEM_RANK@@. <strong>Invisibility is two spells and neither is safe.</strong> Everything down to the measured section is read rather than measured.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>gukbottom</dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>24&ndash;49</dd></div>
     <div class="cell"><dt>ZEM</dt><dd>86<small>115% — was 80</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>9:28<small>corrected 10 Jul</small></dd></div>
-    <div class="cell"><dt>Succor</dt><dd>1197, &minus;217</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Upper Guk<small>4 entrances</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>9:28<small>disputed — the wiki now says 11:00, and the 28 Jul patch lowered it</small></dd></div>
+    <div class="cell"><dt>Minimum level</dt><dd>5<small>to zone in</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>1197, &minus;217<small>between Bedroom and Waterfall</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Upper Guk<small>four entrances, one one-way out</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
-
-
-
+<main>
 
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>The best loot in the bracket.</b> Flowing Black Silk Sash at Haste +21% <span class="tier t5" title="Classic percentage haste. Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat.">T5</span>, the Mithril Two-Handed Sword at +31%, and the Crown of the Froglok Kings.</li><li><b>Two warring sides that overlap in the middle.</b> Dead side runs north, live side south, and the band where they interleave is why people get lost here.</li><li><b>A low experience modifier.</b> ZEM 86, which it shares with Nagafen&rsquo;s Lair and the Plane of Hate; only the Plane of Fear is lower at 82.5. You come for the loot, not the levelling.</li><li><b>Invisibility is two spells and neither is safe.</b> Dead side holds living creatures that see through Invisibility versus Undead; live side gets undead from trains.</li></ul>
-</section>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede"><strong>Dead side runs north, live side runs south, and they overlap in the middle.</strong> The band where they interleave is real rather than a drawing error, and it is why people get lost here. A Y climbing past 800 is taking you into dead side and away from every exit.</p>
+  <dl class="key">
+    <dt>Three jail cells in a maze room</dt><dd>The Jail Room, the live maze&rsquo;s one reliable landmark</dd>
+    <dt>A big room full of people buffing</dt><dd>The Bedroom, the dead-side staging point</dd>
+    <dt>A cauldron, mushrooms, a pit and a ladder</dt><dd>The Elder Room. <strong>Raster of Guk hides in the upper alcove</strong>, and the pit trap here can kill you &mdash; though falling in gets you a clean solo fight with the Minotaur Elder</dd>
+    <dt>Cages with froglok slaves in them</dt><dd>The Executioner Room. He stands on the central platform</dd>
+    <dt>A waterfall, and nothing attacking you</dt><dd>The Waterfall Room. <strong>The Scepter of Sorrows is on the floor</strong></dd>
+    <dt>A three-storey keep</dt><dd>The Live Keep. Roof and bridge Vis and Wan, floor 2 Zol, Yun and the Priest, floor 3 the Crusader</dd>
+    <dt>An eyeball in a room with four ways out</dt><dd>The Evil Eye, and the live-side hub: keep, jail, noble and elder all lead from it</dd>
+    <dt>The two crossings</dt><dd>The Elder Room and the bridge are the only places to cross between the sides. <strong>Live side</strong> is knights and shamans, with more wanderers and the maze. <strong>Dead side</strong> is knights and wizards, busier because there is no faction cost, and undead throughout &mdash; a gift to classes with undead specialisations</dd>
+    <dt>Two safe spots</dt><dd>The tunnel beneath the GIB Room, called <strong>Safe Hall</strong>. And a sharp L turn just above &ldquo;C&rdquo; on the bottom floor that <strong>no wanderer visits</strong>, where people regroup and even bind</dd>
+  </dl>
+  <p class="cm">Four ways in, and one way out nobody plans to use. Three Upper Guk entrances land close together on dead side, two of them needing a short swim; the fourth and deepest is the live side entrance. <strong>Behind the King&rsquo;s Room is a one-way exit</strong> to Upper Guk beside the Innothule entrance &mdash; faster than evacuating, but it puts you past the toughest mob in the zone.</p>
 
-<section>
-  <h2><span class="num">02</span>Know where you are</h2>
-  <p class="lede"><b>Dead side runs north, live side runs south, and they overlap in the middle.</b> The band where they interleave is real rather than a drawing error, and it is why people get lost here. The Elder Room and the bridge are the two places you can cross between them.</p>
-  <div class="scroller"><table>
-    <thead><tr><th>What you see</th><th>Where you are</th></tr></thead>
-    <tbody><tr><td class="nmob">Three jail cells in a maze room</td><td>The Jail Room — the maze's one reliable landmark</td></tr><tr><td class="nmob">A big room full of people buffing</td><td>The Bedroom, the dead-side staging point</td></tr><tr><td class="nmob">A cauldron, mushrooms, a pit and a ladder</td><td>The Elder Room. <strong>Raster of Guk hides in the upper alcove</strong></td></tr><tr><td class="nmob">Cages with froglok slaves in them</td><td>The Executioner Room — he stands on the central platform</td></tr><tr><td class="nmob">A waterfall, and nothing attacking you</td><td>The Waterfall Room. <strong>The Scepter of Sorrows is on the floor</strong></td></tr><tr><td class="nmob">A three-storey keep</td><td>The Live Keep. Roof and bridge Vis/Wan, floor 2 Zol/Yun and the Priest, floor 3 the Crusader</td></tr><tr><td class="nmob">Your Y is climbing past 800</td><td>You are heading into dead side and away from every exit</td></tr><tr><td class="nmob">Wrong invisibility</td><td>Everywhere</td></tr><tr><td class="nmob">See-invis named</td><td>Both sides</td></tr><tr><td class="nmob">Wizards</td><td>Dead side only</td></tr><tr><td class="nmob">Shamans</td><td>Live side</td></tr><tr><td class="nmob">Froglok faction</td><td>Live side</td></tr><tr><td class="nmob">Distance from exits</td><td>Dead side</td></tr><tr><td class="nmob">The Elder Room pit trap</td><td>Live side</td></tr><tr><td class="nmob">Lay on Hands</td><td>King &amp; Crusader</td></tr></tbody>
-  </table></div>
-</section>
-
-<section>
-  <h2><span class="num">03</span>Reading a froglok</h2>
-  <p class="lede">A froglok's clan name gives you its level. Learn the ladder and you can con the whole zone by name. Every melee clan has a caster counterpart of matching difficulty.</p>
+  <h3>Reading a froglok</h3>
+  <p class="cm">The clan name gives the level band, and every melee clan has a caster counterpart of matching difficulty. Learn the ladder and you can con the zone by name.</p>
   <div class="scroller">
   <table>
-    <thead><tr><th>Rank</th><th>Melee clan</th><th>Caster clan</th><th>Level band</th></tr></thead>
+    <thead><tr><th class="lv">Rank</th><th>Melee clan</th><th>Caster clan</th><th>Level band</th></tr></thead>
     <tbody>
       <tr><td class="lv">1</td><td class="nmob">Guk</td><td class="nmob">Guk</td><td class="src"><strong>45&ndash;49</strong> — the king's and the lord's guards</td></tr>
       <tr><td class="lv">2</td><td class="nmob">Bok</td><td class="nmob">Jin</td><td class="src">42&ndash;46</td></tr>
@@ -127,49 +335,42 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Kill wizards first</strong> — they nuke hard and have few hit points — then shamans, then knights, then pets. Dead side mobs can also ghoulroot.
-    <br><br><span class="tier t5" title="Classic EverQuest text. Legends mobs run three classes at once.">T5</span>
-    <strong>Inherited, and wrong here:</strong> the classic guides say Lower Guk has
-    <em>no warriors, only knights, shamans and wizards</em>. Legends mobs are multiclass, and the
-    roster in section 05 lists WAR on froglok after froglok. Read the kill order as a priority
-    among the kits a mob is running, not as a statement about what it is.</div>
+  <p class="cm"><span class="tier t5" title="Classic EverQuest text. Legends mobs run three classes at once.">T5</span> <strong>Inherited, and wrong here:</strong> the classic guides say Lower Guk has <em>no warriors, only knights, shamans and wizards</em>. Legends mobs are multiclass and the roster below lists WAR on froglok after froglok. Read the kill order as a priority among the kits a mob is running, not as a statement about what it is.</p>
 </section>
 
 <section>
-  <h2><span class="num">04</span>The two sides</h2>
-  <div class="camps">
-    <div class="camp"><p class="band">Live &middot; 24&ndash;49</p><h4>Frogloks</h4>
-      <p>Knights and shamans. <strong>Hunting here seriously damages froglok faction</strong>, which many players want intact to travel Upper Guk safely.</p>
-      <p><strong>More wanderers than dead side</strong>, and the maze. If you lose faction by accident, killing undead frogloks raises it back.</p></div>
-    <div class="camp"><p class="band">Dead &middot; 24&ndash;49</p><h4>Froglok ghouls</h4>
-      <p>Knights and wizards. Busier, because there is no faction cost. <strong>Undead — a gift for classes with undead specialisations.</strong></p>
-      <p><strong>Most of it is very far from any exit.</strong> Bring an evacuator.</p></div>
-    <div class="camp"><p class="band">Both</p><h4>The maze is the defence</h4>
-      <p>The wiki's assessment: the zone's main defence is how confusing it is, plus the lack of ready access to the deep areas.</p>
-      <p><strong>Hug the right wall through the live maze</strong> to the jail room, then cut straight through to the evil eye.</p></div>
-  </div>
-  <div class="note danger"><strong>Invisibility is unreliable here, and the reason is subtle.</strong> The live/dead split is <em>not absolute</em>. <strong>Dead side holds many living creatures that see straight through Invisibility versus Undead</strong> — the vampire bats most of all, and a Deadly Black Widow waits in the tunnel by the Bedroom specifically to catch people running the wrong one. Live side occasionally holds undead from trains. Several mobs see through ordinary invisibility too: <strong>the Evil Eye, the Huge Water Elemental, one of the basalt gargoyles</strong>, and every mob flagged undead.</div>
-  <div class="note"><strong>Four ways in, one way out that nobody plans to use.</strong> Three Upper Guk entrances land close together on dead side — two need a short swim, the dry one is nearest Guk's front entrance. The fourth, deepest into Upper Guk, is the live side entrance. <strong>Behind the King's Room there is a one-way zone exit</strong> to Upper Guk beside the Innothule entrance: faster than evacuating, but it puts you past the toughest mob in the zone.</div>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>Invisibility is two spells and neither is safe</b> <strong>Dead side holds living creatures that see through Invisibility versus Undead</strong> — the vampire bats above all, and a Deadly Black Widow waits in the Bedroom tunnel specifically to catch people running the wrong one. Live side gets undead from trains. Seeing through ordinary invisibility: the Evil Eye, the Huge Water Elemental, one basalt gargoyle, and every mob flagged undead.</li>
+    <li><b>Kill order</b> <strong>Wizards first, then shamans, then knights, then pets.</strong> Wizards nuke hard with few hit points and are dead-side only; a Kor ghoul wizard in the Arch Magi area casts a <strong>600-point nuke</strong>. Shamans carry pets and the nastier DoTs, Scourge and Venom of the Snake. Dead side mobs can also ghoulroot.</li>
+    <li><b>Live side costs you froglok faction</b> That faction is what makes Upper Guk and much of live side safe to walk. <strong>Killing undead frogloks raises it back</strong> if you lose it by accident.</li>
+    <li><b>Dead side is a long way from any exit</b> Most of it sits far past the entrances, and the wiki is blunt about it: bring an evacuator.</li>
+    <li><b>The live maze</b> The wiki calls it deadlier than Cazic Thule&rsquo;s, and rates the zone&rsquo;s confusion, plus the lack of ready access to the deep areas, as its main defence. <strong>Hug the right wall to the Jail Room, then cut straight through to the Evil Eye.</strong></li>
+  </ul>
 </section>
 
 <section>
-  <h2><span class="num">05</span>Named roster</h2>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Two rosters, because the sides do not share a population.</p>
+
   <h3>Live side</h3>
   <div class="scroller">
   <table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Class</th><th>Notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">the froglok king</td><td class="loc">King Room<br><span style="color:#9C958E">PH at &minus;105, 22</span></td><td class="lv">47</td><td class="cls">FROGLOK<br>PAL</td><td class="src"><strong>A ton of hit points and Lay on Hands.</strong> Four guards including Boks and Kors. <strong>Placeholder is a froglok guk shaman at 3%.</strong> The zone exit behind him is the escape hatch.<span class="tag warn">lay hands</span></td></tr>
-      <tr><td class="nmob">a froglok tactician</td><td class="loc">&minus;76, &minus;22</td><td class="lv">45</td><td class="cls">FROGLOK<br>WIZ</td><td class="src">25%, <strong>28-minute timer</strong> (the NPC record's own figure, unchanged by the 10 July edit). Casts level 44 wizard spells. Spawns from one of the king's guards.</td></tr>
-      <tr><td class="nmob">a froglok herbalist</td><td class="loc">18, &minus;260</td><td class="lv">43</td><td class="cls">FROGLOK<br>SHM</td><td class="src">25%. <strong>Drowsy, DoTs and ice attacks — keep magic resist up.</strong> Has a shaman pet. Shares his room with a Dar-level mob.</td></tr>
-      <tr><td class="nmob">a froglok crusader</td><td class="loc">231, &minus;595</td><td class="lv">42</td><td class="cls">FROGLOK<br>PAL</td><td class="src"><strong>Lays on Hands when low.</strong> Bottom floor of the Live Keep. Placeholder is a dar or zol knight. The wiki recommends a solid level-42 group.</td></tr>
+      <tr><td class="nmob">the froglok king</td><td class="loc">King Room<br><span style="color:#9A8F7C">PH at &minus;105, 22</span></td><td class="lv">47</td><td class="cls">FROGLOK<br>PAL</td><td class="src"><strong>A ton of hit points and Lay on Hands.</strong> Four guards including Boks and Kors. <strong>Placeholder is a froglok guk shaman at 3%.</strong> The zone exit behind him is the escape hatch.<span class="tag warn">lay hands</span></td></tr>
+      <tr><td class="nmob">a froglok tactician</td><td class="loc">&minus;76, &minus;22</td><td class="lv">45</td><td class="cls">FROGLOK<br>WIZ</td><td class="src">25%, <strong>28-minute timer</strong>, the NPC record's own figure. Casts level 44 wizard spells. Spawns from one of the king's guards.</td></tr>
+      <tr><td class="nmob">a froglok herbalist</td><td class="loc">18, &minus;260</td><td class="lv">43</td><td class="cls">FROGLOK<br>SHM</td><td class="src">25%. <strong>Drowsy, DoTs and ice attacks — keep magic resist up.</strong> Has a pet. Shares his room with a Dar-level mob.</td></tr>
+      <tr><td class="nmob">a froglok crusader</td><td class="loc">231, &minus;595</td><td class="lv">42</td><td class="cls">FROGLOK<br>PAL</td><td class="src"><strong>Lays on Hands when low.</strong> Bottom floor of the Live Keep. Placeholder is a dar or zol knight.</td></tr>
       <tr><td class="nmob">A Froglok Noble</td><td class="loc">375, &minus;150</td><td class="lv">39&ndash;40</td><td class="cls">FROGLOK<br>ENC</td><td class="src">50%. Alone on the eastern side of the northern plank; <strong>placeholder is a Yun shaman.</strong> His room is the gateway toward the king.</td></tr>
-      <tr><td class="nmob">A Froglok Yun Priest</td><td class="loc">207, &minus;431</td><td class="lv">38</td><td class="cls">FROGLOK<br>CLR</td><td class="src"><strong>17%</strong> — the lowest rate on live side. Middle floor of the Live Keep. A level-38 group handles him.</td></tr>
-      <tr><td class="nmob">a huge water elemental</td><td class="loc">103, &minus;85</td><td class="lv">35&ndash;39</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src"><strong>Sees invisibility, attacks regardless of froglok faction, and the nearby Zols assist him.</strong> Drops nothing. The wiki's read: he is a deterrent to explorers.<span class="tag warn">see invis</span></td></tr>
-      <tr><td class="nmob">an Evil Eye</td><td class="loc">625, &minus;445</td><td class="lv">34&ndash;36</td><td class="cls">EVIL EYE<br>WIZ</td><td class="src"><strong>Sees invisibility.</strong> Roughly 80% up. Drops the Bag of Sewn Evil-Eye; <strong>used to drop the Manastone before its removal.</strong> His room is the live-side hub — keep, jail, noble and elder all lead from it.</td></tr>
+      <tr><td class="nmob">A Froglok Yun Priest</td><td class="loc">207, &minus;431</td><td class="lv">38</td><td class="cls">FROGLOK<br>CLR</td><td class="src"><strong>17%</strong> — the lowest rate on live side. Middle floor of the Live Keep.</td></tr>
+      <tr><td class="nmob">a huge water elemental</td><td class="loc">103, &minus;85</td><td class="lv">35&ndash;39</td><td class="cls">ELEMENTAL<br>WAR</td><td class="src"><strong>Sees invisibility, attacks regardless of froglok faction, and the nearby Zols assist him.</strong> Drops nothing — the wiki reads him as a deterrent to explorers.<span class="tag warn">see invis</span></td></tr>
+      <tr><td class="nmob">an Evil Eye</td><td class="loc">625, &minus;445</td><td class="lv">34&ndash;36</td><td class="cls">EVIL EYE<br>WIZ</td><td class="src"><strong>Sees invisibility.</strong> Roughly 80% up. <strong>Used to drop the Manastone before its removal.</strong></td></tr>
       <tr><td class="nmob">a minotaur patriarch</td><td class="loc">592, 80</td><td class="lv">34</td><td class="cls">MINOTAUR<br>RNG</td><td class="src">30%. <strong>Camp him from the Three Minotaur Room</strong> or passers-by will take him.</td></tr>
-      <tr><td class="nmob">A Minotaur Elder</td><td class="loc">930, &minus;295</td><td class="lv">33</td><td class="cls">MINOTAUR<br>CLR</td><td class="src">Placeholder is a greater minotaur. <strong>Spawns inside the pit, at the bottom of a ladder in the mushrooms.</strong> A pit trap in the room can kill you — but if you fall in, you fight only the elder with nothing joining.</td></tr>
-      <tr><td class="nmob">Slaythe the Slayer</td><td class="loc"><span style="color:#D46C64">unrecorded</span></td><td class="lv">&mdash;</td><td class="cls">FROGLOK<br>?</td><td class="src"><strong>A dead end just north of the Jail Room — not in the room itself.</strong> Drops Broken Bow Part B.</td></tr>
+      <tr><td class="nmob">A Minotaur Elder</td><td class="loc">930, &minus;295</td><td class="lv">33</td><td class="cls">MINOTAUR<br>CLR</td><td class="src">Placeholder is a greater minotaur. <strong>Spawns inside the pit, at the bottom of a ladder in the mushrooms.</strong></td></tr>
+      <tr><td class="nmob">Slaythe the Slayer</td><td class="loc"><span style="color:#D46C64">unrecorded</span></td><td class="lv">&mdash;</td><td class="cls">FROGLOK<br>?</td><td class="src"><strong>A dead end just north of the Jail Room — not in the room itself.</strong></td></tr>
       <tr><td class="nmob">Raster of Guk</td><td class="loc"><span style="color:#D46C64">unrecorded</span></td><td class="lv">&mdash;</td><td class="cls">FROGLOK<br>MNK</td><td class="src"><strong>Extremely rare.</strong> Elder Room, upper alcove next to the cauldron. Drops The Idol (Idol of Zan Fi).<span class="tag warn">very rare</span></td></tr>
     </tbody>
   </table>
@@ -178,31 +379,32 @@ footer h3{margin-top:0}
   <h3>Dead side</h3>
   <div class="scroller">
   <table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Class</th><th>Notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">the ghoul lord</td><td class="loc">guards at<br>1558, &minus;749</td><td class="lv">~47</td><td class="cls">GHOUL<br>SHD</td><td class="src"><strong>The toughest fight on dead side.</strong> Spawns with Bok and Guk guards. Skull-Shaped Barbute (common) and the <strong>Short Sword of the Ykesha</strong> (rare).</td></tr>
-      <tr><td class="nmob">the ghoul arch magi</td><td class="loc">PH at<br>1182, &minus;834</td><td class="lv">~44</td><td class="cls">GHOUL<br>WIZ</td><td class="src"><strong>Rare, guarded by two Dars, high magic resist and a lot of hit points.</strong> Placeholder is a jin ghoul wizard. <strong>A Kor ghoul wizard in this area casts a 600-point nuke.</strong><span class="tag warn">600 DD</span></td></tr>
+      <tr><td class="nmob">the ghoul lord</td><td class="loc">guards at<br>1558, &minus;749</td><td class="lv">~47</td><td class="cls">GHOUL<br>SHD</td><td class="src"><strong>The toughest fight on dead side.</strong> Spawns with Bok and Guk guards.</td></tr>
+      <tr><td class="nmob">the ghoul arch magi</td><td class="loc">PH at<br>1182, &minus;834</td><td class="lv">~44</td><td class="cls">GHOUL<br>WIZ</td><td class="src"><strong>Rare, guarded by two Dars, high magic resist and a lot of hit points.</strong> Placeholder is a jin ghoul wizard.<span class="tag warn">600 DD</span></td></tr>
       <tr><td class="nmob">a ghoul sentinel</td><td class="loc">845, &minus;1085, &minus;206</td><td class="lv">42</td><td class="cls">GHOUL<br>WAR</td><td class="src">25%. <strong>Alone in a hidden hallway south of the Frenzy room</strong> — the marked triple spawn on the map is <em>not</em> him. A Wan roamer spawns beside him.</td></tr>
       <tr><td class="nmob">a frenzied ghoul</td><td class="loc"><span style="color:#D46C64">3 spots, Frenzy room</span></td><td class="lv">42</td><td class="cls">GHOUL<br>WAR</td><td class="src"><strong>8%.</strong> Hits very hard and very fast, especially wearing the sash. <strong>The Flowing Black Silk Sash camp.</strong> The three spots can also give bloodthirsty ghouls or Dars.<span class="tag warn">FBSS</span></td></tr>
       <tr><td class="nmob">a reanimated hand</td><td class="loc">1126, &minus;688</td><td class="lv">39&ndash;41</td><td class="cls">HAND<br>WIZ</td><td class="src"><strong>100% spawn</strong>, above the water in the Hand Room, with a Dar or Zol guard. Wizard Rod on the ground here.</td></tr>
       <tr><td class="nmob">a ghoul sage</td><td class="loc">550, &minus;220</td><td class="lv">37</td><td class="cls">GHOUL<br>WIZ</td><td class="src">34%. <strong>Assisted by spawns behind a secret wall.</strong> The room is thick with wizards. The scribe spawns here too.</td></tr>
       <tr><td class="nmob">a ghoul cavalier</td><td class="loc">578, &minus;609</td><td class="lv">36</td><td class="cls">GHOUL<br>SHD</td><td class="src">75%. <strong>Harm Touch and summons a pet.</strong> Dead Tower.</td></tr>
-      <tr><td class="nmob">a ghoul supplier</td><td class="loc">638, &minus;774</td><td class="lv">36</td><td class="cls">GHOUL<br>WAR</td><td class="src">25%, <strong>9m 27s respawn</strong> — the figure updated alongside the zone timer. Store Room. Placeholder is a wan ghoul knight.</td></tr>
-      <tr><td class="nmob">a ghoul assassin</td><td class="loc">620, &minus;754</td><td class="lv">35</td><td class="cls">GHOUL<br>ROG</td><td class="src">20%. <strong>Sees through hide and sneak.</strong> Same room as the supplier. Mask of Deception and the Serrated Bone Dirk.</td></tr>
-      <tr><td class="nmob">a ghoul executioner</td><td class="loc">622, &minus;890</td><td class="lv">35</td><td class="cls">GHOUL<br>WAR</td><td class="src">75%. <strong>On the platform in the middle of the room</strong> — recognisable by the cages holding froglok slaves. The Executioners Axe camp.</td></tr>
-      <tr><td class="nmob">a ghoul savant</td><td class="loc">581, &minus;603</td><td class="lv">35</td><td class="cls">GHOUL<br>CLR</td><td class="src"><strong>100% spawn.</strong> Middle level of the Dead Tower, beside the stairway down. Carries the AC 25 chestplate.</td></tr>
+      <tr><td class="nmob">a ghoul supplier</td><td class="loc">638, &minus;774</td><td class="lv">36</td><td class="cls">GHOUL<br>WAR</td><td class="src">25%, <strong>9m 27s respawn</strong> — updated alongside the zone timer. Store Room. Placeholder is a wan ghoul knight.</td></tr>
+      <tr><td class="nmob">a ghoul assassin</td><td class="loc">620, &minus;754</td><td class="lv">35</td><td class="cls">GHOUL<br>ROG</td><td class="src">20%. <strong>Sees through hide and sneak.</strong> Same room as the supplier.</td></tr>
+      <tr><td class="nmob">a ghoul executioner</td><td class="loc">622, &minus;890</td><td class="lv">35</td><td class="cls">GHOUL<br>WAR</td><td class="src">75%. <strong>On the platform in the middle of the room</strong>, recognisable by the cages holding froglok slaves.</td></tr>
+      <tr><td class="nmob">a ghoul savant</td><td class="loc">581, &minus;603</td><td class="lv">35</td><td class="cls">GHOUL<br>CLR</td><td class="src"><strong>100% spawn.</strong> Middle level of the Dead Tower, beside the stairway down.</td></tr>
       <tr><td class="nmob">a ghoul scribe</td><td class="loc">538, &minus;711</td><td class="lv">35</td><td class="cls">GHOUL<br>ENC</td><td class="src"><strong>14%</strong> — the lowest rate in the zone. Sage Room.</td></tr>
       <tr><td class="nmob">a ghoul ritualist</td><td class="loc">769, &minus;705</td><td class="lv">34</td><td class="cls">GHOUL<br>NEC</td><td class="src">25%. <strong>Spawns between two Tal wizards on the left of the Dead Tower.</strong> Has a pet. Normally three Tal wizards spawn here instead.</td></tr>
     </tbody>
   </table>
   </div>
-
-  
 </section>
 
 <section>
-  <h2><span class="num">06</span>Loot table</h2>
-  <p class="lede">Weapon lines read damage / delay. The wiki's own claim: <strong>"probably the most sought after items in the game for this level range."</strong> As of 29 July every roll is gated to your difficulty tier or better.</p>
+  <p class="kick">Three registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. As of 29 July every roll is gated to your difficulty tier or better. The wiki&rsquo;s own claim for this table: <strong>&ldquo;probably the most sought after items in the game for this level range.&rdquo;</strong></p>
+  <div class="note"><strong>Rare, common and uncommon are the wiki&rsquo;s words, not measured rates.</strong> No session in this zone has been parsed, so nothing here is a count.</div>
+
   <h3>The famous five</h3>
   <div class="scroller">
   <table>
@@ -216,9 +418,9 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>The king carries both a 31% haste two-hander and an AC 12 all-class crown</strong>, at 25% and 75% respectively — and the crown is the <em>common</em> drop. Between him and the frenzied ghoul's 21% sash, Lower Guk holds the two best haste items available at this level.</div>
+  <p class="cm">The king carries the 31% two-hander at 25% and the AC 12 all-class crown at 75%, so the crown is the <em>common</em> drop. Between him and the frenzied ghoul&rsquo;s sash, this zone holds the two best haste items at the level.</p>
 
-  <h3>Armour &amp; wearables</h3>
+  <h3>Armour and wearables</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
@@ -254,8 +456,9 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
+  <p class="cm">The Enameled Black Chestplate at AC 25 is the highest on the site so far, and it comes off <em>a ghoul savant</em>, a <strong>100% spawn</strong> on the Dead Tower&rsquo;s middle level. Rare on his table, but no placeholder gamble to reach him.</p>
 
-  <h3>Weapons &amp; the rest</h3>
+  <h3>Weapons and the rest</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
@@ -267,7 +470,7 @@ footer h3{margin-top:0}
       <tr><td class="it">Enameled Black Mace</td><td class="st">Primary / Secondary<br>1H Blunt 8 / 28</td><td class="st">&mdash;</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">a ghoul savant <em>(common)</em></td></tr>
       <tr><td class="it">Black Tome with Silver Runes</td><td class="st">Primary · focus</td><td class="st">INT +4 · <strong>MANA +30</strong><br>Burning Affliction II</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">a froglok tactician <em>(common)</em></td></tr>
       <tr><td class="it">Mithril Frog Totem</td><td class="st">Primary / Secondary</td><td class="st">AGI +5 · <strong>MANA +35</strong></td><td class="cls">CLR DRU BRD SHM</td><td class="src">a froglok herbalist <em>(common)</em></td></tr>
-      <tr><td class="it">The Idol</td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">WIS +3 · INT +3</td><td class="cls all">ALL · all races</td><td class="src">Raster of Guk <span class="tag warn">very rare</span></td></tr>
+      <tr><td class="it">The Idol</td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">WIS +3 · INT +3<br><span style="color:#B5AA95">also called the Idol of Zan Fi</span></td><td class="cls all">ALL · all races</td><td class="src">Raster of Guk <span class="tag warn">very rare</span></td></tr>
       <tr><td class="it">Bag of Sewn Evil-Eye</td><td class="st">Container</td><td class="st">8 slots · <strong>70% weight reduction</strong> · large capacity</td><td class="cls all">ALL</td><td class="src">an Evil Eye <em>(common)</em></td></tr>
       <tr><td class="it">Light Burlap Sack</td><td class="st">Container · lore</td><td class="st">8 slots · 65% weight reduction</td><td class="cls all">ALL</td><td class="src">a ghoul supplier <em>(common)</em></td></tr>
       <tr><td class="it">Scepter <em>(of Sorrows)</em></td><td class="st">Ground spawn · lore · no drop</td><td class="st">&mdash;</td><td class="cls">NEC only</td><td class="src">Waterfall Room floor</td></tr>
@@ -277,32 +480,14 @@ footer h3{margin-top:0}
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>The Enameled Black Chestplate at AC 25 is the highest in the project so far</strong>, and it comes off <em>a ghoul savant</em> — a <strong>100% spawn</strong> on the Dead Tower's middle level. Rare on his table, but no placeholder gamble to reach him.</div>
 </section>
 
-<section>
-  <h2><span class="num">07</span>Dangers</h2>
-  <div class="note danger"><strong>Invisibility is two spells and neither is safe.</strong> Dead side holds living creatures that see through Invisibility versus Undead — <strong>vampire bats above all, and a Deadly Black Widow that waits in the Bedroom tunnel specifically for people running the wrong one.</strong> Live side gets undead from trains. Independently see-invis: the <strong>Evil Eye</strong>, the <strong>Huge Water Elemental</strong>, one <strong>basalt gargoyle</strong>, and every mob flagged undead.</div>
-  <div class="note danger"><strong>Live side costs you froglok faction.</strong> That faction is what makes Upper Guk and much of live side safe to walk. If you lose it by accident, <strong>killing undead frogloks raises it back.</strong></div>
-  <div class="note danger"><strong>Dead side is a long way from any exit.</strong> The wiki is blunt: bring an evacuator. Most of it sits far past the entrances.</div>
-  <div class="note danger"><strong>Shamans and wizards are the whole problem.</strong> Shamans carry pets and the nastier DoTs — Scourge, Venom of the Snake. Wizards nuke hard with few hit points and are dead-side only. <strong>Kill wizards first, then shamans, then knights, then pets.</strong> A Kor ghoul wizard in the Arch Magi area casts a <strong>600-point nuke.</strong></div>
-  <div class="note danger"><strong>The live maze is deadlier than Cazic Thule's.</strong> The wiki says so directly. <strong>Hug the right wall to the Jail Room, then cut straight through to the Evil Eye</strong>, which is the hub for everything else. The Elder Room also has a <strong>pit trap</strong> that can kill you — though falling in gets you a clean solo fight with the elder.</div>
-  <div class="note"><strong>Two genuinely safe spots.</strong> The tunnel beneath the GIB Room is called <strong>Safe Hall</strong>. And just above "C" on the bottom floor there is a sharp L turn <strong>no wanderer visits</strong> — people regroup and even bind there.</div>
-</section>
+</main>
 
-<section>
-  <h2><span class="num">08</span>Getting there</h2>
-  <ul class="tight">
-    <li><strong>Upper Guk is the only adjacent zone, with four entrances down.</strong> Three land close together on dead side — two need a short swim, the dry one is nearest Guk's front entrance.</li>
-    <li><strong>The live side entrance is the deepest into Upper Guk</strong> and least used.</li>
-    <li><strong>Behind the King's Room is a one-way exit</strong> to Upper Guk beside the Innothule entrance. Faster than evacuating, but it runs you past the toughest mob in the zone.</li>
-    <li><strong>You must be level 5 to zone in.</strong></li>
-    <li>Succor and evacuate drop you at <code>1197, &minus;217</code>, the Upper Guk zone line between the Bedroom and the Waterfall.</li>
-  </ul>
-</section>
+<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-lowerguk">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 06 &middot; Lower Guk &middot; Innothule Swamp, Antonica &middot; floor derived from gukbottom.s3d &middot; north up, west left</p></footer>
 
-<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-lowerguk">Where each one came from, and what is still open</a>.</p></footer>
-
+</div>
 </div>
 </body>
 </html>

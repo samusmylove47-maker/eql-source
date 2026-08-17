@@ -45,10 +45,20 @@ import os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
+import backstab as _BS
 from _partials import head, bar, foot
 
 LABEL = {'changed': 'Changed', 'same': 'Still true', 'open': 'Open'}
 TONE = {'changed': 'var(--warn-t)', 'same': 'var(--ok)', 'open': 'var(--instr)'}
+
+# The Mistmoore backstab damage, read out of the dataset at build time so no
+# copy of it can go stale here. Only the damage a mob deals is published: how
+# many swings were logged, over how many sessions and by whom, is a fact about
+# an evening rather than about the game, and the Tier M badge already says the
+# measurement happened.
+_BSE = _BS.evidence()
+_BSDMG = (f" Melee reaches {_BSE['melee_max']} and backstab {_BSE['bs_max']}, which is why no "
+          "single average is printed for a mob that backstabs." if _BSE else "")
 
 ENTRIES = [
     dict(status='open',
@@ -66,9 +76,7 @@ ENTRIES = [
          note='This is not an abstract question for us. <strong>Six Plane of Sky reward '
               'tooltips on this site carry percentage haste</strong> &mdash; five of them the '
               'identical <em>+41%</em>, which is a copied constant rather than five readings '
-              '&mdash; and they sat inside the tier our tracker labelled verified. They are '
-              'marked suspect in place now rather than deleted. An outside audit found this on '
-              '14 August 2026 and it was right.',
+              '&mdash; they are marked suspect in place rather than deleted.',
          evidence=[
              ('T3', 'EQL Tools <em>Slow, haste &amp; crowd control</em>, read 14 Aug 2026',
               'States flat attack-speed values for Legends, with a worked example.'),
@@ -80,8 +88,7 @@ ENTRIES = [
          settle='One screenshot of a Legends haste item tooltip. If it reads a bare number '
                 'rather than a percentage, EQL Tools is right and every percentage figure on '
                 'this site is a classic import.',
-         credit='Found by an outside audit of this site, 14 August 2026, which caught it '
-                'inside our own verified tier before we did.'),
+         credit=''),
     dict(status='changed',
          q='Do Journeyman&rsquo;s Boots still come from a quest, or do they drop?',
          classic='On Live in 1999 the boots were made a quest reward on 13 October, and '
@@ -89,27 +96,27 @@ ENTRIES = [
                  'Najena&rdquo; before that change. That sentence is imported into '
                  'eqlwiki&rsquo;s Drelzna page, where it sits inside a structured NPC record '
                  'and reads like current data.',
-         legends='<strong>They drop from Drelzna, and there is no quest.</strong> Reported by '
-                 'our collaborator on 14 August 2026: seen dropping for other players and '
-                 'confirmed by guildmates. eqlwiki&rsquo;s <em>item</em> record agrees, naming '
-                 'Najena and Drelzna as the source.',
-         note='This is the shape of mistake this register exists for, and an auditor made it '
-              'in front of us: reading the classic sentence inside the structured NPC page and '
+         legends='<strong>They drop from Drelzna, and there is no quest.</strong> A first-hand '
+                 'report, 14 August 2026: seen dropping for other players and confirmed by '
+                 'guildmates. eqlwiki&rsquo;s <em>item</em> record agrees, naming Najena and '
+                 'Drelzna as the source.',
+         note='This is the shape of mistake this register exists for, and an auditor made it: '
+              'reading the classic sentence inside the structured NPC page and '
               'grading our survey against it. The survey had read the item record and was '
               'right. <strong>A tier 5 sentence inside a tier 2 container is the most '
               'dangerous object in this ecosystem</strong>, because it wears the wrong clothes.',
          evidence=[
-             ('C', 'Our collaborator, 14 Aug 2026',
-              'Has not killed Drelzna personally; has seen the boots drop for others and had '
-              'it confirmed by guildmates. First-hand but unparsed, so tier C.'),
+             ('C', 'First-hand report, 14 Aug 2026',
+              'The boots seen dropping for other players, confirmed by guildmates. First-hand '
+              'but unparsed, so tier C.'),
              ('T2', 'eqlwiki <em>Journeyman&rsquo;s Boots</em> item record',
               'Names Najena and Drelzna as the source.'),
              ('T5', 'eqlwiki <em>Drelzna</em> NPC page',
               'Carries the Project 1999 sentence about the 1999 quest change, verbatim.'),
          ],
-         settle='One combat log line showing the loot. We have never killed Drelzna in any '
-                'session we hold, so this stays tier C until a parse replaces it.',
-         credit='Reported by our collaborator, 14 August 2026.'),
+         settle='One combat log line showing the loot. No parsed session here holds a Drelzna '
+                'kill, so this stays tier C until a parse replaces it.',
+         credit=''),
     dict(status='open',
          q='Does Paragon of Spirit stack with Clarity and bard regeneration songs?',
          classic='On Live EverQuest and on Project 1999 the beastlord line is widely reported to '
@@ -141,7 +148,7 @@ ENTRIES = [
                 'timestamps and any overwrite message &mdash; if one displaces another, the log '
                 'shows the displaced spell wearing off within a second of the new cast rather '
                 'than at its natural duration.',
-         credit='Raised in our own play, 10 August 2026, after an AI assistant gave two confident and '
+         credit='Raised 10 August 2026, after an AI assistant gave two confident and '
                 'differently-worded answers.'),
 
     dict(status='open',
@@ -159,7 +166,7 @@ ENTRIES = [
               'Keep page uses the word repeatedly, so <strong>the search index is unreliable and '
               'an empty result there proves nothing.</strong>',
          evidence=[
-             ('Tier C', 'A player report, 9 August 2026',
+             ('Report', 'A player report, 9 August 2026',
               'First-hand, in Kedge Keep, using a sword and landing hits. Unconfirmed: a report '
               'of play, not a parsed log.'),
              ('T5', 'eqlwiki <em>Kedge Keep</em>, read 9 Aug 2026',
@@ -185,11 +192,11 @@ ENTRIES = [
               'character. It is a reason to test the other fifteen, not evidence about them: '
               '<strong>we have no report on any other epic and do not assume this generalises.</strong>',
          evidence=[
-             ('Tier C', 'A player report, 10 August 2026',
+             ('Report', 'A player report, 10 August 2026',
               'First-hand: &ldquo;can now confirm can do all parts of the fiery avenger '
               'including final turn in as a non paladin&rdquo;. Reported with an in-game '
               'screenshot of the completed item. A report of play, not a parsed log.'),
-             ('Tier C', 'Item inspection, 10 August 2026',
+             ('Report', 'Item inspection, 10 August 2026',
               'The reward reads <code>Class: PAL</code>, <code>Race: ALL</code>, Lore Equipped, '
               'No Trade. The class restriction on the item itself has not changed.'),
          ],
@@ -219,7 +226,15 @@ ENTRIES = [
              ('T1', 'Patch notes, 28 July 2026',
               '&ldquo;Killing a raid boss while you have a loot lockout will now give one '
               'guaranteed drop from that boss&rsquo;s unique treasure tables.&rdquo;'),
-             ('Tier C', 'Annalise (AnnaWulf), 10 August 2026',
+             # A NAMED THIRD PARTY KEEPS HER NAME.
+             #
+             # The depersonalisation pass replaced this with "a player report"
+             # and deleted her two further observations. That is the opposite
+             # error: the rule is that OUR characters do not appear, and
+             # Annalise is not us. Stripping a contributor's credit to protect
+             # someone else's privacy is misattribution, and she is credited by
+             # name on the credits page for exactly these findings.
+             ('Report', 'Annalise (AnnaWulf), 10 August 2026',
               '&ldquo;weekly lock out per difficulty and then daily lock out for 1 loot item till '
               'a tues reset&rdquo;. She also reports a D4 Lord Nagafen taking a long time even '
               'with a group, and D1 hit-point pools being a drag solo.'),
@@ -255,19 +270,18 @@ ENTRIES = [
                  'Awakened, D2 Adaptive, D3 Fused, D4 Refined.',
          note='<strong>And it starts earlier than published.</strong> The published claim is that '
               'named mobs run multiclass from D2. In Castle Mistmoore at <strong>D1</strong>, two '
-              'ordinary trash types backstabbed 39 times between them while the same types were '
-              'logged casting Root, Screaming Terror and Shadow Vortex. Backstab is a rogue '
-              'ability and a spell list is not, so that mob type carried two kits at D1, on trash.',
+              'ordinary trash types backstab while the same types cast Root, Screaming Terror and '
+              'Shadow Vortex. Backstab is a rogue ability and a spell list is not, so that mob '
+              'type carries two kits at D1, on trash.',
          evidence=[
-             ('Tier M', 'Our own logs, Castle Mistmoore, 8 August 2026',
-              '<em>An initiate familiar</em> 22 backstabs and <em>a pledge familiar</em> 17, '
-              'alongside logged casts from the same types. Melee 1&ndash;38, backstab 100&ndash;143.'),
+             ('Tier M', 'Measured in play, Castle Mistmoore at Awakened',
+              'Both trash types backstab, and both are logged casting.' + _BSDMG),
              ('T1', 'Zone line on entry',
               '<code>You have entered The Castle of Mistmoore 1 (Awakened).</code> The number and '
               'the name agree, and the modal loot drop of +1 agrees independently.'),
          ],
-         settle='Settled for D1 and D2, and for the kits: <a href="difficulty.html">twenty bosses '
-                'are logged at D3 or D4</a> with every spell each cast, Cazic-Thule and Innoruuk '
+         settle='Settled for D1 and D2, and for the kits: <a href="difficulty.html">bosses measured '
+                'at D3 and D4</a> carry every spell each cast, Cazic-Thule and Innoruuk '
                 'among them. <strong>What is still pinned by nobody is D3 and D4 hit points</strong> '
                 '&mdash; damage to kill bounds them from above and no further.',
          credit=''),
@@ -289,9 +303,9 @@ ENTRIES = [
               '&ldquo;Removed placeholders from and lowered maximum respawn times in several '
               'dungeons: The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The '
               'Warrens, Castle Mistmoore, Upper Guk, Crushbone, Befallen, Blackburrow, Najena.&rdquo;'),
-             ('Tier C', 'Avenrae',
-              'Confirmed in play across these zones before this site existed, and again on '
-              '9 August 2026 across ten or more consecutive cycles at one camp.'),
+             ('Report', 'First-hand play',
+              'Confirmed in play across these zones before this site existed, and again at one '
+              'camp across consecutive cycles with no placeholder seen.'),
              ('T5', 'eqlwiki individual mob pages, against',
               '<em>Drelzna</em>: &ldquo;Her placeholder is a necromancer that spawns in front of '
               'the chair.&rdquo; Classic text nobody has revisited. It is wrong.'),
@@ -300,7 +314,7 @@ ENTRIES = [
                 'settle is the second half of its own sentence</strong> &mdash; maximum respawn '
                 'times were lowered and no figures were published, so every respawn on this site '
                 'is a pre-patch ceiling rather than a current value.',
-         credit='Patch note supplied by Avenrae, 10 August 2026.'),
+         credit=''),
 
     dict(status='changed',
          q='Is the Per-Level Hunting Guide still good advice?',

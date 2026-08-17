@@ -1,0 +1,53 @@
+{
+ "app": {
+  "bytes": 180377,
+  "file": "sky-ledger.dadeed9c.html",
+  "hash": "dadeed9c",
+  "kb": 176,
+  "sha1": "dadeed9cc2827087964df870d915415660a1ea12"
+ },
+ "dataset": {
+  "classes": 16,
+  "contested": 29,
+  "contested_top": [
+   [
+    "Wind Rune Azia",
+    7
+   ],
+   [
+    "Wind Rune Dena",
+    7
+   ],
+   [
+    "Wind Rune Ena",
+    7
+   ]
+  ],
+  "items": 128,
+  "most_contested_item": "Wind Rune Azia",
+  "most_contested_tests": 7,
+  "quests": 95,
+  "runes": 15,
+  "runes_contested": 15,
+  "turnin_slots": 222
+ },
+ "read": "2026-08-17",
+ "release": {
+  "browser": {
+   "bytes": 58677,
+   "file": "SkyLedger-v1.1.0-browser-only.zip",
+   "mb": 0.1,
+   "url": "https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-browser-only.zip"
+  },
+  "overlay": {
+   "bytes": 100481506,
+   "file": "SkyLedger-v1.1.0-windows.zip",
+   "mb": 100.5,
+   "url": "https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-windows.zip"
+  },
+  "page": "https://github.com/samusmylove47-maker/sky-ledger/releases/tag/v1.1.0",
+  "tag": "v1.1.0"
+ },
+ "source": "SkyLedger.html",
+ "version": "1.1.0"
+}

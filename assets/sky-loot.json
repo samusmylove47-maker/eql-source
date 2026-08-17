@@ -14,70 +14,164 @@
    "difficulty": 0,
    "difficulty_label": "Base",
    "difficulty_from": "zone line"
+  },
+  {
+   "date": "14 Aug 2026",
+   "window": "21:07-21:42",
+   "character": "Shara",
+   "kills": 2,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
+  },
+  {
+   "date": "14 Aug 2026",
+   "window": "21:43-23:59",
+   "character": "Shara",
+   "kills": 11,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
+  },
+  {
+   "date": "15 Aug 2026",
+   "window": "18:56-23:46",
+   "character": "Avenrae",
+   "kills": 31,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
+  },
+  {
+   "date": "16 Aug 2026",
+   "window": "11:15-18:34",
+   "character": "Shara",
+   "kills": 19,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
+  },
+  {
+   "date": "16 Aug 2026",
+   "window": "11:15-18:35",
+   "character": "Avenrae",
+   "kills": 19,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
+  },
+  {
+   "date": "16 Aug 2026",
+   "window": "18:36-19:20",
+   "character": "Shara",
+   "kills": 7,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
+  },
+  {
+   "date": "16 Aug 2026",
+   "window": "18:36-19:20",
+   "character": "Avenrae",
+   "kills": 3,
+   "difficulty": 0,
+   "difficulty_label": "Base",
+   "difficulty_from": "zone line"
   }
  ],
  "fights": {
-  "n": 43,
+  "n": 90,
   "bosses": 15,
   "dates": [
    "14 Aug 2026",
-   "15 Aug 2026"
+   "15 Aug 2026",
+   "16 Aug 2026"
   ],
   "difficulties": [
    0
   ],
-  "attackers_min": 2,
+  "attackers_min": 1,
   "attackers_max": 7,
-  "attackers_median": 4,
-  "thin_fights": 4
+  "attackers_median": 3,
+  "thin_fights": 46
  },
  "bosses": [
   {
    "boss": "Bazzt Zzzt",
-   "fights": 3,
+   "fights": 7,
    "dates": [
-    "14 Aug 2026"
+    "14 Aug 2026",
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
    ],
-   "damage_max": 26158,
+   "damage_max": 35946,
    "damage_max_is_floor": true,
    "damage_complete_max": 23321,
-   "damage_min": 23321,
-   "seconds_min": 45,
-   "seconds_max": 431,
-   "attackers_min": 3,
+   "damage_min": 20790,
+   "seconds_min": 29,
+   "seconds_max": 744,
+   "attackers_min": 2,
    "attackers_max": 6,
-   "our_share_max": 47.9,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
     "Rotting Flesh"
    ],
    "casts": {
-    "Rotting Flesh": 9
+    "Rotting Flesh": 46
    },
-   "melee_avg": 74.5,
-   "melee_max": 159,
-   "melee_swings": 25,
-   "melee_landed": 12,
+   "melee_avg": 315.7,
+   "melee_max": 816,
+   "melee_swings": 196,
+   "melee_landed": 83,
    "exp_pct_per_kill": 0.608,
    "single_observation": false,
    "loot": [
     {
      "item": "Key of Scale",
-     "n": 3
-    },
-    {
-     "item": "Belt of Tranquility",
-     "n": 1
-    },
-    {
-     "item": "Divine Honeycomb",
-     "n": 1
+     "n": 11
     },
     {
      "item": "Whitened Treant Fists",
+     "n": 3
+    },
+    {
+     "item": "Blade of Abrogation",
+     "n": 3
+    },
+    {
+     "item": "Bracelet of Distortion",
+     "n": 3
+    },
+    {
+     "item": "Divine Honeycomb",
+     "n": 2
+    },
+    {
+     "item": "White Satin Gloves",
+     "n": 2
+    },
+    {
+     "item": "Wind Tablet",
+     "n": 2
+    },
+    {
+     "item": "Mote of Infinitesimal Potential",
+     "n": 2
+    },
+    {
+     "item": "Bracelet of Quiescence",
+     "n": 2
+    },
+    {
+     "item": "Bixie Sword Blade",
+     "n": 2
+    },
+    {
+     "item": "Belt of Tranquility",
      "n": 1
     },
     {
@@ -93,24 +187,58 @@
      "n": 1
     },
     {
-     "item": "Blade of Abrogation",
-     "n": 1
-    },
-    {
      "item": "Large Diamond",
      "n": 1
     },
     {
-     "item": "White Satin Gloves",
+     "item": "Belt of the Pine",
+     "n": 1
+    },
+    {
+     "item": "Fine Wool Cloak",
+     "n": 1
+    },
+    {
+     "item": "Belt of Concordance",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Heda",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Geza",
+     "n": 1
+    },
+    {
+     "item": "Weight of the Gods",
+     "n": 1
+    },
+    {
+     "item": "Silken Wrap",
+     "n": 1
+    },
+    {
+     "item": "Treant Tear",
+     "n": 1
+    },
+    {
+     "item": "Bixie Stinger",
+     "n": 1
+    },
+    {
+     "item": "Belt of Virtue",
      "n": 1
     }
    ]
   },
   {
    "boss": "Bazzzazzt",
-   "fights": 8,
+   "fights": 12,
    "dates": [
-    "14 Aug 2026"
+    "14 Aug 2026",
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
@@ -120,30 +248,58 @@
    "damage_complete_max": 18171,
    "damage_min": 8136,
    "seconds_min": 14,
-   "seconds_max": 103,
-   "attackers_min": 4,
+   "seconds_max": 1092,
+   "attackers_min": 2,
    "attackers_max": 6,
-   "our_share_max": 49.7,
+   "our_share_max": 100.0,
    "self_heals": 1,
    "spells": [
     "Deadly Poison"
    ],
    "casts": {
-    "Deadly Poison": 233
+    "Deadly Poison": 683
    },
-   "melee_avg": 57.6,
-   "melee_max": 101,
-   "melee_swings": 39,
-   "melee_landed": 11,
+   "melee_avg": 62.0,
+   "melee_max": 121,
+   "melee_swings": 98,
+   "melee_landed": 35,
    "exp_pct_per_kill": 0.435,
    "single_observation": false,
    "loot": [
     {
      "item": "Bracelet of Cessation",
-     "n": 2
+     "n": 3
+    },
+    {
+     "item": "Mote of Infinitesimal Potential",
+     "n": 3
     },
     {
      "item": "Mote of Minor Potential",
+     "n": 2
+    },
+    {
+     "item": "Symbol of Marr",
+     "n": 2
+    },
+    {
+     "item": "Bracelet of Quiescence",
+     "n": 2
+    },
+    {
+     "item": "Stein of Flowing Ichor",
+     "n": 2
+    },
+    {
+     "item": "Wind Rune Geza",
+     "n": 2
+    },
+    {
+     "item": "Treant Tear",
+     "n": 2
+    },
+    {
+     "item": "Bracelet of Distortion",
      "n": 2
     },
     {
@@ -163,19 +319,35 @@
      "n": 1
     },
     {
-     "item": "Symbol of Marr",
+     "item": "Wind Rune Ena",
      "n": 1
     },
     {
-     "item": "Bracelet of Quiescence",
+     "item": "Blade of Abrogation",
      "n": 1
     },
     {
-     "item": "Stein of Flowing Ichor",
+     "item": "Belt of Virtue",
      "n": 1
     },
     {
-     "item": "Wind Rune Geza",
+     "item": "Belt of Iniquity",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Caza",
+     "n": 1
+    },
+    {
+     "item": "Belt of the Pine",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Izah",
+     "n": 1
+    },
+    {
+     "item": "Belt of Tranquility",
      "n": 1
     }
    ]
@@ -197,13 +369,13 @@
    "seconds_max": 81,
    "attackers_min": 5,
    "attackers_max": 5,
-   "our_share_max": 20.8,
+   "our_share_max": 22.8,
    "self_heals": 0,
    "spells": [
     "Deadly Poison"
    ],
    "casts": {
-    "Deadly Poison": 61
+    "Deadly Poison": 122
    },
    "melee_avg": null,
    "melee_max": null,
@@ -218,6 +390,14 @@
     },
     {
      "item": "Wind Rune Beza",
+     "n": 1
+    },
+    {
+     "item": "White Satin Gloves",
+     "n": 1
+    },
+    {
+     "item": "Stein of Flowing Ichor",
      "n": 1
     }
    ]
@@ -243,7 +423,7 @@
    "self_heals": 0,
    "spells": [],
    "casts": {
-    "Deadly Poison": 1
+    "Deadly Poison": 2
    },
    "melee_avg": null,
    "melee_max": null,
@@ -254,131 +434,180 @@
    "loot": [
     {
      "item": "Belt of the Pine",
+     "n": 2
+    },
+    {
+     "item": "Bixie Essence",
      "n": 1
     }
    ]
   },
   {
    "boss": "Bzzazzt",
-   "fights": 7,
+   "fights": 11,
    "dates": [
-    "14 Aug 2026"
+    "14 Aug 2026",
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
    ],
-   "damage_max": 17394,
+   "damage_max": 18247,
    "damage_max_is_floor": true,
-   "damage_complete_max": 13226,
-   "damage_min": 6783,
-   "seconds_min": 27,
+   "damage_complete_max": 10370,
+   "damage_min": 4156,
+   "seconds_min": 26,
    "seconds_max": 235,
-   "attackers_min": 4,
+   "attackers_min": 2,
    "attackers_max": 5,
-   "our_share_max": 61.4,
+   "our_share_max": 100.0,
    "self_heals": 2,
    "spells": [
     "Deadly Poison"
    ],
    "casts": {
-    "Deadly Poison": 890
+    "Deadly Poison": 1842
    },
-   "melee_avg": 68.7,
+   "melee_avg": 59.3,
    "melee_max": 91,
-   "melee_swings": 49,
-   "melee_landed": 24,
+   "melee_swings": 270,
+   "melee_landed": 116,
    "exp_pct_per_kill": 0.612,
    "single_observation": false,
    "loot": [
     {
      "item": "Wind Rune Dena",
      "n": 1
+    },
+    {
+     "item": "Wind Rune Ena",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Caza",
+     "n": 1
     }
    ]
   },
   {
    "boss": "Bzzzt",
-   "fights": 2,
+   "fights": 6,
    "dates": [
-    "14 Aug 2026"
+    "14 Aug 2026",
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
    ],
-   "damage_max": 17099,
-   "damage_max_is_floor": false,
+   "damage_max": 19988,
+   "damage_max_is_floor": true,
    "damage_complete_max": 17099,
    "damage_min": 10596,
-   "seconds_min": 35,
-   "seconds_max": 82,
-   "attackers_min": 5,
+   "seconds_min": 30,
+   "seconds_max": 139,
+   "attackers_min": 3,
    "attackers_max": 5,
-   "our_share_max": 49.1,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
     "Deadly Poison"
    ],
    "casts": {
-    "Deadly Poison": 107
+    "Deadly Poison": 449
    },
-   "melee_avg": 109.3,
+   "melee_avg": 134.8,
    "melee_max": 141,
-   "melee_swings": 19,
-   "melee_landed": 6,
+   "melee_swings": 61,
+   "melee_landed": 27,
    "exp_pct_per_kill": 0.552,
    "single_observation": false,
    "loot": [
     {
      "item": "Bracelet of Quiescence",
-     "n": 1
+     "n": 3
+    },
+    {
+     "item": "Wind Rune Beza",
+     "n": 2
+    },
+    {
+     "item": "Mote of Infinitesimal Potential",
+     "n": 2
+    },
+    {
+     "item": "Belt of Iniquity",
+     "n": 2
     },
     {
      "item": "Belt of Virtue",
      "n": 1
     },
     {
-     "item": "Wind Rune Beza",
+     "item": "Blade of Abrogation",
      "n": 1
     },
     {
-     "item": "Mote of Infinitesimal Potential",
+     "item": "Wind Rune Kala",
      "n": 1
     },
     {
-     "item": "Belt of Iniquity",
+     "item": "Symbol of Marr",
+     "n": 1
+    },
+    {
+     "item": "Weight of the Gods",
+     "n": 1
+    },
+    {
+     "item": "Bixie Essence",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Exertion",
+     "n": 1
+    },
+    {
+     "item": "Whitened Treant Fists",
      "n": 1
     }
    ]
   },
   {
    "boss": "Eye of Veeshan",
-   "fights": 3,
+   "fights": 8,
    "dates": [
     "14 Aug 2026",
-    "15 Aug 2026"
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
    ],
-   "damage_max": 20109,
+   "damage_max": 25172,
    "damage_max_is_floor": true,
    "damage_complete_max": 18914,
-   "damage_min": 15267,
-   "seconds_min": 47,
-   "seconds_max": 85,
-   "attackers_min": 4,
+   "damage_min": 9650,
+   "seconds_min": 31,
+   "seconds_max": 169,
+   "attackers_min": 2,
    "attackers_max": 6,
-   "our_share_max": 51.9,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [],
    "casts": {},
-   "melee_avg": 71.6,
-   "melee_max": 173,
-   "melee_swings": 134,
-   "melee_landed": 37,
+   "melee_avg": 91.6,
+   "melee_max": 192,
+   "melee_swings": 702,
+   "melee_landed": 265,
    "exp_pct_per_kill": 0.657,
    "single_observation": false,
    "loot": [
+    {
+     "item": "Large Sky Diamond",
+     "n": 3
+    },
     {
      "item": "Large Sky Sapphire",
      "n": 1
@@ -392,14 +621,62 @@
      "n": 1
     },
     {
-     "item": "Large Sky Diamond",
+     "item": "Belt of the Pine",
+     "n": 1
+    },
+    {
+     "item": "Belt of Iniquity",
+     "n": 1
+    },
+    {
+     "item": "Symbol of Veeshan",
+     "n": 1
+    },
+    {
+     "item": "Nebulous Diamond",
+     "n": 1
+    },
+    {
+     "item": "Blood Sky Ruby",
+     "n": 1
+    },
+    {
+     "item": "Symbol of Marr",
+     "n": 1
+    },
+    {
+     "item": "Bloodsky Sapphire",
+     "n": 1
+    },
+    {
+     "item": "Mote of Infinitesimal Potential",
+     "n": 1
+    },
+    {
+     "item": "Large Sky Lapis",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Heda",
+     "n": 1
+    },
+    {
+     "item": "Shimmering Pearl",
+     "n": 1
+    },
+    {
+     "item": "Storm Sky Opal",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Distortion",
      "n": 1
     }
    ]
   },
   {
    "boss": "Gorgalosk",
-   "fights": 2,
+   "fights": 5,
    "dates": [
     "14 Aug 2026",
     "15 Aug 2026"
@@ -407,27 +684,35 @@
    "difficulties": [
     0
    ],
-   "damage_max": 20361,
-   "damage_max_is_floor": false,
+   "damage_max": 21743,
+   "damage_max_is_floor": true,
    "damage_complete_max": 20361,
-   "damage_min": 18457,
-   "seconds_min": 57,
+   "damage_min": 1282,
+   "seconds_min": 11,
    "seconds_max": 159,
-   "attackers_min": 4,
+   "attackers_min": 1,
    "attackers_max": 5,
-   "our_share_max": 28.0,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [],
    "casts": {},
-   "melee_avg": 111.7,
+   "melee_avg": 71.3,
    "melee_max": 345,
-   "melee_swings": 50,
-   "melee_landed": 21,
+   "melee_swings": 278,
+   "melee_landed": 111,
    "exp_pct_per_kill": 0.552,
    "single_observation": false,
    "loot": [
     {
      "item": "Key of Beasts",
+     "n": 5
+    },
+    {
+     "item": "Belt of Contention",
+     "n": 2
+    },
+    {
+     "item": "Belt of Iniquity",
      "n": 2
     },
     {
@@ -451,14 +736,38 @@
      "n": 1
     },
     {
-     "item": "Belt of Contention",
+     "item": "Finely Crafted Amulet",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Distortion",
+     "n": 1
+    },
+    {
+     "item": "Stein of Flowing Ichor",
+     "n": 1
+    },
+    {
+     "item": "Light Woolen Mask",
+     "n": 1
+    },
+    {
+     "item": "Belt of Transience",
+     "n": 1
+    },
+    {
+     "item": "Silken Strands",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Izah",
      "n": 1
     }
    ]
   },
   {
    "boss": "Keeper of Souls",
-   "fights": 2,
+   "fights": 4,
    "dates": [
     "14 Aug 2026",
     "15 Aug 2026"
@@ -466,35 +775,35 @@
    "difficulties": [
     0
    ],
-   "damage_max": 22322,
-   "damage_max_is_floor": false,
+   "damage_max": 22895,
+   "damage_max_is_floor": true,
    "damage_complete_max": 22322,
    "damage_min": 19006,
-   "seconds_min": 62,
+   "seconds_min": 36,
    "seconds_max": 67,
-   "attackers_min": 4,
+   "attackers_min": 3,
    "attackers_max": 5,
    "our_share_max": 40.2,
    "self_heals": 0,
    "spells": [],
    "casts": {},
-   "melee_avg": 94.5,
-   "melee_max": 144,
-   "melee_swings": 13,
-   "melee_landed": 2,
+   "melee_avg": 151.6,
+   "melee_max": 300,
+   "melee_swings": 75,
+   "melee_landed": 23,
    "exp_pct_per_kill": 0.414,
    "single_observation": false,
    "loot": [
     {
      "item": "Avian Key",
-     "n": 2
-    },
-    {
-     "item": "Fine Velvet Cloak",
-     "n": 2
+     "n": 5
     },
     {
      "item": "Woven Skull Cap",
+     "n": 4
+    },
+    {
+     "item": "Fine Velvet Cloak",
      "n": 2
     },
     {
@@ -502,16 +811,28 @@
      "n": 2
     },
     {
+     "item": "Black Silk Cape",
+     "n": 2
+    },
+    {
      "item": "Blade of Abrogation",
      "n": 2
     },
     {
-     "item": "Black Silk Cape",
-     "n": 1
+     "item": "Stone Amulet",
+     "n": 2
     },
     {
-     "item": "Stone Amulet",
-     "n": 1
+     "item": "Mantle of Woven Grass",
+     "n": 2
+    },
+    {
+     "item": "Belt of Transience",
+     "n": 2
+    },
+    {
+     "item": "Ceramic Mask",
+     "n": 2
     },
     {
      "item": "Belt of Iniquity",
@@ -520,15 +841,48 @@
     {
      "item": "Belt of the Pine",
      "n": 1
+    },
+    {
+     "item": "Belt of Concordance",
+     "n": 1
+    },
+    {
+     "item": "Jester's Mask",
+     "n": 1
+    },
+    {
+     "item": "Silvery Ring",
+     "n": 1
+    },
+    {
+     "item": "Symbol of Marr",
+     "n": 1
+    },
+    {
+     "item": "Light Woolen Mantle",
+     "n": 1
+    },
+    {
+     "item": "Light Cloth Mantle",
+     "n": 1
+    },
+    {
+     "item": "Belt of Tranquility",
+     "n": 1
+    },
+    {
+     "item": "Whitened Treant Fists",
+     "n": 1
     }
    ]
   },
   {
    "boss": "Noble Dojorn",
-   "fights": 3,
+   "fights": 7,
    "dates": [
     "14 Aug 2026",
-    "15 Aug 2026"
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
@@ -536,28 +890,44 @@
    "damage_max": 22041,
    "damage_max_is_floor": false,
    "damage_complete_max": 22041,
-   "damage_min": 15723,
-   "seconds_min": 48,
-   "seconds_max": 82,
-   "attackers_min": 3,
+   "damage_min": 3402,
+   "seconds_min": 33,
+   "seconds_max": 136,
+   "attackers_min": 2,
    "attackers_max": 6,
-   "our_share_max": 63.0,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
     "Efreeti Fire"
    ],
    "casts": {
-    "Efreeti Fire": 9
+    "Efreeti Fire": 38
    },
-   "melee_avg": 119.4,
-   "melee_max": 264,
-   "melee_swings": 41,
-   "melee_landed": 25,
+   "melee_avg": 123.1,
+   "melee_max": 293,
+   "melee_swings": 370,
+   "melee_landed": 155,
    "exp_pct_per_kill": 0.608,
    "single_observation": false,
    "loot": [
     {
      "item": "Efreeti Standard",
+     "n": 3
+    },
+    {
+     "item": "Efreeti Battle Axe",
+     "n": 2
+    },
+    {
+     "item": "Belt of Tranquility",
+     "n": 2
+    },
+    {
+     "item": "Golden Efreeti Turban",
+     "n": 2
+    },
+    {
+     "item": "Efreeti Statuette",
      "n": 2
     },
     {
@@ -566,10 +936,6 @@
     },
     {
      "item": "Efreeti Wind Staff",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Battle Axe",
      "n": 1
     },
     {
@@ -583,15 +949,72 @@
     {
      "item": "Efreeti War Axe",
      "n": 1
+    },
+    {
+     "item": "Golden Efreeti Greaves",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Beza",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Magi Staff",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Quiescence",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Ozah",
+     "n": 1
+    },
+    {
+     "item": "Golden Efreeti Bracers",
+     "n": 1
+    },
+    {
+     "item": "Symbol of Marr",
+     "n": 1
+    },
+    {
+     "item": "Efreeti War Staff",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Zweihander",
+     "n": 1
+    },
+    {
+     "item": "Brass Knuckles",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Jaka",
+     "n": 1
+    },
+    {
+     "item": "Golden Efreeti Chestplate",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Long Sword",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Exertion",
+     "n": 1
     }
    ]
   },
   {
    "boss": "Overseer of Air",
-   "fights": 2,
+   "fights": 5,
    "dates": [
     "14 Aug 2026",
-    "15 Aug 2026"
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
@@ -599,32 +1022,48 @@
    "damage_max": 16272,
    "damage_max_is_floor": false,
    "damage_complete_max": 16272,
-   "damage_min": 6504,
-   "seconds_min": 38,
+   "damage_min": 660,
+   "seconds_min": 23,
    "seconds_max": 42,
-   "attackers_min": 4,
+   "attackers_min": 1,
    "attackers_max": 6,
-   "our_share_max": 21.3,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
     "Efreeti Fire"
    ],
    "casts": {
-    "Efreeti Fire": 4
+    "Efreeti Fire": 13
    },
-   "melee_avg": 119.2,
-   "melee_max": 332,
-   "melee_swings": 30,
-   "melee_landed": 12,
-   "exp_pct_per_kill": null,
+   "melee_avg": 191.9,
+   "melee_max": 368,
+   "melee_swings": 98,
+   "melee_landed": 42,
+   "exp_pct_per_kill": 0.456,
    "single_observation": false,
    "loot": [
     {
      "item": "Fine Steel Dagger",
-     "n": 4
+     "n": 14
     },
     {
      "item": "Efreeti War Axe",
+     "n": 3
+    },
+    {
+     "item": "Efreeti War Bow",
+     "n": 3
+    },
+    {
+     "item": "Efreeti Battle Axe",
+     "n": 2
+    },
+    {
+     "item": "Golden Efreeti Gauntlets",
+     "n": 2
+    },
+    {
+     "item": "Efreeti War Horn",
      "n": 2
     },
     {
@@ -648,17 +1087,50 @@
      "n": 1
     },
     {
-     "item": "Efreeti Battle Axe",
+     "item": "Efreeti Long Sword",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Heda",
+     "n": 1
+    },
+    {
+     "item": "Mote of Lesser Potential",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Standard",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Azia",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Scimitar",
+     "n": 1
+    },
+    {
+     "item": "Golden Efreeti Turban",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Wind Staff",
+     "n": 1
+    },
+    {
+     "item": "Efreeti Mace",
      "n": 1
     }
    ]
   },
   {
    "boss": "Protector of Sky",
-   "fights": 2,
+   "fights": 5,
    "dates": [
     "14 Aug 2026",
-    "15 Aug 2026"
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
@@ -666,25 +1138,25 @@
    "damage_max": 16350,
    "damage_max_is_floor": false,
    "damage_complete_max": 16350,
-   "damage_min": 11996,
-   "seconds_min": 24,
-   "seconds_max": 39,
-   "attackers_min": 4,
+   "damage_min": 2330,
+   "seconds_min": 17,
+   "seconds_max": 49,
+   "attackers_min": 2,
    "attackers_max": 7,
-   "our_share_max": 30.0,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [],
    "casts": {},
-   "melee_avg": 80.9,
-   "melee_max": 177,
-   "melee_swings": 21,
-   "melee_landed": 11,
+   "melee_avg": 146.0,
+   "melee_max": 278,
+   "melee_swings": 72,
+   "melee_landed": 32,
    "exp_pct_per_kill": null,
    "single_observation": false,
    "loot": [
     {
      "item": "Key of Misfortune",
-     "n": 2
+     "n": 7
     },
     {
      "item": "Belt of Concordance",
@@ -692,7 +1164,27 @@
     },
     {
      "item": "Belt of Contention",
-     "n": 1
+     "n": 2
+    },
+    {
+     "item": "Wind Rune Heda",
+     "n": 2
+    },
+    {
+     "item": "Belt of Virtue",
+     "n": 2
+    },
+    {
+     "item": "Wind Rune Azia",
+     "n": 2
+    },
+    {
+     "item": "Stein of Flowing Ichor",
+     "n": 2
+    },
+    {
+     "item": "Wind Rune Jaka",
+     "n": 2
     },
     {
      "item": "Bracelet of Cessation",
@@ -707,66 +1199,127 @@
      "n": 1
     },
     {
-     "item": "Wind Rune Heda",
-     "n": 1
-    },
-    {
      "item": "Wind Rune Neza",
      "n": 1
     },
     {
      "item": "Wind Rune Ozah",
      "n": 1
+    },
+    {
+     "item": "Belt of Transience",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Beza",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Meda",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Caza",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Distortion",
+     "n": 1
+    },
+    {
+     "item": "Symbol of Marr",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Fana",
+     "n": 1
+    },
+    {
+     "item": "Treant Tear",
+     "n": 1
+    },
+    {
+     "item": "Weight of the Gods",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Dena",
+     "n": 1
     }
    ]
   },
   {
    "boss": "Sister of the Spire",
-   "fights": 3,
+   "fights": 6,
    "dates": [
     "14 Aug 2026",
-    "15 Aug 2026"
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
    ],
-   "damage_max": 10197,
-   "damage_max_is_floor": false,
+   "damage_max": 15502,
+   "damage_max_is_floor": true,
    "damage_complete_max": 10197,
-   "damage_min": 6388,
-   "seconds_min": 37,
-   "seconds_max": 52,
-   "attackers_min": 3,
+   "damage_min": 3846,
+   "seconds_min": 20,
+   "seconds_max": 1600,
+   "attackers_min": 2,
    "attackers_max": 6,
-   "our_share_max": 43.0,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
     "Entomb in Ice"
    ],
    "casts": {
-    "Entomb in Ice": 8
+    "Entomb in Ice": 33
    },
-   "melee_avg": 78.3,
-   "melee_max": 174,
-   "melee_swings": 70,
-   "melee_landed": 21,
+   "melee_avg": 49.3,
+   "melee_max": 200,
+   "melee_swings": 539,
+   "melee_landed": 200,
    "exp_pct_per_kill": 0.566,
    "single_observation": false,
    "loot": [
     {
      "item": "Veeshan's Key",
-     "n": 3
-    },
-    {
-     "item": "Mote of Lesser Potential",
-     "n": 1
+     "n": 9
     },
     {
      "item": "Belt of Virtue",
-     "n": 1
+     "n": 2
     },
     {
      "item": "Sphinxian Ring",
+     "n": 2
+    },
+    {
+     "item": "Belt of Contention",
+     "n": 2
+    },
+    {
+     "item": "Belt of Transience",
+     "n": 2
+    },
+    {
+     "item": "Belt of Iniquity",
+     "n": 2
+    },
+    {
+     "item": "Ring of Veeshan",
+     "n": 2
+    },
+    {
+     "item": "Symbol of Marr",
+     "n": 2
+    },
+    {
+     "item": "Belt of the Pine",
+     "n": 2
+    },
+    {
+     "item": "Mote of Lesser Potential",
      "n": 1
     },
     {
@@ -778,14 +1331,6 @@
      "n": 1
     },
     {
-     "item": "Belt of Contention",
-     "n": 1
-    },
-    {
-     "item": "Belt of Transience",
-     "n": 1
-    },
-    {
      "item": "Djinni Aura",
      "n": 1
     },
@@ -794,38 +1339,67 @@
      "n": 1
     },
     {
-     "item": "Belt of Iniquity",
-     "n": 1
-    },
-    {
      "item": "Bracelet of Distortion",
      "n": 1
     },
     {
-     "item": "Ring of Veeshan",
+     "item": "Mote of Infinitesimal Potential",
+     "n": 1
+    },
+    {
+     "item": "Ethereal Ruby",
+     "n": 1
+    },
+    {
+     "item": "Belt of Tranquility",
+     "n": 1
+    },
+    {
+     "item": "White Satin Gloves",
+     "n": 1
+    },
+    {
+     "item": "Glowing Necklace",
+     "n": 1
+    },
+    {
+     "item": "Sphinx Claw",
+     "n": 1
+    },
+    {
+     "item": "Weight of the Gods",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Exertion",
+     "n": 1
+    },
+    {
+     "item": "Amethyst Amulet",
      "n": 1
     }
    ]
   },
   {
    "boss": "the Hand of Veeshan",
-   "fights": 2,
+   "fights": 5,
    "dates": [
     "14 Aug 2026",
-    "15 Aug 2026"
+    "15 Aug 2026",
+    "16 Aug 2026"
    ],
    "difficulties": [
     0
    ],
-   "damage_max": 21974,
-   "damage_max_is_floor": false,
+   "damage_max": 30895,
+   "damage_max_is_floor": true,
    "damage_complete_max": 21974,
-   "damage_min": 13832,
-   "seconds_min": 52,
-   "seconds_max": 74,
-   "attackers_min": 4,
+   "damage_min": 13142,
+   "seconds_min": 34,
+   "seconds_max": 498,
+   "attackers_min": 2,
    "attackers_max": 6,
-   "our_share_max": 47.7,
+   "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
     "Efreeti Fire"
@@ -837,52 +1411,11 @@
    "melee_landed": 0,
    "exp_pct_per_kill": 0.456,
    "single_observation": false,
-   "loot": [
-    {
-     "item": "Bracelet of Quiescence",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Mace",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Magi Staff",
-     "n": 1
-    },
-    {
-     "item": "Efreeti War Staff",
-     "n": 1
-    },
-    {
-     "item": "Stein of Flowing Ichor",
-     "n": 1
-    },
-    {
-     "item": "Belt of Concordance",
-     "n": 1
-    },
-    {
-     "item": "White Satin Gloves",
-     "n": 1
-    },
-    {
-     "item": "Golden Efreeti Vambraces",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Wind Staff",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Battle Axe",
-     "n": 1
-    }
-   ]
+   "loot": []
   },
   {
    "boss": "The Spiroc Lord",
-   "fights": 2,
+   "fights": 7,
    "dates": [
     "14 Aug 2026",
     "15 Aug 2026"
@@ -890,239 +1423,433 @@
    "difficulties": [
     0
    ],
-   "damage_max": 22691,
+   "damage_max": 27881,
    "damage_max_is_floor": true,
    "damage_complete_max": 18505,
-   "damage_min": 18505,
-   "seconds_min": 44,
-   "seconds_max": 49,
-   "attackers_min": 4,
+   "damage_min": 17593,
+   "seconds_min": 25,
+   "seconds_max": 1044,
+   "attackers_min": 2,
    "attackers_max": 6,
    "our_share_max": 34.4,
-   "self_heals": 1,
+   "self_heals": 2,
    "spells": [
     "Call of Flame",
     "Careless Lightning",
     "Chloroplast",
+    "Drones of Doom",
     "Ensnare",
     "Ensnaring Roots",
     "Greater Healing",
     "Greater Spiroc Thunder",
+    "Immolate",
+    "Invoke Lightning",
     "Scorching Arrow"
    ],
    "casts": {
-    "Greater Spiroc Thunder": 4,
-    "Ensnare": 4,
-    "Ensnaring Roots": 3,
-    "Call of Flame": 2,
-    "Careless Lightning": 2,
-    "Nature's Precision": 1,
-    "Greater Healing": 1,
-    "Chloroplast": 1,
-    "Scorching Arrow": 1
+    "Greater Spiroc Thunder": 13,
+    "Ensnare": 10,
+    "Ensnaring Roots": 19,
+    "Call of Flame": 6,
+    "Careless Lightning": 3,
+    "Nature's Precision": 2,
+    "Greater Healing": 5,
+    "Chloroplast": 2,
+    "Scorching Arrow": 2,
+    "Invoke Lightning": 4,
+    "Spirit of Wolf": 1,
+    "Call of Earth": 1,
+    "Drones of Doom": 1,
+    "Immolate": 1,
+    "Skin like Diamond": 1
    },
-   "melee_avg": 131.1,
+   "melee_avg": 171.2,
    "melee_max": 308,
-   "melee_swings": 30,
-   "melee_landed": 17,
+   "melee_swings": 143,
+   "melee_landed": 64,
    "exp_pct_per_kill": 0.456,
    "single_observation": false,
    "loot": [
     {
      "item": "Key of the Swarm",
-     "n": 2
+     "n": 8
+    },
+    {
+     "item": "Spiroc Wingblade",
+     "n": 5
     },
     {
      "item": "Belt of Tranquility",
-     "n": 1
+     "n": 2
+    },
+    {
+     "item": "Wind Rune Ena",
+     "n": 2
+    },
+    {
+     "item": "Silken Mask",
+     "n": 2
     },
     {
      "item": "Spiroc Battle Staff",
      "n": 1
     },
     {
-     "item": "Spiroc Wingblade",
-     "n": 1
-    },
-    {
-     "item": "Wind Rune Ena",
-     "n": 1
-    },
-    {
      "item": "Dove Slippers",
+     "n": 1
+    },
+    {
+     "item": "Fine Cloth Raiment",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Caza",
+     "n": 1
+    },
+    {
+     "item": "Shiny Pauldrons",
+     "n": 1
+    },
+    {
+     "item": "Mote of Lesser Potential",
+     "n": 1
+    },
+    {
+     "item": "Spiroc Sky Totem",
+     "n": 1
+    },
+    {
+     "item": "Wind Rune Geza",
+     "n": 1
+    },
+    {
+     "item": "Spiroc Air Totem",
+     "n": 1
+    },
+    {
+     "item": "Bracelet of Distortion",
      "n": 1
     }
    ]
   }
  ],
  "looted_but_unfought": [
+  "Heart harpie",
+  "The Hand of Veeshan",
   "The Spiroc Guardian"
  ],
  "keys": [
   {
    "key": "Avian Key",
    "boss": "Keeper of Souls",
-   "n": 2
+   "n": 5
   },
   {
    "key": "Key of Beasts",
    "boss": "Gorgalosk",
-   "n": 2
+   "n": 5
   },
   {
    "key": "Key of Misfortune",
    "boss": "Protector of Sky",
-   "n": 2
+   "n": 7
   },
   {
    "key": "Key of Scale",
    "boss": "Bazzt Zzzt",
-   "n": 3
+   "n": 11
   },
   {
    "key": "Key of the Swarm",
    "boss": "The Spiroc Lord",
-   "n": 2
+   "n": 8
   },
   {
    "key": "Veeshan's Key",
    "boss": "Sister of the Spire",
-   "n": 3
+   "n": 9
   }
  ],
  "efreeti_sources": {
   "Noble Dojorn": {
-   "Efreeti Standard": 2,
+   "Efreeti Standard": 3,
+   "Efreeti Battle Axe": 2,
+   "Golden Efreeti Turban": 2,
+   "Efreeti Statuette": 2,
    "Efreeti Wind Staff": 1,
-   "Efreeti Battle Axe": 1,
    "Golden Efreeti Vambraces": 1,
-   "Efreeti War Axe": 1
+   "Efreeti War Axe": 1,
+   "Golden Efreeti Greaves": 1,
+   "Efreeti Magi Staff": 1,
+   "Golden Efreeti Bracers": 1,
+   "Efreeti War Staff": 1,
+   "Efreeti Zweihander": 1,
+   "Golden Efreeti Chestplate": 1,
+   "Efreeti Long Sword": 1
   },
   "Overseer of Air": {
-   "Efreeti War Axe": 2,
+   "Efreeti War Axe": 3,
+   "Efreeti War Bow": 3,
+   "Efreeti Battle Axe": 2,
+   "Golden Efreeti Gauntlets": 2,
+   "Efreeti War Horn": 2,
    "Golden Efreeti Bracers": 1,
    "Efreeti War Spear": 1,
    "Efreeti Magi Staff": 1,
-   "Efreeti Battle Axe": 1
+   "Efreeti Long Sword": 1,
+   "Efreeti Standard": 1,
+   "Efreeti Scimitar": 1,
+   "Golden Efreeti Turban": 1,
+   "Efreeti Wind Staff": 1,
+   "Efreeti Mace": 1
   },
-  "the Hand of Veeshan": {
-   "Efreeti Mace": 1,
-   "Efreeti Magi Staff": 1,
+  "The Hand of Veeshan": {
+   "Efreeti Magi Staff": 3,
+   "Efreeti Mace": 2,
+   "Efreeti Wind Staff": 2,
+   "Efreeti Belt": 2,
    "Efreeti War Staff": 1,
    "Golden Efreeti Vambraces": 1,
-   "Efreeti Wind Staff": 1,
-   "Efreeti Battle Axe": 1
+   "Efreeti Battle Axe": 1,
+   "Efreeti Statuette": 1,
+   "Efreeti War Axe": 1,
+   "Efreeti War Horn": 1
   }
  },
  "wind_runes": {
-  "Wind Rune Azia": 1,
-  "Wind Rune Beza": 3,
-  "Wind Rune Caza": 1,
-  "Wind Rune Dena": 1,
-  "Wind Rune Ena": 4,
-  "Wind Rune Fana": 1,
-  "Wind Rune Geza": 2,
-  "Wind Rune Heda": 1,
-  "Wind Rune Izah": 1,
-  "Wind Rune Jaka": 3,
-  "Wind Rune Kala": 3,
-  "Wind Rune Neza": 4,
-  "Wind Rune Ozah": 4
+  "Wind Rune Azia": 6,
+  "Wind Rune Beza": 10,
+  "Wind Rune Caza": 7,
+  "Wind Rune Dena": 4,
+  "Wind Rune Ena": 8,
+  "Wind Rune Fana": 4,
+  "Wind Rune Geza": 9,
+  "Wind Rune Heda": 7,
+  "Wind Rune Izah": 7,
+  "Wind Rune Jaka": 9,
+  "Wind Rune Kala": 6,
+  "Wind Rune Lena": 1,
+  "Wind Rune Meda": 4,
+  "Wind Rune Neza": 6,
+  "Wind Rune Ozah": 7
  },
  "wind_rune_sources": {
   "Wind Rune Azia": [
-   "an essence carrier"
-  ],
-  "Wind Rune Beza": [
-   "Bizazzzt",
-   "Bzzzt",
-   "Overseer of Air"
-  ],
-  "Wind Rune Caza": [
+   "A crystaline cloud",
+   "An essence carrier",
+   "Overseer of Air",
+   "Protector of Sky",
    "an azarack"
   ],
-  "Wind Rune Dena": [
-   "Bzzazzt"
-  ],
-  "Wind Rune Ena": [
+  "Wind Rune Beza": [
+   "A heartsbane drake",
+   "An azarack",
+   "Bizazzzt",
+   "Bzzzt",
+   "Noble Dojorn",
+   "Overseer of Air",
    "Protector of Sky",
-   "The Spiroc Lord",
-   "an essence carrier",
    "an essence tamer"
   ],
+  "Wind Rune Caza": [
+   "An azarack",
+   "Bazzzazzt",
+   "Bzzazzt",
+   "Protector of Sky",
+   "The Spiroc Lord",
+   "an essence carrier"
+  ],
+  "Wind Rune Dena": [
+   "Bzzazzt",
+   "Protector of Sky",
+   "a blade storm",
+   "an essence tamer"
+  ],
+  "Wind Rune Ena": [
+   "An essence carrier",
+   "An essence tamer",
+   "Bazzzazzt",
+   "Bzzazzt",
+   "Protector of Sky",
+   "The Spiroc Lord",
+   "a blade storm"
+  ],
   "Wind Rune Fana": [
+   "A windrider drake",
+   "An azarack",
+   "Protector of Sky",
    "Sister of the Spire"
   ],
   "Wind Rune Geza": [
+   "A blade storm",
+   "A heartsbane drake",
+   "An azarack",
+   "Bazzt Zzzt",
    "Bazzzazzt",
-   "Protector of Sky"
+   "Protector of Sky",
+   "The Spiroc Lord",
+   "an essence carrier"
   ],
   "Wind Rune Heda": [
+   "A spiroc banisher",
+   "An azarack",
+   "Bazzt Zzzt",
+   "Eye of Veeshan",
+   "Overseer of Air",
    "Protector of Sky"
   ],
   "Wind Rune Izah": [
-   "an essence carrier"
+   "A greater sphinx",
+   "A spiroc vanquisher",
+   "An essence carrier",
+   "Bazzzazzt",
+   "Gorgalosk",
+   "The Spiroc Guardian"
   ],
   "Wind Rune Jaka": [
+   "A heartsbane drake",
+   "An azarack",
+   "An essence carrier",
+   "Noble Dojorn",
+   "Protector of Sky",
    "Sister of the Spire",
    "The Spiroc Guardian",
-   "an essence carrier"
-  ],
-  "Wind Rune Kala": [
-   "Eye of Veeshan",
-   "a spiroc vanquisher",
    "an azarack"
   ],
+  "Wind Rune Kala": [
+   "A heartsbane drake",
+   "A spiroc vanquisher",
+   "An azarack",
+   "Bzzzt",
+   "Eye of Veeshan"
+  ],
+  "Wind Rune Lena": [
+   "Heart harpie"
+  ],
+  "Wind Rune Meda": [
+   "A crystaline cloud",
+   "An azarack",
+   "Protector of Sky"
+  ],
   "Wind Rune Neza": [
-   "Protector of Sky",
-   "a spiroc walker",
-   "an azarack",
-   "an essence tamer"
+   "A blade storm",
+   "A spiroc banisher",
+   "A spiroc walker",
+   "An azarack",
+   "An essence tamer",
+   "Protector of Sky"
   ],
   "Wind Rune Ozah": [
+   "An azarack",
+   "An essence tamer",
+   "Noble Dojorn",
    "Protector of Sky",
-   "an azarack",
-   "an essence tamer"
+   "a blade storm"
   ]
  },
  "resisted": {
   "Deadly Poison": {
-   "Bzzazzt": 72,
-   "Bazzzazzt": 52,
-   "Bzzzt": 29,
-   "Bizazzzt": 11
+   "Bzzazzt": 418,
+   "Bazzzazzt": 171,
+   "Bzzzt": 92,
+   "Bizazzzt": 21
   },
   "Mana Sink": {
-   "an avenging gazer": 11
+   "an avenging gazer": 29
   },
   "Stone Breath": {
-   "Gorgalosk": 10
+   "Gorgalosk": 28
+  },
+  "Harpy Voice": {
+   "heart harpie": 28
+  },
+  "Immobilize": {
+   "a greater sphinx": 9,
+   "a heartsbane drake": 6,
+   "an avenging gazer": 5,
+   "a windrider drake": 2
   },
   "Darkness": {
-   "a spiroc vanquisher": 8
+   "a spiroc vanquisher": 8,
+   "a spiroc revolter": 5,
+   "The Spiroc Guardian": 3,
+   "a spiroc arbiter": 2
+  },
+  "Fatigue Drain": {
+   "a blade storm": 14
+  },
+  "Air Elemental Attack": {
+   "a gust of wind": 9,
+   "a crystaline cloud": 4
+  },
+  "Ensnaring Roots": {
+   "The Spiroc Lord": 8
+  },
+  "Rotting Flesh": {
+   "Bazzt Zzzt": 7
+  },
+  "Entrance": {
+   "a greater sphinx": 7
   },
   "Draught of Fire": {
-   "an avenging gazer": 3
+   "an avenging gazer": 6
   },
   "Spiroc Thunder": {
-   "a spiroc vanquisher": 3
+   "a spiroc vanquisher": 4,
+   "a spiroc arbiter": 2
+  },
+  "Stone Spider Stun": {
+   "The Spiroc Lord": 6
+  },
+  "Cajoling Whispers": {
+   "a greater sphinx": 6
+  },
+  "Elnerick's Entombment of Ice": {
+   "a heartsbane drake": 5
+  },
+  "Dooming Darkness": {
+   "heart harpie": 4
   },
   "Ensnare": {
    "The Spiroc Guardian": 2
   },
-  "Stone Spider Stun": {
-   "The Spiroc Lord": 2
-  },
-  "Ensnaring Roots": {
-   "The Spiroc Lord": 2
-  },
   "Call of Flame": {
+   "The Spiroc Lord": 2
+  },
+  "Negation of Life": {
+   "heart harpie": 2
+  },
+  "Engulfing Roots": {
+   "The Spiroc Guardian": 2
+  },
+  "Enveloping Roots": {
+   "a spiroc arbiter": 2
+  },
+  "Invoke Lightning": {
    "The Spiroc Lord": 1
   },
-  "Rotting Flesh": {
-   "Bazzt Zzzt": 1
+  "Tangling Weeds": {
+   "a spiroc banisher": 1
+  },
+  "Dustdevil": {
+   "The Spiroc Guardian": 1
+  },
+  "Whirl Until You Hurl": {
+   "an essence harvester": 1
+  },
+  "Blood of Pain": {
+   "heart harpie": 1
+  },
+  "Shadow Vortex": {
+   "heart harpie": 1
+  },
+  "Shiftless Deeds": {
+   "a greater sphinx": 1
+  },
+  "Discordant Mind": {
+   "a greater sphinx": 1
   }
  },
- "distinct_items": 74,
- "loot_lines": 180
+ "distinct_items": 122,
+ "loot_lines": 543
 }

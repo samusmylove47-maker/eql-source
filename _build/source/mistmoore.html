@@ -6,254 +6,529 @@
 <title>Castle Mistmoore — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#A8324A;--accd:#5c1c29;--acct:color-mix(in srgb, #A8324A 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE MISTMOORE SHEET
+   ------------------------------------------------------------------
+   The page is the plate. A graticule is fixed behind it, the sheet is
+   translucent over that graticule, and a neatline with an inner rule frames
+   the whole thing — the same grammar _build/mistmoorecarto.py already draws
+   on the chart itself.
+
+   Everything here is self-contained: this page never loads assets/site.css.
+   Token names are prefixed --mm- because build3.py appends site.css's :root
+   AFTER this block, and an unprefixed --mut or --txt would be silently
+   overwritten by it. --acc, --accd and --acct are deliberately NOT prefixed:
+   the injected chrome reads them and site.css does not define them.
+
+   Contrast, computed rather than eyeballed, against the lightest ground the
+   page can produce (a graticule crossing under the lamplight, seen through
+   the sheet, #1D180E): ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text
+   5.86, warn 5.16, brass 7.98, link 8.97. On the panel #2A2318 the same list
+   reads 12.99 / 10.76 / 6.77 / 4.88 / 5.15 / 4.53 / 7.01 / 7.88. */
+:root{
+  --acc:#A8324A;--accd:#5c1c29;--acct:#C3838E;
+  --mm-g:#120E08;          /* the plotting table */
+  --mm-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --mm-ink:#F2EADA;--mm-txt:#DFD6C4;--mm-mut:#B5AA95;--mm-dim:#9A8F7C;
+  --mm-warn:#D46C64;--mm-brass:#C9922E;--mm-brass-t:#D9A63F;--mm-ok:#5FA37E;
+  --mm-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --mm-r2:#7A6950;         /* a boundary that carries meaning, 3.34:1 */
+  /* One scale. Anything not on it is a bug. --mm-xl was declared and never
+     used by anything, on a sheet whose own comment says that. It is gone. */
+  --mm-2xs:10px;--mm-xs:11.5px;--mm-sm:13.5px;--mm-base:15.5px;--mm-md:18.5px;
+  --mm-lg:22px;--mm-fig:clamp(30px,6vw,58px);
+  --mm-h2:clamp(24px,3.6vw,36px);--mm-h1:clamp(38px,6.6vw,74px);
+  --mm-rad:4px;
+  /* AND ONE SPACING SCALE, for the same reason. Every margin and padding here
+     was a raw literal, so nine paddings sat inside an 8px band — 9, 10, 11,
+     12, 13, 14, 15, 16, 17 — which is a continuum, not a scale. The steps
+     below are the whole vocabulary; the two clamp() gutters are responsive
+     measurements rather than steps and stay as they are. */
+  --mm-s1:4px;--mm-s2:8px;--mm-s3:12px;--mm-s4:16px;
+  --mm-s5:24px;--mm-s6:32px;--mm-s7:48px;--mm-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--mm-g)}
+body{margin:0;background:transparent;color:var(--mm-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--mm-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint on a
+   document carrying a 1,000px drawing.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast — with one period
+   only two rules can ever coincide. And every stop terminates in
+   rgba(228,210,174,0) rather than the keyword transparent, because older
+   WebKit premultiplies transparent as transparent BLACK and draws a grey seam
+   down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens — so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(168,50,74,.045) 0%, rgba(168,50,74,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--mm-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--mm-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--mm-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--mm-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is the single change that makes a column of figures read as instrument
+   output rather than as a web table. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.ratio .rnum,.rx,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--mm-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--mm-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--mm-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--mm-s2);
+  text-wrap:balance;color:var(--mm-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--mm-lg);letter-spacing:.03em;margin:var(--mm-s5) 0 var(--mm-s2);color:var(--mm-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--mm-mut);font-size:var(--mm-md);margin:0 0 var(--mm-s5);max-width:60ch}
+.cm{color:var(--mm-dim);font-size:var(--mm-sm);line-height:1.6;margin:var(--mm-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--mm-r1);padding-left:var(--mm-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--mm-s7) 0 var(--mm-s5);margin-bottom:var(--mm-s2);
+  border-bottom:1px solid var(--mm-r2)}
+.eyebrow{font-size:var(--mm-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--mm-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--mm-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--mm-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--mm-md);
+  color:var(--mm-mut);letter-spacing:.02em;margin:var(--mm-s2) 0 var(--mm-s3);
+  text-transform:uppercase}
+/* THE DECK. The page opened on a floor plan, so nothing said who the zone is
+   for or what it costs to be wrong here. This is the answer to "should I go
+   tonight", above the first chart rather than reverse-engineered from tables. */
+.deck{color:var(--mm-txt);margin:0 0 var(--mm-s5);max-width:66ch}
+.deck strong{color:var(--mm-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--mm-r1);border-left:1px solid var(--mm-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--mm-p);padding:var(--mm-s3);
+  border-right:1px solid var(--mm-r1);border-bottom:1px solid var(--mm-r1)}
+.cell dt{font-size:var(--mm-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--mm-dim);margin:0 0 var(--mm-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--mm-lg);
+  font-weight:600;color:var(--mm-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--mm-xs);font-weight:400;
+  color:var(--mm-mut);display:block;letter-spacing:0}
+/* Thirteen screens with one id in the document and no way down it. */
+.jump{margin:var(--mm-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--mm-s1) var(--mm-s4);font-size:var(--mm-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--mm-mut);text-decoration:none;border-bottom:1px solid var(--mm-r1)}
+.jump a:hover{color:var(--mm-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column
+   — a rail the eye reads as a plate before it reads a word. The kicker names
+   what the section is MADE OF; numbered headings are a generated-site tell and
+   are not coming back. Below the breakpoint the kicker sits inline and there
+   is no numeral to fall back to. */
+section{margin-top:var(--mm-s7);position:relative}
+.kick{font-size:var(--mm-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--mm-dim);margin:0 0 var(--mm-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--mm-r2);padding-left:var(--mm-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--mm-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--mm-sm);
+  border-top:2px solid var(--mm-brass)}
+th{font-size:var(--mm-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--mm-mut);
+  text-align:left;padding:var(--mm-s2) var(--mm-s3) var(--mm-s2) 0;background:none;
+  border-bottom:1px solid var(--mm-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--mm-s3) var(--mm-s3) var(--mm-s3) 0;border-bottom:1px solid var(--mm-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(168,50,74,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--mm-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--mm-sm);text-align:right;white-space:nowrap;color:var(--mm-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--mm-base);font-weight:600;
+  letter-spacing:.02em;color:var(--mm-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--mm-base);font-weight:600;
+  letter-spacing:.02em;color:var(--mm-ink)}
+/* THE SURVEY LINKS OUT NOW. It named 442 items and 234 named mobs that this
+   site publishes a page for and linked to none of them, while /named/ linked
+   back here three times — a one-way graph. The colour is inherited rather than
+   set, so every contrast ratio measured on this sheet is unchanged and the
+   underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--mm-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--mm-xs);color:var(--mm-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--mm-ok)}
+.st{font-size:var(--mm-xs);color:var(--mm-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--mm-sm);color:var(--mm-mut)}
+.tag{font-size:var(--mm-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--mm-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--mm-warn)}
+/* The tier mark. Eight of these shipped with no rule at all and rendered as a
+   naked capital jammed against the preceding word. Styling an existing mark is
+   not the same as grading a plate: the surveys stay deliberately ungraded. */
+.tier{font-size:var(--mm-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--mm-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--mm-base);
+  letter-spacing:.02em;color:var(--mm-ink);padding:var(--mm-s3) var(--mm-s5) var(--mm-s3) 0;
+  border-bottom:1px solid var(--mm-r1)}
+.key dd{margin:0;font-size:var(--mm-sm);color:var(--mm-mut);padding:var(--mm-s3) 0;
+  border-bottom:1px solid var(--mm-r1)}
+.key strong{color:var(--mm-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* THE PAGE'S ONE LARGE FIGURE. The argument made visible in a glance: what the
+   worst kill in the zone pays, what the best pays, and the multiple between
+   them. Every figure is substituted from assets/measured.json at build time.
+
+   .rnum is scoped to this figure. Unscoped, it also caught the 21 numerals
+   _build/build6.py draws on the floor plan's farming route — SVG <text
+   class="rnum">, whose own font-size attribute a stylesheet rule beats — so
+   the route stops inherited a viewport clamp meant for one headline figure and
+   re-weighted themselves against the map as the window resized: 2.9x the mob
+   labels at 1440px, 1.5x at 375px. Nobody chose that. */
+.ratio{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:center;
+  gap:clamp(6px,2vw,30px);margin:var(--mm-s5) 0 var(--mm-s2);padding:var(--mm-s5) 0 var(--mm-s4);
+  border-top:2px solid var(--mm-brass);border-bottom:1px solid var(--mm-r2)}
+.rside{min-width:0}
+.rside.re{text-align:right}
+.ratio .rnum{display:block;font-size:var(--mm-fig);font-weight:500;line-height:1;
+  color:var(--mm-ink);letter-spacing:-.01em}
+.rwho{display:block;margin-top:var(--mm-s2);font-family:"Saira Condensed",sans-serif;
+  font-weight:600;font-size:var(--mm-xs);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--mm-mut)}
+.rx{font-size:var(--mm-lg);color:var(--mm-brass-t);letter-spacing:.02em}
+.ratio figcaption{grid-column:1/-1;margin:var(--mm-s4) 0 0;color:var(--mm-mut);
+  font-size:var(--mm-sm);max-width:66ch}
+.ratio figcaption strong{color:var(--mm-ink)}
+
+/* Debit and credit. Two facing ledgers instead of one four-column table, which
+   removes a horizontal scroller on the desktop and on the phone. */
+.ledgers{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  gap:clamp(18px,3vw,44px);margin:var(--mm-s5) 0 0}
+.ldg{min-width:0}
+.ldg table{table-layout:fixed}
+.ldg th:first-child,.ldg td:first-child{width:auto}
+.ldg .lv{width:26%}
+/* One h3 rule, at one size. This overrode it to --mm-md and was one of six
+   heading treatments rendering for two heading levels. */
+.ledgers h3{margin:0 0 var(--mm-s1);letter-spacing:.06em}
+.ledgers .skip h3{color:var(--mm-dim)}
+@media(max-width:700px){.ledgers{grid-template-columns:minmax(0,1fr);gap:var(--mm-s5)}}
+
+/* Hazards: one object with one rule, not six identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--mm-s5) 0 0;padding:0 0 0 var(--mm-s5);
+  border-left:2px solid var(--mm-warn);max-width:74ch}
+ul.hz li{padding:var(--mm-s4) 0;border-top:1px solid var(--mm-r1);color:var(--mm-mut);
+  font-size:var(--mm-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--mm-base);
+  color:var(--mm-warn);margin-bottom:var(--mm-s1)}
+ul.hz strong{color:var(--mm-ink)}
+
+.note{border-left:1px solid var(--mm-r1);padding:var(--mm-s1) 0 var(--mm-s1) var(--mm-s4);
+  margin:var(--mm-s5) 0 0;color:var(--mm-mut);font-size:var(--mm-sm);max-width:68ch}
+.note strong{color:var(--mm-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--mm-s8);padding-top:var(--mm-s5);border-top:1px solid var(--mm-r2);
+  color:var(--mm-mut);font-size:var(--mm-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--mm-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--mm-dim);margin:var(--mm-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one
+   step higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .meas table{border-top:2px solid var(--mm-brass)}
+body .meas td{border-bottom:1px solid var(--mm-r1)}   /* its #322A23 is 1.4:1 */
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+body .fp-wrap{border-radius:var(--mm-rad)}
+/* build3.py injects the placeholder note above the roster unconditionally, but
+   its stylesheet only travels with a zone that has a withheld coordinate. This
+   zone has none, so the note has always rendered here as unstyled body text. */
+body .ph-note{margin:0 0 var(--mm-s4);padding:var(--mm-s3) var(--mm-s4);
+  border-left:3px solid var(--mm-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--mm-rad);color:var(--mm-mut);font-size:var(--mm-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--mm-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* build9.py's selectors are descendant-scoped to .meas, so they also capture
+   the authored ledgers in this page's second section: a 520px table min-width
+   that blew the two-column grid open at 1100px, a smaller h2 than every other
+   heading on the page, and a rule below 760px that turns every table into
+   stacked blocks with the column heads hidden. The generated ledger at the
+   foot keeps build9's treatment; these restore the authored ones.
+
+   THE SAME REPAIR, FOR THE SAME FAULT, ON THE OTHER INJECTED SECTION. Only
+   .meas was fixed, so "Floor plan" — the first and largest heading a reader
+   meets — rendered at 28px against 36px everywhere else, with four times the
+   tracking and a shorter margin above. One heading level, one rule. */
+body .meas,body .fplan{margin-top:var(--mm-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--mm-h2);letter-spacing:.005em;line-height:1}
+/* AND THE AUTHORED LEDGERS LEFT .meas ALTOGETHER, which is why the long list of
+   repairs that used to sit here is gone. Two reasons, and the second is the
+   larger one.
+   scripts/gate.py exempts a survey's measured table ROWS from the prose ceiling,
+   because a ceiling over them falls with every new session and eventually
+   forbids logging another night in a zone. Its anchor is the FIRST section opening with
+   the meas class on the page and it fires once — so this page's authored
+   section was taking the exemption, and the 272 words of generated rows in the
+   section the rule was written for were being counted as prose. (The anchor is
+   a plain string search over the whole file, comments included, so the tag is
+   described here rather than typed: written out, this paragraph moved the
+   exemption into the stylesheet.)
+   Renaming this one hands the exemption back. The authored ladder and backstab
+   rows are governed instead, which is the smaller and the correct half: they
+   are six rows and seven, and they do not grow with every session. */
+/* THE SPINE RAIL HAD HOLES AT BOTH ENDS. Seven sections, and the two injected
+   ones — the first on the page and the last — carried no kicker, so the rail
+   was blank exactly where it should be establishing itself. Their generators
+   are not this file's to edit, so the label is set here. It names what the
+   section is made of, in the same register as the authored five. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--mm-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--mm-dim);display:block;margin:0 0 var(--mm-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 10 · Lesser Faydark, Faydwer</p>
-  <h1>Castle Mistmoore</h1>
-  <p class="subtitle">Mayong's stronghold — the population changes at dawn and dusk</p>
+  <p class="eyebrow">Dungeon survey</p>
+  <div class="title"><h1>Castle Mistmoore</h1><span class="leader"></span><span class="plateno">10</span></div>
+  <p class="subtitle">The population changes at dawn and dusk</p>
+  <p class="deck">Levels run 20 to 45, with the roaming Dark Huntress above them. Come for the bard instruments, the focus items and the epic pelt. <strong>A train is what kills people</strong>, funnelling into the one corridor out. Everything below is @@M_TIER@@; D0 and D2 to D4 are unmeasured.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>mistmoore</dd></div>
-    <div class="cell"><dt>Mob levels</dt><dd>20&ndash;45<small>Mayong ~53</small></dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>20&ndash;45<small>Dark Huntress 50</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>97<small>129% — was 90</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>&le;22:00<small>+ dawn / dusk repop</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>@@M_TIER@@<small>verified at this tier</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>&le;22 min<small>trash. Named vary, to four hours</small></dd></div>
+    <div class="cell"><dt>Repop</dt><dd>06:00 / 20:00<small>undead &harr; dark elves</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>&minus;295, 123</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Lesser Faydark<small>only exit</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Lesser Faydark</dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
-
-
-
+<main>
 
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>The population changes at dawn and dusk.</b> Twice a day in game time, at 06:00 and 20:00, the undead give way to dark elves and back. What you can camp depends on the clock.</li><li><b>Chestplate of the Dark Flame.</b> AC 19 and STR +9, the heaviest armour in this set, alongside the Crested Spaulders and Mistmoore Shield.</li><li><b>Trains are the defining hazard.</b> Most start deep in the castle, collect everything on the way out, and funnel through one corridor between the tower and the lake.</li><li><b>A wide band, 20 to 45.</b> The front is survivable long before the castle is.</li></ul>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Two halves and an upper floor: grounds west, castle east.</p>
+  <dl class="key">
+    <dt>A druid ring at a tunnel mouth</dt><dd>The entrance. Everything lies east of it</dd>
+    <dt>A coffin in a tomb, someone behind it</dt><dd>Ssynthi, and the <strong>one-way</strong> door down to the jail</dd>
+    <dt>A cliff, a bridge, castle doors beyond</dt><dd>The castle entrance, unmarked on the wiki map</dd>
+    <dt>Three camps</dt><dd>Grounds and graveyard, 24 to 40. Courtyard and fountain, 28 to 33. Castle rooms, 32 to 35 &mdash; where trains start</dd>
+  </dl>
+  <p class="cm">Pull points and escape lines are unrecorded.</p>
 </section>
 
 <section>
-  <h2><span class="num">02</span>Know where you are</h2>
-  <p class="lede"><b>Two halves and an upper floor.</b> The outer grounds sit west &mdash; graveyard, tomb, pit, canyon, jail, courtyard, fountain and tower. The castle sits east.</p>
-  <div class="scroller"><table>
-    <thead><tr><th>What you see</th><th>Where you are</th></tr></thead>
-    <tbody><tr><td class="nmob">An ancient druid ring at a tunnel mouth</td><td>The entrance, southern edge of Lesser Faydark</td></tr><tr><td class="nmob">A coffin in a tomb, someone behind it</td><td>Room 2 — Ssynthi, and the <strong>one-way</strong> secret entrance to the jail</td></tr><tr><td class="nmob">A white circle drawn on the floor opposite the stairs</td><td>The Tower — Garton Viswin spawns <strong>inside that circle, always</strong></td></tr><tr><td class="nmob">A chair in a throne room, a herald either side</td><td>Room 20 — Princess Cherista</td></tr><tr><td class="nmob">A fountain with two garden mobs flanking one figure</td><td>Room 7 — a cloaked dhampyre</td></tr><tr><td class="nmob">Cells and a stairway</td><td>Room 5 — the jail. An avenging caitiff is on the stairs</td></tr><tr><td class="nmob">A cliff and a bridge, castle doors beyond</td><td>The Castle Entrance — unmarked on the wiki map, just outside the entry hall</td></tr><tr><td class="nmob">Bodies at the zone line</td><td>A train just went through. <strong>Wait.</strong> See §05</td></tr><tr><td class="nmob">Trains</td><td>Deep castle &rarr; the funnel</td></tr><tr><td class="nmob">The returning line</td><td>Entrance corridor</td></tr><tr><td class="nmob">Repop while seated</td><td>Everywhere, 06:00 &amp; 20:00</td></tr><tr><td class="nmob">500-plus nukes</td><td>Deep castle</td></tr><tr><td class="nmob">Black Dire</td><td>The Canyon</td></tr><tr><td class="nmob">Mynthi Davissi</td><td>Ballroom</td></tr><tr><td class="nmob">The invisibility trap</td><td>Jail secret door</td></tr><tr><td class="nmob">A glyphed forbidder</td><td>Pond approach</td></tr></tbody>
-  </table></div>
+  <p class="kick">Five hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>Trains</b> They start deep and <strong>funnel between the tower and the lake</strong> into the one corridor out. Shelter behind the lake, the tower or the zone line. Deep ones carry <strong>500-plus nukes</strong>.</li>
+    <li><b>After a large train</b> The returning line loiters near the entrance and pulling from it is lethal. <strong>Zone in invisible.</strong></li>
+    <li><b>Invisibility is two spells</b> Ordinary covers the day population, versus-undead the night, and <strong>the 20:00 swap changes which you need.</strong> The jail's secret door strips both.</li>
+    <li><b>Sitting at a repop tick</b> Sitting gives level-1-equivalent aggro, and at 06:00 and 20:00 the population changes.</li>
+    <li><b>The approach</b> Lesser Faydark is safe except <strong>Brownies north, Shadowed Men east, dark elves south.</strong></li>
+  </ul>
 </section>
 
 
-
 <section>
-  <h2><span class="num">03</span>Named roster</h2>
-  <p class="lede">Percentages and timers are the wiki's pre-patch figures. <strong>Level 2</strong> in the location column is the wiki's own annotation for the castle's upper floor and is the only vertical information the source provides.</p>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Timers, and the words <em>rare spawn</em>, are pre-patch wiki wording.</p>
+  <div class="note">The wiki's <strong>Level 2</strong> covers two storeys of the plan, and three mobs it puts on the third carry no tag. The plan wins: it is measured against the mesh. <strong>No row records day spawn or night spawn</strong>; one log with the game clock would settle it.</div>
   <div class="scroller">
   <table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Mayong Mistmoore</td><td class="loc"><span style="color:#D46C64">unrecorded</span></td><td class="lv">~53</td><td class="cls">? / ?</td><td class="src">Coffin Room, room 15. The first vampire, cursed by unknown means. Drops the <strong>Fanged Skull Stiletto — 12 / 22 with backstab 12</strong>, the best weapon in the zone by a wide margin. The wiki has no level or coordinate confirmed.<span class="tag warn">unconfirmed</span></td></tr>
-      <tr><td class="nmob">Dark Huntress</td><td class="loc"><span style="color:#D46C64">random</span></td><td class="lv">50</td><td class="cls">HUMAN<br>NEC</td><td class="src"><strong>Highly aggressive and resistant to spells.</strong> A rare NPC that spawns at random locations, buffs itself, and hunts. No loot recorded.<span class="tag warn">roams</span></td></tr>
-      <tr><td class="nmob">Black Dire</td><td class="loc">90, &minus;166, &minus;222</td><td class="lv">45</td><td class="cls">WOLF ELEMENTAL<br>SHD</td><td class="src"><strong>Triggered — spawns at the end of the canyon when an advisor is killed.</strong> Hits in the 200s, can quad, and harm touches. Shaman epic. Drops the Black Dire Pelt.<span class="tag warn">quads + HT</span></td></tr>
-      <tr><td class="nmob">An undead knight</td><td class="loc">&minus;36, 365, &minus;263</td><td class="lv">40</td><td class="cls">SKELETON<br>?</td><td class="src">100%. One of several mobs of this name across the game; this is the Mistmoore one. Loot unrecorded.</td></tr>
-      <tr><td class="nmob">Xicotl</td><td class="loc">&minus;191, 92 &middot; <em>Level 2</em></td><td class="lv">40</td><td class="cls">TROLL<br>SHD</td><td class="src"><strong>~20%</strong> on a 22-minute respawn; <strong>placeholder is a Mistmoore guard.</strong> Drops the Glowing Sword Hilt for Zimel's Blades / SoulFire.</td></tr>
-      <tr><td class="nmob">Lasna Cheroon</td><td class="loc">&minus;173, 90 &middot; <em>Level 2</em></td><td class="lv">36</td><td class="cls">ELF VAMPIRE<br>NEC</td><td class="src">100% but flagged a <strong>rare spawn</strong> — the Bath. Diamondine Earring is the common drop, Platinum Skull Ring the uncommon.</td></tr>
-      <tr><td class="nmob">Garton Viswin</td><td class="loc">&minus;205, 352</td><td class="lv">35&ndash;37</td><td class="cls">ELF VAMPIRE<br>SHD</td><td class="src">34%. <strong>Always inside the white circle on the tower floor, opposite the stairs.</strong> Random placeholder. Carries the Chestplate of the Dark Flame and the Glowing Iron Pike.</td></tr>
-      <tr><td class="nmob">An advisor</td><td class="loc">&minus;117, 86 &middot; <em>Level 2</em></td><td class="lv">35</td><td class="cls">DARK ELF<br>WIZ</td><td class="src">100%, <strong>every four hours — confirmed.</strong> Near the library. <strong>His death spawns Black Dire.</strong> Drops the Advisor Robe.</td></tr>
-      <tr><td class="nmob">Maid Issis</td><td class="loc">&minus;340, &minus;90</td><td class="lv">35</td><td class="cls">DARK ELF<br>NEC</td><td class="src">100%. Placeholder is a deathly usher. Spawns as either a robed dark elf or a vampire.</td></tr>
-      <tr><td class="nmob">Butler Syncall</td><td class="loc">&minus;318, &minus;110 &middot; <em>Level 2</em></td><td class="lv">35</td><td class="cls">DARK ELF<br>SHD</td><td class="src">100%. Placeholder is a deathly harbinger. Same two-form behaviour as the maid.</td></tr>
-      <tr><td class="nmob">Princess Cherista</td><td class="loc">&minus;131, 23 &middot; <em>Level 2</em></td><td class="lv">35</td><td class="cls">ELF VAMPIRE<br>NEC</td><td class="src">33%. On the chair in the Throne Room; <strong>placeholder is a Dark Ritualist, and a Deathly Herald spawns on each side of her.</strong> Does not always drop.</td></tr>
-      <tr><td class="nmob">Mynthi Davissi</td><td class="loc">&minus;152, &minus;13</td><td class="lv">32</td><td class="cls">QEYNOS CITIZEN<br>ENC</td><td class="src">50%, the Ballroom. <strong>She is an enchanter and she will charm you.</strong> The wiki advises endure or resist magic before engaging.<span class="tag warn">charms</span></td></tr>
-      <tr><td class="nmob">A cloaked dhampyre</td><td class="loc">&minus;5, 76</td><td class="lv">33</td><td class="cls">ELF VAMPIRE<br>SHD</td><td class="src"><strong>~15%</strong> at the fountain, flanked by two ordinary garden mobs. Hooded Black Cloak and Blood of the Dhampyre.</td></tr>
-      <tr><td class="nmob">A hemo enologist</td><td class="loc">&minus;67, 171</td><td class="lv">33</td><td class="cls">DARK ELF<br>WAR</td><td class="src">100%, the Courtyard. Drops the Blood Spirit.</td></tr>
-      <tr><td class="nmob">A dark ass't librarian</td><td class="loc">&minus;86, &minus;106 &middot; <em>Level 2</em></td><td class="lv">33</td><td class="cls">DARK ELF<br>WAR</td><td class="src">33%. Guest Room, opposite side from the Library. Illegible Scroll, "Vok Na Zov VI".</td></tr>
-      <tr><td class="nmob">A dark librarian</td><td class="loc">&minus;67, 96</td><td class="lv">31</td><td class="cls">DARK ELF<br>WAR</td><td class="src">Spawns into the Library. Illegible Scroll, "Vok Na Zov V".</td></tr>
-      <tr><td class="nmob">A dark elf noble</td><td class="loc">&minus;117, &minus;105</td><td class="lv">31</td><td class="cls">DARK ELF<br>WIZ</td><td class="src">33%. <strong>Static spawn with no placeholder</strong>, inside the Gypsy Ambassador room by the door, beside a negotiator.</td></tr>
-      <tr><td class="nmob">An avenging caitiff</td><td class="loc">&minus;148, 292</td><td class="lv">30</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>10%</strong> on the stairs to the jail, with a <strong>separate 23-minute spawn timer.</strong> Placeholders are a deathly usher and a will pillager. Crested Spaulders (common) and Crested Helm (rare).</td></tr>
-      <tr><td class="nmob">A deathly usher</td><td class="loc">various</td><td class="lv">30&ndash;32</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>8%.</strong> Casts the Darkness and Ignite Blood lines. <strong>Does not harm touch</strong> despite the company it keeps. Black Silk Gloves, small bronze, Rune of Ivy.</td></tr>
-      <tr><td class="nmob">An imp familiar</td><td class="loc">&minus;16, 435</td><td class="lv">29&ndash;35</td><td class="cls">IMP<br>WAR</td><td class="src">50% but flagged a <strong>rare spawn</strong> in the Graveyard. Bloodstone Eyepatch and Sacrificial Dagger.</td></tr>
-      <tr><td class="nmob">A Fallen Noble</td><td class="loc">23, 105</td><td class="lv">28</td><td class="cls">DARK ELF<br>CLR</td><td class="src"><strong>Rare spawn</strong> at the fountain. Noble's Robes and Vial of Noble's Blood, both uncommon.</td></tr>
-      <tr><td class="nmob">Enynti</td><td class="loc">80, &minus;112</td><td class="lv">27</td><td class="cls">DARK ELF<br>WAR</td><td class="src">The Canyon. Drops the Rune of Fortune (Top).</td></tr>
-      <tr><td class="nmob">A glyphed ghoul</td><td class="loc">&minus;10, 587</td><td class="lv">27</td><td class="cls">DARK ELF<br>WAR</td><td class="src">100%. <strong>Spawns anywhere a familiar does</strong> — the pool, the Gorge, and the gates outside the Graveyard. Carries the Crested Mistmoore Shield.</td></tr>
-      <tr><td class="nmob">Ssynthi</td><td class="loc">&minus;60, 373</td><td class="lv">24&ndash;25</td><td class="cls">INVISIBLE MAN<br>WIZ</td><td class="src">50%. A renegade shadowman who found solace in the teachings of Solusek Ro and is <strong>not normally aggressive.</strong> Quest giver for Solusek's Flower. Drops the Robe of the Keeper.</td></tr>
+      <tr><td class="nmob"><a href="../named/dark-huntress.html">Dark Huntress</a></td><td class="loc"><span style="color:#D46C64">random</span></td><td class="lv">50</td><td class="cls">HUMAN<br>NEC</td><td class="src"><strong>Aggressive and spell-resistant.</strong> Spawns anywhere, buffs itself, hunts. Loot unrecorded.<span class="tag warn">roams</span></td></tr>
+      <tr><td class="nmob"><a href="../named/black-dire.html">Black Dire</a></td><td class="loc">90, &minus;166, &minus;222</td><td class="lv">45</td><td class="cls">WOLF ELEMENTAL<br>SHD</td><td class="src"><strong>Spawns at the canyon’s end when an advisor dies.</strong> Hits in the 200s, quads, harm touches.<span class="tag warn">quads + HT</span></td></tr>
+      <tr><td class="nmob"><a href="../named/an-undead-knight.html">An undead knight</a></td><td class="loc">&minus;36, 365, &minus;263</td><td class="lv">40</td><td class="cls">SKELETON<br>?</td><td class="src">Loot unrecorded.</td></tr>
+      <tr><td class="nmob"><a href="../named/xicotl.html">Xicotl</a></td><td class="loc">&minus;191, 92 &middot; <em>Level 2</em></td><td class="lv">40</td><td class="cls">TROLL<br>SHD + NEC <span class="tier tM">M</span></td><td class="src">On a 22-minute respawn.</td></tr>
+      <tr><td class="nmob"><a href="../named/lasna-cheroon.html">Lasna Cheroon</a></td><td class="loc">&minus;173, 90 &middot; <em>Level 2</em></td><td class="lv">36</td><td class="cls">ELF VAMPIRE<br>NEC</td><td class="src">In the Bath. A <em>rare spawn</em>.</td></tr>
+      <tr><td class="nmob"><a href="../named/garton-viswin.html">Garton Viswin</a></td><td class="loc">&minus;205, 352</td><td class="lv">35&ndash;37</td><td class="cls">ELF VAMPIRE<br>SHD</td><td class="src"><strong>Always inside the white circle.</strong></td></tr>
+      <tr><td class="nmob"><a href="../named/an-advisor.html">An advisor</a></td><td class="loc">&minus;117, 86 &middot; <em>Level 2</em></td><td class="lv">35</td><td class="cls">DARK ELF<br>WIZ</td><td class="src">Near the library. Its <strong>four-hour</strong> figure is the wiki's, unconfirmed. Its death spawns Black Dire.<span class="tag warn">unconfirmed</span></td></tr>
+      <tr><td class="nmob"><a href="../named/maid-issis.html">Maid Issis</a></td><td class="loc">&minus;340, &minus;90</td><td class="lv">35</td><td class="cls">DARK ELF<br>NEC</td><td class="src">Spawns as a robed dark elf or a vampire.</td></tr>
+      <tr><td class="nmob"><a href="../named/butler-syncall.html">Butler Syncall</a></td><td class="loc">&minus;318, &minus;110 &middot; <em>Level 2</em></td><td class="lv">35</td><td class="cls">DARK ELF<br>SHD + NEC <span class="tier tM">M</span></td><td class="src">Same two-form behaviour as the maid.</td></tr>
+      <tr><td class="nmob"><a href="../named/princess-cherista.html">Princess Cherista</a></td><td class="loc">&minus;131, 23 &middot; <em>Level 2</em></td><td class="lv">35</td><td class="cls">ELF VAMPIRE<br>NEC <span class="tier tM">M</span></td><td class="src">On the throne, <strong>a Deathly Herald each side.</strong> Not a certain drop.</td></tr>
+      <tr><td class="nmob"><a href="../named/mynthi-davissi.html">Mynthi Davissi</a></td><td class="loc">&minus;152, &minus;13</td><td class="lv">32</td><td class="cls">QEYNOS CITIZEN<br>ENC</td><td class="src">The Ballroom. <strong>An enchanter: she will charm you.</strong> The wiki advises resist magic.<span class="tag warn">charms</span></td></tr>
+      <tr><td class="nmob"><a href="../named/a-cloaked-dhampyre.html">A cloaked dhampyre</a></td><td class="loc">&minus;5, 76</td><td class="lv">33</td><td class="cls">ELF VAMPIRE<br>SHD</td><td class="src">At the fountain, flanked by two garden mobs.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-hemo-enologist.html">A hemo enologist</a></td><td class="loc">&minus;67, 171</td><td class="lv">33</td><td class="cls">DARK ELF<br>WAR</td><td class="src">The Courtyard.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-dark-asst-librarian.html">A dark ass't librarian</a></td><td class="loc">&minus;86, &minus;106 &middot; <em>Level 2</em></td><td class="lv">33</td><td class="cls">DARK ELF<br>WAR</td><td class="src">Guest Room, opposite the Library.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-dark-librarian.html">A dark librarian</a></td><td class="loc">&minus;67, 96</td><td class="lv">31</td><td class="cls">DARK ELF<br>WAR</td><td class="src">Spawns into the Library.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-dark-elf-noble.html">A dark elf noble</a></td><td class="loc">&minus;117, &minus;105</td><td class="lv">31</td><td class="cls">DARK ELF<br>WIZ + SHD <span class="tier tM">M</span></td><td class="src">The Gypsy Ambassador room, by the door.</td></tr>
+      <tr><td class="nmob"><a href="../named/an-avenging-caitiff.html">An avenging caitiff</a></td><td class="loc">&minus;148, 292</td><td class="lv">30</td><td class="cls">DARK ELF<br>WAR</td><td class="src">On the stairs to the jail, on its own <strong>23-minute cycle.</strong></td></tr>
+      <tr><td class="nmob"><a href="../named/a-deathly-usher.html">A deathly usher</a></td><td class="loc">various</td><td class="lv">30&ndash;32</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>Casts nothing</strong> <span class="tier tM">M</span>.</td></tr>
+      <tr><td class="nmob"><a href="../named/an-imp-familiar.html">An imp familiar</a></td><td class="loc">&minus;16, 435</td><td class="lv">29&ndash;35</td><td class="cls">IMP<br>WAR</td><td class="src">In the Graveyard. A <em>rare spawn</em>.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-fallen-noble.html">A Fallen Noble</a></td><td class="loc">23, 105</td><td class="lv">28</td><td class="cls">DARK ELF<br>CLR</td><td class="src">At the fountain. A <em>rare spawn</em>.</td></tr>
+      <tr><td class="nmob"><a href="../named/enynti.html">Enynti</a></td><td class="loc">80, &minus;112</td><td class="lv">27</td><td class="cls">DARK ELF<br>WAR</td><td class="src">The Canyon.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-glyphed-ghoul.html">A glyphed ghoul</a></td><td class="loc">&minus;10, 587</td><td class="lv">27</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>Spawns anywhere a familiar does</strong> — the pool, the Gorge, the Graveyard gates.</td></tr>
+      <tr><td class="nmob"><a href="../named/ssynthi.html">Ssynthi</a></td><td class="loc">&minus;60, 373</td><td class="lv">24&ndash;25</td><td class="cls">INVISIBLE MAN<br>WIZ + ENC <span class="tier tM">M</span></td><td class="src">Quest giver for Solusek's Flower.</td></tr>
     </tbody>
   </table>
   </div>
-
-  
 </section>
 
 <section>
-  <h2><span class="num">04</span>Loot table</h2>
-  <p class="lede">The wiki lists 40 items dropping here — a smaller table than The Hole or The Warrens, but a higher proportion of it is worth having. Weapon lines read damage / delay. There is no armour <em>set</em> in this zone; instead there are individually strong pieces spread across the servants, the tower and the outer grounds.</p>
+  <p class="kick">Three registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. All races unless a class line says otherwise.</p>
+  <div class="note"><strong>Rare, common and uncommon are the wiki's words, not measured rates.</strong> A figure marked <span class="tier tM">M</span> is a measured drop: a count, never a rate.</div>
 
   <h3>Chase items</h3>
   <div class="scroller">
   <table>
-    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes &amp; races</th><th>Dropped by</th></tr></thead>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it">Fanged Skull Stiletto</td><td class="st">Primary / Secondary<br>Pierce <strong>12</strong> / 22<br>backstab 12</td><td class="st">&mdash;</td><td class="cls">ALL except CLR PAL DRU MNK SHM<br>all races</td><td class="src">Mayong Mistmoore <span class="tag warn">unconfirmed loc</span></td></tr>
-      <tr><td class="it">Chestplate of the Dark Flame</td><td class="st">Chest · lore</td><td class="st"><strong>AC 19</strong> · STR +9</td><td class="cls">WAR PAL SHD<br>all except IKS</td><td class="src">Garton Viswin <em>(rare)</em></td></tr>
-      <tr><td class="it">Crested Spaulders</td><td class="st">Shoulders</td><td class="st"><strong>AC 11</strong> · STA +6</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG<br>all races</td><td class="src">An avenging caitiff <em>(common)</em></td></tr>
-      <tr><td class="it">Crested Mistmoore Shield</td><td class="st">Secondary · lore</td><td class="st">AC 10 · DEX +6<br><strong>+10 Disease / Magic / Poison</strong></td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM<br>all races</td><td class="src">A glyphed ghoul <em>(rare)</em></td></tr>
-      <tr><td class="it">Crested Helm</td><td class="st">Head</td><td class="st">AC 10 · STR +6 · CHA +3</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG<br>all except IKS</td><td class="src">An avenging caitiff <em>(rare)</em></td></tr>
-      <tr><td class="it">Hooded Black Cloak</td><td class="st">Back · lore</td><td class="st">AC 10 · STR +5 · <strong>HP +45</strong></td><td class="cls all">ALL · all races</td><td class="src">A cloaked dhampyre <em>(rare)</em></td></tr>
-      <tr><td class="it">Glowing Iron Pike</td><td class="st">Primary · Pierce 9 / 36<br>backstab 9</td><td class="st">&mdash;</td><td class="cls">WAR RNG SHD BRD ROG<br>all races</td><td class="src">Garton Viswin <em>(common)</em></td></tr>
-      <tr><td class="it">Advisor Robe</td><td class="st">Chest · lore</td><td class="st">AC 8 · INT +5 · AGI +2<br><strong>MANA +20</strong> · SV Magic +5</td><td class="cls">MNK NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">An advisor</td></tr>
-      <tr><td class="it">Platinum Skull Ring</td><td class="st">Finger · focus</td><td class="st"><strong>HP +30</strong> · MANA +20 · CHA &minus;5<br>Reanimation Efficiency II</td><td class="cls all">ALL · all races</td><td class="src">Lasna Cheroon <em>(uncommon)</em></td></tr>
-      <tr><td class="it">Cape of Midnight Mist</td><td class="st">Neck · focus</td><td class="st">AC 2 · STR +5 · <strong>SV Magic +7</strong><br>Enhancement Haste I</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC<br>all races</td><td class="src">Butler Syncall <em>(common)</em></td></tr>
-      <tr><td class="it">Nightshade Wreath</td><td class="st">Head · focus</td><td class="st">AC 1 · WIS +5 · INT +5<br>Reanimation Haste I</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC<br>all races</td><td class="src">Maid Issis <em>(common)</em></td></tr>
-      <tr><td class="it">Diamondine Earring</td><td class="st">Ear · focus</td><td class="st">AC 2 · STR +3 · HP +12<br>Affliction Efficiency I</td><td class="cls all">ALL · all races</td><td class="src">Lasna Cheroon <em>(common)</em><br>Princess Cherista <em>(rare)</em></td></tr>
-      <tr><td class="it">Gem-Encrusted Scepter</td><td class="st">Primary · 1H Blunt 7 / 28</td><td class="st">WIS +5</td><td class="cls">CLR DRU BRD SHM<br>all races</td><td class="src">Princess Cherista <em>(uncommon)</em></td></tr>
-      <tr><td class="it">Sacrificial Dagger</td><td class="st">Primary / Secondary<br>Pierce 5 / <strong>21</strong> · backstab 5</td><td class="st">INT +5</td><td class="cls">ALL except CLR PAL DRU MNK SHM<br>all races</td><td class="src">An imp familiar <em>(common)</em></td></tr>
-      <tr><td class="it">Bloodstone Eyepatch</td><td class="st">Face</td><td class="st">AC 4 · WIS +3 · AGI +3</td><td class="cls">ALL except NEC WIZ MAG ENC<br>all races</td><td class="src">An imp familiar <em>(rare)</em></td></tr>
-      <tr><td class="it">Noble's Robes</td><td class="st">Chest · lore</td><td class="st">AC 6 · CHA +5<br>+6 Fire / Cold · +3 Disease / Magic / Poison</td><td class="cls">CLR NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">A Fallen Noble <em>(uncommon)</em></td></tr>
-      <tr><td class="it">Black Silk Gloves</td><td class="st">Hands · lore · no drop</td><td class="st">AC 4 · DEX +3</td><td class="cls">WAR PAL RNG SHD MNK BRD ROG<br>all races</td><td class="src">Deathly ushers · glyphed aegis · will sappers</td></tr>
-      <tr><td class="it">Robe of the Keeper</td><td class="st">Chest · quest item</td><td class="st">AC 8 · INT +2</td><td class="cls">NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">Ssynthi</td></tr>
-      <tr><td class="it">Bronze Bracers</td><td class="st">Wrist</td><td class="st">AC 7</td><td class="cls">WAR CLR PAL SHD BRD<br>all races</td><td class="src">A ghoulish ancille</td></tr>
+      <tr><td class="it"><a href="../items/chestplate-of-the-dark-flame.html">Chestplate of the Dark Flame</a></td><td class="st">Chest · lore</td><td class="st"><strong>AC 19</strong> · STR +9</td><td class="cls">WAR PAL SHD<br>not IKS</td><td class="src">Garton Viswin &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/crested-spaulders.html">Crested Spaulders</a></td><td class="st">Shoulders</td><td class="st"><strong>AC 11</strong> · STA +6</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG</td><td class="src">An avenging caitiff &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/crested-mistmoore-shield.html">Crested Mistmoore Shield</a></td><td class="st">Secondary · lore</td><td class="st">AC 10 · DEX +6<br><strong>+10 Disease / Magic / Poison</strong></td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM</td><td class="src">A glyphed ghoul &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/crested-helm.html">Crested Helm</a></td><td class="st">Head</td><td class="st">AC 10 · STR +6 · CHA +3</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG<br>not IKS</td><td class="src">An avenging caitiff &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/hooded-black-cloak.html">Hooded Black Cloak</a></td><td class="st">Back · lore</td><td class="st">AC 10 · STR +5 · <strong>HP +45</strong></td><td class="cls all">ALL</td><td class="src">A cloaked dhampyre &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/glowing-iron-pike.html">Glowing Iron Pike</a></td><td class="st">Primary · Pierce 9 / 36<br>backstab 9</td><td class="st">&mdash;</td><td class="cls">WAR RNG SHD BRD ROG</td><td class="src">Garton Viswin &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/advisor-robe.html">Advisor Robe</a></td><td class="st">Chest · lore</td><td class="st">AC 8 · INT +5 · AGI +2<br><strong>MANA +20</strong> · SV Magic +5</td><td class="cls">MNK NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">An advisor</td></tr>
+      <tr><td class="it"><a href="../items/platinum-skull-ring.html">Platinum Skull Ring</a></td><td class="st">Finger · focus</td><td class="st"><strong>HP +30</strong> · MANA +20 · CHA &minus;5<br>Reanimation Efficiency II</td><td class="cls all">ALL</td><td class="src">Lasna Cheroon &middot; <em>uncommon</em></td></tr>
+      <tr><td class="it"><a href="../items/cape-of-midnight-mist.html">Cape of Midnight Mist</a></td><td class="st">Neck · focus</td><td class="st">AC 2 · STR +5 · <strong>SV Magic +7</strong><br>Enhancement Haste I</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC</td><td class="src">Butler Syncall &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/nightshade-wreath.html">Nightshade Wreath</a></td><td class="st">Head · focus</td><td class="st">AC 1 · WIS +5 · INT +5<br>Reanimation Haste I</td><td class="cls">CLR DRU BRD SHM NEC WIZ MAG ENC</td><td class="src">Maid Issis &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/diamondine-earring.html">Diamondine Earring</a></td><td class="st">Ear · focus</td><td class="st">AC 2 · STR +3 · HP +12<br>Affliction Efficiency I</td><td class="cls all">ALL</td><td class="src">Lasna Cheroon &middot; <em>common</em><br>Princess Cherista &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/gem-encrusted-scepter.html">Gem-Encrusted Scepter</a></td><td class="st">Primary · 1H Blunt 7 / 28</td><td class="st">WIS +5</td><td class="cls">CLR DRU BRD SHM</td><td class="src">Princess Cherista &middot; <em>uncommon</em></td></tr>
+      <tr><td class="it"><a href="../items/sacrificial-dagger.html">Sacrificial Dagger</a></td><td class="st">Primary / Secondary<br>Pierce 5 / <strong>21</strong> · backstab 5</td><td class="st">INT +5</td><td class="cls">ALL except CLR PAL DRU MNK SHM</td><td class="src">An imp familiar &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/bloodstone-eyepatch.html">Bloodstone Eyepatch</a></td><td class="st">Face</td><td class="st">AC 4 · WIS +3 · AGI +3</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">An imp familiar &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/nobles-robes.html">Noble's Robes</a></td><td class="st">Chest · lore</td><td class="st">AC 6 · CHA +5<br>+6 Fire / Cold · +3 Disease / Magic / Poison</td><td class="cls">CLR NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">A Fallen Noble &middot; <em>uncommon</em></td></tr>
+      <tr><td class="it"><a href="../items/black-silk-gloves.html">Black Silk Gloves</a></td><td class="st">Hands · lore · no drop</td><td class="st">AC 4 · DEX +3</td><td class="cls">WAR PAL RNG SHD MNK BRD ROG</td><td class="src">A deathly usher · a glyphed aegis · a will sapper</td></tr>
+      <tr><td class="it"><a href="../items/robe-of-the-keeper.html">Robe of the Keeper</a></td><td class="st">Chest · quest item</td><td class="st">AC 8 · INT +2</td><td class="cls">NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">Ssynthi</td></tr>
+      <tr><td class="it"><a href="../items/bronze-bracers.html">Bronze Bracers</a></td><td class="st">Wrist</td><td class="st">AC 7</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">A ghoulish ancille  and other ancille and usher types <span class="tier tM">M</span></td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>An avenging caitiff is the best single camp in the zone.</strong> Crested Spaulders at AC 11 with STA +6 as the <em>common</em> drop, and the AC 10 Crested Helm as the rare, on a 23-minute timer. This used to read &ldquo;the most frustrating&rdquo;, computed from a 10% spawn off two placeholders &mdash; a model the 28 July patch note retracted. The current rate is unmeasured. The <strong>Crested Mistmoore Shield</strong> is arguably better value: AC 10, DEX +6 and +10 to three resists off a glyphed ghoul, which is a 100% spawn that appears anywhere a familiar does. And the <strong>Hooded Black Cloak's HP +45 on a back slot open to every class</strong> is the kind of item that stays equipped for twenty levels.</div>
 
   <h3>The bard items</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot</th><th>Effect</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it">Gypsy Lute</td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">SV Magic +5<br><strong>String Resonance 11</strong></td><td class="src">A gypsy musician</td></tr>
-      <tr><td class="it">Lute of the Gypsy Princess</td><td class="st">Secondary</td><td class="st"><strong>String Resonance 11</strong> (as an item stat, not a focus)</td><td class="src">Mynthi Davissi <em>(common)</em><br>A werewolf</td></tr>
-      <tr><td class="it">Mistmoore Battle Drums</td><td class="st">Primary / Secondary</td><td class="st"><strong>Percussion Resonance 11</strong></td><td class="src">Mynthi Davissi <em>(rare)</em></td></tr>
+      <tr><td class="it"><a href="../items/gypsy-lute.html">Gypsy Lute</a></td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">SV Magic +5<br><strong>String Resonance 11</strong></td><td class="src">A gypsy musician</td></tr>
+      <tr><td class="it"><a href="../items/lute-of-the-gypsy-princess.html">Lute of the Gypsy Princess</a></td><td class="st">Secondary</td><td class="st"><strong>String Resonance 11</strong> &middot; item stat, not a focus</td><td class="src">Mynthi Davissi<br>A werewolf gypsy <span class="tier tM">M</span></td></tr>
+      <tr><td class="it"><a href="../items/mistmoore-battle-drums.html">Mistmoore Battle Drums</a></td><td class="st">Primary / Secondary</td><td class="st"><strong>Percussion Resonance 11</strong></td><td class="src">Mynthi Davissi <span class="tier tM">M</span></td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>This is a bard's zone.</strong> Three instruments at resonance 11 drop here, two from one named. The Gypsy Lute is no-drop, so it must be earned in person; the Lute of the Gypsy Princess is tradeable and carries its resonance as a plain item stat rather than a focus effect, which matters for how it stacks. Note that a werewolf also drops the Princess lute — so it is obtainable at night from the roaming population as well as from Mynthi in the ballroom.</div>
 
-  <h3>Consumables, components and quest items</h3>
+  <h3>Components and quest items</h3>
   <div class="scroller">
   <table>
-    <thead><tr><th>Item</th><th>What it does / is for</th><th>Dropped by</th></tr></thead>
+    <thead><tr><th>Item</th><th>Used for</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it">Vial of Vampire Blood</td><td class="st">1 charge — <strong>Resistance to Magic as level 50</strong></td><td class="src">A glyphed ghoul <em>(common)</em></td></tr>
-      <tr><td class="it">Blood of the Dhampyre</td><td class="st">1 charge — Extended Regeneration</td><td class="src">A cloaked dhampyre <em>(common)</em></td></tr>
-      <tr><td class="it">Glowing Sword Hilt</td><td class="st">Zimel's Blades / <strong>SoulFire</strong> · lore · no drop</td><td class="src">Xicotl</td></tr>
-      <tr><td class="it">Hilt of Soulfire</td><td class="st">SoulFire chain</td><td class="src">Xicotl</td></tr>
-      <tr><td class="it">Black Dire Pelt</td><td class="st"><strong>Shaman epic</strong> · lore · no drop</td><td class="src">Black Dire</td></tr>
-      <tr><td class="it">Butler Syncalls Fang</td><td class="st">Vampire Teeth · lore</td><td class="src">Butler Syncall <em>(rare)</em></td></tr>
-      <tr><td class="it">Maid Issis Fang</td><td class="st">Vampire Teeth · lore</td><td class="src">Maid Issis <em>(rare)</em></td></tr>
-      <tr><td class="it">Gargoyle Eye</td><td class="st">Quest item — the wiki notes these sell for <strong>nine to ten platinum each</strong></td><td class="src">All four gargoyle types</td></tr>
-      <tr><td class="it">Mistmoore Granite</td><td class="st">Component · no drop</td><td class="src">Flouting, jeering, sneering and leering gargoyles</td></tr>
-      <tr><td class="it">Rune of Fortune</td><td class="st">Component (Top) · lore · no drop</td><td class="src">Enynti <em>(rare)</em></td></tr>
-      <tr><td class="it">Rune of Arrest</td><td class="st">Component</td><td class="src">A leering gargoyle</td></tr>
-      <tr><td class="it">Rune of Ivy</td><td class="st">Component</td><td class="src">A deathly usher</td></tr>
-      <tr><td class="it">Essence of Moonlight</td><td class="st">Quest item</td><td class="src">Various</td></tr>
-      <tr><td class="it">Blood Spirit</td><td class="st">Component · no drop</td><td class="src">A hemo enologist</td></tr>
-      <tr><td class="it">Vial of Noble's Blood</td><td class="st">Component · no drop</td><td class="src">A Fallen Noble <em>(uncommon)</em></td></tr>
-      <tr><td class="it">Dark Cauldron</td><td class="st">Component · no drop — roughly 50/50</td><td class="src">An ancille cook</td></tr>
-      <tr><td class="it">Illegible Scroll</td><td class="st">Lore — "Vok Na Zov V" and "Vok Na Zov VI"</td><td class="src">A dark librarian · a dark ass't librarian</td></tr>
-      <tr><td class="it">Stone Marker</td><td class="st">Component · lore · no drop</td><td class="src">A glyphed custodian</td></tr>
-      <tr><td class="it">Werewolf Talon</td><td class="st">Component · lore · no drop</td><td class="src">A gypsy musician</td></tr>
-      <tr><td class="it">Power of Wind</td><td class="st">Component · lore · no drop</td><td class="src">A gypsy dancer</td></tr>
-      <tr><td class="it">Patch of Shadow</td><td class="st">Component</td><td class="src">Ssynthi</td></tr>
-      <tr><td class="it">Pages of Tasarin's Grimoire</td><td class="st">Grimoire chain</td><td class="src">A Mistmoore guard</td></tr>
-      <tr><td class="it">Fine steel weapons · small bronze armour<br>Jade · Flame Agate · Gold Ring</td><td class="st">Vendor fodder and caster research. The wiki notes the dark elves drop platinum, runes and words freely</td><td class="src">Throughout</td></tr>
+      <tr><td class="it"><a href="../items/vial-of-vampire-blood.html">Vial of Vampire Blood</a></td><td class="st">1 charge — <strong>Resistance to Magic as level 50</strong></td><td class="src">A glyphed ghoul &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/blood-of-the-dhampyre.html">Blood of the Dhampyre</a></td><td class="st">1 charge — Extended Regeneration</td><td class="src">A cloaked dhampyre &middot; <em>common</em></td></tr>
+      <tr><td class="it"><a href="../items/glowing-sword-hilt.html">Glowing Sword Hilt</a></td><td class="st">Zimel's Blades / <strong>SoulFire</strong> · lore · no drop</td><td class="src">Xicotl</td></tr>
+      <tr><td class="it"><a href="../items/hilt-of-soulfire.html">Hilt of Soulfire</a></td><td class="st">SoulFire chain</td><td class="src">Xicotl</td></tr>
+      <tr><td class="it"><a href="../items/black-dire-pelt.html">Black Dire Pelt</a></td><td class="st"><strong>Shaman epic</strong> · lore · no drop</td><td class="src">Black Dire</td></tr>
+      <tr><td class="it"><a href="../items/butler-syncalls-fang.html">Butler Syncalls Fang</a></td><td class="st">Vampire Teeth · lore</td><td class="src">Butler Syncall &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/maid-issis-fang.html">Maid Issis Fang</a></td><td class="st">Vampire Teeth · lore</td><td class="src">Maid Issis &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/gargoyle-eye.html">Gargoyle Eye</a></td><td class="st">Quest item &middot; sells <strong>9–10 platinum</strong></td><td class="src">All four gargoyle types</td></tr>
+      <tr><td class="it"><a href="../items/mistmoore-granite.html">Mistmoore Granite</a></td><td class="st">Component · no drop</td><td class="src">Flouting, jeering, sneering and leering gargoyles</td></tr>
+      <tr><td class="it"><a href="../items/rune-of-fortune.html">Rune of Fortune</a></td><td class="st">Component (Top) · lore · no drop</td><td class="src">Enynti &middot; <em>rare</em></td></tr>
+      <tr><td class="it"><a href="../items/rune-of-arrest.html">Rune of Arrest</a></td><td class="st">Component</td><td class="src">A leering gargoyle</td></tr>
+      <tr><td class="it"><a href="../items/rune-of-ivy.html">Rune of Ivy</a></td><td class="st">Component</td><td class="src">A deathly usher</td></tr>
+      <tr><td class="it"><a href="../items/essence-of-moonlight.html">Essence of Moonlight</a></td><td class="st">Quest item</td><td class="src">Various</td></tr>
+      <tr><td class="it"><a href="../items/blood-spirit.html">Blood Spirit</a></td><td class="st">Component · no drop</td><td class="src">A hemo enologist</td></tr>
+      <tr><td class="it"><a href="../items/vial-of-nobles-blood.html">Vial of Noble's Blood</a></td><td class="st">Component · no drop</td><td class="src">A Fallen Noble &middot; <em>uncommon</em></td></tr>
+      <tr><td class="it"><a href="../items/dark-cauldron.html">Dark Cauldron</a></td><td class="st">Component · no drop — roughly 50/50</td><td class="src">An ancille cook</td></tr>
+      <tr><td class="it"><a href="../items/illegible-scroll.html">Illegible Scroll</a></td><td class="st">Lore &middot; Vok Na Zov V and VI</td><td class="src">A dark librarian · a dark ass't librarian</td></tr>
+      <tr><td class="it"><a href="../items/stone-marker.html">Stone Marker</a></td><td class="st">Component · lore · no drop</td><td class="src">A glyphed custodian</td></tr>
+      <tr><td class="it"><a href="../items/werewolf-talon.html">Werewolf Talon</a></td><td class="st">Component · lore · no drop</td><td class="src">A gypsy musician</td></tr>
+      <tr><td class="it"><a href="../items/power-of-wind.html">Power of Wind</a></td><td class="st">Component · lore · no drop</td><td class="src">A gypsy dancer</td></tr>
+      <tr><td class="it"><a href="../items/patch-of-shadow.html">Patch of Shadow</a></td><td class="st">Component</td><td class="src">Ssynthi</td></tr>
+      <tr><td class="it"><a href="../items/pages-of-tasarins-grimoire.html">Pages of Tasarin's Grimoire</a></td><td class="st">Grimoire chain</td><td class="src">A Mistmoore guard</td></tr>
+      <tr><td class="it"><a href="../items/fine-steel-weapons.html">Fine steel weapons</a> · <a href="../items/small-bronze-armour.html">small bronze armour</a><br><a href="../items/jade.html">Jade</a> · <a href="../items/flame-agate.html">Flame Agate</a> · <a href="../items/gold-ring.html">Gold Ring</a></td><td class="st">Vendor fodder and caster research; dark elves drop platinum, runes and words freely</td><td class="src">Throughout</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note"><strong>Nine quest lines route through this castle.</strong> The wiki's related-quest list names the Shaman epic, Zimel's Blades and SoulFire, the Crafted, Lambent and Incandescent armour quests, the Lord of Pain's Khukri from the Crusader's Tests, Solusek's Flower, and Vampire Teeth. Add the cleric <strong>Caduceus of Sacrament</strong> ground spawn on the jail stairs. Only one quest actually <em>starts</em> here — Solusek's Flower, from Ssynthi, minimum level 1, rewarding the Scepter of Sorrow for necromancers.</div>
 </section>
 
-<section>
-  <h2><span class="num">05</span>Dangers</h2>
-  <div class="note danger"><strong>Trains are the defining hazard, and the geometry makes them worse.</strong> Most trains originate deep in the castle, and on the way out every creature along the route joins. <strong>All of them funnel through the middle of the outer area between the tower and the lake</strong> on their way to the narrow corridor to the zone edge. The only shelter is behind the lake or behind the tower — or zoning.</div>
-  <div class="note danger"><strong>The zone shuts down after a large train.</strong> Pulling from the line of returning monsters as they walk slowly back to the castle is itself lethal, and they loiter near the entrance for some time before returning. <strong>Zone in invisible if you can</strong>, because you cannot know what is waiting on the other side.</div>
-  <div class="note danger"><strong>Invisibility is two spells here, and the right one changes twice a day.</strong> Ordinary invisibility works on the daytime population; invisibility versus undead works only on the undead. After the 20:00 swap the population you needed to hide from has changed. There is also a <strong>trap on the secret door at the jail that strips invisibility outright.</strong></div>
-  <div class="note danger"><strong>Sitting at a repop tick can aggro an entire room.</strong> Sitting gives level-1-equivalent aggro, and at 06:00 and 20:00 everything alive respawns while everything dead repops. Be standing at dawn and dusk.</div>
-  <div class="note danger"><strong>Mynthi Davissi charms.</strong> She is a level 32 enchanter in the ballroom and the wiki recommends endure or resist magic before engaging. Note that the 28 July patch caps charm at 30 seconds — that limit applies to <em>her</em> charm on your group as much as to yours on anything else, which makes her materially less dangerous than classic guides suggest.</div>
-  <div class="note danger"><strong>Deep castle trains can carry 500-plus damage nukes.</strong> The wiki is explicit that monsters capable of dealing 500 or more hit points with a single spell live in the interior. At the zone's 20&ndash;45 band that is a one-cast kill on most of the group.</div>
-  <div class="note"><strong>The counterweight: nobody hunting the front need die.</strong> That is the wiki's own claim, and the reasoning holds — the zone edge is close, so a group with Spirit of Wolf up that zones at the first sign of trouble should not lose anyone. It requires that nobody tries to be a hero.</div>
-</section>
+</main>
 
-<section>
-  <h2><span class="num">06</span>Getting there</h2>
-  <ul class="tight">
-    <li>Reached through <strong>Lesser Faydark</strong>, at the western edge of its southern border. An <strong>ancient druid ring</strong> stands at the entrance to the zone.</li>
-    <li>Lesser Faydark is largely safe for anyone strong enough to fight in Mistmoore, but three camps are not: the <strong>Brownie camp to the north</strong>, the <strong>Shadowed Men camp to the east</strong>, and <strong>powerful dark elves in an abandoned camp along the southern edge.</strong></li>
-    <li><strong>Do not run the southern edge</strong> as a shortcut to the tunnel — that is where the dark elves have settled.</li>
-    <li>Lesser Faydark is the <strong>only</strong> adjacent zone. There is one way in and one way out, which is why the entry-corridor train problem has no alternative route.</li>
-    <li>Succor and evacuate drop you at <code>&minus;295, 123</code>, the zone line to Lesser Faydark.</li>
-  </ul>
-</section>
+<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-mistmoore">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 10 &middot; Castle Mistmoore &middot; Lesser Faydark, Faydwer &middot; floor derived from mistmoore.s3d &middot; north up, west left</p></footer>
 
-<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-mistmoore">Where each one came from, and what is still open</a>.</p></footer>
-
+</div>
 </div>
 </body>
 </html>

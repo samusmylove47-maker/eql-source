@@ -6,214 +6,423 @@
 <title>Crushbone — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#BE4F3E;--accd:#7d3327;--acct:color-mix(in srgb, #BE4F3E 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE CRUSHBONE SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore sheet, carrying this zone's own
+   accent. The page is the plate: a graticule fixed behind it, a translucent
+   sheet sliding over that graticule, a neatline with an inner rule around the
+   whole thing, and each section's kicker hanging in the left margin.
+
+   Self-contained. This page never loads assets/site.css, so token names are
+   prefixed --cb- because build3.py appends site.css's :root AFTER this block
+   and an unprefixed --mut or --txt would be silently overwritten by it.
+   --acc, --accd and --acct are deliberately NOT prefixed: the injected chrome
+   reads them and site.css does not define them.
+
+   Contrast, computed rather than eyeballed, against the lightest ground the
+   page can produce (a graticule crossing under the lamplight, seen through the
+   sheet, #1D180E): ink 14.76, txt 12.24, mut 7.69, dim 5.54, accent text 5.76,
+   warn 5.15, brass 6.42, ok 5.91. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 5.07 / 4.53 / 5.65 / 5.20. */
+:root{
+  --acc:#BE4F3E;--accd:#692B22;--acct:#D07D70;
+  --cb-g:#120E08;          /* the plotting table */
+  --cb-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --cb-ink:#F2EADA;--cb-txt:#DFD6C4;--cb-mut:#B5AA95;--cb-dim:#9A8F7C;
+  --cb-warn:#D46C64;--cb-brass:#C9922E;--cb-ok:#5FA37E;
+  --cb-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --cb-r2:#7A6950;         /* a boundary that carries meaning */
+  --cb-2xs:10px;--cb-xs:11.5px;--cb-sm:13.5px;--cb-base:15.5px;--cb-md:18.5px;
+  --cb-lg:22px;--cb-h2:clamp(24px,3.6vw,36px);
+  /* The h1 floor is 30px, not the Mistmoore sheet's 38px. A one-word zone
+     name in Cinzel is unbreakable, so the title row cannot shrink below its
+     width: BLACKBURROW at 38px pushed the plate numeral 26 px past a 390px
+     viewport. Two-word names like CASTLE MISTMOORE wrap and never showed it.
+     The ceiling is unchanged, so the desktop reading is identical. */
+  --cb-h1:clamp(30px,6.6vw,74px);
+  --cb-rad:4px;
+  --cb-s1:4px;--cb-s2:8px;--cb-s3:12px;--cb-s4:16px;
+  --cb-s5:24px;--cb-s6:32px;--cb-s7:48px;--cb-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--cb-g)}
+body{margin:0;background:transparent;color:var(--cb-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--cb-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast. And every stop
+   terminates in rgba(228,210,174,0) rather than the keyword transparent,
+   because older WebKit premultiplies transparent as transparent BLACK and
+   draws a grey seam down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens, so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(190,79,62,.045) 0%, rgba(190,79,62,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--cb-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--cb-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--cb-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--cb-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is what makes a column of figures read as instrument output. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--cb-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--cb-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--cb-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--cb-s2);
+  text-wrap:balance;color:var(--cb-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--cb-lg);letter-spacing:.03em;margin:var(--cb-s5) 0 var(--cb-s2);color:var(--cb-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--cb-mut);font-size:var(--cb-md);margin:0 0 var(--cb-s5);max-width:60ch}
+.cm{color:var(--cb-dim);font-size:var(--cb-sm);line-height:1.6;margin:var(--cb-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--cb-r1);padding-left:var(--cb-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--cb-s7) 0 var(--cb-s5);margin-bottom:var(--cb-s2);
+  border-bottom:1px solid var(--cb-r2)}
+.eyebrow{font-size:var(--cb-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--cb-s4)}
+/* Wraps rather than overflowing. Below about 360px even a 30px CINZEL
+   zone name plus the leader and the numeral is wider than the sheet, and a
+   flex item whose content is one unbreakable word will push out instead of
+   shrinking. Wrapped, the rule and the numeral drop to their own line. */
+.title{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--cb-s4)}
+.leader{flex:1 1 12px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--cb-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(26px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--cb-md);
+  color:var(--cb-mut);letter-spacing:.02em;margin:var(--cb-s2) 0 var(--cb-s3);
+  text-transform:uppercase}
+/* THE DECK. The answer to "should I go tonight", above the first chart rather
+   than reverse-engineered from the tables below it. */
+.deck{color:var(--cb-txt);margin:0 0 var(--cb-s5);max-width:66ch}
+.deck strong{color:var(--cb-ink)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--cb-r1);border-left:1px solid var(--cb-r1)}
+.cell{background:var(--cb-p);padding:var(--cb-s3);
+  border-right:1px solid var(--cb-r1);border-bottom:1px solid var(--cb-r1)}
+.cell dt{font-size:var(--cb-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--cb-dim);margin:0 0 var(--cb-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--cb-lg);
+  font-weight:600;color:var(--cb-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--cb-xs);font-weight:400;
+  color:var(--cb-mut);display:block;letter-spacing:0}
+.jump{margin:var(--cb-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--cb-s1) var(--cb-s4);font-size:var(--cb-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--cb-mut);text-decoration:none;border-bottom:1px solid var(--cb-r1)}
+.jump a:hover{color:var(--cb-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column.
+   The kicker names what the section is MADE OF; numbered headings are a
+   generated-site tell and are not coming back. */
+section{margin-top:var(--cb-s7);position:relative}
+.kick{font-size:var(--cb-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--cb-dim);margin:0 0 var(--cb-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--cb-r2);padding-left:var(--cb-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--cb-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--cb-sm);
+  border-top:2px solid var(--cb-brass)}
+th{font-size:var(--cb-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--cb-mut);
+  text-align:left;padding:var(--cb-s2) var(--cb-s3) var(--cb-s2) 0;background:none;
+  border-bottom:1px solid var(--cb-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--cb-s3) var(--cb-s3) var(--cb-s3) 0;border-bottom:1px solid var(--cb-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(190,79,62,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--cb-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--cb-sm);text-align:right;white-space:nowrap;color:var(--cb-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--cb-base);font-weight:600;
+  letter-spacing:.02em;color:var(--cb-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--cb-base);font-weight:600;
+  letter-spacing:.02em;color:var(--cb-ink)}
+/* The colour is inherited rather than set, so every contrast ratio measured on
+   this sheet is unchanged and the underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--cb-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--cb-xs);color:var(--cb-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--cb-ok)}
+.st{font-size:var(--cb-xs);color:var(--cb-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--cb-sm);color:var(--cb-mut)}
+.tag{font-size:var(--cb-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--cb-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--cb-warn)}
+.tag.new{border-color:#2F5A46;color:var(--cb-ok)}
+.tier{font-size:var(--cb-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--cb-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--cb-base);
+  letter-spacing:.02em;color:var(--cb-ink);padding:var(--cb-s3) var(--cb-s5) var(--cb-s3) 0;
+  border-bottom:1px solid var(--cb-r1)}
+.key dd{margin:0;font-size:var(--cb-sm);color:var(--cb-mut);padding:var(--cb-s3) 0;
+  border-bottom:1px solid var(--cb-r1)}
+.key strong{color:var(--cb-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not four identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--cb-s5) 0 0;padding:0 0 0 var(--cb-s5);
+  border-left:2px solid var(--cb-warn);max-width:74ch}
+ul.hz li{padding:var(--cb-s4) 0;border-top:1px solid var(--cb-r1);color:var(--cb-mut);
+  font-size:var(--cb-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--cb-base);
+  color:var(--cb-warn);margin-bottom:var(--cb-s1)}
+ul.hz strong{color:var(--cb-ink)}
+
+.note{border-left:1px solid var(--cb-r1);padding:var(--cb-s1) 0 var(--cb-s1) var(--cb-s4);
+  margin:var(--cb-s5) 0 0;color:var(--cb-mut);font-size:var(--cb-sm);max-width:68ch}
+.note strong{color:var(--cb-ink)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--cb-s8);padding-top:var(--cb-s5);border-top:1px solid var(--cb-r2);
+  color:var(--cb-mut);font-size:var(--cb-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--cb-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--cb-dim);margin:var(--cb-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one step
+   higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .fp-wrap{border-radius:var(--cb-rad)}
+/* build3.py injects the placeholder note above the roster unconditionally, but
+   its stylesheet only travels with a zone that has a withheld coordinate. This
+   zone has none, so the note would otherwise render as unstyled body text. */
+body .ph-note{margin:0 0 var(--cb-s4);padding:var(--cb-s3) var(--cb-s4);
+  border-left:3px solid var(--cb-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--cb-rad);color:var(--cb-mut);font-size:var(--cb-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--cb-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* One heading level, one rule. The floor plan is the first and largest heading
+   a reader meets, and build6.py's own treatment renders it smaller than every
+   other heading on the page. */
+body .fplan{margin-top:var(--cb-s7)}
+body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--cb-h2);letter-spacing:.005em;line-height:1}
+/* The spine rail would otherwise have a hole where the injected section sits.
+   Its generator is not this file's to edit, so the label is set here, in the
+   same register as the authored four. */
+body .fplan::before{font-family:"IBM Plex Mono",monospace;font-size:var(--cb-2xs);
+  letter-spacing:.2em;text-transform:uppercase;color:var(--cb-dim);display:block;
+  margin:0 0 var(--cb-s2);content:"The zone, drawn"}
+@media(min-width:1080px){
+  body .fplan::before{position:absolute;left:-186px;width:150px;text-align:right;
+    top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 03 · Greater Faydark</p>
-  <h1>Crushbone</h1>
-  <p class="subtitle">The best early dungeon on Faydwer — nine-minute respawns and an entirely new loot tier</p>
+  <p class="eyebrow">Dungeon survey &middot; Greater Faydark</p>
+  <div class="title"><h1>Crushbone</h1><span class="leader"></span><span class="plateno">03</span></div>
+  <p class="subtitle">The orc keep north of Kelethin — nine-minute respawns and a rebuilt loot tier</p>
+  <p class="deck">Levels 4 to 22, from pawns at the zone line to Emperor Crush in his tower. Come for the 14 July loot tier: Crown of Crush, the Dwarven Ringmail line and Headsplitter. <strong>Trains are what kill people</strong>, every five to ten minutes, through the zone line. Bridge pathing is broken.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>crushbone</dd></div>
-    <div class="cell"><dt>Level band</dt><dd>4–22</dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>4&ndash;22<small>Ambassador DVinn 20</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>119<small>159%</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>9:00</dd></div>
-    <div class="cell"><dt>Succor</dt><dd>−644, 158</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Greater Faydark<small>only exit</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>&le;9:00<small>pre-patch ceiling</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>&minus;644, 158</dd></div>
+    <div class="cell"><dt>Exit</dt><dd>Greater Faydark<small>the only one</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+  </ul>
 </header>
 
-
-
-
+<main>
 
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>Nine-minute respawns, the fastest here.</b> Combined with a 4&ndash;22 level band it is the best early dungeon on Faydwer.</li><li><b>An entirely new loot tier.</b> Crown of Crush at AC 10, the Dwarven Ringmail line, and Headsplitter at 11/43.</li><li><b>Trains every five to ten minutes.</b> Legionnaires, oracles, an emissary or Emperor Crush himself come through the zone line. Learn the paths and stay off them.</li><li><b>Pathing is broken in places.</b> Be careful over bridges, especially toward the slaver camp.</li></ul>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Open ground west, the keep east, the slaver workings south.</p>
+  <dl class="key">
+    <dt>A path between two pyres</dt><dd>The entrance. North from Kelethin's <strong>northernmost lift</strong>, or right out of Felwithe along the zone border. Circle of Butcherblock and the translocator land within a run</dd>
+    <dt>A hilltop crowded with orcs</dt><dd>Trainer Hill. Six or seven spawns, fast enough that you never pull from elsewhere</dd>
+    <dt>A building in front of a tree</dt><dd>The safe spot at the Slaver Caves, left on zone-in. Right wall instead for the Pit</dd>
+    <dt>A bridge to the castle</dt><dd>The Wall camp is in front of it. Pull the roamers outside first</dd>
+    <dt>A tented area at the back</dt><dd>Tents. Shares a four-spawn crevice with the Slaver cave, and the corpse run is long</dd>
+    <dt>Five camps</dt><dd>Trainer Hill 8 to 13. Slaver Caves 5 to 8, the Pit 12 to 16. Tents 8 to 14. Wall 14 to 18. Throne Room 17 to 22, <strong>where Emperor Crush and Ambassador DVinn are pulled from</strong></dd>
+  </dl>
 </section>
 
 <section>
-  <h2><span class="num">02</span>The camps</h2>
-  <div class="camps">
-    <div class="camp"><p class="band">Levels 8–13</p><h4>Trainer Hill</h4>
-      <p>Six or seven orcs on the hilltop with a respawn fast enough that you never pull from elsewhere. The wiki calls it the place camping was invented.</p></div>
-    <div class="camp"><p class="band">Levels 5–8 · 12–16</p><h4>Slaver Caves &amp; Pit</h4>
-      <p>Left on zone-in for the caves; follow the right wall for the pit. The safe spot is in front of the building by the tree. <strong>Killing slaves damages faction</strong> with their home city.</p></div>
-    <div class="camp"><p class="band">Levels 14–18</p><h4>Wall</h4>
-      <p>Directly in front of the bridge to the castle. Pull the orcs roaming outside, then from inside once the group can hold it.</p></div>
-    <div class="camp"><p class="band">Levels 17–22</p><h4>Throne Room</h4>
-      <p>Six or seven legionnaires and oracles spawn inside on a very fast timer, so it is hard to hold. A group that can hold it can pull Emperor Crush and Ambassador DVinn from the tower.</p></div>
-    <div class="camp"><p class="band">Levels 8–14</p><h4>Tents</h4>
-      <p>The tented area at the very back, holding orcs between pawn and legionnaire. Shares a four-spawn crevice with the Slaver cave. Corpse runs from here are unpleasant.</p></div>
-  </div>
-  <div class="note"><strong>Turn-in experience.</strong> Orcs drop Crushbone Belts and Crushbone Shoulderpads, which hand in to Canloe Nusback (GM Warrior, Kaladim) for experience and cheap armour. Belts one at a time, shoulderpads two at a time. Belts stay worth doing to about level 10; shoulderpads well past the point most players leave the zone.</div>
+  <p class="kick">Four hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>Trains</b> Every five to ten minutes, through the zone line: legionnaires, oracles, an emissary, sometimes <strong>Emperor Crush himself</strong>. Learn the paths and stay off them.</li>
+    <li><b>Broken pathing</b> Bridges especially, toward the slaver camp and outside the keep. <strong>An orc that goes for a swim routes back behind the castle through the whole zone.</strong></li>
+    <li><b>The Royal Guard</b> <strong>Invisible until it attacks</strong>, behind the throne on the way up to Emperor Crush.</li>
+    <li><b>Faction</b> Killing slaves damages faction with their home city. Retlon Brenclog costs Ak'Anon.</li>
+  </ul>
 </section>
 
 <section>
-  <h2><span class="num">03</span>Named roster</h2>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Levels marked <em>~</em> are the wiki's approximations.</p>
   <div class="scroller">
   <table>
-    <thead><tr><th>#</th><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="lv">—</td><td class="nmob">Emperor Crush</td><td class="loc">86, −74</td><td class="lv">18</td><td class="src">50% spawn. Alcove behind the throne room.</td></tr>
-      <tr><td class="lv">—</td><td class="nmob">Ambassador DVinn</td><td class="loc">76, −72</td><td class="lv">20</td><td class="src">80% spawn. The zone's traditional newbie-killer.</td></tr>
-      <tr><td class="lv">—</td><td class="nmob">Chokehold</td><td class="loc">185, −4</td><td class="lv">~20</td><td class="src">Just under the keep tower. <strong>Melee-vulnerable as of 28 July.</strong><span class="tag new">patched</span></td></tr>
-      <tr><td class="lv">—</td><td class="nmob">Marrowbane</td><td class="loc">87, −100</td><td class="lv">19–21</td><td class="src">Magician. Just north of the main keep entrance.</td></tr>
-      <tr><td class="lv">8</td><td class="nmob">Bonefire</td><td class="loc">154, 163</td><td class="lv">~18</td><td class="src">Paladin. Stands near the throne room window.</td></tr>
-      <tr><td class="lv">10</td><td class="nmob">Bloodgurgler</td><td class="loc">288, −70</td><td class="lv">~19</td><td class="src">Enchanter. By the back tree at the Slaver Pits.</td></tr>
-      <tr><td class="lv">9</td><td class="nmob">Lord Darish</td><td class="loc">250, 90</td><td class="lv">14–17</td><td class="src">In front of the throne. PH is an orc legionnaire.</td></tr>
-      <tr><td class="lv">—</td><td class="nmob">The Prophet</td><td class="loc">86, −62 · 310, 20</td><td class="lv">17</td><td class="src">Shaman. 50% at each of two spots.</td></tr>
-      <tr><td class="lv">2</td><td class="nmob">Orc Trainer</td><td class="loc">−151, 40</td><td class="lv">13</td><td class="src">15% spawn on Trainer Hill.</td></tr>
-      <tr><td class="lv">7</td><td class="nmob">Orc Warlord</td><td class="loc">192, −22</td><td class="lv">16</td><td class="src">Outside near the round table. PH is an orc emissary; both run the same patrol.</td></tr>
-      <tr><td class="lv">5</td><td class="nmob">Orc Warden</td><td class="loc">107, 435</td><td class="lv">15</td><td class="src"><strong>Respawn substantially reduced 28 July.</strong><span class="tag new">patched</span></td></tr>
-      <tr><td class="lv">6</td><td class="nmob">Orc Emissary</td><td class="loc">136, 84</td><td class="lv">15</td><td class="src">100% spawn.</td></tr>
-      <tr><td class="lv">11</td><td class="nmob">Orc Taskmaster</td><td class="loc">245, −152</td><td class="lv">12</td><td class="src">Monk. 50% spawn. Starts the slaver quest chain.</td></tr>
-      <tr><td class="lv">12</td><td class="nmob">Retlon Brenclog</td><td class="loc">274, −136</td><td class="lv">16</td><td class="src">Gnome magician among the slavers.<span class="tag warn">Ak'Anon faction</span></td></tr>
-      <tr><td class="lv">3</td><td class="nmob">Rondo Dunfire</td><td class="loc">97, 396</td><td class="lv">9</td><td class="src">Dwarf rogue hiding in the slaver cave.</td></tr>
-      <tr><td class="lv">&mdash;</td><td class="nmob">Kelynn</td><td class="loc">3, 387</td><td class="lv">9</td><td class="src">12% spawn rate.<span class="tag new">added 8 Aug</span></td></tr>
-      <tr><td class="lv">—</td><td class="nmob">Orc oracle</td><td class="loc">113, 17 · −5, 164 · 86, −57 · 186, 18</td><td class="lv">19–21</td><td class="src">Casts blind and heals. Four spawn points.</td></tr>
-      <tr><td class="lv">—</td><td class="nmob">Royal Guard</td><td class="loc">102, −31</td><td class="lv">15</td><td class="src">Behind the throne, on the way up to Emperor Crush. <strong>Invisible until it aggros.</strong><span class="tag warn">ambush</span></td></tr>
-      <tr><td class="lv">—</td><td class="nmob">Orc Scoutsman</td><td class="loc">various</td><td class="lv">12</td><td class="src"><strong>Respawn substantially reduced 28 July.</strong><span class="tag new">patched</span></td></tr>
+      <tr><td class="nmob">Ambassador DVinn</td><td class="loc">76, &minus;72</td><td class="lv">20</td><td class="src">80% spawn. The zone's traditional newbie-killer.</td></tr>
+      <tr><td class="nmob">Orc oracle</td><td class="loc">113, 17 &middot; &minus;5, 164 &middot; 86, &minus;57 &middot; 186, 18</td><td class="lv">19&ndash;21</td><td class="src"><strong>Casts blind and heals.</strong> Four spawn points.</td></tr>
+      <tr><td class="nmob">Marrowbane</td><td class="loc">87, &minus;100</td><td class="lv">19&ndash;21</td><td class="src">Magician. Just north of the main keep entrance.</td></tr>
+      <tr><td class="nmob">Chokehold</td><td class="loc">185, &minus;4</td><td class="lv">~20</td><td class="src">Just under the keep tower. <strong>Melee-vulnerable as of 28 July.</strong><span class="tag new">patched</span></td></tr>
+      <tr><td class="nmob">Bloodgurgler</td><td class="loc">288, &minus;70</td><td class="lv">~19</td><td class="src">Enchanter. By the back tree at the Slaver Pits.</td></tr>
+      <tr><td class="nmob">Emperor Crush</td><td class="loc">86, &minus;74</td><td class="lv">18</td><td class="src">50% spawn. The alcove behind the throne room.</td></tr>
+      <tr><td class="nmob">Bonefire</td><td class="loc">154, 163</td><td class="lv">~18</td><td class="src">Paladin. Stands near the throne room window.</td></tr>
+      <tr><td class="nmob">The Prophet</td><td class="loc">86, &minus;62 &middot; 310, 20</td><td class="lv">17</td><td class="src">Shaman. 50% at each of two spots.</td></tr>
+      <tr><td class="nmob">Orc Warlord</td><td class="loc">192, &minus;22</td><td class="lv">16</td><td class="src">Outside near the round table. Placeholder is an orc emissary; both run the same patrol.</td></tr>
+      <tr><td class="nmob">Retlon Brenclog</td><td class="loc">274, &minus;136</td><td class="lv">16</td><td class="src">Gnome magician among the slavers.<span class="tag warn">Ak'Anon faction</span></td></tr>
+      <tr><td class="nmob">Lord Darish</td><td class="loc">250, 90</td><td class="lv">14&ndash;17</td><td class="src">In front of the throne. Placeholder is an orc legionnaire.</td></tr>
+      <tr><td class="nmob">Orc Warden</td><td class="loc">107, 435</td><td class="lv">15</td><td class="src"><strong>Respawn substantially reduced 28 July.</strong><span class="tag new">patched</span></td></tr>
+      <tr><td class="nmob">Orc Emissary</td><td class="loc">136, 84</td><td class="lv">15</td><td class="src">100% spawn.</td></tr>
+      <tr><td class="nmob">Royal Guard</td><td class="loc">102, &minus;31</td><td class="lv">15</td><td class="src">Behind the throne, on the way up to Emperor Crush. <strong>Invisible until it aggros.</strong><span class="tag warn">ambush</span></td></tr>
+      <tr><td class="nmob">Orc Trainer</td><td class="loc">&minus;151, 40</td><td class="lv">13</td><td class="src">15% spawn on Trainer Hill.</td></tr>
+      <tr><td class="nmob">Orc Taskmaster</td><td class="loc">245, &minus;152</td><td class="lv">12</td><td class="src">Monk. 50% spawn. Starts the slaver quest chain.</td></tr>
+      <tr><td class="nmob">Orc Scoutsman</td><td class="loc">various</td><td class="lv">12</td><td class="src"><strong>Respawn substantially reduced 28 July.</strong><span class="tag new">patched</span></td></tr>
+      <tr><td class="nmob">Rondo Dunfire</td><td class="loc">97, 396</td><td class="lv">9</td><td class="src">Dwarf rogue, hiding in the slaver cave.</td></tr>
+      <tr><td class="nmob">Kelynn</td><td class="loc">3, 387</td><td class="lv">9</td><td class="src">12% spawn.</td></tr>
     </tbody>
   </table>
   </div>
 </section>
 
 <section>
-  <h2><span class="num">04</span>Loot table</h2>
-  <p class="lede">The revamped drop tier. Items marked <span class="tag new">new</span> did not exist in classic and were added by the 14 July revamp — most are attunable and several now carry ornamentation slots.</p>
+  <p class="kick">Two registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. All races unless a class line says otherwise.</p>
+  <div class="note">Items marked <span class="tag new">new</span> did not exist in classic. They arrived with the <strong>14 July revamp</strong>: most are attunable and several carry ornamentation slots.</div>
+
+  <h3>Chase items</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it">Crown of Crush<span class="tag new">new</span></td><td class="st">Head</td><td class="st">AC 10 · END 10<br>STR 5 · SV Cold 5</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG SHM BER</td><td class="src">Emperor Crush</td></tr>
-      <tr><td class="it">Dwarven Ringmail Tunic</td><td class="st">Chest · lore</td><td class="st">AC 12<br>SV Fire/Cold/Magic +8</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG</td><td class="src">Emperor Crush</td></tr>
-      <tr><td class="it">Dwarven Mace</td><td class="st">1H Blunt 8 / 35</td><td class="st">—</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Emperor Crush</td></tr>
-      <tr><td class="it">Headsplitter<span class="tag new">new</span></td><td class="st">2H Slash 11 / 43</td><td class="st">END 15 · STR 4</td><td class="cls">WAR PAL RNG SHD BER<br><span style="color:#D46C64">MNK ROG BST removed 28 July</span></td><td class="src">Bonefire</td></tr>
+      <tr><td class="it">Crown of Crush<span class="tag new">new</span></td><td class="st">Head</td><td class="st"><strong>AC 10</strong> · END 10<br>STR 5 · SV Cold 5</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG SHM BER</td><td class="src">Emperor Crush</td></tr>
+      <tr><td class="it">Dwarven Ringmail Tunic</td><td class="st">Chest · lore</td><td class="st"><strong>AC 12</strong><br>SV Fire/Cold/Magic +8</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG</td><td class="src">Emperor Crush</td></tr>
+      <tr><td class="it">Dwarven Mace</td><td class="st">1H Blunt 8 / 35</td><td class="st">&mdash;</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Emperor Crush</td></tr>
+      <tr><td class="it">Headsplitter<span class="tag new">new</span></td><td class="st">2H Slash <strong>11 / 43</strong></td><td class="st">END 15 · STR 4</td><td class="cls">WAR PAL RNG SHD BER<br><span style="color:#D46C64">MNK ROG BST removed 28 July</span></td><td class="src">Bonefire</td></tr>
       <tr><td class="it">Corroded Hand Guards<span class="tag new">new</span></td><td class="st">Hands</td><td class="st">AC 10 · STR 1<br>SV Fire/Cold/Poison 3</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">Bonefire</td></tr>
       <tr><td class="it">Spiky Splintmail<span class="tag new">new</span></td><td class="st">Chest · click</td><td class="st">AC 12 · HP 15 · STA 5<br><span style="color:#D46C64">click now Bramblecoat</span></td><td class="cls">WAR RNG SHD SHM BER</td><td class="src">Bloodgurgler</td></tr>
       <tr><td class="it">Rib-bone Stiletto<span class="tag new">new</span></td><td class="st">Pierce 4 / 18<br>Backstab 7</td><td class="st">STR 1 · AGI 1 · DEX 1</td><td class="cls">WAR PAL RNG SHD MNK BRD ROG NEC WIZ MAG ENC BST BER</td><td class="src">Bloodgurgler</td></tr>
       <tr><td class="it">Armband of Serrated Teeth<span class="tag new">new</span></td><td class="st">Arms</td><td class="st">STR 1 · STA 2 · DEX 1<br>SV Disease 2</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Chokehold</td></tr>
       <tr><td class="it">Carved Walking Stick<span class="tag new">new</span></td><td class="st">1H Blunt 6 / 25</td><td class="st">MANA 5 · STR 1 · WIS 1<br>SV Magic/Fire/Cold 1</td><td class="cls all">ALL</td><td class="src">Chokehold</td></tr>
-      <tr><td class="it">Grimy Black Silk Robe<span class="tag new">new</span></td><td class="st">Chest</td><td class="st">AC 6 · MANA 10<br>AGI 2 · INT 5</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Marrowbane</td></tr>
+      <tr><td class="it">Grimy Black Silk Robe<span class="tag new">new</span></td><td class="st">Chest</td><td class="st">AC 6 · <strong>MANA 10</strong><br>AGI 2 · INT 5</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Marrowbane</td></tr>
       <tr><td class="it">Wood Elf Scout Bauble<span class="tag new">new</span></td><td class="st">Neck</td><td class="st">AC 1 · HP 5 · END 5 · AGI 2</td><td class="cls all">ALL</td><td class="src">Marrowbane</td></tr>
-      <tr><td class="it">Disgusting Padded Shirt<span class="tag new">new</span></td><td class="st">Chest</td><td class="st">AC 12 · HP 9 · WIS 2<br>SV Poison/Disease/Cold 2</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">The Prophet</td></tr>
+      <tr><td class="it">Disgusting Padded Shirt<span class="tag new">new</span></td><td class="st">Chest</td><td class="st"><strong>AC 12</strong> · HP 9 · WIS 2<br>SV Poison/Disease/Cold 2</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">The Prophet</td></tr>
       <tr><td class="it">Rotting Faydark Mask<span class="tag new">new</span></td><td class="st">Face</td><td class="st">AC 5 · HP/MANA/END 5<br>STA 2</td><td class="cls all">ALL</td><td class="src">The Prophet</td></tr>
       <tr><td class="it">Bandolier of Teeth<span class="tag new">new</span></td><td class="st">Shoulders</td><td class="st">HP 10 · STR 1<br>SV Poison 1</td><td class="cls all">ALL</td><td class="src">Lord Darish</td></tr>
       <tr><td class="it">Torn Elvish Tapestry<span class="tag new">new</span></td><td class="st">Back</td><td class="st">AC 6 · CHA 4<br>SV Magic 5</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM NEC WIZ MAG ENC BER</td><td class="src">Lord Darish</td></tr>
-      <tr><td class="it">Dwarven Two-Handed Axe</td><td class="st">2H Slash 14 / 43</td><td class="st">—</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Lord Darish</td></tr>
-      <tr><td class="it">Dwarven Axe</td><td class="st">1H Slash 6 / 26</td><td class="st">—</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Lord Darish</td></tr>
-      <tr><td class="it">Shiny Brass Shield</td><td class="st">Secondary · lore</td><td class="st">AC 10 · SV Magic 10</td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM</td><td class="src">Orc Trainer</td></tr>
+      <tr><td class="it">Dwarven Two-Handed Axe</td><td class="st">2H Slash <strong>14 / 43</strong></td><td class="st">&mdash;</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Lord Darish</td></tr>
+      <tr><td class="it">Dwarven Axe</td><td class="st">1H Slash 6 / 26</td><td class="st">&mdash;</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Lord Darish</td></tr>
+      <tr><td class="it">Shiny Brass Shield</td><td class="st">Secondary · lore</td><td class="st">AC 10 · <strong>SV Magic 10</strong></td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM</td><td class="src">Orc Trainer</td></tr>
       <tr><td class="it">Crushbone Cadet's Grimoire<span class="tag new">new</span></td><td class="st">Primary / Secondary</td><td class="st">MANA 5 · INT 2 · WIS 2</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Orc Trainer</td></tr>
       <tr><td class="it">Bracers of Battle</td><td class="st">Wrist</td><td class="st">AC 3 · STR 1 · DEX 3</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Orc Warlord · Orc Warden</td></tr>
       <tr><td class="it">Deteriorated Ancient Faydark Longbow<span class="tag new">new</span></td><td class="st">Range · Archery 14 / 55</td><td class="st">HP 5 · MANA 5 · END 5</td><td class="cls">WAR PAL RNG SHD ROG</td><td class="src">Orc Warlord</td></tr>
       <tr><td class="it">Dragoon Dirk</td><td class="st">Pierce 6 / 23<br>Backstab 6 · lore</td><td class="st">DEX 2 · SV Magic 3</td><td class="cls">WAR RNG SHD BRD ROG NEC WIZ MAG ENC</td><td class="src">Ambassador DVinn</td></tr>
       <tr><td class="it">Wood Elf Scout Shoes<span class="tag new">new</span></td><td class="st">Feet</td><td class="st">AC 2 · AGI 2 · DEX 1<br>SV Fire/Cold 2</td><td class="cls">RNG DRU MNK ROG SHM NEC WIZ MAG ENC BST BER</td><td class="src">Ambassador DVinn</td></tr>
-      <tr><td class="it">Crushbone Fetish</td><td class="st">Secondary · shield</td><td class="st">AC 8 · MANA 10<br>WIS 3 · INT 3 · SV Magic 2</td><td class="cls">CLR DRU SHM NEC WIZ MAG ENC</td><td class="src">Orc oracle</td></tr>
+      <tr><td class="it">Crushbone Fetish</td><td class="st">Secondary · shield</td><td class="st">AC 8 · <strong>MANA 10</strong><br>WIS 3 · INT 3 · SV Magic 2</td><td class="cls">CLR DRU SHM NEC WIZ MAG ENC</td><td class="src">Orc oracle</td></tr>
       <tr><td class="it">Ornament of the Oracle</td><td class="st">Ear</td><td class="st">HP 5 · MANA 10<br>WIS 1 · INT 1 · CHA 2</td><td class="cls">CLR PAL RNG SHD DRU BRD SHM NEC WIZ MAG ENC BST</td><td class="src">Orc oracle</td></tr>
       <tr><td class="it">Slaver`s Lash<span class="tag new">new</span></td><td class="st">1H Slash 9 / 40</td><td class="st">HP 5 · END 5<br>WIS 2 · INT 2</td><td class="cls">PAL RNG SHD BRD</td><td class="src">Orc slaver</td></tr>
-      <tr><td class="it">Slave Trammels</td><td class="st">Feet · leg irons</td><td class="st">AC 20 · AGI −2 · DEX −2<br>SV Disease/Poison 4</td><td class="cls all">ALL</td><td class="src">Slaver camp<span class="tag new">graphic fixed 28 July</span></td></tr>
-      <tr><td class="it">Leather Whip</td><td class="st">1H Slash 5 / 30 · quest</td><td class="st">—</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Orc Taskmaster</td></tr>
-      <tr><td class="it">Brass Earring</td><td class="st">Ear · quest starter</td><td class="st">AC 2</td><td class="cls all">ALL</td><td class="src">Orc Taskmaster</td></tr>
-      <tr><td class="it">Legionnaire's Bracer</td><td class="st">Wrist · quest</td><td class="st">AC 3</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Orc legionnaire</td></tr>
-      <tr><td class="it">Master Crushbone Cell Key</td><td class="st">Key · no drop</td><td class="st">Opens the slave cells</td><td class="cls all">ALL</td><td class="src">Orc Warden · orc slaver</td></tr>
-      <tr><td class="it">Prayer Cloth of Tunare</td><td class="st">Shoulders · quest reward</td><td class="st">AC 3 · WIS 3</td><td class="cls all">ALL</td><td class="src">Screaming Mace quest</td></tr>
-      <tr><td class="it">Screaming Mace</td><td class="st">1H Blunt 8 / 35 · proc</td><td class="st">Screaming Mace effect, instant</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Screaming Mace quest</td></tr>
-      <tr><td class="it">Crushbone Belt · Shoulderpads</td><td class="st">Quest turn-in</td><td class="st">AC 1 — hand in for XP</td><td class="cls">turn-in item</td><td class="src">Centurions · legionnaires · emissaries · warlord</td></tr>
+      <tr><td class="it">Slave Trammels</td><td class="st">Feet · leg irons</td><td class="st"><strong>AC 20</strong> · AGI &minus;2 · DEX &minus;2<br>SV Disease/Poison 4</td><td class="cls all">ALL</td><td class="src">Slaver camp<span class="tag new">graphic fixed 28 July</span></td></tr>
     </tbody>
   </table>
   </div>
+
+  <h3>Quest items and turn-ins</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Screaming Mace</td><td class="st">1H Blunt 8 / 35 · proc</td><td class="st">Screaming Mace effect, instant</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Screaming Mace quest</td></tr>
+      <tr><td class="it">Prayer Cloth of Tunare</td><td class="st">Shoulders · quest reward</td><td class="st">AC 3 · WIS 3</td><td class="cls all">ALL</td><td class="src">Screaming Mace quest</td></tr>
+      <tr><td class="it">Leather Whip</td><td class="st">1H Slash 5 / 30 · quest</td><td class="st">&mdash;</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Orc Taskmaster</td></tr>
+      <tr><td class="it">Brass Earring</td><td class="st">Ear · quest starter</td><td class="st">AC 2</td><td class="cls all">ALL</td><td class="src">Orc Taskmaster</td></tr>
+      <tr><td class="it">Legionnaire's Bracer</td><td class="st">Wrist · quest</td><td class="st">AC 3</td><td class="cls">WAR PAL RNG SHD BRD ROG</td><td class="src">Orc legionnaire</td></tr>
+      <tr><td class="it">Master Crushbone Cell Key</td><td class="st">Key · no drop</td><td class="st">Opens the slave cells</td><td class="cls all">ALL</td><td class="src">Orc Warden · orc slaver</td></tr>
+      <tr><td class="it">Crushbone Belt · Shoulderpads</td><td class="st">Quest turn-in</td><td class="st">AC 1 — hand in for experience</td><td class="cls">turn-in item</td><td class="src">Centurions · legionnaires · emissaries · warlord</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>Canloe Nusback, GM Warrior in Kaladim, takes the turn-ins.</strong> Belts one at a time, shoulderpads two at a time. Belts pay to about level 10, shoulderpads well beyond.</div>
 </section>
 
-<section>
-  <h2><span class="num">05</span>Dangers</h2>
-  <div class="note danger"><strong>Trains every five to ten minutes.</strong> Orc spawns sit close together and the zone is busy. Expect legionnaires, oracles, an emissary or occasionally Emperor Crush himself to come through the zone line. Learn the paths trains follow and stay off them.</div>
-  <div class="note danger"><strong>Pathing is broken in places.</strong> Be careful over bridges — especially toward the slaver camp and outside the keep where Wall pulls happen. If a pulled orc suddenly goes for a swim, its route out of the water runs behind the castle through everything else in the zone.</div>
-  <div class="note danger"><strong>The Royal Guard is invisible until it attacks.</strong> Anyone pushing to Emperor Crush should assume it is there.</div>
-  <div class="note danger"><strong>Faction costs.</strong> Killing slaves damages faction with their home city. Retlon Brenclog costs Ak'Anon faction.</div>
-</section>
+</main>
 
-<section>
-  <h2><span class="num">06</span>Getting there</h2>
-  <ul class="tight">
-    <li>One entrance, directly north of Kelethin in Greater Faydark. Take the northernmost lift — the one furthest from the other two — and head north, or follow the path straight out. <strong>The entrance is ringed by two pyres.</strong></li>
-    <li>From Felwithe, turn right out of the main entrance and follow the zone border. Duller than the Kelethin route but quicker and hard to get lost on.</li>
-    <li><strong>Circle of Butcherblock</strong> (Druid) or the Butcherblock translocator both land on Faydwer within a short run of Greater Faydark.</li>
-    <li>Succor and evacuate drop you at <code>−644, 158</code>, the zone line back to Greater Faydark.</li>
-  </ul>
-</section>
+<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-crushbone">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 03 &middot; Crushbone &middot; Greater Faydark, Faydwer &middot; floor derived from crushbone.s3d &middot; north up, west left</p></footer>
 
-<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-crushbone">Where each one came from, and what is still open</a>.</p></footer>
-
+</div>
 </div>
 </body>
 </html>

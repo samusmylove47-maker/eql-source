@@ -6,160 +6,383 @@
 <title>Blackburrow — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#5C93C4;--accd:#35597a;--acct:color-mix(in srgb, #5C93C4 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
-.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}
-.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}
-.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}
-.cell{background:#251F19;padding:11px 13px}
-.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}
-.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}
-.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}
-.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}
-.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}
-.legend ol{list-style:none;margin:0;padding:0}
-.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}
-.legend .n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}
-.legend .lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}
-.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
+/* THE BLACKBURROW SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore sheet, carrying this zone's own
+   accent. The page is the plate: a graticule fixed behind it, a translucent
+   sheet sliding over that graticule, a neatline with an inner rule around the
+   whole thing, and each section's kicker hanging in the left margin.
+
+   Self-contained. This page never loads assets/site.css, so token names are
+   prefixed --bb- because build3.py appends site.css's :root AFTER this block
+   and an unprefixed --mut or --txt would be silently overwritten by it.
+   --acc, --accd and --acct are deliberately NOT prefixed: the injected chrome
+   reads them and site.css does not define them.
+
+   Contrast, computed rather than eyeballed, against the lightest ground the
+   page can produce (a graticule crossing under the lamplight, seen through the
+   sheet, #1D180E): ink 14.76, txt 12.24, mut 7.69, dim 5.54, accent text 5.76,
+   warn 5.15, brass 6.42, ok 5.91. On the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 5.06 / 4.53 / 5.65 / 5.20. */
+:root{
+  --acc:#5C93C4;--accd:#33516C;--acct:#6398C7;
+  --bb-g:#120E08;          /* the plotting table */
+  --bb-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --bb-ink:#F2EADA;--bb-txt:#DFD6C4;--bb-mut:#B5AA95;--bb-dim:#9A8F7C;
+  --bb-warn:#D46C64;--bb-brass:#C9922E;--bb-ok:#5FA37E;
+  --bb-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --bb-r2:#7A6950;         /* a boundary that carries meaning */
+  --bb-2xs:10px;--bb-xs:11.5px;--bb-sm:13.5px;--bb-base:15.5px;--bb-md:18.5px;
+  --bb-lg:22px;--bb-h2:clamp(24px,3.6vw,36px);
+  /* The h1 floor is 30px, not the Mistmoore sheet's 38px. A one-word zone
+     name in Cinzel is unbreakable, so the title row cannot shrink below its
+     width: BLACKBURROW at 38px pushed the plate numeral 26 px past a 390px
+     viewport. Two-word names like CASTLE MISTMOORE wrap and never showed it.
+     The ceiling is unchanged, so the desktop reading is identical. */
+  --bb-h1:clamp(30px,6.6vw,74px);
+  --bb-rad:4px;
+  --bb-s1:4px;--bb-s2:8px;--bb-s3:12px;--bb-s4:16px;
+  --bb-s5:24px;--bb-s6:32px;--bb-s7:48px;--bb-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--bb-g)}
+body{margin:0;background:transparent;color:var(--bb-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--bb-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint.
+
+   Two deliberate mechanics. Major and minor rules share ONE 152px period per
+   axis instead of two stacked gradients, because stacking makes the crossings
+   compound and the compounding is what eats text contrast. And every stop
+   terminates in rgba(228,210,174,0) rather than the keyword transparent,
+   because older WebKit premultiplies transparent as transparent BLACK and
+   draws a grey seam down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head of the sheet, the zone's own ink bleeding up from the
+   foot, and a vignette that ONLY darkens, so it cannot cost contrast anywhere.
+   The two washes are anchored at opposite ends and both fall to zero by 62%,
+   so they never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(92,147,196,.045) 0%, rgba(92,147,196,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. One soft shadow, because it floats. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--bb-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--bb-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--bb-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--bb-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is what makes a column of figures read as instrument output. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--bb-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--bb-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--bb-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--bb-s2);
+  text-wrap:balance;color:var(--bb-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--bb-lg);letter-spacing:.03em;margin:var(--bb-s5) 0 var(--bb-s2);color:var(--bb-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--bb-mut);font-size:var(--bb-md);margin:0 0 var(--bb-s5);max-width:60ch}
+.cm{color:var(--bb-dim);font-size:var(--bb-sm);line-height:1.6;margin:var(--bb-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--bb-r1);padding-left:var(--bb-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--bb-s7) 0 var(--bb-s5);margin-bottom:var(--bb-s2);
+  border-bottom:1px solid var(--bb-r2)}
+.eyebrow{font-size:var(--bb-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--bb-s4)}
+/* Wraps rather than overflowing. Below about 360px even a 30px CINZEL
+   zone name plus the leader and the numeral is wider than the sheet, and a
+   flex item whose content is one unbreakable word will push out instead of
+   shrinking. Wrapped, the rule and the numeral drop to their own line. */
+.title{display:flex;flex-wrap:wrap;align-items:flex-end;gap:var(--bb-s4)}
+.leader{flex:1 1 12px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--bb-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(26px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--bb-md);
+  color:var(--bb-mut);letter-spacing:.02em;margin:var(--bb-s2) 0 var(--bb-s3);
+  text-transform:uppercase}
+/* THE DECK. The answer to "should I go tonight", above the first chart rather
+   than reverse-engineered from the tables below it. */
+.deck{color:var(--bb-txt);margin:0 0 var(--bb-s5);max-width:66ch}
+.deck strong{color:var(--bb-ink)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--bb-r1);border-left:1px solid var(--bb-r1)}
+.cell{background:var(--bb-p);padding:var(--bb-s3);
+  border-right:1px solid var(--bb-r1);border-bottom:1px solid var(--bb-r1)}
+.cell dt{font-size:var(--bb-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--bb-dim);margin:0 0 var(--bb-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--bb-lg);
+  font-weight:600;color:var(--bb-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--bb-xs);font-weight:400;
+  color:var(--bb-mut);display:block;letter-spacing:0}
+.jump{margin:var(--bb-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--bb-s1) var(--bb-s4);font-size:var(--bb-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--bb-mut);text-decoration:none;border-bottom:1px solid var(--bb-r1)}
+.jump a:hover{color:var(--bb-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column.
+   The kicker names what the section is MADE OF; numbered headings are a
+   generated-site tell and are not coming back. */
+section{margin-top:var(--bb-s7);position:relative}
+.kick{font-size:var(--bb-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--bb-dim);margin:0 0 var(--bb-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--bb-r2);padding-left:var(--bb-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--bb-s4) 0}
+.scroller table{min-width:700px}
+table{border-collapse:collapse;width:100%;font-size:var(--bb-sm);
+  border-top:2px solid var(--bb-brass)}
+th{font-size:var(--bb-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--bb-mut);
+  text-align:left;padding:var(--bb-s2) var(--bb-s3) var(--bb-s2) 0;background:none;
+  border-bottom:1px solid var(--bb-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--bb-s3) var(--bb-s3) var(--bb-s3) 0;border-bottom:1px solid var(--bb-r1);
+  vertical-align:top;background:none}
 tbody tr:last-child td{border-bottom:0}
-.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}
-.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}
-.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}
-.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}
-.cls.all{color:#5FA37E}
-.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}
-.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}
-.tag.warn{border-color:#C9453A;color:#D46C64}
-.tag.new{border-color:#5FA37E;color:#5FA37E}
-.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}
-.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}
-.camp .band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}
-.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}
-.camp p{font-size:13.5px;margin:0 0 9px}
-.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
-.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}
-.link .step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}
-.link .who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}
-.link .gives{font-size:12.5px;color:#9C958E}
-.link .gives b{color:var(--acct);font-weight:600}
-.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}
-.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}
-.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}
-.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(92,147,196,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--bb-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--bb-sm);text-align:right;white-space:nowrap;color:var(--bb-txt)}
+th.lv{text-align:right}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--bb-base);font-weight:600;
+  letter-spacing:.02em;color:var(--bb-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--bb-base);font-weight:600;
+  letter-spacing:.02em;color:var(--bb-ink)}
+/* The colour is inherited rather than set, so every contrast ratio measured on
+   this sheet is unchanged and the underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--bb-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--bb-xs);color:var(--bb-mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--bb-ok)}
+.st{font-size:var(--bb-xs);color:var(--bb-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--bb-sm);color:var(--bb-mut)}
+.tag{font-size:var(--bb-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--bb-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--bb-warn)}
+.tag.new{border-color:#2F5A46;color:var(--bb-ok)}
+.tier{font-size:var(--bb-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);
+  border-radius:2px;color:var(--acct);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--bb-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--bb-base);
+  letter-spacing:.02em;color:var(--bb-ink);padding:var(--bb-s3) var(--bb-s5) var(--bb-s3) 0;
+  border-bottom:1px solid var(--bb-r1)}
+.key dd{margin:0;font-size:var(--bb-sm);color:var(--bb-mut);padding:var(--bb-s3) 0;
+  border-bottom:1px solid var(--bb-r1)}
+.key strong{color:var(--bb-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not four identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--bb-s5) 0 0;padding:0 0 0 var(--bb-s5);
+  border-left:2px solid var(--bb-warn);max-width:74ch}
+ul.hz li{padding:var(--bb-s4) 0;border-top:1px solid var(--bb-r1);color:var(--bb-mut);
+  font-size:var(--bb-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--bb-base);
+  color:var(--bb-warn);margin-bottom:var(--bb-s1)}
+ul.hz strong{color:var(--bb-ink)}
+
+.note{border-left:1px solid var(--bb-r1);padding:var(--bb-s1) 0 var(--bb-s1) var(--bb-s4);
+  margin:var(--bb-s5) 0 0;color:var(--bb-mut);font-size:var(--bb-sm);max-width:68ch}
+.note strong{color:var(--bb-ink)}
+.note.warn{border-left:2px solid var(--bb-warn)}
+.note.warn strong{color:var(--bb-warn)}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--bb-s8);padding-top:var(--bb-s5);border-top:1px solid var(--bb-r2);
+  color:var(--bb-mut);font-size:var(--bb-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
+.imprint{font-size:var(--bb-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--bb-dim);margin:var(--bb-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one step
+   higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .meas table{border-top:2px solid var(--bb-brass)}
+body .meas td{border-bottom:1px solid var(--bb-r1)}   /* its #322A23 is 1.4:1 */
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+body .fp-wrap{border-radius:var(--bb-rad)}
+/* build3.py injects the placeholder note above the roster unconditionally, but
+   its stylesheet only travels with a zone that has a withheld coordinate. This
+   zone has none, so the note would otherwise render as unstyled body text. */
+body .ph-note{margin:0 0 var(--bb-s4);padding:var(--bb-s3) var(--bb-s4);
+  border-left:3px solid var(--bb-ok);background:rgba(95,163,126,.06);
+  border-radius:var(--bb-rad);color:var(--bb-mut);font-size:var(--bb-sm);
+  line-height:1.6;max-width:68ch}
+body .ph-note strong{display:block;color:var(--bb-ink);margin-bottom:3px}
+body .ph-note a{color:#8FBEE4}
+/* One heading level, one rule. The two injected sections are the first and the
+   last a reader meets, and their generators set headings smaller than every
+   other heading on the page. */
+body .meas,body .fplan{margin-top:var(--bb-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--bb-h2);letter-spacing:.005em;line-height:1}
+/* The spine rail would otherwise have holes at both ends, exactly where it
+   should be establishing itself. Those generators are not this file's to edit,
+   so the labels are set here, in the same register as the authored four. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--bb-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--bb-dim);display:block;margin:0 0 var(--bb-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 05 · Qeynos Hills / Everfrost</p>
-  <h1>Blackburrow</h1>
+  <p class="eyebrow">Dungeon survey &middot; Qeynos Hills / Everfrost</p>
+  <div class="title"><h1>Blackburrow</h1><span class="leader"></span><span class="plateno">05</span></div>
   <p class="subtitle">Three floors, one exit tunnel, and the best chest piece in the bracket</p>
+  <p class="deck">A gnoll warren between Qeynos Hills and Everfrost, levels 5 to 20 with Lord Elgnub at 22. Come for the Hardened Bark Breastplate, the focus items and the fang turn-ins. Respawn is 22:00, so <strong>a camp you lose is a camp you wait on</strong>. The gnolls are exceptionally social, and one tunnel serves the whole zone.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>blackburrow</dd></div>
-    <div class="cell"><dt>Level band</dt><dd>5–20<small>Lord Elgnub at 22</small></dd></div>
+    <div class="cell"><dt>Mob levels</dt><dd>5&ndash;20<small>Lord Elgnub 22</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>119<small>159%</small></dd></div>
-    <div class="cell"><dt>Respawn</dt><dd>22:00</dd></div>
-    <div class="cell"><dt>Succor</dt><dd>−159, 39</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Qeynos Hills<small>and Everfrost</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>22:00<small>ceiling unresolved</small></dd></div>
+    <div class="cell"><dt>Succor</dt><dd>&minus;159, 39</dd></div>
+    <div class="cell"><dt>Exits</dt><dd>Two<small>Qeynos Hills, Everfrost</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
-
-
-
+<main>
 
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why"><li><b>The best chest piece in the bracket.</b> Hardened Bark Breastplate, AC 16 and END 15, wearable by eight classes.</li><li><b>Three floors and one exit tunnel.</b> A ring with a deep hole in the middle. Everything funnels through the same way out.</li><li><b>22:00 respawns.</b> Slow. A camp you lose is a camp you wait on, so pick one you can hold.</li><li><b>Con the group, not the target.</b> Spawn groups mix levels, and an elite guard sitting inside a cluster of low gnolls makes a clean pull close to impossible.</li></ul>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Two entrances, a ring on top, and two floors of cave under it.</p>
+  <dl class="key">
+    <dt>A cave mouth shaped like a gnoll's head</dt><dd>The Qeynos Hills entrance, northeast corner, east of Surefall Glade and north of the Western Karana line. <strong>No path leads to it.</strong> Circle of Surefall Glade lands closest; the two North Karana ports work a level earlier and leave a longer run</dd>
+    <dt>A torch-lit tunnel in the canyons</dt><dd>The Everfrost entrance, southeast segment. Harder to find, guarded by two gnolls with two more down the tunnel. <strong>Torches light the way now</strong></dd>
+    <dt>A ring around a deep hole</dt><dd>Floor one, 7 to 12: the plague rat storeroom, the Sentry's ledge over The Pit, Tranixx Darkpaw's spawn room</dd>
+    <dt>A hollowed tree</dt><dd><strong>A false floor that drops to floor two.</strong> Useful once, unpleasant by accident</dd>
+    <dt>A snake ledge with a ladder down</dt><dd>Floor two, 12 to 17: Floor Spike Room, Elite Gnoll Room, Refugee's Nook, the High Shaman room, two commander posts, Socho's hide under a land bridge. <strong>The densest floor, and where clean pulls stop</strong></dd>
+    <dt>The Bridge Room</dt><dd>The pull spot on floor three, 17 to 22. Past it: the Overseer's post, the Brewer's barrels, Sharpshooter Ledge, the Banner Room, the Explorer's alcove. Lord Elgnub is at the far end</dd>
+  </dl>
+  <p class="cm">The Freeport&ndash;Qeynos translocator is free until you reach level 20 in any class, then costs your highest class level in platinum per trip.</p>
 </section>
 
 <section>
-  <h2><span class="num">02</span>The three floors</h2>
-  <div class="camps">
-    <div class="camp"><p class="band">Floor One · levels 7–12</p><h4>The Ring</h4>
-      <p>Two entrances feeding a ring with a deep hole in the middle. The plague rat storeroom, the Sentry Lookout, and Tranixx Darkpaw in his spawn room — he stopped roaming the zone lines on 14 July.</p>
-      <p>The Hollowed Tree has a <strong>false floor that drops to floor two</strong>. Useful once, unpleasant by accident.</p></div>
-    <div class="camp"><p class="band">Floor Two · levels 12–17</p><h4>Caves &amp; Commanders</h4>
-      <p>Snake Ledge with a ladder down, the Floor Spike Room, the Elite Gnoll Room, Refugee's Nook, the High Shaman room, two commander posts, and Socho's hide under a land bridge.</p>
-      <p>The densest floor, and where clean pulls stop being possible.</p></div>
-    <div class="camp"><p class="band">Floor Three · levels 17–22</p><h4>Brewery &amp; The Lord</h4>
-      <p>The Bridge Room is the classic pull spot. Beyond it: the Overseer's post, the Brewer's barrel supply, Sharpshooter Ledge, the Banner Room and the Explorer's alcove.</p>
-      <p>Lord Elgnub sits northeast of the underground river landing, at the far end.</p></div>
-  </div>
-  <div class="note"><strong>Gnoll fangs are free levels.</strong> Every gnoll in the zone drops them commonly. They turn in at South Qeynos for the Moonstones quest and at Halas for the Gnoll Bounty — experience, faction and rewards at low levels. Loot every fang.</div>
+  <p class="kick">Four hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>Con the group, not the target</b> Five gnolls in aggro range of each other is normal, and <strong>spawn groups mix levels</strong> — an elite guard inside a cluster of low gnolls makes a clean pull close to impossible.</li>
+    <li><b>Exceptionally social</b> They aid each other eagerly, patrollers appear from blind corners, and <strong>they aggro through closed doors</strong>. One stray area spell or one runner starts a zone-wide train.</li>
+    <li><b>One tunnel to the surface</b> Low-level players hunt along it, and everything a deep group fails to hold comes up that corridor.</li>
+    <li><b>The architecture</b> Bridges, narrow ledges, water and a deep central pit. Pathing is decent; players are what fall off things.</li>
+  </ul>
 </section>
 
 <section>
-  <h2><span class="num">03</span>Named roster</h2>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Floor numbers are the survey's own, checked against the plan.</p>
   <div class="scroller">
   <table>
-    <thead><tr><th>#</th><th>Named</th><th>Flr</th><th>Loc (Y, X)</th><th>Lvl</th><th>Notes</th></tr></thead>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Flr</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="lv">12</td><td class="nmob">Sabertooth Overseer</td><td class="lv">3</td><td class="loc">−150, 384</td><td class="lv">20</td><td class="src">A berserker gnoll. Usually the first named met on floor three.</td></tr>
-      <tr><td class="lv">18</td><td class="nmob">Lord Elgnub</td><td class="lv">3</td><td class="loc">160, −385</td><td class="lv">22</td><td class="src">Shadow knight. The zone's cap fight, northeast of the underground river landing.</td></tr>
-      <tr><td class="lv">14</td><td class="nmob">Master Brewer</td><td class="lv">3</td><td class="loc">53, 386</td><td class="lv">18</td><td class="src">Among the barrels underneath the brewery. A gnoll brewer (L17) spawns beside him at <code>53, 356</code>.</td></tr>
-      <tr><td class="lv">15</td><td class="nmob">Splitpaw Sharpshooter</td><td class="lv">3</td><td class="loc">49, 357</td><td class="lv">20</td><td class="src">Ranger. Up the ramp north of the Overseer.</td></tr>
-      <tr><td class="lv">13</td><td class="nmob">Refugee Splitpaw (monk)</td><td class="lv">3</td><td class="loc">−162, 452</td><td class="lv">18</td><td class="src">Southwest end of floor three. One of two refugee variants with separate loot tables.</td></tr>
-      <tr><td class="lv">16</td><td class="nmob">Splitpaw Explorer</td><td class="lv">3</td><td class="loc">164, 157</td><td class="lv">18</td><td class="src">Rogue. Bottom of a cave junction.</td></tr>
-      <tr><td class="lv">10</td><td class="nmob">Socho Darkpaw</td><td class="lv">2</td><td class="loc">−85, −286</td><td class="lv">13</td><td class="src">Rogue. Hides under a land bridge in the floor-two caves.</td></tr>
-      <tr><td class="lv">5</td><td class="nmob">Mannan of the Sabertooth</td><td class="lv">2</td><td class="loc">265, −124</td><td class="lv">15</td><td class="src">Small room up the ramp east out of the Floor Spike room.</td></tr>
-      <tr><td class="lv">9</td><td class="nmob">Splitpaw Commander</td><td class="lv">2/3</td><td class="loc">−97, −38 · 251, 363</td><td class="lv">14</td><td class="src">Two of them — one overlooking the underground river, one in the Banner Room.</td></tr>
-      <tr><td class="lv">7</td><td class="nmob">The gnoll high shaman</td><td class="lv">2</td><td class="loc">55, −320</td><td class="lv">15</td><td class="src">Not the same as the generic "a gnoll high shaman" spawns.</td></tr>
-      <tr><td class="lv">6</td><td class="nmob">Refugee Splitpaw (shaman)</td><td class="lv">2</td><td class="loc">89, −147</td><td class="lv">14</td><td class="src">In an alcove south-southeast of the Elite room.</td></tr>
-      <tr><td class="lv">4</td><td class="nmob">Sabertooth Clan Necromancer</td><td class="lv">2</td><td class="loc">189, 140</td><td class="lv">15</td><td class="src">In the Floor Spike Room.</td></tr>
-      <tr><td class="lv">8</td><td class="nmob">A gnoll commander</td><td class="lv">2</td><td class="loc">23, −341 · 292, −115</td><td class="lv">13–15</td><td class="src">Two spawn points on floor two.</td></tr>
-      <tr><td class="lv">11</td><td class="nmob">A Gnoll Tactician</td><td class="lv">2</td><td class="loc">−86, 117</td><td class="lv">13–15</td><td class="src">9% spawn.</td></tr>
-      <tr><td class="lv">2</td><td class="nmob">A giant plague rat</td><td class="lv">1</td><td class="loc">126, −201</td><td class="lv">10</td><td class="src">In the storeroom off the entrance caves.</td></tr>
-      <tr><td class="lv">1</td><td class="nmob">Splitpaw Sentry</td><td class="lv">1</td><td class="loc">66, −21</td><td class="lv">10</td><td class="src">Ranger. On a ledge overlooking The Pit.</td></tr>
-      <tr><td class="lv">3</td><td class="nmob">Tranixx Darkpaw</td><td class="lv">1</td><td class="loc">160, −140</td><td class="lv">10</td><td class="src">Spawn room on floor one. <strong>No longer patrols the zone lines</strong> as of 14 July — he stays put now.</td></tr>
-      <tr><td class="lv">—</td><td class="nmob">An elite gnoll guard</td><td class="lv">1–3</td><td class="loc">various</td><td class="lv">11–13</td><td class="src">Stationary, often placed next to named. The main reason clean pulls fail.</td></tr>
+      <tr><td class="nmob">Lord Elgnub</td><td class="loc">160, &minus;385</td><td class="lv">3</td><td class="lv">22</td><td class="cls">SHD</td><td class="src">The zone's cap fight, northeast of the underground river landing.</td></tr>
+      <tr><td class="nmob">Sabertooth Overseer</td><td class="loc">&minus;150, 384</td><td class="lv">3</td><td class="lv">20</td><td class="cls">GNOLL<br>BER</td><td class="src">Usually the first named met on floor three.</td></tr>
+      <tr><td class="nmob">Splitpaw Sharpshooter</td><td class="loc">49, 357</td><td class="lv">3</td><td class="lv">20</td><td class="cls">RNG</td><td class="src">Up the ramp north of the Overseer.</td></tr>
+      <tr><td class="nmob">Master Brewer</td><td class="loc">53, 386</td><td class="lv">3</td><td class="lv">18</td><td class="cls">&mdash;</td><td class="src">Among the barrels under the brewery. A gnoll brewer, L17, spawns beside him at <code>53, 356</code>.</td></tr>
+      <tr><td class="nmob">Refugee Splitpaw (monk)</td><td class="loc">&minus;162, 452</td><td class="lv">3</td><td class="lv">18</td><td class="cls">MNK</td><td class="src">Southwest end. One of two refugee variants with <strong>separate loot tables</strong>.</td></tr>
+      <tr><td class="nmob">Splitpaw Explorer</td><td class="loc">164, 157</td><td class="lv">3</td><td class="lv">18</td><td class="cls">ROG</td><td class="src">Bottom of a cave junction.</td></tr>
+      <tr><td class="nmob">Mannan of the Sabertooth</td><td class="loc">265, &minus;124</td><td class="lv">2</td><td class="lv">15</td><td class="cls">&mdash;</td><td class="src">Small room up the ramp east out of the Floor Spike room.</td></tr>
+      <tr><td class="nmob">The gnoll high shaman</td><td class="loc">55, &minus;320</td><td class="lv">2</td><td class="lv">15</td><td class="cls">SHM</td><td class="src"><strong>Not the same as the generic "a gnoll high shaman" spawns.</strong></td></tr>
+      <tr><td class="nmob">Sabertooth Clan Necromancer</td><td class="loc">189, 140</td><td class="lv">2</td><td class="lv">15</td><td class="cls">NEC</td><td class="src">In the Floor Spike Room.</td></tr>
+      <tr><td class="nmob">Splitpaw Commander</td><td class="loc">&minus;97, &minus;38 &middot; 251, 363</td><td class="lv">2/3</td><td class="lv">14</td><td class="cls">&mdash;</td><td class="src">Two of them: one overlooking the underground river, one in the Banner Room.</td></tr>
+      <tr><td class="nmob">Refugee Splitpaw (shaman)</td><td class="loc">89, &minus;147</td><td class="lv">2</td><td class="lv">14</td><td class="cls">SHM</td><td class="src">An alcove south-southeast of the Elite room.</td></tr>
+      <tr><td class="nmob">A gnoll commander</td><td class="loc">23, &minus;341 &middot; 292, &minus;115</td><td class="lv">2</td><td class="lv">13&ndash;15</td><td class="cls">&mdash;</td><td class="src">Two spawn points on floor two.</td></tr>
+      <tr><td class="nmob">A Gnoll Tactician</td><td class="loc">&minus;86, 117</td><td class="lv">2</td><td class="lv">13&ndash;15</td><td class="cls">&mdash;</td><td class="src">9% spawn.</td></tr>
+      <tr><td class="nmob">Socho Darkpaw</td><td class="loc">&minus;85, &minus;286</td><td class="lv">2</td><td class="lv">13</td><td class="cls">ROG</td><td class="src">Hides under a land bridge in the floor-two caves.</td></tr>
+      <tr><td class="nmob">An elite gnoll guard</td><td class="loc">various</td><td class="lv">1&ndash;3</td><td class="lv">11&ndash;13</td><td class="cls">&mdash;</td><td class="src">Stationary, often placed beside a named. <strong>The main reason clean pulls fail.</strong></td></tr>
+      <tr><td class="nmob">A giant plague rat</td><td class="loc">126, &minus;201</td><td class="lv">1</td><td class="lv">10</td><td class="cls">&mdash;</td><td class="src">In the storeroom off the entrance caves.</td></tr>
+      <tr><td class="nmob">Splitpaw Sentry</td><td class="loc">66, &minus;21</td><td class="lv">1</td><td class="lv">10</td><td class="cls">RNG</td><td class="src">On a ledge overlooking The Pit.</td></tr>
+      <tr><td class="nmob">Tranixx Darkpaw</td><td class="loc">160, &minus;140</td><td class="lv">1</td><td class="lv">10</td><td class="cls">&mdash;</td><td class="src">Spawn room on floor one. <strong>No longer patrols the zone lines</strong> as of 14 July.</td></tr>
     </tbody>
   </table>
   </div>
 </section>
 
 <section>
-  <h2><span class="num">04</span>Loot table</h2>
-  <p class="lede">Items marked <span class="tag new">new</span> arrived with the 2 June revamp. Note how many carry focus effects — this bracket did not previously have them.</p>
+  <p class="kick">Two registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Weapon lines read damage / delay. All races unless a class line says otherwise.</p>
+  <div class="note">Items marked <span class="tag new">new</span> arrived with the <strong>2 June revamp</strong>. Note how many carry focus effects: this bracket did not previously have them.</div>
+
+  <h3>Chase items</h3>
   <div class="scroller">
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it">Hardened Bark Breastplate<span class="tag new">new</span></td><td class="st">Chest</td><td class="st">AC 16 · END 15<br>SV Disease 10 · SV Poison 10</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG BER</td><td class="src">Sabertooth Overseer · L20</td></tr>
+      <tr><td class="it">Hardened Bark Breastplate<span class="tag new">new</span></td><td class="st">Chest</td><td class="st"><strong>AC 16</strong> · END 15<br>SV Disease 10 · SV Poison 10</td><td class="cls">WAR CLR PAL RNG SHD BRD ROG BER</td><td class="src">Sabertooth Overseer · L20</td></tr>
       <tr><td class="it">Runed Sabertooth Girdle<span class="tag new">new</span></td><td class="st">Waist</td><td class="st">AC 5 · STA 5 · WIS 5<br><span style="color:#9C958E">stats adjusted 16 June</span></td><td class="cls all">ALL</td><td class="src">Sabertooth Overseer · L20</td></tr>
       <tr><td class="it">Wicked Sallet<span class="tag new">new</span></td><td class="st">Head · focus · rare</td><td class="st">AC 10 · STR 3 · STA 3 · INT 2<br>Mana Preservation I</td><td class="cls">SHD only</td><td class="src">Lord Elgnub · L22</td></tr>
       <tr><td class="it">Dark Runed Leggings<span class="tag new">new</span></td><td class="st">Legs</td><td class="st">AC 5 · HP 10 · INT 5</td><td class="cls">NEC WIZ MAG ENC</td><td class="src">Lord Elgnub · L22</td></tr>
       <tr><td class="it">Keg Mallet<span class="tag new">new</span></td><td class="st">1H Blunt 9 / 30</td><td class="st">STA 3 · WIS 3</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST<br><span style="color:#D46C64">Berserker removed 16 June</span></td><td class="src">Master Brewer · L18</td></tr>
       <tr><td class="it">Pub Pants<span class="tag new">new</span></td><td class="st">Legs</td><td class="st">AC 6 · MANA 10 · END 10<br>AGI 5</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Master Brewer · L18</td></tr>
-      <tr><td class="it">Blackburrow Cask</td><td class="st">Container · 8 large slots</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">Master Brewer (guaranteed) · gnoll brewer (rare)</td></tr>
+      <tr><td class="it">Blackburrow Cask</td><td class="st">Container · 8 large slots</td><td class="st">&mdash;</td><td class="cls all">ALL</td><td class="src">Master Brewer (guaranteed) · gnoll brewer (rare)</td></tr>
       <tr><td class="it">Spiked Buckler<span class="tag new">new</span></td><td class="st">Secondary · focus</td><td class="st">AC 10 · DEX 2<br>SV Fire 5 · SV Cold 5<br>Improved Damage I</td><td class="cls">WAR CLR PAL RNG SHD DRU BRD ROG SHM</td><td class="src">Mannan of the Sabertooth · L15</td></tr>
       <tr><td class="it">Vagrant's Tunic<span class="tag new">new</span></td><td class="st">Chest · focus</td><td class="st">AC 8 · HP 5 · WIS 4<br>SV Cold 10<br>Mana Preservation I</td><td class="cls">WAR CLR PAL RNG SHD DRU MNK BRD ROG SHM BST BER</td><td class="src">Socho Darkpaw · L13</td></tr>
       <tr><td class="it">Darkpaw Sash<span class="tag new">new</span></td><td class="st">Waist</td><td class="st">AC 2 · DEX 2 · SV Cold 3</td><td class="cls all">ALL</td><td class="src">Socho Darkpaw · L13</td></tr>
@@ -185,39 +408,34 @@ footer h3{margin-top:0}
       <tr><td class="it">Crude Arrow<span class="tag new">new</span></td><td class="st">Ammo · Archery</td><td class="st">DMG 3 · range 60</td><td class="cls">WAR PAL RNG SHD ROG</td><td class="src">Splitpaw Sentry · L10</td></tr>
       <tr><td class="it">Spiked Collar</td><td class="st">Neck</td><td class="st">AC 3 · STR 3</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">A gnoll commander · elite gnoll guard</td></tr>
       <tr><td class="it">Studded Leather Collar</td><td class="st">Neck</td><td class="st">AC 3 · STR 1 · STA 1</td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">An elite gnoll guard · a gnoll shaman</td></tr>
-      <tr><td class="it">Rusty Spiked Shoulderpads</td><td class="st">Shoulders</td><td class="st">AC 3 · STR 5<br><span style="color:#D46C64">SV Magic −10</span></td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Gnoll commander · Splitpaw Commander · Socho Darkpaw</td></tr>
       <tr><td class="it">Onyx Earring</td><td class="st">Ear</td><td class="st">AGI 2</td><td class="cls all">ALL</td><td class="src">Gnoll commander · elite gnoll guard · Splitpaw Commander</td></tr>
-      <tr><td class="it">Giant Snake Fang</td><td class="st">Pierce 5 / 27 · quest</td><td class="st">—</td><td class="cls">ALL except CLR PAL DRU MNK SHM</td><td class="src">A giant snake</td></tr>
-      <tr><td class="it">Gnoll Fang</td><td class="st">Quest turn-in · no drop</td><td class="st">Hand in at Halas or South Qeynos</td><td class="cls all">ALL</td><td class="src">Every gnoll in the zone</td></tr>
-      <tr><td class="it">Blackburrow Gnoll Pelt · Skin</td><td class="st">Quest items</td><td class="st">Monk headband chain</td><td class="cls all">ALL</td><td class="src">Higher-level gnolls · Socho Darkpaw (skin)</td></tr>
-      <tr><td class="it">Baby Joseph Sayer</td><td class="st">Quest · lore · no drop</td><td class="st">—</td><td class="cls all">ALL</td><td class="src">Lord Elgnub · L22</td></tr>
+      <tr><td class="it">Rusty Spiked Shoulderpads</td><td class="st">Shoulders</td><td class="st">AC 3 · STR 5<br><span style="color:#D46C64">SV Magic &minus;10</span></td><td class="cls">ALL except NEC WIZ MAG ENC</td><td class="src">Gnoll commander · Splitpaw Commander · Socho Darkpaw</td></tr>
     </tbody>
   </table>
   </div>
-  <div class="note danger"><strong>Read Rusty Spiked Shoulderpads carefully.</strong> STR +5 looks good at level 13 until you notice the −10 magic resistance, in a zone full of gnoll shamans and a necromancer. Bark Splinted Shoulderpads off the Splitpaw Commander are strictly better for anyone who can wear them.</div>
+  <div class="note warn"><strong>Read Rusty Spiked Shoulderpads carefully.</strong> STR +5 looks good at level 13 until you notice the &minus;10 magic resistance, in a zone full of gnoll shamans and a necromancer. Bark Splinted Shoulderpads are strictly better for anyone who can wear them.</div>
+
+  <h3>Quest items and turn-ins</h3>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Classes</th><th>Dropped by</th></tr></thead>
+    <tbody>
+      <tr><td class="it">Gnoll Fang</td><td class="st">Quest turn-in · no drop</td><td class="st">Hand in at Halas or South Qeynos</td><td class="cls all">ALL</td><td class="src">Every gnoll in the zone</td></tr>
+      <tr><td class="it">Giant Snake Fang</td><td class="st">Pierce 5 / 27 · quest</td><td class="st">&mdash;</td><td class="cls">ALL except CLR PAL DRU MNK SHM</td><td class="src">A giant snake</td></tr>
+      <tr><td class="it">Blackburrow Gnoll Pelt · Skin</td><td class="st">Quest items</td><td class="st">Monk headband chain</td><td class="cls all">ALL</td><td class="src">Higher-level gnolls · Socho Darkpaw (skin)</td></tr>
+      <tr><td class="it">Baby Joseph Sayer</td><td class="st">Quest · lore · no drop</td><td class="st">&mdash;</td><td class="cls all">ALL</td><td class="src">Lord Elgnub · L22</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="note"><strong>Loot every fang.</strong> Every gnoll in the zone drops them commonly. They turn in at South Qeynos for the Moonstones quest and at Halas for the Gnoll Bounty, for faction and rewards at low levels.</div>
 </section>
 
-<section>
-  <h2><span class="num">05</span>Dangers</h2>
-  <div class="note danger"><strong>Five gnolls in aggro range of each other is normal.</strong> Worse, spawn groups mix levels — an elite guard sitting inside a cluster of low gnolls makes a clean pull close to impossible. Con the whole group, not the one you are aiming at.</div>
-  <div class="note danger"><strong>Blackburrow gnolls are exceptionally social.</strong> They come to each other's aid eagerly, patrollers appear from blind corners, and they will aggro <em>through closed doors</em>. Be very careful with AoE and fear effects — one stray spell or one runner starts a zone-wide train.</div>
-  <div class="note danger"><strong>There is only one tunnel to the surface, and low-level players hunt along it.</strong> When a deep group misses a pull, everything they collected comes up that single corridor.</div>
-  <div class="note danger"><strong>The architecture itself is a hazard.</strong> Bridges, narrow ledges, water and a deep central pit. NPC pathing is decent but players fall off things and wedge into cracks. Mind your step on floor three.</div>
-</section>
+</main>
 
-<section>
-  <h2><span class="num">06</span>Getting there</h2>
-  <ul class="tight">
-    <li><strong>Qeynos Hills entrance</strong> — northeast corner, east of Surefall Glade and north of the Western Karana zone lines. No path leads to it; look for a cave mouth shaped like a gnoll's head.</li>
-    <li><strong>Everfrost entrance</strong> — southeast segment of the canyons. Harder to find, guarded by a couple of gnolls with two more down the tunnel. Torches light the way now.</li>
-    <li><strong>Circle of Surefall Glade</strong> (Druid, group) is the best port for this zone — Surefall Glade opens onto Qeynos Hills and the cave mouth sits east of it. <strong>Circle of North Karana</strong> or <strong>North Karana Portal</strong> work one level earlier but leave a longer run.</li>
-    <li><strong>Freeport ↔ Qeynos translocator.</strong> Legends added a direct route between the two cities. Translocators are <strong>free until you reach level 20 in any class</strong>, and then cost your highest class level in plat per trip.</li>
-    <li>Succor and evacuate drop you at <code>−159, 39</code>, the zone line to Qeynos Hills.</li>
-  </ul>
-</section>
+<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-blackburrow">Where each one came from, and what is still open</a>.</p>
+<p class="imprint">Plate 05 &middot; Blackburrow &middot; Qeynos Hills and Everfrost, Antonica &middot; floor derived from blackburrow.s3d &middot; north up, west left</p></footer>
 
-<footer><p class="src-line">Every figure here is sourced and dated. <a href="../sources.html#zone-blackburrow">Where each one came from, and what is still open</a>.</p></footer>
-
+</div>
 </div>
 </body>
 </html>

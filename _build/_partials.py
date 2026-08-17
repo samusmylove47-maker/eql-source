@@ -46,7 +46,11 @@ CSS_V = _asset_v('public/assets/site.css')
 TOOLS = [
     dict(slug="character",        name="Character sheet"),
     dict(slug="index-search",     name="The Index"),
-    dict(slug="plane-of-sky",     name="Plane of Sky tracker"),
+    # Replaced tools/plane-of-sky.html on 17 Aug 2026. Ours counted a held
+    # turn-in piece against every test that wanted it; Sky Ledger spends each
+    # unit once. Two Sky trackers is the "which do I use" problem and after
+    # that property the older one is the wrong answer.
+    dict(slug="sky-ledger",       name="Sky Ledger"),
     dict(slug="race-unlocks",     name="Race unlock tracker"),
     dict(slug="combo-calculator", name="Race and primary calculator"),
     dict(slug="faction-impact",   name="Faction impact checker"),

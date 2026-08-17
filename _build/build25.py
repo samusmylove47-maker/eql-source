@@ -12,8 +12,10 @@ have never been introduced. This introduces them.
 
 WHAT IT ANSWERS
 ---------------
-"Where do I get another one of these" - our named-mob pages, and where we have
-watched the thing drop ourselves, the mob and the count.
+"Where do I get another one of these" - our named-mob pages, and where a drop
+has been measured in play, the mob. NOT how many times it was watched dropping:
+which mob drops what is a fact about the game, and a sighting tally is a record
+of one player's evening. The tier M badge already says it was measured.
 
 "How much of the planar sets am I actually carrying" - matched against the same
 116 pieces the gear tool ranks, so the two agree by construction.
@@ -27,9 +29,8 @@ No stats, no scoring, no "your gear rates 7/10". The dump carries no stats at
 all - only names, IDs and counts - so any number of that kind would be invented.
 Where we know nothing about an item, the tool says so rather than padding.
 
-An item we do not recognise is a gap in OUR catalogue, not in your inventory,
-and it says that too. Getting that the wrong way round would read as though the
-reader had done something wrong.
+An unrecognised item is a gap in THIS catalogue, and it says so. Getting that
+the wrong way round would read as though the reader had done something wrong.
 
 NOTHING LEAVES THE BROWSER
 --------------------------
@@ -77,14 +78,14 @@ for it in CAT['items']:
 for item, rows in SIGHT.get('by_item', {}).items():
     k = norm(item)
     e = know.setdefault(k, dict(n=item, u=None, z=[], d=''))
-    # The best-evidenced sighting, with ITS OWN count. Pairing the top mob's
-    # name with the total across every mob was the first version and it
-    # overstated that mob: Bone Chips read "we have watched An Elf Skeleton drop
-    # this 7 times" when the skeleton accounted for 5 and three other mobs made
-    # up the rest. The other mobs are counted, not named, so the sentence stays
-    # one line.
+    # WHICH mob drops it, never how many times it was watched doing so. The
+    # sighting count ranks the candidates here and then stays behind: a tally of
+    # what one player saw on one evening is a record of that evening, and the
+    # fact a reader needs is the mob. How many OTHER mobs drop it is a fact about
+    # the item, so that number stays and they are counted rather than named,
+    # which keeps the sentence to one line.
     top = max(rows, key=lambda r: r.get('n', 0))
-    e['seen'] = dict(mob=top['mob'], n=top['n'], others=len(rows) - 1)
+    e['seen'] = dict(mob=top['mob'], others=len(rows) - 1)
 
 PSET = {}
 for it in PLANAR['items']:
@@ -224,13 +225,13 @@ PAGE_JS = r'''<script>
       var tier = r.best === null ? '&mdash;' : '+'+r.best;
       var where;
       if(!k){
-        where = '<span class="none">not in our catalogue &mdash; a gap here, not in your bags</span>';
+        where = '<span class="none">not catalogued here</span>';
       } else {
         var bits = [];
-        if(k.seen) bits.push('<span class="iv-seen">we have watched '+esc(k.seen.mob)+
-                             ' drop this '+k.seen.n+'&times;'+
+        if(k.seen) bits.push('<span class="iv-seen">drops from '+esc(k.seen.mob)+
                              (k.seen.others ? ', and '+k.seen.others+' other mob'+
-                              (k.seen.others>1?'s':'') : '')+'</span>');
+                              (k.seen.others>1?'s':'') : '')+
+                             ' <span class="tier tM">M</span></span>');
         if(k.d) bits.push(esc(k.d));
         if(k.z && k.z.length) bits.push('<span class="none">'+esc(k.z.join(', '))+'</span>');
         // A planar piece with no survey row is not an unrecorded drop - we
@@ -251,11 +252,11 @@ PAGE_JS = r'''<script>
       '<div class="iv-sum">'+
         '<div><b>'+state.rows.length+'</b><span>distinct items</span></div>'+
         '<div><b>'+known+'</b><span>we have a page for</span></div>'+
-        '<div><b>'+seen+'</b><span>we have watched drop</span></div>'+
+        '<div><b>'+seen+'</b><span>with a measured drop source</span></div>'+
         '<div><b>'+plan+'</b><span>planar set piece'+(plan===1?'':'s')+'</span></div>'+
       '</div>'+
       '<div class="iv-filt">'+
-        btn('all','Everything')+btn('seen','Watched drop')+btn('planar','Planar')+
+        btn('all','Everything')+btn('seen','Measured drop')+btn('planar','Planar')+
         btn('known','In our catalogue')+btn('unknown','Not in it')+
       '</div>'+
       '<div class="iv-tw"><table class="iv-t"><thead><tr>'+
@@ -299,8 +300,8 @@ def page():
     n_cat = len({norm(i['n']) for i in CAT['items'] if i.get('kind') == 'item'})
     return (head("What have I got?",
                  f"Paste an EverQuest Legends inventory file and see what this site knows about "
-                 f"every item in it: where it drops, what we have watched drop it, and which "
-                 f"planar set it belongs to. Nothing is uploaded.",
+                 f"every item in it: where it drops, which mobs are measured dropping it, and "
+                 f"which planar set it belongs to. Nothing is uploaded.",
                  rel="../", extra=CSS, og="tools", canon="tools/inventory")
             + bar("../") + f'''
 <main>
@@ -311,10 +312,10 @@ def page():
     <h1 class="display">What have<br><em>I got?</em></h1>
     <p class="hero-lede">Your inventory file is a wall of tab-separated text and nobody reads it.
       Paste it here and it becomes a list of what you are carrying, with everything this site
-      knows about each piece attached &mdash; including {n_seen} items we have watched drop
-      ourselves, with the mob and the count.</p>
-    <p class="hero-sig"><span>{n_cat} items catalogued</span><span>{n_seen} watched drop</span>
-      <span>nothing uploaded</span></p>
+      knows about each piece attached &mdash; including {n_seen} items whose drop source was
+      measured in play rather than transcribed.</p>
+    <p class="hero-sig"><span>{n_cat} items catalogued</span>
+      <span>{n_seen} with a measured drop source</span><span>nothing uploaded</span></p>
   </div>
 </section>
 
@@ -346,9 +347,9 @@ def page():
       <a href="../sets/index.html">every set</a> lists the pieces.
     </div>
     <div class="note">
-      <strong>An item we do not recognise is our gap, not yours.</strong> Our catalogue is mined
-      from the dungeon surveys, so it knows the zones we have surveyed and nothing else. A row
-      saying <em>not in our catalogue</em> means we have not written that zone up yet.
+      <strong>An unrecognised item marks a gap in this catalogue.</strong> It is mined from the
+      dungeon surveys, so it covers the surveyed zones and nothing else. A row saying
+      <em>not catalogued here</em> means that zone has not been written up yet.
     </div>
     <div class="note">
       <strong>On the number after the name.</strong> A drop arrives at the difficulty tier of the

@@ -6,342 +6,500 @@
 <title>Plane of Hate — Survey | EverQuest Legends</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--acc:#C24FA8;--accd:#7A2F6A;--acct:color-mix(in srgb, #C24FA8 56%, #E6E9E4)}
-*{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:#1A1612;color:#DCD9D6;font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}.wrap{max-width:1120px;margin:0 auto;padding:0 22px 90px}.mast{border-bottom:1px solid #40372D;padding:46px 0 26px;margin-bottom:34px}.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acct);margin:0 0 14px}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(34px,6vw,72px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(17px,3.3vw,23px);color:#9C958E;letter-spacing:.02em;margin:0 0 26px;text-transform:uppercase}.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(124px,1fr));gap:1px;background:#40372D;border:1px solid #40372D}.cell{background:#251F19;padding:11px 13px}.cell dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;margin:0 0 4px}.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:20px;font-weight:600}.cell dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:#9C958E;display:block;letter-spacing:0}
-section{margin-top:56px}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(26px,5vw,38px);letter-spacing:.005em;line-height:1;margin:0 0 6px}
-h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acct);vertical-align:top;margin-right:12px;letter-spacing:.1em}.lede{color:#9C958E;margin:0 0 24px;max-width:64ch}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:19px;letter-spacing:.04em;margin:30px 0 10px}
-p{max-width:76ch}a{color:var(--acct)}.plate-box{border:1px solid #40372D;background:#251F19;padding:16px}.map-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,290px);gap:22px;align-items:start}.map-grid.rev{grid-template-columns:minmax(0,340px) minmax(0,1fr)}
-@media(max-width:820px){.map-grid,.map-grid.rev{grid-template-columns:1fr}}
-svg{display:block;width:100%;height:auto}.legend{font-family:"IBM Plex Mono",monospace;font-size:11.5px;line-height:1.5}.legend ol{list-style:none;margin:0;padding:0}.legend li{display:flex;gap:9px;padding:4px 0;border-bottom:1px solid #40372D}.legend.n{color:var(--acct);min-width:19px;text-align:right;font-weight:600}.legend.lv{color:#9C958E;margin-left:auto;padding-left:8px;white-space:nowrap}.scroller{overflow-x:auto;border:1px solid #40372D;margin:18px 0}
-table{border-collapse:collapse;width:100%;min-width:700px;font-size:13.5px}
-th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:#9C958E;text-align:left;padding:11px 13px;background:#312A22;border-bottom:1px solid #40372D;white-space:nowrap}
-td{padding:10px 13px;border-bottom:1px solid #40372D;vertical-align:top;background:#251F19}
-tbody tr:last-child td{border-bottom:0}.loc{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct);white-space:nowrap}.lv{font-family:"IBM Plex Mono",monospace;font-size:12.5px;text-align:right;white-space:nowrap}.nmob{font-family:"Saira Condensed",sans-serif;font-size:16px;font-weight:600;letter-spacing:.02em}.it{font-family:"Saira Condensed",sans-serif;font-size:15.5px;font-weight:600;letter-spacing:.02em;color:#DCD9D6}.cls{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:#9C958E;letter-spacing:.04em;line-height:1.45}.cls.all{color:#5FA37E}.st{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#C4BFBB;line-height:1.5}.src{font-family:"Public Sans",sans-serif;font-size:12.5px;color:#9C958E}.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:4px;white-space:nowrap}.tag.warn{border-color:#C9453A;color:#D46C64}.tag.new{border-color:#5FA37E;color:#5FA37E}.camps{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;margin:22px 0}.camp{border:1px solid #40372D;border-top:2px solid var(--acc);background:#251F19;padding:16px}.camp.band{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--acct)}.camp h4{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;text-transform:uppercase;margin:5px 0 9px;letter-spacing:.02em}.camp p{font-size:13.5px;margin:0 0 9px}.chain{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.link{flex:1 1 180px;background:#251F19;border:1px solid #40372D;border-left:2px solid var(--acc);padding:12px 14px}.link.step{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;color:#9C958E;text-transform:uppercase}.link.who{font-family:"Saira Condensed",sans-serif;font-size:18px;font-weight:600;text-transform:uppercase;letter-spacing:.02em;margin:3px 0}.link.gives{font-size:12.5px;color:#9C958E}.link.gives b{color:var(--acct);font-weight:600}.note{border-left:2px solid #40372D;padding:2px 0 2px 16px;margin:20px 0;color:#9C958E;max-width:76ch}.danger{border-left-color:#C9453A}.danger strong{color:#D46C64}.fresh{border-left-color:#5FA37E}.fresh strong{color:#5FA37E}.note strong{color:#DCD9D6}
-ul.tight{max-width:76ch;padding-left:19px}ul.tight li{margin-bottom:9px}
-code{font-family:"IBM Plex Mono",monospace;font-size:.9em;color:var(--acct);background:#312A22;padding:1px 5px}
-footer{margin-top:70px;padding-top:22px;border-top:1px solid #40372D;color:#9C958E;font-size:12.5px}
+/* THE PLANE OF HATE SHEET
+   ------------------------------------------------------------------
+   The same grammar as the Castle Mistmoore survey: a graticule fixed behind the
+   page, a translucent sheet sliding over it, a neatline with an inner rule, and
+   section kickers hanging in the left margin. The MECHANISM is copied; the
+   colour is not. The Plane of Hate owns #C24FA8 permanently and no other zone
+   may use it.
+
+   Self-contained: this page never loads assets/site.css. Token names are
+   prefixed --ph- because build3.py appends site.css's :root AFTER this block and
+   an unprefixed --mut or --txt would be silently overwritten. --acc, --accd and
+   --acct are deliberately NOT prefixed: the injected chrome reads them and
+   site.css does not define them.
+
+   The accent itself measures 4.19:1 as text on the lightest ground this page can
+   produce, which is under AA. It is not changed — a zone owns its accent
+   permanently — so --acct is a lifted variant of it, mixed a quarter of the way
+   towards bone, exactly as the Castle Mistmoore sheet does with its own.
+
+   Contrast, computed against that ground (a graticule crossing under the
+   lamplight, seen through the sheet, #1D180E): ink 14.78, txt 12.25, mut 7.70,
+   dim 5.55, accent text 5.79, warn 5.16, brass 6.43, brass-t 7.98, ok 5.91. On
+   the panel #2A2318 the same list reads
+   12.99 / 10.76 / 6.77 / 4.88 / 5.08 / 4.53 / 5.65 / 7.01 / 5.20. */
+:root{
+  --acc:#C24FA8;--accd:#6B2B5C;--acct:#CE76B4;
+  --ph-g:#120E08;          /* the plotting table */
+  --ph-p:#2A2318;          /* the one panel value: column heads, field strip */
+  --ph-ink:#F2EADA;--ph-txt:#DFD6C4;--ph-mut:#B5AA95;--ph-dim:#9A8F7C;
+  --ph-warn:#D46C64;--ph-brass:#C9922E;--ph-brass-t:#D9A63F;--ph-ok:#5FA37E;
+  --ph-r1:#4A3F2E;         /* repeated ruling: row dividers */
+  --ph-r2:#7A6950;         /* a boundary that carries meaning */
+  --ph-2xs:10px;--ph-xs:11.5px;--ph-sm:13.5px;--ph-base:15.5px;--ph-md:18.5px;
+  --ph-lg:22px;--ph-h2:clamp(24px,3.6vw,36px);--ph-h1:clamp(38px,6.6vw,74px);
+  --ph-rad:4px;
+  --ph-s1:4px;--ph-s2:8px;--ph-s3:12px;--ph-s4:16px;
+  --ph-s5:24px;--ph-s6:32px;--ph-s7:48px;--ph-s8:64px;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;background:var(--ph-g)}
+body{margin:0;background:transparent;color:var(--ph-txt);
+  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--ph-base);line-height:1.62}
+
+/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
+   so the sheet slides over a stationary grid without a full-page repaint.
+
+   Major and minor rules share ONE 152px period per axis instead of two stacked
+   gradients: stacking makes the crossings compound, and the compounding is what
+   eats text contrast. And every stop terminates in rgba(228,210,174,0) rather
+   than the keyword transparent, because older WebKit premultiplies transparent
+   as transparent BLACK and draws a grey seam down each rule. */
+body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
+body::before{background-image:
+  repeating-linear-gradient(180deg,
+    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
+  repeating-linear-gradient(90deg,
+    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
+    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
+    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
+    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
+/* Lamplight at the head, the zone's own ink bleeding up from the foot, and a
+   vignette that ONLY darkens, so it cannot cost contrast anywhere. The two
+   washes are anchored at opposite ends and both fall to zero by 62%, so they
+   never peak on the same pixel. */
+body::after{background-image:
+  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
+  radial-gradient(120% 55% at 50% 100%, rgba(194,79,168,.045) 0%, rgba(194,79,168,0) 60%),
+  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
+@media print{body::before,body::after{display:none}}
+@media (prefers-contrast:more){body::before{display:none}}
+
+/* THE SHEET. Translucent, so the graticule reads through it at reduced
+   strength: one grid, two intensities. */
+.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--ph-s8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--ph-s8);
+  background:rgba(18,14,8,.58);border:1px solid var(--ph-r2);
+  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
+.sheet::before{content:"";position:absolute;inset:var(--ph-s2);pointer-events:none;
+  border:1px solid rgba(242,234,218,.085)}
+
+/* Typography. Four faces, roles hardened. Every mono element is tabular, which
+   is what makes a column of figures read as instrument output. */
+.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--ph-h1);line-height:1.02;
+  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--ph-ink)}
+h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:var(--ph-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--ph-s2);
+  text-wrap:balance;color:var(--ph-ink)}
+h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--ph-lg);letter-spacing:.03em;margin:var(--ph-s5) 0 var(--ph-s2);color:var(--ph-ink)}
+p{max-width:68ch;text-wrap:pretty}
+a{color:var(--acct)}
+.lede{color:var(--ph-mut);font-size:var(--ph-md);margin:0 0 var(--ph-s5);max-width:60ch}
+.cm{color:var(--ph-dim);font-size:var(--ph-sm);line-height:1.6;margin:var(--ph-s2) 0 0;
+  max-width:64ch;border-left:1px solid var(--ph-r1);padding-left:var(--ph-s4)}
+
+/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
+   to the plate numeral, then the particulars. */
+.mast{padding:var(--ph-s7) 0 var(--ph-s5);margin-bottom:var(--ph-s2);
+  border-bottom:1px solid var(--ph-r2)}
+.eyebrow{font-size:var(--ph-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--acct);margin:0 0 var(--ph-s4)}
+.title{display:flex;align-items:flex-end;gap:var(--ph-s4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--ph-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--acct)}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--ph-md);
+  color:var(--ph-mut);letter-spacing:.02em;margin:var(--ph-s2) 0 var(--ph-s3);
+  text-transform:uppercase}
+.deck{color:var(--ph-txt);margin:0 0 var(--ph-s5);max-width:66ch}
+.deck strong{color:var(--ph-ink)}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--ph-r1);border-left:1px solid var(--ph-r1)}
+/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
+   row is often short, and a container background paints that empty slot as a
+   slab. */
+.cell{background:var(--ph-p);padding:var(--ph-s3);
+  border-right:1px solid var(--ph-r1);border-bottom:1px solid var(--ph-r1)}
+.cell dt{font-size:var(--ph-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--ph-dim);margin:0 0 var(--ph-s1)}
+.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--ph-lg);
+  font-weight:600;color:var(--ph-ink)}
+.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--ph-xs);font-weight:400;
+  color:var(--ph-mut);display:block;letter-spacing:0}
+.jump{margin:var(--ph-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--ph-s1) var(--ph-s4);font-size:var(--ph-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--ph-mut);text-decoration:none;border-bottom:1px solid var(--ph-r1)}
+.jump a:hover{color:var(--ph-ink);border-color:var(--acct)}
+
+/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
+   length of the body, and each section's kicker hangs outside the text column.
+   The kicker names what the section is MADE OF; numbered headings are a
+   generated-site tell and are not coming back. */
+section{margin-top:var(--ph-s7);position:relative}
+.kick{font-size:var(--ph-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ph-dim);margin:0 0 var(--ph-s2)}
+@media(min-width:1080px){
+  main{border-left:1px solid var(--ph-r2);padding-left:var(--ph-s6);margin-left:118px}
+  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Tables. No cell fills and no boxes around the data — hairline rules and one
+   brass head rule do the structural work, which is what a ledger looks like. */
+.scroller{overflow-x:auto;margin:var(--ph-s4) 0}
+.scroller table{min-width:700px}
+.scroller.narrow table{min-width:460px}
+table{border-collapse:collapse;width:100%;font-size:var(--ph-sm);
+  border-top:2px solid var(--ph-brass)}
+th{font-size:var(--ph-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--ph-mut);
+  text-align:left;padding:var(--ph-s2) var(--ph-s3) var(--ph-s2) 0;background:none;
+  border-bottom:1px solid var(--ph-r2);white-space:nowrap;font-weight:500}
+td{padding:var(--ph-s3) var(--ph-s3) var(--ph-s3) 0;border-bottom:1px solid var(--ph-r1);
+  vertical-align:top;background:none}
+tbody tr:last-child td{border-bottom:0}
+tbody tr{transition:background .14s}
+tbody tr:hover{background:rgba(194,79,168,.07)}
+@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
+.loc{font-size:var(--ph-sm);color:var(--acct);white-space:nowrap}
+.lv{font-size:var(--ph-sm);text-align:right;white-space:nowrap;color:var(--ph-txt)}
+th.lv{text-align:right}
+.slot{font-family:"Saira Condensed",sans-serif;font-size:var(--ph-base);font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--acct);white-space:nowrap}
+.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--ph-base);font-weight:600;
+  letter-spacing:.02em;color:var(--ph-ink)}
+.it{font-family:"Saira Condensed",sans-serif;font-size:var(--ph-base);font-weight:600;
+  letter-spacing:.02em;color:var(--ph-ink)}
+/* The colour is inherited rather than set, so every contrast ratio measured on
+   this sheet is unchanged and the underline carries the affordance instead. */
+.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
+  text-decoration-color:var(--ph-r2);text-underline-offset:3px}
+.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
+.cls{font-size:var(--ph-xs);color:var(--ph-mut);letter-spacing:.04em;line-height:1.45}
+.st{font-size:var(--ph-xs);color:var(--ph-txt);line-height:1.5}
+.src{font-family:"Public Sans",sans-serif;font-size:var(--ph-sm);color:var(--ph-mut)}
+.tag{font-size:var(--ph-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--ph-s1);
+  white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:#6A2F2B;color:var(--ph-warn)}
+.tier{font-size:var(--ph-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid currentColor;
+  border-radius:2px;color:var(--ph-dim);margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+.tier.t3{color:var(--ph-brass-t)}
+.tier.t5{color:var(--ph-warn)}
+
+/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--ph-brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--ph-base);
+  letter-spacing:.02em;color:var(--ph-ink);padding:var(--ph-s3) var(--ph-s5) var(--ph-s3) 0;
+  border-bottom:1px solid var(--ph-r1)}
+.key dd{margin:0;font-size:var(--ph-sm);color:var(--ph-mut);padding:var(--ph-s3) 0;
+  border-bottom:1px solid var(--ph-r1)}
+.key strong{color:var(--ph-txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+/* Hazards: one object with one rule, not four identically bordered boxes. */
+ul.hz{list-style:none;margin:var(--ph-s5) 0 0;padding:0 0 0 var(--ph-s5);
+  border-left:2px solid var(--ph-warn);max-width:74ch}
+ul.hz li{padding:var(--ph-s4) 0;border-top:1px solid var(--ph-r1);color:var(--ph-mut);
+  font-size:var(--ph-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--ph-base);
+  color:var(--ph-warn);margin-bottom:var(--ph-s1)}
+ul.hz strong{color:var(--ph-ink)}
+
+.note{border-left:1px solid var(--ph-r1);padding:var(--ph-s1) 0 var(--ph-s1) var(--ph-s4);
+  margin:var(--ph-s5) 0 0;color:var(--ph-mut);font-size:var(--ph-sm);max-width:68ch}
+.note strong{color:var(--ph-ink)}
+.quote{border-left:3px solid var(--accd);margin:var(--ph-s4) 0;padding:var(--ph-s2) 0 var(--ph-s2) var(--ph-s4);
+  font-family:"Saira Condensed",sans-serif;font-size:var(--ph-lg);font-weight:600;
+  line-height:1.25;color:var(--ph-ink);max-width:56ch}
+code{font-size:.9em;color:var(--acct)}
+footer{margin-top:var(--ph-s8);padding-top:var(--ph-s5);border-top:1px solid var(--ph-r2);
+  color:var(--ph-mut);font-size:var(--ph-sm)}
 footer h3{margin-top:0}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.quote{border-left:3px solid var(--accd);margin:18px 0;padding:10px 0 10px 18px;font-family:"Saira Condensed",sans-serif;font-size:clamp(19px,3.4vw,25px);font-weight:500;line-height:1.25;color:#E6E9E4;max-width:60ch}
-.why{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:13px;max-width:78ch}
-.why li{border-left:2px solid #40372D;padding:2px 0 2px 16px}
-.why b{color:#E6E9E4}
-.cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:#9C958E;display:block;margin-top:2px}
-.ck{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--acct);display:block}
-.tier{font-size:9.5px;letter-spacing:.12em;padding:1px 5px;border:1px solid currentColor;border-radius:2px;font-family:"IBM Plex Mono",monospace;white-space:nowrap;text-transform:uppercase}
-.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
-.tc{color:#8FBEE4;border-color:#8FBEE4}
+.imprint{font-size:var(--ph-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--ph-dim);margin:var(--ph-s3) 0 0}
+:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
+
+/* The injected blocks are appended at the foot of the head, AFTER this
+   stylesheet, so they win at equal specificity. These are deliberately one step
+   higher. (Do not write a literal closing head tag anywhere in this file,
+   comments included: build3.py splices its chrome into the FIRST one it finds,
+   and a mention inside a comment swallows the entire injection.) */
+body .meas table{border-top:2px solid var(--ph-brass)}
+body .meas td{border-bottom:1px solid var(--ph-r1)}   /* its #322A23 is 1.4:1 */
+body .meas .cond{background:none;border-left:2px solid var(--acc)}
+body .fp-wrap{border-radius:var(--ph-rad)}
+/* One heading level, one rule. The two injected sections carry their own h2
+   treatments, four points smaller than every other heading on the page and with
+   four times the tracking. */
+body .meas,body .fplan{margin-top:var(--ph-s7)}
+body .meas h2,body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:var(--ph-h2);letter-spacing:.005em;line-height:1}
+/* The spine rail would otherwise have holes at both ends: the injected sections
+   are the first and the last on the page and neither carries a kicker. Their
+   generators are not this file's to edit, so the labels are set here, in the
+   same register as the authored four. */
+body .fplan::before,body .meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--ph-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--ph-dim);display:block;margin:0 0 var(--ph-s2)}
+body .fplan::before{content:"The zone, drawn"}
+body .meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  body .fplan::before,body .meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
 </style>
 </head>
 <body>
 <div class="wrap">
+<div class="sheet">
 
 <header class="mast">
-  <p class="eyebrow">Dungeon Survey Plate 12 · through Oasis of Marr, or a wizard</p>
-  <h1>Plane of Hate</h1>
-  <p class="subtitle">A city on three levels, ten minibosses that each upgrade one trash type, and the best experience rate of the three planes</p>
+  <p class="eyebrow">Dungeon survey &middot; through the Oasis of Marr</p>
+  <div class="title"><h1>Plane of Hate</h1><span class="leader"></span><span class="plateno">12</span></div>
+  <p class="subtitle">A city on three levels, and minibosses that each upgrade one trash type</p>
+  <p class="deck">A city of some thirty buildings on three usable levels, monsters at 48 and up
+    behind a hard level gate at 46. Come for Head, Arms, Wrist and Legs &mdash; the four planar slots
+    the Plane of Fear does not have &mdash; and for the minibosses, each the upgraded form of one
+    ordinary mob. <strong>The city is the difficulty, not the mobs</strong>: every street looks the
+    same in every direction. Innoruuk and the Maestro exist only in the raid instance, and there is
+    no ordinary way out.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>hateplane<small>and hateplaneb</small></dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>48+</dd></div>
     <div class="cell"><dt>Minimum level</dt><dd>46<small>hard gate</small></dd></div>
-    <div class="cell"><dt>ZEM</dt><dd>86<small>115% &mdash; highest of the three planes</small></dd></div>
-    <div class="cell"><dt>Zone respawn</dt><dd>not recorded<small>chests are slow</small></dd></div>
+    <div class="cell"><dt>ZEM</dt><dd>86<small>115% &mdash; Fear and Sky are 82.5</small></dd></div>
+    <div class="cell"><dt>Respawn</dt><dd>not recorded<small>chests are slow</small></dd></div>
+    <div class="cell"><dt>Raid bosses</dt><dd>Voidling<small>since 16 June 2026</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>&minus;375, &minus;354</dd></div>
-    <div class="cell"><dt>Adjacent</dt><dd>Oasis of Marr<small>one way, or wizard port</small></dd></div>
+    <div class="cell"><dt>Exit</dt><dd>None ordinary<small>Gate, Origin, a port, or dying</small></dd></div>
   </dl>
+  <ul class="jump">
+    <li><a href="#where">Where you are</a></li>
+    <li><a href="#danger">Cautions</a></li>
+    <li><a href="#named">Named</a></li>
+    <li><a href="#drops">Drops</a></li>
+    <li><a href="#open">Still open</a></li>
+    <li><a href="#measured">Measured</a></li>
+  </ul>
 </header>
 
+<main>
+
 <section>
-  <h2><span class="num">01</span>Why you come here</h2>
-  <ul class="why">
-    <li><b>The best experience rate of the three planes.</b> ZEM 86, against 82.5 for both Fear and
-      Sky. The 23 June patch note raised instanced Hate to match the open world, so running an
-      instance to avoid competition costs you nothing.</li>
-    <li><b>Four armour slots &mdash; Head, Arms, Wrist and Legs.</b> Fear has the other four. Wrist
-      is the overlap, so it is the one slot you can farm in whichever plane you prefer.</li>
-    <li><b>Ten minibosses, each the upgraded form of one ordinary mob</b>, each dropping a named
-      armour set. If you know which trash type owes you your slot, you also know which miniboss to
-      want. Section 06 is that mapping.</li>
-    <li><b>The city is the difficulty.</b> Not the mobs &mdash; the navigation. Around thirty
-      buildings on a ground floor that looks the same in every direction, with a second level above
-      it. Section 04 is the part of this survey we think is worth your time.</li>
+  <p class="kick">Key to the plan</p>
+  <h2 id="where">Where you are</h2>
+  <p class="lede">Three usable levels, and the middle one is not a floor. The storey control on the
+    plan isolates them.</p>
+  <dl class="key">
+    <dt>A tower on Specter Isle, second floor</dt><dd>The sword &mdash; called black by the wiki and
+      flaming by a player. It takes you to the <strong>public instance</strong></dd>
+    <dt>The top of the same tower</dt><dd>The voidling, and the <strong>raid instance</strong>. The
+      only place Innoruuk and the Maestro of Rancor exist</dd>
+    <dt>Or a wizard</dt><dd><em>Alter Plane: Hate</em>. Reagent: Fuligan Soulstone of Innoruuk,
+      62.5pp</dd>
+    <dt>The port-in, landmark 1</dt><dd>Where you arrive, and where succor returns you</dd>
+    <dt>The Church, 20 &middot; the Organ Hall, 29 &middot; the spiral staircase, 30</dt>
+      <dd>The Maestro is in the Organ Hall, which has a second floor of its own. The Fountain is
+      immediately east of the staircase. Landmarks 2&ndash;19 and 21&ndash;28 are the small
+      buildings, and that is most of the zone <span class="tier t5">T5</span></dd>
+    <dt>A band of floor ten units deep</dt><dd><strong>The rooftops.</strong> Levitate, climb the
+      nearest wall, and travel across the tops of the buildings &mdash; mobs on the ground below will
+      not aggro you up there</dd>
+  </dl>
+  <div class="scroller narrow">
+  <table>
+    <thead><tr><th>Band</th><th>Height</th><th class="lv">Floor found</th><th class="lv">Pieces</th><th>What it is</th></tr></thead>
+    <tbody>
+      <tr><td class="nmob">Upper</td><td class="st">z 109 to 187</td><td class="lv">10,533</td><td class="lv">782</td><td class="st">The second level, up the spiral staircase. More floor than the ground has</td></tr>
+      <tr><td class="nmob">The roofs</td><td class="st">z 88 to 98</td><td class="lv">3,329</td><td class="lv">367</td><td class="st">Ten units deep in hundreds of disconnected pieces &mdash; the tops of the buildings and the wall, not a floor</td></tr>
+      <tr><td class="nmob">Ground</td><td class="st">z 0 to 60</td><td class="lv">5,636</td><td class="lv">523</td><td class="st">The streets and the small houses. Where almost everything you want to kill stands</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="cm">Floor found is triangles of walkable mesh, computed from the zone&rsquo;s own
+    geometry. The middle band reads as rooftops because that is what it is, and it is the surface
+    players are already using. Camps and miniboss spawn points are unrecorded.</p>
+</section>
+
+<section>
+  <p class="kick">Four hazards</p>
+  <h2 id="danger">Cautions</h2>
+  <ul class="hz">
+    <li><b>The city is the difficulty</b> Around thirty buildings on a ground floor that looks the
+      same in every direction, with a second level above it. <strong>You will lose the way back
+      before you lose a fight.</strong></li>
+    <li><b>The object you touch decides the zone</b> Sword for the public instance, voidling for the
+      raid instance. <strong>Pick the sword and the two raid bosses are not there at all.</strong></li>
+    <li><b>There is no ordinary way out</b> Gate, Origin, a wizard or druid port, or die. Succor
+      returns you to the zone-in at &minus;375, &minus;354.</li>
+    <li><b>Invisibility is unreliable</b> Many mobs see through invisibility and through invisibility
+      versus undead, and Innoruuk sees rogue hide. <span class="tier t5">T5</span></li>
   </ul>
 </section>
 
 <section>
-  <h2><span class="num">02</span>What the sources are</h2>
-  <p class="lede">The same problem as Fear, with one exception that matters more than anything else
-    on this page.</p>
-  <p>The eqlwiki Plane of Hate page was created on 27 March 2026 by <code>P99Wiki&gt;Permahoo</code>,
-    an import from the Project 1999 wiki. The Innoruuk page is older still &mdash;
-    <code>imported&gt;CrazyPro</code>, 11 April <b>2025</b>, fifteen months before Legends launched.
-    Both were maintained through July 2026 by named editors, and no edit comment describes a
-    measurement.</p>
-  <p><b>The exception.</b> The Innoruuk page carries hit points written for two difficulty tiers:</p>
-  <blockquote class="quote">HP = 156000 (D2 Raid), 235000 (D4 Raid)</blockquote>
-  <p>That is the only difficulty-tiered boss figure published for any plane boss anywhere we have
-    looked, and D4 in particular is a number nobody else has. It is also <b>not</b> measured, not
-    post-launch, and carries no stated method &mdash; the edits that introduced it are pre-launch
-    beta work by two named editors. We publish it badged, and we do not build anything on top of
-    it. Two numbers from one boss are not a scaling law.</p>
-  <div class="note">The armour tables are the strongest material on the source page, and they have
-    outside support: a creator farming here in August killed a rat and a haunted chest together and
-    got a Magician wrist piece. The table puts <em>a revultant rat</em> at Wrist, Group 2, and
-    Apothic is the Magician set &mdash; Group 2. The drop matches the rat exactly as written.</div>
-</section>
-
-<section>
-  <h2><span class="num">03</span>Getting in: the sword or the voidling</h2>
-  <p class="lede">Which object you touch at the Oasis tower decides which version of the zone you
-    enter. This is the single most practical thing on the page.</p>
-  <ol class="chain">
-    <li><b>Oasis of Marr, Specter Isle, tower second floor</b>
-      <span class="cm">the sword &mdash; called black by the wiki, flaming by a player</span>
-      <span class="ck">public instance</span></li>
-    <li><b>Oasis of Marr, top of the tower</b> <span class="cm">the voidling</span>
-      <span class="ck">raid instance &mdash; the only place Innoruuk and the Maestro exist</span></li>
-    <li><b>Or a wizard</b> <span class="cm">Alter Plane: Hate</span>
-      <span class="ck">reagent: Fuligan Soulstone of Innoruuk, 62.5pp</span></li>
-  </ol>
-  <p class="tight"><b>The two raid bosses do not spawn in the open world or in a personal
-    instance.</b> The 16 June patch note removed them from both. If you want Innoruuk or the Maestro
-    of Rancor, the voidling is not one option among several &mdash; it is the only door.</p>
-  <p class="tight">There is no ordinary way out. Gate, Origin, a wizard or druid port, or die.
-    Succor puts you back at the zone-in at &minus;375, &minus;354. Many mobs see through
-    invisibility and through invisibility versus undead. <span class="tier t5">T5</span></p>
-  <div class="note"><b>Lockouts are per difficulty.</b> The weekly bonus-loot lockout resets
-    Tuesdays at 8AM PST, and a kill made while locked still returns one guaranteed drop from the
-    boss&rsquo;s unique table. One player reports that D0 through D4 each carry their own lockout,
-    which would mean a first clear at D0 costs you nothing at any higher tier.
-    <span class="tier tc">C</span> Reported by a player, 10 August 2026, and not stated either way in the patch notes.</div>
-</section>
-
-<section>
-  <h2><span class="num">04</span>The city, and the three levels underneath it</h2>
-  <p class="lede">The floor plan at the top of this page is not a redrawn map. It is computed from
-    the zone&rsquo;s own mesh, and it separates into three bands that the flattened maps everyone
-    else publishes cannot show you apart.</p>
-
-  <div class="scroller"><table>
-    <thead><tr><th>Band</th><th>Height</th><th>Floor found</th><th>Separate pieces</th><th>What it is</th></tr></thead>
+  <p class="kick">Position and behaviour</p>
+  <h2 id="named">Named roster</h2>
+  <p class="lede">Two raid bosses, voidling only. The roster is confirmed by patch note; almost
+    every number beside it is classic EverQuest.</p>
+  <div class="note">The eqlwiki Plane of Hate page was created 27 March 2026 by
+    <code>P99Wiki&gt;Permahoo</code> and the Innoruuk page by <code>imported&gt;CrazyPro</code> on
+    11 April <strong>2025</strong>, fifteen months before Legends launched. Both were maintained
+    through July 2026 by named editors and no edit comment describes a measurement.</div>
+  <div class="scroller">
+  <table>
+    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th class="lv">Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Ground</td><td>z 0 to 60</td><td>5,636 triangles</td><td>523</td>
-        <td>The streets and the small houses. Where almost everything you want to kill stands.</td></tr>
-      <tr><td class="nmob">The roofs</td><td>z 88 to 98</td><td>3,329 triangles</td><td>367</td>
-        <td>A thin band, ten units deep, broken into hundreds of disconnected pieces. Not a floor
-          &mdash; the tops of the buildings and the wall.</td></tr>
-      <tr><td class="nmob">Upper</td><td>z 109 to 187</td><td>10,533 triangles</td><td>782</td>
-        <td>The second level, reached by the spiral staircase. More floor than the ground has.</td></tr>
+      <tr><td class="nmob"><a href="../named/innoruuk.html">Innoruuk</a></td><td class="loc">not recorded</td><td class="lv">60</td><td class="cls">DEITY<br>WIZ</td><td class="src">Wanders the upper level. A pre-launch beta edit publishes <strong>HP as 156,000 at D2 Raid and 235,000 at D4 Raid</strong>, unverified for Legends &mdash; the only difficulty-tiered figure published for any plane boss, and not a measurement. AC 600, 2 attacks a round, 21&ndash;401 a hit. Rampage, sees rogue hide, Pillage Enchantment, Avatar Power, Gravity Flux. High resists, reported slowable.<span class="tag warn">T5 except the HP</span></td></tr>
+      <tr><td class="nmob"><a href="../named/maestro-of-rancor.html">Maestro of Rancor</a></td><td class="loc">295, &minus;82</td><td class="lv">52</td><td class="cls">VAMPIRE<br>BRD</td><td class="src">The Organ Hall, landmark 29. AC 363. <strong>HP recorded as &ldquo;~16k?&rdquo;</strong> &mdash; the source hedges its own figure, and it is the weakest number on this page. Immune to flee, hard or impossible to slow, sees invis, sees hide. Maestro Lifetap.<span class="tag warn">T5</span></td></tr>
     </tbody>
-  </table></div>
-
-  <p class="tight"><b>That middle band is the one worth knowing about.</b> Ten units deep and split
-    into 367 separate pieces is what a set of rooftops looks like when you ask a computer where the
-    floor is &mdash; and it is exactly the surface players are using. A creator farming here
-    describes the technique unprompted: put levitate on, climb the nearest wall, and travel across
-    the tops of the buildings, because mobs on the ground below will not aggro you up there.
-    <span class="tier tc">C</span></p>
-
-  <p class="tight">So Hate has three usable levels, not two: the ground you fight on, the roofs you
-    travel on, and the upper level. Use the storey control on the plan above to look at one at a
-    time.</p>
-
-  <h3>Landmarks</h3>
-  <div class="scroller"><table>
-    <thead><tr><th>Number</th><th>What is there</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">1</td><td>Port-in</td></tr>
-      <tr><td class="nmob">2&ndash;19, 21&ndash;28</td><td>The small buildings. This is most of the zone.</td></tr>
-      <tr><td class="nmob">20</td><td>The Church</td></tr>
-      <tr><td class="nmob">29</td><td>The Organ Hall &mdash; Maestro of Rancor. This building has its own second floor.</td></tr>
-      <tr><td class="nmob">30</td><td>The spiral staircase to the upper level. The Fountain is immediately east.</td></tr>
-    </tbody>
-  </table></div>
-  <p class="src">Landmark numbering <span class="tier t5">T5</span> &mdash; imported. It matches the
-    published map images rather than anything we have walked.</p>
-
-  <div class="note"><b>An open question we are not going to guess at.</b> This zone answers to two
-    names in <code>/who</code> &mdash; <code>hateplane</code> and <code>hateplaneb</code> &mdash;
-    and the game ships a separate, much larger archive for the second. What <code>hateplaneb</code>
-    is in Legends, we do not know. <b>One <code>/who</code> from the upper level would settle
-    it.</b></div>
+  </table>
+  </div>
+  <p class="src">Both are listed with a single class, and <strong>Legends raid bosses run three
+    classes from D3</strong>, which alone dates the table. @@HATE_MEASURED@@ have been killed and
+    parsed here at more than one tier; Innoruuk mixes wizard, shaman and priest spells in a single
+    fight, which is the triple-class claim measured rather than asserted.
+    <a href="../learn/difficulty.html">What the difficulty tiers change, measured &rarr;</a></p>
+  <div class="note"><strong>Both published respawn timers describe something that no longer
+    happens</strong> &mdash; 7 days for Innoruuk, 3 for the Maestro, the open-world spawn the 16 June
+    patch removed. Access is governed instead by the weekly bonus-loot lockout, which resets Tuesdays
+    at 8AM PST; a kill made while locked still returns one guaranteed drop from the boss&rsquo;s
+    unique table (28 July patch note). Instances cost no experience &mdash; the 23 June patch note
+    raised instanced Hate, Fear and Sky to match the open world &mdash; and drops match the tier you
+    are in, with a diminishing chance to roll higher (29 July hotfix), which also governs what a
+    merge is worth. One player reports that D0 through D4 each carry their own lockout, which would
+    mean a first clear at D0 costs nothing at any higher tier. Reported 10 August 2026 and not stated
+    either way in the patch notes.</div>
 </section>
 
 <section>
-  <h2><span class="num">05</span>Your armour, slot by slot</h2>
-  <p class="lede">Head, Arms, Wrist and Legs. Find your slot, then hunt any mob on that row.</p>
-  <div class="note"><b>The class-group split is gone.</b> The imported page divides these mobs into
-    two groups by which classes they serve. A Legends-era loot guide from a raiding guild lists them
-    merged &mdash; slot-specific, not group-specific &mdash; and adds that every one of them can
-    also drop the matching <b>Lustrous Russet</b> or <b>Midnight Clad</b> piece for its slot.
-    <span class="tier tc">C</span> A guild loot guide, 18 June 2026, pre-launch (<a href="../credits.html">credits</a>). We print the merged reading
-    below and keep the old groups only as a footnote, because it is the newer and more specific
-    account &mdash; but it is beta-dated and one source.
-    <a href="../tools/planar-gear.html">The gear tool &rarr;</a> works from the item records, which
-    are unaffected either way.</div>
+  <p class="kick">Two registers</p>
+  <h2 id="drops">What drops</h2>
+  <p class="lede">Head, Arms, Wrist and Legs. Find your slot, then hunt anything on that row.</p>
+  <div class="note"><strong>The class-group split is gone.</strong> A guild loot guide of 18 June
+    2026 lists these mobs merged &mdash; slot-specific, not group-specific &mdash; and adds that
+    every one can also drop the matching <strong>Lustrous Russet</strong> or <strong>Midnight
+    Clad</strong> piece for its slot. Pre-launch, and one source
+    (<a href="../credits.html">credits</a>). The imported groups stay in the columns below because
+    the merged reading is newer, more specific and beta-dated.
+    <a href="../tools/planar-gear.html">The gear tool &rarr;</a> works from the item records,
+    unaffected either way.</div>
 
-  <div class="scroller"><table>
+  <div class="scroller">
+  <table>
     <thead><tr><th>Slot</th>
       <th>Group 1 &mdash; CLR DRU SHM BST RNG PAL BER MNK<br><small>plus Lustrous Russet</small></th>
       <th>Group 2 &mdash; ENC MAG NEC WIZ BRD SHD ROG WAR<br><small>plus Midnight Clad</small></th></tr></thead>
     <tbody>
-      <tr><td class="nmob">Head</td><td>Cleric of Innoruuk</td><td>a spite golem</td></tr>
-      <tr><td class="nmob">Arms</td><td>a forsaken revenant <b>(female)</b><br>an ire ghast</td>
-        <td>a forsaken revenant <b>(male)</b><br>an ashenbone drake</td></tr>
-      <tr><td class="nmob">Wrist</td><td>an abhorrent<br>a scorn banshee</td>
-        <td>a kiraikuei<br>a loathling lich<br>a revultant rat</td></tr>
-      <tr><td class="nmob">Legs</td>
-        <td>an elite dragoon <b>(male)</b><br>Innoruuk&rsquo;s Chosen <b>(male)</b><br>a Disciple of Innoruuk<br>a Knight of Innoruuk</td>
-        <td>an elite dragoon <b>(female)</b><br>Innoruuk&rsquo;s Chosen <b>(female)</b><br>an Agent of Innoruuk<br>a Champion of Innoruuk<br>a Sage of Innoruuk</td></tr>
+      <tr><td class="slot">Head</td><td class="st">Cleric of Innoruuk</td><td class="st">a spite golem</td></tr>
+      <tr><td class="slot">Arms</td><td class="st">a forsaken revenant <strong>(female)</strong><br>an ire ghast</td>
+        <td class="st">a forsaken revenant <strong>(male)</strong><br>an ashenbone drake</td></tr>
+      <tr><td class="slot">Wrist</td><td class="st">an abhorrent<br>a scorn banshee</td>
+        <td class="st">a kiraikuei<br>a loathling lich<br>a revultant rat</td></tr>
+      <tr><td class="slot">Legs</td>
+        <td class="st">an elite dragoon <strong>(male)</strong><br>Innoruuk&rsquo;s Chosen <strong>(male)</strong><br>a Disciple of Innoruuk<br>a Knight of Innoruuk</td>
+        <td class="st">an elite dragoon <strong>(female)</strong><br>Innoruuk&rsquo;s Chosen <strong>(female)</strong><br>an Agent of Innoruuk<br>a Champion of Innoruuk<br>a Sage of Innoruuk</td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
   <p class="src">Armour table <span class="tier t3">T3</span> &mdash; eqlwiki, maintained by editor
-    Mazirian through 22 July 2026.</p>
+    Mazirian through 22 July 2026. It has outside support: a creator farming here in August killed a
+    revultant rat and a haunted chest together and got a Magician wrist piece, and the table puts the
+    rat at Wrist, Group 2, which is where the Apothic set sits.</p>
+  <p class="src"><strong>Three mob types split by gender, and they split in opposite
+    directions.</strong> A female forsaken revenant drops Group 1 arms and a male drops Group 2. The
+    elite dragoon and Innoruuk&rsquo;s Chosen run the other way round. If you are farming a slot and
+    getting the wrong group, check the gender before you conclude the table is wrong.</p>
 
-  <p class="tight"><b>Three mob types split by gender, and they split in opposite directions.</b> A
-    female forsaken revenant drops Group 1 arms and a male drops Group 2. Same for the elite dragoon
-    and Innoruuk&rsquo;s Chosen &mdash; except those two run male for Group 1 and female for Group 2,
-    the other way round from the revenant. If you are farming a slot and getting the wrong group,
-    check the gender before you conclude the table is wrong.</p>
-
-  <h3>a haunted chest &mdash; resolved, by two sources agreeing</h3>
-  <p class="tight">The imported page says a haunted chest drops <em>any</em> planar armour, including
-    Fear-only pieces. <span class="tier t5">T5</span> <b>Two independent Legends-era accounts say it
-    drops Lustrous Russet and nothing else.</b></p>
-  <ul class="why">
-    <li><b>&ldquo;Haunted Chests &mdash; all Lustrous Russet pieces.&rdquo;</b>
-      <span class="tier tc">C</span> A guild loot guide, 18 June 2026.</li>
-    <li><b>&ldquo;All they drop is the russet gear. That&rsquo;s all they drop.&rdquo;</b>
-      <span class="tier tc">C</span> A creator farming them at D4 for a session, 9 August 2026.</li>
-  </ul>
-  <p class="tight">Two reports, seven weeks apart, one of them post-launch, neither citing the other.
-    <b>We are treating this as settled and the imported line as classic.</b> The mirror holds in
-    Fear: phoboplasms drop Midnight Clad. A logged session of chest kills would raise it from
-    settled to measured.</p>
-</section>
-
-<section>
-  <h2><span class="num">06</span>The minibosses, and the trash they upgrade</h2>
-  <p class="lede">Every miniboss here is the stronger form of one ordinary mob type, and most of them
-    drop a specific named armour set. Read across from the trash you are already killing.</p>
-  <div class="scroller"><table>
+  <h3>The minibosses, and the trash they upgrade</h3>
+  <p class="src">Each is the stronger form of one ordinary mob, and most drop a specific named set.
+    Read across from the trash you are already killing.</p>
+  <div class="scroller">
+  <table>
     <thead><tr><th>Miniboss</th><th>Upgrade of</th><th>Class</th><th>Set it drops</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">High Priest M`kari</td><td>Cleric of Innoruuk</td><td>Cleric</td><td>Ethereal Mist &middot; CLR</td></tr>
-      <tr><td class="nmob">Master of Spite</td><td>a spite golem</td><td>Shaman</td><td>Rune Etched &middot; SHM</td></tr>
-      <tr><td class="nmob">Coercer T`vala</td><td>a forsaken revenant (f)</td><td>Enchanter</td><td>Insidious &middot; ENC</td></tr>
-      <tr><td class="nmob">Magi P`Tasa</td><td>a forsaken revenant (m)</td><td>Magician</td><td>Apothic &middot; MAG</td></tr>
-      <tr><td class="nmob">Avatar of Abhorrence</td><td>an abhorrent</td><td>Rogue</td><td>Woven Shadow &middot; ROG</td></tr>
-      <tr><td class="nmob">Grandmaster R`Tal</td><td>a kiraikuei</td><td>Monk</td><td>Indicolite &middot; WAR</td></tr>
-      <tr><td class="nmob">Mistress of Scorn</td><td>a scorn banshee</td><td>Warrior</td><td>Imbrued Platemail &middot; BRD</td></tr>
-      <tr><td class="nmob">Ashenbone Broodmaster</td><td>an ashenbone drake</td><td>Necromancer</td><td>not recorded</td></tr>
-      <tr><td class="nmob">Lord of Ire</td><td>an ire ghast</td><td>Shadow Knight</td><td>not recorded</td></tr>
-      <tr><td class="nmob">Lord of Loathing</td><td>a loathling lich</td><td>Wizard</td><td>not recorded</td></tr>
+      <tr><td class="nmob">High Priest M`kari</td><td class="st">Cleric of Innoruuk</td><td class="cls">CLR</td><td class="st">Ethereal Mist &middot; CLR</td></tr>
+      <tr><td class="nmob">Master of Spite</td><td class="st">a spite golem</td><td class="cls">SHM</td><td class="st">Rune Etched &middot; SHM</td></tr>
+      <tr><td class="nmob">Coercer T`vala</td><td class="st">a forsaken revenant (f)</td><td class="cls">ENC</td><td class="st">Insidious &middot; ENC</td></tr>
+      <tr><td class="nmob">Magi P`Tasa</td><td class="st">a forsaken revenant (m)</td><td class="cls">MAG</td><td class="st">Apothic &middot; MAG</td></tr>
+      <tr><td class="nmob">Avatar of Abhorrence</td><td class="st">an abhorrent</td><td class="cls">ROG</td><td class="st">Woven Shadow &middot; ROG</td></tr>
+      <tr><td class="nmob">Grandmaster R`Tal</td><td class="st">a kiraikuei</td><td class="cls">MNK</td><td class="st">Indicolite &middot; WAR</td></tr>
+      <tr><td class="nmob">Mistress of Scorn</td><td class="st">a scorn banshee</td><td class="cls">WAR</td><td class="st">Imbrued Platemail &middot; BRD</td></tr>
+      <tr><td class="nmob">Ashenbone Broodmaster</td><td class="st">an ashenbone drake</td><td class="cls">NEC</td><td class="st">not recorded</td></tr>
+      <tr><td class="nmob">Lord of Ire</td><td class="st">an ire ghast</td><td class="cls">SHD</td><td class="st">not recorded</td></tr>
+      <tr><td class="nmob">Lord of Loathing</td><td class="st">a loathling lich</td><td class="cls">WIZ</td><td class="st">not recorded</td></tr>
     </tbody>
-  </table></div>
-  <p class="tight"><b>You will not meet all ten in one run.</b> A player who clears the zone
-    repeatedly reports the minibosses spawn in varying locations and as alternates &mdash;
-    &ldquo;sometimes you'll get a Lord of Ire, sometimes you get a Lord of Loathing&rdquo;.
-    <span class="tier tc">C</span> A player clearing the zone repeatedly, 13 July 2026. So read the table as the pool,
-    not the roster of a single clear.</p>
+  </table>
+  </div>
   <p class="src">Miniboss table <span class="tier t5">T5</span> &mdash; imported, except that
-    <b>Lord of Loathing is named in the 2 June 2026 patch note</b> among bosses given Solo Raid
-    balance changes, alongside Innoruuk, Cazic-Thule and the Maestro. So at least that one is a live
-    Legends encounter and not an inherited name.</p>
-  <div class="note">Two things in the source do not line up and we are flagging rather than fixing.
-    <em>a scorn banshee</em> is filed as &ldquo;Group a&rdquo; in one table and Group 1 in another,
-    while its miniboss drops a Group 2 set. And the same set is called both <em>Imbrued Armor</em>
+    <strong>Lord of Loathing is named in the 2 June 2026 patch note</strong> among bosses given Solo
+    Raid balance changes, alongside Innoruuk, Cazic-Thule and the Maestro. <strong>You will not meet
+    all ten in one run:</strong> a player clearing the zone repeatedly, 13 July 2026, reports them
+    spawning in varying places and as alternates &mdash; a Lord of Ire one time, a Lord of Loathing
+    the next. Read the table as the pool, not the roster of a single clear.</p>
+  <div class="note">Two things in the source do not line up, flagged here rather than fixed.
+    <em>a scorn banshee</em> is filed as &ldquo;Group a&rdquo; in one table and Group 1 in another
+    while its miniboss drops a Group 2 set, and the same set is called both <em>Imbrued Armor</em>
     and <em>Imbrued Platemail Armor</em> on one page.</div>
+
+  <h3>A haunted chest &mdash; resolved, by two sources agreeing</h3>
+  <p class="src">The imported page says a haunted chest drops <em>any</em> planar armour, including
+    Fear-only pieces. <span class="tier t5">T5</span> Two independent Legends-era accounts say it
+    drops Lustrous Russet and nothing else: a guild loot guide of 18 June 2026, and a creator farming
+    them for a session on 9 August 2026 &mdash; &ldquo;All they drop is the russet gear.&rdquo; Two
+    reports, seven weeks apart, one post-launch, neither citing the other.
+    <strong>The imported line is classic and this is settled against it.</strong> The mirror holds in
+    the Plane of Fear, where phoboplasms drop Midnight Clad. A logged session of chest kills would
+    raise it from settled to measured.</p>
 </section>
 
 <section>
-  <h2><span class="num">07</span>The two raid bosses</h2>
-  <p class="lede">Voidling only. The roster is confirmed by patch note; almost every number is
-    classic EverQuest.</p>
-  <div class="scroller"><table>
-    <thead><tr><th>Named</th><th>Loc (Y, X)</th><th>Lvl</th><th>Race / class</th><th>Spawn &amp; notes</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">Innoruuk</td><td class="loc">not recorded</td><td class="lv">60</td>
-        <td class="cls">DEITY<br>WIZ</td>
-        <td class="src">Raid instance only since 16 June 2026. Wanders the upper level.
-          <strong>HP published as 156,000 at D2 Raid and 235,000 at D4 Raid</strong> &mdash; the only
-          difficulty-tiered boss figure published for any plane boss, and a pre-launch beta edit
-          rather than a measurement. AC 600, 2 attacks a round, 21&ndash;401 a hit. Rampage, sees
-          rogue hide, Pillage Enchantment, Avatar Power, Gravity Flux. High resists, reported
-          slowable. The published 7-day respawn describes an open-world spawn that no longer
-          exists.<span class="tag warn">T5 except the HP</span></td></tr>
-      <tr><td class="nmob">Maestro of Rancor</td><td class="loc">295, -82</td><td class="lv">52</td>
-        <td class="cls">VAMPIRE<br>BRD</td>
-        <td class="src">The Organ Hall, landmark 29. Raid instance only since 16 June 2026. AC 363.
-          <strong>HP recorded as &ldquo;~16k?&rdquo;</strong> &mdash; the source hedges its own
-          figure, and it is the weakest number on this page. Immune to flee, hard or impossible to
-          slow, sees invis, sees hide. Maestro Lifetap.<span class="tag warn">T5</span></td></tr>
-    </tbody>
-  </table></div>
-  <p class="tight">Both are listed with a single class. <b>Legends raid bosses run three classes from
-    D3</b>, so that alone dates the table. Which kits attach to which boss at D3 and above is
-    unpublished by anyone, and it is the largest open gap on this site.</p>
-</section>
-
-<section>
-  <h2><span class="num">08</span>Levelling, plat and AA at 46+</h2>
-  <p class="lede">Hate is the strongest of the three planes on paper. Nobody has published a rate,
-    including us.</p>
-  <div class="scroller"><table>
-    <thead><tr><th>What</th><th>Where it comes from</th></tr></thead>
-    <tbody>
-      <tr><td class="nmob">ZEM 86, or 115%</td>
-        <td>Zone infobox. Against 82.5 for Fear and Sky &mdash; the highest of the three.</td></tr>
-      <tr><td class="nmob">Instances match the open world</td>
-        <td>23 June patch note. So running an instance to escape competition costs nothing, and one
-          player reports moving to instances for exactly that reason. <span class="tier tc">C</span></td></tr>
-      <tr><td class="nmob">Raid bosses out of the open world</td>
-        <td>16 June patch note. What is left is trash and minibosses.</td></tr>
-      <tr><td class="nmob">AA gain reported as strong</td>
-        <td>One trash kill giving 9% of an AA, on a character with 229 AAs already banked.
-          <span class="tier tc">C</span> One reading, no level or difficulty stated.</td></tr>
-      <tr><td class="nmob">Loot scales with difficulty</td>
-        <td>29 July hotfix. Higher tiers roll higher, and the tier also governs what a merge is
-          worth.</td></tr>
-    </tbody>
-  </table></div>
-  <p class="tight"><b>We will not publish a plat-per-hour, mote-per-hour or AA-per-hour figure until
-    we have measured one.</b> The only rate estimate we have found anywhere is a creator saying he
-    &ldquo;felt like&rdquo; roughly one armour piece per three haunted chests, while explicitly
-    counting nothing. <span class="tier tc">C</span> That is a feeling, honestly labelled as one by
-    the person who said it, and we are not going to launder it into a drop rate.</p>
-</section>
-
-<section>
-  <h2><span class="num">09</span>What we do not know</h2>
-  <div class="scroller"><table>
+  <p class="kick">Named gaps</p>
+  <h2 id="open">Still open</h2>
+  <p class="lede">Each closes with one log, one <code>/who</code> or one circuit.</p>
+  <div class="scroller">
+  <table>
     <thead><tr><th>Open question</th><th>What settles it</th></tr></thead>
     <tbody>
-      <tr><td class="nmob">What <code>hateplaneb</code> is</td>
-        <td>One <code>/who</code> from the upper level.</td></tr>
-      <tr><td class="nmob">Whether haunted chests drop only Lustrous Russet</td>
-        <td>One logged session of chest kills. Imported prose and the only Legends account disagree
-          outright.</td></tr>
-      <tr><td class="nmob">Whether rats see through invisibility</td>
-        <td>One invisible approach. The table says no; the one player to say anything says yes.</td></tr>
-      <tr><td class="nmob">Whether the chest spawns are fixed</td>
-        <td>Two circuits with positions noted. The creator farming them believes they are static and
-          says outright he is not sure.</td></tr>
-      <tr><td class="nmob">Innoruuk at D0, D1 and D3</td>
-        <td>A raid log. D2 and D4 exist only as a beta-era claim.</td></tr>
-      <tr><td class="nmob">Which class kits bosses run at D3+</td><td>A raid log at D3 or D4.</td></tr>
-      <tr><td class="nmob">Trash and miniboss respawn</td><td>Two passes through one camp with timestamps.</td></tr>
-      <tr><td class="nmob">Sets for three of the ten minibosses</td><td>A kill and a look at the corpse.</td></tr>
+      <tr><td class="nmob">What <code>hateplaneb</code> is</td><td class="src">One <code>/who</code> from the upper level. The zone answers to two names and the game ships a separate, much larger archive for the second; what it is in Legends is not recorded.</td></tr>
+      <tr><td class="nmob">Whether haunted chests drop only Lustrous Russet</td><td class="src">One logged session of chest kills. Imported prose and both Legends accounts disagree outright.</td></tr>
+      <tr><td class="nmob">Whether rats see through invisibility</td><td class="src">One invisible approach. The table says no; the one player to say anything says yes.</td></tr>
+      <tr><td class="nmob">Whether the chest spawns are fixed</td><td class="src">Two circuits with positions noted. The creator farming them believes they are static and says outright he is not sure.</td></tr>
+      <tr><td class="nmob">Innoruuk&rsquo;s hit points at any tier</td><td class="src">He has been killed and parsed here, but damage to kill bounds hit points from above and no more, so the D2 and D4 figures remain a beta-era claim with nothing measured beside them.</td></tr>
+      <tr><td class="nmob">Trash and miniboss respawn</td><td class="src">Two passes through one camp with timestamps.</td></tr>
+      <tr><td class="nmob">Sets for three of the ten minibosses</td><td class="src">A kill and a look at the corpse.</td></tr>
+      <tr><td class="nmob">Plat, motes and AA per hour</td><td class="src">A measured parse. Nothing is published at any level or difficulty, and the only estimate anywhere is a creator saying he &ldquo;felt like&rdquo; roughly one armour piece per three haunted chests while counting nothing.</td></tr>
     </tbody>
-  </table></div>
+  </table>
+  </div>
 </section>
 
+</main>
+
+<footer><p class="src-line">This survey has no per-zone sourcing block yet. <a href="../sources.html">How this site grades its sources</a>.</p>
+<p class="imprint">Plate 12 &middot; Plane of Hate &middot; through the Oasis of Marr, Antonica &middot; floor derived from hateplane.s3d &middot; north up, west left</p></footer>
+
+</div>
 </div>
 </body>
 </html>

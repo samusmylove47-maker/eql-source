@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=8756621c">
+<link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
 </head>
 <body><header class="site-bar">
   <div class="shell">
@@ -45,9 +45,10 @@
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
     <h1 class="display">Eight trackers,<br><em>no account.</em></h1>
-    <p class="hero-lede">No login, no server holding your data. Everything you tick is packed into the
-      page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and
-      the sheet rebuilds exactly. They autosave in your browser too, so day to day you can just come back.</p>
+    <p class="hero-lede">No login, no server holding your data. What you tick is packed into the page
+      URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
+      <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
+      tick anything.</p>
     <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
   </div>
 </section>
@@ -65,24 +66,25 @@
         <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
-        <div class="kicker">Lookup &middot; 435 items, 233 named</div>
+        <div class="kicker">Lookup &middot; 434 items, 232 named</div>
         <h3 class="t">The Index</h3>
         <p class="d">Every item and named mob recorded across the 13 surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
           links back to the survey it was mined from, so you can read the surrounding context before planning a night
           around it.</p>
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
-        <div class="foot"><span>Built from our own surveys</span><span class="go">Open &rarr;</span></div></a>
+        <div class="foot"><span>Built from the surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="plane-of-sky.html" style="--c:var(--instr)">
-        <div class="kicker">Progression &middot; all 560 trios</div>
-        <h3 class="t">Plane of Sky tracker</h3>
-        <p class="d">Pick your three classes and it builds the character sheet: every class-unlock test the trio owes,
-          each component tagged with the island and boss that drops it, and an island ladder that recounts what is left
-          as you tick things off. Includes slot-competition analysis, because three classes means three item pools
-          fighting over the same equipment slots.</p>
-        <div class="chipline"><span class="pill">95 quests</span><span class="pill">222 components</span><span class="pill">16 classes</span></div>
-        <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
+        <div class="kicker">Progression &middot; reads your combat log</div>
+        <h3 class="t">Sky Ledger</h3>
+        <p class="d">It follows your own log and says which of the 95 Plane of Sky class-unlock tests you
+          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
+          once</strong> &mdash; 29 of the 128 items are wanted by more than one test, so holding one does
+          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
+          replaces the tracker published here before it.</p>
+        <div class="chipline"><span class="pill">95 tests</span><span class="pill">29 contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
@@ -98,10 +100,10 @@
         <h3 class="t">Faction impact checker</h3>
         <p class="d">Faction moves while you are not looking, and you find out hours later when a vendor stops
           speaking to you. Name a zone, a faction or a race and it says what rises, what falls, how far per kill,
-          and which unlocks that helps or costs. The movement is counted from our own combat logs rather than
-          assumed, so it states plainly which zones we have measured and which we have not.</p>
+          and which unlocks that helps or costs. The movement is counted from parsed combat logs rather than
+          assumed, so it states plainly which zones are measured and which are not.</p>
         <div class="chipline"><span class="pill">Measured</span><span class="pill">Coverage stated</span></div>
-        <div class="foot"><span>From our own logs</span><span class="go">Open &rarr;</span></div></a>
+        <div class="foot"><span>Measured in play</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="planar-gear.html" style="--c:var(--warn)">
         <div class="kicker">Endgame &middot; five sets per slot</div>
@@ -125,23 +127,22 @@
         <div class="kicker">Lookup</div>
         <h3 class="t">What have I got?</h3>
         <p class="d">Paste the wall of tab-separated text <code>/outputfile inventory</code> writes and read it
-          back as a list of what you carry, with the item&rsquo;s page, its zone, its planar set and where we have
-          watched the thing drop ourselves. Nothing is uploaded; the parse happens in the page.</p>
+          back as a list of what you carry, with the item&rsquo;s page, its zone, its planar set and where the
+          thing has been measured dropping. Nothing is uploaded; the parse happens in the page.</p>
         <div class="chipline"><span class="pill">Nothing uploaded</span><span class="pill">No gear score</span></div>
         <div class="foot"><span>Paste and read</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
-    <div class="note sig"><strong>Where these stop, and who to go to next.</strong> These are progression and
-      reference tools built on quest, faction and survey data. For client-mined numbers, combat log parsing, spellbook
-      diffing, AA planning and 3D zone geometry, <a href="https://eqltools.com" style="color:var(--bone)">EQL Tools</a>
-      is excellent and does all of it properly. We link rather than duplicate; there is no sense in shipping a worse
-      copy of a tool that already exists.</div>
-    <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> They are two views of the
-      same sheet, so a race you mark unlocked in the tracker is treated as available by the calculator straight away.
-      The Plane of Sky tracker keeps its own separate save.</div>
+    <div class="note sig"><strong>Where these stop.</strong> Client-mined numbers, spellbook
+      diffing, AA planning and 3D zone geometry belong to other tools. What is built here is what
+      nobody else holds &mdash; quests, factions, routes, measured play, and a Sky tracker that
+      knows a turn-in piece can only be spent once.</div>
+    <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> A race you mark unlocked
+      in the tracker is available in the calculator straight away. Sky Ledger keeps its own, because what it holds is
+      read from your log rather than ticked.</div>
     <div class="note"><strong>On privacy.</strong> Nothing is transmitted anywhere. The autosave uses your browser&rsquo;s
       own storage and the share link carries a compressed bitfield in the URL fragment &mdash; the part of a URL that is
-      never sent to a server. A fully filled sheet comes out around ninety characters.</div>
+      never sent to a server.</div>
   </section>
 </div>
 </main>
@@ -164,7 +165,7 @@
       <div><h4>Tools</h4><ul>
         <li><a href="../tools/character.html">Character sheet</a></li>
         <li><a href="../tools/index-search.html">The Index</a></li>
-        <li><a href="../tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
         <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
