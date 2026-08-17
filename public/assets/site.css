@@ -1009,3 +1009,58 @@ h1.display em{color:var(--z01)}
    tonight can actually get from the zone. See docs/WHAT-COUNTS.md. */
 .plate .meta .cov{color:var(--acc,#9FB0B4)}
 .plate .meta .cov b{color:inherit;font-weight:700}
+
+/* ---------- the promoted tool ----------
+   A feature band, not a card in a row of equals. Sky Ledger sits directly under
+   the hero and pushes the atlas down, because what it does that no other Sky
+   tracker does — spend a held piece once — is a correctness property rather
+   than a nicer surface, and a card in a grid of eight says the opposite.
+
+   Instrument blue, because it is a tool: the frame stays monochrome and the
+   colour comes from what the thing is. The heavy top rule and the surface step
+   are what carry the promotion; nothing here glows. */
+section.feat{border-top:0;padding-top:var(--s-7)}
+.featwrap{background:var(--surface-1);border:1px solid var(--rule);
+  border-top:3px solid var(--instr);border-radius:var(--r);
+  box-shadow:var(--shadow-2);
+  background-image:linear-gradient(180deg,rgba(127,178,199,.045),rgba(127,178,199,0) 320px)}
+.featgrid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);
+  gap:var(--s-7);padding:var(--s-6) var(--s-6) var(--s-5)}
+@media(max-width:900px){.featgrid{grid-template-columns:1fr;gap:var(--s-5)}}
+.feath{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--t-h2);
+  line-height:var(--lh-tight);letter-spacing:var(--tr-tight);color:var(--bone);
+  margin:var(--s-2) 0 var(--s-4)}
+.featlede{font-size:var(--t-md);line-height:1.55;color:var(--txt);
+  max-width:var(--measure);margin:0 0 var(--s-4)}
+.featlede strong{color:var(--bone);font-weight:600}
+.featsub{font-size:var(--t-base);line-height:1.6;color:var(--mut);
+  max-width:var(--measure);margin:0 0 var(--s-5)}
+.featsub code{font-family:"IBM Plex Mono",monospace;font-size:.92em;color:var(--txt)}
+
+.featdoors{display:flex;gap:var(--s-3);flex-wrap:wrap}
+.featdoor{display:inline-block;padding:12px 18px;border-radius:var(--r);
+  border:1px solid var(--rule2);background:var(--surface-2);color:var(--txt);
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-xs);
+  letter-spacing:.11em;text-transform:uppercase;text-decoration:none;
+  transition:border-color var(--speed),background var(--speed),color var(--speed)}
+.featdoor:hover{border-color:var(--instr);color:var(--bone)}
+.featdoor.lead{background:color-mix(in srgb,var(--instr) 17%,var(--surface-2));
+  border-color:var(--instr);color:var(--bone)}
+.featdoor.lead:hover{background:color-mix(in srgb,var(--instr) 27%,var(--surface-2))}
+
+/* The two claims, as figures. They are the argument, so they are the largest
+   type in the band after the name. */
+.featclaims{list-style:none;margin:0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);
+  overflow:hidden;align-self:start}
+.featclaims li{background:var(--surface-2);padding:var(--s-4) 18px}
+.featclaims b{display:block;font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-xl);font-weight:600;color:var(--bone);line-height:1.15}
+.featclaims .lab{display:block;font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-2xs);letter-spacing:.13em;text-transform:uppercase;
+  color:var(--faint);margin-top:7px}
+.featclaims .why{display:block;color:var(--mut);font-size:var(--t-sm);
+  line-height:1.55;margin-top:9px}
+.featfoot{margin:0;padding:0 var(--s-6) var(--s-6);
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.11em;text-transform:uppercase;color:var(--faint)}

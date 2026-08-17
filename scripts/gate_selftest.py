@@ -131,10 +131,15 @@ CASES = [
     # check.py passed all 721 pages because nothing here runs a page's
     # JavaScript. The check that catches it is narrow on purpose; this proves
     # it is alive.
+    # Retargeted 17 Aug 2026: the case used tools/plane-of-sky.html, which was
+    # withdrawn when Sky Ledger replaced it. RORDER is the same shape of
+    # constant in the same shape of tool — a top-level display order the render
+    # reads on its first statement — so removing it reproduces the fault
+    # exactly. The check is about a tool's data constants, not about that page.
     ("a tool's data constant is undefined",
      "script uses 1 undefined constant(s)",
-     "public/tools/plane-of-sky.html",
-     lambda t: t.replace("const ORDER   = SKY.order;", "", 1)),
+     "public/tools/race-unlocks.html",
+     lambda t: t.replace('const RORDER=["DEF"', 'const RORDER_UNUSED=["DEF"', 1)),
 
     # The counts are read from the data, not typed, because this file typed them
     # once and the case silently became a no-op the next time a zone was added —
@@ -209,6 +214,16 @@ CASES = [
      "shipped an unrendered placeholder",
      "public/raids/plane-of-sky.html",
      lambda t: _sub_first_number(t, "@@BIGGEST@@")),
+
+    # A dataset figure typed into the metadata. The Sky Ledger tool page said 95
+    # in its description while its body read the same quantity from the data, so
+    # the two were free to drift on the next dataset change. Metadata is the
+    # only text a reader gets uncaveated, and it is what a share card carries.
+    ("a figure in the metadata that is nowhere on the page",
+     "in its meta description and never on the page",
+     "public/tools/sky-ledger.html",
+     lambda t: t.replace('name="description" content="',
+                         'name="description" content="4242 tests. ', 1)),
 
     # The change log is exempt from the prose ceiling, and that exemption is
     # exactly the kind of hole that quietly turns a check off. This proves the

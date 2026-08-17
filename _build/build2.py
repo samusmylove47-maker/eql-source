@@ -25,6 +25,10 @@ ZONES = json.load(open("assets/zones-index.json", encoding="utf-8"))
 # pair collides - true, useful to us, and not what a player standing at a zone
 # line needs. It lives here now, whole, and each survey links to its section.
 BYSLUG = {z["slug"]: z for z in ZONES}
+
+# Sky Ledger's dataset counts, read out of assets/sky-ledger.json rather than
+# typed. _build/skyledger.py counts them from the tool's own sky.json.
+SLD = json.load(open("assets/sky-ledger.json", encoding="utf-8"))["dataset"]
 PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
 WP = json.load(open("assets/wiki-provenance.json", encoding="utf-8"))["zones"]
 
@@ -91,9 +95,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
     <h1 class="display">{wordnum(len(TOOLS))} trackers,<br><em>no account.</em></h1>
-    <p class="hero-lede">No login, no server holding your data. Everything you tick is packed into the
-      page URL &mdash; bookmark it, paste it into guild chat, mail it to yourself. Open it anywhere and
-      the sheet rebuilds exactly. They autosave in your browser too, so day to day you can just come back.</p>
+    <p class="hero-lede">No login, no server holding your data. What you tick is packed into the page
+      URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
+      <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
+      tick anything.</p>
     <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
   </div>
 </section>
@@ -120,15 +125,16 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
         <div class="foot"><span>Built from our own surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="plane-of-sky.html" style="--c:var(--instr)">
-        <div class="kicker">Progression &middot; all 560 trios</div>
-        <h3 class="t">Plane of Sky tracker</h3>
-        <p class="d">Pick your three classes and it builds the character sheet: every class-unlock test the trio owes,
-          each component tagged with the island and boss that drops it, and an island ladder that recounts what is left
-          as you tick things off. Includes slot-competition analysis, because three classes means three item pools
-          fighting over the same equipment slots.</p>
-        <div class="chipline"><span class="pill">95 quests</span><span class="pill">222 components</span><span class="pill">16 classes</span></div>
-        <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
+        <div class="kicker">Progression &middot; reads your combat log</div>
+        <h3 class="t">Sky Ledger</h3>
+        <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
+          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
+          once</strong> &mdash; {SLD['contested']} of the {SLD['items']} items are wanted by more than one test, so holding one does
+          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
+          replaces the tracker we used to publish here.</p>
+        <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
@@ -177,17 +183,17 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="foot"><span>Paste and read</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
-    <div class="note sig"><strong>Where these stop, and who to go to next.</strong> These are progression and
-      reference tools built on quest, faction and survey data. For client-mined numbers, combat log parsing, spellbook
-      diffing, AA planning and 3D zone geometry, <a href="https://eqltools.com" style="color:var(--bone)">EQL Tools</a>
-      is excellent and does all of it properly. We link rather than duplicate; there is no sense in shipping a worse
-      copy of a tool that already exists.</div>
-    <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> They are two views of the
-      same sheet, so a race you mark unlocked in the tracker is treated as available by the calculator straight away.
-      The Plane of Sky tracker keeps its own separate save.</div>
+    <div class="note sig"><strong>Where these stop, and who to go to next.</strong> For client-mined numbers,
+      spellbook diffing, AA planning and 3D zone geometry, <a href="https://eqltools.com" style="color:var(--bone)">EQL
+      Tools</a> is excellent and does all of it properly. We link rather than ship a worse copy. <strong>Sky Ledger
+      parses a combat log, which is their territory</strong>: the log-line cases that break naive counting were
+      <a href="sky-ledger.html">identified by sowoky</a> in their <code>sky-core</code> and reimplemented, not copied.</div>
+    <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> A race you mark unlocked
+      in the tracker is available in the calculator straight away. Sky Ledger keeps its own, because what it holds is
+      read from your log rather than ticked.</div>
     <div class="note"><strong>On privacy.</strong> Nothing is transmitted anywhere. The autosave uses your browser&rsquo;s
       own storage and the share link carries a compressed bitfield in the URL fragment &mdash; the part of a URL that is
-      never sent to a server. A fully filled sheet comes out around ninety characters.</div>
+      never sent to a server.</div>
   </section>
 </div>
 </main>

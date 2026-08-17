@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/site.css?v=8756621c">
+<link rel="stylesheet" href="assets/site.css?v=b8d0aec6">
 </head>
 <body><header class="site-bar">
   <div class="shell">
@@ -52,6 +52,44 @@
     <p class="hero-sig"><span>13 zones surveyed</span><span>435 items indexed</span><span>233 named recorded</span><span>10 fully verified</span></p>
   </div>
   <p class="hero-src">Najena, drawn from the game&rsquo;s own mesh &mdash; <b>96 paths, 877 points</b>, 3 storeys</p>
+</section>
+
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <div>
+          <p class="eyebrow">Plane of Sky &middot; <b>reads your own log</b></p>
+          <h2 class="feath">Sky Ledger</h2>
+          <p class="featlede">It follows your combat log while you play and says which of the
+            95 Plane of Sky class-unlock tests you can hand in <strong>now</strong> &mdash; and what
+            the missing pieces drop from. In a browser with nothing to install, or as an
+            overlay on the game.</p>
+          <p class="featsub"><strong>It knows a turn-in piece can only be spent once.</strong>
+            29 of its 128 turn-in items are wanted by more than one test. Holding one
+            does not make several quests ready, and every other tracker &mdash; including the
+            one this replaces, which was ours &mdash; counts it against all of them. It also
+            refuses to print a drop rate it cannot measure: a dry streak reads as a bound,
+            <code>&lt;28% &middot; 0/9</code>, never <code>0%</code>.</p>
+          <div class="featdoors">
+            <a class="featdoor lead" href="app/sky-ledger.856de2c4.html">Run it in your browser &rarr;</a>
+            <a class="featdoor" href="tools/sky-ledger.html">What it does, and the overlay &rarr;</a>
+          </div>
+        </div>
+        <ul class="featclaims">
+          <li><b>29 of 128</b>
+            <span class="lab">Turn-in items wanted twice or more</span>
+            <span class="why">One piece finishes one test. It pools what you hold and spends
+              each unit on the test closest to done.</span></li>
+          <li><b>&lt;28% &middot; 0/9</b>
+            <span class="lab">How a dry streak prints</span>
+            <span class="why">Zero drops in nine kills bounds the rate; it does not measure
+              it. <code>0%</code> would tell you to stop farming.</span></li>
+        </ul>
+      </div>
+      <p class="featfoot">No install &middot; nothing uploaded &middot; build 856de2c4 &middot; 176 KB</p>
+    </div>
+  </div>
 </section>
 
 <section class="band doors">
@@ -200,6 +238,11 @@
           <p class="lede" style="margin:0">Typed by what it was, so a correction never reads as new
             content. Every entry is public, including the ones that make us look worse.</p></div></div>
         <ul class="chlist">
+      <li class="ch" style="--c:var(--bone)">
+        <span class="k">Addition</span>
+        <span class="t">Sky Ledger, and the end of our own Sky tracker</span>
+        <span class="d">17 Aug 2026</span>
+      </li>
       <li class="ch" style="--c:var(--ok)">
         <span class="k">Correction</span>
         <span class="t">We have withdrawn the Eye of Veeshan guide entirely</span>
@@ -214,11 +257,6 @@
         <span class="k">Correction</span>
         <span class="t">Two bosses we lost to a capital letter</span>
         <span class="d">15 Aug 2026</span>
-      </li>
-      <li class="ch" style="--c:var(--ok)">
-        <span class="k">Correction</span>
-        <span class="t">We were grading zones on the wrong thing</span>
-        <span class="d">14 Aug 2026</span>
       </li>
         </ul>
         <p style="margin-top:var(--s-5)"><a class="link" href="sources.html#changelog"
@@ -264,7 +302,7 @@
       <div><h4>Tools</h4><ul>
         <li><a href="tools/character.html">Character sheet</a></li>
         <li><a href="tools/index-search.html">The Index</a></li>
-        <li><a href="tools/plane-of-sky.html">Plane of Sky tracker</a></li>
+        <li><a href="tools/sky-ledger.html">Sky Ledger</a></li>
         <li><a href="tools/race-unlocks.html">Race unlock tracker</a></li>
         <li><a href="tools/combo-calculator.html">Race and primary calculator</a></li>
         <li><a href="tools/faction-impact.html">Faction impact checker</a></li>

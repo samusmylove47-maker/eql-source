@@ -9,13 +9,21 @@
 # HANDOFF.md.
 
 # Pretty URLs for the three trackers that get shared in chat.
-/sky         /tools/plane-of-sky.html      301
+/sky         /tools/sky-ledger.html        301
 /races       /tools/race-unlocks.html      301
 /calculator  /tools/combo-calculator.html  301
 
 # The campaign plate was withdrawn. It had been published and indexed, so send
 # its old URL to the dungeon index rather than leaving a dead end.
 /dungeons/campaign-10-to-50.html  /dungeons/index.html  301
+
+# Our own Plane of Sky tracker was withdrawn on 17 Aug 2026 and replaced by Sky
+# Ledger, which spends a held turn-in piece once instead of counting it against
+# every test that wants it. The old URL was published, indexed and shared in
+# chat, so it goes to the tool that replaced it rather than to a dead end. There
+# is no tombstone page: the withdrawal is recorded in the change log, which is
+# where removals belong.
+/tools/plane-of-sky.html  /tools/sky-ledger.html  301
 
 # The blacklist that used to sit here is gone. It listed ten internal paths
 # and blocked them by rule, which only ever worked while someone remembered

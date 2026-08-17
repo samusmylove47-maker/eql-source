@@ -10,6 +10,12 @@ cd "$(dirname "$0")"
 # names a source that does not exist, or if a dataset invariant moved. Runs
 # before anything renders it.
 python3 _build/skydata.py
+# Copies the Sky Ledger browser build into public/app/ under a content hash and
+# records what it copied in assets/sky-ledger.json. The home page and both tool
+# pages link and quote that file, so it runs before any of them. It does not
+# fail on a machine without the Ledger repo - the copy and the record are both
+# committed, same rule as geometry.py and the game's own files.
+python3 _build/skyledger.py
 python3 _build/extract.py
 # Grades each zone on what a PLAYER needs - bosses, loot, difficulty,
 # inherited advice, farming value - computed from the measured data.
@@ -18,6 +24,8 @@ python3 _build/coverage.py
 python3 _build/build1.py
 python3 _build/build2.py
 python3 _build/build3.py
+# The Sky Ledger page. Prints every dataset figure out of assets/sky-ledger.json.
+python3 _build/build28.py
 python3 _build/build5.py
 python3 _build/build6.py
 python3 _build/build7.py

@@ -128,6 +128,59 @@ nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
 nnone = sum(1 for z in Z if z["verify_level"]=="none")
 
+# THE PROMOTED TOOL.
+# Sky Ledger goes directly under the hero and the atlas moves down. It is not a
+# card in a row of equals: what it does that no other Sky tracker does — spend a
+# held turn-in piece once instead of counting it against every test that wants
+# it — is a correctness property, and the tracker it replaced was ours.
+#
+# Both figures are read out of assets/sky-ledger.json, which _build/skyledger.py
+# counts from the Ledger's own dataset. The tool's README types "three quests"
+# about an item its data wants twice; that is the exact reason nothing here is
+# typed beside the data it claims to come from.
+SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
+SL_APP, SL_DS = SL['app'], SL['dataset']
+
+feature = f'''
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <div>
+          <p class="eyebrow">Plane of Sky &middot; <b>reads your own log</b></p>
+          <h2 class="feath">Sky Ledger</h2>
+          <p class="featlede">It follows your combat log while you play and says which of the
+            {SL_DS['quests']} Plane of Sky class-unlock tests you can hand in <strong>now</strong> &mdash; and what
+            the missing pieces drop from. In a browser with nothing to install, or as an
+            overlay on the game.</p>
+          <p class="featsub"><strong>It knows a turn-in piece can only be spent once.</strong>
+            {SL_DS['contested']} of its {SL_DS['items']} turn-in items are wanted by more than one test. Holding one
+            does not make several quests ready, and every other tracker &mdash; including the
+            one this replaces, which was ours &mdash; counts it against all of them. It also
+            refuses to print a drop rate it cannot measure: a dry streak reads as a bound,
+            <code>&lt;28% &middot; 0/9</code>, never <code>0%</code>.</p>
+          <div class="featdoors">
+            <a class="featdoor lead" href="app/{SL_APP['file']}">Run it in your browser &rarr;</a>
+            <a class="featdoor" href="tools/sky-ledger.html">What it does, and the overlay &rarr;</a>
+          </div>
+        </div>
+        <ul class="featclaims">
+          <li><b>{SL_DS['contested']} of {SL_DS['items']}</b>
+            <span class="lab">Turn-in items wanted twice or more</span>
+            <span class="why">One piece finishes one test. It pools what you hold and spends
+              each unit on the test closest to done.</span></li>
+          <li><b>&lt;28% &middot; 0/9</b>
+            <span class="lab">How a dry streak prints</span>
+            <span class="why">Zero drops in nine kills bounds the rate; it does not measure
+              it. <code>0%</code> would tell you to stop farming.</span></li>
+        </ul>
+      </div>
+      <p class="featfoot">No install &middot; nothing uploaded &middot; build {SL_APP['hash']} &middot; {SL_APP['kb']} KB</p>
+    </div>
+  </div>
+</section>
+'''
+
 from changelog import ENTRIES, TONE
 
 recent = "\n".join(
@@ -153,7 +206,7 @@ home = head("Accurate, sourced and kept current",
   </div>
   {hero_src}
 </section>
-
+{feature}
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>

@@ -1,0 +1,2075 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<!-- The README promises your log never leaves the machine. This enforces it
+     rather than asserting it: connect-src 'none' means the page cannot make a
+     network request of any kind, and there is no remote origin it may load
+     from. 'unsafe-inline' is required because the build inlines the dataset,
+     engine and UI into this one file on purpose — it has to run with the game
+     already open and no network. -->
+<meta http-equiv="Content-Security-Policy"
+      content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Sky Ledger — Plane of Sky overlay</title>
+<style>
+/* ═══ tokens ═══════════════════════════════════════════════════════════════
+   Palette measured from the game's own textures rather than chosen. Norrath's
+   grounds are warm umber, so the ground, the panel and the raised surface are
+   umber and the hairlines are warm with them. The token names are kept and
+   only their values move, because the meaning is carried by where each one is
+   already used: --wind is STATE (live, selected, focused, toggled on) and is
+   now brass; --brass is DATA (counts, rates, island labels, anything read as a
+   number) and is now instrument blue, which is the colour the site gives its
+   tools; --rune stays exclusively wind runes, now verdigris, so a rune is
+   never mistaken for a drop at a glance; --dim is alerts.
+   Every value clears WCAG AA against all three grounds. The tool sits over a
+   bright zone, so none of that may drift.
+   No webfonts and no network of any kind — the CSP above forbids it and the
+   overlay has to paint its first frame with the game already running. The
+   site's four faces are named first and the stack falls back to system faces
+   where they are not installed; mono keeps tabular figures for every count so
+   digits never reflow while you fight.                                       */
+:root{
+  --ink:#0B0704; --haze:#191309; --lift:#282013;
+  --wind:#C9922E; --brass:#7FB2C7; --rune:#6E9E8E; --dim:#D46C64;
+  --bone:#F2EADA; --mute:#B5AA95; --edge:rgba(201,146,46,.20);
+  --a:.92;                      /* opacity, driven by the slider */
+  --w:344px;                    /* rail width */
+  --f:12px;
+  --r:4px;                      /* one small radius, used throughout */
+  --sans:"Public Sans",ui-sans-serif,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
+  --disp:"Cinzel","Trajan Pro",Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-user-select:none;user-select:none}
+html,body{height:100%;background:transparent;overflow:hidden}
+body{
+  font:400 var(--f)/1.45 var(--sans); color:var(--bone);
+  display:flex; align-items:flex-start; justify-content:flex-start;
+  padding:10px; -webkit-font-smoothing:antialiased;
+}
+button,input,select{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+:focus-visible{outline:2px solid var(--wind);outline-offset:1px;border-radius:2px}
+::-webkit-scrollbar{width:7px} ::-webkit-scrollbar-thumb{background:var(--lift);border-radius:var(--r)}
+::-webkit-scrollbar-track{background:transparent}
+
+/* ═══ panel ═══ */
+#app{
+  width:var(--w); max-height:calc(100vh - 20px); display:flex; flex-direction:column;
+  background:rgba(11,7,4,var(--a));
+  border:1px solid var(--edge); border-radius:10px;
+  box-shadow:0 18px 48px rgba(0,0,0,calc(var(--a) * .55));
+  backdrop-filter:blur(9px) saturate(1.1); overflow:hidden;
+}
+#app.wide{--w:600px}
+/* Under Electron the panel must be FLUSH with the window. With the body's
+   10px padding the visible border sat 10px inside the real window edge, so
+   Windows' resize border was in empty space away from anything you could see
+   — which is exactly why resizing felt broken and the grab area felt lost. */
+html.native body{padding:0}
+html.native #app{max-height:100vh;width:100vw}
+#app.ghost{border-color:rgba(201,146,46,.09)}
+/* click-through is invisible state — say so, or the panel looks broken.
+   Instrument blue rather than a heavier gold: the resting hairline is already
+   gold, and a gold edge at a higher alpha reads as a brighter panel, not as a
+   different mode. */
+#app.thru{border-color:rgba(127,178,199,.45)}
+
+/* ═══ title bar — the drag handle ═══ */
+#bar{
+  display:flex; align-items:center; gap:8px; padding:7px 8px 7px 11px;
+  border-bottom:1px solid var(--edge); background:rgba(25,19,9,calc(var(--a) * .8));
+  -webkit-app-region:drag; cursor:grab; flex:none;
+}
+#bar.grabbing{cursor:grabbing}
+#bar button,#bar input{-webkit-app-region:no-drag}
+/* the one display line in the tool: inscriptional capitals, as on the site's
+   own title. Cinzel where it is installed, a serif elsewhere — never fetched. */
+#mark{font:600 11px/1 var(--disp);letter-spacing:.18em;text-transform:uppercase;color:var(--bone)}
+#mark b{color:var(--wind);font-weight:600}
+#who{font:400 11px/1 var(--mono);color:var(--mute);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;flex:1}
+#dot{width:7px;height:7px;border-radius:50%;background:var(--dim);flex:none;transition:background .2s}
+#dot.live{background:var(--wind);box-shadow:0 0 0 3px rgba(201,146,46,.16)}
+#dot.idle{background:var(--brass)}
+.ib{width:24px;height:22px;border-radius:var(--r);color:var(--mute);font-size:12px;line-height:1;
+    display:grid;place-items:center;flex:none;transition:.13s}
+.ib:hover{background:var(--lift);color:var(--bone)}
+.ib.on{color:var(--wind);background:rgba(201,146,46,.1)}
+
+/* ═══ body ═══ */
+#body{display:flex;min-height:0;flex:1}
+
+/* ── signature: the island ladder ──────────────────────────────────────────
+   Sky is a one-way ring, so the only spatial question that matters mid-run is
+   "what is this lap worth to me". Each rung is an island; the figure is how
+   many pieces you still need that drop there. It is a map of your remaining
+   work laid out in the shape of the zone, not decoration.                    */
+/* stretch + scroll, not flex-start + hidden: fixed at its natural 270px the
+   ladder spilled out of a short window, painted over the dock, and swallowed
+   clicks meant for the filter buttons — while clipping the "R" rung, which is
+   the wind runes and the most contested items in the set. */
+#spine{
+  width:46px;flex:none;border-right:1px solid var(--edge);align-self:stretch;
+  background:rgba(25,19,9,calc(var(--a) * .45));
+  display:flex;flex-direction:column;padding:5px 0;
+  overflow-y:auto;overflow-x:hidden;overscroll-behavior:contain;
+}
+.rung{
+  flex:none;height:26px;display:flex;align-items:center;justify-content:center;gap:4px;
+  cursor:pointer;transition:.13s;border-left:2px solid transparent;
+}
+.rung:hover{background:var(--lift)}
+.rung.sel{background:rgba(201,146,46,.09);border-left-color:var(--wind)}
+.rung.here{border-left-color:var(--brass)}
+.rung .isl{font:600 9.5px/1 var(--mono);color:var(--mute);letter-spacing:.03em}
+.rung .n{font:600 12px/1 var(--mono);color:var(--brass);font-variant-numeric:tabular-nums}
+.rung.zero{opacity:.32} .rung.zero .n{color:var(--mute)}
+.rung.sel .isl{color:var(--wind)}
+
+#main{flex:1;min-width:0;overflow-y:auto;overscroll-behavior:contain}
+
+/* ═══ quest rows ═══ */
+.q{border-bottom:1px solid var(--edge)}
+.qh{display:flex;align-items:baseline;gap:7px;padding:5px 9px 5px 10px;cursor:pointer;transition:.1s}
+.qh:hover{background:rgba(40,32,19,.5)}
+.qn{flex:1;min-width:0;font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:12.5px}
+.qc{font:600 10px/1 var(--mono);letter-spacing:.06em;color:var(--mute);flex:none}
+.qf{font:500 10.5px/1 var(--mono);color:var(--mute);flex:none;font-variant-numeric:tabular-nums}
+.q.ready{background:linear-gradient(90deg,rgba(201,146,46,.13),transparent 62%)}
+.q.ready .qn{color:var(--wind)} .q.ready .qf{color:var(--wind)}
+.q.done{opacity:.4} .q.done .qn{text-decoration:line-through;text-decoration-thickness:1px}
+
+/* the turn-in cue — what to say, standing at the giver */
+.say{margin:0 9px 6px 10px;padding:4px 7px;border-left:2px solid var(--wind);
+     background:rgba(201,146,46,.07);border-radius:0 var(--r) var(--r) 0;font-size:10.5px;
+     line-height:1.4;color:var(--mute)}
+.say b{color:var(--wind);font-weight:600}
+.say code{display:block;margin-top:1px}
+.say code{font:500 11px var(--mono);color:var(--brass)}
+/* Brass means "type this at the NPC". An item list is not dialogue, so it must
+   not look like it — bone, and it wraps rather than truncating. */
+.say code.give{color:var(--bone);white-space:normal;line-height:1.45}
+
+/* ═══ item rows ═══ */
+.it{display:flex;gap:7px;padding:2px 9px 3px 10px;align-items:flex-start;font-size:11.5px}
+.it:last-child{padding-bottom:5px}
+.held{padding:1px 9px 4px 30px;font:400 10px var(--mono);color:var(--mute);opacity:.6}
+.it .tick{width:11px;flex:none;text-align:center;font-size:10px;line-height:1.5;color:var(--wind)}
+.it.miss .tick{color:var(--lift)}
+.it .txt{flex:1;min-width:0}
+.it .nm{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.it.miss .nm{color:var(--mute)}
+.it.rune .nm{color:var(--rune)}
+.it.have .nm{color:var(--bone)}
+/* The source line — where it drops and, if the log knows, how often.
+   A flex row so the RATE is never what gets cut. It used to be last in a
+   nowrap line, so compact mode truncated exactly the number the tool exists
+   to show. Now the drop-source text is the only part that can shrink, and its
+   full text is in the row tooltip. */
+.src{font:400 10px/1.4 var(--mono);color:var(--mute);margin-top:1px;
+     display:flex;align-items:baseline;gap:5px;min-width:0}
+.src .isl{color:var(--brass);flex:none}
+.src .from{flex:1 1 auto;min-width:2.5em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.src .rate{flex:none}
+.src .warn{flex:none}
+/* Wind runes are currency and no log can see them. The only honest input is
+   the player reading their own currency tab, so the rune rows get a counter
+   instead of a drop rate. Periwinkle, like every other rune cue. */
+.src .step{flex:none;display:flex;align-items:center;gap:3px;margin-left:auto}
+.src .step button{width:14px;height:14px;border:1px solid var(--edge);border-radius:var(--r);
+  color:var(--mute);font:600 10px/1 var(--mono);display:grid;place-items:center;transition:.1s}
+.src .step button:hover{border-color:var(--rune);color:var(--rune)}
+.src .step b{min-width:1.3em;text-align:center;color:var(--rune);
+  font:600 11px var(--mono);font-variant-numeric:tabular-nums}
+.rate{font-variant-numeric:tabular-nums}
+.rate.ok{color:var(--wind)} .rate.thin{color:var(--brass)} .rate.none{color:var(--mute);opacity:.65}
+.warn{color:var(--dim);cursor:help}
+
+/* ═══ setup ═══ */
+/* The setup panel is taller than the window it lives in — roughly 1000px of
+   controls inside a 620px overlay. #app is `overflow:hidden` (it has to be, to
+   keep the rounded corners), so without a scroller of its own everything below
+   the fold was CLIPPED AND UNREACHABLE: the quest picker sits low in the
+   panel, so only its first rows survived and there was nothing to scroll.
+   flex:1 + min-height:0 is what lets it shrink inside the flex column;
+   overflow-y:auto is what gives it a scrollbar. */
+#setup{padding:11px 12px 14px;display:none;min-height:0;overflow-y:auto;overscroll-behavior:contain}
+#app.setup #setup{display:block;flex:1 1 auto} #app.setup #body{display:none}
+/* section headings — the second and last display level. The rule that runs off
+   to the right of each one is the cartographer's, not a divider: it says where
+   the heading ends and the field begins. */
+.lbl{font:600 10px/1 var(--disp);letter-spacing:.16em;text-transform:uppercase;
+     color:var(--mute);margin:14px 0 7px;display:flex;align-items:center;gap:7px}
+.lbl:first-child{margin-top:0}
+.lbl:after{content:"";flex:1;height:1px;background:var(--edge)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:4px}
+.cls{padding:5px 7px;border:1px solid var(--edge);border-radius:var(--r);text-align:left;
+     font-size:11.5px;color:var(--mute);transition:.12s;display:flex;justify-content:space-between;gap:4px}
+.cls:hover{border-color:var(--mute);color:var(--bone)}
+.cls.on{border-color:var(--wind);color:var(--wind);background:rgba(201,146,46,.09)}
+.cls i{font:600 9px/1.5 var(--mono);font-style:normal;opacity:.55}
+.cls.unv i{color:var(--brass);opacity:1}
+.drop{border:1px dashed var(--edge);border-radius:var(--r);padding:13px 11px;text-align:center;
+      color:var(--mute);font-size:11.5px;transition:.13s;width:100%;line-height:1.5}
+.drop:hover,.drop.over{border-color:var(--wind);color:var(--bone);background:rgba(201,146,46,.05)}
+.drop b{color:var(--bone);font-weight:600;display:block;margin-bottom:2px;font-size:12.5px}
+.hint{font-size:10.5px;color:var(--mute);line-height:1.55;margin-top:7px}
+.hint code{font:500 10.5px var(--mono);color:var(--brass)}
+.pick{display:flex;flex-direction:column;gap:1px;max-height:270px;overflow-y:auto;
+      border:1px solid var(--edge);border-radius:var(--r);padding:3px}
+.pk{display:flex;align-items:center;gap:7px;padding:4px 6px;border-radius:var(--r);font-size:11.5px;transition:.1s}
+.pk:hover{background:var(--lift)}
+.pk .bx{width:12px;height:12px;border:1px solid var(--mute);border-radius:var(--r);flex:none;
+        display:grid;place-items:center;font-size:9px;color:var(--ink);line-height:1}
+.pk.on .bx{background:var(--wind);border-color:var(--wind)}
+.pk .t{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--mute)}
+.pk.on .t{color:var(--bone)}
+.pk .m{font:400 10px var(--mono);color:var(--mute);flex:none}
+.pkh{display:flex;align-items:center;gap:6px;padding:5px 6px 3px;font:600 10px/1 var(--mono);
+     letter-spacing:.08em;color:var(--brass);text-transform:uppercase}
+.pkh button{font:inherit;color:var(--mute);text-transform:none;letter-spacing:0}
+.pkh button:hover{color:var(--wind)}
+.btn{padding:6px 12px;border:1px solid var(--edge);border-radius:var(--r);font-size:11.5px;
+     color:var(--mute);transition:.12s}
+.btn:hover{border-color:var(--wind);color:var(--wind)}
+.btn.pri{border-color:var(--wind);color:var(--wind);background:rgba(201,146,46,.1)}
+.row{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+input[type=text]{background:var(--haze);border:1px solid var(--edge);border-radius:var(--r);
+                 padding:5px 8px;font-size:11.5px;width:100%;-webkit-user-select:text;user-select:text}
+input[type=text]:focus{border-color:var(--wind);outline:none}
+
+/* ═══ dock ═══ */
+#dock{
+  display:flex;align-items:center;gap:8px;padding:6px 9px;flex:none;
+  border-top:1px solid var(--edge);background:rgba(25,19,9,calc(var(--a) * .8));
+  -webkit-app-region:drag;
+}
+#dock *{-webkit-app-region:no-drag}
+#dock .seg{display:flex;gap:1px;background:var(--haze);border-radius:var(--r);padding:1px}
+#dock .seg button{padding:3px 7px;border-radius:var(--r);font-size:10.5px;color:var(--mute);transition:.1s}
+#dock .seg button:hover{color:var(--bone)}
+#dock .seg button.on{background:var(--lift);color:var(--wind)}
+/* the transparency control: continuous, not a menu of five steps */
+#opw{display:flex;align-items:center;gap:6px;flex:1;min-width:96px}
+#op{-webkit-appearance:none;appearance:none;flex:1;height:16px;background:none}
+#op::-webkit-slider-runnable-track{height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--lift),var(--wind))}
+#op::-moz-range-track{height:3px;border-radius:2px;
+  background:linear-gradient(90deg,var(--lift),var(--wind))}
+#op::-webkit-slider-thumb{-webkit-appearance:none;width:11px;height:11px;border-radius:50%;
+  background:var(--bone);margin-top:-4px;box-shadow:0 1px 4px rgba(0,0,0,.6)}
+#op::-moz-range-thumb{width:11px;height:11px;border:0;border-radius:50%;background:var(--bone)}
+#opv{font:500 10px var(--mono);color:var(--mute);width:28px;text-align:right;
+     font-variant-numeric:tabular-nums}
+
+/* ═══ resize grip ═══════════════════════════════════════════════════════════
+   A frameless window has no visible edge to grab, and Windows' invisible
+   resize border is only a few pixels wide — findable by accident at best. So
+   the panel carries its own grip, always in the same corner, and it drives the
+   real window size over IPC rather than relying on that border at all.        */
+#grip{
+  position:absolute;right:0;bottom:0;width:18px;height:18px;
+  cursor:nwse-resize;touch-action:none;z-index:5;
+  -webkit-app-region:no-drag;
+}
+#grip:before{
+  content:"";position:absolute;right:3px;bottom:3px;width:9px;height:9px;
+  /* three stacked diagonals — the conventional grip, drawn rather than a font */
+  background:
+    linear-gradient(135deg,transparent 45%,var(--mute) 45%,var(--mute) 60%,transparent 60%) no-repeat,
+    linear-gradient(135deg,transparent 70%,var(--mute) 70%,var(--mute) 85%,transparent 85%) no-repeat;
+  opacity:.55;transition:opacity .12s;
+}
+#grip:hover:before{opacity:1;background-image:
+  linear-gradient(135deg,transparent 45%,var(--wind) 45%,var(--wind) 60%,transparent 60%),
+  linear-gradient(135deg,transparent 70%,var(--wind) 70%,var(--wind) 85%,transparent 85%)}
+#app.resizing{user-select:none}
+#dock{position:relative}
+
+/* ═══ provenance strip ═════════════════════════════════════════════════════
+   The premise of this tool is that a number without its source is a number
+   that can lie. This is the line where the ledger says what it could NOT
+   account for: kills it refused to credit because a stranger landed them,
+   bag sales whose contents the log never names, trades it would not guess
+   at. It hides itself when it has nothing to admit, so it is never noise.  */
+/* It WRAPS. An earlier revision kept this to one nowrap line, which clipped
+   the warnings off the right edge at 344px and hid them entirely at 244px —
+   silently truncating the honesty mechanism is worse than not having one. */
+#prov{
+  display:none;flex:none;align-items:center;gap:4px 9px;padding:3px 9px;
+  border-top:1px solid var(--edge);background:rgba(25,19,9,calc(var(--a) * .55));
+  font:400 10px/1.5 var(--mono);color:var(--mute);letter-spacing:.02em;
+  flex-wrap:wrap;
+}
+#prov.on{display:flex}
+/* min-width floor: a flex item with overflow:hidden otherwise resolves its
+   automatic minimum to 0 and vanishes without even an ellipsis. */
+#prov .z{color:var(--bone);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:4.5em}
+#prov .z.sky{color:var(--wind)}
+#prov .tier{color:var(--brass);flex:none}
+#prov .ex{cursor:help;flex:none}
+#prov .ex.some{color:var(--brass)}
+#prov .flag{color:var(--dim);cursor:help;flex:none}
+
+.rune-cell{align-items:center}
+.rune-cell.on{border-color:var(--rune);color:var(--rune);background:rgba(110,158,142,.09)}
+.rune-cell .step{display:flex;align-items:center;gap:3px}
+.rune-cell .step button{width:15px;height:15px;border:1px solid var(--edge);border-radius:var(--r);
+  color:var(--mute);font:600 10px/1 var(--mono);display:grid;place-items:center;transition:.1s}
+.rune-cell .step button:hover{border-color:var(--rune);color:var(--rune)}
+.rune-cell .step b{min-width:1.4em;text-align:center;color:var(--rune);
+  font:600 11px var(--mono);font-variant-numeric:tabular-nums}
+.empty{padding:26px 18px;text-align:center;color:var(--mute);font-size:11.5px;line-height:1.6}
+.empty b{color:var(--bone);display:block;margin-bottom:4px;font-weight:600}
+.note{margin:7px 0 0;padding:6px 8px;border-left:2px solid var(--brass);
+      background:rgba(127,178,199,.07);font-size:10.5px;color:var(--mute);line-height:1.5;border-radius:0 var(--r) var(--r) 0}
+.note b{color:var(--brass);font-weight:600}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<div id="app" class="setup wide">
+
+  <div id="bar">
+    <span id="mark">Sky<b>·</b>Ledger</span>
+    <span id="who" title="character and progress">no log yet</span>
+    <span id="dot" title="log status"></span>
+    <button class="ib" id="bSetup" title="Setup">⚙</button>
+    <button class="ib" id="bThru" title="Click-through (Ctrl+Shift+L)">⊘</button>
+    <button class="ib" id="bMin" title="Compact">▭</button>
+  </div>
+
+  <div id="setup">
+    <div class="lbl">Your log</div>
+    <button class="drop" id="drop">
+      <b id="dropT">Follow a log file</b>
+      <span id="dropS">Pick <code>eqlog_&lt;character&gt;_&lt;server&gt;.txt</code> and it updates as you play. Or drop the file here for a one-off read.</span>
+    </button>
+    <div class="hint">
+      Turn logging on in game with <code>/log on</code> first. A log only knows what happened
+      while it was running.
+      <span id="fsaWarn"></span>
+      <span id="nameWarn" style="color:var(--dim);display:block;margin-top:5px"></span>
+    </div>
+    <div class="row" style="margin-top:7px">
+      <button class="btn" id="bInv">Add inventory dump</button>
+      <span class="hint" style="margin:0;flex:1">Recommended. <code>/outputfile inventory</code> at a banker covers everything you looted before logging — wind runes included. It is a snapshot of your bags, so the larger of the two counts wins and nothing is counted twice.</span>
+    </div>
+
+    <div class="lbl">Wind runes</div>
+    <div class="grid" id="runes"></div>
+    <div class="hint">The client names all fifteen in <code>dbstr_us.txt</code> ids 75–89, and they
+      match this tool's dataset exactly. They are <b>ordinary bag items</b>, so an
+      <code>/outputfile inventory</code> dump counts them for you and you can leave this alone.
+      Set them by hand only if you have no dump — runes drop zone-wide from any mob, so a log that
+      began after you farmed them cannot see what you already hold.</div>
+
+    <div class="lbl">Whose kills count</div>
+    <input type="text" id="allies" placeholder="e.g. Shara, Whopper" autocomplete="off" spellcheck="false">
+    <div class="hint">A drop rate is drops over <b>kills you could have looted</b>. The ledger reads your
+      group and raid roster straight out of the log, so normally you need nothing here. Name people only
+      if you started logging <i>after</i> grouping up — the client never re-lists a group you joined,
+      so those kills would otherwise go uncounted. Kills it cannot place are excluded and reported,
+      never quietly folded in.</div>
+
+    <div class="lbl">Your trio</div>
+    <div class="grid" id="classes"></div>
+    <div class="hint" id="unvNote"></div>
+
+    <div class="lbl">What to track <button class="btn" id="bAll" style="padding:2px 7px;font-size:10px">Track all</button><button class="btn" id="bNone" style="padding:2px 7px;font-size:10px">Clear</button></div>
+    <div class="pick" id="picker"></div>
+    <div class="hint">Tracked tests are the only ones the overlay shows, and the only ones that compete for a shared piece.</div>
+
+    <div class="row" style="margin-top:13px">
+      <button class="btn pri" id="bGo">Show overlay</button>
+      <span class="hint" style="margin:0" id="sum"></span>
+    </div>
+  </div>
+
+  <div id="body">
+    <div id="spine"></div>
+    <div id="main"></div>
+  </div>
+
+  <div id="prov" title="What this ledger can and cannot account for"></div>
+
+  <div id="dock">
+    <div class="seg">
+      <button data-f="open" class="on">Open</button>
+      <button data-f="ready">Ready</button>
+      <button data-f="all">All</button>
+    </div>
+    <button class="ib" id="bHeld" title="Show pieces you already hold">✓</button>
+    <div id="opw">
+      <input type="range" id="op" min="15" max="100" value="92" title="Transparency">
+      <span id="opv">92%</span>
+    </div>
+    <div id="grip" title="Drag to resize"></div>
+  </div>
+
+</div>
+<script>
+const SKY={"islands":{"1":{"n":"1","name":"Fairy Island","boss":"Thunder Spirit Princess","d":1},"2":{"n":"2","name":"Imp Island","boss":"Protector of Sky","d":3},"3":{"n":"3","name":"Harpy Island","boss":"Gorgalosk","d":4},"4":{"n":"4","name":"Pegasus Island","boss":"Keeper of Souls","d":5},"5":{"n":"5","name":"Bird Island","boss":"The Spiroc Lord — farmable","d":6},"6":{"n":"6","name":"Bee Island","boss":"Bazzt Zzzt","d":7},"7":{"n":"7","name":"Drake Island","boss":"Sister of the Spire — farmable","d":8},"8":{"n":"8","name":"Butterfly Island","boss":"Eye of Veeshan","d":9},"1.5":{"n":"1.5","name":"Noble Island","boss":"Noble Dojorn — week spawn","d":2},"any":{"n":"—","name":"Zone-wide","boss":"wind runes, any mob","d":0}},"order":["BRD","BST","BER","CLR","DRU","ENC","MAG","MNK","NEC","PAL","RNG","ROG","SHD","SHM","WAR","WIZ"],"classes":{"BRD":{"label":"Bard","abbr":"BRD","hub":"Cilin Spellsinger","armor":"Chain","verified":1,"quests":[{"name":"Test of Tone","giver":"Clarisa Spiritsong","say":"choose Clarisa → tone","reward":"Mask of Song","slot":"Face","stats":"AC 12 · STR/DEX/STA/CHA/WIS/INT/AGI +3 · all five resists +7","haste":0,"items":[{"name":"Light Woolen Mask","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Meda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BRD.0","alt":null},{"name":"Test of Voice","giver":"Clarisa Spiritsong","say":"choose Clarisa → voice","reward":"Mantle of the Songweaver","slot":"Shoulders","stats":"AC 9 · STR +7 · DEX +7 · CHA +5 · AGI +5 · SV MAGIC +5 · clicky Fury (5)","haste":0,"items":[{"name":"Light Woolen Mantle","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BRD.1","alt":null},{"name":"Test of Pitch","giver":"Clarisa Spiritsong","say":"choose Clarisa → pitch","reward":"Ervaj's Flute of Flight","slot":"Primary","stats":"Wind Resonance 12 · STR +8 · STA +10 · CHA +10 · INT +5","haste":0,"items":[{"name":"Crude Wooden Flute","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BRD.2","alt":null},{"name":"Test of Wind","giver":"Denise Songweaver","say":"choose Denise → wind","reward":"Fae Amulet","slot":"Neck","stats":"AC 5 · DEX +4 · STA +4 · HP +50 · SV DISEASE/POISON +10 · clicky Healing (4)","haste":0,"items":[{"name":"Amulet of Woven Hair","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Caza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BRD.3","alt":"Amulet of the Fae"},{"name":"Test of Brass","giver":"Denise Songweaver","say":"choose Denise → brass","reward":"Denon's Horn of Disaster","slot":"Primary","stats":"Brass Resonance 15 · STR +5 · CHA +10 · INT +5 · HP +50","haste":0,"items":[{"name":"Glowing Diamond","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Efreeti War Horn","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Fana","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BRD.4","alt":null},{"name":"Test of Harmony","giver":"Denise Songweaver","say":"choose Denise → harmony","reward":"Harmonic Spear","slot":"Primary","stats":"Piercing 10 / 21 · STR +5 · DEX +5 · CHA +5 · proc Chant of Battle","haste":0,"items":[{"name":"Nebulous Diamond","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti War Spear","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Heda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BRD.5","alt":"Spear of Harmony"}]},"BST":{"label":"Beastlord","abbr":"BST","hub":"Animist Kratho","armor":"Leather","verified":1,"quests":[{"name":"Test of Aviak","giver":"Animist Kratho","say":"aviak","reward":"Spiroc Beak Earcuff","slot":"Ear","stats":"AC 4 · HP +10 · Mana +10 · End +10 · WIS +5 · CHA +5 · click Vigor of Zehkes (120s)","haste":0,"items":[{"name":"Spiroc Elder's Totem","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Beza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BST.0","alt":null},{"name":"Test of Azarack","giver":"Animist Kratho","say":"azarack","reward":"Azarack Skin Wristwraps","slot":"Wrist","stats":"AC 5 · HP +35 · End +10 · STR +5 · STA +5 · DEX +5 · click Whirl Bolt (240s)","haste":0,"items":[{"name":"Azarack Skin","islands":["2"],"mob":"Protector of Sky","rune":false,"flag":null,"mobs":["Protector of Sky"],"named":true,"note":null},{"name":"Wind Rune Heda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BST.1","alt":null},{"name":"Test of Claw","giver":"Animist Kratho","say":"claw","reward":"Windhowl + Spirit Render","slot":"Primary / Secondary","stats":"Windhowl H2H 12 / 22 · HP +55 · End +25 · proc Herikol's Soothing — paired with Spirit Render H2H 10 / 23 · HP 25 · Mana 25 · proc Sha's Lethargy","haste":0,"items":[{"name":"Sphinx Claw","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Mithril Bands","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Brass Knuckles","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BST.2","alt":null},{"name":"Test of Harpy","giver":"Animist Kratho","say":"harpy","reward":"Griffin-Hide Armguards","slot":"Arms","stats":"AC 6 · STA +4 · WIS +3 · End +15 · all five resists +5","haste":0,"items":[{"name":"Leather Cord","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BST.3","alt":null},{"name":"Test of Wind","giver":"Animist Kratho","say":"wind","reward":"Diaphonous Waistband","slot":"Waist","stats":"AC 5 · STR +5 · WIS +10 · DEX +10 · Haste +41%","haste":41,"items":[{"name":"Silken Wrap","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Geza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BST.4","alt":null}]},"BER":{"label":"Berserker","abbr":"BER","hub":"Stragen The Hewer","armor":"Chain","verified":1,"quests":[{"name":"Test of Sharpness","giver":"Stragen The Hewer","say":"sharpness","reward":"Skycleaver","slot":"Primary","stats":"2H Slash 30 / 35 · Dmg Bonus 24 · STA +5 · DEX +10 · SV DISEASE +5 · combat effect Haste","haste":0,"items":[{"name":"Djinni War Blade","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Efreeti Standard","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Jaka","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BER.0","alt":null},{"name":"Test of Will","giver":"Stragen The Hewer","say":"will","reward":"Molten Coil","slot":"Finger","stats":"AC 5 · Mana −55 · STR +6 · STA +5 · AGI +5 · DEX +6 · CHA +10 · SV FIRE +5","haste":0,"items":[{"name":"Pulsating Ruby","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BER.1","alt":null},{"name":"Test of Ferocity","giver":"Stragen The Hewer","say":"ferocity","reward":"Sash of Ferocity","slot":"Waist","stats":"AC 10 · STR +6 · DEX +5 · SV MAGIC +5 · Haste +41%","haste":41,"items":[{"name":"High Quality Raiment","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Ozah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BER.2","alt":null},{"name":"Test of Burden","giver":"Stragen The Hewer","say":"burden","reward":"Shroud of the Sky","slot":"Shoulders","stats":"AC 8 · HP +25 · End +25 · STR +7 · WIS +7 · DEX +7 · click Raging Strength (120s)","haste":0,"items":[{"name":"Feathered Cape","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BER.3","alt":null},{"name":"Test of Blood","giver":"Stragen The Hewer","say":"blood","reward":"Blood-Drawn Runes","slot":"Chest","stats":"HP +55 · End +25 · STR +10 · STA +10 · AGI +5 · DEX +10 · HP Regen +10","haste":0,"items":[{"name":"Azarack Blood","islands":["2"],"mob":"Protector of Sky","rune":false,"flag":null,"mobs":["Protector of Sky"],"named":true,"note":null},{"name":"Wind Rune Lena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BER.4","alt":null},{"name":"Test of Fools Errand","giver":"Stragen The Hewer","say":"fools errand","reward":"Cudgel of the Fool","slot":"Primary","stats":"2H Blunt 45 / 52 · Dmg Bonus 40 · INT −7 · proc Fury of the Chosen","haste":0,"items":[{"name":"Jester's Mask","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Efreeti Great Staff","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":{"k":"conflict","t":"eqlsource lists the Efreeti set (1.5 / 4 / 8). eqlegendstools lists Eye of Veeshan on 8. Both shown."}},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"BER.5","alt":null}]},"CLR":{"label":"Cleric","abbr":"CLR","hub":"Josin Faithbringer","armor":"Plate","verified":1,"quests":[{"name":"Test of Courage","giver":"Alan Harten","say":"choose Alan → courage","reward":"Truewind Earring","slot":"Ear","stats":"DEX +5 · WIS +9 · SV COLD +10","haste":0,"items":[{"name":"Silver Hoop","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Lena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"CLR.0","alt":null},{"name":"Test of Skill","giver":"Alan Harten","say":"choose Alan → skill","reward":"Aegis of the Wind","slot":"Secondary","stats":"AC 25 · WIS +9 · MANA +60 · SV DISEASE +10","haste":0,"items":[{"name":"Small Shield","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Meda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"CLR.1","alt":null},{"name":"Test of Protection","giver":"Alan Harten","say":"choose Alan → protection","reward":"Pauldrons of Piety","slot":"Shoulders","stats":"AC 11 · STA +8 · CHA +2 · WIS +12 · MANA +35","haste":0,"items":[{"name":"Shiny Pauldrons","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Caza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"CLR.2","alt":null},{"name":"Test of Resolution","giver":"Deric Lennox","say":"choose Deric → resolution","reward":"Necklace of Resolution","slot":"Neck","stats":"AC 4 · STR +5 · WIS +7 · HP +30 · MANA +15 · Promised Renewal · Charges: unlimited","haste":0,"items":[{"name":"Silvered Spiroc Necklace","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Neza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"CLR.3","alt":null},{"name":"Test of Theurgy","giver":"Deric Lennox","say":"choose Deric → theurgy","reward":"Theurgist's Star","slot":"Primary","stats":"1H Blunt 15 / 25 · WIS +10 · MANA +40 · SV DISEASE/POISON +25 · proc Blessing of the Theurgist","haste":0,"items":[{"name":"Djinni Aura","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Efreeti Mace","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"CLR.4","alt":null},{"name":"Test of The Weak","giver":"Deric Lennox","say":"choose Deric → weak","reward":"Baton of the Sky","slot":"Primary","stats":"2H Blunt 33 / 40 · AC 25 · MANA +75 · STR +10 · STA +10 · WIS +15 · Blessing of the Lord Commander (600s)","haste":0,"items":[{"name":"Mithril Bands","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti Standard","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"CLR.5","alt":null}]},"DRU":{"label":"Druid","abbr":"DRU","hub":"Strandar Pinemist","armor":"Leather","verified":1,"quests":[{"name":"Test of Wolf","giver":"Will Treewalker","say":"choose Will → wolf","reward":"Drake-Hide Mask","slot":"Face","stats":"AC 4 · STR +10 · DEX +10 · WIS +10 · AGI +10 · MANA +10 · SV MAGIC +7","haste":0,"items":[{"name":"Worn Leather Mask","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Meda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"DRU.0","alt":null},{"name":"Test of Bear","giver":"Will Treewalker","say":"choose Will → bear","reward":"Nature Walker's Mantle","slot":"Shoulders","stats":"AC 6 · DEX +4 · WIS +4 · AGI +4 · MANA +50","haste":0,"items":[{"name":"Mantle of Woven Grass","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"DRU.1","alt":null},{"name":"Test of Tree","giver":"Will Treewalker","say":"choose Will → tree","reward":"Shillelagh","slot":"Primary","stats":"1H Blunt 10 / 25 · AC 2 · CHA +4 · WIS +9 · AGI +2 · MANA +50 · SV FIRE +5","haste":0,"items":[{"name":"Spiroc Battle Staff","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Efreeti Statuette","islands":["4"],"mob":"soul / essence griffons","rune":false,"flag":null,"mobs":["soul / essence griffons"],"named":false,"note":{"k":"conflict","t":"eqlsource lists soul / essence griffons on 4. eqlegendstools lists the Efreeti set. Both shown."}},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"DRU.2","alt":null},{"name":"Test of The Bee","giver":"Fenalla Moonshadow","say":"choose Fenalla → bee","reward":"Honeycomb Belt","slot":"Waist","stats":"AC 6 · CHA +2 · WIS +8 · MANA +75 · Haste +26%","haste":26,"items":[{"name":"Divine Honeycomb","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"DRU.3","alt":null},{"name":"Test of Eagle","giver":"Fenalla Moonshadow","say":"choose Fenalla → eagle","reward":"Spiroc Banisher Focus","slot":"Primary / Secondary","stats":"STR −2 · DEX −2 · WIS +20 · AGI −2 · MANA +10","haste":0,"items":[{"name":"Ethereal Ruby","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Spiroc Elder's Totem","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"DRU.4","alt":null},{"name":"Test of Nature","giver":"Fenalla Moonshadow","say":"choose Fenalla → nature","reward":"Espri","slot":"Primary","stats":"1H Slash 10 / 23 · DEX +9 · WIS +9 · MANA +50 · proc Combust","haste":0,"items":[{"name":"Storm Sky Opal","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti Scimitar","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"DRU.5","alt":null}]},"ENC":{"label":"Enchanter","abbr":"ENC","hub":"Enchanter Jolas","armor":"Silk","verified":1,"quests":[{"name":"Test of Illusion","giver":"Lelulean","say":"choose Lelulean → illusion","reward":"Sphinx Hair Cord","slot":"Waist","stats":"AC 4 · CHA +5 · INT +5 · SV FIRE/DISEASE/COLD +10 · no haste","haste":0,"items":[{"name":"Finely Woven Cloth Cord","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Meda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ENC.0","alt":null},{"name":"Test of Metamorphism","giver":"Lelulean","say":"choose Lelulean → metamorphism","reward":"Wind Walker's Mantle","slot":"Shoulders","stats":"AC 6 · STR +5 · DEX +5 · CHA +10 · AGI +2 · HP +50","haste":0,"items":[{"name":"Light Cloth Mantle","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Ozah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ENC.1","alt":null},{"name":"Test of Deception","giver":"Lelulean","say":"choose Lelulean → deception","reward":"Ivory Mask","slot":"Face","stats":"AC 6 · CHA +6 · INT +6 · MANA +30","haste":0,"items":[{"name":"Silken Mask","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Beza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ENC.2","alt":null},{"name":"Test of Disillusion","giver":"Enderbite","say":"choose Enderbite → disillusion","reward":"Earring of Displacement","slot":"Ear","stats":"AC 6 · CHA +4 · INT +4 · MANA +25 · Gravity Flux (2 charges)","haste":0,"items":[{"name":"Adamantium Earring","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Caza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ENC.3","alt":null},{"name":"Test of Memorization","giver":"Enderbite","say":"choose Enderbite → memorization","reward":"Necklace of Whispering Winds","slot":"Neck","stats":"AC 4 · STA +5 · CHA +10 · INT +5 · MANA +35 · Cajoling Whispers (2 charges)","haste":0,"items":[{"name":"Glowing Necklace","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Fana","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ENC.4","alt":null},{"name":"Test of Incapacitation","giver":"Enderbite","say":"choose Enderbite → incapacitation","reward":"Rod of the Protecting Winds","slot":"Primary","stats":"2H Blunt 35 / 45 · AC 10 · CHA +15 · INT +15 · MANA +75 · Rune III, infinite charges, 180s","haste":0,"items":[{"name":"Large Sky Sapphire","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti Wind Staff","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ENC.5","alt":null}]},"MAG":{"label":"Magician","abbr":"MAG","hub":"Magus Frinon","armor":"Silk","verified":1,"quests":[{"name":"Test of Clarification","giver":"Frederic Calermin","say":"choose Frederic → clarification","reward":"Bracelet of Clarification","slot":"Back / Wrist","stats":"AC 6 · CHA +1 · INT +9 · MANA +10","haste":0,"items":[{"name":"Feathered Cape","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Lena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.0","alt":null},{"name":"Test of Empowerment","giver":"Frederic Calermin","say":"choose Frederic → empowerment","reward":"Mask of Empowerment","slot":"Face","stats":"AC 4 · DEX +7 · INT +7 · AGI +7 · Burnout III (5 charges)","haste":0,"items":[{"name":"Ceramic Mask","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Neza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.1","alt":null},{"name":"Test of Shielding","giver":"Frederic Calermin","say":"choose Frederic → shielding","reward":"Gold White Pendant","slot":"Neck","stats":"AC 2 · INT +5 · MANA +50","haste":0,"items":[{"name":"Golden Coffer","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.2","alt":null},{"name":"Test of Summoning","giver":"Roanis Elindar","say":"choose Roanis → summoning","reward":"Drake-Hide Amice","slot":"Shoulders","stats":"AC 6 · STA +5 · HP +50 · MANA +50 · Malaise (10 charges)","haste":0,"items":[{"name":"Large Diamond","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.3","alt":null},{"name":"Test of Interpretation","giver":"Roanis Elindar","say":"choose Roanis → interpretation","reward":"Duennan Shielding Ring","slot":"Finger","stats":"AC 4 · WIS +5 · INT +5 · MANA +30 · Harmshield (1 charge)","haste":0,"items":[{"name":"Golden Efreeti Ring","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.4","alt":null},{"name":"Test of Gesticulation","giver":"Roanis Elindar","say":"choose Roanis → gesticulation","reward":"Staff of The Magister","slot":"Primary","stats":"2H Blunt 16 / 48 · INT +15 · MANA +75 · SV FIRE +10 · SV COLD +20 · SV POISON +10","haste":0,"items":[{"name":"Hazy Opal","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti Magi Staff","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Jaka","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.5","alt":null},{"name":"Test of Displacement","giver":"Roanis Elindar","say":"choose Roanis → displacement","reward":"Staff of Elemental Mastery: Air","slot":"Primary","stats":"2H Blunt 15 / 30 · Reclaim Energy · Focus Effect: Servant of Air","haste":0,"items":[{"name":"Crown of Elemental Mastery","islands":["7"],"mob":"drake / sphinx / spirit trash","rune":false,"flag":null,"mobs":["drake / sphinx / spirit trash"],"named":false,"note":{"k":"resolved","t":"Isle 7 sphinx and drakes, agreed by both sources."}},{"name":"Large Opal","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Djinni Stave","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Heda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MAG.6","alt":null}]},"MNK":{"label":"Monk","abbr":"MNK","hub":"Holwin","armor":"Leather","verified":1,"quests":[{"name":"Test of Strength","giver":"Ton Po","say":"Ton Po → strength","reward":"Back Straps of Mastery","slot":"Back / Wrist","stats":"AC 15 · STR +7 · STA +7 · CHA +5 · HP +50","haste":0,"items":[{"name":"Silken Strands","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Caza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MNK.0","alt":null},{"name":"Test of Sight","giver":"Ton Po","say":"Ton Po → sight","reward":"Ton Po's Eye Patch","slot":"Face","stats":"End +25 · STR +8 · DEX +8 · AGI +8 · See Invisible (worn)","haste":0,"items":[{"name":"Cracked Leather Eyepatch","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Geza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MNK.1","alt":null},{"name":"Test of Speed","giver":"Ton Po","say":"Ton Po → speed","reward":"Sandals of Alacrity","slot":"Feet","stats":"AC 6 · STR +10 · AGI +10 · HP +20 · Alacrity (2 charges)","haste":0,"items":[{"name":"Dove Slippers","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Jaka","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MNK.2","alt":null},{"name":"Test of Tears","giver":"Wu the Enlightened","say":"Wu → tears","reward":"Ton Po's Shoulder Wraps","slot":"Shoulders","stats":"AC 8 · STR +4 · DEX +4 · AGI +4 · all five resists +10","haste":0,"items":[{"name":"Silken Wrap","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Beza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MNK.3","alt":null},{"name":"Test of Fists","giver":"Wu the Enlightened","say":"Wu → fists","reward":"Wu's Fist of Mastery","slot":"Primary / Secondary","stats":"1H Blunt 16 / 22 · NO DROP but tooltip carries no LORE flag","haste":0,"items":[{"name":"Nebulous Sapphire","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Brass Knuckles","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Neza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MNK.4","alt":null},{"name":"Test of Tranquility","giver":"Wu the Enlightened","say":"Wu → tranquility","reward":"Golden Sash of Tranquility","slot":"Waist","stats":"AC 5 · Haste +41% · STR +15 · DEX +15 · AGI +15","haste":41,"items":[{"name":"Tear of Quellious","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Lena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"MNK.5","alt":null}]},"NEC":{"label":"Necromancer","abbr":"NEC","hub":"Drakis Bloodcaster","armor":"Silk","verified":1,"quests":[{"name":"Test of Flight","giver":"Jzil Gsix","say":"choose Jzil → flight","reward":"Bloody Griffon-Hide Wrist Guard","slot":"Wrist","stats":"AC 5 · DEX +5 · CHA +10 · INT +5 · AGI +5 · MANA +25 · Levitate (10 charges)","haste":0,"items":[{"name":"Griffon's Beak","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Lena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"NEC.0","alt":null},{"name":"Test of Power","giver":"Jzil Gsix","say":"choose Jzil → power","reward":"Cloak of Spiroc Feathers","slot":"Back","stats":"AC 6 · STR +5 · STA +6 · INT +5 · MANA +50","haste":0,"items":[{"name":"Black Silk Cape","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Neza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"NEC.1","alt":null},{"name":"Test of Mind","giver":"Jzil Gsix","say":"choose Jzil → mind","reward":"Bloodsoaked Raiment","slot":"Shoulders","stats":"AC 4 · DEX +3 · INT +5 · HP +30 · MANA +65","haste":0,"items":[{"name":"Fine Cloth Raiment","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Ozah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"NEC.2","alt":null},{"name":"Test of Heart","giver":"Dugaas Helpyre","say":"choose Dugaas → heart","reward":"Sphinx Heart Amulet","slot":"Neck","stats":"AC 4 · STR +10 · CHA −5 · INT +10 · MANA +25 · SV DISEASE +5 · Ultravision (worn)","haste":0,"items":[{"name":"Pulsating Ruby","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"NEC.3","alt":null},{"name":"Test of Finger","giver":"Dugaas Helpyre","say":"choose Dugaas → finger","reward":"Band of Wailing Winds","slot":"Finger","stats":"AC 2 · INT +5 · MANA +50 · Invoke Fear (3 charges)","haste":0,"items":[{"name":"Ring of Veeshan","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Caza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"NEC.4","alt":null},{"name":"Test of Hands","giver":"Dugaas Helpyre","say":"choose Dugaas → hands","reward":"Gorgon Head Staff","slot":"Primary","stats":"2H Blunt 14 / 41 · INT +15 · MANA +75 · SV DISEASE +25 · proc Tishan's Clash","haste":0,"items":[{"name":"Gorgon Head","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Efreeti Great Staff","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":{"k":"conflict","t":"eqlsource lists the Efreeti set (1.5 / 4 / 8). eqlegendstools lists Eye of Veeshan on 8. Both shown."}},{"name":"Wind Rune Fana","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"NEC.5","alt":null}]},"PAL":{"label":"Paladin","abbr":"PAL","hub":"Dason Goldblade","armor":"Plate","verified":1,"quests":[{"name":"Test of Spirit","giver":"Dirkog Steelhand","say":"tested by Dirkog → spirit","reward":"Girdle of Faith","slot":"Waist","stats":"AC 10 · STR +6 · WIS +6 · AGI +6 · Haste +41%","haste":41,"items":[{"name":"Ivory Sky Diamond","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Lena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"PAL.0","alt":null},{"name":"Test of Sacrifice","giver":"Gregori Lightbringer","say":"tested by Gregori → sacrifice","reward":"Aldryn, Blade of the Ocean","slot":"Primary","stats":"1H Slash 20 / 26 · STR +10 · STA +10 · WIS +8","haste":0,"items":[{"name":"Bixie Sword Blade","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Ozah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"PAL.1","alt":null},{"name":"Test of Love","giver":"Gregori Lightbringer","say":"tested by Gregori → love","reward":"Thelvorn, Blade of Light","slot":"Primary","stats":"1H Slash 20 / 26 · WIS +15 · proc Dismiss Summoned","haste":0,"items":[{"name":"Golden Hilt","islands":["7"],"mob":"drake / sphinx / spirit trash","rune":false,"flag":null,"mobs":["drake / sphinx / spirit trash"],"named":false,"note":{"k":"resolved","t":"Isle 7 sphinx and drakes, agreed by both sources."}},{"name":"Sphinx Claw","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Geza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"PAL.2","alt":null},{"name":"Test of Compassion","giver":"Gregori Lightbringer","say":"tested by Gregori → compassion","reward":"Truvinan","slot":"Primary","stats":"2H Slash 32 / 40 · proc Dismiss Undead","haste":0,"items":[{"name":"Large Sky Diamond","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti Zweihander","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"PAL.3","alt":null}]},"RNG":{"label":"Ranger","abbr":"RNG","hub":"Ranger Spirit","armor":"Chain","verified":0,"quests":[{"name":"Griffon Talon Necklace","giver":"Ranger Spirit","say":"tester chain not confirmed for Legends","reward":"Griffon Talon Necklace","slot":"Neck","stats":"","haste":0,"items":[{"name":"Griffon Talon","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Meda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"RNG.0","alt":null},{"name":"Dark Cloak of the Sky","giver":"Ranger Spirit","say":"tester chain not confirmed for Legends","reward":"Dark Cloak of the Sky","slot":"Back","stats":"","haste":0,"items":[{"name":"Fine Velvet Cloak","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Neza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"RNG.1","alt":null},{"name":"Earthshaker's Mantle","giver":"Ranger Spirit","say":"tester chain not confirmed for Legends","reward":"Earthshaker's Mantle","slot":"Shoulders","stats":"","haste":0,"items":[{"name":"Spiroc Earth Totem","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"RNG.2","alt":null},{"name":"Thunderforged Earring","giver":"Ranger Spirit","say":"tester chain not confirmed for Legends","reward":"Thunderforged Earring","slot":"Ear","stats":"","haste":0,"items":[{"name":"White Gold Earring","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"RNG.3","alt":null},{"name":"Arydryidriyorn","giver":"Ranger Spirit","say":"tester chain not confirmed for Legends","reward":"Arydryidriyorn","slot":"Primary / Secondary","stats":"STR +8 · WIS +8 · HP +50 — partial, Build Forge snapshot","haste":0,"items":[{"name":"Circlet of Brambles","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Efreeti Long Sword","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"RNG.4","alt":null},{"name":"Windstriker","giver":"Ranger Spirit","say":"tester chain not confirmed for Legends","reward":"Windstriker","slot":"Range","stats":"","haste":0,"items":[{"name":"Shimmering Pearl","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti War Bow","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Heda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"RNG.5","alt":null}]},"ROG":{"label":"Rogue","abbr":"ROG","hub":"Thalik Silenthand","armor":"Chain","verified":0,"quests":[{"name":"Wispy Choker of Vigor","giver":"Thalik Silenthand","say":"tester chain not confirmed for Legends","reward":"Wispy Choker of Vigor","slot":"Neck","stats":"","haste":0,"items":[{"name":"Inlaid Choker","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Ozah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ROG.0","alt":null},{"name":"Crystal Mask","giver":"Thalik Silenthand","say":"tester chain not confirmed for Legends","reward":"Crystal Mask","slot":"Face","stats":"","haste":0,"items":[{"name":"Jester's Mask","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ROG.1","alt":null},{"name":"Griffon Wing Spaulders","giver":"Thalik Silenthand","say":"tester chain not confirmed for Legends","reward":"Griffon Wing Spaulders","slot":"Shoulders","stats":"","haste":0,"items":[{"name":"Spiroc Sky Totem","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ROG.2","alt":null},{"name":"Shimmering Bracer of Protection","giver":"Thalik Silenthand","say":"tester chain not confirmed for Legends","reward":"Shimmering Bracer of Protection","slot":"Wrist","stats":"","haste":0,"items":[{"name":"Fine Wool Cloak","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Geza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ROG.3","alt":"Scintillating Bracer of Protection"},{"name":"Renard's Belt of Quickness","giver":"Thalik Silenthand","say":"tester chain not confirmed for Legends","reward":"Renard's Belt of Quickness","slot":"Waist","stats":"","haste":0,"items":[{"name":"Sphinxian Circlet","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ROG.4","alt":null},{"name":"Thornstinger","giver":"Thalik Silenthand","say":"tester chain not confirmed for Legends","reward":"Thornstinger","slot":"Primary","stats":"","haste":0,"items":[{"name":"Bixie Stinger","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Bloodsky Sapphire","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Jaka","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"ROG.5","alt":null}]},"SHD":{"label":"Shadow Knight","abbr":"SHD","hub":"Sarkis Ebonblade","armor":"Plate","verified":0,"quests":[{"name":"Amulet of the Sphinx Eye","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Amulet of the Sphinx Eye","slot":"Neck","stats":"AC 15 · STR +7 · WIS +3 · INT +14 · CHA +3 · MANA +25 · Ultravision (worn)","haste":0,"items":[{"name":"Finely Crafted Amulet","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Ozah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.0","alt":null},{"name":"Crimson Ring of the Djinni","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Crimson Ring of the Djinni","slot":"Finger","stats":"","haste":0,"items":[{"name":"Silvery Ring","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Beza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.1","alt":null},{"name":"Pegasus-Hide Belt","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Pegasus-Hide Belt","slot":"Waist","stats":"","haste":0,"items":[{"name":"Finely Woven Cloth Belt","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.2","alt":null},{"name":"Blood Sky Face Plate","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Blood Sky Face Plate","slot":"Face","stats":"","haste":0,"items":[{"name":"Rusted Pauldrons","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Fana","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.3","alt":null},{"name":"Obtenebrate Mithril Guard","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Obtenebrate Mithril Guard","slot":"Secondary","stats":"","haste":0,"items":[{"name":"Efreeti War Shield","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Heda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.4","alt":null},{"name":"Khyldorn the Blood Drinker","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Khyldorn the Blood Drinker","slot":"Primary","stats":"","haste":0,"items":[{"name":"Blood Sky Ruby","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti War Axe","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.5","alt":null},{"name":"Pearlescent Pauldrons","giver":"Sarkis Ebonblade","say":"tester chain not confirmed for Legends","reward":"Pearlescent Pauldrons","slot":"Shoulders","stats":"","haste":0,"items":[{"name":"Fae Pauldrons","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Sphinxian Ring","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHD.6","alt":null}]},"SHM":{"label":"Shaman","abbr":"SHM","hub":"Medicine Man Veetra","armor":"Chain","verified":0,"quests":[{"name":"Amulet of the Fang","giver":"Medicine Man Veetra","say":"tester chain not confirmed for Legends","reward":"Amulet of the Fang","slot":"Neck","stats":"AC 8 · WIS +8 · CHA +2 · MANA +10 · SV MAGIC +5 · SV FIRE +10","haste":0,"items":[{"name":"Leather Cord","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Meda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHM.0","alt":null},{"name":"Bracelet of the Spirits","giver":"Medicine Man Veetra","say":"tester chain not confirmed for Legends","reward":"Bracelet of the Spirits","slot":"Waist","stats":"","haste":0,"items":[{"name":"Ceremonial Belt","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Kala","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHM.1","alt":null},{"name":"Fairy-Hide Mantle","giver":"Medicine Man Veetra","say":"tester chain not confirmed for Legends","reward":"Fairy-Hide Mantle","slot":"Shoulders","stats":"","haste":0,"items":[{"name":"Light Damask Mantle","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Beza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHM.2","alt":null},{"name":"Vermilion Sky Ring","giver":"Medicine Man Veetra","say":"tester chain not confirmed for Legends","reward":"Vermilion Sky Ring","slot":"Finger","stats":"AC 5 · DEX +3 · WIS +7 · SV DISEASE +20 · Feign Death (2 charges) — classic tooltip","haste":0,"items":[{"name":"Bixie Essence","islands":["6"],"mob":"bee mobs","rune":false,"flag":null,"mobs":["bee mobs"],"named":false,"note":null},{"name":"Spiritualist's Ring","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Heda","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHM.3","alt":null},{"name":"Warhammer of the Wind","giver":"Medicine Man Veetra","say":"tester chain not confirmed for Legends","reward":"Warhammer of the Wind","slot":"Primary","stats":"","haste":0,"items":[{"name":"Corrosive Venom","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Efreeti War Club","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Ena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHM.4","alt":null},{"name":"Garduk","giver":"Medicine Man Veetra","say":"tester chain not confirmed for Legends","reward":"Garduk","slot":"Primary","stats":"Piercing 23 / 40 · WIS +15 · MANA +75 · proc Tagar's Insects — classic tooltip","haste":0,"items":[{"name":"Symbol of Veeshan","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti War Maul","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Geza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"SHM.5","alt":null}]},"WAR":{"label":"Warrior","abbr":"WAR","hub":"Torgon Blademaster","armor":"Plate","verified":1,"quests":[{"name":"Test of Skill","giver":"Falorn","say":"tested by Falorn → test of blades → skill","reward":"Azure Ruby Ring","slot":"Finger","stats":"AC 5 · STR +6 · DEX +9 · STA +6","haste":0,"items":[{"name":"Azure Ring","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Neza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WAR.0","alt":null},{"name":"Test of Force","giver":"Falorn","say":"… test of blades → force","reward":"Pauldrons of the Blue Sky","slot":"Shoulders","stats":"AC 12 · STR +8 · DEX +10 · STA +7 · AGI +10 · Spirit of Cheetah (3 charges)","haste":0,"items":[{"name":"Spiroc Air Totem","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Beza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WAR.1","alt":null},{"name":"Test of Strength","giver":"Falorn","say":"… test of blades → strength","reward":"Runed Wind Amulet","slot":"Neck","stats":"AC 6 · STR +7 · AGI +7 · HP +40","haste":0,"items":[{"name":"Stone Amulet","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Azia","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WAR.2","alt":null},{"name":"Test of Think","giver":"Ogog","say":"tested by ogog → ready for ogog → think","reward":"Belt of the Four Winds","slot":"Waist","stats":"AC 5 · STR +12 · DEX +6 · STA +12 · AGI +6 · SV MAGIC +5 · Haste +41%","haste":41,"items":[{"name":"Efreeti Belt","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Tablet","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Wind Rune Fana","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WAR.3","alt":null},{"name":"Test of Smash","giver":"Ogog","say":"… ready for ogog → smash","reward":"Dagas","slot":"Primary / Secondary","stats":"1H Slash 11 / 21 · AC 20 · STR +3 · AGI +2 · HP +100 · Lore Equipped","haste":0,"items":[{"name":"Djinni War Blade","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Gem of Invigoration","islands":["7"],"mob":"drake / sphinx / spirit trash","rune":false,"flag":"source unconfirmed","mobs":["drake / sphinx / spirit trash"],"named":false,"note":{"k":"resolved","t":"eqlsource flagged the source unconfirmed; eqlegendstools names Isle 7 sphinx and drakes. Taken as resolved."}},{"name":"Wind Rune Jaka","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WAR.4","alt":null},{"name":"Test of Bash","giver":"Ogog","say":"… ready for ogog → bash","reward":"Fangol","slot":"Primary","stats":"2H Slash 29 / 35 · STR +3 · DEX +10 · STA +10 · SV POISON +5 · proc Fangol's Breath","haste":0,"items":[{"name":"Efreeti Battle Axe","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Ethereal Emerald","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WAR.5","alt":null}]},"WIZ":{"label":"Wizard","abbr":"WIZ","hub":"Wizard Schrock","armor":"Silk","verified":0,"quests":[{"name":"Augmentor's Mask","giver":"Wizard Schrock","say":"tester chain not confirmed for Legends","reward":"Augmentor's Mask","slot":"Face","stats":"AC 6 · AGI +8 · DEX +4 · INT +9 · MANA +9 — Build Forge snapshot","haste":0,"items":[{"name":"Grey Damask Cloak","islands":["3"],"mob":"Gorgalosk","rune":false,"flag":null,"mobs":["Gorgalosk"],"named":true,"note":null},{"name":"Wind Rune Dena","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WIZ.0","alt":null},{"name":"Al`Kabor's Cap of Binding","giver":"Wizard Schrock","say":"tester chain not confirmed for Legends","reward":"Al`Kabor's Cap of Binding","slot":"Head","stats":"AC 6 · STR +5 · INT +8 · HP +40 · MANA +20 · SV FIRE/COLD +10 — Build Forge snapshot","haste":0,"items":[{"name":"Woven Skull Cap","islands":["4"],"mob":"Keeper of Souls","rune":false,"flag":null,"mobs":["Keeper of Souls"],"named":true,"note":null},{"name":"Wind Rune Fana","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WIZ.1","alt":null},{"name":"Raiment of Thunder","giver":"Wizard Schrock","say":"tester chain not confirmed for Legends","reward":"Raiment of Thunder","slot":"Shoulders","stats":"","haste":0,"items":[{"name":"High Quality Raiment","islands":["5"],"mob":"The Spiroc Lord","rune":false,"flag":null,"mobs":["The Spiroc Lord"],"named":true,"note":null},{"name":"Wind Rune Geza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WIZ.2","alt":null},{"name":"Solidate Mithril Ring","giver":"Wizard Schrock","say":"tester chain not confirmed for Legends","reward":"Solidate Mithril Ring","slot":"Finger","stats":"","haste":0,"items":[{"name":"Box of Winds","islands":["6"],"mob":"Bazzt Zzzt","rune":false,"flag":null,"mobs":["Bazzt Zzzt"],"named":true,"note":null},{"name":"Efreeti Statuette","islands":["4"],"mob":"soul / essence griffons, Eternal Spirit","rune":false,"flag":null,"mobs":["soul / essence griffons, Eternal Spirit"],"named":false,"note":{"k":"conflict","t":"eqlsource lists soul / essence griffons on 4. eqlegendstools lists the Efreeti set. Both shown."}},{"name":"Wind Rune Izah","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WIZ.3","alt":null},{"name":"Amulet of the Void","giver":"Wizard Schrock","say":"tester chain not confirmed for Legends","reward":"Amulet of the Void","slot":"Neck","stats":"AC 4 · AGI +5 · DEX +5 · INT +5 · CHA +5 · MANA +50 — Build Forge snapshot","haste":0,"items":[{"name":"Amethyst Amulet","islands":["7"],"mob":"Sister of the Spire","rune":false,"flag":null,"mobs":["Sister of the Spire"],"named":true,"note":null},{"name":"Wind Rune Jaka","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WIZ.4","alt":null},{"name":"Nargon's Staff","giver":"Wizard Schrock","say":"tester chain not confirmed for Legends","reward":"Nargon's Staff","slot":"Primary","stats":"","haste":0,"items":[{"name":"Large Sky Lapis","islands":["8"],"mob":"Eye of Veeshan","rune":false,"flag":null,"mobs":["Eye of Veeshan"],"named":true,"note":null},{"name":"Efreeti War Staff","islands":["1.5","4","8"],"mob":"Noble Dojorn · Overseer of Air · the Hand of Veeshan","rune":false,"flag":null,"mobs":["Noble Dojorn","Overseer of Air","the Hand of Veeshan"],"named":true,"note":null},{"name":"Wind Rune Caza","islands":["any"],"mob":"random zone-wide drop","rune":true,"flag":null,"mobs":["random zone-wide drop"],"named":false,"note":null}],"id":"WIZ.5","alt":null}]}},"demand":{"Light Woolen Mask":["BRD.0"],"Wind Rune Meda":["BRD.0","CLR.1","DRU.0","ENC.0","RNG.0","SHM.0"],"Light Woolen Mantle":["BRD.1"],"Wind Rune Kala":["BRD.1","BST.3","CLR.4","DRU.1","RNG.2","SHD.5","SHM.1"],"Crude Wooden Flute":["BRD.2"],"Wind Rune Azia":["BRD.2","BER.3","DRU.2","MAG.2","NEC.3","RNG.3","WAR.2"],"Amulet of Woven Hair":["BRD.3"],"Wind Rune Caza":["BRD.3","CLR.2","ENC.3","MNK.0","NEC.4","WIZ.5"],"Glowing Diamond":["BRD.4"],"Efreeti War Horn":["BRD.4"],"Wind Rune Fana":["BRD.4","ENC.4","NEC.5","SHD.3","WAR.3","WIZ.1"],"Nebulous Diamond":["BRD.5"],"Efreeti War Spear":["BRD.5"],"Wind Rune Heda":["BRD.5","BST.1","MAG.6","RNG.5","SHD.4","SHM.3"],"Spiroc Elder's Totem":["BST.0","DRU.4"],"Wind Rune Beza":["BST.0","ENC.2","MNK.3","SHD.1","SHM.2","WAR.1"],"Azarack Skin":["BST.1"],"Sphinx Claw":["BST.2","PAL.2"],"Mithril Bands":["BST.2","CLR.5"],"Brass Knuckles":["BST.2","MNK.4"],"Wind Rune Izah":["BST.2","DRU.5","ENC.5","PAL.3","ROG.4","SHD.6","WIZ.3"],"Leather Cord":["BST.3","SHM.0"],"Silken Wrap":["BST.4","MNK.3"],"Wind Rune Geza":["BST.4","MNK.1","PAL.2","ROG.3","SHM.5","WIZ.2"],"Djinni War Blade":["BER.0","WAR.4"],"Efreeti Standard":["BER.0","CLR.5"],"Wind Rune Jaka":["BER.0","MAG.5","MNK.2","ROG.5","WAR.4","WIZ.4"],"Pulsating Ruby":["BER.1","NEC.3"],"Wind Rune Ena":["BER.1","CLR.5","DRU.4","MAG.4","RNG.4","ROG.2","SHM.4"],"High Quality Raiment":["BER.2","WIZ.2"],"Wind Rune Ozah":["BER.2","ENC.1","NEC.2","PAL.1","ROG.0","SHD.0"],"Feathered Cape":["BER.3","MAG.0"],"Azarack Blood":["BER.4"],"Wind Rune Lena":["BER.4","CLR.0","MAG.0","MNK.5","NEC.0","PAL.0"],"Jester's Mask":["BER.5","ROG.1"],"Efreeti Great Staff":["BER.5","NEC.5"],"Wind Rune Dena":["BER.5","DRU.3","MAG.3","ROG.1","SHD.2","WAR.5","WIZ.0"],"Silver Hoop":["CLR.0"],"Small Shield":["CLR.1"],"Shiny Pauldrons":["CLR.2"],"Silvered Spiroc Necklace":["CLR.3"],"Wind Rune Neza":["CLR.3","MAG.1","MNK.4","NEC.1","RNG.1","WAR.0"],"Djinni Aura":["CLR.4"],"Efreeti Mace":["CLR.4"],"Worn Leather Mask":["DRU.0"],"Mantle of Woven Grass":["DRU.1"],"Spiroc Battle Staff":["DRU.2"],"Efreeti Statuette":["DRU.2","WIZ.3"],"Divine Honeycomb":["DRU.3"],"Ethereal Ruby":["DRU.4"],"Storm Sky Opal":["DRU.5"],"Efreeti Scimitar":["DRU.5"],"Finely Woven Cloth Cord":["ENC.0"],"Light Cloth Mantle":["ENC.1"],"Silken Mask":["ENC.2"],"Adamantium Earring":["ENC.3"],"Glowing Necklace":["ENC.4"],"Large Sky Sapphire":["ENC.5"],"Efreeti Wind Staff":["ENC.5"],"Ceramic Mask":["MAG.1"],"Golden Coffer":["MAG.2"],"Large Diamond":["MAG.3"],"Golden Efreeti Ring":["MAG.4"],"Hazy Opal":["MAG.5"],"Efreeti Magi Staff":["MAG.5"],"Crown of Elemental Mastery":["MAG.6"],"Large Opal":["MAG.6"],"Djinni Stave":["MAG.6"],"Silken Strands":["MNK.0"],"Cracked Leather Eyepatch":["MNK.1"],"Dove Slippers":["MNK.2"],"Nebulous Sapphire":["MNK.4"],"Tear of Quellious":["MNK.5"],"Griffon's Beak":["NEC.0"],"Black Silk Cape":["NEC.1"],"Fine Cloth Raiment":["NEC.2"],"Ring of Veeshan":["NEC.4"],"Gorgon Head":["NEC.5"],"Ivory Sky Diamond":["PAL.0"],"Bixie Sword Blade":["PAL.1"],"Golden Hilt":["PAL.2"],"Large Sky Diamond":["PAL.3"],"Efreeti Zweihander":["PAL.3"],"Griffon Talon":["RNG.0"],"Fine Velvet Cloak":["RNG.1"],"Spiroc Earth Totem":["RNG.2"],"White Gold Earring":["RNG.3"],"Circlet of Brambles":["RNG.4"],"Efreeti Long Sword":["RNG.4"],"Shimmering Pearl":["RNG.5"],"Efreeti War Bow":["RNG.5"],"Inlaid Choker":["ROG.0"],"Spiroc Sky Totem":["ROG.2"],"Fine Wool Cloak":["ROG.3"],"Sphinxian Circlet":["ROG.4"],"Bixie Stinger":["ROG.5"],"Bloodsky Sapphire":["ROG.5"],"Finely Crafted Amulet":["SHD.0"],"Silvery Ring":["SHD.1"],"Finely Woven Cloth Belt":["SHD.2"],"Rusted Pauldrons":["SHD.3"],"Efreeti War Shield":["SHD.4"],"Blood Sky Ruby":["SHD.5"],"Efreeti War Axe":["SHD.5"],"Fae Pauldrons":["SHD.6"],"Sphinxian Ring":["SHD.6"],"Ceremonial Belt":["SHM.1"],"Light Damask Mantle":["SHM.2"],"Bixie Essence":["SHM.3"],"Spiritualist's Ring":["SHM.3"],"Corrosive Venom":["SHM.4"],"Efreeti War Club":["SHM.4"],"Symbol of Veeshan":["SHM.5"],"Efreeti War Maul":["SHM.5"],"Azure Ring":["WAR.0"],"Spiroc Air Totem":["WAR.1"],"Stone Amulet":["WAR.2"],"Efreeti Belt":["WAR.3"],"Wind Tablet":["WAR.3"],"Gem of Invigoration":["WAR.4"],"Efreeti Battle Axe":["WAR.5"],"Ethereal Emerald":["WAR.5"],"Grey Damask Cloak":["WIZ.0"],"Woven Skull Cap":["WIZ.1"],"Box of Winds":["WIZ.3"],"Amethyst Amulet":["WIZ.4"],"Large Sky Lapis":["WIZ.5"],"Efreeti War Staff":["WIZ.5"]},"shared":["Brass Knuckles","Djinni War Blade","Efreeti Great Staff","Efreeti Standard","Efreeti Statuette","Feathered Cape","High Quality Raiment","Jester's Mask","Leather Cord","Mithril Bands","Pulsating Ruby","Silken Wrap","Sphinx Claw","Spiroc Elder's Totem","Wind Rune Azia","Wind Rune Beza","Wind Rune Caza","Wind Rune Dena","Wind Rune Ena","Wind Rune Fana","Wind Rune Geza","Wind Rune Heda","Wind Rune Izah","Wind Rune Jaka","Wind Rune Kala","Wind Rune Lena","Wind Rune Meda","Wind Rune Neza","Wind Rune Ozah"]}
+;
+
+/* ============================================================================
+   Sky Ledger — Plane of Sky tracking engine for EverQuest Legends
+   Pure logic. No DOM. Runs identically in the browser and under node for tests.
+
+   PROVENANCE — every pattern below is quoted from the client's own string
+   table, `eqstr_us.txt` (header EQST0004, 7,120 entries), read out of
+   C:\Users\Public\Daybreak Game Company\Installed Games\EverQuest Legends
+   on 15 Aug 2026. The numeric ID in each comment is the client's ID for that
+   format string, so any claim here can be re-checked in one grep.
+
+   Two tails do NOT appear in the string table and are therefore server-
+   composed. They are quoted instead from a real 986,514-line Legends log
+   (Avenrae / rivervale, 11-14 Aug 2026), where they occur 602 and 79 times:
+       " and sold it for ..."      autosell on pickup
+       " to create a ..."          loot consumed by an upgrade combine
+   This is why the string table alone is not sufficient ground truth, and why
+   the log corpus is cited alongside it.
+
+   Credits:
+     - The autosell / combine / upgrade-tier edge cases follow eqltools.com's
+       sky-core, community work by sowoky. Reimplemented, not copied. The log
+       corpus above independently confirms all three are real.
+     - Corpse-owner capture, kill attribution, pooled allocation and observed
+       drop rates are ours.
+   ========================================================================== */
+(function (root, factory) {
+  if (typeof module === "object" && module.exports) module.exports = factory();
+  else root.SkyEngine = factory();
+})(typeof self !== "undefined" ? self : this, function () {
+  "use strict";
+
+  const TS = String.raw`^\[(\w{3} \w{3} \d{2} \d{2}:\d{2}:\d{2} \d{4})\] `;
+
+  const RX = {
+    /* ── items ──────────────────────────────────────────────────────────────
+       eqstr 467  --You have looted %1 %2 from %3.--
+       eqstr 466  --%1 has looted %2 %3 from %4.--   (another player; ignored)
+       %1 is a quantity, %3 is rendered "<mob>'s corpse" (eqstr 1223 "%1's corpse").
+       The corpse owner is CAPTURED — unlike every tracker we surveyed — because
+       that group is what makes an observed drop rate possible without trusting
+       a kill line to be adjacent to the loot line. */
+    loot: new RegExp(TS + String.raw`(?:--)?You (?:have )?looted (?:an? |([\d,]+) )?(.+) from (.+?)'s corpse(.*)$`),
+    /* eqstr 10012  You offered %1 %2 to %3. */
+    offer: new RegExp(TS + String.raw`You offered ([\d,]+) (.+?) to (.+?)\.$`),
+    /* eqstr 1105  I have no need for this, %3. You can have it back.
+       Wrapped by the client's say line as "<NPC> says, '<text>'" — the wrapper
+       shape is confirmed from the log corpus. %3 is the PLAYER, not the item. */
+    back: new RegExp(TS + String.raw`(.+?) says, 'I have no need for this, (.+?)\. You can have it back\.'$`),
+    /* eqstr 9122  You complete the trade with %1. */
+    done: new RegExp(TS + String.raw`You complete the trade with (.+?)\.$`),
+    /* eqstr 9123  You complete the trade.   — no NPC named. See consume(). */
+    doneBare: new RegExp(TS + String.raw`You complete the trade\.$`),
+    /* eqstr 8080  You successfully destroyed %1 %2. */
+    gone: new RegExp(TS + String.raw`You successfully destroyed ([\d,]+) (.+?)\.$`),
+    /* eqstr 1361  You receive%1 from %2 for the %3(s).
+       The format string has no space after "receive" because %1 (a money
+       string) carries its own leading space. \s* rather than a literal space. */
+    vendor: new RegExp(TS + String.raw`You receive\s*(.+?) from (.+?) for the (.+?)\(s\)\.$`),
+    /* eqstr 799  You receive %1 from %2 for the contents of your bag.
+       A bag sale names no items. We cannot know what left the bags, so we
+       record that it happened and say so rather than silently drifting. */
+    vendorBag: new RegExp(TS + String.raw`You receive\s*(.+?) from (.+?) for the contents of your bag\.$`),
+
+    /* ── zone ───────────────────────────────────────────────────────────────
+       eqstr 12357  You have entered %1.
+       Two other strings share the prefix and are NOT zones — they are rejected
+       in zoneOf() by the lowercase-article rule:
+         eqstr 6372   You have entered an area where levitation effects ...
+         eqstr 12009  You have entered an Arena (PvP) area. */
+    zone: new RegExp(TS + String.raw`You have entered (.+?)\.$`),
+
+    /* ── kills ──────────────────────────────────────────────────────────────
+       All three original patterns are now CONFIRMED verbatim against the
+       client. The 1999-era inference happened to be correct; it is no longer
+       an inference. What was wrong was who gets credit — see attribute().
+         eqstr 12113  You have slain %1!
+         eqstr 12114  %1 has been slain by %2!
+         eqstr 12112  %1 died.
+         eqstr 440    Your pet has slain %1!          (was not handled at all)
+         eqstr 12106  You died.                        (was booked as a kill)
+         eqstr 12107  You have been slain by %1!
+         eqstr 12115  %1 has been slain by an unseen hand! */
+    petSlain: new RegExp(TS + String.raw`Your pet has slain (.+?)!$`),
+    slainByYou: new RegExp(TS + String.raw`You have slain (.+?)!$`),
+    youDied: new RegExp(TS + String.raw`You died\.$`),
+    youSlain: new RegExp(TS + String.raw`You have been slain by (.+?)!$`),
+    /* eqstr 12108 — your death with no killer named. Without this it falls
+       through to nothing and your death goes uncounted. */
+    youSlainUnseen: new RegExp(TS + String.raw`You have been slain by an unseen hand!$`),
+    slain: new RegExp(TS + String.raw`(.+?) has been slain by (.+?)!$`),
+    died: new RegExp(TS + String.raw`(.+?) died\.$`),
+
+    /* ── who counts as yours ────────────────────────────────────────────────
+       The roster is LEARNED from the log. Order matters in consume(): the
+       "You ..." forms must be tested before the "%1 ..." forms, because
+       "You have joined the raid." also satisfies `(.+?) joined the raid.`
+         eqstr 1399   %1 has joined the group.
+         eqstr 12005  %1 has left the group.
+         eqstr 12004  You have joined the group.
+         eqstr 12001  You have been removed from the group.
+         eqstr 12002  Your group has been disbanded.
+         eqstr 5059   %1 joined the raid.
+         eqstr 5063   %1 has left the raid.
+         eqstr 5083   You have joined the raid.
+         eqstr 5062   You were removed from the raid.
+         eqstr 5071   Your raid was disbanded. */
+    youJoinGroup: new RegExp(TS + String.raw`You have joined the group\.$`),
+    youLeaveGroup: new RegExp(TS + String.raw`You have been removed from the group\.$`),
+    groupDisband: new RegExp(TS + String.raw`Your group has been disbanded\.$`),
+    /* EverQuest character names are a single word, and these lines only ever
+       name players. (\S+) rather than (.+?) makes them unambiguous: it is what
+       stops "Bob has joined the raid." from being read by the `joined the
+       raid` pattern with a captured name of "has". */
+    joinGroup: new RegExp(TS + String.raw`(\S+) has joined the group\.$`),
+    leaveGroup: new RegExp(TS + String.raw`(\S+) has left the group\.$`),
+    youJoinRaid: new RegExp(TS + String.raw`You have joined the raid\.$`),
+    youLeaveRaid: new RegExp(TS + String.raw`You were removed from the raid\.$`),
+    raidDisband: new RegExp(TS + String.raw`Your raid was disbanded\.$`),
+    joinRaid: new RegExp(TS + String.raw`(\S+) joined the raid\.$`),
+    leaveRaid: new RegExp(TS + String.raw`(\S+) has left the raid\.$`),
+
+    /* Your pet identifies itself. Every one of the client's pet-chatter
+       strings ends ", Master." — eqstr 1130/1131/1132/1133/1138/489/490.
+       Catching one teaches us the pet's name, so kills credited to the pet by
+       name (rather than by eqstr 440) can also be attributed to you. */
+    /* ONLY the client's actual pet phrases (eqstr 438, 489, 490, 1130-1133,
+       1138). Matching anything ending ", Master." let a stranger typing
+       "ok, Master." in /say become a permanent ally whose every kill entered
+       your drop-rate denominator. */
+    petSpeaks: new RegExp(TS + String.raw`(\S+) says, '(?:Following you|Guarding you|Changing position|Waiting for your order to attack|No longer taunting attackers|Taunting attackers as normal|Failed to taunt my target|Sorry|I beg forgiveness)[^']*, Master\.[^']*'$`),
+
+    /* ── the real credit signal ─────────────────────────────────────────────
+       The killer's NAME is not proof of anything. The client tells you
+       outright whether a kill was yours, and it does so BEFORE printing the
+       kill line — 1 to 4 lines earlier:
+
+         [17:18:40] You gain party experience! (0.592%)
+         [17:18:40] You receive 6 platinum, 9 gold ... from the corpse.
+         [17:18:40] An ire ghast has been slain by an elite dragoon!
+
+       A mob landed the killing blow, and the experience and the corpse were
+       still ours. Attribution by roster alone discarded 222 of 286 kills in
+       the reference corpus — an 18% low bias on every denominator, which
+       reads every drop rate too HIGH. Roster and experience are a UNION:
+       128 kills in that corpus print "You have slain X!" with no experience
+       line at all (trivial cons) and are unambiguously yours.
+         eqstr 138    You gain experience!%1
+         eqstr 139    You gain party experience!%1
+         eqstr 15603  You receive no experience ... as you are in a raid.
+         eqstr 12072  You receive %1 from the corpse%2.   (loot access) */
+    xpGain: new RegExp(TS + String.raw`You gain (?:party )?experience!`),
+    xpRaid: new RegExp(TS + String.raw`You receive no experience for defeating this creature as you are in a raid\.$`),
+    corpseCoin: new RegExp(TS + String.raw`You receive .+ from the corpse`),
+
+    /* ── trades that end without delivering ─────────────────────────────────
+       Offers sit in `pending` until a close consumes them. With no cancel
+       handling they sat there for HOURS and attached themselves to the next
+       unrelated trade with the same NPC — in the reference corpus that booked
+       5 items as delivered that never left the bags, and a fabricated item set
+       on a trade to a quest giver can tick a Sky test complete.
+         eqstr 1450  You have cancelled the trade.
+         eqstr 1448  %1 has cancelled the trade.
+         eqstr 1449  The trade has been cancelled. */
+    cancelMine: new RegExp(TS + String.raw`You have cancelled the trade\.$`),
+    cancelAny: new RegExp(TS + String.raw`The trade has been cancelled\.$`),
+    cancelOther: new RegExp(TS + String.raw`(\S+) has cancelled the trade\.$`),
+
+    /* ── items arriving by routes that are not a corpse ──────────────────────
+         eqstr 1460  You received a %1 from %2.          (NPC hands it over)
+         eqstr 6471  %1 hands you the %2 that was sent from %3.   (parcel)
+         eqstr 6472  ... the stack of %2 %3 ...                   (parcel, stacked) */
+    given: new RegExp(TS + String.raw`You received an? (.+?) from (.+?)\.$`),
+    parcel: new RegExp(TS + String.raw`(.+?) hands you the (?:stack of ([\d,]+) )?(.+?) that was sent from (.+?)\.$`),
+
+    /* eqstr 15518 — a merge eats TWO of the base item and yields one upgraded
+       one. baseName() folds the tier away, so without this the pool never
+       loses the pair and allocate() can call a test ready on items that are
+       already gone. 197 lines in the reference corpus. */
+    merged: new RegExp(TS + String.raw`You have successfully merged two items together to create a new item: (.+?)$`),
+
+    /* eqstr 8067 — the singular of the merchant sale. RX.vendor requires the
+       literal "(s)" and cannot match this one. */
+    vendorOne: new RegExp(TS + String.raw`You receive\s*(.+?) from (.+?) for the (.+?)\.$`),
+  };
+
+  const num = (s) => (s ? parseInt(String(s).replace(/,/g, ""), 10) || 1 : 1);
+
+  /* The log names items at their upgrade tier. "Efreeti Magi Staff +3" and
+     "Efreeti Magi Staff" are the same turn-in. Strip the suffix, and strip the
+     leading article the client sometimes prints. */
+  function baseName(n) {
+    return String(n)
+      .replace(/\s*\+\d+\s*$/, "")
+      /* Legends key-ring variants print as "Gold Plated Koshigatana
+         (Exaltation)". The same item also appears plain, so without this the
+         two land in different buckets and heldOf() subtracts under a key that
+         `looted` never used. */
+      .replace(/\s*\([A-Za-z][A-Za-z ]*\)\s*$/, "")
+      .replace(/^(?:an?|the)\s+/i, "")
+      .trim();
+  }
+
+  /* ── the fifteen wind runes ─────────────────────────────────────────────────
+     Named by the client in dbstr_us.txt ids 75-89, all fifteen carrying the
+     description "Used in Class quests in the Plane of Sky." These names match
+     sky.json's fifteen rune items EXACTLY, which is an independent client-side
+     validation of that slice of the dataset.
+
+     A correction worth recording, because the mistake was instructive. Those
+     dbstr entries sit in a field type used for alternate currency, and the
+     text "Wind Rune" appears zero times in the 986k-line reference log — which
+     looked like proof that runes were currency and could never be counted from
+     a file. It was not proof. That log never entered Sky (`sawSky` is false
+     throughout: it covers Fear, Hate and Nagafen), so the silence said nothing.
+
+     A real /outputfile dump settles it: runes are ORDINARY BAG ITEMS with
+     stack counts, sitting in General bags with item ids 177775-177789.
+
+         General 2-Slot2   Wind Rune Ozah   177778   3   10
+
+     So they are tracked like any other item. The list is kept because it is
+     client-authoritative and useful for validating the dataset, and because
+     the UI offers a hand-entry panel for players who have no dump. */
+  const RUNES = Object.freeze([
+    "Wind Rune Lena", "Wind Rune Meda", "Wind Rune Neza", "Wind Rune Ozah",
+    "Wind Rune Kala", "Wind Rune Azia", "Wind Rune Beza", "Wind Rune Caza",
+    "Wind Rune Dena", "Wind Rune Ena", "Wind Rune Fana", "Wind Rune Geza",
+    "Wind Rune Heda", "Wind Rune Izah", "Wind Rune Jaka",
+  ]);
+  const RUNESET = new Set(RUNES.map((r) => r.toLowerCase()));
+  const isCurrency = (name) => RUNESET.has(String(name || "").toLowerCase());
+
+  /* ── mob identity ───────────────────────────────────────────────────────────
+     The client is not consistent with itself about articles. The same log has
+        "... from an elemental crusader's corpse"
+        "... from giant wooly spider's corpse"      (no article at all)
+        "An elemental crusader has been slain by ..."   (capitalised)
+     and our own dataset holds both "The Spiroc Lord" and "the Hand of Veeshan".
+     One normaliser, applied to BOTH sides of every comparison, is the only way
+     those meet. Display names are kept separately in led.mobSeen for the UI. */
+  function mobKey(n) {
+    return String(n).toLowerCase()
+      .replace(/^(?:an?|the)\s+/, "")
+      .replace(/[.!]+$/, "")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  const nameKey = (n) => String(n).toLowerCase().replace(/\s+/g, " ").trim();
+
+  /* ── zone identity ──────────────────────────────────────────────────────────
+     Legends instances its planar zones and appends a progression tier that
+     classic EverQuest never had. Real lines from the log corpus:
+        "The Plane of Fear 4 (Refined)"
+        "The Plane of Hate - Group 3 (Fused)"
+        "Nagafen's Lair - Group 1 (Awakened)"
+     The tiers seen are Awakened / Adaptive / Fused / Refined. These suffixes
+     appear in NO client string file — they are composed server-side — so only
+     the log proves them. An exact-equality test against "Plane of Sky" could
+     therefore never fire, which is what this function exists to fix. */
+  const INSTANCE = /\s*(?:-\s*Group)?\s*(\d+)\s*\(([A-Za-z][A-Za-z ]*)\)\s*$/;
+
+  function zoneOf(raw) {
+    const s = String(raw == null ? "" : raw).trim();
+    /* Real zone names are proper nouns. The two non-zone strings that share
+       the "You have entered " prefix both begin with a lowercase article, and
+       no Norrathian zone does. That single rule rejects both. */
+    if (/^an?\s/.test(s)) return null;
+    let base = s, instance = null, tier = null;
+    const m = INSTANCE.exec(s);
+    if (m) { instance = parseInt(m[1], 10); tier = m[2].trim(); base = s.slice(0, m.index).trim(); }
+    base = base.replace(/^the\s+/i, "").trim();
+    return { raw: s, base, instance, tier };
+  }
+
+  /* The zone file in the install is airplane.s3d, and dbstr_us.txt calls the
+     place "the Plane of Sky" in item lore. We accept either wording rather
+     than betting on one, and led.zoneRaw always records what the client
+     actually said so a mismatch is visible instead of silent. */
+  const SKY_ZONES = new Set(["plane of sky", "plane of air"]);
+  const isSky = (base) => SKY_ZONES.has(String(base || "").toLowerCase());
+
+  /* A loot line is not proof you kept it. Two tails mean you did not. Both are
+     server-composed and absent from eqstr_us.txt — see the header note. */
+  const wasSold = (tail) => / and sold it for /.test(tail);
+  const wasEaten = (tail) => / to create an? /.test(tail);
+  const kept = (tail) => !wasSold(tail) && !wasEaten(tail);
+
+  const bump = (m, k, v) => m.set(k, (m.get(k) || 0) + (v === undefined ? 1 : v));
+
+  function newLedger() {
+    return {
+      looted: new Map(),        // base name -> looted and kept
+      sold: new Map(),          // autosold on pickup
+      vendored: new Map(),      // sold to a merchant by hand
+      destroyed: new Map(),
+      delivered: new Map(),     // handed over in a closed trade
+      consumed: new Map(),      // eaten by an upgrade combine on pickup
+
+      kills: new Map(),         // mobKey -> kills CREDITED to you or your allies
+      unattributed: new Map(),  // mobKey -> deaths we saw but cannot claim
+      mobSeen: new Map(),       // mobKey -> first-seen display name
+      /* item+mob -> DROP EVENTS, not units. A stack of five wind runes off
+         one corpse is ONE drop, not five: a rate answers "how often does this
+         mob yield this item", and its denominator counts corpses. Counting
+         units here produced rates over 100% and a NaN confidence bound the
+         moment anything stacked. Quantity still lives in `looted`, which is
+         what heldOf() spends. */
+      lootFrom: new Map(),      // "item\u0000mobKey" -> times
+
+      trades: [],               // {npc, items:Map, ts}
+      allies: new Set(),        // nameKey of everyone whose kills count as yours
+      pet: null,                // your pet's display name, if it ever spoke
+      rosterPartial: false,     // you joined a group whose members you never saw
+      deaths: 0,                // your own deaths
+      allyDeaths: 0,            // deaths of people on your roster
+      merged: new Map(),        // eqstr 15518 — two of the base item became one
+      bagSales: 0,              // merchant bag sales — contents unknowable
+      ambiguousTrades: 0,       // eqstr 9123 with no single open offer
+      partialTrades: 0,         // some pieces bounced; which ones is unknowable
+      cancelledTrades: 0,       // offers withdrawn before the trade closed
+      staleOffers: 0,           // offers that outlived their trade window
+
+      zone: null,               // normalised base name, e.g. "Plane of Sky"
+      zoneRaw: null,            // exactly what the client printed
+      zoneTier: null,           // "Fused" etc, or null outside an instance
+      zoneInstance: null,
+      sawSky: false,
+      first: null,
+      last: null,
+      lines: 0,
+    };
+  }
+
+  /* One fold over lines. A file drop and a live tail produce byte-identical
+     ledgers for the same bytes, because nothing here looks ahead. Every branch
+     below is forward-only; preserve that. The experience-credit rule looks
+     BACKWARD only, through a bounded counter, never at future lines. */
+  function createStream(me, opts) {
+    const led = newLedger();
+    const o = opts || {};
+    const pending = new Map();   // npc -> [{n,q,at}] offered, trade not yet closed
+    const refused = new Map();   // npc -> handbacks since the offer
+    const group = new Set(), raid = new Set(), pets = new Set();
+    const seeded = new Set((o.allies || []).map(nameKey));
+    const meKey = me ? nameKey(me) : null;
+
+    let seq = 0;            // every line examined, so distances are measurable
+    let xpPending = 0;      // experience-credit lines not yet claimed by a kill
+    let xpAt = -1e9;        // where the most recent one was
+
+    /* The client prints experience 1-4 lines BEFORE the kill line. 8 is a
+       comfortable margin that still cannot reach the next pull. */
+    const XP_WINDOW = 8;
+    /* An offer older than this is not part of the trade closing now. In the
+       reference corpus a cancelled offer sat in `pending` for 11,000 lines and
+       then attached itself to an unrelated trade two hours later. */
+    const OFFER_WINDOW = 400;
+
+    function refreshAllies() {
+      led.allies = new Set([...seeded, ...group, ...raid, ...pets]);
+      if (meKey) led.allies.add(meKey);
+    }
+    refreshAllies();
+
+    function noteMob(display) {
+      const k = mobKey(display);
+      if (!led.mobSeen.has(k)) led.mobSeen.set(k, String(display).trim());
+      return k;
+    }
+
+    /* -- the attribution rule ------------------------------------------------
+       A drop rate's denominator must be kills whose corpse you could actually
+       have looted. Two signals, and they are a UNION:
+
+         1. the client said you earned experience just now, or
+         2. you, your pet, or a current group/raid member landed it.
+
+       Signal 1 is the client's own answer and outranks everything: a kill can
+       be yours with a MOB named as the killer -- "An ire ghast has been slain
+       by an elite dragoon!" directly after "You gain party experience!".
+       Signal 2 catches trivial-con kills that award no experience at all.
+
+       Anything neither signal claims is counted separately and DISCLOSED.
+       Getting this wrong in either direction fabricates a number: crediting
+       strangers reads every rate low, discarding your own reads every rate
+       high. Roster alone discarded 78% of the kills the player was credited
+       for in the reference corpus. */
+    function claimXp() {
+      if (xpPending > 0 && seq - xpAt <= XP_WINDOW) { xpPending--; return true; }
+      return false;
+    }
+
+    function attribute(mobDisplay, killerDisplay) {
+      const k = noteMob(mobDisplay);
+      const killer = killerDisplay == null ? null : nameKey(killerDisplay);
+      // a roster member being killed is an ally death, not a mob kill
+      if (led.allies.has(nameKey(mobDisplay))) { led.allyDeaths++; claimXp(); return; }
+      const mine = claimXp() || (killer !== null && led.allies.has(killer));
+      if (mine) bump(led.kills, k); else bump(led.unattributed, k);
+    }
+
+    function consume(ln) {
+      seq++;
+      if (ln.charCodeAt(0) !== 91) return false;   // every real line starts '['
+      let m;
+
+      /* Cheap discriminators before the regex chain. 99.7% of a real log is
+         combat and chat spam, and every pattern used to re-test the 26-char
+         timestamp before failing -- ~25M wasted evaluations over one log. */
+      const body = ln.slice(27);
+      const c0 = body.charCodeAt(0);
+      const isYou = c0 === 89 && body.charCodeAt(1) === 111 && body.charCodeAt(2) === 117;
+      const isDash = c0 === 45;
+
+      if (isDash || isYou) {
+        if ((m = RX.loot.exec(ln))) {
+          const item = baseName(m[3]);
+          const mob = noteMob(m[4]);
+          const tail = m[5] || "";
+          const n = num(m[2]);
+          if (kept(tail)) {
+            bump(led.looted, item, n);
+            bump(led.lootFrom, item + "\u0000" + mob, 1);
+          } else if (wasSold(tail)) {
+            bump(led.sold, item, n);
+            /* An autosold drop still happened. It counts for the rate even
+               though it never reached the bags -- otherwise an autosell filter
+               silently deflates every rate the player sees. */
+            bump(led.lootFrom, item + "\u0000" + mob, 1);
+          } else {
+            // eaten by an upgrade combine: not held, but the DROP happened
+            bump(led.consumed, item, n);
+            bump(led.lootFrom, item + "\u0000" + mob, 1);
+          }
+          led.first = led.first || m[1]; led.last = m[1];
+          return true;
+        }
+      }
+
+      if (isYou) {
+        // experience credit -- the kill line that follows claims it
+        if (RX.xpGain.test(ln) || RX.xpRaid.test(ln)) { xpPending++; xpAt = seq; return true; }
+
+        if ((m = RX.offer.exec(ln))) {
+          const npc = m[4];
+          if (!pending.has(npc)) pending.set(npc, []);
+          pending.get(npc).push({ n: baseName(m[3]), q: num(m[2]), at: seq });
+          led.first = led.first || m[1]; led.last = m[1];
+          return true;
+        }
+
+        if ((m = RX.done.exec(ln))) { closeTrade(m[2], m[1]); return true; }
+
+        /* eqstr 9123 names no NPC. One open trade is unambiguous; more than
+           one and we refuse to guess, because a wrong turn-in marks a quest
+           complete that is not. */
+        if ((m = RX.doneBare.exec(ln))) {
+          const open = [...pending.keys()];
+          if (open.length === 1) closeTrade(open[0], m[1]);
+          else if (open.length > 1) led.ambiguousTrades++;
+          led.last = m[1];
+          return true;
+        }
+
+        // eqstr 1450 -- the trade ended with nothing changing hands
+        if (RX.cancelMine.test(ln)) {
+          if (pending.size) led.cancelledTrades++;
+          pending.clear(); refused.clear();
+          return true;
+        }
+
+        if ((m = RX.gone.exec(ln))) { bump(led.destroyed, baseName(m[3]), num(m[2])); led.last = m[1]; return true; }
+        // bag sale first: it also starts "You receive ... from ... for the"
+        if ((m = RX.vendorBag.exec(ln))) { led.bagSales++; led.last = m[1]; return true; }
+        if ((m = RX.vendor.exec(ln))) { bump(led.vendored, baseName(m[4]), 1); led.last = m[1]; return true; }
+        /* eqstr 8067, the singular form. After 1361 and the bag form, both of
+           which it would otherwise swallow, and never the corpse-coin line. */
+        if (body.indexOf(" from the corpse") < 0 && (m = RX.vendorOne.exec(ln))) {
+          bump(led.vendored, baseName(m[4]), 1); led.last = m[1]; return true;
+        }
+
+        /* eqstr 1460 -- an NPC hands you an item. Every quest reward arrives
+           this way, so tracking turn-ins without rewards under-counts held. */
+        if ((m = RX.given.exec(ln))) { bump(led.looted, baseName(m[2]), 1); led.last = m[1]; return true; }
+
+        // eqstr 15518 -- a merge eats TWO of the base item and returns one
+        if ((m = RX.merged.exec(ln))) { bump(led.merged, baseName(m[2]), 1); led.last = m[1]; return true; }
+
+        if ((m = RX.zone.exec(ln))) {
+          const z = zoneOf(m[2]);
+          if (z) {
+            led.zone = z.base; led.zoneRaw = z.raw;
+            led.zoneTier = z.tier; led.zoneInstance = z.instance;
+            if (isSky(z.base)) led.sawSky = true;
+            led.first = led.first || m[1]; led.last = m[1];
+          }
+          pending.clear(); refused.clear();   // a trade cannot survive a zone
+          return true;
+        }
+
+        /* Roster: the "You ..." forms must precede the "%1 ..." forms, or
+           "You have joined the raid." satisfies the bare joined-the-raid one. */
+        if (RX.youJoinGroup.test(ln)) { led.rosterPartial = true; return true; }
+        if (RX.youLeaveGroup.test(ln)) { group.clear(); led.rosterPartial = false; refreshAllies(); return true; }
+        if (RX.youJoinRaid.test(ln)) { led.rosterPartial = true; return true; }
+        if (RX.youLeaveRaid.test(ln)) { raid.clear(); refreshAllies(); return true; }
+        if (RX.groupDisband.test(ln)) { group.clear(); led.rosterPartial = false; refreshAllies(); return true; }
+        if (RX.raidDisband.test(ln)) { raid.clear(); refreshAllies(); return true; }
+
+        /* Your own death, before the generic kill forms -- "You died."
+           otherwise books a phantom kill against a mob named "You". */
+        if (RX.youDied.test(ln)) { led.deaths++; return true; }
+        if (RX.youSlainUnseen.test(ln)) { led.deaths++; return true; }
+        if ((m = RX.youSlain.exec(ln))) { led.deaths++; noteMob(m[2]); led.last = m[1]; return true; }
+        if ((m = RX.slainByYou.exec(ln))) { claimXp(); bump(led.kills, noteMob(m[2])); led.last = m[1]; return true; }
+      }
+
+      // "Your pet has slain X!" begins with "You" but not "You "
+      if (isYou && (m = RX.petSlain.exec(ln))) { claimXp(); bump(led.kills, noteMob(m[2])); led.last = m[1]; return true; }
+
+      /* -- generic forms. The line starts with a name, so no prefix test is
+         possible; a substring check is still far cheaper than the regex. -- */
+      if (body.indexOf(" has been slain by ") > 0 && (m = RX.slain.exec(ln))) {
+        attribute(m[2], m[3]); led.last = m[1]; return true;
+      }
+      if (body.indexOf(" died.") > 0 && (m = RX.died.exec(ln))) {
+        /* eqstr 12112 names no killer, so only the experience line can claim
+           it. 9 of the 10 in the reference corpus carried experience credit. */
+        const k = noteMob(m[2]);
+        if (claimXp()) bump(led.kills, k); else bump(led.unattributed, k);
+        led.last = m[1]; return true;
+      }
+      if (body.indexOf(" says, '") > 0) {
+        if ((m = RX.back.exec(ln))) {
+          /* The same NPC refusing another player's pieces prints an identical
+             line, so it only counts when it names YOU. With no character name
+             we cannot tell, and counting every stranger's refusal would cancel
+             real turn-ins -- so we count none. */
+          const npc = m[2];
+          if (meKey && nameKey(m[3]) === meKey && pending.has(npc)) bump(refused, npc, 1);
+          return true;
+        }
+        if ((m = RX.petSpeaks.exec(ln))) {
+          /* Pets are renamed on every summon, so LEARN each one rather than
+             latching the first -- latching dropped every later pet's kills. */
+          const name = m[2].trim();
+          if (!pets.has(nameKey(name))) { pets.add(nameKey(name)); led.pet = name; refreshAllies(); }
+          return true;
+        }
+      }
+      if (body.indexOf(" the group.") > 0 || body.indexOf(" the raid.") > 0) {
+        if ((m = RX.joinGroup.exec(ln))) { group.add(nameKey(m[2])); refreshAllies(); return true; }
+        if ((m = RX.leaveGroup.exec(ln))) { group.delete(nameKey(m[2])); refreshAllies(); return true; }
+        if ((m = RX.leaveRaid.exec(ln))) { raid.delete(nameKey(m[2])); refreshAllies(); return true; }
+        if ((m = RX.joinRaid.exec(ln))) { raid.add(nameKey(m[2])); refreshAllies(); return true; }
+      }
+      /* eqstr 1449 begins "The", not "You", so it cannot live in the fast path
+         above — that placement was a real bug: the impersonal cancellation
+         never matched and its offers rode into the next trade. */
+      if (RX.cancelAny.test(ln)) {
+        if (pending.size) led.cancelledTrades++;
+        pending.clear(); refused.clear();
+        return true;
+      }
+      if (body.indexOf(" has cancelled the trade.") > 0 && (m = RX.cancelOther.exec(ln))) {
+        if (pending.delete(m[2])) led.cancelledTrades++;
+        refused.delete(m[2]);
+        return true;
+      }
+      if (body.indexOf(" hands you the ") > 0 && (m = RX.parcel.exec(ln))) {
+        bump(led.looted, baseName(m[4]), num(m[3])); led.last = m[1]; return true;
+      }
+
+      return false;
+    }
+
+    function closeTrade(npc, ts) {
+      const held = pending.get(npc);
+      const back = refused.get(npc) || 0;
+      pending.delete(npc); refused.delete(npc);
+      led.first = led.first || ts; led.last = ts;
+      if (!held || !held.length) return;
+
+      /* Offers older than the window belong to a trade that ended some other
+         way -- cancelled out of range, or closed by the other party. */
+      const fresh = held.filter((x) => seq - x.at <= OFFER_WINDOW);
+      if (fresh.length !== held.length) led.staleOffers += held.length - fresh.length;
+      if (!fresh.length) return;
+
+      /* The handback line names the PLAYER, not the item, so a partial bounce
+         leaves us unable to say WHICH piece came back. Delivering all of them
+         marked a Sky test complete that was never turned in, and forgot a
+         piece still sitting in the bags. Refusing to guess is the only honest
+         option: record nothing, and disclose it. */
+      if (back > 0) { led.partialTrades++; return; }
+
+      const items = new Map();
+      fresh.forEach((x) => bump(items, x.n, x.q));
+      items.forEach((v, k) => bump(led.delivered, k, v));
+      led.trades.push({ npc, items, ts });
+    }
+
+    return {
+      led,
+      feed(lines) { for (const ln of lines) if (consume(ln)) led.lines++; return led; },
+      text(t) { return this.feed(String(t).split(/\r?\n/)); },
+    };
+  }
+
+  /* Held = what is actually in your bags now, as far as the log can tell.
+     Deliveries, hand-sales and destructions all take items back out. Autosold
+     and combine-consumed items never arrived, so they are simply absent from
+     `looted` rather than subtracted here. */
+  function heldOf(led, extraInventory) {
+    const held = new Map();
+    led.looted.forEach((v, k) => held.set(k, v));
+    /* UNION with the inventory dump, not a sum. The dump is a snapshot of the
+       bags right now, so anything looted during the logged session is in BOTH
+       — adding them made one Wind Rune read as two and marked two contested
+       quests ready off a single unit. Taking the larger of the two never
+       invents an item, which is the error that matters here. */
+    if (extraInventory) extraInventory.forEach((v, k) => held.set(k, Math.max(held.get(k) || 0, v)));
+    // a merge eats two of the base item and returns one, so the pool loses one
+    [led.delivered, led.vendored, led.destroyed, led.merged].forEach((m) =>
+      m && m.forEach((v, k) => held.set(k, Math.max(0, (held.get(k) || 0) - v))));
+    return held;
+  }
+
+  /* ── the allocator ────────────────────────────────────────────────────────
+     29 of the 128 turn-in items are wanted by more than one quest, and every
+     wind rune is wanted by several. Holding one Djinni War Blade does not make
+     three quests ready. Every held item is a pool, and a pool unit can only be
+     spent once.
+
+     Order matters: spend on the quest closest to finishing first, so the tool
+     tells you to hand in the thing you can actually hand in. Ties break toward
+     the shallower island, because that piece is cheaper to replace.
+     ──────────────────────────────────────────────────────────────────────── */
+  function allocate(quests, held, opts) {
+    const o = opts || {};
+    const depth = o.depth || (() => 0);
+    const pool = new Map(held);
+    const rows = quests.map((q) => ({
+      q,
+      need: q.items.map((it) => ({ it, have: 0, want: 1 })),
+      missing: 0, ready: false,
+    }));
+
+    // How close is each quest before anything is spent? Cheap pre-pass on the
+    // raw pool: it decides priority only, never the final answer.
+    rows.forEach((r) => {
+      r._short = r.need.filter((n) => (pool.get(n.it.name) || 0) < 1).length;
+      r._depth = Math.max.apply(null, r.q.items.map((it) => depth(it)).concat([0]));
+    });
+    rows.sort((a, b) => (a._short - b._short) || (a._depth - b._depth) ||
+      String(a.q.id || "").localeCompare(String(b.q.id || "")));
+
+    rows.forEach((r) => {
+      r.need.forEach((n) => {
+        const have = pool.get(n.it.name) || 0;
+        if (have >= 1) { pool.set(n.it.name, have - 1); n.have = 1; }
+      });
+      r.missing = r.need.filter((n) => !n.have).length;
+      r.ready = r.missing === 0;
+    });
+
+    // Contention: demand from tracked quests against what is actually held.
+    const demand = new Map(), contested = new Map();
+    quests.forEach((q) => q.items.forEach((it) => bump(demand, it.name, 1)));
+    demand.forEach((d, name) => {
+      const h = held.get(name) || 0;
+      if (d > 1 && h < d) contested.set(name, { want: d, have: h, short: d - h });
+    });
+
+    return { rows, leftover: pool, contested, demand };
+  }
+
+  /* ── observed drop rate ───────────────────────────────────────────────────
+     Nobody publishes community drop rates for Sky. We checked. So we do not
+     print one. What we print is what YOUR log has seen: drops over kills you
+     or your group actually landed, with the sample size attached, and nothing
+     at all when the sample is empty.
+
+     `unattributed` rides along so the UI can admit what it excluded. A number
+     with no n beside it is a number that can lie to you; a denominator that
+     quietly swallowed a stranger's kills is the same lie with more arithmetic.
+     ──────────────────────────────────────────────────────────────────────── */
+  function dropRate(led, itemName, mobs) {
+    const item = baseName(itemName);
+    let drops = 0, kills = 0, unattributed = 0, seen = false;
+    (mobs || []).forEach((mob) => {
+      const mk = mobKey(mob);
+      const k = led.kills.get(mk) || 0;
+      const u = led.unattributed.get(mk) || 0;
+      const d = led.lootFrom.get(item + "\u0000" + mk) || 0;
+      kills += k; drops += d; unattributed += u;
+      if (k || d || u) seen = true;
+    });
+    if (!seen) return { state: "none", drops: 0, kills: 0, unattributed: 0 };
+    if (!kills) return { state: "nokills", drops, kills: 0, unattributed };
+    /* More drops than credited kills means the denominator is missing kills we
+       can PROVE happened — we hold the loot. It arises when you loot a corpse
+       whose kill went to someone outside your roster. Dividing anyway printed
+       things like "500% · 5/1" with a NaN confidence bound. There is no honest
+       rate to show here, so we show the counts and say why instead. */
+    if (drops > kills) return { state: "skew", drops, kills, unattributed };
+    const p = drops / kills;
+    /* Zero drops in n kills is NOT a 0% rate — it is an upper bound. The rule
+       of three (well, its exact form) puts the 95% ceiling at 1-0.05^(1/n):
+       nine dry kills only proves the item is rarer than about 28%. Printing
+       "0%" there would tell a player to stop farming something they should
+       keep farming, so we print the ceiling instead. */
+    if (!drops) return { state: "dry", drops: 0, kills, unattributed, rate: 0, high: 1 - Math.pow(0.05, 1 / kills) };
+    return {
+      state: kills < 5 ? "thin" : "ok",
+      drops, kills, unattributed, rate: p,
+      pct: Math.round(p * 100),
+      // Wilson lower bound at 95%: an honest floor for a small sample.
+      low: wilsonLow(drops, kills),
+    };
+  }
+
+  function wilsonLow(s, n) {
+    /* p must stay inside [0,1]: p*(1-p) goes negative outside it and the sqrt
+       returns NaN, which then reaches the screen as "95% floor: NaN%". Callers
+       are guarded too, but a statistic that can emit NaN is not one to trust to
+       its callers. */
+    if (!n || n < 0 || s < 0) return 0;
+    const z = 1.96, p = Math.min(1, s / n);
+    const d = 1 + (z * z) / n;
+    const c = p + (z * z) / (2 * n);
+    const m = z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n));
+    return Math.max(0, (c - m) / d);
+  }
+
+  /* A quest counts as turned in when a closed trade to its giver or its class
+     hub carried every piece it asks for. Falls back to nothing — a manual tick
+     is always available and always wins. */
+  function completions(led, allQuests, hubOf) {
+    const done = new Set();
+    led.trades.forEach((t) => {
+      allQuests.forEach((q) => {
+        if (done.has(q.id)) return;
+        if (t.npc !== q.giver && t.npc !== hubOf(q)) return;
+        /* Every piece must be present, runes included. An earlier revision
+           exempted runes on the belief that they were currency and could never
+           appear in an offer line; a real inventory dump shows they are
+           ordinary bag items, so that exemption was unfounded and could mark a
+           test complete on a partial hand-in. Under-detecting is the safe
+           direction here — a manual tick is always available and always wins,
+           whereas a wrong "done" is silent. */
+        const ok = q.items.every((it) => (t.items.get(it.name) || 0) >= 1);
+        if (ok) done.add(q.id);
+      });
+    });
+    return done;
+  }
+
+  /* Character and server come out of the log's own filename. The handback rule
+     above needs the character name to tell your refusals from a stranger's. */
+  function whoFrom(filename) {
+    const m = /eqlog_([A-Za-z]+)_([A-Za-z0-9]+)\.txt$/i.exec(String(filename || ""));
+    return m ? { name: m[1], server: m[2] } : { name: null, server: null };
+  }
+
+  /* Optional: /outputfile inventory covers everything looted before logging was
+     on. Known limit, and the reason it can never be the only input — wind runes
+     live in the currency tab and do not appear in the dump at all. */
+  /* Optional: an /outputfile inventory dump covers everything looted before
+     logging was switched on.
+
+     The column layout is READ FROM THE HEADER, never assumed. A real dump is
+     `Location, Name, ID, Count, Slots` — five columns, with Count fourth.
+     Taking the third column as the count (which an older four-column layout
+     would have put there) reads every item's ID as its quantity: a real file
+     produced "Wind Rune Kala = 177779" instead of 4. Anything downstream then
+     believes you hold thousands of everything.
+
+     Real dumps are also ragged. They carry a SECOND header part-way through
+     (`KeyRing / Name / ID`), and augment rows have only three columns and no
+     count at all. Both are handled rather than silently mis-parsed. */
+  function parseInventory(text) {
+    const inv = new Map();
+    let iName = 1, iCount = 3;          // sane defaults for the known layout
+
+    String(text).split(/\r?\n/).forEach((ln) => {
+      if (!ln) return;
+      const c = ln.split("\t");
+      if (c.length < 2) return;
+
+      // any row naming the columns is a header: re-read the layout from it
+      const lower = c.map((x) => String(x).trim().toLowerCase());
+      if (lower.indexOf("name") >= 0 && (lower[0] === "location" || lower.indexOf("id") >= 0)) {
+        iName = lower.indexOf("name");
+        const ic = lower.indexOf("count");
+        iCount = ic >= 0 ? ic : -1;     // -1 => this layout carries no count
+        return;
+      }
+
+      const name = baseName(c[iName]);
+      if (!name || name === "Empty") return;
+      /* No count column, or a row too short to reach it (augments), means one
+         of the thing — not zero, which would drop it from the ledger. */
+      const raw = iCount >= 0 ? c[iCount] : undefined;
+      const q = raw === undefined ? 1 : (parseInt(String(raw).replace(/,/g, ""), 10) || 1);
+      if (q < 1) return;
+      // the same item sits in several slots; a dump must be summed, not maxed
+      inv.set(name, (inv.get(name) || 0) + q);
+    });
+    return inv;
+  }
+
+  return {
+    RX, baseName, mobKey, zoneOf, isSky, RUNES, isCurrency, createStream, heldOf, allocate,
+    dropRate, wilsonLow, completions, whoFrom, parseInventory, newLedger,
+  };
+});
+
+/* ── Sky Ledger UI ──────────────────────────────────────────────────────── */
+(function () {
+"use strict";
+const E = SkyEngine, D = SKY;
+const $ = (s) => document.querySelector(s);
+const el = (t, c, x) => { const n = document.createElement(t); if (c) n.className = c; if (x != null) n.textContent = x; return n; };
+
+/* Running inside the Electron shell? It owns real window opacity and
+   click-through; the browser build can only fake the first and not the second. */
+const NATIVE = !!(window.skyNative && window.skyNative.setOpacity);
+/* Flush the panel against the window edge under Electron. With the body's
+   padding the visible border sat inside the real window, putting every resize
+   affordance in empty space. */
+if (NATIVE) document.documentElement.classList.add("native");
+
+// smallest the panel stays usable at: the island rail plus a readable column
+const MIN_W = 240, MIN_H = 320;
+
+/* Persist when we can. In a sandboxed frame localStorage throws on touch, so
+   every access is guarded and the app simply forgets between sessions. */
+const store = {
+  get(k) { try { return localStorage.getItem("sky." + k); } catch (e) { return null; } },
+  set(k, v) { try { localStorage.setItem("sky." + k, v); } catch (e) {} },
+};
+
+const S = {
+  trio: [], tracked: new Set(), filter: "open", island: null,
+  led: E.newLedger(), inv: null, manual: new Set(), opacity: 92, showHeld: false,
+  runes: new Map(),  // rune name -> count, typed by hand: the log cannot see them
+  handle: null, offset: 0, stream: null, char: null, server: null, last: 0,
+  allies: [],   // names the user pinned by hand; the log supplies the rest
+  timer: null,  // the one live-tail interval; re-picking a log must clear it
+  polling: false, // guards against two reads sharing one byte offset
+};
+
+/* The EverQuest client writes its log in the Windows ANSI codepage, not UTF-8.
+   Decoding as UTF-8 turns every accented NPC name into U+FFFD; windows-1252 is
+   a superset of Latin-1 and reads them correctly. `fatal:false` means a stray
+   byte degrades one character instead of throwing away the tick. */
+const DEC = new TextDecoder("windows-1252", { fatal: false });
+
+/* Every stream is built the same way, so a live tail and a file drop start
+   from identical state. Threading the pinned allies through here is what
+   keeps the two paths honest. */
+const newStream = () => E.createStream(S.char, { allies: S.allies });
+
+/* ── quest helpers ──────────────────────────────────────────────────────── */
+const allQuests = [];
+D.order.forEach((k) => D.classes[k].quests.forEach((q) => allQuests.push(Object.assign({}, q, { cls: k }))));
+const byId = new Map(allQuests.map((q) => [q.id, q]));
+const hubOf = (q) => D.classes[q.cls].hub;
+const depth = (it) => Math.max.apply(null, it.islands.map((i) => (D.islands[i] || { d: 0 }).d));
+const trioQuests = () => allQuests.filter((q) => S.trio.indexOf(q.cls) >= 0);
+const trackedQuests = () => allQuests.filter((q) => S.tracked.has(q.id));
+
+/* ── load / save ────────────────────────────────────────────────────────── */
+function save() {
+  store.set("trio", S.trio.join(","));
+  store.set("tracked", [...S.tracked].join(","));
+  store.set("manual", [...S.manual].join(","));
+  store.set("opacity", String(S.opacity));
+  store.set("allies", S.allies.join(","));
+  store.set("runes", [...S.runes].map(([k, v]) => k + "=" + v).join(","));
+}
+function load() {
+  const t = store.get("trio"); if (t) S.trio = t.split(",").filter((x) => D.classes[x]).slice(0, 3);
+  const k = store.get("tracked"); if (k) k.split(",").forEach((x) => byId.has(x) && S.tracked.add(x));
+  const m = store.get("manual"); if (m) m.split(",").forEach((x) => byId.has(x) && S.manual.add(x));
+  const o = parseInt(store.get("opacity"), 10); if (o >= 15 && o <= 100) S.opacity = o;
+  S.allies = parseAllies(store.get("allies"));
+  const rr = store.get("runes");
+  if (rr) rr.split(",").forEach((x) => {
+    const i = x.lastIndexOf("=");
+    if (i < 1) return;
+    const name = x.slice(0, i), n = parseInt(x.slice(i + 1), 10);
+    if (E.isCurrency(name) && n > 0) S.runes.set(name, Math.min(999, n));
+  });
+}
+const parseAllies = (s) => String(s || "").split(",").map((x) => x.trim()).filter(Boolean);
+
+/* 31 of the 95 quests — the five classes with no confirmed Legends-era source —
+   carry a placeholder in `say` rather than real dialogue. It is honest data, but
+   it is not a phrase you can type at an NPC, so the UI must not present it as
+   one. Detected rather than hardcoded per class, so a later dataset that fills
+   any of them in starts showing the real phrase with no code change. */
+const knownSay = (q) => !!q.say && !/not confirmed/i.test(q.say);
+
+/* ── opacity ────────────────────────────────────────────────────────────────
+   One control, continuous. Every tool we surveyed offers a menu of fixed steps
+   or nothing at all, and the right value depends on the zone you are standing
+   in — Sky is bright, so the setting that works in Lower Guk blinds you here.
+   In the browser build the slider drives a CSS alpha, and text alpha is floored
+   well above the panel's so the words stay readable when the chrome is nearly
+   gone. Under Electron the real window opacity does the work instead.         */
+function applyOpacity(v) {
+  S.opacity = v;
+  $("#opv").textContent = v + "%";
+  $("#op").value = v;
+  $("#app").classList.toggle("ghost", v < 45);
+  if (NATIVE) {
+    document.documentElement.style.setProperty("--a", "1");
+    window.skyNative.setOpacity(v / 100);
+  } else {
+    // floor the panel alpha so glass never disappears entirely under the text
+    document.documentElement.style.setProperty("--a", (0.1 + (v / 100) * 0.9).toFixed(3));
+    document.body.style.opacity = (0.35 + (v / 100) * 0.65).toFixed(3);
+  }
+  saveSoon();
+}
+
+/* Dragging the slider fires oninput per pixel. Persisting on each one is a
+   synchronous five-key localStorage write inside a mousemove. Coalesce. */
+let saveT = null;
+function saveSoon() { clearTimeout(saveT); saveT = setTimeout(save, 400); }
+
+/* ── log ingestion ──────────────────────────────────────────────────────────
+   Live tailing without a download. showOpenFilePicker hands back a handle we
+   can re-read; each poll asks for the file again, slices only the bytes past
+   our offset and folds them into the same ledger a file drop would build. If
+   the file shrinks the log was rotated, so the offset resets rather than
+   silently reading garbage from the middle of a line.                        */
+const FSA = typeof window.showOpenFilePicker === "function";
+
+async function pickLog() {
+  if (!FSA) return dropOnly();
+  try {
+    let h;
+    try {
+      [h] = await window.showOpenFilePicker({
+        types: [{ description: "EverQuest log", accept: { "text/plain": [".txt"] } }],
+      });
+    } catch (e) { return; }            // genuinely cancelled — nothing to report
+
+    setLogSource(h, h.name);
+    $("#dropT").textContent = "Following " + h.name;
+    $("#dropS").textContent = "Reading…";
+    /* Arm the tail BEFORE the first read. A 80 MB first pass takes seconds,
+       and if it throws we still want the loop alive to recover on the next
+       tick rather than sitting on a handle nothing is reading. */
+    S.timer = setInterval(poll, 1000);
+    await poll(true);
+    if (S.handle) $("#dropS").textContent = "Updating live. Leave this open while you play.";
+  } catch (e) {
+    $("#dropS").textContent = "Could not read that file: " + (e && e.message ? e.message : e);
+  }
+}
+
+/* One place decides what a log source means, so the pick and drop paths can
+   never disagree about the character name. Getting that wrong silently
+   corrupts turn-in detection: the handback rule keys off the character, so a
+   stale name books a bounced trade as delivered, and a null name lets every
+   stranger's handback cancel yours. */
+function setLogSource(handle, filename) {
+  if (S.timer) { clearInterval(S.timer); S.timer = null; }
+  const who = E.whoFrom(filename);
+  S.handle = handle; S.offset = 0;
+  S.char = who.name; S.server = who.server;
+  S.stream = newStream(); S.led = S.stream.led;
+  $("#nameWarn").textContent = who.name ? "" :
+    "That filename is not eqlog_<Character>_<Server>.txt, so the ledger cannot tell your "
+    + "turn-ins from another player's at the same NPC. Completions are not auto-detected.";
+}
+
+async function poll(first) {
+  if (!S.handle || S.polling) return;   // never let two reads share one offset
+  S.polling = true;
+  try {
+    let f;
+    try { f = await S.handle.getFile(); } catch (e) { setDot("idle"); return; }
+    if (f.size < S.offset) {            // rotated or truncated
+      S.offset = 0; S.stream = newStream(); S.led = S.stream.led;
+    }
+    if (f.size === S.offset) { if (Date.now() - S.last > 90000) setDot("idle"); return; }
+
+    /* Read BYTES, not text. f.slice() is a byte range but the client writes the
+       Windows ANSI codepage, so decoding first and measuring the result
+       (Blob.size) over-counts every byte >= 0x80 by two — the offset runs past
+       the end of the file, the next tick reads mid-line, and lines vanish. */
+    const buf = new Uint8Array(await f.slice(S.offset).arrayBuffer());
+    let end = buf.length;               // never split a line
+    while (end > 0 && buf[end - 1] !== 10) end--;
+    if (!end) { if (!first) return; end = buf.length; }
+    S.offset += end;
+    const text = DEC.decode(buf.subarray(0, end));
+    S.stream.feed(text.split(/\r?\n/));
+    S.last = Date.now(); setDot("live");
+    render();
+  } finally { S.polling = false; }
+}
+
+function dropOnly() {
+  $("#dropS").textContent = "Your browser cannot follow a file live. Drop the log here to read it once — re-drop to refresh.";
+}
+
+function readWhole(file) {
+  setLogSource(null, file.name);        // same name rule as the live path
+  const r = new FileReader();
+  r.onerror = () => { $("#dropS").textContent = "Could not read that file."; };
+  r.onload = () => {
+    // decoded the same way the tail decodes, so both paths see identical text
+    S.stream.text(DEC.decode(new Uint8Array(r.result)));
+    S.last = Date.now(); setDot("idle");
+    $("#dropT").textContent = "Read " + file.name;
+    $("#dropS").textContent = S.led.lines.toLocaleString() + " lines understood. Re-drop the file to refresh.";
+    render();
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function readInventory(file) {
+  const r = new FileReader();
+  r.onload = () => { S.inv = E.parseInventory(r.result); $("#bInv").textContent = "Inventory: " + S.inv.size + " items"; render(); };
+  r.readAsText(file);
+}
+
+function setDot(k) {
+  const d = $("#dot");
+  d.className = k;
+  d.title = k === "live" ? "reading the log" : k === "idle" ? "no new lines" : "no log";
+}
+
+/* ── render ─────────────────────────────────────────────────────────────── */
+function computed() {
+  /* Wind runes are alternate CURRENCY in Legends, not items (client dbstr ids
+     75-89). They never appear in a loot line, an offer line, or an
+     /outputfile dump — "Wind Rune" occurs zero times in a 986k-line log. So
+     the log can never count them, and every one of the 95 tests needs one.
+     The only honest source is the player reading their own currency tab, so
+     these come from the user, are stored separately, and are labelled in the
+     UI as hand-entered rather than observed. */
+  const extra = new Map(S.inv || []);
+  S.runes.forEach((v, k) => extra.set(k, Math.max(extra.get(k) || 0, v)));
+  const held = E.heldOf(S.led, extra.size ? extra : null);
+  const qs = trackedQuests();
+  const auto = E.completions(S.led, allQuests, hubOf);
+  const done = new Set([...auto, ...S.manual]);
+  const open = qs.filter((q) => !done.has(q.id));
+  const a = E.allocate(open, held, { depth });
+  return { held, done, alloc: a, tracked: qs };
+}
+
+function render() {
+  const c = computed();
+  renderSpine(c);
+  renderList(c);
+  renderWho(c);
+  renderProv(c);
+}
+
+/* ── the provenance strip ───────────────────────────────────────────────────
+   Everything this ledger could not account for, stated plainly. It stays
+   hidden until there is something to admit, so it never becomes chrome the
+   eye learns to skip. Order is: where you are, then what was excluded, then
+   anything actively unreliable.                                             */
+function renderProv() {
+  const L = S.led, p = $("#prov");
+  p.innerHTML = "";
+  if (!L.lines) { p.className = ""; return; }
+
+  if (L.zone) {
+    const z = el("span", "z" + (E.isSky(L.zone) ? " sky" : ""), L.zone);
+    z.title = "The client called this zone:\n" + L.zoneRaw;
+    p.appendChild(z);
+    if (L.zoneTier) {
+      const t = el("span", "tier", L.zoneTier);
+      t.title = "Legends instance tier" + (L.zoneInstance ? " " + L.zoneInstance : "")
+        + ".\nClassic EverQuest had no such thing — the tier is appended by the server,\n"
+        + "and appears in no client string file.";
+      p.appendChild(t);
+    }
+  }
+
+  let credited = 0, excluded = 0;
+  L.kills.forEach((v) => { credited += v; });
+  L.unattributed.forEach((v) => { excluded += v; });
+
+  if (credited || excluded) {
+    const k = el("span", "ex" + (excluded ? " some" : ""),
+      credited.toLocaleString() + (credited === 1 ? " kill" : " kills")
+      + (excluded ? " · " + excluded.toLocaleString() + " excluded" : ""));
+    k.title = credited.toLocaleString() + " kill" + (credited === 1 ? "" : "s")
+      + " counted — landed by you, your pet, or someone in your group or raid at the time.\n"
+      + (excluded
+        ? excluded.toLocaleString() + " excluded: a stranger landed "
+          + (excluded === 1 ? "it" : "them") + ", or the client named no killer at all.\n"
+          + "They are left out of every drop rate rather than inflating the denominator.\n"
+          + (L.rosterPartial
+            ? "\nYou joined a group the log never listed, so some of your own group's kills may be\n"
+              + "sitting in that excluded count. Name them under “Whose kills count” in setup."
+            : "")
+        : "Nothing was excluded.");
+    p.appendChild(k);
+  }
+
+  const flags = [];
+  if (L.bagSales) flags.push([L.bagSales + " bag sale" + (L.bagSales === 1 ? "" : "s"),
+    "You sold a bag to a merchant. The client never names what was inside, so those\n"
+    + "items may still be counted as held. Nothing can recover them from the log."]);
+  if (L.ambiguousTrades) flags.push([L.ambiguousTrades + " unplaced trade" + (L.ambiguousTrades === 1 ? "" : "s"),
+    "A trade closed without naming the NPC while more than one offer was open.\n"
+    + "Rather than guess which turn-in it was, the ledger left it out."]);
+  flags.forEach(([txt, tip]) => {
+    const f = el("span", "flag", "⚠ " + txt);
+    f.title = tip;
+    p.appendChild(f);
+  });
+
+  p.className = p.childNodes.length ? "on" : "";
+}
+
+function renderWho(c) {
+  const bits = [];
+  if (S.char) bits.push(S.char);
+  const t = c.tracked.length, dn = c.tracked.filter((q) => c.done.has(q.id)).length;
+  const rdy = c.alloc.rows.filter((r) => r.ready).length;
+  if (t) bits.push(dn + "/" + t + " done" + (rdy ? " · " + rdy + " ready" : ""));
+  $("#who").textContent = bits.join("  ") || "no log yet";
+}
+
+/* Rungs are islands. The figure is the number of distinct tracked pieces still
+   missing that drop there — how much this lap is worth. */
+function renderSpine(c) {
+  const sp = $("#spine"); sp.innerHTML = "";
+  const need = {};
+  c.alloc.rows.forEach((r) => r.need.forEach((n) => {
+    if (n.have) return;
+    n.it.islands.forEach((i) => { (need[i] = need[i] || new Set()).add(n.it.name); });
+  }));
+  ["1", "1.5", "2", "3", "4", "5", "6", "7", "8", "any"].forEach((k) => {
+    const isl = D.islands[k]; if (!isl) return;
+    const n = need[k] ? need[k].size : 0;
+    const r = el("div", "rung" + (n ? "" : " zero") + (S.island === k ? " sel" : ""));
+    r.appendChild(el("span", "isl", k === "any" ? "R" : k));
+    r.appendChild(el("span", "n", String(n)));
+    r.title = (k === "any" ? "Wind runes — any mob, zone-wide" : "Island " + k + " · " + isl.name + " · " + isl.boss)
+      + "\n" + n + " tracked piece" + (n === 1 ? "" : "s") + " still needed here";
+    r.onclick = () => { S.island = S.island === k ? null : k; render(); };
+    sp.appendChild(r);
+  });
+}
+
+/* Three efreeti spawn the same weapons and their names together are 46
+   characters — they never fit the rail and truncate to noise. Name the set,
+   put the roster in the tooltip. */
+function sourceText(it) {
+  if (it.mobs.length > 2) return "Efreeti set · " + it.mobs.length + " spawns";
+  return it.mob;
+}
+
+function rateEl(it) {
+  const s = el("span", "rate");
+  if (!it.named) { s.className = "rate none"; s.textContent = "trash drop"; s.title = "Not a named mob, so there is no kill count to divide by. Rate cannot be measured from a log."; return s; }
+  const r = E.dropRate(S.led, it.name, it.mobs);
+  if (r.state === "none") { s.className = "rate none"; s.textContent = "no kills yet"; s.title = "Your log has not seen this mob die. Nothing to estimate from."; return s; }
+  if (r.state === "dry") {
+    s.className = "rate thin"; s.textContent = "<" + Math.round(r.high * 100) + "% · 0/" + r.kills;
+    s.title = "No drop in " + r.kills + " kill" + (r.kills === 1 ? "" : "s") + "."
+      + "\nThat is not a 0% rate — it puts the 95% ceiling at " + Math.round(r.high * 100) + "%."
+      + "\nKeep killing: the bound tightens with every dry kill.";
+    return s;
+  }
+  if (r.state === "nokills") {
+    s.className = "rate thin";
+    s.textContent = r.drops ? r.drops + " seen" : "not yours";
+    /* Two very different situations share this state, and conflating them
+       would be its own small lie: either drops arrived with no kill we can
+       claim, or the mob only ever died to someone else. */
+    s.title = r.drops
+      ? r.drops + " drop" + (r.drops === 1 ? "" : "s") + " seen, but no kill of this mob is credited to you."
+      : "This mob has died near you, but never to you or your group.";
+    if (r.unattributed) s.title += "\n" + r.unattributed + " death" + (r.unattributed === 1 ? "" : "s")
+      + " excluded — a stranger landed " + (r.unattributed === 1 ? "it" : "them") + ", or the client named no killer.";
+    s.title += "\nA denominator you did not earn would read the rate low. It is left empty instead.";
+    return s;
+  }
+  /* More drops than kills we can credit. No honest rate exists — show the
+     counts and explain, rather than dividing into a number over 100%. */
+  if (r.state === "skew") {
+    s.className = "rate thin";
+    s.textContent = r.drops + " from " + r.kills;
+    s.title = "You have looted this " + r.drops + " time" + (r.drops === 1 ? "" : "s")
+      + " but only " + r.kills + " kill" + (r.kills === 1 ? "" : "s") + " of this mob "
+      + (r.kills === 1 ? "is" : "are") + " credited to you."
+      + (r.unattributed ? "\n" + r.unattributed + " kill" + (r.unattributed === 1 ? "" : "s")
+          + " of it went to someone outside your group, so " + (r.unattributed === 1 ? "it is" : "they are") + " not counted."
+          + "\nIf they were yours, add the name under “Whose kills count”." : "")
+      + "\nNo rate is shown, because dividing these would give one above 100%.";
+    return s;
+  }
+  s.className = "rate " + (r.state === "thin" ? "thin" : "ok");
+  s.textContent = r.pct + "% · " + r.drops + "/" + r.kills;
+  s.title = "Your own observed rate: " + r.drops + " drop" + (r.drops === 1 ? "" : "s") + " over " + r.kills + " kill" + (r.kills === 1 ? "" : "s") + "."
+    + "\n95% confidence floor: " + Math.round(r.low * 100) + "%."
+    + (r.state === "thin" ? "\nToo few kills to lean on." : "")
+    + (r.unattributed ? "\n\n" + r.unattributed + " further death" + (r.unattributed === 1 ? "" : "s")
+        + " of this mob " + (r.unattributed === 1 ? "was" : "were") + " excluded — you could not have looted "
+        + (r.unattributed === 1 ? "it" : "them") + "." : "")
+    + "\nNo site publishes community rates for Sky, so this is measured from your log alone.";
+  return s;
+}
+
+function renderList(c) {
+  const m = $("#main"); m.innerHTML = "";
+  if (!c.tracked.length) {
+    const e = el("div", "empty");
+    e.appendChild(el("b", null, "Nothing tracked yet"));
+    e.appendChild(el("span", null, "Open setup, pick your trio, and choose which tests to follow."));
+    m.appendChild(e); return;
+  }
+  const rows = new Map(c.alloc.rows.map((r) => [r.q.id, r]));
+  let shown = 0;
+
+  const order = c.tracked.slice().sort((a, b) => {
+    const ra = rows.get(a.id), rb = rows.get(b.id);
+    const da = c.done.has(a.id) ? 2 : ra && ra.ready ? 0 : 1;
+    const db = c.done.has(b.id) ? 2 : rb && rb.ready ? 0 : 1;
+    if (da !== db) return da - db;
+    const ma = ra ? ra.missing : 9, mb = rb ? rb.missing : 9;
+    return (ma - mb) || a.id.localeCompare(b.id);
+  });
+  order.forEach((q) => {
+    const done = c.done.has(q.id);
+    const r = rows.get(q.id);
+    if (S.filter === "open" && done) return;
+    if (S.filter === "ready" && !(r && r.ready)) return;
+    /* A rung's figure counts pieces still MISSING there, so its filter has to
+       mean the same thing — otherwise a rung reading 0 still lists quests when
+       you click it, contradicting its own tooltip. Finished quests have no
+       allocator row, so they fall back to "has any item from that island". */
+    if (S.island) {
+      const here = r ? r.need.some((n) => !n.have && n.it.islands.indexOf(S.island) >= 0)
+                     : q.items.some((it) => it.islands.indexOf(S.island) >= 0);
+      if (!here) return;
+    }
+    shown++;
+
+    const box = el("div", "q" + (done ? " done" : r && r.ready ? " ready" : ""));
+    const h = el("div", "qh");
+    h.appendChild(el("span", "qc", D.classes[q.cls].abbr));
+    h.appendChild(el("span", "qn", q.name));
+    const got = r ? r.need.filter((n) => n.have).length : q.items.length;
+    h.appendChild(el("span", "qf", done ? "done" : got + "/" + q.items.length));
+    h.title = "Reward: " + q.reward + (q.slot ? "  (" + q.slot + ")" : "")
+      + (q.stats ? "\n" + q.stats : "")
+      + "\n\nClick to mark " + (done ? "not done" : "turned in") + " by hand.";
+    h.onclick = () => { S.manual.has(q.id) ? S.manual.delete(q.id) : S.manual.add(q.id); save(); render(); };
+    box.appendChild(h);
+
+    if (!done && r) {
+      if (r.ready) {
+        /* Ready needs one thing from the overlay: who to walk to and what to
+           say. The pieces are in your bags — listing them again is four lines
+           of screen the game wanted.
+           EXCEPT for the five classes whose tester dialogue has never been
+           confirmed for Legends. There the dataset has no phrase to give, and
+           printing that it has none is a line of screen that helps nobody.
+           Those quests show WHAT TO HAND OVER instead, which is the next most
+           useful thing to know standing at the NPC. The caveat itself is not
+           lost — it moves to the tooltip. */
+        const s = el("div", "say");
+        s.appendChild(el("b", null, "→ " + hubOf(q)));
+        if (q.giver && q.giver !== hubOf(q)) s.appendChild(document.createTextNode(" via " + q.giver));
+        s.appendChild(document.createTextNode("  "));
+        if (knownSay(q)) {
+          s.appendChild(el("code", null, q.say));
+          s.title = "Say this to " + (q.giver || hubOf(q)) + " to start the turn-in.";
+        } else {
+          s.appendChild(el("code", "give", q.items.map((it) => it.name).join(", ")));
+          s.title = "Hand these to " + (q.giver || hubOf(q)) + ".\n\n"
+            + "The exact dialogue for this class's tester chain has never been confirmed "
+            + "for Legends, so this tool will not invent one. Hail the NPC and read the "
+            + "options — and if you note what works, it can be added with a source.";
+        }
+        box.appendChild(s);
+      } else {
+        const miss = r.need.filter((n) => !n.have);
+        const has = r.need.length - miss.length;
+        (S.showHeld ? r.need : miss).forEach((n) => {
+          const it = n.it;
+          const row = el("div", "it " + (n.have ? "have" : "miss") + (it.rune ? " rune" : ""));
+          row.appendChild(el("span", "tick", n.have ? "\u2713" : "\u25cb"));
+          const t = el("div", "txt");
+          t.appendChild(el("div", "nm", it.name));
+          /* Runes keep their counter even once satisfied — otherwise a
+             mis-click cannot be taken back, because a held row has no
+             control on it and the log can never correct the number. */
+          if (it.rune) {
+            /* Runes drop zone-wide from any mob, so there is no named
+               denominator and no rate is possible. The stepper is a fallback
+               for players with no inventory dump. */
+            const src = el("div", "src");
+            const cur = S.runes.get(it.name) || 0;
+            const note = el("span", "from", "any mob \u00b7 zone-wide");
+            note.title = "Wind runes drop zone-wide from any mob, so there is no named\n"
+              + "mob to divide by and no rate can be measured.\n"
+              + "An inventory dump counts these for you; this is for when you have none.";
+            src.appendChild(note);
+            const stp = el("span", "step");
+            const mk = (txt, d) => {
+              const b = el("button", null, txt);
+              b.onclick = (ev) => {
+                ev.stopPropagation();
+                const v = Math.max(0, Math.min(999, (S.runes.get(it.name) || 0) + d));
+                v ? S.runes.set(it.name, v) : S.runes.delete(it.name);
+                save(); render();
+              };
+              return b;
+            };
+            stp.appendChild(mk("\u2212", -1));
+            stp.appendChild(el("b", null, String(cur)));
+            stp.appendChild(mk("+", 1));
+            src.appendChild(stp);
+            t.appendChild(src);
+            row.title = it.name + "\nDrops zone-wide from any mob. Counted from an inventory dump, or set here by hand.";
+          } else if (!n.have) {
+            const src = el("div", "src");
+            src.appendChild(el("span", "isl", it.islands.map((i) => (i === "any" ? "any" : i)).join("/")));
+            // its own element, so this is what shrinks instead of the rate
+            src.appendChild(el("span", "from", sourceText(it)));
+            src.appendChild(rateEl(it));
+            const ct = c.alloc.contested.get(it.name);
+            if (ct) {
+              const w = el("span", "warn", "  \u26a0");
+              w.title = ct.want + " tracked tests want this and you hold " + ct.have + ". Short by " + ct.short + ".";
+              src.appendChild(w);
+            }
+            if (it.note) {
+              const w = el("span", "warn", " " + (it.note.k === "conflict" ? "\u2691" : "\u2727"));
+              w.title = (it.note.k === "conflict" ? "Sources disagree. " : "Source resolved. ") + it.note.t;
+              src.appendChild(w);
+            }
+            t.appendChild(src);
+            row.title = it.name + "\ndrops from: " + it.mob;
+          }
+          row.appendChild(t);
+          box.appendChild(row);
+        });
+        if (has && !S.showHeld) box.appendChild(el("div", "held", has + " held"));
+      }
+    }
+    m.appendChild(box);
+  });
+
+  if (!shown) {
+    /* Name the reason that actually applies. The filter is tested before the
+       island, so blaming the island when "Ready" is the real cause sends the
+       user hunting for a piece that is not the problem. */
+    const anyHere = !S.island || c.tracked.some((q) => q.items.some((it) => it.islands.indexOf(S.island) >= 0));
+    const head = S.filter === "ready" ? "Nothing ready" : S.filter === "open" ? "Nothing open" : "Nothing to show";
+    let why;
+    if (S.island && !anyHere) why = "No tracked piece drops on that island. Click the rung again to clear it.";
+    else if (S.island) why = S.filter === "ready"
+      ? "Nothing that drops there is ready. Click the rung again to clear the filter."
+      : "Everything you still need from that island is on a test you have turned in.";
+    else why = S.filter === "ready" ? "No tracked test has all its pieces yet." : "Every tracked test is turned in.";
+    const e = el("div", "empty");
+    e.appendChild(el("b", null, head));
+    e.appendChild(el("span", null, why));
+    m.appendChild(e);
+  }
+}
+
+/* ── setup ──────────────────────────────────────────────────────────────── */
+function renderClasses() {
+  const g = $("#classes"); g.innerHTML = "";
+  D.order.forEach((k) => {
+    const c = D.classes[k];
+    const b = el("button", "cls" + (S.trio.indexOf(k) >= 0 ? " on" : "") + (c.verified ? "" : " unv"));
+    b.appendChild(el("span", null, c.label));
+    b.appendChild(el("i", null, c.quests.length + (c.verified ? "" : "?")));
+    b.title = c.label + " — " + c.quests.length + " tests, " + c.armor + ", turn in to " + c.hub
+      + (c.verified ? "" : "\n\nReward stats for this class have no confirmed Legends-era source. The turn-ins are current; the numbers may be classic.");
+    b.onclick = () => {
+      const i = S.trio.indexOf(k);
+      if (i >= 0) S.trio.splice(i, 1);
+      else if (S.trio.length < 3) S.trio.push(k);
+      else return;
+      save(); renderClasses(); renderPicker(); renderSum();
+    };
+    g.appendChild(b);
+  });
+  const unv = S.trio.filter((k) => !D.classes[k].verified).map((k) => D.classes[k].label);
+  $("#unvNote").innerHTML = unv.length
+    ? '<span class="note"><b>' + unv.join(", ") + '</b> — turn-ins are Legends-current, but the reward stat blocks have no confirmed Legends source and may still be classic numbers. Marked <b>?</b> above.</span>'
+    : "Pick up to three. The number is how many tests that class owes.";
+}
+
+function renderPicker() {
+  const p = $("#picker"); p.innerHTML = "";
+  const qs = S.trio.length ? trioQuests() : allQuests;
+  let cls = null;
+  qs.forEach((q) => {
+    if (q.cls !== cls) {
+      cls = q.cls;
+      const h = el("div", "pkh");
+      h.appendChild(el("span", null, D.classes[cls].label));
+      const b = el("button", null, "all");
+      b.onclick = (ev) => { ev.stopPropagation();
+        const mine = qs.filter((x) => x.cls === cls);
+        const every = mine.every((x) => S.tracked.has(x.id));
+        mine.forEach((x) => every ? S.tracked.delete(x.id) : S.tracked.add(x.id));
+        save(); renderPicker(); renderSum(); render(); };
+      h.appendChild(b);
+      p.appendChild(h);
+    }
+    const on = S.tracked.has(q.id);
+    const r = el("div", "pk" + (on ? " on" : ""));
+    const bx = el("span", "bx", on ? "✓" : "");
+    r.appendChild(bx);
+    r.appendChild(el("span", "t", q.name + " — " + q.reward));
+    r.appendChild(el("span", "m", q.items.length + "pc"));
+    r.title = q.reward + (q.slot ? " (" + q.slot + ")" : "") + "\n" + q.items.map((i) => "· " + i.name + " — " + i.mob).join("\n");
+    r.onclick = () => { on ? S.tracked.delete(q.id) : S.tracked.add(q.id); save(); renderPicker(); renderSum(); render(); };
+    p.appendChild(r);
+  });
+}
+
+/* The 15 runes, straight from the client's currency table, each with a
+   counter. This is the authoritative place to set them: the inline steppers on
+   quest rows vanish once a test reads ready, so a mis-click there would
+   otherwise be impossible to take back. */
+function renderRunes() {
+  const g = $("#runes"); g.innerHTML = "";
+  /* Alphabetical, because you are reading them off your currency tab and
+     scanning for a name. E.RUNES itself stays in the client's own order —
+     its index IS the dbstr id (75 + index), which is the provenance — so the
+     sort is a display copy, never the source list. */
+  const shown = E.RUNES.slice().sort((a, b) => a.localeCompare(b));
+  shown.forEach((name) => {
+    const n = S.runes.get(name) || 0;
+    const b = el("div", "cls rune-cell" + (n ? " on" : ""));
+    b.appendChild(el("span", null, name.replace(/^Wind Rune /, "")));
+    const stp = el("span", "step");
+    const mk = (txt, d) => {
+      const x = el("button", null, txt);
+      x.onclick = (ev) => {
+        ev.stopPropagation();
+        const v = Math.max(0, Math.min(999, (S.runes.get(name) || 0) + d));
+        v ? S.runes.set(name, v) : S.runes.delete(name);
+        save(); renderRunes(); render();
+      };
+      return x;
+    };
+    stp.appendChild(mk("−", -1));
+    stp.appendChild(el("b", null, String(n)));
+    stp.appendChild(mk("+", 1));
+    b.appendChild(stp);
+    /* indexOf on E.RUNES, not on the sorted copy — the client's own order is
+       what makes the index a dbstr id. */
+    b.title = name + "\nNamed by the client at dbstr id " + (75 + E.RUNES.indexOf(name))
+      + ".\nAn inventory dump counts these for you. Set by hand only if you have none.";
+    g.appendChild(b);
+  });
+}
+
+function renderSum() {
+  const qs = trackedQuests();
+  const items = new Set(); qs.forEach((q) => q.items.forEach((i) => items.add(i.name)));
+  const contested = [...items].filter((n) => (D.demand[n] || []).filter((id) => S.tracked.has(id)).length > 1);
+  $("#sum").textContent = qs.length
+    ? qs.length + " tests · " + items.size + " distinct pieces" + (contested.length ? " · " + contested.length + " shared" : "")
+    : "Nothing tracked.";
+}
+
+/* ── wiring ─────────────────────────────────────────────────────────────── */
+function init() {
+  load();
+  applyOpacity(S.opacity);
+  renderClasses(); renderPicker(); renderRunes(); renderSum(); render();
+
+  if (!FSA) { dropOnly(); $("#fsaWarn").innerHTML = ' <b style="color:var(--brass)">This browser cannot follow a file live.</b> Chrome or Edge on desktop can, and so can the Electron build.'; }
+
+  $("#drop").onclick = pickLog;
+  ["dragover", "dragenter"].forEach((e) => $("#drop").addEventListener(e, (ev) => { ev.preventDefault(); $("#drop").classList.add("over"); }));
+  ["dragleave", "drop"].forEach((e) => $("#drop").addEventListener(e, () => $("#drop").classList.remove("over")));
+  $("#drop").addEventListener("drop", (ev) => { ev.preventDefault(); const f = ev.dataTransfer.files[0]; if (f) readWhole(f); });
+  document.addEventListener("dragover", (e) => e.preventDefault());
+  document.addEventListener("drop", (e) => e.preventDefault());
+
+  $("#bInv").onclick = () => {
+    const i = document.createElement("input"); i.type = "file"; i.accept = ".txt";
+    i.onchange = () => i.files[0] && readInventory(i.files[0]); i.click();
+  };
+  /* Editing the ally list has to rebuild the ledger, not patch it: attribution
+     is decided at the moment each kill line is read, so the only honest way to
+     apply a new name is to read the log again from the top. Live tails reset
+     their offset; a one-off drop asks for the file again. */
+  $("#allies").value = S.allies.join(", ");
+  $("#allies").onchange = () => {
+    S.allies = parseAllies($("#allies").value);
+    save();
+    if (S.handle) { S.offset = 0; S.stream = newStream(); S.led = S.stream.led; poll(true); }
+    else if (S.led.lines) $("#dropS").textContent = "Ally list changed — re-drop the log to re-read it with the new names.";
+    render();
+  };
+
+  $("#bAll").onclick = () => { (S.trio.length ? trioQuests() : allQuests).forEach((q) => S.tracked.add(q.id)); save(); renderPicker(); renderSum(); render(); };
+  $("#bNone").onclick = () => { S.tracked.clear(); save(); renderPicker(); renderSum(); render(); };
+  /* `wide` must track `setup` in BOTH directions. classList.toggle returns
+     false when it removes, so the old `toggle(...) && add("wide")` left the
+     panel stuck at 600px over the game with no way back except "Show overlay". */
+  const setSetup = (on) => {
+    const a = $("#app");
+    a.classList.toggle("setup", on);
+    a.classList.toggle("wide", on);
+  };
+  $("#bGo").onclick = () => setSetup(false);
+  $("#bSetup").onclick = () => setSetup(!$("#app").classList.contains("setup"));
+
+  /* Width lives on #app, not :root — `#app.wide{--w:600px}` is declared on the
+     element itself and beats anything inherited, which made Compact silently
+     do nothing while setup was open. */
+  $("#bMin").onclick = () => {
+    const a = $("#app"); const on = a.classList.toggle("mini");
+    a.style.setProperty("--w", on ? "244px" : "344px");
+    a.style.setProperty("--f", on ? "11px" : "12px");
+  };
+
+  $("#bThru").onclick = () => {
+    if (!NATIVE) { $("#bThru").title = "Click-through needs the Electron build — a browser window cannot pass clicks to the game."; return; }
+    const on = window.skyNative.toggleClickThrough();
+    $("#bThru").classList.toggle("on", on);
+  };
+  if (!NATIVE) $("#bThru").style.opacity = ".35";
+  // Ctrl+Shift+L is a global shortcut, so the flip can originate in the main
+  // process. Follow it, or the button lies about the state of the window.
+  /* A hotkey another app already owns fails silently at registration. Say so —
+     Ctrl+Shift+L is how you get clicks back, and finding out it is dead while
+     a boss is on you is the wrong moment. */
+  if (NATIVE && window.skyNative.onShortcutFailed) {
+    window.skyNative.onShortcutFailed((lost) => {
+      const names = { show: "Ctrl+Shift+O (show/hide)", through: "Ctrl+Shift+L (click-through)" };
+      $("#nameWarn").textContent = "Another program already owns "
+        + lost.map((k) => names[k] || k).join(" and ")
+        + ". Use the buttons in the panel instead.";
+    });
+  }
+  if (NATIVE && window.skyNative.onThrough) {
+    window.skyNative.onThrough((on) => {
+      $("#bThru").classList.toggle("on", on);
+      $("#app").classList.toggle("thru", on);
+    });
+  }
+
+  $("#bHeld").onclick = () => { S.showHeld = !S.showHeld; $("#bHeld").classList.toggle("on", S.showHeld); render(); };
+  $("#op").oninput = (e) => applyOpacity(+e.target.value);
+  document.querySelectorAll("#dock .seg button").forEach((b) => {
+    b.onclick = () => {
+      document.querySelectorAll("#dock .seg button").forEach((x) => x.classList.remove("on"));
+      b.classList.add("on"); S.filter = b.dataset.f; render();
+    };
+  });
+
+  /* ── resize ───────────────────────────────────────────────────────────────
+     Frameless windows have no visible edge, and Windows' own resize border is
+     a few pixels of empty space you have to find by accident. Worse, the title
+     bar is a drag region, so grabbing anywhere near the top MOVES the window
+     instead of sizing it — which is what "it just slides sideways" was.
+     So we own the gesture: one grip, always the same corner, driving the real
+     window over IPC. Pointer capture keeps the drag alive when the cursor
+     leaves the window, which it will, because you are dragging outward. */
+  (function wireResize() {
+    const grip = $("#grip"), app = $("#app");
+    let sx = 0, sy = 0, sw = 0, sh = 0, live = false;
+
+    grip.addEventListener("pointerdown", (e) => {
+      live = true;
+      grip.setPointerCapture(e.pointerId);
+      app.classList.add("resizing");
+      sx = e.screenX; sy = e.screenY;
+      const r = app.getBoundingClientRect();
+      sw = Math.round(r.width); sh = Math.round(r.height);
+      e.preventDefault(); e.stopPropagation();
+    });
+
+    grip.addEventListener("pointermove", (e) => {
+      if (!live) return;
+      const w = Math.max(MIN_W, sw + (e.screenX - sx));
+      const h = Math.max(MIN_H, sh + (e.screenY - sy));
+      if (NATIVE) window.skyNative.resize(w, h);
+      else {
+        /* The browser build cannot size its own window, so the panel itself
+           grows instead — same feel, and the only thing that can actually
+           change inside a tab. */
+        app.style.setProperty("--w", w + "px");
+        app.style.height = h + "px";
+        app.style.maxHeight = "none";
+      }
+    });
+
+    const end = (e) => {
+      if (!live) return;
+      live = false;
+      app.classList.remove("resizing");
+      try { grip.releasePointerCapture(e.pointerId); } catch (err) {}
+      save();
+    };
+    grip.addEventListener("pointerup", end);
+    grip.addEventListener("pointercancel", end);
+    // double-click the grip to go back to the default size
+    grip.addEventListener("dblclick", () => {
+      if (NATIVE) window.skyNative.resize(360, 620);
+      else { app.style.removeProperty("--w"); app.style.height = ""; app.style.maxHeight = ""; }
+      save();
+    });
+  })();
+
+  // drag the panel in the browser build (Electron uses -webkit-app-region)
+  if (!NATIVE) {
+    let dx = 0, dy = 0, down = false;
+    const bar = $("#bar");
+    bar.addEventListener("mousedown", (e) => {
+      if (e.target.closest("button")) return;
+      down = true; bar.classList.add("grabbing");
+      const r = $("#app").getBoundingClientRect(); dx = e.clientX - r.left; dy = e.clientY - r.top;
+    });
+    addEventListener("mousemove", (e) => {
+      if (!down) return;
+      document.body.style.padding = "0";
+      $("#app").style.position = "fixed";
+      $("#app").style.left = Math.max(0, e.clientX - dx) + "px";
+      $("#app").style.top = Math.max(0, e.clientY - dy) + "px";
+    });
+    addEventListener("mouseup", () => { down = false; bar.classList.remove("grabbing"); });
+  }
+
+  addEventListener("keydown", (e) => {
+    // Escape in a text field means "revert my edit", not "close the panel"
+    if (e.key !== "Escape") return;
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) { t.blur(); return; }
+    setSetup(!$("#app").classList.contains("setup"));
+  });
+  setDot("");
+}
+document.readyState === "loading" ? addEventListener("DOMContentLoaded", init) : init();
+})();
+
+</script>
+</body>
+</html>

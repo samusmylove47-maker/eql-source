@@ -333,6 +333,45 @@ def run(pages, fail, warn):
                  f"Use @@ZEM_RANK@@ — the ranking is derived in "
                  f"_build/derived.py so it cannot go stale silently")
 
+    # ---- 3d. a figure in the metadata must appear in the page ---------------
+    #
+    # The Sky Ledger tool page typed 95 into its meta description while its body
+    # read the same quantity from the dataset twelve lines later — in a file
+    # whose own docstring is headed "EVERY FIGURE ON THIS PAGE IS READ, NOT
+    # TYPED". Rule 5 below could not catch it: that one fires where metadata
+    # asserts what the body HEDGES, and here both stated the same number from
+    # two different origins, free to drift apart on the next dataset change.
+    #
+    # Metadata is the only text a reader gets uncaveated — it is what travels on
+    # a share card — and this fault shipped once before, when the meta
+    # descriptions still said "ten surveyed dungeons" the day after the body
+    # started printing that count from data.
+    #
+    # So: a figure the description states must appear somewhere on the page. A
+    # level band is exempt, because "Levels 24-49" is a range the body renders
+    # as two separate cells, and those were the only three false positives
+    # across all 722 pages.
+    RANGE = re.compile(r"\d+\s*[-–—]\s*\d+")
+    NUMBER = re.compile(r"\b\d[\d,]+\b")
+    for path in pages:
+        h = open(path, encoding="utf-8", errors="replace").read()
+        m = re.search(r'<meta name="description" content="([^"]*)"', h)
+        if not m:
+            continue
+        desc = m.group(1)
+        ranges = "".join(RANGE.findall(desc))
+        body = re.sub(r"<[^>]+>", " ",
+                      re.sub(r"<head\b.*?</head>", " ", h, flags=re.S | re.I))
+        body = body.replace(",", "")
+        for num in set(NUMBER.findall(desc)):
+            if num in ranges:
+                continue
+            if num.replace(",", "") in body or num in body:
+                continue
+            fail(f"{page_key(path)} states {num!r} in its meta description and "
+                 f"never on the page. Metadata is what travels on a share card; "
+                 f"derive it from the same source the body uses")
+
     # ---- 4. withheld coordinates may not reach a page -----------------------
     #
     # They were withheld from the plot and kept printing in the roster, which is

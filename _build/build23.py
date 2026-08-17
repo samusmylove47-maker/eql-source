@@ -31,7 +31,10 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
 
-SKIP_DIRS = ('public/items/', 'public/named/')
+# public/app/ holds the Sky Ledger browser build verbatim — a 176 KB
+# application, not a page of ours. Indexing it would put its whole UI into the
+# site search under a hashed URL that changes with every release.
+SKIP_DIRS = ('public/items/', 'public/named/', 'public/app/')
 SKIP_FILES = {'public/404.html', 'public/search.html'}
 STRIP = re.compile(r'<(script|style|svg)\b.*?</\1>', re.S | re.I)
 

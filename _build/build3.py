@@ -359,14 +359,15 @@ for s in MAPS:
            f"{z['title']} &middot; map", extra,
            og_card=f"dungeons-{s}", canon=f"dungeons/{s}-map")
 # ---- tools
-# The Sky dataset is substituted here rather than typed into the page. See
-# _build/skydata.py for why that mattered enough to change.
-_sky = json.dumps(json.load(open('assets/sky.json', encoding='utf-8')),
-                  separators=(',', ':'), ensure_ascii=False)
-inject(os.path.join(SRC,'eql-sky-tracker.html'), 'public/tools/plane-of-sky.html', '../',
-       'Tools', 'tools/index.html', 'Plane of Sky tracker', own_bar=True,
-       og_card='tools', canon='tools/plane-of-sky',
-       subs=[('/*__SKY_DATA__*/null', _sky)])
+#
+# WITHDRAWN 17 AUG 2026: tools/plane-of-sky.html.
+# _build/source/eql-sky-tracker.html was injected here with assets/sky.json
+# substituted into it. Sky Ledger replaces it — it reads the player's own log
+# and, unlike ours, spends a held turn-in piece once instead of counting it
+# against every test that wants it. The source file stays in _build/source/
+# because _build/skydata.py's `--from-html` escape hatch reads it and
+# assets/sky.json is still published at /data/, but nothing renders it now.
+# /tools/plane-of-sky.html 301s to /tools/sky-ledger.html in public/_redirects.
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/race-unlocks.html', '../',
        'Tools', 'tools/index.html', 'Race unlock tracker',
        extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
@@ -378,7 +379,7 @@ inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator
        subs=[(' show("track");\n})();', ' show("calc");\n})();'),
              ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')],
        own_bar=True, og_card='tools', canon='tools/combo-calculator')
-n += 3
+n += 2
 if PH_MARKED:
     tot=sum(n for _,n in PH_MARKED)
     print(f'placeholder claims struck as historical: {tot} across {len(PH_MARKED)} surveys')

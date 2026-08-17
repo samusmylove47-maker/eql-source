@@ -26,11 +26,17 @@ per required faction, per race, and assets/faction-data.json holds exactly those
 faction lists — verified identical to the tracker's own table before this was
 written.
 
-Plane of Sky progress is NOT decoded. Its layout is one bit per quest plus one
-per component, and parsing the quest structure out of the tracker gave 200
-components where the tool reports 222. A count that might be wrong is worse than
-no count, so the sheet shows the trio and the character name — both plain text
-in the tracker's own fragment — and links out for the detail.
+Plane of Sky progress is no longer shown at all, as of 17 Aug 2026. It was read
+out of the Sky tracker's own save, and that tracker is withdrawn: Sky Ledger
+replaces it, and Sky Ledger works the same thing out from the player's combat
+log rather than from ticks, so there is no bitfield to carry. A card reading
+from a key nothing writes any more would sit permanently empty, which is worse
+than not being there.
+
+The carrier fields survive. `S=` is still parsed out of an old link and written
+back to localStorage, so a sheet somebody bookmarked in August still round-trips
+unchanged instead of silently losing half its contents. A carrier that drops
+what it carries is not a carrier.
 
 Epic progress is not here at all. The site holds no structured epic quest data,
 only components named in loot tables, and inventing a checklist is not an option.
@@ -146,12 +152,11 @@ page = head("Character sheet",
 
       <div class="card2">
         <h2>Plane of Sky</h2>
-        <p class="sub">Read from the Plane of Sky tracker on this browser.</p>
-        <div class="stat">
-          <div><b id="s-trio">&mdash;</b><span>Trio on the sheet</span></div>
-        </div>
-        <p class="none" id="s-none">Nothing saved yet. Pick a trio in the tracker and it appears here.</p>
-        <div class="row"><a class="btn" href="plane-of-sky.html" id="s-open">Open the tracker &rarr;</a></div>
+        <p class="sub">Off this sheet since 17 August 2026.</p>
+        <p class="none">Sky Ledger replaces our Sky tracker and reads your progress out of your
+          combat log, so there is nothing here to tick. An old link still carries its Sky data
+          through untouched.</p>
+        <div class="row"><a class="btn" href="sky-ledger.html">Open Sky Ledger &rarr;</a></div>
       </div>
 
       <div class="card2">
@@ -244,14 +249,12 @@ function render(){{
     const cls=rp.done.includes(r)?"chip2 on":(rp.want.includes(r)?"chip2 want":"chip2");
     return `<span class="${{cls}}">${{RACES[r].name}}</span>`;}}).join("");
 
-  const sc=/(?:^|&)c=([^&]+)/.exec((st.S||"").replace(/^#/,""));
-  const trio=sc?sc[1].split(".").filter(Boolean):[];
-  $("#s-trio").textContent=trio.length?trio.join(" · "):"—";
-  $("#s-none").hidden=trio.length>0;
+  // The Sky readout is gone with the tracker it read (17 Aug 2026). st.S is
+  // still parsed, still written back and still recomposed into the link, so an
+  // old bookmark round-trips unchanged — it simply has nothing to render.
 
-  // the tracker links carry the state, so opening one lands on your sheet
+  // the tracker link carries the state, so opening it lands on your sheet
   $("#r-open").href="race-unlocks.html"+(st.R||"");
-  $("#s-open").href="plane-of-sky.html"+(st.S||"");
   $("#link").value=location.origin+location.pathname+compose();
 }}
 

@@ -17,7 +17,7 @@
  "dungeons/splitpaw.html": 1780,
  "dungeons/thehole.html": 2961,
  "dungeons/warrens.html": 2511,
- "index.html": 457,
+ "index.html": 647,
  "learn/deity.html": 810,
  "learn/difficulty.html": 1486,
  "learn/raid-access.html": 754,
@@ -25,11 +25,10 @@
  "raids/index.html": 214,
  "raids/plane-of-sky.html": 1631,
  "sources.html": 6102,
- "tools/character.html": 204,
+ "tools/character.html": 214,
  "tools/combo-calculator.html": 85,
  "tools/faction-impact.html": 335,
  "tools/index-search.html": 212,
- "tools/index.html": 225,
- "tools/plane-of-sky.html": 192,
+ "tools/index.html": 210,
  "tools/race-unlocks.html": 85
 }
