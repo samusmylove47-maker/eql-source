@@ -59,29 +59,13 @@
       "Splitpaw Sharpshooter": 1
      }
     },
-    "Avenrae's thorns for 3 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
-    "Avenrae": {
-     "landed": 2,
-     "casters": {}
-    },
     "Grasping Roots": {
      "landed": 2,
      "casters": {
       "a gnoll elite": 2
      }
     },
-    "YOUR thorns for 6 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Splitpaw Sharpshooter pet!": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 9 points of non-melee damage": {
      "landed": 1,
      "casters": {}
     },
@@ -123,7 +107,8 @@
     "Chaotic Feedback": {
      "Tranixx Darkpaw": 1
     }
-   }
+   },
+   "stuns_cause_unread": 8
   },
   "faction_by_mob": {},
   "exp_by_mob": {
@@ -1185,10 +1170,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "Avenrae": {
-     "landed": 3,
-     "casters": {}
-    },
     "Blessing of the Squire": {
      "landed": 1,
      "casters": {}
@@ -1204,7 +1185,8 @@
     "Shock of Blades": {
      "a gnoll": 1
     }
-   }
+   },
+   "stuns_cause_unread": 3
   },
   "faction_by_mob": {},
   "exp_by_mob": {
@@ -1869,10 +1851,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "YOUR thorns for 11 points of non-melee damage": {
-     "landed": 4,
-     "casters": {}
-    },
     "Grasping Roots": {
      "landed": 1,
      "casters": {}
@@ -1886,7 +1864,8 @@
     "Searing Arrow": {
      "a gnoll elite": 1
     }
-   }
+   },
+   "stuns_cause_unread": 4
   },
   "faction_by_mob": {},
   "exp_by_mob": {
@@ -2218,19 +2197,11 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "Avenrae": {
-     "landed": 3,
-     "casters": {}
-    },
     "Lightning Bolt": {
      "landed": 2,
      "casters": {
       "Splitpaw Explorer": 2
      }
-    },
-    "Avenrae's thorns for 3 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
     },
     "Blessing of the Squire": {
      "landed": 2,
@@ -2243,17 +2214,10 @@
     "Flowering Heal": {
      "landed": 1,
      "casters": {}
-    },
-    "YOUR thorns for 2 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 11 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
-   "resists": {}
+   "resists": {},
+   "stuns_cause_unread": 7
   },
   "faction_by_mob": {},
   "exp_by_mob": {},
@@ -2906,10 +2870,6 @@
       "a Teir`Dal priestess": 1
      }
     },
-    "Avenrae's thorns for 11 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Burst of Fire": {
      "landed": 1,
      "casters": {}
@@ -2919,10 +2879,6 @@
      "casters": {}
     },
     "Flowering Heal": {
-     "landed": 1,
-     "casters": {}
-    },
-    "YOUR thorns for 2 points of non-melee damage": {
      "landed": 1,
      "casters": {}
     }
@@ -2942,7 +2898,8 @@
     "Ghoul Root": {
      "a ghoul": 1
     }
-   }
+   },
+   "stuns_cause_unread": 3
   },
   "faction_by_mob": {
    "a necro theurgist": {
@@ -3647,18 +3604,6 @@
      "casters": {
       "a Teir`Dal rogue": 3
      }
-    },
-    "YOUR thorns for 15 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
-    },
-    "YOUR thorns for 2 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -3668,7 +3613,8 @@
     "Disease Cloud": {
      "a shadowknight pet": 1
     }
-   }
+   },
+   "stuns_cause_unread": 4
   },
   "faction_by_mob": {},
   "exp_by_mob": {
@@ -5083,26 +5029,19 @@
      "landed": 1,
      "casters": {}
     },
-    "Avenrae's thorns for 10 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
     "Holy Might": {
      "landed": 1,
      "casters": {
       "a froglok ton knight": 1
      }
-    },
-    "Avenrae's thorns for 19 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
     "Root": {
      "a froglok nok shaman": 1
     }
-   }
+   },
+   "stuns_cause_unread": 2
   },
   "faction_by_mob": {
    "a froglok shin warrior": {
@@ -6624,10 +6563,6 @@
    "screams": 1,
    "scream_seconds": 20,
    "stuns": {
-    "Avenrae's thorns for 12 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Lightning Bolt": {
      "landed": 2,
      "casters": {
@@ -6640,14 +6575,6 @@
      "casters": {
       "a tal ghoul wizard": 1
      }
-    },
-    "YOUR thorns for 8 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "YOUR thorns for 2 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -6670,7 +6597,8 @@
     "Ghoul Root": {
      "a zol ghoul knight": 1
     }
-   }
+   },
+   "stuns_cause_unread": 4
   },
   "faction_by_mob": {
    "a froglok tsu shaman": {
@@ -7310,48 +7238,12 @@
       "a kor ghoul wizard": 1
      }
     },
-    "Avenrae's thorns for 26 points of non-melee damage": {
-     "landed": 5,
-     "casters": {}
-    },
-    "Avenrae": {
-     "landed": 4,
-     "casters": {}
-    },
-    "YOUR thorns for 16 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
-    "Avenrae's thorns for 22 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "YOUR thorns for 13 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Blessing of the Squire": {
      "landed": 2,
      "casters": {}
     },
     "Blooming Heal": {
      "landed": 2,
-     "casters": {}
-    },
-    "Avenrae's thorns for 29 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "YOUR thorns for 10 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "YOUR thorns for 2 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 24 points of non-melee damage": {
-     "landed": 1,
      "casters": {}
     },
     "Tishan's Clash": {
@@ -7411,7 +7303,8 @@
     "Engulfing Darkness": {
      "a ghoul cavalier": 1
     }
-   }
+   },
+   "stuns_cause_unread": 21
   },
   "faction_by_mob": {
    "a shin ghoul knight": {
@@ -8224,14 +8117,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "Avenrae's thorns for 8 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
-    },
     "Chaotic Feedback": {
      "landed": 1,
      "casters": {
@@ -8252,7 +8137,8 @@
     "Tangling Weeds": {
      "a necro initiate": 2
     }
-   }
+   },
+   "stuns_cause_unread": 3
   },
   "faction_by_mob": {
    "the thaumaturgist": {
@@ -9141,10 +9027,6 @@
      "landed": 1,
      "casters": {}
     },
-    "YOUR thorns for 6 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
     "Rabies": {
      "landed": 1,
      "casters": {
@@ -9180,7 +9062,8 @@
     "Desist": {
      "a willowisp pet": 1
     }
-   }
+   },
+   "stuns_cause_unread": 1
   },
   "faction_by_mob": {
    "a necro acolyte": {
@@ -10069,15 +9952,7 @@
       "Splitpaw Explorer": 4
      }
     },
-    "Avenrae": {
-     "landed": 2,
-     "casters": {}
-    },
     "Furor": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 11 points of non-melee damage": {
      "landed": 1,
      "casters": {}
     },
@@ -10101,7 +9976,8 @@
     "Engulfing Darkness": {
      "a gnoll necromancer": 1
     }
-   }
+   },
+   "stuns_cause_unread": 3
   },
   "faction_by_mob": {},
   "exp_by_mob": {
@@ -10814,23 +10690,11 @@
      "landed": 2,
      "casters": {}
     },
-    "YOUR thorns for 8 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Korven Nisere's thorns for 6 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
     "Chaos Flux": {
      "landed": 1,
      "casters": {
       "a Teir`Dal rogue": 1
      }
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
     },
     "Lifespike": {
      "landed": 1,
@@ -10863,7 +10727,8 @@
     "Disease Cloud": {
      "a necro acolyte": 2
     }
-   }
+   },
+   "stuns_cause_unread": 3
   },
   "faction_by_mob": {
    "a shadowknight": {
@@ -11653,14 +11518,6 @@
    "screams": 1,
    "scream_seconds": 22,
    "stuns": {
-    "Avenrae": {
-     "landed": 3,
-     "casters": {}
-    },
-    "Avenrae's thorns for 12 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
     "Holy Might": {
      "landed": 3,
      "casters": {
@@ -11730,7 +11587,8 @@
     "Stun": {
      "a necro theurgist": 1
     }
-   }
+   },
+   "stuns_cause_unread": 6
   },
   "faction_by_mob": {},
   "exp_by_mob": {},
@@ -14412,14 +14270,6 @@
       "a shadowy scribe": 2
      }
     },
-    "Avenrae": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Avenrae's thorns for 12 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Tishan's Clash": {
      "landed": 2,
      "casters": {
@@ -14427,19 +14277,11 @@
       "a spiritish ancille": 1
      }
     },
-    "YOUR thorns for 9 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Holy Might": {
      "landed": 1,
      "casters": {
       "a glyphed forbidder": 1
      }
-    },
-    "Avenrae's thorns for 3 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -14473,7 +14315,8 @@
     "Shadow Vortex": {
      "a dark offerer": 1
     }
-   }
+   },
+   "stuns_cause_unread": 7
   },
   "faction_by_mob": {
    "a spiritish ancille": {
@@ -17063,23 +16906,11 @@
       "a negotiator": 2
      }
     },
-    "YOUR thorns for 17 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
     "Tishan's Clash": {
      "landed": 2,
      "casters": {
       "a thought spoiler": 2
      }
-    },
-    "Avenrae's thorns for 22 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "YOUR thorns for 8 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -17112,7 +16943,8 @@
     "Screaming Terror": {
      "Princess Cherista": 1
     }
-   }
+   },
+   "stuns_cause_unread": 5
   },
   "faction_by_mob": {
    "a dark elf noble": {
@@ -20071,28 +19903,12 @@
       "a negotiator": 3
      }
     },
-    "Avenrae": {
-     "landed": 6,
-     "casters": {}
-    },
-    "Avenrae's thorns for 24 points of non-melee damage": {
-     "landed": 6,
-     "casters": {}
-    },
     "Holy Might": {
      "landed": 3,
      "casters": {
       "a glyphed forbidder": 2,
       "a glyphed guard": 1
      }
-    },
-    "YOUR thorns for 9 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Avenrae's thorns for 22 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
     },
     "Tishan's Clash": {
      "landed": 2,
@@ -20102,14 +19918,6 @@
      }
     },
     "Flowering Heal": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 23 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "YOUR thorns for 21 points of non-melee damage": {
      "landed": 1,
      "casters": {}
     }
@@ -20165,7 +19973,8 @@
      "a shadowy scrivener": 1,
      "a thought corruptor": 1
     }
-   }
+   },
+   "stuns_cause_unread": 18
   },
   "faction_by_mob": {},
   "exp_by_mob": {
@@ -24276,31 +24085,11 @@
       "a yun ghoul wizard": 1
      }
     },
-    "YOUR frost for 14 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Avenrae's thorns for 12 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
     "Tishan's Clash": {
      "landed": 1,
      "casters": {
       "a yun ghoul wizard": 1
      }
-    },
-    "Celestial Health": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 17 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {}
@@ -26044,10 +25833,6 @@
       "a tal ghoul wizard": 1
      }
     },
-    "Avenrae's thorns for 17 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
     "Tishan's Clash": {
      "landed": 3,
      "casters": {
@@ -26059,14 +25844,6 @@
      "casters": {
       "a ghoul savant": 2
      }
-    },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {}
@@ -26590,12 +26367,7 @@
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
-   "stuns": {
-    "YOUR thorns for 12 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {
     "Instill": {
      "Avatar of Fear": 2
@@ -26810,10 +26582,6 @@
    "screams": 1,
    "scream_seconds": 4,
    "stuns": {
-    "YOUR thorns for 17 points of non-melee damage": {
-     "landed": 10,
-     "casters": {}
-    },
     "Holy Might": {
      "landed": 7,
      "casters": {
@@ -26821,29 +26589,17 @@
       "a lizard judicator": 3
      }
     },
-    "Avatar of Fear": {
-     "landed": 5,
-     "casters": {}
-    },
-    "Shara": {
-     "landed": 5,
-     "casters": {}
-    },
-    "Force": {
-     "landed": 4,
+    "Anarchy": {
+     "landed": 3,
      "casters": {
       "Cazic Cenobite": 3
      }
     },
-    "Anarchy": {
-     "landed": 2,
+    "Force": {
+     "landed": 3,
      "casters": {
-      "Cazic Cenobite": 2
+      "Cazic Cenobite": 3
      }
-    },
-    "Cannibalize": {
-     "landed": 1,
-     "casters": {}
     },
     "Lightning Bolt": {
      "landed": 1,
@@ -27416,16 +27172,7 @@
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
-   "stuns": {
-    "Blessing of the Knight": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Avenrae's thorns for 17 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {
     "Tagar's Insects": {
      "a lizard protector": 1
@@ -27858,14 +27605,6 @@
       "a lizard fanatic": 2,
       "Cazic Cenobite": 1
      }
-    },
-    "YOUR thorns for 17 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Shara": {
-     "landed": 1,
-     "casters": {}
     },
     "Harm Touch": {
      "landed": 1,
@@ -29372,10 +29111,6 @@
      "casters": {
       "an elemental harvester": 1
      }
-    },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -30819,10 +30554,6 @@
      "casters": {
       "a sonic bat": 4
      }
-    },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -33468,10 +33199,6 @@
       "a sonic bat": 23
      }
     },
-    "YOUR thorns for 19 points of non-melee damage": {
-     "landed": 6,
-     "casters": {}
-    },
     "Chaotic Feedback": {
      "landed": 3,
      "casters": {
@@ -33482,6 +33209,12 @@
      "landed": 3,
      "casters": {
       "a lava guardian": 3
+     }
+    },
+    "Dry Bone Fire Burst": {
+     "landed": 2,
+     "casters": {
+      "an imp protector": 2
      }
     },
     "Discordant Mind": {
@@ -33496,13 +33229,11 @@
       "a kobold noble": 1
      }
     },
-    "Spirit Salve": {
+    "Blast of Poison": {
      "landed": 1,
-     "casters": {}
-    },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
+     "casters": {
+      "a lava guardian": 1
+     }
     },
     "Tishan's Clash": {
      "landed": 1,
@@ -34983,12 +34714,7 @@
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
-   "stuns": {
-    "Sacred Word": {
-     "landed": 1,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {
     "Malaise": {
      "an elemental warrior": 1
@@ -35571,19 +35297,11 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "YOUR thorns for 16 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
     "Ice Spear": {
      "landed": 1,
      "casters": {
       "an elemental warrior": 1
      }
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -36304,10 +36022,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "YOUR thorns for 16 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
     "Lightning Bolt": {
      "landed": 1,
      "casters": {
@@ -36937,12 +36651,7 @@
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
-   "stuns": {
-    "Blessing of the Lord Commander": {
-     "landed": 1,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {}
   },
   "faction_by_mob": {},
@@ -37415,29 +37124,17 @@
    "screams": 1,
    "scream_seconds": 19,
    "stuns": {
-    "YOUR thorns for 19 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
     "Knockback": {
      "landed": 1,
      "casters": {
       "an icy terror": 1
      }
     },
-    "Lady Vox": {
-     "landed": 1,
-     "casters": {}
-    },
     "Thunderclap": {
      "landed": 1,
      "casters": {
       "an ice giant magus": 1
      }
-    },
-    "Blessing of the Lord Commander": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -40098,10 +39795,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "Avenrae's thorns for 3 points of non-melee damage": {
-     "landed": 4,
-     "casters": {}
-    },
     "Frost Shard": {
      "landed": 3,
      "casters": {
@@ -40123,23 +39816,11 @@
       "a gorgon": 2
      }
     },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
-    },
     "Wrath of Al`Kabor": {
      "landed": 1,
      "casters": {
       "a fetid fiend": 1
      }
-    },
-    "Puma Maw": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -41459,23 +41140,17 @@
       "a gorgon": 13
      }
     },
-    "Blessing of the Knight": {
-     "landed": 5,
-     "casters": {}
-    },
-    "YOUR thorns for 3 points of non-melee damage": {
-     "landed": 5,
-     "casters": {}
-    },
     "Specter Stun": {
      "landed": 3,
      "casters": {
       "a phantasm": 3
      }
     },
-    "Tainted Breath": {
+    "Strong Disease": {
      "landed": 2,
-     "casters": {}
+     "casters": {
+      "a fetid fiend": 2
+     }
     },
     "Thunderclap": {
      "landed": 2,
@@ -41502,10 +41177,6 @@
      "casters": {
       "a turmoil toad": 1
      }
-    },
-    "Ice Spear": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -43511,12 +43182,7 @@
    "fear_lines": 0,
    "screams": 1,
    "scream_seconds": 21,
-   "stuns": {
-    "Whopper's thorns for 19 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {}
   },
   "faction_by_mob": {},
@@ -43841,14 +43507,6 @@
      "casters": {
       "Magi P`tasa": 2
      }
-    },
-    "Stankie's thorns for 19 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
     },
     "Force": {
      "landed": 1,
@@ -47552,12 +47210,7 @@
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
-   "stuns": {
-    "Blessing of the Knight": {
-     "landed": 2,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {
     "Earth Elemental Attack": {
      "Terror": 1,
@@ -47977,12 +47630,7 @@
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
-   "stuns": {
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
-    }
-   },
+   "stuns": {},
    "resists": {}
   },
   "faction_by_mob": {},
@@ -49042,10 +48690,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
-    },
     "Tishan's Clash": {
      "landed": 1,
      "casters": {
@@ -50401,10 +50045,6 @@
       "a phantasm": 2
      }
     },
-    "YOUR thorns for 21 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
-    },
     "Chaos Flux": {
      "landed": 1,
      "casters": {
@@ -51612,10 +51252,6 @@
       "Amygdalan knight": 2
      }
     },
-    "Blessing of the Knight": {
-     "landed": 1,
-     "casters": {}
-    },
     "Anarchy": {
      "landed": 1,
      "casters": {
@@ -52512,33 +52148,29 @@
       "Amygdalan warrior": 5
      }
     },
-    "YOUR thorns for 21 points of non-melee damage": {
-     "landed": 4,
-     "casters": {}
-    },
     "Wrath of Al`Kabor": {
      "landed": 1,
      "casters": {
       "a fetid fiend": 1
      }
     },
-    "Amygdalan warrior pet": {
+    "Engulfing Roots": {
      "landed": 1,
-     "casters": {}
+     "casters": {
+      "Amygdalan warrior": 1
+     }
     },
-    "Ffossip's thorns for 24 points of non-melee damage": {
+    "Retribution": {
      "landed": 1,
-     "casters": {}
+     "casters": {
+      "Amygdalan knight": 1
+     }
     },
     "Discordant Mind": {
      "landed": 1,
      "casters": {
       "Amygdalan warrior": 1
      }
-    },
-    "Gauu's thorns for 3 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -53082,9 +52714,11 @@
       "Amygdalan warrior": 1
      }
     },
-    "YOUR thorns for 21 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
+    "Knockback": {
+     "landed": 2,
+     "casters": {
+      "a tentacle tormentor": 2
+     }
     },
     "Terror Lifetap": {
      "landed": 1,
@@ -53092,13 +52726,11 @@
       "a tentacle tormentor": 1
      }
     },
-    "Avenrae's thorns for 21 points of non-melee damage": {
+    "Engulfing Roots": {
      "landed": 1,
-     "casters": {}
-    },
-    "Amygdalan warrior pet": {
-     "landed": 1,
-     "casters": {}
+     "casters": {
+      "Amygdalan warrior": 1
+     }
     }
    },
    "resists": {
@@ -53690,10 +53322,6 @@
      "casters": {
       "a loathling lich": 1
      }
-    },
-    "Kebartik": {
-     "landed": 1,
-     "casters": {}
     },
     "Incinerate Bones": {
      "landed": 1,
@@ -54397,10 +54025,6 @@
      "casters": {
       "an ire ghast": 3
      }
-    },
-    "YOUR thorns for 21 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -56632,14 +56256,6 @@
      "casters": {
       "an elemental harvester": 1
      }
-    },
-    "Avenrae": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Avenrae's thorns for 24 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -57743,10 +57359,6 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "Blessing of the Lord Commander": {
-     "landed": 4,
-     "casters": {}
-    },
     "Stone Breath": {
      "landed": 3,
      "casters": {
@@ -57760,23 +57372,17 @@
       "Sister of the Spire": 3
      }
     },
-    "Envenomed Bolt": {
+    "Elnerick's Entombment of Ice": {
      "landed": 1,
-     "casters": {}
-    },
-    "Doraleous's thorns for 21 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
+     "casters": {
+      "an avenging gazer": 1
+     }
     },
     "Discordant Mind": {
      "landed": 1,
      "casters": {
       "a watchful guard": 1
      }
-    },
-    "Bzzazzt": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -58988,34 +58594,11 @@
    "scream_seconds": 0,
    "stuns": {
     "Deadly Poison": {
-     "landed": 3,
+     "landed": 6,
      "casters": {
-      "Bzzazzt": 2
+      "Bzzazzt": 5,
+      "Bazzzazzt": 1
      }
-    },
-    "YOUR thorns for 21 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
-    },
-    "Celestial Healing": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Bzzazzt": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Puma Maw": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Blessing of the Lord Commander": {
-     "landed": 1,
-     "casters": {}
-    },
-    "Accurately's thorns for 21 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -60398,10 +59981,6 @@
      "casters": {
       "a windrider drake": 2
      }
-    },
-    "Blessing of the Lord Commander": {
-     "landed": 1,
-     "casters": {}
     }
    },
    "resists": {
@@ -61321,9 +60900,11 @@
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {
-    "YOUR thorns for 21 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
+    "Life Leech": {
+     "landed": 1,
+     "casters": {
+      "heart harpie": 1
+     }
     },
     "Stone Breath": {
      "landed": 1,
@@ -61868,19 +61449,11 @@
       "Gorgalosk": 5
      }
     },
-    "YOUR thorns for 24 points of non-melee damage": {
-     "landed": 3,
-     "casters": {}
-    },
     "Discordant Mind": {
      "landed": 2,
      "casters": {
       "a greater sphinx": 2
      }
-    },
-    "YOUR thorns for 3 points of non-melee damage": {
-     "landed": 1,
-     "casters": {}
     },
     "Thunderbolt": {
      "landed": 1,
@@ -62706,9 +62279,11 @@
       "a windrider drake": 4
      }
     },
-    "YOUR thorns for 3 points of non-melee damage": {
-     "landed": 2,
-     "casters": {}
+    "Efreeti Fire": {
+     "landed": 1,
+     "casters": {
+      "Overseer of Air": 1
+     }
     }
    },
    "resists": {

@@ -60,6 +60,45 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 
+def _repair_stun_causes(sessions):
+    """Move mis-attributed stun causes into an explicit unattributed count.
+
+    The stun handler used to accept any "... by X." tail as the spell that
+    stunned us, and a damage shield ends in exactly that shape, so
+    "Avenrae's thorns for 24 points of non-melee damage" was filed as a spell.
+
+    Sessions parsed since the handler was tightened cannot produce these. The
+    ones that can are the preserved records whose raw logs are gone — the seven
+    Castle Mistmoore sessions among them — and those cannot be re-parsed.
+
+    So they are repaired in place, and the repair is deliberately conservative.
+    THE STUN IS REAL: "You are stunned!" was in the log. Only the cause was
+    read wrongly. Deleting the entry would quietly lower a hazard count on a
+    page about how dangerous a zone is. The count is kept and moved to
+    stuns_cause_unread, which a page can print as "cause not recorded" — the
+    honest statement, and the one this project's rules ask for.
+
+    Two shapes are rejected: a name carrying its own damage sentence, and a
+    name that is one of our own characters, which arrives the same way.
+    """
+    ours = {s.get('character') for s in sessions if s.get('character')}
+    for s in sessions:
+        ctl = s.get('control') or {}
+        stuns = ctl.get('stuns')
+        if not stuns:
+            continue
+        keep, moved = {}, 0
+        for spell, rec in stuns.items():
+            landed = (rec or {}).get('landed', 0)
+            if 'points of' in spell or spell in ours or any(c.isdigit() for c in spell):
+                moved += landed
+            else:
+                keep[spell] = rec
+        if moved:
+            ctl['stuns'] = keep
+            ctl['stuns_cause_unread'] = ctl.get('stuns_cause_unread', 0) + moved
+
+
 def _span_minutes(start, end):
     """Minutes between two "HH:MM" stamps from the same session.
 
@@ -206,6 +245,12 @@ GROUP_CAST = re.compile(r'^(\w[\w`\'-]{2,23})(?:\'s)? (?:image shimmers|begins t
 # one, and a trailing digit so two logs from the same character can coexist:
 #   eqlog_Avenrae_rivervale_2026-08-08-pm.txt  ->  Avenrae
 CHAR = re.compile(r'eqlog_([A-Za-z]+?)\d*_', re.I)
+
+# The one shape a stunning spell actually takes in the log. Caster, then the
+# spell that stunned us. See the note at the stun handler for why the looser
+# "by X at end of line" match had to go.
+STUN_CAUSE = re.compile(
+    r'^(.{1,44}?) hit you for \d+ points of [\w\s]*?damage by ([A-Z][^.]*?)\.?\s*$')
 
 
 def character_of(path):
@@ -426,14 +471,25 @@ def collect(rows, character=None):
         if STUN_LANDED.match(x):
             cur['_stun_at'] = when
         elif cur.get('_stun_at') and (when - cur['_stun_at']).total_seconds() <= 2:
-            # the line after "You are stunned!" names what did it
-            sp = BY_SPELL.search(x)
+            # The line after "You are stunned!" names what did it — but only if
+            # it is a spell landing on us. BY_SPELL alone anchors on "by X" at
+            # end of line, and a damage shield ends the same way, so
+            # "You are pierced by Avenrae's thorns for 24 points of non-melee
+            # damage." was being filed as a stunning spell called "Avenrae's
+            # thorns for 24 points of non-melee damage". Mistmoore's table
+            # carried six such entries, and a spell name that is a whole
+            # sentence is the tell.
+            #
+            # Requiring the full form ties the spell to the caster that cast
+            # it, and it costs nothing: every genuine stun in the corpus is a
+            # "hit you for N points of ... damage by SPELL." line. Lines with
+            # no spell at all — "Your mind fills with fear." — correctly
+            # record a stun with no cause rather than borrowing one.
+            sp = STUN_CAUSE.match(x)
             if sp:
-                spell = sp.group(1).strip()
+                spell = sp.group(2).strip()
                 ctl['stuns'][spell] += 1
-                who = re.match(r'^(.{1,44}?) hit you for', x)
-                if who:
-                    ctl['stun_casters'][spell][who.group(1).strip()] += 1
+                ctl['stun_casters'][spell][sp.group(1).strip()] += 1
                 cur['_stun_at'] = None
         if SCREAM_START.match(x):
             ctl['screams'] += 1
@@ -791,6 +847,7 @@ def build(src):
         if s.get('minutes') is None and s.get('window'):
             start, _, end = (s['window'] or '').partition('-')
             s['minutes'] = _span_minutes(start, end)
+    _repair_stun_causes(out)
 
     retier(out)
 
