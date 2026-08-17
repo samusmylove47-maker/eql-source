@@ -147,8 +147,15 @@ def run(pages, fail, warn):
     # quantity from "209 named recorded" and conflating them would make this
     # check lie.
     truth = {
-        "named recorded": len(IX["named"]),
-        "items indexed": len(IX["items"]),
+        "named recorded": IX["counts"]["named_pages"],
+        # THE GATE'S OWN TRUTH WAS THE WRONG NUMBER. len(IX["items"]) is 451:
+        # the raw row count, which includes the 6 groups and 4 fragments that
+        # are not items and get no page. extract.py declares the real figure as
+        # counts.item_pages = 435, and the home page and The Index both print
+        # that. So the check that exists to stop a count drifting was holding a
+        # value no page should ever print, and would have failed a correct page
+        # while passing tools/index.html, which printed 451 for months.
+        "items indexed": IX["counts"]["item_pages"],
         "zones surveyed": len(Z),
         "tools listed": None,          # filled below, once _partials is importable
     }
