@@ -224,6 +224,22 @@ for n, name, note in TIERS:
              f'<td class="dnote">{note or "&mdash;"}</td><td>{ours}</td></tr>')
 
 covered = sorted({s['zone'] for s in SESSIONS if s.get('zone')})
+# HOW MANY OF THESE HAVE A SURVEY. The page said "each plate carries its own
+# figures under Measured in play" beneath a list of every zone we have logged —
+# but most of that list has no survey on this site at all, and five of the
+# thirteen surveys carry no measured section. Counted rather than asserted.
+import re as _re
+_ZT = {z['title'].lower() for z in json.load(open('assets/zones-index.json', encoding='utf-8'))}
+_ALIAS = {'the ruins of old guk': 'lower guk', 'the ruins of old paineel': 'the hole',
+          'the castle of mistmoore': 'castle mistmoore'}
+
+
+def _has_survey(zone):
+    k = _re.sub(r'\s+\d+\s*\(.*?\)$', '', zone or '').replace(' - Group', '').strip().lower()
+    return _ALIAS.get(k, k) in _ZT
+
+
+_no_survey = sum(1 for z in covered if not _has_survey(z))
 
 page = head("What difficulty changes",
   "D0 to D4 in EverQuest Legends: what each tier scales, what it does not, how to read the tier off "
@@ -372,7 +388,9 @@ You have entered The City of Guk 4 (Refined).</pre>
       one effect ticking every six seconds for the same 22 hit points, the same shape Lady Vox
       shows at her top tier.</div>
     <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other {_N_OTHER} bosses</h3>
-    <p class="lede" style="margin:0">Same shape, different bosses, all public raids. A row marked
+    <p class="lede" style="margin:0">Same shape, different bosses. <strong>Most were run in a group
+      instance, not the open zone</strong>, and attacker counts start at two &mdash; so
+      &ldquo;raid&rdquo; is the wrong word for many of them. A row marked
       <em>floor</em> is one we joined after the boss was already engaged, so the log never saw the
       opening and the figure is a lower bound rather than the cost of the fight.</p>
     <div class="scroller"><table>
@@ -406,8 +424,9 @@ You have entered The City of Guk 4 (Refined).</pre>
       this is one zone on one night. It does not contradict the published claim about named mobs; it
       suggests the behaviour starts earlier and lower than the claim implies.</div>
     <p class="lede">Measured so far across {len(covered)} zone{"s" if len(covered) != 1 else ""}:
-      {", ".join(covered) if covered else "none yet"}. Each plate carries its own figures under
-      <em>Measured in play</em>.</p>
+      {", ".join(covered) if covered else "none yet"}. <strong>Where a zone has a survey, its
+      figures are under <em>Measured in play</em></strong>; {_no_survey} of these have no survey
+      here at all.</p>
   </div>
 </section>
 

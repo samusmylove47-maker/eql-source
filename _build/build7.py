@@ -98,9 +98,13 @@ page = head("How raid access works",
         <span class="bar"></span></div>
     </div>
 
-    <div class="note"><strong>Group and raid sizes.</strong> A group caps at 4. A raid caps at 8. If you
-      are reading advice that assumes several dozen players and a dozen healers, you are reading classic
-      EverQuest, and it will not transfer.</div>
+    <div class="note"><strong>Group and raid sizes.</strong> A group caps at 4 and a raid at 8. If
+      you are reading advice that assumes several dozen players and a dozen healers, you are reading
+      classic EverQuest, and it will not transfer.
+      <br><br><strong>Our own logs do not confirm the raid cap.</strong> 24 of 104 parsed fights
+      name more than eight attackers, up to fifteen <span class="tier tM">M</span>. The parser counts
+      every name that deals damage, so pets would inflate it &mdash; we are not claiming the cap is
+      wrong, only that we cannot show it. One raid roster beside a parsed fight would settle it.</div>
   </div>
 </section>
 
