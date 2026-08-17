@@ -155,6 +155,14 @@ CASES = [
                       lambda m: m.group(1) + str(float(m.group(2)) + 300),
                       t, count=1, flags=re.S)),
 
+    # The stored percentage that disagreed with its own ZEM. Splitpaw shipped
+    # 170 where 128/75 rounds to 171, and the survey built a "highest of the
+    # set" claim on it while another zone published 185%.
+    ("a derived percentage that disagrees with its ZEM",
+     "a derived figure may not disagree with what it derives from",
+     "assets/zones-index.json",
+     lambda t: t.replace('"zem_pct": 171', '"zem_pct": 170', 1)),
+
     ("a tool dropped from the footer",
      "footer does not link tools/faction-impact.html",
      "public/index.html",

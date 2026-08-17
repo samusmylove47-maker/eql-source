@@ -244,6 +244,19 @@ def run(pages, fail, warn):
         if z["verify_level"] == "full" and ("is still open" in g or "still open:" in g):
             fail(f"{z['slug']} is marked full but its verify_gate still names an open gate")
 
+    # ---- 3b. a derived figure must equal what it derives from ---------------
+    #
+    # zem_pct is ZEM/75 as a percentage and is stored rather than computed, so
+    # it can drift from the number it comes from. Lair of the Splitpaw carried
+    # 170 for a ZEM of 128 while The Hole and The Warrens carried 171 for the
+    # identical 128 — and the survey then claimed 170% was "highest of the set"
+    # when Kedge Keep publishes 185%. One stored figure, two published errors.
+    for z in Z:
+        want = round(z["zem"] / 75 * 100)
+        if z.get("zem_pct") != want:
+            fail(f"{z['slug']}: zem_pct is {z.get('zem_pct')} but ZEM {z['zem']} gives {want} "
+                 f"— a derived figure may not disagree with what it derives from")
+
     # ---- 4. withheld coordinates may not reach a page -----------------------
     #
     # They were withheld from the plot and kept printing in the roster, which is
