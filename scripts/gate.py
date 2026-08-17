@@ -91,8 +91,26 @@ def without_ledger_rows(h, key):
         if key != ledger_key and not fnmatch.fnmatch(key, ledger_key):
             continue
         cut = h.find(anchor) if anchor else 0
-        if cut >= 0:
-            h = h[:cut] + re.sub(row, " ", h[cut:], flags=re.S)
+        if cut < 0:
+            continue
+        # THE EXEMPTION ENDS WHERE ITS SECTION ENDS.
+        #
+        # It used to run to the end of the file, which was harmless only while
+        # every ledger sat last on its page. On 17 August the measured section
+        # moved to the top of the Castle Mistmoore survey, and the exemption
+        # anchored on it swallowed the nine tables below — the named roster,
+        # every loot table, the landmarks. The ceiling went on passing while
+        # governing almost nothing, which is the shape of a dead check.
+        #
+        # A section-scoped strip cannot do that: moving a ledger changes what
+        # it exempts by nothing. Where the anchor is not a <section> the end is
+        # the end of the file, as before, because those ledgers are the page.
+        end = len(h)
+        if anchor.startswith('<section'):
+            close = h.find('</section>', cut)
+            if close >= 0:
+                end = close
+        h = h[:cut] + re.sub(row, " ", h[cut:end], flags=re.S) + h[end:]
     return h
 
 
