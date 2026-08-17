@@ -3,6 +3,9 @@
 Run from build.sh. Output: assets/index-data.json"""
 import os, re, json, html as H
 ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(ROOT)
+import sys, os as _os
+sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
+import derived
 Z=json.load(open('assets/zones-index.json',encoding='utf-8'))
 
 BADGE=re.compile(r'<span[^>]*class="[^"]*\b(?:tag|pill|badge|new)\b[^"]*"[^>]*>.*?</span>',re.S|re.I)
@@ -266,6 +269,19 @@ for z in Z:
     src=f"_build/source/{z['slug']}.html"
     if not os.path.exists(src): continue
     h=open(src,encoding='utf-8').read()
+    # RESOLVE THE SURVEY'S TOKENS BEFORE MINING IT.
+    #
+    # build3.py substitutes @@TOKEN@@ as it imports a survey into public/, so
+    # the published survey is always correct. Everything ELSE that reads the
+    # same source - this extractor, and through it the item and named-mob pages
+    # - was reading the template. A roster cell citing @@M_KILLS@@ shipped the
+    # literal token onto public/named/a-deathly-usher.html.
+    #
+    # The propagation gate caught it, which is what it is for. Resolving here
+    # means every downstream consumer sees the same text the survey publishes,
+    # rather than each generator remembering to substitute for itself.
+    for a,b in derived.tokens(z['slug']):
+        h = h.replace(a, b)
     for t in re.findall(r'<table[^>]*>(.*?)</table>',h,re.S):
         rows=re.findall(r'<tr[^>]*>(.*?)</tr>',t,re.S)
         if len(rows)<2: continue

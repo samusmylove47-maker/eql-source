@@ -162,10 +162,76 @@ HATE_TARGETS = ('Innoruuk, the Prince of Hate', 'Maestro of Rancor')
 
 def tokens(slug):
     """Every substitution offered to a survey, whether or not it uses them."""
-    return [
+    out = [
         ('@@ZEM_RANK@@', zem_rank(slug)),
         ('@@ZEM_LEADER@@', zem_leaders()),
         ('@@FEAR_MEASURED@@', measured_of(FEAR_TARGETS)),
         ('@@HATE_MEASURED@@', measured_of(HATE_TARGETS)),
         ('@@RAID_FIGHTS@@', f'{raid_fight_count():,}'),
+    ]
+    if slug == 'mistmoore':
+        out += mist_tokens()
+    return out
+
+
+# ---------------------------------------------------------------------------
+# Castle Mistmoore's measured half.
+#
+# The survey carried 2,828 words and not one measured figure, on a zone we have
+# 4.68 hours of parsed log for. These tokens are what the page prints instead of
+# a wiki summary, and every one is read from assets/measured.json at build time.
+# ---------------------------------------------------------------------------
+import zonestats
+
+MIST = dict(zone='Mistmoore', min_kills=50)
+
+
+def _mist():
+    if 'mist' not in _CACHE:
+        _CACHE['mist'] = zonestats.profile(MIST['zone'], min_kills=MIST['min_kills'])
+    return _CACHE['mist']
+
+
+def _fmt(v, places=3):
+    return f'{v:.{places}f}'.rstrip('0').rstrip('.')
+
+
+def mist_tokens():
+    p = _mist()
+    if not p:
+        return []
+    ranked = [m for m in p['mobs'] if m['exp_per_kill']]
+    best, worst = ranked[0], ranked[-1]
+    bs = zonestats.backstabbers(p)
+    hardest = max(bs, key=lambda m: m['backstab_max'])
+    stun, stun_n, casters = p['stuns'][0]
+    top_casters = ', '.join(f'{w} ({n})' for w, n in
+                            sorted(casters.items(), key=lambda t: -t[1])[:3])
+    caitiff = next((i for i, m in enumerate(ranked, 1)
+                    if m['name'].lower() == 'an avenging caitiff'), None)
+    return [
+        ('@@M_KILLS@@', f"{p['kills']:,}"),
+        ('@@M_HOURS@@', _fmt(p['hours'], 2)),
+        ('@@M_RATE@@', f"{p['kills_per_hour']:,}"),
+        ('@@M_SESSIONS@@', str(p['sessions'])),
+        ('@@M_TIER@@', f"D{p['difficulty']} {p['difficulty_label']}"),
+        ('@@M_DATE@@', p['dates'][0] if p['dates'] else 'not recorded'),
+        ('@@M_TYPES@@', str(len(ranked))),
+        ('@@M_BEST@@', best['name'].lower()),
+        ('@@M_BEST_XP@@', _fmt(best['exp_per_kill'])),
+        ('@@M_WORST@@', worst['name'].lower()),
+        ('@@M_WORST_XP@@', _fmt(worst['exp_per_kill'])),
+        ('@@M_SPREAD@@', str(round(best['exp_per_kill'] / worst['exp_per_kill']))),
+        ('@@M_BS_TYPES@@', str(len(bs))),
+        ('@@M_BS_TOTAL@@', str(sum(m['backstabs'] for m in bs))),
+        ('@@M_BS_HARDEST@@', hardest['name'].lower()),
+        ('@@M_BS_MAX@@', str(hardest['backstab_max'])),
+        ('@@M_BS_MELEE@@', str(hardest['melee_max'])),
+        ('@@M_STUN@@', stun),
+        ('@@M_STUN_N@@', str(stun_n)),
+        ('@@M_STUN_WHO@@', top_casters),
+        ('@@M_ITEMS@@', str(len(p['loot']))),
+        ('@@M_CAITIFF_RANK@@', str(caitiff) if caitiff else 'not recorded'),
+        ('@@M_CAITIFF_XP@@', _fmt(next(m['exp_per_kill'] for m in ranked
+                                       if m['name'].lower() == 'an avenging caitiff'))),
     ]
