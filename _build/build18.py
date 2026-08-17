@@ -22,6 +22,13 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
 
+# Counted from the built surveys rather than typed: it said four when eight
+# carry a measured section, and it would have said four after the ninth too.
+import glob as _glob
+_N_MEAS = sum(1 for _p in _glob.glob('public/dungeons/*.html')
+              if 'Measured in play' in open(_p, encoding='utf-8', errors='replace').read())
+
+
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 G = json.load(open('assets/zone-geometry.json', encoding='utf-8'))
 NZONES = len(Z)
@@ -112,7 +119,7 @@ def page():
       has been published either way, it says that instead of guessing.</p>
 
     <h2 class="sec" id="measured">What a combat log can and cannot tell you</h2>
-    <p class="lede">Four surveys carry figures measured from our own play. They are the strongest
+    <p class="lede">{_N_MEAS} surveys carry figures measured from our own play. They are the strongest
       evidence on the site and they generalise to almost nothing.</p>
     <ul class="kv">
       <li><b>A drop seen once</b><span>is seen once. One session is a sample, not a rate, and no

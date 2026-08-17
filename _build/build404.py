@@ -13,7 +13,7 @@ sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot, TOOLS, wordnum
 
 page = head("Page not found",
-  "That page is not here. The dungeon plates, tools and raid guides are all one click away.",
+  "That page is not here. The dungeon surveys, tools and the Plane of Sky guide are all one click away.",
   rel="", og="home") + bar("") + f'''
 <main>
 
@@ -33,7 +33,7 @@ page = head("Page not found",
     <div class="cards c2">
       <a class="card" href="dungeons/index.html" style="--c:var(--z01)">
         <div class="kicker">Every zone</div>
-        <h3 class="t">Dungeon plates</h3>
+        <h3 class="t">Dungeon surveys</h3>
         <p class="d">Every surveyed zone, each with a floor plan derived from the game&rsquo;s own
           geometry, its named mobs, and what they drop.</p>
         <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
@@ -48,8 +48,7 @@ page = head("Page not found",
       <a class="card" href="raids/index.html" style="--c:var(--ember)">
         <div class="kicker">Encounters</div>
         <h3 class="t">Raids</h3>
-        <p class="d">The Plane of Sky island by island, with every boss we have
-          turn.</p>
+        <p class="d">The Plane of Sky island by island, with what every boss cost us to kill.</p>
         <div class="foot"><span>Built from play</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="sources.html" style="--c:var(--bone)">

@@ -60,7 +60,11 @@ os.chdir(ROOT)
 
 
 _IX = json.load(open("assets/index-data.json", encoding="utf-8"))
-N_ITEMS, N_NAMED = len(_IX["items"]), len(_IX["named"])
+# Declared by extract.py, matching what the pages print. Typed as
+# len(_IX["items"]) until 17 Aug 2026, which is 451 raw rows including groups
+# and fragments; the pages print 435 item pages, so the mutation below silently
+# matched nothing.
+N_ITEMS, N_NAMED = _IX["counts"]["item_pages"], _IX["counts"]["named_pages"]
 N_ZONES = len(json.load(open("assets/zones-index.json", encoding="utf-8")))
 
 

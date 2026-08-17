@@ -49,10 +49,13 @@ page = head("How raid access works",
       <div class="card contour" style="--c:var(--warn);--cx:88%;--cy:114%">
         <div class="kicker">No longer true</div>
         <h3 class="t">Open world</h3>
-        <p class="d">Raid bosses do not spawn in the open world. The 16 June patch names them
-          individually: Maestro of Rancor, Innoruuk, the Prince of Hate, Cazic Thule, Fright, Terror,
-          Dread and a dracoliche &ldquo;no longer spawn in the open world &amp; personal
-          instances&rdquo;. Nothing since has reversed it.</p>
+        <p class="d"><strong>Eight named bosses</strong> do not spawn in the open world. The 16 June
+          patch names them individually &mdash; Maestro of Rancor, Innoruuk, the Prince of Hate,
+          Cazic Thule, Fright, Terror, Dread and a dracoliche &ldquo;no longer spawn in the open
+          world &amp; personal instances&rdquo;. All eight are Fear or Hate bosses.
+          <br><br><strong>Not a rule about raid bosses generally, which this page used to claim.</strong>
+          We killed 15 Plane of Sky bosses 43 times, none of it in an instance
+          <span class="tier tM">M</span>. Sky&rsquo;s bosses stand in the open zone.</p>
         <div class="foot"><span>Patch note, 16 Jun 2026</span></div>
       </div>
       <div class="card contour" style="--c:var(--ok);--cx:12%;--cy:110%">
@@ -95,9 +98,13 @@ page = head("How raid access works",
         <span class="bar"></span></div>
     </div>
 
-    <div class="note"><strong>Group and raid sizes.</strong> A group caps at 4. A raid caps at 8. If you
-      are reading advice that assumes several dozen players and a dozen healers, you are reading classic
-      EverQuest, and it will not transfer.</div>
+    <div class="note"><strong>Group and raid sizes.</strong> A group caps at 4 and a raid at 8. If
+      you are reading advice that assumes several dozen players and a dozen healers, you are reading
+      classic EverQuest, and it will not transfer.
+      <br><br><strong>Our own logs do not confirm the raid cap.</strong> 24 of 104 parsed fights
+      name more than eight attackers, up to fifteen <span class="tier tM">M</span>. The parser counts
+      every name that deals damage, so pets would inflate it &mdash; we are not claiming the cap is
+      wrong, only that we cannot show it. One raid roster beside a parsed fight would settle it.</div>
   </div>
 </section>
 
@@ -149,9 +156,13 @@ page = head("How raid access works",
       named editor rather than imported, and it describes a system that has no classic equivalent. It
       does predate launch, so it is beta-era documentation of a live feature.</div>
     <div class="note warn"><strong>Not sourced, and stated as unknown:</strong> whether solo and
-      multiplayer raid lockouts are shared or separate; how a solo raid version differs mechanically
-      from the group version beyond being &ldquo;balanced&rdquo;; and which class kits any raid boss
-      runs at D3 and above. All three close with in-game observation, not further reading.</div>
+      multiplayer raid lockouts are shared or separate, and how a solo raid version differs
+      mechanically from the group version beyond being &ldquo;balanced&rdquo;. Both close with
+      in-game observation, not further reading.
+      <br><br><strong>The third question here is now answered.</strong> Which class kits a raid boss
+      runs at D3 and above was open until 12&ndash;15 August 2026;
+      <a href="../learn/difficulty.html">twenty bosses are logged at those tiers</a> with every spell
+      each cast. <span class="tier tM">TIER M</span></div>
   </div>
 </section>
 

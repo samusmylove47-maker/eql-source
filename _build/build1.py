@@ -138,7 +138,7 @@ recent = "\n".join(
       </li>''' for e in ENTRIES[:4])
 
 home = head("Accurate, sourced and kept current",
-  "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, 3D raid encounter guides and dungeon surveys. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
+  "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
 <main>
 
 <section class="hero">
@@ -185,9 +185,8 @@ home = head("Accurate, sourced and kept current",
       </a>
 
     </div>
-    <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; boss fights
-      rendered in three dimensions, because a paragraph about where to stand has never been as clear as
-      being shown.</p>
+    <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; one zone
+      written up in full, measured from our own logs.</p>
   </div>
 </section>
 
@@ -388,9 +387,9 @@ dung = head("Dungeon surveys",
 <section class="band">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Navigation maps</h2>
-      <p class="lede" style="margin:0">Five zones have one. Crushbone, Befallen, Blackburrow, The Hole
-        and The Warrens do not yet &mdash; Blackburrow is next, because its explicit three-floor
-        structure makes it the strongest candidate for a treatment other than a flat plan.</p></div></div>
+      <p class="lede" style="margin:0">{len(MAPS)} of the {len(Z)} surveys have one:
+        {", ".join(BYS[m]["title"] for m in sorted(MAPS, key=lambda m: BYS[m]["plate"]))}.
+        The rest have a floor plan drawn from the game&rsquo;s mesh but no route map yet.</p></div></div>
     <div class="doorgrid">
 {mapcards}
     </div>

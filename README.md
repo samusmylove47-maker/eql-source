@@ -1,7 +1,7 @@
 # EQL Source
 
 A sourced, daily-updated reference site for EverQuest Legends: survey plates for
-every revamped dungeon, 3D raid encounter guides, and progression tools.
+every revamped dungeon, the Plane of Sky guide, and progression tools.
 
 Static HTML. No server, no database. Python scripts regenerate the pages; the
 output is committed and served as-is.

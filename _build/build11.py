@@ -99,6 +99,14 @@ _other_rows = ''.join(
         s=r['seconds'], sp=r['spells_distinct'],
         h=(r['self_heal_high'] or '&mdash;'))
     for r in _OTHERS)
+
+# Both of these were typed beside the table they describe and both were wrong.
+# "Three bosses logged to D3 or D4" against 20 in the data, and "the other two
+# bosses" against a table of 34.
+_N_OTHER = len({r['boss'] for r in _OTHERS})
+_N_HIGH = len({r['boss'] for r in RAIDS if r['difficulty'] in (3, 4)})
+_PLANES = sorted({r['boss'] for r in RAIDS if r['difficulty'] in (3, 4)
+                  and r['boss'] in ('Cazic-Thule', 'Innoruuk, the Prince of Hate')})
 # Spells that are not direct damage or control. A boss casting these is not
 # running an evocation kit, and that is the whole finding - so the test is
 # stated in code rather than asserted in prose.
@@ -179,7 +187,7 @@ for s in SESSIONS:
 # mode. It is the minimum. Every figure in that paragraph is printed from these
 # counters, so a later session that breaks the rule changes the sentence
 # instead of leaving it standing.
-floor_ok = floor_n = 0
+floor_ok = floor_n = modal_ok = 0
 below = at_tier = above = 0
 for s in SESSIONS:
     # only sessions whose difficulty came from the zone line, never from loot -
@@ -192,6 +200,10 @@ for s in SESSIONS:
         continue
     floor_n += 1
     floor_ok += 1 if min(int(k) for k in tiers) == d else 0
+    # The modal reading, scored over the SAME sessions as the floor. "The
+    # commonest value missed two" was typed beside a computed floor figure and
+    # was wrong: it misses three.
+    modal_ok += 1 if max(tiers.items(), key=lambda kv: kv[1])[0] == str(d) else 0
     for k, v in tiers.items():
         k = int(k)
         below += v if k < d else 0
@@ -212,6 +224,22 @@ for n, name, note in TIERS:
              f'<td class="dnote">{note or "&mdash;"}</td><td>{ours}</td></tr>')
 
 covered = sorted({s['zone'] for s in SESSIONS if s.get('zone')})
+# HOW MANY OF THESE HAVE A SURVEY. The page said "each plate carries its own
+# figures under Measured in play" beneath a list of every zone we have logged —
+# but most of that list has no survey on this site at all, and five of the
+# thirteen surveys carry no measured section. Counted rather than asserted.
+import re as _re
+_ZT = {z['title'].lower() for z in json.load(open('assets/zones-index.json', encoding='utf-8'))}
+_ALIAS = {'the ruins of old guk': 'lower guk', 'the ruins of old paineel': 'the hole',
+          'the castle of mistmoore': 'castle mistmoore'}
+
+
+def _has_survey(zone):
+    k = _re.sub(r'\s+\d+\s*\(.*?\)$', '', zone or '').replace(' - Group', '').strip().lower()
+    return _ALIAS.get(k, k) in _ZT
+
+
+_no_survey = sum(1 for z in covered if not _has_survey(z))
 
 page = head("What difficulty changes",
   "D0 to D4 in EverQuest Legends: what each tier scales, what it does not, how to read the tier off "
@@ -266,7 +294,7 @@ page = head("What difficulty changes",
 You have entered Blackburrow 2 (Adaptive).
 You have entered Befallen 3 (Fused).
 You have entered The City of Guk 4 (Refined).</pre>
-    <p>A zone line with no number and no name is the open world, D0. <strong>Both readings agreed in
+    <p>A zone line with no number and no name is <strong>base difficulty</strong> &mdash; the open world, or an instance run at base. <strong>Both readings agreed in
       every session where both were present &mdash; {agree} of {both}, no disagreements</strong>
       <span class="tier tM">TIER M</span>. So you never have to remember which setting you picked.</p>
     <p>Loot gives a third reading, and <strong>difficulty is a floor</strong>: your tier is the
@@ -274,7 +302,8 @@ You have entered The City of Guk 4 (Refined).</pre>
       drops where the zone line stated the tier on its own, <strong>not one item dropped below
       it</strong> <span class="tier tM">TIER M</span>, and about {above_pct}% rolled above &mdash;
       so anything over the floor is luck, and <strong>three drops settle it</strong>. The floor
-      named the tier in {floor_ok} of {floor_n} sessions; the commonest value missed two. Read the
+      named the tier in {floor_ok} of {floor_n} sessions; the commonest value missed
+      {floor_n - modal_ok}. Read the
       <em>dropped</em> value, not the created one: <em>looted a Keg Mallet +2 &hellip; to create a
       Keg Mallet +4</em> is a <code>+2</code>, and a bare item is the <code>+0</code>.</p>
   </div>
@@ -320,8 +349,8 @@ You have entered The City of Guk 4 (Refined).</pre>
             <span class="gs">Listed by EQL Tools as an open question against the current patch.</span></li>
           <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
             <span class="gz">Which kits attach to which raid boss</span><span class="gl">part measured</span>
-            <span class="gs">Three bosses logged to D3 or D4 below, by spell name. What is still
-              unpublished anywhere is the <em>plane</em> bosses.</span></li>
+            <span class="gs">{_N_HIGH} bosses logged at D3 or D4 below, Cazic-Thule and Innoruuk
+              among them. <em>Hit points</em> remain unpinned.</span></li>
         </ul>
       </aside>
     </div>
@@ -352,14 +381,16 @@ You have entered The City of Guk 4 (Refined).</pre>
       <br><br><strong>Corrected 11 August.</strong> This claimed the kit widens <em>at D3</em> and
       that he healed himself <em>never at D0, D1 and D2</em>. Both were read off this one session
       and later kills contradict the second: the same boss healed itself at D{_yael_heal_low} on
-      another kill, and <strong>Lady Vox heals itself at D{_heal_lowest}</strong>, in the open
-      world. Self-healing is not gated behind a tier &mdash; the tier decides how <em>much</em> of
+      another kill, and <strong>Lady Vox heals itself at D{_heal_lowest}</strong>, the lowest
+      tier there is. Self-healing is not gated behind a tier &mdash; the tier decides how <em>much</em> of
       the kit turns up.
       <br><br><strong>And &ldquo;ten times at D4&rdquo; was ten log lines, not ten decisions:</strong>
       one effect ticking every six seconds for the same 22 hit points, the same shape Lady Vox
       shows at her top tier.</div>
-    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other two bosses</h3>
-    <p class="lede" style="margin:0">Same shape, different bosses, all public raids. A row marked
+    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other {_N_OTHER} bosses</h3>
+    <p class="lede" style="margin:0">Same shape, different bosses. <strong>Most were run in a group
+      instance, not the open zone</strong>, and attacker counts start at two &mdash; so
+      &ldquo;raid&rdquo; is the wrong word for many of them. A row marked
       <em>floor</em> is one we joined after the boss was already engaged, so the log never saw the
       opening and the figure is a lower bound rather than the cost of the fight.</p>
     <div class="scroller"><table>
@@ -393,8 +424,9 @@ You have entered The City of Guk 4 (Refined).</pre>
       this is one zone on one night. It does not contradict the published claim about named mobs; it
       suggests the behaviour starts earlier and lower than the claim implies.</div>
     <p class="lede">Measured so far across {len(covered)} zone{"s" if len(covered) != 1 else ""}:
-      {", ".join(covered) if covered else "none yet"}. Each plate carries its own figures under
-      <em>Measured in play</em>.</p>
+      {", ".join(covered) if covered else "none yet"}. <strong>Where a zone has a survey, its
+      figures are under <em>Measured in play</em></strong>; {_no_survey} of these have no survey
+      here at all.</p>
   </div>
 </section>
 

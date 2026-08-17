@@ -266,9 +266,10 @@ ENTRIES = [
               '<code>You have entered The Castle of Mistmoore 1 (Awakened).</code> The number and '
               'the name agree, and the modal loot drop of +1 agrees independently.'),
          ],
-         settle='Settled for D1 and D2. <strong>D3 and D4 hit points are pinned by nobody</strong>, '
-                'and which class kits attach to which raid boss at D3+ is unpublished. That needs '
-                'a log from a raid at D3 or D4.',
+         settle='Settled for D1 and D2, and for the kits: <a href="difficulty.html">twenty bosses '
+                'are logged at D3 or D4</a> with every spell each cast, Cazic-Thule and Innoruuk '
+                'among them. <strong>What is still pinned by nobody is D3 and D4 hit points</strong> '
+                '&mdash; damage to kill bounds them from above and no further.',
          credit=''),
 
     dict(status='changed',
@@ -277,10 +278,11 @@ ENTRIES = [
                  'repeatedly until the named appears, and published spawn percentages describe how '
                  'often it does.',
          legends='<strong>Gone. The named spawns every cycle.</strong> The developer patch note '
-                 'removes placeholders by name from eleven dungeons, which is every zone this site '
-                 'surveys plus Upper Guk. <strong>Every spawn percentage inherited from classic is '
-                 'therefore historical</strong>, and the site prints them struck through rather than '
-                 'deleting them.',
+                 'removes placeholders by name from eleven dungeons &mdash; ten of the thirteen this '
+                 'site surveys, plus Upper Guk. <strong>Plane of Fear, Plane of Hate and Kedge Keep '
+                 'are not on the list</strong>, so nothing here is established for them. For the ten '
+                 'that are named, <strong>every inherited spawn percentage is historical</strong>, '
+                 'and the site prints them struck through rather than deleting them.',
          note='We carried this as open while the patch note said it plainly the whole time. <strong>The lesson is about where we looked</strong>, not about the answer.',
          evidence=[
              ('T1', 'Developer patch notes',

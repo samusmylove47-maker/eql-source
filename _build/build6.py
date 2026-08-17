@@ -226,6 +226,24 @@ def layer_of(px, py, layers):
     return best, best_d
 
 
+
+# MOBS THE SURVEY TELLS YOU NOT TO KILL.
+#
+# The farming route is nearest-neighbour from the LOWEST-LEVEL mob, and in
+# Najena that is Moosh at 18 — so the route opened on the one named the same
+# page forbids: "Do not kill Moosh. Attacking him pulls an injured halfling out
+# of the cell, and killing that halfling tanks every Rivervale faction."
+#
+# They stay ON THE PLOT. A reader needs to know where Moosh is precisely so
+# they can avoid him; removing the marker would hide the hazard along with the
+# mistake. They are excluded from the ROUTE only, and the page says why.
+#
+# Explicit rather than parsed out of the prose, following WITHHELD: a warning
+# reworded should not silently put a mob back in the route.
+NO_ROUTE = {
+    ('najena', 'Moosh'),
+}
+
 def route_order(dots, levels):
     """An order to walk the named in, and how far that walk is.
 
@@ -378,7 +396,7 @@ def build_plot(zone, pts, layers):
     marks, leaders = [], []
     order = sorted(range(len(pts)), key=lambda i: (-pts[i][1], -pts[i][0]))
     for i in order:
-        yv, xv, name, note, lev = pts[i]
+        yv, xv, name, note, lev, lev_raw = pts[i]
         px, py = -xv, -yv
         short = name if len(name) <= 24 else name[:22] + '…'
         chosen = None
@@ -428,8 +446,9 @@ def build_plot(zone, pts, layers):
         # SVG stays the single record of what was drawn.
         lyr, lyr_d = layer_of(px, py, layers)
         drops = DROPS.get((zone['slug'], name), [])
-        # Levels arrive as floats from the band maths; a reader wants "25".
-        lev_txt = f'{lev:g}' if lev is not None else ''
+        # The band maths averages a range to pick a colour. Printing that average
+        # invents a level: "24-25" became "Level 24.5". Print the source text.
+        lev_txt = lev_raw or (f'{lev:g}' if lev is not None else '')
         lyr_attr = f' data-lyr="{lyr}"' if lyr is not None else ''
         marks.append(
             f'<g class="mk" data-name="{esc(name)}" data-lv="{lev_txt}"{lyr_attr}'
@@ -445,7 +464,13 @@ def build_plot(zone, pts, layers):
     # ---- the farming route -------------------------------------------------
     # An order to take the named in, not a path through the zone. Drawn hidden;
     # the survey's control reveals it.
-    tour, tour_len = route_order(dots, [p[4] for p in pts])
+    # Drop the do-not-kill mobs before ordering, and keep enough to say so.
+    keep = [k for k, p in enumerate(pts) if (zone['slug'], p[2]) not in NO_ROUTE]
+    skipped = [p[2] for k, p in enumerate(pts) if k not in keep]
+    rdots = [dots[k] for k in keep]
+    rlev = [pts[k][4] for k in keep]
+    rtour, tour_len = route_order(rdots, rlev)
+    tour = [keep[i] for i in rtour]
     route = ''
     if len(tour) > 2:
         pl = ' '.join(f'{dots[i][0]:.0f},{dots[i][1]:.0f}' for i in tour)
@@ -540,7 +565,8 @@ for z in Z:
         elif RANGE.search(raw) or len(v) < 2:
             unplotted.append((n['n'], raw or 'not recorded'))
         else:
-            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv'))))
+            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv')),
+                        (n.get('lv') or '').strip()))
     if not pts: continue
     zone_total = len(pts) + len(unplotted) + len(withheld)
     tot_plot += len(pts); tot_named += zone_total
@@ -583,9 +609,9 @@ for z in Z:
 
     rows = '\n'.join(
         f'<li><span class="pn2">{esc(nm)}</span>'
-        f'<span class="pl">{"level " + str(int(lv)) if lv else "level not recorded"}</span>'
+        f'<span class="pl">{"level " + lvr if lvr else "level not recorded"}</span>'
         f'<span class="pc">{yv:.0f}, {xv:.0f}</span></li>'
-        for yv, xv, nm, _, lv in sorted(pts, key=lambda p: (p[4] is None, p[4] or 0)))
+        for yv, xv, nm, _, lv, lvr in sorted(pts, key=lambda p: (p[4] is None, p[4] or 0)))
 
     missing = ''
     if unplotted:
@@ -790,11 +816,19 @@ def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
     route_note = ''
     if len(tour) > 2:
         order = ' &rarr; '.join(pts[i][2] for i in tour)
+        # Anything plotted but not in the tour was excluded on purpose — see
+        # NO_ROUTE. Derived here rather than passed in, so the caption cannot
+        # disagree with the line that was actually drawn.
+        skipped = [p[2] for k, p in enumerate(pts) if k not in set(tour)]
         route_note = (
             f'<p class="fp-route" hidden><strong>Order, not a path.</strong> {order}. '
             f'<span class="rlen">{tour_len:,.0f} units straight-line.</span> '
-            f'<a href="../learn/reading-the-plans.html">Why the line crosses walls '
-            f'&rarr;</a></p>')
+            + (f'<strong>{" and ".join(skipped)} left off deliberately</strong> '
+               f'&mdash; this survey says do not kill '
+               f'{"it" if len(skipped) == 1 else "them"}. '
+               if skipped else '')
+            + '<a href="../learn/reading-the-plans.html">Why the line crosses walls '
+              '&rarr;</a></p>')
 
     lv = ''
     if len(layers) > 1:

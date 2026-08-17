@@ -26,7 +26,9 @@ TWO THINGS THIS PAGE DOES THAT NOBODY ELSE DOES
 SOURCING
 --------
 T1  Producer's Letter, 8 Jul 2026 — token prices, IR pricing.
-T2  eqlwiki Starting Faction Standings, last edited 15 Jun 2026 — the standings
+T5  eqlwiki Starting Faction Standings, last edited 15 Jun 2026 — six weeks BEFORE
+    EverQuest Legends launched on 28 July 2026, so it fails the provenance test in
+    CLAUDE.md and is a Project 1999 import however structured it looks — the standings
     themselves, quoted with its own cleanup banner and its TBA holes NAMED. The
     holes are the point: a reader planning around Rivervale or Kelethin needs to
     know the data is absent, not assume silence means neutral.
@@ -59,6 +61,21 @@ HOLES = ["High Keep", "Rivervale", "Kelethin", "Cabilis", "most Velious factions
 TOKENS = [("Deity", "500 IR", "about $4.99"),
           ("Race", "1,000 IR", "about $9.98"),
           ("Primary class", "1,500 IR", "about $14.97")]
+
+# Ratios derived from TOKENS rather than typed. The prose read "a third of what
+# it costs to change your race, a fifth of your primary class" beside a table
+# giving 500 / 1,000 / 1,500 IR — a half and a third. Both figures were wrong,
+# on the page whose whole argument is that the three choices are priced
+# differently.
+_IR = {name: int(cost.split()[0].replace(',', '')) for name, cost, _ in TOKENS}
+_FRAC = {2: 'half', 3: 'a third', 4: 'a quarter', 5: 'a fifth', 6: 'a sixth'}
+
+
+def _ratio(bigger):
+    n = _IR[bigger] / _IR['Deity']
+    return _FRAC.get(round(n), f'1/{n:g}') if abs(n - round(n)) < 1e-6 else f'{1/n:.2f} of'
+
+
 
 trows = ''.join(
     f'<tr><td class="dname">{what}</td><td class="dn">{ir}</td><td class="dnote">{usd}</td></tr>'
@@ -96,7 +113,8 @@ page = head("Deity, and the level 11 lock",
       <tbody>{trows}</tbody>
     </table></div>
     <p>Iridium sells at 500 IR for $4.99, so a deity change costs about five dollars &mdash;
-      <strong>a third of what it costs to change your race, a fifth of your primary class</strong>.
+      <strong>{_ratio("Race")} what it costs to change your race, {_ratio("Primary class")} of
+      your primary class</strong>.
       The three choices lock together at level 11 and are usually discussed as though they carry the
       same weight. They do not.</p>
     <div class="note"><strong>What that does and does not mean.</strong> The prices are official
@@ -185,7 +203,7 @@ page = head("Deity, and the level 11 lock",
       Letter, 8 July 2026</a></strong> <span class="tier t1">T1</span> Token prices and Iridium
       pricing. Official and dated.</div>
     <div class="note"><strong><a href="https://eqlwiki.com/Starting_Faction_Standings">eqlwiki
-      &mdash; Starting Faction Standings</a></strong> <span class="tier t2">T2</span> Last edited
+      &mdash; Starting Faction Standings</a></strong> <span class="tier t5">T5</span> Last edited
       15 June 2026. Source of the standings, its cleanup banner and its TBA holes, all quoted rather
       than absorbed.</div>
     <div class="note"><strong><a href="https://eqlwiki.com/Newbie_Guide">eqlwiki &mdash; Newbie

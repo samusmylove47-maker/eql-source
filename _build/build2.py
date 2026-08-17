@@ -9,7 +9,10 @@ from _partials import head, bar, foot, TOOLS, wordnum
 # "208 named" while every other page said 209, four days after a change log
 # entry promised exactly this.
 IX = json.load(open("assets/index-data.json", encoding="utf-8"))
-N_ITEMS, N_NAMED = len(IX["items"]), len(IX["named"])
+# Declared by extract.py, not counted again here. len(IX["items"]) is 451 raw
+# rows including groups and fragments; the site publishes 435 item pages, and
+# this page printed the raw number beside The Index's own 435.
+N_ITEMS, N_NAMED = IX["counts"]["item_pages"], IX["counts"]["named_pages"]
 
 # The known-gaps section reads the ledger rather than describing it from
 # memory. On 9 Aug the gate was redefined, every zone reached full, and this
@@ -164,6 +167,14 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
           costs every route to both. It takes the requirement literally instead of talking you out of it.</p>
         <div class="chipline"><span class="pill">Launcher races</span><span class="pill">Token vs grind</span></div>
         <div class="foot"><span>Shares progress</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="inventory.html" style="--c:var(--ok)">
+        <div class="kicker">Lookup</div>
+        <h3 class="t">What have I got?</h3>
+        <p class="d">Paste the wall of tab-separated text <code>/outputfile inventory</code> writes and read it
+          back as a list of what you carry, with the item&rsquo;s page, its zone, its planar set and where we have
+          watched the thing drop ourselves. Nothing is uploaded; the parse happens in the page.</p>
+        <div class="chipline"><span class="pill">Nothing uploaded</span><span class="pill">No gear score</span></div>
+        <div class="foot"><span>Paste and read</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
     <div class="note sig"><strong>Where these stop, and who to go to next.</strong> These are progression and
@@ -184,69 +195,58 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 open('public/tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 
 # ---------------------------------------------------------------- RAIDS
-raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest Legends raid bosses: positioning, radii, phase transitions and pull strategy rendered in space.", rel="../", og="raids", canon="raids/index") + bar("../") + '''
+# The Sky figures, read rather than typed. See CLAUDE.md: a number typed beside
+# data drifts from it, and this page carried four of them.
+try:
+    _SL = json.load(open('assets/sky-loot.json', encoding='utf-8'))
+    _SF = _SL['fights']
+    _SKY_BIGGEST = max(b['damage_max'] for b in _SL['bosses'])
+    _CT = max((f['damage_low'] for f in json.load(open('assets/raids-measured.json', encoding='utf-8'))
+               if f['boss'] == 'Cazic-Thule' and f['difficulty'] == 4), default=None)
+    _SKY_RATIO = round(_CT / _SKY_BIGGEST) if _CT else None
+except (OSError, ValueError, KeyError):
+    _SF, _SKY_BIGGEST, _SKY_RATIO = {}, None, None
+
+_ORD = {2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven'}
+
+raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what every boss cost us to kill, and the order to do it in.", rel="../", og="raids", canon="raids/index") + bar("../") + f'''
 <main>
 
 <section class="hero page ember-hero">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
-    <h1 class="display">Boss fights<br><em>you can orbit.</em></h1>
-    <p class="hero-lede">Each encounter is an interactive three-dimensional diagram &mdash; the platform,
-      the boss, the stack, the radii that matter and the routes between them &mdash; because a paragraph
-      about where to stand has never once been as clear as being shown.</p>
-    <p class="hero-sig"><span>Drag to orbit</span><span>Arrow keys work too</span><span>No plugin</span></p>
+    <h1 class="display">Raid<br><em>encounters.</em></h1>
+    <p class="hero-lede">One zone is written up in full. We publish an encounter when we have
+      fought it ourselves and can say what it cost &mdash; not when we can find a description of
+      it somewhere else.</p>
   </div>
 </section>
 
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
-    <div class="sechead"><span class="n">Live</span><div><h2 class="sec">Plane of Sky</h2>
-      <p class="lede" style="margin:0">Nine islands, each gated by a key that only drops once the island below is
-        cleared. Progression is vertical and unforgiving: fall off and every key you are carrying is destroyed.</p></div></div>
     <div class="cards c2">
-      <a class="card figured contour" href="plane-of-sky.html"
-         style="--c:var(--z01);--cx:14%;--cy:112%">
-        <span class="fig">7</span>
-        <div class="kicker">Progression &middot; solo route</div>
-        <h3 class="t">Every island, fewest pulls</h3>
-        <p class="d">What has to die before each boss appears, what tends to go wrong, and which
-          islands forgive a mistake. Written from a post-launch solo run rather than inherited raid
-          text.</p>
-        <div class="chipline"><span class="pill">7 islands</span><span class="pill">Solo</span></div>
-        <div class="foot"><span>Sourced, badged T3</span><span class="go">Open &rarr;</span></div></a>
-
-      <div class="card" style="--c:var(--warn)">
-        <div class="kicker">Withdrawn &middot; 17 August 2026</div>
-        <h3 class="t">Eye of Veeshan</h3>
-        <p class="d">This was a 3D encounter guide built around pulling the boss down to island 7 to
-          avoid keying a raid to island 8. <strong>Nobody needs to do that.</strong> The site&rsquo;s
-          owner has killed it about ten times and has always killed it where it spawns. The tactic
-          was inherited Project 1999 text and we published it as current.</p>
-        <div class="chipline"><span class="pill">Retracted</span><span class="pill">See the change log</span></div>
-        <div class="foot"><span>What we measured lives on the Sky page</span></div></div>
-
-      <div class="card" style="--c:var(--dim)">
-        <div class="kicker">Queued &middot; islands 5, 6, 7, 4, 3</div>
-        <h3 class="t">Spiroc Lord &rarr; Gorgalosk</h3>
-        <p class="d">The build order is set by which fights a diagram actually helps with. Island 5 first: the
-          vanquisher squad-respawn logic determines kill order and is almost impossible to hold in your head from prose.
-          Then Island 6&rsquo;s bee split tree, which is a decision graph, not a tactic.</p>
-        <div class="chipline"><span class="pill warn">Needs field data</span></div>
-        <div class="foot"><span>In build</span></div></div>
+      <a class="card figured" href="plane-of-sky.html" style="--c:var(--z01)">
+        <span class="fig">9</span>
+        <div class="kicker">Complete &middot; island by island</div>
+        <h3 class="t">The Plane of Sky</h3>
+        <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
+          every island through to the Eye and the Hand of Veeshan. Nine islands, six of the seven
+          key drops confirmed against our own logs, and what each boss actually cost to kill.</p>
+        <div class="chipline"><span class="pill">9 islands</span><span class="pill">{_SF.get('n','?')} fights measured</span></div>
+        <div class="foot"><span>Measured at base difficulty</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
-    <div class="note warn"><strong>On difficulty tiers.</strong> These guides describe the encounters as documented.
-      D0&ndash;D4 does <em>not</em> raise mob levels &mdash; it makes mobs run player-style class kits, widens aggro
-      ranges and pre-upgrades loot. Named mobs are often multiclass from D2 and raid bosses start appearing triple-class
-      at D3. That means a D4 pull can contain cleric-kit adds that chain-stun and heal, and no published source
-      documents which kits attach to which boss. <strong>Encounter-specific D4 behaviour is the single biggest gap on
-      this site, and it can only be closed with combat logs from people who have actually done it.</strong></div>
+    <div class="note"><strong>Sky is not a raid zone, whatever else you have read.</strong> We
+      killed {_SF.get('bosses','?')} of its bosses {_SF.get('n','?')} times with a median of
+      {_ORD.get(_SF.get('attackers_median'), _SF.get('attackers_median'))} attackers and a thinnest
+      fight of {_ORD.get(_SF.get('attackers_min'), _SF.get('attackers_min'))}. The most expensive
+      boss in the zone costs about a {_SKY_RATIO}th of Cazic-Thule at Refined.</div>
 
-    <div class="note"><strong>One documented conflict, unresolved.</strong> The wiki&rsquo;s Dangers section states that
-      boss NPCs no longer death touch. The island walkthroughs immediately below it describe death touch rotations on
-      Keeper of Souls, the Spiroc Lord, Bazzt Zzzt, Sister of the Spire and the Eye. The Dangers line is the
-      Legends-era edit; the walkthrough prose is inherited classic text. Every guide here assumes no death touch and
-      tells you where that assumption would cost you if it is wrong.</div>
+    <div class="note warn"><strong>Everything here is base difficulty.</strong> D0&ndash;D4 does
+      <em>not</em> raise mob levels &mdash; it makes mobs run player-style class kits, widens aggro
+      ranges and pre-upgrades loot. Named mobs are often multiclass from D2 and raid bosses start
+      appearing triple-class at D3. <strong>We have never played Sky above D0</strong>, so nothing
+      on that page describes Awakened or above, and it says so where the figures are.</div>
   </section>
 </div>
 </main>
@@ -264,7 +264,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <p class="hero-lede">This site exists because most EverQuest Legends reference material is classic
       EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied
       without exceptions, including the inconvenient ones.</p>
-    <p class="hero-sig"><span>Five tiers</span><span>Every claim dated</span><span>Gaps published</span></p>
+    <p class="hero-sig"><span>Seven tiers</span><span>Every claim dated</span><span>Gaps published</span></p>
   </div>
 </section>
 
@@ -273,7 +273,19 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
   <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
     <div class="sechead"><span class="n">01</span><div><h2 class="sec">The hierarchy</h2></div></div>
     <div class="cards c2">
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest</div>
+      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier M &middot; strongest</div>
+        <h3 class="t">Our own combat logs</h3>
+        <p class="d">First-hand instrument data: what happened, in the live game, on a dated session, to a named
+          character, parsed rather than remembered. <strong>It outranks every read source for what it directly
+          measures, and generalises to nothing beyond its stated conditions.</strong> Always published with trio,
+          level, zone, difficulty, date and sample size. One session is a sample, not a rate.</p></div>
+      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier C &middot; off the ramp</div>
+        <h3 class="t">A named first-hand report</h3>
+        <p class="d">A player saying they played this last night and it did not work the way the wiki says. Not
+          tier M &mdash; nothing was parsed, and recollection is not a log. Not a reading of a document either, so
+          it sits below M and above tier 3. <strong>Our own play reports are tier C, not tier M</strong>; exempting
+          ourselves would corrupt the scale fastest.</p></div>
+      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest read source</div>
         <h3 class="t">Official patch notes</h3>
         <p class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
           page&rsquo;s last edit supersedes that page.</p></div>
@@ -304,9 +316,10 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <div class="sechead"><span class="n">02</span><div><h2 class="sec">Known gaps</h2>
       <p class="lede" style="margin:0">This list is expected to grow as verification deepens, not shrink.</p></div></div>
     <div class="cards c2">
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 boss behaviour</h3>
-        <p class="d">No published source documents which class kits attach to which raid boss at D3 and D4. Needs
-          combat logs.</p></div>
+      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 hit points</h3>
+        <p class="d">Which class kits attach to which raid boss at D3 and D4 is <strong>no longer the gap</strong>
+          &mdash; Cazic-Thule and Innoruuk are parsed at three tiers with every spell each cast. What is still
+          pinned by nobody is hit points: damage to kill bounds them from above and no more.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Plane of Sky</div><h3 class="t">Five class tooltips</h3>
         <p class="d">Ranger, Rogue, Shadow Knight, Shaman and Wizard reward stat blocks are unconfirmed for Legends.
           The turn-ins and drop sources are current; only the stats are missing.</p></div>
@@ -317,8 +330,9 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
         <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
           translocators, so it is weighted lower, but the conflict is open.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
-        <p class="d">The zone has never been surveyed at ground level, so island positions are not plotted.
-          A handful of <code>/loc</code> readings from islands 7 and 8 would fix it. The page says so in place.</p></div>
+        <p class="d">The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
+          <code>/loc</code> per island &mdash; nine readings &mdash; would label the elevation chart permanently
+          and let us draw each island properly.</strong> The page says so in place.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
         <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
           labels. Which chamber is which is still something you work out from the named roster.</p></div>
@@ -333,7 +347,8 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
         This used to sit on the surveys themselves. It belongs here, where someone
-        checking our working can find all ten in one place.</p>
+        checking our working can find them in one place. <strong>It covers the original ten surveys</strong>;
+        Plane of Fear, Plane of Hate and Kedge Keep were added later and are not in it yet.</p>
       <p class="lede"><strong>The same split applies to almost every row.</strong> A wiki
         page&rsquo;s infobox and its NPC and item tables are usually live Legends data, while its
         narrative sections &mdash; Dangers, Benefits, Traveling &mdash; are imported prose from
