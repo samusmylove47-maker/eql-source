@@ -360,12 +360,12 @@ body .meas#measured::before{content:"From the log"}
   <p class="eyebrow">Dungeon survey</p>
   <div class="title"><h1>Castle Mistmoore</h1><span class="leader"></span><span class="plateno">10</span></div>
   <p class="subtitle">Mayong's stronghold — the population changes at dawn and dusk</p>
-  <p class="deck">Two characters at level @@M_LEVEL@@ took @@M_RATE@@ kills an hour &mdash; all anyone has measured. Levels run 20 to 45 with Mayong above, so the log covers the foot of the band. Come for the bard instruments, the focus items and the epic pelt. <strong>A train is what kills people</strong>, funnelling into the one corridor out. Everything below is @@M_TIER@@; D0 and D2 to D4 are unmeasured.</p>
+  <p class="deck">Levels run 20 to 45, with Mayong above them. Come for the bard instruments, the focus items and the epic pelt. <strong>A train is what kills people</strong>, funnelling into the one corridor out. Everything below is @@M_TIER@@; D0 and D2 to D4 are unmeasured.</p>
   <dl class="strip">
     <div class="cell"><dt>/who name</dt><dd>mistmoore</dd></div>
     <div class="cell"><dt>Mob levels</dt><dd>20&ndash;45<small>Mayong ~53</small></dd></div>
     <div class="cell"><dt>ZEM</dt><dd>97<small>129% — was 90</small></dd></div>
-    <div class="cell"><dt>Difficulty</dt><dd>@@M_TIER@@<small>the only tier measured</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>@@M_TIER@@<small>verified at this tier</small></dd></div>
     <div class="cell"><dt>Respawn</dt><dd>&le;22 min<small>trash. Named vary, to four hours</small></dd></div>
     <div class="cell"><dt>Repop</dt><dd>06:00 / 20:00<small>undead &harr; dark elves</small></dd></div>
     <div class="cell"><dt>Succor</dt><dd>&minus;295, 123</dd></div>
@@ -374,7 +374,6 @@ body .meas#measured::before{content:"From the log"}
   <ul class="jump">
     <li><a href="#where">Where you are</a></li>
     <li><a href="#danger">Cautions</a></li>
-    <li><a href="#worth">Worth killing</a></li>
     <li><a href="#named">Named</a></li>
     <li><a href="#drops">Drops</a></li>
     <li><a href="#measured">Measured</a></li>
@@ -408,50 +407,6 @@ body .meas#measured::before{content:"From the log"}
   </ul>
 </section>
 
-<section class="xp">
-  <p class="kick">Measured &middot; @@M_KILLS@@ kills &middot; @@M_TIER@@</p>
-  <h2 id="worth">What is worth killing</h2>
-  <p class="lede">@@M_KILLS@@ kills in @@M_HOURS@@ hours at @@M_TIER@@ — @@M_RATE@@ an hour. Avenrae's log, @@M_SESSIONS@@ sessions, @@M_DATE@@, @@M_WINDOW@@.</p>
-
-  <div class="note"><strong>The unit.</strong> A percentage of Avenrae's own level bar, as the client prints it: <code>You gain experience! (1.327%)</code>. The log neither divides it among a trio's three classes nor totals the day, so it cannot be read as levels gained. Level @@M_LEVEL@@ is stamped once, at 11:07; @@M_LEVEL_N@@ of @@M_LEVEL_OF@@ sessions carry it. @@M_ZONELINE@@</div>
-
-  <p>They also fall all day: of @@M_DRIFT_ALL@@ types killed in every session, @@M_DRIFT_FELL@@ paid less by the last than the first, a median of @@M_DRIFT_MED@@ times. Each type below is scored against its own session's median.</p>
-
-  <figure class="ratio">
-    <div class="rside"><b class="rnum">@@M_WORST_R@@&times;</b><span class="rwho">@@M_WORST@@</span></div>
-    <div class="rmid"><span class="rx">&times;@@M_SPREAD@@</span></div>
-    <div class="rside re"><b class="rnum">@@M_BEST_R@@&times;</b><span class="rwho">@@M_BEST@@</span></div>
-    <figcaption><strong>Worst against best of @@M_TYPES@@ types killed twice or more.</strong> The familiars at the foot backstab.</figcaption>
-  </figure>
-
-  <div class="ledgers">
-    <div class="ldg">
-      <h3>Worth the swing</h3>
-      <table><thead><tr><th>Mob</th><th class="lv">Score</th><th class="lv">Sessions</th></tr></thead>
-      <tbody>@@M_WORTH_ROWS@@</tbody></table>
-    </div>
-    <div class="ldg skip">
-      <h3>Skip</h3>
-      <table><thead><tr><th>Mob</th><th class="lv">Score</th><th class="lv">Sessions</th></tr></thead>
-      <tbody>@@M_SKIP_ROWS@@</tbody></table>
-    </div>
-  </div>
-  <p class="cm">Types killed once are left off.</p>
-  <div class="note"><strong>One session cannot crown a camp.</strong> A deathly usher tops the first and is @@M_USHER_RANK@@ over all @@M_SESSIONS@@; an ancille cook, absent from that session, outpays it in @@M_COOK_WINS@@ sessions that killed both and stands @@M_COOK_RANK@@. An avenging caitiff was killed once: @@M_CAITIFF_XP@@, @@M_CAITIFF_RANK@@ of @@M_CAITIFF_OF@@ <span class="tier tM">M</span>.</div>
-  <p class="cm">No log line carries the game clock, so this ranking blends the day and night populations.</p>
-
-  <h3>Backstab</h3>
-  <p class="cm">Scope: @@M_BS_SCOPE@@. The experience above is Avenrae's @@M_SESSIONS@@.</p>
-  <p>@@M_BS_TYPES@@ trash types landed @@M_BS_TOTAL@@ backstabs. Hardest, @@M_BS_HARDEST@@: <b>@@M_BS_MAX@@ from behind against @@M_BS_MELEE@@ to the face</b>. Never read a combined average here.</p>
-  <div class="scroller">
-  <table>
-    <thead><tr><th>Type</th><th class="lv">Backstabs</th><th class="lv">Max</th><th class="lv">Melee max</th><th>Also casts</th></tr></thead>
-    <tbody>@@M_BS_ROWS@@</tbody>
-  </table>
-  </div>
-  <div class="note"><strong>@@M_BS_DUAL@@ carry two class kits.</strong> Backstab is a rogue ability; a spell list is not. The log cannot say if one does both.
-    Named do it too: Mynthi Davissi @@M_MYNTHI_HASTE@@ <span class="tier tM">M</span>, one shaman haste and one enchanter. Multiclass named are published from D2 and this is D1, so <strong>doubt the threshold</strong>: two kits already reach trash at D1 in two zones.</div>
-</section>
 
 <section>
   <p class="kick">Position and behaviour</p>
@@ -480,7 +435,7 @@ body .meas#measured::before{content:"From the log"}
       <tr><td class="nmob"><a href="../named/a-dark-librarian.html">A dark librarian</a></td><td class="loc">&minus;67, 96</td><td class="lv">31</td><td class="cls">DARK ELF<br>WAR</td><td class="src">Spawns into the Library.</td></tr>
       <tr><td class="nmob"><a href="../named/a-dark-elf-noble.html">A dark elf noble</a></td><td class="loc">&minus;117, &minus;105</td><td class="lv">31</td><td class="cls">DARK ELF<br>WIZ + SHD <span class="tier tM">M</span></td><td class="src">The Gypsy Ambassador room, by the door.</td></tr>
       <tr><td class="nmob"><a href="../named/an-avenging-caitiff.html">An avenging caitiff</a></td><td class="loc">&minus;148, 292</td><td class="lv">30</td><td class="cls">DARK ELF<br>WAR</td><td class="src">On the stairs to the jail, on its own <strong>23-minute cycle.</strong></td></tr>
-      <tr><td class="nmob"><a href="../named/a-deathly-usher.html">A deathly usher</a></td><td class="loc">various</td><td class="lv">30&ndash;32</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>Casts nothing</strong> across @@M_USHER_SWINGS@@ swings at us <span class="tier tM">M</span>. @@M_USHER_RANK@@ of @@M_TYPES@@ for experience.</td></tr>
+      <tr><td class="nmob"><a href="../named/a-deathly-usher.html">A deathly usher</a></td><td class="loc">various</td><td class="lv">30&ndash;32</td><td class="cls">DARK ELF<br>WAR</td><td class="src"><strong>Casts nothing</strong> <span class="tier tM">M</span>.</td></tr>
       <tr><td class="nmob"><a href="../named/an-imp-familiar.html">An imp familiar</a></td><td class="loc">&minus;16, 435</td><td class="lv">29&ndash;35</td><td class="cls">IMP<br>WAR</td><td class="src">In the Graveyard. A <em>rare spawn</em>.</td></tr>
       <tr><td class="nmob"><a href="../named/a-fallen-noble.html">A Fallen Noble</a></td><td class="loc">23, 105</td><td class="lv">28</td><td class="cls">DARK ELF<br>CLR</td><td class="src">At the fountain. A <em>rare spawn</em>.</td></tr>
       <tr><td class="nmob"><a href="../named/enynti.html">Enynti</a></td><td class="loc">80, &minus;112</td><td class="lv">27</td><td class="cls">DARK ELF<br>WAR</td><td class="src">The Canyon.</td></tr>
@@ -520,7 +475,7 @@ body .meas#measured::before{content:"From the log"}
       <tr><td class="it"><a href="../items/nobles-robes.html">Noble's Robes</a></td><td class="st">Chest · lore</td><td class="st">AC 6 · CHA +5<br>+6 Fire / Cold · +3 Disease / Magic / Poison</td><td class="cls">CLR NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">A Fallen Noble &middot; <em>uncommon</em></td></tr>
       <tr><td class="it"><a href="../items/black-silk-gloves.html">Black Silk Gloves</a></td><td class="st">Hands · lore · no drop</td><td class="st">AC 4 · DEX +3</td><td class="cls">WAR PAL RNG SHD MNK BRD ROG</td><td class="src">A deathly usher · a glyphed aegis · a will sapper</td></tr>
       <tr><td class="it"><a href="../items/robe-of-the-keeper.html">Robe of the Keeper</a></td><td class="st">Chest · quest item</td><td class="st">AC 8 · INT +2</td><td class="cls">NEC WIZ MAG ENC<br>HUM ERU HIE DEF GNM IKS</td><td class="src">Ssynthi</td></tr>
-      <tr><td class="it"><a href="../items/bronze-bracers.html">Bronze Bracers</a></td><td class="st">Wrist</td><td class="st">AC 7</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">A ghoulish ancille &middot; and @@M_BRACERS_MORE@@ further types measured <span class="tier tM">M</span></td></tr>
+      <tr><td class="it"><a href="../items/bronze-bracers.html">Bronze Bracers</a></td><td class="st">Wrist</td><td class="st">AC 7</td><td class="cls">WAR CLR PAL SHD BRD</td><td class="src">A ghoulish ancille  and other ancille and usher types <span class="tier tM">M</span></td></tr>
     </tbody>
   </table>
   </div>
@@ -531,8 +486,8 @@ body .meas#measured::before{content:"From the log"}
     <thead><tr><th>Item</th><th>Slot</th><th>Effect</th><th>Dropped by</th></tr></thead>
     <tbody>
       <tr><td class="it"><a href="../items/gypsy-lute.html">Gypsy Lute</a></td><td class="st">Primary / Secondary<br>lore · no drop</td><td class="st">SV Magic +5<br><strong>String Resonance 11</strong></td><td class="src">A gypsy musician</td></tr>
-      <tr><td class="it"><a href="../items/lute-of-the-gypsy-princess.html">Lute of the Gypsy Princess</a></td><td class="st">Secondary</td><td class="st"><strong>String Resonance 11</strong> &middot; item stat, not a focus</td><td class="src">Mynthi Davissi &middot; <em>@@M_LUTE_MYNTHI@@ seen</em><br>A werewolf gypsy &middot; <em>@@M_LUTE_WOLF@@ seen</em> <span class="tier tM">M</span></td></tr>
-      <tr><td class="it"><a href="../items/mistmoore-battle-drums.html">Mistmoore Battle Drums</a></td><td class="st">Primary / Secondary</td><td class="st"><strong>Percussion Resonance 11</strong></td><td class="src">Mynthi Davissi &middot; <em>@@M_DRUMS@@ seen</em> <span class="tier tM">M</span></td></tr>
+      <tr><td class="it"><a href="../items/lute-of-the-gypsy-princess.html">Lute of the Gypsy Princess</a></td><td class="st">Secondary</td><td class="st"><strong>String Resonance 11</strong> &middot; item stat, not a focus</td><td class="src">Mynthi Davissi<br>A werewolf gypsy <span class="tier tM">M</span></td></tr>
+      <tr><td class="it"><a href="../items/mistmoore-battle-drums.html">Mistmoore Battle Drums</a></td><td class="st">Primary / Secondary</td><td class="st"><strong>Percussion Resonance 11</strong></td><td class="src">Mynthi Davissi <span class="tier tM">M</span></td></tr>
     </tbody>
   </table>
   </div>

@@ -13,7 +13,6 @@ SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 BY = {z['slug']: z for z in Z}
-MAPS = ["najena","splitpaw","lowerguk","nagafenslair","mistmoore"]
 
 RETURN_CSS = """
 <style>
@@ -341,23 +340,11 @@ n = 0
 for z in Z:
     s = z['slug']
     extra = ''
-    if s in MAPS:
-        extra = (f'<span class="ns-sep">/</span><a href="{s}-map.html" '
-                 f'style="color:color-mix(in srgb, {z["accent"]} 56%, #F2EADA)">Navigation map &rarr;</a>')
     n += 1
     inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
            f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s,
            subs=derived.tokens(s),
            og_card=f"dungeons-{s}", canon=f"dungeons/{s}")
-# ---- maps
-for s in MAPS:
-    z = BY[s]
-    extra = (f'<span class="ns-sep">/</span><a href="{s}.html" '
-             f'style="color:color-mix(in srgb, {z["accent"]} 56%, #F2EADA)">&larr; Survey</a>')
-    n += 1
-    inject(os.path.join(SRC, f'{s}-map.html'), f'public/dungeons/{s}-map.html', '../', 'Dungeons', 'dungeons/index.html',
-           f"{z['title']} &middot; map", extra,
-           og_card=f"dungeons-{s}", canon=f"dungeons/{s}-map")
 # ---- tools
 #
 # WITHDRAWN 17 AUG 2026: tools/plane-of-sky.html.

@@ -235,7 +235,7 @@ home = head("Accurate, sourced and kept current",
         <span class="dq">I am going into a zone</span>
         <h3 class="dt">The surveys</h3>
         <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
-          and coordinates re-derived from <code>/loc</code> records. Navigation maps where they exist.</p>
+          and coordinates re-derived from <code>/loc</code> records.</p>
         <span class="dgo">{len(Z)} surveys, {len(MAPS)} maps &rarr;</span>
       </a>
 
@@ -312,14 +312,6 @@ drows = "\n".join(
       <span class="cell"><em>Verified</em>{ {'full':'full','partial':'partial','none':'not yet'}[z['verify_level']] }</span>
       <span class="bar"></span></a>''' for z in Z)
 
-mapcards = "\n".join(
-  f'''      <a class="card" href="{s}-map.html" style="--c:{[z for z in Z if z['slug']==s][0]['accent']}">
-        <div class="kicker">Navigation map</div>
-        <h3 class="t">{[z for z in Z if z['slug']==s][0]['title']}</h3>
-        <p class="d">Field document. Plotted routes, numbered camps and the pulls that matter, kept under 1,300 words
-          so it stays usable on a second monitor.</p>
-        <div class="foot"><span>Companion</span><span class="go">Open &rarr;</span></div></a>''' for s in
-  [z['slug'] for z in Z if z['slug'] in MAPS])
 
 # The survey cards live here, on the surveys page. The home page links to this
 # page rather than reproducing it.  NOT ANY MORE, 16 Aug 2026: it did not
@@ -390,15 +382,6 @@ else:
         <span class="gl">cleared</span>
       </li>''' for i, (title, what) in enumerate(_CLEARED))
 
-mapcards = "\n".join(
-  f'''      <a class="door contour" href="{s}-map.html"
-         style="--c:{BYS[s]['accent']};--cx:{corner(i)[0]};--cy:{corner(i)[1]}">
-        <span class="dq">Navigation map</span>
-        <h3 class="dt">{BYS[s]['title']}</h3>
-        <p class="dd">The companion you keep open while you are in the zone. Plotted routes, numbered
-          camps and the pulls that matter, kept short enough to stay usable on a second monitor.</p>
-        <span class="dgo">Open the map &rarr;</span>
-      </a>''' for i, s in enumerate(sorted(MAPS)))
 
 dung = head("Dungeon surveys",
   f"{len(Z)} revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
@@ -447,17 +430,6 @@ dung = head("Dungeon surveys",
   </div>
 </section>
 
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">Navigation maps</h2>
-      <p class="lede" style="margin:0">{len(MAPS)} of the {len(Z)} surveys have one:
-        {", ".join(BYS[m]["title"] for m in sorted(MAPS, key=lambda m: BYS[m]["plate"]))}.
-        The rest have a floor plan drawn from the game&rsquo;s mesh but no route map yet.</p></div></div>
-    <div class="doorgrid">
-{mapcards}
-    </div>
-  </div>
-</section>
 
 </main>
 ''' + foot("../")

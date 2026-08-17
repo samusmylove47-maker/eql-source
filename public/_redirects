@@ -29,3 +29,14 @@
 # and blocked them by rule, which only ever worked while someone remembered
 # to add the next one. public/ is the deploy root and contains nothing
 # internal, so there is nothing left to block.
+
+# The five navigation-map pages were withdrawn 17 Aug 2026. Every survey now
+# carries a floor plan drawn from the game's own mesh, so a second hand-made
+# map of the same zone was a worse copy of something already on the page.
+# Redirected rather than 404'd: they were linked from the dungeon index for
+# weeks and someone will have one open.
+/dungeons/najena-map.html        /dungeons/najena.html        301
+/dungeons/splitpaw-map.html      /dungeons/splitpaw.html      301
+/dungeons/lowerguk-map.html      /dungeons/lowerguk.html      301
+/dungeons/nagafenslair-map.html  /dungeons/nagafenslair.html  301
+/dungeons/mistmoore-map.html     /dungeons/mistmoore.html     301
