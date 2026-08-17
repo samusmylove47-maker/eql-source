@@ -62,31 +62,55 @@ FIGHTS = LOOT['fights']
 # agree on all of it. `boss` is joined to the measured table by name, so a
 # spelling that drifts here shows up as an unmeasured island rather than
 # silently printing nothing.
+# THE ZONE, IN THE ORDER YOU DO IT.
+#
+# This replaced a "circuit" ordering optimised for repeat farming, which is not
+# what someone opening this page needs: they need the progression. Structure —
+# which teleporter goes where, which boss holds which key — is agreed by two
+# independent post-launch accounts and contradicted by nothing in our logs.
+#
+# `boss` joins to the measured table by name. A spelling that drifts here shows
+# up as an island with no figures rather than silently printing nothing.
 RING = [
-    dict(id="1",   boss="Thunder Spirit Princess", key="Key of Swords",
-         note="Where you arrive, and where the Key Master sells the first three keys."),
-    dict(id="2",   boss="Protector of Sky", key="Key of Misfortune",
-         note="Azaracks. Large aggro radius and a large social radius, so a pull tends to become "
-              "the island."),
-    dict(id="3",   boss="Gorgalosk", key="Key of Beasts",
-         note="Gorgons, gazers and a heart harpie in the tower. Gusts of wind are invisible and "
-              "need see-invis to spot."),
-    dict(id="4",   boss="Keeper of Souls", key="Avian Key",
-         note="Pegasi, and adds that keep coming. The Overseer of Air stands at the windmill "
-              "tower and is a separate kill on the same island."),
-    dict(id="5",   boss="The Spiroc Lord", key="Key of the Swarm",
-         note="Spirocs have a low aggro radius and a high social one, so the outer edge is quiet "
-              "and the middle is not. The Spiroc Guardian is here too."),
-    dict(id="6",   boss="Bazzt Zzzt", key="Key of Scale",
-         note="Bees, and more of them than any source we hold lists &mdash; six named variants "
-              "went down here."),
-    dict(id="7",   boss="Sister of the Spire", key="Veeshan's Key",
-         note="Nothing here aggros except the boss."),
-    dict(id="8",   boss="Eye of Veeshan", key="&mdash;",
-         note="The Hand of Veeshan wanders this island and is the last of the circuit."),
+    dict(id="1", name="The landing", boss="Thunder Spirit Princess", key="Key of Swords",
+         what="Where the zone drops you, and where the Key Master stands. The first three keys "
+              "are bought here rather than killed for.",
+         tactics="Buy your keys before anything else. Nothing on this island has to die."),
+    dict(id="1.5", name="The spur", boss="Noble Dojorn", key="&mdash;",
+         what="Hangs off the landing rather than sitting on the loop, and its teleporter returns "
+              "you to island 2 rather than to 1. A blade storm guards the approach.",
+         tactics="The shortest detour in the zone, and it drops the efreeti line."),
+    dict(id="2", name="The azarack island", boss="Protector of Sky", key="Key of Misfortune",
+         what="Azaracks, with a large aggro radius and a large social radius.",
+         tactics="A pull here tends to become the island. Work from the edge."),
+    dict(id="3", name="The gorgon island", boss="Gorgalosk", key="Key of Beasts",
+         what="Gorgons, gazers, and a heart harpie in the tower.",
+         tactics="Gusts of wind are invisible and need see-invis to spot. They are why people "
+                 "fall off this island."),
+    dict(id="4", name="The pegasus island", boss="Keeper of Souls", key="Avian Key",
+         what="Pegasi, and adds that keep coming. The Overseer of Air stands at the windmill "
+              "tower and is a second kill on the same island.",
+         tactics="Two bosses here, not one. The adds do not stop, so kill to a timer rather "
+                 "than clearing to zero."),
+    dict(id="5", name="The spiroc island", boss="The Spiroc Lord", key="Key of the Swarm",
+         what="Spirocs, with a low aggro radius and a high social one. The Spiroc Guardian is "
+              "here too.",
+         tactics="The outer edge is quiet and the middle is not. Work the rim."),
+    dict(id="6", name="The bee island", boss="Bazzt Zzzt", key="Key of Scale",
+         what="Six named bees, not one &mdash; Bazzt Zzzt, Bazzzazzt, Bzzazzt, Bzzzt, Bizazzzt "
+              "and Bzizzzt all died here on the same nights, and no source we hold mentions "
+              "more than the first.",
+         tactics="Do not bring poison. Across four of the six we resisted Deadly Poison 164 "
+                 "times, the largest resist count anywhere in the zone."),
+    dict(id="7", name="The spire", boss="Sister of the Spire", key="Veeshan&rsquo;s Key",
+         what="Almost empty. Nothing here aggros except the boss.",
+         tactics="The cheapest boss in the zone and the safest island to regroup on."),
+    dict(id="8", name="The final island", boss="Eye of Veeshan", key="&mdash;",
+         what="Two bosses. The Eye sits at the front; the Hand of Veeshan wanders the back, near "
+              "the teleporter that returns you to the landing.",
+         tactics=None),
 ]
-SPUR = dict(id="1.5", boss="Noble Dojorn", key="&mdash;",
-            note="Off island 1, and it returns you to island 2. A blade storm guards it.")
+SPUR = RING[1]
 
 CIRCUIT = ["6", "7", "8", "1", "1.5", "4", "8"]     # the six kills, in order taken
 
@@ -235,6 +259,46 @@ _EXS = [i["cx"] for i in ISL]
 ELEV_VE = ((380 - 92) / (SKY["zmax"] - SKY["zmin"])) / ((900 - 92) / (max(_EXS) - min(_EXS)))
 
 # ------------------------------------------------------------- the cost table
+
+def isle_rows():
+    """One block per island, in the order a group actually does them."""
+    out = []
+    for i in RING:
+        m = MEAS.get(i['boss'])
+        if m:
+            d = dmg_cell(m)
+            atk = (f"{m['attackers_min']}&ndash;{m['attackers_max']}"
+                   if m['attackers_min'] != m['attackers_max'] else str(m['attackers_min']))
+            secs = (f"{m['seconds_min']}&ndash;{m['seconds_max']}s"
+                    if m['seconds_min'] != m['seconds_max'] else f"{m['seconds_min']}s")
+            fig = (f'<span class="isle-fig"><b>{d}</b> damage'
+                   f'<span>{secs} &middot; {atk} attackers <span class="tier tM">M</span></span></span>')
+            drops = ", ".join(x['item'] for x in m['loot'][:4])
+            loot = f'<p class="isle-loot"><em>Seen dropping</em> {drops}</p>' if drops else ''
+        else:
+            # Island 1's boss has never appeared in a log of ours. Saying so on
+            # the island is more use than a blank cell in a table elsewhere.
+            fig = ('<span class="isle-fig isle-none"><b>Never found</b>'
+                   '<span>no kill, no sighting, no log line</span></span>')
+            loot = ''
+        second = (f' <span class="isle-2nd">and {i["second"]}</span>') if i.get('second') else ''
+        tac = f'<p class="isle-tac">{i["tactics"]}</p>' if i.get('tactics') else ''
+        key = (f'<span class="isle-key">Drops {i["key"]}</span>'
+               if i['key'] not in ('&mdash;', None) else '')
+        out.append(f'''      <li class="isle" id="island-{i["id"].replace(".","-")}">
+        <span class="isle-n">{i["id"]}</span>
+        <div class="isle-body">
+          <h3 class="isle-name">{i["name"]}</h3>
+          <p class="isle-boss">{i["boss"]}{second} {key}</p>
+          <p class="isle-what">{i["what"]}</p>
+          {tac}
+          {loot}
+        </div>
+        {fig}
+      </li>''')
+    return "\n".join(out)
+
+
 def cost_rows():
     rows = []
     for b in sorted(LOOT['bosses'], key=lambda b: -b['damage_max']):
@@ -257,22 +321,25 @@ KEYS = {k['key']: k for k in LOOT['keys']}
 
 
 def chain_rows():
+    """The key chain, and whether the log confirmed each link.
+
+    The island descriptions moved into the walkthrough above, so this is now
+    only what it is evidence for: which predicted drop actually landed.
+    """
     rows = []
-    for i in [RING[0], SPUR] + RING[1:]:
-        seen = KEYS.get(i['key'])
+    for i in RING:
+        if i['key'] in ('&mdash;', None):
+            continue
+        seen = KEYS.get(i['key'].replace('&rsquo;', "'"))
         if seen and seen['boss'] == i['boss']:
             mark = (f'<span class="ok">confirmed &times;{seen["n"]}</span> '
                     f'<span class="tier tM">M</span>')
-        elif i['key'] == '&mdash;':
-            mark = ''
         else:
             mark = '<span class="gap">not seen</span>'
-        cls = ' class="kill"' if i["id"] in CIRCUIT else ''
         rows.append(
-            f'''      <li{cls}>
+            f'''      <li>
         <span class="i">{i["id"]}</span><span class="b">{i["boss"]}</span>
         <span class="k">{i["key"]}</span>
-        <span class="nt">{i["note"]}</span>
         <span class="ev">{mark}</span></li>''')
     return "\n".join(rows)
 
@@ -369,6 +436,50 @@ CSS = '''<style>
   color:var(--bone);line-height:1.1}
 .scale .l{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);color:var(--dim);
   letter-spacing:.08em;text-transform:uppercase;margin-top:5px}
+
+/* ---------- the island walkthrough ----------------------------------------
+   One block per island, in progression order. The number is the island's own
+   label — 1.5 really is called that — so it is set as data rather than as a
+   list counter, which could only ever produce 1..9. */
+.isles{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.isle{background:var(--panel);padding:var(--s-5);display:grid;
+  grid-template-columns:56px minmax(0,1fr) minmax(0,190px);gap:var(--s-3) var(--s-5);
+  align-items:start}
+@media(max-width:820px){.isle{grid-template-columns:44px minmax(0,1fr)}
+  .isle-fig{grid-column:2}}
+.isle-n{font-family:"Cinzel",Georgia,serif;font-size:26px;font-weight:700;color:var(--brass-t);
+  line-height:1;font-variant-numeric:tabular-nums}
+.isle-name{font-family:"Cinzel",Georgia,serif;font-size:var(--t-lg);font-weight:600;
+  text-transform:uppercase;letter-spacing:.02em;color:var(--bone);margin:0 0 4px}
+.isle-boss{font-family:"IBM Plex Mono",monospace;font-size:var(--t-xs);letter-spacing:.08em;
+  text-transform:uppercase;color:var(--mut);margin:0 0 var(--s-3)}
+.isle-2nd{color:var(--faint)}
+.isle-key{display:inline-block;margin-left:8px;padding:1px 7px;border:1px solid var(--rule2);
+  border-radius:var(--r);color:var(--brass-t);font-size:var(--t-2xs)}
+.isle-what{margin:0 0 var(--s-2);color:var(--txt);font-size:var(--t-base);line-height:1.6}
+.isle-tac{margin:0;color:var(--mut);font-size:var(--t-sm);line-height:1.6;
+  border-left:2px solid var(--brass);padding-left:var(--s-3)}
+.isle-loot{margin:var(--s-3) 0 0;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.06em;color:var(--faint);line-height:1.7}
+.isle-loot em{font-style:normal;color:var(--dim);text-transform:uppercase;margin-right:6px}
+.isle-fig{text-align:right;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  color:var(--faint);letter-spacing:.06em;line-height:1.6}
+.isle-fig b{display:block;font-family:"Saira Condensed",sans-serif;font-size:var(--t-xl);
+  font-weight:700;color:var(--bone);letter-spacing:0;line-height:1.1}
+.isle-fig em{font-style:normal;font-size:.7em;color:var(--faint)}
+.isle-none b{color:var(--warn-t);font-size:var(--t-lg)}
+@media(max-width:820px){.isle-fig{text-align:left}}
+
+/* Island 8 is the only ordered procedure on the page, so it is the only thing
+   set as numbered steps. */
+.steps8{counter-reset:s;list-style:none;margin:var(--s-5) 0 0;padding:0}
+.steps8 li{counter-increment:s;position:relative;padding:var(--s-4) 0 var(--s-4) 52px;
+  border-bottom:1px solid var(--rule);color:var(--txt);line-height:1.65}
+.steps8 li:last-child{border-bottom:0}
+.steps8 li::before{content:counter(s,decimal-leading-zero);position:absolute;left:0;top:var(--s-4);
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-sm);font-weight:600;color:var(--brass-t)}
+.steps8 b{color:var(--bone);font-weight:600}
 </style>'''
 
 page = (head("Plane of Sky",
@@ -381,15 +492,65 @@ page = (head("Plane of Sky",
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
       <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
-    <h1 class="display">Sky is not a<br><em>raid zone.</em></h1>
-    <p class="hero-lede"><strong>Every reference in this community described a zone that needs a
-      full raid, and so did this page until today.</strong> Over two nights we recorded
-      {FIGHTS["n"]} fights against {FIGHTS["bosses"]} of its bosses. The median fight had
-      {FIGHTS["attackers_median"]} attackers, the thinnest had {FIGHTS["attackers_min"]}, and the
-      most expensive boss in the zone cost {fmt(BIGGEST)} damage.</p>
+    <h1 class="display">The Plane<br><em>of Sky.</em></h1>
+    <p class="hero-lede"><strong>Nine islands on a one-way teleporter loop, each gated by a key
+      the island below it drops.</strong> The whole zone in the order you do it, with what every
+      boss cost us to kill. <strong>It is not a raid zone</strong>, whatever else you have read.</p>
     <p class="hero-sig"><span>{FIGHTS["n"]} fights, {FIGHTS["bosses"]} bosses</span>
       <span>median {FIGHTS["attackers_median"]} attackers</span>
       <span>all at base difficulty</span></p>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">How the zone works</h2></div></div>
+    <p class="lede"><strong>You arrive on island 1 and the Key Master is standing there.</strong>
+      Buy the first three keys from him. After that every island&rsquo;s boss drops the key to the
+      next one, so the order is fixed: <strong>1 &rarr; the spur at 1.5 &rarr; 2 &rarr; 3 &rarr; 4
+      &rarr; 5 &rarr; 6 &rarr; 7 &rarr; 8</strong>. Island 1.5 hangs off the landing and its
+      teleporter puts you on 2 rather than back on 1, so it costs nothing to take on the way past.
+      <strong>Six of the seven predicted key drops landed in our logs</strong>, each from
+      exactly the boss named below; the seventh is unchecked because we have never found the
+      Thunder Spirit Princess. <span class="tier tM">TIER M</span></p>
+    <p class="lede"><strong>Nothing in the Plane of Sky sees through invisibility.</strong> That is
+      the opposite of Fear and Hate, and it is the single most useful fact about the zone: you can
+      walk past almost everything and kill only what you came for.</p>
+    <div class="sky-ring">{ring_svg()}</div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Island by island</h2>
+      <p class="lede" style="margin:0">In progression order. Figures are from our own combat logs
+        at base difficulty. <span class="tier tM">TIER M</span></p></div></div>
+    <ol class="isles">
+{isle_rows()}
+    </ol>
+  </div>
+</section>
+
+<section class="band">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">Island 8, in full</h2>
+      <p class="lede" style="margin:0">Two bosses on one island, and the only part of the zone
+        where the order matters. Reported by the site&rsquo;s owner, who has cleared it about ten
+        times. <span class="tier tc">TIER C</span></p></div></div>
+    <ol class="steps8">
+      <li><b>Go invisible before you take the portal up.</b> Nothing here sees invis, so you
+        arrive unengaged and choose your own opening.</li>
+      <li><b>Walk around to the back of the island</b>, to the teleporter that returns you to the
+        landing. The Hand of Veeshan wanders there.</li>
+      <li><b>Kill the Hand of Veeshan at the back.</b> It drops the efreeti line.</li>
+      <li><b>Walk back to the front and kill the Eye of Veeshan</b> where it stands.</li>
+      <li><b>Slow them both.</b> That is the whole fight.</li>
+    </ol>
+    <div class="note"><strong>There is no pull-down, and there never needed to be.</strong> Until
+      17 August 2026 this site published a 3D encounter guide built around bringing the Eye down to
+      island 7 to avoid keying a raid to island 8. That tactic was inherited Project 1999 text. It
+      is <a href="../sources.html#changelog">withdrawn</a>, and what replaced it is the paragraph
+      above.</div>
   </div>
 </section>
 
@@ -405,84 +566,15 @@ page = (head("Plane of Sky",
     </div>
     <p class="lede" style="margin-top:var(--s-5)">The hardest thing in Sky dies to whoever happens
       to be standing there.</p>
-    <div class="tw"><table class="dtable">
-      <thead><tr><th>Boss</th><th>Fights</th><th>Damage to kill</th><th>Fight</th>
-        <th>Attackers</th><th>Exp each</th></tr></thead>
-      <tbody>
-{cost_rows()}
-      </tbody></table></div>
-    <div class="note"><strong>Damage to kill is not hit points.</strong> It is the damage that had
-      to be dealt, which is what you actually plan around, and it sits above the boss&rsquo;s health
-      rather than measuring it. Where a row reads <em>or more</em> we joined after the boss was
-      engaged and the figure is a floor. Where it reads <em>once</em> we have a single fight and no
-      way to tell a cheap boss from a kill we arrived at the end of &mdash; Bzizzzt&rsquo;s only
-      record is 614 damage over three seconds, and its siblings take twenty thousand.</div>
-    <div class="note danger"><strong>Every one of these fights is at base difficulty.</strong>
-      D0 is the only tier we have played Sky at, so nothing on this page describes Awakened or
-      above. Difficulty raises how much of a boss&rsquo;s class kit appears, and on this evidence
-      we cannot say what that does here.</div>
-    <div class="note"><strong>None of these were our trio alone.</strong> Every Sky fight in the
-      logs is a public pick-up raid of {FIGHTS["attackers_min"]} to {FIGHTS["attackers_max"]}
-      players. The site&rsquo;s owner reports the zone can be soloed
-      <span class="tier tc">TIER C</span>; our thinnest logged fight is
-      {FIGHTS["attackers_min"]} attackers, so that stands unconfirmed until a one-attacker kill
-      appears in a log.</div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The ring</h2>
-      <p class="lede" style="margin:0">Every teleporter runs one way. Ringed islands are the ones
-        the standard circuit kills; a dashed ring is a boss we have never found.</p></div></div>
-    <div class="sky-ring">{ring_svg()}</div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The key chain, confirmed</h2>
-      <p class="lede" style="margin:0">Three keys are bought from the Key Master on island 1.
-        After that every boss drops the key to the island above it. The chain was inherited from
-        two post-launch accounts and had never been checked against a log.</p></div></div>
-    <ul class="chain">
-{chain_rows()}
-    </ul>
-    <p class="lede" style="margin-top:var(--s-5)"><strong>Six of the seven predicted drops
-      landed, each from exactly the boss the chain names.</strong> The seventh is unchecked rather
-      than wrong: we never found the Thunder Spirit Princess, so the Key of Swords has no
-      measurement behind it either way.</p>
-    <div class="note"><strong>Nothing in the Plane of Sky sees through invisibility.</strong>
-      That is the opposite of Fear and Hate, where see-invis is the main hazard, and it is why the
-      circuit can skip most of the zone rather than clear it.</div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The circuit, and the bee island</h2>
-      <p class="lede" style="margin:0">The islands worth killing on a repeat run, in the order the
-        ring makes cheapest.</p></div></div>
-    <div class="circuit">{"".join((f"<b>{s}</b>" if k % 2 == 0 else "<span>&rarr;</span>") for k, s in enumerate(sum([[c, ""] for c in CIRCUIT], [])[:-1]))}</div>
-    <p class="lede" style="margin-top:var(--s-5)">Bee island first, then up through 7 and 8; the
-      loop returns you to 1 for the spur at 1.5; then round again for the Overseer of Air on 4 and
-      the Hand of Veeshan on 8. <strong>Two visits to island 8, and they are different kills</strong>
-      &mdash; the Eye on the first pass, the Hand on the second.</p>
-    <p class="lede"><strong>Island 6 runs six named bees, not one.</strong> No source we hold
-      mentions this, and they are not one mob in successive forms as this page said until today:
-      the Key of Scale came off Bazzt Zzzt itself, three times.</p>
-    <div class="tw"><table class="dtable">
-      <thead><tr><th>Bee</th><th>Fights</th><th>Damage to kill</th><th>Seen dropping</th></tr></thead>
-      <tbody>
-{bee_rows()}
-      </tbody></table></div>
-    <div class="note"><strong>Do not bring poison to the bees.</strong> They cast Deadly Poison at
-      us constantly and we resisted it {POISON_N} times across four of the six variants
-      <span class="tier tM">M</span>. That is the largest resist count in the zone by a wide
-      margin, and it is the one piece of the bee island that changes what you pack.</div>
-    <div class="note"><strong>We do not publish a clear time.</strong> The one figure we have was
-      given by someone who said in the same sentence that they had not timed it, and a time is a
-      fact about a player rather than about the zone.</div>
+    <div class="note"><strong>Damage to kill is not hit points.</strong> It counts every
+      attacker and sits above a boss&rsquo;s health rather than measuring it. A figure marked
+      <em>or more</em> is a fight we joined late, so it is a floor.</div>
+    <div class="note danger"><strong>All of it is base difficulty.</strong> D0 is the only tier we
+      have played Sky at, so nothing here describes Awakened or above.</div>
+    <div class="note"><strong>None of it was one trio.</strong> Every Sky fight in our logs is a
+      public pick-up raid of {FIGHTS["attackers_min"]} to {FIGHTS["attackers_max"]} players. The
+      site&rsquo;s owner reports the zone can be soloed <span class="tier tc">TIER C</span>; our
+      thinnest logged fight is {FIGHTS["attackers_min"]}, so that stands unconfirmed.</div>
   </div>
 </section>
 
@@ -521,17 +613,13 @@ page = (head("Plane of Sky",
       and it is why surveyors print the figure on the drawing rather than in a caption. It had been
       missing from this chart since 11 August 2026, which made the proportion an invented one.</div>
     <div class="note danger"><strong>These are not labelled, and that is deliberate.</strong> The
-      mesh says exactly where every piece of floor is. It does not say which piece is
-      &ldquo;island 4&rdquo; &mdash; that lives in the teleporter network, and no
-      <code>/loc</code> reading from Sky exists to anchor it. <strong>One <code>/loc</code> per
-      island &mdash; {len(RING)+1} of them, or {len(RING)+2} if the Efreeti island is a separate
-      place &mdash; would label this chart permanently.</strong> Drawing a guess would be worth
-      less than drawing nothing.</div>
+      mesh says where every piece of floor is; it does not say which piece is &ldquo;island 4&rdquo;.
+      That lives in the teleporter network, and <strong>one <code>/loc</code> per island &mdash;
+      {len(RING)} readings &mdash; would label this chart permanently</strong> and let us draw each
+      island properly. Drawing a guess would be worth less than drawing nothing.</div>
     <p class="lede">A body of floor is not always an island: a tower counts separately from the
-      ground it stands on, which is why there are {len(ISL)} marks and {len(RING)+1} places to
-      stand.</p>
-  </div>
-</section>
+      ground it stands on, which is why there are {len(ISL)} marks and {len(RING)} places to stand.</p>
+  </section>
 
 <section class="band">
   <div class="shell">
@@ -547,17 +635,16 @@ page = (head("Plane of Sky",
           appeared in a log of ours &mdash; not killed, not seen, not named. Its key is the one
           link in the chain still unconfirmed.</span></li>
       <li><span class="i">3</span><span class="b">Which measured body is which island</span>
-        <span class="k">{len(RING)+1} /loc readings</span></li>
+        <span class="k">{len(RING)} /loc readings</span></li>
       <li><span class="i">4</span><span class="b">Whether there is a tenth island</span>
         <span class="k">one sighting</span>
         <span class="nt">One account counts ten, listing 1&ndash;8, 1.5 and an Efreeti island.
-          The efreeti gear does not settle it: we watched it drop on three islands that are
-          already on the ring, which is evidence about where the gear comes from and none at all
-          about whether a tenth place exists.</span></li>
+          The efreeti drops do not settle it &mdash; all three sources are already on the
+          ring.</span></li>
       <li><span class="i">5</span><span class="b">Boss hit points at any difficulty</span>
         <span class="k">nobody has these</span>
-        <span class="nt">Damage to kill bounds them from above, and every published stat block for
-          these bosses traces to wiki pages created before the game existed.</span></li>
+        <span class="nt">Every published stat block for these bosses traces to a wiki page
+          created before the game existed.</span></li>
       <li><span class="i">6</span><span class="b">Which Sky drops are quest turn-ins</span>
         <span class="k">a turn-in list</span>
         <span class="nt">One account lists items said to be safe to sell. We are not republishing

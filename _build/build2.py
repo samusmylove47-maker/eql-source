@@ -184,69 +184,58 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 open('public/tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 
 # ---------------------------------------------------------------- RAIDS
-raids = head("Raid encounters", "Interactive 3D encounter guides for EverQuest Legends raid bosses: positioning, radii, phase transitions and pull strategy rendered in space.", rel="../", og="raids", canon="raids/index") + bar("../") + '''
+# The Sky figures, read rather than typed. See CLAUDE.md: a number typed beside
+# data drifts from it, and this page carried four of them.
+try:
+    _SL = json.load(open('assets/sky-loot.json', encoding='utf-8'))
+    _SF = _SL['fights']
+    _SKY_BIGGEST = max(b['damage_max'] for b in _SL['bosses'])
+    _CT = max((f['damage_low'] for f in json.load(open('assets/raids-measured.json', encoding='utf-8'))
+               if f['boss'] == 'Cazic-Thule' and f['difficulty'] == 4), default=None)
+    _SKY_RATIO = round(_CT / _SKY_BIGGEST) if _CT else None
+except (OSError, ValueError, KeyError):
+    _SF, _SKY_BIGGEST, _SKY_RATIO = {}, None, None
+
+_ORD = {2: 'two', 3: 'three', 4: 'four', 5: 'five', 6: 'six', 7: 'seven'}
+
+raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what every boss cost us to kill, and the order to do it in.", rel="../", og="raids", canon="raids/index") + bar("../") + f'''
 <main>
 
 <section class="hero page ember-hero">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
-    <h1 class="display">Boss fights<br><em>you can orbit.</em></h1>
-    <p class="hero-lede">Each encounter is an interactive three-dimensional diagram &mdash; the platform,
-      the boss, the stack, the radii that matter and the routes between them &mdash; because a paragraph
-      about where to stand has never once been as clear as being shown.</p>
-    <p class="hero-sig"><span>Drag to orbit</span><span>Arrow keys work too</span><span>No plugin</span></p>
+    <h1 class="display">Raid<br><em>encounters.</em></h1>
+    <p class="hero-lede">One zone is written up in full. We publish an encounter when we have
+      fought it ourselves and can say what it cost &mdash; not when we can find a description of
+      it somewhere else.</p>
   </div>
 </section>
 
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
-    <div class="sechead"><span class="n">Live</span><div><h2 class="sec">Plane of Sky</h2>
-      <p class="lede" style="margin:0">Nine islands, each gated by a key that only drops once the island below is
-        cleared. Progression is vertical and unforgiving: fall off and every key you are carrying is destroyed.</p></div></div>
     <div class="cards c2">
-      <a class="card figured contour" href="plane-of-sky.html"
-         style="--c:var(--z01);--cx:14%;--cy:112%">
-        <span class="fig">7</span>
-        <div class="kicker">Progression &middot; solo route</div>
-        <h3 class="t">Every island, fewest pulls</h3>
-        <p class="d">What has to die before each boss appears, what tends to go wrong, and which
-          islands forgive a mistake. Written from a post-launch solo run rather than inherited raid
-          text.</p>
-        <div class="chipline"><span class="pill">7 islands</span><span class="pill">Solo</span></div>
-        <div class="foot"><span>Sourced, badged T3</span><span class="go">Open &rarr;</span></div></a>
-
-      <div class="card" style="--c:var(--warn)">
-        <div class="kicker">Withdrawn &middot; 17 August 2026</div>
-        <h3 class="t">Eye of Veeshan</h3>
-        <p class="d">This was a 3D encounter guide built around pulling the boss down to island 7 to
-          avoid keying a raid to island 8. <strong>Nobody needs to do that.</strong> The site&rsquo;s
-          owner has killed it about ten times and has always killed it where it spawns. The tactic
-          was inherited Project 1999 text and we published it as current.</p>
-        <div class="chipline"><span class="pill">Retracted</span><span class="pill">See the change log</span></div>
-        <div class="foot"><span>What we measured lives on the Sky page</span></div></div>
-
-      <div class="card" style="--c:var(--dim)">
-        <div class="kicker">Queued &middot; islands 5, 6, 7, 4, 3</div>
-        <h3 class="t">Spiroc Lord &rarr; Gorgalosk</h3>
-        <p class="d">The build order is set by which fights a diagram actually helps with. Island 5 first: the
-          vanquisher squad-respawn logic determines kill order and is almost impossible to hold in your head from prose.
-          Then Island 6&rsquo;s bee split tree, which is a decision graph, not a tactic.</p>
-        <div class="chipline"><span class="pill warn">Needs field data</span></div>
-        <div class="foot"><span>In build</span></div></div>
+      <a class="card figured" href="plane-of-sky.html" style="--c:var(--z01)">
+        <span class="fig">9</span>
+        <div class="kicker">Complete &middot; island by island</div>
+        <h3 class="t">The Plane of Sky</h3>
+        <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
+          every island through to the Eye and the Hand of Veeshan. Nine islands, six of the seven
+          key drops confirmed against our own logs, and what each boss actually cost to kill.</p>
+        <div class="chipline"><span class="pill">9 islands</span><span class="pill">{_SF.get('n','?')} fights measured</span></div>
+        <div class="foot"><span>Measured at base difficulty</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
-    <div class="note warn"><strong>On difficulty tiers.</strong> These guides describe the encounters as documented.
-      D0&ndash;D4 does <em>not</em> raise mob levels &mdash; it makes mobs run player-style class kits, widens aggro
-      ranges and pre-upgrades loot. Named mobs are often multiclass from D2 and raid bosses start appearing triple-class
-      at D3. That means a D4 pull can contain cleric-kit adds that chain-stun and heal, and no published source
-      documents which kits attach to which boss. <strong>Encounter-specific D4 behaviour is the single biggest gap on
-      this site, and it can only be closed with combat logs from people who have actually done it.</strong></div>
+    <div class="note"><strong>Sky is not a raid zone, whatever else you have read.</strong> We
+      killed {_SF.get('bosses','?')} of its bosses {_SF.get('n','?')} times with a median of
+      {_ORD.get(_SF.get('attackers_median'), _SF.get('attackers_median'))} attackers and a thinnest
+      fight of {_ORD.get(_SF.get('attackers_min'), _SF.get('attackers_min'))}. The most expensive
+      boss in the zone costs about a {_SKY_RATIO}th of Cazic-Thule at Refined.</div>
 
-    <div class="note"><strong>One documented conflict, unresolved.</strong> The wiki&rsquo;s Dangers section states that
-      boss NPCs no longer death touch. The island walkthroughs immediately below it describe death touch rotations on
-      Keeper of Souls, the Spiroc Lord, Bazzt Zzzt, Sister of the Spire and the Eye. The Dangers line is the
-      Legends-era edit; the walkthrough prose is inherited classic text. Every guide here assumes no death touch and
-      tells you where that assumption would cost you if it is wrong.</div>
+    <div class="note warn"><strong>Everything here is base difficulty.</strong> D0&ndash;D4 does
+      <em>not</em> raise mob levels &mdash; it makes mobs run player-style class kits, widens aggro
+      ranges and pre-upgrades loot. Named mobs are often multiclass from D2 and raid bosses start
+      appearing triple-class at D3. <strong>We have never played Sky above D0</strong>, so nothing
+      on that page describes Awakened or above, and it says so where the figures are.</div>
   </section>
 </div>
 </main>
