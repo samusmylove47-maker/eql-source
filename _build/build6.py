@@ -378,7 +378,7 @@ def build_plot(zone, pts, layers):
     marks, leaders = [], []
     order = sorted(range(len(pts)), key=lambda i: (-pts[i][1], -pts[i][0]))
     for i in order:
-        yv, xv, name, note, lev = pts[i]
+        yv, xv, name, note, lev, lev_raw = pts[i]
         px, py = -xv, -yv
         short = name if len(name) <= 24 else name[:22] + '…'
         chosen = None
@@ -428,8 +428,9 @@ def build_plot(zone, pts, layers):
         # SVG stays the single record of what was drawn.
         lyr, lyr_d = layer_of(px, py, layers)
         drops = DROPS.get((zone['slug'], name), [])
-        # Levels arrive as floats from the band maths; a reader wants "25".
-        lev_txt = f'{lev:g}' if lev is not None else ''
+        # The band maths averages a range to pick a colour. Printing that average
+        # invents a level: "24-25" became "Level 24.5". Print the source text.
+        lev_txt = lev_raw or (f'{lev:g}' if lev is not None else '')
         lyr_attr = f' data-lyr="{lyr}"' if lyr is not None else ''
         marks.append(
             f'<g class="mk" data-name="{esc(name)}" data-lv="{lev_txt}"{lyr_attr}'
@@ -540,7 +541,8 @@ for z in Z:
         elif RANGE.search(raw) or len(v) < 2:
             unplotted.append((n['n'], raw or 'not recorded'))
         else:
-            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv'))))
+            pts.append((v[0], v[1], n['n'], n.get('no') or '', lvl_of(n.get('lv')),
+                        (n.get('lv') or '').strip()))
     if not pts: continue
     zone_total = len(pts) + len(unplotted) + len(withheld)
     tot_plot += len(pts); tot_named += zone_total
@@ -583,9 +585,9 @@ for z in Z:
 
     rows = '\n'.join(
         f'<li><span class="pn2">{esc(nm)}</span>'
-        f'<span class="pl">{"level " + str(int(lv)) if lv else "level not recorded"}</span>'
+        f'<span class="pl">{"level " + lvr if lvr else "level not recorded"}</span>'
         f'<span class="pc">{yv:.0f}, {xv:.0f}</span></li>'
-        for yv, xv, nm, _, lv in sorted(pts, key=lambda p: (p[4] is None, p[4] or 0)))
+        for yv, xv, nm, _, lv, lvr in sorted(pts, key=lambda p: (p[4] is None, p[4] or 0)))
 
     missing = ''
     if unplotted:

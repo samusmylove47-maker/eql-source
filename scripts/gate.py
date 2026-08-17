@@ -267,6 +267,25 @@ def run(pages, fail, warn):
         if re.search(r"\d", cell):
             fail(f"{path} prints a coordinate for {name!r}, which is withheld: {text_of(cell).strip()!r}")
 
+        # THE ROSTER WAS NOT THE ONLY TABLE. This checked the roster row and
+        # nothing else, so Najena shipped "BoneCracker L24 · −262, 167" in its
+        # key-chain list while the roster three sections below said "withheld".
+        # Withholding a coordinate means withholding it from the PAGE, so the
+        # whole page is checked: any "<name> ... <number>, <number>" within a
+        # short span of the name is a coordinate that escaped.
+        #
+        # Both minus signs are matched. 141 recorded coordinates use U+2212
+        # rather than ASCII hyphen, and a pattern that knows only one of them
+        # would pass exactly the coordinates most likely to be missed.
+        body = text_of(h)
+        for m in re.finditer(re.escape(name), body):
+            near = body[m.end(): m.end() + 90]
+            hit = re.search(r"[-−]?\d{2,4}\s*,\s*[-−]?\d{2,4}", near)
+            if hit:
+                fail(f"{path} prints {hit.group(0)!r} beside {name!r}, whose coordinate is "
+                     f"withheld — withholding applies to the whole page, not just the roster")
+                break
+
     # ---- 5. metadata may not assert what the body will not ------------------
     #
     # The Eye of Veeshan's meta description published 32,000 HP as fact while the

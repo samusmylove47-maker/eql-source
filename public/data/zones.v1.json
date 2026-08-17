@@ -214,7 +214,7 @@
      },
      "inherited": {
       "level": "sourced",
-      "detail": "3 inherited claims badged, placeholder model retracted in place"
+      "detail": "4 inherited claims badged, placeholder model retracted in place"
      },
      "farming": {
       "level": "measured",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "093bc71ba178315c"
+ "hash": "2a9b1ed0b7bf503a"
 }

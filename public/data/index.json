@@ -45,7 +45,7 @@
    "description": "The zones we have surveyed, with the level band, the experience modifier and how far verification has got.",
    "url": "https://eqlsource.com/data/zones.v1.json",
    "bytes": 15908,
-   "hash": "093bc71ba178315c"
+   "hash": "2a9b1ed0b7bf503a"
   },
   {
    "name": "items",
