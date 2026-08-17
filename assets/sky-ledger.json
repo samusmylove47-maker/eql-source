@@ -1,10 +1,10 @@
 {
  "app": {
-  "bytes": 180685,
-  "file": "sky-ledger.0e27c0ed.html",
-  "hash": "0e27c0ed",
+  "bytes": 180377,
+  "file": "sky-ledger.dadeed9c.html",
+  "hash": "dadeed9c",
   "kb": 176,
-  "sha1": "0e27c0edc65ed02287b4ca38cc3c65e3e182887e"
+  "sha1": "dadeed9cc2827087964df870d915415660a1ea12"
  },
  "dataset": {
   "classes": 16,
@@ -34,13 +34,13 @@
  "read": "2026-08-17",
  "release": {
   "browser": {
-   "bytes": 58692,
+   "bytes": 58677,
    "file": "SkyLedger-v1.1.0-browser-only.zip",
    "mb": 0.1,
    "url": "https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-browser-only.zip"
   },
   "overlay": {
-   "bytes": 100481486,
+   "bytes": 100481506,
    "file": "SkyLedger-v1.1.0-windows.zip",
    "mb": 100.5,
    "url": "https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-windows.zip"
