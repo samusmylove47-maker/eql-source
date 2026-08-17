@@ -39,8 +39,10 @@ from _partials import head, bar, foot
 
 Z = {z['slug']: z for z in json.load(open('assets/zones-index.json', encoding='utf-8'))}
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
-# What we have watched drop, joined by _build/sightings.py. This is the only
-# thing on these pages that is not a transcription of somebody else's wiki.
+# Measured drops, joined by _build/sightings.py. This is the only thing on these
+# pages that is not a transcription of somebody else's wiki. It reaches the page
+# as a mob name and a set of difficulty tiers; the session dates, the character
+# and the tally stay in the dataset, where they belong.
 try:
     SIGHT = json.load(open('assets/sightings.json', encoding='utf-8'))
 except (OSError, ValueError):
@@ -119,6 +121,10 @@ CSS = '''<style>
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
 .drops.seen li{border-left-color:var(--ok)}
 .drops.seen b{color:var(--ink)}
+/* The badge carries the whole provenance claim for the block below it, so it
+   sits in the heading rather than in a sentence. Raised off the middle: the
+   heading is uppercase, and middle aligns to x-height, which reads low. */
+.ent h2.sec .tier{margin-left:9px;vertical-align:.24em}
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style>'''
@@ -187,19 +193,39 @@ def weapon_rows(a):
 
 
 def seen_block(rows, label):
-    """Tier M sightings. A count of times watched, never a rate."""
+    """Measured drops: which mob, and the difficulty tiers it was recorded at.
+
+    THE BADGE IS THE PROOF, SO THE SENTENCE IS NOT NEEDED. This block used to
+    print a tally and up to three dated sessions per row - "seen 73x, 10 Aug
+    2026 D1, 11 Aug 2026 D1, 11 Aug 2026 D2" - under a heading naming whose
+    logs they were. All of that existed to establish that the measurement
+    happened, which a tier M badge states in two characters. The finding is
+    that this mob drops this item, and it survives whole.
+
+    THE TIERS ARE A SET, NOT A DATED LIST. Seen four times at D1 and once at
+    D3 reads "D1, D3": the difficulty is a fact about where the drop was
+    recorded, the repetition is a fact about who played what. Absence from the
+    set is not evidence a tier does not drop it, which is what the caveat says.
+
+    A denominator was never in this data - nothing here counts kills - so no
+    row above and no sentence below may be read as a rate.
+    """
     if not rows:
         return ''
-    li = ''.join(
-        f'<li><b>{esc(r["item"] if "item" in r else r["mob"])}</b>'
-        f'<span>seen {r["n"]}&times; &middot; '
-        + ' &middot; '.join(
-            esc(f'{x["date"]}' + (f' D{x["difficulty"]}' if x.get('difficulty') is not None else ''))
-            for x in r['sessions'][:3])
-        + '</span></li>' for r in rows)
-    return (f'<h2 class="sec">{label}</h2><ul class="drops seen">{li}</ul>'
-            f'<p class="src">Counted from our own combat logs. <b>A count, not a rate</b> '
-            f'&mdash; a drop seen once is seen once. '
+    li = []
+    for r in rows:
+        name = r['item'] if 'item' in r else r['mob']
+        tiers = sorted({x['difficulty'] for x in r['sessions']
+                        if x.get('difficulty') is not None})
+        band = ', '.join(f'D{d}' for d in tiers)
+        li.append(f'<li><b>{esc(name)}</b>'
+                  + (f'<span>Recorded at {band}</span>' if band else '')
+                  + '</li>')
+    return (f'<h2 class="sec">{label} <span class="tier tM">TIER M</span></h2>'
+            f'<ul class="drops seen">{"".join(li)}</ul>'
+            f'<p class="src"><b>Observed, not a rate</b> &mdash; no kill count sits '
+            f'behind this, and the tiers are those recorded rather than the only '
+            f'ones that drop it. '
             f'<a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p>')
 
 
@@ -325,7 +351,7 @@ for name, rows in by_item.items():
                  f'{", ".join(esc(x) for x in also)}. We have not reconstructed full names for '
                  f'these &mdash; the row elides a shared prefix and guessing it would invent an '
                  f'item.</p>') if also else ''
-    seen = seen_block(SIGHT['by_item'].get(name, []), 'Seen dropping, in our logs')
+    seen = seen_block(SIGHT['by_item'].get(name, []), 'Dropped by')
     # The cell every field above was read out of, printed whole. A parser that
     # drops a fact looks exactly like a survey that never recorded it, and this
     # line is the only thing on the page that can tell the two apart.
@@ -394,7 +420,7 @@ for nm in IX['named']:
     extra = (f'<h2 class="sec">What it drops</h2><ul class="drops">{dl}</ul>'
              if drops else
              '<p class="lede">No drops recorded &mdash; a gap, not an empty mob.</p>')
-    extra += seen_block(SIGHT['by_named'].get(nm['n'], []), 'Seen dropping, in our logs')
+    extra += seen_block(SIGHT['by_named'].get(nm['n'], []), 'Observed drops')
     extra += (f'<p class="src" style="margin-top:18px">From the '
               f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])} survey</a>.</p>')
     desc = (f"{nm['n']} in {nm['zt']}, EverQuest Legends"

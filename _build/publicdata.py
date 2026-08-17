@@ -49,8 +49,8 @@ TERMS = {
                "trust a value.",
     "attribution": f"EQL Source, {SITE}",
     "measured": "The measured data — drop sightings, damage figures, spell "
-                "lists — is our own parsed play. Freely usable with "
-                "attribution.",
+                "lists — is parsed from this project's own combat logs. Freely "
+                "usable with attribution.",
     "inherited": "Fields sourced from community wikis carry their tier and "
                  "source. Those values are not ours to license; respect the "
                  "original source and do not present a tier 5 figure as fact.",
@@ -143,13 +143,16 @@ def build_sightings():
                                       for x in r.get('sessions', [])])
                        for r in rows]
     return wrap(
-        'sightings', '1.0.0', 'Drops we have watched happen',
-        'Every item we have personally seen drop, the mob it came from, and '
-        'how many times. Parsed from our own combat logs.',
+        'sightings', '1.0.0', 'Measured drop sources',
+        'Which mobs have been measured dropping which items, parsed from '
+        'combat logs. Each row carries the sighting count behind it.',
         dict(items=items),
         notes=[
             "A COUNT, NEVER A RATE. A drop seen once is seen once. Nothing "
-            "here supports a drop-rate claim and we do not make one.",
+            "here supports a drop-rate claim and none is made.",
+            "`seen` and `sessions` are the evidence behind a row, not a "
+            "published finding. The pages on this site print which mob drops "
+            "what and leave the tally here.",
             "`off_roster` means the mob was named by the log rather than by a "
             "survey we had already written.",
             "This is the one dataset in this community that is measured rather "
@@ -185,7 +188,7 @@ def build_zones():
                "`verify_level` is sourcing hygiene and a coordinate check, not "
                "a measure of usefulness. Its third gate asks whether plotted "
                "coordinates land on drawn floor, so a zone with no plotted "
-               "coordinates can never pass it however much we play there.",
+               "coordinates can never pass it however much play it gets.",
                "Verified means checked against source. It does not mean "
                "complete."])
 

@@ -1,14 +1,14 @@
 {
  "name": "sightings",
  "version": "1.0.0",
- "title": "Drops we have watched happen",
- "description": "Every item we have personally seen drop, the mob it came from, and how many times. Parsed from our own combat logs.",
+ "title": "Measured drop sources",
+ "description": "Which mobs have been measured dropping which items, parsed from combat logs. Each row carries the sighting count behind it.",
  "source": "https://eqlsource.com",
  "schema": "https://eqlsource.com/data/sightings.v1.json",
  "terms": {
   "summary": "Use it, credit EQL Source, and read the provenance before you trust a value.",
   "attribution": "EQL Source, https://eqlsource.com",
-  "measured": "The measured data — drop sightings, damage figures, spell lists — is our own parsed play. Freely usable with attribution.",
+  "measured": "The measured data — drop sightings, damage figures, spell lists — is parsed from this project's own combat logs. Freely usable with attribution.",
   "inherited": "Fields sourced from community wikis carry their tier and source. Those values are not ours to license; respect the original source and do not present a tier 5 figure as fact.",
   "warranty": "None. This is a fan project and the game is actively patched. Every dataset here states what it does not know.",
   "unofficial": "Not affiliated with or endorsed by Daybreak Game Company, Game Jawn or Darkpaw Studios."
@@ -20,7 +20,8 @@
   "Values change as evidence improves. That is the product working, not a breach — watch `hash` if you cache."
  ],
  "notes": [
-  "A COUNT, NEVER A RATE. A drop seen once is seen once. Nothing here supports a drop-rate claim and we do not make one.",
+  "A COUNT, NEVER A RATE. A drop seen once is seen once. Nothing here supports a drop-rate claim and none is made.",
+  "`seen` and `sessions` are the evidence behind a row, not a published finding. The pages on this site print which mob drops what and leave the tally here.",
   "`off_roster` means the mob was named by the log rather than by a survey we had already written.",
   "This is the one dataset in this community that is measured rather than transcribed. It is also the smallest sample. Both are true."
  ],

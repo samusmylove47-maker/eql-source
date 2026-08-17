@@ -119,9 +119,9 @@ facts = f'''<div class="slfacts">
   <div><b>&lt;28% &middot; 0/9</b><span>How a dry streak prints</span>
     <em>Never <code>0%</code>. Nine kills with no drop bounds the rate; it does not
       measure it, and <code>0%</code> would tell you to stop farming.</em></div>
-  <div><b>1,205 / 63</b><span>Kills counted / kills it could not place</span>
-    <em>On a 986,000-line log. It reports what it discarded rather than folding
-      it quietly into the total.</em></div>
+  <div><b>Counted &middot; discarded</b><span>Two figures, never merged</span>
+    <em>Kills it cannot place print as their own number rather than folding
+      quietly into the total.</em></div>
 </div>'''
 
 page = head("Sky Ledger",
@@ -199,12 +199,12 @@ page = head("Sky Ledger",
         seen: drops over kills of that mob, with the sample size attached.</li>
       <li><b>A dry streak is a ceiling, not a zero.</b> Nine kills with no drop reads
         <code>&lt;28% &middot; 0/9</code>. Zero successes in nine trials bounds the rate and does
-        not measure it &mdash; the same reasoning as <code>damage_is_floor</code> on our own raid
-        figures.</li>
+        not measure it &mdash; the same reasoning as the <code>damage_is_floor</code> marker on
+        the raid figures here.</li>
       <li><b>It reports what it threw away.</b> Kills it could not place, bag sales whose
-        contents the client never named, trades it would not guess at. On a 986,000-line log:
-        1,205 kills counted, 63 unplaceable, and it says so. The strip hides itself when there
-        is nothing to admit.</li>
+        contents the client never named, trades it would not guess at. The tally it discarded
+        prints beside the tally it kept. The strip hides itself when there is nothing to
+        admit.</li>
       <li><b>Its parsing is checked against the client's own string table.</b>
         <code>You have slain %1!</code> is id 12113 in <code>eqstr_us.txt</code>, read out of the
         install &mdash; the same class of evidence as our floor plans being read out of the
@@ -213,8 +213,8 @@ page = head("Sky Ledger",
         <code>The Plane of Sky 3 (Fused)</code>. That <code>&lt;n&gt; (&lt;Tier&gt;)</code> suffix
         is not in any client string file and classic EverQuest never had it, so an exact match
         against a zone name could never see it.</li>
-      <li><b><code>X died.</code> names no killer, so it is never counted as yours.</b> Ten lines
-        in 986,514. Reported rather than guessed at.</li>
+      <li><b><code>X died.</code> names no killer, so it is never counted as yours.</b> Those
+        lines are reported rather than guessed at.</li>
     </ul>
   </section>
 
@@ -266,9 +266,8 @@ page = head("Sky Ledger",
 
   <section class="band">
     <div class="sechead"><span class="n">05</span><div><h2 class="sec">Who made it, and what it replaced</h2></div></div>
-    <div class="note sig"><strong>Sky Ledger is this site's owner's own build</strong>, a separate
-      project with its own test suite and its own documentation. It is served here rather than
-      rebuilt here.</div>
+    <div class="note sig"><strong>Sky Ledger is a separate project</strong>, with its own test
+      suite and its own documentation. It is served here rather than rebuilt here.</div>
     <div class="note"><strong>Our own Plane of Sky tracker is withdrawn.</strong> It is the tool
       Sky Ledger supersedes, and running both would only ask a reader to pick. Its quest data
       lives on: <a href="../data/index.html">the Sky dataset is published</a> with a source

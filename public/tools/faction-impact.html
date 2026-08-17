@@ -5,9 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Faction impact checker — EQL Source</title>
-<meta name="description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from our own combat logs rather than assumed.">
+<meta name="description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from combat logs rather than assumed.">
 <meta property="og:title" content="Faction impact checker — EQL Source">
-<meta property="og:description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from our own combat logs rather than assumed.">
+<meta property="og:description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from combat logs rather than assumed.">
 <meta property="og:type" content="website">
 <meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
 <meta property="og:image:width" content="1200">
@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="EQL Source">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Faction impact checker — EQL Source">
-<meta name="twitter:description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from our own combat logs rather than assumed.">
+<meta name="twitter:description" content="What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it helps or costs. Measured from combat logs rather than assumed.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
 <link rel="canonical" href="https://eqlsource.com/tools/faction-impact">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,19 +56,19 @@
 
 <div class="shell">
   <div class="note warn"><strong>Read the coverage before you trust a silence.</strong> The faction
-    movement here is <em>measured from our own combat logs</em>, so it covers only zones we have
-    actually played and counted: <strong>Befallen, Blackburrow, Kerra Isle, Nagafen's Lair, Nagafen's Lair - Group, Northern Felwithe, Paineel, Permafrost Keep, Temple of Cazic-Thule, The Castle of Mistmoore, The City of Guk, The Feerrott, The Greater Faydark, The Northern Desert of Ro, The Oasis of Marr, The Permafrost Caverns - Group, The Plane of Fear, The Plane of Fear - Group, The Plane of Hate, The Plane of Hate - Group, The Plane of Sky, The Rathe Mountains, The Ruins of Old Guk, The Ruins of Old Paineel, The Ruins of Old Paineel - Group, The Southern Desert of Ro</strong>. Every other
+    movement here is <em>measured from combat logs</em>, so it covers only the measured zones:
+    <strong>Befallen, Blackburrow, Kerra Isle, Nagafen's Lair, Nagafen's Lair - Group, Northern Felwithe, Paineel, Permafrost Keep, Temple of Cazic-Thule, The Castle of Mistmoore, The City of Guk, The Feerrott, The Greater Faydark, The Northern Desert of Ro, The Oasis of Marr, The Permafrost Caverns - Group, The Plane of Fear, The Plane of Fear - Group, The Plane of Hate, The Plane of Hate - Group, The Plane of Sky, The Rathe Mountains, The Ruins of Old Guk, The Ruins of Old Paineel, The Ruins of Old Paineel - Group, The Southern Desert of Ro</strong>. Every other
     zone on this site is <strong>not measured</strong>, and this page will tell you so rather than
     return an empty result that looks like good news. What a faction is <em>for</em> &mdash; which
     races need it, which quest steps raise it &mdash; comes from the race unlock work and covers
-    everything we hold. <strong>An absent zone means we have not looked, never that it is safe.</strong></div>
+    every faction listed. <strong>An absent zone is unmeasured, never known to be safe.</strong></div>
 </div>
 
 <section class="band" style="border-top:0;padding-top:0">
   <div class="shell">
     <div class="sechead"><span class="n">Search</span><div><h2 class="sec">Look up a faction</h2>
       <p class="lede" style="margin:0">Type any faction, race or zone. It answers what raises it, what
-        needs it, and where we have seen it move.</p></div></div>
+        needs it, and where it has been measured moving.</p></div></div>
     <input id="q" class="fsearch" type="search" placeholder="Mayong Mistmoore, High Elf, Bat Wings&hellip;"
       autocomplete="off" aria-label="Search factions, races and quest steps">
     <div id="res" class="fres" aria-live="polite"></div>
@@ -77,81 +77,76 @@
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><span class="n">Measured</span><div><h2 class="sec">Zones we have counted</h2>
+    <div class="sechead"><span class="n">Measured</span><div><h2 class="sec">Zones with a measurement</h2>
       <p class="lede" style="margin:0">Faction movement recorded from play, with the size per kill and
         the worst single mob. <span class="tier tM">TIER M</span></p></div></div>
     
   <article class="fzone">
     <div class="fzhead">
       <h3>Blackburrow</h3>
-      <span class="fzmeta">D2 &middot; measured across 42 kills
-        &middot; 04 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D2 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
-    <p class="floose"><strong>Seen moving, direction unknown.</strong> Guards of Qeynos, Jaggedpine Treefolk, Karana Residents, Merchants of Qeynos, Sabertooths of Blackburrow, Silent Fist Clan, Split Paw Clan &mdash; these appeared in the log without a mob we could attribute them to, so neither the sign nor the size is known. A session where the faction message and the kill sit adjacent would close it.</p>
+    <p class="floose"><strong>Seen moving, direction unknown.</strong> Guards of Qeynos, Jaggedpine Treefolk, Karana Residents, Merchants of Qeynos, Sabertooths of Blackburrow, Silent Fist Clan, Split Paw Clan &mdash; these appeared in the logs with no mob to attribute them to, so neither the sign nor the size is known. A log where the faction message and the kill sit adjacent would close it.</p>
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Befallen</h3>
-      <span class="fzmeta">D1 &middot; measured across 75 kills
-        &middot; 04 Aug 2026</span>
+      <span class="fzmeta">D1 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Burning Dead</b><span class="fdelta">-2 a kill, -2 to -5 across 6 mob types, biggest -5 from the thaumaturgist</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Burning Dead</b><span class="fdelta">-2 a kill, -2 to -5 across 6 mob types, biggest -5 from the thaumaturgist</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
-    <p class="floose"><strong>Seen moving, direction unknown.</strong> Befallen Inhabitants &mdash; these appeared in the log without a mob we could attribute them to, so neither the sign nor the size is known. A session where the faction message and the kill sit adjacent would close it.</p>
+    <p class="floose"><strong>Seen moving, direction unknown.</strong> Befallen Inhabitants &mdash; these appeared in the logs with no mob to attribute them to, so neither the sign nor the size is known. A log where the faction message and the kill sit adjacent would close it.</p>
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The City of Guk</h3>
-      <span class="fzmeta">D4 &middot; measured across 16 kills
-        &middot; 04 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D4 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill, -5 to -50 across 5 mob types, biggest -50 from the froglok shin lord</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill, -5 to -50 across 5 mob types, biggest -50 from the froglok shin lord</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Ruins of Old Guk</h3>
-      <span class="fzmeta">D1 &middot; measured across 416 kills
-        &middot; 05 Aug 2026</span>
+      <span class="fzmeta">D1 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill, -1 to -5 across 5 mob types &middot; from a froglok tsu shaman</span><span class="fboth">also moves the other way in this zone &mdash; which mobs you kill decides the sign</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down capped"><b>Undead Frogloks of Guk</b><span class="fdelta">would fall, already at minimum for the character who logged this &mdash; direction known, size unmeasured</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Frogloks of Guk</b><span class="fdelta">+5 a kill, +1 to +5 across 7 mob types &middot; from a vis ghoul knight</span><span class="fboth">also moves the other way in this zone &mdash; which mobs you kill decides the sign</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Frogloks of Guk</b><span class="fdelta">-5 a kill, -1 to -5 across 5 mob types &middot; from a froglok tsu shaman</span><span class="fboth">also moves the other way in this zone &mdash; which mobs you kill decides the sign</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="down capped"><b>Undead Frogloks of Guk</b><span class="fdelta">would fall, already at minimum when measured &mdash; direction known, size unmeasured</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Frogloks of Guk</b><span class="fdelta">+5 a kill, +1 to +5 across 7 mob types &middot; from a vis ghoul knight</span><span class="fboth">also moves the other way in this zone &mdash; which mobs you kill decides the sign</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Kerra Isle</h3>
-      <span class="fzmeta">D0 &middot; measured across 2 kills
-        &middot; 06 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Heretics</b><span class="fdelta">-5 a kill, -3 to -5 across 2 mob types &middot; from kerran tiger spahi</span><span class="fuse">required for Erudite</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Craftkeepers</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Crimson Hands</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Deepwater Knights</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse">required for Erudite</span></li><li class="up"><b>Gate Callers</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Craftkeepers</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="up"><b>Crimson Hands</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="up"><b>Deepwater Knights</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse">required for Erudite</span></li><li class="up"><b>Gate Callers</b><span class="fdelta">+5 a kill &middot; from kerran tiger spahi</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
-    <p class="floose"><strong>Seen moving, direction unknown.</strong> Kerra Isle &mdash; these appeared in the log without a mob we could attribute them to, so neither the sign nor the size is known. A session where the faction message and the kill sit adjacent would close it.</p>
+    <p class="floose"><strong>Seen moving, direction unknown.</strong> Kerra Isle &mdash; these appeared in the logs with no mob to attribute them to, so neither the sign nor the size is known. A log where the faction message and the kill sit adjacent would close it.</p>
     <h4 class='fwarn'>Quest steps this undoes</h4><ul class='fsteps'><li><b>Kill 400 kobolds</b> raises Heretics &mdash; used for Erudite</li></ul>
     <h4 class='fgood'>Quest steps this helps</h4><ul class='fsteps'><li><b>Kobold Molars (Good)</b> raises Deepwater Knights &mdash; used for Erudite</li><li><b>Kill Paineel heretics</b> raises Deepwater Knights &mdash; used for Erudite</li></ul>
     
@@ -159,12 +154,11 @@
   <article class="fzone">
     <div class="fzhead">
       <h3>The Castle of Mistmoore</h3>
-      <span class="fzmeta">D1 &middot; measured across 1018 kills
-        &middot; 08 Aug 2026</span>
+      <span class="fzmeta">D1 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Agents of Mistmoore</b><span class="fdelta">-5 a kill, -4 to -300 across 49 mob types, biggest -300 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Mayong Mistmoore</b><span class="fdelta">-5 a kill, -4 to -300 across 49 mob types, biggest -300 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Temple of Solusek Ro</b><span class="fdelta">-5 a kill &middot; from Ssynthi</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>King Tearis Thex</b><span class="fdelta">+5 a kill, +5 to +75 across 49 mob types, biggest +75 from Xicotl</span><span class="fuse">not required by any unlock, but raised by quest steps used for High Elf, Wood Elf</span></li><li class="up"><b>League of Antonican Bards</b><span class="fdelta">+5 a kill, +5 to +75 across 49 mob types, biggest +75 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Ring of Scale</b><span class="fdelta">+5 a kill, +5 to +15 across 51 mob types, biggest +15 from Xicotl</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Shadowed Men</b><span class="fdelta">+5 a kill &middot; from Ssynthi</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Agents of Mistmoore</b><span class="fdelta">-5 a kill, -4 to -300 across 49 mob types, biggest -300 from Xicotl</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="down"><b>Mayong Mistmoore</b><span class="fdelta">-5 a kill, -4 to -300 across 49 mob types, biggest -300 from Xicotl</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="down"><b>Temple of Solusek Ro</b><span class="fdelta">-5 a kill &middot; from Ssynthi</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>King Tearis Thex</b><span class="fdelta">+5 a kill, +5 to +75 across 49 mob types, biggest +75 from Xicotl</span><span class="fuse">not required by any unlock, but raised by quest steps used for High Elf, Wood Elf</span></li><li class="up"><b>League of Antonican Bards</b><span class="fdelta">+5 a kill, +5 to +75 across 49 mob types, biggest +75 from Xicotl</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="up"><b>Ring of Scale</b><span class="fdelta">+5 a kill, +5 to +15 across 51 mob types, biggest +15 from Xicotl</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="up"><b>Shadowed Men</b><span class="fdelta">+5 a kill &middot; from Ssynthi</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
     
     
@@ -174,8 +168,7 @@
   <article class="fzone">
     <div class="fzhead">
       <h3>The Southern Desert of Ro</h3>
-      <span class="fzmeta">D0 &middot; measured across 3 kills
-        &middot; 09 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -184,13 +177,12 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Feerrott</h3>
-      <span class="fzmeta">D0 &middot; measured across 5 kills
-        &middot; 09 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -199,28 +191,26 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Temple of Cazic-Thule</h3>
-      <span class="fzmeta">D2 &middot; measured across 77 kills
-        &middot; 09 Aug 2026</span>
+      <span class="fzmeta">D2 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Allize Taeew</b><span class="fdelta">-33 a kill, -10 to -150 across 8 mob types, biggest -150 from Avatar of Fear</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Allize Volew</b><span class="fdelta">+5 a kill, +5 to +15 across 8 mob types, biggest +15 from Avatar of Fear</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Allize Taeew</b><span class="fdelta">-33 a kill, -10 to -150 across 8 mob types, biggest -150 from Avatar of Fear</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Allize Volew</b><span class="fdelta">+5 a kill, +5 to +15 across 8 mob types, biggest +15 from Avatar of Fear</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Paineel</h3>
-      <span class="fzmeta">D0 &middot; measured across 1 kill
-        &middot; 10 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -229,103 +219,96 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Ruins of Old Paineel</h3>
-      <span class="fzmeta">D0 &middot; measured across 375 kills
-        &middot; 10 Aug 2026</span>
+      <span class="fzmeta">D0 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Minions of Underfoot</b><span class="fdelta">-3 a kill &middot; from an elemental warrior</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Minions of Underfoot</b><span class="fdelta">-3 a kill &middot; from an elemental warrior</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Nagafen's Lair</h3>
-      <span class="fzmeta">D0 &middot; measured across 292 kills
-        &middot; 10 Aug 2026</span>
+      <span class="fzmeta">D0 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Goblins of Fire Peak</b><span class="fdelta">-3 a kill &middot; from a guano harvester</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Kobolds of Fire Pit</b><span class="fdelta">-3 a kill, -3 to -10 across 7 mob types, biggest -10 from Targin the Rock</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Solusek Mining Co.</b><span class="fdelta">+5 a kill &middot; from a kobold king</span><span class="fuse dim">no unlock we track uses this</span></li><li class="up"><b>Tribe Vrodak</b><span class="fdelta">+5 a kill &middot; from a guano harvester</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Goblins of Fire Peak</b><span class="fdelta">-3 a kill &middot; from a guano harvester</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="down"><b>Kobolds of Fire Pit</b><span class="fdelta">-3 a kill, -3 to -10 across 7 mob types, biggest -10 from Targin the Rock</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Solusek Mining Co.</b><span class="fdelta">+5 a kill &middot; from a kobold king</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="up"><b>Tribe Vrodak</b><span class="fdelta">+5 a kill &middot; from a guano harvester</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Nagafen's Lair - Group</h3>
-      <span class="fzmeta">D1 &middot; measured across 31 kills
-        &middot; 10 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D1 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Nagafen</b><span class="fdelta">-12 a kill, -7 to -12 across 3 mob types &middot; from a fire giant warrior</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Vox</b><span class="fdelta">-1 a kill &middot; from a fire giant warrior</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Solusek Mining Co.</b><span class="fdelta">+5 a kill &middot; from a fire giant warrior</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Nagafen</b><span class="fdelta">-12 a kill, -7 to -12 across 3 mob types &middot; from a fire giant warrior</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="down"><b>Vox</b><span class="fdelta">-1 a kill &middot; from a fire giant warrior</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Solusek Mining Co.</b><span class="fdelta">+5 a kill &middot; from a fire giant warrior</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Ruins of Old Paineel - Group</h3>
-      <span class="fzmeta">D0 &middot; measured across 7 kills
-        &middot; 10 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Minions of Underfoot</b><span class="fdelta">-3 a kill, -3 to -500 across 2 mob types, biggest -500 from Master Yael</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Minions of Underfoot</b><span class="fdelta">-3 a kill, -3 to -500 across 2 mob types, biggest -500 from Master Yael</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Permafrost Keep</h3>
-      <span class="fzmeta">D0 &middot; measured across 0 kills
-        &middot; 10 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
-    <p class="floose"><strong>Seen moving, direction unknown.</strong> Nagafen, Vox &mdash; these appeared in the log without a mob we could attribute them to, so neither the sign nor the size is known. A session where the faction message and the kill sit adjacent would close it.</p>
+    <p class="floose"><strong>Seen moving, direction unknown.</strong> Nagafen, Vox &mdash; these appeared in the logs with no mob to attribute them to, so neither the sign nor the size is known. A log where the faction message and the kill sit adjacent would close it.</p>
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Permafrost Caverns - Group</h3>
-      <span class="fzmeta">D0 &middot; measured across 25 kills
-        &middot; 10 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Nagafen</b><span class="fdelta">-1 a kill, -1 to -200 across 5 mob types, biggest -200 from a priest of Nagafen</span><span class="fuse dim">no unlock we track uses this</span></li><li class="down"><b>Vox</b><span class="fdelta">-19 a kill, -10 to -409 across 5 mob types, biggest -409 from Lady Vox</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
-      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Solusek Mining Co.</b><span class="fdelta">+30 a kill &middot; from a priest of Nagafen</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Nagafen</b><span class="fdelta">-1 a kill, -1 to -200 across 5 mob types, biggest -200 from a priest of Nagafen</span><span class="fuse dim">no unlock listed here uses this</span></li><li class="down"><b>Vox</b><span class="fdelta">-19 a kill, -10 to -409 across 5 mob types, biggest -409 from Lady Vox</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
+      <div><h4 class="fup">Rises</h4><ul class="flist"><li class="up"><b>Solusek Mining Co.</b><span class="fdelta">+30 a kill &middot; from a priest of Nagafen</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Northern Desert of Ro</h3>
-      <span class="fzmeta">D0 &middot; measured across 0 kills
-        &middot; 10 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -334,28 +317,26 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>Northern Felwithe</h3>
-      <span class="fzmeta">D0 &middot; measured across 14 kills
-        &middot; 11 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li><li class="down capped"><b>Minions of Underfoot</b><span class="fdelta">would fall, already at minimum for the character who logged this &mdash; direction known, size unmeasured</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li><li class="down capped"><b>Minions of Underfoot</b><span class="fdelta">would fall, already at minimum when measured &mdash; direction known, size unmeasured</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Plane of Fear</h3>
-      <span class="fzmeta">D4 &middot; measured across 270 kills
-        &middot; 12 Aug 2026</span>
+      <span class="fzmeta">D4 &middot; measured</span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -364,13 +345,12 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Plane of Fear - Group</h3>
-      <span class="fzmeta">D2 &middot; measured across 21 kills
-        &middot; 12 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D2 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -379,58 +359,54 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Plane of Hate</h3>
-      <span class="fzmeta">D4 &middot; measured across 74 kills
-        &middot; 12 Aug 2026</span>
+      <span class="fzmeta">D4 &middot; measured</span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Inhabitants of Hate</b><span class="fdelta">-10 a kill, -5 to -50 across 9 mob types, biggest -50 from Cleric of Innoruuk</span><span class="fuse dim">no unlock we track uses this</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="down"><b>Inhabitants of Hate</b><span class="fdelta">-10 a kill, -5 to -50 across 9 mob types, biggest -50 from Cleric of Innoruuk</span><span class="fuse dim">no unlock listed here uses this</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Rathe Mountains</h3>
-      <span class="fzmeta">D0 &middot; measured across 128 kills
-        &middot; 12 Aug 2026</span>
+      <span class="fzmeta">D0 &middot; measured</span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
-    <p class="floose"><strong>Seen moving, direction unknown.</strong> Broken Skull Clan, DaBashers, Green Blood Knights, Protectors of Gukta, Shadowknights of Night Keep &mdash; these appeared in the log without a mob we could attribute them to, so neither the sign nor the size is known. A session where the faction message and the kill sit adjacent would close it.</p>
+    <p class="floose"><strong>Seen moving, direction unknown.</strong> Broken Skull Clan, DaBashers, Green Blood Knights, Protectors of Gukta, Shadowknights of Night Keep &mdash; these appeared in the logs with no mob to attribute them to, so neither the sign nor the size is known. A log where the faction message and the kill sit adjacent would close it.</p>
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Plane of Hate - Group</h3>
-      <span class="fzmeta">D4 &middot; measured across 18 kills
-        &middot; 12 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D4 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
-      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li><li class="down capped"><b>Inhabitants of Hate</b><span class="fdelta">would fall, already at minimum for the character who logged this &mdash; direction known, size unmeasured</span></li></ul></div>
+      <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li><li class="down capped"><b>Inhabitants of Hate</b><span class="fdelta">would fall, already at minimum when measured &mdash; direction known, size unmeasured</span></li></ul></div>
       <div><h4 class="fup">Rises</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
     </div>
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Oasis of Marr</h3>
-      <span class="fzmeta">D0 &middot; measured across 3 kills
-        &middot; 13 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -439,13 +415,12 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Greater Faydark</h3>
-      <span class="fzmeta">D0 &middot; measured across 3 kills
-        &middot; 14 Aug 2026<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
+      <span class="fzmeta">D0 &middot; measured<span class="fthin">small sample &mdash; treat as seen once, not as a rate</span></span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -454,13 +429,12 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   <article class="fzone">
     <div class="fzhead">
       <h3>The Plane of Sky</h3>
-      <span class="fzmeta">D0 &middot; measured across 123 kills
-        &middot; 14 Aug 2026</span>
+      <span class="fzmeta">D0 &middot; measured</span>
     </div>
     <div class="fcols">
       <div><h4 class="fdown">Falls</h4><ul class="flist"><li class="fnone">nothing recorded</li></ul></div>
@@ -469,14 +443,14 @@
     
     
     
-    <p class='fnothing'>Nothing here touches a race unlock we track, in either direction.</p>
+    <p class='fnothing'>Nothing here touches a race unlock listed on this page, in either direction.</p>
   </article>
   </div>
 </section>
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><span class="n">Not measured</span><div><h2 class="sec">Where we cannot answer</h2></div></div>
+    <div class="sechead"><span class="n">Not measured</span><div><h2 class="sec">Zones with no answer</h2></div></div>
     <div class="note"><strong>These zones have plates but no faction measurement:</strong>
       Najena, Lair of the Splitpaw, Crushbone, The Hole, The Warrens. Faction data for them would come from a combat log of an
       hour in the zone &mdash; the same way the measured zones above were produced. Until then this page
@@ -493,7 +467,7 @@ function esc(s){return String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;
 function card(name, f){
   let h = '<article class="fcard"><h3>' + esc(name) + '</h3>';
   if (f.needed_by.length) h += '<p class="fneed"><b>Needed for:</b> ' + f.needed_by.map(esc).join(', ') + '</p>';
-  else h += '<p class="fneed dim">No race unlock we track requires this.</p>';
+  else h += '<p class="fneed dim">No race unlock listed here requires this.</p>';
   if (f.raised_by.length) {
     h += '<p class="fsub">Raised by</p><ul>';
     f.raised_by.forEach(r => { h += '<li>' + esc(r.step) + ' <span class="d">' + (r.delta>0?'+':'') + r.delta +
@@ -507,7 +481,7 @@ function card(name, f){
       '</span></li>'; });
     h += '</ul>';
   } else {
-    h += '<p class="fsub dim">We have not measured this moving anywhere.</p>';
+    h += '<p class="fsub dim">Not measured moving in any zone.</p>';
   }
   return h + '</article>';
 }
@@ -521,7 +495,7 @@ function run(){
     FAC[k].moved_in.some(m => m.zone.toLowerCase().includes(t)));
   if (!hits.length) {
     res.innerHTML = '<p class="fnothing">Nothing matches &ldquo;' + esc(q.value) +
-      '&rdquo;. That means we hold no record of it &mdash; not that it has no effect.</p>';
+      '&rdquo;. That means there is no record of it here &mdash; not that it has no effect.</p>';
     return;
   }
   res.innerHTML = hits.sort().slice(0, 24).map(k => card(k, FAC[k])).join('');

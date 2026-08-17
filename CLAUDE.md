@@ -442,6 +442,44 @@ because they are easy to break by accident:
 
 ## 7. Writing voice
 
+**The site is generic, never personal.** This is the rule that governs every
+other one in this section, set 17 August 2026 after a sweep found 322 places
+where the site read as one player's diary rather than a reference.
+
+Nothing is tied to a character. No kill counts, swing counts, hit rates,
+"seen x12" tallies, session windows, play dates, hours farmed, attacker counts,
+or damage shares. **No experience per kill at all** &mdash; experience is a
+function of the reader's level, so a figure measured at 26 tells a stranger at
+35 nothing true. Zone ZEM is the one sanctioned experience figure.
+
+**A tier M badge already means "we verified this in play".** The page does not
+have to publish the log to earn it. Wherever a sentence exists to prove the
+measurement happened, delete it and let the badge do the work.
+
+**Keep the fact, drop the count.** "882 stunning melee attacks were shrugged off
+and 296 stuns landed anyway" becomes "stuns here arrive as spells, not as melee".
+Same knowledge, no diary. Never delete a finding to satisfy this rule; restate it.
+
+Three exemptions, all deliberate:
+
+- **Sample inputs on tools** may show a character name, because a reader needs
+  to see the shape of what to type.
+- **`credits.html` names the site's own characters, once.** Decided by the
+  collaborator on 17 August 2026: credits is where a site is entitled to say who
+  it is. It is the only page that does, and a future sweep should not read it as
+  a violation.
+- **Named third parties keep their names everywhere.** Annalise (AnnaWulf),
+  sowoky and any other outside contributor are credited by name with a date,
+  because CLAUDE.md's own standard is that every claim traces to a named source.
+  The rule protects the collaborator's characters, not other people's. Stripping
+  an outsider's credit to satisfy it is misattribution, and it happened once
+  during that sweep before being caught.
+
+- **`public/data/*.vN.json` keeps its fields**, including sighting counts and
+  session dates. It is a published contract and fields are never removed.
+  Decided 17 August 2026: reword the human-facing descriptions, leave the shape
+  alone. The counts are gone from every page a reader sees.
+
 Plain, specific, confident where the evidence is and openly uncertain where it
 is not. Short sentences. No hype, no "ultimate guide", no exclamation marks.
 British spelling. Numerals for game figures. Address the reader as "you" only in

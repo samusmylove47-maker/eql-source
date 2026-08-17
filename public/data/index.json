@@ -7,7 +7,7 @@
  "terms": {
   "summary": "Use it, credit EQL Source, and read the provenance before you trust a value.",
   "attribution": "EQL Source, https://eqlsource.com",
-  "measured": "The measured data — drop sightings, damage figures, spell lists — is our own parsed play. Freely usable with attribution.",
+  "measured": "The measured data — drop sightings, damage figures, spell lists — is parsed from this project's own combat logs. Freely usable with attribution.",
   "inherited": "Fields sourced from community wikis carry their tier and source. Those values are not ours to license; respect the original source and do not present a tier 5 figure as fact.",
   "warranty": "None. This is a fan project and the game is actively patched. Every dataset here states what it does not know.",
   "unofficial": "Not affiliated with or endorsed by Daybreak Game Company, Game Jawn or Darkpaw Studios."
@@ -26,16 +26,16 @@
    "title": "Plane of Sky class unlock quests",
    "description": "Every Plane of Sky test for all sixteen classes, with the turn-ins, the island each component drops on, and a source recorded per claim.",
    "url": "https://eqlsource.com/data/sky.v1.json",
-   "bytes": 128301,
+   "bytes": 128324,
    "hash": "c8d41d080e92f873"
   },
   {
    "name": "sightings",
    "version": "1.0.0",
-   "title": "Drops we have watched happen",
-   "description": "Every item we have personally seen drop, the mob it came from, and how many times. Parsed from our own combat logs.",
+   "title": "Measured drop sources",
+   "description": "Which mobs have been measured dropping which items, parsed from combat logs. Each row carries the sighting count behind it.",
    "url": "https://eqlsource.com/data/sightings.v1.json",
-   "bytes": 206507,
+   "bytes": 206684,
    "hash": "1fb7dad3694443ff"
   },
   {
@@ -44,8 +44,8 @@
    "title": "Surveyed dungeons",
    "description": "The zones we have surveyed, with the level band, the experience modifier and how far verification has got.",
    "url": "https://eqlsource.com/data/zones.v1.json",
-   "bytes": 15907,
-   "hash": "b3090c2e9982c935"
+   "bytes": 15525,
+   "hash": "e5388b4f46bd765e"
   },
   {
    "name": "items",
@@ -53,7 +53,7 @@
    "title": "Item names and game IDs",
    "description": "Item name to the game's own numeric item ID, read from `/outputfile inventory` dumps.",
    "url": "https://eqlsource.com/data/items.v1.json",
-   "bytes": 9774,
+   "bytes": 9797,
    "hash": "519cde8b25db1101"
   }
  ]

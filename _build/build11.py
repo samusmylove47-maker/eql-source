@@ -11,11 +11,19 @@ developer-confirmed, player-measured, or unpinned. Those are their measurements,
 not ours. They are cited by name, linked, badged, and never restated as though
 we found them. Where they say something is unpinned, this page says unpinned.
 
-OUR OWN LOGS supply something they do not have: the difficulty is written in the
-zone line on entry, twice, as a number and a name. That comes from {len(SESSIONS)} sessions
-across two characters and five tiers, and it is tier M. It also lets us check
-their tier names against the game's own text, and to put one measured finding
-next to their multiclass claim that goes slightly further than it does.
+MEASUREMENT IN PLAY supplies something they do not have: the difficulty is
+written in the zone line on entry, twice, as a number and a name. It is tier M.
+It also lets us check their tier names against the game's own text, and to put
+one measured finding next to their multiclass claim that goes slightly further
+than it does.
+
+WHAT NEVER REACHES THE PAGE
+---------------------------
+The play behind a tier M figure. Session counts, dates, kill tallies, attacker
+counts, damage shares and character names are all read to derive a finding and
+none of them print: the badge is the claim that we measured it, and the finding
+is what a reader needs. Findings are still DERIVED from the data at build time,
+never typed — a generic sentence is not a licence to remember a number.
 
 WHAT THIS PAGE MUST NOT DO
 --------------------------
@@ -26,18 +34,6 @@ rest. If a reader wants the full scaling tables they should go and read theirs.
 """
 import json as _json
 RAIDS = _json.load(open('assets/raids-measured.json', encoding='utf-8'))
-# Printed from the record rather than typed, because a typed version of exactly
-# this fact was wrong for a month.
-def _yael_party(rows):
-    atk = sorted({r.get('attackers') for r in rows if r.get('attackers')})
-    share = [r.get('our_damage_share_pct') for r in rows
-             if r.get('our_damage_share_pct') is not None]
-    if not atk:
-        return 'multi', 'an unrecorded share of'
-    span = (str(atk[0]) if len(atk) == 1 else f'{atk[0]}&ndash;{atk[-1]}')
-    lo, hi = (round(min(share)), round(max(share))) if share else (0, 0)
-    return span, (str(lo) if lo == hi else f'{lo}&ndash;{hi}')
-
 
 # The ramp is ONE session at five tiers - that is what makes it a comparison.
 # Later kills of the same boss are replication and are reported apart from it;
@@ -49,7 +45,6 @@ YAEL = sorted([r for r in _ALL_YAEL if r['date'] == _RAMP_DATE],
               key=lambda r: r['difficulty'])
 REPEATS = sorted([r for r in _ALL_YAEL if r['date'] != _RAMP_DATE],
                  key=lambda r: r['difficulty'])
-_yael_atk, _yael_share = _yael_party(_ALL_YAEL)
 
 # Self-healing by tier, across every boss we have logged. Counted here because
 # the sentence this replaces - "he healed himself never at D0, D1 and D2" - was
@@ -63,27 +58,23 @@ _yael_heal_low = _yael_heal_tiers[0] if _yael_heal_tiers else None
 _sp = [r['spells_distinct'] for r in YAEL]
 _spell_span = f"{min(_sp)}&ndash;{max(_sp)}" if _sp else "several"
 
-# The repeats are kept visible rather than dropped, and the comparison against
-# the ramp is computed rather than described.
+# The repeats are kept as a statement about the measurement, not as a second
+# night's scoreboard: what a reader needs is that the same boss at the same tier
+# does not reproduce, and by how far. Dates, groups and per-run totals are read
+# to compute that and are not printed.
+_bits = []
 if REPEATS:
     _ramp_at = {r['difficulty']: r for r in YAEL}
-    _bits = []
     for r in REPEATS:
         base = _ramp_at.get(r['difficulty'])
-        d = r['damage_low']
-        if base:
-            pct = round(100 * (d - base['damage_low']) / base['damage_low'])
-            _bits.append(f"D{r['difficulty']} again at {d:,} "
-                         f"({pct:+d}% against the ramp)")
-        else:
-            _bits.append(f"D{r['difficulty']} at {d:,}")
-    _repeat_note = (
-        '<p class="src" style="margin:var(--s-5) 0 0"><strong>Killed again on '
-        + REPEATS[0]['date'] + ' by a different group:</strong> ' + '; '.join(_bits)
-        + '. Kept out of the table because the comparison above is one session at five '
-          'settings, and a second group on another night is a different measurement.</p>')
-else:
-    _repeat_note = ''
+        if base and base['damage_low']:
+            pct = round(100 * (r['damage_low'] - base['damage_low']) / base['damage_low'])
+            _bits.append(f"D{r['difficulty']} {pct:+d}%")
+_repeat_note = (
+    '<p class="src" style="margin:var(--s-5) 0 0"><strong>The same boss measured again at the '
+    'same tiers does not reproduce:</strong> ' + ', '.join(_bits) + ' against the ramp above. '
+    'Damage to kill is what a fight cost, not a constant &mdash; raid size, gear and misses all '
+    'count towards it.</p>') if _bits else ''
 
 # The other two bosses. Shown because the corrections above cite them - a reader
 # told "Lady Vox heals itself at D0" should be able to see the row.
@@ -102,36 +93,57 @@ else:
 _OTHERS = sorted([r for r in RAIDS if r['boss'] != 'Master Yael'],
                  key=lambda r: (r['boss'], -1 if r['difficulty'] is None
                                 else r['difficulty']))
-_other_rows = ''.join(
-    '<tr><td class="nmob">{b}</td><td class="lv">{d}</td><td class="lv">{dm}{fl}</td>'
-    '<td class="lv">{s}s</td><td class="lv">{sp}</td><td class="lv">{h}</td></tr>'.format(
-        b=r['boss'],
-        d=('D%d' % r['difficulty'] if r['difficulty'] is not None
-           else '<span class="unk" title="No numbered zone line, and nothing '
-                'dropped carrying an independent tier">not resolved</span>'),
-        dm=(f"{r['damage_low']:,}" if r['damage_low'] == r['damage_high']
-            else f"{r['damage_low']:,}&ndash;{r['damage_high']:,}"),
-        fl=(' <em>floor</em>' if r.get('damage_is_floor') else ''),
-        s=r['seconds'], sp=r['spells_distinct'],
-        h=(r['self_heal_high'] or '&mdash;'))
-    for r in _OTHERS)
 
-# Both of these were typed beside the table they describe and both were wrong.
-# "Three bosses logged to D3 or D4" against 20 in the data, and "the other two
-# bosses" against a table of 34.
-_N_OTHER = len({r['boss'] for r in _OTHERS})
-_N_HIGH = len({r['boss'] for r in RAIDS if r['difficulty'] in (3, 4)})
-_PLANES = sorted({r['boss'] for r in RAIDS if r['difficulty'] in (3, 4)
-                  and r['boss'] in ('Cazic-Thule', 'Innoruuk, the Prince of Hate')})
-# Spells that are not direct damage or control. A boss casting these is not
-# running an evocation kit, and that is the whole finding - so the test is
-# stated in code rather than asserted in prose.
-_HEALS = {'Healing Light', 'Sacred Echo', 'Bond of Death'}
-_DOT_FEAR = {'Screaming Terror', 'Insidious Retrogression', 'Ignite Blood', 'Shadow Vortex'}
+# ONE ROW PER BOSS PER TIER, NOT ONE ROW PER KILL.
+#
+# A row per kill made the table a record of how many times each boss had been
+# killed at each setting, which is a fact about a player's play and not about
+# the game. It also read badly: twelve rows of the same wasp at D0 said nothing
+# the first row had not.
+#
+# Collapsing it needs the rule CLAUDE.md already sets - trust the fullest view
+# of a boss at a tier and treat the rest as lower bounds. So a group with any
+# complete view drops its partial ones; a group with nothing but partial views
+# keeps the strongest of them, which is the highest, and stays marked a floor.
+def _fullest(rows):
+    full = [r for r in rows if not r.get('damage_is_floor')]
+    if full:
+        return full, False
+    return [max(rows, key=lambda r: r['damage_high'])], True
 
-def _kit(r):
-    sp = set(r['spells'])
-    return dict(heals=sorted(sp & _HEALS), dots=sorted(sp & _DOT_FEAR))
+
+def _span(lo, hi, fmt='{:,}'):
+    return fmt.format(lo) if lo == hi else f'{fmt.format(lo)}&ndash;{fmt.format(hi)}'
+
+
+_groups = []
+for r in _OTHERS:
+    if _groups and _groups[-1][0] == (r['boss'], r['difficulty']):
+        _groups[-1][1].append(r)
+    else:
+        _groups.append(((r['boss'], r['difficulty']), [r]))
+
+_other_rows = ''
+for (boss, diff), rows in _groups:
+    use, is_floor = _fullest(rows)
+    dmg = _span(min(r['damage_low'] for r in use), max(r['damage_high'] for r in use))
+    secs = _span(min(r['seconds'] for r in use), max(r['seconds'] for r in use), '{}')
+    heal_hi = max(r['self_heal_high'] for r in use)
+    heal = _span(min(r['self_heal_low'] for r in use), heal_hi, '{}') if heal_hi else '&mdash;'
+    _other_rows += (
+        f'<tr><td class="nmob">{boss}</td><td class="lv">'
+        + ('D%d' % diff if diff is not None
+           else '<span class="unk" title="No numbered zone line, and nothing dropped carrying '
+                'an independent tier">not resolved</span>')
+        + f'</td><td class="lv">{dmg}{" <em>floor</em>" if is_floor else ""}</td>'
+        + f'<td class="lv">{secs}s</td>'
+        + f'<td class="lv">{max(r["spells_distinct"] for r in use)}</td>'
+        + f'<td class="lv">{heal}</td></tr>')
+
+# Which of the high-tier bosses the aside names. A count of what we have killed
+# is a record of our play, so the aside names the bosses and leaves the tally.
+_PLANES = sorted({r['boss'].split(',')[0] for r in RAIDS if r['difficulty'] in (3, 4)
+                  and r['boss'].startswith(('Cazic-Thule', 'Innoruuk'))})
 
 # Only what is NEW at each tier. Repeating the whole list five times cost 250
 # words and hid the finding; the widening is the point, so show the widening.
@@ -156,16 +168,15 @@ def _new_rows():
     return "".join(out)
 
 _yael_rows = _new_rows()
+# The error bar: where one kill was recorded twice, how far the two records
+# disagree. It describes the method, not the run, so it prints.
 _spreads = [r["damage_spread_pct"] for r in RAIDS if len(r["observers"]) > 1]
 _worst = max(_spreads) if _spreads else 0
-_nobs = sum(len(r["observers"]) for r in RAIDS)
-_first_multi = next((r["difficulty"] for r in YAEL if _kit(r)["heals"]), None)
 import os, sys, json, collections
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
-import backstab as _BS
 from _partials import head, bar, foot
 
 try:
@@ -181,8 +192,13 @@ TIERS = [
     (4, 'Refined', 'the current maximum'),
 ]
 
-# what our own logs can say about each tier, counted rather than asserted
-seen = collections.defaultdict(lambda: dict(sessions=0, kills=0, zones=set(), chars=set()))
+# WHICH TIERS HAVE BEEN MEASURED, not how much they were played.
+# The counters still run, because whether a tier is verified has to be derived
+# rather than asserted - but what reaches the page is the verdict, and the tier
+# M badge beside it already says we measured it. Session and kill tallies are a
+# record of one player's evening and belong to that player, not to a reference
+# page.
+seen = collections.defaultdict(lambda: dict(sessions=0, zones=set()))
 agree = both = 0
 for s in SESSIONS:
     d = s.get('difficulty')
@@ -190,14 +206,14 @@ for s in SESSIONS:
         continue
     e = seen[d]
     e['sessions'] += 1
-    e['kills'] += s.get('kills', 0)
     if s.get('zone'):
         e['zones'].add(s['zone'])
-    if s.get('character'):
-        e['chars'].add(s['character'])
     if s.get('difficulty_label_agrees') is not None:
         both += 1
         agree += 1 if s['difficulty_label_agrees'] else 0
+# The cross-check prints as a verdict, never as a score line.
+label_check = ('have never disagreed where the line carried both' if both and agree == both
+               else 'do not always agree, so read the number')
 
 # THE LOOT FLOOR, COUNTED HERE RATHER THAN TYPED INTO THE PROSE
 # The page used to say the tier is "the +N most things arrive at", which is the
@@ -228,23 +244,28 @@ for s in SESSIONS:
         above += v if k > d else 0
 drops_total = below + at_tier + above
 above_pct = round(100 * above / max(1, drops_total))
+# Two findings, each stated only if the data still supports it.
+below_line = ('<strong>No upgradeable drop has been seen below the tier of the zone it dropped '
+              'in</strong> <span class="tier tM">TIER M</span>, and about '
+              f'{above_pct}% roll above' if not below else
+              '<strong>A drop can land below the tier of the zone it dropped in</strong> '
+              f'<span class="tier tM">TIER M</span>, and about {above_pct}% roll above')
+floor_clause = ('The floor names the tier where the commonest value does not always. '
+                if modal_ok < floor_ok else '')
 
 rows = ''
 for n, name, note in TIERS:
     e = seen.get(n)
-    if e and e['sessions']:
-        ours = (f'<b>{e["sessions"]}</b> session{"s" if e["sessions"] != 1 else ""}, '
-                f'{e["kills"]} kills, {len(e["zones"])} zone{"s" if len(e["zones"]) != 1 else ""}')
-    else:
-        ours = '<span class="dim">not yet played on a log we hold</span>'
+    ours = ('<span class="tier tM">M</span> verified in play' if e and e['sessions']
+            else '<span class="dim">not verified here yet</span>')
     rows += (f'<tr><td class="dn">D{n}</td><td class="dname">{name}</td>'
              f'<td class="dnote">{note or "&mdash;"}</td><td>{ours}</td></tr>')
 
 covered = sorted({s['zone'] for s in SESSIONS if s.get('zone')})
-# HOW MANY OF THESE HAVE A SURVEY. The page said "each plate carries its own
-# figures under Measured in play" beneath a list of every zone we have logged —
-# but most of that list has no survey on this site at all, and five of the
-# thirteen surveys carry no measured section. Counted rather than asserted.
+# WHETHER A MEASURED ZONE HAS A SURVEY. The page used to list every zone we have
+# played in, which is a record of play rather than a fact about the game. The
+# coverage gap behind the list is real and stays, stated as a gap and derived
+# from the same data.
 import re as _re
 _ZT = {z['title'].lower() for z in json.load(open('assets/zones-index.json', encoding='utf-8'))}
 _ALIAS = {'the ruins of old guk': 'lower guk', 'the ruins of old paineel': 'the hole',
@@ -274,17 +295,17 @@ page = head("What difficulty changes",
       condition your loot arrives in. The con colour of a mob is the same at every tier, which is
       exactly why the setting catches people out.</p>
     <p class="hero-sig"><span>5 tiers</span><span>D4 is the maximum</span>
-      <span>{both} of {len(SESSIONS)} sessions cross-checked</span></p>
+      <span>The zone line names yours</span></p>
   </div>
 </section>
 
 <div class="shell">
-  <div class="note"><strong>Where this comes from, and what is ours.</strong> The scaling work on
+  <div class="note"><strong>Where this comes from.</strong> The scaling work on
     this page is <strong>not ours</strong>. <a href="https://eqltools.com/learn/difficulty">EQL Tools
     measured it</a> <span class="tier t3">T3</span> and, to their credit, labels every claim by how it
     is known &mdash; developer-confirmed, player-measured, or unpinned. Their figures are credited
     below and linked, never restated as though we found them, and where they say a thing is not pinned
-    down, neither do we. <strong>What is ours is the part read from our own combat logs</strong>
+    down, neither do we. <strong>The rest is measured in play</strong>
     <span class="tier tM">TIER M</span>: how the tier is written in the game, and one observation
     about class kits that goes a step further than the published claim. If you want the full scaling
     tables, read theirs &mdash; this page answers the question for a reader of this site and points
@@ -295,9 +316,9 @@ page = head("What difficulty changes",
   <div class="shell">
     <div class="sechead"><span class="n">The tiers</span><div><h2 class="sec">Five settings</h2>
       <p class="lede" style="margin:0">The names are the game&rsquo;s own. EQL Tools lists them, and
-        our logs print them on entry &mdash; two sources that did not derive from each other.</p></div></div>
+        the game prints them on entry &mdash; two sources that did not derive from each other.</p></div></div>
     <div class="tw"><table class="dtable">
-      <thead><tr><th>Tier</th><th>Name</th><th>Note</th><th>In our logs</th></tr></thead>
+      <thead><tr><th>Tier</th><th>Name</th><th>Note</th><th>Measured</th></tr></thead>
       <tbody>{rows}</tbody>
     </table></div>
   </div>
@@ -311,16 +332,13 @@ page = head("What difficulty changes",
 You have entered Blackburrow 2 (Adaptive).
 You have entered Befallen 3 (Fused).
 You have entered The City of Guk 4 (Refined).</pre>
-    <p>A zone line with no number and no name is <strong>base difficulty</strong> &mdash; the open world, or an instance run at base. <strong>Both readings agreed in
-      every session where both were present &mdash; {agree} of {both}, no disagreements</strong>
+    <p>A zone line with no number and no name is <strong>base difficulty</strong> &mdash; the open
+      world, or an instance run at base. <strong>The number and the name {label_check}</strong>
       <span class="tier tM">TIER M</span>. So you never have to remember which setting you picked.</p>
     <p>Loot gives a third reading, and <strong>difficulty is a floor</strong>: your tier is the
-      <em>lowest</em> <code>+N</code> you see, not the commonest. In {drops_total:,} upgradeable
-      drops where the zone line stated the tier on its own, <strong>not one item dropped below
-      it</strong> <span class="tier tM">TIER M</span>, and about {above_pct}% rolled above &mdash;
-      so anything over the floor is luck, and <strong>three drops settle it</strong>. The floor
-      named the tier in {floor_ok} of {floor_n} sessions; the commonest value missed
-      {floor_n - modal_ok}. Read the
+      <em>lowest</em> <code>+N</code> you see, not the commonest. {below_line} &mdash;
+      so anything over the floor is luck, and <strong>three drops settle it</strong>.
+      {floor_clause}Read the
       <em>dropped</em> value, not the created one: <em>looted a Keg Mallet +2 &hellip; to create a
       Keg Mallet +4</em> is a <code>+2</code>, and a bare item is the <code>+0</code>.</p>
   </div>
@@ -366,7 +384,7 @@ You have entered The City of Guk 4 (Refined).</pre>
             <span class="gs">Listed by EQL Tools as an open question against the current patch.</span></li>
           <li class="gaterow" style="--c:var(--warn)"><span class="gn">03</span>
             <span class="gz">Which kits attach to which raid boss</span><span class="gl">part measured</span>
-            <span class="gs">{_N_HIGH} bosses logged at D3 or D4 below, Cazic-Thule and Innoruuk
+            <span class="gs">Measured at D3 and D4 in the table below, {" and ".join(_PLANES)}
               among them. <em>Hit points</em> remain unpinned.</span></li>
         </ul>
       </aside>
@@ -376,45 +394,44 @@ You have entered The City of Guk 4 (Refined).</pre>
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><span class="n">Ours</span>
+    <div class="sechead"><span class="n">Measured</span>
       <div><h2 class="sec">The ramp, measured on one boss at all five tiers</h2>
-      <p class="lede" style="margin:0">Master Yael, in the group instance of The Hole, killed once
-        at every difficulty on 10 August 2026 in a single session &mdash; same boss, same group,
-        five settings.</p>
-      <p class="src" style="margin:8px 0 0"><strong>These were {_yael_atk}-player raids, not a
-        trio.</strong> Our characters dealt {_yael_share}% of the damage; the rest came from other
-        players. <strong>Damage to kill counts everyone</strong>, so read these as what the fight
-        costs a raid.</p></div></div>
+      <p class="lede" style="margin:0">Master Yael, in the group instance of The Hole, measured at
+        every difficulty &mdash; same boss, same group, five settings, so the tier is the only
+        thing that changed between the rows.</p>
+      <p class="src" style="margin:8px 0 0"><strong>Damage to kill counts every attacker</strong>,
+        so read these as what the fight costs a raid rather than what one party deals.</p></div></div>
     <div class="scroller"><table>
       <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
         <th>Self-heals</th><th>What he cast</th></tr></thead>
       <tbody>{_yael_rows}</tbody>
     </table></div>
     {_repeat_note}
-    <div class="note"><strong>The kit broadens as the tier rises.</strong> Across this session he
-      casts {_spell_span} distinct spells from D0 to D4, and the heals, fear and damage over time
-      appear in the upper half. <span class="tier tM">TIER M</span>
-      <br><br><strong>Self-healing is not gated behind a tier.</strong> This boss healed itself at
+    <div class="note"><strong>The kit broadens as the tier rises.</strong> From D0 to D4 he casts
+      {_spell_span} distinct spells, and the heals, fear and damage over time appear in the upper
+      half. <span class="tier tM">TIER M</span>
+      <br><br><strong>Self-healing is not gated behind a tier.</strong> This boss heals itself at
       D{_yael_heal_low}, and Lady Vox at D{_heal_lowest}, the lowest there is. What the tier decides
       is how <em>much</em> of the kit turns up.
-      <br><br><strong>Read a heal count as log lines, not decisions.</strong> Ten at D4 is one
-      effect ticking every six seconds for the same 22 hit points &mdash; the same shape Lady Vox
-      shows at her top tier.</div>
-    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other {_N_OTHER} bosses</h3>
-    <p class="lede" style="margin:0">Same shape, different bosses. <strong>Most were run in a group
-      instance, not the open zone</strong>, and attacker counts start at two &mdash; so
-      &ldquo;raid&rdquo; is the wrong word for many of them. A row marked
-      <em>floor</em> is one we joined after the boss was already engaged, so the log never saw the
-      opening and the figure is a lower bound rather than the cost of the fight.</p>
+      <br><br><strong>Read a self-heal count as events, not decisions.</strong> A run of them at
+      the top tier is one effect ticking every six seconds for the same 22 hit points &mdash; the
+      same shape Lady Vox shows at hers.</div>
+    <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other bosses</h3>
+    <p class="lede" style="margin:0">Same shape, different bosses. <strong>One row per boss per
+      tier, taking the fullest view of each</strong>, so a range is how far two measurements of the
+      same fight sat apart. Most were measured in a group instance rather than the open zone. A row
+      marked <em>floor</em> was measured from part-way into the fight, so it is a lower bound
+      rather than the cost of the fight.</p>
     <div class="scroller"><table>
       <thead><tr><th>Boss</th><th>Tier</th><th>Damage to kill</th><th>Fight</th>
         <th>Spells</th><th>Self-heals</th></tr></thead>
       <tbody>{_other_rows}</tbody>
     </table></div>
-    <div class="note"><strong>Where the ranges come from.</strong> Several fights were logged from
-      two clients at once, and two parses of one kill differ by whatever each missed &mdash;
+    <div class="note"><strong>Where the ranges come from.</strong> One view of a fight witnesses
+      only part of it, so two records of the same kill differ by whatever each missed &mdash;
       between nothing and {_worst}% here. <strong>That spread is the method&rsquo;s error bar,
-      measured rather than assumed</strong>, and it is why the D4 self-heal count is a range.
+      measured rather than assumed</strong>, and it is why some counts print as a range. A thin
+      view reads low, never high, which is why a <em>floor</em> row is a lower bound.
       <br><br><strong>Damage to kill is not hit points.</strong> These bosses heal, so it is an
       upper bound carrying the raid&rsquo;s gear and misses with it.</div>
   </div>
@@ -422,25 +439,22 @@ You have entered The City of Guk 4 (Refined).</pre>
 
 <section class="band">
   <div class="shell">
-    <div class="sechead"><span class="n">Ours</span>
-      <div><h2 class="sec">One thing we measured that goes further</h2></div></div>
+    <div class="sechead"><span class="n">Measured</span>
+      <div><h2 class="sec">One measurement that goes further</h2></div></div>
     <div class="note"><strong>The published claim is that <em>named</em> mobs are often multiclass
-      from D2. We have it on ordinary trash at D1.</strong> In Castle Mistmoore at Awakened, two trash
-      types &mdash; <em>an initiate familiar</em> and <em>a pledge familiar</em> &mdash; backstabbed
-      {_BS.counts_phrase()} across {_BS.scope_phrase()}, while the same types were logged casting
-      Root, Screaming Terror, Shadow Vortex, Shock of Poison and Engulfing Darkness.
-      <span class="tier tM">TIER M</span>
+      from D2. It is on ordinary trash at D1.</strong> In Castle Mistmoore at Awakened, two trash
+      types &mdash; <em>an initiate familiar</em> and <em>a pledge familiar</em> &mdash; backstab,
+      and the same types cast Root, Screaming Terror, Shadow Vortex, Shock of Poison and Engulfing
+      Darkness. <span class="tier tM">TIER M</span>
       <br><br>Backstab is the part that settles it. A spell list on its own proves little, because
       those spells could plausibly sit in one broad caster kit &mdash; but backstab is a rogue
       ability, and a mob type doing both is running two kits. At D1, on trash.
-      <br><br><strong>Its limit, stated:</strong> a log aggregates by mob type, so whether a single
-      individual carries both kits cannot be told apart from two individuals carrying one each. And
-      this is one zone on one night. It does not contradict the published claim about named mobs; it
-      suggests the behaviour starts earlier and lower than the claim implies.</div>
-    <p class="lede">Measured so far across {len(covered)} zone{"s" if len(covered) != 1 else ""}:
-      {", ".join(covered) if covered else "none yet"}. <strong>Where a zone has a survey, its
-      figures are under <em>Measured in play</em></strong>; {_no_survey} of these have no survey
-      here at all.</p>
+      <br><br><strong>Its limit, stated:</strong> the measurement aggregates by mob type, so whether
+      a single individual carries both kits cannot be told apart from two individuals carrying one
+      each. It is one zone at one tier. It does not contradict the published claim about named mobs;
+      it suggests the behaviour starts earlier and lower than the claim implies.</div>
+    <p class="lede"><strong>Where a zone has a survey, its measured figures are under
+      <em>Measured in play</em>.</strong>{" Not every zone measured this way has a survey here." if _no_survey else ""}</p>
   </div>
 </section>
 
@@ -452,11 +466,10 @@ You have entered The City of Guk 4 (Refined).</pre>
       Current to the launch patch of 28 July 2026, and labelled by confidence throughout, which is
       rarer than it should be. <strong>Go and read it</strong> if you want the mote grades, the
       lockout timings and the full tables &mdash; this page deliberately does not reproduce them.</div>
-    <div class="note"><strong>Our own combat logs</strong> <span class="tier tM">TIER M</span>
-      {len(SESSIONS)} sessions across two characters, parsed by our own log reader.
-      Source of the zone-line reading, the loot-tier correspondence and the multiclass observation.
-      Every figure derived from them appears with the character, level, zone, tier and sample size
-      beside it.</div>
+    <div class="note"><strong>Measured in play</strong> <span class="tier tM">TIER M</span>
+      Parsed from combat logs. Source of the zone-line reading, the loot-tier
+      correspondence and the multiclass observation. A figure derived this way carries the tier M
+      badge and names the zone and tier it was measured at; the play behind it is not published.</div>
   </div>
 </section>
 
@@ -464,5 +477,4 @@ You have entered The City of Guk 4 (Refined).</pre>
 ''' + foot("../")
 
 open('public/learn/difficulty.html', 'w', encoding='utf-8', newline='\n').write(page)
-print(f"learn/difficulty.html written: {both} sessions cross-checked, "
-      f"{len(seen)} tiers seen in our logs")
+print(f"learn/difficulty.html written: {len(seen)} tiers verified in play")

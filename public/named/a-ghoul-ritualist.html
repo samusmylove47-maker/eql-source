@@ -66,6 +66,10 @@
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
 .drops.seen li{border-left-color:var(--ok)}
 .drops.seen b{color:var(--ink)}
+/* The badge carries the whole provenance claim for the block below it, so it
+   sits in the heading rather than in a sentence. Raised off the middle: the
+   heading is uppercase, and middle aligns to x-height, which reads low. */
+.ent h2.sec .tier{margin-left:9px;vertical-align:.24em}
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style></head>
@@ -97,7 +101,7 @@
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
-  <div class="shell ent" style="--c:#7FA84F"><h2 class="sec">What it drops</h2><ul class="drops"><li><a href="../items/embroidered-black-cape.html">Embroidered Black Cape</a><span>Shoulders &middot; AC 4 each · HP +15/+10 · MANA +20/+25 · Sleeves: Summoning E</span></li><li><a href="../items/embroidered-black-sleeves.html">Embroidered Black Sleeves</a><span>Arms &middot; AC 4 each · HP +15/+10 · MANA +20/+25 · Sleeves: Summoning E</span></li></ul><h2 class="sec">Seen dropping, in our logs</h2><ul class="drops seen"><li><b>Embroidered Black Cape</b><span>seen 3&times; &middot; 09 Aug 2026 D1 &middot; 09 Aug 2026 D1</span></li></ul><p class="src">Counted from our own combat logs. <b>A count, not a rate</b> &mdash; a drop seen once is seen once. <a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p><p class="src" style="margin-top:18px">From the <a href="../dungeons/lowerguk.html">Lower Guk survey</a>.</p></div>
+  <div class="shell ent" style="--c:#7FA84F"><h2 class="sec">What it drops</h2><ul class="drops"><li><a href="../items/embroidered-black-cape.html">Embroidered Black Cape</a><span>Shoulders &middot; AC 4 each · HP +15/+10 · MANA +20/+25 · Sleeves: Summoning E</span></li><li><a href="../items/embroidered-black-sleeves.html">Embroidered Black Sleeves</a><span>Arms &middot; AC 4 each · HP +15/+10 · MANA +20/+25 · Sleeves: Summoning E</span></li></ul><h2 class="sec">Observed drops <span class="tier tM">TIER M</span></h2><ul class="drops seen"><li><b>Embroidered Black Cape</b><span>Recorded at D1</span></li></ul><p class="src"><b>Observed, not a rate</b> &mdash; no kill count sits behind this, and the tiers are those recorded rather than the only ones that drop it. <a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p><p class="src" style="margin-top:18px">From the <a href="../dungeons/lowerguk.html">Lower Guk survey</a>.</p></div>
 </section>
 </main>
 <footer class="site-foot">

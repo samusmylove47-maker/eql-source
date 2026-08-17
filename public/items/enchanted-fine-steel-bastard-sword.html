@@ -66,6 +66,10 @@
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
 .drops.seen li{border-left-color:var(--ok)}
 .drops.seen b{color:var(--ink)}
+/* The badge carries the whole provenance claim for the block below it, so it
+   sits in the heading rather than in a sentence. Raised off the middle: the
+   heading is uppercase, and middle aligns to x-height, which reads low. */
+.ent h2.sec .tier{margin-left:9px;vertical-align:.24em}
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style></head>
@@ -97,7 +101,7 @@
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">
-  <div class="shell ent" style="--c:#8E7BC7"><h2 class="sec">Where it drops</h2><ul class="srcs"><li><b><a href="../dungeons/befallen.html">Befallen</a></b> &mdash; off Knight V`Tal<span>Survey 04 &middot; levels 7-25+ &middot; ZEM 119</span></li></ul><h2 class="sec">Seen dropping, in our logs</h2><ul class="drops seen"><li><b>Knight V`Tal</b><span>seen 9&times; &middot; 04 Aug 2026 D1 &middot; 04 Aug 2026 D3 &middot; 07 Aug 2026 D1</span></li></ul><p class="src">Counted from our own combat logs. <b>A count, not a rate</b> &mdash; a drop seen once is seen once. <a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p><p class="src" style="margin-top:18px"><b>As Befallen records it:</b> &ldquo;2H Slash 20 / 42&rdquo;</p><p class="src" style="margin-top:8px">The survey records no trade restriction for this item. <b>Read that as unrecorded, not as tradeable</b> &mdash; it may be No Drop and unnoted. One screenshot of the item description would settle it.</p><p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. <a href="../sources.html">How we source</a>.</p></div>
+  <div class="shell ent" style="--c:#8E7BC7"><h2 class="sec">Where it drops</h2><ul class="srcs"><li><b><a href="../dungeons/befallen.html">Befallen</a></b> &mdash; off Knight V`Tal<span>Survey 04 &middot; levels 7-25+ &middot; ZEM 119</span></li></ul><h2 class="sec">Dropped by <span class="tier tM">TIER M</span></h2><ul class="drops seen"><li><b>Knight V`Tal</b><span>Recorded at D1, D3</span></li></ul><p class="src"><b>Observed, not a rate</b> &mdash; no kill count sits behind this, and the tiers are those recorded rather than the only ones that drop it. <a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p><p class="src" style="margin-top:18px"><b>As Befallen records it:</b> &ldquo;2H Slash 20 / 42&rdquo;</p><p class="src" style="margin-top:8px">The survey records no trade restriction for this item. <b>Read that as unrecorded, not as tradeable</b> &mdash; it may be No Drop and unnoted. One screenshot of the item description would settle it.</p><p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. <a href="../sources.html">How we source</a>.</p></div>
 </section>
 </main>
 <footer class="site-foot">

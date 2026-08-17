@@ -56,8 +56,8 @@ promises = ''.join(f'<li>{esc(s)}</li>' for s in IDX['stability'])
 
 page = (head("Public data",
              "Versioned, per-claim-sourced EverQuest Legends data, free to "
-             "consume. Plane of Sky quests with provenance, drops we have "
-             "watched happen, surveyed zones and item IDs.",
+             "consume. Plane of Sky quests with provenance, measured drop "
+             "sources, surveyed zones and item IDs.",
              rel="../", extra=CSS, og="tools", canon="data/index")
         + bar("../") + f'''
 <main>
@@ -92,8 +92,8 @@ page = (head("Public data",
       <br><br><strong>No warranty.</strong> {esc(IDX['terms']['warranty'])}</div>
 
     <h2 class="sec">What this data is not good for</h2>
-    <div class="note"><strong>Drop rates.</strong> The sightings file is a count of what we
-      watched happen, and a drop seen once is seen once. There is no denominator in it and
+    <div class="note"><strong>Drop rates.</strong> The sightings file is a count of measured
+      drops, and a drop seen once is seen once. There is no denominator in it and
       you cannot compute one. If you publish a percentage from this, you have invented it.
       <br><br><strong>Anything marked below tier 2.</strong> Every claim carries its tier.
       A tier 5 figure is inherited Project 1999 prose that nobody has checked against
@@ -101,9 +101,9 @@ page = (head("Public data",
       <a href="../learn/contamination.html">We scan ourselves for it</a> and publish what
       turns up. Read the provenance before you present a number as fact.
       <br><br><strong>Completeness.</strong> Thirteen zones of far more &mdash; ten dungeons and
-      two of the planes &mdash; plus the Plane of Sky written up separately, and a sample of a few
-      dozen play sessions. Everything here states what it does not know; that is the most useful
-      field in the file.</div>
+      two of the planes &mdash; plus the Plane of Sky written up separately, and a limited sample
+      of measured play behind it. Everything here states what it does not know; that is the most
+      useful field in the file.</div>
 
     <h2 class="sec">If you build something with it</h2>
     <p style="color:var(--dim);font-size:15px;line-height:1.65;max-width:70ch;margin:var(--s-5) 0 0">

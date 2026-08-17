@@ -8,7 +8,7 @@
  "terms": {
   "summary": "Use it, credit EQL Source, and read the provenance before you trust a value.",
   "attribution": "EQL Source, https://eqlsource.com",
-  "measured": "The measured data — drop sightings, damage figures, spell lists — is our own parsed play. Freely usable with attribution.",
+  "measured": "The measured data — drop sightings, damage figures, spell lists — is parsed from this project's own combat logs. Freely usable with attribution.",
   "inherited": "Fields sourced from community wikis carry their tier and source. Those values are not ours to license; respect the original source and do not present a tier 5 figure as fact.",
   "warranty": "None. This is a fan project and the game is actively patched. Every dataset here states what it does not know.",
   "unofficial": "Not affiliated with or endorsed by Daybreak Game Company, Game Jawn or Darkpaw Studios."
@@ -21,7 +21,7 @@
  ],
  "notes": [
   "`coverage` is the useful one: how much of what a PLAYER needs we hold for the zone - bosses, loot, difficulty behaviour, which inherited advice is wrong, and farming value. Each facet is `measured` from our own logs, `sourced` from a document, or `none`. Computed, never typed.",
-  "`verify_level` is sourcing hygiene and a coordinate check, not a measure of usefulness. Its third gate asks whether plotted coordinates land on drawn floor, so a zone with no plotted coordinates can never pass it however much we play there.",
+  "`verify_level` is sourcing hygiene and a coordinate check, not a measure of usefulness. Its third gate asks whether plotted coordinates land on drawn floor, so a zone with no plotted coordinates can never pass it however much play it gets.",
   "Verified means checked against source. It does not mean complete."
  ],
  "data": {
@@ -37,15 +37,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "17 named on the roster, none fought by us"
+      "detail": "17 named on the roster, none measured"
      },
      "loot": {
       "level": "sourced",
-      "detail": "65 items listed, none seen by us"
+      "detail": "65 items listed, none measured"
      },
      "difficulty": {
       "level": "none",
-      "detail": "never played at a recorded difficulty"
+      "detail": "no measured difficulty"
      },
      "inherited": {
       "level": "sourced",
@@ -70,15 +70,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "17 named on the roster, none fought by us"
+      "detail": "17 named on the roster, none measured"
      },
      "loot": {
       "level": "sourced",
-      "detail": "24 items listed, none seen by us"
+      "detail": "24 items listed, none measured"
      },
      "difficulty": {
       "level": "none",
-      "detail": "never played at a recorded difficulty"
+      "detail": "no measured difficulty"
      },
      "inherited": {
       "level": "sourced",
@@ -103,15 +103,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "19 named on the roster, none fought by us"
+      "detail": "19 named on the roster, none measured"
      },
      "loot": {
       "level": "sourced",
-      "detail": "35 items listed, none seen by us"
+      "detail": "35 items listed, none measured"
      },
      "difficulty": {
       "level": "none",
-      "detail": "never played at a recorded difficulty"
+      "detail": "no measured difficulty"
      },
      "inherited": {
       "level": "sourced",
@@ -136,15 +136,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "19 named on the roster, none fought by us"
+      "detail": "19 named on the roster, none measured"
      },
      "loot": {
       "level": "measured",
-      "detail": "40 items watched dropping here"
+      "detail": "40 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D1, D3, D4"
+      "detail": "measured at D1, D3, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -169,15 +169,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "18 named on the roster, none fought by us"
+      "detail": "18 named on the roster, none measured"
      },
      "loot": {
       "level": "measured",
-      "detail": "28 items watched dropping here"
+      "detail": "28 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D2, D3"
+      "detail": "measured at D2, D3"
      },
      "inherited": {
       "level": "sourced",
@@ -202,15 +202,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "25 named on the roster, none fought by us"
+      "detail": "25 named on the roster, none measured"
      },
      "loot": {
       "level": "measured",
-      "detail": "33 items watched dropping here"
+      "detail": "33 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D0, D1"
+      "detail": "measured at D0, D1"
      },
      "inherited": {
       "level": "sourced",
@@ -235,15 +235,15 @@
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "1 boss fought and parsed across 5 kills, tiers D1–D4"
+      "detail": "1 boss measured, tiers D1–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "40 items watched dropping here"
+      "detail": "40 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D0, D1, D2, D3, D4"
+      "detail": "measured at D0, D1, D2, D3, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -268,15 +268,15 @@
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "1 boss fought and parsed across 7 kills, tiers D0–D4"
+      "detail": "1 boss measured, tiers D0–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "14 items watched dropping here"
+      "detail": "14 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D0, D1, D2, D3, D4"
+      "detail": "measured at D0, D1, D2, D3, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -301,15 +301,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "19 named on the roster, none fought by us"
+      "detail": "19 named on the roster, none measured"
      },
      "loot": {
       "level": "sourced",
-      "detail": "59 items listed, none seen by us"
+      "detail": "59 items listed, none measured"
      },
      "difficulty": {
       "level": "none",
-      "detail": "never played at a recorded difficulty"
+      "detail": "no measured difficulty"
      },
      "inherited": {
       "level": "sourced",
@@ -334,15 +334,15 @@
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "24 named on the roster, none fought by us"
+      "detail": "24 named on the roster, none measured"
      },
      "loot": {
       "level": "measured",
-      "detail": "40 items watched dropping here"
+      "detail": "40 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D1 only"
+      "detail": "measured at D1 only"
      },
      "inherited": {
       "level": "sourced",
@@ -363,19 +363,19 @@
     "zem": 82.5,
     "plate": 11,
     "verify_level": "none",
-    "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded for this zone, so there is nothing to check against the floor. Gates 1 and 2 are done - every boss page was checked against the MediaWiki revision API on 10 Aug 2026 and every one is a Project 1999 import. WHAT IS OURS: 10 measured sessions, 214 kills, 58 mob types, and 16 boss fights including Cazic-Thule at Adaptive, Fused and Refined with his full spell kit.",
+    "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded for this zone, so there is nothing to check against the floor. Gates 1 and 2 are done - every boss page was checked against the MediaWiki revision API on 10 Aug 2026 and every one is a Project 1999 import. Measured in play: Cazic-Thule at Adaptive, Fused and Refined, with his full spell kit.",
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "5 bosses fought and parsed across 22 kills, tiers D2–D4"
+      "detail": "5 bosses measured, tiers D2–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "56 items watched dropping here"
+      "detail": "56 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D1, D2, D3, D4"
+      "detail": "measured at D1, D2, D3, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -396,19 +396,19 @@
     "zem": 86,
     "plate": 12,
     "verify_level": "none",
-    "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded, so there is nothing to check against the floor. Gates 1 and 2 are done - the boss pages were checked against the revision API on 10 Aug 2026 and are Project 1999 imports. The zone has a second archive, hateplaneb, whose relationship to this one we have not established. WHAT IS OURS: 5 measured sessions, 48 kills, 42 mob types, and 24 boss fights including Innoruuk at Fused and Refined and ten of his court, with which boss drops which planar set.",
+    "verify_gate": "Gate 3 cannot be attempted here: no named coordinate is recorded, so there is nothing to check against the floor. Gates 1 and 2 are done - the boss pages were checked against the revision API on 10 Aug 2026 and are Project 1999 imports. The zone has a second archive, hateplaneb, whose relationship to this one is not established. Measured in play: Innoruuk at Fused and Refined and ten of his court, with which boss drops which planar set.",
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "12 bosses fought and parsed across 59 kills, tiers D1–D4"
+      "detail": "12 bosses measured, tiers D1–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "70 items watched dropping here"
+      "detail": "70 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "played and parsed at D1, D3, D4"
+      "detail": "measured at D1, D3, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -429,11 +429,11 @@
     "zem": 139,
     "plate": 13,
     "verify_level": "none",
-    "verify_gate": "Nothing here is ours yet. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but we have never logged a session in this zone: no kill, no drop and no boss fight is measured. This one is accurate.",
+    "verify_gate": "Nothing here is measured. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but no session in this zone has been logged: no kill, no drop and no boss fight is measured. The low grade here is accurate, not an artefact.",
     "coverage": {
      "bosses": {
       "level": "sourced",
-      "detail": "14 named on the roster, none fought by us"
+      "detail": "14 named on the roster, none measured"
      },
      "loot": {
       "level": "none",
@@ -441,7 +441,7 @@
      },
      "difficulty": {
       "level": "none",
-      "detail": "never played at a recorded difficulty"
+      "detail": "no measured difficulty"
      },
      "inherited": {
       "level": "sourced",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "b3090c2e9982c935"
+ "hash": "e5388b4f46bd765e"
 }

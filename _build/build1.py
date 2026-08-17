@@ -249,7 +249,7 @@ home = head("Accurate, sourced and kept current",
 
     </div>
     <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; one zone
-      written up in full, measured from our own logs.</p>
+      written up in full, measured in play.</p>
   </div>
 </section>
 
@@ -339,7 +339,7 @@ if _open:
                f"{npart} are partial and {nnone} are not verified at all. Partial surveys are "
                f"complete and useful; they have simply not cleared every gate. Which gate is open "
                f"is recorded per zone rather than averaged into a single number that would "
-               f"flatter us.")
+               f"read better than the truth.")
     asidec, asideh = "var(--warn)", "Open gates"
 else:
     verdict = (f"By that standard <strong>all {len(Z)} are verified</strong>, as of 9 August 2026. "
@@ -357,7 +357,7 @@ _ORDER = {"none": 0, "partial": 1, "full": 2}
 # reader needs in order to judge the word "verified".
 _CLEARED = [
   ("Source read in full", "Every survey's wiki page was fetched whole and its roster re-compared "
-   "against ours, not sampled. It is how Kelynn was found missing from Crushbone."),
+   "against the survey, not sampled. It is how Kelynn was found missing from Crushbone."),
   ("History from the API", "Edit history taken from MediaWiki, never the page footer. Footers were "
    "stale on four of the first five zones checked; Befallen's was two months out."),
   ("Coordinates on drawn floor", "All 176 plotted positions land within 120 units of walkable floor "

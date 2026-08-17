@@ -23,6 +23,14 @@ sys.path.insert(0, os.path.join(ROOT, '_build'))
 import backstab as _BS
 from _partials import head, bar, foot
 
+# The damage a mob deals is a fact about the mob, so it stays. How many times it
+# was seen doing it, in how many sessions, on what date, is a record of one
+# player's evening and does not. Read out of the dataset here rather than typed,
+# because the typed version of this figure was wrong for a week.
+_BS_E = _BS.evidence() or {}
+_BS_MELEE = f"up to {_BS_E['melee_max']}" if _BS_E.get('melee_max') else 'harder'
+_BS_BACK = f"up to {_BS_E['bs_max']}" if _BS_E.get('bs_max') else 'far harder'
+
 # Counted from the built surveys rather than typed: it said four when eight
 # carry a measured section, and it would have said four after the ninth too.
 import glob as _glob
@@ -79,8 +87,8 @@ def page():
     <ul class="kv">
       <li><b>Not marked</b><span>Doors, locks, and one-way drops. A gap in a line is as likely
         to be a ledge you fall off as a doorway you walk through.</span></li>
-      <li><b>Not a published map</b><span>It is derived from the game&rsquo;s mesh. It is our own
-        computation of where the floor ends, not a copy of anyone&rsquo;s drawing.</span></li>
+      <li><b>Not a published map</b><span>It is derived from the game&rsquo;s mesh &mdash; computed
+        from where the floor ends, not copied from anyone&rsquo;s drawing.</span></li>
       <li><b>Walkable floor only</b><span>Surfaces a standing character could stand on. In a zone
         you swim through &mdash; Kedge Keep especially &mdash; large parts of where you can
         actually go have no floor under them, so the plan under-draws the space.</span></li>
@@ -120,21 +128,24 @@ def page():
       has been published either way, it says that instead of guessing.</p>
 
     <h2 class="sec" id="measured">What a combat log can and cannot tell you</h2>
-    <p class="lede">{_N_MEAS} surveys carry figures measured from our own play. They are the strongest
+    <p class="lede">{_N_MEAS} surveys carry figures measured in play. They are the strongest
       evidence on the site and they generalise to almost nothing.</p>
     <ul class="kv">
-      <li><b>A drop seen once</b><span>is seen once. One session is a sample, not a rate, and no
+      <li><b>A drop seen once</b><span>is seen once. A measurement is a sample, not a rate, and no
         drop rate can be read from it. Where a survey says a thing dropped, that is a count.</span></li>
-      <li><b>Damage figures</b><span>describe that trio, at that level, against those mobs, on
-        that date. A different level or a different trio changes all of them.</span></li>
+      <li><b>Damage figures</b><span>describe one party, at one level, against those mobs. A
+        different level or a different trio changes all of them.</span></li>
       <li><b>Resist rates</b><span>depend on the character&rsquo;s own resistances and alternate
         abilities. Treat a spell table as what happened to one build, not as a property of the
         mob. The useful part is the kill order.</span></li>
       <li><b>Absent mobs</b><span>are not missing. A log records what happened, so anything that
-        never attacked us and never cast anything does not appear.</span></li>
+        never attacked and never cast anything does not appear.</span></li>
+      <li><b>Partial fights</b><span>read low, never high. A record that starts after the fight
+        did misses the opening, so its figures are a lower bound and are marked as one.</span></li>
       <li><b>Spell names</b><span>are printed exactly as the game printed them.</span></li>
-      <li><b>Never a combined average</b><span>for a mob that backstabs. Our Mistmoore log has
-        familiars at {_BS.damage_phrase()}; one number across both describes neither.</span></li>
+      <li><b>Never a combined average</b><span>for a mob that backstabs. The Castle Mistmoore
+        familiars hit {_BS_MELEE} in melee and {_BS_BACK} from behind; one number across both
+        describes neither.</span></li>
     </ul>
 
     <h2 class="sec">Why there are no invented maps here</h2>
@@ -143,7 +154,7 @@ def page():
       the zone it claimed to depict: the position it printed for its boss, twice, sat
       <strong>210 units outside the zone&rsquo;s entire extent</strong> and 458 units from any
       geometry at all.</p>
-    <p>The archives are on your disk and ours. <strong>We would rather read the map than imagine
+    <p>The archives ship with the game client. <strong>Reading the map beats imagining
       it</strong>, and everything on these plans is read.</p>
 
   </div>

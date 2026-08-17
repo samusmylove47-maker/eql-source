@@ -30,8 +30,10 @@ ITEMS, SETCLASS = P['items'], P['setClass']
 # Every stat here is a classic-era item record read off a wiki page. Until 14
 # August nothing on this site could say where a single one of these pieces
 # comes from in Legends - the tool ranked 116 pieces and could not name one
-# source. These are our own kills: a count of what we watched drop, and from
-# what. A count, never a rate.
+# source. Drop sources are measured, tier M, and are published as a list of
+# mobs and zones. The counts behind them order the list and are not printed:
+# a tally of kills is a diary entry, and the TIER M badge already says the
+# source was seen in play.
 def _keyname(s):
     s = re.sub(r'\s*\+\d+\s*$', '', s or '')
     s = re.sub(r'^(a|an|the)\s+', '', s.strip(), flags=re.I)
@@ -132,14 +134,13 @@ for s in order:
     if drops:
         top = drops.most_common(6)
         zones = ', '.join(z for z, _ in SET_ZONES.get(s, collections.Counter()).most_common(2))
-        seen = ('<p class="seen"><b>We have watched this drop</b> '
-                + ', '.join(f'{esc_mob(m)} &times;{n}' for m, n in top)
+        seen = ('<p class="seen"><b>Dropped by</b> '
+                + ', '.join(esc_mob(m) for m, _ in top)
                 + (f' &mdash; {esc_mob(zones)}' if zones else '')
-                + '. <span class="tier tM">TIER M</span> Counts from our own kills, '
-                  'never a rate.</p>')
+                + '. <span class="tier tM">TIER M</span></p>')
     else:
-        seen = ('<p class="seen none">We have not watched any piece of this set drop. '
-                'That is a gap in our logs, not evidence the set is hard to get.</p>')
+        seen = ('<p class="seen none">No drop source is recorded for any piece of this set. '
+                'That is a gap in the record, not evidence the set is hard to get.</p>')
     blocks.append(
         f'<section class="setblk" id="{slug(s)}">'
         f'<h2>{s}</h2><p class="who">{who} &middot; {len(rows)} recorded</p>{seen}'
