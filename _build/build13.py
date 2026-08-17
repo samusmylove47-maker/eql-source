@@ -67,9 +67,8 @@ ENTRIES = [
          note='This is not an abstract question for us. <strong>Six Plane of Sky reward '
               'tooltips on this site carry percentage haste</strong> &mdash; five of them the '
               'identical <em>+41%</em>, which is a copied constant rather than five readings '
-              '&mdash; and they sat inside the tier our tracker labelled verified. They are '
-              'marked suspect in place now rather than deleted. An outside audit found this on '
-              '14 August 2026 and it was right.',
+              '&mdash. They are marked suspect in place rather than '
+              'deleted.',
          evidence=[
              ('T3', 'EQL Tools <em>Slow, haste &amp; crowd control</em>, read 14 Aug 2026',
               'States flat attack-speed values for Legends, with a worked example.'),
@@ -81,8 +80,7 @@ ENTRIES = [
          settle='One screenshot of a Legends haste item tooltip. If it reads a bare number '
                 'rather than a percentage, EQL Tools is right and every percentage figure on '
                 'this site is a classic import.',
-         credit='Found by an outside audit of this site, 14 August 2026, which caught it '
-                'inside our own verified tier before we did.'),
+         credit=''),
     dict(status='changed',
          q='Do Journeyman&rsquo;s Boots still come from a quest, or do they drop?',
          classic='On Live in 1999 the boots were made a quest reward on 13 October, and '

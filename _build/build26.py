@@ -141,9 +141,7 @@ page = (head("What the scanner finds here",
       table of other people&rsquo;s contamination. <strong>A scanner that only finds someone
       else&rsquo;s rot is an attack ad</strong>, and the only version of this worth having is
       the one that runs here first and publishes the result whatever it says.
-      <br><br>The six haste figures that started this were found by
-      <a href="../sources.html#changelog">an outside audit</a>, not by us. That is the
-      argument for owning a tool rather than a habit.</div>
+</div>
 
     <p class="src">Run by hand with <code>scripts/contamination.py</code> over
       {C['scanned']} files: every survey and tool source, the Plane of Sky dataset, the
