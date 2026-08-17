@@ -135,8 +135,9 @@ log their absence as a defect.
   multiclass from D2; raid bosses start appearing triple-class at D3.
 
   **Measured, and it starts earlier than that on trash.** In Castle Mistmoore at
-  **D1**, 8 Aug 2026, two ordinary trash types backstabbed 39 times between them
-  — `An initiate familiar` 22, `A pledge familiar` 17 — while the same types were
+  **D1**, 8 Aug 2026, two ordinary trash types backstabbed **113 times** between
+  them across seven sessions — `A pledge familiar` 62, `An initiate familiar` 51
+  — while the same types were
   logged casting Root, Screaming Terror, Shadow Vortex, Shock of Poison and
   Engulfing Darkness. Backstab is a rogue ability and a spell list is not, so
   that mob type carries two kits at D1, on trash, not on a named. The log cannot
@@ -155,8 +156,9 @@ log their absence as a defect.
   *kits* reach trash at D0 — but a mob carrying two of them is a D1 observation,
   and the distinction is worth keeping.
 
-  Damage separates the same way: those familiars hit for 1–38 in melee and
-  100–143 from behind, and the imp protector 45 on average in melee against 175
+  Damage separates the same way: those familiars hit up to 39 in melee and up to
+  168 from behind, with per-session backstab averages from 18 to 143 — and the
+  imp protector 45 on average in melee against 175
   from behind, max 405. Never publish a combined average for a mob that
   backstabs.
 
@@ -207,6 +209,18 @@ neither was true. Unreliable in both directions. Mark them.
 - **Never invent a number.** No drop rate, spawn timer, coordinate, stat or plat
   cost that you did not read in a named source. If it is not sourced, write
   "not recorded".
+
+  **And a measured number goes stale.** This file carried "backstabbed 39 times
+  between them — `An initiate familiar` 22, `A pledge familiar` 17" and
+  "1–38 in melee and 100–143 from behind" until 17 Aug 2026. The parse holds
+  113, 51 and 62, and a backstab maximum of 168; no session or combination of
+  sessions produces 22 and 17, and one session's backstabs *average* 38.8, which
+  cannot happen if the floor is 100. The figures were probably right against a
+  smaller parse and four copies of the prose did not move when the data grew.
+  **A figure that cites a dataset must be read out of that dataset at build
+  time** — `_build/backstab.py` is the pattern. A number typed beside the data
+  it claims to come from is the fault this project keeps finding in other
+  people's work.
 - **Never present classic EverQuest as Legends.** Where a page carries inherited
   prose, say so in place.
 - **Never delete a flagged gap to make a page look complete.** Gaps close with

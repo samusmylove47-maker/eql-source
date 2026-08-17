@@ -211,6 +211,10 @@ if os.path.exists("build.sh"):
                    # the committed zone geometry into drawable SVG. Nothing to
                    # schedule, so an orphan warning here would be permanent.
                    "heroart.py",
+                   # Also imported, not run: it reads the Mistmoore backstab
+                   # evidence out of measured.json so four pages cannot carry a
+                   # stale copy of it again.
+                   "backstab.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it

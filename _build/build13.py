@@ -45,6 +45,7 @@ import os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
+import backstab as _BS
 from _partials import head, bar, foot
 
 LABEL = {'changed': 'Changed', 'same': 'Still true', 'open': 'Open'}
@@ -255,13 +256,13 @@ ENTRIES = [
                  'Awakened, D2 Adaptive, D3 Fused, D4 Refined.',
          note='<strong>And it starts earlier than published.</strong> The published claim is that '
               'named mobs run multiclass from D2. In Castle Mistmoore at <strong>D1</strong>, two '
-              'ordinary trash types backstabbed 39 times between them while the same types were '
+              'ordinary trash types backstabbed ' + _BS.counts_phrase() + ' while the same types were '
               'logged casting Root, Screaming Terror and Shadow Vortex. Backstab is a rogue '
               'ability and a spell list is not, so that mob type carried two kits at D1, on trash.',
          evidence=[
              ('Tier M', 'Our own logs, Castle Mistmoore, 8 August 2026',
-              '<em>An initiate familiar</em> 22 backstabs and <em>a pledge familiar</em> 17, '
-              'alongside logged casts from the same types. Melee 1&ndash;38, backstab 100&ndash;143.'),
+              _BS.counts_phrase() + ', across ' + _BS.scope_phrase() + ', '
+              'alongside logged casts from the same types. ' + _BS.damage_phrase().capitalize() + '.'),
              ('T1', 'Zone line on entry',
               '<code>You have entered The Castle of Mistmoore 1 (Awakened).</code> The number and '
               'the name agree, and the modal loot drop of +1 agrees independently.'),

@@ -46,8 +46,10 @@ difficulty is unresolved instead of choosing.
 
 BACKSTAB
 --------
-Kept apart from ordinary swings. Mistmoore's familiars hit for 1-38 in melee and
-100-143 from behind, so a combined average of "10.5, max 143" describes neither.
+Kept apart from ordinary swings. Mistmoore's familiars hit up to 39 in melee and
+up to 168 from behind, so a combined average describes neither. (This docstring
+said "1-38 and 100-143" until 17 Aug 2026, which was stale and, at the low end,
+impossible: one session's backstabs average 38.8.)
 It is also the clearest class evidence in a log: a spell list can belong to one
 broad caster kit, but backstab is a rogue ability, and a mob type doing both is
 running two kits.
@@ -596,7 +598,7 @@ def summarise(s):
     for name, v in s['dmg'].items():
         h, ms = s['mob_hit'].get(name, 0), s['mob_miss'].get(name, 0)
         # Backstab is kept apart from ordinary swings. Mistmoore's familiars hit
-        # for 1-38 in melee and 100-143 from behind; averaging the two together
+        # up to 39 in melee and up to 168 from behind; averaging the two together
         # reports "10.5 average, 143 maximum", which describes neither and hides
         # the thing a reader actually needs to know.
         plain = [d for verb, d in v if verb != 'backstabs']

@@ -20,6 +20,7 @@ import os, sys, json
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
+import backstab as _BS
 from _partials import head, bar, foot
 
 # Counted from the built surveys rather than typed: it said four when eight
@@ -133,8 +134,7 @@ def page():
         never attacked us and never cast anything does not appear.</span></li>
       <li><b>Spell names</b><span>are printed exactly as the game printed them.</span></li>
       <li><b>Never a combined average</b><span>for a mob that backstabs. Our Mistmoore log has
-        familiars hitting for 1&ndash;38 in melee and 100&ndash;143 from behind; one number
-        across both describes neither.</span></li>
+        familiars at {_BS.damage_phrase()}; one number across both describes neither.</span></li>
     </ul>
 
     <h2 class="sec">Why there are no invented maps here</h2>

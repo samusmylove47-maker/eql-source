@@ -149,6 +149,7 @@ import os, sys, json, collections
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
+import backstab as _BS
 from _partials import head, bar, foot
 
 try:
@@ -414,8 +415,9 @@ You have entered The City of Guk 4 (Refined).</pre>
     <div class="note"><strong>The published claim is that <em>named</em> mobs are often multiclass
       from D2. We have it on ordinary trash at D1.</strong> In Castle Mistmoore at Awakened, two trash
       types &mdash; <em>an initiate familiar</em> and <em>a pledge familiar</em> &mdash; backstabbed
-      39 times between them while the same types were logged casting Root, Screaming Terror, Shadow
-      Vortex, Shock of Poison and Engulfing Darkness. <span class="tier tM">TIER M</span>
+      {_BS.counts_phrase()} across {_BS.scope_phrase()}, while the same types were logged casting
+      Root, Screaming Terror, Shadow Vortex, Shock of Poison and Engulfing Darkness.
+      <span class="tier tM">TIER M</span>
       <br><br>Backstab is the part that settles it. A spell list on its own proves little, because
       those spells could plausibly sit in one broad caster kit &mdash; but backstab is a rogue
       ability, and a mob type doing both is running two kits. At D1, on trash.
