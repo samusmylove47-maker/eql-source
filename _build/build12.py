@@ -26,7 +26,9 @@ TWO THINGS THIS PAGE DOES THAT NOBODY ELSE DOES
 SOURCING
 --------
 T1  Producer's Letter, 8 Jul 2026 — token prices, IR pricing.
-T2  eqlwiki Starting Faction Standings, last edited 15 Jun 2026 — the standings
+T5  eqlwiki Starting Faction Standings, last edited 15 Jun 2026 — six weeks BEFORE
+    EverQuest Legends launched on 28 July 2026, so it fails the provenance test in
+    CLAUDE.md and is a Project 1999 import however structured it looks — the standings
     themselves, quoted with its own cleanup banner and its TBA holes NAMED. The
     holes are the point: a reader planning around Rivervale or Kelethin needs to
     know the data is absent, not assume silence means neutral.
@@ -201,7 +203,7 @@ page = head("Deity, and the level 11 lock",
       Letter, 8 July 2026</a></strong> <span class="tier t1">T1</span> Token prices and Iridium
       pricing. Official and dated.</div>
     <div class="note"><strong><a href="https://eqlwiki.com/Starting_Faction_Standings">eqlwiki
-      &mdash; Starting Faction Standings</a></strong> <span class="tier t2">T2</span> Last edited
+      &mdash; Starting Faction Standings</a></strong> <span class="tier t5">T5</span> Last edited
       15 June 2026. Source of the standings, its cleanup banner and its TBA holes, all quoted rather
       than absorbed.</div>
     <div class="note"><strong><a href="https://eqlwiki.com/Newbie_Guide">eqlwiki &mdash; Newbie
