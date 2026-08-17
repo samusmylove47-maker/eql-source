@@ -49,10 +49,13 @@ page = head("How raid access works",
       <div class="card contour" style="--c:var(--warn);--cx:88%;--cy:114%">
         <div class="kicker">No longer true</div>
         <h3 class="t">Open world</h3>
-        <p class="d">Raid bosses do not spawn in the open world. The 16 June patch names them
-          individually: Maestro of Rancor, Innoruuk, the Prince of Hate, Cazic Thule, Fright, Terror,
-          Dread and a dracoliche &ldquo;no longer spawn in the open world &amp; personal
-          instances&rdquo;. Nothing since has reversed it.</p>
+        <p class="d"><strong>Eight named bosses</strong> do not spawn in the open world. The 16 June
+          patch names them individually &mdash; Maestro of Rancor, Innoruuk, the Prince of Hate,
+          Cazic Thule, Fright, Terror, Dread and a dracoliche &ldquo;no longer spawn in the open
+          world &amp; personal instances&rdquo;. All eight are Fear or Hate bosses.
+          <br><br><strong>Not a rule about raid bosses generally, which this page used to claim.</strong>
+          We killed 15 Plane of Sky bosses 43 times, none of it in an instance
+          <span class="tier tM">M</span>. Sky&rsquo;s bosses stand in the open zone.</p>
         <div class="foot"><span>Patch note, 16 Jun 2026</span></div>
       </div>
       <div class="card contour" style="--c:var(--ok);--cx:12%;--cy:110%">

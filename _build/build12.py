@@ -60,6 +60,21 @@ TOKENS = [("Deity", "500 IR", "about $4.99"),
           ("Race", "1,000 IR", "about $9.98"),
           ("Primary class", "1,500 IR", "about $14.97")]
 
+# Ratios derived from TOKENS rather than typed. The prose read "a third of what
+# it costs to change your race, a fifth of your primary class" beside a table
+# giving 500 / 1,000 / 1,500 IR — a half and a third. Both figures were wrong,
+# on the page whose whole argument is that the three choices are priced
+# differently.
+_IR = {name: int(cost.split()[0].replace(',', '')) for name, cost, _ in TOKENS}
+_FRAC = {2: 'half', 3: 'a third', 4: 'a quarter', 5: 'a fifth', 6: 'a sixth'}
+
+
+def _ratio(bigger):
+    n = _IR[bigger] / _IR['Deity']
+    return _FRAC.get(round(n), f'1/{n:g}') if abs(n - round(n)) < 1e-6 else f'{1/n:.2f} of'
+
+
+
 trows = ''.join(
     f'<tr><td class="dname">{what}</td><td class="dn">{ir}</td><td class="dnote">{usd}</td></tr>'
     for what, ir, usd in TOKENS)
@@ -96,7 +111,8 @@ page = head("Deity, and the level 11 lock",
       <tbody>{trows}</tbody>
     </table></div>
     <p>Iridium sells at 500 IR for $4.99, so a deity change costs about five dollars &mdash;
-      <strong>a third of what it costs to change your race, a fifth of your primary class</strong>.
+      <strong>{_ratio("Race")} what it costs to change your race, {_ratio("Primary class")} of
+      your primary class</strong>.
       The three choices lock together at level 11 and are usually discussed as though they carry the
       same weight. They do not.</p>
     <div class="note"><strong>What that does and does not mean.</strong> The prices are official

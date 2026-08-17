@@ -165,7 +165,7 @@ log their absence as a defect.
 
   | | Name |
   |---|---|
-  | **D0** | Base / Normal — the default open world |
+  | **D0** | Base / Normal — the default. The open world, and any instance run at base |
   | **D1** | Awakened |
   | **D2** | Adaptive |
   | **D3** | Fused |

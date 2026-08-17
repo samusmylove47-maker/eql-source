@@ -266,7 +266,7 @@ page = head("What difficulty changes",
 You have entered Blackburrow 2 (Adaptive).
 You have entered Befallen 3 (Fused).
 You have entered The City of Guk 4 (Refined).</pre>
-    <p>A zone line with no number and no name is the open world, D0. <strong>Both readings agreed in
+    <p>A zone line with no number and no name is <strong>base difficulty</strong> &mdash; the open world, or an instance run at base. <strong>Both readings agreed in
       every session where both were present &mdash; {agree} of {both}, no disagreements</strong>
       <span class="tier tM">TIER M</span>. So you never have to remember which setting you picked.</p>
     <p>Loot gives a third reading, and <strong>difficulty is a floor</strong>: your tier is the
@@ -352,8 +352,8 @@ You have entered The City of Guk 4 (Refined).</pre>
       <br><br><strong>Corrected 11 August.</strong> This claimed the kit widens <em>at D3</em> and
       that he healed himself <em>never at D0, D1 and D2</em>. Both were read off this one session
       and later kills contradict the second: the same boss healed itself at D{_yael_heal_low} on
-      another kill, and <strong>Lady Vox heals itself at D{_heal_lowest}</strong>, in the open
-      world. Self-healing is not gated behind a tier &mdash; the tier decides how <em>much</em> of
+      another kill, and <strong>Lady Vox heals itself at D{_heal_lowest}</strong>, the lowest
+      tier there is. Self-healing is not gated behind a tier &mdash; the tier decides how <em>much</em> of
       the kit turns up.
       <br><br><strong>And &ldquo;ten times at D4&rdquo; was ten log lines, not ten decisions:</strong>
       one effect ticking every six seconds for the same 22 hit points, the same shape Lady Vox
