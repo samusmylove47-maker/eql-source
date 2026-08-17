@@ -242,33 +242,26 @@ to be rebuilt from scratch.
 
 ---
 
-## Tier C — a first-hand report, not yet an instrument reading
+## First-hand reports carry no tier
 
-Added 10 August 2026. The scale ran M, 1, 2, 3, 4, 5, and a named player saying
-*"I did this last night and it did not work the way the wiki says"* fits none of
-them. It is not Tier M: nothing was parsed, and recollection is not a log. It is
-not tiers 3 to 5: those are readings of documents, and this is not a document.
+A named player saying they played this last night and it did not work the way
+the wiki says is worth publishing. It is not a reading of a document, so it does
+not sit on a scale built for ranking documents.
 
-**Tier C sits below M and above 3.** First-hand, named, dated, unconfirmed.
+This site briefly ran a **Tier C** for these, introduced 10 August 2026 and
+withdrawn on 17 August. It was generalised from a single event and never earned
+the status of a tier. What it was really doing — naming who reported a thing and
+when — is better done in the sentence itself, where a reader sees it without
+having to learn a badge.
 
-Every Tier C claim publishes four things:
+**So: attribute, date, and say what would confirm it.** "Reported by our
+collaborator, 14 August 2026, seen dropping for other players and not killed by
+us in any session we hold" tells a reader everything the badge did and more. A
+report never becomes fact by repetition; it gets confirmed by a log or a patch
+note, or it stays a report.
 
-1. **Who reported it**, by name. Credit is the whole point — it is the only
-   currency we have for the people who find these.
-2. **When**, and under what conditions they saw it.
-3. **What would confirm it** — usually one log line or one screenshot.
-4. **That it is unconfirmed**, in a badge, wherever the claim appears.
-
-**A Tier C claim never becomes fact by repetition.** It either gets confirmed
-and moves tier, with the confirming evidence named, or it stays C indefinitely
-and visibly. Watch for the failure mode where a C claim is cited so often that
-someone quietly drops the badge.
-
-**This applies to us too.** The collaborator's own play reports are Tier C, not
-Tier M. Our logs are Tier M because a parser read them; our memories are not.
-Exempting ourselves would be the most obvious way to corrupt the scale.
-
----
+**This applies to us too.** Our own play reports are reports, not measurements.
+Only what `logstats.py` parsed out of a log is tier M.
 
 ## Verification standard
 

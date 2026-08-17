@@ -139,6 +139,15 @@ nnone = sum(1 for z in Z if z["verify_level"]=="none")
 # about an item its data wants twice; that is the exact reason nothing here is
 # typed beside the data it claims to come from.
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
+# The overlay door. A release exists now, so the home page offers the download
+# directly rather than routing a reader through the tool page to find out there
+# is nothing to download. Falls back to the tool page where no release is
+# recorded, so a build without the Ledger repo still produces a working link.
+_SL_REL = (SL.get('release') or {}).get('overlay') or {}
+SL_OVERLAY_HREF = _SL_REL.get('url') or 'tools/sky-ledger.html'
+SL_OVERLAY_LABEL = (f'Download the overlay &middot; {_SL_REL["mb"]} MB &rarr;'
+                    if _SL_REL.get('mb') else 'The overlay &rarr;')
+
 SL_APP, SL_DS = SL['app'], SL['dataset']
 
 feature = f'''
@@ -161,7 +170,8 @@ feature = f'''
             <code>&lt;28% &middot; 0/9</code>, never <code>0%</code>.</p>
           <div class="featdoors">
             <a class="featdoor lead" href="app/{SL_APP['file']}">Run it in your browser &rarr;</a>
-            <a class="featdoor" href="tools/sky-ledger.html">What it does, and the overlay &rarr;</a>
+            <a class="featdoor" href="{SL_OVERLAY_HREF}">{SL_OVERLAY_LABEL}</a>
+            <a class="featdoor" href="tools/sky-ledger.html">What it does &rarr;</a>
           </div>
         </div>
         <ul class="featclaims">

@@ -158,7 +158,7 @@ ENTRIES = [
               'Keep page uses the word repeatedly, so <strong>the search index is unreliable and '
               'an empty result there proves nothing.</strong>',
          evidence=[
-             ('Tier C', 'A player report, 9 August 2026',
+             ('Report', 'A player report, 9 August 2026',
               'First-hand, in Kedge Keep, using a sword and landing hits. Unconfirmed: a report '
               'of play, not a parsed log.'),
              ('T5', 'eqlwiki <em>Kedge Keep</em>, read 9 Aug 2026',
@@ -184,11 +184,11 @@ ENTRIES = [
               'character. It is a reason to test the other fifteen, not evidence about them: '
               '<strong>we have no report on any other epic and do not assume this generalises.</strong>',
          evidence=[
-             ('Tier C', 'A player report, 10 August 2026',
+             ('Report', 'A player report, 10 August 2026',
               'First-hand: &ldquo;can now confirm can do all parts of the fiery avenger '
               'including final turn in as a non paladin&rdquo;. Reported with an in-game '
               'screenshot of the completed item. A report of play, not a parsed log.'),
-             ('Tier C', 'Item inspection, 10 August 2026',
+             ('Report', 'Item inspection, 10 August 2026',
               'The reward reads <code>Class: PAL</code>, <code>Race: ALL</code>, Lore Equipped, '
               'No Trade. The class restriction on the item itself has not changed.'),
          ],
@@ -218,7 +218,7 @@ ENTRIES = [
              ('T1', 'Patch notes, 28 July 2026',
               '&ldquo;Killing a raid boss while you have a loot lockout will now give one '
               'guaranteed drop from that boss&rsquo;s unique treasure tables.&rdquo;'),
-             ('Tier C', 'Annalise (AnnaWulf), 10 August 2026',
+             ('Report', 'Annalise (AnnaWulf), 10 August 2026',
               '&ldquo;weekly lock out per difficulty and then daily lock out for 1 loot item till '
               'a tues reset&rdquo;. She also reports a D4 Lord Nagafen taking a long time even '
               'with a group, and D1 hit-point pools being a drag solo.'),
@@ -288,7 +288,7 @@ ENTRIES = [
               '&ldquo;Removed placeholders from and lowered maximum respawn times in several '
               'dungeons: The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The '
               'Warrens, Castle Mistmoore, Upper Guk, Crushbone, Befallen, Blackburrow, Najena.&rdquo;'),
-             ('Tier C', 'Avenrae',
+             ('Report', 'Avenrae',
               'Confirmed in play across these zones before this site existed, and again on '
               '9 August 2026 across ten or more consecutive cycles at one camp.'),
              ('T5', 'eqlwiki individual mob pages, against',

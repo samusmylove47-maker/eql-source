@@ -31,12 +31,46 @@ from _partials import head, bar, foot
 
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
 APP, DS = SL['app'], SL['dataset']
+REL = SL.get('release') or {}
 HREF = f"../app/{APP['file']}"
 # A version we could not read is not a version. Printing "vNone" beside three
 # real figures is the kind of small lie that makes a reader distrust the rest.
 VER = f'<span>v{SL["version"]}</span>' if SL.get('version') else ''
 
+# The two doors, or an honest sentence where no release exists. Sizes are read
+# off the packages by skyledger.py; a button that lies about a 100 MB download
+# is worse than no button.
+def _downloads():
+    ov, br = REL.get('overlay') or {}, REL.get('browser') or {}
+    if not ov.get('url'):
+        return ('<div class="note warn"><strong>No release is published yet.</strong> '
+                'The browser build above is the whole application apart from '
+                'click-through and real transparency.</div>')
+    return (
+        '<p class="dlrow">'
+        f'<a class="dl" href="{ov["url"]}"><b>Download the overlay</b>'
+        f'<span>Windows &middot; {ov.get("mb", "?")} MB &middot; unzip and run, no installer</span></a>'
+        f'<a class="dl alt" href="{br.get("url", REL.get("page", "#"))}"><b>Or the single file</b>'
+        f'<span>One HTML page &middot; {br.get("mb", "?")} MB &middot; opens in any browser</span></a>'
+        '</p>')
+
+
+DOWNLOADS = _downloads()
+
+
 CSS = '''<style>
+.dlrow{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 10px;max-width:none}
+.dl{flex:1 1 260px;display:block;padding:15px 17px;text-decoration:none;
+  border:1px solid var(--rule2);border-left:3px solid var(--brass);
+  background:var(--surface-2);border-radius:4px;transition:border-color .15s,background .15s}
+.dl:hover{background:#31281a;border-color:var(--brass)}
+.dl b{display:block;font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
+.dl span{display:block;margin-top:3px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;color:var(--mut);letter-spacing:.02em}
+.dl.alt{border-left-color:var(--instr)}
+.dl.alt:hover{border-color:var(--instr)}
+
 /* Two doors, and they are not equals: one runs the thing, one explains it. */
 .slrun{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
   gap:var(--s-4);margin:var(--s-6) 0 0}
@@ -225,11 +259,9 @@ page = head("Sky Ledger",
       <tr><td>Ctrl+Shift+L</td><td>click-through &mdash; the panel stops eating clicks</td></tr>
       <tr><td>slider</td><td>opacity, continuous from 15% to 100% rather than fixed steps</td></tr>
     </table>
-    <div class="note warn"><strong>There is no download link here yet.</strong> The overlay builds
-      as a portable Windows executable from the Ledger's own repository
-      (<code>npm run dist</code>), and no release of it has been published anywhere we could link
-      to. Saying so is more useful than a button that goes nowhere. The browser build above is the
-      whole application apart from click-through and real transparency.</div>
+    {DOWNLOADS}
+    <p class="cm">Both carry build {APP['hash']}, the same one served above. Exclusive fullscreen
+      draws over every window including this one &mdash; use Windowed or Borderless.</p>
   </section>
 
   <section class="band">
@@ -249,7 +281,7 @@ page = head("Sky Ledger",
       eqltools.com&rsquo;s <code>sky-core</code>, and reimplemented rather than copied. Two of
       them appear in no client string file at all, so they could only ever have been found by
       reading a real log. Quest data was cross-checked against
-      <a href="https://eqltools.com">eqlegendstools.com</a> and loadoutlegends.com, which agree
+      eqlegendstools.com and loadoutlegends.com, which agree
       independently at {DS['quests']} tests, {DS['turnin_slots']} turn-in slots and {DS['items']} unique items.</div>
   </section>
 

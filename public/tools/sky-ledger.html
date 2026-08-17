@@ -24,6 +24,18 @@
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="../assets/site.css?v=b8d0aec6">
 <style>
+.dlrow{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 10px;max-width:none}
+.dl{flex:1 1 260px;display:block;padding:15px 17px;text-decoration:none;
+  border:1px solid var(--rule2);border-left:3px solid var(--brass);
+  background:var(--surface-2);border-radius:4px;transition:border-color .15s,background .15s}
+.dl:hover{background:#31281a;border-color:var(--brass)}
+.dl b{display:block;font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;
+  text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
+.dl span{display:block;margin-top:3px;font-family:"IBM Plex Mono",monospace;
+  font-size:11.5px;color:var(--mut);letter-spacing:.02em}
+.dl.alt{border-left-color:var(--instr)}
+.dl.alt:hover{border-color:var(--instr)}
+
 /* Two doors, and they are not equals: one runs the thing, one explains it. */
 .slrun{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
   gap:var(--s-4);margin:var(--s-6) 0 0}
@@ -214,11 +226,9 @@
       <tr><td>Ctrl+Shift+L</td><td>click-through &mdash; the panel stops eating clicks</td></tr>
       <tr><td>slider</td><td>opacity, continuous from 15% to 100% rather than fixed steps</td></tr>
     </table>
-    <div class="note warn"><strong>There is no download link here yet.</strong> The overlay builds
-      as a portable Windows executable from the Ledger's own repository
-      (<code>npm run dist</code>), and no release of it has been published anywhere we could link
-      to. Saying so is more useful than a button that goes nowhere. The browser build above is the
-      whole application apart from click-through and real transparency.</div>
+    <p class="dlrow"><a class="dl" href="https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-windows.zip"><b>Download the overlay</b><span>Windows &middot; 100.5 MB &middot; unzip and run, no installer</span></a><a class="dl alt" href="https://github.com/samusmylove47-maker/sky-ledger/releases/download/v1.1.0/SkyLedger-v1.1.0-browser-only.zip"><b>Or the single file</b><span>One HTML page &middot; 0.1 MB &middot; opens in any browser</span></a></p>
+    <p class="cm">Both carry build 856de2c4, the same one served above. Exclusive fullscreen
+      draws over every window including this one &mdash; use Windowed or Borderless.</p>
   </section>
 
   <section class="band">
@@ -238,7 +248,7 @@
       eqltools.com&rsquo;s <code>sky-core</code>, and reimplemented rather than copied. Two of
       them appear in no client string file at all, so they could only ever have been found by
       reading a real log. Quest data was cross-checked against
-      <a href="https://eqltools.com">eqlegendstools.com</a> and loadoutlegends.com, which agree
+      eqlegendstools.com and loadoutlegends.com, which agree
       independently at 95 tests, 222 turn-in slots and 128 unique items.</div>
   </section>
 

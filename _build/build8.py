@@ -536,7 +536,7 @@ page = (head("Plane of Sky",
     <div class="sechead"><div><h2 class="sec">Island 8, in full</h2>
       <p class="lede" style="margin:0">Two bosses on one island, and the only part of the zone
         where the order matters. Reported by the site&rsquo;s owner, who has cleared it about ten
-        times. <span class="tier tc">TIER C</span></p></div></div>
+        times.</p></div></div>
     <ol class="steps8">
       <li><b>Go invisible before you take the portal up.</b> Nothing here sees invis, so you
         arrive unengaged and choose your own opening.</li>
@@ -568,7 +568,7 @@ page = (head("Plane of Sky",
       have played Sky at, so nothing here describes Awakened or above.</div>
     <div class="note"><strong>None of it was one trio.</strong> Every Sky fight in our logs is a
       public pick-up raid of {FIGHTS["attackers_min"]} to {FIGHTS["attackers_max"]} players. The
-      site&rsquo;s owner reports the zone can be soloed <span class="tier tc">TIER C</span>; our
+      site&rsquo;s owner reports the zone can be soloed; our
       thinnest logged fight is {FIGHTS["attackers_min"]}, so that stands unconfirmed.</div>
   </div>
 </section>

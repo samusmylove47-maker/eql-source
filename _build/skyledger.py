@@ -91,6 +91,49 @@ def dataset_counts(repo):
     )
 
 
+# THE PUBLISHED DOWNLOADS.
+#
+# The tool page offered no download until 17 August 2026, because nothing was
+# published anywhere linkable and a button going nowhere is worse than a
+# sentence saying so. A GitHub release exists now, and the page prints its
+# sizes rather than describing them.
+#
+# The sizes are read off the packages in the Ledger's dist/ rather than typed,
+# so they cannot drift from what a reader actually downloads. The URL is a
+# constant because it is an address, not a measurement. On a machine without
+# the Ledger repo the sizes fall back to whatever the committed record already
+# holds, the same way the app copy does.
+RELEASE_BASE = ('https://github.com/samusmylove47-maker/sky-ledger/'
+                'releases/download')
+ASSETS = (('overlay', 'SkyLedger-v{v}-windows.zip'),
+          ('browser', 'SkyLedger-v{v}-browser-only.zip'))
+
+
+def release_info(repo, version):
+    if not version:
+        return None
+    out = dict(tag=f'v{version}',
+               page=('https://github.com/samusmylove47-maker/sky-ledger/'
+                     f'releases/tag/v{version}'))
+    prev = {}
+    try:
+        prev = (json.load(open(OUT, encoding='utf-8')).get('release') or {})
+    except (OSError, ValueError):
+        pass
+    for key, pattern in ASSETS:
+        fname = pattern.format(v=version)
+        out[key] = dict(url=f'{RELEASE_BASE}/v{version}/{fname}', file=fname)
+        path = os.path.join(repo, 'dist', fname) if repo else None
+        if path and os.path.exists(path):
+            out[key]['bytes'] = os.path.getsize(path)
+        elif prev.get(key, {}).get('bytes'):
+            out[key]['bytes'] = prev[key]['bytes']
+        if out[key].get('bytes'):
+            out[key]['mb'] = round(out[key]['bytes'] / 1e6, 1)
+    return out
+
+
+
 def main():
     repo = find_repo()
     if repo is None:
@@ -141,6 +184,7 @@ def main():
         app=dict(file=name, hash=short, sha1=sha1, bytes=len(blob),
                  kb=round(len(blob) / 1024)),
         dataset=dataset_counts(repo),
+        release=release_info(repo, version),
     )
     json.dump(rec, open(OUT, 'w', encoding='utf-8', newline='\n'),
               indent=1, sort_keys=True)

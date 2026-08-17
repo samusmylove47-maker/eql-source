@@ -183,11 +183,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="foot"><span>Paste and read</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
-    <div class="note sig"><strong>Where these stop, and who to go to next.</strong> For client-mined numbers,
-      spellbook diffing, AA planning and 3D zone geometry, <a href="https://eqltools.com" style="color:var(--bone)">EQL
-      Tools</a> is excellent and does all of it properly. We link rather than ship a worse copy. <strong>Sky Ledger
-      parses a combat log, which is their territory</strong>: the log-line cases that break naive counting were
-      <a href="sky-ledger.html">identified by sowoky</a> in their <code>sky-core</code> and reimplemented, not copied.</div>
+    <div class="note sig"><strong>Where these stop.</strong> Client-mined numbers, spellbook
+      diffing, AA planning and 3D zone geometry are not ours and are not on the roadmap. We build
+      where we hold something nobody else does &mdash; quests, factions, routes, measured play, and
+      a Sky tracker that knows a turn-in piece can only be spent once.</div>
     <div class="note sig"><strong>The race tracker and the calculator share one save.</strong> A race you mark unlocked
       in the tracker is available in the calculator straight away. Sky Ledger keeps its own, because what it holds is
       read from your log rather than ticked.</div>
@@ -285,12 +284,6 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
           character, parsed rather than remembered. <strong>It outranks every read source for what it directly
           measures, and generalises to nothing beyond its stated conditions.</strong> Always published with trio,
           level, zone, difficulty, date and sample size. One session is a sample, not a rate.</p></div>
-      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier C &middot; off the ramp</div>
-        <h3 class="t">A named first-hand report</h3>
-        <p class="d">A player saying they played this last night and it did not work the way the wiki says. Not
-          tier M &mdash; nothing was parsed, and recollection is not a log. Not a reading of a document either, so
-          it sits below M and above tier 3. <strong>Our own play reports are tier C, not tier M</strong>; exempting
-          ourselves would corrupt the scale fastest.</p></div>
       <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest read source</div>
         <h3 class="t">Official patch notes</h3>
         <p class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki

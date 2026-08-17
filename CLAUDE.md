@@ -36,14 +36,6 @@ page look less finished.
 
 Higher tiers override lower ones. Always.
 
-**Tier C — a first-hand report, off the numeric ramp.** A named player saying
-"I played this last night and it did not work the way the wiki says". Not tier M
-— nothing was parsed, and recollection is not a log. Not tiers 3–5 — those are
-readings of documents. It sits below M and above 3, and every C claim publishes
-who reported it, when, what would confirm it, and that it has not been.
-**Our own play reports are Tier C, not Tier M**; exempting ourselves would
-corrupt the scale fastest. Full handling in `docs/SOURCES.md`.
-
 0. **Measured combat logs — tier M.** First-hand instrument data from our own
    play: what happened, in the live game, on a dated session, to a named
    character. Parsed by `_build/logstats.py` into `assets/measured.json`.
@@ -233,20 +225,13 @@ neither was true. Unreliable in both directions. Mark them.
 - **New Sebilis / New Sebilisian Expedition content is out of scope** for the
   dungeon plates. The one exception is the Iksar race unlock, which requires
   that faction and is part of the race tracker.
-- **Do not clone eqltools.com.** Client-mined data and 3D zone geometry we
-  cannot match. Our layer is quests, factions, routes and tactics. Link to them
-  rather than shipping worse copies. `docs/BACKLOG.md` lists what not to build.
+- **Do not ship a worse copy of something that already exists.** Where another
+  tool holds client-mined data or geometry we cannot match, link to it rather
+  than half-rebuilding it. `docs/BACKLOG.md` lists what not to build.
 
-  **Log parsing came off that list on 17 August 2026, deliberately.** The rule
-  named it because a worse copy of someone else's parser helps nobody. What
-  shipped is not a copy: the Sky Ledger is the collaborator's own build, it
-  reads the player's own log on their own machine and uploads nothing, and it
-  holds a property no rival has — a turn-in piece can only be spent once, so
-  one Djinni War Blade does not make three quests ready.
-
-  The test the rule was really asking is unchanged, and it is the one to apply
-  next time: **would ours be worse than the thing we would be cloning?** Where
-  the answer is yes, link out. Where we hold something they do not, ship it.
+  The test is whether ours would be worse. Where we hold something nobody else
+  does &mdash; the Sky Ledger knowing a turn-in piece can only be spent once, and
+  refusing a drop rate it cannot measure &mdash; we ship it.
 
 ---
 
