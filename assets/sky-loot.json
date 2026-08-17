@@ -1411,80 +1411,7 @@
    "melee_landed": 0,
    "exp_pct_per_kill": 0.456,
    "single_observation": false,
-   "loot": [
-    {
-     "item": "Efreeti Magi Staff",
-     "n": 3
-    },
-    {
-     "item": "Bracelet of Quiescence",
-     "n": 2
-    },
-    {
-     "item": "Efreeti Mace",
-     "n": 2
-    },
-    {
-     "item": "White Satin Gloves",
-     "n": 2
-    },
-    {
-     "item": "Efreeti Wind Staff",
-     "n": 2
-    },
-    {
-     "item": "Efreeti Belt",
-     "n": 2
-    },
-    {
-     "item": "Efreeti War Staff",
-     "n": 1
-    },
-    {
-     "item": "Stein of Flowing Ichor",
-     "n": 1
-    },
-    {
-     "item": "Belt of Concordance",
-     "n": 1
-    },
-    {
-     "item": "Golden Efreeti Vambraces",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Battle Axe",
-     "n": 1
-    },
-    {
-     "item": "Bracelet of Exertion",
-     "n": 1
-    },
-    {
-     "item": "Efreeti Statuette",
-     "n": 1
-    },
-    {
-     "item": "Weight of the Gods",
-     "n": 1
-    },
-    {
-     "item": "Symbol of Marr",
-     "n": 1
-    },
-    {
-     "item": "Efreeti War Axe",
-     "n": 1
-    },
-    {
-     "item": "Efreeti War Horn",
-     "n": 1
-    },
-    {
-     "item": "Belt of Iniquity",
-     "n": 1
-    }
-   ]
+   "loot": []
   },
   {
    "boss": "The Spiroc Lord",
@@ -1607,6 +1534,8 @@
   }
  ],
  "looted_but_unfought": [
+  "Heart harpie",
+  "The Hand of Veeshan",
   "The Spiroc Guardian"
  ],
  "keys": [
@@ -1674,7 +1603,7 @@
    "Efreeti Wind Staff": 1,
    "Efreeti Mace": 1
   },
-  "the Hand of Veeshan": {
+  "The Hand of Veeshan": {
    "Efreeti Magi Staff": 3,
    "Efreeti Mace": 2,
    "Efreeti Wind Staff": 2,
@@ -1706,28 +1635,28 @@
  },
  "wind_rune_sources": {
   "Wind Rune Azia": [
+   "A crystaline cloud",
+   "An essence carrier",
    "Overseer of Air",
    "Protector of Sky",
-   "a crystaline cloud",
-   "an azarack",
-   "an essence carrier"
+   "an azarack"
   ],
   "Wind Rune Beza": [
+   "A heartsbane drake",
+   "An azarack",
    "Bizazzzt",
    "Bzzzt",
    "Noble Dojorn",
    "Overseer of Air",
    "Protector of Sky",
-   "a heartsbane drake",
-   "an azarack",
    "an essence tamer"
   ],
   "Wind Rune Caza": [
+   "An azarack",
    "Bazzzazzt",
    "Bzzazzt",
    "Protector of Sky",
    "The Spiroc Lord",
-   "an azarack",
    "an essence carrier"
   ],
   "Wind Rune Dena": [
@@ -1737,84 +1666,85 @@
    "an essence tamer"
   ],
   "Wind Rune Ena": [
+   "An essence carrier",
+   "An essence tamer",
    "Bazzzazzt",
    "Bzzazzt",
    "Protector of Sky",
    "The Spiroc Lord",
-   "a blade storm",
-   "an essence carrier",
-   "an essence tamer"
+   "a blade storm"
   ],
   "Wind Rune Fana": [
+   "A windrider drake",
+   "An azarack",
    "Protector of Sky",
-   "Sister of the Spire",
-   "a windrider drake",
-   "an azarack"
+   "Sister of the Spire"
   ],
   "Wind Rune Geza": [
+   "A blade storm",
+   "A heartsbane drake",
+   "An azarack",
    "Bazzt Zzzt",
    "Bazzzazzt",
    "Protector of Sky",
    "The Spiroc Lord",
-   "a blade storm",
-   "a heartsbane drake",
-   "an azarack",
    "an essence carrier"
   ],
   "Wind Rune Heda": [
+   "A spiroc banisher",
+   "An azarack",
    "Bazzt Zzzt",
    "Eye of Veeshan",
    "Overseer of Air",
-   "Protector of Sky",
-   "a spiroc banisher",
-   "an azarack"
+   "Protector of Sky"
   ],
   "Wind Rune Izah": [
+   "A greater sphinx",
+   "A spiroc vanquisher",
+   "An essence carrier",
    "Bazzzazzt",
    "Gorgalosk",
-   "The Spiroc Guardian",
-   "a greater sphinx",
-   "a spiroc vanquisher",
-   "an essence carrier"
+   "The Spiroc Guardian"
   ],
   "Wind Rune Jaka": [
+   "A heartsbane drake",
+   "An azarack",
+   "An essence carrier",
    "Noble Dojorn",
    "Protector of Sky",
    "Sister of the Spire",
    "The Spiroc Guardian",
-   "a heartsbane drake",
-   "an azarack",
-   "an essence carrier"
+   "an azarack"
   ],
   "Wind Rune Kala": [
+   "A heartsbane drake",
+   "A spiroc vanquisher",
+   "An azarack",
    "Bzzzt",
-   "Eye of Veeshan",
-   "a heartsbane drake",
-   "a spiroc vanquisher",
-   "an azarack"
+   "Eye of Veeshan"
   ],
   "Wind Rune Lena": [
-   "heart harpie"
+   "Heart harpie"
   ],
   "Wind Rune Meda": [
-   "Protector of Sky",
-   "a crystaline cloud",
-   "an azarack"
+   "A crystaline cloud",
+   "An azarack",
+   "Protector of Sky"
   ],
   "Wind Rune Neza": [
-   "Protector of Sky",
-   "a blade storm",
-   "a spiroc banisher",
-   "a spiroc walker",
-   "an azarack",
-   "an essence tamer"
+   "A blade storm",
+   "A spiroc banisher",
+   "A spiroc walker",
+   "An azarack",
+   "An essence tamer",
+   "Protector of Sky"
   ],
   "Wind Rune Ozah": [
+   "An azarack",
+   "An essence tamer",
    "Noble Dojorn",
    "Protector of Sky",
-   "a blade storm",
-   "an azarack",
-   "an essence tamer"
+   "a blade storm"
   ]
  },
  "resisted": {

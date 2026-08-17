@@ -35,8 +35,8 @@
    "title": "Drops we have watched happen",
    "description": "Every item we have personally seen drop, the mob it came from, and how many times. Parsed from our own combat logs.",
    "url": "https://eqlsource.com/data/sightings.v1.json",
-   "bytes": 204068,
-   "hash": "3ea40f4b9b974a38"
+   "bytes": 206507,
+   "hash": "1fb7dad3694443ff"
   },
   {
    "name": "zones",
@@ -44,8 +44,8 @@
    "title": "Surveyed dungeons",
    "description": "The zones we have surveyed, with the level band, the experience modifier and how far verification has got.",
    "url": "https://eqlsource.com/data/zones.v1.json",
-   "bytes": 15908,
-   "hash": "0063d82f325bfcfc"
+   "bytes": 15907,
+   "hash": "b3090c2e9982c935"
   },
   {
    "name": "items",

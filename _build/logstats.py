@@ -60,6 +60,56 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 
+def _merge_mob_case(sessions):
+    """One mob type, one entry, whatever case the log wrote it in.
+
+    EverQuest capitalises a creature's name at the start of a line and not in
+    the middle, so "A pledge familiar backstabs YOU" and "You have slain a
+    pledge familiar" name the same thing twice. Every session was carrying both
+    — one holding the swings, the other the loot and the spell list, each
+    looking complete and neither being so.
+
+    In Castle Mistmoore that split 66 real mob types into 121, and the measured
+    section published "113 ordinary mob types" for a zone with about 58. Nobody
+    typed that figure; it was counted off data that had been halved.
+
+    Merged onto the lower-case key and displayed in whichever form the log used
+    first, so no capitalisation is invented. Runs over preserved records too:
+    their raw logs are gone and this is arithmetic on what they already hold,
+    not new information about them.
+    """
+    for s in sessions:
+        mobs = s.get('mobs') or {}
+        if not mobs:
+            continue
+        out, shown = {}, {}
+        for raw, rec in mobs.items():
+            key = raw.lower()
+            shown.setdefault(key, raw)
+            cur = out.get(key)
+            if cur is None:
+                out[key] = dict(rec)
+                continue
+            for f in ('swings', 'landed', 'backstabs'):
+                cur[f] = (cur.get(f) or 0) + (rec.get(f) or 0)
+            for f in ('max', 'backstab_max'):
+                vals = [v for v in (cur.get(f), rec.get(f)) if v is not None]
+                cur[f] = max(vals) if vals else None
+            for f in ('casts', 'loot'):
+                merged = dict(cur.get(f) or {})
+                for k, v in (rec.get(f) or {}).items():
+                    merged[k] = merged.get(k, 0) + v
+                cur[f] = merged
+            # A mean is only meaningful against the hits it was taken over, and
+            # one of the two entries always has none. Keep whichever side
+            # actually landed blows; never average two means.
+            for mean, over in (('avg', 'landed'), ('backstab_avg', 'backstabs')):
+                if (rec.get(over) or 0) > (cur.get(over) or 0) - (rec.get(over) or 0):
+                    if rec.get(mean) is not None:
+                        cur[mean] = rec[mean]
+        s['mobs'] = {shown[k]: v for k, v in out.items()}
+
+
 def _repair_stun_causes(sessions):
     """Move mis-attributed stun causes into an explicit unattributed count.
 
@@ -847,6 +897,7 @@ def build(src):
         if s.get('minutes') is None and s.get('window'):
             start, _, end = (s['window'] or '').partition('-')
             s['minutes'] = _span_minutes(start, end)
+    _merge_mob_case(out)
     _repair_stun_causes(out)
 
     retier(out)

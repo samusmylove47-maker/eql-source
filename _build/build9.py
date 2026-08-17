@@ -208,9 +208,23 @@ def merge(sessions):
     if cav:
         out['caveat'] = cav[0]
 
-    mobs = {}
+    # ONE MOB TYPE, ONE ROW, WHATEVER CASE THE LOG WROTE IT IN.
+    #
+    # The parser records a mob under the capitalisation of the line it came
+    # from: "A deathly usher backstabs YOU" and "You have slain a deathly
+    # usher" are the same creature and were becoming two rows. Across the
+    # Castle Mistmoore sessions that turned 66 real types into 121, and the
+    # measured section published "113 ordinary mob types" for a zone holding
+    # about 58 — a count nobody typed, derived from data that had been split
+    # in half.
+    #
+    # Keyed on the lower-case name; the display name is whichever form the log
+    # used first, so nothing invents a capitalisation the game does not use.
+    mobs, shown = {}, {}
     for s in sessions:
-        for name, d in s['mobs'].items():
+        for raw, d in s['mobs'].items():
+            name = raw.lower()
+            shown.setdefault(name, raw)
             m = mobs.setdefault(name, dict(swings=0, landed=0, avg=None, max=None,
                                            backstabs=0, backstab_avg=None, backstab_max=None,
                                            casts=collections.Counter(), loot=collections.Counter(),
@@ -232,7 +246,8 @@ def merge(sessions):
         m['casts'] = dict(m['casts'].most_common())
         m['loot'] = dict(m['loot'].most_common())
         del m['_dmg'], m['_bdmg']
-    out['mobs'] = mobs
+    # Back to the log's own capitalisation for display.
+    out['mobs'] = {shown[k]: v for k, v in mobs.items()}
     # Unique names, not the sum of per-session counts: the same gargoyle type
     # appearing in both halves of an afternoon is one kind of mob, not two.
     kinds = {k for s in sessions for k in (s.get('kinds') or [])}
