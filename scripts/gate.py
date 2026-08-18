@@ -122,6 +122,56 @@ def page_key(path):
     return path.replace(os.sep, "/").replace("public/", "")
 
 
+# Pages whose length is a function of how much has been CATALOGUED rather than
+# how much has been WRITTEN. The ratchet must bite on writing more and never on
+# recording more — the same argument page_words makes below when it strips the
+# floor plans' own <svg> labels.
+#
+# Everything under items/, named/ and sets/ qualifies. The per-entity pages are
+# one page per item or mob; the three A-Z hubs are the listings of those same
+# entities, and a hub grows every time the catalogue does. sets/index.html is
+# the one that does not look like a listing and is one anyway: 7% of its words
+# sit inside links, which reads as prose until you notice the other 134 table
+# rows of set pieces.
+#
+# This is the whole exemption. Every other page the build ships must carry a
+# ceiling, and adding a fourth directory here means arguing that it is a
+# catalogue, which should be hard.
+CATALOGUE_DIRS = ("items/", "named/", "sets/")
+
+
+def site_pages():
+    """Every page the build ships, as check.py defines that set.
+
+    This mirrors the glob at the top of scripts/check.py, which is the
+    definition. It exists here so scripts/prose_budget.py can enrol exactly the
+    pages the gate will later enforce against — a budget script working from a
+    different page list than the gate is how a page gets enrolled at a weight
+    nobody checks, or checked against a ceiling nobody set.
+    """
+    return sorted(p.replace(os.sep, "/") for p in
+                  glob.glob("public/*.html") + glob.glob("public/*/*.html")
+                  if not os.path.basename(p).startswith("_")
+                  and not p.replace(os.sep, "/").startswith("public/app/"))
+
+
+def governed(key):
+    """True if this page must carry a ceiling in assets/prose-budget.json.
+
+    Lives here and is imported by scripts/prose_budget.py for exactly the
+    reason page_words is: a page enrolled by one rule and enforced by another
+    is a page nobody governs.
+
+    Until 18 Aug 2026 nothing enrolled pages at all. The gate skipped a missing
+    key with `if cap is None: continue`, and prose_budget.py only ever iterated
+    keys that already existed — so a page could be born ungoverned and stay
+    that way, and fourteen were, including three dungeon surveys and a tool
+    page carrying 1,233 words. A ratchet with no enrolment step does not
+    protect the pages it has never heard of.
+    """
+    return not key.startswith(CATALOGUE_DIRS)
+
+
 def page_words(path, key):
     """Words of readable prose on a built page.
 
@@ -425,9 +475,19 @@ def run(pages, fail, warn):
     # alone is not enough: the Eye of Veeshan page badges the number once and
     # then discusses it twice in prose - "unverified for Legends", "the 32,000
     # hit points come from" - and an all-occurrences rule let it through.
+    # "revamp" and "re-measured" joined this vocabulary on 18 Aug 2026. A body
+    # saying a zone was revamped is qualifying every figure on the page, and a
+    # description restating one of those figures flatly is the fault this check
+    # was built for.
+    #
+    # It does not on its own protect the page that prompted it — see 5c. Rule 5
+    # only inspects numbers of three digits or more, and Castle Mistmoore's
+    # description contains none: "20-45" and "22:00" are both under the
+    # threshold. Widening the vocabulary of a check that never looks at the page
+    # is the kind of fix that reads as done and changes nothing.
     HEDGE = re.compile(r"unverified|unconfirmed|disputed|retract|pre-launch|"
                        r"import|not confirmed|cannot be confirmed|we do not|"
-                       r"no longer|superseded", re.I)
+                       r"no longer|superseded|revamp|re-measured", re.I)
     for p in pages:
         h = open(p, encoding="utf-8", errors="replace").read()
         m = re.search(r'<meta name="description" content="([^"]*)"', h)
@@ -582,6 +642,40 @@ def run(pages, fail, warn):
     except (OSError, ValueError, KeyError, ImportError):
         pass          # no plans yet is not a failure; a wrong plan is
 
+    # ---- 5c. a revamped zone must say so on its share card -------------------
+    #
+    # Castle Mistmoore was revamped on 18 Aug 2026. The survey body carried the
+    # note and the dungeon index carried it three times, while the page's own
+    # meta description and og:description still ended "Every figure sourced and
+    # dated." That is the copy that unfurls in a Discord embed, and it is the
+    # one copy a reader cannot correct, click past or scroll below.
+    #
+    # Rule 5 above could not have caught it and still cannot. It inspects
+    # numbers of three digits or more, and this description contains none —
+    # "20-45" and "22:00" are both under that threshold — so the check that
+    # exists to stop metadata asserting what the body hedges was structurally
+    # blind to the page that went stale. Adding vocabulary to it would not have
+    # helped. This asks the question directly: the data says revamped, so the
+    # card has to say revamped.
+    #
+    # Keyed off `revamped` in zones-index.json, so a zone that is revamped
+    # tomorrow is covered the moment the date lands, with no edit here.
+    for z in Z:
+        if not z.get("revamped"):
+            continue
+        page = f"public/dungeons/{z['slug']}.html"
+        if not os.path.exists(page):
+            continue
+        h = open(page, encoding="utf-8", errors="replace").read()
+        for attr in ('<meta name="description" content="([^"]*)"',
+                     '<meta property="og:description" content="([^"]*)"'):
+            m = re.search(attr, h)
+            if m and not re.search(r"revamp|re-measured", m.group(1), re.I):
+                fail(f"{page}: {z['slug']} carries revamped {z['revamped']} in "
+                     f"zones-index.json, but its share description does not say "
+                     f"so — that is the copy a Discord embed keeps")
+                break
+
     # ---- 6. prose may not grow -----------------------------------------------
     #
     # The site reached 67,752 words before anyone measured it. Not one page was
@@ -602,6 +696,15 @@ def run(pages, fail, warn):
             key = p.replace(os.sep, "/").replace("public/", "")
             cap = budget.get(key)
             if cap is None:
+                # A missing key used to mean "unchecked", silently. That is the
+                # one state a ratchet must not have: the pages nobody enrolled
+                # were exactly the pages nobody was watching grow.
+                if governed(key):
+                    fail(f"{key} ships with no ceiling in assets/prose-budget.json, "
+                         f"so its prose is ungoverned. Run "
+                         f"`python3 scripts/prose_budget.py` to enrol it at its "
+                         f"current weight, or add its directory to gate.CATALOGUE_DIRS "
+                         f"and argue there why it is a catalogue")
                 continue
             n = page_words(p, key)
             if n > cap + 40:          # a little slack for a genuine new fact
