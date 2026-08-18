@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `f3c28e5b`** (PR #94, merged — the tip of `main`). Diff
+**This describes commit `5f50d1b4`** (PR #95, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -135,62 +135,95 @@ note.*
 
 ## To the Director
 
-**PR: the 50 Upgrades refresh, and the field-path record that stops it recurring.**
+**PR: the EQL Source Auras band, from Session C's material.**
 
-**The catalogue figure is `counts.items`, and it is 3,663.** The page led with
-3,653 under the label *Items shipped*; 3,653 is `counts.purge.shipped`, what
-survived the era purge. The two were equal while
-`counts.purge.admittedOutsideScrape` was 0, and they diverged by exactly ten
-when the planner admitted ten items on evidence other than era. Both figures
-now appear, saying which is which: the catalogue in the tile, and one sentence
-separating what is here on era from what is here on independent evidence.
+**The ceiling is 787, not 768, and 768 was not reachable.** This is the one
+number in the brief I could not honour, so here is the derivation rather than
+the conclusion.
 
-**Every figure is keyed by the dotted path it was read from**, and
-`_build/build29.py` looks each one up by that path through `fig()`. So the
-upstream field name sits beside the label in the generator where a mismatch is
-visible in a diff, and a path that moves upstream is a build failure rather than
-a plausible wrong number on a published page. `scripts/refresh-upgrades.mjs`
-writes the snapshot and **refuses to write at all if any declared path has
-vanished** — a schema change is precisely the moment a figure quietly becomes a
-different quantity, so it stops rather than leaves a hole. Hand-run, needs the
-network, never in `build.sh`; the read-date is passed in, because it is the day
-a person stood behind the snapshot rather than the day a script ran.
+`index.html` was **657** when I started, not 649. Session C measured against
+`fddcb2ed`; two change-log entries have landed since, and the home page renders
+`ENTRIES[:4]`, so the rolling window got heavier. Their band measurement was
+exact — I reproduce their 136 words to the word — but the base under it moved.
 
-**The refresh surfaced two more faults, both of the same family.**
+| variant | band | index becomes |
+|---|---|---|
+| A, as C wrote it, + the naming edit | 137 | 794 |
+| **B — cut #1 applied (approved)** | **130** | **787** |
+| C — + cut #2 (you overrode this) | 125 | 782 |
+| D — + cut #3 (you refused this) | 119 | 776 |
 
-*The unattributed share was typed as a word.* `<strong>Forty per cent…</strong>`
-sat in the page beside a computed `PCT_UNATTRIBUTED` that nothing used. The
-refresh moved it to 41. A count spelled as a word is the one shape `gate.py`
-check 1 structurally cannot see, because every count rule there matches digits —
-the same hole the dungeon index fell into with "Ten zones, surveyed".
+**Even taking all three cuts lands at 776.** 768 cannot be reached without
+cutting copy you explicitly protected, so I applied the approved cut #1, kept
+the eyebrow and the caption, and raised the ceiling to the measured 787. If you
+want a number closer to 768 it has to come out of the second paragraph, which C
+argued hardest to keep and which I would not cut without you saying so.
 
-*The licence divergence closed from the other end.* We withdrew the planner's
-unsourced `CC BY-SA 4.0` claim and deliberately left the snapshot carrying what
-they claimed, because the difference between what we could stand behind and what
-they asserted was the whole point. Upstream has now withdrawn it too:
-`license.content` is `null` with a note saying it was assumed rather than
-checked. There is no difference left to draw, and the page reads their null.
+**It is a genuine raise, not a `LEDGERS` case — confirmed by reading it, not
+recalling it.** Every one of the eight `LEDGERS` entries matches a *repeating
+row*: `<div class="zrow">`, `<article class="st-entry">`, `<a class="plate">`,
+`<a class="card">`, `<li class="gaterow">`, `<tr>`, `<article class="fzone">`.
+Each exists because a set grows when something is recorded. The Auras band is
+one fixed `<section>` of fixed prose that grows when nothing. Exempting it would
+be exempting writing, which is the only thing the ratchet is for. You were right
+and my reversal yesterday was in the other direction for the right reason.
 
-**The prose ratchet fired, and this time trimming was the right answer.**
-`tools/50-upgrades.html` went to 646 against a 561 ceiling. Unlike the dungeon
-index, this was genuinely writing more, not recording more — my new paragraph
-included two sentences narrating our own mistake, which is diary content on a
-reference page. Cut, and the mechanism sentence deduplicated against the
-paragraph above it. The page now measures **585**, inside the 40-word slack that
-exists for a genuine new fact. No ceiling raised.
+### The video
 
-**One figure I could not verify, raised rather than touched.** The page's meta
-description says "three classes, twenty-three slots". The snapshot holds
-`slots.worn.length` = 18. I cannot reconcile 23 from anything in the planner's
-file, and it is typed rather than derived. Changing it without evidence would be
-inventing a number, so it stands as written and is flagged here.
+Leads, above the prose. `.featgrid` is a single column at every width — there is
+no two-column rule in `site.css` at all — so DOM order is reading order and
+putting the `<figure>` first is what "above" means here. **No CSS change**, so
+`CSS_V` does not re-hash.
 
-**Cross-repo, for whenever you next speak to Session B.** The planner's
-`upstream.datasets` block records our `zones.v1.json` at hash `9ccb68b8…`, which
-is the pre-Mistmoore copy. Ours is now `1c4d0d55…` and carries Mistmoore at
-`partial` with its gate text. Nothing is broken — they will pick it up on their
-next refresh — but if their page states a verification count for our zones, it
-is currently one behind.
+`_build/media.py` needed no change either: it globs `_media/`, so committing the
+two files was enough. They ship as `auras-trailer.5fc3fbbc.mp4` (839 KB) and
+`auras-poster.5c861299.jpg` (175 KB).
+
+Verified in a real browser at both viewports and under reduced motion:
+
+| | video box | `autoplay` | shows |
+|---|---|---|---|
+| 1440x900 | 601x339, 1.77 | present | video |
+| 390x844 | 273x154, 1.77 | **removed** | poster |
+| 1440x900, reduce | 601x339, 1.77 | **removed** | poster |
+
+No `<iframe>` on the page. No `controls` attribute, so no control implying sound
+— Pause is the only one, and the caption says "silent". The encode carries no
+audio stream at all.
+
+### C's copy, untouched except as instructed
+
+The WeakAuras credit, the from-scratch clause, the non-affiliation clause and
+the word "Targeting" are all as written, and `_build/build1.py` now carries a
+comment above the band saying why each is load-bearing, so a later tidying pass
+has to argue with a reason rather than a preference. Cut #1 removed the
+telemetry list only; **"of its own" survives it**, which `CLAIMS.md` §6 flags as
+the load-bearing half of that sentence.
+
+Naming applied: **EQL Source Auras** at first mention. There is no second
+mention in the band, so "Auras" does not appear alone anywhere yet.
+
+### Three things I did, slightly beyond the brief
+
+**`docs/auras/ENCODE.md` now exists.** You referred to it as the asset spec; it
+did not. C's encoding reasoning — CRF 28, 24fps against 30, the 10.9s cut point
+and what is at t=11.25 — was in their HANDOFF note, which is read once. It is a
+spec, so it is filed as one.
+
+**I did not take C's HANDOFF section.** It was written into a structure that
+changed after they branched, and its substance is now in `ENCODE.md` and
+`CLAIMS.md`. Their branch keeps the original.
+
+**No change-log entry.** A band announcing a tool that has not shipped is not a
+correction, a source refresh, or an addition of a claim. When Auras actually
+ships, that is the Addition. Saying so here because it also keeps the ceiling
+arithmetic above honest — an entry would have moved `ENTRIES[:4]` again.
+
+### Recorded, not solved
+
+`tools/50-upgrades.html`'s meta description says **"twenty-three slots"** while
+the snapshot holds `slots.worn.length` = **18**. Left exactly as written.
+Session B has the question.
 
 ---
 

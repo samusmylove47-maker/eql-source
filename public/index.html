@@ -125,6 +125,59 @@
   </div>
 </section>
 
+
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <figure class="feattrailer">
+          <video src="assets/media/auras-trailer.5fc3fbbc.mp4"
+                 poster="assets/media/auras-poster.5c861299.jpg"
+                 width="1600" height="900" autoplay muted loop playsinline
+                 preload="metadata" id="autrailer"
+                 aria-label="A Quick Buff cast landing on screen, and the overlay filling with
+                             fourteen buff icons across the top of the game, each counting
+                             down its own remaining time."></video>
+          <button class="vpause" type="button" id="aupause" aria-controls="autrailer">Pause</button>
+          <figcaption><span>The overlay in play &middot; 9s, silent</span></figcaption>
+        </figure>
+        <div>
+          <p class="eyebrow">Next &middot; <b>reads your own log</b></p>
+          <h2 class="feath">EQL Source Auras</h2>
+          <p class="featlede">It reads your combat log and draws your buffs over the game as
+            icons that count down, so you can see what is about to drop off without opening
+            a window.</p>
+          <p class="featsub">It reads files the client already has: the log it writes as you
+            play, your spellbook, and the game's own spell icons. It does not read or alter
+            the game's memory, inject code into it, or send it input. It makes no network
+            requests of its own.</p>
+          <p class="featsub">The idea is WeakAuras'. The code is not: a from-scratch
+            implementation for EverQuest Legends, sharing no code and no trigger format with
+            it, and neither affiliated with nor endorsed by its authors.</p>
+          <p class="featfoot">Windows. Targeting next Tuesday's maintenance.</p>
+        </div>
+      </div>
+      <script>
+      /* Identical to the Sky Ledger band's, on the same reasoning: the video
+         carries `autoplay` so it works with no script at all, and this only
+         ever takes motion AWAY. Below 700px and under prefers-reduced-motion
+         the poster is what shows, and a tap gets the motion. */
+      (function(){
+        var v=document.getElementById('autrailer'), b=document.getElementById('aupause');
+        if(!v||!b) return;
+        var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function sync(){ b.textContent=v.paused?'Play':'Pause'; }
+        var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
+        if(quiet||small){ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }
+        b.addEventListener('click',function(){ v.paused?v.play():v.pause(); sync(); });
+        v.addEventListener('play',sync); v.addEventListener('pause',sync);
+        sync();
+      })();
+      </script>
+    </div>
+  </div>
+</section>
+
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>

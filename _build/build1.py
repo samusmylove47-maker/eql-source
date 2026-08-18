@@ -238,6 +238,90 @@ feature = f'''
 </section>
 '''
 
+# EQL SOURCE AURAS — the band for the overlay, from Session C's adjudicated copy.
+#
+# THE TEXT IS LIFTED FROM docs/auras/band.html, NOT RETYPED. That file is what
+# the word count was measured against, and every sentence in it is backed claim
+# by claim in docs/auras/CLAIMS.md. Four phrases are load-bearing and are not to
+# be tidied by a later pass:
+#
+#   - "The idea is WeakAuras'" is a credit the site owes an influence. It is a
+#     claim about design intent, sourced to the author rather than to the code.
+#   - the from-scratch clause and the not-affiliated clause are what keep the
+#     credit from reading as a claim of lineage or endorsement.
+#   - "Targeting" is a claim about an intention rather than an event. The
+#     project's own handoff says "dev build only, nothing shipped", so
+#     "releasing" would be false. It must never be softened into a promise.
+#   - "of its own" in the network sentence scopes the claim to the application's
+#     code rather than to the Electron runtime beneath it.
+#
+# THE VIDEO LEADS. .featgrid is a single column at every width, so DOM order is
+# reading order and the figure sits above the prose. That is deliberate: the
+# overlay is a thing you have to see to understand, and the sentence explaining
+# it lands better after you have watched it happen.
+#
+# NO IFRAME, EVER. An embed would make this page issue a third-party request on
+# load, which is the one thing every claim on this site about running locally
+# depends on not doing. The file is served from our own origin under a content
+# hash by _build/media.py, exactly as the Sky Ledger trailer is.
+#
+# NO CONTROL IMPLYING SOUND. The encode carries no audio stream at all, so a
+# mute button would offer to silence something that does not exist. Pause is the
+# only control, and the caption says "silent" so a reader knows before they ask.
+auras = f'''
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <figure class="feattrailer">
+          <video src="assets/media/{MEDIA['auras-trailer']['file']}"
+                 poster="assets/media/{MEDIA['auras-poster']['file']}"
+                 width="1600" height="900" autoplay muted loop playsinline
+                 preload="metadata" id="autrailer"
+                 aria-label="A Quick Buff cast landing on screen, and the overlay filling with
+                             fourteen buff icons across the top of the game, each counting
+                             down its own remaining time."></video>
+          <button class="vpause" type="button" id="aupause" aria-controls="autrailer">Pause</button>
+          <figcaption><span>The overlay in play &middot; 9s, silent</span></figcaption>
+        </figure>
+        <div>
+          <p class="eyebrow">Next &middot; <b>reads your own log</b></p>
+          <h2 class="feath">EQL Source Auras</h2>
+          <p class="featlede">It reads your combat log and draws your buffs over the game as
+            icons that count down, so you can see what is about to drop off without opening
+            a window.</p>
+          <p class="featsub">It reads files the client already has: the log it writes as you
+            play, your spellbook, and the game's own spell icons. It does not read or alter
+            the game's memory, inject code into it, or send it input. It makes no network
+            requests of its own.</p>
+          <p class="featsub">The idea is WeakAuras'. The code is not: a from-scratch
+            implementation for EverQuest Legends, sharing no code and no trigger format with
+            it, and neither affiliated with nor endorsed by its authors.</p>
+          <p class="featfoot">Windows. Targeting next Tuesday's maintenance.</p>
+        </div>
+      </div>
+      <script>
+      /* Identical to the Sky Ledger band's, on the same reasoning: the video
+         carries `autoplay` so it works with no script at all, and this only
+         ever takes motion AWAY. Below 700px and under prefers-reduced-motion
+         the poster is what shows, and a tap gets the motion. */
+      (function(){{
+        var v=document.getElementById('autrailer'), b=document.getElementById('aupause');
+        if(!v||!b) return;
+        var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
+        var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
+        if(quiet||small){{ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }}
+        b.addEventListener('click',function(){{ v.paused?v.play():v.pause(); sync(); }});
+        v.addEventListener('play',sync); v.addEventListener('pause',sync);
+        sync();
+      }})();
+      </script>
+    </div>
+  </div>
+</section>
+''' if MEDIA.get('auras-trailer') and MEDIA.get('auras-poster') else ''
+
 from changelog import ENTRIES, TONE
 
 recent = "\n".join(
@@ -264,6 +348,7 @@ home = head("Accurate, sourced and kept current",
   {hero_src}
 </section>
 {feature}
+{auras}
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>
