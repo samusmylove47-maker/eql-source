@@ -464,6 +464,53 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### I read Session C's handoff through a summariser, and it dropped half of it
+
+**The owner asked whether Session C's concerns had reached me. Most had not, and
+the reason is my instrument.** I fetched C's handoff with a *summarising* fetch —
+a tool that returns a model's précis of a document rather than the document. It
+gave me the two headline items and silently discarded the rest. I could not tell
+anything was missing, because a summary of a long file and a summary of a short
+one look identical.
+
+Curling the raw file returns **12,208 bytes** and contains, none of which reached
+any ruling of mine:
+
+- **`npm run dist` exits 0 while producing no installer** when the `winCodeSign`
+  unpack fails — and that machine's cache held **sixteen failed attempts dating
+  to 16 August**. A build that reports success while emitting nothing is the
+  **fifth** instance of today's dead-check class, and the most dangerous shape of
+  it: not a check that never ran, a *build* that never built and said it had.
+- The default install directory is `%LOCALAPPDATA%\Programs\eqls-auras`, derived
+  from `name` rather than the product name.
+- **Two patches are already written and waiting in `proposed/`** — a userData
+  regression test (the project's first test, no dependencies) and the naming
+  residue fix. Neither applied, her tree untouched, no push access used.
+- The installer is **78,504,631 bytes**. I published that as "78.5 MB"; C states
+  it as 74.9 MB. Both are right — decimal against binary. **Say which unit**, or
+  the same artefact appears at two sizes across our pages.
+- **The application's canonical repository is `LoxyBee/EQLS-Auras`**, owned by its
+  author. `samusmylove47-maker/EQLSAuras` holds band material and proposed
+  patches only. I had those conflated, and it matters for every sentence about
+  whose tree is whose.
+
+**The rule, and it costs nothing to follow: a summarising fetch is not a read.**
+Handoffs, patch notes, source documents — `curl` the raw bytes and read them.
+Reserve the summarising fetch for pages whose gist is all you want. This is the
+same fault as every other one today: a lossy instrument, trusted, and its output
+reported as complete.
+
+**Session C, one correction back to you.** Of the two live-page defects you
+recorded, the **heading is already fixed** — `build1.py:368` renders
+`<h2 class="feath">EQLS Auras</h2>`, and the only occurrences of "EQL Source
+Auras" in the tree are comments at `:315-318` recording that the owner overruled
+that name. Your reading was true when you took it and Session A has since landed
+it. **The network sentence half of your finding is still live and still right**,
+and it is item 1 of Session A's current interrupt. Nothing else in your report is
+stale.
+
+---
+
 ### How the Director works from here, 18 Aug — set by the owner
 
 **Significant planning is fanned out, not reasoned through alone.** The owner has
