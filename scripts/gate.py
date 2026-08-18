@@ -775,3 +775,35 @@ def run(pages, fail, warn):
                 if f"tools/{slug}.html" not in foot:
                     fail(f"{p}: footer does not link tools/{slug}.html")
                     break
+
+    # ---- 7. the sitemap and the canonical tags must name the same address ----
+    #
+    # They disagreed on every page until 18 Aug 2026, in two ways at once. The
+    # sitemap wrote {domain}/{path}.html for all 716 entries, and the ten index
+    # pages declared a canonical of <dir>/index. Both forms 307 to the address
+    # the page is actually served at, so nothing was broken for a reader — but
+    # a sitemap of redirecting URLs is indexed as redirects rather than as
+    # pages, and a canonical that redirects is a page naming an address that is
+    # not its own, which is the one thing a canonical exists not to do.
+    #
+    # Both derive from _partials.public_path() now. This check exists because
+    # one rule with two consumers only stays one rule while something compares
+    # what the two of them actually wrote.
+    try:
+        sm = open("public/sitemap.xml", encoding="utf-8").read()
+    except OSError:
+        sm = None
+        warn("public/sitemap.xml is missing — sitemap/canonical agreement is unchecked")
+    if sm is not None:
+        locs = set(re.findall(r"<loc>([^<]*)</loc>", sm))
+        for bad in sorted(l for l in locs if l.endswith(".html")):
+            fail(f"public/sitemap.xml lists {bad}, which 307-redirects. List the "
+                 f"address the page is served at, the one its canonical names")
+            break
+        for p in pages:
+            h = open(p, encoding="utf-8", errors="replace").read()
+            m = re.search(r'<link rel="canonical" href="([^"]*)"', h)
+            if m and m.group(1) not in locs:
+                fail(f"{p} declares canonical {m.group(1)} but the sitemap does not "
+                     f"list that address — two answers to one question, and a "
+                     f"search engine picks the wrong one")

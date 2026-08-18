@@ -103,6 +103,39 @@ def wordnum(n):
 SITE_URL = _cfg.get("site_url", "").rstrip("/")
 
 
+def public_path(rel):
+    """The address a built page is actually served at, relative to the site root.
+
+    ONE RULE, TWO CONSUMERS. head() writes it into <link rel="canonical"> and
+    _build/sitemap.py writes it into <loc>. They disagreed until 18 Aug 2026,
+    and both were wrong in different ways:
+
+      - the sitemap listed 716 URLs ending .html, every one of which 307s;
+      - the ten index pages named a canonical that also 307s, because their
+        generators pass canon="dungeons/index" and the host serves that at
+        /dungeons/.
+
+    A canonical that redirects is a page telling a search engine its own address
+    is somewhere else, which is the one thing a canonical exists not to say.
+    Nothing was broken for a reader — every form resolves — but a sitemap of
+    redirecting URLs is indexed as redirects rather than as pages.
+
+    Accepts either a built path (`public/dungeons/index.html`, `index.html`) or
+    a bare canon string (`dungeons/index`), because the two callers hold
+    different things and normalising here means neither has to remember.
+    """
+    rel = rel.replace(os.sep, "/")
+    if rel.startswith("public/"):
+        rel = rel[len("public/"):]
+    if rel.endswith(".html"):
+        rel = rel[:-len(".html")]
+    if rel == "index":
+        return ""                       # the site root, served at /
+    if rel.endswith("/index"):
+        return rel[:-len("index")]      # keeps the trailing slash: dungeons/
+    return rel
+
+
 def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
     """Page head.
 
@@ -125,7 +158,9 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
         f'<meta name="twitter:image" content="{card}">',
     ]
     if canon is not None and SITE_URL:
-        lines.append(f'<link rel="canonical" href="{SITE_URL}/{canon}">')
+        # Normalised rather than trusted. Every generator passes its own canon
+        # string and ten of them passed "<dir>/index", which the host 307s.
+        lines.append(f'<link rel="canonical" href="{SITE_URL}/{public_path(canon)}">')
     # The archive republishes coordinates we have since established are wrong.
     # Keeping it verbatim is right; letting a search engine land a reader on it
     # is not - "kept verbatim" was allowed to override "marked on sight".

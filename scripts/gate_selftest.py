@@ -297,6 +297,17 @@ CASES = [
                            if k != "tools/sky-ledger.html"},
                           indent=1, sort_keys=True)),
 
+    # The sitemap and the canonical tags disagreed on every page until 18 Aug
+    # 2026 and nothing noticed, because each was internally consistent and only
+    # wrong against the other. Both derive from _partials.public_path() now, and
+    # this proves the comparison between them is alive: reverting one entry to
+    # the .html form it used to carry must fail the build.
+    ("a sitemap entry that contradicts the page's own canonical",
+     "the sitemap does not list that address",
+     "public/sitemap.xml",
+     lambda t: t.replace("<loc>https://eqlsource.com/dungeons/najena</loc>",
+                         "<loc>https://eqlsource.com/dungeons/najena.html</loc>")),
+
     # A count typed as a word rather than printed from the ledger. The dungeon
     # index headline read "Ten zones, surveyed" while the ledger held thirteen,
     # and nothing caught it because every count check matched digits only.
