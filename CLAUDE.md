@@ -441,6 +441,15 @@ the plates page render the count from that field. The site once published "8 of
 and the highest number reached the front page. Never derive a count from "has a
 date in the field".
 
+**This repo requires Python 3.12 or newer.** On 3.11 `build.sh` dies with
+`SyntaxError: unterminated string literal` in `_build/build24.py` — a file with
+nothing to do with whatever you were changing, which is what makes it cost an
+hour. `build17.py` and `build24.py` both nest same-type quotes inside f-string
+replacement fields, legal from 3.12 under PEP 701 and a syntax error before it.
+Two of fifty-two generators are affected, so it bisects clean to a date long
+before the failure and reads like a fault that has been there for weeks. It is
+a version floor, not a bug. Found 18 Aug 2026 by a session in a 3.11 container.
+
 **On Windows**, `build.sh` needs a `python3` on PATH; Windows ships only
 `python`. Any new `open()` in a generator must specify `encoding='utf-8'` and,
 for writes, `newline='\n'` — the platform defaults corrupt the output.

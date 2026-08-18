@@ -330,7 +330,7 @@
     "zem": 97,
     "plate": 10,
     "verify_level": "partial",
-    "verify_gate": "Gate 3 is still open. The 18 August 2026 revamp changed named spawns, named loot and aggro range, and nobody has checked whether the mesh moved with them - every coordinate here was landed against a floor plan read before the zone changed. Gates 1 and 2 are about sourcing and stand: every figure was checked against source on 31 July 2026, and that check is still good for what it covered. One logged session in the revamped zone closes it.",
+    "verify_gate": "Gates 1 and 2 stand on sourcing, checked 31 July 2026. Gate 3 was opened on 18 August when the revamp changed named spawns, named loot and aggro range, and it is now PARTLY closed: the zone has been re-measured post-revamp at two difficulty tiers, so the figures below are current rather than inherited. What is still open is narrower than it was - nobody has re-derived the floor plan from the game meshes since the revamp, so the plotted coordinates are checked against a mesh read before the zone changed. Re-running _build/geometry.py on a machine with the game installed closes it.",
     "coverage": {
      "bosses": {
       "level": "sourced",
@@ -338,11 +338,11 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "40 items recorded dropping here"
+      "detail": "41 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "measured at D1 only"
+      "detail": "measured at D1, D2"
      },
      "inherited": {
       "level": "sourced",
@@ -350,7 +350,7 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 67 mob types measured"
+      "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 70 mob types measured"
      }
     },
     "coverage_score": 8,
@@ -367,15 +367,15 @@
     "coverage": {
      "bosses": {
       "level": "measured",
-      "detail": "5 bosses measured, tiers D2–D4"
+      "detail": "5 bosses measured, tiers D0–D4"
      },
      "loot": {
       "level": "measured",
-      "detail": "56 items recorded dropping here"
+      "detail": "72 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
-      "detail": "measured at D1, D2, D3, D4"
+      "detail": "measured at D0, D1, D2, D3, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -383,7 +383,7 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 82.5, respawn not recorded, 47 mob types measured"
+      "detail": "ZEM 82.5, respawn not recorded, 50 mob types measured"
      }
     },
     "coverage_score": 9,
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "77dce9a44e4fd225"
+ "hash": "231b62d3fac2f96e"
 }

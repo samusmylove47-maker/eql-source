@@ -1264,7 +1264,7 @@
   "The Castle of Mistmoore": {
    "difficulty": 1,
    "date": "08 Aug 2026",
-   "kills": 1018,
+   "kills": 1120,
    "per_mob": {
     "a pledge familiar": {
      "Mayong Mistmoore": -5,
@@ -1629,6 +1629,13 @@
     "Shadowed Men",
     "Temple of Solusek Ro"
    ],
+   "capped": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
    "factions_seen": [
     "Agents of Mistmoore",
     "King Tearis Thex",
@@ -2084,33 +2091,10 @@
    "damages": [],
    "helps": []
   },
-  "Northern Felwithe": {
-   "difficulty": 0,
-   "date": "11 Aug 2026",
-   "kills": 14,
-   "per_mob": {},
-   "factions": [],
-   "capped": {
-    "Minions of Underfoot": "down"
-   },
-   "factions_seen": [
-    "Minions of Underfoot"
-   ],
-   "falling": [],
-   "rising": [],
-   "capped_up": [],
-   "capped_down": [
-    "Minions of Underfoot"
-   ],
-   "steps_undone": [],
-   "steps_helped": [],
-   "damages": [],
-   "helps": []
-  },
   "The Plane of Fear": {
    "difficulty": 4,
    "date": "12 Aug 2026",
-   "kills": 270,
+   "kills": 420,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2126,7 +2110,7 @@
   "The Plane of Fear - Group": {
    "difficulty": 2,
    "date": "12 Aug 2026",
-   "kills": 21,
+   "kills": 26,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2195,7 +2179,7 @@
   "The Rathe Mountains": {
    "difficulty": 0,
    "date": "12 Aug 2026",
-   "kills": 128,
+   "kills": 144,
    "per_mob": {},
    "factions": [],
    "factions_seen": [
@@ -2283,6 +2267,65 @@
    "steps_undone": [],
    "steps_helped": [],
    "damages": [],
+   "helps": []
+  },
+  "Nektulos Forest": {
+   "difficulty": 0,
+   "date": "18 Aug 2026",
+   "kills": 1,
+   "per_mob": {
+    "Guard D`Zel": {
+     "Dreadguard Outer": -100,
+     "Dark Bargainers": -15,
+     "Indigo Brotherhood": -10,
+     "Dreadguard Inner": -25
+    }
+   },
+   "factions": [
+    "Dark Bargainers",
+    "Dreadguard Inner",
+    "Dreadguard Outer",
+    "Indigo Brotherhood"
+   ],
+   "capped": {
+    "Emerald Warriors": "up"
+   },
+   "factions_seen": [
+    "Dark Bargainers",
+    "Dreadguard Inner",
+    "Dreadguard Outer",
+    "Emerald Warriors",
+    "Indigo Brotherhood"
+   ],
+   "falling": [
+    "Dark Bargainers",
+    "Dreadguard Inner",
+    "Dreadguard Outer",
+    "Indigo Brotherhood"
+   ],
+   "rising": [],
+   "capped_up": [
+    "Emerald Warriors"
+   ],
+   "capped_down": [],
+   "steps_undone": [
+    {
+     "step": "redwine",
+     "name": "Bottle of Red Wine",
+     "factions": [
+      "Dark Bargainers",
+      "Dreadguard Inner",
+      "Dreadguard Outer"
+     ],
+     "races": [
+      "Dark Elf"
+     ]
+    }
+   ],
+   "steps_helped": [],
+   "damages": [
+    "Dark Elf"
+   ],
    "helps": []
   }
  }

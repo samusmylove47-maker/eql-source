@@ -203,12 +203,12 @@
   ],
   "verified": "2026-07-31",
   "verify_level": "partial",
-  "verify_gate": "Gate 3 is still open. The 18 August 2026 revamp changed named spawns, named loot and aggro range, and nobody has checked whether the mesh moved with them - every coordinate here was landed against a floor plan read before the zone changed. Gates 1 and 2 are about sourcing and stand: every figure was checked against source on 31 July 2026, and that check is still good for what it covered. One logged session in the revamped zone closes it.",
+  "verify_gate": "Gates 1 and 2 stand on sourcing, checked 31 July 2026. Gate 3 was opened on 18 August when the revamp changed named spawns, named loot and aggro range, and it is now PARTLY closed: the zone has been re-measured post-revamp at two difficulty tiers, so the figures below are current rather than inherited. What is still open is narrower than it was - nobody has re-derived the floor plan from the game meshes since the revamp, so the plotted coordinates are checked against a mesh read before the zone changed. Re-running _build/geometry.py on a machine with the game installed closes it.",
   "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
   "placeholders_removed": true,
   "placeholders_source": "Official patch notes, 28 July 2026: &ldquo;Removed placeholders from and lowered maximum respawn times in several dungeons&rdquo;, naming six by name &mdash; The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The Warrens and Castle Mistmoore. This zone is one of the six. Read in full and stored verbatim on 18 August 2026.",
   "revamped": "18 August 2026",
-  "revamped_note": "Measured before the 18 August 2026 revamp. The zone has changed since; these figures stand for the zone as it was, and nothing here has been re-measured against the new one.",
+  "revamped_note": "Measured on both sides of the 18 August 2026 revamp, and the two are kept apart. The section below describes the zone AFTER the revamp: two logged sessions on 18 August, at Awakened and Adaptive, with the pre-revamp corpus held back rather than averaged in. build9.py splits sessions on the revamp date so the eras cannot merge.",
   "placeholders_source_id": "patch-2026-07-28"
  },
  {
