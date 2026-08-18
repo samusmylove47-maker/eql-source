@@ -61065,9 +61065,9 @@
   "difficulty_label_agrees": null,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "16:48-18:54",
+  "window": "16:48-19:23",
   "stamps": [],
-  "minutes": 126,
+  "minutes": 155,
   "kills": 248,
   "distinct": 54,
   "kinds": [
@@ -61183,16 +61183,16 @@
    "a spiritish ancille": 1
   },
   "drop_tiers": {
-   "1": 107,
-   "2": 18,
+   "1": 108,
+   "2": 19,
    "3": 1
   },
   "faction": {
-   "Mayong Mistmoore": 365,
-   "King Tearis Thex": 365,
-   "Agents of Mistmoore": 365,
-   "League of Antonican Bards": 365,
-   "Ring of Scale": 365,
+   "Mayong Mistmoore": 371,
+   "King Tearis Thex": 371,
+   "Agents of Mistmoore": 371,
+   "League of Antonican Bards": 371,
+   "Ring of Scale": 371,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
@@ -61972,8 +61972,8 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Shield of Thistles": 3,
-     "Skin like Rock": 2
+     "Shield of Thistles": 9,
+     "Skin like Rock": 4
     },
     "loot": {
      "Stone Marker": 2,
@@ -62420,8 +62420,8 @@
     "backstab_max": null,
     "casts": {
      "Healing": 41,
-     "Symbol of Transal": 15,
-     "Center": 10,
+     "Symbol of Transal": 18,
+     "Center": 12,
      "Echoing Light": 10,
      "Holy Might": 9,
      "Root": 4,
@@ -62446,9 +62446,10 @@
     "loot": {
      "Visage of the Gargoyle +1": 4,
      "Rune of Fortune": 2,
+     "Visage of the Gargoyle +2": 2,
      "Fine Steel Spear +1": 1,
-     "Visage of the Gargoyle +2": 1,
-     "Fine Steel Rapier +1": 1
+     "Fine Steel Rapier +1": 1,
+     "Fine Steel Morning Star +1": 1
     }
    },
    "A sneering gargoyle": {
@@ -62502,14 +62503,15 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 7,
-     "Instill": 4,
+     "Lightning Bolt": 10,
+     "Instill": 8,
      "Tishan's Clash": 1,
      "Shielding": 1,
      "Leatherskin": 1
     },
     "loot": {
-     "Flame Agate": 1
+     "Flame Agate": 1,
+     "Topaz": 1
     }
    },
    "A shadowy sage": {
@@ -62966,8 +62968,8 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 10,
-     "Instill": 4,
+     "Lightning Bolt": 11,
+     "Instill": 6,
      "Lesser Shielding": 3
     },
     "loot": {
