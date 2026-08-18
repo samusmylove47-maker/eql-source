@@ -338,6 +338,24 @@ The one thing already settled: **the band heading is "EQLS Auras" and stays
 there** until the family lands. `_build/build1.py` carries the reasoning above
 the band so a tidying pass cannot expand it back.
 
+**What the mark means, set by the owner 18 Aug 2026.** The canonical reading of
+`=` is **"this is measured"**. That is not decoration attached afterwards; it is
+the same proposition the site already leads with, and the home page headline
+states it in words: *Norrath, measured.*
+
+Which makes the mark and the headline one idea in two forms, and it sets the
+order of work when the family lands. **The masthead tagline — `Survey` in
+`site.config.json` — is the third thing to reconsider**, and deliberately not
+the first. The hero eyebrow was cut on 18 August for saying the same thing a
+third time; once the mark exists, the tagline becomes the only element still
+competing with it.
+
+It is last for a practical reason as well as an editorial one: the tagline
+renders on all 716 pages through `_partials.py`, so changing it re-renders the
+whole site. That is a decision to take once, with the mark settled and the tool
+names settled, rather than a string to adjust while the family is still being
+drawn.
+
 ---
 
 ## P5 - The home page's prose ceiling is coupled to the change log
