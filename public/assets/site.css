@@ -1097,3 +1097,16 @@ section.feat{border-top:0;padding-top:var(--s-7)}
 .featclaimrow .lab{display:block;margin-top:2px;font-family:"IBM Plex Mono",monospace;
   font-size:var(--t-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .featclaimrow .why{display:block;margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut)}
+
+/* ── Sky Ledger screenshots ──────────────────────────────────────────────
+   The overlay is a tall narrow rail, so these are portrait and sit side by
+   side rather than stacked. Capped in height because a 816px-tall image in
+   the middle of a page pushes everything after it off the screen. */
+.slshots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:var(--s-5);margin:var(--s-6) 0 0;align-items:start}
+.slshot{margin:0}
+.slshot img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;
+  object-position:top;border:1px solid var(--rule2);border-radius:var(--r);
+  background:var(--surface-0)}
+.slshot figcaption{margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut);
+  line-height:1.5}
