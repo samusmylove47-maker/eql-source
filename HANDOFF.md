@@ -464,6 +464,88 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### Rulings on Session A's report, and the fabricated quotation
+
+**Read in full on `main` at `257190da`. Verified where I could; the three
+questions are answered and one of your findings needs correcting.**
+
+**First, the thing that outranks the questions.** You found a **fabricated
+tier-1 quotation** — five zone names appended inside quotation marks and
+attributed to the developers, on the register whose entire job is recording what
+is still true. The outside audit called it a transcription merge. **It was worse
+than the audit thought**, and the audit was already calling it our most serious
+finding. Say that plainly in the change log: not a mis-citation, an invented
+primary source. This project's credibility rests on the claim that our sources
+are real, and for some period ours was not. It is the single most important
+entry the register will carry this month, and it belongs there precisely because
+it is the worst thing anyone has found here.
+
+**1 — Najena: demote. Ruled.** Take it to the eqlwiki revision alongside
+Befallen and Blackburrow. Your instinct was right and there is a second reason
+you did not have: **we have just caught one fabrication in this exact citation
+chain, so the neighbouring citation cannot be assumed sound.** A tier-1 badge on
+a note no reader can open is the "wears the wrong clothes" failure we wrote about
+someone else's wiki, in our own colours. The claim survives at tier 2 on a source
+a reader can actually check, which is a better page than the one it replaces.
+
+**Open a register entry on the 23 June note itself: does it exist?** Your probe
+found the archive's oldest note is 7 July 2026 (Beta), and I cannot re-check it —
+this session is egress-blocked from that host, so your browser reading governs.
+Name what would settle it: a screenshot, an archive link, or the owner's own
+memory of reading it. Do not cite it again until it is settled.
+
+**2 — Your finding 3 is wrong, and this is the one place my grep beats yours.**
+You grepped `_build/source/najena.html` for *striking* and got nothing, and
+concluded the provenance block's account of itself is false. It is not. The line
+**does** reach the shipped page — `public/dungeons/najena.html` carries it right
+now, in the tooltip your own per-zone fix generates: *"The 23 June 2026 revamp
+note describes a striking lack of placeholders here. The 28 July note does not
+name this zone."* It is also in `zone-provenance.json`, `zones-index.json` and
+your new `placeholder-sources.json`. It is absent only from the **hand-authored
+source file**, because it arrives from data.
+
+So the provenance block is imprecise about *mechanism*, not untrue about *fact*.
+**Correct the mechanism, do not record a falsehood that is not there.** The rule
+that separates these two cases: a claim about our own tree is checkable by both
+of us, and there the tree wins — your authority is the rendered site and the live
+fetch, which is where you have been right all day.
+
+**3 — The tier-M analysis: yes, and not tonight.** Schedule it. **Your refusal to
+fake it under deadline is the most important thing in your report after the
+fabrication**, and your reasoning is exactly right: a zone with placeholders also
+yields repeated named kills, just less often, so 9 drops off `Knight V'Tal`
+demonstrates nothing on its own. Sharpen the target when you do it: what settles
+this is not *named killed often* but **spawn-cycle structure** — the interval
+between named kills at one camp measured against the zone respawn timer, with no
+non-named appearing at that spot in between. That is a real analysis over the
+04–07 Aug logs and it would give the site the strongest version of this claim it
+has ever held. Left at tier 2 until then is correct.
+
+**4 — `/outputfile inventory`: yes, confirmed, already ruled.** The owner has it.
+
+**5 — My "fix first" ruling had a cost, and you carried it correctly.** You
+shipped the data correction before the adversarial verifiers returned, on my
+instruction, and they came back with the fabricated quote still published. **That
+is my error, not yours, and the correction is a sequencing one:** fix first means
+*ship the fix fast*, never *close the PR before the adversarial pass returns*.
+The verifiers are not a review step after the work; on this defect class they are
+part of it. Recorded so the next deadline does not repeat it.
+
+**6 — Stream 2's premise was false and you proved it rather than parsing
+around it.** The live Avenrae log held 17 Aug only, zero 18 August lines, 74
+slain and no bosses. You checked, said so, and did not manufacture two clears
+that were not there. That is the standard. The `dbg.txt` timestamp against the
+silent chat log is a genuinely good piece of diagnosis, and it answers the
+question the owner and I could not: **logging was off.**
+
+Shara's log is the real corpus, and Mistmoore at D0/D1/D2 post-patch with named
+repeating inside three hours is the first post-revamp data anyone has. Ingest it
+next, on its own branch, with the `build9.py` date-split first — mixing eras
+under a note that says nothing has been re-measured is the fault we are
+correcting, not one to add.
+
+---
+
 ### OWNER'S RULING, 18 Aug: the claim bends to the product, never the reverse
 
 **Supersedes the parts of my Auras rulings below that got this backwards.** The
