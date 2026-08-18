@@ -154,6 +154,15 @@ CSS = '''<style>
 # description to appear on the page, and the description is the copy that
 # travels on a share card where a stale figure cannot be corrected. Counting in
 # words sidesteps the whole class of fault.
+#
+# "TWENTY-THREE SLOTS" IS NOT A TYPO FOR EIGHTEEN, AND THIS IS THE ANSWER.
+# It was flagged twice on 18 Aug 2026 as unreconcilable, because the snapshot's
+# slots.worn.length is 18 and no path in the planner's meta.json equals 23.
+# Both figures are right and they count different things: 18 is slot TYPES in
+# the data, 23 is POSITIONS in the interface. The planner's own landing page
+# states it — "twenty-three slots including the two Any Slots" — and the
+# doubled positions account for the rest (two ears, two wrists, two fingers).
+# Read 18 Aug 2026. Do not "correct" this to eighteen.
 page = head(
     "50 Upgrades",
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "

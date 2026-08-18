@@ -147,6 +147,22 @@ nnone = sum(1 for z in Z if z["verify_level"]=="none")
 # about an item its data wants twice; that is the exact reason nothing here is
 # typed beside the data it claims to come from.
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
+
+# The planner's vendored snapshot, read BY FIELD PATH exactly as build29.py
+# reads it. Same reason: the snapshot carried counts.purge.shipped under a
+# catalogue label for as long as the two happened to be equal, and a figure that
+# does not name its field gets read as the wrong quantity eventually.
+UP = json.load(open('assets/50-upgrades.json', encoding='utf-8'))
+
+
+def upfig(path):
+    """One figure from the planner's snapshot, named by its upstream path."""
+    try:
+        return UP['figures'][path]
+    except KeyError:
+        raise SystemExit(
+            f"assets/50-upgrades.json has no figure at {path!r}. Run "
+            f"`node scripts/refresh-upgrades.mjs <YYYY-MM-DD>`, or fix the path.")
 # The overlay door. A release exists now, so the home page offers the download
 # directly rather than routing a reader through the tool page to find out there
 # is nothing to download. Falls back to the tool page where no release is
@@ -164,6 +180,62 @@ try:
     MEDIA = json.load(open('assets/media.json', encoding='utf-8'))
 except (OSError, ValueError):
     MEDIA = {}
+
+# 50 UPGRADES — first of the three bands, because it is the only one of them a
+# stranger can use today. Sky Ledger ships too, but the planner is the link
+# being posted; EQLS Auras is a teaser for a build that does not exist yet, and
+# a teaser must not outrank a shipped product.
+#
+# WHERE EACH FIGURE COMES FROM, BECAUSE THEY COME FROM TWO PLACES.
+#
+# Catalogue counts are interpolated from assets/50-upgrades.json by field path
+# through upfig(), so they cannot drift from the planner's own accounting and
+# cannot be read as the wrong quantity.
+#
+# The product claims — a trio, twenty-three slots, +0 to +10 — are NOT in that
+# snapshot, because meta.json describes the catalogue rather than the interface.
+# They are read off the planner's own landing page, 18 Aug 2026, which states:
+# "Three classes at once, twenty-three slots including the two Any Slots, and
+# every item upgradeable from +0 to +10". Typed here and sourced there, which is
+# the rule when a claim has a source but no field.
+#
+# "Including the two Any Slots" is also the answer to a question this site
+# carried open for a day: the snapshot's slots.worn.length is 18, which is slot
+# TYPES in the data, while 23 is positions in the interface. Both are right and
+# they count different things.
+#
+# NO HONEST-FRAMING FIGURES HERE, DELIBERATELY. The share of the catalogue with
+# no source standing belongs on the tool page, where the full accounting sits
+# one click away. A band that leads with its own caveat does not get clicked,
+# and the caveat is not hidden — it is the first thing on the page this links to.
+upgrades = f'''
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <div>
+          <p class="eyebrow">Live now &middot; <b>no account, no server</b></p>
+          <h2 class="feath">50 Upgrades</h2>
+          <p class="featlede">Pick a trio and a race, fill twenty-three slots, and compare what
+            each candidate does to the character rather than to the item beside it. Every item
+            upgrades from +0 to +10, and the stat sheet recomputes as you touch it.</p>
+          <p class="featsub">It holds {upfig('counts.items'):,} items, {upfig('counts.withStats'):,} of them
+            carrying stat values. Eligibility is the union of your three classes, so a paladin
+            in the mix opens plate for everyone, and points past a cap score nothing.</p>
+          <p class="featsub">Your sets live in this browser and travel as a link. Every item
+            window names where its numbers came from, and the full accounting of what is
+            sourced and what is not is one click away.</p>
+          <div class="featdoors">
+            <a class="featdoor lead" href="{UP['url']}">Open the planner &rarr;</a>
+            <a class="featdoor" href="tools/50-upgrades.html">What it does &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <p class="featfoot">Built and hosted in its own repository &middot; snapshot read {UP['read']}</p>
+    </div>
+  </div>
+</section>
+'''
 
 feature = f'''
 <section class="band feat">
@@ -364,6 +436,7 @@ home = head("Accurate, sourced and kept current",
   </div>
   {hero_src}
 </section>
+{upgrades}
 {feature}
 {auras}
 <section class="band doors">
