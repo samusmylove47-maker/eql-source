@@ -2,17 +2,23 @@
  "sky-ledger-poster": {
   "bytes": 180943,
   "file": "sky-ledger-poster.af5c97c2.jpg",
-  "kb": 177
+  "h": 900,
+  "kb": 177,
+  "w": 1600
  },
  "sky-ledger-ready": {
   "bytes": 111528,
   "file": "sky-ledger-ready.74a1cf9a.png",
-  "kb": 109
+  "h": 812,
+  "kb": 109,
+  "w": 427
  },
  "sky-ledger-setup": {
   "bytes": 70924,
   "file": "sky-ledger-setup.35856925.png",
-  "kb": 69
+  "h": 816,
+  "kb": 69,
+  "w": 426
  },
  "sky-ledger-trailer": {
   "bytes": 971771,

@@ -1105,8 +1105,11 @@ section.feat{border-top:0;padding-top:var(--s-7)}
 .slshots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
   gap:var(--s-5);margin:var(--s-6) 0 0;align-items:start}
 .slshot{margin:0}
-.slshot img{display:block;width:100%;height:auto;max-height:70vh;object-fit:contain;
-  object-position:top;border:1px solid var(--rule2);border-radius:var(--r);
-  background:var(--surface-0)}
+/* Never upscale. These are 427px-wide captures of a 427px-wide overlay, and
+   stretching one into a 568px column softens every glyph in it - on a page
+   whose whole argument is that the tool is legible over the game. They sit at
+   native width and centre in whatever space the column gives them. */
+.slshot img{display:block;width:100%;max-width:427px;height:auto;margin:0 auto;
+  border:1px solid var(--rule2);border-radius:var(--r);background:var(--surface-0)}
 .slshot figcaption{margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut);
   line-height:1.5}

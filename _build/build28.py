@@ -46,8 +46,13 @@ def shot(stem, alt, cap):
     m = MEDIA.get(stem)
     if not m:
         return ''
-    return (f'<figure class="slshot"><img src="../assets/media/{m["file"]}" alt="{alt}" '
-            f'loading="lazy" decoding="async"><figcaption>{cap}</figcaption></figure>')
+    # width/height are required, not decorative: without them the box is 2px
+    # tall before the bytes arrive, `loading="lazy"` never sees it enter the
+    # viewport, and the browser never requests the image at all.
+    dim = f' width="{m["w"]}" height="{m["h"]}"' if m.get('w') else ''
+    return (f'<figure class="slshot"><img src="../assets/media/{m["file"]}" alt="{alt}"'
+            f'{dim} loading="lazy" decoding="async">'
+            f'<figcaption>{cap}</figcaption></figure>')
 
 
 SHOTS = ''
