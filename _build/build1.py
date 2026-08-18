@@ -345,7 +345,17 @@ home = head("Accurate, sourced and kept current",
 <section class="hero">
   {hero_art}
   <div class="shell">
-    <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
+    <!-- THE EYEBROW CARRIES CONTEXT, NOT A CLAIM, AND THAT IS DELIBERATE.
+         It read "EverQuest Legends &middot; surveyed, sourced, dated" until
+         18 Aug 2026. The hero was making the same promise three times over: the
+         masthead tagline says Survey, the eyebrow said surveyed, sourced,
+         dated, and the headline says NORRATH, MEASURED. Three statements of one
+         idea do not reinforce it, they divide it, and the headline is much the
+         strongest of them. The other two were competing with it.
+         So the eyebrow names the game and stops. Do not restore the clause on
+         the grounds that the eyebrow looks bare - bare is what lets the
+         headline land. -->
+    <p class="eyebrow">EverQuest Legends</p>
     <h1 class="display">Norrath,<br><em>measured.</em></h1>
     <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
       a Legends-shaped hole. We go in with the log running and write down what actually happened.
