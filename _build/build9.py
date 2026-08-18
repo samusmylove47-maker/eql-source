@@ -25,6 +25,7 @@ If assets/measured.json is missing or holds no session for a zone, that plate is
 left exactly as it was. Nothing here is required for the site to build.
 """
 import os, sys, json, re, collections
+import datetime as _dt          # the revamp cut in _revamp_cut(), nothing else
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -259,7 +260,45 @@ def revamp_html(note):
     return ('<b class="revamp">' + note + '</b> ')
 
 
-def section(sess_list, zone_title, revamp=None):
+def _revamp_cut(sess_list, revamped):
+    """Sessions from after a zone was revamped, and sessions from before it.
+
+    A REVAMP MAKES TWO ZONES OUT OF ONE, AND MERGING THEM DESCRIBES NEITHER.
+    Castle Mistmoore was revamped on 18 August 2026: named became guaranteed
+    spawns, every named gained a guaranteed drop, and daytime aggro range was
+    cut. A session from the 8th and a session from the 18th are observations of
+    different games, and this function had no date filter at all — so the first
+    post-revamp parse would have averaged them together underneath a note
+    saying nothing here had been re-measured.
+
+    Same argument the difficulty and character filters below already make. The
+    cut is `date >= revamped`; a zone with no revamp date is all one era and
+    comes back unsplit.
+    """
+    if not revamped:
+        return sess_list, []
+    try:
+        cut = _dt.datetime.strptime(revamped, '%d %B %Y').date()
+    except (ValueError, TypeError):
+        return sess_list, []          # unparseable date: do not silently split
+
+    def on_or_after(s):
+        try:
+            return _dt.datetime.strptime(s['date'], '%d %b %Y').date() >= cut
+        except (ValueError, TypeError, KeyError):
+            return False
+
+    after = [s for s in sess_list if on_or_after(s)]
+    before = [s for s in sess_list if not on_or_after(s)]
+    return (after, before) if after else (before, [])
+
+
+def section(sess_list, zone_title, revamp=None, revamped=None):
+    # A revamp splits the corpus before anything else does. Once a zone has
+    # post-revamp sessions the page describes those; the older ones are a
+    # different zone and are not averaged in. See _revamp_cut.
+    sess_list, superseded = _revamp_cut(sess_list, revamped)
+
     # Merge only what was observed under the same conditions: same difficulty,
     # and the same vantage point. A healer's view of a fight and a tank's are
     # different fights, and averaging them would describe neither.
@@ -404,7 +443,8 @@ def main():
         h = re.sub(r'<section class="meas" id="measured">.*?</section>', '', h, flags=re.S)
         h = h.replace(CSS, '')
         _z = by_key[key(next(x['zone'] for x in lst))]
-        block = section(lst, _z['title'], _z.get('revamped_note'))
+        block = section(lst, _z['title'], _z.get('revamped_note'),
+                        _z.get('revamped'))
         if '</main>' in h:
             h = h.replace('</main>', block + '</main>', 1)
         elif '</body>' in h:

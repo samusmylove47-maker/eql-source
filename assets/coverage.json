@@ -285,7 +285,7 @@
     },
     "difficulty": {
      "level": "measured",
-     "detail": "measured at D1 only"
+     "detail": "measured at D1, D2"
     },
     "inherited": {
      "level": "sourced",
@@ -293,12 +293,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 67 mob types measured"
+     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 70 mob types measured"
     }
    },
    "score": 8,
    "max_score": 10,
-   "kills": 1018,
+   "kills": 1120,
    "bosses": []
   },
   "planeoffear": {
@@ -306,7 +306,7 @@
    "facets": {
     "bosses": {
      "level": "measured",
-     "detail": "5 bosses measured, tiers D2–D4"
+     "detail": "5 bosses measured, tiers D0–D4"
     },
     "loot": {
      "level": "measured",
@@ -314,7 +314,7 @@
     },
     "difficulty": {
      "level": "measured",
-     "detail": "measured at D1, D2, D3, D4"
+     "detail": "measured at D0, D1, D2, D3, D4"
     },
     "inherited": {
      "level": "sourced",
@@ -322,12 +322,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 82.5, respawn not recorded, 47 mob types measured"
+     "detail": "ZEM 82.5, respawn not recorded, 91 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 291,
+   "kills": 507,
    "bosses": [
     "Cazic-Thule",
     "Dread",

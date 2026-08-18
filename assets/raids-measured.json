@@ -1533,6 +1533,43 @@
  },
  {
   "boss": "Cazic-Thule",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "17 Aug 2026",
+  "zone": "The Plane of Fear - Group",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 19321,
+  "damage_high": 19321,
+  "damage_spread_pct": 0.0,
+  "seconds": 94,
+  "spells": {
+   "Shadow Vortex": 3,
+   "Cascading Darkness": 2,
+   "Negation of Life": 2,
+   "Avatar Power": 2,
+   "Asystole": 2,
+   "Boil Blood": 1,
+   "Life Leech": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "bashes",
+   "crushes",
+   "kicks"
+  ]
+ },
+ {
+  "boss": "Cazic-Thule",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
   "date": "12 Aug 2026",
@@ -1832,6 +1869,38 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "crushes"
+  ]
+ },
+ {
+  "boss": "Dread",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "17 Aug 2026",
+  "zone": "The Plane of Fear - Group",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 3,
+  "damage_low": 3778,
+  "damage_high": 3778,
+  "damage_spread_pct": 0.0,
+  "seconds": 61,
+  "spells": {
+   "Earth Elemental Attack": 3
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
   ]
  },
  {
@@ -2286,6 +2355,38 @@
    "cleaves"
   ],
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Fright",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "17 Aug 2026",
+  "zone": "The Plane of Fear - Group",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 5,
+  "damage_low": 17637,
+  "damage_high": 17637,
+  "damage_spread_pct": 0.0,
+  "seconds": 74,
+  "spells": {
+   "Earth Elemental Attack": 3
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ]
  },
  {
   "boss": "Fright",
@@ -5709,6 +5810,38 @@
  },
  {
   "boss": "Terror",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "17 Aug 2026",
+  "zone": "The Plane of Fear - Group",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 17,
+  "damage_low": 10738,
+  "damage_high": 10738,
+  "damage_spread_pct": 0.0,
+  "seconds": 115,
+  "spells": {
+   "Earth Elemental Attack": 7
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ]
+ },
+ {
+  "boss": "Terror",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
   "date": "12 Aug 2026",
@@ -6143,6 +6276,74 @@
    "hits"
   ],
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "a dracoliche",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "17 Aug 2026",
+  "zone": "The Plane of Fear - Group",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": false,
+  "joined_late_seconds": 3,
+  "damage_low": 2049,
+  "damage_high": 2049,
+  "damage_spread_pct": 0.0,
+  "seconds": 27,
+  "spells": {
+   "Rotting Flesh": 1,
+   "Dragon Fear": 1,
+   "Root": 1,
+   "Ignite Bones": 1
+  },
+  "spells_distinct": 4,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "pet",
+   "pierces"
+  ]
+ },
+ {
+  "boss": "a dracoliche",
+  "difficulty": 0,
+  "difficulty_label": "Base",
+  "date": "17 Aug 2026",
+  "zone": "The Plane of Fear - Group",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": 31,
+  "damage_low": 11580,
+  "damage_high": 11580,
+  "damage_spread_pct": 0.0,
+  "seconds": 113,
+  "spells": {
+   "Root": 9,
+   "Dragon Fear": 3,
+   "Rotting Flesh": 3,
+   "Incinerate Bones": 2,
+   "Asystole": 2,
+   "Chilling Embrace": 1
+  },
+  "spells_distinct": 6,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "pierces"
+  ],
+  "partial_reason": "joined 31s after the boss was engaged"
  },
  {
   "boss": "a dracoliche",
