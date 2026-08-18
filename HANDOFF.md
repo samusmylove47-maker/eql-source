@@ -464,6 +464,137 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### MOST URGENT, Session A: the share cards are wrong, and they are what Discord shows
+
+Found by the external-claim sweep, **verified by me directly in the tree**, and
+worse than anything the outside audit found — because the auditor read pages and
+these are PNGs.
+
+`_build/ogcards.py` bakes three false claims into the share cards:
+
+| Line | Card says | Truth |
+|---|---|---|
+| `:139` | `Trackers — five` | `_partials.TOOLS` holds **6** |
+| `:145` | `Entries — six` | `_partials.LEARN` holds **7** |
+| `:148` | `Tiers — M, 1 to 5, and C` | **Tier C was withdrawn 17 Aug**, by our own Correction |
+
+The third is the one that stings: a share card advertising a tier we publicly
+retracted, on the card for the **Accuracy** page.
+
+**Why this is tonight's priority over everything else.** These images are what
+renders when anyone pastes an eqlsource link into Discord — which is exactly what
+happens when the guild reads the site this evening. A wrong page can be corrected
+by the reader clicking it. A wrong card is the only thing most people will ever
+see, it travels off-site, and we cannot reach it once it is posted.
+
+**And no gate can see it**, because `ogcards.py` is hand-run and outside
+`build.sh` — deliberately, since it needs Pillow. So the counts cannot drift back
+into agreement on a rebuild; they can only be fixed by hand and then drift again.
+**Derive all three from `TOOLS`, `LEARN` and the tier scale** and spell them as
+numerals from `len()`, exactly as the site does everywhere else. Then add
+`ogcards` to `stamp.py`'s inputs, or a check that fails when a card is older than
+the registry it describes.
+
+Regenerate and commit the cards tonight. If Pillow is unavailable, say so and I
+will rule on shipping without them rather than shipping wrong ones.
+
+---
+
+### The Auras sentence: the fix is sharper than I first ruled
+
+I said take the sentence down or state the truth. The sweep found something that
+makes the correction *better than the original*, so do this instead.
+
+`docs/auras/band.html` — the source copy — reads:
+
+> It makes no network requests of its own — **no telemetry, no analytics, no
+> update check.**
+
+The shipped copy at `_build/build1.py` **dropped those three clauses** and kept
+only the umbrella. `docs/auras/CLAIMS.md:73-77` records that claim 6 was verified
+by symbol grep for `telemetry`, `analytics`, `sentry`, `posthog`, `mixpanel`,
+`crashReporter`.
+
+**So the checkable half was verified and then discarded, and the unverifiable
+half is the half that broke.** Google Fonts is not telemetry, analytics or an
+update check — those three clauses are almost certainly still true. The umbrella
+sentence is the only false one.
+
+Restore band.html's specific wording, drop or qualify the umbrella, and say in
+place that the app currently fetches a webfont from Google at launch and that it
+is being removed. That leaves *more* true information on the page than today's
+sentence carries, and every clause maps to a symbol a gate can count.
+
+The comment at `build1.py:334-335` claims the text is lifted from `band.html`
+rather than retyped. It was retyped and it diverged. **Make the generator read
+`band.html` instead of asserting that it did** — cheapest fix on the whole list,
+and it retires a comment that is currently untrue.
+
+---
+
+### Two more verified today, both live
+
+- **We contradict ourselves about 50 Upgrades, on two pages, right now.**
+  `_build/build29.py:177` says it runs entirely in the browser and **"nothing is
+  stored"**; `_build/build1.py:224` says **"Your sets live in this browser."**
+  Both describe the same app; `localStorage` is storage. One is wrong and nothing
+  compares them. Resolve against the planner itself and print it from one place.
+- **Blanket privacy claims cover things they cannot vouch for.**
+  `_build/build2.py:106` prints *"Nothing transmitted · Works offline"* across a
+  tools grid that includes an **off-origin, third-party** planner and a **100 MB
+  download**; `:183` repeats it as prose. Scope it to the tools it is true of, or
+  state which tool it excludes. A page-wide guarantee over six tools in three
+  repositories is a promise we do not control.
+
+---
+
+### The gate for this whole class
+
+Extend the **Sky Ledger committed-record pattern** — an external thing, a
+committed JSON record, a build that fails when the two disagree. Its limit today
+is that it records *identity* (bytes, sha1) and never *evidence*. Add the
+evidence half:
+
+- `assets/external/<name>.json`, written by a **hand-run** refresh script, never
+  by `build.sh` — the `refresh-upgrades.mjs` rule, that a build which re-fetches
+  its vendored inputs is not vendoring them.
+- Each record holds `version`, `read`, `source`, and **`evidence.*` as keyed
+  integers — the result of each negative search: `evidence.urls.https_scheme: 0`,
+  `evidence.network.fetch: 0`, `evidence.telemetry.sentry: 0`, one key per symbol
+  `CLAIMS.md` already enumerates.
+- Generators print these sentences **only** through an `extfig()` lookup, the way
+  `upfig()` already works. A moved path is a `SystemExit`; **a non-zero counter
+  removes the sentence and fails the build.** Google Fonts falls out of
+  `urls.https_scheme` whether it arrives as a `<link>`, a `preconnect` or an
+  `@import`.
+- **Every such sentence prints its scope from the record** — "audited at v0.1.0,
+  read 18 Aug 2026". A dated claim cannot rot. Only an undated one can.
+- **Free win available today:** `skyledger.py` already holds the served bundle in
+  memory. Scan it for `fetch(`, `XMLHttpRequest`, `WebSocket`, `https://` and
+  `//fonts.` before writing, record the counts, have `check.py` recompute them
+  from the bytes it already re-hashes, and gate *"Nothing is uploaded"* on zero.
+  `toolsmoke.js` already parses served bundles for a different fault, so the
+  machinery exists.
+- `gate_selftest.py` cases are mandatory: flip a counter to 1, age a `read` past
+  the ceiling, inject a fonts link into the served Ledger blob. Each must fail.
+
+**State plainly what it cannot do**, on the page as well as here: it verifies the
+snapshot, never the binary a reader downloads; it counts symbols, not behaviour;
+and it cannot make a universal negative true. *"Every other tracker"*, *"no site
+publishes drop rates"* and *"Firefox and Safari cannot"* are fixed by a named,
+dated survey or not at all.
+
+**The lesson, for the change log:** a claim about software we do not build is a
+measurement, not a fact — it has to be read at build time out of a dated,
+committed record, or carry the date and version it was true at, because the
+alternative is a sentence that stays byte-identical while the thing it describes
+walks away.
+
+The sweep raised 22 candidates. I have ruled on the five I verified myself;
+the rest are a Wave 2 pass, not tonight's work.
+
+---
+
 ### URGENT, Session A, tonight: the home page is publishing a false claim
 
 **Session C found it and it is ours to fix, not theirs.** `_build/build1.py`, the
