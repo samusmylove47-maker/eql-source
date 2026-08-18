@@ -253,6 +253,23 @@ CASES = [
                          'class="x">' + " ".join(["ballast"] * 90)
                          + '</div><div class="plates"', 1)),
 
+    # Not growth this time — absence. The three cases above all prove that a
+    # page WITH a ceiling cannot grow past it. None of them could prove anything
+    # about a page with no ceiling at all, and until 18 Aug 2026 that page was
+    # skipped in silence: `cap = budget.get(key)` then `if cap is None:
+    # continue`. Fourteen pages were in that state, three of them dungeon
+    # surveys, and the ratchet reported clean the whole time.
+    #
+    # A hole that swallows every page nobody thought to enrol is worse than a
+    # ceiling set too high, because a ceiling set too high is at least visible
+    # in the file. This case deletes a key and requires the build to notice.
+    ("a governed page with no prose ceiling at all",
+     "tools/sky-ledger.html ships with no ceiling",
+     "assets/prose-budget.json",
+     lambda t: json.dumps({k: v for k, v in json.loads(t).items()
+                           if k != "tools/sky-ledger.html"},
+                          indent=1, sort_keys=True)),
+
     # A count typed as a word rather than printed from the ledger. The dungeon
     # index headline read "Ten zones, surveyed" while the ledger held thirteen,
     # and nothing caught it because every count check matched digits only.

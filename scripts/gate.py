@@ -122,6 +122,56 @@ def page_key(path):
     return path.replace(os.sep, "/").replace("public/", "")
 
 
+# Pages whose length is a function of how much has been CATALOGUED rather than
+# how much has been WRITTEN. The ratchet must bite on writing more and never on
+# recording more — the same argument page_words makes below when it strips the
+# floor plans' own <svg> labels.
+#
+# Everything under items/, named/ and sets/ qualifies. The per-entity pages are
+# one page per item or mob; the three A-Z hubs are the listings of those same
+# entities, and a hub grows every time the catalogue does. sets/index.html is
+# the one that does not look like a listing and is one anyway: 7% of its words
+# sit inside links, which reads as prose until you notice the other 134 table
+# rows of set pieces.
+#
+# This is the whole exemption. Every other page the build ships must carry a
+# ceiling, and adding a fourth directory here means arguing that it is a
+# catalogue, which should be hard.
+CATALOGUE_DIRS = ("items/", "named/", "sets/")
+
+
+def site_pages():
+    """Every page the build ships, as check.py defines that set.
+
+    This mirrors the glob at the top of scripts/check.py, which is the
+    definition. It exists here so scripts/prose_budget.py can enrol exactly the
+    pages the gate will later enforce against — a budget script working from a
+    different page list than the gate is how a page gets enrolled at a weight
+    nobody checks, or checked against a ceiling nobody set.
+    """
+    return sorted(p.replace(os.sep, "/") for p in
+                  glob.glob("public/*.html") + glob.glob("public/*/*.html")
+                  if not os.path.basename(p).startswith("_")
+                  and not p.replace(os.sep, "/").startswith("public/app/"))
+
+
+def governed(key):
+    """True if this page must carry a ceiling in assets/prose-budget.json.
+
+    Lives here and is imported by scripts/prose_budget.py for exactly the
+    reason page_words is: a page enrolled by one rule and enforced by another
+    is a page nobody governs.
+
+    Until 18 Aug 2026 nothing enrolled pages at all. The gate skipped a missing
+    key with `if cap is None: continue`, and prose_budget.py only ever iterated
+    keys that already existed — so a page could be born ungoverned and stay
+    that way, and fourteen were, including three dungeon surveys and a tool
+    page carrying 1,233 words. A ratchet with no enrolment step does not
+    protect the pages it has never heard of.
+    """
+    return not key.startswith(CATALOGUE_DIRS)
+
+
 def page_words(path, key):
     """Words of readable prose on a built page.
 
@@ -602,6 +652,15 @@ def run(pages, fail, warn):
             key = p.replace(os.sep, "/").replace("public/", "")
             cap = budget.get(key)
             if cap is None:
+                # A missing key used to mean "unchecked", silently. That is the
+                # one state a ratchet must not have: the pages nobody enrolled
+                # were exactly the pages nobody was watching grow.
+                if governed(key):
+                    fail(f"{key} ships with no ceiling in assets/prose-budget.json, "
+                         f"so its prose is ungoverned. Run "
+                         f"`python3 scripts/prose_budget.py` to enrol it at its "
+                         f"current weight, or add its directory to gate.CATALOGUE_DIRS "
+                         f"and argue there why it is a catalogue")
                 continue
             n = page_words(p, key)
             if n > cap + 40:          # a little slack for a genuine new fact
