@@ -159,11 +159,12 @@ page = (head("Every planar set",
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="../tools/planar-gear.html">Planar gear</a> &nbsp;/&nbsp; Every set</p>
+      <a href="../tools/index.html">Tools</a> &nbsp;/&nbsp; Every set</p>
     <h1 class="display">Every planar set,<br><em>piece by piece.</em></h1>
     <p class="hero-lede">All {len(by_set)} sets and {len(ITEMS)} pieces &mdash; the sixteen class
       sets plus the two shared ones. Want to know what to <em>chase</em> rather than what exists?
-      <a href="../tools/planar-gear.html">The gear tool</a> ranks these against your trio.</p>
+      <a href="https://samusmylove47-maker.github.io/EQL50ups/">50 Upgrades</a> ranks these
+      against your trio, every slot at once.</p>
     <p class="hero-sig"><span>{len(by_set)} sets</span><span>{len(ITEMS)} pieces</span>
       <span><span class="tier t3">T3</span> classic-era records</span></p>
     <div class="setnav">{nav}</div>

@@ -59,14 +59,10 @@ const TOOLS = [
    * is unsmoked. */
   { file: '50-upgrades.html', fills: null,
     note: 'a description page — the app it links is hosted and tested in its own repo' },
-  { file: 'planar-gear.html', fills: 'cls', expect: '<button',
-    note: 'the class chooser' },
   { file: 'index-search.html', fills: 'results', expect: '<',
     note: 'the result list renders unfiltered on load' },
   { file: 'faction-impact.html', fills: null,
     note: 'zone cards are server-rendered; the script only filters' },
-  { file: 'character.html', fills: null,
-    note: 'renders from saved state, empty on a first visit' },
   /* These two boot straight onto a tab and fill its pane from the race data,
    * with no saved state needed. Listed as load-only until 14 Aug 2026, which
    * meant the migration of their dataset out of the markup was covered by no
@@ -75,8 +71,6 @@ const TOOLS = [
     note: 'the tracker pane, filled from the race data on boot' },
   { file: 'combo-calculator.html', fills: 'pane-calc', expect: '<',
     note: 'same app, boots onto the calculator tab' },
-  { file: 'inventory.html', fills: null,
-    note: 'waits for a paste; nothing renders on load by design' },
 ];
 
 /* ---------------------------------------------------------------- the stub */

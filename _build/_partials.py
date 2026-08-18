@@ -43,8 +43,24 @@ CSS_V = _asset_v('public/assets/site.css')
 #
 # `name` is the display name. `foot` is the shorter footer label where the full
 # name would wrap; where they are the same, `foot` is omitted.
+# WITHDRAWN 18 AUG 2026: character sheet, planar gear targets, inventory reader.
+# All three are superseded by 50 Upgrades, which does what each of them did and
+# does it against a catalogue none of them had: a trio's eligibility as the
+# union of three classes, every slot, every item from +0 to +10, and an
+# inventory it reads for itself. Shipping a worse copy of something already
+# available is the rule this project applies to other people's tools; it applies
+# to ours.
+#
+# Same shape as the Sky tracker withdrawal on 17 Aug and the same handling: the
+# pages are deleted, the reason stays here where the next session will look, the
+# change log records it, and there is no tombstone page. The old URLs 301 to
+# 50 Upgrades in public/_redirects, in both address forms.
+#
+# _build/planardata.py and _build/inventory.py both SURVIVE and are no part of
+# this. Neither renders a page: the first writes assets/planar.json, which the
+# measured-drop matcher needs or it discards every planar set drop as trash, and
+# the second writes assets/item-ids.json, published as items.v1.json.
 TOOLS = [
-    dict(slug="character",        name="Character sheet"),
     dict(slug="index-search",     name="The Index"),
     # Replaced tools/plane-of-sky.html on 17 Aug 2026. Ours counted a held
     # turn-in piece against every test that wanted it; Sky Ledger spends each
@@ -58,8 +74,6 @@ TOOLS = [
     dict(slug="race-unlocks",     name="Race unlock tracker"),
     dict(slug="combo-calculator", name="Race and primary calculator"),
     dict(slug="faction-impact",   name="Faction impact checker"),
-    dict(slug="planar-gear",      name="Planar gear targets"),
-    dict(slug="inventory",        name="What have I got?", foot="Inventory reader"),
 ]
 
 # `blurb` is what the Learn hub prints under each title. It lives here so the

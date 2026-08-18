@@ -106,14 +106,6 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
-      <a class="card" href="character.html" style="--c:var(--ok)">
-        <div class="kicker">One sheet &middot; one link</div>
-        <h3 class="t">Character sheet</h3>
-        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
-          Bookmark it, paste it into guild chat, open it on another machine and everything is where
-          you left it &mdash; including the two trackers, which it fills in for you.</p>
-        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
-        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
@@ -155,15 +147,6 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Measured</span><span class="pill">Coverage stated</span></div>
         <div class="foot"><span>Measured in play</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="planar-gear.html" style="--c:var(--warn)">
-        <div class="kicker">Endgame &middot; five sets per slot</div>
-        <h3 class="t">Planar gear targets</h3>
-        <p class="d">A trio can wear planar armour from all three of its classes plus the two shared sets, so
-          five sets compete for every slot and holding that in your head is genuinely hard. Pick three classes,
-          choose what you are optimising for from five named presets, and lock a target per slot. No weights to
-          configure. Built from 116 item records with every blank left blank.</p>
-        <div class="chipline"><span class="pill">116 pieces</span><span class="pill">No configuring</span></div>
-        <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
         <div class="kicker">Planning</div>
@@ -173,14 +156,6 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
           costs every route to both. It takes the requirement literally instead of talking you out of it.</p>
         <div class="chipline"><span class="pill">Launcher races</span><span class="pill">Token vs grind</span></div>
         <div class="foot"><span>Shares progress</span><span class="go">Open &rarr;</span></div></a>
-      <a class="card" href="inventory.html" style="--c:var(--ok)">
-        <div class="kicker">Lookup</div>
-        <h3 class="t">What have I got?</h3>
-        <p class="d">Paste the wall of tab-separated text <code>/outputfile inventory</code> writes and read it
-          back as a list of what you carry, with the item&rsquo;s page, its zone, its planar set and where the
-          thing has been measured dropping. Nothing is uploaded; the parse happens in the page.</p>
-        <div class="chipline"><span class="pill">Nothing uploaded</span><span class="pill">No gear score</span></div>
-        <div class="foot"><span>Paste and read</span><span class="go">Open &rarr;</span></div></a>
     </div>
 
     <div class="note sig"><strong>Where these stop.</strong> Client-mined numbers, spellbook
