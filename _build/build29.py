@@ -30,6 +30,25 @@ FOUR GATE RULES THIS PAGE IS WRITTEN AROUND
   after a full `./build.sh`. Running this file alone leaves 715 pages without
   the link.
 
+THE ONE FIELD THAT IS NOT INTERPOLATED, AND WHY
+-----------------------------------------------
+The snapshot's `attribution` and `license` fields say the item data is "used
+under CC BY-SA 4.0". **That licence is not sourced.** eqlwiki.com declares no
+content licence at all: its `siteinfo` `rightsinfo` returns an empty url and an
+empty text, and its copyrights page does not exist — the API normalises the
+request to `EQLWiki:Copyrights` and reports it missing. Checked 18 August 2026.
+
+So the planner asserted a licence, we vendored the assertion faithfully, and it
+published here as fact on the site whose entire pitch is that it does not do
+that. Nothing was done wrong to produce it: the figure was interpolated rather
+than typed, from a snapshot recording its source and its read-date, which is
+the rule exactly. **The more rigorous the vendoring, the more efficiently an
+upstream error propagates.**
+
+The credit is kept and the terms are not. The vendored fields stay untouched as
+the record of what the planner claims — that distinction is the point. We print
+what we can stand behind; the snapshot keeps what they said.
+
 THE SOURCE STANDING IS PUBLISHED, NOT BURIED
 --------------------------------------------
 Forty per cent of the catalogue carries no source standing at all. That is the
@@ -167,8 +186,14 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">04</span><div><h2 class="sec">Credit and licence</h2></div></div>
-      <p class="upnote">{U['attribution']}</p>
+      <div class="sechead"><span class="n">04</span><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
+      <p class="upnote"><strong>Item data is derived from the EverQuest Legends Wiki
+        (eqlwiki.com), with attribution.</strong> <strong>eqlwiki.com publishes no content
+        licence</strong> &mdash; checked {U['read']}: the wiki&rsquo;s own <code>siteinfo</code>
+        rightsinfo is empty and its copyrights page is absent. The terms of reuse are not
+        stated by the source, so none are claimed here on its behalf.</p>
+      <p>EverQuest is a trademark of Daybreak Game Company LLC. Neither the planner nor this
+        site is affiliated with Daybreak or Game Jawn.</p>
       <p class="src">Figures on this page are read from the planner&rsquo;s own published
         snapshot, taken {U['read']}. <a href="{U['source']}">The file this page reads</a>.</p>
     </div>

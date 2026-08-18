@@ -411,6 +411,25 @@ date in the field".
 `python`. Any new `open()` in a generator must specify `encoding='utf-8'` and,
 for writes, `newline='\n'` — the platform defaults corrupt the output.
 
+**A shell heredoc eats backslash escapes.** Any file whose content contains
+`\n`, `\t`, `\x89`, or a regex escape like `\b` or `\d` is written through the
+editor, never through `python - <<'PY'` or `cat <<'EOF'`. This has cost three
+incidents:
+
+- `src-app.js` — an escaped `\n\n` became two real line breaks inside a
+  JavaScript string literal. The bundle raised `SyntaxError`, the Sky Ledger
+  rendered nothing, and **196 dataset assertions still passed**, because they
+  exercise the engine and the data rather than the built page. It shipped to a
+  public release for six minutes.
+- `media.py` — `b'\x89PNG\r\n\x1a\n'` arrived as a literal newline and the file
+  would not parse.
+- `gate.py` — `\b` arrived as a backspace character, and `check.py` caught it
+  only because it happens to scan for control characters.
+
+The tell is that the damage is invisible in a diff summary and obvious in
+`cat -A`. `node scripts/toolsmoke.js` now parses every served bundle for exactly
+this fault, which closes the worst case and none of the others.
+
 ---
 
 ## 6. Design system

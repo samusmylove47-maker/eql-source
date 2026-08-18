@@ -1,115 +1,132 @@
-# Handoff — 15 August 2026 (evening)
+# Handoff — 18 August 2026
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
----
-
-## The one thing to understand before you touch anything
-
-The collaborator corrected the project's direction on 14 August and it matters
-more than any task below:
-
-> *Few people playing EQ Legends care about plot coordinates… trash monsters are
-> irrelevant. Players only care about bosses, unless it's for farming
-> experience… What our site needs to carry is only data that players care
-> about.*
-
-`docs/WHAT-COUNTS.md` records the correction. Zones are graded on **bosses,
-loot, difficulty behaviour, inherited-advice marking and farming value**,
-computed by `_build/coverage.py`. A zone improves by being played, not edited.
-
-**When proposing work, say who it is for.**
+**This describes commit `075305bd`** (PR #90, merged). Diff against it rather
+than trusting anything below — a later session should re-derive, not remember.
 
 ---
 
-## Open pull requests
+## Every figure here is a command, not a number
 
-- **Plane of Sky, rewritten.** Branch `feat/sky-rewrite-measured`. Pushed,
-  awaiting review and merge.
+A remembered figure survives a session boundary as a fact. A command survives as
+a fact-checker. Nothing in this file states a count that you cannot regenerate,
+because the counts move and this file will not.
 
-## What that branch did, and the one thing to check first
+```bash
+./build.sh                      # must exit 0
+python3 scripts/check.py        # page count, and every link/chrome/ceiling rule
+python3 scripts/gate_selftest.py  # the propagation gate still catches its faults
+node scripts/toolsmoke.js       # every tool runs; every served bundle parses
+```
 
-`raids/plane-of-sky.html` said the zone needs a full raid. It does not, and the
-page now leads with the measurement: 43 fights, 15 bosses, median 4 attackers,
-biggest boss 26,158 damage against Cazic-Thule's 382,035.
+| What you want to know | How to get it |
+|---|---|
+| How many pages ship | `python3 scripts/check.py` prints `checked N pages` |
+| How many tools are registered | `python3 -c "import sys;sys.path.insert(0,'_build');from _partials import TOOLS;print(len(TOOLS))"` |
+| Which tools | same import, `[t['slug'] for t in TOOLS]` |
+| Every prose ceiling | `assets/prose-budget.json` — and `scripts/gate.py`'s `page_words` is the only correct way to measure against it |
+| A page's current weight | `python3 -c "import sys;sys.path.insert(0,'scripts');from gate import page_words;print(page_words('public/index.html','index.html'))"` |
+| The planner's catalogue counts | `assets/50-upgrades.json` — `counts`, `standing`, `purge` |
+| When the planner snapshot was read | `assets/50-upgrades.json` → `read` |
+| Which zones are revamped | `assets/zones-index.json` → any zone with `revamped` |
+| What the Sky Ledger serves | `assets/sky-ledger.json` → `app.file`, `app.hash` |
+| Measured sessions, zones, raid fights | `assets/measured.json`, `assets/raids-measured.json` |
 
-**Check this before anything else:** the branch also changed
-`_build/raidstats.py`, which **moves published figures in Plane of Fear**.
-The parser matched boss names case-sensitively, so a name whose article is
-lowercase lost its slain line and the fight never closed. `a dracoliche` was
-published at **1,287** damage at Adaptive and **14,483** at Fused. It is
-actually **85,671** and **285,202**, plus a Refined kill at **362,687** we held
-no record of at all. Same fault hid `the Hand of Veeshan` entirely. Both are in
-the change log as a Correction. If you disagree with that call, it is one commit
-to revert — but the old figures are wrong.
+**The rule behind the table:** where a decision can live in a data file or a
+check, put it there. `zones-index.json` carrying the revamp date rather than two
+generators is why that fact will outlive every session that reads this. It is
+`gate.py`'s argument applied to sessions instead of pages.
 
-## Immediate work, in the collaborator's order
+---
 
-1. **Castle Mistmoore is revamped on Tuesday 18 August.** Three days. We hold
-   1,008 pre-revamp kills across 65 mob types. The "before" data is already
-   parsed and committed; **what is missing is a frozen, labelled baseline** an
-   after-patch parse can be diffed against rather than silently averaged into.
-   Do that before Tuesday. More pre-patch play is the collaborator's call, not
-   ours.
+## Do not build these
 
-2. **Kedge Keep.** Still blocked, and the previous handoff was optimistic:
-   **no Kedge logs have arrived.** The newest log
-   (`eqlog_Avenrae_rivervale_2026-08-15.txt`, scanned this morning) has no Kedge
-   or Siren zone line anywhere in it, and `measured.json`'s latest session is
-   14 August. It remains the only zone at 3/10 with zero measured sessions.
+Every one has been considered and declined. A session arriving with energy and
+no context will do them enthusiastically. Written down they are decisions;
+unwritten they read as omissions.
 
-3. **Age-stamp the outgrown zones.** Najena, Splitpaw, Crushbone, The Warrens at
-   4/10 — fully verified under the old standard, never played with logging on.
-   Wording: *"updated as of XX/XX — any new information since has not been
-   verified."* **Generate it from the last measured session date** so it cannot
-   go stale by hand.
+| Not this | Why |
+|---|---|
+| Hosting the 50 Upgrades planner under `public/app/` | It is built, tested and refreshed in its own repository. We carry a description page and a link. Same-origin hosting makes us responsible for a release cadence we do not control. |
+| A home-page feature band for 50 Upgrades | `index.html` has no room. The ceiling is in `prose-budget.json`, the gate fails at cap + 40, and the Sky Ledger band alone is ~190 words. The tools door already reads its count from `len(TOOLS)`, so the tool is announced at zero word cost. |
+| Withdrawing any existing tool | Nothing currently duplicates anything. The Sky Ledger withdrawal on 17 Aug was justified by a correctness property ours lacked; absent that, two tools are two tools. |
+| A shared `.btn` class | The imported pages carry their own stylesheets and never load `site.css`. A shared button would have to be injected into 21 pages that each already style their own. Real, and post-launch. |
+| The doubled `cache-control` header | Real, harmless, post-launch. |
+| `.html` → extensionless 307 | Real, post-launch. It touches every internal link and the sitemap. |
+| Self-hosting the site's fonts | Real, post-launch. |
+| The map export | Post-launch. |
+| Editing `public/assets/site.css` casually | It re-hashes `CSS_V` and rewrites the stylesheet line on every page. Fine when the CSS genuinely changed; never as a side effect. |
+| Running `scripts/prose_budget.py` to fix a page that is over | It only lowers ceilings. A page over its cap is trimmed, or the ceiling is raised **by hand with the reason in the commit** — `CLAUDE.md` §5, precedent in PR #89. |
 
-4. **`sightings.py` is losing evidence.** Now `docs/BACKLOG.md` P0, with
-   acceptance criteria. It discards every measured drop whose item is not in a
-   catalogue mined from the dungeon surveys plus the planar sets, so **all 148
-   Plane of Sky loot lines were thrown away** and `sightings.json` held no Sky
-   drop at all. `_build/skyloot.py` works around it for Sky only; every other
-   unsurveyed zone is still losing drops silently. This is a migration across a
-   dataset five builders and the public contract read — run
-   `scripts/toolrender.js` before and after.
+---
 
-## Standing rules learned the hard way
+## Open
 
-- **Never publish a drop rate.** A drop seen once is seen once.
-- **Read who was in the fight.** Every raid-boss kill in every log we hold is a
-  public pick-up raid, not our trio.
-- **Other players are never named** outside the credits. Counted, then discarded.
-- **A log records what its own character witnessed.** Where the attacker count
-  is thin, the damage is a floor, not a measurement.
-- **Never let a hand-typed sentence sit beside a generated figure.** Two
-  retractions came from that. The Sky page renders every figure from
-  `assets/sky-loot.json`.
-- **A findings doc can be as wrong as a page.** `docs/SKY-MEASURED.md` carried
-  four errors into this session — a boss listed as killed that appears **zero**
-  times in the log, a missing key drop, a missing efreeti source, and a pointer
-  to drop tables that were not in the file it named. All four are corrected in
-  place rather than deleted. Re-check a findings doc against the data before
-  building on it.
-- **Run `node scripts/toolsmoke.js`** after touching anything a tool reads, and
-  `scripts/toolrender.js` before and after any data migration.
-- **Do not write regex escapes through a bash heredoc.** Use the Write tool.
+**1. A vendored claim is not a fact.** `assets/50-upgrades.json` is a faithful
+copy of the planner's `meta.json`, and it carried a licence assertion —
+`CC BY-SA 4.0` — that neither project can source. `eqlwiki.com`'s own
+`siteinfo` returns empty `rightsinfo` and has no `Project:Copyrights`. The page
+was corrected where it is generated; the snapshot keeps what the planner claims,
+because that distinction is the point.
 
-## Health
+The general lesson is unfixed and is the most interesting failure so far:
+**nothing was done wrong to produce it.** The figure was interpolated, never
+typed, from a snapshot recording its source and read-date — the rule followed
+exactly. The fault entered through the snapshot, which faithfully copied an
+upstream assertion nobody had checked. The more rigorous the vendoring, the more
+efficiently an upstream error propagates. `publicdata.py`'s contract language
+needs one more idea — a claim in a vendored file is not a fact until someone
+here has stood behind it — and that is a post-launch change, not a tonight one.
 
-723 pages pass `check.py`. **19** gate self-test cases, up from 17. 8 tools run
-under the smoke test. Public data contract live at `/data/`.
+**2. Imported pages carry their own footers.** 21 of them, so shared-footer
+propagation reaches the rest and `len(TOOLS)` with it. Verify rather than
+assume: `grep -L site-foot public/**/*.html`. `gate.py` rule 6 is scoped
+`if "site-foot" not in h: continue` for exactly this reason. An acceptance test
+asserting a tool link in `public/dungeons/najena.html` is asserting a false
+premise — no tool has ever been in a survey footer. Giving those pages the
+shared footer is a real change with a real cost (words added to thirteen
+surveys, thirteen ceilings to re-measure) and has not been made.
 
-**Two new gate cases, because this one nearly shipped.** The withdrawn `build4.py`'s `BODY` was
-a plain triple-quoted string — it carries the 3D engine's JavaScript, so it can
-never be an f-string — and f-string syntax written into it renders as itself.
-`raids/eye-of-veeshan.html` published the literal text `{EYE_FULL:,}` in its
-stat block **and passed all 723 checks**, because every check reads what a page
-says and none asked whether it had finished rendering. `gate.py` check 5d now
-refuses both `{...}` and `@@TOKEN@@` leaks, and the self-test proves it for each.
-Caught by opening the page, which remains the only way.
+**3. Search reaches a fraction of the site.** `search.html` covers the prose
+pages and says so; The Index covers items and named mobs and says so; they
+cross-link. Nothing is unfindable, but a reader meets two boxes. Post-launch.
 
-## Logs
+---
 
-`state/logs/` is gitignored and holds copies through 15 Aug. The collaborator
-deletes the game-side logs after each scan, so **secure and parse before
-confirming**. Everything derived is committed; the raw logs are never published.
+## For the session working on the planner
+
+Two facts you cannot see from that repository:
+
+**The Mistmoore revamp date is data, not code.** It lives in
+`assets/zones-index.json` as `revamped` and `revamped_note` on the mistmoore
+entry, and both `_build/build9.py` (the survey's measured section) and
+`_build/build11.py` (the difficulty explainer) read it. When post-revamp logs
+land, the ingestion path is a data edit and a rebuild — no generator changes.
+
+**The licence correction is ours too.** `eqlwiki.com` publishes no content
+licence: `siteinfo` `rightsinfo` is empty and `Project:Copyrights` is absent,
+checked 18 August 2026. Any Sources screen carrying `used under CC BY-SA 4.0`
+for eqlwiki-derived data is repeating an unsourced claim. Keep the attribution,
+drop the terms, say the source states none.
+
+---
+
+## Recent shape of the work
+
+The site was made **generic rather than personal** on 17 August: no character
+names, kill counts, play dates or experience-per-kill anywhere a reader sees.
+`CLAUDE.md` §7 is the rule and carries its three deliberate exemptions. A tier M
+badge means "verified in play" — a page never has to publish the log to earn it.
+
+**Tier C was withdrawn** the same day. It was generalised from a single event,
+and one event is not a rank on a scale. The change log records both its
+introduction and its withdrawal, because a ledger records what was true when it
+was written.
+
+The Castle Mistmoore survey is the house format; the other twelve and the raid
+pages follow it. If you reformat anything, **diff for lost facts before you
+commit** — a reformat deleted evidence on 17 August and a green build did not
+notice. `scripts/check.py` validates that pages are well-formed, and `gate.py`
+validates that figures agree with their data. Neither notices a sentence
+describing a thing that no longer exists.
