@@ -56,7 +56,7 @@ zrows = "\n".join(
       <span class="pn">{z['plate']:02d}</span>
       <span><span class="zt">{z['title']}</span><span class="zs">{zsub(z)}</span></span>
       <span class="cell zonesub"><em>Respawn</em>{z['respawn'] or 'not recorded'}</span>
-      <span class="cell"><em>ZEM</em>{z['zem']} <span style="color:var(--faint)">/ {z['zem_pct']}%</span></span>
+      <span class="cell" title="Zone experience modifier: how fast the zone pays against a baseline of 75"><em>ZEM</em>{z['zem']} <span style="color:var(--faint)">/ {z['zem_pct']}%</span></span>
       <span class="cell"><em>Plan</em>{'yes' if z['slug'] in PLANS else '—'}</span>
       <span class="bar"></span></a>''' for z in Z)
 
@@ -304,7 +304,8 @@ home = head("Accurate, sourced and kept current",
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">The atlas</h2>
       <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
-        No two are the same shape because no two dungeons are.</p></div>
+        <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays against a
+        baseline of 75.</p></div>
       <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
     <div class="plates">
 {plates}
@@ -439,10 +440,11 @@ dung = head("Dungeon surveys",
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
     <h1 class="display">{wordnum(len(Z))} zones,<br><em>surveyed.</em></h1>
-    <p class="hero-lede">Each shipping a deep-reference survey and, where built, a navigation map
-      companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
-      coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the
-      floor the game itself draws.</p>
+    <p class="hero-lede">Each carrying a floor plan drawn from the game&rsquo;s own mesh, population
+      tables, named rosters with spawn data, loot tied to its drop source, and coordinates
+      re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the floor the
+      game itself draws. <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays
+      against a baseline of 75.</p>
     <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len([z for z in Z if z['slug'] in PLANS])} with a floor plan</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
   </div>
 </section>

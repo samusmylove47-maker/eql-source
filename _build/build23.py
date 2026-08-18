@@ -4,7 +4,7 @@ WHY
 ---
 721 pages, and the only search was The Index, which searches items and named
 mobs. You could not find "Screaming Terror", "charm cap", "mote", "voidling" or
-"Tier C" anywhere on this site, including on the pages that explain them.
+"backstab" anywhere on this site, including on the pages that explain it.
 
 WHAT IT INDEXES, AND WHAT IT LEAVES OUT
 ---------------------------------------
@@ -127,7 +127,7 @@ BODY = f'''
       <a href="tools/index-search.html">The Index</a> does that properly, with filters for class,
       slot and zone.</p>
     <input class="sf" id="q" type="search" autocomplete="off" spellcheck="false"
-      placeholder="Screaming Terror, voidling, mote, tier C, placeholder&hellip;">
+      placeholder="Screaming Terror, voidling, mote, backstab, placeholder&hellip;">
     <p class="scount" id="c"></p>
   </div>
 </section>
