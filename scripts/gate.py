@@ -49,6 +49,20 @@ LEDGERS = [
     # registered and footer-linked while its card was never written - so the
     # count printed seven and the grid rendered six.
     ("tools/index.html", 'class="cards c2"', r'<a class="card"[^>]*>.*?</a>'),
+    # The open-gates list on the same page: one row per zone short of the full
+    # standard, each printing that zone's verify_gate in full. Its length is a
+    # function of HOW MANY GATES ARE OPEN, not of how much anyone has written.
+    # Castle Mistmoore dropping to partial on 18 Aug 2026 added 76 words to this
+    # page without a word being written, and took it 374 -> 450 against a 374
+    # ceiling.
+    #
+    # This one has a sharper edge than the five above. A ceiling over these rows
+    # puts budget pressure directly on the description of an open gap, and
+    # CLAUDE.md's hard rule is "never delete a flagged gap to make a page look
+    # complete". A check whose cheapest remedy is to say less about an unsolved
+    # problem is worse than no check. The heading and the paragraph around the
+    # list stay governed, as always.
+    ("dungeons/index.html", '<ul class="gatelist">', r'<li class="gaterow".*?</li>'),
     # MEASURED TABLES ARE A LEDGER; THE WORDS AROUND THEM ARE NOT.
     #
     # A survey's "Measured in play" section is a table per thing measured - the

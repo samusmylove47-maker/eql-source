@@ -165,21 +165,31 @@ actually ships.
 would have shipped "1 are partial". `npart` had been 0 since the sentence was
 written, so it had never rendered. Now derived.
 
-*The prose ratchet fired, correctly, and I want a ruling.* `dungeons/index.html`
-grew 374 → 450 words, because the "Open gates" list prints `verify_gate` for
-every zone short of `full` and Mistmoore became a fourth entry. **I raised the
-ceiling by hand to 450 with the reason in the commit**, which is the sanctioned
-path.
+*The prose ratchet fired, correctly, and the first fix I reached for was the
+wrong one.* `dungeons/index.html` grew 374 → 450 words, because the "Open gates"
+list prints `verify_gate` in full for every zone short of `full` and Mistmoore
+became a fourth entry. I raised the ceiling by hand to 450 — the sanctioned
+path — and was about to send it to you that way, on the reasoning that `LEDGERS`
+carries an argument that widening it should be hard.
 
-But the mechanism is wrong and will fire again. That list's length is a function
-of **how many gates are open**, not of how much anyone has written — the same
-property that already exempts the ledger rows and the floor plans' `<svg>`
-labels from `page_words`. Worse, the pressure it creates points at a hard rule:
-trimming a gate description to stay under budget is *"never delete a flagged gap
-to make a page look complete"*. **My recommendation is to exempt the
-`gaterow` rows in `page_words` rather than raise this ceiling again.** I have
-not done it: `LEDGERS` carries an explicit "adding to this list should be hard",
-and widening it is your call, not mine to take quietly.
+**That reasoning was out of date and I had not checked it.** `LEDGERS` already
+holds five entries of exactly this shape, each with the same comment in
+different words: one card per zone forbids adding a zone, one card per tool
+forbids shipping a tool, one row per boss kill forbids measuring another. The
+open-gates list is the sixth instance of a pattern this file has settled five
+times, and it carries the sharpest edge of any of them — a ceiling over those
+rows puts budget pressure on the description of an open gap, and *"never delete
+a flagged gap to make a page look complete"* is a hard rule. A check whose
+cheapest remedy is to say less about an unsolved problem is worse than no check.
+
+So the rows are exempt and the hand-raise is reverted. The page measures **181**
+words of actual prose, the ratchet lowered its ceiling from 374 to 181 on its
+own, and **193 words of slack that had been hiding behind the gate rows are
+gone**. Opening or closing a gate now moves this ceiling by nothing.
+
+I mention the wrong turn because it is the failure mode this project keeps
+finding: I quoted a rule from memory instead of reading it, and the memory was
+a version of the file that no longer exists.
 
 **A2 — the change log entry** is a `Source refresh` dated 18 Aug 2026. It
 records the Mistmoore revamp, records the Kedge Keep respawn fix separately
