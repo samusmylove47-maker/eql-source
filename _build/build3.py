@@ -290,9 +290,22 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
                          t.replace("&le;", "at most ").replace("<=", "at most ")
                           .replace("&ndash;", "-").replace("&mdash;", "-")
                           .replace("&minus;", "-").replace("<", "")).strip())
+                # "Every figure sourced and dated" is a confidence claim, and it
+                # is the wrong one to make about a zone that changed this
+                # morning. A share card is the one copy a reader cannot correct,
+                # click past or scroll below — it unfurls in Discord with
+                # whatever it said when the link was posted.
+                #
+                # Driven by the data, not by the slug: any zone that grows a
+                # `revamped` date gets this sentence, and the next revamp needs
+                # a value in zones-index.json and no generator change at all.
+                tail = "Every figure sourced and dated."
+                if zdata.get("revamped"):
+                    tail = (f"Measured before the {clean(zdata['revamped'])} "
+                            f"revamp and not re-measured since.")
                 desc = (f"{clean(desc)}. Levels {clean(zdata['levels'].split(' (')[0])}, "
                         f"respawn {clean(zdata['respawn'] or 'not recorded')}. "
-                        f"Every figure sourced and dated.")
+                        f"{tail}")
             h = h.replace('<meta name="viewport"',
                           f'<meta name="description" content="{desc}">'
                           '<meta name="viewport"', 1)

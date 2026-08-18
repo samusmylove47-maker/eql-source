@@ -171,6 +171,19 @@ CASES = [
      "public/dungeons/planeofhate.html",
      lambda t: re.sub(r'(<meta name="description" content=")', r'\g<1>375 damage. ', t, count=1)),
 
+    # Rule 5's blind spot, proved separately because rule 5 cannot prove it.
+    # Castle Mistmoore was revamped on 18 Aug 2026 with the note in its body and
+    # its share card still ending "Every figure sourced and dated" — the copy a
+    # Discord embed keeps, and the one a reader cannot correct. Rule 5 only
+    # inspects numbers of three digits or more and this description has none, so
+    # the case above would pass on this page no matter how stale the card got.
+    ("a revamped zone whose share card does not say so",
+     "share description does not say so",
+     "public/dungeons/mistmoore.html",
+     lambda t: t.replace("Measured before the 18 August 2026 revamp and not "
+                         "re-measured since.",
+                         "Every figure sourced and dated.")),
+
     # The bug this shipped with. _build/plans.py parsed /loc with a plain
     # `-?\d+`, and 141 recorded coordinates use U+2212 MINUS SIGN, so every
     # negative one read as positive and the mark landed in the opposite corner.

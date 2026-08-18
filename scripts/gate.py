@@ -475,9 +475,19 @@ def run(pages, fail, warn):
     # alone is not enough: the Eye of Veeshan page badges the number once and
     # then discusses it twice in prose - "unverified for Legends", "the 32,000
     # hit points come from" - and an all-occurrences rule let it through.
+    # "revamp" and "re-measured" joined this vocabulary on 18 Aug 2026. A body
+    # saying a zone was revamped is qualifying every figure on the page, and a
+    # description restating one of those figures flatly is the fault this check
+    # was built for.
+    #
+    # It does not on its own protect the page that prompted it — see 5c. Rule 5
+    # only inspects numbers of three digits or more, and Castle Mistmoore's
+    # description contains none: "20-45" and "22:00" are both under the
+    # threshold. Widening the vocabulary of a check that never looks at the page
+    # is the kind of fix that reads as done and changes nothing.
     HEDGE = re.compile(r"unverified|unconfirmed|disputed|retract|pre-launch|"
                        r"import|not confirmed|cannot be confirmed|we do not|"
-                       r"no longer|superseded", re.I)
+                       r"no longer|superseded|revamp|re-measured", re.I)
     for p in pages:
         h = open(p, encoding="utf-8", errors="replace").read()
         m = re.search(r'<meta name="description" content="([^"]*)"', h)
@@ -631,6 +641,40 @@ def run(pages, fail, warn):
             fail(f"{off} plotted positions disagree with their floor plan in total")
     except (OSError, ValueError, KeyError, ImportError):
         pass          # no plans yet is not a failure; a wrong plan is
+
+    # ---- 5c. a revamped zone must say so on its share card -------------------
+    #
+    # Castle Mistmoore was revamped on 18 Aug 2026. The survey body carried the
+    # note and the dungeon index carried it three times, while the page's own
+    # meta description and og:description still ended "Every figure sourced and
+    # dated." That is the copy that unfurls in a Discord embed, and it is the
+    # one copy a reader cannot correct, click past or scroll below.
+    #
+    # Rule 5 above could not have caught it and still cannot. It inspects
+    # numbers of three digits or more, and this description contains none —
+    # "20-45" and "22:00" are both under that threshold — so the check that
+    # exists to stop metadata asserting what the body hedges was structurally
+    # blind to the page that went stale. Adding vocabulary to it would not have
+    # helped. This asks the question directly: the data says revamped, so the
+    # card has to say revamped.
+    #
+    # Keyed off `revamped` in zones-index.json, so a zone that is revamped
+    # tomorrow is covered the moment the date lands, with no edit here.
+    for z in Z:
+        if not z.get("revamped"):
+            continue
+        page = f"public/dungeons/{z['slug']}.html"
+        if not os.path.exists(page):
+            continue
+        h = open(page, encoding="utf-8", errors="replace").read()
+        for attr in ('<meta name="description" content="([^"]*)"',
+                     '<meta property="og:description" content="([^"]*)"'):
+            m = re.search(attr, h)
+            if m and not re.search(r"revamp|re-measured", m.group(1), re.I):
+                fail(f"{page}: {z['slug']} carries revamped {z['revamped']} in "
+                     f"zones-index.json, but its share description does not say "
+                     f"so — that is the copy a Discord embed keeps")
+                break
 
     # ---- 6. prose may not grow -----------------------------------------------
     #
