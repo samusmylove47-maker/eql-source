@@ -254,8 +254,19 @@ input[type=text]:focus{border-color:var(--wind);outline:none}
 #dock .seg button:hover{color:var(--bone)}
 #dock .seg button.on{background:var(--lift);color:var(--wind)}
 /* the transparency control: continuous, not a menu of five steps */
-#opw{display:flex;align-items:center;gap:6px;flex:1;min-width:96px}
-#op{-webkit-appearance:none;appearance:none;flex:1;height:16px;background:none}
+/* THE SLIDER MUST SHRINK WITH THE WINDOW.
+   min-width:96px here, plus the min-width:auto every flex item gets by
+   default, meant neither this wrapper nor the range inside it could go below
+   its content width. Narrow the overlay and the dock needed 312px in a 242px
+   box: the slider ran 47px past the panel edge and its right half could not be
+   clicked. It still worked if you grabbed the middle and dragged off the edge,
+   which is the tell for an overflow rather than a dead control.
+   min-width:0 on both lets the row reflow; 40px keeps the track wide enough to
+   aim at once everything else has taken its share. */
+#opw{display:flex;align-items:center;gap:6px;flex:1 1 0;min-width:0}
+#op{-webkit-appearance:none;appearance:none;flex:1 1 40px;min-width:40px;height:16px;background:none}
+#dock{flex-wrap:nowrap}
+#dock .seg{flex:0 0 auto}
 #op::-webkit-slider-runnable-track{height:3px;border-radius:2px;
   background:linear-gradient(90deg,var(--lift),var(--wind))}
 #op::-moz-range-track{height:3px;border-radius:2px;
@@ -1948,13 +1959,34 @@ function init() {
   $("#bGo").onclick = () => setSetup(false);
   $("#bSetup").onclick = () => setSetup(!$("#app").classList.contains("setup"));
 
-  /* Width lives on #app, not :root — `#app.wide{--w:600px}` is declared on the
-     element itself and beats anything inherited, which made Compact silently
-     do nothing while setup was open. */
+  /* COMPACT HAS TO MOVE THE WINDOW, NOT A VARIABLE.
+     Under Electron `html.native #app{width:100vw}` wins over
+     `#app{width:var(--w)}`, so setting --w changed a value nothing read and
+     the button did nothing at all in the overlay. It only ever appeared to
+     work in a browser tab, where the panel is the only thing that can change.
+     The window is what has a width in the overlay, so ask for it.
+     The wide width is remembered rather than assumed: restoring used to
+     hard-code 344, which threw away the 600 the setup panel had asked for. */
+  const COMPACT_W = 244;
+  let priorW = null;
   $("#bMin").onclick = () => {
-    const a = $("#app"); const on = a.classList.toggle("mini");
-    a.style.setProperty("--w", on ? "244px" : "344px");
+    const a = $("#app");
+    const on = a.classList.toggle("mini");
     a.style.setProperty("--f", on ? "11px" : "12px");
+    if (NATIVE) {
+      const b = a.getBoundingClientRect();
+      if (on) priorW = Math.round(b.width);
+      window.skyNative.resize(on ? COMPACT_W : (priorW || 360), Math.round(b.height));
+    } else if (on) {
+      a.style.setProperty("--w", COMPACT_W + "px");
+    } else {
+      /* REMOVE rather than restore a number. Writing the old width back as an
+         inline style pinned the panel there for good, so opening and closing
+         setup stopped changing the width once Compact had been used once.
+         Clearing it hands control back to `#app.wide{--w:600px}` and the
+         :root default, which is where the width belongs. */
+      a.style.removeProperty("--w");
+    }
   };
 
   $("#bThru").onclick = () => {
