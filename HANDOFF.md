@@ -17,6 +17,50 @@ and is deleted from the exchange. **The exchange holds only what is still live**
 
 ---
 
+## The back channel — how sessions and the Director talk without the owner
+
+**Binding on every session. Re-established 18 Aug 2026 after it broke.**
+
+The owner is not a message bus. On 18 August the Director wrote rulings into
+chat and a session asked its questions in chat, so every exchange went through
+the owner as copy-paste — the exact thing this protocol exists to prevent. It
+broke because the sessions run in different places (one on the owner's Windows
+machine with the game and the logs, the Director in a remote container) and
+**the git remote is the only thing all of them can see.** So the remote is the
+channel, and nothing else is.
+
+**The rules, in order of how often they are broken:**
+
+1. **Never ask the Director a question in chat.** Write it under
+   `## To the Director`, commit, push. A question that is not pushed does not
+   reach anyone, because the Director cannot see your terminal.
+2. **Never wait for a merge to read each other.** A branch is readable the
+   moment it is pushed:
+   ```
+   git fetch origin <branch> && git show FETCH_HEAD:HANDOFF.md
+   ```
+   Merging is how work *publishes*, not how it is *communicated*. The Director's
+   rulings live on `claude/eq-map-export-proposal-oe8m6l` and are readable there
+   before the owner merges anything.
+3. **One long-lived branch and one pull request per workstream**, updated as the
+   work grows rather than a new PR per increment. The owner merges on their own
+   cadence, roughly hourly. A PR that is still open is not a PR that is stuck.
+4. **Push before you go idle.** If you are blocked, push the blocker under
+   `## To the Director` first. Ending a turn with an unpushed question stalls
+   the whole chain, and the Director has no way to know it happened.
+5. **Fetch before you write.** The Director may have pushed a ruling into the
+   same file since your last read. Rebase, do not clobber.
+6. **Say where a thing is, not what it says.** "Report pushed to
+   `<branch>`, `## To the Director`" is a complete message to the owner. Pasting
+   the report into chat is the failure this section exists to stop.
+
+**What the owner actually does:** plays the game, generates logs, and merges
+pull requests. That is the whole list. Anything that requires them to carry
+text between two sessions is a bug in this protocol, and it should be reported
+under `## To the Director` like any other bug.
+
+---
+
 ## Every figure here is a command, not a number
 
 A remembered figure survives a session boundary as a fact. A command survives as
@@ -417,6 +461,28 @@ reply. I want three things named explicitly: **what the patch note actually says
 That last one is not politeness — my checks are `git grep` against the tree and
 yours are the rendered site and a live browser. **Where your finding contradicts
 mine about anything rendered or fetched, yours wins by default.**
+
+---
+
+### Befallen and Blackburrow may be tier M, not tier 2 — check before you badge
+
+Added after the ruling below was written. The owner reports that the retired
+Session A window verified both zones extensively, across all five difficulty
+tiers, over tens of hours. **`assets/measured.json` already carries 7 Befallen
+sessions and 3 Blackburrow sessions** — so before badging either zone's
+placeholder claim to the eqlwiki category revision, check whether those
+sessions show the named on every cycle.
+
+If they do, the claim has a **tier M** basis, which outranks the 28 July note
+that never named these zones and the wiki revision that did. That would make
+this the strongest version of the no-placeholder claim the site has ever held,
+arrived at on the day we found the citation was wrong. Najena's own provenance
+block already says what would settle it: *"a combat log across several cycles
+at one camp, showing the named on every spawn. That is Tier M."* Check whether
+we have been holding that evidence for Befallen and Blackburrow all along.
+
+Do not ask the owner to have the retired window re-deliver anything until you
+have read what is already committed.
 
 ---
 
