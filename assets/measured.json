@@ -20645,6 +20645,7 @@
  {
   "zone": "The Ruins of Old Guk",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -21088,6 +21089,7 @@
  {
   "zone": "The Southern Desert of Ro",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -21165,6 +21167,7 @@
  {
   "zone": "The Ruins of Old Guk",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -22186,6 +22189,7 @@
  {
   "zone": "The Ruins of Old Guk",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -22664,6 +22668,7 @@
  {
   "zone": "The Feerrott",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -22718,6 +22723,7 @@
  {
   "zone": "Temple of Cazic-Thule",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -22891,6 +22897,7 @@
  {
   "zone": "Temple of Cazic-Thule",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -23420,6 +23427,7 @@
  {
   "zone": "Temple of Cazic-Thule",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -23815,6 +23823,7 @@
  {
   "zone": "Temple of Cazic-Thule",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -24216,6 +24225,7 @@
  {
   "zone": "Temple of Cazic-Thule",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -24581,6 +24591,7 @@
  {
   "zone": "Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -24643,6 +24654,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -24717,6 +24729,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -24775,6 +24788,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -25158,6 +25172,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -25499,6 +25514,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -25869,6 +25885,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -26128,6 +26145,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -26433,6 +26451,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -26632,6 +26651,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -26692,6 +26712,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -27049,6 +27070,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -27275,6 +27297,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -27401,6 +27424,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -27548,6 +27572,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -27725,6 +27750,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -27833,6 +27859,7 @@
  {
   "zone": "Permafrost Keep",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -27901,6 +27928,7 @@
  {
   "zone": "Permafrost Keep",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -27958,6 +27986,7 @@
  {
   "zone": "The Permafrost Caverns - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -28145,6 +28174,7 @@
  {
   "zone": "The Permafrost Caverns - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -28316,6 +28346,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -28408,6 +28439,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -28491,6 +28523,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -28573,6 +28606,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -28670,6 +28704,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -28784,6 +28819,7 @@
  {
   "zone": "The Northern Desert of Ro",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -28838,6 +28874,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -29405,6 +29442,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -29907,6 +29945,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -30090,6 +30129,7 @@
  {
   "zone": null,
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 1,
@@ -30281,6 +30321,7 @@
  {
   "zone": null,
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 1,
@@ -30575,6 +30616,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -30791,6 +30833,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -31175,6 +31218,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -31454,6 +31498,7 @@
  {
   "zone": "The Permafrost Caverns - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -31702,6 +31747,7 @@
  {
   "zone": "The Permafrost Caverns - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -31860,6 +31906,7 @@
  {
   "zone": "The Permafrost Caverns - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -32110,6 +32157,7 @@
  {
   "zone": "The Permafrost Caverns - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -32376,6 +32424,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -32494,6 +32543,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -32586,6 +32636,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -32793,6 +32844,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -32919,6 +32971,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -32985,6 +33038,7 @@
  {
   "zone": "Nagafen's Lair",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -33051,6 +33105,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -33339,6 +33394,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -33526,6 +33582,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -33664,6 +33721,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -33767,6 +33825,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -33893,6 +33952,7 @@
  {
   "zone": "The Ruins of Old Paineel - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -33979,6 +34039,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -34276,6 +34337,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -34462,6 +34524,7 @@
  {
   "zone": "The Feerrott",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -34537,6 +34600,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -35721,6 +35785,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -37135,6 +37200,7 @@
  {
   "zone": "The Feerrott",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -37216,6 +37282,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -37607,6 +37674,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -37878,6 +37946,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -38745,6 +38814,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -39370,6 +39440,7 @@
  {
   "zone": "The Rathe Mountains",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -39430,6 +39501,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -39821,6 +39893,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -40114,6 +40187,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -40399,6 +40473,7 @@
  {
   "zone": "The Feerrott",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -40466,6 +40541,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -40939,6 +41015,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -41298,6 +41375,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -41674,6 +41752,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -41967,6 +42046,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -42253,6 +42333,7 @@
  {
   "zone": "Nagafen's Lair - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -42505,6 +42586,7 @@
  {
   "zone": "The Rathe Mountains",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -42569,6 +42651,7 @@
  {
   "zone": "The Feerrott",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -42625,6 +42708,7 @@
  {
   "zone": "The Feerrott",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -42681,6 +42765,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -43016,6 +43101,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -43265,6 +43351,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -43536,6 +43623,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -43761,6 +43849,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -43823,6 +43912,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -44363,6 +44453,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -44832,6 +44923,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -45260,6 +45352,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -45617,6 +45710,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -46146,6 +46240,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -46629,6 +46724,7 @@
  {
   "zone": "The Oasis of Marr",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -46693,6 +46789,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -47046,6 +47143,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -47303,6 +47401,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -48052,6 +48151,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -48628,6 +48728,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -48771,6 +48872,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -48864,6 +48966,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -49265,6 +49368,7 @@
  {
   "zone": "The Ruins of Old Paineel",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -49608,6 +49712,7 @@
  {
   "zone": "The Greater Faydark",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -49677,6 +49782,7 @@
  {
   "zone": "The Rathe Mountains",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -49879,6 +49985,7 @@
  {
   "zone": "The Rathe Mountains",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -50134,6 +50241,7 @@
  {
   "zone": "The Oasis of Marr",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -50205,6 +50313,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -51167,6 +51276,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -51366,6 +51476,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -51881,6 +51992,7 @@
  {
   "zone": null,
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": null,
@@ -51950,6 +52062,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -52310,6 +52423,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -52640,6 +52754,7 @@
  {
   "zone": "The Southern Desert of Ro",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -52700,6 +52815,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -53518,6 +53634,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -54003,6 +54120,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -54530,6 +54648,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -54761,6 +54880,7 @@
  {
   "zone": "The Plane of Sky",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -55020,6 +55140,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -55262,6 +55383,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -55448,6 +55570,7 @@
  {
   "zone": "The Plane of Hate",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -56301,6 +56424,7 @@
  {
   "zone": "The Plane of Hate - Group",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Refined",
   "difficulty_num": 4,
   "difficulty": 4,
@@ -56639,6 +56763,7 @@
  {
   "zone": "The Rathe Mountains",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -56757,6 +56882,7 @@
  {
   "zone": "The Rathe Mountains",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Fused",
   "difficulty_num": 3,
   "difficulty": 3,
@@ -57006,6 +57132,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Avenrae",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -57522,6 +57649,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -58006,6 +58134,7 @@
  {
   "zone": "The Plane of Fear",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -58190,6 +58319,7 @@
  {
   "zone": "The Plane of Fear - Group",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -58450,6 +58580,7 @@
  {
   "zone": "Nektulos Forest",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -58504,6 +58635,7 @@
  {
   "zone": "Nektulos Forest",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 0,
@@ -58585,6 +58717,7 @@
  {
   "zone": "The Castle of Mistmoore",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Awakened",
   "difficulty_num": 1,
   "difficulty": 1,
@@ -59665,6 +59798,7 @@
  {
   "zone": "The Castle of Mistmoore",
   "character": "Shara",
+  "zone_from": null,
   "difficulty_label": "Adaptive",
   "difficulty_num": 2,
   "difficulty": 2,
@@ -60921,8 +61055,9 @@
   "drop_tier_modal": 2
  },
  {
-  "zone": null,
+  "zone": "The Castle of Mistmoore",
   "character": "Avenrae",
+  "zone_from": "/who, read from this log",
   "difficulty_label": null,
   "difficulty_num": null,
   "difficulty": 1,
@@ -60930,13 +61065,18 @@
   "difficulty_label_agrees": null,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "16:48-17:38",
+  "window": "16:48-17:54",
   "stamps": [],
-  "minutes": 50,
-  "kills": 96,
-  "distinct": 34,
+  "minutes": 66,
+  "kills": 152,
+  "distinct": 43,
   "kinds": [
    "Maid Issis",
+   "Princess Cherista",
+   "a cloaked dhampyre",
+   "a dark ass`t librarian",
+   "a dark librarian",
+   "a fallen noble",
    "a flouting gargoyle",
    "a ghastish ancille",
    "a ghostly ancille",
@@ -60946,17 +61086,21 @@
    "a glyphed ghoul",
    "a glyphed guard",
    "a glyphed sentry",
+   "a glyphed warder",
    "a grinning gargoyle",
    "a gypsy dancer",
+   "a hemo enologist",
    "a jeering gargoyle",
    "a leering gargoyle",
    "a pledge familiar",
    "a shadowy sage",
    "a shadowy scribe",
    "a sneering gargoyle",
+   "a soul inveigling",
    "a soul seductress",
    "a soul temptress",
    "a spectral ancille",
+   "a thought corruptor",
    "a thought defiler",
    "a thought spoiler",
    "a vampire noble",
@@ -60972,125 +61116,145 @@
    "an initiate familiar"
   ],
   "kills_by_mob": {
+   "a will sapper": 17,
+   "a flouting gargoyle": 16,
    "a ghoulish ancille": 9,
+   "a will pillager": 9,
    "a ghastish ancille": 8,
    "an initiate familiar": 8,
-   "a flouting gargoyle": 7,
-   "a pledge familiar": 7,
-   "a will sapper": 7,
-   "a will pillager": 6,
-   "a glyphed guard": 5,
+   "a pledge familiar": 8,
+   "a leering gargoyle": 6,
+   "a glyphed guard": 6,
+   "a soul temptress": 6,
+   "a soul seductress": 4,
+   "a werewolf": 4,
+   "a soul inveigling": 4,
+   "a jeering gargoyle": 3,
    "a vampiric ancille": 3,
-   "a soul seductress": 3,
+   "a vampire noble": 3,
+   "a will ravisher": 3,
    "a glyphed forbidder": 2,
-   "a leering gargoyle": 2,
    "a glyphed familiar": 2,
-   "a jeering gargoyle": 2,
+   "a glyphed sentry": 2,
    "a vampire oracle": 2,
-   "a vampire noble": 2,
-   "a will ravisher": 2,
-   "a soul temptress": 2,
-   "a werewolf": 2,
+   "a thought defiler": 2,
+   "a werewolf gypsy": 2,
+   "Maid Issis": 2,
+   "a glyphed warder": 2,
+   "a thought corruptor": 2,
    "a grinning gargoyle": 1,
    "a glyphed ghoul": 1,
-   "a glyphed sentry": 1,
    "a ghostly ancille": 1,
    "a sneering gargoyle": 1,
    "a shadowy sage": 1,
    "a spectral ancille": 1,
    "a gypsy dancer": 1,
    "a wraithish ancille": 1,
-   "a thought defiler": 1,
-   "a werewolf gypsy": 1,
    "a thought spoiler": 1,
    "a shadowy scribe": 1,
-   "Maid Issis": 1,
-   "an ancille cook": 1
+   "an ancille cook": 1,
+   "a dark ass`t librarian": 1,
+   "a dark librarian": 1,
+   "Princess Cherista": 1,
+   "a hemo enologist": 1,
+   "a cloaked dhampyre": 1,
+   "a fallen noble": 1
   },
   "drop_tiers": {
-   "1": 44,
-   "2": 12
+   "1": 62,
+   "2": 13,
+   "3": 1
   },
   "faction": {
-   "Mayong Mistmoore": 153,
-   "King Tearis Thex": 153,
-   "Agents of Mistmoore": 153,
-   "League of Antonican Bards": 153,
-   "Ring of Scale": 153,
+   "Mayong Mistmoore": 222,
+   "King Tearis Thex": 222,
+   "Agents of Mistmoore": 222,
+   "League of Antonican Bards": 222,
+   "Ring of Scale": 222,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
   "context": [],
   "escapes": [],
   "control": {
-   "melee_stuns_avoided": 219,
-   "lockout_lines": 61,
+   "melee_stuns_avoided": 314,
+   "lockout_lines": 89,
    "fear_lines": 0,
-   "screams": 2,
-   "scream_seconds": 38,
+   "screams": 3,
+   "scream_seconds": 43,
    "stuns": {
     "Lightning Bolt": {
-     "landed": 24,
+     "landed": 37,
      "casters": {
-      "a vampire oracle": 5,
+      "a vampire oracle": 7,
+      "a thought spoiler": 7,
       "a ghostly ancille": 5,
+      "a thought defiler": 5,
+      "a vampire noble": 4,
       "a spectral ancille": 3,
-      "a thought spoiler": 3,
       "a shadowy scribe": 3,
-      "a thought defiler": 3,
-      "a vampire noble": 2
+      "a thought corruptor": 3
      }
     },
     "Tishan's Clash": {
-     "landed": 4,
+     "landed": 5,
      "casters": {
       "a vampire noble": 2,
       "a spectral ancille": 1,
-      "a vampire oracle": 1
+      "a vampire oracle": 1,
+      "a thought spoiler": 1
      }
     },
     "Holy Might": {
-     "landed": 3,
+     "landed": 4,
      "casters": {
-      "a glyphed warder": 2,
+      "a glyphed warder": 3,
       "a glyphed forbidder": 1
      }
     }
    },
    "resists": {
     "Fatigue Drain": {
-     "a will pillager": 8,
+     "a will sapper": 12,
+     "a will pillager": 10,
      "a ghoulish ancille": 4,
-     "a will sapper": 3,
+     "a will ravisher": 3,
      "a ghastish ancille": 2,
-     "a will ravisher": 1
+     "a cloaked dhampyre": 1
     },
     "Instill": {
      "a vampire noble": 10,
-     "a thought spoiler": 9,
+     "a thought spoiler": 10,
+     "a vampire oracle": 8,
      "a shadowy scribe": 5,
-     "a vampire oracle": 4,
+     "a thought defiler": 5,
      "a ghostly ancille": 2,
      "a shadowy sage": 2,
      "a spectral ancille": 2,
-     "a thought defiler": 2
+     "a will pillager": 2,
+     "a thought corruptor": 1
     },
     "Lightning Bolt": {
      "a vampire oracle": 4,
+     "a thought defiler": 3,
+     "a thought spoiler": 3,
+     "a thought corruptor": 3,
      "a shadowy scribe": 2,
-     "a thought spoiler": 2,
-     "a thought defiler": 1,
      "a glyphed familiar": 1,
      "a ghostly ancille": 1,
      "a shadowy sage": 1,
-     "a spectral ancille": 1
+     "a spectral ancille": 1,
+     "a vampire noble": 1
     },
     "Tishan's Clash": {
      "a thought spoiler": 2,
-     "a thought defiler": 1
+     "a thought defiler": 1,
+     "a thought corruptor": 1
     },
     "Screaming Terror": {
-     "a soul seductress": 13,
+     "a soul seductress": 14,
+     "a soul inveigling": 6,
+     "Princess Cherista": 4,
      "a wraithish ancille": 1
     },
     "Fear": {
@@ -61099,16 +61263,20 @@
     },
     "Engulfing Darkness": {
      "a soul seductress": 2,
+     "Maid Issis": 2,
      "a wraithish ancille": 1,
-     "Maid Issis": 1
+     "a soul inveigling": 1,
+     "Princess Cherista": 1
     },
     "Mana Drain": {
+     "Princess Cherista": 2,
      "a thought defiler": 1,
      "Maid Issis": 1
     },
     "Root": {
      "an initiate familiar": 8,
      "a pledge familiar": 4,
+     "a glyphed warder": 1,
      "a glyphed forbidder": 1
     },
     "Frost Bolt": {
@@ -61118,21 +61286,32 @@
      "an initiate familiar": 1
     },
     "Holy Might": {
+     "a glyphed warder": 1,
      "a glyphed forbidder": 1
     },
     "Negation of Life": {
+     "a soul temptress": 3,
+     "a soul seductress": 2,
      "a wraithish ancille": 2,
-     "a soul temptress": 2,
-     "a soul seductress": 1
+     "Princess Cherista": 2,
+     "a soul inveigling": 1
     },
     "Shadow Vortex": {
-     "a soul temptress": 3,
+     "a soul temptress": 5,
      "a wraithish ancille": 3,
-     "a soul seductress": 1
+     "a soul inveigling": 2,
+     "a soul seductress": 1,
+     "Princess Cherista": 1
     },
     "Cancelling of Life": {
      "an ancille cook": 3,
      "Butler Syncall": 1
+    },
+    "Suffocate": {
+     "a will pillager": 1
+    },
+    "Infectious Cloud": {
+     "a soul temptress": 1
     }
    }
   },
@@ -61368,86 +61547,167 @@
     "Agents of Mistmoore": "down",
     "League of Antonican Bards": "up",
     "Ring of Scale": "up"
+   },
+   "a dark ass`t librarian": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a dark librarian": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "Princess Cherista": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a glyphed warder": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a soul inveigling": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a thought corruptor": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a hemo enologist": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a cloaked dhampyre": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a fallen noble": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
    }
   },
   "exp_by_mob": {
    "a glyphed forbidder": 2.468,
    "a ghoulish ancille": 2.39,
-   "a flouting gargoyle": 2.58,
+   "a flouting gargoyle": 2.357,
    "a ghastish ancille": 2.68,
-   "a leering gargoyle": 3.281,
+   "a leering gargoyle": 2.955,
    "an initiate familiar": 0.881,
-   "a pledge familiar": 0.608,
+   "a pledge familiar": 0.557,
    "a grinning gargoyle": 1.093,
    "a glyphed ghoul": 1.499,
    "a glyphed familiar": 0.882,
-   "a glyphed guard": 1.197,
-   "a glyphed sentry": 1.499,
+   "a glyphed guard": 1.161,
+   "a glyphed sentry": 1.35,
    "a ghostly ancille": 1.621,
    "a sneering gargoyle": 1.219,
-   "a jeering gargoyle": 2.162,
+   "a jeering gargoyle": 2.047,
    "a vampiric ancille": 2.897,
    "a shadowy sage": 1.592,
    "a spectral ancille": 1.3,
    "a vampire oracle": 1.248,
-   "a vampire noble": 1.334,
-   "a will pillager": 2.437,
-   "a will sapper": 2.059,
-   "a will ravisher": 2.982,
-   "a soul seductress": 1.312,
+   "a vampire noble": 1.306,
+   "a will pillager": 2.361,
+   "a will sapper": 1.952,
+   "a will ravisher": 2.76,
+   "a soul seductress": 1.252,
    "a gypsy dancer": 1.097,
-   "a soul temptress": 1.16,
+   "a soul temptress": 1.081,
    "a wraithish ancille": 1.472,
-   "a werewolf": 1.784,
-   "a thought defiler": 1.38,
-   "a werewolf gypsy": 2.359,
+   "a werewolf": 1.768,
+   "a thought defiler": 1.366,
+   "a werewolf gypsy": 2.175,
    "a thought spoiler": 1.151,
    "a shadowy scribe": 1.196,
-   "Maid Issis": 1.358,
-   "an ancille cook": 2.986
+   "Maid Issis": 1.306,
+   "an ancille cook": 2.986,
+   "a dark ass`t librarian": 2.509,
+   "a dark librarian": 2.509,
+   "Princess Cherista": 2.605,
+   "a glyphed warder": 0.983,
+   "a soul inveigling": 1.372,
+   "a thought corruptor": 1.125,
+   "a hemo enologist": 1.991,
+   "a cloaked dhampyre": 2.316,
+   "a fallen noble": 1.201
   },
   "exp_samples_by_mob": {
    "a glyphed forbidder": 2,
    "a ghoulish ancille": 9,
-   "a flouting gargoyle": 7,
+   "a flouting gargoyle": 16,
    "a ghastish ancille": 8,
-   "a leering gargoyle": 2,
+   "a leering gargoyle": 6,
    "an initiate familiar": 8,
-   "a pledge familiar": 7,
+   "a pledge familiar": 8,
    "a grinning gargoyle": 1,
    "a glyphed ghoul": 1,
    "a glyphed familiar": 2,
-   "a glyphed guard": 5,
-   "a glyphed sentry": 1,
+   "a glyphed guard": 6,
+   "a glyphed sentry": 2,
    "a ghostly ancille": 1,
    "a sneering gargoyle": 1,
-   "a jeering gargoyle": 2,
+   "a jeering gargoyle": 3,
    "a vampiric ancille": 3,
    "a shadowy sage": 1,
    "a spectral ancille": 1,
    "a vampire oracle": 2,
-   "a vampire noble": 2,
-   "a will pillager": 6,
-   "a will sapper": 7,
-   "a will ravisher": 2,
-   "a soul seductress": 3,
+   "a vampire noble": 3,
+   "a will pillager": 9,
+   "a will sapper": 17,
+   "a will ravisher": 3,
+   "a soul seductress": 4,
    "a gypsy dancer": 1,
-   "a soul temptress": 2,
+   "a soul temptress": 6,
    "a wraithish ancille": 1,
-   "a werewolf": 2,
-   "a thought defiler": 1,
-   "a werewolf gypsy": 1,
+   "a werewolf": 4,
+   "a thought defiler": 2,
+   "a werewolf gypsy": 2,
    "a thought spoiler": 1,
    "a shadowy scribe": 1,
-   "Maid Issis": 1,
-   "an ancille cook": 1
+   "Maid Issis": 2,
+   "an ancille cook": 1,
+   "a dark ass`t librarian": 1,
+   "a dark librarian": 1,
+   "Princess Cherista": 1,
+   "a glyphed warder": 2,
+   "a soul inveigling": 4,
+   "a thought corruptor": 2,
+   "a hemo enologist": 1,
+   "a cloaked dhampyre": 1,
+   "a fallen noble": 1
   },
-  "exp_attributed": 177.389,
-  "exp_attributed_kills": 96,
-  "you_hit": 1117,
-  "you_miss": 634,
-  "mob_hit": 2987,
-  "mob_miss": 1968,
+  "exp_attributed": 277.546,
+  "exp_attributed_kills": 152,
+  "you_hit": 1639,
+  "you_miss": 868,
+  "mob_hit": 4430,
+  "mob_miss": 2945,
   "mobs": {
    "A glyphed forbidder": {
     "swings": 47,
@@ -61524,22 +61784,23 @@
     }
    },
    "A leering gargoyle": {
-    "swings": 133,
-    "landed": 89,
-    "avg": 11.0,
-    "max": 45,
+    "swings": 412,
+    "landed": 268,
+    "avg": 13.8,
+    "max": 87,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
+     "Mistmoore Granite": 3,
      "Gargoyle Eye": 2,
-     "Mistmoore Granite": 2
+     "Mote of Minor Potential": 1
     }
    },
    "A glyphed guard": {
-    "swings": 228,
-    "landed": 113,
+    "swings": 229,
+    "landed": 114,
     "avg": 3.4,
     "max": 23,
     "backstabs": 0,
@@ -61553,17 +61814,17 @@
     }
    },
    "A flouting gargoyle": {
-    "swings": 428,
-    "landed": 267,
-    "avg": 10.5,
-    "max": 39,
+    "swings": 831,
+    "landed": 497,
+    "avg": 11.7,
+    "max": 74,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Mistmoore Granite": 4,
-     "Gargoyle Eye": 1
+     "Mistmoore Granite": 5,
+     "Gargoyle Eye": 3
     }
    },
    "A dark offerer": {
@@ -61598,169 +61859,192 @@
     "loot": {}
    },
    "A werewolf": {
-    "swings": 236,
-    "landed": 143,
-    "avg": 7.0,
-    "max": 30,
+    "swings": 352,
+    "landed": 221,
+    "avg": 7.3,
+    "max": 37,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Werewolf Talon": 1
+     "Werewolf Talon": 3,
+     "Mote of Lesser Potential": 1
     }
    },
    "A will pillager": {
-    "swings": 458,
-    "landed": 282,
-    "avg": 8.6,
-    "max": 32,
+    "swings": 622,
+    "landed": 380,
+    "avg": 8.9,
+    "max": 64,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
      "Alacrity": 16,
-     "Feedback": 14
+     "Feedback": 14,
+     "Instill": 7,
+     "Suffocate": 2,
+     "Beguile": 1,
+     "Anarchy": 1,
+     "Tashani": 1
     },
-    "loot": {}
+    "loot": {
+     "Bronze Gauntlets +1": 1,
+     "Mote of Minor Potential": 1
+    }
    },
    "A thought spoiler": {
-    "swings": 39,
-    "landed": 26,
-    "avg": 8.7,
+    "swings": 78,
+    "landed": 45,
+    "avg": 9.3,
     "max": 27,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Instill": 16,
-     "Lightning Bolt": 13,
-     "Tishan's Clash": 4,
+     "Instill": 24,
+     "Lightning Bolt": 20,
+     "Tishan's Clash": 6,
+     "Lesser Shielding": 2,
      "Shielding": 1
     },
     "loot": {
-     "Mithril Earring +1": 2
+     "Mithril Earring +1": 2,
+     "Topaz": 1,
+     "Jade Earring +2": 1
     }
    },
    "A werewolf gypsy": {
-    "swings": 87,
-    "landed": 57,
-    "avg": 8.2,
-    "max": 30,
+    "swings": 141,
+    "landed": 99,
+    "avg": 9.3,
+    "max": 47,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Mistmoore Battle Drums +1": 1
+     "Mistmoore Battle Drums +1": 2
     }
    },
    "A gypsy dancer": {
-    "swings": 81,
-    "landed": 46,
-    "avg": 5.8,
+    "swings": 91,
+    "landed": 55,
+    "avg": 5.9,
     "max": 23,
-    "backstabs": 6,
-    "backstab_avg": 70.8,
+    "backstabs": 7,
+    "backstab_avg": 62.4,
     "backstab_max": 106,
     "casts": {},
     "loot": {
-     "Power of Wind": 2
+     "Power of Wind": 3
     }
    },
    "A vampire noble": {
-    "swings": 63,
-    "landed": 42,
-    "avg": 13.7,
+    "swings": 81,
+    "landed": 52,
+    "avg": 13.1,
     "max": 32,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Instill": 16,
-     "Lightning Bolt": 9,
+     "Instill": 18,
+     "Lightning Bolt": 15,
      "Tishan's Clash": 4,
-     "Leatherskin": 2,
-     "Shielding": 1
+     "Leatherskin": 3,
+     "Shielding": 2
     },
     "loot": {
      "Silver Amulet +1": 1,
-     "Gold Ring +2": 1
+     "Gold Ring +2": 1,
+     "Fine Steel Spear +3": 1,
+     "Ivory": 1
     }
    },
    "A thought defiler": {
-    "swings": 36,
-    "landed": 27,
-    "avg": 12.0,
-    "max": 34,
+    "swings": 60,
+    "landed": 45,
+    "avg": 15.1,
+    "max": 57,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 9,
-     "Instill": 5,
+     "Lightning Bolt": 13,
+     "Instill": 8,
      "Tishan's Clash": 2,
      "Leatherskin": 2
     },
     "loot": {
-     "Mithril Earring +2": 1
+     "Mithril Earring +2": 1,
+     "Flame Agate": 1
     }
    },
    "A soul temptress": {
-    "swings": 71,
-    "landed": 45,
-    "avg": 8.5,
-    "max": 26,
+    "swings": 152,
+    "landed": 86,
+    "avg": 9.0,
+    "max": 51,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 32,
-     "Shadow Vortex": 13,
+     "Lifedraw": 50,
+     "Shadow Vortex": 22,
+     "Heat Blood": 8,
      "Engulfing Darkness": 5,
-     "Heat Blood": 3,
-     "Negation of Life": 3,
-     "Infectious Cloud": 1,
-     "Shielding": 1
+     "Negation of Life": 5,
+     "Infectious Cloud": 3,
+     "Shielding": 3,
+     "Lesser Shielding": 1
     },
     "loot": {
      "Flame Agate": 1,
      "Fine Steel Dagger +2": 1,
      "Jade Earring +1": 1,
-     "Fine Steel Rapier +1": 1
+     "Fine Steel Rapier +1": 1,
+     "Fine Steel Dagger +1": 1,
+     "Jade": 1,
+     "Topaz": 1
     }
    },
    "A will sapper": {
-    "swings": 401,
-    "landed": 243,
+    "swings": 942,
+    "landed": 557,
     "avg": 7.6,
-    "max": 30,
+    "max": 46,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
      "Fine Steel Long Sword +1": 2,
-     "Black Silk Gloves +1": 1
+     "Black Silk Gloves +1": 2,
+     "Fine Steel Spear +1": 2,
+     "Fine Steel Scimitar +1": 1,
+     "Mote of Minor Potential": 1,
+     "Fine Steel Dagger +1": 1
     }
    },
    "A soul seductress": {
-    "swings": 131,
-    "landed": 80,
-    "avg": 10.1,
+    "swings": 142,
+    "landed": 87,
+    "avg": 10.2,
     "max": 28,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 24,
-     "Screaming Terror": 16,
+     "Lifedraw": 26,
+     "Screaming Terror": 17,
      "Leatherskin": 7,
-     "Shadow Vortex": 5,
+     "Shadow Vortex": 6,
      "Fear": 4,
      "Engulfing Darkness": 3,
+     "Negation of Life": 3,
      "Heat Blood": 3,
-     "Negation of Life": 2,
      "Shock of Poison": 2,
      "Shielding": 2
     },
@@ -61770,32 +62054,35 @@
      "Fine Steel Rapier +2": 1,
      "Topaz": 1,
      "Mithril Earring +1": 1,
-     "Fine Steel Dagger +1": 1
+     "Fine Steel Dagger +1": 1,
+     "Silver Amulet +1": 1
     }
    },
    "A vampire oracle": {
-    "swings": 52,
-    "landed": 30,
-    "avg": 10.3,
-    "max": 26,
+    "swings": 87,
+    "landed": 57,
+    "avg": 10.6,
+    "max": 31,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 17,
-     "Instill": 13,
+     "Instill": 23,
+     "Lightning Bolt": 20,
      "Tishan's Clash": 5,
-     "Leatherskin": 1
+     "Leatherskin": 2,
+     "Lesser Shielding": 1
     },
     "loot": {
      "Fine Steel Rapier +2": 1,
      "Jade Earring +1": 1,
-     "Fine Steel Dagger +1": 1
+     "Fine Steel Dagger +1": 1,
+     "Mote of Minor Potential": 1
     }
    },
    "A pledge familiar": {
-    "swings": 190,
-    "landed": 97,
+    "swings": 199,
+    "landed": 99,
     "avg": 4.1,
     "max": 19,
     "backstabs": 4,
@@ -61893,9 +62180,9 @@
     "loot": {}
    },
    "A glyphed sentry": {
-    "swings": 109,
-    "landed": 64,
-    "avg": 4.9,
+    "swings": 118,
+    "landed": 69,
+    "avg": 4.8,
     "max": 27,
     "backstabs": 0,
     "backstab_avg": null,
@@ -61922,22 +62209,25 @@
     }
    },
    "A glyphed warder": {
-    "swings": 69,
-    "landed": 41,
+    "swings": 78,
+    "landed": 45,
     "avg": 3.2,
     "max": 18,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Healing": 15,
-     "Center": 3,
-     "Symbol of Transal": 3,
-     "Holy Might": 3,
-     "Root": 2,
-     "Echoing Light": 2
+     "Healing": 24,
+     "Symbol of Transal": 8,
+     "Holy Might": 7,
+     "Center": 5,
+     "Echoing Light": 4,
+     "Root": 3
     },
-    "loot": {}
+    "loot": {
+     "Fine Steel Warhammer +1": 1,
+     "Mote of Minor Potential": 1
+    }
    },
    "Enynti": {
     "swings": 63,
@@ -61967,9 +62257,9 @@
     }
    },
    "A jeering gargoyle": {
-    "swings": 59,
-    "landed": 36,
-    "avg": 12.2,
+    "swings": 100,
+    "landed": 59,
+    "avg": 10.1,
     "max": 33,
     "backstabs": 0,
     "backstab_avg": null,
@@ -62026,10 +62316,10 @@
     "loot": {}
    },
    "A will ravisher": {
-    "swings": 114,
-    "landed": 68,
-    "avg": 8.3,
-    "max": 33,
+    "swings": 212,
+    "landed": 124,
+    "avg": 9.7,
+    "max": 61,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
@@ -62039,9 +62329,9 @@
     }
    },
    "A deathly herald": {
-    "swings": 50,
-    "landed": 25,
-    "avg": 6.7,
+    "swings": 57,
+    "landed": 30,
+    "avg": 6.6,
     "max": 22,
     "backstabs": 0,
     "backstab_avg": null,
@@ -62113,60 +62403,187 @@
     }
    },
    "Maid Issis": {
-    "swings": 24,
-    "landed": 14,
-    "avg": 11.2,
-    "max": 28,
-    "backstabs": 0,
-    "backstab_avg": null,
-    "backstab_max": null,
-    "casts": {
-     "Lifedraw": 5,
-     "Screaming Terror": 2,
-     "Shadow Vortex": 2,
-     "Engulfing Darkness": 1,
-     "Shock of Poison": 1
-    },
-    "loot": {
-     "Pearl": 1,
-     "Nightshade Wreath +1": 1
-    }
-   },
-   "A soul inveigling": {
-    "swings": 27,
-    "landed": 21,
-    "avg": 11.3,
+    "swings": 45,
+    "landed": 24,
+    "avg": 11.8,
     "max": 35,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 3,
-     "Leatherskin": 2,
-     "Shadow Vortex": 2,
+     "Lifedraw": 8,
+     "Engulfing Darkness": 2,
      "Screaming Terror": 2,
+     "Shadow Vortex": 2,
+     "Shock of Poison": 1,
+     "Heat Blood": 1,
+     "Negation of Life": 1
+    },
+    "loot": {
+     "Nightshade Wreath +1": 2,
+     "Pearl": 1,
+     "Maid Issis Fang": 1
+    }
+   },
+   "A soul inveigling": {
+    "swings": 108,
+    "landed": 65,
+    "avg": 15.4,
+    "max": 72,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 16,
+     "Screaming Terror": 7,
+     "Shadow Vortex": 6,
+     "Leatherskin": 3,
+     "Heat Blood": 3,
+     "Major Shielding": 2,
      "Infectious Cloud": 2,
-     "Major Shielding": 1,
      "Shock of Poison": 1,
      "Engulfing Darkness": 1,
-     "Heat Blood": 1
+     "Negation of Life": 1
     },
-    "loot": {}
+    "loot": {
+     "Jade": 3,
+     "Ivory": 1,
+     "Fine Steel Spear +1": 1
+    }
    },
-   "A fallen noble": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
+   "A dark librarian": {
+    "swings": 110,
+    "landed": 62,
+    "avg": 8.5,
+    "max": 32,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Veil of Silence +1": 1,
+     "Steel Knuckles +1": 1,
+     "Illegible Scroll": 1
+    }
+   },
+   "A dark ass`t librarian": {
+    "swings": 91,
+    "landed": 57,
+    "avg": 12.4,
+    "max": 64,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Illegible Scroll": 1
+    }
+   },
+   "Princess Cherista": {
+    "swings": 63,
+    "landed": 40,
+    "avg": 19.9,
+    "max": 74,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Symbol of Transal": 2
+     "Lifedraw": 6,
+     "Screaming Terror": 4,
+     "Negation of Life": 3,
+     "Shadow Vortex": 3,
+     "Leatherskin": 2,
+     "Engulfing Darkness": 1,
+     "Heat Blood": 1,
+     "Shock of Poison": 1,
+     "Major Shielding": 1
     },
-    "loot": {}
+    "loot": {
+     "Tarnished Ancient Tiara +1": 1,
+     "Flame Agate": 1
+    }
    },
    "A thought corruptor": {
+    "swings": 43,
+    "landed": 28,
+    "avg": 11.4,
+    "max": 31,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 8,
+     "Lightning Bolt": 7,
+     "Leatherskin": 1,
+     "Tishan's Clash": 1
+    },
+    "loot": {
+     "Mote of Minor Potential": 1
+    }
+   },
+   "A hemo enologist": {
+    "swings": 19,
+    "landed": 10,
+    "avg": 8.1,
+    "max": 30,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Blood Wine": 1
+    }
+   },
+   "A cloaked dhampyre": {
+    "swings": 19,
+    "landed": 12,
+    "avg": 11.9,
+    "max": 34,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Engulfing Darkness": 1,
+     "Harm Touch": 1,
+     "Lifedraw": 1
+    },
+    "loot": {
+     "Fleeting Memory +1": 1
+    }
+   },
+   "A fallen noble": {
+    "swings": 18,
+    "landed": 10,
+    "avg": 5.0,
+    "max": 24,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Symbol of Transal": 4,
+     "Daring": 2,
+     "Healing": 1,
+     "Echoing Light": 1,
+     "Holy Might": 1
+    },
+    "loot": {
+     "Noble's Robes +1": 1,
+     "Fine Steel Morning Star +1": 1,
+     "Vial of Noble's Blood": 1
+    }
+   },
+   "A deathly usher": {
+    "swings": 6,
+    "landed": 2,
+    "avg": 11.0,
+    "max": 21,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A shadowy scrivener": {
     "swings": 0,
     "landed": 0,
     "avg": null,
@@ -62175,7 +62592,8 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Leatherskin": 1
+     "Shielding": 1,
+     "Lightning Bolt": 1
     },
     "loot": {}
    }

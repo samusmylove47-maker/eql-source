@@ -293,12 +293,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 70 mob types measured"
+     "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 71 mob types measured"
     }
    },
    "score": 8,
    "max_score": 10,
-   "kills": 1120,
+   "kills": 1272,
    "bosses": []
   },
   "planeoffear": {
@@ -310,7 +310,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "72 items recorded dropping here"
+     "detail": "62 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
