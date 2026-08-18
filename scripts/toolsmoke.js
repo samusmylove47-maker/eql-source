@@ -53,6 +53,12 @@ const TOOLS = [
    * _build/_partials.py; it reports as skipped, which is the honest answer. */
   { file: 'sky-ledger.html', fills: null,
     note: 'a description page — the app it links is tested in its own repo' },
+  /* Same shape: a description page for an application hosted in its own
+   * repository. Listed rather than omitted because nothing else forces a new
+   * tool to appear here, and a page that ships unsmoked is one nobody notices
+   * is unsmoked. */
+  { file: '50-upgrades.html', fills: null,
+    note: 'a description page — the app it links is hosted and tested in its own repo' },
   { file: 'planar-gear.html', fills: 'cls', expect: '<button',
     note: 'the class chooser' },
   { file: 'index-search.html', fills: 'results', expect: '<',

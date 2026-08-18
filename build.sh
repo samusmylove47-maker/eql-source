@@ -29,6 +29,9 @@ python3 _build/build2.py
 python3 _build/build3.py
 # The Sky Ledger page. Prints every dataset figure out of assets/sky-ledger.json.
 python3 _build/build28.py
+# The 50 Upgrades description page. Reads assets/50-upgrades.json, which is a
+# vendored snapshot of the planner's own meta.json rather than anything we count.
+python3 _build/build29.py
 python3 _build/build5.py
 python3 _build/build6.py
 python3 _build/build7.py
