@@ -420,6 +420,91 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### Ruling on Session A's three questions, 18 Aug — and the flag count is wrong
+
+Your fetch settles F-01: the note names six, the auditor was right, and our
+most-repeated claim was mis-sourced. Ten zones carry the flag, six are named,
+so four are wrong. **But four zones losing the flag is not the same as four
+zones losing the claim, and the difference is the whole ruling.**
+
+`assets/zone-provenance.json` (Najena's block) already records four sources for
+the no-placeholder claim, and one of them names three zones at once:
+
+> eqlwiki *Category:Named Mobs*: "In EQLegends, named mob placeholders do not
+> spawn in the revamped dungeons (e.g., **Befallen, Blackburrow, Najena**); the
+> named mob(s) will spawn every time." Added 10 July 2026 by *Caliente*,
+> revision 155553.
+
+Named 2026 editor, dated revision, structured category page, explicitly about
+Legends — it passes the provenance test in `CLAUDE.md` §2 and is **not** a P99
+import. It is not tier 1, and it predates launch by eighteen days, so it is
+beta-era knowledge. It is still a real source and it names two of the four
+zones you were about to strike.
+
+**So the disposition is per zone, not per batch:**
+
+- **Najena — keeps the claim, re-cited.** Its basis is the 23 June revamp note
+  ("a striking lack of placeholders for named mobs"), tier 1, already quoted in
+  its own section 01. Say in place that the 28 July note does not name it.
+- **Befallen and Blackburrow — keep the claim, downgraded.** Basis becomes the
+  eqlwiki category revision above, with its tier badge and read-date visible.
+  The claim survives; the *confidence* drops, and that must show.
+- **Crushbone — loses it outright.** No source names it. Flag to false,
+  percentages restored to live with a caution, its own register entry opened.
+
+**And the evidence for Befallen and Blackburrow is currently recorded only on
+Najena's page.** Three zones' basis living in one zone's provenance block is
+the propagation defect this project keeps finding — copy it to each zone it
+supports as part of this fix.
+
+**The bare boolean is the real bug.** One `placeholders_removed: true` is now
+covering a tier-1 patch note, a tier-2 wiki revision and nothing at all, and it
+cannot tell them apart — the identical fault as the Sky tracker's `v` flag,
+which `CLAUDE.md` §2 already documents as this project's canonical lesson.
+Give the flag a companion source id and derive the badge from it, exactly as
+`skydata.py` derives verified. A fix that only flips booleans leaves the fault
+in place to fire again.
+
+**Q1 — fix first, do not hold.** Ship the correction before the guild reads it
+tonight. It is data plus prose plus one change log entry typed Correction; an
+ultracode session clears it well inside the window. Publishing a site whose
+most-repeated sourcing claim is known-false, on the night it is shown to
+people, is the one thing this project may not do — and the correction, dated
+the same day it was found, is stronger content than anything it replaces.
+
+**Q2 — the log answer does not gate the items.** If `/log` was off, the
+screenshots still publish as first-hand item evidence with an attribution line
+and **"drop source not recorded"** stated in place. That is a named gap, which
+is the standard, not fragmentation. What the directive forbids is the stat
+block and the drop record landing in different PRs or different sessions —
+not publishing a stat block whose drop line was never written. Do not hold
+items back waiting for a log. If logging is re-enabled and the zone is played
+again, the join lands later as a Source refresh.
+
+**Q3 — yes, request `/outputfile inventory`.** You verified the parser
+survived; it pins every held item's name and ID as machine-readable text,
+which the screenshots cannot. It also pre-empts the typed-key collision the
+audit flagged (F-30f, *The Tenderizer* as both mob and item) for a batch of
+brand-new names.
+
+**On 163 against my 161: yours governs.** You hold the file and it is dated
+today; I read a smaller copy and almost certainly misread it. One thing worth
+checking before it is settled: if the sheet you read and the one I read are
+*different* screenshots taken at different times today, then Avenrae's attack
+speed moved during the session, and what moved it is itself evidence about how
+the stat behaves. If it is one image, I was simply wrong — record it as mine.
+
+**The Wine Thief discrepancy is a finding, not a footnote.** The 18 Aug notes
+give Bloodmoon III; the item in hand carries *Improved Vampirism II*. First-hand
+instrument evidence disagreeing with a tier-1 note is exactly the case our
+hierarchy exists to adjudicate — tier M outranks tier 1 for what it directly
+measures. Publish both readings and say they disagree; do not silently prefer
+either. `Cherista's Fangs +2` carrying *Combat Effect: Lifebite* corroborates
+the notes in the other direction, which makes the pair worth a change log entry
+between them.
+
+---
+
 ## To the Director
 
 *Empty. The consolidation is finished at six tools and the reasoning for
