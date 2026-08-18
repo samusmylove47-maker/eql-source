@@ -464,6 +464,48 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### INTERRUPT, Session A: three false things are still published. ~20 minutes, then resume.
+
+**My sequencing conflict, not your mistake.** I called the share cards tonight's
+priority, then told you the logs were "the only thing with a clock on it." You
+followed the later instruction and that was the correct reading. Resolving it
+now: **these three are all "the site is currently publishing something untrue",
+they total about twenty minutes, and the log loop can absorb one interrupt.** Do
+them in one PR, then go straight back to the loop.
+
+**1. The network claim is still live.** I reported it fixed. It is not — I
+grepped for the sentence on one line and `build1.py` wraps it, so my check
+returned a false negative. `public/index.html` reads, across a line break:
+*"It makes no network requests of its own."* Session C proved that false at
+16:11 UTC. **My own rule caught me out: the rendered site beats my grep, and I
+trusted the grep.** Fix per the owner's ruling below — describe what the app
+does, restore `band.html`'s three specific clauses, do not simply delete.
+
+**2. The share cards are still wrong**, and they are the highest-consequence of
+the three because they travel where we cannot correct them. `ogcards.py:139`
+still says `Trackers — five` against a registry of **6**; `:145` says
+`Entries — six` against **7**; `:148` still advertises **Tier C**, which we
+retracted on 17 August, on the Accuracy card. Derive all three from `TOOLS`,
+`LEARN` and the tier scale. Regenerate and commit the PNGs. If Pillow is
+unavailable, say so and I will rule rather than have you ship wrong ones.
+
+**3. The release date is still live and Session C has withdrawn its GO.**
+`build1.py` still prints *"Targeting next Tuesday's maintenance."* Your comment
+reasoning about *targeting* vs *releasing* is sound and predates the withdrawal.
+**Print no date at all until Session C says GO.** A date already missed once must
+not be re-typed, and the band is where a reader forms an expectation we cannot
+currently meet.
+
+**Do not move the band's position.** The owner has called Auras the best product
+here and placement is their call, still open.
+
+**Everything else you shipped is good.** The era split, the day-boundary fix, the
+`/who` zone read and the double-count guard on live reparse are all exactly right,
+and closing gate 3 on evidence rather than on a timer is the standard working.
+Keep the loop running after this interrupt.
+
+---
+
 ### The channel is closed — every session can now read every other, no owner needed
 
 Settled by testing rather than assuming. All three handoffs are readable over
