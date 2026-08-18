@@ -329,8 +329,8 @@
     "levels": "20-45",
     "zem": 97,
     "plate": 10,
-    "verify_level": "partial",
-    "verify_gate": "Gates 1 and 2 stand on sourcing, checked 31 July 2026. Gate 3 was opened on 18 August when the revamp changed named spawns, named loot and aggro range, and it is now PARTLY closed: the zone has been re-measured post-revamp at two difficulty tiers, so the figures below are current rather than inherited. What is still open is narrower than it was - nobody has re-derived the floor plan from the game meshes since the revamp, so the plotted coordinates are checked against a mesh read before the zone changed. Re-running _build/geometry.py on a machine with the game installed closes it.",
+    "verify_level": "full",
+    "verify_gate": "All three gates cleared. Gates 1 and 2 on sourcing, checked 31 July 2026. Gate 3 was opened on 18 August when the revamp changed named spawns, named loot and aggro range, on the reasoning that nobody had checked whether the mesh moved with them. It did not. The client's mistmoore.s3d and mistmoore_obj.s3d are dated 11 May 2026, identical to every other zone archive in the install, and re-running _build/geometry.py against the live game regenerates assets/zone-geometry.json byte-for-byte - so the plotted coordinates are checked against the mesh the game is currently shipping. The revamp changed population and loot, not geometry. Re-measured in play the same day at Awakened and Adaptive.",
     "coverage": {
      "bosses": {
       "level": "sourced",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "236ccfefd99b0f2b"
+ "hash": "fa9f9fd15b61adb7"
 }
