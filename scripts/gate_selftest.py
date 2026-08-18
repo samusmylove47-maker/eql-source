@@ -180,8 +180,14 @@ CASES = [
     ("the count of surveys short of the full standard, off by one",
      "surveys have not cleared the full standard",
      "public/sources.html",
-     lambda t: t.replace("Four of the 13 surveys have not cleared",
-                         "Five of the 13 surveys have not cleared")),
+     # Derived, not typed. This pinned the literal "Four of the 13 surveys" and
+     # went TEST BROKEN the moment Mistmoore returned to full and the sentence
+     # read "Three" - a self-test that hard-codes the value it mutates rots
+     # exactly like the pages it is guarding. It now rewrites whatever word is
+     # there into one that is certainly wrong.
+     lambda t: re.sub(r'\b(One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Eleven|Twelve|Thirteen)'
+                      r'( of the \d+ surveys have not cleared)',
+                      r'Thirteen\2', t, count=1)),
 
     ("a withheld coordinate reprinted in the roster",
      "prints a coordinate for 'Rathyl', which is withheld",

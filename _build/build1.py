@@ -371,12 +371,18 @@ auras = f'''
             a window.</p>
           <p class="featsub">It reads files the client already has: the log it writes as you
             play, your spellbook, and the game's own spell icons. It does not read or alter
-            the game's memory, inject code into it, or send it input. It makes no network
-            requests of its own.</p>
+            the game's memory, inject code into it, or send it input. <strong>It fetches its
+            typeface from Google each time it launches</strong>, which discloses your IP
+            address to Google; beyond that it sends nothing &mdash; no telemetry, no
+            analytics, no update check.</p>
           <p class="featsub">The idea is WeakAuras'. The code is not: a from-scratch
             implementation for EverQuest Legends, sharing no code and no trigger format with
             it, and neither affiliated with nor endorsed by its authors.</p>
-          <p class="featfoot">Windows. Targeting next Tuesday's maintenance.</p>
+          <!-- NO DATE. Session C withdrew its GO on 18 Aug 2026 and a date already
+               missed once must not be re-typed. The band is where a reader forms an
+               expectation, and this site cannot currently meet a dated one. It stays
+               absent until Session C says GO - not softened, not hedged, absent. -->
+          <p class="featfoot">Windows.</p>
         </div>
       </div>
       <script>
