@@ -71,6 +71,21 @@
 /items/fanged-skull-stiletto.html /dungeons/mistmoore.html  301
 /items/fanged-skull-stiletto      /dungeons/mistmoore.html  301
 
+# The character sheet, the planar gear tool and the inventory reader were
+# withdrawn on 18 Aug 2026, superseded by 50 Upgrades: it does what all three
+# did, against a catalogue none of them had. All three were published, indexed
+# and linked from every footer, so they go to the tool that replaced them rather
+# than to a dead end. No tombstone page — the withdrawal is in the change log,
+# which is where removals belong.
+#
+# Both address forms, per the rule at the top of this file.
+/tools/character.html     /tools/50-upgrades.html  301
+/tools/character          /tools/50-upgrades.html  301
+/tools/planar-gear.html   /tools/50-upgrades.html  301
+/tools/planar-gear        /tools/50-upgrades.html  301
+/tools/inventory.html     /tools/50-upgrades.html  301
+/tools/inventory          /tools/50-upgrades.html  301
+
 # A short address for the gear planner, because it is the kind of thing that
 # gets typed into Discord rather than clicked.
 /upgrades  /tools/50-upgrades.html  301

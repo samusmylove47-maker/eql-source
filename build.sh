@@ -46,12 +46,11 @@ python3 _build/build11.py
 python3 _build/build12.py
 python3 _build/build13.py
 python3 _build/build18.py
-# planardata.py writes assets/planar.json and build19.py renders the page from
-# it. Separate because four generators read that dataset and none of them render
-# that page — build24 (/sets/), build25, sightings.py and the contamination
-# scanner — so the data must outlive the page. Data first, always.
+# planardata.py writes assets/planar.json. The page that used to render beside
+# it — the planar gear tool — was withdrawn on 18 Aug 2026, and the dataset
+# outlived it exactly as the split was built to allow: /sets/, sightings.py and
+# the contamination scanner all still read it.
 python3 _build/planardata.py
-python3 _build/build19.py
 python3 _build/build20.py
 python3 _build/build21.py
 python3 _build/build22.py
@@ -60,16 +59,11 @@ python3 _build/build22.py
 python3 _build/build26.py
 python3 _build/build24.py
 python3 _build/build14.py
-python3 _build/build15.py
 python3 _build/sightings.py
 # One shared locator plan per zone, plus the bounds build17.py needs to
 # turn a recorded /loc into a position on it.
 python3 _build/plans.py
 python3 _build/build17.py
-# Joins the catalogue, the measured sightings and the planar sets, so it runs
-# after sightings.py has written the second of those and build17.py has made
-# the item pages it links to.
-python3 _build/build25.py
 python3 _build/build404.py
 # Search indexes the built pages, so it has to run after every generator that
 # writes one. Keep it last but for the sitemap.

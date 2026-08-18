@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `6a3a474f`** (PR #99, merged — the tip of `main`). Diff
+**This describes commit `3d0c9073`** (PR #101, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -149,63 +149,75 @@ Until that sequence arrives:
 
 ## To the Director
 
-**PR: the sitemap/canonical fix, and the `.html` row corrected.**
+**PR 2: three tools withdrawn.** Six remain. Every accept criterion met, and
+three things in the brief did not hold against the tree.
 
-**It was worse than I reported, and in a second way.** I told you the sitemap
-listed 716 redirecting `.html` URLs. It also turned out that **the ten index
-pages declared a canonical that redirects** — `/index`, `/dungeons/index`,
-`/items/index` and so on, each 307ing to the address it is actually served at.
-So the home page was telling search engines its canonical address was `/index`.
+### Two of the PR 2 items are actually PR 3 items
 
-Measured live before touching anything:
+**The undefined-constant check does not die here.** The brief says no surviving
+tool page declares a capitalised data constant after these removals. Measured:
 
 ```
-200  /                     307  /index          -> /
-200  /dungeons/            307  /dungeons/index -> /dungeons/
-200  /credits              307  /404.html       -> /404
+combo-calculator.html   9 declared   CLASSNAMES, CORDER, KINDS, RACES, RORDER, SKEY
+race-unlocks.html       9 declared   CLASSNAMES, CORDER, KINDS, RACES, RORDER, SKEY
+faction-impact.html     2 declared   FAC, RACES
 ```
 
-Fixing only the sitemap would have made it disagree with those canonicals in the
-opposite direction, so both derive from one rule now:
-`_partials.public_path()`, imported by `sitemap.py` rather than reimplemented.
-Two files deriving one address two ways is how they came to disagree at all.
+Those are exactly the three pages PR 3 removes. `gate_selftest.py` case 1 still
+points at `race-unlocks.html`'s `RORDER`, which is still there. **Retiring the
+check now would have deleted live protection and a working self-test case**, so
+it is untouched and carried to PR 3.
 
-Result: **715 sitemap entries, zero ending `.html`, zero mismatches against 715
-canonicals.** All ten URL shapes verified 200 on the live site. `404.html` is no
-longer listed — it is an error page, and it was the one page with no canonical,
-which should have been the tell.
+**None of the flagged prose became false either.** `build2.py:91` names Sky
+Ledger, race unlocks and the calculator — all three survive PR 2. `:97` and
+`build404.py:44` derive from `len(TOOLS)` and self-updated to *Six trackers*.
+`:101-104`'s "what you tick is packed into the page URL" is still true of race
+unlocks and the calculator, and `:190`'s "the race tracker and the calculator
+share one save" is still true of both. **Every one of them goes false in PR 3**,
+when those two are removed — which is the state the brief was describing.
 
-**`gate.py` rule 7 and a 26th self-test case** keep it that way. One rule with
-two consumers stays one rule only while something compares what the two of them
-actually wrote — that is the whole lesson of this fix, and it is the same shape
-as `page_words` being shared by the gate and the budget script.
+`build1.py:396` is inside the Auras video script, not prose; the line numbers
+there moved when the 50 Upgrades band landed.
 
-### Both rulings recorded
+### The inbound links were eight, and not the eight listed
 
-**The `.html` hold is released**, and the row it lived in was wrong twice over —
-it called the redirect "post-launch" when the redirect has been live all along.
-Rewritten to say what is actually unbuilt: migrating the internal hrefs, which
-is released but unscheduled, and that the redirect stays permanently because it
-protects links already in the wild.
+`public/_redirects:13-14` is `/races` and `/calculator`, which point at tools
+that survive. Nothing in that file referenced the three. The real set:
 
-**The planner's footer is left alone**, recorded under *For the session working
-on the planner* with your reasoning — it is about to be wrong in six new ways,
-so it is copied once from the final state after the consolidation, with the
-drift check B already built for the nav.
+```
+_build/build2.py        three hub cards (109, 158, 176) — not in the brief
+_build/build24.py:162   /sets/ crumb          -> tools/index
+_build/build24.py:166   "the gear tool"       -> 50 Upgrades
+_build/changelog.py:56  <a> unwired to plain text, per the :18 precedent
+_build/source/planeoffear.html:395  -> /sets/
+_build/source/planeofhate.html:405  -> /sets/
+```
 
-**The consolidation and the subdomain are under *From the Director***, because
-both are live and neither is mine to start. The subdomain has a `docs/BACKLOG.md`
-P5 entry carrying the Cloudflare trap: DNS-only until Pages issues the
-certificate, since getting that order wrong puts a certificate warning on a
-public URL — the worst possible failure for a page whose pitch is that it is
-safe to use.
+Both surveys carry their own footers, as the brief said, so those two were the
+ones no footer sweep would have caught.
 
-### One thing I did not do
+### Raised, not decided
 
-**I did not migrate the internal hrefs.** 61 on the home page alone, ~716 pages,
-and each one currently costs a reader a redirect hop. It is now unblocked and it
-is a large mechanical change that wants its own PR and its own revert, not a
-rider on this one.
+**`_build/build20.py:41` credits BarakDur for the idea behind the planar gear
+tool.** Left exactly as written. Removing a credit is yours, and `CLAUDE.md` §7
+is explicit that an outside contributor keeps their name — stripping one to tidy
+after a withdrawal happened once before and was caught. The tool is gone; the
+person still had the idea.
+
+**The tools hub grid has drifted and I did not fix it.** Six tools registered,
+five cards, and the one with no card is **50 Upgrades** — the tool being posted.
+This predates PR 2: it was nine tools and eight cards before I touched it. PR 3
+removes two more cards, so fixing it now means fixing it twice, which is your
+own reasoning about B's footer. It wants generating from `TOOLS` rather than
+hand-writing, once the count has stopped moving. Not urgent: the tool is in
+every footer by `gate.py` rule 6, and the home page now leads with its band.
+
+### Carried to PR 3
+
+Retire the undefined-constant check and its self-test case; correct
+`build2.py:91`, `:101-104`, `:190` and `build404.py:44`; regenerate the hub grid
+from `TOOLS`. All four are only correct to do once race unlocks, the calculator
+and the faction checker are actually gone.
 
 ---
 
