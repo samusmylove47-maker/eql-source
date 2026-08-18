@@ -202,13 +202,13 @@
    "Lesser Faydark"
   ],
   "verified": "2026-07-31",
-  "verify_level": "partial",
-  "verify_gate": "Gate 3 is still open. The 18 August 2026 revamp changed named spawns, named loot and aggro range, and nobody has checked whether the mesh moved with them - every coordinate here was landed against a floor plan read before the zone changed. Gates 1 and 2 are about sourcing and stand: every figure was checked against source on 31 July 2026, and that check is still good for what it covered. One logged session in the revamped zone closes it.",
+  "verify_level": "full",
+  "verify_gate": "All three gates cleared. Gates 1 and 2 on sourcing, checked 31 July 2026. Gate 3 was opened on 18 August when the revamp changed named spawns, named loot and aggro range, on the reasoning that nobody had checked whether the mesh moved with them. It did not. The client's mistmoore.s3d and mistmoore_obj.s3d are dated 11 May 2026, identical to every other zone archive in the install, and re-running _build/geometry.py against the live game regenerates assets/zone-geometry.json byte-for-byte - so the plotted coordinates are checked against the mesh the game is currently shipping. The revamp changed population and loot, not geometry. Re-measured in play the same day at Awakened and Adaptive.",
   "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
   "placeholders_removed": true,
   "placeholders_source": "Official patch notes, 28 July 2026: &ldquo;Removed placeholders from and lowered maximum respawn times in several dungeons&rdquo;, naming six by name &mdash; The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The Warrens and Castle Mistmoore. This zone is one of the six. Read in full and stored verbatim on 18 August 2026.",
   "revamped": "18 August 2026",
-  "revamped_note": "Measured before the 18 August 2026 revamp. The zone has changed since; these figures stand for the zone as it was, and nothing here has been re-measured against the new one.",
+  "revamped_note": "Measured on both sides of the 18 August 2026 revamp, and the two are kept apart. The section below describes the zone AFTER the revamp: two logged sessions on 18 August, at Awakened and Adaptive, with the pre-revamp corpus held back rather than averaged in. build9.py splits sessions on the revamp date so the eras cannot merge.",
   "placeholders_source_id": "patch-2026-07-28"
  },
  {
