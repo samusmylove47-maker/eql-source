@@ -329,8 +329,8 @@
     "levels": "20-45",
     "zem": 97,
     "plate": 10,
-    "verify_level": "full",
-    "verify_gate": null,
+    "verify_level": "partial",
+    "verify_gate": "Gate 3 is still open. The 18 August 2026 revamp changed named spawns, named loot and aggro range, and nobody has checked whether the mesh moved with them - every coordinate here was landed against a floor plan read before the zone changed. Gates 1 and 2 are about sourcing and stand: every figure was checked against source on 31 July 2026, and that check is still good for what it covered. One logged session in the revamped zone closes it.",
     "coverage": {
      "bosses": {
       "level": "sourced",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "9ccb68b87a450128"
+ "hash": "1c4d0d553d87b523"
 }
