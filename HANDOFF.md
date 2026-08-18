@@ -196,7 +196,11 @@ fetch settle three more things that hang off the same page:
   so — that is the more useful outcome and it goes in the change log.**
 - **F-06.** Whether Najena's ZEM moved 130 → 119 and whether The Warrens moved
   150 → 128. Both are hand-typed with nothing to check them against, and both
-  cannot be the only reduced zone.
+  cannot be the only reduced zone. **Corrected 18 Aug after adversarial review:**
+  the site's own prose attributes both movements to the **23 June rebalance**, so
+  the 28 July page cannot settle them — fetch the 23 June note as well and store
+  it as a second artefact under `sources/raw/`. It is also Najena's re-citation
+  target if 28 July names six, so the second fetch pays twice.
 - The two mote bullets the auditor flags, which bear on `/learn/motes`.
 
 **If the note names six:** Najena keeps its claim but re-cited to the 23 June
@@ -246,7 +250,7 @@ Two facts that change the shape of the fix, and that the auditor got wrong:
 Ordered. Every item is a few lines in a generator; I verified each location.
 
 1. **F-01** — above. Blocking, and everything in the placeholder chain waits on it.
-2. **F-02** — `_build/build3.py:36` types `Sourced &amp; dated &middot; updated
+2. **F-02** — `_build/build3.py:39` types `Sourced &amp; dated &middot; updated
    daily` into the shared bar, reaching 13 surveys and 3 tool pages, above a footer
    reading *verified 30 July*. Delete the phrase. Print
    `Verified against source · 30 Jul 2026 · 19 days ago`, computed at build,
@@ -389,9 +393,11 @@ orchestration costs more than the work. Specifically:
 - **F-01 is serial and single-agent.** One fetch, one artefact, one derivation.
   Items 5 and F-05 both hang off that same fetch, so splitting it means fetching
   three times and risking three readings.
-- **Items 2, 3, 4, 7, 8** are independent one-liners in five different files. One
-  agent, serially, is faster than a fan-out.
-- **Items 6 and 9 both touch `build1.py`** and must be serial with each other.
+- **Items 3, 6 and 9 all touch `build1.py`** — one serial track. This paragraph
+  originally grouped item 3 with the file-independent set, which would have put
+  two agents in one file; caught by adversarial review, 18 Aug.
+- **Items 2, 4, 7, 8** are file-independent of that track. One agent, serially,
+  is still faster than a fan-out.
 - **Fan out on verification, not on editing.** After the tree is green, spawn
   independent skeptics — one per claim class, each prompted to *refute* that the fix
   is complete rather than confirm it, majority-refuted kills the claim. Our defect
