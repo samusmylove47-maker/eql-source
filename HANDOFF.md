@@ -127,38 +127,290 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
-**PR 3 is not being done, and this is the reasoning rather than a deferral.**
+*The PR 3 ruling of 18 Aug is applied and retired from this exchange. One line of
+it stands and belongs in a standing section, so move it there rather than losing
+it: if a successor to the race unlock tracker, the race and primary calculator or
+the faction impact checker ever ships, the handling is delete the page, keep the
+reason in `TOOLS`, record it in the change log, redirect both address forms, no
+tombstone.*
 
-The consolidation was going to take nine tools to three. It took nine to six and
-stops there. Ruled 18 Aug 2026 with the owner's authority delegated.
+---
 
-PR 2 removed the character sheet, the planar gear tool and the inventory reader,
-and it was right for one reason: **50 Upgrades already did all three jobs,
-better, against a bigger catalogue.** Keeping a worse copy of something already
-available is the rule this site applies to other people's tools, so it has to
-apply to ours.
+### The external audit of 18 August — ruling, and Wave 1
 
-**That reason does not exist for the remaining three.** Nothing supersedes the
-race unlock tracker, the race and primary calculator, or the faction impact
-checker. Deleting three working, unduplicated tools to reach a number would
-invert the standard the consolidation was justified by — it would be removing
-things *because* they are ours, which is the opposite of the rule.
+An outside session with no prior context audited the live site and returned 34
+findings. The owner has read it and delegated the triage. **I checked every
+actionable finding against `origin/main` @ `5ee3cd3b` myself rather than against
+the auditor's rendered reading**, so what follows is verified state, not a relayed
+claim. Where I name a file and line, I read it.
 
-Three items were carried to PR 3 and are now moot in the right direction:
+Ruled 18 Aug 2026 with the owner's authority delegated. **The owner has approved
+this plan.**
 
-- **The undefined-constant check stays.** It was to be retired because no
-  surviving tool page would declare a capitalised constant. Three still do —
-  `combo-calculator` and `race-unlocks` nine each, `faction-impact` two — and
-  `gate_selftest` case 1 still points at a live target.
-- **The tools-index prose stays true.** "What you tick is packed into the page
-  URL" describes race unlocks and the calculator, which survive; so does "the
-  race tracker and the calculator share one save".
-- **The hub grid is fixed rather than deferred.** The reason to wait was that
-  PR 3 would remove two more cards. It will not.
+**The verdict is fair and the diagnosis is right.** One defect class produces most
+of the list: *authored prose asserting what generated data does not support.* We
+have named that fault twice in our own change log. It has now reached the tier-1
+citation under our most-repeated claim.
 
-If a successor to any of those three ever ships, the precedent is set and the
-handling is written down: delete the page, keep the reason in `TOOLS`, record it
-in the change log, redirect both address forms, no tombstone.
+**The audit's best contribution is not a finding.** It is the "gate that should
+have caught it" column. Nine findings collapse into four cheap gates. Build the
+gates, not just the fixes — a fix without a gate is the same bug scheduled for
+later.
+
+#### The one structural cause, under three of the five criticals
+
+**We hold no stored copy of any tier-1 source.** Every patch note on this site
+exists only as prose typed inside a generator. The eleven-zone placeholder
+quotation is a hand-typed string at `_build/build13.py:303-306`, and
+`placeholders_removed` is a hand-set boolean in `assets/zones-index.json` beside
+it. Nothing connects them.
+
+That single absence produces all three: a quotation can drift and nothing can tell
+(F-01); a bullet inside a note we have "already read" is never adjudicated (F-05);
+nothing queues what a new note touches (F-03). **Fix it once as an artefact store,
+not three times as prose.** `sources/raw/<yyyy-mm-dd>-<slug>.txt` holding each
+fetched note verbatim, and `sources/notes.jsonl` — one row per bullet with date,
+URL, raw text and extracted entities. Then `placeholders_removed` is *derived*,
+exactly as `verified` was derived on the Sky tracker. Our own idiom, applied one
+level up, to the source scale itself.
+
+#### F-01 is first, blocking, and only you can do it
+
+I tried the fetch from my session. `everquestlegends.com` is **blocked by the
+network egress proxy** here — `EGRESS_BLOCKED`, not a timeout, not my method. You
+proved on 17 Aug that a real browser resolves that host. **Your reading of that
+page beats mine by default and beats the auditor's too.**
+
+Re-fetch `/patch-notes/eql-update-notes-7-28-2026`. The auditor says it names
+**six** dungeons — The Hole, Nagafen's Lair, Lower Guk, Lair of the Splitpaw, The
+Warrens, Castle Mistmoore — where we quote **eleven**. Settle it, and in the same
+fetch settle three more things that hang off the same page:
+
+- **F-05.** The auditor quotes an *Unbound Alacrity* AA giving "a passive 3/6/10%
+  increase in your **current and maximum haste value**." That string appears
+  nowhere in our repo. A stat with a current and a maximum is a capped value, not
+  a divisor on weapon delay — which would move the open haste question in
+  `_build/build13.py:65-88` from *two community sources disagree* to *a T1 source
+  describes a capped value*. It does not close: the tooltip format still needs the
+  screenshot. **Verify the line exists before citing it. If it is not there, say
+  so — that is the more useful outcome and it goes in the change log.**
+- **F-06.** Whether Najena's ZEM moved 130 → 119 and whether The Warrens moved
+  150 → 128. Both are hand-typed with nothing to check them against, and both
+  cannot be the only reduced zone.
+- The two mote bullets the auditor flags, which bear on `/learn/motes`.
+
+**If the note names six:** Najena keeps its claim but re-cited to the 23 June
+revamp note it already holds, saying in place that 28 July does not name it.
+Crushbone, Befallen, Blackburrow and Upper Guk lose the flag, their percentages
+return to live with a caution, the register entry moves **Settled → Partly
+settled**, and a `Correction` entry names the mechanism. Our own 11 Aug entry
+records that we had *already seen both renderings* and published Settled anyway.
+That belongs in the correction precisely because it is the worst-looking part.
+
+#### Two things I settled by running them, which change how the fix is built
+
+The auditor hedged F-14 and F-15 as **VERIFY**, suspecting its own extractor. It
+should not have. I ran the naive tag-strip every crawler runs over our own shipped
+`public/dungeons/najena.html`. It returns, exactly:
+
+```
+'Placeholder is an earth elementalwas. Respawn about 19 minutes. …'
+'Placeholder is the giant black widow at that exact coordinatewas — one of four …'
+'Placeholder is a magicianwas. Behind two locked doors at the far south end.'
+'Minimum level54 and below cannot enter'
+'ZEM119159% — was 130'
+```
+
+All eighteen struck rows machine-read as **live assertions**. The minimum level to
+enter Najena is 5 and the string a model ingests says **54**. Not inferred —
+reproduced.
+
+Two facts that change the shape of the fix, and that the auditor got wrong:
+
+1. **There is no `sr-only` class anywhere in `assets/site.css`.** It has to be
+   added before either fix can use one.
+2. **The stat cells are not a shared component.** `class="cell"><dt>` appears 105
+   times across `build2.py`, `build8.py` and **13 hand-authored
+   `_build/source/*.html` files**. The auditor assumed a component and was wrong
+   about the mechanism while right about the defect. So F-14 is **not** 105 hand
+   edits — it is a post-import pass in `_build/build3.py`, which already does
+   precisely this shape of work: `mark_placeholders()` at `build3.py:224-240`
+   rewrites imported HTML by regex at import time.
+
+   **And that same function emits every one of the 18 struck spans.** Adding
+   `<del cite datetime>` plus the two hidden markers there fixes all of them in
+   about six lines. That is the best six lines available anywhere on this list.
+
+#### Wave 1 — before the guild reads the site this evening
+
+Ordered. Every item is a few lines in a generator; I verified each location.
+
+1. **F-01** — above. Blocking, and everything in the placeholder chain waits on it.
+2. **F-02** — `_build/build3.py:36` types `Sourced &amp; dated &middot; updated
+   daily` into the shared bar, reaching 13 surveys and 3 tool pages, above a footer
+   reading *verified 30 July*. Delete the phrase. Print
+   `Verified against source · 30 Jul 2026 · 19 days ago`, computed at build,
+   ambering at 14 days. A freshness claim that decays visibly is worth more than a
+   promise.
+3. **F-26** — `_build/build1.py:379` says *"Targeting next Tuesday's maintenance."*
+   Absolute date from data. A relative date in static content is wrong within days
+   and no gate we own can see it.
+4. **F-30a/b/c** — real defects in shipped HTML, not extraction artefacts:
+   `community wiki (eqlwiki.</p>` truncates mid-sentence and drops the rest of the
+   source list; `185%),nd it runs` is a typo; and `zone-provenance.json:49` says
+   *"Befallen's 4:27"* while `zones-index.json` says **4:30** — a stale hand-typed
+   comparative on the very page that documents the correction. Compute comparative
+   respawns from the data.
+5. **F-06** — add `zem_before` to `zones-index.json` and **derive** both the
+   direction and the count. We already print *"the joint lowest in the series"*
+   correctly from data, so the machinery exists and Najena's was typed.
+6. **F-07** — `_build/build1.py:435,628` print `{nfull} fully verified` beside the
+   facet grades, so a reader sees **"Najena: fully verified, 4/10"** and concludes
+   one of them is broken. Rename both visibly: `Sourcing: 3 of 3 gates` and
+   `Coverage: 4 of 10 facets`. Never the bare word *verified* as a metric label.
+   This is the contradiction a first-time reader hits hardest tonight.
+7. **F-21** — `_build/build2.py:307` types *"D0, the only tier measured"* on the
+   raids index while we hold Cazic-Thule at three tiers, Innoruuk at two, Yael at
+   five, Vox at four, Nagafen at two. It currently tells a reader that the best
+   content on the site does not exist. Scope it to Sky or retire it. The generated
+   encounter index is Wave 3; the sentence is today.
+8. **F-10** — `_build/changelog.py` has **no `sorted()` at all** and exactly two
+   out-of-order transitions: two 17 Aug entries sit below 10 Aug entries they
+   supersede, and *Site launch, 6 Aug* sits below *Race unlock data, 5 Aug*. Sort
+   descending, secondary key on entry id. If you want to show supersession, make it
+   an explicit link, not adjacency.
+9. **F-11** — `_build/build1.py:601` reads
+   `'unstarted' if z['verify_level']=='none' else 'open'`, so Plane of Fear — where
+   gates 1 and 2 are done and Cazic-Thule is measured at three tiers — shows
+   `unstarted`. Add a third value **`blocked`**, derived from gate states, and sort
+   the list by zone number. *Blocked* is the honest word and it is a point in our
+   favour, not against us.
+
+#### Wave 2 — the gates, and the machine-legibility work that is the strategy
+
+| Gate | Rule | Catches |
+|---|---|---|
+| G1 Quotation | a string attributed to a T1 source must be a substring of the stored artefact for that URL | F-01, permanently |
+| G2 Temporal | no *daily / current / live / latest / soon / next Tuesday* outside a field printed from data | F-02, F-26 |
+| G3 Superlative | *only / highest / lowest / first / joint* must be emitted by the generator that computed it | F-06 |
+| G4 One label, one metric | *verified* may name exactly one metric site-wide | F-07 |
+| G5 Struck-with-marker | no `line-through` without a retraction marker | F-15 |
+| G6 Derived status | a hand-set status disagreeing with the computed one fails | F-11 |
+| G7 Monotonic register | one date comparison | F-10 |
+| G8 Extraction | tag-strip the built HTML; assert no two field values concatenate | F-14 |
+
+G2, G3 and G7 are a few lines each and catch a class rather than an instance. G8
+rides on `scripts/conformance.js`, which already executes every page. **Every gate
+change re-runs `gate_selftest.py`** — a dead check looks exactly like a passing
+one, and that is our rule, not the auditor's.
+
+Then, in order: **F-15** (six lines, above), **F-16** JSON-LD starting with
+`Dataset` on `/data/` — we have **zero** `application/ld+json` in the entire tree —
+**F-17** a licence (CC BY 4.0, plus the auditor's best single idea: derive
+`licensable: true|false` **from tier**, since Tier M is ours and tiers 1–5 are not,
+which turns a paragraph asking readers to be careful into a checkable field),
+**F-14**, **F-18** ship the item and named catalogues and the claims ledger, and
+**F-04** key the source registry on origin domain and derive the tier from it —
+three live competitors have near-identical names, so this is a real ambiguity.
+
+#### What I dismiss, with reasons, so you do not spend time on it
+
+- **F-03's severity.** It calls an unapplied T1 note a CRITICAL defect and then
+  concedes in its own text that it is "not a defect, it is a capacity problem." We
+  *published* that the 18 Aug notes were unadjudicated, on the day. That is the
+  standard working. Take the `patch_pending` banner and the queue; reject the grade.
+- **F-27**, swap the Najena hero. Dismissed. It trades our strongest visual asset
+  for a rhetorical point no reader will follow.
+- **F-28's GitHub org move.** Take `/about` and the privacy line. **Defer the org
+  move** — it changes every download URL on the site on the day we promote it.
+- **F-25**, split `/sources` into three. Right in principle, largest structural
+  change on the list, touches every footer. After the gates.
+- **F-19**, stable app URL. The content hash was a reasoned, published decision.
+  The shell-plus-hashed-assets pattern is genuinely better and we will take it, but
+  it is a queued improvement, not medium-high.
+- **F-31 misquotes us.** It quotes *"every item… searchable in one place"* having
+  dropped the qualifier that is actually in `build1.py:451` — **"across the
+  surveyed dungeons."** We never claimed the game's catalogue. The positioning
+  change still stands, below, but the charge as written is not what the page says.
+- **F-09's implied fix is wrong.** Do **not** retro-edit the 15 Aug entry. It
+  records what was true when written, and editing a register to match today is the
+  one thing a register may never do. Take the other half: emit a `Source refresh`
+  entry automatically when a headline figure moves.
+
+#### The positioning ruling, because it changes copy you will touch in Wave 1
+
+The owner asked the real question: *how do we fight a war against quantity when we
+are quality?* eqlbase advertises 9,283 items. The Index holds 434. The auditing
+model preferred 9,283 immediately.
+
+**Not because it judged volume over rigour. Because quantity survives text
+extraction and our quality does not.** Our tiers are `<span class="tier t3">`. Our
+retractions are a CSS rule. Our provenance is typography. Strip the tags — which is
+what every crawler does, as the extraction above demonstrates on our own page — and
+every signal we own evaporates, leaving one number: 434, against 9,283.
+
+So **F-14, F-15, F-16 and F-17 are not four machine-legibility chores. They are the
+competitive answer**, and that is why they outrank prettier work. Structured
+provenance changes the comparison from *434 items vs 9,283 items*, which we lose
+and should, to *434 structured claims vs 9,283 unstructured strings*, which is not
+close. We do not need volume. We need a field they do not have, in a form a machine
+can read.
+
+Three copy changes follow, and they are yours to make:
+
+1. **Change the noun.** Never `434 items indexed` bare. Print **`434 items, each
+   with its source and read date`**. The figure stops being a score and becomes the
+   denominator of a claim about rigour. Drop *"searchable in one place"* — it is a
+   catalogue sentence and it invites the one comparison we lose.
+2. **Add the item catalogue to the list of things that belong to other tools.**
+   `build2.py:177` already names client-mined numbers, spellbook diffing, AA
+   planning and 3D geometry. Items are missing. Point at eqlbase by name. A site
+   that states what it is not best at is the only kind whose superlatives are worth
+   believing — and it is the honest resolution of F-31.
+3. **Narrow the `/data/` framing.** *"Nobody in this community publishes
+   machine-readable data"* is typed at `build27.py:68` and `publicdata.py:5` and is
+   broader than we can defend. Make it what we checked: *"No open, versioned dataset
+   exists in this community that we have found. If one does, tell us and we will
+   link it."*
+
+Two further moves are **mine to write, not yours to build today**, noted so you do
+not pre-empt them: publishing our own measured disagreement rate against the
+inherited corpus, and publishing this audit itself with what we took and what we
+refused. Both are Wave 3 copy. Do not start either without a ruling.
+
+#### How to run this
+
+**Ultracode for the whole of Wave 1 and Wave 2.** This is substantive multi-file
+work under time pressure and token cost is not a constraint today.
+
+**Where to fan out, and where not to.** Do not fan out five one-line edits — the
+orchestration costs more than the work. Specifically:
+
+- **F-01 is serial and single-agent.** One fetch, one artefact, one derivation.
+  Items 5 and F-05 both hang off that same fetch, so splitting it means fetching
+  three times and risking three readings.
+- **Items 2, 3, 4, 7, 8** are independent one-liners in five different files. One
+  agent, serially, is faster than a fan-out.
+- **Items 6 and 9 both touch `build1.py`** and must be serial with each other.
+- **Fan out on verification, not on editing.** After the tree is green, spawn
+  independent skeptics — one per claim class, each prompted to *refute* that the fix
+  is complete rather than confirm it, majority-refuted kills the claim. Our defect
+  class is "authored prose asserting what generated data does not support," and the
+  cure for that is an adversarial reader, not a more careful writer. That is the one
+  place a fleet earns its keep on this list.
+- **Wave 2's gates are genuinely parallel** — eight independent checks in
+  `gate.py` plus their `gate_selftest.py` cases. Fan out one agent per gate, then a
+  single serial pass to run the self-test and reconcile.
+
+**Do not `/loop` this.** Wave 1 is a finite ordered list with a deadline, not a
+poll. Loop only if you end up waiting on something external.
+
+**Report back under the To heading**, committed with the PR rather than said in a
+reply. I want three things named explicitly: **what the patch note actually says**,
+**which zones lost the flag**, and **any finding above where you found me wrong.**
+That last one is not politeness — my checks are `git grep` against the tree and
+yours are the rendered site and a live browser. **Where your finding contradicts
+mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
