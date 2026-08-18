@@ -1,0 +1,110 @@
+SOURCE: https://www.everquestlegends.com/patch-notes/eql-update-notes-7-28-2026
+TITLE: Natch Potes - July 28, 2026 | EverQuest Legends
+PUBLISHED: Jul 28, 2026
+TIER: 1 (official patch notes, everquestlegends.com)
+READ: 2026-08-18, by Session A, rendered in a real browser
+METHOD: the patch-notes list is JS-rendered; a plain HTTP fetch returns ~1,150
+        characters of navigation and none of this text. Captured as
+        document.querySelector('article').innerText.
+VERBATIM: yes. Nothing below is edited, reordered or corrected, including the
+        publisher's own typos ("Kerran is` now available", "subsequentially",
+        "sillily", "Hater Targets").
+
+--------------------------------------------------------------------------------
+
+Natch Potes - July 28, 2026
+Jul 28, 2026
+Share:
+
+EverQuest Legends Launch Day Patch - 7/28/2026
+
+General
+Kerran is` now available as a player character race. Kerran primary race unlocks are achievable by exploring Kerra Isle.
+The Troopers have removed the barricades in the New Sebilisian Expedition, allowing for adventurers to venture forth, and discover what lies beyond, and maybe figure out just what this place is....
+
+
+Introducing Void-touched Potential, a new token that can be earned up to 3 times per week from raid activities through voidlings. A Void-Touched Potential can be merged like motes to increase an item or spell's rank by +1.
+
+
+Auto attack will no longer persist if your target's death causes their owned pet to subsequentially despawn.
+
+
+Fixed NPC spell casting logic so that it respects spell reuse and recovery times and prioritizes damage over harmful spells.
+
+
+Stunned players now receive a short-term immunity from additional stuns that lasts beyond the duration of the current stun. This will prevent chain stunning. However players beware, NPCs also learned the basics of this skill.
+
+
+Loss of player control spells (such as NPC charm) are now capped to 30 seconds duration.
+Improved casting behavior of multi-class bards to better prevent stuck-states between songs and casting spells.
+AAs / Skills / Disciplines
+Added the Unbound Alacrity AA, a new autogranted class AA for Monk Gives a passive 3/6/10% increase in your current and maximum haste value.
+Added the Unbound Life AA, a new autogranted class AA for Paladin Gives a passive 2/4/6% increase to your direct healing spells.
+Added the Unbound Ferocity AA, a new autogranted class AA for Beastlord Gives a passive 3/6/9% chance for your pet to flurry.
+Added the Unbound Versatility AA, a new autogranted class AA for Bard Gives a passive 5/10/15% chance for you to continue casting through a stun.
+Added the Unbound Drain AA, a new autogranted class AA for Shadow Knight Gives a passive 2/4/6% increase in damage for lifetap spells.
+Added the Unbound Lethality AA, a new autogranted class AA for Rogue Gives a passive 10/15/20% bonus to the duration of all poisons. Additionally lowers the resist value of all poisons by 25/50/75.
+Added the Tricksters Misdirection AA, a new class AA for Enchanters. When used, the AA applies a buff with a 1 minute duration. That buff is a defensive proc with 1 charge, and a 100% trigger chance. When triggered, a simulacrum of the player is summoned, and the player is teleported backwards, out of harms way. The simulacrum spawns with all of the players aggro from the target, and then the players aggro is reduced drastically. The simulacrum will live for up to 15 seconds.
+Ranks 9 and 10 of Harm Touch will now add a Damage Over Time effect to their target.
+The Leech Touch AA is now a passive ability. Once purchased, it gives Harm Touch a permanent, passive lifetap component to both instant and damage over time components.
+Flesh To Bone will now create NODROP Bone Chips, that can still be used for summoning spells.
+Activating skills Cleave or Frenzy will reduce the cooldown time of the Rampage AA
+The Improved Bash AA can now utilize the best item (weapon or shield) from the primary, secondary, or Any slots. If no valid item is in any of those slots, it will still activate for minimal damage but with the interrupt potential.
+Quickbuff now excludes lull / pacify spells.
+Alternate Ability Timers should no longer have collisions, such as Cannibalize triggering Harm Touch or vice-versa.
+Audio
+Frogloks now use Classic appropriate sounds!
+Gameplay
+Removed placeholders from and lowered maximum respawn times in several dungeons:
+The Hole
+Nagafen's Lair
+Lower Guk
+Lair of the Splitpaw
+The Warrens
+Castle Mistmoore
+More dungeon treatments will take place over time.
+Rare monsters in Crushbone flagged as rare monsters
+Crushbone's Orc Scoutsman and Orc Warden respawn timers substantially reduced
+Chokehold in Crushbone is now susceptible to melee attacks.
+Reduced the kicking vigor of low level NPC monks.
+Players will no longer receive motes while at the class lock cap.
+Motes will no longer drop for players unless they were eligible to gain exp from the kill.
+All races are now eligible to equip items, such as for charm pets.
+One of the bees in Plane of Sky should no longer become a murder bee upon being charmed.
+Guild Masters should no longer point new characters towards NPC that don't exist, to complete quests that don't exist.
+Instances
+All methods of quitting an instance will now also cause you to leave that zone.
+Killing a raid boss while you have a loot lockout will now give one guaranteed drop from that boss's unique treasure tables, along with possible drops from its standard loot pool.
+Items
+Shield of the Immaculate now requires being equipped to use the activated effect, and has a 6 second recast time.
+Headsplitter Axe no longer sillily usable by Monks, Rogues, or Beastlords.
+Slave Trammels now properly reflect being leg irons.
+Spiky Splintmail now has a worn graphic and its clicky has been shifted to Bramblecoat
+Ornamentation slots added to new model-visible items from Crushbone
+Several Crushbone items have received worn graphics.
+Rib-bone Stiletto graphics have been updated.
+Spells
+Improved Beastlord Warder mana regeneration values.
+Pets can now be summoned with a permanent illusion using illusion items in activated item storage.
+Upgraded pet spell level base damage bonus now applies to some pet skill attacks and will more reliably increase base melee damage.
+The Shaman spells Tortoises Healing, Slugs Healing, and Snails Healing are now all tied to the correct spell scroll.
+Familiars will no longer show pet statistics.
+Tradeskills
+Disabled the remaining throwable Concoctions made by Alchemy.
+UI
+UI Scaling and text filtering have been added to options window. Text filtering can change the way text appears on screen making it sharper or a little more blurry depending on the setting you prefer. Scaling options are 1, 2, 3 ,4 ,5
+Updated the Help options in game to remove incorrect information and remove the out of date tips.
+Tinted the pet inventory slot border red if you have an active pet and the item is not equip-able due to class or level.
+Windows size is no longer saved if the window is in the minimized state allowing you to restore properly on next game open.
+Auto Add Hater Targets has been changed to Auto Add Hate Targets.
+Kerra Isle
+
+Kerra Isle has been redesigned as a home for new Kerran characters in Norrath. Visitors to the Isle will find Guildmasters, Spell Merchants, a Banker, Constructed Potential, an Adventuring Supplies merchant, and a number of friendly felines with quests to complete!
+
+Newly created Kerran characters will receive a "note" item that can be traded directly to their Guild Master for a small amount of experience and faction. Don't forget to hail your Guild Master afterwards, as they will provide an important task for an achievement on the Isle
+
+Quests on Kerra Isle have been altered to take place on the continent of Odus, including Kerra Isle itself as well as Toxxulia Forest Some familiar quest rewards have been updated to fit the level range of the new area and the design of EverQuest Legends
+
+These quests are also built using the "Task" system for easy tracking of your progress. You can always press [Alt+Q] (default) to open the Quest Journal where you can check how your quests are going
+
+Non-Kerran visitors to the region should also consider hailing a Guild Master to receive the task for the achievement (because they just might decide they'd like to try the cat lifestyle in a future loadout)
