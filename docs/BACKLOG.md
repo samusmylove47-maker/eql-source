@@ -313,6 +313,36 @@ it in the change log as an idea taken from a sibling site rather than an origina
 
 ---
 
+## P5 - Serve the planner from a subdomain
+
+**Recorded 18 Aug 2026, not started. Queued by the Director behind the tool
+consolidation; the subdomain is the first thing after it.**
+
+The planner lives at `samusmylove47-maker.github.io/EQL50ups/`. The home page
+band links out to it, which works and reads as a link to somebody else's site.
+
+**A subdomain answers the objection that ruled out same-origin hosting.** The
+entry above says hosting it under `public/app/` "makes us responsible for a
+release cadence we do not control", and that is still true and still decisive.
+A subdomain sidesteps it entirely: the planner ships when its own repository
+ships, and the URL still says ours. Nothing about our build or our deploy takes
+on their cadence.
+
+**One implementation trap, known in advance.** `eqlsource.com` is on Cloudflare,
+and Cloudflare's proxy conflicts with GitHub Pages' certificate provisioning.
+**The DNS record goes in DNS-only — grey cloud — until Pages has issued the
+certificate.** Only then is proxying it a decision worth taking. Getting that
+order wrong produces a certificate error on a public URL, which is the most
+alarming possible failure for a page whose whole pitch is that it is safe to
+use.
+
+Three things move together and none is ours alone: the DNS record, a `VITE_BASE`
+change in the planner's build, and every link pointing at the planner — the home
+page band, `tools/50-upgrades.html`, and `assets/50-upgrades.json`'s `url`
+field, which `refresh-upgrades.mjs` writes from a constant.
+
+---
+
 ## P5 - The =logo family, and settling the sibling tool names
 
 **Recorded 18 Aug 2026, not started. `docs/DESIGN.md`'s call, with the owner.**

@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `8eb5858d`** (PR #98, merged — the tip of `main`). Diff
+**This describes commit `6a3a474f`** (PR #99, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -66,7 +66,7 @@ unwritten they read as omissions.
 | Withdrawing any existing tool | Nothing currently duplicates anything. The Sky Ledger withdrawal on 17 Aug was justified by a correctness property ours lacked; absent that, two tools are two tools. |
 | A shared `.btn` class | The imported pages carry their own stylesheets and never load `site.css`. A shared button would have to be injected into every one of them, and each already styles its own. Count them, never quote a number: `grep -rL site-foot --include='*.html' --exclude-dir=app public/`. Real, and post-launch. |
 | The doubled `cache-control` header | Real, harmless, post-launch. |
-| `.html` → extensionless 307 | Real, post-launch, and **held by a cross-repo dependency as of 18 Aug 2026: do not remove the `.html` form.** The 50 Upgrades planner's masthead and footer link the `.html` URLs for all 32 of their outbound links, so dropping the rule breaks that footer at once. The Director has asked that repository to link extensionless and will release this hold when it has. Until then this is not merely deferred — it would break a live page in another repository. |
+| Migrating every internal href to the extensionless form | **The redirect is already live** — `/x.html` 307s to `/x`, measured 18 Aug 2026 — and this row was wrong for a day in saying otherwise. What is unbuilt is changing the ~61 hrefs per page that still say `.html`; each costs a reader one redirect hop. The cross-repo hold on it is **released**: the planner now links extensionless for all 42 of its outbound URLs, so the dependency is discharged. Released, not scheduled — it touches every internal link on 716 pages. **The redirect itself stays regardless**: it costs nothing and protects links already in the wild. |
 | Self-hosting the site's fonts | Real, post-launch. |
 | The map export | Post-launch. |
 | Editing `public/assets/site.css` casually | It re-hashes `CSS_V` and rewrites the stylesheet line on every page. Fine when the CSS genuinely changed; never as a side effect. |
@@ -127,88 +127,107 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
-*Empty. Every ruling received has been applied and moved into the standing
-section it belongs in — that is the correct state for this heading, not a lost
-note.*
+**The tool consolidation is being mapped, and nothing should pre-empt it.**
+Nine tools become three. The mapping was still running on 18 Aug 2026; the
+Director will produce an ordered, independently-revertible PR sequence when it
+lands, and will queue the planner subdomain behind it.
+
+Until that sequence arrives:
+
+- **Do not add, remove, rename or restructure a tool.** `_partials.TOOLS` is
+  about to change shape, and `gate.py` rule 6 will follow it automatically —
+  anything hand-aligned to the current nine gets aligned twice.
+- **Do not fix the planner's footer**, which omits `50-upgrades`. It is about to
+  be wrong in six new ways. Recorded in full under *For the session working on
+  the planner*.
+- **The subdomain is not started**, and it is first after the consolidation, not
+  before. `docs/BACKLOG.md` P5 carries it, including the one trap worth knowing
+  in advance: the DNS record goes in DNS-only until GitHub Pages has issued the
+  certificate, because Cloudflare's proxy conflicts with that provisioning.
 
 ---
 
 ## To the Director
 
-**PR: the 50 Upgrades band, placed first of the three.**
+**PR: the sitemap/canonical fix, and the `.html` row corrected.**
 
-Rendered `<h2>` order is **50 Upgrades, Sky Ledger, EQLS Auras**. The band is
-**130 words**, matching the Auras band. `index.html` 783 → **913**, raised by
-hand with the reason in the commit — a genuine raise, not a `LEDGERS` case: one
-fixed section of fixed prose that grows when nothing.
+**It was worse than I reported, and in a second way.** I told you the sitemap
+listed 716 redirecting `.html` URLs. It also turned out that **the ten index
+pages declared a canonical that redirects** — `/index`, `/dungeons/index`,
+`/items/index` and so on, each 307ing to the address it is actually served at.
+So the home page was telling search engines its canonical address was `/index`.
 
-### One pitch item is not true, and I left it out
+Measured live before touching anything:
 
-**"Import your own inventory" is not a feature of that planner.** The word
-`import` appears **zero times** on its entire site, and the two `inventory`
-matches are a tier-M provenance label — *"held in a live inventory"*, describing
-where the planner's own data came from — and **our** Inventory reader in the
-footer nav. `docs/BACKLOG.md` P4.5 proposes inventory import for the *Sky*
-tracker, which is the likeliest source of the crossed wire.
+```
+200  /                     307  /index          -> /
+200  /dungeons/            307  /dungeons/index -> /dungeons/
+200  /credits              307  /404.html       -> /404
+```
 
-Everything else in the pitch shipped, because the planner's own landing page
-states it, read 18 Aug 2026:
+Fixing only the sitemap would have made it disagree with those canonicals in the
+opposite direction, so both derive from one rule now:
+`_partials.public_path()`, imported by `sitemap.py` rather than reimplemented.
+Two files deriving one address two ways is how they came to disagree at all.
 
-> "Three classes at once, twenty-three slots including the two Any Slots, and
-> every item upgradeable from +0 to +10 — with the stat sheet recomputing as you
-> touch it. No account, no server: your sets live in this browser and travel as
-> links."
+Result: **715 sitemap entries, zero ending `.html`, zero mismatches against 715
+canonicals.** All ten URL shapes verified 200 on the live site. `404.html` is no
+longer listed — it is an error page, and it was the one page with no canonical,
+which should have been the tell.
 
-### Twenty-three slots is answered — stand Session B down
+**`gate.py` rule 7 and a 26th self-test case** keep it that way. One rule with
+two consumers stays one rule only while something compares what the two of them
+actually wrote — that is the whole lesson of this fix, and it is the same shape
+as `page_words` being shared by the gate and the budget script.
 
-That same sentence closes the question I raised twice and you routed to B.
-**Both figures are right and they count different things:** the snapshot's
-`slots.worn.length` is 18 slot *types* in the data; 23 is *positions* in the
-interface, "including the two Any Slots", with the doubled ear, wrist and finger
-positions making up the rest. No path in `meta.json` equals 23 because
-`meta.json` describes the catalogue, not the UI.
+### Both rulings recorded
 
-I was right that it could not be reconciled *from the snapshot* and wrong to
-imply it could not be reconciled at all — the answer was one page away and I did
-not look until this task made me. `_build/build29.py` now carries the
-reconciliation beside the description, so nobody "corrects" 23 to 18.
+**The `.html` hold is released**, and the row it lived in was wrong twice over —
+it called the redirect "post-launch" when the redirect has been live all along.
+Rewritten to say what is actually unbuilt: migrating the internal hrefs, which
+is released but unscheduled, and that the redirect stays permanently because it
+protects links already in the wild.
 
-### Figures come from two places, and the band says which
+**The planner's footer is left alone**, recorded under *For the session working
+on the planner* with your reasoning — it is about to be wrong in six new ways,
+so it is copied once from the final state after the consolidation, with the
+drift check B already built for the nav.
 
-Catalogue counts — {items} and {with stats} — are interpolated from
-`assets/50-upgrades.json` **by field path** through a new `upfig()` in
-`build1.py`, the same shape `build29.py` uses. Nothing typed, and a moved path
-fails the build.
+**The consolidation and the subdomain are under *From the Director***, because
+both are live and neither is mine to start. The subdomain has a `docs/BACKLOG.md`
+P5 entry carrying the Cloudflare trap: DNS-only until Pages issues the
+certificate, since getting that order wrong puts a certificate warning on a
+public URL — the worst possible failure for a page whose pitch is that it is
+safe to use.
 
-The product claims cannot be: `meta.json` has no interface fields at all. They
-are typed and sourced to the planner's landing page with the read date, recorded
-in a comment above the band. That is the rule when a claim has a source but no
-field, and the alternative — inventing a `slots.uiPositions` path that does not
-exist upstream — is the fault `refresh-upgrades.mjs` refuses to allow.
+### One thing I did not do
 
-### Honest framing stayed on the tool page, as instructed
-
-No unattributed-share figure in the band. It leads with what the tool does and
-links twice: **Open the planner** and **What it does**. The caveat is not hidden,
-it is the first thing on the page one of those links goes to.
-
-### Next PR — the screenshot
-
-No image, as instructed. Session B's equipment view is the right asset. It needs
-to land in `_media/`, where `media.py` will hash it with no code change, and the
-band has a `.featgrid` slot ready for a `<figure>` exactly as the other two do.
-**That PR will need another hand raise**: a figure adds a caption, and 913 is
-already 90 above the previous fail line.
-
-### Still open, unchanged
-
-Nothing. The slots question above was the last one I was carrying.
+**I did not migrate the internal hrefs.** 61 on the home page alone, ~716 pages,
+and each one currently costs a reader a redirect hop. It is now unblocked and it
+is a large mechanical change that wants its own PR and its own revert, not a
+rider on this one.
 
 ---
 
 ## For the session working on the planner
 
-Two facts you cannot see from that repository:
+**Your footer is missing a tool, and the Director has ruled: do not fix it yet.**
+It lists eight tools and omits `50-upgrades` — which is to say it omits the page
+it is. It is our footer as it stood before PR #90 registered that tool.
+
+Fixing it entry by entry now means fixing it twice, because the tool count is
+about to go from nine to three. **After the consolidation lands, copy the footer
+once from the final state and add the drift check** — the same shape you already
+built for the nav. A hand-copied footer drifts silently, which is the argument
+that put `len(TOOLS)` behind ours and `gate.py` rule 6 in front of it; rule 6
+cannot see your copy.
+
+**Your outbound links are already correct** and this closed a hold on our side:
+all 42 are absolute and extensionless, none end `.html`. Both forms resolve —
+`/x.html` 307s to `/x` — so nothing was ever broken, and the prohibition on our
+touching that redirect is now lifted.
+
+Two more facts you cannot see from that repository:
 
 **The Mistmoore revamp date is data, not code.** It lives in
 `assets/zones-index.json` as `revamped` and `revamped_note` on the mistmoore
