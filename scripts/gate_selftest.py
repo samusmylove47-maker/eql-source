@@ -124,6 +124,19 @@ def _sub_first_number(text, placeholder):
     return text[:m.start()] + "<b>" + placeholder + "</b>" + text[m.end():]
 
 
+def _shrink_dataset(text, key, keep):
+    """Drop a published dataset to `keep` entries without breaking its shape.
+
+    The point is that it stays valid JSON with every declared field present —
+    which is exactly why the emptiness rule could not see this failure and the
+    floor had to be added.
+    """
+    d = json.loads(text)
+    items = d["data"][key]
+    d["data"][key] = dict(list(items.items())[:keep])
+    return json.dumps(d)
+
+
 CASES = [
     # A tool whose data constant went missing. The Sky tracker shipped on 14
     # August with ORDER undefined: the class picker rendered nothing, the trio
@@ -296,6 +309,18 @@ CASES = [
      lambda t: json.dumps({k: v for k, v in json.loads(t).items()
                            if k != "tools/sky-ledger.html"},
                           indent=1, sort_keys=True)),
+
+    # A published dataset that lost most of itself and stayed green. The
+    # emptiness rule beside the floor catches a dataset that lost EVERYTHING;
+    # it is blind to one that lost a third, which is the shape the consolidation
+    # had waiting. assets/planar.json feeds sightings.py's match table, the two
+    # catalogues share a hundred names, and removing the planar generator would
+    # have taken data.items from 277 to 177 — valid JSON, right shape, not
+    # empty. This proves the floor sees what emptiness cannot.
+    ("a published dataset that lost a large fraction of itself",
+     "below its recorded floor",
+     "public/data/sightings.v1.json",
+     lambda t: _shrink_dataset(t, "items", 150)),
 
     # The sitemap and the canonical tags disagreed on every page until 18 Aug
     # 2026 and nothing noticed, because each was internally consistent and only
