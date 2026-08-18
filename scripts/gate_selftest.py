@@ -156,6 +156,20 @@ CASES = [
      "public/index.html",
      lambda t: re.sub(r"(\d+) fully verified", "8 fully verified", t, count=1)),
 
+    # The other half of check 2, revived 18 Aug 2026. It had read "of the ten
+    # plates have not cleared" since the plates became surveys on 10 August, so
+    # it matched nothing for eight days and reported clean throughout — and it
+    # compared against npart rather than every survey short of the full
+    # standard, so the day it began matching it would have failed a correct
+    # page. Dead and wrong at once, which is why the sibling case above could
+    # not stand in for it: that one exercises the "fully verified" regex, and
+    # this sentence is counted from a different number on a different page.
+    ("the count of surveys short of the full standard, off by one",
+     "surveys have not cleared the full standard",
+     "public/sources.html",
+     lambda t: t.replace("Four of the 13 surveys have not cleared",
+                         "Five of the 13 surveys have not cleared")),
+
     ("a withheld coordinate reprinted in the roster",
      "prints a coordinate for 'Rathyl', which is withheld",
      "public/dungeons/najena.html",

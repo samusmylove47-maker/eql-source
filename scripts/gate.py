@@ -308,6 +308,13 @@ def run(pages, fail, warn):
     # ---- 2. verification counts agree with the ledger ------------------------
     nfull = sum(1 for z in Z if z["verify_level"] == "full")
     npart = sum(1 for z in Z if z["verify_level"] == "partial")
+    # Every survey that has not cleared the full three-gate standard: partial
+    # and none together. This is what sources.html counts, and keeping the name
+    # distinct from npart is deliberate — confusing the two is the fault below.
+    nopen = sum(1 for z in Z if z["verify_level"] != "full")
+    WORDNUM = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6,
+               "seven": 7, "eight": 8, "nine": 9, "ten": 10, "eleven": 11,
+               "twelve": 12, "thirteen": 13}
     for p in pages:
         t = text_of(open(p, encoding="utf-8", errors="replace").read())
         for m in re.finditer(r"(\d+)\s+fully verified", t):
@@ -315,13 +322,29 @@ def run(pages, fail, warn):
                 fail(f"{p} claims {m.group(1)} fully verified; the ledger says {nfull}")
         # The gaps page once said five plates had not cleared the standard on
         # the same page whose change log said all ten had.
-        for m in re.finditer(r"(\w+) of the ten plates have not cleared", t):
-            words = {"one": 1, "two": 2, "three": 3, "four": 4, "five": 5,
-                     "six": 6, "seven": 7, "eight": 8, "nine": 9, "ten": 10}
-            got = words.get(m.group(1).lower())
-            if got is not None and got != npart:
-                fail(f"{p} says {m.group(1)} plates have not cleared the standard; "
-                     f"the ledger says {npart}")
+        #
+        # THIS CHECK WAS DEAD, AND ALSO WRONG. Both fixed 18 Aug 2026, together,
+        # because fixing the regex alone would have turned a silent check into a
+        # false one.
+        #
+        # Dead: it read "of the ten plates have not cleared". The plates became
+        # surveys on 10 Aug, the count in that sentence is rendered from len(Z),
+        # and the page has said "of the 13 surveys" ever since. It matched
+        # nothing for eight days and reported clean, which is what a dead check
+        # and a clean site have in common.
+        #
+        # Wrong: it compared against npart. sources.html counts every survey
+        # that has not cleared the FULL standard, which is partial and none
+        # together — so on the day it started matching it would have failed a
+        # correct page. npart was 0 and the sentence said three.
+        for m in re.finditer(r"(\w+) of the (\d+) surveys have not cleared", t):
+            got = WORDNUM.get(m.group(1).lower())
+            if got is not None and got != nopen:
+                fail(f"{p} says {m.group(1)} surveys have not cleared the full "
+                     f"standard; the ledger says {nopen}")
+            if int(m.group(2)) != len(Z):
+                fail(f"{p} says that is out of {m.group(2)} surveys; the ledger "
+                     f"holds {len(Z)}")
 
     # ---- 3. a full zone may not still name an open gate ---------------------
     for z in Z:

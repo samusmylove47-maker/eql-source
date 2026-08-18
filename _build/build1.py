@@ -383,8 +383,13 @@ dplates = "\n".join(
 # When something regresses the old wording comes back on its own.
 _open = [z for z in Z if z['verify_level'] != 'full']
 if _open:
-    verdict = (f"By that standard <strong>{nfull} of {len(Z)}</strong> are verified, "
-               f"{npart} are partial and {nnone} are not verified at all. Partial surveys are "
+    # Agreement, because these counts move. npart was 0 from the day this
+    # sentence was written until 18 Aug 2026, so "1 are partial" was never
+    # rendered and never seen — a sentence that only breaks on a value the data
+    # has not taken yet still breaks.
+    _v = lambda n: "is" if n == 1 else "are"
+    verdict = (f"By that standard <strong>{nfull} of {len(Z)}</strong> {_v(nfull)} verified, "
+               f"{npart} {_v(npart)} partial and {nnone} {_v(nnone)} not verified at all. Partial surveys are "
                f"complete and useful; they have simply not cleared every gate. Which gate is open "
                f"is recorded per zone rather than averaged into a single number that would "
                f"read better than the truth.")

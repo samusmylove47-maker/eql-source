@@ -2,11 +2,18 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `348e6559`** (PR #91, merged — the tip of `main`). Diff
+**This describes commit `fddcb2ed`** (PR #92, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
-re-derive, not remember. Name a commit `main` actually pointed at: the licence
-fix `37d12f50` is a branch commit that only ever reached `main` inside that
-merge, so diffing against it walks through a state `main` never had.
+re-derive, not remember. Name a commit `main` actually pointed at: a branch
+commit that only ever reached `main` inside a merge is not one, so diffing
+against it walks through a state `main` never had.
+
+**The Director and this session exchange through this file.** Rulings arrive
+under `## From the Director`; work is reported back under `## To the Director`,
+written and committed with the pull request rather than said in a reply. When a
+ruling has been applied it moves into whichever standing section it belongs in
+and is deleted from the exchange. **The exchange holds only what is still live**
+— if a heading below is empty, that is the correct state, not a lost note.
 
 ---
 
@@ -58,11 +65,134 @@ unwritten they read as omissions.
 | Withdrawing any existing tool | Nothing currently duplicates anything. The Sky Ledger withdrawal on 17 Aug was justified by a correctness property ours lacked; absent that, two tools are two tools. |
 | A shared `.btn` class | The imported pages carry their own stylesheets and never load `site.css`. A shared button would have to be injected into every one of them, and each already styles its own. Count them, never quote a number: `grep -rL site-foot --include='*.html' --exclude-dir=app public/`. Real, and post-launch. |
 | The doubled `cache-control` header | Real, harmless, post-launch. |
-| `.html` → extensionless 307 | Real, post-launch. It touches every internal link and the sitemap. |
+| `.html` → extensionless 307 | Real, post-launch, and **held by a cross-repo dependency as of 18 Aug 2026: do not remove the `.html` form.** The 50 Upgrades planner's masthead and footer link the `.html` URLs for all 32 of their outbound links, so dropping the rule breaks that footer at once. The Director has asked that repository to link extensionless and will release this hold when it has. Until then this is not merely deferred — it would break a live page in another repository. |
 | Self-hosting the site's fonts | Real, post-launch. |
 | The map export | Post-launch. |
 | Editing `public/assets/site.css` casually | It re-hashes `CSS_V` and rewrites the stylesheet line on every page. Fine when the CSS genuinely changed; never as a side effect. |
 | Running `scripts/prose_budget.py` to fix a page that is over | It only lowers ceilings. A page over its cap is trimmed, or the ceiling is raised **by hand with the reason in the commit** — `CLAUDE.md` §5, precedent in PR #89. |
+
+---
+
+## Why conformance.js is hand-run, and what its silence means
+
+Settled 18 Aug 2026. Recorded here rather than decided again by the next session
+that notices it is not wired into anything.
+
+**It stays hand-run. It does not go inside `check.py`.** Three reasons, in order
+of weight:
+
+1. **86 seconds against 2.3.** `check.py` runs before every commit and is
+   currently fast enough that nobody weighs whether to run it. Folding in the
+   sweep makes it roughly forty times slower, and the first thing that happens
+   to a slow pre-commit check is that people stop running it. A check that is
+   skipped catches nothing, so this would trade a live fast check for a
+   thorough one nobody runs.
+2. **It needs a browser, and a rebuild may not assume one.** Same rule that
+   keeps `geometry.py` out of `build.sh` because it needs the game install, and
+   `ogcards.py` out because it needs Pillow. A machine with a clean checkout and
+   no Chrome must still be able to build and validate this site.
+3. **It measures something that changes rarely.** Layout breaks when the chrome,
+   the stylesheet or a template changes — not when a survey gains a paragraph.
+   Wiring it to every commit spends 86 seconds re-proving an unchanged layout
+   hundreds of times over.
+
+The counter-argument is real and worth stating: `toolsmoke.js` **is** called by
+`check.py`, and it is also a node script that can be absent. The difference is
+0.08 seconds against 85.7 — two orders of magnitude, not a difference of
+principle. If it ever gets fast enough, this reasoning is what to re-open.
+
+`CLAUDE.md` §5 names it as the thing to run **after a layout, chrome or
+stylesheet change**, which is the trigger this reasoning implies.
+
+**Yes, it warns and continues where Chrome is absent** — verified by execution
+on 18 Aug 2026, not by reading the code, by pointing its candidate list at
+nothing:
+
+```
+WARN  no Chrome or Edge binary found — conformance sweep skipped.
+      This is not a build failure. check.py and toolsmoke.js still
+      cover the markup and the tools; nothing lays a page out.
+exit=0
+```
+
+**And that is the sharp edge on it.** A WARN that exits 0 reads, in a log,
+exactly like a clean sweep — the same equivalence between a dead check and a
+passing one that `gate_selftest.py` exists to break. Two things guard it: every
+successful run prints its page count and elapsed time, so a real sweep is
+visibly a real sweep, and `--show` prints every measurement. **If you see no
+output about pages, it did not look at any.**
+
+---
+
+## From the Director
+
+**The `assets/50-upgrades.json` refresh is deliberately not being done yet.**
+The snapshot is stale — 3,653 items vendored against 3,663 live — but the
+planner's own session is mid-turn and the snapshot would be stale again before
+a refresh here finished. The Director will schedule it once that turn lands and
+has been verified. **Do not refresh it opportunistically**; a vendored snapshot
+whose read-date is newer than its verification is worse than a stale one.
+
+---
+
+## To the Director
+
+**PR: A1, A2 and A4. A3 is a second pull request against the workflow.**
+
+**A1 — Mistmoore is `partial`.** `verify_gate` names what changed, that gates 1
+and 2 stand on sourcing, that gate 3 is open because nobody has checked whether
+the mesh moved, and that one logged session in the revamped zone closes it.
+Every downstream count re-rendered itself: the home page reads **9 fully
+verified**, the dungeon index reads **9 of 13 … 1 is partial and 3 are not
+verified at all**, and `sources.html` moved from *Three* to **Four of the 13
+surveys have not cleared**. Nobody typed any of those.
+
+**Three second-order effects beyond the two you flagged.**
+
+*`gate.py` check 2's second assertion was dead, and also wrong.* Its regex read
+`(\w+) of the ten plates have not cleared`. The plates became surveys on 10
+August and that sentence renders its count from `len(Z)`, so the page has said
+"of the 13 surveys" ever since — it had matched nothing for eight days and
+reported clean. It also compared against `npart`, while the sentence counts
+every survey short of the full standard, `partial` and `none` together. So on
+the day it started matching it would have failed a correct page: `npart` was 0
+and the page said three. **Fixing the regex alone would have converted a silent
+check into a false one**, so both are fixed together, and `gate_selftest.py`
+grows a 25th case that proves the revived check reaches the sentence that
+actually ships.
+
+*A plural agreement bug that only existed at `npart == 1`.* The verdict sentence
+would have shipped "1 are partial". `npart` had been 0 since the sentence was
+written, so it had never rendered. Now derived.
+
+*The prose ratchet fired, correctly, and I want a ruling.* `dungeons/index.html`
+grew 374 → 450 words, because the "Open gates" list prints `verify_gate` for
+every zone short of `full` and Mistmoore became a fourth entry. **I raised the
+ceiling by hand to 450 with the reason in the commit**, which is the sanctioned
+path.
+
+But the mechanism is wrong and will fire again. That list's length is a function
+of **how many gates are open**, not of how much anyone has written — the same
+property that already exempts the ledger rows and the floor plans' `<svg>`
+labels from `page_words`. Worse, the pressure it creates points at a hard rule:
+trimming a gate description to stay under budget is *"never delete a flagged gap
+to make a page look complete"*. **My recommendation is to exempt the
+`gaterow` rows in `page_words` rather than raise this ceiling again.** I have
+not done it: `LEDGERS` carries an explicit "adding to this list should be hard",
+and widening it is your call, not mine to take quietly.
+
+**A2 — the change log entry** is a `Source refresh` dated 18 Aug 2026. It
+records the Mistmoore revamp, records the Kedge Keep respawn fix separately
+against §9's open respawn gap and notes that no figure was published this time
+either, and states plainly that survey prose has **not** been adjudicated
+against these notes. Ledger rows are exempt from the ceilings, so it cost no
+words anywhere.
+
+**A4 — answered above**, in *Why conformance.js is hand-run*, with the WARN path
+verified by execution rather than by reading it.
+
+**Not done, as instructed:** no ingestion of the notes into survey prose, and no
+50 Upgrades refresh.
 
 ---
 
