@@ -21,6 +21,9 @@ python3 _build/extract.py
 # inherited advice, farming value - computed from the measured data.
 # Runs before build1, which prints it on the plate cards.
 python3 _build/coverage.py
+# Copies the committed trailer and poster into public/ under a content hash.
+# Runs before build1, which prints their filenames into the home page.
+python3 _build/media.py
 python3 _build/build1.py
 python3 _build/build2.py
 python3 _build/build3.py

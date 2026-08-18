@@ -149,6 +149,13 @@ SL_OVERLAY_LABEL = (f'Download the overlay &middot; {_SL_REL["mb"]} MB &rarr;'
                     if _SL_REL.get('mb') else 'The overlay &rarr;')
 
 SL_APP, SL_DS = SL['app'], SL['dataset']
+# The trailer and its poster, hashed by _build/media.py so a changed capture is
+# a different cache key. Absent on a machine that has never run it, so the band
+# degrades to no video rather than a broken element.
+try:
+    MEDIA = json.load(open('assets/media.json', encoding='utf-8'))
+except (OSError, ValueError):
+    MEDIA = {}
 
 feature = f'''
 <section class="band feat">
@@ -174,18 +181,50 @@ feature = f'''
             <a class="featdoor" href="tools/sky-ledger.html">What it does &rarr;</a>
           </div>
         </div>
-        <ul class="featclaims">
-          <li><b>{SL_DS['contested']} of {SL_DS['items']}</b>
-            <span class="lab">Turn-in items wanted twice or more</span>
-            <span class="why">One piece finishes one test. It pools what you hold and spends
-              each unit on the test closest to done.</span></li>
-          <li><b>&lt;28% &middot; 0/9</b>
-            <span class="lab">How a dry streak prints</span>
-            <span class="why">Zero drops in nine kills bounds the rate; it does not measure
-              it. <code>0%</code> would tell you to stop farming.</span></li>
-        </ul>
+        <figure class="feattrailer">
+          <video src="assets/media/{MEDIA['sky-ledger-trailer']['file']}"
+                 poster="assets/media/{MEDIA['sky-ledger-poster']['file']}"
+                 width="1600" height="900" autoplay muted loop playsinline
+                 preload="metadata" id="sltrailer"
+                 aria-label="The Sky Ledger overlay running over the game: quests marked ready,
+                             the panel narrowed to its compact width, and the transparency
+                             slider dimming it against the scenery."></video>
+          <button class="vpause" type="button" id="slpause" aria-controls="sltrailer">Pause</button>
+          <figcaption><span>The overlay in play &middot; 18s, silent</span>
+            <a href="https://youtu.be/hxq2qY1FXtg">Full tutorial on YouTube, 1:15 &rarr;</a></figcaption>
+        </figure>
       </div>
+      <ul class="featclaimrow">
+        <li><b>{SL_DS['contested']} of {SL_DS['items']}</b>
+          <span class="lab">Turn-in items wanted twice or more</span>
+          <span class="why">One piece finishes one test. It pools what you hold and spends
+            each unit on the test closest to done.</span></li>
+        <li><b>&lt;28% &middot; 0/9</b>
+          <span class="lab">How a dry streak prints</span>
+          <span class="why">Zero drops in nine kills bounds the rate; it does not measure
+            it. <code>0%</code> would tell you to stop farming.</span></li>
+      </ul>
       <p class="featfoot">No install &middot; nothing uploaded &middot; build {SL_APP['hash']} &middot; {SL_APP['kb']} KB</p>
+      <script>
+      /* A loop that cannot be stopped is a nuisance, and one that starts
+         moving at a reader who asked for less motion is worse than a nuisance.
+         The video carries `autoplay` so it works with no script at all; this
+         only ever takes motion AWAY, never adds it. */
+      (function(){{
+        var v=document.getElementById('sltrailer'), b=document.getElementById('slpause');
+        if(!v||!b) return;
+        var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
+        /* Autoplay costs a megabyte of someone's mobile data for a loop they
+           did not ask for. The poster carries the same picture at 177 KB, so
+           a narrow screen gets the still and a tap gets the motion. */
+        var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
+        if(quiet||small){{ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }}
+        b.addEventListener('click',function(){{ v.paused?v.play():v.pause(); sync(); }});
+        v.addEventListener('play',sync); v.addEventListener('pause',sync);
+        sync();
+      }})();
+      </script>
     </div>
   </div>
 </section>
