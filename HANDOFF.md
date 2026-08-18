@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `5f50d1b4`** (PR #95, merged — the tip of `main`). Diff
+**This describes commit `8eb5858d`** (PR #98, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -135,110 +135,74 @@ note.*
 
 ## To the Director
 
-**PR: the EQLS Auras band, from Session C's material.**
+**PR: the 50 Upgrades band, placed first of the three.**
 
-**The ceiling is 786, not 768, and 768 was not reachable.** This is the one
-number in the brief I could not honour, so here is the derivation rather than
-the conclusion. (787 as first shipped; the "EQLS Auras" rename took one word out
-and the ratchet followed it down.)
+Rendered `<h2>` order is **50 Upgrades, Sky Ledger, EQLS Auras**. The band is
+**130 words**, matching the Auras band. `index.html` 783 → **913**, raised by
+hand with the reason in the commit — a genuine raise, not a `LEDGERS` case: one
+fixed section of fixed prose that grows when nothing.
 
-`index.html` was **657** when I started, not 649. Session C measured against
-`fddcb2ed`; two change-log entries have landed since, and the home page renders
-`ENTRIES[:4]`, so the rolling window got heavier. Their band measurement was
-exact — I reproduce their 136 words to the word — but the base under it moved.
+### One pitch item is not true, and I left it out
 
-| variant | band | index becomes |
-|---|---|---|
-| A, as C wrote it, + the naming edit | 137 | 794 |
-| **B — cut #1 applied (approved)** | **130** | **787**, now **786** after the rename |
-| C — + cut #2 (you overrode this) | 125 | 782 |
-| D — + cut #3 (you refused this) | 119 | 776 |
+**"Import your own inventory" is not a feature of that planner.** The word
+`import` appears **zero times** on its entire site, and the two `inventory`
+matches are a tier-M provenance label — *"held in a live inventory"*, describing
+where the planner's own data came from — and **our** Inventory reader in the
+footer nav. `docs/BACKLOG.md` P4.5 proposes inventory import for the *Sky*
+tracker, which is the likeliest source of the crossed wire.
 
-**Even taking all three cuts lands at 776.** 768 cannot be reached without
-cutting copy you explicitly protected, so I applied the approved cut #1, kept
-the eyebrow and the caption, and raised the ceiling to the measured 787. If you
-want a number closer to 768 it has to come out of the second paragraph, which C
-argued hardest to keep and which I would not cut without you saying so.
+Everything else in the pitch shipped, because the planner's own landing page
+states it, read 18 Aug 2026:
 
-**It is a genuine raise, not a `LEDGERS` case — confirmed by reading it, not
-recalling it.** Every one of the eight `LEDGERS` entries matches a *repeating
-row*: `<div class="zrow">`, `<article class="st-entry">`, `<a class="plate">`,
-`<a class="card">`, `<li class="gaterow">`, `<tr>`, `<article class="fzone">`.
-Each exists because a set grows when something is recorded. The Auras band is
-one fixed `<section>` of fixed prose that grows when nothing. Exempting it would
-be exempting writing, which is the only thing the ratchet is for. You were right
-and my reversal yesterday was in the other direction for the right reason.
+> "Three classes at once, twenty-three slots including the two Any Slots, and
+> every item upgradeable from +0 to +10 — with the stat sheet recomputing as you
+> touch it. No account, no server: your sets live in this browser and travel as
+> links."
 
-### The video
+### Twenty-three slots is answered — stand Session B down
 
-Leads, above the prose. `.featgrid` is a single column at every width — there is
-no two-column rule in `site.css` at all — so DOM order is reading order and
-putting the `<figure>` first is what "above" means here. **No CSS change**, so
-`CSS_V` does not re-hash.
+That same sentence closes the question I raised twice and you routed to B.
+**Both figures are right and they count different things:** the snapshot's
+`slots.worn.length` is 18 slot *types* in the data; 23 is *positions* in the
+interface, "including the two Any Slots", with the doubled ear, wrist and finger
+positions making up the rest. No path in `meta.json` equals 23 because
+`meta.json` describes the catalogue, not the UI.
 
-`_build/media.py` needed no change either: it globs `_media/`, so committing the
-two files was enough. They ship as `auras-trailer.5fc3fbbc.mp4` (839 KB) and
-`auras-poster.5c861299.jpg` (175 KB).
+I was right that it could not be reconciled *from the snapshot* and wrong to
+imply it could not be reconciled at all — the answer was one page away and I did
+not look until this task made me. `_build/build29.py` now carries the
+reconciliation beside the description, so nobody "corrects" 23 to 18.
 
-Verified in a real browser at both viewports and under reduced motion:
+### Figures come from two places, and the band says which
 
-| | video box | `autoplay` | shows |
-|---|---|---|---|
-| 1440x900 | 601x339, 1.77 | present | video |
-| 390x844 | 273x154, 1.77 | **removed** | poster |
-| 1440x900, reduce | 601x339, 1.77 | **removed** | poster |
+Catalogue counts — {items} and {with stats} — are interpolated from
+`assets/50-upgrades.json` **by field path** through a new `upfig()` in
+`build1.py`, the same shape `build29.py` uses. Nothing typed, and a moved path
+fails the build.
 
-No `<iframe>` on the page. No `controls` attribute, so no control implying sound
-— Pause is the only one, and the caption says "silent". The encode carries no
-audio stream at all.
+The product claims cannot be: `meta.json` has no interface fields at all. They
+are typed and sourced to the planner's landing page with the read date, recorded
+in a comment above the band. That is the rule when a claim has a source but no
+field, and the alternative — inventing a `slots.uiPositions` path that does not
+exist upstream — is the fault `refresh-upgrades.mjs` refuses to allow.
 
-### C's copy, untouched except as instructed
+### Honest framing stayed on the tool page, as instructed
 
-The WeakAuras credit, the from-scratch clause, the non-affiliation clause and
-the word "Targeting" are all as written, and `_build/build1.py` now carries a
-comment above the band saying why each is load-bearing, so a later tidying pass
-has to argue with a reason rather than a preference. Cut #1 removed the
-telemetry list only; **"of its own" survives it**, which `CLAIMS.md` §6 flags as
-the load-bearing half of that sentence.
+No unattributed-share figure in the band. It leads with what the tool does and
+links twice: **Open the planner** and **What it does**. The caveat is not hidden,
+it is the first thing on the page one of those links goes to.
 
-Naming settled at **EQLS Auras** — it reads aloud as "Equals Auras" and anchors
-a planned =Auras / =50Upgrades / =SkyLedger family. C wrote "EQL Auras", a first
-ruling made it "EQL Source Auras", the owner overruled that, and `build1.py`
-carries the reasoning above the band so a tidying pass cannot expand it back.
-The name costs one word fewer, so `index.html` is **786** and `prose_budget.py`
-lowered the ceiling to match — ceilings only ever fall, and this one did.
+### Next PR — the screenshot
 
-### Three things I did, slightly beyond the brief
+No image, as instructed. Session B's equipment view is the right asset. It needs
+to land in `_media/`, where `media.py` will hash it with no code change, and the
+band has a `.featgrid` slot ready for a `<figure>` exactly as the other two do.
+**That PR will need another hand raise**: a figure adds a caption, and 913 is
+already 90 above the previous fail line.
 
-**`docs/auras/ENCODE.md` now exists.** You referred to it as the asset spec; it
-did not. C's encoding reasoning — CRF 28, 24fps against 30, the 10.9s cut point
-and what is at t=11.25 — was in their HANDOFF note, which is read once. It is a
-spec, so it is filed as one.
+### Still open, unchanged
 
-**I did not take C's HANDOFF section.** It was written into a structure that
-changed after they branched, and its substance is now in `ENCODE.md` and
-`CLAIMS.md`. Their branch keeps the original.
-
-**No change-log entry.** A band announcing a tool that has not shipped is not a
-correction, a source refresh, or an addition of a claim. When Auras actually
-ships, that is the Addition. Saying so here because it also keeps the ceiling
-arithmetic above honest — an entry would have moved `ENTRIES[:4]` again.
-
-### Filed to the backlog, not started
-
-The **=logo family** and the **change-log / home-page ceiling coupling** are both
-in `docs/BACKLOG.md` as P5. The first is `DESIGN.md`'s call with the owner and
-must not be begun from a heading change — it touches the wordmark and both
-sibling tool names, which are published titles, share cards and footer links.
-The second is written up with the three options I can see and a note that the
-one in place today, "document it and measure rather than trust", is the weakest
-of them.
-
-### Recorded, not solved
-
-`tools/50-upgrades.html`'s meta description says **"twenty-three slots"** while
-the snapshot holds `slots.worn.length` = **18**. Left exactly as written.
-Session B has the question.
+Nothing. The slots question above was the last one I was carrying.
 
 ---
 
