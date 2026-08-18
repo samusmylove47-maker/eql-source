@@ -491,23 +491,46 @@ except Exception as e:                      # a broken gate must not pass silent
 #
 # Adding a key is fine and needs no change here. Removing one, or renaming it,
 # should fail loudly and require a deliberate decision to publish a v2.
+# `floor` is the smallest each collection may become before the build refuses.
+#
+# ADDED 18 AUG 2026, BECAUSE EMPTY WAS THE ONLY FAILURE THIS COULD SEE.
+# The emptiness rule below catches a dataset that lost everything. It cannot
+# catch one that lost most of itself, and the consolidation had exactly that
+# waiting: assets/planar.json is read by _build/sightings.py to match planar
+# armour, index-data.json contains none of it, and the two catalogues share a
+# hundred names. Losing planar.json would have taken data.items from 277 to 177
+# — a third of a published dataset gone, still valid JSON, still the right
+# shape, still not empty. Green.
+#
+# The numbers are observations, not targets: each is the count on 18 Aug 2026,
+# recorded in the comment beside it, with the floor set low enough that ordinary
+# churn does not trip it and far above the failure it exists to catch. Raising a
+# floor as a dataset grows is fine. Lowering one is a decision that needs a
+# reason in the commit, exactly like raising a prose ceiling.
 _CONTRACT = {
     "sky.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
              "terms", "stability", "notes", "data", "hash"},
-        data={"sources", "islands", "ladder", "order", "efreeti", "classes"}),
+        data={"sources", "islands", "ladder", "order", "efreeti", "classes"},
+        # Fixed sets: the zone has ten islands and the game sixteen classes.
+        # These do not churn, so their floors sit at the count itself.
+        floor={"sources": 4, "islands": 10, "ladder": 10, "order": 16,
+               "efreeti": 2, "classes": 16}),
     "sightings.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
              "terms", "stability", "notes", "data", "hash"},
-        data={"items"}),
+        data={"items"},
+        floor={"items": 220}),        # 277 on 18 Aug 2026
     "zones.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
              "terms", "stability", "notes", "data", "hash"},
-        data={"zones"}),
+        data={"zones"},
+        floor={"zones": 13}),         # 13 surveys; a zone is never unsurveyed
     "items.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
              "terms", "stability", "notes", "data", "hash"},
-        data={"items"}),
+        data={"items"},
+        floor={"items": 205}),        # 257 on 18 Aug 2026
 }
 try:
     _idx = json.load(open("public/data/index.json", encoding="utf-8"))
@@ -547,6 +570,15 @@ for _d in _idx.get("datasets", []):
         if isinstance(_v, (dict, list)) and len(_v) == 0:
             fail(f"{_fname}: data.{_k} is empty. A published dataset that lost "
                  f"its contents is worse than one that failed to build")
+        # And the failure that is not emptiness. See the floors above.
+        elif isinstance(_v, (dict, list)):
+            _floor = (_want.get("floor") or {}).get(_k)
+            if _floor is not None and len(_v) < _floor:
+                fail(f"{_fname}: data.{_k} holds {len(_v)}, below its recorded "
+                     f"floor of {_floor}. A published dataset does not lose a "
+                     f"large fraction of itself by accident — find what stopped "
+                     f"feeding it. If the drop is real and intended, lower the "
+                     f"floor in check.py and say why in the commit")
 for _extra in sorted(set(os.path.basename(p) for p in glob.glob("public/data/*.json"))
                      - _listed - {"index.json"}):
     fail(f"public/data/{_extra} is published but not listed in index.json, so "

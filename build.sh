@@ -46,6 +46,11 @@ python3 _build/build11.py
 python3 _build/build12.py
 python3 _build/build13.py
 python3 _build/build18.py
+# planardata.py writes assets/planar.json and build19.py renders the page from
+# it. Separate because four generators read that dataset and none of them render
+# that page — build24 (/sets/), build25, sightings.py and the contamination
+# scanner — so the data must outlive the page. Data first, always.
+python3 _build/planardata.py
 python3 _build/build19.py
 python3 _build/build20.py
 python3 _build/build21.py

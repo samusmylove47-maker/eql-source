@@ -13,9 +13,22 @@
 /races       /tools/race-unlocks.html      301
 /calculator  /tools/combo-calculator.html  301
 
+# EVERY WITHDRAWAL RULE IS WRITTEN IN BOTH FORMS, AND HERE IS WHY.
+#
+# Until 18 Aug 2026 all nine of them named only the .html address, while the
+# site canonicalises extensionless — /x.html 307s to /x, and the sitemap and
+# every canonical tag name the extensionless form. So a withdrawn page had a
+# working old URL and a dead one, and the dead one was the shape a reader would
+# have got from search or from a shared canonical link. All nine extensionless
+# forms were measured 404 on the live site that day.
+#
+# A redirect that only catches the form nobody links is not a redirect. From
+# here: withdraw a page, write both lines.
+#
 # The campaign plate was withdrawn. It had been published and indexed, so send
 # its old URL to the dungeon index rather than leaving a dead end.
 /dungeons/campaign-10-to-50.html  /dungeons/index.html  301
+/dungeons/campaign-10-to-50       /dungeons/index.html  301
 
 # Our own Plane of Sky tracker was withdrawn on 17 Aug 2026 and replaced by Sky
 # Ledger, which spends a held turn-in piece once instead of counting it against
@@ -24,6 +37,7 @@
 # is no tombstone page: the withdrawal is recorded in the change log, which is
 # where removals belong.
 /tools/plane-of-sky.html  /tools/sky-ledger.html  301
+/tools/plane-of-sky       /tools/sky-ledger.html  301
 
 # The blacklist that used to sit here is gone. It listed ten internal paths
 # and blocked them by rule, which only ever worked while someone remembered
@@ -36,10 +50,15 @@
 # Redirected rather than 404'd: they were linked from the dungeon index for
 # weeks and someone will have one open.
 /dungeons/najena-map.html        /dungeons/najena.html        301
+/dungeons/najena-map             /dungeons/najena.html        301
 /dungeons/splitpaw-map.html      /dungeons/splitpaw.html      301
+/dungeons/splitpaw-map           /dungeons/splitpaw.html      301
 /dungeons/lowerguk-map.html      /dungeons/lowerguk.html      301
+/dungeons/lowerguk-map           /dungeons/lowerguk.html      301
 /dungeons/nagafenslair-map.html  /dungeons/nagafenslair.html  301
+/dungeons/nagafenslair-map       /dungeons/nagafenslair.html  301
 /dungeons/mistmoore-map.html     /dungeons/mistmoore.html     301
+/dungeons/mistmoore-map          /dungeons/mistmoore.html     301
 
 # A named-mob page and an item page were withdrawn 17 Aug 2026 because neither
 # subject is in the game: no measured session in Castle Mistmoore has ever seen
@@ -48,7 +67,9 @@
 # so they go to the survey that used to carry them rather than to a 404. The
 # faction named after Mayong is real and the survey still names it.
 /named/mayong-mistmoore.html      /dungeons/mistmoore.html  301
+/named/mayong-mistmoore           /dungeons/mistmoore.html  301
 /items/fanged-skull-stiletto.html /dungeons/mistmoore.html  301
+/items/fanged-skull-stiletto      /dungeons/mistmoore.html  301
 
 # A short address for the gear planner, because it is the kind of thing that
 # gets typed into Discord rather than clicked.
