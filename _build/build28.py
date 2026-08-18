@@ -254,6 +254,9 @@ page = head("Sky Ledger",
     <p class="lede">Both hotkeys are global, so they work while the game has focus. Position,
       size, opacity and click-through are remembered between runs. Exclusive fullscreen draws
       over every other window, this one included &mdash; use Windowed or Borderless.</p>
+    <p class="lede"><a href="https://youtu.be/gmH4wm6pHz8">Watch it run, 18 seconds &rarr;</a>
+      &nbsp;&middot;&nbsp;
+      <a href="https://youtu.be/hxq2qY1FXtg">The full tutorial, 1:15 &rarr;</a></p>
     <table class="slkeys">
       <tr><td>Ctrl+Shift+O</td><td>show and hide the panel</td></tr>
       <tr><td>Ctrl+Shift+L</td><td>click-through &mdash; the panel stops eating clicks</td></tr>
