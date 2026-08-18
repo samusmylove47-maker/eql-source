@@ -106,16 +106,17 @@ ENTRIES = [
               'right. <strong>A tier 5 sentence inside a tier 2 container is the most '
               'dangerous object in this ecosystem</strong>, because it wears the wrong clothes.',
          evidence=[
-             ('C', 'First-hand report, 14 Aug 2026',
+             ('Report', 'First-hand report, 14 Aug 2026',
               'The boots seen dropping for other players, confirmed by guildmates. First-hand '
-              'but unparsed, so tier C.'),
+              'and unparsed, so it carries no tier: the scale ranks readings of documents, and '
+              'this is neither a document nor a log.'),
              ('T2', 'eqlwiki <em>Journeyman&rsquo;s Boots</em> item record',
               'Names Najena and Drelzna as the source.'),
              ('T5', 'eqlwiki <em>Drelzna</em> NPC page',
               'Carries the Project 1999 sentence about the 1999 quest change, verbatim.'),
          ],
          settle='One combat log line showing the loot. No parsed session here holds a Drelzna '
-                'kill, so this stays tier C until a parse replaces it.',
+                'kill, so this stays a report until a parse replaces it.',
          credit=''),
     dict(status='open',
          q='Does Paragon of Spirit stack with Clarity and bard regeneration songs?',

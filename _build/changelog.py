@@ -270,6 +270,14 @@ ENTRIES = [
               "the source says. A log across several cycles at one camp settles it outright. "
               "<strong>Drelzna also gained three drops</strong> her wiki record carries and this "
               "plate never did &mdash; Dark Elf Parts, Bronze Greaves and Tentacle Whip"),
+    dict(kind="Correction", date="17 Aug 2026", title="Eight named bosses, not raid bosses generally",
+         body="The raid-access explainer read the 16 June patch note as a rule about raid bosses "
+              "as a class. <strong>It names eight, individually</strong> &mdash; Maestro of Rancor, "
+              "Innoruuk, Cazic Thule, Fright, Terror, Dread and a dracoliche &mdash; and every one "
+              "of them is a Fear or Hate boss. The Plane of Sky's bosses stand in the open zone, "
+              "which is the counter-example the broader reading could not survive. The page states "
+              "the narrower claim now, and the note that it once said otherwise moved here, which "
+              "is where a correction belongs."),
     dict(kind="Correction", date="17 Aug 2026", title="Tier C withdrawn: a first-hand report is not a tier",
          body="A tier was added on 10 August for named first-hand reports, and it should not have been. "
               "<strong>It was generalised from a single event</strong> &mdash; one first-hand "
