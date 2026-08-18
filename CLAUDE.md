@@ -328,6 +328,16 @@ scripts/
                     and nowhere else: a scanner that only finds other people's
                     rot is an attack ad. If it is ever pointed outward it comes
                     here first and the result publishes either way
+  conformance.js    loads every built page in headless Chrome over file:// and
+                    reports console errors, viewport overflow and an empty body,
+                    at 1440x900 and 390x844. Hand-run, ~86s for the site, no
+                    dependencies — it drives Chrome over the DevTools Protocol
+                    with node's built-in WebSocket. WARNs and exits 0 where no
+                    browser is installed. It aborts every non-file: request, so
+                    the webfonts fall back and it must NEVER be extended to
+                    judge type or spacing: that would be measuring a page which
+                    does not ship. `--show` prints every measurement, because a
+                    silent pass and a dead check read the same
   toolrender.js     dumps what a tool actually renders, so a refactor can be
                     proved to change nothing. Run it before and after any change
                     that moves data a tool reads, and diff. toolsmoke says the
@@ -374,6 +384,29 @@ that a click does the right thing** — only that the script runs and the page
 fills. That is the exact gap that let a tracker ship with an empty class picker
 and every other check green, and it is all this closes. Opening the page is
 still the only way to know it works.
+
+**After a layout, chrome or stylesheet change, load the site in a real browser:**
+
+```bash
+node scripts/conformance.js
+```
+
+Hand-run and not part of `build.sh` — it takes about 86 seconds against the
+whole site and needs a browser installed, and a rebuild must work without one.
+It loads every built page over `file://` at 1440x900 and 390x844 and reports
+console errors, `scrollWidth` against `innerWidth`, and an empty body. That is
+the layer `check.py` and `toolsmoke.js` both miss: neither of them lays a page
+out, so neither can see a page that overflows 390px or throws on load.
+
+**It aborts every non-file request, so the three Google-hosted faces fall back
+to system fonts.** Nothing it reports is a statement about type, rhythm or
+whether a label fits its box — it is measuring a page that does not ship. Do not
+extend it to make that judgement.
+
+Two traps are recorded in its header and both cost a wrong answer while it was
+being written: `mobile:true` makes the layout viewport elastic, so the overflow
+check can never fire; and a clean sweep is indistinguishable from a broken
+measurement, which is what `--show` is for.
 
 After a deliberate trim, lower the prose ceilings to match and commit them with
 the trim:
