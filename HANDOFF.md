@@ -464,6 +464,106 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The twice-daily refresh has run 23 times and failed 23 times
+
+**Settled from the Actions API, not from the repo — because nothing in the repo
+could settle it.** `state/last-check.json` holds `last_run_utc: null`, and three
+documents describe a working twice-daily pipeline. Both readings were wrong in
+the same direction.
+
+```
+23 scheduled runs, 7 Aug 20:04 → 18 Aug 18:35 UTC
+conclusions: Counter({'failure': 23})
+failing step: anthropics/claude-code-action@v1, ~18s, every time
+```
+
+**It has never once succeeded.** `last_run_utc` is null *because* it fails before
+reaching the line that would write it — so the field that was supposed to record
+the pipeline's health instead recorded its own unreachability, and read as
+"not configured yet" for eleven days.
+
+This is the day's fault class in its purest form, and the worst instance found:
+not a check that never ran, not a build that reported success while producing
+nothing — **an entire automation that ran on schedule, failed every time, and was
+silent enough that three documents went on describing it as working.** An
+eighteen-second failure at the action step is a configuration or credential
+fault, which the owner can read in one click; **the fix is secondary to the
+lesson, which is that we had no way of knowing.**
+
+**Ruling:** `state/last-check.json` must distinguish *never ran*, *ran and
+failed*, and *ran and found nothing* — three states currently collapsed into one
+null. Until it does, `docs/AUTOMATION.md` overstates what exists and should say
+so in place. **Owner: one look at the Actions page gives the error string.**
+
+---
+
+### The programme, and what it corrects in my own rulings
+
+A ten-agent survey with three adversarial passes returned 19 corrections. I have
+verified the load-bearing ones myself rather than relaying them.
+
+**Verified true, and the first thing anyone does:**
+
+**`scripts/gate_selftest.py` is RED right now.**
+```
+[TEST BROKEN] the count of surveys short of the full standard, off by one
+              the mutation did not apply — the markup it targets has changed
+1 case(s) did not see the check they were written for fail.
+```
+The standing mandate moved Mistmoore to `full`, the page's count went from
+"Four of the 13" to "Three", and the selftest case is anchored to the typed
+string. **This is the instrument that proves every other gate works**, so nothing
+in Wave 2 starts until it is green — and the repair is not just repointing that
+case. **Gate G-0: every regex- or path-anchored check in `check.py` and `gate.py`
+reports how many things it examined, and zero is a failure.** That retires the
+dead-check class mechanically instead of one instance at a time, and it retires
+two known-dead checks with it (`check.py:96` matches 0 pages; `check.py:124`
+guards a root `index.html` that has not existed since the move to `public/`).
+
+**Verified, and it corrects a ruling of mine:** the survey claimed the fabricated
+quotation is still live in three places. **Two of those are wrong** —
+`_build/build18.py` and `public/learn/reading-the-plans.html` contain zero
+occurrences. It survives only in the 10 August change-log entry, **which is the
+register doing its job.** Do not rewrite it: append a visible *"Superseded 18 Aug
+2026 →"* marker and leave the original text intact. Editing a register to match
+today is the one thing a register may never do, and this is the test of whether
+we meant it when we said so.
+
+**Also verified and unreported until now:** a **second** divergence between a
+published quotation and the stored artefact — `_build/build13.py:229` ends
+"…unique treasure tables." where `sources/raw/2026-07-28-eql-update-notes.txt:41`
+reads "…unique treasure tables, along with possible drops from its standard loot
+pool." A comma became a full stop inside quotation marks with no ellipsis. **The
+first check ever run against a stored artefact found a second fault in the same
+note**, which is the argument for G-1 in one sentence.
+
+**Killed, including my own designs.** I proposed an external-evidence store with
+per-symbol counters, an `extfig()` lookup and staleness ceilings. **It is a
+framework for four artefacts and it is not worth building.** Take two pieces
+only: the free Sky Ledger byte scan, and a printed dated scope clause — *"audited
+at v0.1.0, read 18 Aug 2026"* — on every external claim. A dated claim cannot rot;
+only an undated one can, and that is the whole of the fix.
+
+Also killed: **G3 and G4** (`gate.py:382-421` is already G3, and G4 as I wrote it
+forbids the pattern `CLAUDE.md` §2 prescribes); **F-04**, a domain→tier registry
+for twenty sources; **F-09**, a register that writes its own entries and stops
+being a record of decisions; **F-25**, splitting `/sources` when every defect on
+it is content rather than structure; **F-19**; and **the item catalogue as a
+dataset** — `docs/BACKLOG.md:443-447` already concedes items to eqlbase and
+eqlegendstools, so shipping 434 of them invites the volume comparison our
+positioning exists to refuse. Ship the **named-mob catalogue** and the **claims
+ledger** instead: those are the things nobody else has.
+
+**The structural observation, which I am recording because it indicts the tool I
+have been quoting all day:** `python3 scripts/check.py` returns *"checked 713
+pages / All checks passed"* with a fabricated quotation in the change log, a
+false technical claim on the front page, six wrong facts in the share cards, two
+"fully verified" zones with no verifier, and an automation that has failed 23
+consecutive times. **A green check has told us nothing all day.** G-0 is
+therefore the first gate rather than the last.
+
+---
+
 ### I read Session C's handoff through a summariser, and it dropped half of it
 
 **The owner asked whether Session C's concerns had reached me. Most had not, and
