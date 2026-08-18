@@ -63,10 +63,26 @@ jobs:
             than the last run.
 
             STEP 2 — if nothing relevant changed, STOP.
-            Update state/last-check.json with the run timestamp, commit that one
-            file directly to main with the message "chore: no source changes",
-            and exit. Do not open a pull request. Most runs should end here and
-            that is correct.
+            Write nothing, commit nothing, push nothing, and open no pull
+            request. Just exit. Most runs should end here and that is correct.
+
+            This step used to commit state/last-check.json straight to main with
+            the message "chore: no source changes". That is the one rule this
+            repository does not bend — CLAUDE.md: never push straight to main,
+            and merging is what publishes — broken twice a day on the path
+            nobody watches, by the job least able to notice it had done it.
+
+            Routing that state file through a pull request instead would be
+            worse, not better: fourteen trivial pull requests a week trains the
+            reviewer to merge without reading, which costs the gate its meaning
+            on the day a run has something real in it.
+
+            Nothing is lost by writing nothing. seen_revisions only needs to
+            record a revision this job actually acted on, and a run that found
+            no relevant change acted on none. The next run re-reads recent
+            changes and reaches the same conclusion, which is the definition of
+            idempotent rather than a cost. last_run_utc is decoration; nothing
+            computes from it.
 
             STEP 3 — if something changed, read only what changed.
             Use diff=cur&oldid=<last seen revid> so you get the changes and the
