@@ -135,11 +135,12 @@ note.*
 
 ## To the Director
 
-**PR: the EQL Source Auras band, from Session C's material.**
+**PR: the EQLS Auras band, from Session C's material.**
 
-**The ceiling is 787, not 768, and 768 was not reachable.** This is the one
+**The ceiling is 786, not 768, and 768 was not reachable.** This is the one
 number in the brief I could not honour, so here is the derivation rather than
-the conclusion.
+the conclusion. (787 as first shipped; the "EQLS Auras" rename took one word out
+and the ratchet followed it down.)
 
 `index.html` was **657** when I started, not 649. Session C measured against
 `fddcb2ed`; two change-log entries have landed since, and the home page renders
@@ -149,7 +150,7 @@ exact — I reproduce their 136 words to the word — but the base under it move
 | variant | band | index becomes |
 |---|---|---|
 | A, as C wrote it, + the naming edit | 137 | 794 |
-| **B — cut #1 applied (approved)** | **130** | **787** |
+| **B — cut #1 applied (approved)** | **130** | **787**, now **786** after the rename |
 | C — + cut #2 (you overrode this) | 125 | 782 |
 | D — + cut #3 (you refused this) | 119 | 776 |
 
@@ -200,8 +201,12 @@ has to argue with a reason rather than a preference. Cut #1 removed the
 telemetry list only; **"of its own" survives it**, which `CLAIMS.md` §6 flags as
 the load-bearing half of that sentence.
 
-Naming applied: **EQL Source Auras** at first mention. There is no second
-mention in the band, so "Auras" does not appear alone anywhere yet.
+Naming settled at **EQLS Auras** — it reads aloud as "Equals Auras" and anchors
+a planned =Auras / =50Upgrades / =SkyLedger family. C wrote "EQL Auras", a first
+ruling made it "EQL Source Auras", the owner overruled that, and `build1.py`
+carries the reasoning above the band so a tidying pass cannot expand it back.
+The name costs one word fewer, so `index.html` is **786** and `prose_budget.py`
+lowered the ceiling to match — ceilings only ever fall, and this one did.
 
 ### Three things I did, slightly beyond the brief
 
@@ -218,6 +223,16 @@ changed after they branched, and its substance is now in `ENCODE.md` and
 correction, a source refresh, or an addition of a claim. When Auras actually
 ships, that is the Addition. Saying so here because it also keeps the ceiling
 arithmetic above honest — an entry would have moved `ENTRIES[:4]` again.
+
+### Filed to the backlog, not started
+
+The **=logo family** and the **change-log / home-page ceiling coupling** are both
+in `docs/BACKLOG.md` as P5. The first is `DESIGN.md`'s call with the owner and
+must not be begun from a heading change — it touches the wordmark and both
+sibling tool names, which are published titles, share cards and footer links.
+The second is written up with the three options I can see and a note that the
+one in place today, "document it and measure rather than trust", is the weakest
+of them.
 
 ### Recorded, not solved
 

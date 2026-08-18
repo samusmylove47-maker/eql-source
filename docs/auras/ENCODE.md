@@ -1,4 +1,4 @@
-# EQL Source Auras — the asset spec
+# EQLS Auras — the asset spec
 
 Session C encoded these and recorded the reasoning in their handoff note. It is
 collected here because a handoff note is read once and a spec is read whenever
@@ -63,7 +63,7 @@ renders.
 
 **The application window never appears.** That is incidental to the cut but
 useful: the application calls itself *EQ Buff Tracker* — window title, taskbar,
-`package.json` — while the site announces **EQL Source Auras**. The clash is
+`package.json` — while the site announces **EQLS Auras**. The clash is
 invisible in this band and will be obvious on any page carrying a screenshot of
 the app. Settle the name before a tool page ships, not before this band does.
 
