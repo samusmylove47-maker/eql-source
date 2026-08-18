@@ -464,6 +464,74 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### STANDING MANDATE, Session A: the logs are yours. Stop waiting for me.
+
+**This supersedes the question-and-answer pattern we fell into today, which is my
+fault and not yours.** I answered each of your questions and you correctly
+stopped for the next ruling, so between us we built a session that waits. The
+owner is playing, the log has been writing in Mistmoore for over an hour, and
+nobody is reading it. That is the wrong shape and this fixes it.
+
+**You own log ingestion outright.** Not "execute the ingestion step" — own it.
+Drive it, decide inside it, and report what you did rather than ask whether to do
+it. The owner's job today is to generate evidence; yours is to turn evidence into
+the site without a hand on your shoulder.
+
+**Run this loop now and keep running it, self-paced, roughly every 20–30 minutes,
+until the owner says play has stopped:**
+
+1. Copy every log with new content into `state/logs` under its dated name —
+   Avenrae's *and* Shara's. Raw logs never commit; `.gitignore` covers them.
+2. `git checkout main -- assets/measured.json` **before every reparse**, then
+   parse. That is what stops a live session's growing window from accreting
+   duplicate keys.
+3. Run `raidstats.py` over the **full** directory, never a subset. Assert the
+   fight count never falls below its previous value; diff for vanished fights
+   before every commit.
+4. Refresh **one** branch and **one** PR. The owner merges on their own cadence.
+   Do not open a second PR per cycle.
+5. Note in the PR body what grew since the last push. That is your report; it
+   does not need to come to me first.
+
+**Before the first Mistmoore parse lands, in the same PR:**
+
+- **The `build9.py` date-split.** `section()` has no date filter, so a naive
+  parse mixes post-revamp kills into the pre-revamp corpus under a note saying
+  nothing has been re-measured. Split sessions on `date >= revamped`.
+- **Rewrite `revamped_note`** the moment the first post-revamp session lands. It
+  currently says nothing here has been re-measured; that stops being true with
+  your first commit, and `gate.py` rule 5c plus `build3.py`'s share-card tail
+  both read that field.
+- **Close gate 3.** `zones-index.json` says one logged session in the revamped
+  zone closes it. You have three tiers of them. Update `verify_gate` and
+  `verify_level` rather than leaving a gate open that the evidence has shut.
+
+**Your standing authority — decide these yourself and tell me afterwards:**
+
+- Anything derivable from the data: counts, tiers, difficulty readings, which
+  zone a session belongs to, whether a figure is a floor or a measurement.
+- Any correction to a claim the new data contradicts, including on pages you did
+  not write.
+- Sequencing, branch and PR shape, when to rebuild, what to put in the change log
+  and how to type it.
+- Rejecting any instruction of mine that the tree or the build contradicts. You
+  have done this twice today and both times you were right.
+
+**Escalate to me only when:** a claim would be genuinely new rather than derived
+and no source supports it; something touches Shara's repo or another session's
+work; a published figure would move with no evidence behind the move; or you find
+another fabrication. That list is short on purpose.
+
+**Do not wait on the `/outputfile inventory` dump, the Befallen tier-M analysis,
+or any ruling from me to start the loop.** They are queued behind live ingestion,
+which is the only thing on this site with a clock on it.
+
+If you hit something that genuinely blocks the loop, push the blocker under
+`## To the Director` and **keep going on everything it does not block.** An idle
+session is the one outcome today cannot afford.
+
+---
+
 ### The build needs Python 3.12, nothing says so, and the Director cannot run it
 
 Found while merging, nearly reported as "main is broken", and it is not — the
