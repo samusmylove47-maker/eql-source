@@ -350,7 +350,7 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 70 mob types measured"
+      "detail": "ZEM 97, respawn <=22:00 plus dawn/dusk repop, 71 mob types measured"
      }
     },
     "coverage_score": 8,
@@ -371,7 +371,7 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "72 items recorded dropping here"
+      "detail": "62 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "231b62d3fac2f96e"
+ "hash": "236ccfefd99b0f2b"
 }

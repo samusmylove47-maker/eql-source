@@ -354,6 +354,43 @@ SESSION_CAVEAT = {
         "count reflects that rather than the zone.",
 }
 
+# /who NAMES THE ZONE WHEN THE ZONE LINE IS MISSING.
+#
+# A "You have entered" line is only written when you cross a zone boundary with
+# logging already on. Turn logging on after you arrive and the whole session has
+# no zone line at all — which is what happened to Avenrae on 18 Aug 2026: a
+# client restart mid-afternoon, logging enabled afterwards, and then hours of
+# Castle Mistmoore that the parser could not place.
+#
+# /who prints the zone for every player it lists, including you:
+#
+#   [22 PAL/DRU/BRD] Avenrae (Ancient Wolf) <Valor> ZONE: The Castle of Mistmoore 1207 (mistmoore)
+#
+# That is the same log, first-hand, timestamped — the game stating where the
+# character is. It is not the mob-name inference this parser refuses to make,
+# and it is not ZONE_STATED's "a person told us afterwards" either. It is read
+# evidence, so it is used as read evidence and recorded as such in zone_from.
+#
+# The trailing integer is an INSTANCE id here, not a difficulty: the zone-line
+# form is "Mistmoore 1 (Awakened)" where 1 is the tier, while /who gives
+# "Mistmoore 1207 (mistmoore)" where the parenthetical is the short zone code.
+# So the number is stripped and no difficulty is taken from this line — the
+# drop-tier floor names the difficulty, as it does for any session without a
+# zone line.
+WHO_SELF = re.compile(
+    r'^\[\s*\d+\s+[A-Z/]+\s*\]\s+([A-Za-z]+)\s+\([^)]*\)'   # [22 PAL/DRU/BRD] Name (Race)
+    r'(?:\s*<[^>]*>)?\s*ZONE:\s*(.+?)\s*\(([a-z]+)\)\s*$')  # <Guild> ZONE: Long Name (code)
+
+
+def _who_zone(line, who):
+    """The zone /who states for THIS log's own character, or None."""
+    m = WHO_SELF.match(line.strip())
+    if not m or m.group(1).lower() != (who or '').lower():
+        return None
+    name = re.sub(r'\s+\d+$', '', m.group(2).strip())   # drop the instance id
+    return name or None
+
+
 ZONE_STATED = {
     # Avenrae's 9 Aug log opens mid-zone with no "You have entered" line.
     # Shara's log covers the same clock window and carries
@@ -493,6 +530,13 @@ def collect(rows, character=None):
                               when)
             sessions.append(cur)
         prev = when
+        # Only where the session still has no zone. A real zone line always
+        # wins, and this never overrides one — it fills a hole.
+        if cur.get('zone') is None and character:
+            wz = _who_zone(x, character)
+            if wz:
+                cur['zone'] = wz
+                cur['zone_from'] = '/who, read from this log'
         m = ZONE.search(x)
         if m and NOT_A_ZONE.match(m.group(1).strip()):
             m = None
@@ -676,8 +720,16 @@ def summarise(s):
     label = (s['difficulty_label'] or '').strip().lower()
     d_named = DIFFICULTY.get(label)
     d_num = s.get('difficulty_num')
-    # An unnumbered, unlabelled zone line is the open world, which is D0.
-    if d_named is None and d_num is None and s['zone']:
+    # An unnumbered, unlabelled zone LINE is the open world, which is D0.
+    #
+    # Only a zone line. A zone learned from /who says where the character is and
+    # nothing whatever about difficulty, so treating its silence as D0 would
+    # invent a reading: Avenrae's 18 Aug Mistmoore session came back D0 "zone
+    # line" on drops that floor at 1. Where /who named the zone the difficulty
+    # falls through to the loot tier, exactly as it does for a session with no
+    # zone attribution at all.
+    if (d_named is None and d_num is None and s['zone']
+            and s.get('zone_from') != '/who, read from this log'):
         d_named = 0
     # THE LOOT READING IS A FLOOR, NOT AN AVERAGE
     #
@@ -707,6 +759,11 @@ def summarise(s):
     agree = None if (d_named is None or d_loot is None) else (d_named == d_loot)
 
     out = dict(zone=s['zone'], character=s.get('character'),
+               # Where the zone came from, when it was not a zone line. A
+               # session whose zone is read from /who is a weaker attribution
+               # than one the game announced on entry, and the record says so
+               # rather than presenting the two identically.
+               zone_from=s.get('zone_from'),
                difficulty_label=s['difficulty_label'],
                difficulty_num=d_num,
                difficulty=d_num if d_num is not None else
@@ -900,6 +957,38 @@ def build(src):
     kept = len([k for k in merged if k not in fresh])
     merged.update(fresh)
     out = sorted(merged.values(),
+                 key=lambda s: (s.get('date') or '', s.get('window') or ''))
+
+    # A LIVE SESSION RE-PARSED IS ONE SESSION, NOT TWO.
+    #
+    # The key is (character, date, window) and a session still being played has
+    # a window that grows, so every reparse mints a NEW key and the old snapshot
+    # survives beside it. On 18 Aug 2026 the ingestion loop reparsed Avenrae's
+    # live Mistmoore log every twenty minutes and produced 16:48-17:38 with 96
+    # kills and 16:48-17:54 with 152 - the same evening, counted twice, with the
+    # shorter one a strict subset of the longer.
+    #
+    # The loop's stated defence was to reset measured.json from main before each
+    # reparse. That works exactly until the first cycle merges, after which main
+    # itself holds a snapshot of the live session and the reset restores the
+    # very record it was meant to drop. It failed on the third cycle.
+    #
+    # Two sessions cannot begin in the same minute for the same character on the
+    # same date, so a shared start is proof of a reparse rather than of two
+    # visits. The longer window supersedes; nothing is averaged and nothing is
+    # added up.
+    by_start = {}
+    for s in out:
+        start = (s.get('window') or '').partition('-')[0]
+        k = (s.get('character'), s.get('date'), start)
+        prev = by_start.get(k)
+        if prev is None or _span_minutes(start, (s.get('window') or '').partition('-')[2]) \
+                > _span_minutes(start, (prev.get('window') or '').partition('-')[2]):
+            by_start[k] = s
+    superseded = len(out) - len(by_start)
+    if superseded:
+        print(f"  superseded {superseded} re-parsed snapshot(s) of a live session")
+    out = sorted(by_start.values(),
                  key=lambda s: (s.get('date') or '', s.get('window') or ''))
 
     # Back-fill the duration on preserved records.
