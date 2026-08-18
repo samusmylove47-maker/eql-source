@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `2d48a729`** (PR #102, merged — the tip of `main`). Diff
+**This describes commit `5ee3cd3b`** (PR #103, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -164,9 +164,180 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
-*Empty. The consolidation is finished at six tools and the reasoning for
-stopping there is under the From heading. Nothing is outstanding and nothing is
-waiting on a ruling.*
+**Branch `claude/placeholder-recitation`. F-01 fetched and stored, F-05 settled,
+the placeholder correction shipped. Protocol read; this is where my questions
+live from now on.**
+
+### What the 28 July note actually says
+
+Fetched in a real browser, stored verbatim at
+`sources/raw/2026-07-28-eql-update-notes.txt` — the first artefact of the store.
+It is JS-rendered, so a plain fetch returns navigation and nothing else, which is
+most of why nobody had checked it.
+
+> Removed placeholders from and lowered maximum respawn times in several
+> dungeons: **The Hole · Nagafen's Lair · Lower Guk · Lair of the Splitpaw ·
+> The Warrens · Castle Mistmoore**. More dungeon treatments will take place over
+> time.
+
+**Six.** Not eleven, not ten-and-Upper-Guk. Upper Guk is not mentioned anywhere
+in the note.
+
+**The haste string exists verbatim**, which is the more useful of the two
+outcomes you named: *"Added the Unbound Alacrity AA, a new autogranted class AA
+for Monk Gives a passive 3/6/10% increase in your current and maximum haste
+value."*
+
+**Both mote bullets, verbatim:** *"Players will no longer receive motes while at
+the class lock cap."* and *"Motes will no longer drop for players unless they
+were eligible to gain exp from the kill."*
+
+### Which zones lost the flag: one, not four
+
+Your per-zone ruling is why, and applying it changed the answer:
+
+| zone | disposition | basis now |
+|---|---|---|
+| the six named | keep | `patch-2026-07-28`, tier 1, quoted and stored |
+| Najena | keep, re-cited | `patch-2026-06-23`, tier 1 — **but see below** |
+| Befallen, Blackburrow | keep, downgraded | `eqlwiki-cat-named-155553`, tier 2, rev + editor + read-date visible |
+| **Crushbone** | **loses it outright** | none |
+
+Crushbone's rows carried `title="Historical. The 28 July 2026 patch note removed
+placeholders from this zone."` — a tooltip citing a note that never named it.
+They are live text again.
+
+**The boolean is gone as the carrier.** `assets/placeholder-sources.json` holds
+one entry per basis with tier, url, read-date and the quote; each zone names one
+by `placeholders_source_id`; the confidence a page shows derives from that. Same
+remedy `skydata.py` already applies.
+
+**The evidence is propagated.** The eqlwiki revision lived only in Najena's
+provenance block while supporting three zones. Copied to Befallen's and
+Blackburrow's.
+
+---
+
+### Where the directive and the prompt are wrong
+
+**1. There is no 23 June patch note to cite, and Najena's basis is now the
+weakest thing on the page.** `everquestlegends.com/patch-notes` lists six notes;
+the oldest is **7 July 2026 (Beta)**. Probes for 6-16, 6-23 and 6-30 fall through
+to the site's Home view, which is how that single-page app answers a path that
+does not exist. F-06's plan to fetch it and use it as Najena's re-citation target
+**cannot be executed**. I have recorded it as `fetchable: false` with the
+reasoning rather than quietly citing an unreachable source. Najena's claim now
+rests on a tier-1 note a reader cannot check, plus the tier-2 wiki revision that
+also names it. **That is worth your ruling: I would rather demote Najena to the
+wiki revision alongside Befallen and Blackburrow than keep a tier-1 badge on
+something unverifiable.**
+
+**2. `measured.json` does not establish tier M for Befallen or Blackburrow, and
+I have not badged them.** The counts are right — 7 and 3 sessions — but the parse
+records kills, loot and casts per mob and **no spawn-cycle structure at all**. It
+cannot distinguish *named on every spawn* from *named killed often*. What it
+shows is suggestive: in one Befallen session `Knight V'Tal` dropped 9 items and
+`Soldier of V'Zher` 7, which is repeated kills of the same named in one sitting.
+That is consistent with no placeholders and does not demonstrate it — a zone
+*with* placeholders also yields repeated named kills, just less often. Najena's
+own standard is the one to beat: *"a combat log across several cycles at one
+camp, showing the named on every spawn."* Settling it means a camp-cycle analysis
+of the raw 04–07 Aug Shara logs, which are in `state/logs`. **That is real work
+and I did not fake it under deadline.** Left at tier 2.
+
+**3. The survey prose already had it right; the error was confined to
+`zones-index.json`, and the site contradicted itself.** `zone-provenance.json`
+already names the six correctly on The Hole, Nagafen's Lair, The Warrens and
+Mistmoore — `thehole[2]` quotes all six verbatim — and `blackburrow[0]` says in
+as many words *"Blackburrow was not named in the 28 July launch-day dungeon
+pass."* So one file said six and excluded Blackburrow while another flagged it
+and claimed eleven. Worth knowing for the audit's model of how this defect
+spreads: it was not a uniform belief, it was two files disagreeing.
+
+**4. A gap closed that this site had already scoped precisely.** Blackburrow's
+`respawn_note` has said since 11 August that eqlwiki's rendering named six
+without it, a fuller quotation supplied to us named eleven with it, and **"one
+reading of the developers' own page settles it."** That reading is done. Six,
+without Blackburrow; the eleven-zone quotation was wrong. Recorded as a gap
+closing, not as new content, and 22:00 is not a pre-patch ceiling for that zone
+because the pass never touched it.
+
+**5. Stream 2's premise was false when written, and the owner has since fixed
+it.** The live `eqlog_Avenrae_rivervale.txt` held **17 Aug 15:51–17:17 only** —
+17,806 lines, every one `Mon Aug 17`, zero 18 August lines. One zone entry, `The
+Plane of Fear 1 (Awakened)`. **74 slain lines and zero bosses** — no Cazic-Thule,
+Dread, Fright or Terror. Not two clears; 86 minutes of trash. Its only two
+"mistmoore" strings are other players' chat, one of them saying *"i think
+mistmoore is getting a revamp tomorrow"*. `dbg.txt` was written today at 14:30,
+so the client ran and the chat log did not — logging was off.
+
+The owner then supplied Shara's logs, and those are the real thing. See below.
+
+**6. Attack Speed is 163, not 161.** Single screenshot, dated today, sent into
+this session. Recorded as yours per your own instruction — but note it is one
+image, so the "did it move during the session" reading does not arise from this
+evidence.
+
+---
+
+### The haste question has a third answer, and the screenshots settle it
+
+Not a bare number and not a percent. On items, haste is a **named effect with a
+rank**:
+
+- `Cape of Midnight Mist +4` — **Focus Effect: Enhancement Haste I**
+- `Nightshade Wreath +2` — **Focus Effect: Reanimation Haste I**
+
+On the character sheet it is a **%-labelled stat carrying a bare number**:
+`Attack Speed % 163`. The register asked whether a tooltip prints a bare number
+or a percent; on these fifteen items it prints **neither** — it prints a name and
+a roman numeral, and the number lives on the sheet. That is consistent with the
+patch note's *"3/6/10% increase in your current and maximum haste value"*: a
+percentage applied to a stat, with the stat shown on the sheet and the source
+shown on the item.
+
+Two items corroborate the 18 Aug notes independently: `Wine Thief +4` carries
+*Improved Vampirism II* (the note gives Bloodmoon *III*), and `Cherista's Fangs
++2` carries *Combat Effect: Lifebite* (the note adds Lifebite). Per your ruling
+the Vampirism pair is a finding, not a footnote, and both readings publish.
+
+### Shara's logs — the first post-revamp Mistmoore data exists
+
+`eqlog_Shara_rivervale_2026-08-18.txt`, 60,756 lines, 00:00:02–15:47:37 today.
+Copied into `state/logs` beside all eight existing logs (10 total; `.gitignore`
+covers `state/logs/` and `*eqlog*.txt`, verified — `git status` cannot see them).
+
+**Mistmoore at three tiers, all post-patch by timestamp** (servers down 06:00
+PDT; these are afternoon):
+
+```
+12:55:32  The Castle of Mistmoore              (D0)
+12:56:35  The Castle of Mistmoore 1 (Awakened) (D1)
+13:58:47  The Castle of Mistmoore              (D0)
+13:59:39  The Castle of Mistmoore 2 (Adaptive) (D2)
+```
+
+Named killed: **Xicotl ×4, Butler Syncall ×4, Maid Issis ×3** — repeated named
+kills inside three hours, which bears directly on the revamp's *"named NPCs being
+guaranteed spawns"*. `eqlog_Shara_rivervale_2026-08-17.txt` carries the Plane of
+Fear day, including `The Plane of Fear - Group` and an unnumbered entry, so D0
+and D1 both.
+
+**I have not parsed them into `measured.json` yet.** That is the Mistmoore
+ingestion PR, and per the directive it rebases onto Wave 1's Mistmoore touches
+and needs the `build9.py` date-split before eras can be kept distinct. Doing it
+in the same PR as this correction would have delayed the correction, and Q1 said
+fix first.
+
+### Questions
+
+1. **Najena's tier.** Demote to the wiki revision, or keep a tier-1 citation a
+   reader cannot reach? I lean demote.
+2. **The tier-M analysis for Befallen and Blackburrow** — worth doing? It is a
+   camp-cycle pass over the raw logs, and it would make this the strongest
+   version of the claim the site has held. Not tonight.
+3. **`/outputfile inventory`** — requested per your ruling. `_build/inventory.py`
+   survives and still writes `assets/item-ids.json`, so the parser is intact.
 
 ---
 
@@ -176,8 +347,8 @@ waiting on a ruling.*
 It lists eight tools and omits `50-upgrades` — which is to say it omits the page
 it is. It is our footer as it stood before PR #90 registered that tool.
 
-Fixing it entry by entry now means fixing it twice, because the tool count is
-about to go from nine to three. **After the consolidation lands, copy the footer
+Fixing it entry by entry now means fixing it twice, because the tool count went from nine to six
+on 18 Aug and six is final. **After the consolidation lands, copy the footer
 once from the final state and add the drift check** — the same shape you already
 built for the nav. A hand-copied footer drifts silently, which is the argument
 that put `len(TOOLS)` behind ours and `gate.py` rule 6 in front of it; rule 6

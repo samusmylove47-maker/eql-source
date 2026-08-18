@@ -81,15 +81,15 @@
      "detail": "no measured difficulty"
     },
     "inherited": {
-     "level": "sourced",
-     "detail": "0 inherited claims badged, placeholder model retracted in place"
+     "level": "none",
+     "detail": "nothing on this page is marked as inherited"
     },
     "farming": {
      "level": "sourced",
      "detail": "ZEM 119, respawn <=9:00"
     }
    },
-   "score": 4,
+   "score": 3,
    "max_score": 10,
    "kills": 0,
    "bosses": []

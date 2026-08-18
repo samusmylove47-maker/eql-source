@@ -114,15 +114,15 @@
       "detail": "no measured difficulty"
      },
      "inherited": {
-      "level": "sourced",
-      "detail": "0 inherited claims badged, placeholder model retracted in place"
+      "level": "none",
+      "detail": "nothing on this page is marked as inherited"
      },
      "farming": {
       "level": "sourced",
       "detail": "ZEM 119, respawn <=9:00"
      }
     },
-    "coverage_score": 4,
+    "coverage_score": 3,
     "url": "https://eqlsource.com/dungeons/crushbone"
    },
    {
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "1c4d0d553d87b523"
+ "hash": "77dce9a44e4fd225"
 }
