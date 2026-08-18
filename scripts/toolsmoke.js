@@ -270,9 +270,46 @@ for (const tool of picked) {
     console.log(`  [loads      ] ${name} — ${tool.note}`);
   }
 }
+/* ── served applications: does the bundle even parse? ──────────────────────
+ * On 17 August a fix written through a shell heredoc turned an escaped newline
+ * escape into two REAL line breaks inside a JavaScript string literal. The
+ * bundle raised SyntaxError on load and the whole tool rendered nothing — empty
+ * class picker, empty rune list — while 196 dataset assertions still passed,
+ * because they exercise the engine and the data rather than the built page. A
+ * green suite and a dead page look identical from a terminal.
+ *
+ * This is SYNTAX ONLY. No DOM, no execution. The served bundles are whole
+ * applications with their own suites, and running one under a stub DOM fails
+ * for a dozen unrelated reasons — which is how a check like this gets switched
+ * off within a week. Parsing is the part that catches the fault above, and it
+ * costs milliseconds. */
+const appDir = path.join(ROOT, 'public', 'app');
+let appsChecked = 0;
+if (fs.existsSync(appDir)) {
+  for (const f of fs.readdirSync(appDir).filter((n) => n.endsWith('.html'))) {
+    const html = fs.readFileSync(path.join(appDir, f), 'utf8');
+    const bodies = [...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/gi)]
+      .map((m) => m[1])
+      .filter((b) => b.trim().length);
+    let i = 0;
+    for (const body of bodies) {
+      i += 1;
+      try {
+        new vm.Script(body);
+      } catch (e) {
+        bad += 1;
+        console.log(`  [SYNTAX     ] app/${f} script ${i} — ${e.message}`);
+      }
+    }
+    appsChecked += 1;
+    console.log(`  [parses     ] app/${f} — ${bodies.length} inline script(s)`);
+  }
+}
+
 console.log(bad
-  ? `\n${bad} tool(s) failed. A tool that throws on load is dead in the browser.`
-  : `\nAll ${picked.length} tools ran. Loading is not working: this proves the `
-    + `script executes and the page fills, and nothing more.`);
+  ? `\n${bad} failure(s). A tool that throws on load is dead in the browser.`
+  : `\nAll ${picked.length} tools ran${appsChecked ? `, ${appsChecked} served app(s) parse` : ''}. `
+    + `Loading is not working: this proves the script executes and the page `
+    + `fills, and nothing more.`);
 process.exit(bad ? 1 : 0);
 })();
