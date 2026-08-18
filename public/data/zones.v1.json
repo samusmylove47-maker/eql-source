@@ -338,7 +338,7 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "40 items recorded dropping here"
+      "detail": "41 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -371,7 +371,7 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "56 items recorded dropping here"
+      "detail": "72 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -383,7 +383,7 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 82.5, respawn not recorded, 91 mob types measured"
+      "detail": "ZEM 82.5, respawn not recorded, 50 mob types measured"
      }
     },
     "coverage_score": 9,
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "c8da4f0cfb2237b9"
+ "hash": "231b62d3fac2f96e"
 }

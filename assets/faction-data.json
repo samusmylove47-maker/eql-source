@@ -2091,62 +2091,17 @@
    "damages": [],
    "helps": []
   },
-  "Northern Felwithe": {
-   "difficulty": 0,
-   "date": "11 Aug 2026",
-   "kills": 14,
-   "per_mob": {},
-   "factions": [],
-   "capped": {
-    "Minions of Underfoot": "down"
-   },
-   "factions_seen": [
-    "Minions of Underfoot"
-   ],
-   "falling": [],
-   "rising": [],
-   "capped_up": [],
-   "capped_down": [
-    "Minions of Underfoot"
-   ],
-   "steps_undone": [],
-   "steps_helped": [],
-   "damages": [],
-   "helps": []
-  },
   "The Plane of Fear": {
    "difficulty": 4,
    "date": "12 Aug 2026",
-   "kills": 481,
+   "kills": 420,
    "per_mob": {},
    "factions": [],
-   "capped": {
-    "Mayong Mistmoore": "down",
-    "King Tearis Thex": "up",
-    "Agents of Mistmoore": "down",
-    "League of Antonican Bards": "up",
-    "Ring of Scale": "up"
-   },
-   "factions_seen": [
-    "Agents of Mistmoore",
-    "King Tearis Thex",
-    "League of Antonican Bards",
-    "Mayong Mistmoore",
-    "Ring of Scale",
-    "Shadowed Men",
-    "Temple of Solusek Ro"
-   ],
+   "factions_seen": [],
    "falling": [],
    "rising": [],
-   "capped_up": [
-    "King Tearis Thex",
-    "League of Antonican Bards",
-    "Ring of Scale"
-   ],
-   "capped_down": [
-    "Agents of Mistmoore",
-    "Mayong Mistmoore"
-   ],
+   "capped_up": [],
+   "capped_down": [],
    "steps_undone": [],
    "steps_helped": [],
    "damages": [],

@@ -584,8 +584,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -698,8 +698,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -838,8 +838,8 @@
     "sessions": [
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      }
@@ -956,6 +956,92 @@
       "difficulty": 3,
       "label": null,
       "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "A flouting gargoyle": [
+   {
+    "item": "Mistmoore Granite",
+    "n": 27,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Gargoyle Eye",
+    "n": 25,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -1310,85 +1396,6 @@
       "character": "Shara"
      }
     ]
-   }
-  ],
-  "A flouting gargoyle": [
-   {
-    "item": "Gargoyle Eye",
-    "n": 24,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Mistmoore Granite",
-    "n": 24,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
    }
   ],
   "Knight V`Tal": [
@@ -2667,6 +2674,116 @@
     ]
    }
   ],
+  "Maid Issis": [
+   {
+    "item": "Nightshade Wreath",
+    "n": 15,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Maid Issis Fang",
+    "n": 8,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "item": "Flame Agate",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "item": "Fine Steel Spear",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
   "A gnoll necromancer": [
    {
     "item": "Gnoll Fang",
@@ -2741,11 +2858,25 @@
     "off_roster": true
    }
   ],
-  "Maid Issis": [
+  "Butler Syncall": [
    {
-    "item": "Nightshade Wreath",
+    "item": "Cape of Midnight Mist",
     "n": 14,
     "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
      {
       "date": "08 Aug 2026",
       "zone": "The Castle of Mistmoore",
@@ -2759,13 +2890,6 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Shara"
      },
      {
       "date": "18 Aug 2026",
@@ -2780,66 +2904,66 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    },
    {
-    "item": "Maid Issis Fang",
-    "n": 8,
+    "item": "Butler Syncalls Fang",
+    "n": 7,
     "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
      {
       "date": "08 Aug 2026",
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
      },
      {
       "date": "18 Aug 2026",
       "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
+      "difficulty": 2,
+      "label": "Adaptive",
       "character": "Shara"
      }
     ]
    },
    {
-    "item": "Flame Agate",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "item": "Fine Steel Spear",
+    "item": "Bronze Bracers",
     "n": 1,
     "sessions": [
      {
       "date": "08 Aug 2026",
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Fine Steel Scimitar",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -2960,6 +3084,36 @@
     ]
    }
   ],
+  "A gypsy dancer": [
+   {
+    "item": "Power of Wind",
+    "n": 13,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "A jeering gargoyle": [
    {
     "item": "Gargoyle Eye",
@@ -2988,9 +3142,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -3060,9 +3214,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -3070,7 +3224,7 @@
    },
    {
     "item": "Mistmoore Granite",
-    "n": 11,
+    "n": 12,
     "sessions": [
      {
       "date": "08 Aug 2026",
@@ -3102,9 +3256,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -3231,109 +3385,6 @@
     ]
    }
   ],
-  "Butler Syncall": [
-   {
-    "item": "Cape of Midnight Mist",
-    "n": 13,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Shara"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "item": "Butler Syncalls Fang",
-    "n": 7,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "item": "Bronze Bracers",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Fine Steel Scimitar",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ]
-   }
-  ],
   "Enynti": [
    {
     "item": "Rune of Fortune",
@@ -3383,9 +3434,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -3502,9 +3553,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -3533,7 +3584,7 @@
    },
    {
     "item": "Ringmail Boots",
-    "n": 1,
+    "n": 2,
     "sessions": [
      {
       "date": "08 Aug 2026",
@@ -3541,35 +3592,12 @@
       "difficulty": 1,
       "label": null,
       "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
-  "A gypsy dancer": [
-   {
-    "item": "Power of Wind",
-    "n": 12,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -3783,8 +3811,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -4179,9 +4207,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -4205,12 +4233,91 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
+   }
+  ],
+  "A will sapper": [
+   {
+    "item": "Black Silk Gloves",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Fine Steel Scimitar",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Fine Steel Spear",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Splitpaw Explorer": [
@@ -4304,9 +4411,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -4696,78 +4803,6 @@
       "character": "Shara"
      }
     ]
-   }
-  ],
-  "A will sapper": [
-   {
-    "item": "Black Silk Gloves",
-    "n": 9,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Fine Steel Scimitar",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Fine Steel Spear",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
    }
   ],
   "Arisen Thaumaturgist": [
@@ -6112,8 +6147,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -7194,6 +7229,29 @@
      {
       "date": "08 Aug 2026",
       "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "An ancille cook": [
+   {
+    "item": "Dark Cauldron",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
@@ -8697,9 +8755,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -10000,6 +10058,43 @@
     "off_roster": true
    }
   ],
+  "A soul seductress": [
+   {
+    "item": "Flame Agate",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Jade",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "A spiritish ancille": [
    {
     "item": "Fine Steel Spear",
@@ -10054,6 +10149,20 @@
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
       "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Mistmoore Battle Drums",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -10184,22 +10293,6 @@
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
       "label": null,
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
-  "An ancille cook": [
-   {
-    "item": "Dark Cauldron",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
       "character": "Avenrae"
      }
     ],
@@ -11328,9 +11421,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -11599,9 +11692,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -12555,8 +12648,8 @@
     "sessions": [
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      }
@@ -12904,9 +12997,9 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -13282,36 +13375,6 @@
     "off_roster": true
    }
   ],
-  "A soul seductress": [
-   {
-    "item": "Flame Agate",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Jade",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
   "A spectral ancille": [
    {
     "item": "Fine Steel Spear",
@@ -13333,9 +13396,9 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -13364,6 +13427,22 @@
      {
       "date": "09 Aug 2026",
       "zone": "The Ruins of Old Guk",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "A vampire noble": [
+   {
+    "item": "Gold Ring",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
@@ -13434,6 +13513,22 @@
     "off_roster": true
    }
   ],
+  "A werewolf": [
+   {
+    "item": "Werewolf Talon",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "A will pillager": [
    {
     "item": "Bronze Bracers",
@@ -13457,9 +13552,9 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -13467,6 +13562,20 @@
    }
   ],
   "A wraithish ancille": [
+   {
+    "item": "Fine Steel Spear",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
    {
     "item": "Flame Agate",
     "n": 1,
@@ -15348,8 +15457,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -15404,8 +15513,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -15453,8 +15562,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -15691,6 +15800,134 @@
     "off_roster": true
    }
   ],
+  "Mistmoore Granite": [
+   {
+    "mob": "A flouting gargoyle",
+    "n": 27,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A jeering gargoyle",
+    "n": 12,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A leering gargoyle",
+    "n": 12,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "a jeering gargoyle",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "Rune of Ivy": [
    {
     "mob": "A deathly usher",
@@ -15734,46 +15971,10 @@
     ]
    }
   ],
-  "Enchanted Fine Steel Rapier": [
-   {
-    "mob": "Korven Nisere",
-    "n": 25,
-    "sessions": [
-     {
-      "date": "04 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "04 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Shara"
-     },
-     {
-      "date": "07 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "07 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Shara"
-     }
-    ]
-   }
-  ],
   "Gargoyle Eye": [
    {
     "mob": "A flouting gargoyle",
-    "n": 24,
+    "n": 25,
     "sessions": [
      {
       "date": "08 Aug 2026",
@@ -15802,6 +16003,13 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -15833,9 +16041,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -15875,9 +16083,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -15910,9 +16118,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -15952,9 +16160,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -15975,132 +16183,40 @@
     "off_roster": true
    }
   ],
-  "Mistmoore Granite": [
+  "Enchanted Fine Steel Rapier": [
    {
-    "mob": "A flouting gargoyle",
-    "n": 24,
+    "mob": "Korven Nisere",
+    "n": 25,
     "sessions": [
      {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
+      "date": "04 Aug 2026",
+      "zone": "Befallen",
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
      },
      {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
+      "date": "04 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 3,
+      "label": "Fused",
       "character": "Shara"
      },
      {
-      "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "date": "07 Aug 2026",
+      "zone": "Befallen",
       "difficulty": 1,
       "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A jeering gargoyle",
-    "n": 12,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
+      "character": "Shara"
      },
      {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
+      "date": "07 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 3,
+      "label": "Fused",
       "character": "Shara"
      }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A leering gargoyle",
-    "n": 11,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "a jeering gargoyle",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
+    ]
    }
   ],
   "Enchanted Fine Steel Long Sword": [
@@ -16376,7 +16492,7 @@
    },
    {
     "mob": "A will sapper",
-    "n": 9,
+    "n": 10,
     "sessions": [
      {
       "date": "08 Aug 2026",
@@ -16398,6 +16514,13 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -16806,6 +16929,56 @@
     ]
    }
   ],
+  "Nightshade Wreath": [
+   {
+    "mob": "Maid Issis",
+    "n": 15,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Bone Chips": [
    {
     "mob": "A greater skeleton",
@@ -16898,11 +17071,25 @@
     "off_roster": true
    }
   ],
-  "Nightshade Wreath": [
+  "Cape of Midnight Mist": [
    {
-    "mob": "Maid Issis",
+    "mob": "Butler Syncall",
     "n": 14,
     "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
      {
       "date": "08 Aug 2026",
       "zone": "The Castle of Mistmoore",
@@ -16918,13 +17105,6 @@
       "character": "Avenrae"
      },
      {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Shara"
-     },
-     {
       "date": "18 Aug 2026",
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
@@ -16937,6 +17117,13 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -16970,6 +17157,57 @@
     ]
    }
   ],
+  "Power of Wind": [
+   {
+    "mob": "A gypsy dancer",
+    "n": 13,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "a gypsy dancer",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "Sacrificial Dagger": [
    {
     "mob": "An imp familiar",
@@ -17001,56 +17239,6 @@
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
       "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   }
-  ],
-  "Cape of Midnight Mist": [
-   {
-    "mob": "Butler Syncall",
-    "n": 13,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Shara"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
       "character": "Shara"
      }
     ]
@@ -17105,9 +17293,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -17191,9 +17379,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -17208,57 +17396,6 @@
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
       "label": "Awakened",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
-  "Power of Wind": [
-   {
-    "mob": "A gypsy dancer",
-    "n": 12,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "a gypsy dancer",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "18 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 2,
-      "label": "Adaptive",
       "character": "Shara"
      }
     ],
@@ -17695,9 +17832,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -17930,9 +18067,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -18897,8 +19034,8 @@
      },
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      },
@@ -19644,9 +19781,9 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -19771,6 +19908,20 @@
      {
       "date": "08 Aug 2026",
       "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A wraithish ancille",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
@@ -20060,8 +20211,8 @@
     "sessions": [
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      }
@@ -20361,9 +20512,9 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -20416,9 +20567,9 @@
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -20490,6 +20641,27 @@
       "zone": "The Ruins of Old Guk",
       "difficulty": 1,
       "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A soul seductress",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -20592,9 +20764,9 @@
      },
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -20725,28 +20897,14 @@
     "off_roster": true
    },
    {
-    "mob": "A soul seductress",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
     "mob": "A spectral ancille",
     "n": 1,
     "sessions": [
      {
       "date": "18 Aug 2026",
-      "zone": "The Plane of Fear",
+      "zone": null,
       "difficulty": 1,
-      "label": "Awakened",
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -21578,8 +21736,8 @@
     "sessions": [
      {
       "date": "11 Aug 2026",
-      "zone": "Northern Felwithe",
-      "difficulty": 0,
+      "zone": null,
+      "difficulty": 1,
       "label": null,
       "character": "Shara"
      }
@@ -21889,6 +22047,29 @@
       "difficulty": 3,
       "label": "Fused",
       "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Dark Cauldron": [
+   {
+    "mob": "An ancille cook",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -22229,6 +22410,20 @@
       "character": "Avenrae"
      }
     ]
+   },
+   {
+    "mob": "A werewolf gypsy",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Sharp Claws": [
@@ -22477,6 +22672,27 @@
     "off_roster": true
    },
    {
+    "mob": "A glyphed guard",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
     "mob": "A Teir`Dal priest",
     "n": 1,
     "sessions": [
@@ -22499,20 +22715,6 @@
       "zone": "Befallen",
       "difficulty": 1,
       "label": "Awakened",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A glyphed guard",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
       "character": "Shara"
      }
     ],
@@ -24397,6 +24599,20 @@
      }
     ],
     "off_roster": true
+   },
+   {
+    "mob": "A werewolf",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Blighted Armband": [
@@ -24764,22 +24980,6 @@
       "zone": "The Plane of Hate - Group",
       "difficulty": 3,
       "label": "Fused",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
-  "Dark Cauldron": [
-   {
-    "mob": "An ancille cook",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": "Awakened",
       "character": "Avenrae"
      }
     ],
@@ -25600,6 +25800,20 @@
       "zone": "The Castle of Mistmoore",
       "difficulty": 1,
       "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A vampire noble",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": null,
+      "difficulty": 1,
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -28408,6 +28622,6 @@
    }
   ]
  },
- "pairs": 653,
- "excluded_trash_drops": 4859
+ "pairs": 657,
+ "excluded_trash_drops": 4877
 }

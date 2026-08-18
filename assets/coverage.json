@@ -281,7 +281,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "40 items recorded dropping here"
+     "detail": "41 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -310,7 +310,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "56 items recorded dropping here"
+     "detail": "72 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -322,12 +322,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 82.5, respawn not recorded, 91 mob types measured"
+     "detail": "ZEM 82.5, respawn not recorded, 50 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 507,
+   "kills": 446,
    "bosses": [
     "Cazic-Thule",
     "Dread",

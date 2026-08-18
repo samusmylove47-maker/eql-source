@@ -468,8 +468,29 @@ def collect(rows, character=None):
     sessions, cur, prev = [], None, None
     for when, x in rows:
         if cur is None or (prev is not None and when - prev > GAP):
-            cur = new_session(cur['zone'] if cur else None,
-                              cur['difficulty_label'] if cur else None, when)
+            # A ZONE LINE MUST NOT CROSS A DAY BOUNDARY.
+            #
+            # Carrying the previous session's zone forward is right for a short
+            # break inside one visit, and wrong the moment the gap is a night.
+            # On 18 Aug 2026 Avenrae's live log held one zone line - "The Plane
+            # of Fear 1 (Awakened)", 17 August - and then 96 kills the next
+            # afternoon in Castle Mistmoore, logged after the client restarted
+            # with no new zone line. The inheritance labelled every one of them
+            # Plane of Fear, at D1, with difficulty_from "zone line": Maid
+            # Issis, ghoulish ancilles and glyphed familiars, about to be
+            # published on the Fear survey.
+            #
+            # build9.py's own ALIASES note already states the standard - a wrong
+            # match attaches one zone's measurements to another zone's plate,
+            # which is worse than no match at all. So the zone is inherited only
+            # within a calendar day; across one the session starts unnamed and
+            # its difficulty comes from the drop-tier floor, which is what
+            # CLAUDE.md says to do when a session has no zone line of its own.
+            same_day = (prev is not None and cur is not None
+                        and when.date() == prev.date())
+            cur = new_session(cur['zone'] if (cur and same_day) else None,
+                              cur['difficulty_label'] if (cur and same_day) else None,
+                              when)
             sessions.append(cur)
         prev = when
         m = ZONE.search(x)
