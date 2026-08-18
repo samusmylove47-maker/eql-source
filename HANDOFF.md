@@ -329,6 +329,51 @@ and needs the `build9.py` date-split before eras can be kept distinct. Doing it
 in the same PR as this correction would have delayed the correction, and Q1 said
 fix first.
 
+### The fan-out caught what I missed, and one of them was the worst thing on the site
+
+I shipped the data correction before the adversarial verifiers returned, on your
+"fix first" ruling. They came back with three surfaces I had not touched, and
+the PR was incomplete without them. Recording that plainly: the data fix alone
+would have left the falsehood published.
+
+**1. A fabricated tier-1 quotation on the register.**
+`public/learn/still-true.html` published this in quotation marks, badged
+**T1 - Developer patch notes**:
+
+> "Removed placeholders from and lowered maximum respawn times in several
+> dungeons: The Hole, Nagafen's Lair, Lower Guk, Lair of the Splitpaw, The
+> Warrens, Castle Mistmoore, **Upper Guk, Crushbone, Befallen, Blackburrow,
+> Najena**."
+
+The real note stops at Castle Mistmoore. **Five zone names were appended inside
+the quotation marks** and attributed to the developers. Source
+`_build/build13.py:306`. That is not a mis-citation, it is an invented primary
+source, and it sat on the page whose entire job is recording what is still true.
+Corrected, with the retraction stated outside the quote marks so the ledger
+records what it printed.
+
+**2. The generator minted the false citation on every flagged zone.**
+`_build/build3.py:234` hard-coded *"Historical. The 28 July 2026 patch note
+removed placeholders from this zone"* as the tooltip for every zone the boolean
+fired on. So Najena, Befallen and Blackburrow - which keep the claim on *other*
+sources - had a false tier-1 attribution injected into their rosters by the
+renderer, in a tooltip, where **no data fix could reach it**. The attribution is
+now derived per zone from `placeholders_source_id`. Najena's reads *"The 23 June
+2026 revamp note ... The 28 July note does not name this zone."*
+
+**3. Two generator comments restated the fabricated count** to the next reader of
+the code, and Najena's provenance block claims it has quoted the 23 June line in
+section 01 "since it was written" - `grep striking _build/source/najena.html`
+returns nothing. The first is fixed; the second is left as found and flagged
+here, because rewriting a provenance block's account of itself needs your call.
+
+**And I hit the heredoc trap this project documents.** My first `build3.py` patch
+went through a shell heredoc carrying `'`, which arrived as a bare apostrophe
+and broke a string literal. `build.sh` exited non-zero, `check.py` caught the
+stale tree, and nothing shipped - the guard worked. CLAUDE.md section 5 says to
+use the editor for any content with escapes, and it is right; I used it for the
+retry.
+
 ### Questions
 
 1. **Najena's tier.** Demote to the wiki revision, or keep a tier-1 citation a
