@@ -310,6 +310,17 @@ CASES = [
                            if k != "tools/sky-ledger.html"},
                           indent=1, sort_keys=True)),
 
+    # A registered tool with no card on the hub that lists the tools. This
+    # shipped twice: once when the inventory reader was built, registered and
+    # footer-linked with no card, and again on 18 Aug 2026 when 50 Upgrades —
+    # the tool actually being posted — was missing from the grid all day while
+    # a band announced it on the home page. Rule 6 only ever proved the footer.
+    ("a registered tool with no card on the tools hub",
+     "has no card for",
+     "public/tools/index.html",
+     lambda t: t.replace('<a class="card" href="50-upgrades.html"',
+                         '<a class="card" href="50-upgrades-x.html"', 1)),
+
     # A published dataset that lost most of itself and stayed green. The
     # emptiness rule beside the floor catches a dataset that lost EVERYTHING;
     # it is blind to one that lost a third, which is the shape the consolidation
