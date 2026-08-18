@@ -49,3 +49,7 @@
 # faction named after Mayong is real and the survey still names it.
 /named/mayong-mistmoore.html      /dungeons/mistmoore.html  301
 /items/fanged-skull-stiletto.html /dungeons/mistmoore.html  301
+
+# A short address for the gear planner, because it is the kind of thing that
+# gets typed into Discord rather than clicked.
+/upgrades  /tools/50-upgrades.html  301

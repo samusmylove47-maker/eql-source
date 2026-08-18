@@ -51,6 +51,10 @@ TOOLS = [
     # unit once. Two Sky trackers is the "which do I use" problem and after
     # that property the older one is the wrong answer.
     dict(slug="sky-ledger",       name="Sky Ledger"),
+    # A gear planner built in its own repository and hosted there. This site
+    # carries a description page and links out; the application is not ours to
+    # serve and its data is refreshed on its own cadence.
+    dict(slug="50-upgrades",      name="50 Upgrades"),
     dict(slug="race-unlocks",     name="Race unlock tracker"),
     dict(slug="combo-calculator", name="Race and primary calculator"),
     dict(slug="faction-impact",   name="Faction impact checker"),

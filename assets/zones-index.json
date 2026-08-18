@@ -197,7 +197,9 @@
   "verify_gate": null,
   "respawn_note": "Named in the 28 Jul patch as having maximum respawn lowered, but no figure was published and no post-patch measurement exists. The value shown is a pre-patch ceiling.",
   "placeholders_removed": true,
-  "placeholders_source": "Developer patch notes: &ldquo;Removed placeholders from and lowered maximum respawn times in several dungeons&rdquo;, naming all ten of these zones and Upper Guk. Confirmed in play by Avenrae before this site existed, and again on 9 August 2026."
+  "placeholders_source": "Developer patch notes: &ldquo;Removed placeholders from and lowered maximum respawn times in several dungeons&rdquo;, naming all ten of these zones and Upper Guk. Confirmed in play by Avenrae before this site existed, and again on 9 August 2026.",
+  "revamped": "18 August 2026",
+  "revamped_note": "Measured before the 18 August 2026 revamp. The zone has changed since; these figures stand for the zone as it was, and nothing here has been re-measured against the new one."
  },
  {
   "plate": 11,

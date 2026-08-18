@@ -1,0 +1,35 @@
+{
+ "_comment": "Vendored snapshot of the 50 Upgrades planner's own meta.json. Every figure here is read from that file and never from the planner's README: the README says 3,533 items and meta.json says 3,653, and printing the wrong one is exactly the propagation fault gate.py exists to catch. Refresh by re-fetching the source URL; do not hand-edit.",
+ "read": "2026-08-18",
+ "source": "https://samusmylove47-maker.github.io/EQL50ups/data/meta.json",
+ "url": "https://samusmylove47-maker.github.io/EQL50ups/",
+ "built_at": "2026-08-18T02:29:42.008Z",
+ "counts": {
+  "items": 3653,
+  "with_slot": 2263,
+  "with_stats": 1713,
+  "with_effects": 538,
+  "with_acquisition": 3456,
+  "with_numeric_id": 289,
+  "era_unknown": 177,
+  "stats_unknown": 6
+ },
+ "standing": {
+  "tier_m": 5,
+  "tier_2": 2045,
+  "tier_5": 126,
+  "unattributed": 1477
+ },
+ "purge": {
+  "before": 11252,
+  "shipped": 3653,
+  "quarantined": 7599
+ },
+ "classes": 16,
+ "races": 15,
+ "slots_worn": 18,
+ "era_current": "Sky",
+ "license": "CC BY-SA 4.0",
+ "license_source": "EverQuest Legends Wiki (eqlwiki.com)",
+ "attribution": "Item data derived from the EverQuest Legends Wiki (eqlwiki.com), used under CC BY-SA 4.0. Derived data is shared alike. EverQuest is a trademark of Daybreak Game Company LLC; this project is unaffiliated with Daybreak or Game Jawn."
+}

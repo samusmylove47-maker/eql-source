@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>50 Upgrades — EQL Source</title>
+<meta name="description" content="A gear planner for EverQuest Legends: three classes, twenty-three slots, no account and no server.">
+<meta property="og:title" content="50 Upgrades — EQL Source">
+<meta property="og:description" content="A gear planner for EverQuest Legends: three classes, twenty-three slots, no account and no server.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="50 Upgrades — EQL Source">
+<meta name="twitter:description" content="A gear planner for EverQuest Legends: three classes, twenty-three slots, no account and no server.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
+<link rel="canonical" href="https://eqlsource.com/tools/50-upgrades">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../assets/site.css?v=d093f9cb">
+<style>
+.upsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);margin:var(--s-6) 0}
+.upsum div{background:var(--surface-2);padding:var(--s-4)}
+.upsum b{display:block;font-family:"IBM Plex Mono",monospace;font-size:var(--t-lg);
+  color:var(--brass-t);font-variant-numeric:tabular-nums}
+.upsum span{display:block;margin-top:3px;font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
+.upgo{display:block;margin:var(--s-6) 0 0;padding:var(--s-5) var(--s-5);text-decoration:none;
+  border:1px solid var(--rule2);border-left:3px solid var(--brass);border-radius:var(--r);
+  background:var(--surface-2);transition:border-color .15s,background .15s}
+.upgo:hover{background:#31281a;border-color:var(--brass)}
+.upgo b{display:block;font-family:"Saira Condensed",sans-serif;font-size:var(--t-xl);
+  font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
+.upgo span{display:block;margin-top:4px;font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-xs);color:var(--mut)}
+.upstand{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule)}
+.upstand li{background:var(--surface-2);padding:var(--s-3) var(--s-4);display:flex;
+  gap:var(--s-4);align-items:baseline;font-size:var(--t-sm);color:var(--mut)}
+.upstand .n{font-family:"IBM Plex Mono",monospace;color:var(--bone);
+  font-variant-numeric:tabular-nums;min-width:4.5em;text-align:right}
+.upnote{margin:var(--s-6) 0 0;padding:var(--s-4) var(--s-5);border-left:3px solid var(--rule2);
+  background:var(--surface-1);color:var(--mut);font-size:var(--t-sm);line-height:1.6}
+.upnote strong{color:var(--bone)}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../raids/index.html">Raids</a>
+      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index-search.html">The Index</a>
+      <a href="../learn/index.html">Learn</a>
+      <a href="../sources.html">Accuracy</a>
+      <a href="../search.html" class="nav-find">Search</a>
+    </nav>
+  </div>
+</header>
+<main>
+  <section class="band" style="border-top:0">
+    <div class="shell">
+      <p class="eyebrow">Gear planning &middot; <b>built and hosted elsewhere</b></p>
+      <h1 class="display">50 Upgrades</h1>
+      <p class="hero-lede">Pick a trio and a race, fill the slots, and compare what each
+        candidate does to the character rather than to the item beside it. It runs entirely
+        in the browser: nothing is stored, no account is made, and a build travels as a
+        link rather than as a saved record on someone else&rsquo;s machine.</p>
+
+      <a class="upgo" href="https://samusmylove47-maker.github.io/EQL50ups/">
+        <b>Open the planner</b>
+        <span>Hosted in its own repository &middot; nothing to install</span></a>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="sechead"><span class="n">01</span><div><h2 class="sec">What it holds</h2>
+        <p class="lede" style="margin:0">Counted by the planner itself and read from its
+          published snapshot, so this page cannot drift from the catalogue it describes.</p></div></div>
+      <div class="upsum">
+        <div><b>3,653</b><span>Items shipped</span></div>
+        <div><b>1,713</b><span>Carrying stat values</span></div>
+        <div><b>538</b><span>Carrying an effect</span></div>
+        <div><b>3,456</b><span>Naming how to get one</span></div>
+      </div>
+      <p>Everything shipped is content this game actually has. The catalogue behind it holds
+        11,252 rows; 7,599 of them are held back because nothing places
+        them in EverQuest Legends, which is 68 per cent of what it started
+        with. Kunark, Velious and Luclin items are the bulk of that.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="sechead"><span class="n">02</span><div><h2 class="sec">Where the numbers come from</h2>
+        <p class="lede" style="margin:0">The planner grades its own rows and publishes the
+          grades. This is that table, unedited.</p></div></div>
+      <ul class="upstand">
+        <li><span class="n">2,045</span> structured wiki data for an item whose era
+          places it inside this game <span class="tier t2">T2</span></li>
+        <li><span class="n">1,477</span> no sourced stat values at all &mdash;
+          the row either never had any or withholds them</li>
+        <li><span class="n">126</span> wiki numbers with no era placing them here,
+          so the stat block may describe an item of the same name from a different game
+          <span class="tier t5">T5</span></li>
+        <li><span class="n">5</span> read off a live client window and agreeing
+          with it field for field <span class="tier tM">M</span></li>
+      </ul>
+      <p class="upnote"><strong>Forty per cent of the catalogue carries no source standing.</strong>
+        That is the single most useful thing to know before trusting a comparison, and the
+        planner says it about itself rather than leaving it to be discovered. A row with no
+        attribution is not a wrong row &mdash; it is a row whose numbers nobody has traced to
+        a source, and the difference matters most exactly when two candidates are close.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it will not tell you</h2></div></div>
+      <p>Item flags are unreliable and the planner says so in its own data: the wiki carries two
+        authoring conventions, and a live client window disagreed with the catalogue on both
+        items anyone has checked. Do not use a tradeability flag here to decide whether a
+        guildmate can hand you something.</p>
+      <p>Weapon skill is wrong for at least some monk fist weapons. The wiki itself is
+        internally inconsistent about them, and the planner reports the suspects rather than
+        quietly correcting a source it cannot verify.</p>
+      <p>Damage bonus is absent. A client window shows one, no source carries it per item, and
+        it appears to be derived from level and weapon type rather than stored on the item.</p>
+      <p>An era-less item is unconfirmed rather than assumed old. Where one ships anyway, it is
+        because something independent proves it exists in this game.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="sechead"><span class="n">04</span><div><h2 class="sec">Credit and licence</h2></div></div>
+      <p class="upnote">Item data derived from the EverQuest Legends Wiki (eqlwiki.com), used under CC BY-SA 4.0. Derived data is shared alike. EverQuest is a trademark of Daybreak Game Company LLC; this project is unaffiliated with Daybreak or Game Jawn.</p>
+      <p class="src">Figures on this page are read from the planner&rsquo;s own published
+        snapshot, taken 2026-08-18. <a href="https://samusmylove47-maker.github.io/EQL50ups/data/meta.json">The file this page reads</a>.</p>
+    </div>
+  </section>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="../dungeons/index.html">All surveys</a></li>
+        <li><a href="../dungeons/najena.html">Najena</a></li>
+        <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="../items/index.html">Every item</a></li>
+        <li><a href="../named/index.html">Every named mob</a></li>
+        <li><a href="../sets/index.html">Every planar set</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="../raids/index.html">Encounter index</a></li>
+        <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="../tools/character.html">Character sheet</a></li>
+        <li><a href="../tools/index-search.html">The Index</a></li>
+        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
+        <li><a href="../tools/50-upgrades.html">50 Upgrades</a></li>
+        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
+        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
+        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+        <li><a href="../tools/planar-gear.html">Planar gear targets</a></li>
+        <li><a href="../tools/inventory.html">Inventory reader</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="../learn/still-true.html">Is it still true?</a></li>
+        <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="../learn/motes.html">Motes</a></li>
+        <li><a href="../learn/raid-access.html">How raid access works</a></li>
+        <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
+        <li><a href="../learn/contamination.html">Contamination</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="../search.html">Search the site</a></li>
+        <li><a href="../data/index.html">Public data</a></li>
+        <li><a href="../credits.html">Credits</a></li>
+        <li><a href="../archive/index.html">The original plates</a></li>
+        <li><a href="../sources.html">Sourcing standard</a></li>
+        <li><a href="../sources.html#gaps">Known gaps</a></li>
+        <li><a href="../sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="../learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+  </div>
+</footer>
+<script src="../assets/site.js"></script>
+</body>
+</html>
