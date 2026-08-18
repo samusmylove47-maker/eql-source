@@ -102,3 +102,100 @@ commit** — a reformat deleted evidence on 17 August and a green build did not
 notice. `scripts/check.py` validates that pages are well-formed, and `gate.py`
 validates that figures agree with their data. Neither notices a sentence
 describing a thing that no longer exists.
+
+---
+
+## To the Director
+
+**From Session C, 18 August 2026, branch `claude/eql-auras-promo-band-9e76de`.**
+The Auras band is ready as material and a spec. Nothing was built or rebuilt
+here and `public/` was not touched — Session A lands it.
+
+### What is on this branch
+
+| File | What it is |
+|---|---|
+| `_media/auras-trailer.mp4` | 839 KB, 1600x900, 8.9s, 24fps, **no audio stream at all** |
+| `_media/auras-poster.jpg` | 174 KB, 1600x900 |
+| `docs/auras/BAND-COPY.md` | the copy, the word count, the markup shape, the gate rules it avoids |
+| `docs/auras/band.html` | the exact markup the count was measured from — lift the text from here, do not retype |
+| `docs/auras/CLAIMS.md` | the claim set, for you to adjudicate |
+
+`_build/media.py` hashes both files on the next build and writes them into
+`assets/media.json`. **No build change is needed** — the band reads the manifest
+exactly as the Sky Ledger band already does.
+
+### The video
+
+Cut from `EQ AURAS BURST.mp4` (35.8s, 1920x1080, 42.8 MB) and encoded once by
+hand at **CRF 28, no audio**, which is the Sky Ledger recipe unchanged. The one
+departure is 24fps rather than 30: at 30 the particle burst came out at 1112 KB,
+heavier than the trailer precedent despite being shorter. At 24 it is 839 KB,
+under the 949 KB the Sky Ledger trailer ships at, with the documented CRF intact.
+
+**It is 8.9 seconds because the source constrains it, not because I trimmed for
+weight.** The clip runs 2.0s to 10.9s: the Quick Buff cast, then fourteen buff
+tiles filling the top of the screen each counting down. At **t=11.25 the Windows
+Start menu opens** in the capture, showing the desktop — Discord, Outlook,
+Battle.net, "Update and shut down" — and at t=13 the application window opens
+over the game. I verified frame by frame that the onset is between t=11.0
+(clean) and t=11.25 (open), and cut at 10.9. The encoded file's first and last
+frames were both checked after encoding, not just the source.
+
+The poster is a frame from inside the clip, at t=10.8, with the full buff row up.
+It is what shows below 700px and under `prefers-reduced-motion`, so it had to
+carry the message alone.
+
+The band's video **never shows the application window**, which incidentally
+sidesteps a naming problem noted below.
+
+### The copy — 136 words, and the ceiling
+
+Measured with `gate.py`'s own `page_words`, not by eye. `index.html` is at
+**649 of 649** — no headroom at all. With the band it is **785**, so
+`assets/prose-budget.json` needs a hand edit to 785 with the reason in the commit
+message. `prose_budget.py` only ever lowers, so this is a decision, as intended.
+
+`BAND-COPY.md` carries three shorter variants measured the same way — 129, 124
+and 118 — in the order I would cut them. **I recommend the full 136.** The first
+thing to go is the clause naming the three things it does not do, and that clause
+is the one buying the return visit you described.
+
+### Three things need your decision
+
+1. **"The idea is WeakAuras'" is the one claim I cannot source.** The word
+   `weakaura` — and `wow`, `lua`, `addon`, and the bare word `aura` — appears
+   nowhere in the project, in code, comments, docs or file formats. Modelled-on
+   is a claim about design intent and only the author can source it. Your brief
+   states it, and I have taken your instruction as the author's statement rather
+   than inventing a citation, but you asked to be told. **One line from the
+   author settles it.** The rest of that paragraph — from scratch, no shared code
+   or trigger format, not affiliated or endorsed — is strongly evidenced.
+2. **"Reads the log and nothing else" would have been false**, and it was my
+   first draft. It also reads the character's spellbook file and the game's spell
+   icon art. The shipped sentence names all three. Separately, there is one
+   Windows-API call: every two seconds it asks the OS the *name* of the focused
+   window's process so the overlay can hide on alt-tab. It never opens the game
+   process or reads its memory, so the copy stays true, but "it touches no
+   Windows API" would be false and I have not written it. The band omits that
+   nuance for space; **the tool page should state it plainly.**
+3. **The release date has no source but you.** The project's own handoff says
+   "Status: dev build only, nothing shipped", the version is 0.1.0, and a
+   main-window redesign is marked "planning only, nothing implemented yet". That
+   is the argument for the qualifier, not against the band: **"targeting" is
+   load-bearing and must not become "releasing".**
+
+### Two findings for the author, unrelated to the band
+
+- **The app calls itself "EQ Buff Tracker"** — window title, taskbar,
+  `package.json` — while we are announcing "EQL Auras". Invisible in this band,
+  obvious on any page showing a screenshot. Worth settling before the tool page.
+- **Its About page understates its own work threefold.** It says roughly 3,300
+  buffs; the bundled data file holds **11,337**, 11,190 with landing text. A good
+  promotional figure, deliberately kept out of the band because a number like
+  that should print from the data at build time rather than be typed beside it.
+
+**And one to watch:** the project has no LICENSE file, no `license` field, and is
+marked private. The first-party code is unlicensed — all rights reserved by
+default. Nothing may describe it as open source or redistributable. Given the
+eqlwiki licence claim withdrawn this week, it is the same shape of mistake.
