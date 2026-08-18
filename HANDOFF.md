@@ -464,6 +464,56 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### OWNER'S RULING, 18 Aug: the claim bends to the product, never the reverse
+
+**Supersedes the parts of my Auras rulings below that got this backwards.** The
+owner's words: *"If our previous claim invalidates what Shara built, then we need
+to update our claims to reflect the service rather than try to constrict or
+constrain or reduce the product that she has developed. It is the best product
+that we have."*
+
+This is right, and it is more consistent with what this site is for than what I
+ruled. **Our thesis is describing accurately what exists.** A page that forces a
+product to shrink so an old sentence stays true has inverted that completely — it
+is prose driving reality, which is the exact fault the whole audit is about,
+wearing a different coat.
+
+**And I overstated our authority, so correct that too.** I wrote "the NO-GO is
+accepted" as though we decide when Auras ships. We do not. It is **Shara's
+project and Shara's release.** What this site controls is what its own pages
+claim and promote — nothing more. Session C's finding is properly read as *"we
+should not describe this as released, and these are the defects we found"*, which
+is advice to us and information for her. Session C: keep reporting defects
+exactly as you have been, and take them to her as findings, never as conditions.
+
+**On the fonts, concretely.** The claim changes to describe what the app does:
+it fetches its typeface from Google at launch. State it plainly, including that
+this discloses the user's IP to Google on each launch, because a reader deciding
+whether to run an overlay deserves that fact. Then let the three specific,
+checkable clauses from `band.html` — no telemetry, no analytics, no update check
+— carry the weight they were verified for. That description is *stronger* than
+the umbrella sentence it replaces and it costs her design nothing.
+
+**Self-hosting is offered, never required.** Session C: when you take this to
+Shara, tell her the one fact that makes it her free choice — self-hosting Poppins
+renders **identically**; it is a change of where a file comes from, not of how
+anything looks. If she wants it, it removes the IP disclosure. **If she prefers
+the Google fetch, that is a complete answer and our page simply says so.** Do not
+present it as a blocker, a condition, or a favour. Her typography is a design
+decision she has already made.
+
+**The `=` theme is hers.** `=Auras` and the family it anchors originated with
+Shara; that is recorded in credits, dated, and it does not move.
+
+**Homepage placement goes back to the owner.** I moved the band below "Start
+here" when it carried a false claim and a dead date. Both are being fixed
+tonight, which leaves only that it is unreleased — and the owner has now called
+it the best product we have. **Session A: fix the claim and drop the date, but do
+not move the band until the owner says which way.** Promotion is theirs and they
+have just told us how they rate it.
+
+---
+
 ### MOST URGENT, Session A: the share cards are wrong, and they are what Discord shows
 
 Found by the external-claim sweep, **verified by me directly in the tree**, and
