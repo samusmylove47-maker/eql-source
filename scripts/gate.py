@@ -776,6 +776,32 @@ def run(pages, fail, warn):
                     fail(f"{p}: footer does not link tools/{slug}.html")
                     break
 
+    # ---- 6b. every registered tool must have a card on the tools hub --------
+    #
+    # Rule 6 above proves a tool is reachable from every FOOTER. Nothing proved
+    # it was on the page that exists to list the tools, and the difference is
+    # not academic: the LEDGERS entry for this grid was added because a tool
+    # shipped built, registered and footer-linked with no card, so the heading
+    # counted seven and the grid rendered six.
+    #
+    # It happened again. 50 Upgrades shipped on 18 Aug 2026, was announced by a
+    # band on the home page and linked from 700-odd footers, and had no card on
+    # tools/index.html for the whole of that day — the one tool being posted
+    # publicly was the one missing from the tool list.
+    #
+    # Twice is a class of fault. The cards carry bespoke copy per tool and are
+    # not generated, which is exactly why the registry and the grid can drift;
+    # this makes the drift fail the build instead of waiting to be noticed.
+    if listed is not None and os.path.exists("public/tools/index.html"):
+        hub = open("public/tools/index.html", encoding="utf-8", errors="replace").read()
+        carded = set(re.findall(r'<a class="card" href="([a-z0-9-]+)\.html"', hub))
+        for slug in sorted(listed - carded):
+            fail(f"tools/index.html has no card for {slug!r}, which is in the TOOLS "
+                 f"registry and in every footer. The hub that lists the tools is "
+                 f"the one place a reader looks for them")
+        for ghost in sorted(carded - listed):
+            fail(f"tools/index.html cards {ghost!r}, which is not a registered tool")
+
     # ---- 7. the sitemap and the canonical tags must name the same address ----
     #
     # They disagreed on every page until 18 Aug 2026, in two ways at once. The

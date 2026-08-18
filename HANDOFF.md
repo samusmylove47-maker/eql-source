@@ -2,7 +2,7 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `3d0c9073`** (PR #101, merged — the tip of `main`). Diff
+**This describes commit `2d48a729`** (PR #102, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -127,97 +127,46 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
-**The tool consolidation is being mapped, and nothing should pre-empt it.**
-Nine tools become three. The mapping was still running on 18 Aug 2026; the
-Director will produce an ordered, independently-revertible PR sequence when it
-lands, and will queue the planner subdomain behind it.
+**PR 3 is not being done, and this is the reasoning rather than a deferral.**
 
-Until that sequence arrives:
+The consolidation was going to take nine tools to three. It took nine to six and
+stops there. Ruled 18 Aug 2026 with the owner's authority delegated.
 
-- **Do not add, remove, rename or restructure a tool.** `_partials.TOOLS` is
-  about to change shape, and `gate.py` rule 6 will follow it automatically —
-  anything hand-aligned to the current nine gets aligned twice.
-- **Do not fix the planner's footer**, which omits `50-upgrades`. It is about to
-  be wrong in six new ways. Recorded in full under *For the session working on
-  the planner*.
-- **The subdomain is not started**, and it is first after the consolidation, not
-  before. `docs/BACKLOG.md` P5 carries it, including the one trap worth knowing
-  in advance: the DNS record goes in DNS-only until GitHub Pages has issued the
-  certificate, because Cloudflare's proxy conflicts with that provisioning.
+PR 2 removed the character sheet, the planar gear tool and the inventory reader,
+and it was right for one reason: **50 Upgrades already did all three jobs,
+better, against a bigger catalogue.** Keeping a worse copy of something already
+available is the rule this site applies to other people's tools, so it has to
+apply to ours.
+
+**That reason does not exist for the remaining three.** Nothing supersedes the
+race unlock tracker, the race and primary calculator, or the faction impact
+checker. Deleting three working, unduplicated tools to reach a number would
+invert the standard the consolidation was justified by — it would be removing
+things *because* they are ours, which is the opposite of the rule.
+
+Three items were carried to PR 3 and are now moot in the right direction:
+
+- **The undefined-constant check stays.** It was to be retired because no
+  surviving tool page would declare a capitalised constant. Three still do —
+  `combo-calculator` and `race-unlocks` nine each, `faction-impact` two — and
+  `gate_selftest` case 1 still points at a live target.
+- **The tools-index prose stays true.** "What you tick is packed into the page
+  URL" describes race unlocks and the calculator, which survive; so does "the
+  race tracker and the calculator share one save".
+- **The hub grid is fixed rather than deferred.** The reason to wait was that
+  PR 3 would remove two more cards. It will not.
+
+If a successor to any of those three ever ships, the precedent is set and the
+handling is written down: delete the page, keep the reason in `TOOLS`, record it
+in the change log, redirect both address forms, no tombstone.
 
 ---
 
 ## To the Director
 
-**PR 2: three tools withdrawn.** Six remain. Every accept criterion met, and
-three things in the brief did not hold against the tree.
-
-### Two of the PR 2 items are actually PR 3 items
-
-**The undefined-constant check does not die here.** The brief says no surviving
-tool page declares a capitalised data constant after these removals. Measured:
-
-```
-combo-calculator.html   9 declared   CLASSNAMES, CORDER, KINDS, RACES, RORDER, SKEY
-race-unlocks.html       9 declared   CLASSNAMES, CORDER, KINDS, RACES, RORDER, SKEY
-faction-impact.html     2 declared   FAC, RACES
-```
-
-Those are exactly the three pages PR 3 removes. `gate_selftest.py` case 1 still
-points at `race-unlocks.html`'s `RORDER`, which is still there. **Retiring the
-check now would have deleted live protection and a working self-test case**, so
-it is untouched and carried to PR 3.
-
-**None of the flagged prose became false either.** `build2.py:91` names Sky
-Ledger, race unlocks and the calculator — all three survive PR 2. `:97` and
-`build404.py:44` derive from `len(TOOLS)` and self-updated to *Six trackers*.
-`:101-104`'s "what you tick is packed into the page URL" is still true of race
-unlocks and the calculator, and `:190`'s "the race tracker and the calculator
-share one save" is still true of both. **Every one of them goes false in PR 3**,
-when those two are removed — which is the state the brief was describing.
-
-`build1.py:396` is inside the Auras video script, not prose; the line numbers
-there moved when the 50 Upgrades band landed.
-
-### The inbound links were eight, and not the eight listed
-
-`public/_redirects:13-14` is `/races` and `/calculator`, which point at tools
-that survive. Nothing in that file referenced the three. The real set:
-
-```
-_build/build2.py        three hub cards (109, 158, 176) — not in the brief
-_build/build24.py:162   /sets/ crumb          -> tools/index
-_build/build24.py:166   "the gear tool"       -> 50 Upgrades
-_build/changelog.py:56  <a> unwired to plain text, per the :18 precedent
-_build/source/planeoffear.html:395  -> /sets/
-_build/source/planeofhate.html:405  -> /sets/
-```
-
-Both surveys carry their own footers, as the brief said, so those two were the
-ones no footer sweep would have caught.
-
-### Raised, not decided
-
-**`_build/build20.py:41` credits BarakDur for the idea behind the planar gear
-tool.** Left exactly as written. Removing a credit is yours, and `CLAUDE.md` §7
-is explicit that an outside contributor keeps their name — stripping one to tidy
-after a withdrawal happened once before and was caught. The tool is gone; the
-person still had the idea.
-
-**The tools hub grid has drifted and I did not fix it.** Six tools registered,
-five cards, and the one with no card is **50 Upgrades** — the tool being posted.
-This predates PR 2: it was nine tools and eight cards before I touched it. PR 3
-removes two more cards, so fixing it now means fixing it twice, which is your
-own reasoning about B's footer. It wants generating from `TOOLS` rather than
-hand-writing, once the count has stopped moving. Not urgent: the tool is in
-every footer by `gate.py` rule 6, and the home page now leads with its band.
-
-### Carried to PR 3
-
-Retire the undefined-constant check and its self-test case; correct
-`build2.py:91`, `:101-104`, `:190` and `build404.py:44`; regenerate the hub grid
-from `TOOLS`. All four are only correct to do once race unlocks, the calculator
-and the faction checker are actually gone.
+*Empty. The consolidation is finished at six tools and the reasoning for
+stopping there is under the From heading. Nothing is outstanding and nothing is
+waiting on a ruling.*
 
 ---
 

@@ -29,6 +29,10 @@ BYSLUG = {z["slug"]: z for z in ZONES}
 # Sky Ledger's dataset counts, read out of assets/sky-ledger.json rather than
 # typed. _build/skyledger.py counts them from the tool's own sky.json.
 SLD = json.load(open("assets/sky-ledger.json", encoding="utf-8"))["dataset"]
+# The planner's vendored snapshot, read by field path exactly as build1.py and
+# build29.py read it. counts.items is the catalogue; counts.purge.shipped is
+# what survived the era purge, and they are not the same quantity.
+UPF = json.load(open("assets/50-upgrades.json", encoding="utf-8"))["figures"]
 PROV = json.load(open("assets/zone-provenance.json", encoding="utf-8"))
 WP = json.load(open("assets/wiki-provenance.json", encoding="utf-8"))["zones"]
 
@@ -126,6 +130,17 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
           not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
           replaces the tracker published here before it.</p>
         <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
+
+      <a class="card" href="50-upgrades.html" style="--c:var(--brass)">
+        <div class="kicker">Gear planning &middot; built and hosted elsewhere</div>
+        <h3 class="t">50 Upgrades</h3>
+        <p class="d">Pick a trio and a race, fill twenty-three slots, and compare what each candidate does to the
+          character rather than to the item beside it. Every item upgrades from +0 to +10 and the stat sheet
+          recomputes as you touch it. It holds {UPF['counts.items']:,} items, {UPF['counts.withStats']:,} of them carrying stat
+          values, and it grades its own rows &mdash; this page says how many carry no source standing at all before
+          you trust a comparison.</p>
+        <div class="chipline"><span class="pill">{UPF['counts.items']:,} items</span><span class="pill">Three classes at once</span><span class="pill">No account</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">

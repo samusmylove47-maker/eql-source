@@ -38,9 +38,21 @@ PEOPLE = [
     ("Annalise", None,
      "Blunt and slashing weapons underwater in Kedge Keep. The Fiery Avenger completed as a "
      "non-paladin. Raid lockouts running per difficulty."),
+    # KEPT DELIBERATELY AFTER THE TOOL WAS WITHDRAWN, 18 Aug 2026. The planar
+    # gear tool is gone; the idea is not. Comparing all three of a trio's class
+    # sets at once instead of one is the thing 50 Upgrades does, and it does it
+    # because this tool did it first. The owner's ruling: a credit is for the
+    # idea, and the idea passes forward down the chain of succession into the
+    # tools built after it.
+    #
+    # So this is not a stale entry to tidy on the next sweep. Removing a named
+    # outside contributor's credit because the artefact moved on is exactly the
+    # misattribution CLAUDE.md §7 names, and it was caught happening once
+    # already during the 17 August sweep.
     ("BarakDur", None,
      "The idea behind the planar gear tool &mdash; comparing all three of a trio&rsquo;s class "
-     "sets at once instead of one."),
+     "sets at once instead of one. The tool was withdrawn in favour of 50 Upgrades, which "
+     "does the same thing across every slot; the idea carried forward into it."),
     ("Classic XP", "https://www.youtube.com/watch?v=92F07fPPBlI",
      "Farming Lustrous Russet in the Plane of Hate, and the rooftop route across the city that "
      "sent us looking for a rooftop layer in the mesh."),
