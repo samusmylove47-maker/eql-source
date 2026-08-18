@@ -35,6 +35,21 @@ rest. If a reader wants the full scaling tables they should go and read theirs.
 import json as _json
 RAIDS = _json.load(open('assets/raids-measured.json', encoding='utf-8'))
 
+# THE ZONE THIS FINDING COMES FROM HAS SINCE BEEN REVAMPED.
+#
+# The trash-multiclass measurement is Castle Mistmoore's, and Castle Mistmoore
+# changed on 18 August 2026. The finding is not withdrawn - it was true of the
+# zone it was taken in - but a reader meeting it here has no way to know it
+# predates the revamp unless this page says so.
+#
+# Read from assets/zones-index.json so the survey and this page cannot drift:
+# one date, one edit, both pages move.
+_ZI = _json.load(open('assets/zones-index.json', encoding='utf-8'))
+_MM = next((z for z in _ZI if z.get('slug') == 'mistmoore'), {})
+_REVAMP = (('<strong>Measured before the ' + _MM['revamped'] + ' revamp.</strong> '
+            'The zone has changed since; the reading stands for the zone as it was.')
+           if _MM.get('revamped') else '')
+
 # The ramp is ONE session at five tiers - that is what makes it a comparison.
 # Later kills of the same boss are replication and are reported apart from it;
 # dropping them into the table gave two D1 rows and two D2 rows under a heading
@@ -452,7 +467,8 @@ You have entered The City of Guk 4 (Refined).</pre>
       <br><br><strong>Its limit, stated:</strong> the measurement aggregates by mob type, so whether
       a single individual carries both kits cannot be told apart from two individuals carrying one
       each. It is one zone at one tier. It does not contradict the published claim about named mobs;
-      it suggests the behaviour starts earlier and lower than the claim implies.</div>
+      it suggests the behaviour starts earlier and lower than the claim implies.
+      <br><br>{_REVAMP}</div>
     <p class="lede"><strong>Where a zone has a survey, its measured figures are under
       <em>Measured in play</em>.</strong>{" Not every zone measured this way has a survey here." if _no_survey else ""}</p>
   </div>

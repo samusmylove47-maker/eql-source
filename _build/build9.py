@@ -236,7 +236,30 @@ def merge(sessions):
     return out
 
 
-def section(sess_list, zone_title):
+def revamp_html(note):
+    """A dated line saying the measurement predates a zone revamp.
+
+    WHY THIS IS NOT OPTIONAL
+    ------------------------
+    A measured figure is a fact about the zone AS IT WAS. When the zone changes,
+    every figure in this section keeps its provenance and loses its currency at
+    the same instant, and nothing in the data knows that happened. Castle
+    Mistmoore was revamped on 18 August 2026 and this survey publishes a
+    thousand kills recorded before it: someone who farmed the new version this
+    morning can contradict the flagship page in one message.
+
+    The evidence is not withdrawn, because it is not wrong - it is dated. It
+    says which side of the revamp it sits on and lets the reader decide.
+
+    Read from `revamped_note` in assets/zones-index.json rather than written
+    here, so a second revamped zone needs a data edit and no code.
+    """
+    if not note:
+        return ''
+    return ('<b class="revamp">' + note + '</b> ')
+
+
+def section(sess_list, zone_title, revamp=None):
     # Merge only what was observed under the same conditions: same difficulty,
     # and the same vantage point. A healer's view of a fight and a tank's are
     # different fights, and averaging them would describe neither.
@@ -339,7 +362,7 @@ def section(sess_list, zone_title):
         f'<b>{esc(zone_title)}, run at {diff}.</b> '
         f'Everything below was observed in the live game rather than read from a '
         f'source: what these mobs cast, what they hit for, and what they dropped. '
-        f'{tiers}{facs}'
+        f'{tiers}{facs}{revamp_html(revamp)}'
         f'</div>{control_html(s)}{tables}'
         f'<p class="caveat"><strong>What this is and is not.</strong> Observations, not '
         f'rates. A drop seen once is not a drop rate, and nothing here is a probability. '
@@ -380,7 +403,8 @@ def main():
         # surveys blow their ceilings at once. Strip any previous copy first.
         h = re.sub(r'<section class="meas" id="measured">.*?</section>', '', h, flags=re.S)
         h = h.replace(CSS, '')
-        block = section(lst, by_key[key(next(x['zone'] for x in lst))]['title'])
+        _z = by_key[key(next(x['zone'] for x in lst))]
+        block = section(lst, _z['title'], _z.get('revamped_note'))
         if '</main>' in h:
             h = h.replace('</main>', block + '</main>', 1)
         elif '</body>' in h:
