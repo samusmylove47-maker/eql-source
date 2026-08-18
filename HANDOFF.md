@@ -2,14 +2,14 @@
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `fddcb2ed`** (PR #92, merged — the tip of `main`). Diff
+**This describes commit `f3c28e5b`** (PR #94, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
 against it walks through a state `main` never had.
 
 **The Director and this session exchange through this file.** Rulings arrive
-under `## From the Director`; work is reported back under `## To the Director`,
+under the From heading; work is reported back under the To heading,
 written and committed with the pull request rather than said in a reply. When a
 ruling has been applied it moves into whichever standing section it belongs in
 and is deleted from the exchange. **The exchange holds only what is still live**
@@ -37,8 +37,9 @@ node scripts/toolsmoke.js       # every tool runs; every served bundle parses
 | Which tools | same import, `[t['slug'] for t in TOOLS]` |
 | Every prose ceiling | `assets/prose-budget.json` — and `scripts/gate.py`'s `page_words` is the only correct way to measure against it |
 | A page's current weight | `python3 -c "import sys;sys.path.insert(0,'scripts');from gate import page_words;print(page_words('public/index.html','index.html'))"` |
-| The planner's catalogue counts | `assets/50-upgrades.json` — `counts`, `standing`, `purge` |
-| When the planner snapshot was read | `assets/50-upgrades.json` → `read` |
+| The planner's catalogue counts | `assets/50-upgrades.json` → `figures`, **keyed by the dotted path each figure was read from** in the planner's `meta.json`. `counts.items` is the catalogue; `counts.purge.shipped` is what survived the era purge. They are not the same quantity and were equal until 18 Aug 2026 |
+| When the planner snapshot was read | `assets/50-upgrades.json` → `read` — the day a person stood behind it, not the day a script ran |
+| How to refresh that snapshot | `node scripts/refresh-upgrades.mjs <YYYY-MM-DD>`. Hand-run, needs network, never in `build.sh`. Never hand-edit a figure |
 | Which zones are revamped | `assets/zones-index.json` → any zone with `revamped` |
 | How many zones have cleared every gate | `python3 -c "import json,collections;print(collections.Counter(z['verify_level'] for z in json.load(open('assets/zones-index.json',encoding='utf-8'))))"` |
 | Which pages lack the shared footer | `grep -rL site-foot --include='*.html' --exclude-dir=app public/` — the imported pages, and nothing else. Do **not** use `public/**/*.html`: with globstar off it silently skips the five root pages |
@@ -126,83 +127,70 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
-**The `assets/50-upgrades.json` refresh is deliberately not being done yet.**
-The snapshot is stale — 3,653 items vendored against 3,663 live — but the
-planner's own session is mid-turn and the snapshot would be stale again before
-a refresh here finished. The Director will schedule it once that turn lands and
-has been verified. **Do not refresh it opportunistically**; a vendored snapshot
-whose read-date is newer than its verification is worse than a stale one.
+*Empty. Every ruling received has been applied and moved into the standing
+section it belongs in — that is the correct state for this heading, not a lost
+note.*
 
 ---
 
 ## To the Director
 
-**PR: A1, A2 and A4. A3 is a second pull request against the workflow.**
+**PR: the 50 Upgrades refresh, and the field-path record that stops it recurring.**
 
-**A1 — Mistmoore is `partial`.** `verify_gate` names what changed, that gates 1
-and 2 stand on sourcing, that gate 3 is open because nobody has checked whether
-the mesh moved, and that one logged session in the revamped zone closes it.
-Every downstream count re-rendered itself: the home page reads **9 fully
-verified**, the dungeon index reads **9 of 13 … 1 is partial and 3 are not
-verified at all**, and `sources.html` moved from *Three* to **Four of the 13
-surveys have not cleared**. Nobody typed any of those.
+**The catalogue figure is `counts.items`, and it is 3,663.** The page led with
+3,653 under the label *Items shipped*; 3,653 is `counts.purge.shipped`, what
+survived the era purge. The two were equal while
+`counts.purge.admittedOutsideScrape` was 0, and they diverged by exactly ten
+when the planner admitted ten items on evidence other than era. Both figures
+now appear, saying which is which: the catalogue in the tile, and one sentence
+separating what is here on era from what is here on independent evidence.
 
-**Three second-order effects beyond the two you flagged.**
+**Every figure is keyed by the dotted path it was read from**, and
+`_build/build29.py` looks each one up by that path through `fig()`. So the
+upstream field name sits beside the label in the generator where a mismatch is
+visible in a diff, and a path that moves upstream is a build failure rather than
+a plausible wrong number on a published page. `scripts/refresh-upgrades.mjs`
+writes the snapshot and **refuses to write at all if any declared path has
+vanished** — a schema change is precisely the moment a figure quietly becomes a
+different quantity, so it stops rather than leaves a hole. Hand-run, needs the
+network, never in `build.sh`; the read-date is passed in, because it is the day
+a person stood behind the snapshot rather than the day a script ran.
 
-*`gate.py` check 2's second assertion was dead, and also wrong.* Its regex read
-`(\w+) of the ten plates have not cleared`. The plates became surveys on 10
-August and that sentence renders its count from `len(Z)`, so the page has said
-"of the 13 surveys" ever since — it had matched nothing for eight days and
-reported clean. It also compared against `npart`, while the sentence counts
-every survey short of the full standard, `partial` and `none` together. So on
-the day it started matching it would have failed a correct page: `npart` was 0
-and the page said three. **Fixing the regex alone would have converted a silent
-check into a false one**, so both are fixed together, and `gate_selftest.py`
-grows a 25th case that proves the revived check reaches the sentence that
-actually ships.
+**The refresh surfaced two more faults, both of the same family.**
 
-*A plural agreement bug that only existed at `npart == 1`.* The verdict sentence
-would have shipped "1 are partial". `npart` had been 0 since the sentence was
-written, so it had never rendered. Now derived.
+*The unattributed share was typed as a word.* `<strong>Forty per cent…</strong>`
+sat in the page beside a computed `PCT_UNATTRIBUTED` that nothing used. The
+refresh moved it to 41. A count spelled as a word is the one shape `gate.py`
+check 1 structurally cannot see, because every count rule there matches digits —
+the same hole the dungeon index fell into with "Ten zones, surveyed".
 
-*The prose ratchet fired, correctly, and the first fix I reached for was the
-wrong one.* `dungeons/index.html` grew 374 → 450 words, because the "Open gates"
-list prints `verify_gate` in full for every zone short of `full` and Mistmoore
-became a fourth entry. I raised the ceiling by hand to 450 — the sanctioned
-path — and was about to send it to you that way, on the reasoning that `LEDGERS`
-carries an argument that widening it should be hard.
+*The licence divergence closed from the other end.* We withdrew the planner's
+unsourced `CC BY-SA 4.0` claim and deliberately left the snapshot carrying what
+they claimed, because the difference between what we could stand behind and what
+they asserted was the whole point. Upstream has now withdrawn it too:
+`license.content` is `null` with a note saying it was assumed rather than
+checked. There is no difference left to draw, and the page reads their null.
 
-**That reasoning was out of date and I had not checked it.** `LEDGERS` already
-holds five entries of exactly this shape, each with the same comment in
-different words: one card per zone forbids adding a zone, one card per tool
-forbids shipping a tool, one row per boss kill forbids measuring another. The
-open-gates list is the sixth instance of a pattern this file has settled five
-times, and it carries the sharpest edge of any of them — a ceiling over those
-rows puts budget pressure on the description of an open gap, and *"never delete
-a flagged gap to make a page look complete"* is a hard rule. A check whose
-cheapest remedy is to say less about an unsolved problem is worse than no check.
+**The prose ratchet fired, and this time trimming was the right answer.**
+`tools/50-upgrades.html` went to 646 against a 561 ceiling. Unlike the dungeon
+index, this was genuinely writing more, not recording more — my new paragraph
+included two sentences narrating our own mistake, which is diary content on a
+reference page. Cut, and the mechanism sentence deduplicated against the
+paragraph above it. The page now measures **585**, inside the 40-word slack that
+exists for a genuine new fact. No ceiling raised.
 
-So the rows are exempt and the hand-raise is reverted. The page measures **181**
-words of actual prose, the ratchet lowered its ceiling from 374 to 181 on its
-own, and **193 words of slack that had been hiding behind the gate rows are
-gone**. Opening or closing a gate now moves this ceiling by nothing.
+**One figure I could not verify, raised rather than touched.** The page's meta
+description says "three classes, twenty-three slots". The snapshot holds
+`slots.worn.length` = 18. I cannot reconcile 23 from anything in the planner's
+file, and it is typed rather than derived. Changing it without evidence would be
+inventing a number, so it stands as written and is flagged here.
 
-I mention the wrong turn because it is the failure mode this project keeps
-finding: I quoted a rule from memory instead of reading it, and the memory was
-a version of the file that no longer exists.
-
-**A2 — the change log entry** is a `Source refresh` dated 18 Aug 2026. It
-records the Mistmoore revamp, records the Kedge Keep respawn fix separately
-against §9's open respawn gap and notes that no figure was published this time
-either, and states plainly that survey prose has **not** been adjudicated
-against these notes. Ledger rows are exempt from the ceilings, so it cost no
-words anywhere.
-
-**A4 — answered above**, in *Why conformance.js is hand-run*, with the WARN path
-verified by execution rather than by reading it.
-
-**Not done, as instructed:** no ingestion of the notes into survey prose, and no
-50 Upgrades refresh.
+**Cross-repo, for whenever you next speak to Session B.** The planner's
+`upstream.datasets` block records our `zones.v1.json` at hash `9ccb68b8…`, which
+is the pre-Mistmoore copy. Ours is now `1c4d0d55…` and carries Mistmoore at
+`partial` with its gate text. Nothing is broken — they will pick it up on their
+next refresh — but if their page states a verification count for our zones, it
+is currently one behind.
 
 ---
 
