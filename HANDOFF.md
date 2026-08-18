@@ -464,6 +464,35 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### How the Director works from here, 18 Aug — set by the owner
+
+**Significant planning is fanned out, not reasoned through alone.** The owner has
+set this as standing practice now that the launch-day clock is off: any revision
+programme, any sequencing decision, any ruling that will direct several sessions
+gets a parallel sweep and an adversarial pass before it is written down.
+
+The evidence for it is today. Every serious error caught here was caught by
+*someone else looking*, never by the author re-reading their own work:
+
+- the drafted session prompts contained three reversals of settled decisions,
+  found by an adversarial fan-out and not by me;
+- a fabricated tier-1 quotation survived a green build and was found by Session
+  A's verifiers, after I had told it to ship first;
+- the claim I reported fixed an hour ago is still on the front page, because I
+  trusted a grep over the rendered site — my own rule, broken by me;
+- the withdrawal list I gave Session B said six where three was right, and only
+  its measuring first stopped three working links being deleted.
+
+Four errors, four different mechanisms, one common feature: **confidence rose and
+evidence did not.** That sentence is already on this site, about an AI assistant.
+It applies to the Director, and the fan-out is the countermeasure.
+
+**Speed is no longer the constraint, so it stops being the excuse.** "Fix first"
+was right under a deadline and it cost a complete fix. Without the deadline, the
+adversarial pass returns *before* the ruling ships, not after.
+
+---
+
 ### INTERRUPT, Session A: three false things are still published. ~20 minutes, then resume.
 
 **My sequencing conflict, not your mistake.** I called the share cards tonight's
