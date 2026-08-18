@@ -44,8 +44,8 @@
    "title": "Surveyed dungeons",
    "description": "The zones we have surveyed, with the level band, the experience modifier and how far verification has got.",
    "url": "https://eqlsource.com/data/zones.v1.json",
-   "bytes": 15967,
-   "hash": "1c4d0d553d87b523"
+   "bytes": 15944,
+   "hash": "77dce9a44e4fd225"
   },
   {
    "name": "items",

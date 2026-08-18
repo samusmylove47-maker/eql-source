@@ -1,0 +1,46 @@
+{
+ "_comment": "Sources for the no-placeholder claim, one entry per basis. Each zone in zones-index.json names one of these by id in placeholders_source_id, and the rendered confidence is DERIVED from the tier here rather than typed beside the claim. Written 18 Aug 2026 after an audit found the claim mis-sourced on ten zones at once: a single boolean was covering a tier-1 patch note, a tier-2 wiki revision and nothing at all, and it could not tell them apart. That is the identical fault CLAUDE.md section 2 records for the Sky tracker's `v` flag, and the remedy is the same one skydata.py already applies - a claim names its source, and the badge is derived, never typed.",
+ "sources": {
+  "patch-2026-07-28": {
+   "tier": 1,
+   "kind": "Official patch notes",
+   "title": "Natch Potes - July 28, 2026 (EverQuest Legends Launch Day Patch)",
+   "url": "https://www.everquestlegends.com/patch-notes/eql-update-notes-7-28-2026",
+   "published": "2026-07-28",
+   "read": "2026-08-18",
+   "raw": "sources/raw/2026-07-28-eql-update-notes.txt",
+   "fetchable": true,
+   "quote": "Removed placeholders from and lowered maximum respawn times in several dungeons: The Hole, Nagafen's Lair, Lower Guk, Lair of the Splitpaw, The Warrens, Castle Mistmoore. More dungeon treatments will take place over time.",
+   "names_zones": ["thehole", "nagafenslair", "lowerguk", "splitpaw", "warrens", "mistmoore"],
+   "note": "SIX zones, named individually. Read in a real browser on 18 Aug 2026 and stored verbatim at the path above. The list is closed - the note names no others, and it does not mention Upper Guk. This site claimed for weeks that it named eleven, or ten plus Upper Guk; it named six."
+  },
+  "patch-2026-06-23": {
+   "tier": 1,
+   "kind": "Official patch notes",
+   "title": "23 June 2026 revamp notes",
+   "url": null,
+   "published": "2026-06-23",
+   "read": null,
+   "raw": null,
+   "fetchable": false,
+   "quote": "a striking lack of placeholders for named mobs",
+   "names_zones": ["najena"],
+   "note": "NOT PUBLICLY FETCHABLE, checked 18 Aug 2026. everquestlegends.com/patch-notes lists six notes and its oldest is 7 July 2026 (Beta); probes for 6-16, 6-23 and 6-30 all fall through to the site's Home view, which is how that single-page app answers a path that does not exist. The quote has been carried in Najena's own provenance block since that survey was written, and it is beta-era - the game launched 28 July. So the strongest source we hold for Najena is one a reader cannot check. That is recorded here rather than smoothed over, and it is the open question on this claim."
+  },
+  "eqlwiki-cat-named-155553": {
+   "tier": 2,
+   "kind": "Structured wiki data",
+   "title": "eqlwiki Category:Named Mobs",
+   "url": "https://eqlwiki.com/index.php?title=Category:Named_Mobs&oldid=155553",
+   "published": "2026-07-10",
+   "read": "2026-08-18",
+   "raw": null,
+   "fetchable": true,
+   "revision": 155553,
+   "editor": "Caliente",
+   "quote": "In EQLegends, named mob placeholders do not spawn in the revamped dungeons (e.g., Befallen, Blackburrow, Najena); the named mob(s) will spawn every time.",
+   "names_zones": ["befallen", "blackburrow", "najena"],
+   "note": "Passes the CLAUDE.md section 2 provenance test: named 2026 editor, dated revision, structured category page, explicitly about Legends, not a Project 1999 import. It is tier 2 and it predates launch by eighteen days, so it is beta-era knowledge about a pre-launch state. It is a real source and it is weaker than a patch note - which is exactly what the rendered line must say."
+  }
+ }
+}

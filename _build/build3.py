@@ -91,7 +91,8 @@ p.tight{color:#B0A9A2;font-size:14px;line-height:1.6;margin:0}
 # THE PLACEHOLDER STATEMENT
 # Spawn percentages on every survey are inherited classic data: they describe
 # the chance a named appears instead of its placeholder. The developer patch
-# note removed placeholders from all ten of these zones and Upper Guk, so every
+# note removed placeholders from six named dungeons - not the ten-plus-Upper-Guk
+# this comment asserted until 18 Aug 2026 - so every
 # percentage on the site is historical. It is printed rather than deleted, with
 # this note above it, because deleting what a source says is how a record stops
 # being checkable.
@@ -191,8 +192,9 @@ def mark_withheld(h, slug):
 # ---------------------------------------------------------------------------
 # THE RETRACTION HAS TO REACH THE ROW
 #
-# The placeholder question was settled at tier 1 on 10 Aug: the patch note names
-# eleven dungeons placeholders were removed from. Every affected survey grew a
+# The placeholder question was settled at tier 1 on 10 Aug - on a MISREADING.
+# The note names six dungeons, not the eleven this comment claimed until 18 Aug
+# 2026, when it was fetched and stored. Every affected survey grew a
 # header saying so. The roster rows underneath kept saying "Placeholder is an
 # earth elemental" in bold and present tense, three lines below a header saying
 # there are none.
@@ -221,6 +223,25 @@ PH_MARK_CSS = """<style>
 </style>"""
 
 
+# One attribution per source, because the ten flagged zones do not share one.
+# Keyed by placeholders_source_id in zones-index.json; assets/placeholder-sources.json
+# carries the tier, url and read-date behind each.
+PH_TITLE = {
+    'patch-2026-07-28':
+        'Historical. The 28 July 2026 patch note names this zone among the six it '
+        'removed placeholders from.',
+    'patch-2026-06-23':
+        'Historical. The 23 June 2026 revamp note describes a striking lack of '
+        'placeholders here. The 28 July note does not name this zone.',
+    'eqlwiki-cat-named-155553':
+        'Historical, on a wiki revision rather than a patch note: eqlwiki '
+        'Category:Named Mobs rev 155553, 10 July 2026. The 28 July note does not '
+        'name this zone.',
+    None:
+        'Historical. The source is recorded against this zone in zones-index.json.',
+}
+
+
 def mark_placeholders(h, slug):
     """Strike placeholder claims in roster cells where the patch note removed them."""
     z = BY.get(slug)
@@ -228,11 +249,18 @@ def mark_placeholders(h, slug):
         return h, 0
     n = 0
 
+    # THE ATTRIBUTION IS PER ZONE, NOT ONE SENTENCE FOR ALL OF THEM.
+    # This hard-coded "the 28 July 2026 patch note" for every zone the boolean
+    # fired on. That note names six dungeons; the flag fired on ten. So Najena,
+    # Befallen and Blackburrow - which keep the claim on other sources - had a
+    # false tier-1 citation minted into their rosters by the generator, in a
+    # tooltip, where no data fix could reach it. Read 18 Aug 2026.
+    title = PH_TITLE.get(z.get('placeholders_source_id'), PH_TITLE[None])
+
     def one(m):
         nonlocal n
         n += 1
-        return (f'<span class="ph-old" title="Historical. The 28 July 2026 patch note '
-                f'removed placeholders from this zone.">{m.group(1)}</span>'
+        return (f'<span class="ph-old" title="{title}">{m.group(1)}</span>'
                 f'<span class="ph-old-tag">was</span>')
 
     # only inside the roster's notes cells, never in body prose
