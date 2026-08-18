@@ -35,7 +35,15 @@ IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 # put groups and fragments in the total and printed 451 beside The Index's 441.
 NITEMS = IX['counts']['item_pages']
 NNAMED = IX['counts']['named_pages']
-MAPS = {"najena","splitpaw","lowerguk","nagafenslair","mistmoore"}
+# The five navigation maps were withdrawn on 17 Aug 2026 - every survey now
+# carries a floor plan drawn from the game's own mesh, so a second hand-made
+# map of the same zone was a worse copy of something already on the page.
+# What a zone HAS is a plan, and that is computed from the geometry rather
+# than listed here: a hand-kept set is exactly how "5 maps" outlived the maps.
+try:
+    PLANS = set(json.load(open('assets/zone-geometry.json', encoding='utf-8')))
+except (OSError, ValueError):
+    PLANS = set()
 BYS = {z['slug']: z for z in Z}
 
 def zsub(z):
@@ -49,7 +57,7 @@ zrows = "\n".join(
       <span><span class="zt">{z['title']}</span><span class="zs">{zsub(z)}</span></span>
       <span class="cell zonesub"><em>Respawn</em>{z['respawn'] or 'not recorded'}</span>
       <span class="cell"><em>ZEM</em>{z['zem']} <span style="color:var(--faint)">/ {z['zem_pct']}%</span></span>
-      <span class="cell"><em>Map</em>{'yes' if z['slug'] in MAPS else '—'}</span>
+      <span class="cell"><em>Plan</em>{'yes' if z['slug'] in PLANS else '—'}</span>
       <span class="bar"></span></a>''' for z in Z)
 
 # Home page: colour objects rather than table rows. The contour rings are
@@ -275,7 +283,7 @@ home = head("Accurate, sourced and kept current",
         <h3 class="dt">The surveys</h3>
         <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
           and coordinates re-derived from <code>/loc</code> records.</p>
-        <span class="dgo">{len(Z)} surveys, {len(MAPS)} maps &rarr;</span>
+        <span class="dgo">{len(Z)} surveys &rarr;</span>
       </a>
 
       <a class="door contour" href="tools/index.html" style="--c:var(--instr);--cx:84%;--cy:104%">
@@ -435,7 +443,7 @@ dung = head("Dungeon surveys",
       companion. Population tables, named rosters with spawn data, loot tied to its drop source, and
       coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the
       floor the game itself draws.</p>
-    <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len(MAPS)} maps</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
+    <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len([z for z in Z if z['slug'] in PLANS])} with a floor plan</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
   </div>
 </section>
 

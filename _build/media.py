@@ -36,6 +36,35 @@ SRC = '_media'
 DST = os.path.join('public', 'assets', 'media')
 
 
+def _png_size(b):
+    """(width, height) from a PNG's IHDR, or None."""
+    import struct
+    if b[:8] != b'\x89PNG\r\n\x1a\n':
+        return None
+    return struct.unpack(">II", b[16:24])
+
+
+def _jpeg_size(b):
+    """(width, height) from the first JPEG start-of-frame marker, or None."""
+    import struct
+    if b[:2] != b'\xff\xd8':
+        return None
+    i = 2
+    while i < len(b) - 9:
+        if b[i] != 0xFF:
+            i += 1
+            continue
+        m = b[i + 1]
+        if 0xC0 <= m <= 0xCF and m not in (0xC4, 0xC8, 0xCC):
+            h, w = struct.unpack(">HH", b[i + 5:i + 9])
+            return w, h
+        if m in (0xD8, 0x01) or 0xD0 <= m <= 0xD7:
+            i += 2
+            continue
+        i += 2 + struct.unpack(">H", b[i + 2:i + 4])[0]
+    return None
+
+
 def main():
     if not os.path.isdir(SRC):
         print('media: no _media/ directory, nothing to copy')
@@ -56,8 +85,17 @@ def main():
             # kind of corruption that only shows up in a browser.
             with open(out, 'wb') as fh:
                 fh.write(blob)
-        manifest[stem] = dict(file=name, bytes=len(blob),
-                              kb=round(len(blob) / 1024))
+        rec = dict(file=name, bytes=len(blob), kb=round(len(blob) / 1024))
+        # INTRINSIC SIZE, BECAUSE A LAZY IMAGE WITH NO SIZE NEVER LOADS.
+        # width/height attributes give the box an aspect ratio before the bytes
+        # arrive. Without them these rendered 2px tall, so `loading="lazy"`
+        # never saw them enter the viewport and the browser never requested
+        # them at all - two blank strips where the screenshots should be. It
+        # also stops the page jumping when they do land.
+        wh = _png_size(blob) or _jpeg_size(blob)
+        if wh:
+            rec['w'], rec['h'] = wh
+        manifest[stem] = rec
     # An earlier build's copy is dead weight and, worse, still reachable.
     for old in sorted(glob.glob(os.path.join(DST, '*'))):
         if os.path.basename(old) not in keep:

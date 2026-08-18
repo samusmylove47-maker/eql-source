@@ -32,6 +32,40 @@ from _partials import head, bar, foot
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
 APP, DS = SL['app'], SL['dataset']
 REL = SL.get('release') or {}
+OV = REL.get('overlay') or {}
+# The two screenshots and the trailer poster, hashed by _build/media.py. Absent
+# on a machine that has never run it, so the shots degrade to nothing rather
+# than to a broken image.
+try:
+    MEDIA = json.load(open('assets/media.json', encoding='utf-8'))
+except (OSError, ValueError):
+    MEDIA = {}
+
+
+def shot(stem, alt, cap):
+    m = MEDIA.get(stem)
+    if not m:
+        return ''
+    # width/height are required, not decorative: without them the box is 2px
+    # tall before the bytes arrive, `loading="lazy"` never sees it enter the
+    # viewport, and the browser never requests the image at all.
+    dim = f' width="{m["w"]}" height="{m["h"]}"' if m.get('w') else ''
+    return (f'<figure class="slshot"><img src="../assets/media/{m["file"]}" alt="{alt}"'
+            f'{dim} loading="lazy" decoding="async">'
+            f'<figcaption>{cap}</figcaption></figure>')
+
+
+SHOTS = ''
+if MEDIA.get('sky-ledger-ready') or MEDIA.get('sky-ledger-setup'):
+    SHOTS = ('<div class="slshots">'
+             + shot('sky-ledger-ready',
+                    'The overlay listing seven ready quests, each showing only the items to hand over',
+                    'Ready quests. Under each tester, the pieces to hand them &mdash; nothing else, '
+                    'because that is the question you have standing at the NPC.')
+             + shot('sky-ledger-setup',
+                    'The setup panel: whose kills count, the class picker, and what to track',
+                    'Setup. The number on each class is how many tests it owes.')
+             + '</div>')
 HREF = f"../app/{APP['file']}"
 # A version we could not read is not a version. Printing "vNone" beside three
 # real figures is the kind of small lie that makes a reader distrust the rest.
@@ -162,13 +196,13 @@ page = head("Sky Ledger",
         <p class="m">Build {APP['hash']} &middot; nothing installed &middot; nothing sent</p>
         <span class="go">Open the app &rarr;</span>
       </a>
-      <a href="#overlay" style="--c:var(--brass)">
+      <a href="{OV.get('url', '#overlay')}" style="--c:var(--brass)">
         <h3>Put it over the game</h3>
         <p>The browser build cannot pass clicks through to the game and can only fake
           transparency. The Electron shell fixes both, with two global hotkeys and a
           continuous opacity slider.</p>
-        <p class="m">Windows &middot; portable &middot; no download published yet</p>
-        <span class="go">What that needs &rarr;</span>
+        <p class="m">Windows &middot; portable &middot; {OV.get('mb', '?')} MB &middot; unzip and run</p>
+        <span class="go">Download the overlay &rarr;</span>
       </a>
     </div>
   </section>
@@ -257,6 +291,7 @@ page = head("Sky Ledger",
     <p class="lede"><a href="https://youtu.be/gmH4wm6pHz8">Watch it run, 18 seconds &rarr;</a>
       &nbsp;&middot;&nbsp;
       <a href="https://youtu.be/hxq2qY1FXtg">The full tutorial, 1:15 &rarr;</a></p>
+    {SHOTS}
     <table class="slkeys">
       <tr><td>Ctrl+Shift+O</td><td>show and hide the panel</td></tr>
       <tr><td>Ctrl+Shift+L</td><td>click-through &mdash; the panel stops eating clicks</td></tr>

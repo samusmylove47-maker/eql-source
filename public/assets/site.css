@@ -1097,3 +1097,19 @@ section.feat{border-top:0;padding-top:var(--s-7)}
 .featclaimrow .lab{display:block;margin-top:2px;font-family:"IBM Plex Mono",monospace;
   font-size:var(--t-2xs);letter-spacing:.14em;text-transform:uppercase;color:var(--faint)}
 .featclaimrow .why{display:block;margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut)}
+
+/* ── Sky Ledger screenshots ──────────────────────────────────────────────
+   The overlay is a tall narrow rail, so these are portrait and sit side by
+   side rather than stacked. Capped in height because a 816px-tall image in
+   the middle of a page pushes everything after it off the screen. */
+.slshots{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:var(--s-5);margin:var(--s-6) 0 0;align-items:start}
+.slshot{margin:0}
+/* Never upscale. These are 427px-wide captures of a 427px-wide overlay, and
+   stretching one into a 568px column softens every glyph in it - on a page
+   whose whole argument is that the tool is legible over the game. They sit at
+   native width and centre in whatever space the column gives them. */
+.slshot img{display:block;width:100%;max-width:427px;height:auto;margin:0 auto;
+  border:1px solid var(--rule2);border-radius:var(--r);background:var(--surface-0)}
+.slshot figcaption{margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut);
+  line-height:1.5}
