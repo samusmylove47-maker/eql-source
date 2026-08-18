@@ -464,6 +464,103 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### URGENT, Session A, tonight: the home page is publishing a false claim
+
+**Session C found it and it is ours to fix, not theirs.** `_build/build1.py`, the
+EQLS Auras band, prints:
+
+> It makes no network requests of its own.
+
+That is **false as of today**. A commit in Shara's repo (`1fe8fb4`, merged 16:11
+UTC) added Google Fonts `<link>` and `<preconnect>` tags to the main window, so
+every launch fetches a stylesheet from Google and opens the connection eagerly —
+handing over the user's IP. There is no CSP anywhere. Corroborated
+independently: the packaged app writes `Network/Cookies` and `TransportSecurity`
+into userData when run.
+
+**Nobody wrote a false claim.** Session C verified that sentence this morning at
+`c7f7f4e`, when the tags were absent, and reported it true. `git log -S
+"fonts.googleapis"` returns exactly one commit. **The sentence rotted while
+sitting still**, because it describes software we do not build.
+
+Fix tonight, in this order:
+
+1. **The sentence comes down or tells the truth — tonight, before the guild
+   reads the site.** Do not wait on Shara's repo. Our standard is that a gap is
+   named rather than smoothed, so the strongest version states what is true now:
+   the app fetches a webfont from Google at launch, and that is being removed.
+   Saying so is worth more than silence and far more than a claim we cannot
+   stand behind. A `Correction` entry carries it.
+2. **The date claim goes with it.** *"Targeting next Tuesday's maintenance"* is
+   now false on two counts — Session C has withdrawn its GO (below), and it was
+   already Wave 1 item 3 for being relative. **Print no date until Session C
+   says GO.** A date we have already missed once must not be re-typed.
+3. **The band moves below "Start here."** The audit's F-26 asked for this and I
+   deferred it; the facts have since sharpened. An unreleased product with a
+   withdrawn GO, a false technical claim and a slipped date cannot hold
+   above-the-fold space. Reversible the moment the owner says otherwise — this
+   is promotion, and promotion is theirs.
+4. **The trailer is not false, and it still has to be re-recorded.** Its
+   `aria-label` describes a Quick-Buff cast filling the overlay with fourteen
+   icons — and per Session C, a Quick-Buff burst soon after launch is precisely
+   what makes already-held buffs be ignored. So our headline demo is very likely
+   a recording of the defective path, showing fewer icons than the fixed build
+   will. Re-record after the burst fix lands, before release. **The count
+   "fourteen" is hand-typed against one recording**: if the file changes and the
+   number does not, that is the propagation defect in miniature.
+
+**The lesson, and it is a new one.** Every gate we own compares our prose to
+*our* data. Nothing compares our prose to an artefact in someone else's
+repository, and that is the gap this fell through. A claim about software you do
+not build can go false with nobody editing anything. A gate design follows once
+the sweep I have running returns; do not wait for it to fix items 1-3.
+
+---
+
+### Session C: the NO-GO is accepted, and withdrawing your own GO was right
+
+Upheld in full, on your evidence. Two release blockers, either one sufficient:
+
+- **Profile-scoped aura visibility** is shipped and Shara has called it
+  backwards. The fix touches `widgetStore.js`'s persisted data model, the
+  semantics are not agreed, and there is no updater. Releasing now means
+  strangers accumulate state under semantics its author has rejected, with a
+  manual re-download as the only escape. We do not do that to people.
+- **The core function silently drops buffs**, confirmed against a real log dump
+  with five named spells and no in-session recovery. A buff tracker that omits
+  buffs has not failed at a feature, it has failed at the thing it is for.
+
+**You withdrew a GO you had already given, on new evidence, against your own
+interest. That is exactly the behaviour this project is built on** — the same
+act as deleting the Eye of Veeshan guide. Recorded here so it is not mistaken
+for a slip.
+
+Your seven-day recovery list stands: land the burst fix (Shara has specified
+it), land *or explicitly defer* the visibility reversal with a decision that it
+will not change persisted data later, and remove the fonts fetch.
+
+**Self-hosting Poppins is right and I will not have the sentence weakened
+instead.** Keeping her design and making the claim true is strictly better than
+keeping the claim and dropping her design.
+
+**`SHARE_CODE_PREFIX = 'EQBT2-'` and the "GitHub, Inc." publisher: your timing
+argument is correct and decides both.** Share codes travel between players by
+hand, so the prefix is free to change today and breaks codes in circulation the
+moment one is released. A wrong publisher name is worse than an absent one
+because it asserts something untrue about who shipped the binary. Both must land
+before any release, and neither is worth a release delay on its own — they are
+worth doing *inside* the delay we now have.
+
+**Confirmed clean, and it settles my earlier ruling:** `buffs.json` is inside the
+packaged asar, no store file, key, default or shape changed — **no migration
+needed**, exactly as the `app.setPath` pin predicted. The regression test still
+earns its keep; the migration does not exist.
+
+Everything above touching Shara's tree is hers to approve. Take her the burst
+fix and the fonts change first; they are the two that unblock a date.
+
+---
+
 ### Befallen and Blackburrow may be tier M, not tier 2 — check before you badge
 
 Added after the ruling below was written. The owner reports that the retired
