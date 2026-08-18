@@ -313,6 +313,71 @@ it in the change log as an idea taken from a sibling site rather than an origina
 
 ---
 
+## P5 - The =logo family, and settling the sibling tool names
+
+**Recorded 18 Aug 2026, not started. `docs/DESIGN.md`'s call, with the owner.**
+
+The product is **EQLS Auras**, which reads aloud as "Equals Auras". That is not
+an abbreviation that happened to fit; it is the anchor for a planned logo family
+written as **=Auras**, **=50Upgrades**, **=SkyLedger**.
+
+Which means the decision is larger than one heading. It touches the site
+wordmark and the names of two tools that already ship under other names — the
+50 Upgrades description page and the Sky Ledger. Renaming either is a change to
+a published page's title, its `og:title`, its share card under
+`public/assets/og/`, and every footer that links it, so it is not a CSS job with
+a naming side effect.
+
+**Do not begin any of it from a heading change.** `DESIGN.md` is binding for
+design work and this is design work: the mark comes first, the tool names follow
+it, and the home page follows them. Whoever picks this up should read
+`docs/DESIGN.md` and get the owner's decision on the mark before touching a
+single generator.
+
+The one thing already settled: **the band heading is "EQLS Auras" and stays
+there** until the family lands. `_build/build1.py` carries the reasoning above
+the band so a tidying pass cannot expand it back.
+
+---
+
+## P5 - The home page's prose ceiling is coupled to the change log
+
+**Recorded 18 Aug 2026, not started. Nobody designed this and it will bite again.**
+
+`index.html` renders `ENTRIES[:4]` from `_build/changelog.py`, and those four
+entries are counted by `page_words` like any other prose. So **writing a verbose
+correction silently spends the front page's headroom**, and the page that trips
+its ceiling is whichever one happens to be nearest it rather than the one that
+grew.
+
+It has already happened. Two change-log entries landed on 18 August and moved
+`index.html` from 649 to 657 with nothing on the home page having been written
+or edited. A session then planned a band against 649, and the arithmetic was
+wrong before it started.
+
+That is the same shape as the fault `page_words` already strips `<svg>` labels
+and ledger rows to avoid — a ceiling that bites on recording rather than on
+writing — but it is **not** simply another `LEDGERS` entry, and it should not be
+fixed by adding one without thought. `ENTRIES[:4]` is a rolling window, not an
+append-only list: it does not grow without bound, it *fluctuates* with the
+length of whatever was written most recently. Exempting it outright would stop
+the home page's own prose being governed at all, because the four entries are a
+large share of the page.
+
+Options worth weighing, none chosen:
+
+- exempt the four rendered entries the way ledger rows are exempt, and accept
+  that the rest of the home page is what the ceiling then governs;
+- render a fixed-length summary on the home page rather than entry bodies, so
+  the window's weight cannot vary;
+- leave it and document it, so the next session budgeting the home page knows
+  to measure rather than to trust a number written down earlier.
+
+The third is what is in place today, via the derivation table in `HANDOFF.md`.
+It is the weakest of the three and it is honest about being weak.
+
+---
+
 ## Deliberately not doing
 
 **Do not clone EQL Tools.** Their layer is client-mined numbers, log parsing and

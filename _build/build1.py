@@ -238,7 +238,14 @@ feature = f'''
 </section>
 '''
 
-# EQL SOURCE AURAS — the band for the overlay, from Session C's adjudicated copy.
+# EQLS AURAS — the band for the overlay, from Session C's adjudicated copy.
+#
+# THE NAME IS "EQLS Auras", NOT "EQL Source Auras" AND NOT "EQL Auras". It reads
+# aloud as "Equals Auras", and it anchors a planned logo family — =Auras,
+# =50Upgrades, =SkyLedger. Session C wrote "EQL Auras"; a first ruling changed
+# it to "EQL Source Auras"; the owner overruled that on 18 Aug 2026 and this is
+# the settled form. Do not expand it back on the grounds that it reads like an
+# abbreviation. It is one.
 #
 # THE TEXT IS LIFTED FROM docs/auras/band.html, NOT RETYPED. That file is what
 # the word count was measured against, and every sentence in it is backed claim
@@ -286,7 +293,7 @@ auras = f'''
         </figure>
         <div>
           <p class="eyebrow">Next &middot; <b>reads your own log</b></p>
-          <h2 class="feath">EQL Source Auras</h2>
+          <h2 class="feath">EQLS Auras</h2>
           <p class="featlede">It reads your combat log and draws your buffs over the game as
             icons that count down, so you can see what is about to drop off without opening
             a window.</p>
