@@ -1,35 +1,35 @@
 {
- "_comment": "Vendored snapshot of the 50 Upgrades planner's own meta.json. Every figure here is read from that file and never from the planner's README: the README says 3,533 items and meta.json says 3,653, and printing the wrong one is exactly the propagation fault gate.py exists to catch. Refresh by re-fetching the source URL; do not hand-edit.",
+ "_comment": "Vendored snapshot of the 50 Upgrades planner’s own meta.json. EVERY FIGURE IS KEYED BY THE DOTTED PATH IT WAS READ FROM in that file, and _build/build29.py looks them up by that path. A vendored number that does not say which field it is gets read as the wrong quantity eventually, and did: this file carried 3,653 as counts.items until 18 Aug 2026, but 3,653 is counts.purge.shipped. They were equal while counts.purge.admittedOutsideScrape was 0, so the page printed the era-purge survivor count under a catalogue label and nothing could tell. A \".length\" suffix is the length of the array at that path.",
+ "_regenerate": "node scripts/refresh-upgrades.mjs <YYYY-MM-DD>. Never hand-edit a figure.",
  "read": "2026-08-18",
  "source": "https://samusmylove47-maker.github.io/EQL50ups/data/meta.json",
  "url": "https://samusmylove47-maker.github.io/EQL50ups/",
- "built_at": "2026-08-18T02:29:42.008Z",
- "counts": {
-  "items": 3653,
-  "with_slot": 2263,
-  "with_stats": 1713,
-  "with_effects": 538,
-  "with_acquisition": 3456,
-  "with_numeric_id": 289,
-  "era_unknown": 177,
-  "stats_unknown": 6
- },
- "standing": {
-  "tier_m": 5,
-  "tier_2": 2045,
-  "tier_5": 126,
-  "unattributed": 1477
- },
- "purge": {
-  "before": 11252,
-  "shipped": 3653,
-  "quarantined": 7599
- },
- "classes": 16,
- "races": 15,
- "slots_worn": 18,
- "era_current": "Sky",
- "license": "CC BY-SA 4.0",
- "license_source": "EverQuest Legends Wiki (eqlwiki.com)",
- "attribution": "Item data derived from the EverQuest Legends Wiki (eqlwiki.com), used under CC BY-SA 4.0. Derived data is shared alike. EverQuest is a trademark of Daybreak Game Company LLC; this project is unaffiliated with Daybreak or Game Jawn."
+ "built_at": "2026-08-18T06:36:13.565Z",
+ "figures": {
+  "counts.items": 3663,
+  "counts.withSlot": 2263,
+  "counts.withStats": 1713,
+  "counts.withEffects": 538,
+  "counts.withAcquisition": 3456,
+  "counts.withNumericId": 299,
+  "counts.eraUnknown": 187,
+  "counts.statsUnknown": 16,
+  "counts.standing.tier-M": 5,
+  "counts.standing.tier-2": 2045,
+  "counts.standing.tier-5": 126,
+  "counts.standing.unattributed": 1487,
+  "counts.purge.before": 11252,
+  "counts.purge.shipped": 3653,
+  "counts.purge.quarantined": 7599,
+  "counts.purge.catalog": 3663,
+  "counts.purge.admittedOutsideScrape": 10,
+  "classes.length": 16,
+  "races.length": 15,
+  "slots.worn.length": 18,
+  "era.current": "Sky",
+  "license.content": null,
+  "license.checked": "2026-08-18",
+  "license.contentSource": "EverQuest Legends Wiki (eqlwiki.com)",
+  "attribution": "Item data derived from the EverQuest Legends Wiki (eqlwiki.com), with attribution. eqlwiki publishes no content licence — checked 2026-08-18; siteinfo rightsinfo empty, Project:Copyrights absent — so the terms of reuse are not stated by the source. EverQuest is a trademark of Daybreak Game Company LLC; this project is unaffiliated with Daybreak or Game Jawn."
+ }
 }
