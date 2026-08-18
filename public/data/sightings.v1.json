@@ -1281,7 +1281,7 @@
     },
     {
      "mob": "A leering gargoyle",
-     "seen": 14,
+     "seen": 15,
      "off_roster": true,
      "sessions": [
       {
@@ -1386,7 +1386,7 @@
     },
     {
      "mob": "A leering gargoyle",
-     "seen": 15,
+     "seen": 16,
      "off_roster": true,
      "sessions": [
       {
@@ -1445,7 +1445,7 @@
     },
     {
      "mob": "A sneering gargoyle",
-     "seen": 5,
+     "seen": 6,
      "off_roster": true,
      "sessions": [
       {
@@ -1736,7 +1736,7 @@
    "Black Silk Gloves": [
     {
      "mob": "A deathly usher",
-     "seen": 21,
+     "seen": 22,
      "off_roster": false,
      "sessions": [
       {
@@ -2364,6 +2364,50 @@
      ]
     }
    ],
+   "Rune of Fortune": [
+    {
+     "mob": "Enynti",
+     "seen": 14,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Leather Whip": [
     {
      "mob": "Splitpaw Commander",
@@ -2411,50 +2455,6 @@
       },
       {
        "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Rune of Fortune": [
-    {
-     "mob": "Enynti",
-     "seen": 13,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
@@ -3470,6 +3470,42 @@
      ]
     }
    ],
+   "Illegible Scroll": [
+    {
+     "mob": "A dark librarian",
+     "seen": 8,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A dark ass't librarian",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Midnight Clad Straps": [
     {
      "mob": "Amygdalan warrior",
@@ -3630,42 +3666,6 @@
       {
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Illegible Scroll": [
-    {
-     "mob": "A dark librarian",
-     "seen": 7,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A dark ass't librarian",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -4572,6 +4572,18 @@
      ]
     },
     {
+     "mob": "A shadowy sage",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A shadowy scrivener",
      "seen": 1,
      "off_roster": true,
@@ -4659,6 +4671,18 @@
      "mob": "A wraithish ancille",
      "seen": 1,
      "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Enynti",
+     "seen": 1,
+     "off_roster": false,
      "sessions": [
       {
        "date": "18 Aug 2026",
@@ -8198,6 +8222,18 @@
      ]
     },
     {
+     "mob": "A shadowy scribe",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A soul seductress",
      "seen": 1,
      "off_roster": true,
@@ -9511,6 +9547,18 @@
      "sessions": [
       {
        "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A shadowy sage",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
@@ -12014,5 +12062,5 @@
    ]
   }
  },
- "hash": "1be595a8a64a5846"
+ "hash": "cf5133ef3eb56122"
 }
