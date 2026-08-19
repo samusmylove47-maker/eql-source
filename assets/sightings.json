@@ -9564,6 +9564,34 @@
     "off_roster": true
    },
    {
+    "item": "Insidious Sleeves",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
     "item": "Insidious Slippers",
     "n": 3,
     "sessions": [
@@ -9618,27 +9646,6 @@
     "sessions": [
      {
       "date": "16 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Insidious Sleeves",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
       "zone": "The Plane of Hate",
       "difficulty": 4,
       "label": "Refined",
@@ -9806,6 +9813,120 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Master of Spite": [
+   {
+    "item": "Rune Etched Gauntlets",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     },
+     {
+      "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Rune Etched Boots",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Rune Etched Greaves",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Rune Etched Bracer",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Rune Etched Vambraces",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -10974,106 +11095,6 @@
     "sessions": [
      {
       "date": "16 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
-  "Master of Spite": [
-   {
-    "item": "Rune Etched Gauntlets",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     },
-     {
-      "date": "15 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Rune Etched Greaves",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Rune Etched Boots",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Rune Etched Bracer",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "15 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Rune Etched Vambraces",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
       "zone": "The Plane of Hate",
       "difficulty": 4,
       "label": "Refined",
@@ -24187,7 +24208,7 @@
    },
    {
     "mob": "Master of Spite",
-    "n": 3,
+    "n": 4,
     "sessions": [
      {
       "date": "13 Aug 2026",
@@ -24198,6 +24219,13 @@
      },
      {
       "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
       "zone": "The Plane of Hate - Group",
       "difficulty": 4,
       "label": "Refined",
@@ -24806,6 +24834,57 @@
       "difficulty": 4,
       "label": "Refined",
       "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Insidious Sleeves": [
+   {
+    "mob": "Coercer T`vala",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "An ashenbone drake",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
      }
     ],
     "off_roster": true
@@ -26081,6 +26160,57 @@
       "character": "Shara"
      }
     ]
+   }
+  ],
+  "Rune Etched Boots": [
+   {
+    "mob": "Master of Spite",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A boogeyman",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "17 Aug 2026",
+      "zone": "The Plane of Fear",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A phantasm",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Fear",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Rune Etched Greaves": [
@@ -27640,50 +27770,6 @@
     "off_roster": true
    }
   ],
-  "Insidious Sleeves": [
-   {
-    "mob": "An ashenbone drake",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "Coercer T`vala",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
   "Bloodstone Eyepatch": [
    {
     "mob": "An imp familiar",
@@ -28132,50 +28218,6 @@
       "character": "Avenrae"
      }
     ]
-   }
-  ],
-  "Rune Etched Boots": [
-   {
-    "mob": "Master of Spite",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A boogeyman",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "17 Aug 2026",
-      "zone": "The Plane of Fear",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A phantasm",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Fear",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
    }
   ],
   "Imbrued Platemail Helm": [
@@ -29445,5 +29487,5 @@
   ]
  },
  "pairs": 671,
- "excluded_trash_drops": 5079
+ "excluded_trash_drops": 5082
 }

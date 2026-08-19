@@ -63624,5 +63624,234 @@
   },
   "drop_tier_floor": 4,
   "drop_tier_modal": 4
+ },
+ {
+  "zone": "The Plane of Hate - Group",
+  "character": "Avenrae",
+  "zone_from": null,
+  "difficulty_label": "Refined",
+  "difficulty_num": 4,
+  "difficulty": 4,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "18 Aug 2026",
+  "window": "20:57-21:15",
+  "stamps": [],
+  "minutes": 18,
+  "kills": 1,
+  "distinct": 1,
+  "kinds": [
+   "Coercer T`vala"
+  ],
+  "kills_by_mob": {
+   "Coercer T`vala": 1
+  },
+  "drop_tiers": {
+   "4": 5
+  },
+  "faction": {
+   "Inhabitants of Hate": 7
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 1,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {}
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {
+   "Coercer T`vala": {
+    "Inhabitants of Hate": "down"
+   }
+  },
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 1005,
+  "you_miss": 721,
+  "mob_hit": 27,
+  "mob_miss": 55,
+  "mobs": {
+   "A haunted chest pet": {
+    "swings": 26,
+    "landed": 6,
+    "avg": 25.3,
+    "max": 56,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Healing": 5,
+     "Wrath": 2,
+     "Lay on Hands": 1
+    },
+    "loot": {}
+   },
+   "A haunted chest": {
+    "swings": 10,
+    "landed": 2,
+    "avg": 62.5,
+    "max": 98,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Tashania": 1,
+     "Immobilize": 1
+    },
+    "loot": {}
+   },
+   "Master of Spite": {
+    "swings": 25,
+    "landed": 9,
+    "avg": 160.0,
+    "max": 308,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Firefist": 12,
+     "Spiritual Brawn": 11,
+     "Malosi": 7,
+     "Superior Healing": 6,
+     "Engulfing Roots": 3,
+     "Drifting Death": 2,
+     "Fire": 2,
+     "Efflorescing Heal": 2,
+     "Chloroplast": 2,
+     "Sha's Lethargy": 2,
+     "Shield of Spikes": 1,
+     "Harnessing of Spirit": 1,
+     "Ice": 1,
+     "Ensnare": 1
+    },
+    "loot": {
+     "Rune Etched Boots +4": 1,
+     "Rune Etched Gauntlets +4": 1,
+     "Tunarian Scimitar +4": 1
+    }
+   },
+   "A loathling lich": {
+    "swings": 2,
+    "landed": 1,
+    "avg": 72.0,
+    "max": 72,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Immobilize": 2,
+     "Diamondskin": 1,
+     "Elnerick's Entombment of Ice": 1
+    },
+    "loot": {}
+   },
+   "Coercer T`vala": {
+    "swings": 19,
+    "landed": 9,
+    "avg": 193.8,
+    "max": 300,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Tashania": 12,
+     "Engulfing Roots": 9,
+     "Ensnare": 8,
+     "Immobilize": 6,
+     "Superior Healing": 4,
+     "Drifting Death": 2,
+     "Shiftless Deeds": 2,
+     "Life Leech": 2,
+     "Arch Shielding": 1,
+     "Shield of Spikes": 1,
+     "Firefist": 1,
+     "Harm Touch": 1,
+     "Ice": 1,
+     "Dazzle": 1,
+     "Efflorescing Heal": 1
+    },
+    "loot": {
+     "Insidious Sleeves +4": 2
+    }
+   },
+   "Innoruuk`s Chosen": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Swords": 4,
+     "Malaisement": 3,
+     "Symbol of Naltron": 2,
+     "Barrier of Combustion": 2,
+     "Resolution": 1,
+     "Arch Shielding": 1,
+     "Armor of the Faithful": 1,
+     "Blaze": 1,
+     "Shield of Spikes": 1
+    },
+    "loot": {}
+   },
+   "Innoruuk`s Chosen pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Skin like Rock": 2,
+     "Firefist": 1,
+     "Earth Elemental Attack": 1,
+     "Searing Arrow": 1,
+     "Tangling Weeds": 1
+    },
+    "loot": {}
+   },
+   "A forsaken revenant": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Feedback": 5,
+     "Celerity": 3
+    },
+    "loot": {}
+   },
+   "Cleric of Innoruuk": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Force": 1
+    },
+    "loot": {
+     "Crystallized Sulfur": 1,
+     "Blue Diamond": 1
+    }
+   }
+  },
+  "drop_tier_floor": 4,
+  "drop_tier_modal": 4
  }
 ]

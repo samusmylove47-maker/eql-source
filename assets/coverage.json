@@ -190,7 +190,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "40 items recorded dropping here"
+     "detail": "41 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -362,7 +362,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 92,
+   "kills": 93,
    "bosses": [
     "Ashenbone Broodmaster",
     "Avatar of Abhorrence",
