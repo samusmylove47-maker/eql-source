@@ -1281,112 +1281,7 @@
     },
     {
      "mob": "A leering gargoyle",
-     "seen": 17,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A jeering gargoyle",
-     "seen": 14,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a jeering gargoyle",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Gargoyle Eye": [
-    {
-     "mob": "A flouting gargoyle",
-     "seen": 29,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A leering gargoyle",
-     "seen": 17,
+     "seen": 18,
      "off_roster": true,
      "sessions": [
       {
@@ -1428,6 +1323,111 @@
       },
       {
        "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a jeering gargoyle",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Gargoyle Eye": [
+    {
+     "mob": "A flouting gargoyle",
+     "seen": 30,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A jeering gargoyle",
+     "seen": 17,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A leering gargoyle",
+     "seen": 17,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       },
@@ -1520,7 +1520,7 @@
    "Rune of Ivy": [
     {
      "mob": "A deathly usher",
-     "seen": 27,
+     "seen": 28,
      "off_roster": false,
      "sessions": [
       {
@@ -1581,6 +1581,89 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Black Silk Gloves": [
+    {
+     "mob": "A deathly usher",
+     "seen": 24,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A will sapper",
+     "seen": 15,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A glyphed aegis",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -1661,89 +1744,6 @@
        "date": "04 Aug 2026",
        "zone": "Blackburrow",
        "difficulty": 2
-      }
-     ]
-    }
-   ],
-   "Black Silk Gloves": [
-    {
-     "mob": "A deathly usher",
-     "seen": 23,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A will sapper",
-     "seen": 14,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A glyphed aegis",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
       }
      ]
     }
@@ -1875,6 +1875,40 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Sacrificial Dagger": [
+    {
+     "mob": "An imp familiar",
+     "seen": 17,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -2171,40 +2205,6 @@
        "date": "15 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 3
-      }
-     ]
-    }
-   ],
-   "Sacrificial Dagger": [
-    {
-     "mob": "An imp familiar",
-     "seen": 16,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
       }
      ]
     }
@@ -2958,7 +2958,7 @@
     },
     {
      "mob": "A dark ass't librarian",
-     "seen": 1,
+     "seen": 2,
      "off_roster": false,
      "sessions": [
       {
@@ -3633,6 +3633,25 @@
      ]
     }
    ],
+   "Dark Cauldron": [
+    {
+     "mob": "An ancille cook",
+     "seen": 8,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Loam Encrusted Robe": [
     {
      "mob": "Master Yael",
@@ -3893,25 +3912,6 @@
       {
        "date": "17 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Dark Cauldron": [
-    {
-     "mob": "An ancille cook",
-     "seen": 7,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -5907,6 +5907,30 @@
      ]
     }
    ],
+   "Vial of Noble's Blood": [
+    {
+     "mob": "A Fallen Noble",
+     "seen": 5,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Carmine Trinket": [
     {
      "mob": "A fetid fiend",
@@ -6950,30 +6974,6 @@
     }
    ],
    "Noble's Robes": [
-    {
-     "mob": "A Fallen Noble",
-     "seen": 4,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Vial of Noble's Blood": [
     {
      "mob": "A Fallen Noble",
      "seen": 4,
@@ -9504,6 +9504,23 @@
      ]
     },
     {
+     "mob": "A shadowy scribe",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A thought spoiler",
      "seen": 2,
      "off_roster": true,
@@ -9623,18 +9640,6 @@
      "sessions": [
       {
        "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A shadowy scribe",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
@@ -11236,6 +11241,20 @@
      ]
     }
    ],
+   "Mistmoore Heirloom Ring": [
+    {
+     "mob": "A Fallen Noble",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Ethereal Mist Boots": [
     {
      "mob": "A boogeyman",
@@ -12126,5 +12145,5 @@
    ]
   }
  },
- "hash": "56c74ac9ca413692"
+ "hash": "facacfda5894bbd0"
 }
