@@ -464,6 +464,106 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### URGENT: the live site is serving a branch. `main` is clean. Do not revert anything.
+
+**Diagnosed 19 Aug. Read this before touching git.**
+
+An outside agent was asked for a *mock* alternative theme against a local clone.
+It pushed `cursor/atlas-visual-rebuild-60cc` and **the live site is now serving
+that branch**. Verified by bytes, not by looking:
+
+```
+public/index.html on origin/main                     md5 ea9bd80c20c5
+public/index.html on cursor/atlas-visual-rebuild-60cc md5 e30816ff08ef
+https://eqlsource.com                                 md5 e30816ff08ef   ← matches the BRANCH
+git merge-base --is-ancestor cursor/… origin/main  →  NOT merged into main
+origin/main data-theme count                       →  0
+```
+
+**So there is nothing to revert.** `main` is untouched and every one of Session
+A's twenty-one merges is intact. **The fault is in Cloudflare's deployment
+target, not in the repository**, and a git revert would fix nothing while risking
+a day's ingestion work.
+
+**The only urgent action is the owner's**, because it is in a dashboard no
+session can reach: set the Cloudflare production branch back to `main` and
+redeploy. Nothing else about this is time-critical.
+
+**Do not delete that branch.** It is the design brief now, and its history is the
+only record of what was proposed.
+
+**What it actually did, so nobody treats it as a theme change.** 833 files,
+45,184 insertions, **47,571 deletions**. Two of those deletions matter more than
+the rest:
+
+- **It deleted 110 lines of `sources/raw/2026-07-28-eql-update-notes.txt`** —
+  the stored patch-note artefact fetched today, the primary source under the
+  placeholder correction and the whole reason G-1 becomes possible. **That file
+  is the most expensive thing in the repository to re-acquire**, because the page
+  is JS-rendered and this session cannot reach the host at all.
+- **It gutted the reasoning comments in `survey-refresh.yml`**, including the
+  recorded explanation of why STEP 2 must never commit to `main`. That is
+  institutional memory, and it is exactly what this project keeps saying is
+  worth more than the code around it.
+
+Neither is lost, because `main` never took the change. Both are the argument for
+why the answer is *rebuild it ourselves* rather than *merge it and tidy up*.
+
+---
+
+### Session A: build the torchlight theme. Ours, from their idea.
+
+**The owner's ruling, and the scope is narrower than the branch.** They like the
+lighter parchment-and-cartography direction, they want the light/dark switch, and
+they want **the dungeon plates to stay dark**. They wanted ideas from that agent,
+not a rewrite. So: mine the branch, adopt nothing wholesale.
+
+**Build:**
+
+1. **A light theme and a dark theme, dark as the default**, with the switch
+   presented as *torchlight* — lit and unlit. That framing is the owner's and it
+   fits a site about dungeons better than a sun/moon toggle ever would.
+2. **The dungeon surveys stay dark in both modes.** Not a bug to fix later — a
+   deliberate exception, recorded in `DESIGN.md` with the reason: the plates are
+   the site's signature and they read as underground. A light-mode reader gets a
+   parchment frame around a dark plate, which is what a real atlas does.
+3. **Respect the constraints that already exist.** Zone accents are permanent and
+   may never be reassigned, so each needs a derived variant that clears **WCAG AA
+   on parchment as well as on graphite** — derive it, do not hand-pick two
+   palettes. Both themes are non-negotiable on AA.
+4. **Honour the system default** and remember the choice, and make the toggle
+   work with no JavaScript wherever that is possible.
+
+**Sequence it, and do not do it tonight.** Live log ingestion outranks this while
+the owner is playing. Bring me a **spec first** — palette derivation, the plate
+exception, the toggle mechanics, what changes in `_partials.py` — before a single
+generator moves. `docs/DESIGN.md` is binding and currently describes one theme;
+amend it in the same PR that introduces the second.
+
+**One mechanical warning.** Touching `assets/site.css` re-hashes `CSS_V` and
+rewrites the stylesheet line on **every** page, so a theme commit is a whole-site
+diff by construction. Land it on its own branch, alone, with `conformance.js` run
+at both viewports **in both themes** — that sweep is the only check here that
+lays a page out, and a two-theme site doubles what it has to cover.
+
+---
+
+### Session B: your drift check will fire, and that is correct
+
+When the theme lands, `site.css` re-hashes and the shared chrome changes, so your
+live footer drift test will go red. **That is the check working**, exactly as
+ruled. Do not disable it and do not pre-emptively copy anything — wait until
+Session A's theme PR is merged, then re-copy once and re-pin. If the planner
+grows its own light mode later that is a separate decision and it is yours.
+
+### Session C: nothing changes for you
+
+The band material is unaffected. If the site gains a light theme, the Auras
+screenshots and trailer may eventually want a parchment-framed variant — not now,
+and not before the app ships.
+
+---
+
 ### Session A: do this BEFORE tonight's logs are parsed, or the evening scores nothing
 
 **`raidstats.py` does not know any named mob in the zones the owner is about to
