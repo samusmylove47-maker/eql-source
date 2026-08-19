@@ -8,7 +8,7 @@
   "Fire Giant Warrior": [
    {
     "item": "Throwing Boulder",
-    "n": 73,
+    "n": 90,
     "sessions": [
      {
       "date": "10 Aug 2026",
@@ -43,6 +43,13 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -5240,6 +5247,151 @@
     ]
    }
   ],
+  "Magus Rokyl": [
+   {
+    "item": "Throwing Boulder",
+    "n": 8,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Polished Mithril Mask",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Rokyls Channelling Crystal",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Fine Steel Spear",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Master Yael": [
    {
     "item": "Loam Encrusted Robe",
@@ -5922,137 +6074,6 @@
      }
     ],
     "off_roster": true
-   }
-  ],
-  "Magus Rokyl": [
-   {
-    "item": "Throwing Boulder",
-    "n": 7,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Polished Mithril Mask",
-    "n": 5,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Rokyls Channelling Crystal",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Fine Steel Spear",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
    }
   ],
   "Tranixx Darkpaw": [
@@ -6985,6 +7006,123 @@
     "off_roster": true
    }
   ],
+  "Warlord Skarlon": [
+   {
+    "item": "Throwing Boulder",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Mithril Greaves",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Mithril Vambraces",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Fine Steel Spear",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "A Fallen Noble": [
    {
     "item": "Vial of Noble's Blood",
@@ -7894,6 +8032,26 @@
     ]
    },
    {
+    "item": "Bladestopper",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
     "item": "Gold Plated Koshigatana",
     "n": 3,
     "sessions": [
@@ -7921,15 +8079,42 @@
     ]
    },
    {
-    "item": "Bladestopper",
-    "n": 2,
+    "item": "Red Dragon Scales",
+    "n": 3,
     "sessions": [
      {
       "date": "11 Aug 2026",
       "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Blight, Hammer of the Scourge",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
      }
     ]
    },
@@ -7949,6 +8134,26 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Gauntlets of Fiery Might",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -7974,26 +8179,6 @@
     ]
    },
    {
-    "item": "Red Dragon Scales",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
     "item": "Treasure Hunter`s Satchel",
     "n": 2,
     "sessions": [
@@ -8009,19 +8194,6 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 2,
       "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Gauntlets of Fiery Might",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -8160,109 +8332,6 @@
      }
     ],
     "off_roster": true
-   }
-  ],
-  "Warlord Skarlon": [
-   {
-    "item": "Throwing Boulder",
-    "n": 5,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Mithril Vambraces",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Mithril Greaves",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Fine Steel Spear",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
    }
   ],
   "a ghoul cavalier": [
@@ -14612,7 +14681,7 @@
   "Throwing Boulder": [
    {
     "mob": "Fire Giant Warrior",
-    "n": 73,
+    "n": 90,
     "sessions": [
      {
       "date": "10 Aug 2026",
@@ -14647,6 +14716,13 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -14785,7 +14861,7 @@
    },
    {
     "mob": "Magus Rokyl",
-    "n": 7,
+    "n": 8,
     "sessions": [
      {
       "date": "10 Aug 2026",
@@ -14834,6 +14910,13 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -14868,7 +14951,7 @@
    },
    {
     "mob": "Warlord Skarlon",
-    "n": 5,
+    "n": 6,
     "sessions": [
      {
       "date": "10 Aug 2026",
@@ -14903,6 +14986,13 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -25862,6 +25952,28 @@
     "off_roster": true
    }
   ],
+  "Bladestopper": [
+   {
+    "mob": "Lord Nagafen",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Gold Plated Koshigatana": [
    {
     "mob": "Lord Nagafen",
@@ -25883,6 +25995,64 @@
      },
      {
       "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Red Dragon Scales": [
+   {
+    "mob": "Lord Nagafen",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Rokyls Channelling Crystal": [
+   {
+    "mob": "Magus Rokyl",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
       "zone": "Nagafen's Lair - Group",
       "difficulty": 4,
       "label": "Refined",
@@ -26092,6 +26262,35 @@
      }
     ],
     "off_roster": true
+   }
+  ],
+  "Mithril Greaves": [
+   {
+    "mob": "Warlord Skarlon",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
    }
   ],
   "Mithril Vambraces": [
@@ -27832,17 +28031,17 @@
     ]
    }
   ],
-  "Bladestopper": [
+  "Blight, Hammer of the Scourge": [
    {
     "mob": "Lord Nagafen",
     "n": 2,
     "sessions": [
      {
-      "date": "11 Aug 2026",
+      "date": "18 Aug 2026",
       "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
      }
     ]
    }
@@ -27864,6 +28063,28 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Gauntlets of Fiery Might": [
+   {
+    "mob": "Lord Nagafen",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -27891,28 +28112,6 @@
     ]
    }
   ],
-  "Red Dragon Scales": [
-   {
-    "mob": "Lord Nagafen",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   }
-  ],
   "Treasure Hunter`s Satchel": [
    {
     "mob": "Lord Nagafen",
@@ -27930,28 +28129,6 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 2,
       "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
-   }
-  ],
-  "Rokyls Channelling Crystal": [
-   {
-    "mob": "Magus Rokyl",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
       "character": "Avenrae"
      }
     ]
@@ -28108,28 +28285,6 @@
       "difficulty": 0,
       "label": null,
       "character": "Shara"
-     }
-    ]
-   }
-  ],
-  "Mithril Greaves": [
-   {
-    "mob": "Warlord Skarlon",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
      }
     ]
    }
@@ -29030,21 +29185,6 @@
     ]
    }
   ],
-  "Gauntlets of Fiery Might": [
-   {
-    "mob": "Lord Nagafen",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ]
-   }
-  ],
   "Brell's Girdle": [
    {
     "mob": "Master Yael",
@@ -29304,6 +29444,6 @@
    }
   ]
  },
- "pairs": 670,
- "excluded_trash_drops": 5059
+ "pairs": 671,
+ "excluded_trash_drops": 5079
 }

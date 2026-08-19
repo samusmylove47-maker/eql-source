@@ -63348,103 +63348,241 @@
   "difficulty_label_agrees": true,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "20:41-20:43",
+  "window": "20:41-20:53",
   "stamps": [],
-  "minutes": 2,
-  "kills": 1,
-  "distinct": 1,
+  "minutes": 12,
+  "kills": 4,
+  "distinct": 3,
   "kinds": [
-   "King Tranix pet"
+   "King Tranix pet",
+   "a fire giant warrior",
+   "a fire giant warrior pet"
   ],
   "kills_by_mob": {
-   "King Tranix pet": 1
+   "a fire giant warrior pet": 2,
+   "King Tranix pet": 1,
+   "a fire giant warrior": 1
   },
   "drop_tiers": {
-   "4": 3
+   "4": 33
   },
   "faction": {
-   "Nagafen": 6,
-   "Solusek Mining Co.": 6,
-   "Vox": 6
+   "Nagafen": 21,
+   "Solusek Mining Co.": 21,
+   "Vox": 21
   },
   "context": [],
   "escapes": [],
   "control": {
-   "melee_stuns_avoided": 2,
+   "melee_stuns_avoided": 4,
    "lockout_lines": 0,
    "fear_lines": 0,
    "screams": 0,
    "scream_seconds": 0,
    "stuns": {},
-   "resists": {}
+   "resists": {
+    "Envenomed Breath": {
+     "a fire giant warrior pet": 1
+    },
+    "Drowsy": {
+     "a fire giant warrior": 3,
+     "a fire giant warrior pet": 2
+    },
+    "Frost Shard": {
+     "a fire giant warrior": 1
+    },
+    "Ice Spear": {
+     "a fire giant warrior pet": 2
+    },
+    "Burst of Fire": {
+     "a fire giant warrior pet": 1
+    },
+    "Earth Elemental Attack": {
+     "a fire giant warrior pet": 2
+    },
+    "Engulfing Darkness": {
+     "a fire giant warrior pet": 1
+    },
+    "Cancelling of Life": {
+     "a fire giant warrior pet": 1
+    },
+    "Searing Arrow": {
+     "a fire giant warrior pet": 1
+    },
+    "Bonds of Force": {
+     "Lord Nagafen": 1
+    },
+    "Elnerick's Entombment of Ice": {
+     "Magus Rokyl": 1
+    },
+    "Lava Breath": {
+     "Lord Nagafen": 1
+    }
+   }
   },
-  "faction_by_mob": {},
-  "faction_capped_by_mob": {},
+  "faction_by_mob": {
+   "a fire giant warrior": {
+    "Solusek Mining Co.": 5
+   }
+  },
+  "faction_capped_by_mob": {
+   "a fire giant warrior": {
+    "Nagafen": "down",
+    "Vox": "down"
+   }
+  },
   "exp_by_mob": {},
   "exp_samples_by_mob": {},
   "exp_attributed": 0,
   "exp_attributed_kills": 0,
-  "you_hit": 75,
-  "you_miss": 31,
-  "mob_hit": 50,
-  "mob_miss": 79,
+  "you_hit": 722,
+  "you_miss": 448,
+  "mob_hit": 180,
+  "mob_miss": 304,
   "mobs": {
    "A fire giant warrior": {
-    "swings": 57,
-    "landed": 24,
-    "avg": 63.6,
+    "swings": 154,
+    "landed": 61,
+    "avg": 65.5,
     "max": 177,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Tashania": 6,
-     "Drowsy": 3,
-     "Frost Shard": 3,
-     "Greater Healing": 3,
-     "Malosi": 2,
+     "Tashania": 7,
+     "Greater Healing": 6,
+     "Superior Healing": 5,
+     "Malaisement": 5,
+     "Drowsy": 4,
+     "Frost Shard": 4,
+     "Shock of Swords": 4,
+     "Malosi": 3,
+     "Chloroplast": 3,
+     "Immobilize": 3,
+     "Ensnare": 3,
+     "Shock of Venom": 2,
      "Spirit of Wolf": 2,
+     "Envenomed Breath": 2,
+     "Shadow Vortex": 2,
+     "Life Leech": 2,
+     "Tangling Weeds": 2,
      "Feedback": 1,
-     "Shock of Venom": 1,
      "Spiritual Brawn": 1,
-     "Chloroplast": 1,
-     "Superior Healing": 1,
      "Discordant Mind": 1,
-     "Envenomed Breath": 1
+     "Force": 1,
+     "Harm Touch": 1,
+     "Negation of Life": 1,
+     "Fire": 1,
+     "Blaze": 1,
+     "Retribution": 1,
+     "Healing Light": 1,
+     "Word of Spirit": 1,
+     "Sacred Echo": 1,
+     "Dooming Darkness": 1,
+     "Efflorescing Heal": 1,
+     "Scorching Arrow": 1,
+     "Infectious Cloud": 1,
+     "Ensnaring Roots": 1
     },
-    "loot": {}
+    "loot": {
+     "Throwing Boulder +4": 17,
+     "Fire Giant Toes": 6,
+     "Lava Rock": 4,
+     "Fine Steel Short Sword +4": 2,
+     "Emerald": 1,
+     "Mote of Major Potential": 1,
+     "Jade Ring +4": 1,
+     "Fine Steel Two Handed Sword +4": 1,
+     "Crystallized Sulfur": 1
+    }
    },
    "A fire giant warrior pet": {
-    "swings": 38,
-    "landed": 16,
-    "avg": 25.5,
+    "swings": 96,
+    "landed": 25,
+    "avg": 22.5,
     "max": 58,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Greater Healing": 10,
-     "Envenomed Breath": 4,
-     "Drowsy": 3,
-     "Ice Spear": 3,
+     "Greater Healing": 12,
+     "Ice Spear": 6,
+     "Envenomed Breath": 6,
+     "Drowsy": 4,
+     "Lifedraw": 4,
+     "Wrath": 3,
+     "Burst of Fire": 3,
+     "Earth Elemental Attack": 3,
      "Spirit of Wolf": 2,
-     "Wrath": 2,
+     "Lay on Hands": 2,
+     "Searing Arrow": 2,
+     "Light Healing": 2,
      "Stun": 1,
      "Sicken": 1,
-     "Lay on Hands": 1
+     "Harm Touch": 1,
+     "Tangling Weeds": 1,
+     "Engulfing Darkness": 1,
+     "Cancelling of Life": 1
     },
     "loot": {}
    },
    "Warlord Skarlon": {
-    "swings": 26,
-    "landed": 10,
-    "avg": 75.0,
-    "max": 144,
+    "swings": 38,
+    "landed": 16,
+    "avg": 80.9,
+    "max": 155,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
-    "loot": {}
+    "loot": {
+     "Mithril Greaves +4": 1,
+     "Lava Rock": 1,
+     "Throwing Boulder +4": 1
+    }
+   },
+   "Lord Nagafen": {
+    "swings": 163,
+    "landed": 68,
+    "avg": 134.7,
+    "max": 261,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Bonds of Force": 3,
+     "Supernova": 1,
+     "Markar's Clash": 1,
+     "Elnerick's Entombment of Ice": 1,
+     "Immobilize": 1
+    },
+    "loot": {
+     "Blight, Hammer of the Scourge +4": 2,
+     "Gauntlets of Fiery Might +4": 1,
+     "Bladestopper +4": 1,
+     "Red Dragon Scales": 1,
+     "Orb of Tishan +4": 1
+    }
+   },
+   "Magus Rokyl": {
+    "swings": 25,
+    "landed": 10,
+    "avg": 91.1,
+    "max": 255,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Immobilize": 5,
+     "Elnerick's Entombment of Ice": 4,
+     "Ice Comet": 1,
+     "Wrath of Al`Kabor": 1
+    },
+    "loot": {
+     "Throwing Boulder +4": 1,
+     "Mote of Major Potential": 1,
+     "Rokyls Channelling Crystal +4": 1
+    }
    },
    "King Tranix pet": {
     "swings": 0,
