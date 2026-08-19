@@ -228,6 +228,36 @@ data is in `assets/raids-measured.json` and the query is four lines. If you
 want it folded in, say so and I will do it as its own PR with the numbers
 re-read out of the dataset at write time rather than typed.
 
+
+### Phinigel Autropos backstabs, and that makes him a triple-class raid boss in a log
+
+First kill of him we hold, in a Kedge Keep group instance at the top tier. His
+melee verbs are `backstabs` and `crushes`, and he cast `Ensnare`,
+`Engulfing Roots`, `Drifting Death`, `Ice Comet`, `Wrath of Al`Kabor`,
+`Diamondskin`, `Immobilize` and `Ice`.
+
+Backstab is a rogue ability. The roots and snares are druid. The comet and
+Diamondskin are wizard. That is three kits in one fight, and it is the
+reasoning CLAUDE.md section 2 already applies to Mistmoore trash, arriving on
+a raid boss.
+
+It is the second time the published triple-class claim has shown up in a log
+after Innoruuk, and the first where one of the three is a **melee** kit rather
+than a second spell list.
+
+**The data is stored and nothing publishes it.** `melee_verbs` is recorded in
+`assets/raids-measured.json`, but no page renders melee verbs, so the row on
+`learn/difficulty.html` shows his spells and not his backstab. Publishing it
+would be a new claim on a page rather than a catch-up parse, so I have not
+written it. Say the word and it goes on the Kedge survey or the difficulty
+explainer, derived from `melee_verbs` rather than typed.
+
+### Where the night ended
+
+Play stopped after Kedge Keep. Ingestion is complete through the final log line
+and the loop is discontinued at the owner's instruction. Nothing is
+part-parsed and no session is orphaned.
+
 ---
 
 ## For the session working on the planner

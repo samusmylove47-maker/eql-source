@@ -64273,5 +64273,116 @@
     "loot": {}
    }
   }
+ },
+ {
+  "zone": "Kedge Keep - Group",
+  "character": "Avenrae",
+  "zone_from": null,
+  "difficulty_label": "Refined",
+  "difficulty_num": 4,
+  "difficulty": 4,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "18 Aug 2026",
+  "window": "22:20-22:28",
+  "stamps": [],
+  "minutes": 8,
+  "kills": 0,
+  "distinct": 0,
+  "kinds": [],
+  "kills_by_mob": {},
+  "drop_tiers": {
+   "4": 4
+  },
+  "faction": {
+   "Phinigel Autropos": 5
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 0,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {}
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 249,
+  "you_miss": 128,
+  "mob_hit": 11,
+  "mob_miss": 25,
+  "mobs": {
+   "A swirlspine seahorse": {
+    "swings": 34,
+    "landed": 11,
+    "avg": 25.6,
+    "max": 49,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Superior Healing": 13,
+     "Vortex": 12,
+     "Wrath": 5,
+     "Force": 3,
+     "Celestial Echo": 2,
+     "Harm Touch": 1,
+     "Cajoling Whispers": 1,
+     "Negation of Life": 1,
+     "Tashania": 1,
+     "Immobilize": 1
+    },
+    "loot": {}
+   },
+   "A swirlspine seahorse pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 2,
+     "Harm Touch": 1,
+     "Lay on Hands": 1
+    },
+    "loot": {}
+   },
+   "Phinigel Autropos": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Immobilize": 13,
+     "Engulfing Roots": 6,
+     "Ensnare": 5,
+     "Ice": 2,
+     "Drifting Death": 2,
+     "Ice Comet": 1,
+     "Wrath of Al`Kabor": 1,
+     "Diamondskin": 1
+    },
+    "loot": {
+     "Rod of Malisement +4": 3,
+     "Star Ruby Earring +4": 1,
+     "Mote of Major Potential": 1
+    }
+   }
+  },
+  "drop_tier_floor": 4,
+  "drop_tier_modal": 4
  }
 ]

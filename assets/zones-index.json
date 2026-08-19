@@ -269,7 +269,7 @@
     ],
     "verified": null,
     "verify_level": "none",
-    "verify_gate": "The floor plan is read from the game's own mesh and Phinigel's position is checked against it, but the zone is barely measured: a short run at base difficulty, no drops and no boss fight. Phinigel Autropos is unfought, so nothing about the encounter that gates four class epics is first-hand. The low grade here is accurate, not an artefact.",
+    "verify_gate": "The floor plan is read from the game's own mesh and Phinigel's position is checked against it. Phinigel Autropos is measured now, killed in a group instance at the top tier, but the zone around him is not: the open-world run is short, no upgradeable drops are recorded and the trash is barely sampled. The low grade here is accurate, not an artefact.",
     "respawn_note": "Phinigel Autropos is published at 12 hours, which describes an open-world spawn the 11 June 2026 patch note removed - he no longer spawns in the open world or in personal instances. Trash respawn is unrecorded by any source we have found.",
     "placeholders_removed": false,
     "placeholders_source": "Kedge Keep is not in the 28 July patch note listing six dungeons that had placeholders removed. Nothing has been published either way.",

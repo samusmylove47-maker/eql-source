@@ -5776,6 +5776,43 @@
   "partial_reason": "saw 1 attackers where another kill of this boss at this tier saw 6"
  },
  {
+  "boss": "Phinigel Autropos",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "Kedge Keep - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 7.4,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 337650,
+  "damage_high": 337650,
+  "damage_spread_pct": 0.0,
+  "seconds": 251,
+  "spells": {
+   "Immobilize": 13,
+   "Engulfing Roots": 6,
+   "Ensnare": 5,
+   "Ice": 2,
+   "Drifting Death": 2,
+   "Ice Comet": 1,
+   "Wrath of Al`Kabor": 1,
+   "Diamondskin": 1
+  },
+  "spells_distinct": 8,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "backstabs",
+   "crushes"
+  ]
+ },
+ {
   "boss": "Protector of Sky",
   "difficulty": 0,
   "difficulty_label": "Base",

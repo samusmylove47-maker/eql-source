@@ -429,11 +429,11 @@
     "zem": 139,
     "plate": 13,
     "verify_level": "none",
-    "verify_gate": "The floor plan is read from the game's own mesh and Phinigel's position is checked against it, but the zone is barely measured: a short run at base difficulty, no drops and no boss fight. Phinigel Autropos is unfought, so nothing about the encounter that gates four class epics is first-hand. The low grade here is accurate, not an artefact.",
+    "verify_gate": "The floor plan is read from the game's own mesh and Phinigel's position is checked against it. Phinigel Autropos is measured now, killed in a group instance at the top tier, but the zone around him is not: the open-world run is short, no upgradeable drops are recorded and the trash is barely sampled. The low grade here is accurate, not an artefact.",
     "coverage": {
      "bosses": {
-      "level": "sourced",
-      "detail": "14 named on the roster, none measured"
+      "level": "measured",
+      "detail": "1 boss measured, D4"
      },
      "loot": {
       "level": "none",
@@ -441,7 +441,7 @@
      },
      "difficulty": {
       "level": "measured",
-      "detail": "measured at D0 only"
+      "detail": "measured at D0, D4"
      },
      "inherited": {
       "level": "sourced",
@@ -449,13 +449,13 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 139, respawn not recorded, 8 mob types measured"
+      "detail": "ZEM 139, respawn not recorded, 11 mob types measured"
      }
     },
-    "coverage_score": 6,
+    "coverage_score": 7,
     "url": "https://eqlsource.com/dungeons/kedgekeep"
    }
   ]
  },
- "hash": "f5821837bcecba06"
+ "hash": "869620310b03f60e"
 }
