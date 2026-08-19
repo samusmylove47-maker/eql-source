@@ -6076,6 +6076,148 @@
     "off_roster": true
    }
   ],
+  "Mistress of Scorn": [
+   {
+    "item": "Imbrued Platemail Greaves",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     },
+     {
+      "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Imbrued Platemail Vambraces",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Imbrued Platemail Boots",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Imbrued Platemail Helm",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Imbrued Platemail Bracer",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Imbrued Platemail Breastplate",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "Tranixx Darkpaw": [
    {
     "item": "Onyx Earring",
@@ -6876,134 +7018,6 @@
       "character": "Shara"
      }
     ]
-   }
-  ],
-  "Mistress of Scorn": [
-   {
-    "item": "Imbrued Platemail Greaves",
-    "n": 6,
-    "sessions": [
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     },
-     {
-      "date": "15 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Imbrued Platemail Vambraces",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Imbrued Platemail Helm",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Imbrued Platemail Boots",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "15 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Imbrued Platemail Bracer",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Imbrued Platemail Breastplate",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
    }
   ],
   "Warlord Skarlon": [
@@ -11041,6 +11055,27 @@
     "off_roster": true
    },
    {
+    "item": "Indicolite Gauntlets",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
     "item": "Indicolite Helm",
     "n": 2,
     "sessions": [
@@ -11070,20 +11105,6 @@
       "zone": "The Plane of Hate - Group",
       "difficulty": 4,
       "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "item": "Indicolite Gauntlets",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 1,
-      "label": "Awakened",
       "character": "Avenrae"
      }
     ],
@@ -19888,6 +19909,57 @@
     ]
    }
   ],
+  "Imbrued Platemail Greaves": [
+   {
+    "mob": "Mistress of Scorn",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "13 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Shara"
+     },
+     {
+      "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "Onyx Earring": [
    {
     "mob": "Tranixx Darkpaw",
@@ -21957,50 +22029,6 @@
       "character": "Avenrae"
      }
     ]
-   }
-  ],
-  "Imbrued Platemail Greaves": [
-   {
-    "mob": "Mistress of Scorn",
-    "n": 6,
-    "sessions": [
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "13 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Shara"
-     },
-     {
-      "date": "15 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "16 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
    }
   ],
   "Vial of Noble's Blood": [
@@ -28008,11 +28036,18 @@
     "off_roster": true
    },
    {
-    "mob": "An elite dragoon",
-    "n": 1,
+    "mob": "Innoruuk`s Chosen",
+    "n": 2,
     "sessions": [
      {
-      "date": "12 Aug 2026",
+      "date": "16 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
       "zone": "The Plane of Hate - Group",
       "difficulty": 4,
       "label": "Refined",
@@ -28022,14 +28057,14 @@
     "off_roster": true
    },
    {
-    "mob": "Innoruuk`s Chosen",
+    "mob": "An elite dragoon",
     "n": 1,
     "sessions": [
      {
-      "date": "16 Aug 2026",
+      "date": "12 Aug 2026",
       "zone": "The Plane of Hate - Group",
-      "difficulty": 1,
-      "label": "Awakened",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ],
@@ -28218,6 +28253,43 @@
       "character": "Avenrae"
      }
     ]
+   }
+  ],
+  "Imbrued Platemail Boots": [
+   {
+    "mob": "Mistress of Scorn",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "15 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Plane of Hate - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A gorgon",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "12 Aug 2026",
+      "zone": "The Plane of Fear",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Imbrued Platemail Helm": [
@@ -28852,36 +28924,6 @@
     "off_roster": true
    }
   ],
-  "Imbrued Platemail Boots": [
-   {
-    "mob": "A gorgon",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "12 Aug 2026",
-      "zone": "The Plane of Fear",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "Mistress of Scorn",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "15 Aug 2026",
-      "zone": "The Plane of Hate - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   }
-  ],
   "Vermiculated Bracelet": [
    {
     "mob": "A gorgon",
@@ -29487,5 +29529,5 @@
   ]
  },
  "pairs": 671,
- "excluded_trash_drops": 5082
+ "excluded_trash_drops": 5087
 }

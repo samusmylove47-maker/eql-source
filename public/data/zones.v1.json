@@ -416,7 +416,7 @@
      },
      "farming": {
       "level": "measured",
-      "detail": "ZEM 86, respawn not recorded, 41 mob types measured"
+      "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
      }
     },
     "coverage_score": 9,
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "218c464e7359dbaa"
+ "hash": "c2575e1be0b5ee73"
 }
