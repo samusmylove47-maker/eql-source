@@ -3246,6 +3246,41 @@
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
+  "boss": "Innoruuk, the Prince of Hate",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 11,
+  "other_players": 10,
+  "our_damage_share_pct": 7.3,
+  "damage_is_floor": true,
+  "joined_late_seconds": 5,
+  "damage_low": 361742,
+  "damage_high": 361742,
+  "damage_spread_pct": 0.0,
+  "seconds": 436,
+  "spells": {
+   "Malosi": 6,
+   "Plague": 6,
+   "Immobilize": 3,
+   "Rend": 2,
+   "Elnerick's Entombment of Ice": 2
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "hits"
+  ],
+  "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
   "boss": "Keeper of Souls",
   "difficulty": 0,
   "difficulty_label": "Base",

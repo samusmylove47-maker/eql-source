@@ -63636,9 +63636,9 @@
   "difficulty_label_agrees": true,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "20:57-21:43",
+  "window": "20:57-21:49",
   "stamps": [],
-  "minutes": 46,
+  "minutes": 52,
   "kills": 2,
   "distinct": 2,
   "kinds": [
@@ -63650,15 +63650,15 @@
    "an elite dragoon": 1
   },
   "drop_tiers": {
-   "4": 12
+   "4": 16
   },
   "faction": {
-   "Inhabitants of Hate": 17
+   "Inhabitants of Hate": 18
   },
   "context": [],
   "escapes": [],
   "control": {
-   "melee_stuns_avoided": 3,
+   "melee_stuns_avoided": 6,
    "lockout_lines": 0,
    "fear_lines": 0,
    "screams": 0,
@@ -63679,10 +63679,10 @@
   "exp_samples_by_mob": {},
   "exp_attributed": 0,
   "exp_attributed_kills": 0,
-  "you_hit": 2018,
-  "you_miss": 1381,
-  "mob_hit": 270,
-  "mob_miss": 388,
+  "you_hit": 2312,
+  "you_miss": 1593,
+  "mob_hit": 298,
+  "mob_miss": 426,
   "mobs": {
    "A haunted chest pet": {
     "swings": 26,
@@ -63933,6 +63933,29 @@
      "Shield of the Immaculate +4": 1
     }
    },
+   "Innoruuk, the Prince of Hate": {
+    "swings": 66,
+    "landed": 28,
+    "avg": 108.6,
+    "max": 202,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Malosi": 6,
+     "Plague": 6,
+     "Immobilize": 3,
+     "Rend": 2,
+     "Elnerick's Entombment of Ice": 2
+    },
+    "loot": {
+     "Hotof's Bracer +4": 2,
+     "Mote of Major Potential": 1,
+     "Triumphant Mask +4": 1,
+     "Ring of Pureblood +4": 1,
+     "Shattered Emerald of Corruption": 1
+    }
+   },
    "Innoruuk`s Chosen pet": {
     "swings": 0,
     "landed": 0,
@@ -63982,5 +64005,79 @@
   },
   "drop_tier_floor": 4,
   "drop_tier_modal": 4
+ },
+ {
+  "zone": "The Ruins of Old Paineel - Group",
+  "character": "Avenrae",
+  "zone_from": null,
+  "difficulty_label": "Refined",
+  "difficulty_num": 4,
+  "difficulty": 4,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": null,
+  "date": "18 Aug 2026",
+  "window": "21:56-21:58",
+  "stamps": [],
+  "minutes": 2,
+  "kills": 0,
+  "distinct": 0,
+  "kinds": [],
+  "kills_by_mob": {},
+  "drop_tiers": {},
+  "faction": {
+   "Minions of Underfoot": 3
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 0,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {}
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 38,
+  "you_miss": 36,
+  "mob_hit": 1,
+  "mob_miss": 5,
+  "mobs": {
+   "An elemental warrior": {
+    "swings": 6,
+    "landed": 1,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Cajoling Whispers": 1,
+     "Immobilize": 1
+    },
+    "loot": {}
+   },
+   "An elemental channeler": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Instill": 2,
+     "Lay on Hands": 1
+    },
+    "loot": {}
+   }
+  }
  }
 ]
