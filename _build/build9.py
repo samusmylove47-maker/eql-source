@@ -76,7 +76,7 @@ CSS = """
 .meas{margin:34px 0 10px}
 .meas h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
   letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
-.meas .cond{border-left:2px solid var(--accd);background:#201A15;padding:12px 16px;
+.meas .cond{border-left:2px solid var(--accd);background:var(--surface-1);padding:12px 16px;
   margin:0 0 18px;color:var(--mut);font-size:14px}
 .meas .cond b{color:var(--bone)}
 .meas .tw{overflow-x:auto;margin:0 0 14px;-webkit-overflow-scrolling:touch}

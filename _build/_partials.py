@@ -181,20 +181,25 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
 {extra}</head>
 <body>'''
 
-def bar(rel=""):
+def bar(rel="", current=None, extra=""):
+    def nav(href, label, cls=""):
+        cur = ' aria-current="page"' if current == label else ''
+        klass = f' class="{cls}"' if cls else ''
+        return f'<a href="{rel}{href}"{klass}{cur}>{label}</a>'
     return f'''<a class="skip" href="#main">Skip to content</a>
 <header class="site-bar">
   <div class="shell">
     <a class="mark" href="{rel}index.html">{COMPASS}<span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
-      <a href="{rel}dungeons/index.html">Dungeons</a>
-      <a href="{rel}raids/index.html">Raids</a>
-      <a href="{rel}tools/index.html">Tools</a>
-      <a href="{rel}tools/index-search.html">The Index</a>
-      <a href="{rel}learn/index.html">Learn</a>
-      <a href="{rel}sources.html">Accuracy</a>
-      <a href="{rel}search.html" class="nav-find">Search</a>
+      {nav("dungeons/index.html", "Dungeons")}
+      {nav("raids/index.html", "Raids")}
+      {nav("tools/index.html", "Tools")}
+      {nav("tools/index-search.html", "The Index")}
+      {nav("learn/index.html", "Learn")}
+      {nav("sources.html", "Accuracy")}
+      {nav("search.html", "Search", "nav-find")}
+      {extra}
       <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>

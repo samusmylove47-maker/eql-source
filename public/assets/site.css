@@ -249,6 +249,7 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .site-nav a[aria-current]{color:var(--bind-ink)}
 .site-nav a[aria-current]::after{content:"";position:absolute;left:11px;right:11px;bottom:6px;
   height:1px;background:var(--brass)}
+.site-nav .ns-sep{color:var(--bind-faint);padding:0 2px}
 .theme-toggle{margin-left:12px;padding:6px 11px;border:1px solid var(--brass);
   border-radius:0;font-family:"IBM Plex Mono",monospace;font-size:9.5px;
   letter-spacing:.22em;text-transform:uppercase;color:var(--brass);
@@ -307,7 +308,7 @@ h1.display{font-family:"Cinzel",Georgia,serif;font-weight:900;
   font-size:clamp(40px,6.2vw,86px);line-height:.92;letter-spacing:.02em;
   text-transform:uppercase;margin:0;color:var(--bone);text-wrap:balance}
 h1.display::first-letter,.illum::first-letter{color:var(--brass-t);font-weight:900}
-h1.display em{font-style:normal;color:var(--c, var(--z01));font-weight:700}
+h1.display em{font-style:normal;color:var(--c, var(--brass-t));font-weight:700}
 h2.sec{font-family:"Cinzel",Georgia,serif;font-weight:700;
   font-size:clamp(28px,4.2vw,48px);line-height:1.06;letter-spacing:.02em;
   text-transform:uppercase;margin:0 0 var(--s-3);color:var(--bone);text-wrap:balance}
@@ -344,6 +345,11 @@ section.band{padding:var(--band) 0;border-top:1px solid var(--rule)}
 .cards{display:grid;gap:var(--s-4)}
 .cards.c2{grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr))}
 .cards.c3{grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+.cards.catalog{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:720px){.cards.catalog{grid-template-columns:1fr}}
+.cards.catalog>.card:not(.feature){padding:var(--s-4)}
+.cards.catalog>.card:not(.feature) .t{font-size:var(--t-lg)}
+.cards.catalog>.card:not(.feature) .d{font-size:var(--t-sm);margin-bottom:var(--s-3)}
 .cards>*{min-width:0}
 .card{position:relative;display:flex;flex-direction:column;background:var(--surface-1);
   border:1px solid var(--rule);border-top:2px solid var(--c,var(--rule2));
@@ -554,7 +560,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .hero-art{position:relative;inset:auto;width:100%;height:100%;overflow:hidden;
   min-height:min(56vh,500px);mask-image:none;-webkit-mask-image:none;opacity:1;z-index:0}
 .hero-art svg{width:100%;height:100%;overflow:hidden}
-.hero-art path{fill:none;stroke:var(--c, var(--z01));stroke-width:1.2;
+.hero-art path{fill:none;stroke:var(--c);stroke-width:1.2;
   stroke-linejoin:round;stroke-linecap:round;opacity:.92;
   stroke-dasharray:2600;stroke-dashoffset:2600;
   animation:survey 2.8s cubic-bezier(.22,.61,.36,1) forwards;
@@ -567,7 +573,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
   font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.14em;text-transform:uppercase;color:#C4B496;
   text-align:left;margin:0;max-width:none}
-.frontis-plate .hero-src b,.hero-src b{color:var(--c, var(--z01));font-weight:500}
+.frontis-plate .hero-src b,.hero-src b{color:var(--c);font-weight:500}
 
 /* Register: the four counts as a 2×2 engraved block, not a wrapping dash row. */
 .register{display:grid;grid-template-columns:1fr 1fr;list-style:none;margin:var(--s-5) 0 0;
@@ -639,7 +645,8 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 
 /* ---------- the standard: a scale that reads as a scale ---------- */
 .scale-strip{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin:var(--s-5) 0 var(--s-4)}
-@media(max-width:760px){.scale-strip{grid-template-columns:repeat(2,1fr)}}
+.scale-strip.six{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.scale-strip,.scale-strip.six{grid-template-columns:repeat(2,1fr)}}
 .scale-strip>*{min-width:0}
 .ss{padding:var(--s-3) var(--s-3) var(--s-4);background:var(--surface-1);
   border-top:3px solid var(--tc);border-radius:0 0 var(--r) var(--r)}
@@ -798,7 +805,7 @@ a.card.figured:hover .fig{opacity:.22}
    above this. These bands must not look like a second copy of it.
    ========================================================================== */
 
-.hero.page{padding:clamp(24px,3.2vw,44px) 0 0}
+.hero.page{padding:clamp(24px,3.2vw,44px) 0 0;--c:var(--brass-t)}
 .hero.page .shell{max-width:var(--max);width:100%;margin:0 auto;
   background:none;border:0;box-shadow:none;padding:0 var(--gut) clamp(20px,3vw,36px)}
 .hero.page .shell::after{display:none}
@@ -806,9 +813,13 @@ a.card.figured:hover .fig{opacity:.22}
   margin-bottom:var(--s-4)}
 .hero.page .crumb::before{content:"";width:28px;height:1px;background:var(--brass);flex:0 0 28px}
 h1.display{max-width:14ch}
-h1.display em{color:var(--c, var(--z01));-webkit-text-fill-color:unset;background:none}
+h1.display em{color:var(--c, var(--brass-t));-webkit-text-fill-color:unset;background:none}
 .hero-lede{font-size:var(--t-md);color:var(--mut);max-width:52ch;
   margin:var(--s-5) 0 0;line-height:1.62}
+
+.chapter{padding:clamp(20px,3vw,36px) 0 0}
+.chapter .mast{padding-top:0}
+.chapter .register{margin-top:var(--s-5);max-width:32rem}
 
 /* ---------- the three doors ---------- */
 .doorgrid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr) minmax(0,1fr);
@@ -1272,6 +1283,13 @@ html[data-theme="dungeon"] .sheet::after{mix-blend-mode:overlay;opacity:.35}
 
 .mast{position:relative;padding:var(--s-7) 0 var(--s-5);margin-bottom:var(--s-2);
   border-bottom:1px solid var(--rule2)}
+.mast .crumb,.sheet .crumb{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.16em;
+  text-transform:uppercase;color:var(--dim);margin:0 0 var(--s-4)}
+.mast .crumb::before,.sheet .crumb::before{content:"";width:28px;height:1px;
+  background:var(--brass);flex:0 0 28px}
+.mast .crumb a,.sheet .crumb a{color:var(--mut);text-decoration:none}
+.mast .crumb a:hover,.sheet .crumb a:hover{color:var(--bone)}
 .mast::before,.mast::after{content:"";position:absolute;top:10px;width:28px;height:28px;
   pointer-events:none;background-color:var(--rule2);opacity:.75;
   -webkit-mask:url("ornament/cartouche-corner.svg") no-repeat center / contain;

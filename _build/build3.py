@@ -8,34 +8,31 @@ from withheld import WITHHELD, REASON, MARK
 # See _build/derived.py for why one typed superlative became four typed
 # ordinals before this existed.
 import derived
-from _partials import CSS_V, THEME_BOOT, FONTS, COMPASS
+from _partials import CSS_V, THEME_BOOT, FONTS, bar
 _CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json"), encoding="utf-8"))
 SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 BY = {z['slug']: z for z in Z}
 
-RETURN_CSS = """
-<style>
-@media(max-width:640px){.ns-bar .ns-tag{display:none}}
-</style>
-"""
+RETURN_CSS = ""
 
 def bar_html(rel, crumb, crumb_href, here, extra=""):
-    css_v = f'?v={CSS_V}' if CSS_V else ''
-    return (f'<a class="skip" href="#main">Skip to content</a>'
-            f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{COMPASS}{SITE}</a>'
-            f'<span class="ns-sep">/</span><a href="{rel}{crumb_href}">{crumb}</a>'
-            f'<span class="ns-sep">/</span><span style="color:var(--bind-ink)">{here}</span>'
-            f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span>'
-            f'<button type="button" class="theme-toggle" aria-pressed="false" '
-            f'aria-label="Switch to torchlit reading">Torchlight</button></div>')
+    """The same leather running head as every other page.
+
+    Surveys used to get a breadcrumb strip (`.ns-bar`) with no Dungeons / Raids
+    / Tools / Learn. Opening a plate from the home spread felt like leaving
+    the site for a PDF. The current mark is `crumb`, which already matches a
+    nav label. `here` is the page name and belongs in the mast crumb, not in
+    a second bar.
+    """
+    return bar(rel, current=crumb, extra=extra)
 
 # Pages that already have a sticky bar of their own. Both bars pin to top:0,
 # and this one wins on z-index, so on the race tracker it covered 73% of the
 # tool's own tab-and-save bar the moment you scrolled. The breadcrumb is the
 # less important of the two, so it stops following on those pages.
-UNPIN = '<style>.ns-bar{position:static}</style>'
+UNPIN = '<style>.ns-bar,.site-bar{position:static}</style>'
 
 WH_CSS = """
 <style>
@@ -273,6 +270,11 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
               + social + css)
     h = h.replace('</head>', chrome + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
+    if ('dungeons/' in dst.replace('\\', '/') and '<p class="crumb">' not in h
+            and '<header class="mast">' in h):
+        crumb_line = (f'  <p class="crumb"><a href="{rel}index.html">{SITE}</a> &nbsp;/&nbsp; '
+                      f'<a href="{rel}{crumb_href}">{crumb}</a></p>\n')
+        h = h.replace('<header class="mast">', '<header class="mast">\n' + crumb_line, 1)
     if ph_zone:
         z_ = BY.get(ph_zone, {})
         note = PH_CONFIRMED.replace('REL_', rel)

@@ -42,7 +42,7 @@ readable.
 - `.plate` — tipped-in figure (mesh on `--plot-bg`) plus a fixed-height caption;
   `.plate.lead` is 2×2. The lead is the latest `revamped` date in
   `zones-index.json`, not `:first-child` and not plate 01.
-- `.site-bar` / `.ns-bar` — leather running head, brass underline on the current mark
+- `.site-bar` — one leather running head on every page, brass underline on the current mark. Survey crumbs live in `.mast .crumb`, not a second bar.
 - `.cm` / `.note` / `.kick` — marginalia
 - `.fplan` — dungeon plan; JS selectors are load-bearing (`data-lyr`, `.mk`, `.fp-*`)
 

@@ -60,21 +60,19 @@ prov_blocks = "".join(
 N_OPEN = sum(1 for z in ZONES if z["verify_level"] != "full")
 
 if N_OPEN:
-    gates_card = (
-        '<div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div>'
-        '<h3 class="t">Verification gates</h3>'
-        f'<p class="d">{wordnum(N_OPEN)} of the {len(ZONES)} surveys have not cleared the full '
+    gates_item = (
+        f'<div><dt>Verification gates</dt>'
+        f'<dd>{wordnum(N_OPEN)} of the {len(ZONES)} surveys have not cleared the full '
         'three-gate standard. Which gate is open is listed against each zone on the '
-        '<a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>')
+        '<a href="dungeons/index.html">plates page</a>.</dd></div>')
 else:
-    gates_card = (
-        '<div class="card" style="--c:var(--ok)"><div class="kicker">Dungeons</div>'
-        '<h3 class="t">Verification gates, all cleared</h3>'
-        '<p class="d">All ten surveys have passed all three gates, and the evidence for each '
-        'is recorded on the <a href="dungeons/index.html" style="color:var(--ok)">plates page</a>. '
+    gates_item = (
+        f'<div><dt>Verification gates, all cleared</dt>'
+        f'<dd>All {len(ZONES)} surveys have passed all three gates, and the evidence for each '
+        'is recorded on the <a href="dungeons/index.html">plates page</a>. '
         'That is not the same as complete. It means each survey has been checked against its live '
         'source and every coordinate lands somewhere a player can stand &mdash; the gaps listed '
-        'here are what remains.</p></div>')
+        'here are what remains.</dd></div>')
 # The change log lives in one place. sources.html renders all of it and the home
 # page shows the most recent few; before 9 Aug 2026 this page kept its own
 # hand-written copy, which had drifted eight entries behind - every correction
@@ -88,23 +86,40 @@ chrows = "\n".join(
         <span class="cell"></span><span class="bar"></span></div>''' for e in ENTRIES)
 
 # ---------------------------------------------------------------- TOOLS
-tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../", og="tools", canon="tools/index") + bar("../") + f'''
+TOOLS_CSS = """<style>
+:root{--acc:var(--instr);--acct:var(--instr-t)}
+.sheet .cards{margin-top:var(--s-6);grid-template-columns:repeat(2,minmax(0,1fr))}
+.sheet .cards>.card:not(.feature){padding:var(--s-4)}
+.sheet .cards>.card:not(.feature) .t{font-size:var(--t-lg)}
+.sheet .cards>.card:not(.feature) .d{font-size:var(--t-sm);margin-bottom:var(--s-3)}
+.sheet .note{max-width:var(--measure-wide)}
+@media(max-width:720px){.sheet .cards{grid-template-columns:1fr}}
+</style>"""
+
+tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../", extra=TOOLS_CSS, og="tools", canon="tools/index") + bar("../", current="Tools") + f'''
 <main id="main">
+<div class="sky-wrap">
+<div class="sheet">
 
-<section class="hero page">
-  <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
-    <h1 class="display">{wordnum(len(TOOLS))} trackers,<br><em>no account.</em></h1>
-    <p class="hero-lede">No login, no server holding your data. What you tick is packed into the page
-      URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
-      <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
-      tick anything.</p>
-    <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
-  </div>
-</section>
+<header class="mast">
+  <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
+  <p class="eyebrow">Instrument</p>
+  <div class="title"><h1>{wordnum(len(TOOLS))} trackers</h1><span class="leader"></span>
+    <span class="plateno">{len(TOOLS)}</span></div>
+  <p class="subtitle">No account. Progress travels in the link</p>
+  <p class="deck">No login, no server holding your data. What you tick is packed into the page
+    URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
+    <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
+    tick anything.</p>
+  <ul class="register">
+    <li><b>{len(TOOLS)}</b> trackers</li>
+    <li><b>None</b> transmitted</li>
+    <li><b>Share</b> by link</li>
+    <li><b>Works</b> offline</li>
+  </ul>
+</header>
 
-<div class="shell">
-  <section class="band" style="border-top:0;padding-top:0">
+<section>
     <div class="cards c2">
       <a class="card feature" href="sky-ledger.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; reads your combat log</div>
@@ -193,7 +208,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
     <div class="note"><strong>On privacy.</strong> Nothing is transmitted anywhere. The autosave uses your browser&rsquo;s
       own storage and the share link carries a compressed bitfield in the URL fragment &mdash; the part of a URL that is
       never sent to a server.</div>
-  </section>
+    <p class="doornote">50 Upgrades is a gear planner hosted in its own repository. This site carries a
+      <a href="50-upgrades.html">description page</a>, not the planner.</p>
+</section>
+</div>
 </div>
 </main>
 ''' + foot("../")
@@ -237,11 +255,11 @@ RAID_PAGES = [dict(slug="plane-of-sky", name="The Plane of Sky")]
 # said louder, and the two could not both lead the page.
 RAIDS_CSS = """<style>
 :root{--acc:var(--ember);--acct:var(--ember-t)}
-.sheet .cards{margin-top:var(--s-6)}
+.sheet .door{margin-top:var(--s-6)}
 .sheet .note{max-width:var(--measure-wide)}
 </style>"""
 
-raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what each boss costs to kill, and the order to do it in.", rel="../", extra=RAIDS_CSS, og="raids", canon="raids/index") + bar("../") + f'''
+raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what each boss costs to kill, and the order to do it in.", rel="../", extra=RAIDS_CSS, og="raids", canon="raids/index") + bar("../", current="Raids") + f'''
 <main id="main" class="raidx">
 <div class="sky-wrap">
 <div class="sheet">
@@ -264,16 +282,14 @@ raids = head("Raid encounters", "The Plane of Sky, island by island: the key cha
 </header>
 
 <section>
-  <div class="cards c2">
-    <a class="card" href="plane-of-sky.html" style="--c:var(--ember)">
-      <div class="kicker">Complete &middot; island by island</div>
-      <h3 class="t">The Plane of Sky</h3>
-      <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
-        every island through to the Eye and the Hand of Veeshan. What each boss costs to kill,
-        where the efreeti gear comes from, and how high the place actually is.</p>
-      <div class="chipline"><span class="pill">Key chain confirmed</span><span class="pill">Measured in play</span></div>
-      <div class="foot"><span>Base difficulty</span><span class="go">Open &rarr;</span></div></a>
-  </div>
+  <a class="door lead" href="plane-of-sky.html" style="--c:var(--ember)">
+    <span class="dq">The only encounter written up</span>
+    <h3 class="dt">The Plane of Sky</h3>
+    <p class="dd">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
+      every island through to the Eye and the Hand of Veeshan. What each boss costs to kill,
+      where the efreeti gear comes from, and how high the place actually is.</p>
+    <span class="dgo">Island by island &rarr;</span>
+  </a>
 
   <div class="note warn"><strong>Difficulty does not raise mob levels.</strong> D0&ndash;D4 makes
     mobs run player-style class kits, widens aggro ranges and pre-upgrades loot. Named mobs are
@@ -288,52 +304,55 @@ raids = head("Raid encounters", "The Plane of Sky, island by island: the key cha
 open('public/raids/index.html','w',encoding='utf-8',newline='\n').write(raids)
 
 # ---------------------------------------------------------------- SOURCES
-src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.", og="sources", canon="sources") + bar() + f'''
+src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.", og="sources", canon="sources") + bar("", current="Accuracy") + f'''
 <main id="main">
 
-<section class="hero page">
+<section class="chapter" style="--c:var(--instr)">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
-    <h1 class="display">Sourcing<br><em>standard.</em></h1>
-    <p class="hero-lede">This site exists because most EverQuest Legends reference material is classic
-      EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied
-      without exceptions, including the inconvenient ones.</p>
-    <p class="hero-sig"><span>Six tiers</span><span>Every claim dated</span><span>Gaps published</span></p>
+    <header class="mast">
+      <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
+      <p class="eyebrow">The standard</p>
+      <div class="title"><h1>Sourcing</h1><span class="leader"></span>
+        <span class="plateno">M&ndash;5</span></div>
+      <p class="subtitle">Every claim dated. Gaps published</p>
+      <p class="deck">This site exists because most EverQuest Legends reference material is classic
+        EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied
+        without exceptions, including the inconvenient ones.</p>
+    </header>
   </div>
 </section>
 
 <div class="shell">
 
-  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
+  <section class="band" style="border-top:0;padding-top:0">
     <div class="sechead"><div><h2 class="sec">The hierarchy</h2></div></div>
-    <div class="cards c2">
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier M &middot; strongest</div>
-        <h3 class="t">Measured combat logs</h3>
-        <p class="d">First-hand instrument data, parsed rather than remembered. <strong>It outranks every read
-          source for what it directly measures, and generalises to nothing beyond its stated conditions.</strong>
+    <div class="scale-strip six">
+      <div class="ss" style="--tc:var(--ok)"><div class="n">Tier M &middot; strongest</div>
+        <div class="h">Measured combat logs</div>
+        <div class="d">First-hand instrument data, parsed rather than remembered. It outranks every read
+          source for what it directly measures, and generalises to nothing beyond its stated conditions.
           The zone and difficulty are published with it; a single observation is a sighting, not a rate.
-          <strong>The badge is the claim that it was measured</strong> &mdash; the session behind it is
-          not published.</p></div>
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest read source</div>
-        <h3 class="t">Official patch notes</h3>
-        <p class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
-          page&rsquo;s last edit supersedes that page.</p></div>
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 2</div>
-        <h3 class="t">Structured wiki data</h3>
-        <p class="d">Infoboxes, NPC tables, item tables, coordinate records on eqlwiki. Machine-shaped fields that
-          somebody entered from the live game.</p></div>
-      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier 3</div>
-        <h3 class="t">Named community guides</h3>
-        <p class="d">eqprogression.com, and maintained wiki user guides such as Alanna&rsquo;s Race Unlock Guide.
-          Named authors, actively updated, dated. Reliable, but they are one person&rsquo;s reading of the game.</p></div>
-      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier 4</div>
-        <h3 class="t">Aggregators</h3>
-        <p class="d">EQL Build Forge, EQ Legends Tools. Useful for cross-checking a number against a second pair of
-          eyes. Each carries a snapshot date; anything older than the last patch is treated as stale.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Tier 5 &middot; marked on sight</div>
-        <h3 class="t">Wiki prose</h3>
-        <p class="d">Large parts are a Project 1999 import, sometimes word for word. It describes a single-class game
-          at fixed difficulty. It is quoted only when marked as classic, never as Legends fact.</p></div>
+          The badge is the claim that it was measured &mdash; the session behind it is not published.</div></div>
+      <div class="ss" style="--tc:var(--ok)"><div class="n">Tier 1</div>
+        <div class="h">Official patch notes</div>
+        <div class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
+          page&rsquo;s last edit supersedes that page.</div></div>
+      <div class="ss" style="--tc:var(--ok)"><div class="n">Tier 2</div>
+        <div class="h">Structured wiki data</div>
+        <div class="d">Infoboxes, NPC tables, item tables, coordinate records on eqlwiki. Machine-shaped fields that
+          somebody entered from the live game.</div></div>
+      <div class="ss" style="--tc:var(--instr)"><div class="n">Tier 3</div>
+        <div class="h">Named community guides</div>
+        <div class="d">eqprogression.com, and maintained wiki user guides such as Alanna&rsquo;s Race Unlock Guide.
+          Named authors, actively updated, dated. Reliable, but they are one person&rsquo;s reading of the game.</div></div>
+      <div class="ss" style="--tc:var(--instr)"><div class="n">Tier 4</div>
+        <div class="h">Aggregators</div>
+        <div class="d">EQL Build Forge, EQ Legends Tools. Useful for cross-checking a number against a second pair of
+          eyes. Each carries a snapshot date; anything older than the last patch is treated as stale.</div></div>
+      <div class="ss" style="--tc:var(--warn)"><div class="n">Tier 5 &middot; marked on sight</div>
+        <div class="h">Wiki prose</div>
+        <div class="d">Large parts are a Project 1999 import, sometimes word for word. It describes a single-class game
+          at fixed difficulty. It is quoted only when marked as classic, never as Legends fact.</div></div>
     </div>
     <div class="note sig"><strong>Two systems break almost all inherited advice.</strong> Legends characters run
       <em>three</em> classes at once, and difficulty D0&ndash;D4 changes mob behaviour rather than mob level. Any line
@@ -344,31 +363,31 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
   <section class="band" id="gaps">
     <div class="sechead"><div><h2 class="sec">Known gaps</h2>
       <p class="lede" style="margin:0">This list is expected to grow as verification deepens, not shrink.</p></div></div>
-    <div class="cards c2">
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 hit points</h3>
-        <p class="d">Which class kits attach to which raid boss at D3 and D4 is <strong>no longer the gap</strong>
+    <div class="gaplist">
+      <div><dt>D4 hit points</dt>
+        <dd>Which class kits attach to which raid boss at D3 and D4 is <strong>no longer the gap</strong>
           &mdash; Cazic-Thule and Innoruuk are parsed at three tiers with every spell each cast. What is still
-          pinned by nobody is hit points: damage to kill bounds them from above and no more.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Plane of Sky</div><h3 class="t">Five class tooltips</h3>
-        <p class="d">Ranger, Rogue, Shadow Knight, Shaman and Wizard reward stat blocks are unconfirmed for Legends.
-          The turn-ins and drop sources are current; only the stats are missing.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Respawn ceilings</h3>
-        <p class="d">The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
-          the pre-patch timer as a ceiling rather than a current value.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Travel</div><h3 class="t">Druid and wizard port levels</h3>
-        <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
-          translocators, so it is weighted lower, but the conflict is open.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
-        <p class="d">The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
+          pinned by nobody is hit points: damage to kill bounds them from above and no more.</dd></div>
+      <div><dt>Five class tooltips</dt>
+        <dd>Ranger, Rogue, Shadow Knight, Shaman and Wizard reward stat blocks are unconfirmed for Legends.
+          The turn-ins and drop sources are current; only the stats are missing.</dd></div>
+      <div><dt>Respawn ceilings</dt>
+        <dd>The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
+          the pre-patch timer as a ceiling rather than a current value.</dd></div>
+      <div><dt>Druid and wizard port levels</dt>
+        <dd>Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
+          translocators, so it is weighted lower, but the conflict is open.</dd></div>
+      <div><dt>Plane of Sky geometry</dt>
+        <dd>The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
           <code>/loc</code> per island &mdash; nine readings &mdash; would label the elevation chart permanently
-          and let each island be drawn properly.</strong> The page says so in place.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
-        <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
-          labels. Which chamber is which is still something you work out from the named roster.</p></div>
-      {gates_card}
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
-        <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another
-          hour of reading wikis.</p></div>
+          and let each island be drawn properly.</strong> The page says so in place.</dd></div>
+      <div><dt>Floor plans have no room names</dt>
+        <dd>The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
+          labels. Which chamber is which is still something you work out from the named roster.</dd></div>
+      {gates_item}
+      <div><dt>In-game confirmation</dt>
+        <dd>Most of these close with a screenshot or a log line. If you have one, it is worth more than another
+          hour of reading wikis.</dd></div>
     </div>
   </section>
 

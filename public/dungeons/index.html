@@ -29,7 +29,7 @@ document.documentElement.setAttribute("data-theme","dungeon");
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=0bda3e2e">
+<link rel="stylesheet" href="../assets/site.css?v=9b54dc35">
 </head>
 <body><a class="skip" href="#main">Skip to content</a>
 <header class="site-bar">
@@ -50,34 +50,39 @@ document.documentElement.setAttribute("data-theme","dungeon");
 </svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
-      <a href="../dungeons/index.html">Dungeons</a>
+      <a href="../dungeons/index.html" aria-current="page">Dungeons</a>
       <a href="../raids/index.html">Raids</a>
       <a href="../tools/index.html">Tools</a>
       <a href="../tools/index-search.html">The Index</a>
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      
       <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
 <main id="main">
 
-<section class="hero page">
+<section class="chapter" style="--c:#A8324A">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
-    <h1 class="display">13 zones,<br><em>surveyed.</em></h1>
-    <p class="hero-lede">Each carrying a floor plan drawn from the game&rsquo;s own mesh, population
-      tables, named rosters with spawn data, loot tied to its drop source, and coordinates
-      re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the floor the
-      game itself draws. <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays
-      against a baseline of 75.</p>
-    <p class="hero-sig"><span>13 surveys</span><span>13 with a floor plan</span><span>10 fully verified</span><span>0 partial</span><span>3 unverified</span></p>
-  </div>
-</section>
-
-<section class="band" style="border-top:0;padding-top:0">
-  <div class="shell">
+    <header class="mast">
+      <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
+      <p class="eyebrow">Dungeon surveys</p>
+      <div class="title"><h1>13 zones</h1><span class="leader"></span>
+        <span class="plateno">13</span></div>
+      <p class="subtitle">Each drawn from the game&rsquo;s own mesh</p>
+      <p class="deck">Population tables, named rosters with spawn data, loot tied to its drop source,
+        and coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against
+        the floor the game itself draws. <b>ZEM</b> is the zone experience modifier &mdash; how fast a
+        zone pays against a baseline of 75.</p>
+      <ul class="register">
+        <li><b>13</b> surveys</li>
+        <li><b>13</b> with a floor plan</li>
+        <li><b>10</b> fully verified</li>
+        <li><b>3</b> still open</li>
+      </ul>
+    </header>
     <div class="plates">
     <a class="plate lead" href="mistmoore.html" style="--c:#A8324A">
       <span class="plate-art" aria-hidden="true"><svg viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet"><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M7.0,17.0 L10.0,18.0 L10.0,20.0 L7.0,20.0 L3.0,22.0 L3.0,25.0 L2.0,28.0 L2.0,32.0 L0.0,38.0 L5.0,40.0 L3.0,45.0 L7.0,50.0 L15.0,50.0 L17.0,53.0 L10.0,53.0 L7.0,52.0 L7.0,50.0 L10.0,50.0 L12.0,45.0 L8.0,40.0 L8.0,33.0 L10.0,28.0 L8.0,27.0 L10.0,22.0 L12.0,22.0 L13.0,20.0 L17.0,20.0 L15.0,18.0 L13.0,18.0 L13.0,15.0 L12.0,13.0 L8.0,13.0 L7.0,17.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M15.0,50.0 L18.0,52.0 L12.0,53.0 L10.0,53.0 L7.0,52.0 L7.0,50.0 L3.0,45.0 L0.0,38.0 L2.0,32.0 L2.0,28.0 L3.0,25.0 L3.0,22.0 L7.0,20.0 L7.0,17.0 L8.0,13.0 L12.0,13.0 L13.0,15.0 L17.0,15.0 L15.0,18.0 L18.0,18.0 L17.0,20.0 L13.0,20.0 L12.0,22.0 L8.0,33.0 L8.0,40.0 L12.0,45.0 L10.0,50.0 L15.0,50.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M67.0,53.0 L68.0,54.0 L68.0,51.0 L79.0,51.0 L79.0,50.0 L75.0,50.0 L75.0,49.0 L81.0,49.0 L81.0,52.0 L85.0,52.0 L85.0,53.0 L84.0,53.0 L84.0,54.0 L81.0,53.0 L81.0,58.0 L79.0,58.0 L79.0,60.0 L68.0,60.0 L68.0,58.0 L67.0,59.0 L66.0,59.0 L66.0,49.0 L72.0,49.0 L72.0,50.0 L67.0,50.0 L67.0,53.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M70.0,78.0 L71.0,76.0 L65.0,77.0 L64.0,80.0 L64.0,76.0 L64.0,76.0 L64.0,75.0 L67.0,74.0 L61.0,74.0 L61.0,64.0 L63.0,64.0 L63.0,65.0 L62.0,65.0 L63.0,70.0 L66.0,70.0 L67.0,71.0 L63.0,71.0 L63.0,73.0 L69.0,73.0 L68.0,75.0 L71.0,75.0 L71.0,76.0 L71.0,76.0 L71.0,79.0 L70.0,79.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M36.0,52.0 L38.0,52.0 L38.0,54.0 L39.0,54.0 L39.0,51.0 L39.0,51.0 L39.0,47.0 L36.0,47.0 L36.0,45.0 L34.0,45.0 L34.0,47.0 L33.0,47.0 L33.0,49.0 L29.0,49.0 L29.0,45.0 L30.0,45.0 L30.0,39.0 L26.0,39.0 L26.0,45.0 L28.0,45.0 L28.0,51.0 L35.0,51.0 L35.0,52.0 L36.0,52.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M88.0,65.0 L89.0,65.0 L89.0,66.0 L88.0,66.0 L89.0,65.0 L90.0,65.0 L90.0,67.0 L85.0,67.0 L85.0,68.0 L83.0,68.0 L83.0,74.0 L90.0,74.0 L90.0,75.0 L81.0,75.0 L81.0,77.0 L90.0,77.0 L90.0,80.0 L92.0,80.0 L92.0,63.0 L89.0,63.0 L88.0,62.0 L89.0,62.0 L89.0,63.0 L88.0,63.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M28.0,10.0 L32.0,10.0 L32.0,17.0 L33.0,18.0 L38.0,18.0 L38.0,17.0 L40.0,18.0 L40.0,15.0 L37.0,15.0 L35.0,17.0 L33.0,15.0 L35.0,13.0 L35.0,10.0 L33.0,8.0 L27.0,8.0 L27.0,10.0 L25.0,12.0 L27.0,13.0 L28.0,13.0 L28.0,10.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M12.0,62.0 L15.0,58.0 L15.0,55.0 L23.0,58.0 L12.0,62.0 L8.0,67.0 L7.0,72.0 L7.0,78.0 L5.0,82.0 L5.0,87.0 L10.0,93.0 L18.0,93.0 L23.0,87.0 L27.0,83.0 L22.0,80.0 L20.0,78.0 L20.0,72.0 L12.0,72.0 L17.0,67.0 L12.0,62.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M79.0,36.0 L81.0,36.0 L81.0,40.0 L79.0,40.0 L79.0,37.0 L67.0,37.0 L68.0,40.0 L66.0,40.0 L66.0,36.0 L72.0,36.0 L72.0,34.0 L73.0,34.0 L73.0,27.0 L74.0,27.0 L74.0,32.0 L74.0,32.0 L74.0,34.0 L75.0,34.0 L75.0,36.0 L79.0,36.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M30.0,68.0 L30.0,70.0 L29.0,68.0 L29.0,65.0 L30.0,64.0 L33.0,64.0 L35.0,65.0 L35.0,65.0 L33.0,63.0 L30.0,63.0 L28.0,65.0 L28.0,68.0 L30.0,70.0 L33.0,70.0 L35.0,68.0 L35.0,67.0 L33.0,67.0 L33.0,65.0 L30.0,65.0 L30.0,68.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M82.0,65.0 L81.0,65.0 L81.0,66.0 L82.0,66.0 L81.0,65.0 L72.0,65.0 L72.0,63.0 L69.0,63.0 L68.0,61.0 L68.0,53.0 L69.0,51.0 L68.0,50.0 L65.0,50.0 L65.0,49.0 L72.0,49.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M63.0,32.0 L61.0,30.0 L62.0,29.0 L62.0,29.0 L60.0,30.0 L58.0,32.0 L58.0,33.0 L60.0,36.0 L60.0,36.0 L58.0,33.0 L60.0,35.0 L62.0,35.0 L63.0,33.0 L64.0,32.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M63.0,58.0 L63.0,59.0 L62.0,59.0 L62.0,61.0 L63.0,61.0 L63.0,62.0 L60.0,63.0 L60.0,52.0 L63.0,51.0 L66.0,51.0 L66.0,59.0 L65.0,59.0 L65.0,58.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M81.0,28.0 L83.0,28.0 L85.0,30.0 L86.0,30.0 L85.0,32.0 L83.0,33.0 L82.0,33.0 L80.0,32.0 L80.0,30.0 L82.0,28.0 L79.0,30.0 L79.0,30.0 L81.0,28.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M77.0,10.0 L88.0,18.0 L79.0,17.0 L79.0,18.0 L77.0,17.0 L70.0,17.0 L63.0,20.0 L58.0,20.0 L58.0,19.0 L57.0,17.0 L57.0,12.0 L58.0,10.0 L77.0,10.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M66.0,77.0 L71.0,76.0 L70.0,78.0 L71.0,78.0 L70.0,80.0 L71.0,80.0 L70.0,82.0 L66.0,83.0 L66.0,82.0 L66.0,82.0 L64.0,80.0 L65.0,77.0 L66.0,77.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M55.0,12.0 L55.0,20.0 L50.0,22.0 L50.0,7.0 L52.0,7.0 L55.0,8.0 L57.0,8.0 L58.0,10.0 L57.0,12.0 L57.0,18.0 L55.0,18.0 L55.0,12.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M43.0,62.0 L43.0,63.0 L46.0,63.0 L46.0,64.0 L41.0,64.0 L41.0,58.0 L38.0,58.0 L38.0,54.0 L39.0,54.0 L39.0,57.0 L43.0,57.0 L43.0,62.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M60.0,35.0 L62.0,35.0 L63.0,33.0 L64.0,32.0 L63.0,32.0 L61.0,30.0 L62.0,29.0 L60.0,30.0 L58.0,32.0 L58.0,33.0 L60.0,35.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M32.0,63.0 L33.0,63.0 L32.0,66.0 L31.0,66.0 L30.0,63.0 L30.0,63.0 L30.0,63.0 L31.0,66.0 L32.0,66.0 L33.0,63.0 L32.0,63.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M5.0,82.0 L5.0,87.0 L10.0,93.0 L2.0,87.0 L5.0,82.0 L7.0,78.0 L7.0,72.0 L8.0,67.0 L3.0,72.0 L5.0,82.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M83.0,33.0 L85.0,32.0 L86.0,30.0 L85.0,30.0 L83.0,28.0 L82.0,28.0 L80.0,30.0 L80.0,32.0 L82.0,33.0 L83.0,33.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M15.0,57.0 L15.0,58.0 L12.0,62.0 L8.0,67.0 L5.0,67.0 L7.0,62.0 L13.0,58.0 L9.0,58.0 L15.0,55.0 L15.0,57.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M61.0,65.0 L61.0,67.0 L61.0,67.0 L61.0,69.0 L69.0,68.0 L69.0,67.0 L63.0,67.0 L62.0,64.0 L61.0,64.0 L61.0,65.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M69.0,70.0 L69.0,71.0 L72.0,71.0 L72.0,71.0 L73.0,71.0 L73.0,70.0 L72.0,70.0 L72.0,67.0 L69.0,67.0 L69.0,70.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M65.0,49.0 L65.0,50.0 L64.0,51.0 L63.0,51.0 L61.0,50.0 L61.0,49.0 L63.0,48.0 L64.0,48.0 L65.0,49.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M75.0,49.0 L82.0,49.0 L82.0,50.0 L81.0,50.0 L81.0,63.0 L82.0,62.0 L81.0,62.0 L81.0,63.0 L82.0,63.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M86.0,49.0 L86.0,50.0 L85.0,51.0 L83.0,51.0 L82.0,50.0 L82.0,49.0 L83.0,48.0 L85.0,48.0 L86.0,49.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M50.0,66.0 L50.0,67.0 L40.0,67.0 L40.0,66.0 L46.0,66.0 L46.0,63.0 L47.0,63.0 L47.0,66.0 L50.0,66.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M28.0,65.0 L28.0,68.0 L30.0,71.0 L33.0,71.0 L35.0,68.0 L35.0,65.0 L33.0,63.0 L30.0,63.0 L28.0,65.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M9.0,58.0 L12.0,55.0 L12.0,53.0 L17.0,53.0 L15.0,55.0 L9.0,58.0 L7.0,62.0 L13.0,58.0 L9.0,58.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M37.0,65.0 L37.0,68.0 L33.0,72.0 L30.0,72.0 L27.0,68.0 L27.0,65.0 L30.0,62.0 L33.0,62.0 L37.0,65.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M79.0,56.0 L79.0,61.0 L78.0,63.0 L79.0,63.0 L79.0,50.0 L78.0,51.0 L79.0,53.0 L79.0,56.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M58.0,67.0 L59.0,67.0 L60.0,65.0 L53.0,65.0 L53.0,70.0 L55.0,70.0 L55.0,67.0 L58.0,67.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M3.0,72.0 L5.0,67.0 L8.0,67.0 L3.0,72.0 L2.0,82.0 L2.0,87.0 L5.0,82.0 L3.0,72.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M70.0,80.0 L71.0,80.0 L71.0,78.0 L70.0,80.0 L70.0,79.0 L70.0,79.0 L70.0,80.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M66.0,83.0 L70.0,82.0 L71.0,80.0 L71.0,83.0 L64.0,83.0 L66.0,82.0 L66.0,83.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M42.0,28.0 L50.0,27.0 L47.0,23.0 L42.0,28.0 L45.0,32.0 L50.0,32.0 L42.0,28.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M36.0,66.0 L40.0,66.0 L40.0,68.0 L35.0,68.0 L35.0,66.0 L36.0,66.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M88.0,57.0 L88.0,60.0 L89.0,60.0 L89.0,53.0 L88.0,53.0 L88.0,57.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M90.0,61.0 L92.0,61.0 L92.0,51.0 L82.0,51.0 L82.0,61.0 L90.0,61.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M64.0,62.0 L64.0,64.0 L61.0,64.0 L61.0,60.0 L64.0,60.0 L64.0,62.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M66.0,57.0 L66.0,59.0 L63.0,59.0 L63.0,56.0 L66.0,56.0 L66.0,57.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M61.0,54.0 L61.0,52.0 L66.0,52.0 L66.0,56.0 L61.0,56.0 L61.0,54.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M66.0,65.0 L67.0,65.0 L67.0,60.0 L64.0,60.0 L64.0,65.0 L65.0,65.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M78.0,39.0 L79.0,39.0 L78.0,49.0 L68.0,49.0 L69.0,39.0 L78.0,39.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M82.0,49.0 L81.0,49.0 L81.0,52.0 L84.0,52.0 L84.0,49.0 L82.0,49.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M81.0,55.0 L81.0,56.0 L84.0,56.0 L84.0,54.0 L81.0,54.0 L81.0,55.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M50.0,69.0 L50.0,70.0 L53.0,70.0 L53.0,66.0 L50.0,66.0 L50.0,69.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M69.0,65.0 L72.0,65.0 L72.0,61.0 L67.0,61.0 L67.0,65.0 L69.0,65.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M36.0,47.0 L38.0,47.0 L38.0,46.0 L36.0,46.0 L36.0,47.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M39.0,51.0 L41.0,51.0 L41.0,49.0 L39.0,49.0 L39.0,51.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M24.0,38.0 L24.0,46.0 L32.0,46.0 L32.0,38.0 L24.0,38.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M23.0,22.0 L26.0,27.0 L17.0,27.0 L22.0,22.0 L23.0,22.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M39.0,49.0 L41.0,49.0 L41.0,47.0 L39.0,48.0 L39.0,49.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M66.0,62.0 L67.0,62.0 L67.0,61.0 L66.0,61.0 L66.0,62.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M63.0,65.0 L66.0,65.0 L66.0,61.0 L63.0,61.0 L63.0,65.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M66.0,64.0 L66.0,65.0 L67.0,65.0 L67.0,64.0 L66.0,64.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M70.0,54.0 L70.0,55.0 L69.0,55.0 L69.0,54.0 L70.0,54.0"/><path fill="none" stroke="currentColor" stroke-width="1" vector-effect="non-scaling-stroke" d="M60.0,71.0 L61.0,71.0 L61.0,70.0 L60.0,70.0 L60.0,71.0"/></svg></span>
@@ -210,24 +215,8 @@ document.documentElement.setAttribute("data-theme","dungeon");
       </span>
     </a>
     </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="split">
-      <div>
-        <div class="sechead"><div><h2 class="sec">What verified means</h2>
-          <p class="lede" style="margin:0">A zone counts as verified only when all three gates pass: its
-            wiki page was fetched in full and its roster re-compared, <em>its edit history was
-            fetched</em> &mdash; not merely the footer date &mdash; and <em>every coordinate lands on
-            drawn floor</em>, within 120 units of geometry extracted from the game&rsquo;s own mesh
-            files.</p></div></div>
-        <p class="lede">By that standard <strong>10 of 13</strong> are verified, 0 are partial and 3 are not verified at all. Partial surveys are complete and useful; they have simply not cleared every gate. Which gate is open is recorded per zone rather than averaged into a single number that would read better than the truth.</p>
-      </div>
-      <aside class="standard" style="--c:var(--warn)">
-        <h3 class="stdh">Open gates</h3>
-        <ul class="gatelist">
+    <p class="lede" style="margin-top:var(--s-7)">By that standard <strong>10 of 13</strong> are verified, 0 are partial and 3 are not verified at all. Partial surveys are complete and useful; they have simply not cleared every gate. Which gate is open is recorded per zone rather than averaged into a single number that would read better than the truth.</p>
+    <ul class="gatelist">
       <li class="gaterow" style="--c:#8FB03A">
         <span class="gn">11</span>
         <span class="gz">Plane of Fear</span>
@@ -246,12 +235,9 @@ document.documentElement.setAttribute("data-theme","dungeon");
         <span class="gs">Nothing here is measured. The floor plan is read from the game's own mesh and Phinigel's published position is checked against it, but no session in this zone has been logged: no kill, no drop and no boss fight is measured. The low grade here is accurate, not an artefact.</span>
         <span class="gl">unstarted</span>
       </li>
-        </ul>
-      </aside>
-    </div>
+    </ul>
   </div>
 </section>
-
 
 </main>
 <footer class="site-foot">

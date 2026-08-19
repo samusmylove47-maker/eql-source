@@ -29,7 +29,7 @@ document.documentElement.setAttribute("data-theme","dungeon");
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/site.css?v=0bda3e2e">
+<link rel="stylesheet" href="assets/site.css?v=9b54dc35">
 </head>
 <body><a class="skip" href="#main">Skip to content</a>
 <header class="site-bar">
@@ -55,57 +55,61 @@ document.documentElement.setAttribute("data-theme","dungeon");
       <a href="tools/index.html">Tools</a>
       <a href="tools/index-search.html">The Index</a>
       <a href="learn/index.html">Learn</a>
-      <a href="sources.html">Accuracy</a>
+      <a href="sources.html" aria-current="page">Accuracy</a>
       <a href="search.html" class="nav-find">Search</a>
+      
       <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
 <main id="main">
 
-<section class="hero page">
+<section class="chapter" style="--c:var(--instr)">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
-    <h1 class="display">Sourcing<br><em>standard.</em></h1>
-    <p class="hero-lede">This site exists because most EverQuest Legends reference material is classic
-      EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied
-      without exceptions, including the inconvenient ones.</p>
-    <p class="hero-sig"><span>Six tiers</span><span>Every claim dated</span><span>Gaps published</span></p>
+    <header class="mast">
+      <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
+      <p class="eyebrow">The standard</p>
+      <div class="title"><h1>Sourcing</h1><span class="leader"></span>
+        <span class="plateno">M&ndash;5</span></div>
+      <p class="subtitle">Every claim dated. Gaps published</p>
+      <p class="deck">This site exists because most EverQuest Legends reference material is classic
+        EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied
+        without exceptions, including the inconvenient ones.</p>
+    </header>
   </div>
 </section>
 
 <div class="shell">
 
-  <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
+  <section class="band" style="border-top:0;padding-top:0">
     <div class="sechead"><div><h2 class="sec">The hierarchy</h2></div></div>
-    <div class="cards c2">
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier M &middot; strongest</div>
-        <h3 class="t">Measured combat logs</h3>
-        <p class="d">First-hand instrument data, parsed rather than remembered. <strong>It outranks every read
-          source for what it directly measures, and generalises to nothing beyond its stated conditions.</strong>
+    <div class="scale-strip six">
+      <div class="ss" style="--tc:var(--ok)"><div class="n">Tier M &middot; strongest</div>
+        <div class="h">Measured combat logs</div>
+        <div class="d">First-hand instrument data, parsed rather than remembered. It outranks every read
+          source for what it directly measures, and generalises to nothing beyond its stated conditions.
           The zone and difficulty are published with it; a single observation is a sighting, not a rate.
-          <strong>The badge is the claim that it was measured</strong> &mdash; the session behind it is
-          not published.</p></div>
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 1 &middot; strongest read source</div>
-        <h3 class="t">Official patch notes</h3>
-        <p class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
-          page&rsquo;s last edit supersedes that page.</p></div>
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Tier 2</div>
-        <h3 class="t">Structured wiki data</h3>
-        <p class="d">Infoboxes, NPC tables, item tables, coordinate records on eqlwiki. Machine-shaped fields that
-          somebody entered from the live game.</p></div>
-      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier 3</div>
-        <h3 class="t">Named community guides</h3>
-        <p class="d">eqprogression.com, and maintained wiki user guides such as Alanna&rsquo;s Race Unlock Guide.
-          Named authors, actively updated, dated. Reliable, but they are one person&rsquo;s reading of the game.</p></div>
-      <div class="card" style="--c:var(--instr)"><div class="kicker">Tier 4</div>
-        <h3 class="t">Aggregators</h3>
-        <p class="d">EQL Build Forge, EQ Legends Tools. Useful for cross-checking a number against a second pair of
-          eyes. Each carries a snapshot date; anything older than the last patch is treated as stale.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Tier 5 &middot; marked on sight</div>
-        <h3 class="t">Wiki prose</h3>
-        <p class="d">Large parts are a Project 1999 import, sometimes word for word. It describes a single-class game
-          at fixed difficulty. It is quoted only when marked as classic, never as Legends fact.</p></div>
+          The badge is the claim that it was measured &mdash; the session behind it is not published.</div></div>
+      <div class="ss" style="--tc:var(--ok)"><div class="n">Tier 1</div>
+        <div class="h">Official patch notes</div>
+        <div class="d">Dated, authoritative, and they override everything below them. Anything published after a wiki
+          page&rsquo;s last edit supersedes that page.</div></div>
+      <div class="ss" style="--tc:var(--ok)"><div class="n">Tier 2</div>
+        <div class="h">Structured wiki data</div>
+        <div class="d">Infoboxes, NPC tables, item tables, coordinate records on eqlwiki. Machine-shaped fields that
+          somebody entered from the live game.</div></div>
+      <div class="ss" style="--tc:var(--instr)"><div class="n">Tier 3</div>
+        <div class="h">Named community guides</div>
+        <div class="d">eqprogression.com, and maintained wiki user guides such as Alanna&rsquo;s Race Unlock Guide.
+          Named authors, actively updated, dated. Reliable, but they are one person&rsquo;s reading of the game.</div></div>
+      <div class="ss" style="--tc:var(--instr)"><div class="n">Tier 4</div>
+        <div class="h">Aggregators</div>
+        <div class="d">EQL Build Forge, EQ Legends Tools. Useful for cross-checking a number against a second pair of
+          eyes. Each carries a snapshot date; anything older than the last patch is treated as stale.</div></div>
+      <div class="ss" style="--tc:var(--warn)"><div class="n">Tier 5 &middot; marked on sight</div>
+        <div class="h">Wiki prose</div>
+        <div class="d">Large parts are a Project 1999 import, sometimes word for word. It describes a single-class game
+          at fixed difficulty. It is quoted only when marked as classic, never as Legends fact.</div></div>
     </div>
     <div class="note sig"><strong>Two systems break almost all inherited advice.</strong> Legends characters run
       <em>three</em> classes at once, and difficulty D0&ndash;D4 changes mob behaviour rather than mob level. Any line
@@ -116,31 +120,31 @@ document.documentElement.setAttribute("data-theme","dungeon");
   <section class="band" id="gaps">
     <div class="sechead"><div><h2 class="sec">Known gaps</h2>
       <p class="lede" style="margin:0">This list is expected to grow as verification deepens, not shrink.</p></div></div>
-    <div class="cards c2">
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 hit points</h3>
-        <p class="d">Which class kits attach to which raid boss at D3 and D4 is <strong>no longer the gap</strong>
+    <div class="gaplist">
+      <div><dt>D4 hit points</dt>
+        <dd>Which class kits attach to which raid boss at D3 and D4 is <strong>no longer the gap</strong>
           &mdash; Cazic-Thule and Innoruuk are parsed at three tiers with every spell each cast. What is still
-          pinned by nobody is hit points: damage to kill bounds them from above and no more.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Plane of Sky</div><h3 class="t">Five class tooltips</h3>
-        <p class="d">Ranger, Rogue, Shadow Knight, Shaman and Wizard reward stat blocks are unconfirmed for Legends.
-          The turn-ins and drop sources are current; only the stats are missing.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Respawn ceilings</h3>
-        <p class="d">The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
-          the pre-patch timer as a ceiling rather than a current value.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Travel</div><h3 class="t">Druid and wizard port levels</h3>
-        <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
-          translocators, so it is weighted lower, but the conflict is open.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
-        <p class="d">The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
+          pinned by nobody is hit points: damage to kill bounds them from above and no more.</dd></div>
+      <div><dt>Five class tooltips</dt>
+        <dd>Ranger, Rogue, Shadow Knight, Shaman and Wizard reward stat blocks are unconfirmed for Legends.
+          The turn-ins and drop sources are current; only the stats are missing.</dd></div>
+      <div><dt>Respawn ceilings</dt>
+        <dd>The 28 July patch lowered maximum respawn times without publishing figures. Affected plates state
+          the pre-patch timer as a ceiling rather than a current value.</dd></div>
+      <div><dt>Druid and wizard port levels</dt>
+        <dd>Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
+          translocators, so it is weighted lower, but the conflict is open.</dd></div>
+      <div><dt>Plane of Sky geometry</dt>
+        <dd>The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
           <code>/loc</code> per island &mdash; nine readings &mdash; would label the elevation chart permanently
-          and let each island be drawn properly.</strong> The page says so in place.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
-        <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
-          labels. Which chamber is which is still something you work out from the named roster.</p></div>
-      <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Verification gates</h3><p class="d">Three of the 13 surveys have not cleared the full three-gate standard. Which gate is open is listed against each zone on the <a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>
-      <div class="card" style="--c:var(--ok)"><div class="kicker">Help wanted</div><h3 class="t">In-game confirmation</h3>
-        <p class="d">Most of these close with a screenshot or a log line. If you have one, it is worth more than another
-          hour of reading wikis.</p></div>
+          and let each island be drawn properly.</strong> The page says so in place.</dd></div>
+      <div><dt>Floor plans have no room names</dt>
+        <dd>The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
+          labels. Which chamber is which is still something you work out from the named roster.</dd></div>
+      <div><dt>Verification gates</dt><dd>Three of the 13 surveys have not cleared the full three-gate standard. Which gate is open is listed against each zone on the <a href="dungeons/index.html">plates page</a>.</dd></div>
+      <div><dt>In-game confirmation</dt>
+        <dd>Most of these close with a screenshot or a log line. If you have one, it is worth more than another
+          hour of reading wikis.</dd></div>
     </div>
   </section>
 

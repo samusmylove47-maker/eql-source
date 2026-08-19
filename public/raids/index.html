@@ -29,10 +29,10 @@ document.documentElement.setAttribute("data-theme","dungeon");
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=0bda3e2e">
+<link rel="stylesheet" href="../assets/site.css?v=9b54dc35">
 <style>
 :root{--acc:var(--ember);--acct:var(--ember-t)}
-.sheet .cards{margin-top:var(--s-6)}
+.sheet .door{margin-top:var(--s-6)}
 .sheet .note{max-width:var(--measure-wide)}
 </style></head>
 <body><a class="skip" href="#main">Skip to content</a>
@@ -55,12 +55,13 @@ document.documentElement.setAttribute("data-theme","dungeon");
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
       <a href="../dungeons/index.html">Dungeons</a>
-      <a href="../raids/index.html">Raids</a>
+      <a href="../raids/index.html" aria-current="page">Raids</a>
       <a href="../tools/index.html">Tools</a>
       <a href="../tools/index-search.html">The Index</a>
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      
       <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
@@ -87,16 +88,14 @@ document.documentElement.setAttribute("data-theme","dungeon");
 </header>
 
 <section>
-  <div class="cards c2">
-    <a class="card" href="plane-of-sky.html" style="--c:var(--ember)">
-      <div class="kicker">Complete &middot; island by island</div>
-      <h3 class="t">The Plane of Sky</h3>
-      <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
-        every island through to the Eye and the Hand of Veeshan. What each boss costs to kill,
-        where the efreeti gear comes from, and how high the place actually is.</p>
-      <div class="chipline"><span class="pill">Key chain confirmed</span><span class="pill">Measured in play</span></div>
-      <div class="foot"><span>Base difficulty</span><span class="go">Open &rarr;</span></div></a>
-  </div>
+  <a class="door lead" href="plane-of-sky.html" style="--c:var(--ember)">
+    <span class="dq">The only encounter written up</span>
+    <h3 class="dt">The Plane of Sky</h3>
+    <p class="dd">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
+      every island through to the Eye and the Hand of Veeshan. What each boss costs to kill,
+      where the efreeti gear comes from, and how high the place actually is.</p>
+    <span class="dgo">Island by island &rarr;</span>
+  </a>
 
   <div class="note warn"><strong>Difficulty does not raise mob levels.</strong> D0&ndash;D4 makes
     mobs run player-style class kits, widens aggro ranges and pre-upgrades loot. Named mobs are

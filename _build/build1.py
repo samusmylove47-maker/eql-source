@@ -494,52 +494,37 @@ else:
 
 dung = head("Dungeon surveys",
   f"{len(Z)} revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
-  rel="../", og="dungeons", canon="dungeons/index") + bar("../") + f'''
+  rel="../", og="dungeons", canon="dungeons/index") + bar("../", current="Dungeons") + f'''
 <main id="main">
 
-<section class="hero page">
+<section class="chapter" style="--c:{FEAT['accent']}">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
-    <h1 class="display">{wordnum(len(Z))} zones,<br><em>surveyed.</em></h1>
-    <p class="hero-lede">Each carrying a floor plan drawn from the game&rsquo;s own mesh, population
-      tables, named rosters with spawn data, loot tied to its drop source, and coordinates
-      re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the floor the
-      game itself draws. <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays
-      against a baseline of 75.</p>
-    <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len([z for z in Z if z['slug'] in PLANS])} with a floor plan</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
-  </div>
-</section>
-
-<section class="band" style="border-top:0;padding-top:0">
-  <div class="shell">
+    <header class="mast">
+      <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
+      <p class="eyebrow">Dungeon surveys</p>
+      <div class="title"><h1>{wordnum(len(Z))} zones</h1><span class="leader"></span>
+        <span class="plateno">{len(Z)}</span></div>
+      <p class="subtitle">Each drawn from the game&rsquo;s own mesh</p>
+      <p class="deck">Population tables, named rosters with spawn data, loot tied to its drop source,
+        and coordinates re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against
+        the floor the game itself draws. <b>ZEM</b> is the zone experience modifier &mdash; how fast a
+        zone pays against a baseline of 75.</p>
+      <ul class="register">
+        <li><b>{len(Z)}</b> surveys</li>
+        <li><b>{len([z for z in Z if z['slug'] in PLANS])}</b> with a floor plan</li>
+        <li><b>{nfull}</b> fully verified</li>
+        <li><b>{npart + nnone}</b> still open</li>
+      </ul>
+    </header>
     <div class="plates">
 {dplates}
     </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="split">
-      <div>
-        <div class="sechead"><div><h2 class="sec">What verified means</h2>
-          <p class="lede" style="margin:0">A zone counts as verified only when all three gates pass: its
-            wiki page was fetched in full and its roster re-compared, <em>its edit history was
-            fetched</em> &mdash; not merely the footer date &mdash; and <em>every coordinate lands on
-            drawn floor</em>, within 120 units of geometry extracted from the game&rsquo;s own mesh
-            files.</p></div></div>
-        <p class="lede">{verdict}</p>
-      </div>
-      <aside class="standard" style="--c:{asidec}">
-        <h3 class="stdh">{asideh}</h3>
-        <ul class="gatelist">
+    <p class="lede" style="margin-top:var(--s-7)">{verdict}</p>
+    <ul class="gatelist">
 {gaterows}
-        </ul>
-      </aside>
-    </div>
+    </ul>
   </div>
 </section>
-
 
 </main>
 ''' + foot("../")
