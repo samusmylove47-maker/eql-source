@@ -35,8 +35,8 @@
    "title": "Measured drop sources",
    "description": "Which mobs have been measured dropping which items, parsed from combat logs. Each row carries the sighting count behind it.",
    "url": "https://eqlsource.com/data/sightings.v1.json",
-   "bytes": 233293,
-   "hash": "7fea24e2de308b7b"
+   "bytes": 233635,
+   "hash": "3a585504951560cb"
   },
   {
    "name": "zones",
@@ -45,7 +45,7 @@
    "description": "The zones we have surveyed, with the level band, the experience modifier and how far verification has got.",
    "url": "https://eqlsource.com/data/zones.v1.json",
    "bytes": 16197,
-   "hash": "218c464e7359dbaa"
+   "hash": "c2575e1be0b5ee73"
   },
   {
    "name": "items",

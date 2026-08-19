@@ -63636,27 +63636,29 @@
   "difficulty_label_agrees": true,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "20:57-21:15",
+  "window": "20:57-21:30",
   "stamps": [],
-  "minutes": 18,
-  "kills": 1,
-  "distinct": 1,
+  "minutes": 33,
+  "kills": 2,
+  "distinct": 2,
   "kinds": [
-   "Coercer T`vala"
+   "Coercer T`vala",
+   "an elite dragoon"
   ],
   "kills_by_mob": {
-   "Coercer T`vala": 1
+   "Coercer T`vala": 1,
+   "an elite dragoon": 1
   },
   "drop_tiers": {
-   "4": 5
+   "4": 9
   },
   "faction": {
-   "Inhabitants of Hate": 7
+   "Inhabitants of Hate": 13
   },
   "context": [],
   "escapes": [],
   "control": {
-   "melee_stuns_avoided": 1,
+   "melee_stuns_avoided": 3,
    "lockout_lines": 0,
    "fear_lines": 0,
    "screams": 0,
@@ -63668,16 +63670,19 @@
   "faction_capped_by_mob": {
    "Coercer T`vala": {
     "Inhabitants of Hate": "down"
+   },
+   "an elite dragoon": {
+    "Inhabitants of Hate": "down"
    }
   },
   "exp_by_mob": {},
   "exp_samples_by_mob": {},
   "exp_attributed": 0,
   "exp_attributed_kills": 0,
-  "you_hit": 1005,
-  "you_miss": 721,
-  "mob_hit": 27,
-  "mob_miss": 55,
+  "you_hit": 1582,
+  "you_miss": 1128,
+  "mob_hit": 256,
+  "mob_miss": 368,
   "mobs": {
    "A haunted chest pet": {
     "swings": 26,
@@ -63783,25 +63788,108 @@
     }
    },
    "Innoruuk`s Chosen": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
+    "swings": 10,
+    "landed": 4,
+    "avg": 46.8,
+    "max": 66,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
      "Shock of Swords": 4,
+     "Immobilize": 4,
+     "Superior Healing": 4,
      "Malaisement": 3,
+     "Retribution": 3,
      "Symbol of Naltron": 2,
      "Barrier of Combustion": 2,
+     "Shield of Spikes": 2,
+     "Sacred Echo": 2,
      "Resolution": 1,
      "Arch Shielding": 1,
      "Armor of the Faithful": 1,
-     "Blaze": 1,
-     "Shield of Spikes": 1
+     "Blaze": 1
+    },
+    "loot": {
+     "Crystallized Sulfur": 1,
+     "Indicolite Gauntlets +4": 1
+    }
+   },
+   "An Evangelist of Hate": {
+    "swings": 14,
+    "landed": 4,
+    "avg": 110.5,
+    "max": 141,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Healing Light": 4,
+     "Sacred Echo": 2,
+     "Immobilize": 1,
+     "Retribution": 1
     },
     "loot": {}
+   },
+   "A forsaken revenant": {
+    "swings": 1,
+    "landed": 1,
+    "avg": 12.0,
+    "max": 12,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Feedback": 5,
+     "Celerity": 3,
+     "Tashania": 1,
+     "Cajoling Whispers": 1
+    },
+    "loot": {}
+   },
+   "Maestro of Rancor": {
+    "swings": 457,
+    "landed": 194,
+    "avg": 125.6,
+    "max": 231,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Superior Healing": 28,
+     "Chloroplast": 14,
+     "Malosi": 13,
+     "Plague": 5,
+     "Shock of Venom": 4,
+     "Quickness": 1,
+     "Blizzard Blast": 1,
+     "Envenomed Bolt": 1,
+     "Sha's Lethargy": 1,
+     "Gale of Poison": 1
+    },
+    "loot": {}
+   },
+   "Mistress of Scorn": {
+    "swings": 60,
+    "landed": 26,
+    "avg": 170.0,
+    "max": 314,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Sha's Lethargy": 8,
+     "Envenomed Breath": 7,
+     "Frost Shard": 5,
+     "Spiritual Brawn": 1
+    },
+    "loot": {
+     "Crystallized Sulfur": 1,
+     "Mote of Major Potential": 1,
+     "Dawnchaser +4": 1,
+     "Imbrued Platemail Boots +4": 1,
+     "Imbrued Platemail Greaves +4": 1
+    }
    },
    "Innoruuk`s Chosen pet": {
     "swings": 0,
@@ -63820,20 +63908,6 @@
     },
     "loot": {}
    },
-   "A forsaken revenant": {
-    "swings": 0,
-    "landed": 0,
-    "avg": null,
-    "max": null,
-    "backstabs": 0,
-    "backstab_avg": null,
-    "backstab_max": null,
-    "casts": {
-     "Feedback": 5,
-     "Celerity": 3
-    },
-    "loot": {}
-   },
    "Cleric of Innoruuk": {
     "swings": 0,
     "landed": 0,
@@ -63848,6 +63922,19 @@
     "loot": {
      "Crystallized Sulfur": 1,
      "Blue Diamond": 1
+    }
+   },
+   "an elite dragoon": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Crystallized Sulfur": 1
     }
    }
   },

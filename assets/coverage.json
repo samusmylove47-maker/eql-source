@@ -357,12 +357,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 86, respawn not recorded, 41 mob types measured"
+     "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 93,
+   "kills": 94,
    "bosses": [
     "Ashenbone Broodmaster",
     "Avatar of Abhorrence",

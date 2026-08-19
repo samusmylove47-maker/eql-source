@@ -4165,6 +4165,45 @@
      ]
     }
    ],
+   "Imbrued Platemail Greaves": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 7,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Onyx Earring": [
     {
      "mob": "Tranixx Darkpaw",
@@ -5894,40 +5933,6 @@
        "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Imbrued Platemail Greaves": [
-    {
-     "mob": "Mistress of Scorn",
-     "seen": 6,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "15 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      },
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
       }
      ]
     }
@@ -10915,6 +10920,23 @@
      ]
     },
     {
+     "mob": "Innoruuk`s Chosen",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "An elite dragoon",
      "seen": 1,
      "off_roster": true,
@@ -10923,18 +10945,6 @@
        "date": "12 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Innoruuk`s Chosen",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 1
       }
      ]
     }
@@ -11094,6 +11104,37 @@
        "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Imbrued Platemail Boots": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "A gorgon",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 4
       }
      ]
     }
@@ -11654,32 +11695,6 @@
      ]
     }
    ],
-   "Imbrued Platemail Boots": [
-    {
-     "mob": "A gorgon",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Mistress of Scorn",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "15 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Vermiculated Bracelet": [
     {
      "mob": "A gorgon",
@@ -12224,5 +12239,5 @@
    ]
   }
  },
- "hash": "7fea24e2de308b7b"
+ "hash": "3a585504951560cb"
 }
