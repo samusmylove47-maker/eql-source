@@ -30,7 +30,7 @@
    "Throwing Boulder": [
     {
      "mob": "Fire Giant Warrior",
-     "seen": 73,
+     "seen": 90,
      "off_roster": false,
      "sessions": [
       {
@@ -57,6 +57,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -163,7 +168,7 @@
     },
     {
      "mob": "Magus Rokyl",
-     "seen": 7,
+     "seen": 8,
      "off_roster": false,
      "sessions": [
       {
@@ -200,6 +205,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -227,7 +237,7 @@
     },
     {
      "mob": "Warlord Skarlon",
-     "seen": 5,
+     "seen": 6,
      "off_roster": false,
      "sessions": [
       {
@@ -254,6 +264,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -9184,6 +9199,25 @@
      ]
     }
    ],
+   "Bladestopper": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Gold Plated Koshigatana": [
     {
      "mob": "Lord Nagafen",
@@ -9202,6 +9236,54 @@
       },
       {
        "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Red Dragon Scales": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Rokyls Channelling Crystal": [
+    {
+     "mob": "Magus Rokyl",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 4
       }
@@ -9377,6 +9459,30 @@
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Mithril Greaves": [
+    {
+     "mob": "Warlord Skarlon",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -10849,16 +10955,16 @@
      ]
     }
    ],
-   "Bladestopper": [
+   "Blight, Hammer of the Scourge": [
     {
      "mob": "Lord Nagafen",
      "seen": 2,
      "off_roster": false,
      "sessions": [
       {
-       "date": "11 Aug 2026",
+       "date": "18 Aug 2026",
        "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
+       "difficulty": 4
       }
      ]
     }
@@ -10882,6 +10988,25 @@
      ]
     }
    ],
+   "Gauntlets of Fiery Might": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Hierophant`s Crook": [
     {
      "mob": "Lord Nagafen",
@@ -10901,25 +11026,6 @@
      ]
     }
    ],
-   "Red Dragon Scales": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Treasure Hunter`s Satchel": [
     {
      "mob": "Lord Nagafen",
@@ -10935,25 +11041,6 @@
        "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 2
-      }
-     ]
-    }
-   ],
-   "Rokyls Channelling Crystal": [
-    {
-     "mob": "Magus Rokyl",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
       }
      ]
     }
@@ -11089,25 +11176,6 @@
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
        "difficulty": 0
-      }
-     ]
-    }
-   ],
-   "Mithril Greaves": [
-    {
-     "mob": "Warlord Skarlon",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
       }
      ]
     }
@@ -11903,20 +11971,6 @@
      ]
     }
    ],
-   "Gauntlets of Fiery Might": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Brell's Girdle": [
     {
      "mob": "Master Yael",
@@ -12155,5 +12209,5 @@
    ]
   }
  },
- "hash": "48ec21343a27e56f"
+ "hash": "af1aa6b4bc83b87e"
 }
