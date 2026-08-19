@@ -464,6 +464,52 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### Session A: do this BEFORE tonight's logs are parsed, or the evening scores nothing
+
+**`raidstats.py` does not know any named mob in the zones the owner is about to
+play.** Verified against `origin/main`:
+
+```
+raidstats knows 'Cazic-Thule': yes   'Phinigel': yes
+raidstats knows 'Emperor Crush': NO  'Drelzna': NO  'Chokehold': NO
+                'Ambassador D'Vinn': NO  'The Tenderizer': NO
+```
+
+`coverage.py:113-122` feeds the **bosses** facet from `raids-measured.json`, and
+`raidstats.py` writes that file only for names it recognises. So:
+
+```
+crushbone  bosses: sourced — "19 named on the roster, none measured"
+najena     bosses: sourced — "17 named on the roster, none measured"
+splitpaw   bosses: sourced — "17 named on the roster, none measured"
+warrens    bosses: sourced — "19 named on the roster, none measured"
+mistmoore  bosses: sourced — "23 named on the roster, none measured"   ← 1,551 kills
+```
+
+**Mistmoore is the proof.** One thousand five hundred and fifty-one measured
+kills, and its boss facet still reads *none measured*, because not one of its 23
+named is on the list. The owner can kill every named in four zones tonight and
+every one of those cells will still say **none measured**.
+
+**Extend the recognised-boss list to the named mobs already on our own rosters.**
+The roster counts above come from our data, so the names are already in the tree —
+this is a join, not research. It is worth **+1 on five zones at once**, and it is
+the only point tonight's play cannot buy on its own.
+
+Not strictly blocking, because `state/logs` keeps the raw files and a reparse
+picks the kills up retroactively — but do it today so the value lands with the
+session rather than a week later.
+
+**Second task, same reasoning: the parser is blind to most of what the owner will
+see.** `logstats.py:174-302` has no capture for `/loc`, `/con`, mob levels,
+respawn intervals or item properties. **`STAMP` at `:202` is the only bridge** —
+`ATTN Claude: <text>` typed in game lands as a dated, session-scoped note. Make
+sure that note survives into `measured.json` visibly enough that a survey
+generator can read it, and tell the owner in the handoff what shape you want
+those notes in. Tonight is the first time anyone has used that channel in anger.
+
+---
+
 ### I cleared a live falsehood by searching for the wrong string. Third time today.
 
 **Correction to my own ruling.** I told this session that the survey's claim
