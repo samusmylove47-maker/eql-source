@@ -5108,6 +5108,138 @@
     "off_roster": true
    }
   ],
+  "King Tranix": [
+   {
+    "item": "Throwing Boulder",
+    "n": 8,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Polished Mithril Torque",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Crown of King Tranix",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Master Yael": [
    {
     "item": "Loam Encrusted Robe",
@@ -5790,124 +5922,6 @@
      }
     ],
     "off_roster": true
-   }
-  ],
-  "King Tranix": [
-   {
-    "item": "Throwing Boulder",
-    "n": 7,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Polished Mithril Torque",
-    "n": 6,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Crown of King Tranix",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
    }
   ],
   "Magus Rokyl": [
@@ -14709,7 +14723,7 @@
    },
    {
     "mob": "King Tranix",
-    "n": 7,
+    "n": 8,
     "sessions": [
      {
       "date": "10 Aug 2026",
@@ -14758,6 +14772,13 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 3,
       "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
       "character": "Avenrae"
      }
     ]
@@ -19649,6 +19670,63 @@
     ]
    }
   ],
+  "Polished Mithril Torque": [
+   {
+    "mob": "King Tranix",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "12 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "Nagafen's Lair - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Serpent's Tooth": [
    {
     "mob": "Master Yael",
@@ -21725,56 +21803,6 @@
      }
     ],
     "off_roster": true
-   }
-  ],
-  "Polished Mithril Torque": [
-   {
-    "mob": "King Tranix",
-    "n": 6,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "12 Aug 2026",
-      "zone": "Nagafen's Lair - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     }
-    ]
    }
   ],
   "Diamondine Earring": [
@@ -29277,5 +29305,5 @@
   ]
  },
  "pairs": 670,
- "excluded_trash_drops": 5056
+ "excluded_trash_drops": 5059
 }

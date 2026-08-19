@@ -207,7 +207,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 323,
+   "kills": 324,
    "bosses": [
     "Lord Nagafen"
    ]
@@ -281,7 +281,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "41 items recorded dropping here"
+     "detail": "42 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",

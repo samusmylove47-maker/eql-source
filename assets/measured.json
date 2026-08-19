@@ -63336,5 +63336,155 @@
   },
   "drop_tier_floor": 1,
   "drop_tier_modal": 1
+ },
+ {
+  "zone": "Nagafen's Lair - Group",
+  "character": "Avenrae",
+  "zone_from": null,
+  "difficulty_label": "Refined",
+  "difficulty_num": 4,
+  "difficulty": 4,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "18 Aug 2026",
+  "window": "20:41-20:43",
+  "stamps": [],
+  "minutes": 2,
+  "kills": 1,
+  "distinct": 1,
+  "kinds": [
+   "King Tranix pet"
+  ],
+  "kills_by_mob": {
+   "King Tranix pet": 1
+  },
+  "drop_tiers": {
+   "4": 3
+  },
+  "faction": {
+   "Nagafen": 6,
+   "Solusek Mining Co.": 6,
+   "Vox": 6
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 2,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {}
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 75,
+  "you_miss": 31,
+  "mob_hit": 50,
+  "mob_miss": 79,
+  "mobs": {
+   "A fire giant warrior": {
+    "swings": 57,
+    "landed": 24,
+    "avg": 63.6,
+    "max": 177,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Tashania": 6,
+     "Drowsy": 3,
+     "Frost Shard": 3,
+     "Greater Healing": 3,
+     "Malosi": 2,
+     "Spirit of Wolf": 2,
+     "Feedback": 1,
+     "Shock of Venom": 1,
+     "Spiritual Brawn": 1,
+     "Chloroplast": 1,
+     "Superior Healing": 1,
+     "Discordant Mind": 1,
+     "Envenomed Breath": 1
+    },
+    "loot": {}
+   },
+   "A fire giant warrior pet": {
+    "swings": 38,
+    "landed": 16,
+    "avg": 25.5,
+    "max": 58,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Healing": 10,
+     "Envenomed Breath": 4,
+     "Drowsy": 3,
+     "Ice Spear": 3,
+     "Spirit of Wolf": 2,
+     "Wrath": 2,
+     "Stun": 1,
+     "Sicken": 1,
+     "Lay on Hands": 1
+    },
+    "loot": {}
+   },
+   "Warlord Skarlon": {
+    "swings": 26,
+    "landed": 10,
+    "avg": 75.0,
+    "max": 144,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "King Tranix pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 2,
+     "Cancelling of Life": 1,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "King Tranix": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 1,
+     "Shadow Vortex": 1,
+     "Life Leech": 1,
+     "Dooming Darkness": 1
+    },
+    "loot": {
+     "Fine Steel Dagger +4": 1,
+     "Polished Mithril Torque +4": 1,
+     "Lava Rock": 1,
+     "Throwing Boulder +4": 1,
+     "Mote of Major Potential": 1
+    }
+   }
+  },
+  "drop_tier_floor": 4,
+  "drop_tier_modal": 4
  }
 ]
