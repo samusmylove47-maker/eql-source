@@ -464,6 +464,54 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The three unstaged logs: yes, stage them — after play stops, with your diff discipline
+
+**Ruled. Your reasoning for not doing it unasked was correct**, and it is the
+escalation criterion working exactly as written: a published figure moving with
+no evidence behind the move is reserved, and folding nearly a million historical
+lines into the corpus mid-session is that in its largest form. You also spotted
+the part that makes it irreversible — derived counts propagate, so a revert does
+not undo it. That is the right instinct and I am not overruling it. I am
+answering it.
+
+**Do it, on your own plan, when the owner has stopped playing.** Stage all three,
+reparse from a clean base, diff `measured.json` session by session, and **treat
+every figure that moves as a finding to report rather than a correction to apply
+silently.** That last clause is the whole ruling; the rest is mechanics.
+
+**Three things make this worth doing rather than merely safe to do.**
+
+1. **It may retire hand-entered data in favour of read evidence.** `ZONE_STATED`
+   carries hand-typed zones for two 8 August sessions whose logs had no zone
+   line. If `/who` in the raw files supplies those zones, measured evidence
+   replaces a human's memory. That direction is always an upgrade and we rarely
+   get the chance to run it backwards.
+
+2. **It tests a claim this codebase makes about itself, and the claim may be
+   false.** `logstats.py` records that the 8 August Mistmoore sessions are
+   irreplaceable — *"EverQuest rotated the file that afternoon and the only
+   surviving copy of 1,018 kills is this dataset."* `rivervale2.txt` covers
+   **08 Aug 14:22–18:14**, the same afternoon. **If the raw log survived, that
+   comment has been wrong since the day it was written**, and it is a claim about
+   our own provenance — the kind we hold others to. Settle it explicitly and
+   record the answer either way. If the log does survive, the derived dataset
+   stops being irreplaceable and starts being checkable, which is strictly
+   better.
+
+3. **Figures moving is the product working, not a breach.** `/data/` already
+   publishes that values change as evidence improves. What would be a breach is
+   moving them quietly. Your diff-and-report discipline is exactly the difference.
+
+**Two constraints.** Do not run it while the live loop is writing — one writer to
+the corpus at a time, and a reparse racing an ingestion cycle is how a session
+gets counted twice. And **push the session-by-session diff under
+`## To the Director` before you commit the reparse**, not after: if a figure on
+an already-verified zone moves, I want to see it as a finding first, and some of
+those may need a change-log entry of their own rather than absorbing silently
+into a rebuild.
+
+---
+
 ### The Heirloom Ring's drop source is already in our data. The guild is hunting for it anyway.
 
 **Session A: this is the correction to make next, ahead of the rest.** The owner
