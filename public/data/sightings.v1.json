@@ -116,7 +116,7 @@
     },
     {
      "mob": "King Tranix",
-     "seen": 7,
+     "seen": 8,
      "off_roster": false,
      "sessions": [
       {
@@ -153,6 +153,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -4062,6 +4067,50 @@
      ]
     }
    ],
+   "Polished Mithril Torque": [
+    {
+     "mob": "King Tranix",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Serpent's Tooth": [
     {
      "mob": "Master Yael",
@@ -5796,45 +5845,6 @@
        "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Polished Mithril Torque": [
-    {
-     "mob": "King Tranix",
-     "seen": 6,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
       }
      ]
     }
@@ -12145,5 +12155,5 @@
    ]
   }
  },
- "hash": "facacfda5894bbd0"
+ "hash": "48ec21343a27e56f"
 }

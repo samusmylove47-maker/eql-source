@@ -338,7 +338,7 @@
      },
      "loot": {
       "level": "measured",
-      "detail": "41 items recorded dropping here"
+      "detail": "42 items recorded dropping here"
      },
      "difficulty": {
       "level": "measured",
@@ -457,5 +457,5 @@
    }
   ]
  },
- "hash": "fa9f9fd15b61adb7"
+ "hash": "d211663655411818"
 }
