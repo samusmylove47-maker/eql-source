@@ -22,18 +22,22 @@ sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot, LEARN, wordnum
 
 CSS = '''<style>
-.lh{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,320px),1fr));
-  gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);
-  overflow:hidden;margin-top:var(--s-6)}
-.lh a{background:var(--panel);padding:20px 22px;display:grid;gap:7px;align-content:start;
-  text-decoration:none;transition:background .12s}
-.lh a:hover{background:var(--panel2)}
+.lh{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:var(--s-4);margin-top:var(--s-6)}
+.lh a{background:var(--surface-1);padding:22px 24px;display:grid;gap:8px;align-content:start;
+  text-decoration:none;border:1px solid var(--rule);border-radius:var(--r);
+  box-shadow:var(--lift);transition:transform var(--speed),box-shadow var(--speed),border-color var(--speed)}
+.lh a:hover{transform:translateY(-2px);box-shadow:var(--shadow-2);border-color:var(--rule2)}
+.lh a:first-child{grid-column:1/-1;padding:clamp(24px,3vw,36px);
+  background:linear-gradient(160deg,color-mix(in srgb, var(--brass) 10%, var(--sheet)), var(--sheet))}
+.lh a:first-child h3{font-size:clamp(28px,4vw,42px)}
 .lh h3{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;
   text-transform:uppercase;letter-spacing:.02em;color:var(--bone);margin:0;line-height:1.1}
 .lh p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.6}
 .lh .go{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
   text-transform:uppercase;color:var(--faint)}
 .lh a:hover .go{color:var(--bone)}
+@media(max-width:720px){.lh{grid-template-columns:1fr}.lh a:first-child{grid-column:auto}}
 </style>'''
 
 cards = "\n".join(

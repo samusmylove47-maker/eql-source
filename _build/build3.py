@@ -8,7 +8,7 @@ from withheld import WITHHELD, REASON, MARK
 # See _build/derived.py for why one typed superlative became four typed
 # ordinals before this existed.
 import derived
-from _partials import CSS_V, THEME_BOOT, FONTS
+from _partials import CSS_V, THEME_BOOT, FONTS, COMPASS
 _CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json"), encoding="utf-8"))
 SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
@@ -24,7 +24,7 @@ RETURN_CSS = """
 def bar_html(rel, crumb, crumb_href, here, extra=""):
     css_v = f'?v={CSS_V}' if CSS_V else ''
     return (f'<a class="skip" href="#main">Skip to content</a>'
-            f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{SITE}</a>'
+            f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{COMPASS}{SITE}</a>'
             f'<span class="ns-sep">/</span><a href="{rel}{crumb_href}">{crumb}</a>'
             f'<span class="ns-sep">/</span><span style="color:var(--bind-ink)">{here}</span>'
             f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span>'

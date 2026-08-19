@@ -106,14 +106,16 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
-      <a class="card" href="character.html" style="--c:var(--ok)">
-        <div class="kicker">One sheet &middot; one link</div>
-        <h3 class="t">Character sheet</h3>
-        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
-          Bookmark it, paste it into guild chat, open it on another machine and everything is where
-          you left it &mdash; including the two trackers, which it fills in for you.</p>
-        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
-        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card feature" href="sky-ledger.html" style="--c:var(--instr)">
+        <div class="kicker">Progression &middot; reads your combat log</div>
+        <h3 class="t">Sky Ledger</h3>
+        <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
+          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
+          once</strong> &mdash; {SLD['contested']} of the {SLD['items']} items are wanted by more than one test, so holding one does
+          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
+          replaces the tracker published here before it.</p>
+        <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
@@ -125,16 +127,14 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
         <div class="foot"><span>Built from the surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
-        <div class="kicker">Progression &middot; reads your combat log</div>
-        <h3 class="t">Sky Ledger</h3>
-        <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
-          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
-          once</strong> &mdash; {SLD['contested']} of the {SLD['items']} items are wanted by more than one test, so holding one does
-          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
-          replaces the tracker published here before it.</p>
-        <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested items</span><span class="pill">No install</span></div>
-        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="character.html" style="--c:var(--ok)">
+        <div class="kicker">One sheet &middot; one link</div>
+        <h3 class="t">Character sheet</h3>
+        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
+          Bookmark it, paste it into guild chat, open it on another machine and everything is where
+          you left it &mdash; including the two trackers, which it fills in for you.</p>
+        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
+        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
@@ -305,7 +305,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
 <div class="shell">
 
   <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
-    <div class="sechead"><span class="n">01</span><div><h2 class="sec">The hierarchy</h2></div></div>
+    <div class="sechead"><div><h2 class="sec">The hierarchy</h2></div></div>
     <div class="cards c2">
       <div class="card" style="--c:var(--ok)"><div class="kicker">Tier M &middot; strongest</div>
         <h3 class="t">Measured combat logs</h3>
@@ -342,7 +342,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
   </section>
 
   <section class="band" id="gaps">
-    <div class="sechead"><span class="n">02</span><div><h2 class="sec">Known gaps</h2>
+    <div class="sechead"><div><h2 class="sec">Known gaps</h2>
       <p class="lede" style="margin:0">This list is expected to grow as verification deepens, not shrink.</p></div></div>
     <div class="cards c2">
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 hit points</h3>
@@ -373,7 +373,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
   </section>
 
   <section class="band" id="provenance">
-    <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
+    <div class="sechead"><div><h2 class="sec">Where each zone's figures came from</h2>
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
         This used to sit on the surveys themselves. It belongs here, where someone
         checking the working can find it in one place. <strong>It covers the original ten surveys</strong>;
@@ -392,7 +392,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
   </section>
 
   <section class="band" id="changelog">
-    <div class="sechead"><span class="n">04</span><div><h2 class="sec">Change log</h2>
+    <div class="sechead"><div><h2 class="sec">Change log</h2>
       <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
     <div class="ztable">
 {chrows}

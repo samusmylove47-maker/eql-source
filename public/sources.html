@@ -27,21 +27,26 @@ document.documentElement.setAttribute("data-theme","dungeon");
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="assets/site.css?v=4599463b">
+<link rel="stylesheet" href="assets/site.css?v=d0b914a2">
 </head>
 <body><a class="skip" href="#main">Skip to content</a>
 <header class="site-bar">
   <div class="shell">
     <a class="mark" href="index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
-  <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
-  <circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".8" opacity=".4"/>
-  <path d="M32 4 L35.2 28.8 L32 32 L28.8 28.8 Z" fill="currentColor"/>
-  <path d="M32 60 L28.8 35.2 L32 32 L35.2 35.2 Z" fill="currentColor" opacity=".55"/>
-  <path d="M60 32 L35.2 35.2 L32 32 L35.2 28.8 Z" fill="currentColor" opacity=".75"/>
-  <path d="M4 32 L28.8 28.8 L32 32 L28.8 35.2 Z" fill="currentColor" opacity=".75"/>
-  <circle cx="32" cy="32" r="2.4" fill="currentColor"/>
+  <circle cx="32" cy="32" r="30.5" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+  <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+  <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+  <path d="M32 3.5 L34.6 27.6 L32 32 L29.4 27.6 Z" fill="currentColor"/>
+  <path d="M32 60.5 L29.4 36.4 L32 32 L34.6 36.4 Z" fill="currentColor" opacity=".42"/>
+  <path d="M60.5 32 L36.4 34.6 L32 32 L36.4 29.4 Z" fill="currentColor"/>
+  <path d="M3.5 32 L27.6 29.4 L32 32 L27.6 34.6 Z" fill="currentColor"/>
+  <path d="M52.2 11.8 L35.4 30.2 L32 32 L34.2 28.8 Z" fill="currentColor" opacity=".32"/>
+  <path d="M11.8 52.2 L28.8 34.2 L32 32 L30.2 35.4 Z" fill="currentColor" opacity=".32"/>
+  <path d="M52.2 52.2 L34.2 35.4 L32 32 L35.4 33.8 Z" fill="currentColor" opacity=".22"/>
+  <path d="M11.8 11.8 L29.8 28.6 L32 32 L28.6 30.2 Z" fill="currentColor" opacity=".22"/>
+  <circle cx="32" cy="32" r="2.1" fill="currentColor"/>
 </svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
@@ -72,7 +77,7 @@ document.documentElement.setAttribute("data-theme","dungeon");
 <div class="shell">
 
   <section class="band" style="border-top:0;padding-top:clamp(30px,5vw,50px)">
-    <div class="sechead"><span class="n">01</span><div><h2 class="sec">The hierarchy</h2></div></div>
+    <div class="sechead"><div><h2 class="sec">The hierarchy</h2></div></div>
     <div class="cards c2">
       <div class="card" style="--c:var(--ok)"><div class="kicker">Tier M &middot; strongest</div>
         <h3 class="t">Measured combat logs</h3>
@@ -109,7 +114,7 @@ document.documentElement.setAttribute("data-theme","dungeon");
   </section>
 
   <section class="band" id="gaps">
-    <div class="sechead"><span class="n">02</span><div><h2 class="sec">Known gaps</h2>
+    <div class="sechead"><div><h2 class="sec">Known gaps</h2>
       <p class="lede" style="margin:0">This list is expected to grow as verification deepens, not shrink.</p></div></div>
     <div class="cards c2">
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">D4 hit points</h3>
@@ -140,7 +145,7 @@ document.documentElement.setAttribute("data-theme","dungeon");
   </section>
 
   <section class="band" id="provenance">
-    <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where each zone's figures came from</h2>
+    <div class="sechead"><div><h2 class="sec">Where each zone's figures came from</h2>
       <p class="lede" style="margin:0">Which revision, read on which date, and what is still open per zone.
         This used to sit on the surveys themselves. It belongs here, where someone
         checking the working can find it in one place. <strong>It covers the original ten surveys</strong>;
@@ -163,7 +168,7 @@ document.documentElement.setAttribute("data-theme","dungeon");
   </section>
 
   <section class="band" id="changelog">
-    <div class="sechead"><span class="n">04</span><div><h2 class="sec">Change log</h2>
+    <div class="sechead"><div><h2 class="sec">Change log</h2>
       <p class="lede" style="margin:0">Typed by what changed, so a correction is never mistaken for an addition.</p></div></div>
     <div class="ztable">
       <div class="zrow" style="--c:var(--ok)"><span class="pn">FIX</span>

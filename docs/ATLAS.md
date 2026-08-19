@@ -34,12 +34,17 @@ readable.
 
 ## Components
 
-- `.sheet` / `.wrap` — the paper leaf (surveys, raids index, Sky)
+- `.sheet` / `.wrap` — stacked paper leaves (surveys, raids index, Sky)
 - `.mast` / `.plateno` / `.strip` — cartouche title block
-- `.plate` — zone card: accent wash, cropped number, real mesh thumbnail
-- `.site-bar` / `.ns-bar` — leather index
+- `.frontis` / `.cartouche` / `.frontis-plate` — home title spread: figure on
+  `--plot-bg`, paper slip over it
+- `.plate` — tipped-in figure (mesh on `--plot-bg`) plus caption; first child is 2×2
+- `.site-bar` / `.ns-bar` — leather running head, brass underline on the current mark
 - `.cm` / `.note` / `.kick` — marginalia
 - `.fplan` — dungeon plan; JS selectors are load-bearing (`data-lyr`, `.mk`, `.fp-*`)
+
+Do not restore `.contour` rings, gradient-clipped display type, or a boxed
+`.hero .shell` on every interior page. Those are the 2023-template tells.
 
 ## Honesty
 

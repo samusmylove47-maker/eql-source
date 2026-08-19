@@ -110,19 +110,24 @@ document.documentElement.setAttribute("data-theme","dungeon");
 }catch(e){}})();
 </script>'''
 
-FONTS = ('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700'
+FONTS = ('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900'
          '&family=IBM+Plex+Mono:wght@400;500;600'
-         '&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400'
-         '&family=Saira+Condensed:wght@600;700&display=swap')
+         '&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600'
+         '&family=Saira+Condensed:wght@500;600;700&display=swap')
 
 COMPASS = '''<svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
-  <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
-  <circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".8" opacity=".4"/>
-  <path d="M32 4 L35.2 28.8 L32 32 L28.8 28.8 Z" fill="currentColor"/>
-  <path d="M32 60 L28.8 35.2 L32 32 L35.2 35.2 Z" fill="currentColor" opacity=".55"/>
-  <path d="M60 32 L35.2 35.2 L32 32 L35.2 28.8 Z" fill="currentColor" opacity=".75"/>
-  <path d="M4 32 L28.8 28.8 L32 32 L28.8 35.2 Z" fill="currentColor" opacity=".75"/>
-  <circle cx="32" cy="32" r="2.4" fill="currentColor"/>
+  <circle cx="32" cy="32" r="30.5" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+  <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+  <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+  <path d="M32 3.5 L34.6 27.6 L32 32 L29.4 27.6 Z" fill="currentColor"/>
+  <path d="M32 60.5 L29.4 36.4 L32 32 L34.6 36.4 Z" fill="currentColor" opacity=".42"/>
+  <path d="M60.5 32 L36.4 34.6 L32 32 L36.4 29.4 Z" fill="currentColor"/>
+  <path d="M3.5 32 L27.6 29.4 L32 32 L27.6 34.6 Z" fill="currentColor"/>
+  <path d="M52.2 11.8 L35.4 30.2 L32 32 L34.2 28.8 Z" fill="currentColor" opacity=".32"/>
+  <path d="M11.8 52.2 L28.8 34.2 L32 32 L30.2 35.4 Z" fill="currentColor" opacity=".32"/>
+  <path d="M52.2 52.2 L34.2 35.4 L32 32 L35.4 33.8 Z" fill="currentColor" opacity=".22"/>
+  <path d="M11.8 11.8 L29.8 28.6 L32 32 L28.6 30.2 Z" fill="currentColor" opacity=".22"/>
+  <circle cx="32" cy="32" r="2.1" fill="currentColor"/>
 </svg>'''
 
 

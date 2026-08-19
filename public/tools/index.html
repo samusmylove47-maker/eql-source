@@ -27,21 +27,26 @@ document.documentElement.setAttribute("data-theme","dungeon");
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=4599463b">
+<link rel="stylesheet" href="../assets/site.css?v=d0b914a2">
 </head>
 <body><a class="skip" href="#main">Skip to content</a>
 <header class="site-bar">
   <div class="shell">
     <a class="mark" href="../index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
-  <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
-  <circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".8" opacity=".4"/>
-  <path d="M32 4 L35.2 28.8 L32 32 L28.8 28.8 Z" fill="currentColor"/>
-  <path d="M32 60 L28.8 35.2 L32 32 L35.2 35.2 Z" fill="currentColor" opacity=".55"/>
-  <path d="M60 32 L35.2 35.2 L32 32 L35.2 28.8 Z" fill="currentColor" opacity=".75"/>
-  <path d="M4 32 L28.8 28.8 L32 32 L28.8 35.2 Z" fill="currentColor" opacity=".75"/>
-  <circle cx="32" cy="32" r="2.4" fill="currentColor"/>
+  <circle cx="32" cy="32" r="30.5" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+  <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+  <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+  <path d="M32 3.5 L34.6 27.6 L32 32 L29.4 27.6 Z" fill="currentColor"/>
+  <path d="M32 60.5 L29.4 36.4 L32 32 L34.6 36.4 Z" fill="currentColor" opacity=".42"/>
+  <path d="M60.5 32 L36.4 34.6 L32 32 L36.4 29.4 Z" fill="currentColor"/>
+  <path d="M3.5 32 L27.6 29.4 L32 32 L27.6 34.6 Z" fill="currentColor"/>
+  <path d="M52.2 11.8 L35.4 30.2 L32 32 L34.2 28.8 Z" fill="currentColor" opacity=".32"/>
+  <path d="M11.8 52.2 L28.8 34.2 L32 32 L30.2 35.4 Z" fill="currentColor" opacity=".32"/>
+  <path d="M52.2 52.2 L34.2 35.4 L32 32 L35.4 33.8 Z" fill="currentColor" opacity=".22"/>
+  <path d="M11.8 11.8 L29.8 28.6 L32 32 L28.6 30.2 Z" fill="currentColor" opacity=".22"/>
+  <circle cx="32" cy="32" r="2.1" fill="currentColor"/>
 </svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
@@ -73,14 +78,16 @@ document.documentElement.setAttribute("data-theme","dungeon");
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
-      <a class="card" href="character.html" style="--c:var(--ok)">
-        <div class="kicker">One sheet &middot; one link</div>
-        <h3 class="t">Character sheet</h3>
-        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
-          Bookmark it, paste it into guild chat, open it on another machine and everything is where
-          you left it &mdash; including the two trackers, which it fills in for you.</p>
-        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
-        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card feature" href="sky-ledger.html" style="--c:var(--instr)">
+        <div class="kicker">Progression &middot; reads your combat log</div>
+        <h3 class="t">Sky Ledger</h3>
+        <p class="d">It follows your own log and says which of the 95 Plane of Sky class-unlock tests you
+          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
+          once</strong> &mdash; 29 of the 128 items are wanted by more than one test, so holding one does
+          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
+          replaces the tracker published here before it.</p>
+        <div class="chipline"><span class="pill">95 tests</span><span class="pill">29 contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; 434 items, 232 named</div>
@@ -92,16 +99,14 @@ document.documentElement.setAttribute("data-theme","dungeon");
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
         <div class="foot"><span>Built from the surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
-        <div class="kicker">Progression &middot; reads your combat log</div>
-        <h3 class="t">Sky Ledger</h3>
-        <p class="d">It follows your own log and says which of the 95 Plane of Sky class-unlock tests you
-          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
-          once</strong> &mdash; 29 of the 128 items are wanted by more than one test, so holding one does
-          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
-          replaces the tracker published here before it.</p>
-        <div class="chipline"><span class="pill">95 tests</span><span class="pill">29 contested items</span><span class="pill">No install</span></div>
-        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="character.html" style="--c:var(--ok)">
+        <div class="kicker">One sheet &middot; one link</div>
+        <h3 class="t">Character sheet</h3>
+        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
+          Bookmark it, paste it into guild chat, open it on another machine and everything is where
+          you left it &mdash; including the two trackers, which it fills in for you.</p>
+        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
+        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>

@@ -136,11 +136,9 @@ nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
 nnone = sum(1 for z in Z if z["verify_level"]=="none")
 
-# THE PROMOTED TOOL.
-# Sky Ledger goes directly under the hero and the atlas moves down. It is not a
-# card in a row of equals: what it does that no other Sky tracker does — spend a
-# held turn-in piece once instead of counting it against every test that wants
-# it — is a correctness property, and the tracker it replaced was ours.
+# Sky Ledger is promoted, but the atlas is the identity: it sits after the
+# plates, not in front of them. A card in a row of equals still says the wrong
+# thing; the feature band is a tipped-in plate of its own.
 #
 # Both figures are read out of assets/sky-ledger.json, which _build/skyledger.py
 # counts from the Ledger's own dataset. The tool's README types "three quests"
@@ -247,21 +245,40 @@ recent = "\n".join(
         <span class="d">{e['date']}</span>
       </li>''' for e in ENTRIES[:4])
 
+_hero_plate = next(z['plate'] for z in Z if z['slug'] == HERO_ZONE)
+
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
 <main id="main">
 
 <section class="hero">
-  {hero_art}
-  <div class="shell">
-    <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
-    <h1 class="display">Norrath,<br><em>measured.</em></h1>
-    <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
-      a Legends-shaped hole. We go in with the log running and write down what actually happened.
-      Every figure names its source and the day it was read, and every gap says so out loud.</p>
-    <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
+  <div class="shell frontis">
+    <div class="cartouche" data-folio="{_hero_plate:02d}">
+      <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
+      <h1 class="display">Norrath,<br><em>measured.</em></h1>
+      <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
+        a Legends-shaped hole. We go in with the log running and write down what actually happened.
+        Every figure names its source and the day it was read, and every gap says so out loud.</p>
+      <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
+    </div>
+    <figure class="frontis-plate">
+      {hero_art}
+      {hero_src}
+    </figure>
   </div>
-  {hero_src}
+</section>
+
+<section class="band atlas-index">
+  <div class="shell">
+    <div class="sechead"><div><h2 class="sec">The atlas</h2>
+      <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
+        <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays against a
+        baseline of 75.</p></div>
+      <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
+    <div class="plates">
+{plates}
+    </div>
+  </div>
 </section>
 {feature}
 <section class="band doors">
@@ -270,7 +287,7 @@ home = head("Accurate, sourced and kept current",
       <p class="lede" style="margin:0">Three ways in, depending on what you came for.</p></div></div>
     <div class="doorgrid">
 
-      <a class="door contour" href="tools/index-search.html" style="--c:var(--bone);--cx:88%;--cy:116%">
+      <a class="door lead" href="tools/index-search.html" style="--c:var(--bone)">
         <span class="dq">I need to find something</span>
         <h3 class="dt">The Index</h3>
         <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
@@ -278,7 +295,7 @@ home = head("Accurate, sourced and kept current",
         <span class="dgo">Search {NITEMS} items &rarr;</span>
       </a>
 
-      <a class="door contour" href="dungeons/index.html" style="--c:var(--z01);--cx:12%;--cy:110%">
+      <a class="door" href="dungeons/index.html" style="--c:var(--z01)">
         <span class="dq">I am going into a zone</span>
         <h3 class="dt">The surveys</h3>
         <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
@@ -286,7 +303,7 @@ home = head("Accurate, sourced and kept current",
         <span class="dgo">{len(Z)} surveys &rarr;</span>
       </a>
 
-      <a class="door contour" href="tools/index.html" style="--c:var(--instr);--cx:84%;--cy:104%">
+      <a class="door" href="tools/index.html" style="--c:var(--instr)">
         <span class="dq">I am planning a character</span>
         <h3 class="dt">The trackers</h3>
         <p class="dd">Class unlocks, race unlocks and the primary-slot decision you can never take back.
@@ -297,19 +314,6 @@ home = head("Accurate, sourced and kept current",
     </div>
     <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; one zone
       written up in full, measured in play.</p>
-  </div>
-</section>
-
-<section class="band">
-  <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The atlas</h2>
-      <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
-        <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays against a
-        baseline of 75.</p></div>
-      <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
-    <div class="plates">
-{plates}
-    </div>
   </div>
 </section>
 
@@ -327,7 +331,7 @@ home = head("Accurate, sourced and kept current",
           style="margin:0">The full change log &rarr;</a></p>
       </div>
 
-      <aside class="standard contour" style="--c:var(--instr);--cx:92%;--cy:112%">
+      <aside class="standard" style="--c:var(--instr)">
         <h3 class="stdh">Why you can check us</h3>
         <p class="stdp">Every claim carries the weight of its source. Tiers 1 and 2 print plain;
           anything weaker carries its badge wherever it appears
@@ -469,7 +473,7 @@ dung = head("Dungeon surveys",
             files.</p></div></div>
         <p class="lede">{verdict}</p>
       </div>
-      <aside class="standard contour" style="--c:{asidec};--cx:90%;--cy:110%">
+      <aside class="standard" style="--c:{asidec}">
         <h3 class="stdh">{asideh}</h3>
         <ul class="gatelist">
 {gaterows}

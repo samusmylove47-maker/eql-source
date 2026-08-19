@@ -84,17 +84,18 @@ CSS = '''<style>
   gap:var(--s-6);align-items:start}
 @media(max-width:760px){.ent-top{grid-template-columns:1fr}}
 .locator{margin:20px 0 0;display:flex;flex-direction:column;gap:8px}
-.loc-plan{position:relative;display:block;border:1px solid var(--rule);
-  border-radius:4px;background:var(--surface-1);padding:10px;overflow:hidden}
+.loc-plan{position:relative;display:block;border:1px solid var(--rule2);
+  border-radius:var(--r);background:var(--plot-bg);padding:8px;overflow:hidden;
+  box-shadow:var(--lift)}
 .loc-fit{position:relative;display:block;line-height:0}
-.loc-plan img{width:100%;height:auto;display:block;opacity:.8}
+.loc-plan img{width:100%;height:auto;display:block;opacity:.92}
 /* The mark is the point of the whole thing: it is where the mob actually
    stands, from its recorded /loc. Drawn as a survey station rather than a pin —
    a ring with a centre dot, which is what a plotted position looks like on a
    real plan and what the site's own floor plans already use. */
 .loc-mark{position:absolute;width:13px;height:13px;margin:-6.5px 0 0 -6.5px;
   border:1.5px solid var(--c);border-radius:50%;
-  box-shadow:0 0 0 2px var(--surface-1)}
+  box-shadow:0 0 0 2px var(--plot-bg)}
 .loc-mark::after{content:"";position:absolute;inset:3.5px;border-radius:50%;
   background:var(--c)}
 .locator figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;

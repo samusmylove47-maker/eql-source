@@ -78,7 +78,7 @@ CSS = '''<style>
 .arch section{border:0;padding:0}
 .arch h2 .num{display:none}
 .arch svg{max-width:100%;height:auto;display:block;border:1px solid var(--line);
-  border-radius:4px;background:#191410}
+  border-radius:var(--r);background:var(--plot-bg)}
 .arch .legend ol{list-style:none;margin:14px 0 0;padding:0;display:grid;
   grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:5px}
 .arch .legend li{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:baseline;

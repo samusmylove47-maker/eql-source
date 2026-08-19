@@ -332,11 +332,19 @@ it were actively preventing what was asked for. Their words:
 Then, after the first pass: *"I love the cartography theme. Lean further into
 this."*
 
-**19 August 2026.** The site now has two readings of that chart. Default is
-daylight vellum (cream paper, iron-gall ink, leather chrome). The measured dark
-ground is the dungeon theme, not discarded. Survey sheets load `site.css`; the
-prefixed per-zone palettes are gone. Ornament is chrome. Geometry remains the
-art. Field guide: `docs/ATLAS.md`.
+**19 August 2026, second pass.** The first dual-theme pass was a retokening: parchment
+instead of slate, a grain overlay, a theme toggle. It still read as the same page
+with different colours. This pass rebuilds the *composition*:
+
+- The home page is a title spread. Najena's mesh sits as a figure on `--plot-bg`,
+  not as a faded watermark. The title is a paper cartouche over it.
+- Plate cards are tipped-in figures with a caption strip beneath, not type on a
+  washed tile. The first plate is 2×2.
+- Survey sheets are stacked leaves with engraved (double-rule) tables.
+- Fake contour rings, gradient-clipped display type, numbered section indexes and
+  leftover dark-theme sticky bars are gone.
+
+Field guide: `docs/ATLAS.md`.
 
 ### The palette is measured, not chosen
 

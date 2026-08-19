@@ -165,7 +165,8 @@ CSS = '''<style>
 .pg-none{border:1px dashed var(--rule);padding:16px;color:var(--mut);font-size:14px}
 .pg-lock{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ok)}
-.pg-summary{position:sticky;bottom:0;background:rgba(14,19,21,.97);backdrop-filter:blur(10px);
+.pg-summary{position:sticky;bottom:0;
+  background:color-mix(in srgb, var(--surface-0) 94%, transparent);
   border-top:1px solid var(--rule2);padding:13px 0;margin-top:26px;z-index:20}
 .pg-tot{display:flex;flex-wrap:wrap;gap:5px 16px;font-family:"IBM Plex Mono",monospace;
   font-size:12px;color:var(--dim)}
