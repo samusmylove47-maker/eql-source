@@ -382,8 +382,8 @@
    "title": "Kedge Keep",
    "facets": {
     "bosses": {
-     "level": "sourced",
-     "detail": "14 named on the roster, none measured"
+     "level": "measured",
+     "detail": "1 boss measured, D4"
     },
     "loot": {
      "level": "none",
@@ -391,7 +391,7 @@
     },
     "difficulty": {
      "level": "measured",
-     "detail": "measured at D0 only"
+     "detail": "measured at D0, D4"
     },
     "inherited": {
      "level": "sourced",
@@ -399,13 +399,15 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 139, respawn not recorded, 8 mob types measured"
+     "detail": "ZEM 139, respawn not recorded, 11 mob types measured"
     }
    },
-   "score": 6,
+   "score": 7,
    "max_score": 10,
    "kills": 2,
-   "bosses": []
+   "bosses": [
+    "Phinigel Autropos"
+   ]
   }
  }
 }

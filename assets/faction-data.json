@@ -2353,6 +2353,24 @@
    "steps_helped": [],
    "damages": [],
    "helps": []
+  },
+  "Kedge Keep - Group": {
+   "difficulty": 4,
+   "date": "18 Aug 2026",
+   "kills": 0,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [
+    "Phinigel Autropos"
+   ],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
   }
  }
 }
