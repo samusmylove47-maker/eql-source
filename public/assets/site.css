@@ -794,17 +794,16 @@ a.card.figured:hover .fig{opacity:.22}
 .band.ember .shell{position:relative;z-index:1}
 
 /* ==========================================================================
-   HOME — an actual home page. Three doors, what changed, and why to trust it.
-   It deliberately does NOT enumerate the plates, the tools or the raids; that
-   is what the nav is for, and listing them here made the page a table of
-   contents for itself.
+   HOME — doors, what changed, and why to trust it. The atlas already sat
+   above this. These bands must not look like a second copy of it.
    ========================================================================== */
 
-.hero.page{padding:clamp(28px,4vw,56px) 0 0}
+.hero.page{padding:clamp(24px,3.2vw,44px) 0 0}
 .hero.page .shell{max-width:var(--max);width:100%;margin:0 auto;
-  background:none;border:0;box-shadow:none;padding:0 var(--gut) clamp(28px,4vw,48px)}
+  background:none;border:0;box-shadow:none;padding:0 var(--gut) clamp(20px,3vw,36px)}
 .hero.page .shell::after{display:none}
-.hero.page .crumb{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.hero.page .crumb{display:flex;align-items:center;gap:12px;flex-wrap:wrap;
+  margin-bottom:var(--s-4)}
 .hero.page .crumb::before{content:"";width:28px;height:1px;background:var(--brass);flex:0 0 28px}
 h1.display{max-width:14ch}
 h1.display em{color:var(--c, var(--z01));-webkit-text-fill-color:unset;background:none}
@@ -879,11 +878,14 @@ h1.display em{color:var(--c, var(--z01));-webkit-text-fill-color:unset;backgroun
   letter-spacing:.06em;color:var(--dim);margin-top:3px}
 .stdfoot{margin:var(--s-4) 0 0}
 
-/* ---------- interior page heroes ----------
-   Same device as the home page at reduced scale, so an interior page is
-   recognisably the same site without competing with the front door. */
-.hero.page{padding:clamp(28px,4vw,56px) 0 0}
-.hero.page h1.display{font-size:clamp(38px,6vw,78px);max-width:14ch}
+/* ---------- interior chapter openings ----------
+   A half-title, not a second frontis. Engraved double-rule under the display
+   line so an interior page is the same atlas at chapter scale. */
+.hero.page{padding:clamp(24px,3.2vw,44px) 0 0}
+.hero.page h1.display{font-size:clamp(32px,5vw,62px);max-width:16ch;
+  padding-bottom:var(--s-4);margin-bottom:0;
+  border-bottom:1px solid var(--rule2);
+  box-shadow:0 1px 0 var(--surface-0),0 2px 0 var(--rule)}
 .hero.page .crumb{margin-bottom:var(--s-4)}
 .hero.page .hero-lede{font-size:var(--t-base);max-width:var(--measure)}
 
