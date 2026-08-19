@@ -1756,7 +1756,7 @@
   "melee_verbs": [
    "hits"
   ],
-  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
+  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 13"
  },
  {
   "boss": "Coercer T`vala",
@@ -1795,7 +1795,7 @@
   "melee_verbs": [
    "hits"
   ],
-  "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 7"
+  "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 13"
  },
  {
   "boss": "Coercer T`vala",
@@ -1834,7 +1834,7 @@
   "melee_verbs": [
    "hits"
   ],
-  "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 7"
+  "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 13"
  },
  {
   "boss": "Coercer T`vala",
@@ -1849,7 +1849,7 @@
   "attackers": 7,
   "other_players": 6,
   "our_damage_share_pct": 21.3,
-  "damage_is_floor": false,
+  "damage_is_floor": true,
   "joined_late_seconds": null,
   "damage_low": 66752,
   "damage_high": 66752,
@@ -1869,7 +1869,48 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "crushes"
-  ]
+  ],
+  "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 13"
+ },
+ {
+  "boss": "Coercer T`vala",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 12.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 608,
+  "damage_low": 431769,
+  "damage_high": 431769,
+  "damage_spread_pct": 0.0,
+  "seconds": 433,
+  "spells": {
+   "Tashania": 12,
+   "Engulfing Roots": 9,
+   "Ensnare": 8,
+   "Immobilize": 6,
+   "Superior Healing": 4,
+   "Drifting Death": 2,
+   "Shiftless Deeds": 2,
+   "Life Leech": 2,
+   "Ice": 1,
+   "Dazzle": 1,
+   "Efflorescing Heal": 1
+  },
+  "spells_distinct": 11,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "crushes"
+  ],
+  "partial_reason": "joined 608s after the boss was engaged"
  },
  {
   "boss": "Dread",
@@ -4943,6 +4984,46 @@
    "kicks"
   ],
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
+  "boss": "Master of Spite",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 12.9,
+  "damage_is_floor": true,
+  "joined_late_seconds": 136,
+  "damage_low": 385277,
+  "damage_high": 385277,
+  "damage_spread_pct": 0.0,
+  "seconds": 363,
+  "spells": {
+   "Malosi": 7,
+   "Superior Healing": 6,
+   "Engulfing Roots": 3,
+   "Drifting Death": 2,
+   "Fire": 2,
+   "Efflorescing Heal": 2,
+   "Chloroplast": 2,
+   "Sha's Lethargy": 2,
+   "Ice": 1,
+   "Ensnare": 1
+  },
+  "spells_distinct": 10,
+  "self_heal_low": 6,
+  "self_heal_high": 6,
+  "melee_verbs": [
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
   "boss": "Mistress of Scorn",

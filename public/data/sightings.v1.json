@@ -7739,7 +7739,7 @@
     },
     {
      "mob": "Master of Spite",
-     "seen": 3,
+     "seen": 4,
      "off_roster": true,
      "sessions": [
       {
@@ -7749,6 +7749,11 @@
       },
       {
        "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
@@ -8252,6 +8257,47 @@
      "sessions": [
       {
        "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Insidious Sleeves": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "An ashenbone drake",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
@@ -9305,6 +9351,49 @@
        "date": "07 Aug 2026",
        "zone": "Blackburrow",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Rune Etched Boots": [
+    {
+     "mob": "Master of Spite",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "A boogeyman",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "17 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A phantasm",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
       }
      ]
     }
@@ -10624,42 +10713,6 @@
      ]
     }
    ],
-   "Insidious Sleeves": [
-    {
-     "mob": "An ashenbone drake",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Coercer T`vala",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Bloodstone Eyepatch": [
     {
      "mob": "An imp familiar",
@@ -11041,44 +11094,6 @@
        "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 2
-      }
-     ]
-    }
-   ],
-   "Rune Etched Boots": [
-    {
-     "mob": "Master of Spite",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "A boogeyman",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "17 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A phantasm",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
       }
      ]
     }
@@ -12209,5 +12224,5 @@
    ]
   }
  },
- "hash": "af1aa6b4bc83b87e"
+ "hash": "7fea24e2de308b7b"
 }
