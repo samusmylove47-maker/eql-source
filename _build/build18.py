@@ -65,7 +65,7 @@ def page():
                  "deliberately leave out, and what the route line is and is not.",
                  rel="../", extra=CSS, og="dungeons", canon="learn/reading-the-plans")
             + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell rp">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

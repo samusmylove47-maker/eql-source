@@ -18,11 +18,18 @@
 <meta name="twitter:description" content="Pick your three classes and target the best planar armour available to you across all three class sets plus Lustrous Russet and Midnight Clad. 116 pieces, every stat from the item's own record.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
 <link rel="canonical" href="https://eqlsource.com/tools/planar-gear">
+<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d093f9cb">
+<link rel="stylesheet" href="../assets/site.css?v=ebcf22e3">
 <style>
 .pg-step{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--faint);margin:0 0 10px}
@@ -62,7 +69,8 @@
 .pg-none{border:1px dashed var(--rule);padding:16px;color:var(--mut);font-size:14px}
 .pg-lock{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ok)}
-.pg-summary{position:sticky;bottom:0;background:rgba(14,19,21,.97);backdrop-filter:blur(10px);
+.pg-summary{position:sticky;bottom:0;
+  background:color-mix(in srgb, var(--surface-0) 94%, transparent);
   border-top:1px solid var(--rule2);padding:13px 0;margin-top:26px;z-index:20}
 .pg-tot{display:flex;flex-wrap:wrap;gap:5px 16px;font-family:"IBM Plex Mono",monospace;
   font-size:12px;color:var(--dim)}
@@ -73,10 +81,24 @@
 .pg-warn{border-left:3px solid var(--warn);padding:3px 0 3px 14px;margin:14px 0;
   color:var(--mut);font-size:13.5px;line-height:1.6}
 </style></head>
-<body><header class="site-bar">
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
-    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <a class="mark" href="../index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+  <circle cx="32" cy="32" r="30.5" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+  <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+  <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+  <path d="M32 3.5 L34.6 27.6 L32 32 L29.4 27.6 Z" fill="currentColor"/>
+  <path d="M32 60.5 L29.4 36.4 L32 32 L34.6 36.4 Z" fill="currentColor" opacity=".42"/>
+  <path d="M60.5 32 L36.4 34.6 L32 32 L36.4 29.4 Z" fill="currentColor"/>
+  <path d="M3.5 32 L27.6 29.4 L32 32 L27.6 34.6 Z" fill="currentColor"/>
+  <path d="M52.2 11.8 L35.4 30.2 L32 32 L34.2 28.8 Z" fill="currentColor" opacity=".32"/>
+  <path d="M11.8 52.2 L28.8 34.2 L32 32 L30.2 35.4 Z" fill="currentColor" opacity=".32"/>
+  <path d="M52.2 52.2 L34.2 35.4 L32 32 L35.4 33.8 Z" fill="currentColor" opacity=".22"/>
+  <path d="M11.8 11.8 L29.8 28.6 L32 32 L28.6 30.2 Z" fill="currentColor" opacity=".22"/>
+  <circle cx="32" cy="32" r="2.1" fill="currentColor"/>
+</svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Contents</button>
     <nav class="site-nav" id="nav">
       <a href="../dungeons/index.html">Dungeons</a>
       <a href="../raids/index.html">Raids</a>
@@ -85,10 +107,12 @@
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
 <div class="shell">
   <div class="page-head">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

@@ -76,18 +76,18 @@ CSS = """
 .meas{margin:34px 0 10px}
 .meas h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
   letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
-.meas .cond{border-left:2px solid var(--accd);background:#201A15;padding:12px 16px;
+.meas .cond{border-left:2px solid var(--accd);background:var(--surface-1);padding:12px 16px;
   margin:0 0 18px;color:var(--mut);font-size:14px}
 .meas .cond b{color:var(--bone)}
 .meas .tw{overflow-x:auto;margin:0 0 14px;-webkit-overflow-scrolling:touch}
 .meas table{width:100%;min-width:520px;border-collapse:collapse;font-size:14px}
 .meas th{text-align:left;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
-  letter-spacing:.14em;text-transform:uppercase;color:#B6ABA1;font-weight:500;
-  border-bottom:1px solid #40372D;padding:0 12px 7px 0}
-.meas td{border-bottom:1px solid #322A23;padding:9px 12px 9px 0;vertical-align:top}
-.meas td.n{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:#D3CFCB}
+  letter-spacing:.14em;text-transform:uppercase;color:var(--dim);font-weight:500;
+  border-bottom:1px solid var(--rule);padding:0 12px 7px 0}
+.meas td{border-bottom:1px solid var(--rule);padding:9px 12px 9px 0;vertical-align:top}
+.meas td.n{font-family:"IBM Plex Mono",monospace;white-space:nowrap;color:var(--txt)}
 .meas .mob{color:var(--bone);font-weight:600}
-.meas .sub{display:block;color:#9C958E;font-size:12.5px;margin-top:3px}
+.meas .sub{display:block;color:var(--dim);font-size:12.5px;margin-top:3px}
 .meas .caveat{color:var(--faint);font-size:13.5px;margin:0;max-width:80ch}
 .tierM{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.1em;padding:1px 5px;border:1px solid var(--accd);border-radius:3px;
@@ -96,7 +96,7 @@ CSS = """
   .meas table{min-width:0}
   .meas table,.meas thead,.meas tbody,.meas tr,.meas td,.meas th{display:block}
   .meas thead{display:none}.meas td{border:0;padding:2px 0}
-  .meas tr{border-bottom:1px solid #322A23;padding:10px 0;display:block}}
+  .meas tr{border-bottom:1px solid var(--rule);padding:10px 0;display:block}}
 </style>"""
 
 

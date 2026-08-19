@@ -220,7 +220,7 @@ page = head("Faction impact checker",
   "What grinding an EverQuest Legends zone does to your faction standing, and which race unlocks it "
   "helps or costs. Measured from combat logs rather than assumed.",
   rel="../", og="tools", canon="tools/faction-impact") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

@@ -109,7 +109,7 @@ page = head(
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "
     "no account and no server.",
     rel="../", extra=CSS, og="tools", canon="tools/50-upgrades") + bar("../") + f'''
-<main>
+<main id="main">
   <section class="band" style="border-top:0">
     <div class="shell">
       <p class="eyebrow">Gear planning &middot; <b>built and hosted elsewhere</b></p>
@@ -127,7 +127,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">01</span><div><h2 class="sec">What it holds</h2>
+      <div class="sechead"><div><h2 class="sec">What it holds</h2>
         <p class="lede" style="margin:0">Counted by the planner itself and read from its
           published snapshot, so this page cannot drift from the catalogue it describes.</p></div></div>
       <div class="upsum">
@@ -145,7 +145,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">02</span><div><h2 class="sec">Where the numbers come from</h2>
+      <div class="sechead"><div><h2 class="sec">Where the numbers come from</h2>
         <p class="lede" style="margin:0">The planner grades its own rows and publishes the
           grades. This is that table, unedited.</p></div></div>
       <ul class="upstand">
@@ -169,7 +169,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it will not tell you</h2></div></div>
+      <div class="sechead"><div><h2 class="sec">What it will not tell you</h2></div></div>
       <p>Item flags are unreliable and the planner says so in its own data: the wiki carries two
         authoring conventions, and a live client window disagreed with the catalogue on both
         items anyone has checked. Do not use a tradeability flag here to decide whether a
@@ -186,7 +186,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">04</span><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
+      <div class="sechead"><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
       <p class="upnote"><strong>Item data is derived from the EverQuest Legends Wiki
         (eqlwiki.com), with attribution.</strong> <strong>eqlwiki.com publishes no content
         licence</strong> &mdash; checked {U['read']}: the wiki&rsquo;s own <code>siteinfo</code>

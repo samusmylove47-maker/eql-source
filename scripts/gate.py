@@ -48,7 +48,7 @@ LEDGERS = [
     # cards forbids shipping a tool, and the tool that exposed it had been built,
     # registered and footer-linked while its card was never written - so the
     # count printed seven and the grid rendered six.
-    ("tools/index.html", 'class="cards c2"', r'<a class="card"[^>]*>.*?</a>'),
+    ("tools/index.html", 'class="cards c2"', r'<a class="card[^"]*"[^>]*>.*?</a>'),
     # MEASURED TABLES ARE A LEDGER; THE WORDS AROUND THEM ARE NOT.
     #
     # A survey's "Measured in play" section is a table per thing measured - the

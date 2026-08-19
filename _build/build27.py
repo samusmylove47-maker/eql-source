@@ -31,8 +31,8 @@ CSS = '''<style>
   text-transform:uppercase;color:var(--faint);margin:5px 0 0}
 .dt .ds p{margin:9px 0 0;color:var(--dim);font-size:14.5px;line-height:1.6;max-width:70ch}
 .dt .ds ul{margin:9px 0 0;padding-left:18px;color:var(--faint);font-size:13.5px;line-height:1.6;max-width:72ch}
-.dt pre{background:#10151A;border:1px solid var(--rule);border-radius:4px;padding:14px 16px;
-  overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--dim);
+.dt pre{background:var(--plot-bg);border:1px solid var(--rule2);border-radius:var(--r);padding:14px 16px;
+  overflow-x:auto;font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:#C4B496;
   line-height:1.6;margin:var(--s-5) 0 0}
 .dt .promise{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
   background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
@@ -60,7 +60,7 @@ page = (head("Public data",
              "sources, surveyed zones and item IDs.",
              rel="../", extra=CSS, og="tools", canon="data/index")
         + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell dt">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Public data</p>

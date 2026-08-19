@@ -437,11 +437,13 @@ this fault, which closes the worst case and none of the others.
 `docs/DESIGN.md` is the full brief and is binding. The non-negotiables, repeated
 because they are easy to break by accident:
 
-- **Monochrome chrome, polychrome content.** The frame is bone and graphite. All
-  colour comes from the material — the ten zone accents, instrument blue for
-  tools, ember for raids.
-- **Three faces.** Saira Condensed (display, uppercase, tight), IBM Plex Mono
-  (data, labels, anything numeric), Public Sans (prose).
+- **Monochrome chrome, polychrome content.** The frame is bone and graphite
+  (leather binding in both themes). All colour comes from the material — the
+  ten zone accents, instrument blue for tools, ember for raids.
+- **Four faces.** Cinzel (display, illuminated initials), Saira Condensed
+  (dense UI, plate numbers, table names), IBM Plex Mono (nav, badges,
+  coordinates), Source Serif 4 (prose). Daylight parchment is the default
+  reading; `data-theme="dungeon"` is the torchlit one. See `docs/ATLAS.md`.
 - **The plate cards** are the home page's signature: one card per zone, washed
   with its own accent, carrying its plate number cropped by the card edge. They
   reflow, so adding a zone needs no layout change. A fixed-column spectrum of

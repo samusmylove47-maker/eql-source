@@ -117,7 +117,7 @@ CSS = '''<style>
 </style>'''
 
 BODY = f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Search</p>

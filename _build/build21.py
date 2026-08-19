@@ -73,7 +73,7 @@ page = (head("Motes, and what they are worth",
              "item, and why converting motes upward can cost you item upgrade XP.",
              rel="../", extra=CSS, og="tools", canon="learn/motes")
         + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

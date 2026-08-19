@@ -51,7 +51,7 @@ unwritten they read as omissions.
 | Hosting the 50 Upgrades planner under `public/app/` | It is built, tested and refreshed in its own repository. We carry a description page and a link. Same-origin hosting makes us responsible for a release cadence we do not control. |
 | A home-page feature band for 50 Upgrades | `index.html` has no room. The ceiling is in `prose-budget.json`, the gate fails at cap + 40, and the Sky Ledger band alone is ~190 words. The tools door already reads its count from `len(TOOLS)`, so the tool is announced at zero word cost. |
 | Withdrawing any existing tool | Nothing currently duplicates anything. The Sky Ledger withdrawal on 17 Aug was justified by a correctness property ours lacked; absent that, two tools are two tools. |
-| A shared `.btn` class | The imported pages carry their own stylesheets and never load `site.css`. A shared button would have to be injected into 21 pages that each already style their own. Real, and post-launch. |
+| A shared `.btn` class | Surveys now load `site.css`; imported tools still carry their own app CSS and IDs. A shared button that fights those sheets is a real change and has not been made. |
 | The doubled `cache-control` header | Real, harmless, post-launch. |
 | `.html` → extensionless 307 | Real, post-launch. It touches every internal link and the sitemap. |
 | Self-hosting the site's fonts | Real, post-launch. |

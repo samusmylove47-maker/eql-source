@@ -25,8 +25,9 @@ NPAGES = IX['counts']['item_pages']
 NZONES = len(json.load(open('assets/zones-index.json', encoding='utf-8')))
 
 CSS = '''<style>
-.ix-controls{position:sticky;top:58px;z-index:30;background:rgba(14,19,21,.96);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);padding:14px 0 12px;margin-bottom:0}
+.ix-controls{position:sticky;top:var(--bar-h);z-index:30;
+  background:color-mix(in srgb, var(--surface-0) 92%, transparent);
+  border-bottom:1px solid var(--rule);padding:14px 0 12px;margin-bottom:0}
 .ix-search{width:100%;font-family:"IBM Plex Mono",monospace;font-size:15px;padding:13px 15px;
   background:var(--panel2);border:1px solid var(--rule2);color:var(--bone)}
 .ix-search:focus{outline:2px solid var(--bone);outline-offset:-1px}
@@ -39,7 +40,7 @@ CSS = '''<style>
 .fchip{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   padding:5px 9px;border:1px solid var(--rule);color:var(--mut);transition:all .12s}
 .fchip:hover{color:var(--bone);border-color:var(--rule2)}
-.fchip[aria-pressed="true"]{border-color:var(--bone);color:var(--bone);background:rgba(230,233,228,.07)}
+.fchip[aria-pressed="true"]{border-color:var(--bone);color:var(--bone);background:color-mix(in srgb, var(--brass) 14%, transparent)}
 .fchip.z[aria-pressed="true"]{border-color:var(--zc);background:transparent;
   color:var(--zc);color:color-mix(in srgb, var(--zc) 68%, var(--bone))}
 .ix-mode{display:flex;gap:0;border:1px solid var(--rule)}
@@ -83,11 +84,11 @@ a.nm:focus-visible{outline:2px solid var(--zc);outline-offset:3px;border-radius:
   .res .zone{grid-column:2;grid-row:1}
 }
 .ix-empty{border:1px dashed var(--rule);padding:36px;text-align:center;color:var(--mut);margin-top:24px}
-mark{background:rgba(230,233,228,.22);color:var(--bone);padding:0 1px}
+mark{background:color-mix(in srgb, var(--brass) 22%, transparent);color:var(--bone);padding:0 1px}
 </style>'''
 
 BODY = f'''
-<main>
+<main id="main">
 <div class="shell">
   <div class="page-head">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; <a href="index.html">Tools</a> &nbsp;/&nbsp; The Index</p>

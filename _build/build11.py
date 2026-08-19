@@ -298,7 +298,7 @@ page = head("What difficulty changes",
   "D0 to D4 in EverQuest Legends: what each tier scales, what it does not, how to read the tier off "
   "the zone line, and which parts nobody has pinned down yet.",
   rel="../", og="learn", canon="learn/difficulty") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">
@@ -385,7 +385,7 @@ You have entered The City of Guk 4 (Refined).</pre>
             named can be worth killing again on another setting.</li>
         </ol>
       </div>
-      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:112%">
+      <aside class="standard" style="--c:var(--warn)">
         <h3 class="stdh">Still unpinned</h3>
         <p class="stdp">Named because they are open, not smoothed over. These are EQL Tools&rsquo;
           own confidence labels, kept rather than quietly upgraded.</p>

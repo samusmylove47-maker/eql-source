@@ -5,6 +5,7 @@ Run before every commit:  python3 scripts/check.py
 Exit code 0 = safe to commit. Anything else is a blocker, not a warning.
 """
 import json, os, re, sys, glob
+from datetime import datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -108,6 +109,40 @@ else:
         if missing:
             fail(f"dungeons/index.html does not link {len(missing)} zone(s): {', '.join(missing)}")
 
+    # Featured plate: latest revamped zone leads the atlas. Typing Najena as
+    # the hero after Mistmoore revamped is the fault this catches.
+    def _revamp_date(raw):
+        raw = (raw or "").strip()
+        if not raw:
+            return None
+        for fmt in ("%d %B %Y", "%d %b %Y", "%Y-%m-%d"):
+            try:
+                return datetime.strptime(raw, fmt).date()
+            except ValueError:
+                continue
+        return None
+    dated = [(z, _revamp_date(z.get("revamped"))) for z in Z]
+    dated = [(z, d) for z, d in dated if d]
+    if dated:
+        feat = max(dated, key=lambda t: t[1])[0]
+        for page, needle, check_hero in (
+            ("public/index.html",
+             f'class="plate lead" href="dungeons/{feat["slug"]}.html"', True),
+            ("public/dungeons/index.html",
+             f'class="plate lead" href="{feat["slug"]}.html"', False),
+        ):
+            if not os.path.exists(page):
+                continue
+            h = open(page, encoding="utf-8").read()
+            if needle not in h:
+                fail(f"{page} does not feature {feat['title']} as the lead plate "
+                     f"— the latest revamped zone must lead")
+            if check_hero:
+                m = re.search(r'class="hero-src">([^<]+)', h)
+                if not m or feat["title"] not in m.group(1):
+                    fail(f"{page} hero figure is not {feat['title']} "
+                         f"— the latest revamped zone is the title-spread art")
+
 # 4. the 3D viewer must not depend on a CDN
 for p in glob.glob("public/raids/*.html"):
     h = open(p, encoding="utf-8").read()
@@ -121,8 +156,8 @@ css = open("public/assets/site.css", encoding="utf-8").read()
 for cls in (".tier", ".t1", ".t3", ".t5"):
     if cls not in css:
         fail(f"assets/site.css has lost {cls} — the source-tier badge system is load-bearing")
-if os.path.exists("index.html"):
-    h = open("index.html", encoding="utf-8").read()
+if os.path.exists("public/index.html"):
+    h = open("public/index.html", encoding="utf-8").read()
     # What matters is that the scale is published and legible on the home page,
     # not which markup renders it. This used to require a literal "tier-scale"
     # class, which broke the moment the scale was redesigned even though every
@@ -149,7 +184,7 @@ if os.path.exists("index.html"):
 # two display levels only, and Saira Condensed stays underneath it as the
 # workhorse. The site read as documentation rather than as a reference for this
 # game, and a display face with an actual point of view is most of the fix.
-FACES = {"Cinzel", "Saira Condensed", "IBM Plex Mono", "Public Sans"}
+FACES = {"Cinzel", "Saira Condensed", "IBM Plex Mono", "Source Serif 4"}
 declared = set(re.findall(r'font-family:\s*"([^"]+)"', css))
 extra = declared - FACES
 if extra:

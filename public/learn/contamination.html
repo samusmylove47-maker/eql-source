@@ -18,11 +18,18 @@
 <meta name="twitter:description" content="We scan our own pages for Project 1999 conventions and publish what turns up. Percentage haste, classic charge counts and classic resist blocks, counted, with what would settle each one.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
 <link rel="canonical" href="https://eqlsource.com/learn/contamination">
+<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d093f9cb">
+<link rel="stylesheet" href="../assets/site.css?v=ebcf22e3">
 <style>
 .cn table{border-collapse:collapse;width:100%;font-size:14px;margin:var(--s-5) 0 0}
 .cn th{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.14em;
@@ -46,10 +53,24 @@
 .cn .score span{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--faint);display:block;margin-top:6px}
 </style></head>
-<body><header class="site-bar">
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
-    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <a class="mark" href="../index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+  <circle cx="32" cy="32" r="30.5" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+  <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+  <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+  <path d="M32 3.5 L34.6 27.6 L32 32 L29.4 27.6 Z" fill="currentColor"/>
+  <path d="M32 60.5 L29.4 36.4 L32 32 L34.6 36.4 Z" fill="currentColor" opacity=".42"/>
+  <path d="M60.5 32 L36.4 34.6 L32 32 L36.4 29.4 Z" fill="currentColor"/>
+  <path d="M3.5 32 L27.6 29.4 L32 32 L27.6 34.6 Z" fill="currentColor"/>
+  <path d="M52.2 11.8 L35.4 30.2 L32 32 L34.2 28.8 Z" fill="currentColor" opacity=".32"/>
+  <path d="M11.8 52.2 L28.8 34.2 L32 32 L30.2 35.4 Z" fill="currentColor" opacity=".32"/>
+  <path d="M52.2 52.2 L34.2 35.4 L32 32 L35.4 33.8 Z" fill="currentColor" opacity=".22"/>
+  <path d="M11.8 11.8 L29.8 28.6 L32 32 L28.6 30.2 Z" fill="currentColor" opacity=".22"/>
+  <circle cx="32" cy="32" r="2.1" fill="currentColor"/>
+</svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Contents</button>
     <nav class="site-nav" id="nav">
       <a href="../dungeons/index.html">Dungeons</a>
       <a href="../raids/index.html">Raids</a>
@@ -58,10 +79,12 @@
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell cn">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
@@ -96,7 +119,7 @@
       demonstrably works differently in Legends.</p>
     <div class="tw"><table>
       <thead><tr><th>Signature</th><th>Unmarked</th><th>Marked</th><th>What it is</th></tr></thead>
-      <tbody><tr><td class="sig">haste-pct</td><td class="n ok">0</td><td class="n ok">16</td><td class="what"><b>Classic:</b> Haste was a percentage that divided weapon delay.<br><b>Legends:</b> Legends uses a flat value on an attack-speed stat. EQL Tools documents it; eqlwiki still carries the classic formula, so the two best sources in the field disagree.<br><b>What would settle it:</b> One screenshot of a Legends haste tooltip.<br><span style="color:var(--faint)">Found in: sky.json, index-data.json, lowerguk.html</span></td></tr></tbody>
+      <tbody><tr><td class="sig">haste-pct</td><td class="n ok">0</td><td class="n ok">16</td><td class="what"><b>Classic:</b> Haste was a percentage that divided weapon delay.<br><b>Legends:</b> Legends uses a flat value on an attack-speed stat. EQL Tools documents it; eqlwiki still carries the classic formula, so the two best sources in the field disagree.<br><b>What would settle it:</b> One screenshot of a Legends haste tooltip.<br><span style="color:var(--faint)">Found in: sky.json, index-data.json, source\lowerguk.html</span></td></tr></tbody>
     </table></div>
 
     <h2 class="sec">Classic formats</h2>
@@ -106,7 +129,7 @@
       number in it is right.</p>
     <div class="tw"><table>
       <thead><tr><th>Signature</th><th>Unmarked</th><th>Marked</th><th>What it is</th></tr></thead>
-      <tbody><tr><td class="sig">charges</td><td class="n bad">9</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic printed a charge count in brackets on clickable items.<br><b>Legends:</b> Nobody has published whether Legends keeps charge counts or the same numbers.<br><b>What would settle it:</b> One screenshot of a clickable item tooltip.<br><span style="color:var(--faint)">Found in: sky.json</span></td></tr><tr><td class="sig">sv-resist</td><td class="n bad">217</td><td class="n ok">9</td><td class="what"><b>Classic:</b> Classic stat blocks abbreviated resists as SV MAGIC +N.<br><b>Legends:</b> The abbreviation may well be current. Its presence marks a block transcribed from a classic-era record, which is worth knowing even when the number is right.<br><b>What would settle it:</b> Compare one block against the item in game.<br><span style="color:var(--faint)">Found in: index-data.json, warrens.html, sky.json</span></td></tr><tr><td class="sig">nodrop</td><td class="n bad">65</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic flag wording on item records.<br><b>Legends:</b> Legends may use different wording. Unchecked.<br><b>What would settle it:</b> One screenshot of an item tooltip carrying the flag.<br><span style="color:var(--faint)">Found in: mistmoore.html, najena.html, warrens.html</span></td></tr></tbody>
+      <tbody><tr><td class="sig">charges</td><td class="n bad">9</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic printed a charge count in brackets on clickable items.<br><b>Legends:</b> Nobody has published whether Legends keeps charge counts or the same numbers.<br><b>What would settle it:</b> One screenshot of a clickable item tooltip.<br><span style="color:var(--faint)">Found in: sky.json</span></td></tr><tr><td class="sig">sv-resist</td><td class="n bad">217</td><td class="n ok">9</td><td class="what"><b>Classic:</b> Classic stat blocks abbreviated resists as SV MAGIC +N.<br><b>Legends:</b> The abbreviation may well be current. Its presence marks a block transcribed from a classic-era record, which is worth knowing even when the number is right.<br><b>What would settle it:</b> Compare one block against the item in game.<br><span style="color:var(--faint)">Found in: index-data.json, source\warrens.html, sky.json</span></td></tr><tr><td class="sig">nodrop</td><td class="n bad">65</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic flag wording on item records.<br><b>Legends:</b> Legends may use different wording. Unchecked.<br><b>What would settle it:</b> One screenshot of an item tooltip carrying the flag.<br><span style="color:var(--faint)">Found in: source\mistmoore.html, source\najena.html, source\warrens.html</span></td></tr></tbody>
     </table></div>
 
     <div class="note"><strong>Why this page is about us and not about anyone else.</strong>

@@ -18,52 +18,92 @@
 <meta name="twitter:description" content="Nine EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
 <link rel="canonical" href="https://eqlsource.com/tools/index">
+<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;700;900&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d093f9cb">
-</head>
-<body><header class="site-bar">
+<link rel="stylesheet" href="../assets/site.css?v=ebcf22e3">
+<style>
+:root{--acc:var(--instr);--acct:var(--instr-t)}
+.sheet .cards{margin-top:var(--s-6);grid-template-columns:repeat(2,minmax(0,1fr))}
+.sheet .cards>.card:not(.feature){padding:var(--s-4)}
+.sheet .cards>.card:not(.feature) .t{font-size:var(--t-lg)}
+.sheet .cards>.card:not(.feature) .d{font-size:var(--t-sm);margin-bottom:var(--s-3)}
+.sheet .note{max-width:var(--measure-wide)}
+@media(max-width:720px){.sheet .cards{grid-template-columns:1fr}}
+</style></head>
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
-    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <a class="mark" href="../index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+  <circle cx="32" cy="32" r="30.5" stroke="currentColor" stroke-width=".7" opacity=".45"/>
+  <circle cx="32" cy="32" r="22" stroke="currentColor" stroke-width=".5" opacity=".28"/>
+  <circle cx="32" cy="32" r="8" stroke="currentColor" stroke-width=".6" opacity=".4"/>
+  <path d="M32 3.5 L34.6 27.6 L32 32 L29.4 27.6 Z" fill="currentColor"/>
+  <path d="M32 60.5 L29.4 36.4 L32 32 L34.6 36.4 Z" fill="currentColor" opacity=".42"/>
+  <path d="M60.5 32 L36.4 34.6 L32 32 L36.4 29.4 Z" fill="currentColor"/>
+  <path d="M3.5 32 L27.6 29.4 L32 32 L27.6 34.6 Z" fill="currentColor"/>
+  <path d="M52.2 11.8 L35.4 30.2 L32 32 L34.2 28.8 Z" fill="currentColor" opacity=".32"/>
+  <path d="M11.8 52.2 L28.8 34.2 L32 32 L30.2 35.4 Z" fill="currentColor" opacity=".32"/>
+  <path d="M52.2 52.2 L34.2 35.4 L32 32 L35.4 33.8 Z" fill="currentColor" opacity=".22"/>
+  <path d="M11.8 11.8 L29.8 28.6 L32 32 L28.6 30.2 Z" fill="currentColor" opacity=".22"/>
+  <circle cx="32" cy="32" r="2.1" fill="currentColor"/>
+</svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Contents</button>
     <nav class="site-nav" id="nav">
       <a href="../dungeons/index.html">Dungeons</a>
       <a href="../raids/index.html">Raids</a>
-      <a href="../tools/index.html">Tools</a>
+      <a href="../tools/index.html" aria-current="page">Tools</a>
       <a href="../tools/index-search.html">The Index</a>
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
+<div class="sky-wrap">
+<div class="sheet">
 
-<section class="hero page">
-  <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
-    <h1 class="display">Nine trackers,<br><em>no account.</em></h1>
-    <p class="hero-lede">No login, no server holding your data. What you tick is packed into the page
-      URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
-      <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
-      tick anything.</p>
-    <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
-  </div>
-</section>
+<header class="mast">
+  <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
+  <p class="eyebrow">Instrument</p>
+  <div class="title"><h1>Nine trackers</h1><span class="leader"></span>
+    <span class="plateno">9</span></div>
+  <p class="subtitle">No account. Progress travels in the link</p>
+  <p class="deck">No login, no server holding your data. What you tick is packed into the page
+    URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
+    <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
+    tick anything.</p>
+  <ul class="register">
+    <li><b>9</b> trackers</li>
+    <li><b>None</b> transmitted</li>
+    <li><b>Share</b> by link</li>
+    <li><b>Works</b> offline</li>
+  </ul>
+</header>
 
-<div class="shell">
-  <section class="band" style="border-top:0;padding-top:0">
+<section>
     <div class="cards c2">
-      <a class="card" href="character.html" style="--c:var(--ok)">
-        <div class="kicker">One sheet &middot; one link</div>
-        <h3 class="t">Character sheet</h3>
-        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
-          Bookmark it, paste it into guild chat, open it on another machine and everything is where
-          you left it &mdash; including the two trackers, which it fills in for you.</p>
-        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
-        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card feature" href="sky-ledger.html" style="--c:var(--instr)">
+        <div class="kicker">Progression &middot; reads your combat log</div>
+        <h3 class="t">Sky Ledger</h3>
+        <p class="d">It follows your own log and says which of the 95 Plane of Sky class-unlock tests you
+          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
+          once</strong> &mdash; 29 of the 128 items are wanted by more than one test, so holding one does
+          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
+          replaces the tracker published here before it.</p>
+        <div class="chipline"><span class="pill">95 tests</span><span class="pill">29 contested items</span><span class="pill">No install</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; 434 items, 232 named</div>
@@ -75,16 +115,14 @@
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
         <div class="foot"><span>Built from the surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
-        <div class="kicker">Progression &middot; reads your combat log</div>
-        <h3 class="t">Sky Ledger</h3>
-        <p class="d">It follows your own log and says which of the 95 Plane of Sky class-unlock tests you
-          can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
-          once</strong> &mdash; 29 of the 128 items are wanted by more than one test, so holding one does
-          not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
-          replaces the tracker published here before it.</p>
-        <div class="chipline"><span class="pill">95 tests</span><span class="pill">29 contested items</span><span class="pill">No install</span></div>
-        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
+      <a class="card" href="character.html" style="--c:var(--ok)">
+        <div class="kicker">One sheet &middot; one link</div>
+        <h3 class="t">Character sheet</h3>
+        <p class="d">Your trio, your race unlocks and your Plane of Sky progress in a single address.
+          Bookmark it, paste it into guild chat, open it on another machine and everything is where
+          you left it &mdash; including the two trackers, which it fills in for you.</p>
+        <div class="chipline"><span class="pill">No account</span><span class="pill">Nothing sent</span><span class="pill">Downloadable</span></div>
+        <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
@@ -143,7 +181,10 @@
     <div class="note"><strong>On privacy.</strong> Nothing is transmitted anywhere. The autosave uses your browser&rsquo;s
       own storage and the share link carries a compressed bitfield in the URL fragment &mdash; the part of a URL that is
       never sent to a server.</div>
-  </section>
+    <p class="doornote">50 Upgrades is a gear planner hosted in its own repository. This site carries a
+      <a href="50-upgrades.html">description page</a>, not the planner.</p>
+</section>
+</div>
 </div>
 </main>
 <footer class="site-foot">

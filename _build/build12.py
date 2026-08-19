@@ -86,7 +86,7 @@ page = head("Deity, and the level 11 lock",
   "for 500 Iridium. What the choice costs, what the published advice leaves out, and where the "
   "faction data simply stops.",
   rel="../", og="learn", canon="learn/deity") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">
@@ -150,7 +150,7 @@ page = head("Deity, and the level 11 lock",
           for a decision that locks at level 11. Safe and free are different things, and on a
           permanent choice the difference is the whole question.</p>
       </div>
-      <aside class="standard contour" style="--c:var(--instr);--cx:88%;--cy:112%">
+      <aside class="standard" style="--c:var(--instr)">
         <h3 class="stdh">Reading it straight</h3>
         <p class="stdp">Agnostic buys you fewer enemies and costs you the deity-gated content. Which
           way that trades depends on things nobody has measured.</p>

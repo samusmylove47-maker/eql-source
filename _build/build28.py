@@ -168,7 +168,7 @@ page = head("Sky Ledger",
     f"{DS['quests']} Plane of Sky class-unlock tests you can hand in now. Runs "
     f"in a browser with no install, or as an overlay on the game.",
     rel="../", extra=CSS, og="tools", canon="tools/sky-ledger") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">
@@ -208,7 +208,7 @@ page = head("Sky Ledger",
   </section>
 
   <section class="band">
-    <div class="sechead"><span class="n">01</span><div><h2 class="sec">A piece can only be spent once</h2>
+    <div class="sechead"><div><h2 class="sec">A piece can only be spent once</h2>
       <p class="lede" style="margin:0">This is the whole reason it is promoted here, and it is
         a correctness property rather than a feature.</p></div></div>
     <p class="lede"><strong>{DS['contested']} of the {DS['items']} turn-in items are wanted by more than one
@@ -224,7 +224,7 @@ page = head("Sky Ledger",
   </section>
 
   <section class="band">
-    <div class="sechead"><span class="n">02</span><div><h2 class="sec">It holds this site's standard on its own</h2>
+    <div class="sechead"><div><h2 class="sec">It holds this site's standard on its own</h2>
       <p class="lede" style="margin:0">Arrived at separately, by the same person, which is worth
         saying plainly rather than presenting as a coincidence.</p></div></div>
     <ul class="sllim">
@@ -253,7 +253,7 @@ page = head("Sky Ledger",
   </section>
 
   <section class="band">
-    <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it will not tell you</h2>
+    <div class="sechead"><div><h2 class="sec">What it will not tell you</h2>
       <p class="lede" style="margin:0">Its own limits, in our type. They are limits of the log,
         mostly, and none of them are fixable by trying harder.</p></div></div>
     <ul class="sllim">
@@ -282,7 +282,7 @@ page = head("Sky Ledger",
   </section>
 
   <section class="band" id="overlay">
-    <div class="sechead"><span class="n">04</span><div><h2 class="sec">The overlay</h2>
+    <div class="sechead"><div><h2 class="sec">The overlay</h2>
       <p class="lede" style="margin:0">The same application in an Electron shell, so it can sit on
         top of the game instead of beside it.</p></div></div>
     <p class="lede">Both hotkeys are global, so they work while the game has focus. Position,
@@ -303,7 +303,7 @@ page = head("Sky Ledger",
   </section>
 
   <section class="band">
-    <div class="sechead"><span class="n">05</span><div><h2 class="sec">Who made it, and what it replaced</h2></div></div>
+    <div class="sechead"><div><h2 class="sec">Who made it, and what it replaced</h2></div></div>
     <div class="note sig"><strong>Sky Ledger is a separate project</strong>, with its own test
       suite and its own documentation. It is served here rather than rebuilt here.</div>
     <div class="note"><strong>Our own Plane of Sky tracker is withdrawn.</strong> It is the tool

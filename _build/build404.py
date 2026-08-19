@@ -15,7 +15,7 @@ from _partials import head, bar, foot, TOOLS, wordnum
 page = head("Page not found",
   "That page is not here. The dungeon surveys, tools and the Plane of Sky guide are all one click away.",
   rel="", og="home") + bar("") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

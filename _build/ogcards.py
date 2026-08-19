@@ -23,10 +23,11 @@ assets/zones-index.json, so a card cannot drift from the page it represents.
 
 TYPOGRAPHY, AND AN HONEST DEVIATION
 -----------------------------------
-The site's three faces are Saira Condensed, IBM Plex Mono and Public Sans. None
-is on this machine and vendoring three font files to draw ten images is a poor
+The site's four faces are Cinzel, Saira Condensed, IBM Plex Mono and Source Serif 4. None
+is on this machine and vendoring four font files to draw ten images is a poor
 trade, so the cards use the nearest system equivalents: Franklin Gothic Demi
-Condensed for display and Consolas for data. It is a deviation from the design
+Condensed on Windows, Liberation Sans Bold on Linux, and a monospaced face
+for data. It is a deviation from the design
 system and it is recorded here rather than hidden. If the real faces are ever
 vendored, change FONTS below and re-run.
 """
@@ -41,21 +42,35 @@ except ImportError:
     sys.exit("Pillow is not installed. This is a by-hand tool: pip install Pillow")
 
 W, H = 1200, 630
-BG, INK, DIM, FAINT = "#191410", "#F2EADA", "#B5AA95", "#8D8272"
-BONE, INSTR, EMBER = "#DFD6C4", "#5C93C4", "#C4623A"
+BG, INK, DIM, FAINT = "#EDE4CF", "#2A2118", "#5C5346", "#6E6558"
+BONE, INSTR, EMBER = "#3A3228", "#2A6580", "#A33824"
 
 FONTS = {
-    "display": r"C:\Windows\Fonts\FRAMDCN.TTF",
-    "mono":    r"C:\Windows\Fonts\consola.ttf",
-    "monob":   r"C:\Windows\Fonts\consolab.ttf",
+    "display": (
+        r"C:\Windows\Fonts\FRAMDCN.TTF",
+        "/usr/share/fonts/truetype/liberation/LiberationSans-Bold.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+    ),
+    "mono": (
+        r"C:\Windows\Fonts\consola.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationMono-Regular.ttf",
+    ),
+    "monob": (
+        r"C:\Windows\Fonts\consolab.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf",
+        "/usr/share/fonts/truetype/liberation/LiberationMono-Bold.ttf",
+    ),
 }
 
 
 def font(kind, size):
-    try:
-        return ImageFont.truetype(FONTS[kind], size)
-    except OSError:
-        return ImageFont.load_default(size)
+    for path in FONTS[kind]:
+        try:
+            return ImageFont.truetype(path, size)
+        except OSError:
+            continue
+    return ImageFont.load_default(size)
 
 
 def fit(draw, text, kind, size, maxw):
@@ -90,7 +105,7 @@ def card(path, accent, eyebrow, title, facts, footer):
 
     # A rule the width of the title, then the facts along it.
     ry = ty + tf.size + 42
-    d.rectangle([x, ry, right, ry + 2], fill="#2E3A41")
+    d.rectangle([x, ry, right, ry + 2], fill="#8A7348")
 
     fy = ry + 34
     col = x

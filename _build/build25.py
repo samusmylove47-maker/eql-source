@@ -103,8 +103,8 @@ DATA = dict(know=know, sets=sorted({v['set'] for v in know.values() if v.get('se
 CSS = '''<style>
 .iv-drop{border:1px dashed var(--rule2);border-radius:var(--r);padding:var(--s-6);
   background:var(--panel);margin:var(--s-5) 0 0}
-.iv-drop textarea{width:100%;min-height:150px;background:#10151A;color:var(--dim);
-  border:1px solid var(--rule);border-radius:4px;padding:12px 14px;
+.iv-drop textarea{width:100%;min-height:150px;background:var(--plot-bg);color:#C4B496;
+  border:1px solid var(--rule2);border-radius:var(--r);padding:12px 14px;
   font-family:"IBM Plex Mono",monospace;font-size:12px;line-height:1.6;resize:vertical}
 .iv-drop textarea:focus{outline:2px solid var(--instr);outline-offset:1px}
 .iv-priv{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.1em;
@@ -114,7 +114,7 @@ CSS = '''<style>
 .iv-btn{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
   text-transform:uppercase;padding:10px 18px;border:1px solid var(--instr);
   background:transparent;color:var(--instr);cursor:pointer;border-radius:3px;margin:12px 8px 0 0}
-.iv-btn:hover{background:var(--instr);color:#0B0F12}
+.iv-btn:hover{background:var(--instr);color:var(--surface-0)}
 .iv-btn.sec{border-color:var(--rule2);color:var(--mut)}
 .iv-btn.sec:hover{background:var(--rule);color:var(--bone)}
 .iv-sum{display:flex;flex-wrap:wrap;gap:1px;background:var(--rule);border:1px solid var(--rule);
@@ -304,7 +304,7 @@ def page():
                  f"which planar set it belongs to. Nothing is uploaded.",
                  rel="../", extra=CSS, og="tools", canon="tools/inventory")
             + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

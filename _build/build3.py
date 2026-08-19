@@ -8,81 +8,36 @@ from withheld import WITHHELD, REASON, MARK
 # See _build/derived.py for why one typed superlative became four typed
 # ordinals before this existed.
 import derived
+from _partials import CSS_V, THEME_BOOT, FONTS, bar
 _CFG = json.load(open(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),"site.config.json"), encoding="utf-8"))
 SITE = _CFG["site_name"]
 SRC = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'source')
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 BY = {z['slug']: z for z in Z}
 
-RETURN_CSS = """
-<style>
-.ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
- align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
- letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:var(--mut);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
-.ns-bar a:hover{color:var(--bone);border-color:var(--bone)}
-.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
- letter-spacing:.13em;color:var(--bone);text-decoration:none;border:0}
-/* These carried the pre-AA greys. #62584F measured 2.46:1 on this bar. The
-   values here mirror assets/site.css's ramp; they are duplicated rather than
-   referenced because this chrome is injected into standalone tool pages. */
-.ns-bar .ns-sep{color:var(--faint)}
-.ns-bar .ns-tag{margin-left:auto;color:var(--faint)}
-@media(max-width:640px){.ns-bar .ns-tag{display:none}}
-</style>
-"""
+RETURN_CSS = ""
 
 def bar_html(rel, crumb, crumb_href, here, extra=""):
-    return (f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{SITE}</a>'
-            f'<span class="ns-sep">/</span><a href="{rel}{crumb_href}">{crumb}</a>'
-            f'<span class="ns-sep">/</span><span style="color:var(--txt)">{here}</span>'
-            f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>')
+    """The same leather running head as every other page.
+
+    Surveys used to get a breadcrumb strip (`.ns-bar`) with no Dungeons / Raids
+    / Tools / Learn. Opening a plate from the home spread felt like leaving
+    the site for a PDF. The current mark is `crumb`, which already matches a
+    nav label. `here` is the page name and belongs in the mast crumb, not in
+    a second bar.
+    """
+    return bar(rel, current=crumb, extra=extra)
 
 # Pages that already have a sticky bar of their own. Both bars pin to top:0,
 # and this one wins on z-index, so on the race tracker it covered 73% of the
 # tool's own tab-and-save bar the moment you scrolled. The breadcrumb is the
 # less important of the two, so it stops following on those pages.
-UNPIN = '<style>.ns-bar{position:static}</style>'
+UNPIN = '<style>.ns-bar,.site-bar{position:static}</style>'
 
 WH_CSS = """
 <style>
 .wh{font-family:"IBM Plex Mono",monospace;font-size:.82em;letter-spacing:.06em;
-  text-transform:uppercase;color:#D9837C;border-bottom:1px dotted #D9837C}
-.whnote{margin:14px 0 0;padding:12px 14px;border-left:3px solid var(--warn);
-  background:rgba(201,69,58,.06);color:#B0A9A2;font-size:14px;line-height:1.55}
-.whnote strong{color:var(--bone)}
-.disputed{text-decoration:line-through;text-decoration-color:#D9837C;
-  text-decoration-thickness:2px;color:#9C958E}
-.ph-ev{margin:10px 0 12px;padding-left:18px;line-height:1.62}
-.ph-ev li{margin:0 0 7px}
-.ph-note{margin:0 0 16px;padding:13px 15px;border-radius:4px;font-size:14px;line-height:1.6}
-.ph-note strong{display:block;margin-bottom:4px}
-.ph-yes{border-left:3px solid var(--ok);background:rgba(95,163,126,.07);color:var(--mut)}
-.ph-yes strong{color:#8FD3AD}
-.ph-note a{color:#8FBEE4}
-
-/* The trimmed plate blocks. Answer-first lists, a key chain drawn as a chain,
-   and dangers that read as dangers. Injected because plates carry their own CSS. */
-ul.why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-ul.why li{padding:12px 15px;border:1px solid #40372D;border-left:3px solid var(--acc,#D9A227);
-  border-radius:4px;background:#1E1914;color:var(--mut);font-size:15px;line-height:1.55}
-ul.why b{color:var(--bone)}
-ol.chain{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:0}
-ol.chain li{display:grid;grid-template-columns:minmax(140px,auto) 1fr auto;gap:12px;
-  align-items:baseline;padding:11px 14px;border:1px solid #40372D;border-bottom:0;
-  background:#1E1914;color:#9C958E;font-size:14px}
-ol.chain li:first-child{border-radius:4px 4px 0 0}
-ol.chain li:last-child{border-bottom:1px solid #40372D;border-radius:0 0 4px 4px}
-ol.chain b{color:var(--bone);font-size:15px}
-ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint)}
-ol.chain .ck{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct,#E8C25F)}
-@media(max-width:640px){ol.chain li{grid-template-columns:1fr;gap:3px}}
-ul.danger-list,ul.tightlist{list-style:none;margin:0;padding:0;display:grid;gap:9px}
-ul.danger-list li,ul.tightlist li{padding:11px 14px;border-left:3px solid #40372D;
-  background:rgba(255,255,255,.02);color:#B0A9A2;font-size:14.5px;line-height:1.55}
-ul.danger-list li{border-left-color:var(--warn)}
-ul.danger-list b,ul.tightlist b{color:var(--bone)}
-p.tight{color:#B0A9A2;font-size:14px;line-height:1.6;margin:0}
+  text-transform:uppercase;color:var(--warn-t);border-bottom:1px dotted var(--warn-t)}
 </style>"""
 
 # The plates and tools are standalone pages with their own footers, so foot()
@@ -101,14 +56,11 @@ PH_CONFIRMED = """
   <a href="REL_learn/reading-the-plans.html">Why they are still printed &rarr;</a></div>"""
 
 
-# THE INJECTED CHROME USES TOKENS, AND THESE PAGES HAVE NONE.
-# The twenty-one imported pages carry their own stylesheets and never load
-# site.css, so every var(--bone), var(--faint), var(--rule) in the chrome this
-# file injects resolved to nothing at all. It fails silently, exactly as
-# --line and --ink did on the entity pages.
-#
-# Rather than type the palette a third time, the tokens are read out of
-# site.css itself. If a token changes there it changes here on the next build.
+# THE INJECTED CHROME USES TOKENS, AND THESE PAGES USED TO HAVE NONE.
+# Surveys and imported tools now load site.css. TOKENS_CSS is still emitted as
+# a belt so a page that carries its own :root (race-unlocks) cannot lose
+# --bone if the stylesheet link is skipped, and so the ns-bar paints before
+# the external file arrives.
 def _tokens_from_site_css():
     try:
         css = open('public/assets/site.css', encoding='utf-8').read()
@@ -118,8 +70,10 @@ def _tokens_from_site_css():
     keep = ('--surface-0', '--surface-1', '--surface-2', '--ground', '--panel',
             '--panel2', '--rule', '--rule2', '--line', '--ink', '--bone',
             '--txt', '--mut', '--dim', '--faint', '--ok', '--warn', '--warn-t',
-            '--ember', '--ember-t', '--instr', '--brass', '--brass-t',
-            '--lava', '--lava-t', '--r', '--speed')
+            '--ember', '--ember-t', '--instr', '--instr-t', '--brass', '--brass-t',
+            '--lava', '--lava-t', '--r', '--speed', '--bind', '--bind-ink',
+            '--bind-mut', '--bind-faint', '--bind-line', '--bar-bg', '--sheet',
+            '--plot-bg')
     # Strip comments BEFORE splitting. site.css documents nearly every token
     # inline, so a declaration arrives as "/* why this value */\n  --bone:#F2EADA"
     # and splitting on ':' hands back the comment rather than the name. The
@@ -138,14 +92,7 @@ def _tokens_from_site_css():
 
 TOKENS_CSS = _tokens_from_site_css()
 
-CONTACT_CSS = """<style>
-.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
-  background:rgba(255,255,255,.02)}
-.inj-contact p{margin:0;color:#B0A9A2;font-size:14px;line-height:1.6}
-.inj-contact strong{color:var(--bone)}
-.inj-contact a{color:#8FBEE4}
-.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
-</style>"""
+CONTACT_CSS = ""
 
 CONTACT = """
 <div class="inj-contact">
@@ -216,7 +163,7 @@ PH_MARK_CSS = """<style>
 .ph-old{text-decoration:line-through;text-decoration-color:var(--warn);
   text-decoration-thickness:1px;color:var(--faint)}
 .ph-old-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--warn-t);border:1px solid #6A2F2B;border-radius:2px;
+  text-transform:uppercase;color:var(--warn-t);border:1px solid var(--warn);border-radius:2px;
   padding:1px 4px;margin-left:5px;white-space:nowrap;text-decoration:none;display:inline-block}
 </style>"""
 
@@ -309,19 +256,25 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
                   f'<meta name="twitter:image" content="{img}">')
         if canon:
             social += f'<link rel="canonical" href="{url}/{canon}">'
-    # Tokens first. These twenty-one pages are the hand-written originals: they
-    # carry their own stylesheets and never load site.css, so every var(--bone),
-    # var(--faint) and var(--rule) in the chrome injected here resolved to
-    # nothing at all. It fails silently, exactly the way --line and --ink did on
-    # the entity pages. CONTACT_CSS travels with them because the contact block
-    # itself is injected unconditionally further down, while its stylesheet used
-    # to ride along with the withheld-coordinate block — so any page with no
-    # withheld coordinate got the markup and none of the styling, and its links
-    # rendered in the browser's default blue on a dark ground.
-    h = h.replace('</head>', TOKENS_CSS + CONTACT_CSS
-                  + f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">'
-                  + social + css + '</head>', 1)
+    # Surveys and imported tools now load site.css (theme tokens, sheet grammar,
+    # ns-bar, contact). TOKENS_CSS remains as a belt: race-unlocks still carries
+    # its own stylesheet and must not lose --bone if the link is ever skipped.
+    css_v = f'?v={CSS_V}' if CSS_V else ''
+    chrome = (THEME_BOOT
+              + '<link rel="preconnect" href="https://fonts.googleapis.com">'
+              + '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+              + f'<link href="{FONTS}" rel="stylesheet">'
+              + TOKENS_CSS + CONTACT_CSS
+              + f'<link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">'
+              + f'<link rel="stylesheet" href="{rel}assets/site.css{css_v}">'
+              + social + css)
+    h = h.replace('</head>', chrome + '</head>', 1)
     h = re.sub(r'<body([^>]*)>', lambda m: '<body%s>\n' % m.group(1) + bar_html(rel, crumb, crumb_href, here, extra), h, count=1)
+    if ('dungeons/' in dst.replace('\\', '/') and '<p class="crumb">' not in h
+            and '<header class="mast">' in h):
+        crumb_line = (f'  <p class="crumb"><a href="{rel}index.html">{SITE}</a> &nbsp;/&nbsp; '
+                      f'<a href="{rel}{crumb_href}">{crumb}</a></p>\n')
+        h = h.replace('<header class="mast">', '<header class="mast">\n' + crumb_line, 1)
     if ph_zone:
         z_ = BY.get(ph_zone, {})
         note = PH_CONFIRMED.replace('REL_', rel)
@@ -347,6 +300,10 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
             h = h[:k] + note + h[k:]
     if '</footer>' in h:
         h = h.replace('</footer>', CONTACT.replace('REL_', rel) + '\n</footer>', 1)
+    if '</body>' in h:
+        h = h.replace('</body>', f'<script src="{rel}assets/site.js"></script>\n</body>', 1)
+    else:
+        h += f'\n<script src="{rel}assets/site.js"></script>\n'
     open(dst, 'w', encoding='utf-8', newline='\n').write(h)
     return len(h)
 
