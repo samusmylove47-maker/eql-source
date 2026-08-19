@@ -1281,7 +1281,7 @@
     },
     {
      "mob": "A leering gargoyle",
-     "seen": 15,
+     "seen": 16,
      "off_roster": true,
      "sessions": [
       {
@@ -1386,7 +1386,7 @@
     },
     {
      "mob": "A leering gargoyle",
-     "seen": 16,
+     "seen": 17,
      "off_roster": true,
      "sessions": [
       {
@@ -1445,7 +1445,7 @@
     },
     {
      "mob": "A sneering gargoyle",
-     "seen": 6,
+     "seen": 7,
      "off_roster": true,
      "sessions": [
       {
@@ -1800,7 +1800,7 @@
     },
     {
      "mob": "A glyphed aegis",
-     "seen": 2,
+     "seen": 3,
      "off_roster": true,
      "sessions": [
       {
@@ -2163,6 +2163,50 @@
      ]
     }
    ],
+   "Rune of Fortune": [
+    {
+     "mob": "Enynti",
+     "seen": 16,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Nightshade Wreath": [
     {
      "mob": "Maid Issis",
@@ -2323,50 +2367,6 @@
    "Cape of Midnight Mist": [
     {
      "mob": "Butler Syncall",
-     "seen": 14,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Rune of Fortune": [
-    {
-     "mob": "Enynti",
      "seen": 14,
      "off_roster": false,
      "sessions": [
@@ -4413,6 +4413,18 @@
      ]
     },
     {
+     "mob": "A wraithish ancille",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A zol ghoul knight",
      "seen": 2,
      "off_roster": true,
@@ -4663,18 +4675,6 @@
       {
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A wraithish ancille",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -9517,6 +9517,18 @@
      ]
     },
     {
+     "mob": "A dark elf noble",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A jin ghoul wizard",
      "seen": 1,
      "off_roster": true,
@@ -12062,5 +12074,5 @@
    ]
   }
  },
- "hash": "cf5133ef3eb56122"
+ "hash": "47a3c089669a1cc9"
 }
