@@ -464,6 +464,83 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The Heirloom Ring's drop source is already in our data. The guild is hunting for it anyway.
+
+**Session A: this is the correction to make next, ahead of the rest.** The owner
+reports the guild actively hunting to find what drops the Mistmoore Heirloom
+Ring, on the strength of what our own page tells them. **We already know.**
+
+```
+assets/sightings.json → by_item["Mistmoore Heirloom Ring"]
+[{"mob": "A Fallen Noble", "n": 1,
+  "sessions": [{"date": "18 Aug 2026", "zone": "The Castle of Mistmoore",
+                "difficulty": 1, "character": "Avenrae"}]}]
+```
+
+**The swarm never mattered.** `_build/logstats.py:214` is
+`looted an? (.+?) from (.+?)'s corpse` — the game names the corpse in the loot
+line itself, so twenty mobs dying together changes nothing. The attribution was
+captured the moment the log was parsed.
+
+**And `public/items/mistmoore-heirloom-ring.html` contradicts itself**, with the
+false half winning. It renders, within two sentences of each other:
+
+> Where it drops — **Not recorded.** Read off a live client window, 18 Aug 2026;
+> **no log we hold records it dropping.**
+>
+> Dropped by · **TIER M** · **A Fallen Noble** · Recorded at D1
+
+Both cannot be true, and a tier-M badge means a log recorded it. **A reader takes
+the prose, not the badge** — which is precisely what happened, and it sent people
+into the zone to re-derive something we had already measured. This is the
+header/row defect with a cost attached for the first time: not a wrong page, a
+wasted evening for a guild.
+
+Fix the prose to read from `sightings.by_item`, and make the "not recorded" text
+impossible to print for an item that has a mob in that file.
+
+---
+
+### The owner's screenshots settle three things the ring page asks for
+
+First-hand client windows, 18 Aug 2026. Attribution line, no tier badge, per the
+Tier C withdrawal. **The page currently says "One screenshot of the item
+description would settle it." Here it is.**
+
+From the **+1** item window:
+
+| field | value |
+|---|---|
+| Tradeability | **Attunable** — the page says "not recorded" and asks for exactly this |
+| SV Void | **1** — **missing** from the page's `+1: AC 2 · HP +11 · INT +4` line |
+| Size / Weight | TINY / 0.1 |
+| Upgrade | Tier 1, **0 / 2** slots, "can be upgraded" |
+| Value | 15 platinum 2 gold |
+| Class / Race | ALL / ALL |
+| Worn Effect | **Heritage of Mistmoore** — Cast Instant, Target Self, **Duration 10:00** |
+| Effect text | "Increases your health and mana regeneration while also decreasing your resistances to magic and fire." |
+
+**Two cautions on the same evidence.**
+
+The worn effect's spell window reads **"No eligible class"** in red. Do not
+publish that as a restriction until it is understood — an all-class item whose
+worn effect names no eligible class is more likely a display artefact of a
+self-buff than a real gate, and we have one screenshot, not a test.
+
+And **the +2 figures are a guild-chat report, not a tooltip read.** Shara's line
+— *"+1 hp and mana regen, −15 fire save and −10 magic save"* — corroborates what
+the page already carries as contested at +2 and +5. It stays a report. **The +1
+window above is the only tier we have actually read.** Keeping those two grades
+of evidence apart is the whole point of the exercise.
+
+**The trade-off is the interesting finding and nobody else will have written it
+down.** This is an item that *lowers* two resistances to raise regeneration, at
+every tier, on an all-class finger slot. That is a design fact worth stating
+plainly on the survey — and it is the strongest argument yet that post-revamp
+Mistmoore loot is not classic loot with new numbers.
+
+---
+
 ### The twice-daily refresh has run 23 times and failed 23 times
 
 **Settled from the Actions API, not from the repo — because nothing in the repo
