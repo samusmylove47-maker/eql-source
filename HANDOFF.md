@@ -534,6 +534,31 @@ not a rewrite. So: mine the branch, adopt nothing wholesale.
 4. **Honour the system default** and remember the choice, and make the toggle
    work with no JavaScript wherever that is possible.
 
+**Four things in the mock are better than my spec above. Take these, by name.**
+
+1. **The toggle is labelled by destination, not by state** — it reads
+   `TORCHLIGHT` while you are in the light theme and `DAYLIGHT` while you are in
+   the dark one. That is the correct affordance and it beats a sun/moon icon or a
+   state label outright. Adopt the naming exactly.
+2. **The plates stay dark in both themes, and it works.** My ruling above called
+   that a deliberate exception; the mock proves it reads well — a parchment frame
+   around black plates with the accent line work glowing on them. It is the best
+   thing in the design and it is *our* asset, not theirs.
+3. **The hero promotes the freshly revamped zone.** Castle Mistmoore leads
+   because it was revamped on 18 August. That is a genuinely good instinct and it
+   is one we can do better than they did: **derive it.** The hero zone should be
+   chosen by the data — most recently `revamped`, or most recently gaining
+   measured sessions — never hand-picked, or it goes stale the way every typed
+   thing on this site has. That also retires the audit's F-27 complaint about a
+   hero zone with no measured session, permanently and by construction.
+4. **The coverage grade is on the card** — `8/10 · 3 MEASURED`. That is our own
+   metric, surfaced where a reader meets the zone rather than buried on an index.
+   Take it, with the F-07 naming already ruled: `Coverage 8/10`, never bare.
+
+**And one defect in the mock not to copy.** The stat table renders the zone as
+`Castle Mistm…` — a truncated name in a fixed-width cell, on the day we found a
+truncation publishing a false NPC level. Size that cell to its content.
+
 **Sequence it, and do not do it tonight.** Live log ingestion outranks this while
 the owner is playing. Bring me a **spec first** — palette derivation, the plate
 exception, the toggle mechanics, what changes in `_partials.py` — before a single
