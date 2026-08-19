@@ -36,9 +36,12 @@ readable.
 
 - `.sheet` / `.wrap` — stacked paper leaves (surveys, raids index, Sky)
 - `.mast` / `.plateno` / `.strip` — cartouche title block
-- `.frontis` / `.cartouche` / `.frontis-plate` — home title spread: figure on
-  `--plot-bg`, paper slip over it
-- `.plate` — tipped-in figure (mesh on `--plot-bg`) plus caption; first child is 2×2
+- `.frontis` / `.cartouche` / `.frontis-plate` — home title spread: paper verso
+  beside the featured zone on `--plot-bg`. Type stays on paper; mesh stays in
+  the well. A leather spine sits between the leaves.
+- `.plate` — tipped-in figure (mesh on `--plot-bg`) plus a fixed-height caption;
+  `.plate.lead` is 2×2. The lead is the latest `revamped` date in
+  `zones-index.json`, not `:first-child` and not plate 01.
 - `.site-bar` / `.ns-bar` — leather running head, brass underline on the current mark
 - `.cm` / `.note` / `.kick` — marginalia
 - `.fplan` — dungeon plan; JS selectors are load-bearing (`data-lyr`, `.mk`, `.fp-*`)

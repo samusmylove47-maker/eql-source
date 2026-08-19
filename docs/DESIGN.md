@@ -336,10 +336,12 @@ this."*
 instead of slate, a grain overlay, a theme toggle. It still read as the same page
 with different colours. This pass rebuilds the *composition*:
 
-- The home page is a title spread. Najena's mesh sits as a figure on `--plot-bg`,
-  not as a faded watermark. The title is a paper cartouche over it.
-- Plate cards are tipped-in figures with a caption strip beneath, not type on a
-  washed tile. The first plate is 2×2.
+- The home page is an open spread. The latest-revamped zone's mesh sits as a
+  figure on `--plot-bg`, not as a faded watermark and not under the title. The
+  title is a paper cartouche *beside* it. Which zone leads is read from
+  `revamped` in `zones-index.json` — never typed as Najena, never `:first-child`.
+- Plate cards are tipped-in figures with a uniform caption strip beneath, not
+  type on a washed tile. The featured plate is 2×2 (`.plate.lead`).
 - Survey sheets are stacked leaves with engraved (double-rule) tables.
 - Fake contour rings, gradient-clipped display type, numbered section indexes and
   leftover dark-theme sticky bars are gone.

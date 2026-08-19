@@ -3,18 +3,60 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
+from datetime import datetime
 from _partials import head, bar, foot, TOOLS, wordnum
 import heroart
 
+Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
+
+
+def _revamp_date(z):
+    """Parse a zone's `revamped` field. Returns a date or None.
+
+    The ledger is the source, not a slug typed here. Hardcoding Najena as the
+    hero is how plate 01 stayed on the front door the day after Castle
+    Mistmoore revamped.
+    """
+    raw = (z.get('revamped') or '').strip()
+    if not raw:
+        return None
+    for fmt in ('%d %B %Y', '%d %b %Y', '%Y-%m-%d'):
+        try:
+            return datetime.strptime(raw, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
+def featured_zone(zones):
+    """The atlas leads with the most recently revamped zone.
+
+    If none carry a parseable revamp date, the highest plate number leads —
+    newest survey, not plate 01 by array order.
+    """
+    dated = [(z, _revamp_date(z)) for z in zones]
+    dated = [(z, d) for z, d in dated if d is not None]
+    if dated:
+        return max(dated, key=lambda t: (t[1], t[0]['plate']))[0]
+    return max(zones, key=lambda z: z['plate'])
+
+
+def atlas_order(zones, lead):
+    rest = [z for z in zones if z['slug'] != lead['slug']]
+    rest.sort(key=lambda z: z['plate'])
+    return [lead] + rest
+
+
 # THE HOME PAGE'S ART IS A REAL DUNGEON.
-# Najena's walkable floor, read out of the game's own mesh. It is the one piece
-# of imagery this site can honestly own: screenshots are Daybreak's, stock
-# fantasy art is nobody's, and generated art is exactly what a guildmate meant
-# when they called the site AI slop. This is a measurement, like every figure
-# on the page, and it carries its source line for the same reason they do.
-HERO_ZONE = 'najena'
-_hp, _hw, _hh = heroart.paths(HERO_ZONE, box=1000, precision=0)
-_hstat = heroart.stats(HERO_ZONE)
+# The featured zone's walkable floor, read out of the game's own mesh. It is
+# the one piece of imagery this site can honestly own: screenshots are
+# Daybreak's, stock fantasy art is nobody's, and generated art is exactly what
+# a guildmate meant when they called the site AI slop. This is a measurement,
+# like every figure on the page, and it carries its source line for the same
+# reason they do.
+FEAT = featured_zone(Z)
+_hp, _hw, _hh = heroart.paths(FEAT['slug'], box=1000, precision=0)
+_hstat = heroart.stats(FEAT['slug'])
 # Stagger the draw-in so it reads as a survey rather than a switch being
 # thrown. Delays are assigned here rather than by nth-child, which would need
 # one CSS rule per path.
@@ -23,11 +65,9 @@ hero_art = (f'<div class="hero-art" aria-hidden="true">'
             + "".join(f'<path {heroart.SAFE_ATTRS} d="{d}" style="--d:{i * 14}ms"/>'
                       for i, d in enumerate(_hp))
             + '</svg></div>')
-hero_src = (f'<p class="hero-src">Najena, drawn from the game&rsquo;s own mesh &mdash; '
+hero_src = (f'<p class="hero-src">{FEAT["title"]}, drawn from the game&rsquo;s own mesh &mdash; '
             f'<b>{_hstat["paths"]} paths, {_hstat["points"]:,} points</b>, '
             f'{_hstat["layers"]} storeys</p>')
-
-Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 # Counts are read from the mined data, never typed. The Index once published
 # "389 items" while the data held 452 and its own counter said so on screen.
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
@@ -92,15 +132,20 @@ def _cov(z):
     """What a PLAYER can get from this zone, which is not what the three gates
     measure. Gate 3 asks whether a coordinate lands on drawn floor - a build
     input for our own maps - so Plane of Fear scored zero with both its gods
-    parsed at three difficulties. See docs/WHAT-COUNTS.md."""
+    parsed at three difficulties. See docs/WHAT-COUNTS.md.
+
+    Always returns a .cov slot, even when empty, so a card without a measured
+    clause cannot shrink the caption strip and leave The Warrens shorter than
+    Lower Guk in the same row.
+    """
     c = COV.get(z['slug'])
     if not c:
-        return ''
+        return '<span class="cov empty" aria-hidden="true">&nbsp;</span>'
     got = [k for k, f in c['facets'].items() if f['level'] == 'measured']
     tip = '; '.join(f"{k}: {f['detail']}" for k, f in c['facets'].items())
+    extra = f' &middot; {len(got)} measured' if got else ''
     return (f'<span class="cov" title="{tip}">'
-            f'<b>{c["score"]}</b>/{c["max_score"]}'
-            + (f' &middot; {len(got)} measured' if got else '') + '</span>')
+            f'<b>{c["score"]}</b>/{c["max_score"]}{extra}</span>')
 
 # THE PLATE CARDS CARRY THEIR OWN ZONE, DRAWN.
 #
@@ -123,14 +168,28 @@ def plate_art(slug):
             + '</svg></span>')
 
 
-plates = "\n".join(
-  f'''    <a class="plate" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
+def plate_card(z, href, lead=False):
+    """One atlas card. Caption is a fixed-height strip so missing coverage
+    cannot shorten the card. `lead` is the featured (latest-revamped) zone."""
+    cls = 'plate lead' if lead else 'plate'
+    mark = (f'<span class="plate-mark">Revamped {z["revamped"]}</span>'
+            if z.get('revamped') else '')
+    return f'''    <a class="{cls}" href="{href}" style="--c:{z['accent']}">
       {plate_art(z['slug'])}
       <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
+      {mark}
       <span class="num" aria-hidden="true">{z['plate']:02d}</span>
-      <h3 class="pt">{z['title']}</h3>
-      <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
-    </a>''' for i, z in enumerate(Z))
+      <span class="plate-caption">
+        <h3 class="pt">{z['title']}</h3>
+        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
+      </span>
+    </a>'''
+
+
+ATLAS = atlas_order(Z, FEAT)
+plates = "\n".join(
+    plate_card(z, f"dungeons/{z['slug']}.html", lead=(z['slug'] == FEAT['slug']))
+    for z in ATLAS)
 
 nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
@@ -245,21 +304,24 @@ recent = "\n".join(
         <span class="d">{e['date']}</span>
       </li>''' for e in ENTRIES[:4])
 
-_hero_plate = next(z['plate'] for z in Z if z['slug'] == HERO_ZONE)
-
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
 <main id="main">
 
 <section class="hero">
-  <div class="shell frontis">
-    <div class="cartouche" data-folio="{_hero_plate:02d}">
+  <div class="shell frontis" style="--c:{FEAT['accent']}">
+    <div class="cartouche" data-folio="{FEAT['plate']:02d}">
       <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
       <h1 class="display">Norrath,<br><em>measured.</em></h1>
       <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
         a Legends-shaped hole. We go in with the log running and write down what actually happened.
         Every figure names its source and the day it was read, and every gap says so out loud.</p>
-      <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
+      <ul class="register">
+        <li><b>{len(Z)}</b> zones surveyed</li>
+        <li><b>{NITEMS}</b> items indexed</li>
+        <li><b>{NNAMED}</b> named recorded</li>
+        <li><b>{nfull}</b> fully verified</li>
+      </ul>
     </div>
     <figure class="frontis-plate">
       {hero_art}
@@ -372,13 +434,8 @@ drows = "\n".join(
 # which is most of why a visitor's eye slid off it. The atlas is on both pages
 # now, and this is the same card.
 dplates = "\n".join(
-  f'''      <a class="plate" href="{z['slug']}.html" style="--c:{z['accent']}">
-        {plate_art(z['slug'])}
-        <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
-        <span class="num" aria-hidden="true">{z['plate']:02d}</span>
-        <h3 class="pt">{z['title']}</h3>
-        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
-      </a>''' for i, z in enumerate(Z))
+    plate_card(z, f"{z['slug']}.html", lead=(z['slug'] == FEAT['slug']))
+    for z in ATLAS)
 
 # The open gates, generated rather than written out five times by hand. Sorted
 # so unverified zones come before partial ones — the worse state reads first.
