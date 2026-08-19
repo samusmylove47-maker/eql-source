@@ -199,6 +199,35 @@ any figure that moves as a finding to report rather than a correction to apply
 silently. Roughly one cycle's work, and better done when play has stopped and
 nothing else is writing to the corpus.
 
+### Self-healing looks like a property of the boss, not of the tier — and CLAUDE.md's gap section says something slightly different
+
+Tonight's Plane of Hate run has taken the sample to 30 fights across five
+bosses, and they split cleanly:
+
+| boss | kills | self-heal counts seen |
+|---|---|---|
+| Coercer T`vala | 6 | 0 |
+| Mistress of Scorn | 6 | 0 |
+| Maestro of Rancor | 7 | 0 |
+| Master of Spite | 5 | 0, 1, 2, 6 |
+| Lord of Ire | 6 | 0, 2, 4, 5, 6 |
+
+The three that never heal show 0 in **every** view, including their fullest —
+13 to 15 attackers, where a thin view could not hide a heal. The two that do
+heal show 0 only in their thinnest views, which is the under-witnessing effect
+already documented.
+
+CLAUDE.md section 9 currently reads "what the tier raises is how much of the
+kit appears, not whether a heal is in it". That was right about the tier and is
+now incomplete about the kit: three of these five bosses appear to have no heal
+in the kit at all, at any tier, in any view.
+
+**I have not edited CLAUDE.md.** It is the project's constitution and the
+wording of a known gap is the human's call, not a derived figure I own. The
+data is in `assets/raids-measured.json` and the query is four lines. If you
+want it folded in, say so and I will do it as its own PR with the numbers
+re-read out of the dataset at write time rather than typed.
+
 ---
 
 ## For the session working on the planner
