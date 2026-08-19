@@ -190,7 +190,7 @@ def bar(rel="", current=None, extra=""):
 <header class="site-bar">
   <div class="shell">
     <a class="mark" href="{rel}index.html">{COMPASS}<span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
-    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Contents</button>
     <nav class="site-nav" id="nav">
       {nav("dungeons/index.html", "Dungeons")}
       {nav("raids/index.html", "Raids")}

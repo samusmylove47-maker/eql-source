@@ -60,14 +60,14 @@ _hstat = heroart.stats(FEAT['slug'])
 # Stagger the draw-in so it reads as a survey rather than a switch being
 # thrown. Delays are assigned here rather than by nth-child, which would need
 # one CSS rule per path.
-hero_art = (f'<div class="hero-art" aria-hidden="true">'
+hero_art = (f'<div class="hero-art plate-art" aria-hidden="true">'
             f'<svg viewBox="0 0 {_hw} {_hh}" preserveAspectRatio="xMidYMid meet">'
             + "".join(f'<path {heroart.SAFE_ATTRS} d="{d}" style="--d:{i * 14}ms"/>'
                       for i, d in enumerate(_hp))
             + '</svg></div>')
-hero_src = (f'<p class="hero-src">{FEAT["title"]}, drawn from the game&rsquo;s own mesh &mdash; '
+hero_src = (f'<span class="hero-src">{FEAT["title"]}, drawn from the game&rsquo;s own mesh &mdash; '
             f'<b>{_hstat["paths"]} paths, {_hstat["points"]:,} points</b>, '
-            f'{_hstat["layers"]} storeys</p>')
+            f'{_hstat["layers"]} storeys</span>')
 # Counts are read from the mined data, never typed. The Index once published
 # "389 items" while the data held 452 and its own counter said so on screen.
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
@@ -99,21 +99,6 @@ zrows = "\n".join(
       <span class="cell" title="Zone experience modifier: how fast the zone pays against a baseline of 75"><em>ZEM</em>{z['zem']} <span style="color:var(--faint)">/ {z['zem_pct']}%</span></span>
       <span class="cell"><em>Plan</em>{'yes' if z['slug'] in PLANS else '—'}</span>
       <span class="bar"></span></a>''' for z in Z)
-
-# Home page: colour objects rather than table rows. The contour rings are
-# anchored to a different corner per survey so the cards do not read as one
-# texture repeated — each looks like a different piece of the same map.
-#
-# The list is ten long because the site had ten zones, and it was indexed
-# directly: the eleventh survey crashed the home page build. It cycles now, so
-# the eleventh reuses the first corner rather than stopping the build. Adding a
-# zone is meant to need no layout change, and this was the one place it did.
-_CORNERS = [("86%","118%"),("14%","112%"),("92%","104%"),("8%","120%"),("78%","110%"),
-            ("20%","104%"),("94%","116%"),("10%","106%"),("70%","120%"),("30%","110%")]
-
-
-def corner(i):
-    return _CORNERS[i % len(_CORNERS)]
 
 try:
     COV = json.load(open('assets/coverage.json', encoding='utf-8'))['zones']
@@ -168,28 +153,40 @@ def plate_art(slug):
             + '</svg></span>')
 
 
-def plate_card(z, href, lead=False):
+def plate_card(z, href, lead=False, numeral=True):
     """One atlas card. Caption is a fixed-height strip so missing coverage
-    cannot shorten the card. `lead` is the featured (latest-revamped) zone."""
+    cannot shorten the card. `lead` is the featured (latest-revamped) zone.
+
+    Overlay is the cropped plate numeral, not the level band — Splitpaw's
+    levels string ran across the mesh. Respawn lives in the title attribute;
+    the caption strip holds ZEM and coverage, two fields every card can show.
+    """
     cls = 'plate lead' if lead else 'plate'
     mark = (f'<span class="plate-mark">Revamped {z["revamped"]}</span>'
             if z.get('revamped') else '')
-    return f'''    <a class="{cls}" href="{href}" style="--c:{z['accent']}">
+    num = (f'<span class="num" aria-hidden="true">{z["plate"]:02d}</span>'
+           if numeral else '')
+    rs = z['respawn'] or 'not recorded'
+    tip = f"Levels {z['levels']}. Respawn {rs}."
+    return f'''    <a class="{cls}" href="{href}" style="--c:{z['accent']}" title="{tip}">
       {plate_art(z['slug'])}
-      <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
+      {_gate(z)}
       {mark}
-      <span class="num" aria-hidden="true">{z['plate']:02d}</span>
+      {num}
       <span class="plate-caption">
         <h3 class="pt">{z['title']}</h3>
-        <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
+        <span class="meta"><span>ZEM <b>{z['zem']}</b></span>{_cov(z)}</span>
       </span>
     </a>'''
 
 
 ATLAS = atlas_order(Z, FEAT)
+# Home draws the featured zone once, as the title-spread recto. The gathering
+# under it is the other twelve — a second Mistmoore card after the frontis
+# is the same zone drawn twice.
 plates = "\n".join(
-    plate_card(z, f"dungeons/{z['slug']}.html", lead=(z['slug'] == FEAT['slug']))
-    for z in ATLAS)
+    plate_card(z, f"dungeons/{z['slug']}.html")
+    for z in ATLAS if z['slug'] != FEAT['slug'])
 
 nfull = sum(1 for z in Z if z["verify_level"]=="full")
 npart = sum(1 for z in Z if z["verify_level"]=="partial")
@@ -204,15 +201,6 @@ nnone = sum(1 for z in Z if z["verify_level"]=="none")
 # about an item its data wants twice; that is the exact reason nothing here is
 # typed beside the data it claims to come from.
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
-# The overlay door. A release exists now, so the home page offers the download
-# directly rather than routing a reader through the tool page to find out there
-# is nothing to download. Falls back to the tool page where no release is
-# recorded, so a build without the Ledger repo still produces a working link.
-_SL_REL = (SL.get('release') or {}).get('overlay') or {}
-SL_OVERLAY_HREF = _SL_REL.get('url') or 'tools/sky-ledger.html'
-SL_OVERLAY_LABEL = (f'Download the overlay &middot; {_SL_REL["mb"]} MB &rarr;'
-                    if _SL_REL.get('mb') else 'The overlay &rarr;')
-
 SL_APP, SL_DS = SL['app'], SL['dataset']
 # The trailer and its poster, hashed by _build/media.py so a changed capture is
 # a different cache key. Absent on a machine that has never run it, so the band
@@ -222,55 +210,43 @@ try:
 except (OSError, ValueError):
     MEDIA = {}
 
+_rev_cell = (f'        <div class="cell"><dt>Revamped</dt><dd>{FEAT["revamped"]}</dd></div>\n'
+             if FEAT.get('revamped') else '')
+_lead_tip = f"Levels {FEAT['levels']}. Respawn {FEAT['respawn'] or 'not recorded'}."
+lead_recto = f'''    <a class="plate lead" href="dungeons/{FEAT['slug']}.html" style="--c:{FEAT['accent']}" title="{_lead_tip}">
+      {hero_art}
+      {_gate(FEAT)}
+      {hero_src}
+      <span class="plate-caption">
+        <h3 class="pt">{FEAT["title"]}</h3>
+        <span class="meta"><span>ZEM <b>{FEAT["zem"]}</b></span>{_cov(FEAT)}</span>
+      </span>
+    </a>'''
+
 feature = f'''
 <section class="band feat">
   <div class="shell">
-    <div class="featwrap">
-      <div class="featgrid">
-        <div>
-          <p class="eyebrow">Plane of Sky &middot; <b>reads your own log</b></p>
-          <h2 class="feath">Sky Ledger</h2>
-          <p class="featlede">It follows your combat log while you play and says which of the
-            {SL_DS['quests']} Plane of Sky class-unlock tests you can hand in <strong>now</strong> &mdash; and what
-            the missing pieces drop from. In a browser with nothing to install, or as an
-            overlay on the game.</p>
-          <p class="featsub"><strong>It knows a turn-in piece can only be spent once.</strong>
-            {SL_DS['contested']} of its {SL_DS['items']} turn-in items are wanted by more than one test. Holding one
-            does not make several quests ready, and every other tracker &mdash; including the
-            one this replaces, which was ours &mdash; counts it against all of them. It also
-            refuses to print a drop rate it cannot measure: a dry streak reads as a bound,
-            <code>&lt;28% &middot; 0/9</code>, never <code>0%</code>.</p>
-          <div class="featdoors">
-            <a class="featdoor lead" href="app/{SL_APP['file']}">Run it in your browser &rarr;</a>
-            <a class="featdoor" href="{SL_OVERLAY_HREF}">{SL_OVERLAY_LABEL}</a>
-            <a class="featdoor" href="tools/sky-ledger.html">What it does &rarr;</a>
-          </div>
-        </div>
-        <figure class="feattrailer">
-          <video src="assets/media/{MEDIA['sky-ledger-trailer']['file']}"
-                 poster="assets/media/{MEDIA['sky-ledger-poster']['file']}"
-                 width="1600" height="900" autoplay muted loop playsinline
-                 preload="metadata" id="sltrailer"
-                 aria-label="The Sky Ledger overlay running over the game: quests marked ready,
-                             the panel narrowed to its compact width, and the transparency
-                             slider dimming it against the scenery."></video>
-          <button class="vpause" type="button" id="slpause" aria-controls="sltrailer">Pause</button>
-          <figcaption><span>The overlay in play &middot; 18s, silent</span>
-            <a href="https://youtu.be/hxq2qY1FXtg">Full tutorial on YouTube, 1:15 &rarr;</a></figcaption>
-        </figure>
-      </div>
-      <ul class="featclaimrow">
-        <li><b>{SL_DS['contested']} of {SL_DS['items']}</b>
-          <span class="lab">Turn-in items wanted twice or more</span>
-          <span class="why">One piece finishes one test. It pools what you hold and spends
-            each unit on the test closest to done.</span></li>
-        <li><b>&lt;28% &middot; 0/9</b>
-          <span class="lab">How a dry streak prints</span>
-          <span class="why">Zero drops in nine kills bounds the rate; it does not measure
-            it. <code>0%</code> would tell you to stop farming.</span></li>
-      </ul>
-      <p class="featfoot">No install &middot; nothing uploaded &middot; build {SL_APP['hash']} &middot; {SL_APP['kb']} KB</p>
-      <script>
+    <div class="featplate" style="--c:var(--instr)">
+      <figure class="feattrailer">
+        <video src="assets/media/{MEDIA['sky-ledger-trailer']['file']}"
+               poster="assets/media/{MEDIA['sky-ledger-poster']['file']}"
+               width="1600" height="900" autoplay muted loop playsinline
+               preload="metadata" id="sltrailer"
+               aria-label="The Sky Ledger overlay running over the game: quests marked ready,
+                           the panel narrowed to its compact width, and the transparency
+                           slider dimming it against the scenery."></video>
+        <button class="vpause" type="button" id="slpause" aria-controls="sltrailer">Pause</button>
+      </figure>
+      <span class="plate-caption">
+        <h3 class="pt">Sky Ledger</h3>
+        <span class="meta"><span>{SL_DS['contested']} of {SL_DS['items']} contested</span>
+          <span>a dry streak prints as a bound</span></span>
+      </span>
+      <a class="featdoor lead" href="app/{SL_APP['file']}">Run it in your browser</a>
+    </div>
+    <p class="featfoot">No install &middot; nothing uploaded &middot; build {SL_APP['hash']} &middot; {SL_APP['kb']} KB
+      &middot; <a href="tools/sky-ledger.html">What it does</a></p>
+    <script>
       /* A loop that cannot be stopped is a nuisance, and one that starts
          moving at a reader who asked for less motion is worse than a nuisance.
          The video carries `autoplay` so it works with no script at all; this
@@ -290,7 +266,6 @@ feature = f'''
         sync();
       }})();
       </script>
-    </div>
   </div>
 </section>
 '''
@@ -309,70 +284,47 @@ home = head("Accurate, sourced and kept current",
 <main id="main">
 
 <section class="hero">
-  <div class="shell frontis" style="--c:{FEAT['accent']}">
+  <div class="frontis" style="--c:{FEAT['accent']}">
     <div class="cartouche" data-folio="{FEAT['plate']:02d}">
-      <p class="eyebrow">EverQuest Legends &middot; <b>surveyed, sourced, dated</b></p>
+      <p class="eyebrow">EverQuest Legends</p>
       <h1 class="display">Norrath,<br><em>measured.</em></h1>
-      <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
-        a Legends-shaped hole. We go in with the log running and write down what actually happened.
-        Every figure names its source and the day it was read, and every gap says so out loud.</p>
-      <ul class="register">
-        <li><b>{len(Z)}</b> zones surveyed</li>
-        <li><b>{NITEMS}</b> items indexed</li>
-        <li><b>{NNAMED}</b> named recorded</li>
-        <li><b>{nfull}</b> fully verified</li>
-      </ul>
+      <dl class="strip">
+        <div class="cell"><dt>Plate</dt><dd>{FEAT['plate']:02d}</dd></div>
+        <div class="cell"><dt>Zone</dt><dd>{FEAT['title']}</dd></div>
+        <div class="cell"><dt>Levels</dt><dd>{FEAT['levels'].split(' (')[0]}</dd></div>
+        <div class="cell"><dt>ZEM</dt><dd>{FEAT['zem']}</dd></div>
+{_rev_cell}        <div class="cell"><dt>Storeys</dt><dd>{_hstat['layers']}</dd></div>
+      </dl>
     </div>
-    <figure class="frontis-plate">
-      {hero_art}
-      {hero_src}
-    </figure>
+{lead_recto}
   </div>
 </section>
 
 <section class="band atlas-index">
   <div class="shell">
-    <div class="sechead"><div><h2 class="sec">The atlas</h2>
-      <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
-        <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays against a
-        baseline of 75.</p></div>
-      <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
     <div class="plates">
 {plates}
     </div>
+    <p class="doornote"><a href="dungeons/index.html">Every survey</a>. <b>ZEM</b> is the zone
+      experience modifier &mdash; how fast a zone pays against a baseline of 75.</p>
   </div>
 </section>
 {feature}
 <section class="band doors">
   <div class="shell">
-    <div class="sechead"><div><h2 class="sec">Start here</h2>
-      <p class="lede" style="margin:0">Three ways in, depending on what you came for.</p></div></div>
     <div class="doorgrid">
-
-      <a class="door lead" href="tools/index-search.html" style="--c:var(--bone)">
+      <a class="door lead" href="tools/index-search.html" style="--c:var(--instr)">
         <span class="dq">I need to find something</span>
         <h3 class="dt">The Index</h3>
         <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
           Ask where a thing drops, filter by class and slot, or find the named you have not met.</p>
-        <span class="dgo">Search {NITEMS} items &rarr;</span>
       </a>
-
-      <a class="door" href="dungeons/index.html" style="--c:var(--z01)">
-        <span class="dq">I am going into a zone</span>
-        <h3 class="dt">The surveys</h3>
-        <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
-          and coordinates re-derived from <code>/loc</code> records.</p>
-        <span class="dgo">{len(Z)} surveys &rarr;</span>
-      </a>
-
       <a class="door" href="tools/index.html" style="--c:var(--instr)">
         <span class="dq">I am planning a character</span>
         <h3 class="dt">The trackers</h3>
         <p class="dd">Class unlocks, race unlocks and the primary-slot decision you can never take back.
           Progress packs into the page URL, so nothing is stored and nothing is lost.</p>
-        <span class="dgo">{wordnum(len(TOOLS))} trackers &rarr;</span>
       </a>
-
     </div>
     <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; one zone
       written up in full, measured in play.</p>
@@ -399,11 +351,11 @@ home = head("Accurate, sourced and kept current",
           anything weaker carries its badge wherever it appears
           &mdash; <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
         <ol class="stdscale">
-          <li style="--tc:#5FA37E"><b>Developer statements</b><span>Patch notes and direct answers</span></li>
-          <li style="--tc:#7FB2C7"><b>Structured wiki data</b><span>Infoboxes, tables, coordinate records</span></li>
-          <li style="--tc:#D9A227"><b>Named community guides</b><span>Attributed, maintained, one reading</span></li>
-          <li style="--tc:#D9762A"><b>Aggregators</b><span>Mined snapshots, stale after a patch</span></li>
-          <li style="--tc:#D46C64"><b>Inherited classic prose</b><span>Project 1999 text. Quoted, marked</span></li>
+          <li style="--tc:var(--t1)"><b>Developer statements</b><span>Patch notes and direct answers</span></li>
+          <li style="--tc:var(--t2)"><b>Structured wiki data</b><span>Infoboxes, tables, coordinate records</span></li>
+          <li style="--tc:var(--t3)"><b>Named community guides</b><span>Attributed, maintained, one reading</span></li>
+          <li style="--tc:var(--t4)"><b>Aggregators</b><span>Mined snapshots, stale after a patch</span></li>
+          <li style="--tc:var(--t5)"><b>Inherited classic prose</b><span>Project 1999 text. Quoted, marked</span></li>
         </ol>
         <p class="stdfoot"><a class="link" href="sources.html" style="margin:0">The full standard, and
           every open gap &rarr;</a></p>

@@ -156,8 +156,8 @@ css = open("public/assets/site.css", encoding="utf-8").read()
 for cls in (".tier", ".t1", ".t3", ".t5"):
     if cls not in css:
         fail(f"assets/site.css has lost {cls} — the source-tier badge system is load-bearing")
-if os.path.exists("index.html"):
-    h = open("index.html", encoding="utf-8").read()
+if os.path.exists("public/index.html"):
+    h = open("public/index.html", encoding="utf-8").read()
     # What matters is that the scale is published and legible on the home page,
     # not which markup renders it. This used to require a literal "tier-scale"
     # class, which broke the moment the scale was redesigned even though every

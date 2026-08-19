@@ -36,9 +36,7 @@ readable.
 
 - `.sheet` / `.wrap` — stacked paper leaves (surveys, raids index, Sky)
 - `.mast` / `.plateno` / `.strip` — cartouche title block
-- `.frontis` / `.cartouche` / `.frontis-plate` — home title spread: paper verso
-  beside the featured zone on `--plot-bg`. Type stays on paper; mesh stays in
-  the well. A leather spine sits between the leaves.
+- `.frontis` / `.cartouche` / `.plate.lead` — home folio: paper verso (title + featured-zone imprint) beside the lead plate as the recto. The gathering under it is the other plates; the featured zone is drawn once. Type stays on paper; mesh stays in the well. A leather spine sits between the leaves.
 - `.plate` — tipped-in figure (mesh on `--plot-bg`) plus a fixed-height caption;
   `.plate.lead` is 2×2. The lead is the latest `revamped` date in
   `zones-index.json`, not `:first-child` and not plate 01.
