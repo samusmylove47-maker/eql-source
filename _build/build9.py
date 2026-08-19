@@ -382,12 +382,23 @@ def section(sess_list, zone_title, revamp=None, revamped=None):
     facs = ', '.join(esc(f) for f in list(s['faction'])[:8])
     facs = f' Killing here moves faction with {facs}.' if facs else ''
     d, lab = s.get('difficulty'), s.get('difficulty_label')
+    # Which source named this difficulty is READ, never assumed. This branch
+    # printed "read from the loot tier" for every unlabelled session until
+    # 18 Aug 2026, which was false for 50 of the 58 that reach it: a bare
+    # "You have entered Kedge Keep." is a zone line naming no tier, and the
+    # open world runs at base. Only 8 were genuinely loot-tier readings.
+    src = s.get('difficulty_from')
     if lab and d is not None:
         diff = f'D{d}, {esc(lab)}'
     elif lab:
         diff = esc(lab)
-    elif d is not None:
+    elif d is not None and src == 'loot tier':
         diff = f'D{d}, read from the loot tier rather than the zone line'
+    elif d is not None and src == 'zone line':
+        diff = (f'D{d}, read from a zone line that names no tier '
+                f'&mdash; the open world runs at base')
+    elif d is not None:
+        diff = f'D{d}, source not recorded'
     else:
         diff = 'not stated'
     if s.get('difficulty_agrees') is False:

@@ -4966,6 +4966,178 @@
     ]
    }
   ],
+  "Master Yael": [
+   {
+    "item": "Loam Encrusted Robe",
+    "n": 9,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Serpent's Tooth",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "item": "Earthshaker",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "item": "Brell's Girdle",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Drop of Mercury",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
   "An Elf Skeleton": [
    {
     "item": "Mallet Hilt",
@@ -5388,164 +5560,6 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Avenrae"
-     }
-    ]
-   }
-  ],
-  "Master Yael": [
-   {
-    "item": "Loam Encrusted Robe",
-    "n": 8,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 0,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "item": "Serpent's Tooth",
-    "n": 7,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 0,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "item": "Earthshaker",
-    "n": 4,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 4,
-      "label": "Refined",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "item": "Brell's Girdle",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
-   },
-   {
-    "item": "Drop of Mercury",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
      }
     ]
    }
@@ -19056,6 +19070,63 @@
     ]
    }
   ],
+  "Loam Encrusted Robe": [
+   {
+    "mob": "Master Yael",
+    "n": 9,
+    "sessions": [
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 0,
+      "label": null,
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "10 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 3,
+      "label": "Fused",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Avenrae"
+     },
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Pristine Studded Leather Sleeves": [
    {
     "mob": "Soldier of V`Zher",
@@ -19298,56 +19369,6 @@
      }
     ],
     "off_roster": true
-   }
-  ],
-  "Loam Encrusted Robe": [
-   {
-    "mob": "Master Yael",
-    "n": 8,
-    "sessions": [
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 0,
-      "label": null,
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     },
-     {
-      "date": "10 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 3,
-      "label": "Fused",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Avenrae"
-     },
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
    }
   ],
   "Black Chitin Leggings": [
@@ -28255,6 +28276,28 @@
     ]
    }
   ],
+  "Brell's Girdle": [
+   {
+    "mob": "Master Yael",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "11 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Avenrae"
+     },
+     {
+      "date": "18 Aug 2026",
+      "zone": "The Ruins of Old Paineel - Group",
+      "difficulty": 4,
+      "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Imbrued Platemail Boots": [
    {
     "mob": "Mistress of Scorn",
@@ -29269,21 +29312,6 @@
     ]
    }
   ],
-  "Brell's Girdle": [
-   {
-    "mob": "Master Yael",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "11 Aug 2026",
-      "zone": "The Ruins of Old Paineel - Group",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Avenrae"
-     }
-    ]
-   }
-  ],
   "Midnight Clad Leggings": [
    {
     "mob": "Phoboplasm",
@@ -29529,5 +29557,5 @@
   ]
  },
  "pairs": 671,
- "excluded_trash_drops": 5099
+ "excluded_trash_drops": 5100
 }

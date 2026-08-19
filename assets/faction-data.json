@@ -2327,6 +2327,32 @@
     "Dark Elf"
    ],
    "helps": []
+  },
+  "Kedge Keep": {
+   "difficulty": 0,
+   "date": "18 Aug 2026",
+   "kills": 2,
+   "per_mob": {
+    "a seahorse patriarch": {
+     "Phinigel Autropos": -5
+    }
+   },
+   "factions": [
+    "Phinigel Autropos"
+   ],
+   "factions_seen": [
+    "Phinigel Autropos"
+   ],
+   "falling": [
+    "Phinigel Autropos"
+   ],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
   }
  }
 }

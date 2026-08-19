@@ -3476,6 +3476,50 @@
      ]
     }
    ],
+   "Loam Encrusted Robe": [
+    {
+     "mob": "Master Yael",
+     "seen": 9,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Pristine Studded Leather Sleeves": [
     {
      "mob": "Soldier of V`Zher",
@@ -3667,45 +3711,6 @@
       {
        "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Loam Encrusted Robe": [
-    {
-     "mob": "Master Yael",
-     "seen": 8,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 3
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
        "difficulty": 1
       }
      ]
@@ -11108,6 +11113,25 @@
      ]
     }
    ],
+   "Brell's Girdle": [
+    {
+     "mob": "Master Yael",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Imbrued Platemail Boots": [
     {
      "mob": "Mistress of Scorn",
@@ -12001,20 +12025,6 @@
      ]
     }
    ],
-   "Brell's Girdle": [
-    {
-     "mob": "Master Yael",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
-      }
-     ]
-    }
-   ],
    "Midnight Clad Leggings": [
     {
      "mob": "Phoboplasm",
@@ -12239,5 +12249,5 @@
    ]
   }
  },
- "hash": "3a585504951560cb"
+ "hash": "c7e7e7f3e9d0c664"
 }

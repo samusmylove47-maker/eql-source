@@ -4924,7 +4924,7 @@
   "attackers": 6,
   "other_players": 5,
   "our_damage_share_pct": 17.7,
-  "damage_is_floor": false,
+  "damage_is_floor": true,
   "joined_late_seconds": null,
   "damage_low": 234249,
   "damage_high": 242060,
@@ -4947,6 +4947,47 @@
   "self_heal_high": 10,
   "melee_verbs": [
    "hits",
+   "pierces"
+  ],
+  "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 13"
+ },
+ {
+  "boss": "Master Yael",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 5.8,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 384584,
+  "damage_high": 384584,
+  "damage_spread_pct": 0.0,
+  "seconds": 335,
+  "spells": {
+   "Immobilize": 10,
+   "Elnerick's Entombment of Ice": 5,
+   "Insidious Retrogression": 4,
+   "Shadow Vortex": 4,
+   "Ignite Blood": 3,
+   "Wrath of Al`Kabor": 2,
+   "Force": 2,
+   "Superior Healing": 1,
+   "Sacred Echo": 1,
+   "Circle of Force": 1,
+   "Gravity Flux": 1,
+   "Infectious Cloud": 1
+  },
+  "spells_distinct": 12,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
    "pierces"
   ]
  },

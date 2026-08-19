@@ -64015,18 +64015,20 @@
   "difficulty": 4,
   "difficulty_from": "zone line, numbered",
   "difficulty_label_agrees": true,
-  "difficulty_agrees": null,
+  "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "21:56-21:58",
+  "window": "21:56-22:04",
   "stamps": [],
-  "minutes": 2,
+  "minutes": 8,
   "kills": 0,
   "distinct": 0,
   "kinds": [],
   "kills_by_mob": {},
-  "drop_tiers": {},
+  "drop_tiers": {
+   "4": 2
+  },
   "faction": {
-   "Minions of Underfoot": 3
+   "Minions of Underfoot": 4
   },
   "context": [],
   "escapes": [],
@@ -64045,10 +64047,10 @@
   "exp_samples_by_mob": {},
   "exp_attributed": 0,
   "exp_attributed_kills": 0,
-  "you_hit": 38,
-  "you_miss": 36,
-  "mob_hit": 1,
-  "mob_miss": 5,
+  "you_hit": 196,
+  "you_miss": 167,
+  "mob_hit": 4,
+  "mob_miss": 17,
   "mobs": {
    "An elemental warrior": {
     "swings": 6,
@@ -64064,6 +64066,34 @@
     },
     "loot": {}
    },
+   "Master Yael": {
+    "swings": 15,
+    "landed": 3,
+    "avg": 35.7,
+    "max": 53,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Immobilize": 10,
+     "Elnerick's Entombment of Ice": 5,
+     "Insidious Retrogression": 4,
+     "Shadow Vortex": 4,
+     "Ignite Blood": 3,
+     "Wrath of Al`Kabor": 2,
+     "Force": 2,
+     "Superior Healing": 1,
+     "Sacred Echo": 1,
+     "Circle of Force": 1,
+     "Gravity Flux": 1,
+     "Infectious Cloud": 1
+    },
+    "loot": {
+     "Crystallized Sulfur": 1,
+     "Brell's Girdle +4": 1,
+     "Loam Encrusted Robe +4": 1
+    }
+   },
    "An elemental channeler": {
     "swings": 0,
     "landed": 0,
@@ -64075,6 +64105,170 @@
     "casts": {
      "Instill": 2,
      "Lay on Hands": 1
+    },
+    "loot": {}
+   }
+  },
+  "drop_tier_floor": 4,
+  "drop_tier_modal": 4
+ },
+ {
+  "zone": "Kedge Keep",
+  "character": "Avenrae",
+  "zone_from": null,
+  "difficulty_label": null,
+  "difficulty_num": null,
+  "difficulty": 0,
+  "difficulty_from": "zone line",
+  "difficulty_label_agrees": null,
+  "difficulty_agrees": null,
+  "date": "18 Aug 2026",
+  "window": "22:07-22:20",
+  "stamps": [],
+  "minutes": 13,
+  "kills": 2,
+  "distinct": 2,
+  "kinds": [
+   "a seahorse patriarch",
+   "an emerald sailfin"
+  ],
+  "kills_by_mob": {
+   "an emerald sailfin": 1,
+   "a seahorse patriarch": 1
+  },
+  "drop_tiers": {},
+  "faction": {
+   "Phinigel Autropos": 19
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 4,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {}
+  },
+  "faction_by_mob": {
+   "a seahorse patriarch": {
+    "Phinigel Autropos": -5
+   }
+  },
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 47,
+  "you_miss": 42,
+  "mob_hit": 35,
+  "mob_miss": 128,
+  "mobs": {
+   "Cauldronbubble": {
+    "swings": 12,
+    "landed": 2,
+    "avg": 21.5,
+    "max": 38,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A cauldron hammerhead": {
+    "swings": 6,
+    "landed": 1,
+    "avg": 6.0,
+    "max": 6,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A stiletto tooth piranha": {
+    "swings": 80,
+    "landed": 21,
+    "avg": 10.3,
+    "max": 36,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A stiletto fang piranha": {
+    "swings": 25,
+    "landed": 10,
+    "avg": 18.8,
+    "max": 43,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A cauldron shark": {
+    "swings": 19,
+    "landed": 1,
+    "avg": 5.0,
+    "max": 5,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "A gloomstalker mermaid": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Healing": 4,
+     "Burst of Fire": 4,
+     "Spirit of Wolf": 3,
+     "Tangling Weeds": 3,
+     "Searing Arrow": 2,
+     "Light Healing": 2,
+     "Stinging Swarm": 1,
+     "Firefist": 1
+    },
+    "loot": {}
+   },
+   "A gloomwater mermaid": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Healing": 1,
+     "Spirit of Wolf": 1,
+     "Healing": 1
+    },
+    "loot": {}
+   },
+   "A seahorse patriarch": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Shielding": 1,
+     "Steelskin": 1,
+     "Elnerick's Entombment of Ice": 1,
+     "Instill": 1
     },
     "loot": {}
    }
