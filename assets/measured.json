@@ -61065,11 +61065,11 @@
   "difficulty_label_agrees": null,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "16:48-20:13",
+  "window": "16:48-20:32",
   "stamps": [],
-  "minutes": 205,
-  "kills": 398,
-  "distinct": 61,
+  "minutes": 224,
+  "kills": 431,
+  "distinct": 63,
   "kinds": [
    "Enynti",
    "Lasna Cheroon",
@@ -61082,6 +61082,8 @@
    "a dark elf noble",
    "a dark librarian",
    "a dark offerer",
+   "a dark ritualist",
+   "a dark sacrificer",
    "a deathly harbinger",
    "a deathly herald",
    "a deathly usher",
@@ -61134,20 +61136,20 @@
    "an initiate familiar"
   ],
   "kills_by_mob": {
-   "a flouting gargoyle": 35,
+   "a flouting gargoyle": 40,
    "a ghoulish ancille": 34,
-   "a will sapper": 29,
+   "a will sapper": 31,
    "a ghastish ancille": 23,
+   "a deathly usher": 22,
    "an initiate familiar": 21,
-   "a pledge familiar": 20,
+   "a pledge familiar": 21,
    "a leering gargoyle": 18,
-   "a deathly usher": 17,
+   "a jeering gargoyle": 14,
    "a will pillager": 14,
-   "a soul temptress": 12,
-   "a deathly herald": 11,
-   "a glyphed guard": 10,
+   "a soul temptress": 13,
+   "a deathly herald": 12,
+   "a glyphed guard": 11,
    "a sneering gargoyle": 9,
-   "a jeering gargoyle": 9,
    "a vampiric ancille": 9,
    "a glyphed sentry": 8,
    "a soul seductress": 8,
@@ -61155,9 +61157,12 @@
    "a werewolf": 7,
    "a soul inveigling": 5,
    "a thought corruptor": 5,
+   "a dark offerer": 5,
    "a glyphed aegis": 5,
    "a vampire noble": 4,
+   "an ancille cook": 4,
    "a dark librarian": 4,
+   "a shadowy scrivener": 4,
    "a ghostly ancille": 3,
    "a shadowy sage": 3,
    "a vampire oracle": 3,
@@ -61166,27 +61171,25 @@
    "a werewolf gypsy": 3,
    "a shadowy scribe": 3,
    "Maid Issis": 3,
+   "Princess Cherista": 3,
    "a glyphed warder": 3,
+   "a hemo enologist": 3,
    "a deathly harbinger": 3,
    "Enynti": 3,
    "a glyphed custodian": 3,
-   "a shadowy scrivener": 3,
    "a glyphed forbidder": 2,
    "a gypsy dancer": 2,
    "a wraithish ancille": 2,
-   "an ancille cook": 2,
-   "Princess Cherista": 2,
-   "a hemo enologist": 2,
+   "a dark ass`t librarian": 2,
    "a cloaked dhampyre": 2,
    "a fallen noble": 2,
-   "a dark offerer": 2,
    "a gypsy ambassador": 2,
    "a gypsy musician": 2,
+   "an imp familiar": 2,
    "a grinning gargoyle": 1,
    "a glyphed ghoul": 1,
    "a spectral ancille": 1,
    "a thought spoiler": 1,
-   "a dark ass`t librarian": 1,
    "a negotiator": 1,
    "a dark elf noble": 1,
    "a spiritish ancille": 1,
@@ -61194,41 +61197,42 @@
    "Mynthi Davissi": 1,
    "Lasna Cheroon": 1,
    "Xicotl": 1,
-   "an imp familiar": 1
+   "a dark ritualist": 1,
+   "a dark sacrificer": 1
   },
   "drop_tiers": {
-   "1": 166,
-   "2": 34,
+   "1": 181,
+   "2": 39,
    "3": 2
   },
   "faction": {
-   "Mayong Mistmoore": 587,
-   "King Tearis Thex": 587,
-   "Agents of Mistmoore": 587,
-   "League of Antonican Bards": 587,
-   "Ring of Scale": 587,
+   "Mayong Mistmoore": 641,
+   "King Tearis Thex": 641,
+   "Agents of Mistmoore": 641,
+   "League of Antonican Bards": 641,
+   "Ring of Scale": 641,
    "Temple of Solusek Ro": 1,
    "Shadowed Men": 1
   },
   "context": [],
   "escapes": [],
   "control": {
-   "melee_stuns_avoided": 760,
-   "lockout_lines": 235,
+   "melee_stuns_avoided": 804,
+   "lockout_lines": 246,
    "fear_lines": 0,
-   "screams": 7,
-   "scream_seconds": 68,
+   "screams": 8,
+   "scream_seconds": 88,
    "stuns": {
     "Lightning Bolt": {
-     "landed": 80,
+     "landed": 87,
      "casters": {
       "a ghostly ancille": 12,
+      "a thought defiler": 10,
       "a thought corruptor": 10,
       "a thought spoiler": 9,
+      "a shadowy scrivener": 9,
       "a vampire oracle": 8,
-      "a shadowy scribe": 7,
-      "a shadowy scrivener": 7,
-      "a thought defiler": 6,
+      "a shadowy scribe": 8,
       "a shadowy sage": 5,
       "a dark elf noble": 5,
       "a vampire noble": 4,
@@ -61243,6 +61247,15 @@
       "Mynthi Davissi": 6
      }
     },
+    "Holy Might": {
+     "landed": 11,
+     "casters": {
+      "a glyphed warder": 5,
+      "a fallen noble": 3,
+      "a glyphed custodian": 2,
+      "a glyphed forbidder": 1
+     }
+    },
     "Tishan's Clash": {
      "landed": 10,
      "casters": {
@@ -61254,48 +61267,40 @@
       "a shadowy scribe": 1,
       "a thought corruptor": 1
      }
-    },
-    "Holy Might": {
-     "landed": 9,
-     "casters": {
-      "a glyphed warder": 5,
-      "a glyphed custodian": 2,
-      "a glyphed forbidder": 1,
-      "a fallen noble": 1
-     }
     }
    },
    "resists": {
     "Fatigue Drain": {
-     "a will sapper": 18,
+     "a will sapper": 19,
      "a will pillager": 14,
      "a ghoulish ancille": 9,
      "Butler Syncall": 5,
+     "a cloaked dhampyre": 4,
      "a will ravisher": 3,
-     "a cloaked dhampyre": 3,
      "a ghastish ancille": 2
     },
     "Instill": {
+     "a shadowy scribe": 16,
      "a thought spoiler": 13,
-     "a shadowy scribe": 12,
      "a vampire noble": 12,
      "a vampire oracle": 11,
      "a shadowy sage": 10,
      "a ghostly ancille": 6,
      "a thought defiler": 6,
      "a dark elf noble": 6,
-     "a shadowy scrivener": 4,
+     "a shadowy scrivener": 5,
      "a spectral ancille": 2,
      "a will pillager": 2,
      "a thought corruptor": 2
     },
     "Negation of Life": {
+     "a dark offerer": 4,
      "a soul temptress": 4,
-     "a dark offerer": 3,
      "a soul seductress": 3,
      "a soul inveigling": 3,
      "a wraithish ancille": 2,
-     "Princess Cherista": 2
+     "Princess Cherista": 2,
+     "a dark sacrificer": 1
     },
     "Lightning Bolt": {
      "a shadowy scribe": 5,
@@ -61323,8 +61328,10 @@
     },
     "Screaming Terror": {
      "a soul seductress": 18,
-     "Princess Cherista": 9,
+     "Princess Cherista": 10,
      "a soul inveigling": 6,
+     "a dark sacrificer": 3,
+     "a dark ritualist": 3,
      "Maid Issis": 2,
      "a wraithish ancille": 1,
      "a leering gargoyle": 1,
@@ -61344,10 +61351,12 @@
      "Princess Cherista": 1,
      "an ancille cook": 1,
      "Lasna Cheroon": 1,
-     "Xicotl": 1
+     "Xicotl": 1,
+     "a cloaked dhampyre": 1,
+     "a dark sacrificer": 1
     },
     "Mana Drain": {
-     "Princess Cherista": 5,
+     "Princess Cherista": 7,
      "a thought defiler": 1,
      "Maid Issis": 1,
      "Lasna Cheroon": 1,
@@ -61373,7 +61382,8 @@
     "Holy Might": {
      "a glyphed warder": 2,
      "a glyphed forbidder": 1,
-     "a glyphed custodian": 1
+     "a glyphed custodian": 1,
+     "a fallen noble": 1
     },
     "Shadow Vortex": {
      "a soul temptress": 9,
@@ -61382,10 +61392,11 @@
      "a dark offerer": 3,
      "a soul inveigling": 2,
      "Princess Cherista": 2,
-     "a wightish ancille": 1
+     "a wightish ancille": 1,
+     "a dark sacrificer": 1
     },
     "Cancelling of Life": {
-     "an ancille cook": 3,
+     "an ancille cook": 5,
      "Xicotl": 3,
      "Butler Syncall": 1,
      "a deathly usher": 1
@@ -61395,7 +61406,9 @@
     },
     "Infectious Cloud": {
      "a soul temptress": 1,
-     "a soul seductress": 1
+     "a soul seductress": 1,
+     "a dark sacrificer": 1,
+     "Princess Cherista": 1
     },
     "Stun": {
      "a flouting gargoyle": 1
@@ -61415,7 +61428,12 @@
      "a pledge familiar": 1
     },
     "Heat Blood": {
-     "a soul seductress": 1
+     "a soul seductress": 1,
+     "a dark sacrificer": 1,
+     "a dark offerer": 1
+    },
+    "Tangling Weeds": {
+     "a soul temptress": 1
     }
    }
   },
@@ -61819,12 +61837,26 @@
     "Agents of Mistmoore": "down",
     "League of Antonican Bards": "up",
     "Ring of Scale": "up"
+   },
+   "a dark ritualist": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
+   },
+   "a dark sacrificer": {
+    "Mayong Mistmoore": "down",
+    "King Tearis Thex": "up",
+    "Agents of Mistmoore": "down",
+    "League of Antonican Bards": "up",
+    "Ring of Scale": "up"
    }
   },
   "exp_by_mob": {
    "a glyphed forbidder": 2.468,
    "a ghoulish ancille": 1.671,
-   "a flouting gargoyle": 2.03,
+   "a flouting gargoyle": 1.956,
    "a ghastish ancille": 2.14,
    "a leering gargoyle": 2.42,
    "an initiate familiar": 0.59,
@@ -61832,22 +61864,22 @@
    "a grinning gargoyle": 1.093,
    "a glyphed ghoul": 1.499,
    "a glyphed familiar": 0.684,
-   "a glyphed guard": 1.009,
+   "a glyphed guard": 0.94,
    "a glyphed sentry": 1.018,
    "a ghostly ancille": 1.161,
    "a sneering gargoyle": 0.8,
-   "a jeering gargoyle": 1.488,
+   "a jeering gargoyle": 1.287,
    "a vampiric ancille": 2.197,
    "a shadowy sage": 1.384,
    "a spectral ancille": 1.3,
    "a vampire oracle": 1.07,
    "a vampire noble": 1.175,
    "a will pillager": 2.051,
-   "a will sapper": 1.691,
+   "a will sapper": 1.649,
    "a will ravisher": 2.76,
    "a soul seductress": 1.014,
    "a gypsy dancer": 0.674,
-   "a soul temptress": 0.969,
+   "a soul temptress": 0.943,
    "a wraithish ancille": 1.212,
    "a werewolf": 1.378,
    "a thought defiler": 1.293,
@@ -61855,19 +61887,19 @@
    "a thought spoiler": 1.151,
    "a shadowy scribe": 0.955,
    "Maid Issis": 1.139,
-   "an ancille cook": 2.582,
-   "a dark ass`t librarian": 2.509,
+   "an ancille cook": 2.224,
+   "a dark ass`t librarian": 1.795,
    "a dark librarian": 1.866,
-   "Princess Cherista": 2.16,
+   "Princess Cherista": 1.954,
    "a glyphed warder": 0.949,
    "a soul inveigling": 1.29,
    "a thought corruptor": 0.895,
-   "a hemo enologist": 1.666,
+   "a hemo enologist": 1.592,
    "a cloaked dhampyre": 1.959,
    "a fallen noble": 1.001,
-   "a deathly herald": 1.944,
-   "a deathly usher": 1.404,
-   "a dark offerer": 0.772,
+   "a deathly herald": 1.892,
+   "a deathly usher": 1.362,
+   "a dark offerer": 0.684,
    "a deathly harbinger": 2.046,
    "Enynti": 0.856,
    "a glyphed aegis": 1.43,
@@ -61877,17 +61909,19 @@
    "a dark elf noble": 1.048,
    "a spiritish ancille": 0.768,
    "a wightish ancille": 0.695,
-   "a shadowy scrivener": 1.034,
+   "a shadowy scrivener": 0.948,
    "a gypsy musician": 1.224,
    "Mynthi Davissi": 0.734,
    "Lasna Cheroon": 2.062,
    "Xicotl": 2.675,
-   "an imp familiar": 0.796
+   "an imp familiar": 0.796,
+   "a dark ritualist": 0.795,
+   "a dark sacrificer": 0.652
   },
   "exp_samples_by_mob": {
    "a glyphed forbidder": 2,
    "a ghoulish ancille": 34,
-   "a flouting gargoyle": 35,
+   "a flouting gargoyle": 39,
    "a ghastish ancille": 23,
    "a leering gargoyle": 18,
    "an initiate familiar": 21,
@@ -61895,22 +61929,22 @@
    "a grinning gargoyle": 1,
    "a glyphed ghoul": 1,
    "a glyphed familiar": 7,
-   "a glyphed guard": 10,
+   "a glyphed guard": 11,
    "a glyphed sentry": 8,
    "a ghostly ancille": 3,
    "a sneering gargoyle": 9,
-   "a jeering gargoyle": 9,
+   "a jeering gargoyle": 14,
    "a vampiric ancille": 9,
    "a shadowy sage": 3,
    "a spectral ancille": 1,
    "a vampire oracle": 3,
    "a vampire noble": 4,
    "a will pillager": 14,
-   "a will sapper": 29,
+   "a will sapper": 31,
    "a will ravisher": 3,
    "a soul seductress": 8,
    "a gypsy dancer": 2,
-   "a soul temptress": 12,
+   "a soul temptress": 13,
    "a wraithish ancille": 2,
    "a werewolf": 7,
    "a thought defiler": 3,
@@ -61918,19 +61952,19 @@
    "a thought spoiler": 1,
    "a shadowy scribe": 3,
    "Maid Issis": 3,
-   "an ancille cook": 2,
-   "a dark ass`t librarian": 1,
+   "an ancille cook": 4,
+   "a dark ass`t librarian": 2,
    "a dark librarian": 4,
-   "Princess Cherista": 2,
+   "Princess Cherista": 3,
    "a glyphed warder": 3,
    "a soul inveigling": 5,
    "a thought corruptor": 5,
-   "a hemo enologist": 2,
+   "a hemo enologist": 3,
    "a cloaked dhampyre": 2,
    "a fallen noble": 2,
-   "a deathly herald": 11,
-   "a deathly usher": 17,
-   "a dark offerer": 2,
+   "a deathly herald": 12,
+   "a deathly usher": 21,
+   "a dark offerer": 5,
    "a deathly harbinger": 3,
    "Enynti": 3,
    "a glyphed aegis": 5,
@@ -61940,19 +61974,21 @@
    "a dark elf noble": 1,
    "a spiritish ancille": 1,
    "a wightish ancille": 1,
-   "a shadowy scrivener": 3,
+   "a shadowy scrivener": 4,
    "a gypsy musician": 2,
    "Mynthi Davissi": 1,
    "Lasna Cheroon": 1,
    "Xicotl": 1,
-   "an imp familiar": 1
+   "an imp familiar": 2,
+   "a dark ritualist": 1,
+   "a dark sacrificer": 1
   },
-  "exp_attributed": 588.508,
-  "exp_attributed_kills": 398,
-  "you_hit": 4284,
-  "you_miss": 2034,
-  "mob_hit": 10640,
-  "mob_miss": 8507,
+  "exp_attributed": 619.989,
+  "exp_attributed_kills": 428,
+  "you_hit": 4656,
+  "you_miss": 2218,
+  "mob_hit": 11313,
+  "mob_miss": 9143,
   "mobs": {
    "A glyphed forbidder": {
     "swings": 47,
@@ -62036,7 +62072,10 @@
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
-    "casts": {},
+    "casts": {
+     "Valor": 4,
+     "Symbol of Pinzarn": 3
+    },
     "loot": {
      "Fine Steel Great Staff +1": 3,
      "Fine Steel Dagger +1": 2,
@@ -62047,9 +62086,9 @@
     }
    },
    "A leering gargoyle": {
-    "swings": 1370,
-    "landed": 833,
-    "avg": 13.1,
+    "swings": 1474,
+    "landed": 887,
+    "avg": 13.2,
     "max": 87,
     "backstabs": 0,
     "backstab_avg": null,
@@ -62064,14 +62103,14 @@
      "Infectious Cloud": 1
     },
     "loot": {
-     "Mistmoore Granite": 7,
+     "Mistmoore Granite": 8,
      "Gargoyle Eye": 6,
      "Mote of Minor Potential": 5
     }
    },
    "A glyphed guard": {
-    "swings": 377,
-    "landed": 196,
+    "swings": 391,
+    "landed": 201,
     "avg": 3.8,
     "max": 23,
     "backstabs": 0,
@@ -62092,8 +62131,8 @@
     }
    },
    "A flouting gargoyle": {
-    "swings": 1995,
-    "landed": 1104,
+    "swings": 2099,
+    "landed": 1160,
     "avg": 10.9,
     "max": 74,
     "backstabs": 0,
@@ -62107,55 +62146,60 @@
     },
     "loot": {
      "Mistmoore Granite": 9,
-     "Gargoyle Eye": 5,
+     "Gargoyle Eye": 6,
      "Mote of Minor Potential": 2
     }
    },
    "A dark offerer": {
-    "swings": 97,
-    "landed": 48,
-    "avg": 9.2,
+    "swings": 144,
+    "landed": 71,
+    "avg": 9.4,
     "max": 29,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 26,
-     "Shadow Vortex": 13,
-     "Negation of Life": 5,
-     "Heat Blood": 5,
-     "Engulfing Darkness": 5,
-     "Shielding": 3,
-     "Lesser Shielding": 2,
-     "Infectious Cloud": 1
+     "Lifedraw": 37,
+     "Shadow Vortex": 21,
+     "Heat Blood": 8,
+     "Engulfing Darkness": 8,
+     "Negation of Life": 6,
+     "Shielding": 6,
+     "Infectious Cloud": 3,
+     "Lesser Shielding": 2
     },
     "loot": {
-     "Thick Caustic Fluid": 5,
+     "Thick Caustic Fluid": 9,
      "Topaz": 1,
      "Jade Earring +1": 1,
      "Fine Steel Rapier +1": 1,
-     "Silver Amulet +1": 1
+     "Silver Amulet +1": 1,
+     "Mithril Earring +1": 1,
+     "Ivory": 1
     }
    },
    "A shadowy scribe": {
-    "swings": 86,
-    "landed": 46,
-    "avg": 12.0,
+    "swings": 105,
+    "landed": 54,
+    "avg": 11.5,
     "max": 31,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Instill": 23,
-     "Lightning Bolt": 16,
-     "Shielding": 2,
-     "Leatherskin": 2,
+     "Instill": 27,
+     "Lightning Bolt": 18,
+     "Leatherskin": 6,
+     "Shielding": 5,
      "Tishan's Clash": 2,
-     "Project Lightning": 1
+     "Project Lightning": 1,
+     "Lesser Shielding": 1
     },
     "loot": {
      "Jade": 1,
-     "Silver Amulet +1": 1
+     "Silver Amulet +1": 1,
+     "Fine Steel Rapier +1": 1,
+     "Gold Ring +1": 1
     }
    },
    "A werewolf": {
@@ -62269,16 +62313,16 @@
     }
    },
    "A thought defiler": {
-    "swings": 107,
-    "landed": 69,
-    "avg": 14.2,
+    "swings": 118,
+    "landed": 75,
+    "avg": 14.6,
     "max": 57,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lightning Bolt": 17,
-     "Instill": 16,
+     "Lightning Bolt": 22,
+     "Instill": 17,
      "Leatherskin": 4,
      "Tishan's Clash": 2,
      "Major Shielding": 2
@@ -62293,46 +62337,48 @@
     }
    },
    "A soul temptress": {
-    "swings": 364,
-    "landed": 197,
-    "avg": 9.7,
+    "swings": 375,
+    "landed": 204,
+    "avg": 9.6,
     "max": 51,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
      "Lifedraw": 95,
-     "Shadow Vortex": 39,
+     "Shadow Vortex": 40,
      "Heat Blood": 16,
      "Engulfing Darkness": 11,
+     "Shield of Barbs": 9,
      "Negation of Life": 8,
      "Infectious Cloud": 8,
      "Shielding": 6,
      "Inner Fire": 4,
      "Lesser Shielding": 3,
      "Skin like Rock": 3,
-     "Shield of Barbs": 3,
      "Spirit of Wolf": 3,
      "Drowsy": 3,
      "Light Healing": 2,
+     "Tangling Weeds": 2,
      "Word of Shadow": 1,
      "Firefist": 1
     },
     "loot": {
      "Jade": 3,
      "Topaz": 3,
+     "Fine Steel Rapier +1": 2,
      "Flame Agate": 1,
      "Fine Steel Dagger +2": 1,
      "Jade Earring +1": 1,
-     "Fine Steel Rapier +1": 1,
      "Fine Steel Dagger +1": 1,
      "Fine Steel Rapier +2": 1,
-     "Silver Amulet +1": 1
+     "Silver Amulet +1": 1,
+     "Mithril Earring +2": 1
     }
    },
    "A will sapper": {
-    "swings": 1409,
-    "landed": 790,
+    "swings": 1529,
+    "landed": 855,
     "avg": 7.3,
     "max": 46,
     "backstabs": 0,
@@ -62340,7 +62386,7 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Black Silk Gloves +1": 5,
+     "Black Silk Gloves +1": 6,
      "Fine Steel Spear +1": 3,
      "Fine Steel Long Sword +1": 2,
      "Mote of Minor Potential": 2,
@@ -62349,7 +62395,9 @@
      "Fine Steel Warhammer +1": 1,
      "Bronze Boots +1": 1,
      "Bronze Vambraces +1": 1,
-     "Fine Steel Long Sword +2": 1
+     "Fine Steel Long Sword +2": 1,
+     "Fine Steel Two Handed Sword +2": 1,
+     "Bronze Girdle +2": 1
     }
    },
    "A soul seductress": {
@@ -62410,8 +62458,8 @@
     }
    },
    "A pledge familiar": {
-    "swings": 557,
-    "landed": 233,
+    "swings": 562,
+    "landed": 234,
     "avg": 3.9,
     "max": 19,
     "backstabs": 10,
@@ -62526,9 +62574,9 @@
     }
    },
    "A glyphed sentry": {
-    "swings": 410,
-    "landed": 219,
-    "avg": 5.9,
+    "swings": 425,
+    "landed": 225,
+    "avg": 5.8,
     "max": 27,
     "backstabs": 0,
     "backstab_avg": null,
@@ -62537,7 +62585,8 @@
     "loot": {
      "Ringmail Cape +1": 2,
      "Fine Steel Long Sword +1": 1,
-     "Ringmail Sleeves +2": 1
+     "Ringmail Sleeves +2": 1,
+     "Fine Steel Short Sword +1": 1
     }
    },
    "Ssynthi": {
@@ -62613,8 +62662,8 @@
     }
    },
    "A jeering gargoyle": {
-    "swings": 426,
-    "landed": 229,
+    "swings": 619,
+    "landed": 319,
     "avg": 8.0,
     "max": 34,
     "backstabs": 0,
@@ -62622,8 +62671,8 @@
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Gargoyle Eye": 3,
-     "Mistmoore Granite": 2
+     "Gargoyle Eye": 5,
+     "Mistmoore Granite": 3
     }
    },
    "A vampiric ancille": {
@@ -62672,9 +62721,9 @@
     "casts": {
      "Instill": 17,
      "Lightning Bolt": 7,
-     "Tishan's Clash": 2,
-     "Major Shielding": 1,
-     "Leatherskin": 1
+     "Major Shielding": 2,
+     "Leatherskin": 2,
+     "Tishan's Clash": 2
     },
     "loot": {
      "Mithril Earring +1": 1,
@@ -62698,9 +62747,9 @@
     }
    },
    "A deathly herald": {
-    "swings": 747,
-    "landed": 415,
-    "avg": 7.9,
+    "swings": 818,
+    "landed": 448,
+    "avg": 7.8,
     "max": 32,
     "backstabs": 0,
     "backstab_avg": null,
@@ -62734,22 +62783,22 @@
     }
    },
    "An ancille cook": {
-    "swings": 200,
-    "landed": 124,
-    "avg": 12.6,
+    "swings": 286,
+    "landed": 171,
+    "avg": 13.2,
     "max": 39,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 34,
-     "Cancelling of Life": 4,
-     "Harm Touch": 4,
+     "Lifedraw": 47,
+     "Cancelling of Life": 6,
+     "Harm Touch": 6,
      "Fear": 4,
-     "Engulfing Darkness": 3
+     "Engulfing Darkness": 4
     },
     "loot": {
-     "Dark Cauldron": 4,
+     "Dark Cauldron": 5,
      "Fine Steel Dagger +1": 2,
      "Fine Steel Long Sword +1": 1
     }
@@ -62847,45 +62896,46 @@
     }
    },
    "A dark ass`t librarian": {
-    "swings": 91,
-    "landed": 57,
-    "avg": 12.4,
+    "swings": 143,
+    "landed": 85,
+    "avg": 10.5,
     "max": 64,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Illegible Scroll": 1
+     "Illegible Scroll": 2
     }
    },
    "Princess Cherista": {
-    "swings": 208,
-    "landed": 129,
-    "avg": 17.0,
+    "swings": 234,
+    "landed": 145,
+    "avg": 16.9,
     "max": 74,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 27,
-     "Screaming Terror": 14,
+     "Lifedraw": 34,
+     "Screaming Terror": 15,
      "Shadow Vortex": 7,
+     "Leatherskin": 6,
+     "Heat Blood": 6,
      "Shock of Poison": 6,
-     "Leatherskin": 5,
      "Negation of Life": 5,
-     "Heat Blood": 5,
-     "Major Shielding": 2,
-     "Infectious Cloud": 2,
+     "Major Shielding": 3,
+     "Infectious Cloud": 3,
      "Engulfing Darkness": 1
     },
     "loot": {
-     "Tarnished Ancient Tiara +1": 3,
+     "Tarnished Ancient Tiara +1": 4,
      "Cherista's Fangs +1": 2,
      "Flame Agate": 1,
      "Ivory": 1,
      "Amber": 1,
-     "Topaz": 1
+     "Topaz": 1,
+     "Mithril Earring +1": 1
     }
    },
    "A thought corruptor": {
@@ -62910,62 +62960,63 @@
     }
    },
    "A hemo enologist": {
-    "swings": 44,
-    "landed": 25,
-    "avg": 8.4,
+    "swings": 106,
+    "landed": 57,
+    "avg": 9.1,
     "max": 30,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Blood Wine": 2
+     "Blood Wine": 3
     }
    },
    "A cloaked dhampyre": {
-    "swings": 46,
-    "landed": 28,
-    "avg": 10.6,
+    "swings": 75,
+    "landed": 46,
+    "avg": 10.8,
     "max": 34,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Lifedraw": 3,
-     "Harm Touch": 2,
-     "Engulfing Darkness": 1
+     "Lifedraw": 7,
+     "Harm Touch": 3,
+     "Engulfing Darkness": 2
     },
     "loot": {
-     "Fleeting Memory +1": 2
+     "Fleeting Memory +1": 3
     }
    },
    "A fallen noble": {
-    "swings": 37,
-    "landed": 21,
-    "avg": 4.2,
-    "max": 24,
+    "swings": 81,
+    "landed": 43,
+    "avg": 6.5,
+    "max": 25,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Symbol of Transal": 9,
-     "Daring": 4,
-     "Healing": 4,
-     "Echoing Light": 2,
-     "Holy Might": 2,
+     "Symbol of Transal": 12,
+     "Healing": 10,
+     "Daring": 8,
+     "Holy Might": 5,
+     "Echoing Light": 4,
      "Root": 2
     },
     "loot": {
-     "Vial of Noble's Blood": 2,
+     "Vial of Noble's Blood": 3,
      "Noble's Robes +1": 1,
      "Fine Steel Morning Star +1": 1,
-     "Noble's Robes +2": 1
+     "Noble's Robes +2": 1,
+     "Mistmoore Heirloom Ring +1": 1
     }
    },
    "A deathly usher": {
-    "swings": 1165,
-    "landed": 615,
-    "avg": 6.5,
+    "swings": 1363,
+    "landed": 716,
+    "avg": 6.4,
     "max": 30,
     "backstabs": 0,
     "backstab_avg": null,
@@ -62985,35 +63036,38 @@
      "Blooming Heal": 1
     },
     "loot": {
-     "Black Silk Gloves +1": 3,
-     "Rune of Ivy": 2,
+     "Black Silk Gloves +1": 4,
+     "Rune of Ivy": 3,
      "Fine Steel Warhammer +1": 2,
+     "Fine Steel Morning Star +1": 2,
      "Bronze Greaves +1": 1,
      "Fine Steel Two Handed Sword +2": 1,
      "Bronze Greaves +2": 1,
-     "Fine Steel Two Handed Sword +1": 1
+     "Fine Steel Two Handed Sword +1": 1,
+     "Bronze Pauldron +1": 1
     }
    },
    "A shadowy scrivener": {
-    "swings": 46,
-    "landed": 17,
-    "avg": 8.9,
+    "swings": 55,
+    "landed": 22,
+    "avg": 9.3,
     "max": 25,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Instill": 14,
-     "Lightning Bolt": 12,
-     "Lesser Shielding": 4,
+     "Instill": 18,
+     "Lightning Bolt": 17,
+     "Shielding": 5,
+     "Lesser Shielding": 5,
      "Column of Frost": 3,
-     "Shielding": 1,
      "Tishan's Clash": 1
     },
     "loot": {
      "Mithril Earring +1": 1,
      "Fine Steel Dagger +1": 1,
-     "Ivory": 1
+     "Ivory": 1,
+     "Pearl": 1
     }
    },
    "A gypsy ambassador": {
@@ -63068,11 +63122,12 @@
     "casts": {
      "Instill": 15,
      "Lightning Bolt": 14,
+     "Leatherskin": 2,
      "Tishan's Clash": 2,
      "Shielding": 1,
-     "Leatherskin": 1,
      "Fire Spiral of Al`Kabor": 1,
-     "Project Lightning": 1
+     "Project Lightning": 1,
+     "Lesser Shielding": 1
     },
     "loot": {
      "Gold Ring +2": 1
@@ -63089,10 +63144,11 @@
     "casts": {
      "Alacrity": 26,
      "Chaos Flux": 14,
+     "Quickness": 14,
      "Mesmerization": 6,
      "Tashani": 4,
+     "Lesser Shielding": 2,
      "Root": 2,
-     "Lesser Shielding": 1,
      "Charm": 1
     },
     "loot": {
@@ -63108,13 +63164,13 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
+     "Quickness": 29,
      "Chaos Flux": 14,
-     "Quickness": 11,
      "Alacrity": 8,
      "Mesmerization": 7,
      "Tashani": 6,
      "Root": 4,
-     "Lesser Shielding": 1
+     "Lesser Shielding": 2
     },
     "loot": {
      "Fine Steel Rapier +1": 1,
@@ -63122,19 +63178,20 @@
     }
    },
    "An imp familiar": {
-    "swings": 120,
-    "landed": 72,
-    "avg": 7.6,
-    "max": 25,
+    "swings": 123,
+    "landed": 73,
+    "avg": 7.9,
+    "max": 26,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {},
     "loot": {
-     "Sacrificial Dagger +1": 2,
+     "Sacrificial Dagger +1": 3,
      "Sacrificial Dagger +2": 1,
      "Mote of Minor Potential": 1,
-     "Fine Steel Rapier +1": 1
+     "Fine Steel Rapier +1": 1,
+     "Ashroot": 1
     }
    },
    "A glyphed custodian": {
@@ -63230,24 +63287,51 @@
     }
    },
    "A dark sacrificer": {
-    "swings": 16,
-    "landed": 8,
-    "avg": 8.8,
-    "max": 19,
+    "swings": 65,
+    "landed": 37,
+    "avg": 9.1,
+    "max": 30,
     "backstabs": 0,
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Shadow Vortex": 2,
+     "Lifedraw": 15,
+     "Shadow Vortex": 7,
+     "Screaming Terror": 5,
+     "Heat Blood": 3,
      "Shock of Poison": 2,
-     "Lifedraw": 1,
-     "Infectious Cloud": 1,
-     "Heat Blood": 1,
-     "Screaming Terror": 1,
-     "Shielding": 1,
-     "Leatherskin": 1
+     "Infectious Cloud": 2,
+     "Shielding": 2,
+     "Leatherskin": 2,
+     "Lesser Shielding": 1,
+     "Negation of Life": 1,
+     "Engulfing Darkness": 1
     },
-    "loot": {}
+    "loot": {
+     "Jade Earring +2": 1,
+     "Topaz": 1
+    }
+   },
+   "A dark ritualist": {
+    "swings": 37,
+    "landed": 20,
+    "avg": 12.8,
+    "max": 35,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 6,
+     "Major Shielding": 4,
+     "Leatherskin": 4,
+     "Screaming Terror": 4,
+     "Shadow Vortex": 1,
+     "Engulfing Darkness": 1,
+     "Infectious Cloud": 1
+    },
+    "loot": {
+     "Fine Steel Rapier +2": 1
+    }
    }
   },
   "drop_tier_floor": 1,
