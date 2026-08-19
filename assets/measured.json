@@ -63636,9 +63636,9 @@
   "difficulty_label_agrees": true,
   "difficulty_agrees": true,
   "date": "18 Aug 2026",
-  "window": "20:57-21:30",
+  "window": "20:57-21:43",
   "stamps": [],
-  "minutes": 33,
+  "minutes": 46,
   "kills": 2,
   "distinct": 2,
   "kinds": [
@@ -63650,10 +63650,10 @@
    "an elite dragoon": 1
   },
   "drop_tiers": {
-   "4": 9
+   "4": 12
   },
   "faction": {
-   "Inhabitants of Hate": 13
+   "Inhabitants of Hate": 17
   },
   "context": [],
   "escapes": [],
@@ -63679,10 +63679,10 @@
   "exp_samples_by_mob": {},
   "exp_attributed": 0,
   "exp_attributed_kills": 0,
-  "you_hit": 1582,
-  "you_miss": 1128,
-  "mob_hit": 256,
-  "mob_miss": 368,
+  "you_hit": 2018,
+  "you_miss": 1381,
+  "mob_hit": 270,
+  "mob_miss": 388,
   "mobs": {
    "A haunted chest pet": {
     "swings": 26,
@@ -63788,7 +63788,7 @@
     }
    },
    "Innoruuk`s Chosen": {
-    "swings": 10,
+    "swings": 11,
     "landed": 4,
     "avg": 46.8,
     "max": 66,
@@ -63796,23 +63796,33 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
+     "Superior Healing": 17,
      "Shock of Swords": 4,
      "Immobilize": 4,
-     "Superior Healing": 4,
      "Malaisement": 3,
      "Retribution": 3,
+     "Chloroplast": 3,
      "Symbol of Naltron": 2,
      "Barrier of Combustion": 2,
      "Shield of Spikes": 2,
      "Sacred Echo": 2,
+     "Spirit of Wolf": 2,
+     "Ensnare": 2,
      "Resolution": 1,
      "Arch Shielding": 1,
      "Armor of the Faithful": 1,
-     "Blaze": 1
+     "Blaze": 1,
+     "Skin like Nature": 1,
+     "Malosi": 1,
+     "Plague": 1,
+     "Blizzard Blast": 1,
+     "Drifting Death": 1,
+     "Engulfing Roots": 1
     },
     "loot": {
-     "Crystallized Sulfur": 1,
-     "Indicolite Gauntlets +4": 1
+     "Crystallized Sulfur": 2,
+     "Indicolite Gauntlets +4": 1,
+     "Mote of Major Potential": 1
     }
    },
    "An Evangelist of Hate": {
@@ -63856,10 +63866,10 @@
     "backstab_avg": null,
     "backstab_max": null,
     "casts": {
-     "Superior Healing": 28,
-     "Chloroplast": 14,
-     "Malosi": 13,
-     "Plague": 5,
+     "Superior Healing": 41,
+     "Chloroplast": 19,
+     "Malosi": 14,
+     "Plague": 6,
      "Shock of Venom": 4,
      "Quickness": 1,
      "Blizzard Blast": 1,
@@ -63867,7 +63877,11 @@
      "Sha's Lethargy": 1,
      "Gale of Poison": 1
     },
-    "loot": {}
+    "loot": {
+     "Mote of Greater Potential": 1,
+     "Kelin`s Seven Stringed Lute +4": 1,
+     "Six Note Blade +4": 1
+    }
    },
    "Mistress of Scorn": {
     "swings": 60,
@@ -63889,6 +63903,34 @@
      "Dawnchaser +4": 1,
      "Imbrued Platemail Boots +4": 1,
      "Imbrued Platemail Greaves +4": 1
+    }
+   },
+   "Lord of Ire": {
+    "swings": 33,
+    "landed": 14,
+    "avg": 150.4,
+    "max": 314,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Malosi": 9,
+     "Plague": 7,
+     "Shadow Vortex": 3,
+     "Rain of Swords": 2,
+     "Shock of Swords": 2,
+     "Envenomed Bolt": 2,
+     "Superior Healing": 2,
+     "Harm Touch": 1,
+     "Harnessing of Spirit": 1,
+     "Elemental Maelstrom": 1,
+     "Shock of Venom": 1,
+     "Flame Arc": 1,
+     "Togor's Insects": 1,
+     "Life Leech": 1
+    },
+    "loot": {
+     "Shield of the Immaculate +4": 1
     }
    },
    "Innoruuk`s Chosen pet": {

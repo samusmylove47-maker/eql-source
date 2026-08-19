@@ -3934,6 +3934,50 @@
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 15"
  },
  {
+  "boss": "Lord of Ire",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 11,
+  "other_players": 10,
+  "our_damage_share_pct": 10.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 1,
+  "damage_low": 374265,
+  "damage_high": 374265,
+  "damage_spread_pct": 0.0,
+  "seconds": 393,
+  "spells": {
+   "Malosi": 9,
+   "Plague": 7,
+   "Shadow Vortex": 3,
+   "Rain of Swords": 2,
+   "Shock of Swords": 2,
+   "Envenomed Bolt": 2,
+   "Superior Healing": 2,
+   "Harm Touch": 1,
+   "Harnessing of Spirit": 1,
+   "Elemental Maelstrom": 1,
+   "Shock of Venom": 1,
+   "Flame Arc": 1,
+   "Togor's Insects": 1,
+   "Life Leech": 1
+  },
+  "spells_distinct": 14,
+  "self_heal_low": 4,
+  "self_heal_high": 4,
+  "melee_verbs": [
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 15"
+ },
+ {
   "boss": "Lord of Loathing",
   "difficulty": 1,
   "difficulty_label": "Awakened",
@@ -4345,6 +4389,45 @@
    "slashes"
   ],
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
+  "boss": "Maestro of Rancor",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 7.8,
+  "damage_is_floor": true,
+  "joined_late_seconds": 681,
+  "damage_low": 369895,
+  "damage_high": 369895,
+  "damage_spread_pct": 0.0,
+  "seconds": 713,
+  "spells": {
+   "Superior Healing": 41,
+   "Chloroplast": 19,
+   "Malosi": 14,
+   "Plague": 6,
+   "Shock of Venom": 4,
+   "Blizzard Blast": 1,
+   "Envenomed Bolt": 1,
+   "Sha's Lethargy": 1,
+   "Gale of Poison": 1
+  },
+  "spells_distinct": 9,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "crushes"
+  ],
+  "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
   "boss": "Magi P`tasa",
