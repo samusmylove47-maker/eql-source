@@ -385,7 +385,7 @@ You have entered The City of Guk 4 (Refined).</pre>
             named can be worth killing again on another setting.</li>
         </ol>
       </div>
-      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:112%">
+      <aside class="standard" style="--c:var(--warn)">
         <h3 class="stdh">Still unpinned</h3>
         <p class="stdp">Named because they are open, not smoothed over. These are EQL Tools&rsquo;
           own confidence labels, kept rather than quietly upgraded.</p>

@@ -733,9 +733,9 @@ html[data-theme="dungeon"] body::after{mix-blend-mode:overlay;opacity:.032}
   background:var(--brass)}
 
 /* ---------- the plate language, extended to the rest of the page ----------
-   The plate cards were the thing that worked, so the same three moves — a
-   contour field, a cropped figure and an accent wash — carry into the tool
-   and raid cards. One vocabulary, not a page of unrelated ideas. */
+   The plate cards were the thing that worked, so the same moves — a cropped
+   figure and an accent wash — carry into the tool and raid cards. One
+   vocabulary, not a page of unrelated ideas. */
 .card.figured{overflow:hidden;
   background:linear-gradient(155deg,
     color-mix(in srgb, var(--c) 9%, var(--surface-1)) 0%,

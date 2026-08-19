@@ -46,7 +46,7 @@ page = head("How raid access works",
         assumption most inherited advice still makes.</p></div></div>
 
     <div class="cards c2">
-      <div class="card contour" style="--c:var(--warn);--cx:88%;--cy:114%">
+      <div class="card" style="--c:var(--warn)">
         <div class="kicker">No longer true</div>
         <h3 class="t">Open world</h3>
         <p class="d"><strong>Eight named bosses</strong> do not spawn in the open world. The 16 June
@@ -58,7 +58,7 @@ page = head("How raid access works",
           instance <span class="tier tM">M</span>.</p>
         <div class="foot"><span>Patch note, 16 Jun 2026</span></div>
       </div>
-      <div class="card contour" style="--c:var(--ok);--cx:12%;--cy:110%">
+      <div class="card" style="--c:var(--ok)">
         <div class="kicker">How it works now</div>
         <h3 class="t">Voidlings</h3>
         <p class="d">Raid instances are created by NPCs called voidlings. Hail one and it offers a list
@@ -122,7 +122,7 @@ page = head("How raid access works",
         <p class="lede">Difficulty D0 to D4 is selectable when creating a raid instance, and difficulty
           does not raise mob levels &mdash; it changes what mobs <em>do</em>.</p>
       </div>
-      <aside class="standard contour" style="--c:var(--warn);--cx:90%;--cy:112%">
+      <aside class="standard" style="--c:var(--warn)">
         <h3 class="stdh">What is not settled</h3>
         <p class="stdp">Two sources disagree about lockouts, and neither settles it.</p>
         <ul class="gatelist">
