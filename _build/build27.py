@@ -60,7 +60,7 @@ page = (head("Public data",
              "sources, surveyed zones and item IDs.",
              rel="../", extra=CSS, og="tools", canon="data/index")
         + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell dt">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Public data</p>

@@ -149,7 +149,7 @@ if os.path.exists("index.html"):
 # two display levels only, and Saira Condensed stays underneath it as the
 # workhorse. The site read as documentation rather than as a reference for this
 # game, and a display face with an actual point of view is most of the fix.
-FACES = {"Cinzel", "Saira Condensed", "IBM Plex Mono", "Public Sans"}
+FACES = {"Cinzel", "Saira Condensed", "IBM Plex Mono", "Source Serif 4"}
 declared = set(re.findall(r'font-family:\s*"([^"]+)"', css))
 extra = declared - FACES
 if extra:

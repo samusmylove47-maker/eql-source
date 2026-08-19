@@ -249,7 +249,7 @@ recent = "\n".join(
 
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
-<main>
+<main id="main">
 
 <section class="hero">
   {hero_art}
@@ -434,7 +434,7 @@ else:
 dung = head("Dungeon surveys",
   f"{len(Z)} revamped EverQuest Legends dungeons surveyed from primary sources: population tables, named rosters, loot with drop sources and plotted coordinate maps.",
   rel="../", og="dungeons", canon="dungeons/index") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

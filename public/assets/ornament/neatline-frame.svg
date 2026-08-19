@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+  <!-- Four neatline corners. Empty centre so this can sit on a sheet without
+       inventing geography. Chrome only. -->
+  <g stroke="#000" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M48 8 H8 V48" stroke-width="2"/>
+    <path d="M48 16 H16 V48" stroke-width="1" opacity=".5"/>
+    <path d="M352 8 H392 V48" stroke-width="2"/>
+    <path d="M352 16 H384 V48" stroke-width="1" opacity=".5"/>
+    <path d="M48 392 H8 V352" stroke-width="2"/>
+    <path d="M48 384 H16 V352" stroke-width="1" opacity=".5"/>
+    <path d="M352 392 H392 V352" stroke-width="2"/>
+    <path d="M352 384 H384 V352" stroke-width="1" opacity=".5"/>
+  </g>
+</svg>

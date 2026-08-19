@@ -1,92 +1,75 @@
 /* ===================================================================   EQL SOURCE — shared design system
 
-   Chrome is monochrome. Colour belongs to the material: the ten zone accents,
-   instrument blue for tools, ember for raids. Nothing in the frame competes.
-   Faces: Saira Condensed (display) · IBM Plex Mono (data) · Public Sans (prose)
+   Dual theme. Default is the daylight atlas: cream vellum, iron-gall ink,
+   leather chrome. html[data-theme="dungeon"] is the torchlit reading — the
+   measured umber-black ground from Norrath's own textures. Colour still
+   belongs to the material: the ten zone accents, instrument blue for tools,
+   ember for raids. Faces: Cinzel (display) · Saira Condensed (workhorse) ·
+   IBM Plex Mono (cartographer's hand) · Source Serif 4 (prose).
 
    FOUNDATION. Every size, space, surface and radius below comes from a token.
    Do not write a raw px value into a rule — add a step to a scale instead, and
-   only when an existing step genuinely will not do. The file previously carried
-   28 distinct font sizes, 14 of them less than a pixel apart, which is a
-   continuum rather than a scale and made every change a guess.
+   only when an existing step genuinely will not do.
+   See docs/ATLAS.md.
    ========================================================================== */
 
 :root{
-  /* ---- surfaces: three levels, and only three ----------------------------
-     0 is the page, 1 is a panel resting on it, 2 is a panel lifted off it —
-     hover states, input wells, table heads. Anything needing a fourth level
-     is a sign the layout, not the palette, is wrong.
-
-     THESE ARE MEASURED, NOT CHOSEN. Until 16 Aug 2026 the ground was #0E1315:
-     hue 193, a cool slate. _build/palette.py reads the DXT1 endpoint colours
-     out of every zone texture in the game's own .s3d archives, and Norrath's
-     grounds come back at hue 15–30 — a warm umber-black — across 2.6 million
-     samples. 62% of all saturated colour in the game art is warm. The site was
-     the wrong temperature, provably, and that is most of why it read as a
-     developer tool rather than as a reference for this game. See
-     assets/norrath-palette.json. */
-  --surface-0:#0B0704;
-  --surface-1:#191309;
-  --surface-2:#282013;
-  --ground:var(--surface-0);   /* legacy names, kept so callers do not churn */
+  /* ---- ATLAS (default): parchment page, leather binding -------------------
+     The measured dark palette is not discarded. It is the ink, and the
+     dungeon theme. Paper is the printed chart of that ground. */
+  --surface-0:#EDE4CF;
+  --surface-1:#E5D6B6;
+  --surface-2:#D9C7A4;
+  --ground:var(--surface-0);
   --panel:var(--surface-1);
   --panel2:var(--surface-2);
 
-  /* THE STRUCTURE WAS INVISIBLE, AND THAT WAS THE BLANDNESS.
-     An audit on 16 Aug 2026 measured the entire structural vocabulary of this
-     site — every surface change, every hairline, every "elevation" — and found
-     it living in a 1.04–1.31:1 band. --rule came out at 1.31:1 against the
-     page. It appears 48 times: it is the edge of every card, the divider in
-     every table, the line under every section. None of it was reaching a
-     reader's eye. A page whose every boundary is mathematically invisible
-     reads as a wall of text no matter how good the palette is.
-     --rule is now 2.25:1, and --rule2 clears 3:1 — the WCAG 1.4.11 bar for a
-     non-text boundary that carries meaning. The surface steps widen too,
-     though only a little: they are a wash under content, not a boundary, and
-     the whole text ramp was re-checked against the lighter panel. */
-  --rule:#544833;              /* 2.25:1 — a hairline you can actually see */
-  --rule2:#6B5C46;             /* 3.10:1 — a boundary that carries meaning */
+  --rule:#A89068;              /* ~3.2:1 on cream — a hairline you can see */
+  --rule2:#8A7348;             /* ~4.6:1 — a boundary that carries meaning */
 
-  /* Aliases for two names that were used and never defined. 29 references
-     across build14, build15 and build17 pointed at --line and --ink, and on
-     the 674 item and named pages `border-top:1px solid var(--line)` computed
-     to a width of zero: the row dividers on the site's most common page did
-     not render at all. An undefined custom property fails silently, which is
-     why this survived every check we have. */
   --line:var(--rule);
   --ink:var(--bone);
 
-  /* ---- text: every step clears WCAG AA (4.5:1) on the darkest surface it is
-     ever drawn on. Ratios given against --surface-2 / --surface-0. Warmed to
-     parchment to sit on the measured ground; every step re-checked. -------- */
-  --bone:#F2EADA;              /* 14.71 / 16.78 */
-  --txt:#DFD6C4;               /* 12.20 / 13.91 */
-  --mut:#B5AA95;               /*  7.67 /  8.74 */
-  --dim:#9A8F7C;               /*  5.53 /  6.30 */
-  /* 4.93 on the lightest surface it is ever drawn on, which is not one of the
-     three below: the ten hand-written survey plates carry their own panels,
-     and .ph-old sits on a #251F19 table cell. Set from #8D8272 to clear that
-     one — it measured 4.32 there, against 4.89 before the repalette, so it was
-     a real regression and the only one the sweep introduced. */
-  --faint:#978C7C;             /*  5.33 /  6.08 · 4.93 on the plate panels */
+  /* Iron-gall on vellum. Ratios against --surface-2 / --surface-0. */
+  --bone:#2A2118;              /* ~12.4 / ~13.8 */
+  --txt:#3A3228;               /* ~9.8 / ~10.9 */
+  --mut:#4A443A;               /* ~7.6 on page, ~5.8 on surface-2 */
+  --dim:#524B41;               /* ~6.8 / ~5.2 */
+  --faint:#585044;             /* ~6.3 / ~4.8 — floor for small text on a panel */
 
-  /* ---- signal colours. The plain token is for rules, borders and bars; the
-     -t variant is the same hue lifted to 4.5:1 for text. --------------------- */
-  --ok:#5FA37E;
-  --warn:#C9453A;      --warn-t:#D46C64;
-  --ember:#C4482E;     --ember-t:#D76C55;
-  --instr:#7FB2C7;
+  --ok:#2D6A48;        --ok-t:#2D6A48;
+  --warn:#A83228;      --warn-t:#A83228;
+  --ember:#A33824;     --ember-t:#A33824;
+  --instr:#2A6580;     --instr-t:#2A6580;
 
-  /* ---- torchlight. The chrome's own accent, and the one thing that makes the
-     frame feel lit rather than printed. Taken from the warm mid-tones that
-     dominate Norrath's textures — leather, aged bronze, lamplit stone. ------ */
-  --brass:#C9922E;     --brass-t:#D9A63F;      /* 6.40 / 7.94 on surface-2 */
+  --brass:#8A6418;     --brass-t:#6E4E12;  /* -t is body text: 6.0 on page, 4.6 on surface-2 */
+  --lava:#C41E00;      --lava-t:#C41E00;
 
-  /* ---- the blaze. #FF2800 is not a design choice: it is 17% of every
-     light-band sample in the measured game art, and it is Nagafen's lava. It
-     is the loudest colour Norrath owns, so it is used once per page at most —
-     a live figure, a warning, the thing the eye should land on first. ------- */
-  --lava:#FF2800;      --lava-t:#FF6A4D;
+  /* Leather chrome — the binding. Same in both themes so the atlas opens. */
+  --bind:#2A1F14;
+  --bind-ink:#F2EADA;
+  --bind-mut:#C4B496;
+  --bind-faint:#9A8B72;
+  --bind-line:#5C4A32;
+  --bar-bg:rgba(42,31,20,.94);
+
+  --sheet:rgba(250,244,230,.78);
+  --sheet-inset:rgba(42,33,24,.10);
+  --grid-maj:rgba(42,33,24,.055);
+  --grid-min:rgba(42,33,24,.022);
+  --grid-zero:rgba(42,33,24,0);
+  --fox-a:rgba(139,90,43,.07);
+  --fox-b:rgba(90,50,20,.05);
+  --vignette:rgba(42,33,24,0);
+  --grain-a:rgba(42,33,24,.55);
+  --grain-b:rgba(42,33,24,.32);
+  --ember-band:color-mix(in srgb, var(--ember) 14%, var(--surface-1));
+  --plot-bg:#191309;           /* floor plans stay a dark inset on the sheet */
+  --hero-wash:rgba(138,100,24,.08);
+  --sel-bg:var(--brass);
+  --sel-fg:var(--surface-0);
+
+  --t1:#2D6A48; --t2:#2A6580; --t3:#6E4E12; --t4:#8A4A14; --t5:#A83228;
 
   /* ---- the ten zone accents. Permanent identity, never reassigned. Where one
      must carry text, blend toward --bone at the point of use. --------------- */
@@ -134,8 +117,8 @@
 
   /* ---- elevation. Never a hard drop shadow; these are wide and faint, and
      do the work together with a surface change and a hairline. -------------- */
-  --shadow-1:0 1px 2px rgba(0,0,0,.28);
-  --shadow-2:0 12px 32px -14px rgba(0,0,0,.62);
+  --shadow-1:0 1px 2px rgba(42,33,24,.14);
+  --shadow-2:0 18px 40px -18px rgba(42,33,24,.32);
 
   --speed:.16s;              /* one duration for every hover and state change */
   --bar-h:58px;              /* masthead height; the mobile nav hangs off it */
@@ -143,48 +126,141 @@
   --measure-wide:78ch;       /* asides and notes, which may run wider */
 }
 
+/* ---- DUNGEON: torchlit reading. The measured Norrath ground. -------------- */
+html[data-theme="dungeon"]{
+  color-scheme:dark;
+  --surface-0:#0B0704;
+  --surface-1:#191309;
+  --surface-2:#282013;
+  --rule:#544833;
+  --rule2:#6B5C46;
+  --bone:#F2EADA;
+  --txt:#DFD6C4;
+  --mut:#B5AA95;
+  --dim:#9A8F7C;
+  --faint:#978C7C;
+  --ok:#5FA37E;        --ok-t:#5FA37E;
+  --warn:#D55A50;      --warn-t:#D46C64;
+  --ember:#D45A40;     --ember-t:#D76C55;
+  --instr:#7FB2C7;     --instr-t:#8FBEE4;
+  --brass:#C9922E;     --brass-t:#D9A63F;
+  --lava:#FF2800;      --lava-t:#FF6A4D;
+  --sheet:rgba(18,14,8,.58);
+  --sheet-inset:rgba(242,234,218,.085);
+  --grid-maj:rgba(228,210,174,.050);
+  --grid-min:rgba(228,210,174,.020);
+  --grid-zero:rgba(228,210,174,0);
+  --fox-a:rgba(201,146,46,.060);
+  --fox-b:rgba(217,162,39,.045);
+  --vignette:rgba(0,0,0,.42);
+  --grain-a:rgba(242,234,218,.9);
+  --grain-b:rgba(242,234,218,.55);
+  --ember-band:#12100F;
+  --plot-bg:#12171A;
+  --hero-wash:rgba(201,146,46,.07);
+  --sel-bg:var(--bone);
+  --sel-fg:var(--surface-0);
+  --t1:#5FA37E; --t2:#7FB2C7; --t3:#D9A227; --t4:#D9762A; --t5:#D46C64;
+  --shadow-1:0 1px 2px rgba(0,0,0,.28);
+  --shadow-2:0 12px 32px -14px rgba(0,0,0,.62);
+}
+
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth;background:var(--surface-0);
+  color-scheme:light;overflow-x:clip}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--surface-0);color:var(--txt);
-  font-family:"Public Sans",system-ui,-apple-system,sans-serif;
+
+/* Graticule: one 152px period per axis. Stops use --grid-zero rather than the
+   keyword transparent, which older WebKit premultiplies as black. */
+html::before,html::after{content:"";position:fixed;inset:0;pointer-events:none}
+html::before{z-index:0;background-image:
+  repeating-linear-gradient(180deg,
+    var(--grid-maj) 0 1px, var(--grid-zero) 1px 38px,
+    var(--grid-min) 38px 39px, var(--grid-zero) 39px 76px,
+    var(--grid-min) 76px 77px, var(--grid-zero) 77px 114px,
+    var(--grid-min) 114px 115px, var(--grid-zero) 115px 152px),
+  repeating-linear-gradient(90deg,
+    var(--grid-maj) 0 1px, var(--grid-zero) 1px 38px,
+    var(--grid-min) 38px 39px, var(--grid-zero) 39px 76px,
+    var(--grid-min) 76px 77px, var(--grid-zero) 77px 114px,
+    var(--grid-min) 114px 115px, var(--grid-zero) 115px 152px)}
+html::after{z-index:0;background-image:
+  radial-gradient(115% 60% at 50% 0%, var(--fox-a) 0%, transparent 62%),
+  radial-gradient(120% 55% at 50% 100%, var(--fox-b) 0%, transparent 60%),
+  radial-gradient(135% 105% at 18% 8%, var(--fox-a) 0%, transparent 42%),
+  radial-gradient(90% 80% at 92% 88%, var(--fox-b) 0%, transparent 50%),
+  radial-gradient(135% 105% at 50% 42%, transparent 44%, var(--vignette) 100%)}
+@media print{html::before,html::after,body::after{display:none}}
+@media (prefers-contrast:more){html::before,html::after,body::after{display:none}}
+
+body{margin:0;background:transparent;color:var(--txt);position:relative;z-index:1;
+  font-family:"Source Serif 4",Georgia,"Times New Roman",serif;
   font-size:var(--t-base);line-height:var(--lh-base);
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img,svg{display:block;max-width:100%}
 a{color:inherit}
 button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 :focus-visible{outline:2px solid var(--bone);outline-offset:3px;border-radius:var(--r)}
-::selection{background:var(--bone);color:var(--surface-0)}
+::selection{background:var(--sel-bg);color:var(--sel-fg)}
+
+.skip{position:absolute;left:var(--gut);top:-48px;z-index:200;padding:8px 12px;
+  background:var(--bind);color:var(--bind-ink);font-family:"IBM Plex Mono",monospace;
+  font-size:var(--t-2xs);letter-spacing:var(--tr-wide);text-transform:uppercase;
+  text-decoration:none;border:1px solid var(--bind-line)}
+.skip:focus{top:8px}
 
 .shell{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
 .hidden{display:none!important}
 
-/* ---------- masthead ---------- */
-.site-bar{position:sticky;top:0;z-index:80;background:rgba(11,7,4,.88);
-  backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+/* ---------- masthead: leather cartouche ---------- */
+.site-bar{position:sticky;top:0;z-index:80;background:var(--bar-bg);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--bind-line);
+  box-shadow:0 8px 24px -16px rgba(0,0,0,.55)}
 .site-bar .shell{display:flex;align-items:center;gap:var(--s-4);height:var(--bar-h)}
-.mark{display:flex;align-items:baseline;gap:9px;text-decoration:none;flex:0 0 auto}
+.mark{display:flex;align-items:center;gap:10px;text-decoration:none;flex:0 0 auto}
+.mark .compass{width:22px;height:22px;flex:0 0 22px;color:var(--bind-mut)}
 .mark .m1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--t-md);
-  letter-spacing:.1em;text-transform:uppercase;color:var(--bone);line-height:1}
+  letter-spacing:.1em;text-transform:uppercase;color:var(--bind-ink);line-height:1}
 .mark .m2{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-widest);text-transform:uppercase;color:var(--faint)}
-.site-nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap}
+  letter-spacing:var(--tr-widest);text-transform:uppercase;color:var(--bind-faint)}
+.site-nav{display:flex;gap:2px;margin-left:auto;flex-wrap:wrap;align-items:center}
 .site-nav a{font-family:"IBM Plex Mono",monospace;font-size:var(--t-xs);
-  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--mut);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--bind-mut);
   text-decoration:none;padding:var(--s-2) var(--s-3);border-radius:var(--r);
   border:1px solid transparent;transition:color var(--speed),border-color var(--speed),background var(--speed)}
-.site-nav a:hover{color:var(--bone);border-color:var(--rule);background:var(--surface-1)}
-.site-nav a[aria-current]{color:var(--bone);border-color:var(--rule2)}
-.burger{display:none;margin-left:auto;padding:var(--s-2) 11px;border:1px solid var(--rule);
+.site-nav a:hover{color:var(--bind-ink);border-color:var(--bind-line);background:rgba(242,234,218,.06)}
+.site-nav a[aria-current]{color:var(--bind-ink);border-color:var(--bind-line)}
+.theme-toggle{margin-left:6px;padding:var(--s-2) 11px;border:1px solid var(--bind-line);
   border-radius:var(--r);font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--mut)}
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--bind-mut);
+  background:transparent}
+.theme-toggle:hover,.theme-toggle[aria-pressed="true"]{color:var(--bind-ink);border-color:var(--brass)}
+.burger{display:none;margin-left:auto;padding:var(--s-2) 11px;border:1px solid var(--bind-line);
+  border-radius:var(--r);font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--bind-mut)}
 @media(max-width:760px){
   .burger{display:block}
-  .site-nav{position:absolute;top:var(--bar-h);left:0;right:0;background:var(--surface-1);
-    border-bottom:1px solid var(--rule);flex-direction:column;gap:0;padding:6px 0;margin:0}
-  .site-nav a{padding:13px var(--gut);border:0;border-radius:0;border-top:1px solid var(--rule)}
+  .theme-toggle{margin-left:0}
+  .site-nav{position:absolute;top:var(--bar-h);left:0;right:0;background:var(--bind);
+    border-bottom:1px solid var(--bind-line);flex-direction:column;gap:0;padding:6px 0;margin:0;
+    align-items:stretch}
+  .site-nav a{padding:13px var(--gut);border:0;border-radius:0;border-top:1px solid var(--bind-line)}
+  .site-nav .theme-toggle{margin:8px var(--gut);align-self:flex-start}
   .site-nav:not(.open){display:none}
 }
+
+/* Survey / tool breadcrumb bar (injected by build3.py) */
+.ns-bar{background:var(--bind);border-bottom:1px solid var(--bind-line);padding:11px 22px;display:flex;
+  align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
+.ns-bar a{color:var(--bind-mut);text-decoration:none;border-bottom:1px solid transparent}
+.ns-bar a:hover{color:var(--bind-ink);border-color:var(--bind-ink)}
+.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
+  letter-spacing:.13em;color:var(--bind-ink);text-decoration:none;border:0}
+.ns-bar .ns-sep{color:var(--bind-faint)}
+.ns-bar .ns-tag{margin-left:auto;color:var(--bind-faint)}
+.ns-bar .theme-toggle{margin-left:8px}
+@media(max-width:640px){.ns-bar .ns-tag{display:none}}
 
 /* ---------- type ---------- */
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:var(--t-xs);
@@ -203,6 +279,8 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 h1.display{font-family:"Cinzel",Georgia,serif;font-weight:700;
   font-size:clamp(34px,5.6vw,76px);line-height:1.02;letter-spacing:.005em;
   text-transform:uppercase;margin:0;color:var(--bone);text-wrap:balance}
+h1.display::first-letter,.illum::first-letter{
+  color:var(--brass-t);font-weight:700}
 /* Colour is set further down, where the headline's gradient treatment lives.
    Setting it here too only creates a rule that never wins. */
 h1.display em{font-style:normal}
@@ -305,31 +383,31 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
   background:var(--surface-2);border-radius:var(--r);padding:1px 6px}
 
 /* ---------- footer ---------- */
-.site-foot{border-top:1px solid var(--rule);margin-top:0;
-  padding:var(--s-7) 0 70px;background:var(--surface-1)}
+.site-foot{border-top:1px solid var(--bind-line);margin-top:0;
+  padding:var(--s-7) 0 70px;background:var(--bind);color:var(--bind-mut)}
 .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:var(--s-6)}
 .foot-grid>*{min-width:0}
 .foot-grid h4{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--faint);margin:0 0 var(--s-3)}
+  letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--bind-faint);margin:0 0 var(--s-3)}
 .foot-grid ul{list-style:none;margin:0;padding:0}
 .foot-grid li{margin-bottom:7px}
-.foot-grid a{font-size:var(--t-sm);color:var(--mut);text-decoration:none}
-.foot-grid a:hover{color:var(--bone)}
+.foot-grid a{font-size:var(--t-sm);color:var(--bind-mut);text-decoration:none}
+.foot-grid a:hover{color:var(--bind-ink)}
 .zprov{border-left:3px solid var(--c);padding:14px 0 14px 16px;margin:0 0 18px}
 .zprov h3{margin:0 0 8px;font-family:"Saira Condensed",sans-serif;font-weight:600;
   text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--ink)}
 .zprov p,.zprov div{margin:0 0 9px;color:var(--dim);font-size:13.5px;line-height:1.6}
 .zprov strong{color:var(--ink)}
 .src-line{margin:0;font-size:13.5px;color:var(--dim)}
-.foot-contact{margin:22px 0 0;padding:16px 18px;border:1px solid var(--line);
-  border-radius:4px;background:rgba(255,255,255,.02)}
-.foot-contact p{margin:0;color:var(--dim);font-size:14px;line-height:1.6}
-.foot-contact strong{color:var(--ink)}
-.foot-contact a{color:var(--instr-t,#8FBEE4)}
-.foot-nolog{margin-top:7px !important;font-size:12.5px !important;color:var(--faint) !important}
-.foot-legal{margin-top:var(--s-6);padding-top:var(--s-5);border-top:1px solid var(--rule);
+.foot-contact{margin:22px 0 0;padding:16px 18px;border:1px solid var(--bind-line);
+  border-radius:4px;background:rgba(242,234,218,.04)}
+.foot-contact p{margin:0;color:var(--bind-mut);font-size:14px;line-height:1.6}
+.foot-contact strong{color:var(--bind-ink)}
+.foot-contact a{color:var(--bind-ink);text-underline-offset:3px}
+.foot-nolog{margin-top:7px !important;font-size:12.5px !important;color:var(--bind-faint) !important}
+.foot-legal{margin-top:var(--s-6);padding-top:var(--s-5);border-top:1px solid var(--bind-line);
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.08em;
-  color:var(--faint);line-height:1.8}
+  color:var(--bind-faint);line-height:1.8}
 
 /* ---------- page header for interior pages ---------- */
 .page-head{padding:clamp(44px,7vw,86px) 0 clamp(26px,4vw,40px);border-bottom:1px solid var(--rule)}
@@ -355,10 +433,11 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .tier::before{content:"";width:5px;height:5px;background:currentColor;flex:0 0 5px}
 /* t5 was #C9453A — 3.2:1, below AA at this size. Lifted to 4.5:1, same hue. The
    tier badges are load-bearing: an unreadable one is worse than a missing one. */
-.t1{color:#5FA37E}.t2{color:#7FB2C7}.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
+.t1{color:var(--t1)}.t2{color:var(--t2)}.t3{color:var(--t3)}.t4{color:var(--t4)}.t5{color:var(--t5)}
 /* Tier C — a named player's first-hand report, unconfirmed. Deliberately not
    on the numeric ramp: it is a different kind of claim, not a weaker one. */
-.tc{background:rgba(92,147,196,.16);color:#8FBEE4;border-color:rgba(92,147,196,.5)}
+.tc{background:color-mix(in srgb, var(--instr) 16%, transparent);color:var(--instr-t);
+  border-color:color-mix(in srgb, var(--instr) 50%, transparent)}
 /* A figure we still print because the source says it, while telling the reader
    we do not believe it. Never delete a source figure to make a page tidy. */
 .disputed{text-decoration:line-through;text-decoration-color:var(--warn-t);
@@ -403,12 +482,12 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
    out before it reaches the text so it never costs contrast. */
 .hero{position:relative;overflow:hidden;padding:clamp(36px,5.2vw,72px) 0 0;
   background:
-    radial-gradient(120% 90% at 12% 0%, rgba(201,146,46,.07) 0%, transparent 62%),
+    radial-gradient(120% 90% at 12% 0%, var(--hero-wash) 0%, transparent 62%),
     linear-gradient(180deg, var(--surface-1) 0%, var(--surface-0) 78%)}
 .hero::before{content:"";position:absolute;inset:0;pointer-events:none;
   background-image:
-    linear-gradient(to right, rgba(242,234,218,.045) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(242,234,218,.045) 1px, transparent 1px);
+    linear-gradient(to right, var(--grid-maj) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-maj) 1px, transparent 1px);
   background-size:96px 96px;
   -webkit-mask-image:linear-gradient(180deg,#000 0%,transparent 72%);
   mask-image:linear-gradient(180deg,#000 0%,transparent 72%)}
@@ -483,15 +562,15 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 /* ---------- raids: the one band that runs dark and full width ---------- */
 .band.ember{border-top:1px solid var(--ember);
   background:
-    radial-gradient(80% 120% at 80% 0%, rgba(196,72,46,.13) 0%, transparent 64%),
-    linear-gradient(180deg,#12100F 0%, var(--surface-0) 90%)}
+    radial-gradient(80% 120% at 80% 0%, color-mix(in srgb, var(--ember) 18%, transparent) 0%, transparent 64%),
+    linear-gradient(180deg, var(--ember-band) 0%, var(--surface-0) 90%)}
 .band.ember .sec{color:var(--bone)}
 .ember-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);
   gap:clamp(var(--s-5),4vw,var(--s-7));align-items:center}
 @media(max-width:900px){.ember-grid{grid-template-columns:1fr}}
 .ember-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));
   gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
-.ember-stats>div{background:rgba(18,16,15,.75);padding:var(--s-4)}
+.ember-stats>div{background:var(--surface-1);padding:var(--s-4)}
 .ember-stats dt{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--ember-t);margin-bottom:6px}
 .ember-stats dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--t-xl);
@@ -556,9 +635,10 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .plates>*{min-width:0}
 .plate{position:relative;isolation:isolate;display:flex;flex-direction:column;
   justify-content:flex-end;
-  min-height:230px;overflow:hidden;text-decoration:none;border-radius:var(--r);
+  min-height:230px;overflow:hidden;text-decoration:none;border-radius:3px 3px 14px 3px;
   border:1px solid var(--rule);border-top:2px solid var(--c);
   padding:var(--s-4) var(--s-4) var(--s-3);
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 12px),calc(100% - 12px) 100%,0 100%);
   background:linear-gradient(155deg,
     color-mix(in srgb, var(--c) 13%, var(--surface-1)) 0%,
     var(--surface-1) 58%);
@@ -617,12 +697,15 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .band.ember .sec{font-size:clamp(38px,6.2vw,72px)}
 .band.ember .ember-stats dd{font-size:var(--t-2xl)}
 
-/* ---------- a fine grain, to stop large dark fields reading as dead flat --- */
-body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.032;
+/* ---------- paper fiber. One tiny tiled SVG plus hairline weave, never a PNG --- */
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.045;
   background-image:
-    repeating-linear-gradient(0deg, rgba(242,234,218,.9) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(242,234,218,.55) 0 1px, transparent 1px 4px);
-  mix-blend-mode:overlay}
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='64' height='64' filter='url(%23n)' opacity='.5'/></svg>"),
+    repeating-linear-gradient(0deg, var(--grain-a) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, var(--grain-b) 0 1px, transparent 1px 4px);
+  background-size:128px 128px, auto, auto;
+  mix-blend-mode:multiply}
+html[data-theme="dungeon"] body::after{mix-blend-mode:overlay;opacity:.032}
 @media (prefers-reduced-motion:reduce){body::after{opacity:.02}}
 
 /* Hero: the headline's second line takes the first plate's accent, so the
@@ -687,7 +770,12 @@ a.card.figured:hover .fig{opacity:.22}
    contents for itself.
    ========================================================================== */
 
-.hero .shell{max-width:none;width:min(var(--max),100%);margin:0 auto}
+.hero .shell{max-width:none;width:min(var(--max),100%);margin:0 auto;
+  background:var(--sheet);border:1px solid var(--rule2);box-shadow:var(--shadow-2);
+  padding:clamp(28px,4vw,52px) var(--gut) clamp(32px,4vw,56px);
+  position:relative}
+.hero .shell::after{content:"";position:absolute;inset:8px;border:1px solid var(--sheet-inset);
+  pointer-events:none}
 h1.display{max-width:16ch}
 /* Gradient-clipped display type: the headline takes light across it rather than
    sitting flat. The fallback colour is set first for anything without clip. */
@@ -792,8 +880,8 @@ h1.display em{color:var(--z01)}
    at the top of its own page. Zone accents stay with the zones; ember stays
    with raids; instrument blue stays with tools. */
 .hero.ember-hero{background:
-  radial-gradient(88% 120% at 78% 0%, rgba(196,72,46,.16) 0%, transparent 62%),
-  linear-gradient(180deg,#14100E 0%, var(--surface-0) 78%)}
+  radial-gradient(88% 120% at 78% 0%, color-mix(in srgb, var(--ember) 16%, transparent) 0%, transparent 62%),
+  linear-gradient(180deg, var(--ember-band) 0%, var(--surface-0) 78%)}
 .hero.ember-hero h1.display em{color:var(--ember-t)}
 @supports ((background-clip:text) or (-webkit-background-clip:text)){
   .hero.ember-hero h1.display em{
@@ -809,7 +897,7 @@ h1.display em{color:var(--z01)}
    information is never carried by the drawing alone. */
 .plotband{border-top:1px solid var(--rule)}
 .plotwrap{margin-top:var(--s-5);border:1px solid var(--rule);border-radius:var(--r);
-  overflow:hidden;background:#12171A;box-shadow:var(--shadow-1)}
+  overflow:hidden;background:var(--plot-bg);box-shadow:var(--shadow-1)}
 /* Sized by height, not width. A zone's plot has whatever aspect ratio its mobs
    give it — Najena is a tall column, Befallen is nearly square. Setting
    width:100% forces every plot into the container's landscape box and
@@ -1082,7 +1170,7 @@ section.feat{border-top:0;padding-top:var(--s-7)}
 .vpause{position:absolute;right:10px;bottom:10px;z-index:2;
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.12em;
   text-transform:uppercase;padding:5px 9px;border-radius:3px;cursor:pointer;
-  background:rgba(11,7,4,.72);color:var(--txt);border:1px solid var(--rule2)}
+  background:var(--bar-bg);color:var(--bind-ink);border:1px solid var(--bind-line)}
 .vpause:hover{color:var(--bone);border-color:var(--brass)}
 /* A moving image is a real accessibility cost. The script pauses on load where
    the reader has asked for less motion; this keeps the control visible so the
@@ -1113,3 +1201,285 @@ section.feat{border-top:0;padding-top:var(--s-7)}
   border:1px solid var(--rule2);border-radius:var(--r);background:var(--surface-0)}
 .slshot figcaption{margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut);
   line-height:1.5}
+
+/* ==========================================================================
+   THE SHEET — atlas grammar shared by surveys, raids index, and Sky.
+   Scoped under .sheet / .sheet-page so chrome pages keep their own headings.
+   ========================================================================== */
+
+.wrap,.sky-wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--s-8)}
+.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--s-8);
+  background:var(--sheet);border:1px solid var(--rule2);
+  box-shadow:var(--shadow-2);
+  animation:sheet-settle .7s cubic-bezier(.22,.61,.36,1) both}
+.sheet::before{content:"";position:absolute;inset:var(--s-2);pointer-events:none;
+  border:1px solid var(--sheet-inset);background-color:var(--rule2);
+  -webkit-mask:url("ornament/neatline-frame.svg") no-repeat center / 100% 100%;
+  mask:url("ornament/neatline-frame.svg") no-repeat center / 100% 100%}
+.sheet::after{content:"";position:absolute;inset:0;pointer-events:none;
+  box-shadow:inset 0 0 80px -24px rgba(42,33,24,.18);
+  background:
+    linear-gradient(90deg, transparent 0%, rgba(42,33,24,.03) 49.6%, rgba(42,33,24,.06) 50%, rgba(42,33,24,.03) 50.4%, transparent 100%);
+  mix-blend-mode:multiply;opacity:.55}
+html[data-theme="dungeon"] .sheet::after{mix-blend-mode:overlay;opacity:.35}
+@keyframes sheet-settle{from{transform:translateY(10px);opacity:0}to{transform:none;opacity:1}}
+@media (prefers-reduced-motion:reduce){.sheet{animation:none}}
+
+.sheet .mono,.sheet .eyebrow,.sheet .kick,.sheet th,.sheet .loc,.sheet .lv,
+.sheet .cls,.sheet .st,.sheet .tag,.sheet .tier,.sheet code,.sheet .cell dt,
+.sheet .imprint,.sheet .jump{
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+  font-feature-settings:"tnum" 1}
+.sheet h1{font-family:"Cinzel",Georgia,serif;font-weight:700;
+  font-size:clamp(38px,6.6vw,74px);line-height:1.02;letter-spacing:.015em;margin:0;
+  text-transform:uppercase;text-wrap:balance;color:var(--bone)}
+.sheet h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
+  font-size:clamp(24px,3.6vw,36px);letter-spacing:.005em;line-height:1;margin:0 0 var(--s-2);
+  text-wrap:balance;color:var(--bone)}
+.sheet h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
+  font-size:var(--t-lg);letter-spacing:.03em;margin:var(--s-5) 0 var(--s-2);color:var(--bone)}
+.sheet p{max-width:68ch;text-wrap:pretty}
+.sheet a{color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone))}
+.sheet .lede{color:var(--mut);font-size:var(--t-md);margin:0 0 var(--s-5);max-width:60ch}
+.sheet .cm{color:var(--dim);font-size:var(--t-sm);line-height:1.6;margin:var(--s-2) 0 0;
+  max-width:64ch;border-left:1px solid var(--rule);padding-left:var(--s-4)}
+.sheet .deck{color:var(--txt);margin:0 0 var(--s-5);max-width:66ch}
+.sheet .deck strong{color:var(--bone)}
+.sheet .deck::first-letter{font-family:"Cinzel",Georgia,serif;font-weight:700;
+  font-size:1.35em;letter-spacing:.02em;color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone));
+  padding-right:.04em}
+
+.mast{position:relative;padding:var(--s-7) 0 var(--s-5);margin-bottom:var(--s-2);
+  border-bottom:1px solid var(--rule2)}
+.mast::before,.mast::after{content:"";position:absolute;top:10px;width:28px;height:28px;
+  pointer-events:none;background-color:var(--rule2);opacity:.75;
+  -webkit-mask:url("ornament/cartouche-corner.svg") no-repeat center / contain;
+  mask:url("ornament/cartouche-corner.svg") no-repeat center / contain}
+.mast::before{left:0}
+.mast::after{right:0;transform:scaleX(-1)}
+.sheet .eyebrow,.mast .eyebrow{font-size:var(--t-2xs);letter-spacing:.24em;text-transform:uppercase;
+  color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone));margin:0 0 var(--s-4)}
+.sheet .title,.mast .title{display:flex;align-items:flex-end;gap:var(--s-4)}
+.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
+  background-image:repeating-linear-gradient(90deg,var(--rule2) 0 1px,transparent 1px 5px)}
+.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
+  font-size:clamp(30px,5vw,58px);color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone))}
+.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-md);
+  color:var(--mut);letter-spacing:.02em;margin:var(--s-2) 0 var(--s-3);
+  text-transform:uppercase}
+.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
+  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
+.sheet .cell,.strip .cell{background:var(--panel);padding:var(--s-3);
+  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.sheet .cell dt,.strip dt{font-size:var(--t-2xs);letter-spacing:.15em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 var(--s-1)}
+.sheet .cell dd,.strip dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);
+  font-weight:600;color:var(--bone)}
+.sheet .cell dd small,.strip dd small{font-family:"Source Serif 4",Georgia,serif;
+  font-size:var(--t-xs);font-weight:400;color:var(--mut);display:block;letter-spacing:0}
+.jump{margin:var(--s-4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
+  gap:var(--s-1) var(--s-4);font-size:var(--t-2xs);letter-spacing:.16em;
+  text-transform:uppercase}
+.jump a{color:var(--mut);text-decoration:none;border-bottom:1px solid var(--rule)}
+.jump a:hover{color:var(--bone);border-color:var(--acct, var(--brass))}
+
+.sheet section{margin-top:var(--s-7);position:relative}
+.kick{font-size:var(--t-2xs);letter-spacing:.2em;text-transform:uppercase;
+  color:var(--dim);margin:0 0 var(--s-2)}
+@media(min-width:1080px){
+  .sheet main{border-left:1px solid var(--rule2);padding-left:var(--s-6);margin-left:118px}
+  .sheet .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+.scroller{overflow-x:auto;margin:var(--s-4) 0}
+.scroller table{min-width:700px}
+.sheet table{border-collapse:collapse;width:100%;font-size:var(--t-sm);
+  border-top:2px solid var(--brass)}
+.sheet th{font-size:var(--t-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--mut);
+  text-align:left;padding:var(--s-2) var(--s-3) var(--s-2) 0;background:none;
+  border-bottom:1px solid var(--rule2);white-space:nowrap;font-weight:500}
+.sheet td{padding:var(--s-3) var(--s-3) var(--s-3) 0;border-bottom:1px solid var(--rule);
+  vertical-align:top;background:none}
+.sheet tbody tr:last-child td{border-bottom:0}
+.sheet tbody tr{transition:background .14s}
+.sheet tbody tr:hover{background:color-mix(in srgb, var(--acc, var(--brass)) 8%, transparent)}
+@media(prefers-reduced-motion:reduce){.sheet tbody tr{transition:none}}
+.loc{font-size:var(--t-sm);color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone));white-space:nowrap}
+.lv{font-size:var(--t-sm);text-align:right;white-space:nowrap;color:var(--txt)}
+th.lv{text-align:right}
+.nmob,.it{font-family:"Saira Condensed",sans-serif;font-size:var(--t-base);font-weight:600;
+  letter-spacing:.02em;color:var(--bone)}
+.cls{font-size:var(--t-xs);color:var(--mut);letter-spacing:.04em;line-height:1.45}
+.cls.all{color:var(--ok)}
+.st{font-size:var(--t-xs);color:var(--txt);line-height:1.5}
+.sheet .src{font-family:"Source Serif 4",Georgia,serif;font-size:var(--t-sm);color:var(--mut)}
+.tag{font-size:var(--t-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
+  border:1px solid var(--accd, var(--rule2));color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone));
+  display:inline-block;margin-top:var(--s-1);white-space:nowrap;border-radius:2px}
+.tag.warn{border-color:var(--warn);color:var(--warn-t)}
+.sheet .tier{font-size:var(--t-2xs);letter-spacing:.1em;padding:1px 5px;
+  border:1px solid var(--accd, var(--rule2));border-radius:2px;
+  margin-left:5px;white-space:nowrap;
+  display:inline-block;vertical-align:1px}
+
+.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
+  border-top:2px solid var(--brass)}
+.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-base);
+  letter-spacing:.02em;color:var(--bone);padding:var(--s-3) var(--s-5) var(--s-3) 0;
+  border-bottom:1px solid var(--rule)}
+.key dd{margin:0;font-size:var(--t-sm);color:var(--mut);padding:var(--s-3) 0;
+  border-bottom:1px solid var(--rule)}
+.key strong{color:var(--txt)}
+@media(max-width:640px){
+  .key{grid-template-columns:1fr}
+  .key dt{padding-bottom:2px;border-bottom:0}
+  .key dd{padding-top:2px}
+}
+
+ul.hz{list-style:none;margin:var(--s-5) 0 0;padding:0 0 0 var(--s-5);
+  border-left:2px solid var(--warn);max-width:74ch}
+ul.hz li{padding:var(--s-4) 0;border-top:1px solid var(--rule);color:var(--mut);
+  font-size:var(--t-sm);line-height:1.62}
+ul.hz li:first-child{border-top:0;padding-top:0}
+ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
+  text-transform:uppercase;letter-spacing:.06em;font-size:var(--t-base);
+  color:var(--warn-t);margin-bottom:var(--s-1)}
+ul.hz strong{color:var(--bone)}
+
+.sheet .note{border-left:1px solid var(--rule);padding:var(--s-1) 0 var(--s-1) var(--s-4);
+  margin:var(--s-5) 0 0;color:var(--mut);font-size:var(--t-sm);max-width:68ch}
+.sheet .note strong{color:var(--bone)}
+.sheet code{font-size:.9em;color:var(--brass-t);
+  color:color-mix(in srgb, var(--acct, var(--brass-t)) 50%, var(--bone));background:transparent;padding:0}
+.sheet footer,.sheet-page footer{margin-top:var(--s-8);padding-top:var(--s-5);
+  border-top:1px solid var(--rule2);color:var(--mut);font-size:var(--t-sm)}
+.sheet footer h3{margin-top:0}
+.imprint{font-size:var(--t-2xs);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);margin:var(--s-3) 0 0}
+
+.sheet-page .fp-wrap{border-radius:var(--r)}
+.ph-note{margin:0 0 var(--s-4);padding:var(--s-3) var(--s-4);
+  border-left:3px solid var(--ok);background:color-mix(in srgb, var(--ok) 8%, transparent);
+  border-radius:var(--r);color:var(--mut);font-size:var(--t-sm);line-height:1.6;max-width:68ch}
+.ph-note strong{display:block;color:var(--bone);margin-bottom:3px}
+.ph-note a{color:var(--instr-t)}
+.ph-yes{border-left:3px solid var(--ok);background:color-mix(in srgb, var(--ok) 8%, transparent);color:var(--mut)}
+.ph-yes strong{color:var(--ok)}
+.whnote{margin:var(--s-4) 0 0;padding:var(--s-3) var(--s-4);
+  border-left:3px solid var(--warn);background:color-mix(in srgb, var(--warn) 8%, transparent);
+  border-radius:var(--r);color:var(--mut);font-size:var(--t-sm);line-height:1.6;max-width:68ch}
+.whnote strong{color:var(--bone)}
+.sheet .meas,.sheet .fplan{margin-top:var(--s-7)}
+.sheet .meas h2,.sheet .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
+  font-size:clamp(24px,3.6vw,36px);letter-spacing:.005em;line-height:1}
+.sheet .meas table{border-top:2px solid var(--brass)}
+.sheet .meas td{border-bottom:1px solid var(--rule)}
+.sheet .meas .cond{background:none;border-left:2px solid var(--acc)}
+.fplan::before,.meas#measured::before{
+  font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.2em;
+  text-transform:uppercase;color:var(--dim);display:block;margin:0 0 var(--s-2)}
+.fplan::before{content:"The zone, drawn"}
+.meas#measured::before{content:"From the log"}
+@media(min-width:1080px){
+  .fplan::before,.meas#measured::before{
+    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
+}
+
+/* Floor-plan controls — tokens, not hardcoded dungeon greys */
+.fplan{margin:38px 0 10px}
+.fp-lede{color:var(--mut);margin:0 0 16px;max-width:66ch}
+.fp-wrap{border:1px solid var(--rule);background:var(--plot-bg);overflow:hidden;border-radius:var(--r)}
+.fp-wrap svg{display:block;height:min(96vh,1000px);width:auto;max-width:100%;margin:0 auto}
+@media(max-width:900px){.fp-wrap svg{height:auto;width:100%}}
+.fp-levels{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:0 0 14px}
+.fp-levels .lab{align-self:center;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:4px}
+.fp-levels button{display:flex;flex-direction:column;gap:2px;padding:8px 12px;cursor:pointer;
+  background:var(--surface-1);border:1px solid var(--rule);border-radius:var(--r);color:var(--mut);
+  font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1}
+.fp-levels button span{font-size:10px;color:var(--dim)}
+.fp-levels button:hover{color:var(--bone);border-color:var(--accd, var(--rule2))}
+.fp-levels button:focus-visible{outline:2px solid var(--acct, var(--brass));outline-offset:2px}
+.fp-levels button.on{background:color-mix(in srgb, var(--acc) 16%, var(--surface-1));
+  border-color:var(--accd, var(--rule2));color:var(--bone)}
+.fp-note{color:var(--faint);font-size:13.5px;margin:12px 0 0;max-width:78ch}
+.fp-toggles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
+.fp-t{padding:7px 13px;cursor:pointer;background:var(--surface-1);border:1px solid var(--rule);
+  border-radius:var(--r);color:var(--mut);font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  letter-spacing:.04em}
+.fp-t:hover{color:var(--bone);border-color:var(--accd, var(--rule2))}
+.fp-t:focus-visible{outline:2px solid var(--acct, var(--brass));outline-offset:2px}
+.fp-t.on{background:color-mix(in srgb, var(--acc) 16%, var(--surface-1));border-color:var(--accd, var(--rule2));
+  color:var(--bone)}
+.fp-t[data-t="route"].on{background:color-mix(in srgb, var(--brass) 16%, var(--surface-1));
+  border-color:var(--brass);color:var(--brass-t)}
+svg .route[hidden]{display:none}
+.plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
+.mk{cursor:pointer}
+.mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
+.mk.dim{opacity:.14}
+.mk.sel circle{stroke:var(--bone);stroke-width:3}
+.fp-detail{margin:12px 0 0;padding:13px 15px;border:1px solid var(--rule);border-radius:var(--r);
+  background:var(--surface-1)}
+.fp-detail h3{margin:0 0 3px;font-family:"Saira Condensed",sans-serif;font-weight:600;
+  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--bone)}
+.fp-detail .dmeta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);
+  letter-spacing:.06em;text-transform:uppercase}
+.fp-detail ul{margin:9px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
+.fp-detail li{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--txt);
+  background:var(--surface-2);border:1px solid var(--rule);border-radius:3px;padding:3px 8px}
+.fp-detail .dnone{color:var(--mut);font-size:13.5px;margin:8px 0 0}
+.fp-route{margin:12px 0 0;padding:12px 14px;border-left:3px solid var(--brass);
+  background:color-mix(in srgb, var(--brass) 8%, transparent);color:var(--mut);font-size:13.5px;line-height:1.6}
+.fp-route strong,.fp-route .rlen{color:var(--bone)}
+.fp-route em{color:var(--brass-t);font-style:normal}
+
+/* Injected survey lists that used to carry hardcoded dungeon fills */
+ul.why{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+ul.why li{padding:12px 15px;border:1px solid var(--rule);border-left:3px solid var(--acc,var(--brass));
+  border-radius:var(--r);background:var(--surface-1);color:var(--mut);font-size:15px;line-height:1.55}
+ul.why b{color:var(--bone)}
+ol.chain{list-style:none;margin:0 0 14px;padding:0;display:grid;gap:0}
+ol.chain li{display:grid;grid-template-columns:minmax(140px,auto) 1fr auto;gap:12px;
+  align-items:baseline;padding:11px 14px;border:1px solid var(--rule);border-bottom:0;
+  background:var(--surface-1);color:var(--dim);font-size:14px}
+ol.chain li:first-child{border-radius:4px 4px 0 0}
+ol.chain li:last-child{border-bottom:1px solid var(--rule);border-radius:0 0 4px 4px}
+ol.chain b{color:var(--bone);font-size:15px}
+ol.chain .cm{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint)}
+ol.chain .ck{font-family:"IBM Plex Mono",monospace;font-size:12.5px;color:var(--acct,var(--brass-t))}
+@media(max-width:640px){ol.chain li{grid-template-columns:1fr;gap:3px}}
+ul.danger-list,ul.tightlist{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+ul.danger-list li,ul.tightlist li{padding:11px 14px;border-left:3px solid var(--rule);
+  background:var(--surface-1);color:var(--mut);font-size:14.5px;line-height:1.55}
+ul.danger-list li{border-left-color:var(--warn)}
+ul.danger-list b,ul.tightlist b{color:var(--bone)}
+p.tight{color:var(--mut);font-size:14px;line-height:1.6;margin:0}
+.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid var(--rule);border-radius:var(--r);
+  background:var(--surface-1)}
+.inj-contact p{margin:0;color:var(--mut);font-size:14px;line-height:1.6}
+.inj-contact strong{color:var(--bone)}
+.inj-contact a{color:var(--instr-t)}
+.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
+.ph-old{text-decoration:line-through;text-decoration-color:var(--warn);
+  text-decoration-thickness:1px;color:var(--faint)}
+.ph-old-tag{font-family:"IBM Plex Mono",monospace;font-size:9px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--warn-t);border:1px solid var(--warn);border-radius:2px;
+  padding:1px 4px;margin-left:5px;white-space:nowrap;text-decoration:none;display:inline-block}
+
+/* Plate cards: a labelled fragment, not a SaaS tile. Radius + clip live on
+   the main .plate rule so this does not fight it. */
+.card,.door,.standard,.featwrap{
+  background-color:var(--surface-1)}
+
+/* Authored inline greys were mixed for the old dark sheet. Re-ink them. */
+.sheet [style*="color:#9C958E"],.sheet [style*="color:#9A8F7C"]{color:var(--dim)!important}
+.sheet [style*="color:#D46C64"]{color:var(--warn-t)!important}
+.sheet [style*="color:#5FA37E"]{color:var(--ok)!important}
+

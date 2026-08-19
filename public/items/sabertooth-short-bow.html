@@ -18,11 +18,18 @@
 <meta name="twitter:description" content="Sabertooth Short Bow in EverQuest Legends: Range · Archery 6 / 30 · Knee Shot effect. Req level 15 · range 50. Drops in Blackburrow.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons.png">
 <link rel="canonical" href="https://eqlsource.com/items/sabertooth-short-bow">
+<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d093f9cb">
+<link rel="stylesheet" href="../assets/site.css?v=4599463b">
 <style>
 .ent{max-width:74ch}
 .ent-top{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,246px);
@@ -53,7 +60,7 @@
 .ent .facts dd{margin:0;color:var(--ink);font-size:15px}
 .ent .facts dd.none{color:var(--faint);font-style:italic}
 .srcs{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:9px}
-.srcs li{border-left:3px solid var(--c);background:var(--panel,#1E1914);padding:12px 15px;
+.srcs li{border-left:3px solid var(--c);background:var(--panel);padding:12px 15px;
   border-radius:0 4px 4px 0}
 .srcs b{color:var(--ink)}
 .srcs span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
@@ -73,9 +80,18 @@
 .src{margin:0;font-size:13px;color:var(--dim)}
 .src a{color:var(--dim)}
 </style></head>
-<body><header class="site-bar">
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <a class="mark" href="../index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+  <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+  <circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".8" opacity=".4"/>
+  <path d="M32 4 L35.2 28.8 L32 32 L28.8 28.8 Z" fill="currentColor"/>
+  <path d="M32 60 L28.8 35.2 L32 32 L35.2 35.2 Z" fill="currentColor" opacity=".55"/>
+  <path d="M60 32 L35.2 35.2 L32 32 L35.2 28.8 Z" fill="currentColor" opacity=".75"/>
+  <path d="M4 32 L28.8 28.8 L32 32 L28.8 35.2 Z" fill="currentColor" opacity=".75"/>
+  <circle cx="32" cy="32" r="2.4" fill="currentColor"/>
+</svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
       <a href="../dungeons/index.html">Dungeons</a>
@@ -85,10 +101,11 @@
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell ent" style="--c:#5C93C4">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

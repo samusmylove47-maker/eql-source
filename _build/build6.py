@@ -669,71 +669,8 @@ for z in Z:
 # site.css, so the block carries its own styling rather than borrowing any.
 # build3.py has already written them by the time this runs, and regenerates
 # them from _build/source on every build, so injecting here is not cumulative.
-PLATE_CSS = """
-<style>
-.fplan{margin:38px 0 10px}
-.fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
-  letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
-.fp-lede{color:#B0A9A2;margin:0 0 16px;max-width:66ch}
-.fp-wrap{border:1px solid #40372D;background:#191410;overflow:hidden;border-radius:4px}
-.fp-wrap svg{display:block;height:min(96vh,1000px);width:auto;max-width:100%;margin:0 auto}
-@media(max-width:900px){.fp-wrap svg{height:auto;width:100%}}
-.fp-levels{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:0 0 14px}
-.fp-levels .lab{align-self:center;font-family:"IBM Plex Mono",monospace;font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:4px}
-.fp-levels button{display:flex;flex-direction:column;gap:2px;padding:8px 12px;cursor:pointer;
-  background:#251F19;border:1px solid #40372D;border-radius:4px;color:var(--mut);
-  font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1}
-.fp-levels button span{font-size:10px;color:#B6ABA1}
-.fp-levels button:hover{color:var(--bone);border-color:var(--accd)}
-.fp-levels button:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-.fp-levels button.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);
-  border-color:var(--accd);color:var(--bone)}
-.fp-note{color:var(--faint);font-size:13.5px;margin:12px 0 0;max-width:78ch}
-.lyr{transition:stroke-opacity .18s}
-.lyr.mute{stroke-opacity:.07}
-@media(prefers-reduced-motion:reduce){.lyr{transition:none}}
-.fp-toggles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
-.fp-t{padding:7px 13px;cursor:pointer;background:#251F19;border:1px solid #40372D;
-  border-radius:4px;color:var(--mut);font-family:"IBM Plex Mono",monospace;font-size:12.5px;
-  letter-spacing:.04em}
-.fp-t:hover{color:var(--bone);border-color:var(--accd)}
-.fp-t:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-.fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
-  color:var(--bone)}
-.fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
-/* THE `hidden` ATTRIBUTE DOES NOT HIDE AN SVG ELEMENT. It is an HTML attribute:
-   the rule that honours it lives in the browser's HTML stylesheet, and `.hidden`
-   is an IDL property of HTMLElement, which SVGGElement is not. So the route
-   group shipped with `hidden` set and a computed display of `inline` — the line
-   and its numbered stops were drawn on every plan, always, while the button
-   flipped a property nothing read. The sibling HTML note beside it honoured
-   `hidden` correctly, which is why half the control appeared to work.
-   The numerals had no explanation on screen because the note they belong to was
-   the half that stayed hidden. Two changes, and both are needed: this rule makes
-   the attribute mean something here, and the handler below sets the ATTRIBUTE
-   rather than the property. */
-svg .route[hidden]{display:none}
-.plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
-.mk{cursor:pointer}
-.mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
-.mk.dim{opacity:.14}
-.mk.sel circle{stroke:var(--bone);stroke-width:3}
-.fp-detail{margin:12px 0 0;padding:13px 15px;border:1px solid #40372D;border-radius:4px;
-  background:#1E1914}
-.fp-detail h3{margin:0 0 3px;font-family:"Saira Condensed",sans-serif;font-weight:600;
-  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--bone)}
-.fp-detail .dmeta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);
-  letter-spacing:.06em;text-transform:uppercase}
-.fp-detail ul{margin:9px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.fp-detail li{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#D2CDC8;
-  background:#251F19;border:1px solid #40372D;border-radius:3px;padding:3px 8px}
-.fp-detail .dnone{color:#B0A9A2;font-size:13.5px;margin:8px 0 0}
-.fp-route{margin:12px 0 0;padding:12px 14px;border-left:3px solid #E8B04B;
-  background:rgba(232,176,75,.06);color:#B0A9A2;font-size:13.5px;line-height:1.6}
-.fp-route strong,.fp-route .rlen{color:var(--bone)}
-.fp-route em{color:#F2DDAE;font-style:normal}
-</style>"""
+# Floor-plan look lives in site.css (atlas / dungeon tokens).
+PLATE_CSS = ""
 
 PLATE_JS = """
 <script>
@@ -890,7 +827,7 @@ for z, svg, layers, npts, onf, tour, tlen, pts in PLATE_QUEUE:
 page = head("Survey plots",
   "Every recorded named-mob coordinate in the ten surveyed EverQuest Legends dungeons, plotted to "
   "scale, labelled in place and coloured by level.", rel="../") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

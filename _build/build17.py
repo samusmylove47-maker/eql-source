@@ -108,7 +108,7 @@ CSS = '''<style>
 .ent .facts dd{margin:0;color:var(--ink);font-size:15px}
 .ent .facts dd.none{color:var(--faint);font-style:italic}
 .srcs{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:9px}
-.srcs li{border-left:3px solid var(--c);background:var(--panel,#1E1914);padding:12px 15px;
+.srcs li{border-left:3px solid var(--c);background:var(--panel);padding:12px 15px;
   border-radius:0 4px 4px 0}
 .srcs b{color:var(--ink)}
 .srcs span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
@@ -278,7 +278,7 @@ def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon,
         for k, v in facts)
     return (head(title, desc, rel="../", extra=CSS, og="dungeons", canon=canon)
             + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell ent" style="--c:{accent}">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
@@ -476,7 +476,7 @@ def hub(fname, title, desc, blurb, entries, folder):
     body.append('</ul>')
     html = (head(title, desc, rel="../", extra=HUB_CSS, og="tools",
                  canon=f"{folder}/index") + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

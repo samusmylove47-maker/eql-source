@@ -178,7 +178,7 @@ CSS = '''<style>
 </style>'''
 
 BODY = f'''
-<main>
+<main id="main">
 <div class="shell">
   <div class="page-head">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

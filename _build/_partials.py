@@ -102,6 +102,29 @@ def wordnum(n):
 
 SITE_URL = _cfg.get("site_url", "").rstrip("/")
 
+THEME_BOOT = '''<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script>'''
+
+FONTS = ('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700'
+         '&family=IBM+Plex+Mono:wght@400;500;600'
+         '&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400'
+         '&family=Saira+Condensed:wght@600;700&display=swap')
+
+COMPASS = '''<svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+  <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+  <circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".8" opacity=".4"/>
+  <path d="M32 4 L35.2 28.8 L32 32 L28.8 28.8 Z" fill="currentColor"/>
+  <path d="M32 60 L28.8 35.2 L32 32 L35.2 35.2 Z" fill="currentColor" opacity=".55"/>
+  <path d="M60 32 L35.2 35.2 L32 32 L35.2 28.8 Z" fill="currentColor" opacity=".75"/>
+  <path d="M4 32 L28.8 28.8 L32 32 L28.8 35.2 Z" fill="currentColor" opacity=".75"/>
+  <circle cx="32" cy="32" r="2.4" fill="currentColor"/>
+</svg>'''
+
 
 def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
     """Page head.
@@ -144,18 +167,20 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
 <meta property="og:title" content="{title} — {SITE}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-{social}{canonical}<link rel="preconnect" href="https://fonts.googleapis.com">
+{social}{canonical}{THEME_BOOT}
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="{FONTS}" rel="stylesheet">
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{rel}assets/site.css{'?v=' + CSS_V if CSS_V else ''}">
 {extra}</head>
 <body>'''
 
 def bar(rel=""):
-    return f'''<header class="site-bar">
+    return f'''<a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="{rel}index.html"><span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
+    <a class="mark" href="{rel}index.html">{COMPASS}<span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
       <a href="{rel}dungeons/index.html">Dungeons</a>
@@ -165,6 +190,7 @@ def bar(rel=""):
       <a href="{rel}learn/index.html">Learn</a>
       <a href="{rel}sources.html">Accuracy</a>
       <a href="{rel}search.html" class="nav-find">Search</a>
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>'''

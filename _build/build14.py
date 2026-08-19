@@ -94,7 +94,7 @@ page = head("The original plates",
   "The ten hand-built coordinate plots EQL Source began with, kept whole after the "
   "mesh-derived floor plans replaced them in August 2026.",
   rel="../", extra=CSS, og="archive", canon="archive/index", robots="noindex") + bar("../") + f'''
-<main>
+<main id="main">
 <div class="shell"><div class="note danger" style="margin-top:22px" id="archive-warn"><strong>Kept exactly as they last shipped, and some of it is known to be wrong.</strong> The Najena plate carries six coordinates later found to sit 57&ndash;513 units outside the zone. Nothing here is corrected &mdash; that is what an archive is &mdash; so read it as a record, not as guidance. The <a href="../dungeons/index.html">surveys</a> are current.</div></div>
 
 

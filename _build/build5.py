@@ -87,7 +87,7 @@ mark{background:rgba(230,233,228,.22);color:var(--bone);padding:0 1px}
 </style>'''
 
 BODY = f'''
-<main>
+<main id="main">
 <div class="shell">
   <div class="page-head">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; <a href="index.html">Tools</a> &nbsp;/&nbsp; The Index</p>

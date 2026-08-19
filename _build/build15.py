@@ -67,14 +67,14 @@ CLASS_JS = json.dumps(CLASSES, separators=(",", ":"))
 
 CSS = '''<style>
 .sheet{display:grid;gap:18px;margin:26px 0 0}
-.card2{border:1px solid var(--line);border-radius:5px;background:var(--panel,#1E1914);padding:18px 20px}
+.card2{border:1px solid var(--line);border-radius:5px;background:var(--panel);padding:18px 20px}
 .card2 h2{margin:0 0 4px;font-family:"Saira Condensed",sans-serif;font-weight:600;
   text-transform:uppercase;letter-spacing:.02em;font-size:19px;color:var(--ink)}
 .card2 .sub{margin:0 0 14px;color:var(--faint);font-size:13px}
 .idgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
 .idgrid label{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
   letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:0 0 4px}
-.idgrid input,.idgrid select{width:100%;padding:9px 10px;background:#191410;
+.idgrid input,.idgrid select{width:100%;padding:9px 10px;background:var(--surface-1);
   border:1px solid var(--line);border-radius:4px;color:var(--ink);font-size:14.5px;
   font-family:"IBM Plex Mono",monospace}
 .idgrid input:focus,.idgrid select:focus{outline:2px solid var(--instr);outline-offset:1px}
@@ -89,11 +89,11 @@ CSS = '''<style>
 .chip2.on{border-color:var(--ok);color:var(--ok)}
 .chip2.want{border-color:var(--instr);color:var(--instr-t,#8FBEE4)}
 .row{display:flex;gap:9px;flex-wrap:wrap;align-items:center;margin:14px 0 0}
-.btn{padding:9px 15px;border-radius:4px;border:1px solid var(--line);background:#251F19;
+.btn{padding:9px 15px;border-radius:4px;border:1px solid var(--line);background:var(--surface-2);
   color:var(--ink);font-family:"IBM Plex Mono",monospace;font-size:13px;cursor:pointer}
 .btn:hover{border-color:var(--dim)}
-.btn.primary{background:color-mix(in srgb,var(--instr) 20%,#251F19);border-color:var(--instr)}
-#link{width:100%;padding:10px;background:#191410;border:1px solid var(--line);border-radius:4px;
+.btn.primary{background:color-mix(in srgb,var(--instr) 20%,var(--surface-2));border-color:var(--instr)}
+#link{width:100%;padding:10px;background:var(--surface-1);border:1px solid var(--line);border-radius:4px;
   color:var(--dim);font-family:"IBM Plex Mono",monospace;font-size:12.5px;margin:10px 0 0}
 .none{color:var(--faint);font-size:14px;margin:6px 0 0}
 .card2 a{color:var(--instr-t,#8FBEE4)}
@@ -103,7 +103,7 @@ page = head("Character sheet",
   "One EverQuest Legends character sheet carrying your trio, race unlocks and Plane of Sky "
   "progress in a single link. No account, nothing transmitted.",
   rel="../", extra=CSS, og="tools", canon="tools/character") + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

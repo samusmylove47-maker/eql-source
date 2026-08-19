@@ -18,75 +18,35 @@
 <meta name="twitter:description" content="The Plane of Sky, island by island: the key chain, what each boss costs to kill, and the order to do it in.">
 <meta name="twitter:image" content="https://eqlsource.com/assets/og/raids.png">
 <link rel="canonical" href="https://eqlsource.com/raids/index">
+<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d093f9cb">
+<link rel="stylesheet" href="../assets/site.css?v=4599463b">
 <style>
 :root{--acc:var(--ember);--acct:var(--ember-t)}
-html{background:var(--surface-0)}
-body{background:transparent}
-/* The graticule. One 152px period per axis rather than two stacked gradients,
-   because stacked periods compound at the crossings and the compounding eats
-   text contrast. Every stop terminates in rgba(228,210,174,0) and never in the
-   keyword transparent, which older WebKit premultiplies as transparent BLACK
-   and draws as a grey seam down each rule. site.css already owns body::after
-   for the site-wide grain, so the washes ride on main.raidx::before. */
-body::before,main.raidx::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
-body::before{background-image:
-  repeating-linear-gradient(180deg,
-    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
-    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
-    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
-    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
-  repeating-linear-gradient(90deg,
-    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
-    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
-    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
-    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
-main.raidx::before{background-image:
-  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
-  radial-gradient(120% 55% at 50% 100%, rgba(196,72,46,.045) 0%, rgba(196,72,46,0) 60%),
-  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
-@media print{body::before,main.raidx::before{display:none}}
-@media (prefers-contrast:more){body::before{display:none}}
-.sky-wrap{max-width:1200px;margin:0 auto;padding:var(--s-6) clamp(10px,2vw,26px) var(--s-8)}
-.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--s-8);
-  background:rgba(11,7,4,.58);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
-.sheet::before{content:"";position:absolute;inset:var(--s-2);pointer-events:none;
-  border:1px solid rgba(242,234,218,.085)}
-.mast{padding:var(--s-7) 0 var(--s-5);border-bottom:1px solid var(--rule2)}
-.mast .eyebrow{font-size:var(--t-2xs);letter-spacing:var(--tr-widest);color:var(--acct);
-  margin:0 0 var(--s-4)}
-.title{display:flex;align-items:flex-end;gap:var(--s-4)}
-.mast h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(38px,6.6vw,74px);
-  line-height:1.02;letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;
-  color:var(--bone)}
-.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
-  background-image:repeating-linear-gradient(90deg,var(--rule2) 0 1px,rgba(0,0,0,0) 1px 5px)}
-.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
-  font-size:clamp(30px,5vw,58px);color:var(--acct)}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-md);
-  color:var(--mut);letter-spacing:.02em;margin:var(--s-2) 0 var(--s-3);text-transform:uppercase}
-.deck{color:var(--txt);margin:0 0 var(--s-5);max-width:66ch}
-.deck strong{color:var(--bone)}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:0;
-  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-.strip .cell{background:var(--panel);padding:var(--s-3);
-  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.strip dt{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--dim);margin:0 0 var(--s-1)}
-.strip dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);
-  font-weight:600;color:var(--bone);line-height:1.15}
-.strip dd small{font-family:"Public Sans",sans-serif;font-size:var(--t-xs);font-weight:400;
-  color:var(--mut);display:block;letter-spacing:0;line-height:1.4}
 .sheet .cards{margin-top:var(--s-6)}
 .sheet .note{max-width:var(--measure-wide)}
 </style></head>
-<body><header class="site-bar">
+<body><a class="skip" href="#main">Skip to content</a>
+<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="../index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <a class="mark" href="../index.html"><svg class="compass" viewBox="0 0 64 64" fill="none" aria-hidden="true" focusable="false">
+  <circle cx="32" cy="32" r="29" stroke="currentColor" stroke-width="1.2" opacity=".55"/>
+  <circle cx="32" cy="32" r="18" stroke="currentColor" stroke-width=".8" opacity=".4"/>
+  <path d="M32 4 L35.2 28.8 L32 32 L28.8 28.8 Z" fill="currentColor"/>
+  <path d="M32 60 L28.8 35.2 L32 32 L35.2 35.2 Z" fill="currentColor" opacity=".55"/>
+  <path d="M60 32 L35.2 35.2 L32 32 L35.2 28.8 Z" fill="currentColor" opacity=".75"/>
+  <path d="M4 32 L28.8 28.8 L32 32 L28.8 35.2 Z" fill="currentColor" opacity=".75"/>
+  <circle cx="32" cy="32" r="2.4" fill="currentColor"/>
+</svg><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
       <a href="../dungeons/index.html">Dungeons</a>
@@ -96,10 +56,11 @@ main.raidx::before{background-image:
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
+      <button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button>
     </nav>
   </div>
 </header>
-<main class="raidx">
+<main id="main" class="raidx">
 <div class="sky-wrap">
 <div class="sheet">
 

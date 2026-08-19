@@ -48,7 +48,7 @@ page = (head("Learn",
              "actually changes, what motes are worth, and how to read our floor plans.",
              rel="../", extra=CSS, og="home", canon="learn/index")
         + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn</p>

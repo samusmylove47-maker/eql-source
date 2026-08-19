@@ -298,7 +298,7 @@ page = head("What difficulty changes",
   "D0 to D4 in EverQuest Legends: what each tier scales, what it does not, how to read the tier off "
   "the zone line, and which parts nobody has pinned down yet.",
   rel="../", og="learn", canon="learn/difficulty") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

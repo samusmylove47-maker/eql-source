@@ -89,7 +89,7 @@ chrows = "\n".join(
 
 # ---------------------------------------------------------------- TOOLS
 tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trackers: Plane of Sky class unlocks, race unlocks, and a race-and-primary-class calculator. No account, progress travels in the link.", rel="../", og="tools", canon="tools/index") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">
@@ -235,70 +235,14 @@ RAID_PAGES = [dict(slug="plane-of-sky", name="The Plane of Sky")]
 #
 # Ember stays the raids accent. The ember hero this replaced was the same idea
 # said louder, and the two could not both lead the page.
-RAIDS_CSS = '''<style>
+RAIDS_CSS = """<style>
 :root{--acc:var(--ember);--acct:var(--ember-t)}
-html{background:var(--surface-0)}
-body{background:transparent}
-/* The graticule. One 152px period per axis rather than two stacked gradients,
-   because stacked periods compound at the crossings and the compounding eats
-   text contrast. Every stop terminates in rgba(228,210,174,0) and never in the
-   keyword transparent, which older WebKit premultiplies as transparent BLACK
-   and draws as a grey seam down each rule. site.css already owns body::after
-   for the site-wide grain, so the washes ride on main.raidx::before. */
-body::before,main.raidx::before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
-body::before{background-image:
-  repeating-linear-gradient(180deg,
-    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
-    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
-    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
-    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
-  repeating-linear-gradient(90deg,
-    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
-    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
-    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
-    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
-main.raidx::before{background-image:
-  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
-  radial-gradient(120% 55% at 50% 100%, rgba(196,72,46,.045) 0%, rgba(196,72,46,0) 60%),
-  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
-@media print{body::before,main.raidx::before{display:none}}
-@media (prefers-contrast:more){body::before{display:none}}
-.sky-wrap{max-width:1200px;margin:0 auto;padding:var(--s-6) clamp(10px,2vw,26px) var(--s-8)}
-.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--s-8);
-  background:rgba(11,7,4,.58);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
-.sheet::before{content:"";position:absolute;inset:var(--s-2);pointer-events:none;
-  border:1px solid rgba(242,234,218,.085)}
-.mast{padding:var(--s-7) 0 var(--s-5);border-bottom:1px solid var(--rule2)}
-.mast .eyebrow{font-size:var(--t-2xs);letter-spacing:var(--tr-widest);color:var(--acct);
-  margin:0 0 var(--s-4)}
-.title{display:flex;align-items:flex-end;gap:var(--s-4)}
-.mast h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(38px,6.6vw,74px);
-  line-height:1.02;letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;
-  color:var(--bone)}
-.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
-  background-image:repeating-linear-gradient(90deg,var(--rule2) 0 1px,rgba(0,0,0,0) 1px 5px)}
-.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
-  font-size:clamp(30px,5vw,58px);color:var(--acct)}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-md);
-  color:var(--mut);letter-spacing:.02em;margin:var(--s-2) 0 var(--s-3);text-transform:uppercase}
-.deck{color:var(--txt);margin:0 0 var(--s-5);max-width:66ch}
-.deck strong{color:var(--bone)}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));margin:0;
-  border-top:1px solid var(--rule);border-left:1px solid var(--rule)}
-.strip .cell{background:var(--panel);padding:var(--s-3);
-  border-right:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.strip dt{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--dim);margin:0 0 var(--s-1)}
-.strip dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);
-  font-weight:600;color:var(--bone);line-height:1.15}
-.strip dd small{font-family:"Public Sans",sans-serif;font-size:var(--t-xs);font-weight:400;
-  color:var(--mut);display:block;letter-spacing:0;line-height:1.4}
 .sheet .cards{margin-top:var(--s-6)}
 .sheet .note{max-width:var(--measure-wide)}
-</style>'''
+</style>"""
 
 raids = head("Raid encounters", "The Plane of Sky, island by island: the key chain, what each boss costs to kill, and the order to do it in.", rel="../", extra=RAIDS_CSS, og="raids", canon="raids/index") + bar("../") + f'''
-<main class="raidx">
+<main id="main" class="raidx">
 <div class="sky-wrap">
 <div class="sheet">
 
@@ -345,7 +289,7 @@ open('public/raids/index.html','w',encoding='utf-8',newline='\n').write(raids)
 
 # ---------------------------------------------------------------- SOURCES
 src = head("Sourcing standard", "How EQL Source sources, dates and verifies every claim, plus the current list of known gaps and open questions.", og="sources", canon="sources") + bar() + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

@@ -7,7 +7,7 @@
 <meta name="description" content="Track every EverQuest Legends race unlock, build a consolidated shopping list across races, and work out the cheapest route to a non-traditional race and primary class.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Saira+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* Grey ramp and --warn lifted so every step clears WCAG AA (4.5:1) on the
    darkest panel it lands on. --dim previously bottomed out at 3.22:1. Raising
@@ -15,9 +15,9 @@
    three distinguishable greys. --warn doubles as the "Extreme" tier colour, so
    lifting it also fixes the tier ramp's darkest step. --vio was 3.93:1 at 18px
    — just under the large-text floor, so it needed 4.5. Accents are unchanged. */
-:root{--acc:#D9A227;--accd:#8a6a1c;--bg:#1A1612;--panel:#251F19;--panel2:#312A22;--line:#40372D;--txt:#DCD9D6;--mut:#B6AFA9;--dim:#9C958E;--ok:#5FA37E;--warn:#D8776F;--blue:#4FA3D1;--vio:#9A89CD;--orange:#D9762A}
+:root{--acc:#D9A227;--accd:#8a6a1c;--bg:var(--surface-0);--panel:var(--surface-1);--panel2:var(--surface-2);--line:var(--rule);--blue:var(--instr);--vio:#6B4FA0;--orange:var(--t4, #A85A18)}
 *{box-sizing:border-box}html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:"Source Serif 4",system-ui,sans-serif;font-size:15.5px;line-height:1.62}
 .wrap{max-width:1180px;margin:0 auto;padding:0 22px 100px}
 .eyebrow{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--acc);margin:0 0 14px}
 h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(32px,5.4vw,64px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
@@ -55,7 +55,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--acc);back
 .sc{background:var(--panel);padding:12px 14px}
 .sc dt{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.15em;text-transform:uppercase;color:var(--mut);margin:0 0 4px}
 .sc dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:26px;font-weight:700;line-height:1}
-.sc dd small{font-family:"Public Sans",sans-serif;font-size:11.5px;font-weight:400;color:var(--mut);display:block;letter-spacing:0;line-height:1.4;margin-top:3px}
+.sc dd small{font-family:"Source Serif 4",sans-serif;font-size:11.5px;font-weight:400;color:var(--mut);display:block;letter-spacing:0;line-height:1.4;margin-top:3px}
 
 /* race cards */
 .rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:16px;margin-top:20px}

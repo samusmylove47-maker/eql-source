@@ -304,7 +304,7 @@ def page():
                  f"which planar set it belongs to. Nothing is uploaded.",
                  rel="../", extra=CSS, og="tools", canon="tools/inventory")
             + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

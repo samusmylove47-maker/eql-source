@@ -87,7 +87,7 @@ page = (head("What the scanner finds here",
              "classic resist blocks, counted, with what would settle each one.",
              rel="../", extra=CSS, og="tools", canon="learn/contamination")
         + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell cn">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

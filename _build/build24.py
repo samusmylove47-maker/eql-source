@@ -155,7 +155,7 @@ page = (head("Every planar set",
              f"stats: the sixteen class sets plus Lustrous Russet and Midnight Clad.",
              rel="../", extra=CSS, og="tools", canon="sets/index")
         + bar("../") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;

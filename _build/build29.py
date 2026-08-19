@@ -109,7 +109,7 @@ page = head(
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "
     "no account and no server.",
     rel="../", extra=CSS, og="tools", canon="tools/50-upgrades") + bar("../") + f'''
-<main>
+<main id="main">
   <section class="band" style="border-top:0">
     <div class="shell">
       <p class="eyebrow">Gear planning &middot; <b>built and hosted elsewhere</b></p>

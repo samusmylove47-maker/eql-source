@@ -76,7 +76,7 @@ page = (head("Credits",
              "The players and creators whose findings corrected this site, and where to find "
              "their own work.", rel="", extra=CSS, og="home", canon="credits")
         + bar("") + f'''
-<main>
+<main id="main">
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Credits</p>

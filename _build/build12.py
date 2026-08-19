@@ -86,7 +86,7 @@ page = head("Deity, and the level 11 lock",
   "for 500 Iridium. What the choice costs, what the published advice leaves out, and where the "
   "faction data simply stops.",
   rel="../", og="learn", canon="learn/deity") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">

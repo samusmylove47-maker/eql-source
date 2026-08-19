@@ -1,349 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="sheet-page">
 <head>
 <meta charset="utf-8">
 <meta name="description" content="Underwater from end to end - four class epics converge on one boss. Levels 32-50, respawn not recorded. Every figure sourced and dated."><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Kedge Keep — Survey | EverQuest Legends</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <style>
-/* THE KEDGE KEEP SHEET
-   ------------------------------------------------------------------
-   The same grammar as the Castle Mistmoore survey: a graticule fixed behind the
-   page, a translucent sheet sliding over it, a neatline with an inner rule, and
-   section kickers hanging in the left margin. The MECHANISM is copied; the
-   colour is not. Kedge Keep owns #2FA5C9 permanently and no other zone may use
-   it.
-
-   Self-contained: this page never loads assets/site.css. Token names are
-   prefixed --kk- because build3.py appends site.css's :root AFTER this block and
-   an unprefixed --mut or --txt would be silently overwritten. --acc, --accd and
-   --acct are deliberately NOT prefixed: the injected chrome reads them and
-   site.css does not define them.
-
-   Contrast, computed against the lightest ground this page can produce (a
-   graticule crossing under the lamplight, seen through the sheet, #1D180E):
-   ink 14.78, txt 12.25, mut 7.70, dim 5.55, accent text 6.99, warn 5.16,
-   brass 6.43, brass-t 7.98, ok 5.91. On the panel #2A2318 the same list reads
-   12.99 / 10.76 / 6.77 / 4.88 / 6.15 / 4.53 / 5.65 / 7.01 / 5.20. */
-:root{
-  --acc:#2FA5C9;--accd:#1A5B6F;--acct:#4CAFCC;
-  --kk-g:#120E08;          /* the plotting table */
-  --kk-p:#2A2318;          /* the one panel value: column heads, field strip */
-  --kk-ink:#F2EADA;--kk-txt:#DFD6C4;--kk-mut:#B5AA95;--kk-dim:#9A8F7C;
-  --kk-warn:#D46C64;--kk-brass:#C9922E;--kk-brass-t:#D9A63F;--kk-ok:#5FA37E;
-  --kk-r1:#4A3F2E;         /* repeated ruling: row dividers */
-  --kk-r2:#7A6950;         /* a boundary that carries meaning */
-  --kk-2xs:10px;--kk-xs:11.5px;--kk-sm:13.5px;--kk-base:15.5px;--kk-md:18.5px;
-  --kk-lg:22px;--kk-h2:clamp(24px,3.6vw,36px);--kk-h1:clamp(38px,6.6vw,74px);
-  --kk-rad:4px;
-  --kk-s1:4px;--kk-s2:8px;--kk-s3:12px;--kk-s4:16px;
-  --kk-s5:24px;--kk-s6:32px;--kk-s7:48px;--kk-s8:64px;
-}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;background:var(--kk-g)}
-body{margin:0;background:transparent;color:var(--kk-txt);
-  font-family:"Public Sans",system-ui,sans-serif;font-size:var(--kk-base);line-height:1.62}
-
-/* THE GRATICULE. Fixed to the viewport rather than background-attachment:fixed,
-   so the sheet slides over a stationary grid without a full-page repaint.
-
-   Major and minor rules share ONE 152px period per axis instead of two stacked
-   gradients: stacking makes the crossings compound, and the compounding is what
-   eats text contrast. And every stop terminates in rgba(228,210,174,0) rather
-   than the keyword transparent, because older WebKit premultiplies transparent
-   as transparent BLACK and draws a grey seam down each rule. */
-body::before,body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none}
-body::before{background-image:
-  repeating-linear-gradient(180deg,
-    rgba(228,210,174,.050) 0 1px, rgba(228,210,174,0) 1px 38px,
-    rgba(228,210,174,.020) 38px 39px, rgba(228,210,174,0) 39px 76px,
-    rgba(228,210,174,.020) 76px 77px, rgba(228,210,174,0) 77px 114px,
-    rgba(228,210,174,.020) 114px 115px, rgba(228,210,174,0) 115px 152px),
-  repeating-linear-gradient(90deg,
-    rgba(228,210,174,.034) 0 1px, rgba(228,210,174,0) 1px 38px,
-    rgba(228,210,174,.014) 38px 39px, rgba(228,210,174,0) 39px 76px,
-    rgba(228,210,174,.014) 76px 77px, rgba(228,210,174,0) 77px 114px,
-    rgba(228,210,174,.014) 114px 115px, rgba(228,210,174,0) 115px 152px)}
-/* Lamplight at the head, the zone's own ink bleeding up from the foot, and a
-   vignette that ONLY darkens, so it cannot cost contrast anywhere. The two
-   washes are anchored at opposite ends and both fall to zero by 62%, so they
-   never peak on the same pixel. */
-body::after{background-image:
-  radial-gradient(115% 60% at 50% 0%, rgba(201,146,46,.060) 0%, rgba(201,146,46,0) 62%),
-  radial-gradient(120% 55% at 50% 100%, rgba(47,165,201,.045) 0%, rgba(47,165,201,0) 60%),
-  radial-gradient(135% 105% at 50% 42%, rgba(0,0,0,0) 44%, rgba(0,0,0,.42) 100%)}
-@media print{body::before,body::after{display:none}}
-@media (prefers-contrast:more){body::before{display:none}}
-
-/* THE SHEET. Translucent, so the graticule reads through it at reduced
-   strength: one grid, two intensities. */
-.wrap{max-width:1200px;margin:0 auto;padding:0 clamp(10px,2vw,26px) var(--kk-s8)}
-.sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--kk-s8);
-  background:rgba(18,14,8,.58);border:1px solid var(--kk-r2);
-  box-shadow:0 26px 64px -30px rgba(0,0,0,.9)}
-.sheet::before{content:"";position:absolute;inset:var(--kk-s2);pointer-events:none;
-  border:1px solid rgba(242,234,218,.085)}
-
-/* Typography. Four faces, roles hardened. Every mono element is tabular, which
-   is what makes a column of figures read as instrument output. */
-.mono,.eyebrow,.kick,th,.loc,.lv,.cls,.st,.tag,.tier,code,.cell dt,.imprint,.jump{
-  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
-  font-feature-settings:"tnum" 1}
-h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--kk-h1);line-height:1.02;
-  letter-spacing:.015em;margin:0;text-transform:uppercase;text-wrap:balance;color:var(--kk-ink)}
-h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;
-  font-size:var(--kk-h2);letter-spacing:.005em;line-height:1;margin:0 0 var(--kk-s2);
-  text-wrap:balance;color:var(--kk-ink)}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
-  font-size:var(--kk-lg);letter-spacing:.03em;margin:var(--kk-s5) 0 var(--kk-s2);color:var(--kk-ink)}
-p{max-width:68ch;text-wrap:pretty}
-a{color:var(--acct)}
-.lede{color:var(--kk-mut);font-size:var(--kk-md);margin:0 0 var(--kk-s5);max-width:60ch}
-.cm{color:var(--kk-dim);font-size:var(--kk-sm);line-height:1.6;margin:var(--kk-s2) 0 0;
-  max-width:64ch;border-left:1px solid var(--kk-r1);padding-left:var(--kk-s4)}
-
-/* THE CARTOUCHE. A chart's title block: eyebrow, name, a dotted leader running
-   to the plate numeral, then the particulars. */
-.mast{padding:var(--kk-s7) 0 var(--kk-s5);margin-bottom:var(--kk-s2);
-  border-bottom:1px solid var(--kk-r2)}
-.eyebrow{font-size:var(--kk-2xs);letter-spacing:.24em;text-transform:uppercase;
-  color:var(--acct);margin:0 0 var(--kk-s4)}
-.title{display:flex;align-items:flex-end;gap:var(--kk-s4)}
-.leader{flex:1 1 40px;height:1px;margin-bottom:.42em;
-  background-image:repeating-linear-gradient(90deg,var(--kk-r2) 0 1px,rgba(0,0,0,0) 1px 5px)}
-.plateno{font-family:"Cinzel",Georgia,serif;font-weight:700;line-height:.9;
-  font-size:clamp(30px,5vw,58px);color:var(--acct)}
-.subtitle{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--kk-md);
-  color:var(--kk-mut);letter-spacing:.02em;margin:var(--kk-s2) 0 var(--kk-s3);
-  text-transform:uppercase}
-.deck{color:var(--kk-txt);margin:0 0 var(--kk-s5);max-width:66ch}
-.deck strong{color:var(--kk-ink)}
-.strip{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));margin:0;
-  border-top:1px solid var(--kk-r1);border-left:1px solid var(--kk-r1)}
-/* Ruled by cell borders rather than by a coloured gap: with auto-fit the last
-   row is often short, and a container background paints that empty slot as a
-   slab. */
-.cell{background:var(--kk-p);padding:var(--kk-s3);
-  border-right:1px solid var(--kk-r1);border-bottom:1px solid var(--kk-r1)}
-.cell dt{font-size:var(--kk-2xs);letter-spacing:.15em;text-transform:uppercase;
-  color:var(--kk-dim);margin:0 0 var(--kk-s1)}
-.cell dd{margin:0;font-family:"Saira Condensed",sans-serif;font-size:var(--kk-lg);
-  font-weight:600;color:var(--kk-ink)}
-.cell dd small{font-family:"Public Sans",sans-serif;font-size:var(--kk-xs);font-weight:400;
-  color:var(--kk-mut);display:block;letter-spacing:0}
-.jump{margin:var(--kk-s4) 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;
-  gap:var(--kk-s1) var(--kk-s4);font-size:var(--kk-2xs);letter-spacing:.16em;
-  text-transform:uppercase}
-.jump a{color:var(--kk-mut);text-decoration:none;border-bottom:1px solid var(--kk-r1)}
-.jump a:hover{color:var(--kk-ink);border-color:var(--acct)}
-
-/* THE SPINE. Above 1080px the sheet gains a left gutter, a hairline runs the
-   length of the body, and each section's kicker hangs outside the text column.
-   The kicker names what the section is MADE OF; numbered headings are a
-   generated-site tell and are not coming back. */
-section{margin-top:var(--kk-s7);position:relative}
-.kick{font-size:var(--kk-2xs);letter-spacing:.2em;text-transform:uppercase;
-  color:var(--kk-dim);margin:0 0 var(--kk-s2)}
-@media(min-width:1080px){
-  main{border-left:1px solid var(--kk-r2);padding-left:var(--kk-s6);margin-left:118px}
-  .kick{position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
-}
-
-/* Tables. No cell fills and no boxes around the data — hairline rules and one
-   brass head rule do the structural work, which is what a ledger looks like. */
-.scroller{overflow-x:auto;margin:var(--kk-s4) 0}
-.scroller table{min-width:700px}
-.scroller.narrow table{min-width:460px}
-table{border-collapse:collapse;width:100%;font-size:var(--kk-sm);
-  border-top:2px solid var(--kk-brass)}
-th{font-size:var(--kk-2xs);letter-spacing:.16em;text-transform:uppercase;color:var(--kk-mut);
-  text-align:left;padding:var(--kk-s2) var(--kk-s3) var(--kk-s2) 0;background:none;
-  border-bottom:1px solid var(--kk-r2);white-space:nowrap;font-weight:500}
-td{padding:var(--kk-s3) var(--kk-s3) var(--kk-s3) 0;border-bottom:1px solid var(--kk-r1);
-  vertical-align:top;background:none}
-tbody tr:last-child td{border-bottom:0}
-tbody tr{transition:background .14s}
-tbody tr:hover{background:rgba(47,165,201,.07)}
-@media(prefers-reduced-motion:reduce){tbody tr{transition:none}}
-.loc{font-size:var(--kk-sm);color:var(--acct);white-space:nowrap}
-.lv{font-size:var(--kk-sm);text-align:right;white-space:nowrap;color:var(--kk-txt)}
-th.lv{text-align:right}
-.nmob{font-family:"Saira Condensed",sans-serif;font-size:var(--kk-base);font-weight:600;
-  letter-spacing:.02em;color:var(--kk-ink)}
-.it{font-family:"Saira Condensed",sans-serif;font-size:var(--kk-base);font-weight:600;
-  letter-spacing:.02em;color:var(--kk-ink)}
-/* The colour is inherited rather than set, so every contrast ratio measured on
-   this sheet is unchanged and the underline carries the affordance instead. */
-.it a,.nmob a{color:inherit;text-decoration:underline;text-decoration-thickness:1px;
-  text-decoration-color:var(--kk-r2);text-underline-offset:3px}
-.it a:hover,.nmob a:hover{text-decoration-color:var(--acct);color:var(--acct)}
-.cls{font-size:var(--kk-xs);color:var(--kk-mut);letter-spacing:.04em;line-height:1.45}
-.st{font-size:var(--kk-xs);color:var(--kk-txt);line-height:1.5}
-.src{font-family:"Public Sans",sans-serif;font-size:var(--kk-sm);color:var(--kk-mut)}
-.tag{font-size:var(--kk-2xs);letter-spacing:.1em;text-transform:uppercase;padding:2px 6px;
-  border:1px solid var(--accd);color:var(--acct);display:inline-block;margin-top:var(--kk-s1);
-  white-space:nowrap;border-radius:2px}
-.tag.warn{border-color:#6A2F2B;color:var(--kk-warn)}
-.tier{font-size:var(--kk-2xs);letter-spacing:.1em;padding:1px 5px;border:1px solid currentColor;
-  border-radius:2px;color:var(--kk-dim);margin-left:5px;white-space:nowrap;
-  display:inline-block;vertical-align:1px}
-.tier.t3{color:var(--kk-brass-t)}
-.tier.t5{color:var(--kk-warn)}
-
-/* THE KEY. Two columns, ruled rows, no box and no horizontal scroller. */
-.key{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);margin:0;
-  border-top:2px solid var(--kk-brass)}
-.key dt{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--kk-base);
-  letter-spacing:.02em;color:var(--kk-ink);padding:var(--kk-s3) var(--kk-s5) var(--kk-s3) 0;
-  border-bottom:1px solid var(--kk-r1)}
-.key dd{margin:0;font-size:var(--kk-sm);color:var(--kk-mut);padding:var(--kk-s3) 0;
-  border-bottom:1px solid var(--kk-r1)}
-.key strong{color:var(--kk-txt)}
-@media(max-width:640px){
-  .key{grid-template-columns:1fr}
-  .key dt{padding-bottom:2px;border-bottom:0}
-  .key dd{padding-top:2px}
-}
-
-/* Hazards: one object with one rule, not five identically bordered boxes. */
-ul.hz{list-style:none;margin:var(--kk-s5) 0 0;padding:0 0 0 var(--kk-s5);
-  border-left:2px solid var(--kk-warn);max-width:74ch}
-ul.hz li{padding:var(--kk-s4) 0;border-top:1px solid var(--kk-r1);color:var(--kk-mut);
-  font-size:var(--kk-sm);line-height:1.62}
-ul.hz li:first-child{border-top:0;padding-top:0}
-ul.hz b{display:block;font-family:"Saira Condensed",sans-serif;font-weight:700;
-  text-transform:uppercase;letter-spacing:.06em;font-size:var(--kk-base);
-  color:var(--kk-warn);margin-bottom:var(--kk-s1)}
-ul.hz strong{color:var(--kk-ink)}
-
-.note{border-left:1px solid var(--kk-r1);padding:var(--kk-s1) 0 var(--kk-s1) var(--kk-s4);
-  margin:var(--kk-s5) 0 0;color:var(--kk-mut);font-size:var(--kk-sm);max-width:68ch}
-.note strong{color:var(--kk-ink)}
-code{font-size:.9em;color:var(--acct)}
-footer{margin-top:var(--kk-s8);padding-top:var(--kk-s5);border-top:1px solid var(--kk-r2);
-  color:var(--kk-mut);font-size:var(--kk-sm)}
-footer h3{margin-top:0}
-.imprint{font-size:var(--kk-2xs);letter-spacing:.16em;text-transform:uppercase;
-  color:var(--kk-dim);margin:var(--kk-s3) 0 0}
-:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-
-/* The injected blocks are appended at the foot of the head, AFTER this
-   stylesheet, so they win at equal specificity. These are deliberately one step
-   higher. (Do not write a literal closing head tag anywhere in this file,
-   comments included: build3.py splices its chrome into the FIRST one it finds,
-   and a mention inside a comment swallows the entire injection.) */
-body .fp-wrap{border-radius:var(--kk-rad)}
-/* One heading level, one rule. build6.py's own h2 treatment renders the first
-   and largest heading a reader meets four points smaller than every other
-   heading on the page, with four times the tracking. */
-body .fplan{margin-top:var(--kk-s7)}
-body .fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:700;
-  font-size:var(--kk-h2);letter-spacing:.005em;line-height:1}
-/* The spine rail would otherwise have a hole exactly where it establishes
-   itself: the injected plan is the first section on the page and carries no
-   kicker of its own. Its generator is not this file's to edit, so the label is
-   set here, in the same register as the authored four. */
-body .fplan::before{
-  content:"The zone, drawn";
-  font-family:"IBM Plex Mono",monospace;font-size:var(--kk-2xs);letter-spacing:.2em;
-  text-transform:uppercase;color:var(--kk-dim);display:block;margin:0 0 var(--kk-s2)}
-@media(min-width:1080px){
-  body .fplan::before{
-    position:absolute;left:-186px;width:150px;text-align:right;top:.5em;margin:0}
-}
+:root{--acc:#2FA5C9;--accd:#1A5B6F;--acct:#4CAFCC;}
 </style>
-<style>:root{--surface-0:#0B0704;--surface-1:#191309;--surface-2:#282013;--ground:var(--surface-0);--panel:var(--surface-1);--panel2:var(--surface-2);--rule:#544833;--rule2:#6B5C46;--line:var(--rule);--ink:var(--bone);--bone:#F2EADA;--txt:#DFD6C4;--mut:#B5AA95;--dim:#9A8F7C;--faint:#978C7C;--ok:#5FA37E;--warn:#C9453A;--warn-t:#D46C64;--ember:#C4482E;--ember-t:#D76C55;--instr:#7FB2C7;--brass:#C9922E;--brass-t:#D9A63F;--lava:#FF2800;--lava-t:#FF6A4D;--r:4px;--speed:.16s;}</style><style>
-.inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
-  background:rgba(255,255,255,.02)}
-.inj-contact p{margin:0;color:#B0A9A2;font-size:14px;line-height:1.6}
-.inj-contact strong{color:var(--bone)}
-.inj-contact a{color:#8FBEE4}
-.inj-contact .nolog{margin-top:7px;font-size:12.5px;color:var(--faint)}
-</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><meta property="og:title" content="Kedge Keep — Survey | EverQuest Legends"><meta property="og:description" content="Underwater from end to end - four class epics converge on one boss. Levels 32-50, respawn not recorded. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-kedgekeep.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Kedge Keep — Survey | EverQuest Legends"><meta name="twitter:description" content="Underwater from end to end - four class epics converge on one boss. Levels 32-50, respawn not recorded. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-kedgekeep.png"><link rel="canonical" href="https://eqlsource.com/dungeons/kedgekeep">
+<script>
+(function(){try{var t=localStorage.getItem("eql-theme");
+if(t==="dungeon"||t==="atlas")document.documentElement.setAttribute("data-theme",t);
+else if(window.matchMedia&&matchMedia("(prefers-color-scheme:dark)").matches)
+document.documentElement.setAttribute("data-theme","dungeon");
+}catch(e){}})();
+</script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet"><style>:root{--surface-0:#EDE4CF;--surface-1:#E5D6B6;--surface-2:#D9C7A4;--ground:var(--surface-0);--panel:var(--surface-1);--panel2:var(--surface-2);--rule:#A89068;--rule2:#8A7348;--line:var(--rule);--ink:var(--bone);--bone:#2A2118;--txt:#3A3228;--mut:#4A443A;--dim:#524B41;--faint:#585044;--ok:#2D6A48;--warn:#A83228;--warn-t:#A83228;--ember:#A33824;--ember-t:#A33824;--instr:#2A6580;--instr-t:#2A6580;--brass:#8A6418;--brass-t:#6E4E12;--lava:#C41E00;--lava-t:#C41E00;--bind:#2A1F14;--bind-ink:#F2EADA;--bind-mut:#C4B496;--bind-faint:#9A8B72;--bind-line:#5C4A32;--bar-bg:rgba(42,31,20,.94);--sheet:rgba(250,244,230,.78);--plot-bg:#191309;--r:4px;--speed:.16s;}</style><link rel="icon" href="../favicon.svg" type="image/svg+xml"><link rel="stylesheet" href="../assets/site.css?v=4599463b"><meta property="og:title" content="Kedge Keep — Survey | EverQuest Legends"><meta property="og:description" content="Underwater from end to end - four class epics converge on one boss. Levels 32-50, respawn not recorded. Every figure sourced and dated."><meta property="og:type" content="website"><meta property="og:site_name" content="EQL Source"><meta property="og:image" content="https://eqlsource.com/assets/og/dungeons-kedgekeep.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta name="twitter:card" content="summary_large_image"><meta name="twitter:title" content="Kedge Keep — Survey | EverQuest Legends"><meta name="twitter:description" content="Underwater from end to end - four class epics converge on one boss. Levels 32-50, respawn not recorded. Every figure sourced and dated."><meta name="twitter:image" content="https://eqlsource.com/assets/og/dungeons-kedgekeep.png"><link rel="canonical" href="https://eqlsource.com/dungeons/kedgekeep">
 <style>
-.ns-bar{background:var(--surface-1);border-bottom:1px solid var(--rule);padding:11px 22px;display:flex;
- align-items:center;gap:13px;flex-wrap:wrap;font-family:"IBM Plex Mono",monospace;font-size:10px;
- letter-spacing:.16em;text-transform:uppercase;position:sticky;top:0;z-index:90}
-.ns-bar a{color:var(--mut);text-decoration:none;border-bottom:1px solid transparent;transition:color .15s}
-.ns-bar a:hover{color:var(--bone);border-color:var(--bone)}
-.ns-bar .ns-mark{font-family:"Saira Condensed",sans-serif;font-size:15px;font-weight:700;
- letter-spacing:.13em;color:var(--bone);text-decoration:none;border:0}
-/* These carried the pre-AA greys. #62584F measured 2.46:1 on this bar. The
-   values here mirror assets/site.css's ramp; they are duplicated rather than
-   referenced because this chrome is injected into standalone tool pages. */
-.ns-bar .ns-sep{color:var(--faint)}
-.ns-bar .ns-tag{margin-left:auto;color:var(--faint)}
 @media(max-width:640px){.ns-bar .ns-tag{display:none}}
 </style>
-
-<style>
-.fplan{margin:38px 0 10px}
-.fplan h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;
-  letter-spacing:.02em;font-size:clamp(21px,3.4vw,28px);margin:0 0 8px}
-.fp-lede{color:#B0A9A2;margin:0 0 16px;max-width:66ch}
-.fp-wrap{border:1px solid #40372D;background:#191410;overflow:hidden;border-radius:4px}
-.fp-wrap svg{display:block;height:min(96vh,1000px);width:auto;max-width:100%;margin:0 auto}
-@media(max-width:900px){.fp-wrap svg{height:auto;width:100%}}
-.fp-levels{display:flex;flex-wrap:wrap;gap:8px;align-items:stretch;margin:0 0 14px}
-.fp-levels .lab{align-self:center;font-family:"IBM Plex Mono",monospace;font-size:10px;
-  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-right:4px}
-.fp-levels button{display:flex;flex-direction:column;gap:2px;padding:8px 12px;cursor:pointer;
-  background:#251F19;border:1px solid #40372D;border-radius:4px;color:var(--mut);
-  font-family:"IBM Plex Mono",monospace;font-size:13.5px;line-height:1}
-.fp-levels button span{font-size:10px;color:#B6ABA1}
-.fp-levels button:hover{color:var(--bone);border-color:var(--accd)}
-.fp-levels button:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-.fp-levels button.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);
-  border-color:var(--accd);color:var(--bone)}
-.fp-note{color:var(--faint);font-size:13.5px;margin:12px 0 0;max-width:78ch}
-.lyr{transition:stroke-opacity .18s}
-.lyr.mute{stroke-opacity:.07}
-@media(prefers-reduced-motion:reduce){.lyr{transition:none}}
-.fp-toggles{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 10px}
-.fp-t{padding:7px 13px;cursor:pointer;background:#251F19;border:1px solid #40372D;
-  border-radius:4px;color:var(--mut);font-family:"IBM Plex Mono",monospace;font-size:12.5px;
-  letter-spacing:.04em}
-.fp-t:hover{color:var(--bone);border-color:var(--accd)}
-.fp-t:focus-visible{outline:2px solid var(--acct);outline-offset:2px}
-.fp-t.on{background:color-mix(in srgb, var(--acc) 16%, #251F19);border-color:var(--accd);
-  color:var(--bone)}
-.fp-t[data-t="route"].on{background:rgba(232,176,75,.16);border-color:#E8B04B;color:#F2DDAE}
-/* THE `hidden` ATTRIBUTE DOES NOT HIDE AN SVG ELEMENT. It is an HTML attribute:
-   the rule that honours it lives in the browser's HTML stylesheet, and `.hidden`
-   is an IDL property of HTMLElement, which SVGGElement is not. So the route
-   group shipped with `hidden` set and a computed display of `inline` — the line
-   and its numbered stops were drawn on every plan, always, while the button
-   flipped a property nothing read. The sibling HTML note beside it honoured
-   `hidden` correctly, which is why half the control appeared to work.
-   The numerals had no explanation on screen because the note they belong to was
-   the half that stayed hidden. Two changes, and both are needed: this rule makes
-   the attribute mean something here, and the handler below sets the ATTRIBUTE
-   rather than the property. */
-svg .route[hidden]{display:none}
-.plotsvg.nonames .mklbl,.plotsvg.nonames .mklead{display:none}
-.mk{cursor:pointer}
-.mk:focus-visible circle{stroke:var(--bone);stroke-width:3}
-.mk.dim{opacity:.14}
-.mk.sel circle{stroke:var(--bone);stroke-width:3}
-.fp-detail{margin:12px 0 0;padding:13px 15px;border:1px solid #40372D;border-radius:4px;
-  background:#1E1914}
-.fp-detail h3{margin:0 0 3px;font-family:"Saira Condensed",sans-serif;font-weight:600;
-  text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--bone)}
-.fp-detail .dmeta{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint);
-  letter-spacing:.06em;text-transform:uppercase}
-.fp-detail ul{margin:9px 0 0;padding:0;list-style:none;display:flex;flex-wrap:wrap;gap:6px}
-.fp-detail li{font-family:"IBM Plex Mono",monospace;font-size:12px;color:#D2CDC8;
-  background:#251F19;border:1px solid #40372D;border-radius:3px;padding:3px 8px}
-.fp-detail .dnone{color:#B0A9A2;font-size:13.5px;margin:8px 0 0}
-.fp-route{margin:12px 0 0;padding:12px 14px;border-left:3px solid #E8B04B;
-  background:rgba(232,176,75,.06);color:#B0A9A2;font-size:13.5px;line-height:1.6}
-.fp-route strong,.fp-route .rlen{color:var(--bone)}
-.fp-route em{color:#F2DDAE;font-style:normal}
-</style></head>
-<body>
-<div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:var(--txt)">Survey 13 &middot; Kedge Keep</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>
+</head>
+<body class="sheet-page">
+<a class="skip" href="#main">Skip to content</a><div class="ns-bar"><a class="ns-mark" href="../index.html">EQL Source</a><span class="ns-sep">/</span><a href="../dungeons/index.html">Dungeons</a><span class="ns-sep">/</span><span style="color:var(--bind-ink)">Survey 13 &middot; Kedge Keep</span><span class="ns-tag">Sourced &amp; dated &middot; updated daily</span><button type="button" class="theme-toggle" aria-pressed="false" aria-label="Switch to torchlit reading">Torchlight</button></div>
 <div class="wrap">
 <div class="sheet">
 
@@ -377,7 +53,7 @@ svg .route[hidden]{display:none}
   </ul>
 </header>
 
-<main>
+<main id="main">
 
 <section class="fplan"><h2>Floor plan</h2><p class="fp-lede">Where the walkable floor ends, computed from the zone&rsquo;s own geometry in the game files, with the 1 named mob whose position is on record plotted on it. This zone has 3 levels and they overlap when flattened, so the control above isolates one at a time.</p><div class="fp-toggles"><button type="button" class="fp-t on" data-t="names" aria-pressed="true">Names</button></div><div class="fp-levels"><span class="lab">Height</span><button type="button" data-lyr="all" class="on" aria-pressed="true">All<span>3 levels</span></button><button type="button" data-lyr="2" aria-pressed="false">3<span>336 to 364</span></button><button type="button" data-lyr="1" aria-pressed="false">2<span>-112 to 84</span></button><button type="button" data-lyr="0" aria-pressed="false">1<span>-238 to -140</span></button></div><div class="fp-wrap"><svg class="plotsvg" viewBox="-336 -266 924 798" role="img" aria-label="Survey plot of Kedge Keep. 1 recorded named-mob positions, labelled in place and coloured by level. Dashed outlines group positions that sit close together; they are not room shapes. North is up, west is left. Every position is also listed as text beneath the plot."><rect x="-336" y="-266" width="924" height="798" fill="#191410"/><line x1="-300" y1="-266" x2="-300" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-200" y1="-266" x2="-200" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-100" y1="-266" x2="-100" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="0" y1="-266" x2="0" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="100" y1="-266" x2="100" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="200" y1="-266" x2="200" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="300" y1="-266" x2="300" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="400" y1="-266" x2="400" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="500" y1="-266" x2="500" y2="532" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="-200" x2="588" y2="-200" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="-100" x2="588" y2="-100" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="0" x2="588" y2="0" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="100" x2="588" y2="100" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="200" x2="588" y2="200" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="300" x2="588" y2="300" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="400" x2="588" y2="400" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><line x1="-336" y1="500" x2="588" y2="500" stroke="#322A23" stroke-width="1" vector-effect="non-scaling-stroke"/><g class="lyr" data-lyr="0" data-z0="-238" data-z1="-140" fill="none" stroke="#2FA5C9" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="98,-14 98,0 84,0 84,-14 98,-14"/><polyline points="154,316 154,364 196,364 196,322 182,322 182,316 178,316 178,312 182,312 182,308 210,308 210,294 154,294 154,312 158,312 158,316 154,316"/><polyline points="126,-28 126,-14 140,-14 140,0 126,0 126,14 112,14 112,28 98,28 98,42 84,42 84,28 70,28 70,14 56,14 56,0 42,0 42,-14 56,-14 56,-28 70,-28 70,-42 84,-42 84,-56 98,-56 98,-42 112,-42 112,-28 126,-28"/><polyline points="84,294 84,308 112,308 112,312 116,312 116,316 112,316 112,322 98,322 98,364 140,364 140,316 136,316 136,312 140,312 140,294 84,294"/><polyline points="-154,56 -140,98 -126,56 -98,70 -112,42 -70,28 -112,14 -98,-14 -126,0 -140,-42 -154,0 -182,-14 -168,14 -210,28 -168,42 -182,70 -154,56"/><polyline points="-56,-56 -42,28 -56,112 -140,126 -180,144 -168,168 -126,168 -114,134 -140,126 -224,112 -238,28 -258,-16 -294,-14 -294,28 -260,50 -238,28 -224,-56 -140,-70 -56,-56"/></g><g class="lyr" data-lyr="1" data-z0="-112" data-z1="84" fill="none" stroke="#2FA5C9" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="216,256 224,252 224,238 266,238 266,294 224,294 224,280 220,280 220,276 216,276 216,280 196,280 196,294 210,294 210,308 182,308 182,312 178,312 178,316 182,316 182,322 196,322 196,364 154,364 154,316 158,316 154,308 140,308 140,312 136,312 136,316 140,316 140,364 98,364 98,322 112,322 112,316 116,316 112,308 84,308 84,294 98,294 98,280 78,280 78,276 74,276 74,280 70,280 70,294 28,294 28,238 70,238 70,252 74,252 74,256 78,256 78,252 98,252 98,238 112,238 112,224 126,224 126,210 140,210 140,168 112,168 116,166 126,168 140,196 154,196 154,210 168,210 168,224 182,224 182,238 196,238 196,252 216,252 216,256"/><polyline points="98,-14 98,-28 112,-14 112,14 98,28 98,14 56,14 42,28 84,28 84,56 28,56 28,84 14,70 12,58 42,28 28,28 28,42 14,42 0,56 -14,56 -58,12 -70,14 -84,28 -98,28 -112,14 -112,-14 -98,-28 -84,-28 -70,-14 -58,-12 -12,-58 -14,-70 -28,-84 -28,-98 -14,-112 14,-112 28,-98 28,-84 56,-84 56,-70 70,-70 70,-98 56,-98 56,-126 70,-140 84,-140 98,-126 98,-98 84,-98 84,-70 98,-56 112,-56 112,-84 140,-84 140,-98 126,-112 112,-112 112,-126 126,-126 140,-140 140,-154 112,-154 112,-210 182,-210 182,-154 154,-154 154,-140 168,-126 196,-126 196,-98 210,-84 224,-98 252,-98 266,-84 280,-98 280,-140 252,-140 252,-112 224,-112 224,-210 266,-210 266,-224 308,-224 308,-210 350,-210 350,-140 360,-140 360,-134 364,-132 364,-140 372,-158 392,-168 406,-168 406,-182 420,-196 434,-196 448,-210 462,-210 476,-196 476,-182 462,-168 448,-168 434,-182 420,-168 434,-126 448,-140 462,-140 476,-154 490,-154 490,-140 504,-140 518,-154 504,-168 504,-182 518,-196 532,-196 546,-182 546,-168 532,-154 532,-140 518,-126 476,-126 462,-98 462,-84 476,-70 490,-84 504,-84 518,-70 518,-56 504,-42 490,-42 476,-56 462,-56 448,-70 448,-98 434,-112 406,-84 392,-84 372,-98 372,-140 372,-98 364,-112 364,-128 364,-118 360,-120 360,-112 322,-112 322,-140 294,-140 294,-98 308,-84 308,-70 294,-56 280,-56 266,-70 252,-63 252,-56 266,-42 287,-42 294,-35 294,-28 336,-28 350,-14 350,0 336,14 294,14 294,21 287,28 266,28 252,42 252,49 266,56 280,42 294,42 308,56 308,70 294,84 280,84 266,70 252,84 224,84 210,70 196,84 182,84 168,70 112,70 112,98 126,98 126,112 154,112 182,98 196,98 224,112 224,126 238,126 252,154 252,168 238,196 224,196 224,210 196,224 182,224 154,210 154,168 182,168 180,156 184,152 194,152 198,156 198,166 194,170 184,170 182,154 154,154 154,126"/><polyline points="84,126 84,182 42,182 42,196 56,196 56,238 14,238 14,196 28,196 28,182 -14,182 -14,224 -56,224 -56,168 0,168 0,126 28,126 28,98 14,112 0,112 14,98 42,98 42,126 84,126 84,140 98,140 98,154 98,112 56,112 56,84 14,84 0,70 -14,70 -14,56 -28,140 -112,154 -168,154 -252,140 -266,56 -266,0 -252,-84 -168,-98 -112,-98 -28,-84 -14,0 0,0 14,14 14,-14 -14,-14 -14,14 14,14"/><polyline points="210,-42 224,-56 224,-63 210,-70 196,-56 182,-56 168,-70 168,-84 182,-98 182,-112 168,-112 154,-98 154,-70 126,-70 126,-56 154,-56 154,-14 182,-14"/><polyline points="140,126 126,126 126,140 112,140 112,154 140,154 140,126 126,154 112,154 112,98"/><polyline points="98,28 98,56 132,58 168,56 182,42 196,42 210,56 224,49 224,42 210,28"/><polyline points="12,-60 14,-70 14,-56 12,-60"/><polyline points="262,14 264,18 270,16 268,10 264,10 262,14"/><polyline points="58,-14 70,-14 84,-28 84,-42 70,-56 56,-56 56,-42 28,-42 58,-14"/><polyline points="182,182 210,182 210,140 168,140 168,182 182,182"/><polyline points="280,0 294,14 280,0"/><polyline points="210,140 210,182 168,182 168,140 210,140"/><polyline points="98,-28 112,-42 140,-42 140,0 182,0"/><polyline points="280,-14 294,-28 280,-14"/><polyline points="262,-28 264,-24 270,-26 268,-32 264,-32 262,-28"/><polyline points="98,98 98,70 84,70 84,98"/></g><g class="lyr" data-lyr="2" data-z0="336" data-z1="364" fill="none" stroke="#2FA5C9" stroke-opacity=".45" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" vector-effect="non-scaling-stroke"><polyline points="10,-70 60,-60 70,-10 110,-10 110,10 70,10 60,60 10,70 10,110 -10,110 -10,70 -60,60 -28,42 -42,28 -60,60 -70,10 -110,10 -110,-10 -70,-10 -60,-60 -28,-42 -42,-28 -60,-60 -10,-70 -10,-90 -40,-90 -40,-140 -10,-140 -10,-170 10,-170 10,-120 -20,-120 -20,-110 10,-110 10,-70"/><polyline points="28,42 60,60 42,28 28,42"/><polyline points="28,-42 60,-60 42,-28 28,-42"/></g><line class="mklead" x1="-37" y1="-111" x2="-37" y2="-139" stroke="#71675D" stroke-width="1" vector-effect="non-scaling-stroke"/><g class="mk" data-name="Phinigel Autropos" data-lv="53" data-lyr="2" data-drops="" tabindex="0" role="button" aria-label="Phinigel Autropos, level 53. No drops recorded."><circle cx="-37" cy="-111" r="8.4" fill="#7FB2C7" fill-opacity=".95" stroke="#0B0704" stroke-width="1.5" vector-effect="non-scaling-stroke"/><text class="mklbl" x="-37" y="-145" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" fill="#F2EADA" style="paint-order:stroke" stroke="#191410" stroke-width="8.5" stroke-linejoin="round">Phinigel Autropos</text></g><g><line x1="-307" y1="494" x2="-207" y2="494" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="-307" y1="484" x2="-307" y2="504" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><line x1="-207" y1="484" x2="-207" y2="504" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><text x="-257" y="474" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" fill="#B5AA95">100 units</text></g><g><line x1="542" y1="482" x2="542" y2="436" stroke="#B5AA95" stroke-width="2" vector-effect="non-scaling-stroke"/><path d="M542,421 L530,443 L554,443 Z" fill="#B5AA95"/><text x="542" y="512" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="20" fill="#B5AA95">N</text></g></svg></div><div class="fp-detail" hidden aria-live="polite"></div><p class="fp-note">Lines are floor edges &mdash; a wall or a drop. <b>1 of 1 recorded positions land on drawn floor.</b> <a href="../learn/reading-the-plans.html">What this plan does not mark &rarr;</a></p></section><section>
   <p class="kick">Key to the plan</p>
@@ -524,6 +200,7 @@ svg .route[hidden]{display:none}
 
 </div>
 </div>
+<script src="../assets/site.js"></script>
 
 <script>
 (function(){

@@ -98,7 +98,9 @@ Do not change these. They are the identity.
 - **The tier badges**, `.tier` with `.t1`–`.t5`, plus `.tM` for measured and
   `.tc` for a first-hand report.
 - **Four typefaces**, no more: Cinzel (display), Saira Condensed (the
-  condensed workhorse), IBM Plex Mono (data and labels), Public Sans (prose).
+  condensed workhorse), IBM Plex Mono (data and labels), Source Serif 4 (prose).
+  Daylight atlas is the default reading; `data-theme="dungeon"` is the torchlit
+  one. See `docs/ATLAS.md`.
 - **WCAG AA on all text.** The site now measures clean across 11,942 text nodes
   on 25 pages. Do not regress it. Accents that fail as text get a lifted variant;
   the accent itself is never reassigned.
@@ -155,7 +157,8 @@ Four of these were relaxed on 16 August 2026 by the person who owns the site.
 See §11; the reasoning is recorded there rather than quietly edited out here.
 
 - ~~No fourth typeface.~~ **Four now.** Cinzel holds the top two display
-  levels. Saira Condensed stays as the workhorse beneath it.
+  levels. Saira Condensed stays as the workhorse beneath it. Source Serif 4
+  holds prose (replaced Public Sans, 19 Aug 2026).
 - No colour outside the system — **and the system is now measured rather than
   chosen.** See §11.
 - No stock art and no generated imagery. **Derived geometry is not either of
@@ -328,6 +331,12 @@ it were actively preventing what was asked for. Their words:
 
 Then, after the first pass: *"I love the cartography theme. Lean further into
 this."*
+
+**19 August 2026.** The site now has two readings of that chart. Default is
+daylight vellum (cream paper, iron-gall ink, leather chrome). The measured dark
+ground is the dungeon theme, not discarded. Survey sheets load `site.css`; the
+prefixed per-zone palettes are gone. Ornament is chrome. Geometry remains the
+art. Field guide: `docs/ATLAS.md`.
 
 ### The palette is measured, not chosen
 

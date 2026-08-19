@@ -168,7 +168,7 @@ page = head("Sky Ledger",
     f"{DS['quests']} Plane of Sky class-unlock tests you can hand in now. Runs "
     f"in a browser with no install, or as an overlay on the game.",
     rel="../", extra=CSS, og="tools", canon="tools/sky-ledger") + bar("../") + f'''
-<main>
+<main id="main">
 
 <section class="hero page">
   <div class="shell">
