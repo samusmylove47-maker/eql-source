@@ -464,6 +464,92 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### I cleared a live falsehood by searching for the wrong string. Third time today.
+
+**Correction to my own ruling.** I told this session that the survey's claim
+about `_build/build18.py` "overreaches" because the file contains zero
+occurrences of the fabricated zone list. It does. **The fabrication there is not
+the list — it is the count**, and I never searched for it:
+
+```
+_build/build18.py  →  public/learn/reading-the-plans.html
+"The 28 July 2026 patch note removed placeholders from eleven dungeons."
+```
+
+Live, present tense, on a Learn explainer. The note names **six**, our own
+change log says so, and `docs/BLIND-READ-2026-08-17.md:20` had already flagged
+it. **My grep cleared it and it is still publishing.**
+
+That is the third false all-clear I have given today, by the same mechanism every
+time: I choose a search string, it misses, and I report *"absent"* when the only
+supportable claim is *"my search found nothing."* **Those are different
+sentences and I have been writing the wrong one.** From here, a clearance from
+me carries the string I searched for, so the next reader can see what I did not
+look for.
+
+---
+
+### Three things are publishing something false right now. Verified in the tree.
+
+**1. The eleven-dungeon count, above.** Fix to six and derive the list from the
+per-zone source ids rather than typing either number.
+
+**2. A false NPC level, published as a finished sentence.** `_build/extract.py:400`
+truncates notes at 190 characters with no boundary and no ellipsis:
+
+```
+_build/source/najena.html:347   "…the NPC record says 35."
+public/named/najena.html        "…the NPC record says 3"
+```
+
+A reader sees a complete sentence asserting level **3**. Six other named pages
+carry mid-word cuts from the same cap — those are ugly; **this one is wrong**,
+and it is the most severe live falsehood on the site because nothing about it
+looks broken. Fix the cap to break on a word boundary and append an ellipsis, and
+**never let a truncation end on a digit.**
+
+**3. A share card advertising a withdrawn product.** `_build/ogcards.py:163-165`
+sells the raids card as *"Positioning in 3D"* with *"Model — turn it, phase
+it."* The 3D engine and the only encounter guide were deleted on 16 August.
+`public/assets/og/raids.png` was regenerated on **17 August — a day after the
+withdrawal — carrying the withdrawn claim**, and `public/raids/index.html`
+declares it as its `og:image`. That is the surface `ogcards.py` itself calls
+uncorrectable, advertising a feature that does not exist. Add it to the share-card
+sweep already outstanding.
+
+---
+
+### Four more, lower but real
+
+- **The change log has no supersede mechanism at all.** Two entries still assert
+  the eleven-zone fabrication with no marker and no link to the correction six
+  entries above. Add a `supersede` field to the entry dict and render it. **Do
+  not rewrite the bodies** — the false entry must stay legible.
+- **The difficulty table's range caption is wrong for four rows.** It tells the
+  reader a range is *"how far two measurements of the same fight sat apart"*.
+  Four rows span **separate kills** — including **Lord Nagafen at D4, 370,351–
+  373,810, from 12 and 18 August, both fully witnessed at 13 attackers, neither a
+  floor.** No two clients disagreed about anything. Emit a per-row marker and
+  split the caption: a cross-kill range is run-to-run variance, and the error bar
+  belongs only to the single-kill case.
+- **Mistmoore's `revamped_note` describes sessions the page does not show** —
+  it names two logged sessions at Awakened and Adaptive; `build9.py` selects one,
+  Avenrae's D1, and excludes exactly those two. Reduce the note to the era claim
+  and let the generator describe the sessions.
+- **A prose ceiling was raised without a reason.** `16e005a6` says what moved and
+  never why, and `gate.py:747` already grants `cap + 40`, so the page would have
+  passed untouched. Four words of ratchet given up to buy nothing. Restore it.
+
+**One thing the review got wrong, recorded because it matters.** Two independent
+reviewers cited a *"Master Yael D1 74,582–85,415"* row as evidence. **It does not
+exist** — `build11.py:108` excludes that boss from the table and the string
+appears nowhere in the rendered page. Two agents hunting fabricated figures
+fabricated one. That is not an argument against the fan-out, which found six real
+faults I would have missed; it is the argument for verifying its output exactly
+as hard as I verify my own.
+
+---
+
 ### The three unstaged logs: yes, stage them — after play stops, with your diff discipline
 
 **Ruled. Your reasoning for not doing it unasked was correct**, and it is the
