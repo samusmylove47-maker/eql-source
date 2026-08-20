@@ -55,6 +55,12 @@ ALIASES = {
     # the article is stripped - so an alias written as 'thehole' matches nothing
     # and fails exactly like no alias at all.
     'ruinsoldpaineel': 'hole',
+    # In play the zone is "Clan Crushbone"; the survey is "Crushbone". Its first
+    # measured sessions arrived 19 Aug 2026 and were reported as unmatched, the
+    # same way The Hole's were - the report prints every build and is easy to
+    # read past, which is how a zone ends up verified against sources and blank
+    # on the evidence we gathered ourselves.
+    'clancrushbone': 'crushbone',
 }
 
 # A public group instance appends " - Group" to the zone name. It is the same
@@ -168,6 +174,18 @@ def merge(sessions):
     # claims a period in the first place.
     out['kills'] = sum(s['kills'] for s in sessions)
     out['sessions_merged'] = len(sessions)
+
+    # The merged block describes itself with its BEST-sourced session, not its
+    # first. Sessions only merge when the difficulty already agrees, so this
+    # picks the strongest evidence for the same answer: a numbered zone line
+    # ("Clan Crushbone 1 (Awakened)") carries a label and states the tier
+    # outright, where a loot-tier floor only infers it. Crushbone merged one
+    # character's loot-tier session with another's zone-line session and, on
+    # sessions[0] alone, published the weaker provenance for both.
+    best = next((s for s in sessions if s.get('difficulty_label')), None)
+    if best is not None:
+        out['difficulty_label'] = best['difficulty_label']
+        out['difficulty_from'] = best.get('difficulty_from')
 
     for key in ('drop_tiers', 'faction'):
         c = collections.Counter()

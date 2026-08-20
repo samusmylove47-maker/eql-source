@@ -64384,5 +64384,2254 @@
   },
   "drop_tier_floor": 4,
   "drop_tier_modal": 4
+ },
+ {
+  "zone": "The Plane of Fear - Group",
+  "character": "Shara",
+  "zone_from": null,
+  "difficulty_label": "Fused",
+  "difficulty_num": 3,
+  "difficulty": 3,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "19 Aug 2026",
+  "window": "12:15-12:50",
+  "stamps": [],
+  "minutes": 35,
+  "kills": 5,
+  "distinct": 5,
+  "kinds": [
+   "Dread pet",
+   "Terror pet",
+   "a fetid fiend",
+   "a spinechiller spider",
+   "a worry wraith"
+  ],
+  "kills_by_mob": {
+   "a worry wraith": 1,
+   "a fetid fiend": 1,
+   "a spinechiller spider": 1,
+   "Terror pet": 1,
+   "Dread pet": 1
+  },
+  "drop_tiers": {
+   "3": 6
+  },
+  "faction": {},
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 0,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {
+    "Earth Elemental Attack": {
+     "Fright": 1
+    },
+    "Sha's Lethargy": {
+     "Dread": 1
+    },
+    "Dooming Darkness": {
+     "Cazic-Thule": 1
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 103,
+  "you_miss": 8,
+  "mob_hit": 0,
+  "mob_miss": 69,
+  "mobs": {
+   "A gorgon": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Stone Breath": 76,
+     "Plague": 4,
+     "Instill": 3,
+     "Superior Healing": 1,
+     "Spirit of Wolf": 1,
+     "Malosi": 1,
+     "Blizzard Blast": 1
+    },
+    "loot": {}
+   },
+   "A gorgon pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Envenomed Breath": 1,
+     "Greater Healing": 1
+    },
+    "loot": {}
+   },
+   "A worry wraith": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Superior Healing": 4,
+     "Tashania": 2,
+     "Cajoling Whispers": 2,
+     "Celestial Echo": 1,
+     "Gravity Flux": 1
+    },
+    "loot": {
+     "Wraithstone +3": 1,
+     "Wand of Allure +3": 1
+    }
+   },
+   "Fright": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Earth Elemental Attack": 14,
+     "Sha's Lethargy": 12,
+     "Immobilize": 9,
+     "Discordant Mind": 8,
+     "Greater Healing": 4,
+     "Tashania": 4,
+     "Gravity Flux": 2,
+     "Swift Like the Wind": 1,
+     "Dazzle": 1,
+     "Envenomed Breath": 1
+    },
+    "loot": {
+     "Jacinth": 1
+    }
+   },
+   "Terror pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 1,
+     "Engulfing Darkness": 1,
+     "Fear": 1
+    },
+    "loot": {}
+   },
+   "Terror": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Earth Elemental Attack": 13,
+     "Life Leech": 4,
+     "Dooming Darkness": 3,
+     "Shadow Vortex": 3,
+     "Invoke Fear": 2,
+     "Negation of Life": 1,
+     "Harm Touch": 1
+    },
+    "loot": {
+     "Crystallized Sulfur": 1
+    }
+   },
+   "Dread": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Earth Elemental Attack": 18,
+     "Superior Healing": 9,
+     "Ensnare": 5,
+     "Chloroplast": 3,
+     "Dustdevil": 1,
+     "Efflorescing Heal": 1,
+     "Sha's Lethargy": 1,
+     "Engulfing Roots": 1
+    },
+    "loot": {
+     "Crystallized Sulfur": 1
+    }
+   },
+   "Dread pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Greater Healing": 2,
+     "Ice Spear": 1
+    },
+    "loot": {}
+   },
+   "A thought bleeder": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Mana Drain": 7,
+     "Malaisement": 6,
+     "Shock of Swords": 6,
+     "Life Leech": 5,
+     "Shadow Vortex": 3,
+     "Blood of Pain": 2,
+     "Dooming Darkness": 2,
+     "Rain of Swords": 2
+    },
+    "loot": {}
+   },
+   "A thought bleeder pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "A dracoliche pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 7,
+     "Shadow Vortex": 4,
+     "Negation of Life": 2,
+     "Harm Touch": 1
+    },
+    "loot": {}
+   },
+   "A dracoliche": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Tangling Weeds": 17,
+     "Rotting Flesh": 13,
+     "Dragon Fear": 12,
+     "Malaisement": 10,
+     "Insidious Retrogression": 7,
+     "Paralyzing Earth": 3,
+     "Ignite Blood": 2,
+     "Infectious Cloud": 2,
+     "Greater Healing": 2,
+     "Ensnaring Roots": 2,
+     "Torbas' Poison Blast": 2,
+     "Bond of Death": 1,
+     "Shadow Vortex": 1
+    },
+    "loot": {}
+   },
+   "A nightmare": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Darkness": 20
+    },
+    "loot": {}
+   },
+   "Cazic-Thule": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Avatar Power": 12,
+     "Shadow Vortex": 6,
+     "Life Leech": 4,
+     "Negation of Life": 2,
+     "Dooming Darkness": 2,
+     "Word of Spirit": 1,
+     "Blood of Pain": 1
+    },
+    "loot": {
+     "Mote of Major Potential": 1,
+     "Amulet of Necropotence +3": 1,
+     "Darkwood Trunk": 1,
+     "Soul Leech, Dark Sword of Blood +3": 1,
+     "Blood Fire +3": 1,
+     "Diamond": 1
+    }
+   },
+   "a spinechiller spider": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Cryosilk Choker +3": 1
+    }
+   }
+  },
+  "drop_tier_floor": 3,
+  "drop_tier_modal": 3
+ },
+ {
+  "zone": null,
+  "character": "Avenrae",
+  "zone_from": null,
+  "difficulty_label": null,
+  "difficulty_num": null,
+  "difficulty": 3,
+  "difficulty_from": "loot tier",
+  "difficulty_label_agrees": null,
+  "difficulty_agrees": true,
+  "date": "19 Aug 2026",
+  "window": "12:36-12:50",
+  "stamps": [],
+  "minutes": 14,
+  "kills": 0,
+  "distinct": 0,
+  "kinds": [],
+  "kills_by_mob": {},
+  "drop_tiers": {
+   "3": 3,
+   "4": 1
+  },
+  "faction": {},
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 18,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {
+    "Negation of Life": {
+     "Cazic-Thule": 1
+    },
+    "Solon's Bewitching Bravura": {
+     "Cazic-Thule": 2
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 677,
+  "you_miss": 480,
+  "mob_hit": 150,
+  "mob_miss": 204,
+  "mobs": {
+   "A dracoliche": {
+    "swings": 4,
+    "landed": 1,
+    "avg": 31.0,
+    "max": 31,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Tangling Weeds": 7,
+     "Dragon Fear": 3,
+     "Rotting Flesh": 3
+    },
+    "loot": {}
+   },
+   "A gorgon": {
+    "swings": 66,
+    "landed": 20,
+    "avg": 53.8,
+    "max": 141,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Stone Breath": 40
+    },
+    "loot": {}
+   },
+   "Cazic-Thule": {
+    "swings": 284,
+    "landed": 129,
+    "avg": 233.1,
+    "max": 471,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Avatar Power": 12,
+     "Shadow Vortex": 7,
+     "Life Leech": 5,
+     "Dooming Darkness": 3,
+     "Negation of Life": 2,
+     "Harm Touch": 1,
+     "Word of Spirit": 1,
+     "Blood of Pain": 1
+    },
+    "loot": {
+     "Staff of the Earthcrafter +3": 2,
+     "Mote of Major Potential": 1,
+     "Soul Leech, Dark Sword of Blood +4": 1,
+     "Blood Fire +3": 1
+    }
+   }
+  },
+  "drop_tier_floor": 3,
+  "drop_tier_modal": 3
+ },
+ {
+  "zone": "Clan Crushbone",
+  "character": "Shara",
+  "zone_from": null,
+  "difficulty_label": "Awakened",
+  "difficulty_num": 1,
+  "difficulty": 1,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "19 Aug 2026",
+  "window": "19:02-19:25",
+  "stamps": [],
+  "minutes": 23,
+  "kills": 0,
+  "distinct": 0,
+  "kinds": [],
+  "kills_by_mob": {},
+  "drop_tiers": {
+   "1": 27,
+   "2": 5
+  },
+  "faction": {
+   "Crushbone Orcs": 85,
+   "Storm Guard": 85,
+   "Faydarks Champions": 85,
+   "Emerald Warriors": 85
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 1,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {
+    "Water Elemental Attack": {
+     "Marrowbane pet": 2
+    },
+    "Poison Bolt": {
+     "an orc thaumaturgist": 1
+    },
+    "Mesmerization": {
+     "Bloodgurgler": 4
+    },
+    "Charm": {
+     "Bloodgurgler": 1
+    },
+    "Disease Cloud": {
+     "an orc thaumaturgist": 1
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {},
+  "exp_by_mob": {},
+  "exp_samples_by_mob": {},
+  "exp_attributed": 0,
+  "exp_attributed_kills": 0,
+  "you_hit": 96,
+  "you_miss": 3,
+  "mob_hit": 86,
+  "mob_miss": 1658,
+  "mobs": {
+   "Orc legionnaire": {
+    "swings": 617,
+    "landed": 20,
+    "avg": 2.7,
+    "max": 12,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Orc trainee": {
+    "swings": 31,
+    "landed": 3,
+    "avg": 2.0,
+    "max": 4,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "An orc thaumaturgist": {
+    "swings": 103,
+    "landed": 8,
+    "avg": 4.5,
+    "max": 10,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 9,
+     "Lifespike": 8,
+     "Disease Cloud": 7,
+     "Poison Bolt": 6,
+     "Heat Blood": 4,
+     "Engulfing Darkness": 4,
+     "Cancelling of Life": 2,
+     "Clinging Darkness": 1,
+     "Restless Bones": 1,
+     "Lesser Shielding": 1
+    },
+    "loot": {
+     "Mote of Minor Potential": 1
+    }
+   },
+   "Orc centurion": {
+    "swings": 375,
+    "landed": 15,
+    "avg": 1.4,
+    "max": 6,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Tangling Weeds": 3,
+     "Minor Healing": 3,
+     "Flame Lick": 2
+    },
+    "loot": {
+     "Crushbone Belt +1": 5,
+     "Cloth Cord +1": 2,
+     "Crushbone Belt +2": 2,
+     "Cloth Cape +1": 1,
+     "Cloth Gloves +1": 1,
+     "Small Cloth Pants +1": 1
+    }
+   },
+   "Royal guard": {
+    "swings": 76,
+    "landed": 3,
+    "avg": 3.3,
+    "max": 7,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Air Elemental Invisibility": 2
+    },
+    "loot": {
+     "Bronze Dagger +1": 2,
+     "Bronze Rapier +1": 1,
+     "Bronze Spear +2": 1
+    }
+   },
+   "Orc trainer": {
+    "swings": 31,
+    "landed": 2,
+    "avg": 8.0,
+    "max": 15,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "An orc thaumaturgist pet": {
+    "swings": 132,
+    "landed": 13,
+    "avg": 4.0,
+    "max": 13,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 9,
+     "Lifebite": 6,
+     "Disease Cloud": 5,
+     "Clinging Darkness": 5,
+     "Harm Touch": 4
+    },
+    "loot": {}
+   },
+   "Bloodgurgler": {
+    "swings": 24,
+    "landed": 1,
+    "avg": 2.0,
+    "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaotic Feedback": 10,
+     "Mesmerization": 5,
+     "Tashani": 1,
+     "Charm": 1,
+     "Suffocating Sphere": 1
+    },
+    "loot": {
+     "Master Crushbone Cell Key": 1,
+     "Mote of Minor Potential": 1,
+     "Spiky Splintmail +1": 1
+    }
+   },
+   "Orc taskmaster": {
+    "swings": 67,
+    "landed": 6,
+    "avg": 2.0,
+    "max": 7,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Skin like Wood": 2,
+     "Flame Lick": 1,
+     "Tangling Weeds": 1,
+     "Minor Healing": 1
+    },
+    "loot": {}
+   },
+   "Marrowbane": {
+    "swings": 70,
+    "landed": 13,
+    "avg": 10.1,
+    "max": 24,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Blades": 19,
+     "Burn": 7,
+     "Lesser Summoning: Water": 1
+    },
+    "loot": {
+     "Grimy Black Silk Robe +1": 2,
+     "Rusty Long Sword +1": 1,
+     "Raw-Hide Sleeves +1": 1
+    }
+   },
+   "Marrowbane pet": {
+    "swings": 60,
+    "landed": 2,
+    "avg": 13.5,
+    "max": 14,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Water Elemental Attack": 24
+    },
+    "loot": {}
+   },
+   "Orc apprentice": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Blades": 8,
+     "Burn": 4
+    },
+    "loot": {}
+   },
+   "Bonefire": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Furor": 8,
+     "Desist": 6,
+     "Light Healing": 3,
+     "Lay on Hands": 2
+    },
+    "loot": {
+     "Master Crushbone Cell Key": 2,
+     "Headsplitter +1": 2,
+     "Raw-Hide Wristbands +1": 1,
+     "Mote of Lesser Potential": 1
+    }
+   },
+   "Bloodgurgler pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 4,
+     "Furor": 4,
+     "Root": 3,
+     "Courage": 1
+    },
+    "loot": {}
+   },
+   "The Prophet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Drowsy": 2,
+     "Light Healing": 1,
+     "Sicken": 1
+    },
+    "loot": {
+     "Blue Orc Head": 1,
+     "Disgusting Padded Shirt +1": 1,
+     "Sealed Note": 1,
+     "Tergon's Spellbook": 1
+    }
+   },
+   "Lord Darish": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Crushbone Battle Plans": 2,
+     "Dwarven Axe +1": 2,
+     "Torn Elvish Tapestry +1": 2
+    }
+   },
+   "orc slaver": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Cloth Pants +2": 1,
+     "Slave Trammels +2": 1,
+     "Slave Trammels +1": 1,
+     "Shackle Key 19": 1,
+     "Shackle Key 17": 1
+    }
+   }
+  },
+  "drop_tier_floor": 1,
+  "drop_tier_modal": 1
+ },
+ {
+  "zone": "Clan Crushbone",
+  "character": "Shara",
+  "zone_from": null,
+  "difficulty_label": "Awakened",
+  "difficulty_num": 1,
+  "difficulty": 1,
+  "difficulty_from": "zone line, numbered",
+  "difficulty_label_agrees": true,
+  "difficulty_agrees": true,
+  "date": "19 Aug 2026",
+  "window": "19:32-20:45",
+  "stamps": [],
+  "minutes": 73,
+  "kills": 6,
+  "distinct": 5,
+  "kinds": [
+   "an orc thaumaturgist",
+   "an orc thaumaturgist pet",
+   "orc centurion",
+   "orc slaver",
+   "royal guard"
+  ],
+  "kills_by_mob": {
+   "an orc thaumaturgist": 2,
+   "orc centurion": 1,
+   "orc slaver": 1,
+   "an orc thaumaturgist pet": 1,
+   "royal guard": 1
+  },
+  "drop_tiers": {
+   "1": 95,
+   "2": 24,
+   "3": 2
+  },
+  "faction": {
+   "Storm Guard": 282,
+   "Emerald Warriors": 281,
+   "Crushbone Orcs": 280,
+   "Faydarks Champions": 280,
+   "Butcherblock Bandits": 2,
+   "Miners Guild 628": 2,
+   "Indigo Brotherhood": 1,
+   "Steel Warriors": 1,
+   "Primordial Malice": 1
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 5,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {
+    "Chaotic Feedback": {
+     "Bloodgurgler": 2
+    },
+    "Clinging Darkness": {
+     "an orc thaumaturgist pet": 3
+    },
+    "Burn": {
+     "Marrowbane": 1
+    },
+    "Water Elemental Attack": {
+     "Marrowbane pet": 4
+    },
+    "Poison Bolt": {
+     "an orc thaumaturgist": 1
+    }
+   }
+  },
+  "faction_by_mob": {},
+  "faction_capped_by_mob": {
+   "orc centurion": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "an orc thaumaturgist": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc slaver": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "royal guard": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   }
+  },
+  "exp_by_mob": {
+   "orc centurion": 0.59,
+   "an orc thaumaturgist": 1.101,
+   "orc slaver": 0.481,
+   "royal guard": 1.441
+  },
+  "exp_samples_by_mob": {
+   "orc centurion": 1,
+   "an orc thaumaturgist": 2,
+   "orc slaver": 1,
+   "royal guard": 1
+  },
+  "exp_attributed": 4.714,
+  "exp_attributed_kills": 5,
+  "you_hit": 155,
+  "you_miss": 4,
+  "mob_hit": 75,
+  "mob_miss": 2637,
+  "mobs": {
+   "Orc trainee": {
+    "swings": 119,
+    "landed": 6,
+    "avg": 1.5,
+    "max": 4,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Orc centurion": {
+    "swings": 589,
+    "landed": 16,
+    "avg": 1.9,
+    "max": 6,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Strike": 2,
+     "Cease": 2,
+     "Minor Healing": 1,
+     "Lay on Hands": 1
+    },
+    "loot": {
+     "Crushbone Belt +1": 14,
+     "Crushbone Belt +2": 5,
+     "Small Cloth Shirt +1": 2,
+     "Cloth Sleeves +1": 2,
+     "Cloth Veil +1": 2,
+     "Cloth Gloves +1": 1,
+     "Small Cloth Pants +2": 1,
+     "Cloth Choker +1": 1,
+     "Cloth Wristband +2": 1,
+     "Cloth Choker +2": 1,
+     "Cloth Sandals +2": 1,
+     "Small Cloth Pants +1": 1,
+     "Cloth Sleeves +3": 1,
+     "Cloth Cord +2": 1
+    }
+   },
+   "Orc apprentice": {
+    "swings": 50,
+    "landed": 2,
+    "avg": 3.5,
+    "max": 6,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Blades": 27,
+     "Burn": 8,
+     "Shield of Fire": 2,
+     "Rain of Blades": 1
+    },
+    "loot": {}
+   },
+   "Orc trainer": {
+    "swings": 35,
+    "landed": 1,
+    "avg": 14.0,
+    "max": 14,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Orc legionnaire": {
+    "swings": 865,
+    "landed": 20,
+    "avg": 3.0,
+    "max": 13,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaotic Feedback": 6,
+     "Root": 4,
+     "Charm": 2
+    },
+    "loot": {}
+   },
+   "Bloodgurgler": {
+    "swings": 42,
+    "landed": 2,
+    "avg": 13.0,
+    "max": 24,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaotic Feedback": 26,
+     "Tashani": 10,
+     "Quickness": 7,
+     "Suffocating Sphere": 5,
+     "Root": 3,
+     "Languid Pace": 1,
+     "Sisna's Animation": 1,
+     "Lesser Shielding": 1
+    },
+    "loot": {
+     "Master Crushbone Cell Key": 5,
+     "Rib-bone Stiletto +1": 3,
+     "Spiky Splintmail +1": 2,
+     "Bronze Knuckles +2": 1,
+     "Raw-Hide Leggings +2": 1,
+     "Rusty Short Sword +1": 1,
+     "Rusty Long Sword +1": 1
+    }
+   },
+   "Orc scoutsman": {
+    "swings": 60,
+    "landed": 2,
+    "avg": 1.5,
+    "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Orc warlord": {
+    "swings": 17,
+    "landed": 1,
+    "avg": 31.0,
+    "max": 31,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "An orc thaumaturgist pet": {
+    "swings": 158,
+    "landed": 6,
+    "avg": 4.2,
+    "max": 13,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifebite": 39,
+     "Disease Cloud": 15,
+     "Lifedraw": 14,
+     "Harm Touch": 14,
+     "Clinging Darkness": 13,
+     "Lifespike": 1
+    },
+    "loot": {}
+   },
+   "An orc thaumaturgist": {
+    "swings": 136,
+    "landed": 4,
+    "avg": 1.2,
+    "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 39,
+     "Lifespike": 16,
+     "Disease Cloud": 14,
+     "Poison Bolt": 12,
+     "Heat Blood": 7,
+     "Cancelling of Life": 6,
+     "Clinging Darkness": 4,
+     "Infectious Cloud": 4,
+     "Lifebite": 4,
+     "Engulfing Darkness": 3,
+     "Lesser Shielding": 3,
+     "Restless Bones": 2,
+     "Minor Shielding": 1,
+     "Shielding": 1,
+     "Convoke Shadow": 1
+    },
+    "loot": {}
+   },
+   "Orc emissary": {
+    "swings": 52,
+    "landed": 1,
+    "avg": 2.0,
+    "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Orc slaver": {
+    "swings": 106,
+    "landed": 2,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Slave Trammels +1": 11,
+     "Shackle Key 18": 3,
+     "Slaver`s Lash +1": 3,
+     "Shackle Key 16": 2,
+     "Shackle Key 20": 1,
+     "Shackle Key 17": 1,
+     "Cloth Choker +1": 1,
+     "Shackle Key 22": 1,
+     "Cloth Shirt +3": 1,
+     "Slave Trammels +2": 1
+    }
+   },
+   "Orc taskmaster": {
+    "swings": 200,
+    "landed": 4,
+    "avg": 2.8,
+    "max": 5,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Skin like Wood": 13,
+     "Flame Lick": 11,
+     "Tangling Weeds": 5,
+     "Minor Healing": 2,
+     "Burst of Fire": 2
+    },
+    "loot": {}
+   },
+   "Royal guard": {
+    "swings": 91,
+    "landed": 2,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 1,
+    "backstab_avg": 56.0,
+    "backstab_max": 56,
+    "casts": {
+     "Air Elemental Invisibility": 5
+    },
+    "loot": {
+     "Bronze Rapier +1": 6,
+     "Bronze Shortened Spear +1": 5,
+     "Bronze Dagger +1": 4,
+     "Bronze Main Gauche +1": 4,
+     "Bronze Rapier +2": 2,
+     "Bronze Main Gauche +2": 2,
+     "Bronze Spear +1": 1,
+     "Raw-Hide Skullcap +2": 1,
+     "Raw-Hide Leggings +2": 1,
+     "Raw-Hide Sleeves +1": 1,
+     "Raw-Hide Boots +1": 1
+    }
+   },
+   "Orc Warden": {
+    "swings": 27,
+    "landed": 1,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Master Crushbone Cell Key": 2,
+     "Raw-Hide Gloves +2": 1,
+     "Bracers of Battle +1": 1,
+     "Raw-Hide Cloak +1": 1
+    }
+   },
+   "Lord Darish": {
+    "swings": 4,
+    "landed": 1,
+    "avg": 5.0,
+    "max": 5,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Crushbone Battle Plans": 3,
+     "Bandolier of Teeth +1": 2,
+     "Rusty Short Sword +1": 1,
+     "Torn Elvish Tapestry +1": 1,
+     "Rusty Long Sword +2": 1
+    }
+   },
+   "Bonefire": {
+    "swings": 27,
+    "landed": 3,
+    "avg": 1.3,
+    "max": 2,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Furor": 13,
+     "Desist": 6,
+     "Light Healing": 6,
+     "Courage": 6,
+     "Lay on Hands": 2
+    },
+    "loot": {
+     "Master Crushbone Cell Key": 4,
+     "Corroded Hand Guards +1": 2,
+     "Headsplitter +1": 2,
+     "Bronze Knuckles +2": 1,
+     "Bronze Mace +1": 1,
+     "Raw-Hide Leggings +1": 1
+    }
+   },
+   "Orc oracle": {
+    "swings": 46,
+    "landed": 1,
+    "avg": 19.0,
+    "max": 19,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Drowsy": 15,
+     "Frost Rift": 13,
+     "Minor Healing": 9,
+     "Inner Fire": 9,
+     "Burst of Flame": 5,
+     "Sicken": 3
+    },
+    "loot": {}
+   },
+   "Marrowbane": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Blades": 39,
+     "Shield of Fire": 14,
+     "Burn": 12,
+     "Shielding": 4,
+     "Lesser Summoning: Water": 3,
+     "Rain of Blades": 1,
+     "Rain of Fire": 1
+    },
+    "loot": {
+     "Grimy Black Silk Robe +1": 4,
+     "Wood Elf Scout Bauble +1": 2,
+     "Rusty Broad Sword +1": 1,
+     "Rusty Short Sword +1": 1,
+     "Rusty Short Sword +2": 1
+    }
+   },
+   "Marrowbane pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Water Elemental Attack": 18
+    },
+    "loot": {}
+   },
+   "The Prophet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 8,
+     "Frost Rift": 6,
+     "Inner Fire": 5,
+     "Drowsy": 5,
+     "Spirit of Wolf": 3,
+     "Sicken": 3,
+     "Tainted Breath": 1,
+     "Burst of Flame": 1
+    },
+    "loot": {
+     "Blue Orc Head": 6,
+     "Sealed Note": 6,
+     "Disgusting Padded Shirt +1": 5,
+     "Tergon's Spellbook": 3,
+     "Splintering Club +1": 1,
+     "Raw-Hide Gloves +1": 1,
+     "Raw-Hide Sleeves +2": 1,
+     "Rotting Faydark Mask +1": 1
+    }
+   },
+   "Orc legionnaire pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 6,
+     "Cease": 4,
+     "Furor": 4
+    },
+    "loot": {}
+   },
+   "Bloodgurgler pet": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Furor": 7,
+     "Light Healing": 5,
+     "Courage": 4,
+     "Root": 4,
+     "Lay on Hands": 1
+    },
+    "loot": {}
+   },
+   "A dwarven slave": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Skin like Wood": 2
+    },
+    "loot": {}
+   },
+   "Rondo Dunfire": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Rondo's Tongue": 2,
+     "Dwarf Meat": 1
+    }
+   }
+  },
+  "drop_tier_floor": 1,
+  "drop_tier_modal": 1
+ },
+ {
+  "zone": "Clan Crushbone",
+  "character": "Avenrae",
+  "zone_from": "/who, read from this log",
+  "difficulty_label": null,
+  "difficulty_num": null,
+  "difficulty": 1,
+  "difficulty_from": "loot tier",
+  "difficulty_label_agrees": null,
+  "difficulty_agrees": true,
+  "date": "19 Aug 2026",
+  "window": "19:55-20:44",
+  "stamps": [],
+  "minutes": 49,
+  "kills": 138,
+  "distinct": 22,
+  "kinds": [
+   "Ambassador D`Vinn",
+   "Bloodgurgler",
+   "Bonefire",
+   "Emperor Crush",
+   "Lord Darish",
+   "Marrowbane",
+   "Rondo Dunfire",
+   "The Prophet",
+   "a dwarven slave",
+   "an orc thaumaturgist",
+   "an orc thaumaturgist pet",
+   "orc apprentice",
+   "orc centurion",
+   "orc emissary",
+   "orc legionnaire",
+   "orc oracle",
+   "orc scoutsman",
+   "orc slaver",
+   "orc taskmaster",
+   "orc trainee",
+   "orc warlord",
+   "royal guard"
+  ],
+  "kills_by_mob": {
+   "orc legionnaire": 33,
+   "orc centurion": 22,
+   "an orc thaumaturgist": 16,
+   "orc taskmaster": 12,
+   "royal guard": 9,
+   "orc slaver": 7,
+   "The Prophet": 5,
+   "orc oracle": 5,
+   "orc trainee": 4,
+   "Bonefire": 3,
+   "Lord Darish": 3,
+   "Bloodgurgler": 3,
+   "an orc thaumaturgist pet": 3,
+   "Marrowbane": 2,
+   "Rondo Dunfire": 2,
+   "orc warlord": 2,
+   "orc scoutsman": 2,
+   "orc emissary": 1,
+   "a dwarven slave": 1,
+   "orc apprentice": 1,
+   "Emperor Crush": 1,
+   "Ambassador D`Vinn": 1
+  },
+  "drop_tiers": {
+   "1": 161,
+   "2": 46,
+   "3": 1
+  },
+  "faction": {
+   "Storm Guard": 225,
+   "Emerald Warriors": 224,
+   "Crushbone Orcs": 223,
+   "Faydarks Champions": 223,
+   "Butcherblock Bandits": 2,
+   "Miners Guild 628": 2,
+   "Clerics of Underfoot": 1,
+   "Kazon Stormhammer": 1,
+   "Miners Guild 249": 1,
+   "Indigo Brotherhood": 1,
+   "Steel Warriors": 1,
+   "Primordial Malice": 1
+  },
+  "context": [],
+  "escapes": [],
+  "control": {
+   "melee_stuns_avoided": 75,
+   "lockout_lines": 0,
+   "fear_lines": 0,
+   "screams": 0,
+   "scream_seconds": 0,
+   "stuns": {},
+   "resists": {
+    "Desist": {
+     "Bonefire": 4
+    },
+    "Clinging Darkness": {
+     "an orc thaumaturgist pet": 4
+    },
+    "Root": {
+     "Bloodgurgler pet": 4,
+     "orc legionnaire": 1,
+     "Bloodgurgler": 1
+    },
+    "Strike": {
+     "orc centurion": 1
+    },
+    "Furor": {
+     "Bloodgurgler pet": 2,
+     "Bonefire": 2
+    },
+    "Suffocating Sphere": {
+     "Bloodgurgler": 2
+    },
+    "Drowsy": {
+     "orc oracle": 4
+    },
+    "Shock of Blades": {
+     "orc apprentice": 3,
+     "Marrowbane": 1
+    },
+    "Chaotic Feedback": {
+     "Bloodgurgler": 1
+    },
+    "Engulfing Darkness": {
+     "an orc thaumaturgist": 1
+    },
+    "Cancelling of Life": {
+     "an orc thaumaturgist": 2
+    },
+    "Burn": {
+     "Marrowbane": 1
+    }
+   }
+  },
+  "faction_by_mob": {
+   "a dwarven slave": {
+    "Clerics of Underfoot": -5,
+    "Kazon Stormhammer": -5,
+    "Miners Guild 249": -3
+   },
+   "Rondo Dunfire": {
+    "Butcherblock Bandits": -25,
+    "Miners Guild 628": 5
+   },
+   "Ambassador D`Vinn": {
+    "Indigo Brotherhood": -75,
+    "Steel Warriors": 5,
+    "Primordial Malice": 150
+   }
+  },
+  "faction_capped_by_mob": {
+   "royal guard": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Bonefire": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Lord Darish": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "an orc thaumaturgist": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc centurion": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc legionnaire": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc emissary": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "The Prophet": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc slaver": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc taskmaster": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Marrowbane": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Bloodgurgler": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Rondo Dunfire": {
+    "Storm Guard": "up"
+   },
+   "orc trainee": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc apprentice": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc warlord": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc scoutsman": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "orc oracle": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Emperor Crush": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "Ambassador D`Vinn": {
+    "Emerald Warriors": "up"
+   }
+  },
+  "exp_by_mob": {
+   "royal guard": 2.424,
+   "Bonefire": 3.126,
+   "Lord Darish": 2.702,
+   "an orc thaumaturgist": 1.646,
+   "orc centurion": 0.525,
+   "orc legionnaire": 1.113,
+   "orc emissary": 1.803,
+   "The Prophet": 3.021,
+   "orc slaver": 0.77,
+   "orc taskmaster": 1.126,
+   "Marrowbane": 3.281,
+   "Bloodgurgler": 3.083,
+   "Rondo Dunfire": 0.83,
+   "orc trainee": 0.439,
+   "orc apprentice": 0.397,
+   "orc warlord": 2.019,
+   "orc scoutsman": 0.93,
+   "orc oracle": 1.948,
+   "Emperor Crush": 2.924,
+   "Ambassador D`Vinn": 2.571
+  },
+  "exp_samples_by_mob": {
+   "royal guard": 9,
+   "Bonefire": 3,
+   "Lord Darish": 3,
+   "an orc thaumaturgist": 16,
+   "orc centurion": 18,
+   "orc legionnaire": 33,
+   "orc emissary": 1,
+   "The Prophet": 5,
+   "orc slaver": 6,
+   "orc taskmaster": 12,
+   "Marrowbane": 2,
+   "Bloodgurgler": 3,
+   "Rondo Dunfire": 2,
+   "orc trainee": 2,
+   "orc apprentice": 1,
+   "orc warlord": 2,
+   "orc scoutsman": 2,
+   "orc oracle": 5,
+   "Emperor Crush": 1,
+   "Ambassador D`Vinn": 1
+  },
+  "exp_attributed": 186.736,
+  "exp_attributed_kills": 127,
+  "you_hit": 673,
+  "you_miss": 372,
+  "mob_hit": 1075,
+  "mob_miss": 1030,
+  "mobs": {
+   "Orc warlord": {
+    "swings": 72,
+    "landed": 45,
+    "avg": 5.8,
+    "max": 27,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Deterioriated Ancient Faydark Longbow +1": 3,
+     "Bracers of Battle +1": 1,
+     "Raw-Hide Sleeves +2": 1,
+     "Crushbone Shoulderpads +1": 1
+    }
+   },
+   "Royal guard": {
+    "swings": 100,
+    "landed": 51,
+    "avg": 2.9,
+    "max": 11,
+    "backstabs": 8,
+    "backstab_avg": 25.4,
+    "backstab_max": 56,
+    "casts": {
+     "Air Elemental Invisibility": 6
+    },
+    "loot": {
+     "Bronze Main Gauche +1": 3,
+     "Bronze Spear +1": 3,
+     "Bronze Shortened Spear +2": 2,
+     "Bronze Rapier +1": 2,
+     "Bronze Shortened Spear +1": 1,
+     "Raw-Hide Belt +1": 1,
+     "Bronze Rapier +3": 1,
+     "Mote of Minor Potential": 1,
+     "Bronze Dagger +1": 1,
+     "Bronze Spear +2": 1,
+     "Bronze Rapier +2": 1
+    }
+   },
+   "Bonefire": {
+    "swings": 58,
+    "landed": 37,
+    "avg": 6.7,
+    "max": 33,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Furor": 14,
+     "Desist": 6,
+     "Light Healing": 6,
+     "Lay on Hands": 3,
+     "Courage": 3
+    },
+    "loot": {
+     "Master Crushbone Cell Key": 4,
+     "Headsplitter +1": 2,
+     "Headsplitter +2": 1,
+     "Corroded Hand Guards +1": 1,
+     "Raw-Hide Cloak +1": 1
+    }
+   },
+   "Orc emissary": {
+    "swings": 56,
+    "landed": 29,
+    "avg": 2.8,
+    "max": 14,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Rusty Spear +1": 4,
+     "Crushbone Shoulderpads +1": 2,
+     "Rusty Spear +2": 1
+    }
+   },
+   "Orc legionnaire": {
+    "swings": 436,
+    "landed": 188,
+    "avg": 3.5,
+    "max": 21,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaotic Feedback": 6,
+     "Root": 4,
+     "Charm": 2
+    },
+    "loot": {
+     "Legionnaire's Bracer +1": 26,
+     "Crushbone Shoulderpads +1": 6,
+     "Legionnaire's Bracer +2": 5,
+     "Crushbone Shoulderpads +2": 4,
+     "Mote of Minor Potential": 2,
+     "Rusty Short Sword +1": 2,
+     "Raw-Hide Boots +2": 1,
+     "Rusty Long Sword +1": 1,
+     "Raw-Hide Mask +1": 1,
+     "Raw-Hide Tunic +1": 1,
+     "Raw-Hide Mask +2": 1,
+     "Bronze Long Sword +1": 1,
+     "Rusty Long Sword +2": 1,
+     "Raw-Hide Wristbands +1": 1,
+     "Raw-Hide Belt +2": 1,
+     "Raw-Hide Gloves +1": 1,
+     "Raw-Hide Shoulderpads +1": 1,
+     "Raw-Hide Sleeves +1": 1,
+     "Bronze Two Handed Sword +2": 1,
+     "Bronze Two Handed Sword +1": 1,
+     "Raw-Hide Gorget +1": 1,
+     "Raw-Hide Belt +1": 1
+    }
+   },
+   "Lord Darish": {
+    "swings": 128,
+    "landed": 79,
+    "avg": 4.7,
+    "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Bandolier of Teeth +1": 3,
+     "Crushbone Battle Plans": 3,
+     "Raw-Hide Sleeves +1": 1,
+     "Rusty Short Sword +1": 1,
+     "Raw-Hide Belt +2": 1
+    }
+   },
+   "An orc thaumaturgist pet": {
+    "swings": 139,
+    "landed": 71,
+    "avg": 2.4,
+    "max": 15,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifebite": 31,
+     "Lifedraw": 16,
+     "Harm Touch": 16,
+     "Disease Cloud": 15,
+     "Clinging Darkness": 9,
+     "Lifespike": 1
+    },
+    "loot": {}
+   },
+   "An orc thaumaturgist": {
+    "swings": 137,
+    "landed": 78,
+    "avg": 2.6,
+    "max": 16,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Lifedraw": 34,
+     "Poison Bolt": 11,
+     "Disease Cloud": 11,
+     "Lifespike": 11,
+     "Heat Blood": 7,
+     "Cancelling of Life": 7,
+     "Infectious Cloud": 4,
+     "Lifebite": 4,
+     "Lesser Shielding": 3,
+     "Restless Bones": 2,
+     "Engulfing Darkness": 2,
+     "Convoke Shadow": 2,
+     "Clinging Darkness": 2,
+     "Shielding": 1
+    },
+    "loot": {
+     "Mote of Minor Potential": 3
+    }
+   },
+   "Orc taskmaster": {
+    "swings": 147,
+    "landed": 82,
+    "avg": 2.5,
+    "max": 16,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Skin like Wood": 11,
+     "Flame Lick": 8,
+     "Tangling Weeds": 4,
+     "Burst of Fire": 2,
+     "Minor Healing": 1
+    },
+    "loot": {
+     "Brass Earring +1": 6,
+     "Leather Whip +1": 6,
+     "Raw-Hide Boots +1": 1,
+     "Brass Earring +2": 1,
+     "Mote of Minor Potential": 1,
+     "Mote of Lesser Potential": 1,
+     "Raw-Hide Tunic +1": 1,
+     "Raw-Hide Gorget +1": 1,
+     "Leather Whip +2": 1,
+     "Raw-Hide Cloak +1": 1
+    }
+   },
+   "Orc centurion": {
+    "swings": 300,
+    "landed": 112,
+    "avg": 1.5,
+    "max": 9,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Strike": 2,
+     "Cease": 2,
+     "Minor Healing": 1,
+     "Lay on Hands": 1
+    },
+    "loot": {
+     "Crushbone Belt +1": 8,
+     "Crushbone Belt +2": 4,
+     "Cloth Veil +1": 2,
+     "Small Cloth Cap +1": 2,
+     "Cloth Cape +1": 1,
+     "Cloth Sleeves +1": 1,
+     "Cloth Gloves +1": 1,
+     "Cloth Cord +2": 1,
+     "Mote of Minor Potential": 1
+    }
+   },
+   "Ambassador D`Vinn": {
+    "swings": 101,
+    "landed": 61,
+    "avg": 5.4,
+    "max": 33,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Dark Elf Parts": 1,
+     "Dragoon Dirk +1": 1,
+     "Wood Elf Scout Shoes +1": 1
+    }
+   },
+   "Emperor Crush": {
+    "swings": 22,
+    "landed": 18,
+    "avg": 6.1,
+    "max": 33,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Rusty Broad Sword +2": 1,
+     "Dwarven Ringmail Tunic +1": 1
+    }
+   },
+   "The Prophet": {
+    "swings": 41,
+    "landed": 23,
+    "avg": 6.3,
+    "max": 23,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Light Healing": 8,
+     "Frost Rift": 5,
+     "Drowsy": 4,
+     "Spirit of Wolf": 3,
+     "Sicken": 3,
+     "Tainted Breath": 1,
+     "Inner Fire": 1,
+     "Burst of Flame": 1
+    },
+    "loot": {
+     "Blue Orc Head": 6,
+     "Sealed Note": 6,
+     "Disgusting Padded Shirt +1": 4,
+     "Mote of Minor Potential": 2,
+     "Rotting Faydark Mask +1": 2,
+     "Raw-Hide Skullcap +1": 1,
+     "Tergon's Spellbook": 1,
+     "Rusty Morning Star +1": 1,
+     "Splintering Club +1": 1
+    }
+   },
+   "Marrowbane pet": {
+    "swings": 13,
+    "landed": 9,
+    "avg": 12.8,
+    "max": 22,
+    "backstabs": 3,
+    "backstab_avg": 22.3,
+    "backstab_max": 23,
+    "casts": {
+     "Water Elemental Attack": 15
+    },
+    "loot": {}
+   },
+   "Marrowbane": {
+    "swings": 17,
+    "landed": 9,
+    "avg": 11.8,
+    "max": 35,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Blades": 19,
+     "Shield of Fire": 14,
+     "Burn": 8,
+     "Lesser Summoning: Water": 3,
+     "Shielding": 2,
+     "Rain of Fire": 1
+    },
+    "loot": {
+     "Grimy Black Silk Robe +1": 3,
+     "Wood Elf Scout Bauble +1": 1,
+     "Bronze Two Handed Sword +2": 1
+    }
+   },
+   "Orc slaver": {
+    "swings": 95,
+    "landed": 38,
+    "avg": 2.3,
+    "max": 12,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Slave Trammels +1": 7,
+     "Slaver`s Lash +1": 4,
+     "Shackle Key 17": 2,
+     "Shackle Key 20": 2,
+     "Slave Trammels +2": 2,
+     "Shackle Key 24": 1,
+     "Shackle Key 16": 1,
+     "Mote of Lesser Potential": 1
+    }
+   },
+   "Orc scoutsman": {
+    "swings": 35,
+    "landed": 23,
+    "avg": 2.8,
+    "max": 17,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Sarialiyn's Lute": 5,
+     "Bronze Mace +1": 1,
+     "Raw-Hide Gorget +2": 1,
+     "Raw-Hide Wristbands +1": 1,
+     "Rusty Short Sword +1": 1,
+     "Crushbone Shoulderpads +1": 1,
+     "Rusty Long Sword +1": 1
+    }
+   },
+   "Bloodgurgler pet": {
+    "swings": 35,
+    "landed": 22,
+    "avg": 1.5,
+    "max": 9,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Courage": 7,
+     "Furor": 7,
+     "Light Healing": 5,
+     "Root": 4,
+     "Lay on Hands": 1
+    },
+    "loot": {}
+   },
+   "Bloodgurgler": {
+    "swings": 31,
+    "landed": 21,
+    "avg": 7.8,
+    "max": 26,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Chaotic Feedback": 9,
+     "Quickness": 7,
+     "Tashani": 3,
+     "Suffocating Sphere": 2,
+     "Sisna's Animation": 1,
+     "Lesser Shielding": 1,
+     "Root": 1
+    },
+    "loot": {
+     "Master Crushbone Cell Key": 4,
+     "Spiky Splintmail +2": 2,
+     "Rib-bone Stiletto +2": 1,
+     "Spiky Splintmail +1": 1,
+     "Raw-Hide Shoulderpads +1": 1,
+     "Raw-Hide Gloves +1": 1
+    }
+   },
+   "Orc oracle": {
+    "swings": 57,
+    "landed": 31,
+    "avg": 6.0,
+    "max": 32,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Drowsy": 11,
+     "Frost Rift": 10,
+     "Inner Fire": 9,
+     "Minor Healing": 7,
+     "Sicken": 2,
+     "Burst of Flame": 2
+    },
+    "loot": {
+     "Crushbone Fetish +1": 5,
+     "Ornament of the Oracle +2": 2,
+     "Raw-Hide Belt +1": 1,
+     "Splintering Club +1": 1,
+     "Raw-Hide Wristbands +2": 1,
+     "Crushbone Fetish +2": 1
+    }
+   },
+   "Chokehold": {
+    "swings": 33,
+    "landed": 22,
+    "avg": 5.4,
+    "max": 30,
+    "backstabs": 7,
+    "backstab_avg": 98.1,
+    "backstab_max": 143,
+    "casts": {},
+    "loot": {
+     "Master Crushbone Cell Key": 2,
+     "Rusty Broad Sword +1": 1,
+     "Armband of Serrated Teeth +1": 1,
+     "Rusty Long Sword +1": 1,
+     "Armband of Serrated Teeth +2": 1
+    }
+   },
+   "Orc Warden": {
+    "swings": 8,
+    "landed": 4,
+    "avg": 4.2,
+    "max": 9,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Master Crushbone Cell Key": 2,
+     "Raw-Hide Belt +1": 1
+    }
+   },
+   "Rondo Dunfire": {
+    "swings": 3,
+    "landed": 2,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Rondo's Tongue": 2
+    }
+   },
+   "Orc trainee": {
+    "swings": 29,
+    "landed": 15,
+    "avg": 2.3,
+    "max": 9,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {
+     "Leather Whip +1": 4,
+     "Leather Whip +2": 2,
+     "Crushbone Belt +1": 2,
+     "Crushbone Belt +2": 1,
+     "Small Cloth Pants +1": 1
+    }
+   },
+   "Orc trainer": {
+    "swings": 4,
+    "landed": 3,
+    "avg": 2.7,
+    "max": 6,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {},
+    "loot": {}
+   },
+   "Orc apprentice": {
+    "swings": 8,
+    "landed": 2,
+    "avg": 1.0,
+    "max": 1,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Shock of Blades": 10,
+     "Burn": 3,
+     "Shield of Fire": 1
+    },
+    "loot": {
+     "Cloth Cord +1": 1
+    }
+   },
+   "A dwarven slave": {
+    "swings": 0,
+    "landed": 0,
+    "avg": null,
+    "max": null,
+    "backstabs": 0,
+    "backstab_avg": null,
+    "backstab_max": null,
+    "casts": {
+     "Skin like Wood": 3
+    },
+    "loot": {
+     "Rusty Mining Pick +2": 1,
+     "Dwarven Blood": 1
+    }
+   }
+  },
+  "drop_tier_floor": 1,
+  "drop_tier_modal": 1
  }
 ]

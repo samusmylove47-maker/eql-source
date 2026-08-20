@@ -472,8 +472,14 @@ def collect(rows, character=None):
                    'text': m.group(1).strip().rstrip("'")}
                   for w, x in rows for m in [STAMP.search(x)] if m]
 
-    def new_session(zone, diff, when):
-        return dict(zone=zone, difficulty_label=diff,
+    def new_session(zone, diff, when, inherited=False):
+        # zone_inherited marks a zone carried over from the previous session
+        # rather than read from a zone line in this one. A carried zone is a
+        # guess that survives arbitrarily long gaps: Avenrae's 19 Aug log
+        # carried "The Feerrott" across seven hours into a Crushbone run, and
+        # 138 kills landed on the wrong survey. /who may correct a carried
+        # zone; it may never correct an observed one.
+        return dict(zone=zone, zone_inherited=inherited, difficulty_label=diff,
                     date=when.strftime('%d %b %Y'),
                     start=when.strftime('%H:%M'), end=when.strftime('%H:%M'),
                     stamps=[], kills=collections.Counter(),
@@ -527,15 +533,23 @@ def collect(rows, character=None):
                         and when.date() == prev.date())
             cur = new_session(cur['zone'] if (cur and same_day) else None,
                               cur['difficulty_label'] if (cur and same_day) else None,
-                              when)
+                              when,
+                              inherited=bool(cur and same_day and cur['zone']))
             sessions.append(cur)
         prev = when
-        # Only where the session still has no zone. A real zone line always
-        # wins, and this never overrides one — it fills a hole.
-        if cur.get('zone') is None and character:
+        # Where the session has no zone, or only a zone carried forward from an
+        # earlier session. A zone line read in THIS session always wins and is
+        # never overridden; a carried one is a guess and /who is first-hand.
+        if (cur.get('zone') is None or cur.get('zone_inherited')) and character:
             wz = _who_zone(x, character)
-            if wz:
+            if wz and wz != cur.get('zone'):
                 cur['zone'] = wz
+                cur['zone_inherited'] = False
+                cur['difficulty_label'] = None
+                cur['difficulty_num'] = None
+                cur['zone_from'] = '/who, read from this log'
+            elif wz:
+                cur['zone_inherited'] = False
                 cur['zone_from'] = '/who, read from this log'
         m = ZONE.search(x)
         if m and NOT_A_ZONE.match(m.group(1).strip()):
@@ -563,6 +577,8 @@ def collect(rows, character=None):
             # returning, or stepping out and back, emits another zone line and
             # was splitting one Mistmoore run into a 15-minute session and a
             # 2-minute one. A real break is caught by the gap rule above.
+            if cur is not None:
+                cur['zone_inherited'] = False
             if cur and cur['zone'] == raw and cur['difficulty_label'] == diff:
                 continue
             cur = new_session(raw, diff, when)
