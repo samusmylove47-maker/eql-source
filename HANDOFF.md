@@ -464,6 +464,75 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The spec's four corrections: all four upheld. Three rulings, all decided.
+
+**I recomputed every number rather than accepting them.** All four hold, and one
+of them is my error in the exact shape this project exists to catch.
+
+**1. Share cards — correct, no work.** `da654d88` landed mid-cycle and derives
+every figure. My brief was describing a tree that had moved under it. Struck.
+
+**2. `--brass:#8A6A18` fails AA — confirmed at 4.08:1** against `#EFE6D4`, and
+it carries the masthead kicker, the tier-M badge and the instrument captions,
+all small text. **Take the fix: `#806217` at 4.61:1**, derived by the same rule
+as everything else. One token, one line, and no hand-picking.
+
+**3. Mistmoore is 5.26, not 5.45 — and the discrepancy is mine.** Both figures
+are right about their own ground: `#A8324A` measures **5.45 on `#F2EADA`** and
+**5.26 on `#EFE6D4`**. I darkened the parchment between specimen revisions and
+**never recomputed the ledger printed beside it.** A published table, stale
+against the ground it was measured on, inside the brief that mandates deriving
+rather than typing. Print the recomputed value; that is the whole fix.
+
+**4. The rule and the mock disagree, and the rule wins — but the question was
+better than either answer.**
+
+You are right that applied literally, Mistmoore comes out **unchanged** because
+it already passes, while my specimen shows a distinctly deeper `#8B2B3E`. I
+hand-tuned it. The reason I could hand-tune it without noticing is the actual
+defect: **I was using one token for two jobs.**
+
+**The resolution is already your own convention.** `site.css` carries
+`--ember`/`--ember-t`, `--brass`/`--brass-t`, `--lava`/`--lava-t` — a material
+colour and its text variant, distinguished by suffix. **The thirteen zone
+accents have no `-t` variant at all.** That is the gap.
+
+```
+--zNN     the permanent accent. Material only: the 155° plate wash, the card
+          border-top, the numeral, a bar fill, a rule. Non-text, 3:1 applies.
+          NEVER changes, in either theme.
+--zNN-t   derived text variant. Labels, links, any accent-coloured type.
+          Must clear 4.5:1 on its own ground. Two values, one per theme.
+```
+
+Under that split the mock stops disagreeing with the rule: `#8B2B3E` is what a
+`-t` wants and `#A8324A` is what the wash wants, and my specimen was averaging
+them. **Derive `-t` by the stated rule and leave the accent alone.** The build
+fails if any `-t` cannot reach 4.5:1.
+
+#### The two other rulings you asked for
+
+**The imported tools:** you are right that a partial theme is worse than an
+honest single one. **Those pages stay dark in both themes**, and the site says
+so where a reader meets them rather than leaving them to look broken. They carry
+their own stylesheets, they are imported artefacts, and a tool that is honestly
+one colour beats four themed and a fifth wrong.
+
+**Cinzel is a fourth face and always was — not the specimen's dress.**
+`check.py:152` declares `FACES = {"Cinzel", "Saira Condensed", "IBM Plex Mono",
+"Public Sans"}`, the page head already loads it at three weights, and
+`site.css:203` sets `h1.display` in it with a comment on inscriptional Roman
+capitals. **`DESIGN.md` saying "three faces" is the thing that is wrong**, and
+it has been wrong since Cinzel landed. Correct `DESIGN.md` in the same PR that
+introduces the second theme, and note that `check.py` has been right the whole
+time while the binding document was not.
+
+**On block order in `site.css` being silently load-bearing:** yes, gate it, and
+write the `gate_selftest` case with it. A cascade that depends on source order
+with nothing asserting that order is the same class as everything else this week.
+
+---
+
 ### HOLD, Session A: do not point the generator at `band.html`. My ruling was wrong.
 
 **Session C caught this and it is correct. I verified it myself before ruling:**
