@@ -22,7 +22,14 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=9fa2e0d6">
+<link rel="stylesheet" href="../assets/site.css?v=c503d970">
+<script>/* Torchlight is the default and the CSS says so, so this only ever has
+   work to do for a reader who chose daylight. It runs before first paint to
+   avoid a flash of the wrong ground, and it is wrapped because localStorage
+   throws outright in a browser with cookies blocked - the site must render
+   dark in that case, not fail to render. */
+(function(){try{var t=localStorage.getItem("eqls-theme");
+if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})()</script>
 <style>
 :root{--acc:var(--ember);--acct:var(--ember-t)}
 html{background:var(--surface-0)}
@@ -97,8 +104,21 @@ main.raidx::before{background-image:
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
     </nav>
+    <button class="lamp" type="button" aria-live="polite"
+      title="Switch the ground"></button>
   </div>
 </header>
+<script>/* Labelled by DESTINATION, not by state: it reads DAYLIGHT while you are
+   in torchlight. The label itself is set in CSS so it is correct before this
+   runs and stays correct with JavaScript off; only the switching needs script.
+   A CSS-only toggle would need a checkbox ahead of every themed element in
+   source order, and the chrome is injected into pages whose body order we do
+   not control. */
+(function(){var b=document.querySelector(".lamp");if(!b)return;
+b.addEventListener("click",function(){var d=document.documentElement;
+var next=d.getAttribute("data-theme")==="light"?"dark":"light";
+d.setAttribute("data-theme",next);
+try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 <main class="raidx">
 <div class="sky-wrap">
 <div class="sheet">

@@ -253,6 +253,53 @@
 :root[data-theme="light"] [style*="--c:"]{
   --c-t:color-mix(in srgb, var(--c) 48%, var(--bone)); }
 
+/* ---- the lamp: the ground switch ----------------------------------------
+   Labelled by DESTINATION rather than by state - it reads DAYLIGHT while you
+   are standing in torchlight. The label is content in CSS, so it is right
+   before any script runs and stays right with JavaScript off; only the
+   switching needs script.
+
+   It is a lantern because that is the site's own framing for the two grounds,
+   and the lantern is the one motif DESIGN.md assigns to this control and to
+   nothing else. ---------------------------------------------------------- */
+.lamp{
+  margin-left:var(--s-3); flex:none; cursor:pointer;
+  font-family:"IBM Plex Mono",monospace; font-size:var(--t-2xs);
+  letter-spacing:var(--tr-wider); text-transform:uppercase;
+  padding:6px 10px; border-radius:var(--r-1);
+  border:1px solid var(--rule); background:transparent; color:var(--mut);
+  transition:color var(--speed), border-color var(--speed);
+}
+.lamp:hover{ color:var(--bone); border-color:var(--rule2); }
+.lamp:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
+.lamp::before{ content:"Daylight"; }
+:root[data-theme="light"] .lamp::before{ content:"Torchlight"; }
+
+/* SIZED FOR THE LONGER WORD, WHICH IS NOT COSMETIC.
+   The label is the destination, so it changes length when the ground changes:
+   Daylight is eight characters and Torchlight is ten. Left to size itself the
+   button grew by 14px in daylight and took the masthead past 390px - caught by
+   conformance.js on its first page the moment it swept both themes, and it
+   would have shipped otherwise, because the dark sweep is clean.
+   Reserving the width also stops the header reflowing every time it is used. */
+.lamp{ min-width:11ch; text-align:center; }
+
+/* WHY THE ROW WRAPS RATHER THAN THE LABEL SHRINKING.
+   The label is the destination, so it changes length with the ground: Daylight
+   is eight characters, Torchlight is ten. At 390px the masthead holds the mark
+   at 202px and the burger at 54px, and the longer label took the row 15px past
+   the viewport - found by conformance.js on its first page the moment it swept
+   both themes, and invisible to a torchlight-only sweep because that label is
+   the short one.
+   Shortening or truncating the label was the other option and it is the wrong
+   one here: a truncation that changes meaning is the exact fault this site
+   corrected on 20 August, and "Torchligh…" is worse than a second row. So the
+   row wraps and the label stays whole. */
+@media (max-width:720px){
+  .site-bar .shell{ flex-wrap:wrap; row-gap:var(--s-2); }
+  .lamp{ margin-left:auto; padding:6px 8px; }
+}
+
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}

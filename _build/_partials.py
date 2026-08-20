@@ -198,6 +198,13 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{rel}assets/site.css{'?v=' + CSS_V if CSS_V else ''}">
+<script>/* Torchlight is the default and the CSS says so, so this only ever has
+   work to do for a reader who chose daylight. It runs before first paint to
+   avoid a flash of the wrong ground, and it is wrapped because localStorage
+   throws outright in a browser with cookies blocked - the site must render
+   dark in that case, not fail to render. */
+(function(){{try{{var t=localStorage.getItem("eqls-theme");
+if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}}catch(e){{}}}})()</script>
 {extra}</head>
 <body>'''
 
@@ -215,8 +222,21 @@ def bar(rel=""):
       <a href="{rel}sources.html">Accuracy</a>
       <a href="{rel}search.html" class="nav-find">Search</a>
     </nav>
+    <button class="lamp" type="button" aria-live="polite"
+      title="Switch the ground"></button>
   </div>
-</header>'''
+</header>
+<script>/* Labelled by DESTINATION, not by state: it reads DAYLIGHT while you are
+   in torchlight. The label itself is set in CSS so it is correct before this
+   runs and stays correct with JavaScript off; only the switching needs script.
+   A CSS-only toggle would need a checkbox ahead of every themed element in
+   source order, and the chrome is injected into pages whose body order we do
+   not control. */
+(function(){{var b=document.querySelector(".lamp");if(!b)return;
+b.addEventListener("click",function(){{var d=document.documentElement;
+var next=d.getAttribute("data-theme")==="light"?"dark":"light";
+d.setAttribute("data-theme",next);
+try{{localStorage.setItem("eqls-theme",next);}}catch(e){{}}}});}})()</script>'''
 
 def _foot_links(items, folder, rel):
     """Footer list items for a registry. Generated so the footer cannot drift
