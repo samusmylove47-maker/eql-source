@@ -464,6 +464,70 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### BUILD ORDER, Session A: `ATLAS-SPEC.md` is approved. Build it.
+
+**The spec is accepted with the three rulings below already decided. You do not
+need another round from me — build, push, and the owner merges.**
+
+Your four corrections all held; I recomputed each rather than accepting them.
+Section 0 stands as written, with the brass fix `#806217` at 4.61:1 taken as
+proposed, the Mistmoore figure corrected to 5.26 (my error — I darkened the
+ground between revisions and never recomputed the table), and the share-card
+item struck.
+
+**The three rulings you asked for, all settled and recorded above in full:**
+
+1. **Accents: two tokens, not one.** `--zNN` stays the permanent material colour
+   for the wash, the border-top, the numeral and any bar or rule — non-text,
+   3:1. `--zNN-t` is the derived text variant, one per theme, must clear 4.5:1
+   on its own ground, derived by the stated rule and never hand-picked. That is
+   your existing `--ember`/`--ember-t` convention, which was simply never
+   extended to the zone accents. The build fails if any `-t` cannot reach 4.5:1.
+2. **The imported tools stay dark in both themes**, and the site says so where a
+   reader meets them. Your argument won it: honestly one colour beats four
+   themed and a fifth wrong.
+3. **Cinzel is a fourth face and always was.** `check.py:152` has declared four
+   since it landed; `DESIGN.md` saying three is the error. Correct `DESIGN.md`
+   in the same PR, and note that the checker was right while the binding
+   document was not.
+
+**Order of work, and the first two are not negotiable:**
+
+1. **`gate_selftest.py` goes green first.** It is red now — one case reports
+   TEST BROKEN because the mandate moved Mistmoore to `full` and the case is
+   anchored to a typed string. It is the instrument that proves every other gate
+   works, so nothing cosmetic lands in front of it. Re-anchor it to a derived
+   value while you are there.
+2. **The two live falsehoods**, in one PR: `reading-the-plans.html` still says
+   "eleven dungeons" where the note names six, and `najena.html` publishes "the
+   NPC record says 3" where the source says 35, from the 190-character
+   truncation. Break on a word boundary, append an ellipsis, never end on a digit.
+3. **Then the theme**, on its own branch, alone — `CSS_V` re-hashes and it is a
+   whole-site diff by construction.
+
+**Acceptance, all of it before you ask for a merge:**
+
+- `./build.sh` exits 0 and `python3 scripts/check.py` is green.
+- `python3 scripts/gate_selftest.py` is **green**, with a new case for the theme:
+  break a `-t` derivation below 4.5:1 and the build must fail.
+- `node scripts/conformance.js` at **both viewports in both themes** — that is
+  the only check here that lays a page out, and a two-theme site doubles what it
+  has to cover.
+- Tag-strip the built home page and assert the Auras paragraph reads as the
+  agreed copy: what the app does today, the three verified clauses, **no promise
+  about anyone else's roadmap**.
+- No accent-coloured type anywhere resolves to a `--zNN` rather than a `--zNN-t`.
+
+**One last thing, and report it under the To heading whatever the answer.** The
+site has not deployed since `2b05159b` on 18 Aug — 33 commits. **After the owner
+merges your work, check whether eqlsource.com actually changes.** Fingerprint it:
+`curl -s https://eqlsource.com | md5sum` against
+`git show origin/main:public/index.html | md5sum`. If they differ an hour after a
+merge, the deployment is broken independently of anything we build, and that is a
+finding worth more than the theme.
+
+---
+
 ### The site has not deployed for 29 hours. `main` is 33 commits ahead of live.
 
 Measured, 19 Aug, by fingerprinting the served page against every recent commit:
