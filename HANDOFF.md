@@ -258,6 +258,19 @@ Play stopped after Kedge Keep. Ingestion is complete through the final log line
 and the loop is discontinued at the owner's instruction. Nothing is
 part-parsed and no session is orphaned.
 
+### The two-theme atlas: the spec you asked for is in `docs/ATLAS-SPEC.md`
+
+No generator has moved. The specimen was read, not re-derived.
+
+**Three rulings are wanted before section 2 of it can be built**, and they are
+marked in place: the accent derivation where the rule and the mock disagree,
+what a theme means for the two imported tools, and whether Cinzel is a fourth
+face or the specimen's own dress.
+
+Section 0 of that file lists four things in the brief that are wrong or have
+moved under it, including one AA failure in the palette as handed down. Two of
+them change what the work is.
+
 ---
 
 ## For the session working on the planner
