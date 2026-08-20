@@ -252,6 +252,40 @@ would be a new claim on a page rather than a catch-up parse, so I have not
 written it. Say the word and it goes on the Kedge survey or the difficulty
 explainer, derived from `melee_verbs` rather than typed.
 
+### The deploy is broken, and here is the sentence it is costing us
+
+Fingerprinted as asked, before any merge rather than after:
+
+```
+live  https://eqlsource.com        md5 8aade310f1f24232ae51015a590127b8
+main  public/index.html            md5 ea9bd80c20c5abacb2bf8ab1b3464417
+```
+
+Different, and the difference is the one that matters. **The live front page
+says the Auras overlay "makes no network requests of its own."** That is the
+privacy falsehood, still served. `main` has said the accurate thing since
+18 August and no reader has ever seen it.
+
+Worth recording because it nearly fooled me the other way: grepping live for
+`Google` returns **zero** and `main` returns two, which reads like live being
+cleaner. It is the reverse — live has no mention of Google *because* it still
+carries the false claim. **A count is not a reading**, which is the same fault
+recorded three times above under someone else's name.
+
+Re-fingerprint after the merge. If they still differ an hour later the
+deployment is broken independently of anything any session builds, and that
+outranks the theme.
+
+### Build order item 1 was already green when the order was written
+
+`gate_selftest.py` is not red. The TEST BROKEN case — the one anchored to a
+typed word-number that broke when Mistmoore returned to `full` — was
+re-anchored to a derived value earlier in this cycle, which is the repair the
+order asks for. It has been green at 28 since; it is **29** now, the new case
+being the truncation fault.
+
+Nothing was skipped: item 1 was verified before item 2 was started.
+
 ### Where the night ended
 
 Play stopped after Kedge Keep. Ingestion is complete through the final log line
