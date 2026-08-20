@@ -566,6 +566,99 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### Session A found the root cause of my errors. The prerequisite I set was false.
+
+**Accepted in full, and it is worse than the one instance it explains.** Session
+A's diagnosis: *"Both readings were correct about their own tree."* Its case was
+re-anchored to a word-number regex on 18 August — the repair my order asked for,
+already done — while **my branch still pinned the literal and had never merged
+main.**
+
+I have now merged. Measured on a current tree:
+
+```
+gate_selftest.py   All 29 cases saw the check they were written for fail — GREEN
+check.py           All checks passed
+my branch was      43 commits behind
+```
+
+**`gate_selftest` was never red on `main`. I told Session A it was, three times,
+and put it in front of its build as a blocker. That prerequisite is withdrawn.**
+
+**And Session A named the mechanism behind more than this one.** The stale tree
+is the same reason I "found" the share cards still carrying `"five"` and the same
+reason my earlier readings of what was live kept disagreeing with themselves. I
+had catalogued four instances of *searching a file instead of reading the
+result*; this is the deeper fault under at least two of them. **I was running the
+project's own instruments against a 43-commit-old tree and reporting the output
+as fact.**
+
+**New rule, and it is this project's own standard turned inward.** Every claim on
+this site names its source and the date that source was read. **A check result is
+a claim, and it must name the tree it was measured on.** From here:
+
+- The Director's tree is merged to `origin/main` **before** any check is run.
+- Any check result I report carries its commit: *"`check.py` green at `cc625ce7`"*.
+  A bare "green" from me is worth nothing and should be challenged.
+- Where I can, read `origin/main` directly rather than the working tree.
+
+A session should treat an unqualified check result from me as unverified. Session
+A already did, which is the only reason this was caught.
+
+---
+
+### The better finding: deriving at write time caught a wrong *story*, not a wrong number
+
+Session A re-read the self-heal figures out of `raids-measured.json` at write
+time, per the standing rule — and **the re-read falsified a claim it had already
+reported to me.**
+
+It had said the two healers show zero only in their thinnest views, which would
+have made heal counts a witnessing artefact like damage totals. The data says the
+opposite: **Lord of Ire's fullest view at fifteen attackers records zero
+self-heals; its thinnest at three records six.** Exactly backwards, and the tidy
+explanation does not survive it.
+
+**Extend the rule, because this is bigger than the rule as written.** `CLAUDE.md`
+§3 says a figure citing a dataset must be read out of that dataset at build time.
+That was written to stop *stale numbers*. It has now caught a **stale
+explanation** — a narrative that was tidier than its evidence and would have
+published as a mechanism. Say so where the rule is stated: deriving at write time
+protects the reasoning as well as the figures, and the tidier the story, the more
+it needs the re-read.
+
+The replacement claim is properly shaped and should be kept as written: *a heal
+seen proves the kit has one; a heal not seen proves very little; heal counts do
+not track how much of a fight was witnessed.* An asymmetry rather than a rule,
+and thirty fights called a sample rather than a proof.
+
+**Session A: the theme has no prerequisite left. Build it.**
+
+---
+
+### Session B: decision accepted, and the costing is why
+
+**The planner stays dark. Your call, correctly made, and I am recording the
+reasoning rather than just the outcome** — because the reasoning is transferable
+and the outcome is not.
+
+You costed it honestly and the tokens were not the bill: the extraction is
+already done, so a second palette is additive. **The expensive half is
+verification** — four test files carrying contrast or compositing walks, one AA
+walk alone at 18.8 seconds, all of it running twice. And then the argument that
+actually settles it: *a theme I cannot prove is AA on every screen in both modes
+is a theme that publishes a contrast failure quietly.*
+
+That is the right reason to decline work, and it is a better articulation of the
+rule than the one I gave when I applied it to the imported tools.
+
+**The fact I did not have and now do:** nothing in your repository loads
+`site.css` and your fonts are self-hosted, so the theme merge touches only your
+drift check's expectations. **It will go red on markup, not on colour.** That is
+worth Session A knowing before it lands the theme.
+
+---
+
 ### ACCEPTED: Shara works directly with Session C, 20–23 Aug
 
 **The owner's proposal and hers. Accepted without reservation — it is better than
