@@ -563,6 +563,29 @@
     "off_roster": true
    }
   ],
+  "Orc centurion": [
+   {
+    "item": "Crushbone Belt",
+    "n": 38,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "An elemental crusader": [
    {
     "item": "Drop of Mercury",
@@ -935,6 +958,22 @@
       "difficulty": 1,
       "label": null,
       "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Orc legionnaire": [
+   {
+    "item": "Legionnaire's Bracer",
+    "n": 31,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -1778,6 +1817,50 @@
       "character": "Shara"
      }
     ]
+   }
+  ],
+  "Orc slaver": [
+   {
+    "item": "Slave Trammels",
+    "n": 21,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Slaver`s Lash",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Soldier of V`Zher": [
@@ -3603,6 +3686,28 @@
     "off_roster": true
    }
   ],
+  "Royal Guard": [
+   {
+    "item": "Bronze Rapier",
+    "n": 13,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Splitpaw Sharpshooter": [
    {
     "item": "Sharpshooter's Bandana",
@@ -4502,6 +4607,130 @@
     "off_roster": true
    }
   ],
+  "Bloodgurgler": [
+   {
+    "item": "Master Crushbone Cell Key",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Spiky Splintmail",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Rib-bone Stiletto",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Bonefire": [
+   {
+    "item": "Master Crushbone Cell Key",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Headsplitter",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Corroded Hand Guards",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Splitpaw Explorer": [
    {
     "item": "Well Worn Boots",
@@ -4594,6 +4823,48 @@
      {
       "date": "18 Aug 2026",
       "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "The Prophet": [
+   {
+    "item": "Disgusting Padded Shirt",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Rotting Faydark Mask",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
@@ -4962,6 +5233,48 @@
       "difficulty": 3,
       "label": "Fused",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Marrowbane": [
+   {
+    "item": "Grimy Black Silk Robe",
+    "n": 9,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Wood Elf Scout Bauble",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -6232,6 +6545,34 @@
     "off_roster": true
    }
   ],
+  "Orc Taskmaster": [
+   {
+    "item": "Brass Earring",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Leather Whip",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Tranixx Darkpaw": [
    {
     "item": "Onyx Earring",
@@ -7032,6 +7373,64 @@
       "character": "Shara"
      }
     ]
+   }
+  ],
+  "Orc oracle": [
+   {
+    "item": "Crushbone Fetish",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Ornament of the Oracle",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Orc trainee": [
+   {
+    "item": "Leather Whip",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "item": "Crushbone Belt",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Warlord Skarlon": [
@@ -7970,6 +8369,54 @@
      {
       "date": "07 Aug 2026",
       "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Lord Darish": [
+   {
+    "item": "Bandolier of Teeth",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Torn Elvish Tapestry",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "item": "Dwarven Axe",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
@@ -9958,6 +10405,41 @@
      }
     ],
     "off_roster": true
+   }
+  ],
+  "Orc Warden": [
+   {
+    "item": "Master Crushbone Cell Key",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Bracers of Battle",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
    }
   ],
   "Stonesoul the Unmoving": [
@@ -12661,6 +13143,34 @@
     "off_roster": true
    }
   ],
+  "Chokehold": [
+   {
+    "item": "Armband of Serrated Teeth",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Master Crushbone Cell Key",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Lord Elgnub": [
    {
     "item": "Baby Joseph Sayer",
@@ -13249,6 +13759,22 @@
       "character": "Avenrae"
      }
     ]
+   }
+  ],
+  "orc slaver": [
+   {
+    "item": "Slave Trammels",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "stone spider": [
@@ -14061,6 +14587,34 @@
     "off_roster": true
    }
   ],
+  "Ambassador DVinn": [
+   {
+    "item": "Dragoon Dirk",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "item": "Wood Elf Scout Shoes",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "An avenging caitiff": [
    {
     "item": "Crested Helm",
@@ -14193,6 +14747,21 @@
     ]
    }
   ],
+  "Emperor Crush": [
+   {
+    "item": "Dwarven Ringmail Tunic",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "High Priest M`kari": [
    {
     "item": "Ethereal Mist Bracers",
@@ -14234,6 +14803,21 @@
       "difficulty": 3,
       "label": null,
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Orc Warlord": [
+   {
+    "item": "Bracers of Battle",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -15924,6 +16508,43 @@
     "off_roster": true
    }
   ],
+  "Crushbone Belt": [
+   {
+    "mob": "Orc centurion",
+    "n": 38,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "Orc trainee",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
   "Drop of Mercury": [
    {
     "mob": "An elemental crusader",
@@ -16425,6 +17046,22 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Legionnaire's Bracer": [
+   {
+    "mob": "Orc legionnaire",
+    "n": 31,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ],
     "off_roster": true
@@ -17061,6 +17698,43 @@
       "character": "Shara"
      }
     ]
+   }
+  ],
+  "Slave Trammels": [
+   {
+    "mob": "Orc slaver",
+    "n": 21,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "orc slaver",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
    }
   ],
   "Pristine Studded Leather Leggings": [
@@ -17826,6 +18500,150 @@
       "zone": "Blackburrow",
       "difficulty": 2,
       "label": "Adaptive",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "mob": "Orc Taskmaster",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Orc trainee",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Bronze Rapier": [
+   {
+    "mob": "Royal Guard",
+    "n": 13,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "A gnoll elite",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "04 Aug 2026",
+      "zone": null,
+      "difficulty": 3,
+      "label": null,
+      "character": "Shara"
+     },
+     {
+      "date": "07 Aug 2026",
+      "zone": "Blackburrow",
+      "difficulty": 2,
+      "label": "Adaptive",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A necro acolyte",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "06 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "07 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "A pledge familiar",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "08 Aug 2026",
+      "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   },
+   {
+    "mob": "The Thaumaturgist",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "06 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "mob": "A Necro Theurgist",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "07 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "mob": "Priest Amiaz",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "07 Aug 2026",
+      "zone": "Befallen",
+      "difficulty": 1,
+      "label": "Awakened",
       "character": "Shara"
      }
     ]
@@ -18625,6 +19443,81 @@
     "off_roster": true
    }
   ],
+  "Master Crushbone Cell Key": [
+   {
+    "mob": "Bloodgurgler",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Bonefire",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Orc Warden",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   },
+   {
+    "mob": "Chokehold",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Well Worn Boots": [
    {
     "mob": "Splitpaw Explorer",
@@ -18704,6 +19597,28 @@
      {
       "date": "18 Aug 2026",
       "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Disgusting Padded Shirt": [
+   {
+    "mob": "The Prophet",
+    "n": 10,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
@@ -19070,6 +19985,28 @@
     ]
    }
   ],
+  "Grimy Black Silk Robe": [
+   {
+    "mob": "Marrowbane",
+    "n": 9,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Loam Encrusted Robe": [
    {
     "mob": "Master Yael",
@@ -19386,103 +20323,6 @@
     ]
    }
   ],
-  "Bronze Rapier": [
-   {
-    "mob": "A gnoll elite",
-    "n": 7,
-    "sessions": [
-     {
-      "date": "04 Aug 2026",
-      "zone": null,
-      "difficulty": 3,
-      "label": null,
-      "character": "Shara"
-     },
-     {
-      "date": "07 Aug 2026",
-      "zone": "Blackburrow",
-      "difficulty": 2,
-      "label": "Adaptive",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A necro acolyte",
-    "n": 3,
-    "sessions": [
-     {
-      "date": "06 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     },
-     {
-      "date": "07 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "A pledge familiar",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "08 Aug 2026",
-      "zone": "The Castle of Mistmoore",
-      "difficulty": 1,
-      "label": null,
-      "character": "Avenrae"
-     }
-    ],
-    "off_roster": true
-   },
-   {
-    "mob": "The Thaumaturgist",
-    "n": 2,
-    "sessions": [
-     {
-      "date": "06 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "mob": "A Necro Theurgist",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "07 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   },
-   {
-    "mob": "Priest Amiaz",
-    "n": 1,
-    "sessions": [
-     {
-      "date": "07 Aug 2026",
-      "zone": "Befallen",
-      "difficulty": 1,
-      "label": "Awakened",
-      "character": "Shara"
-     }
-    ]
-   }
-  ],
   "Gypsy Lute": [
    {
     "mob": "A gypsy musician",
@@ -19794,6 +20634,28 @@
     "off_roster": true
    }
   ],
+  "Headsplitter": [
+   {
+    "mob": "Bonefire",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Butler Syncalls Fang": [
    {
     "mob": "Butler Syncall",
@@ -19975,6 +20837,44 @@
       "zone": "The Plane of Hate - Group",
       "difficulty": 4,
       "label": "Refined",
+      "character": "Avenrae"
+     }
+    ],
+    "off_roster": true
+   }
+  ],
+  "Brass Earring": [
+   {
+    "mob": "Orc Taskmaster",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Slaver`s Lash": [
+   {
+    "mob": "Orc slaver",
+    "n": 7,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
       "character": "Avenrae"
      }
     ],
@@ -21972,6 +22872,28 @@
     ]
    }
   ],
+  "Spiky Splintmail": [
+   {
+    "mob": "Bloodgurgler",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Valorium Helmet": [
    {
     "mob": "Cleric of Innoruuk",
@@ -22045,6 +22967,21 @@
      {
       "date": "18 Aug 2026",
       "zone": "The Castle of Mistmoore",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Crushbone Fetish": [
+   {
+    "mob": "Orc oracle",
+    "n": 6,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
       "difficulty": 1,
       "label": null,
       "character": "Avenrae"
@@ -23043,6 +23980,28 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Bandolier of Teeth": [
+   {
+    "mob": "Lord Darish",
+    "n": 5,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -24851,6 +25810,28 @@
     "off_roster": true
    }
   ],
+  "Rib-bone Stiletto": [
+   {
+    "mob": "Bloodgurgler",
+    "n": 4,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Ethereal Mist Helm": [
    {
     "mob": "Cleric of Innoruuk",
@@ -25961,6 +26942,28 @@
     ]
    }
   ],
+  "Corroded Hand Guards": [
+   {
+    "mob": "Bonefire",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Insidious Slippers": [
    {
     "mob": "Coercer T`vala",
@@ -26080,6 +27083,21 @@
     "off_roster": true
    }
   ],
+  "Torn Elvish Tapestry": [
+   {
+    "mob": "Lord Darish",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   }
+  ],
   "Bladestopper": [
    {
     "mob": "Lord Nagafen",
@@ -26184,6 +27202,28 @@
       "zone": "Nagafen's Lair - Group",
       "difficulty": 4,
       "label": "Refined",
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Wood Elf Scout Bauble": [
+   {
+    "mob": "Marrowbane",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
       "character": "Avenrae"
      }
     ]
@@ -26423,6 +27463,28 @@
       "difficulty": 2,
       "label": "Adaptive",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Rotting Faydark Mask": [
+   {
+    "mob": "The Prophet",
+    "n": 3,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     },
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -27980,6 +29042,21 @@
     "off_roster": true
    }
   ],
+  "Armband of Serrated Teeth": [
+   {
+    "mob": "Chokehold",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Rune Etched Helm": [
    {
     "mob": "Cleric of Innoruuk",
@@ -28127,6 +29204,21 @@
      }
     ],
     "off_roster": true
+   }
+  ],
+  "Dwarven Axe": [
+   {
+    "mob": "Lord Darish",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
    }
   ],
   "Baby Joseph Sayer": [
@@ -28370,6 +29462,21 @@
      }
     ],
     "off_roster": true
+   }
+  ],
+  "Ornament of the Oracle": [
+   {
+    "mob": "Orc oracle",
+    "n": 2,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
    }
   ],
   "Gnoll Hide Lariat": [
@@ -29124,6 +30231,36 @@
     "off_roster": true
    }
   ],
+  "Dragoon Dirk": [
+   {
+    "mob": "Ambassador DVinn",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
+  "Wood Elf Scout Shoes": [
+   {
+    "mob": "Ambassador DVinn",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Shadow Rage Wristguard": [
    {
     "mob": "An abhorrent",
@@ -29250,6 +30387,21 @@
     "off_roster": true
    }
   ],
+  "Dwarven Ringmail Tunic": [
+   {
+    "mob": "Emperor Crush",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
+     }
+    ]
+   }
+  ],
   "Ethereal Mist Bracers": [
    {
     "mob": "High Priest M`kari",
@@ -29308,6 +30460,34 @@
       "difficulty": 1,
       "label": "Awakened",
       "character": "Shara"
+     }
+    ]
+   }
+  ],
+  "Bracers of Battle": [
+   {
+    "mob": "Orc Warden",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": "Awakened",
+      "character": "Shara"
+     }
+    ]
+   },
+   {
+    "mob": "Orc Warlord",
+    "n": 1,
+    "sessions": [
+     {
+      "date": "19 Aug 2026",
+      "zone": "Clan Crushbone",
+      "difficulty": 1,
+      "label": null,
+      "character": "Avenrae"
      }
     ]
    }
@@ -29556,6 +30736,6 @@
    }
   ]
  },
- "pairs": 671,
- "excluded_trash_drops": 5105
+ "pairs": 704,
+ "excluded_trash_drops": 5360
 }

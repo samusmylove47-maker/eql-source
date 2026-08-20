@@ -2110,7 +2110,7 @@
   "The Plane of Fear - Group": {
    "difficulty": 2,
    "date": "12 Aug 2026",
-   "kills": 26,
+   "kills": 31,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2371,6 +2371,107 @@
    "steps_helped": [],
    "damages": [],
    "helps": []
+  },
+  "Clan Crushbone": {
+   "difficulty": 1,
+   "date": "19 Aug 2026",
+   "kills": 144,
+   "per_mob": {
+    "a dwarven slave": {
+     "Clerics of Underfoot": -5,
+     "Kazon Stormhammer": -5,
+     "Miners Guild 249": -3
+    },
+    "Rondo Dunfire": {
+     "Butcherblock Bandits": -25,
+     "Miners Guild 628": 5
+    },
+    "Ambassador D`Vinn": {
+     "Indigo Brotherhood": -75,
+     "Steel Warriors": 5,
+     "Primordial Malice": 150
+    }
+   },
+   "factions": [
+    "Butcherblock Bandits",
+    "Clerics of Underfoot",
+    "Indigo Brotherhood",
+    "Kazon Stormhammer",
+    "Miners Guild 249",
+    "Miners Guild 628",
+    "Primordial Malice",
+    "Steel Warriors"
+   ],
+   "capped": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "factions_seen": [
+    "Butcherblock Bandits",
+    "Clerics of Underfoot",
+    "Crushbone Orcs",
+    "Emerald Warriors",
+    "Faydarks Champions",
+    "Indigo Brotherhood",
+    "Kazon Stormhammer",
+    "Miners Guild 249",
+    "Miners Guild 628",
+    "Primordial Malice",
+    "Steel Warriors",
+    "Storm Guard"
+   ],
+   "falling": [
+    "Butcherblock Bandits",
+    "Clerics of Underfoot",
+    "Indigo Brotherhood",
+    "Kazon Stormhammer",
+    "Miners Guild 249"
+   ],
+   "rising": [
+    "Miners Guild 628",
+    "Primordial Malice",
+    "Steel Warriors"
+   ],
+   "capped_up": [
+    "Emerald Warriors",
+    "Faydarks Champions",
+    "Storm Guard"
+   ],
+   "capped_down": [
+    "Crushbone Orcs"
+   ],
+   "steps_undone": [
+    {
+     "step": "tonics400",
+     "name": "Tumpy Tonics",
+     "factions": [
+      "Kazon Stormhammer"
+     ],
+     "races": [
+      "Dwarf"
+     ]
+    }
+   ],
+   "steps_helped": [
+    {
+     "step": "iceberg",
+     "name": "Lion Delights to Iceberg",
+     "factions": [
+      "Steel Warriors"
+     ],
+     "races": [
+      "Barbarian"
+     ]
+    }
+   ],
+   "damages": [
+    "Dwarf"
+   ],
+   "helps": [
+    "Barbarian"
+   ]
   }
  }
 }
