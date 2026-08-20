@@ -154,6 +154,21 @@
      variants under their own names and each theme points --c-t at one of them.
      Falls back to the accent itself where a card sets neither. ------------- */
   --instr-t:#8FBEE4;
+  --ok-t:#5FA37E;
+
+  /* ---- the evidence scale, as tokens rather than five literals -----------
+     .t1..t5 were five hard-coded hexes. Three of them duplicated tokens that
+     already existed (--ok, --instr, --warn-t) and one, #D9A227, was Najena's
+     permanent zone accent painting a tier badge - so a zone accent reached
+     type through a literal no token rename could ever have found.
+
+     Being literals, they did not flip with the theme: measured on the built
+     page in daylight, the tier-3 badge rendered at 1.85:1. The badges are
+     load-bearing by this file's own comment above them - an unreadable one is
+     worse than a missing one - so they get their own family, one per ground,
+     each derived to clear 4.5:1 rather than picked. --------------------- */
+  --tier-1:#5FA37E; --tier-2:#7FB2C7; --tier-3:#D9A227;
+  --tier-4:#D9762A; --tier-5:#D46C64;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -205,27 +220,38 @@
   --warn:#C9453A; --ember:#C4482E; --lava:#F22701;
   --brass:#A17627; --ok:#538868; --instr:#62828D;
   --warn-t:#914E45; --ember-t:#934E3C; --lava-t:#9A4632;
-  --brass-t:#775B27; --instr-t:#506469;
+  --brass-t:#775B27; --instr-t:#506469; --ok-t:#45684E;
+  --tier-1:#45684E; --tier-2:#506469; --tier-3:#7B5C1C;
+  --tier-4:#915220; --tier-5:#914E45;
   color-scheme:light;
 }
 
-/* ---- the accent text variant, declared where the accent actually is -------
+/* ---- the accent text variant, one derivation per ground ------------------
    --c is set INLINE, per card, by the generators: 1,540 declarations across
-   685 pages. --c-t cannot be declared on :root, because a custom property
-   computes on the element that declares it - a --c-t resolved at :root would
-   fall back to :root's own (absent) --c and reach every card as nothing.
+   685 pages. --c-t cannot be declared on :root - a custom property computes on
+   the element that declares it, so a --c-t resolved at :root falls back to
+   :root's own absent --c and reaches every card as nothing. Measured in a
+   browser, not reasoned about.
 
-   Matched on the inline declaration rather than on a class list. The carriers
-   today are .shell.ent, .zrow, .card, .plate, .gaterow, .contour, .zprov,
-   .arch, .st-entry, .standard, .ch, .door - and two bare <a> with no class at
-   all, which a hand-maintained list would already have missed. A list of
-   classes is the kind of thing that goes stale in silence here; a selector
-   that matches the thing itself cannot.
+   Matched on the inline declaration rather than a class list. The carriers are
+   .shell.ent, .zrow, .card, .plate, .gaterow, .contour, .zprov, .arch,
+   .st-entry, .standard, .ch, .door - and two bare <a> with no class at all,
+   which a hand-maintained list would already have missed.
 
-   The fallback is the accent, so a card that carries no derived variant keeps
-   exactly the colour it has today. ---------------------------------------- */
-[style*="--c:"]{ --c-t:var(--c-t-torch, var(--c)); }
-:root[data-theme="light"] [style*="--c:"]{ --c-t:var(--c-t-day, var(--c)); }
+   ONE RATIO PER GROUND, AND BOTH ARE DERIVED RATHER THAN CHOSEN.
+   --bone flips from parchment to ink between the themes, so this expression
+   lightens on graphite and darkens on parchment without being told to. That is
+   why no per-zone value has to be emitted inline and no generator changes: the
+   idiom was never inverted, only under-powered on one ground.
+
+   56% is what torchlight already shipped and its worst zone measures 6.23:1,
+   so the dark theme is untouched. On parchment 56% leaves three zones short -
+   lowerguk 4.39, najena 3.84, planeoffear 4.06 - and 48% is the highest ratio
+   at which ALL THIRTEEN clear 4.5:1, worst 4.56. Both figures come from
+   _build/accents.py, which fails rather than lowering the bar. ----------- */
+[style*="--c:"]{ --c-t:color-mix(in srgb, var(--c) 56%, var(--bone)); }
+:root[data-theme="light"] [style*="--c:"]{
+  --c-t:color-mix(in srgb, var(--c) 48%, var(--bone)); }
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
@@ -339,7 +365,7 @@ a.card:hover{background:var(--surface-2);transform:translateY(-2px);box-shadow:v
      fall short of 4.5:1 at this size. Blending toward --bone lifts every one of
      them over the floor without reassigning any zone accent. */
   color:var(--dim);   /* legible fallback where color-mix is unsupported */
-  color:color-mix(in srgb, var(--c,var(--dim)) 68%, var(--bone))}
+  color:var(--c-t,var(--dim))}
 .card .t{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
   line-height:1;letter-spacing:.005em;text-transform:uppercase;color:var(--bone);margin:0 0 var(--s-2)}
 .card .d{font-size:var(--t-base);color:var(--mut);margin:0 0 14px;line-height:1.55}
@@ -347,14 +373,13 @@ a.card:hover{background:var(--surface-2);transform:translateY(-2px);box-shadow:v
   padding-top:var(--s-3);border-top:1px solid var(--rule);
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.12em;
   text-transform:uppercase;color:var(--dim)}
-.card .foot .go{margin-left:auto;color:var(--c,var(--bone));
-  color:color-mix(in srgb, var(--c,var(--bone)) 68%, var(--bone))}
+.card .foot .go{margin-left:auto;color:var(--c-t,var(--bone))}
 .chipline{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:var(--s-3)}
 .pill{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.12em;
   text-transform:uppercase;padding:3px 7px;border:1px solid currentColor;
   border-radius:var(--r);color:var(--dim)}
 .pill.ok{color:var(--ok)}.pill.warn{color:var(--warn-t)}
-.pill.live{color:var(--c);color:color-mix(in srgb, var(--c) 68%, var(--bone))}
+.pill.live{color:var(--c-t)}
 
 /* ---------- zone row list ---------- */
 .ztable{border:1px solid var(--rule);border-radius:var(--r);overflow:hidden;margin-top:var(--s-2)}
@@ -364,7 +389,7 @@ a.card:hover{background:var(--surface-2);transform:translateY(-2px);box-shadow:v
 .zrow:last-child{border-bottom:0}
 .zrow:hover{background:var(--surface-2)}
 .zrow .pn{font-family:"IBM Plex Mono",monospace;font-size:var(--t-xs);font-weight:600;
-  color:var(--c);color:color-mix(in srgb, var(--c) 56%, var(--bone))}
+  color:var(--c-t)}
 .zrow .zt{font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);font-weight:700;
   text-transform:uppercase;letter-spacing:.01em;color:var(--bone);line-height:var(--lh-tight)}
 .zrow .zs{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);color:var(--dim);
@@ -439,7 +464,8 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .tier::before{content:"";width:5px;height:5px;background:currentColor;flex:0 0 5px}
 /* t5 was #C9453A — 3.2:1, below AA at this size. Lifted to 4.5:1, same hue. The
    tier badges are load-bearing: an unreadable one is worse than a missing one. */
-.t1{color:#5FA37E}.t2{color:#7FB2C7}.t3{color:#D9A227}.t4{color:#D9762A}.t5{color:#D46C64}
+.t1{color:var(--tier-1)}.t2{color:var(--tier-2)}.t3{color:var(--tier-3)}
+.t4{color:var(--tier-4)}.t5{color:var(--tier-5)}
 /* Tier C — a named player's first-hand report, unconfirmed. Deliberately not
    on the numeric ramp: it is a different kind of claim, not a weaker one. */
 .tc{background:rgba(92,147,196,.16);color:#8FBEE4;border-color:rgba(92,147,196,.5)}
@@ -687,7 +713,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .plate .meta{position:relative;z-index:1;display:flex;flex-wrap:wrap;gap:var(--s-1) var(--s-3);
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.1em;
   text-transform:uppercase;color:var(--dim)}
-.plate .meta b{font-weight:400;color:color-mix(in srgb, var(--c) 56%, var(--bone))}
+.plate .meta b{font-weight:400;color:var(--c-t)}
 .plate .lvl{position:absolute;top:var(--s-4);left:var(--s-4);z-index:1;
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:var(--tr-wide);
   text-transform:uppercase;color:var(--mut)}
@@ -803,7 +829,7 @@ h1.display em{color:var(--z01)}
   border-color:color-mix(in srgb, var(--c) 45%, var(--rule))}
 .dq{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider);text-transform:uppercase;
-  color:color-mix(in srgb, var(--c) 62%, var(--bone));margin-bottom:var(--s-3)}
+  color:var(--c-t);margin-bottom:var(--s-3)}
 .dt{font-family:"Saira Condensed",sans-serif;font-weight:700;
   font-size:clamp(26px,3vw,34px);line-height:1;text-transform:uppercase;
   letter-spacing:.01em;color:var(--bone);margin:0 0 var(--s-3)}
@@ -824,7 +850,7 @@ h1.display em{color:var(--z01)}
   align-items:baseline;padding:var(--s-3) 0;border-bottom:1px solid var(--rule)}
 @media(max-width:640px){.ch{grid-template-columns:1fr;gap:var(--s-1)}}
 .ch .k{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
-  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--c);
+  letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--c-t);
   border:1px solid currentColor;border-radius:var(--r);padding:2px 6px;white-space:nowrap}
 .ch .t{font-size:var(--t-sm);color:var(--txt)}
 .ch .d{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
@@ -865,7 +891,7 @@ h1.display em{color:var(--z01)}
 .gaterow{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s-2) var(--s-3);
   align-items:baseline;padding:var(--s-3) 0;border-bottom:1px solid var(--rule)}
 .gaterow .gn{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);font-weight:600;
-  color:color-mix(in srgb, var(--c) 56%, var(--bone))}
+  color:var(--c-t)}
 .gaterow .gz{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-md);
   text-transform:uppercase;letter-spacing:.02em;color:var(--bone);line-height:1.1}
 .gaterow .gl{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
@@ -910,7 +936,7 @@ h1.display em{color:var(--z01)}
   gap:var(--s-1) var(--s-3);align-items:baseline;
   padding:var(--s-2) 0;border-bottom:1px solid var(--rule)}
 .plotkey .pi{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);font-weight:600;
-  color:color-mix(in srgb, var(--c) 56%, var(--bone));min-width:1.6em}
+  color:var(--c-t);min-width:1.6em}
 .plotkey .pn2{font-size:var(--t-sm);color:var(--txt)}
 .plotkey .pl{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:.06em;color:var(--dim);white-space:nowrap}
@@ -936,7 +962,7 @@ h1.display em{color:var(--z01)}
     color-mix(in srgb, var(--c) 11%, var(--surface-1)) 0%, var(--surface-1) 60%)}
 .isl-n{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider);text-transform:uppercase;
-  color:color-mix(in srgb, var(--c) 62%, var(--bone))}
+  color:var(--c-t)}
 .isl-tier{float:right;font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wide);text-transform:uppercase;color:var(--tc);
   border:1px solid currentColor;border-radius:var(--r);padding:2px 7px}
@@ -1039,7 +1065,7 @@ h1.display em{color:var(--z01)}
 @media(max-width:520px){.fthin{display:block;margin:4px 0 0}}
 .fsteps li{padding:var(--s-2) 0;font-size:var(--t-sm);border-bottom:1px solid var(--rule)}
 .fnothing,.fnone{color:var(--faint);font-size:var(--t-sm)}
-.tier.tM{border-color:color-mix(in srgb, var(--ok) 60%, var(--rule));color:var(--ok)}
+.tier.tM{border-color:color-mix(in srgb, var(--ok) 60%, var(--rule));color:var(--ok-t)}
 
 /* Height control. Sits above its plot, one button per storey plus All. The
    unselected storeys fade rather than vanish, so a reader keeps the sense of
