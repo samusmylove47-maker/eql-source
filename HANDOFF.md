@@ -252,6 +252,12 @@ would be a new claim on a page rather than a catch-up parse, so I have not
 written it. Say the word and it goes on the Kedge survey or the difficulty
 explainer, derived from `melee_verbs` rather than typed.
 
+### CORRECTED BELOW — the site is deployed and the cause was not what this said
+
+The section that follows was written before the dashboard was looked at. Its
+measurement was sound and its diagnosis was not. Read
+**"What the deploy actually was"** underneath it before acting on anything here.
+
 ### The deploy is broken, and here is the sentence it is costing us
 
 Fingerprinted as asked, before any merge rather than after:
@@ -275,6 +281,54 @@ recorded three times above under someone else's name.
 Re-fingerprint after the merge. If they still differ an hour later the
 deployment is broken independently of anything any session builds, and that
 outranks the theme.
+
+### What the deploy actually was
+
+**The site is live and correct.** `eqlsource.com` and `origin/main` are the same
+bytes, verified on the served page rather than on the deploy tool's own report:
+
+```
+live  8f04daf4e05e   main  8f04daf4e05e
+```
+
+The Auras privacy falsehood is gone from the front page, and Najena's false NPC
+level, Crushbone's measured data, Kedge Keep and the six-dungeons correction are
+all public. Two days of stuck work reached readers.
+
+**Published by hand.** `npx wrangler deploy` from the repository root, by the
+owner's authorisation, after moving their checkout onto `main` — it was sitting
+on `fix/licence-and-tiers`, **77 commits behind**, and a deploy from there would
+have published a front page older than the one that was live. Their earlier
+attempt failed on a PowerShell execution policy, which is the only reason it did
+not happen. `npx.cmd` is the form that runs on this machine.
+
+**The dashboard was deploying the whole time.** Its version history is full of
+entries labelled with branch names and attributed to sessions, not a 29-hour
+silence. Branch control has now been set to production branch `main` with
+non-production builds **off**, so only `main` can reach the live site whatever
+was happening before.
+
+**What is still unproven, and I am not going to assert it.** I claimed the live
+bytes proved the site was serving the Director's branch. It proved nothing of
+the kind: that branch and `main` at `2b05159b` have **zero differing files**
+under `public/`, so the fingerprint cannot tell them apart. Whether branch
+pushes were replacing production, or production had simply stopped, is
+unresolved — and the setting above closes the hole either way.
+
+**The general fault, three times in one session, all mine.** A grep count of
+zero, a `curl` that had not followed a redirect, and a matching fingerprint were
+each treated as evidence when each would have looked identical had the theory
+been wrong. That is the same family as this project's own rules — *a dead check
+looks exactly like a passing one*, and zero-examined-is-a-failure. The operating
+rule taken from it: **name the competing explanation before measuring, and pick
+a measurement that comes out differently under each.** Where none exists, report
+the question as unresolved rather than the theory that fits.
+
+**The untested question.** Everything correct on the site today was published by
+hand. No merge to `main` has been observed to publish on its own since the
+branch-control change. **This PR is that test**: if the site does not change
+after it merges, the automation is still broken and the build logs are the next
+place to look, not the theme.
 
 ### Build order item 1 was already green when the order was written
 
