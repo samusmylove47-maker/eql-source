@@ -248,6 +248,11 @@ if os.path.exists("build.sh"):
                    # experience ranking and the measured-boss counts, so a
                    # page cannot type an ordinal that goes stale in silence.
                    "derived.py",
+                   # Derives each zone accent's text variant for both grounds
+                   # and refuses any that cannot clear 4.5:1. Imported by the
+                   # generators that emit per-card tokens rather than run on
+                   # its own; run it directly to print the table.
+                   "accents.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it
