@@ -263,18 +263,24 @@ renumbering. `plate` stays an identifier.
 
 ---
 
-## 7. One thing in the specimen that contradicts `DESIGN.md`
+## 7. Cinzel — resolved 20 August, and I had this backwards
 
-The specimen loads **Cinzel** and uses it for the masthead, the zone headings
-and the plate numeral inside `.plate`. `DESIGN.md` says **three faces** — Saira
-Condensed, IBM Plex Mono, Public Sans — and the plate cards in that same
-specimen keep Saira for their numeral.
+**This section originally said `DESIGN.md` declares three faces and asked
+whether Cinzel was a fourth. That was wrong, and the ruling I received repeated
+the error back to me because I put it there.**
 
-So Cinzel is either a fourth face for the site or presentation dress for the
-specimen itself, and the specimen does not settle which. **I have assumed it is
-the specimen's own dress and planned for three faces.** If it is meant to ship,
-it is a `DESIGN.md` amendment and a fourth webfont on every page, and I would
-want that decided rather than inferred.
+`docs/DESIGN.md` line 103 lists **four typefaces** — Cinzel, Saira Condensed,
+IBM Plex Mono, Public Sans — and line 160 records the change explicitly:
+"~~No fourth typeface.~~ **Four now.** Cinzel holds the top two display levels."
+`scripts/check.py`'s `FACES` set has carried all four since Cinzel landed.
+
+So the design brief and the checker agreed the whole time. **The outlier was
+`CLAUDE.md`**, which said three — and that is the file a session reads first,
+which is why the mistake propagated into a spec, a ruling and back again before
+anyone read the two documents side by side.
+
+Corrected in `CLAUDE.md`, in the same PR that introduces the second theme. There
+is no `DESIGN.md` amendment to make and no new webfont: Cinzel already ships.
 
 ---
 
