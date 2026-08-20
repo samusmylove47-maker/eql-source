@@ -145,6 +145,17 @@ _IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 N_ITEMS = _IX['counts']['item_pages']
 N_NAMED = _IX['counts']['named_pages']
 
+# The raid card sold a 3D model until 20 Aug 2026 — "Positioning in 3D",
+# "Model: turn it, phase it" — three days after that model was withdrawn and its
+# generator deleted. The figures on these cards were derived in da654d88 and the
+# TAGLINES were not, so a typed sentence went on advertising a page that no
+# longer exists, on the image Discord shows for every raids link.
+#
+# Derived now, from the same dataset the raid pages read.
+_RAIDS = json.load(open('assets/raids-measured.json', encoding='utf-8'))
+_RF = _RAIDS.get('fights', _RAIDS) if isinstance(_RAIDS, dict) else _RAIDS
+N_BOSSES = len({f.get('boss') for f in _RF if f.get('boss')})
+
 # Tier C was withdrawn on 17 Aug 2026: it was generalised from a single event,
 # and one event is not a rank on a scale. The scale is M and 1 to 5.
 TIER_SCALE = "M, and 1 to 5"
@@ -156,13 +167,13 @@ SECTIONS = [
      "every claim names its source and the date it was read"),
     ("dungeons", BONE, "DUNGEON SURVEYS", "Every zone, surveyed",
      [("Floor plans", "from the game meshes"), ("Coordinates", "checked at build time")],
-     "walls drawn from the game's own files"),
+     "every position checked against drawn floor"),
     ("tools", INSTR, "TOOLS", "No account. Nothing sent.",
      [("Trackers", wordnum(len(TOOLS)).lower()), ("Your progress", "travels in the link")],
      "share by link, works offline"),
-    ("raids", EMBER, "RAID ENCOUNTERS", "Positioning in 3D",
-     [("Model", "turn it, phase it"), ("Every figure", "sourced and dated")],
-     "schematic where it is schematic, and it says so"),
+    ("raids", EMBER, "RAID ENCOUNTERS", "What they cast, and what they cost",
+     [("Bosses measured", str(N_BOSSES)), ("Every figure", "sourced and dated")],
+     "damage to kill is an upper bound, and the pages say so"),
     ("learn", INSTR, "IS IT STILL TRUE?", "You know a lot that is wrong",
      [("Entries", wordnum(len(LEARN)).lower()), ("Open questions", "named, not hidden")],
      "twenty-five years of habit, tested"),

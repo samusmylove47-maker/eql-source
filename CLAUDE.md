@@ -1,7 +1,7 @@
 # EQL Source — project rules
 
-A reference site for EverQuest Legends: dungeon surveys, 3D raid
-encounter guides, and progression tools. Static HTML, no server, no database.
+A reference site for EverQuest Legends: dungeon surveys, measured raid data
+and progression tools. Static HTML, no server, no database.
 **Cloudflare** publishes on every merge to `main` — the host is a Worker with
 static assets, configured by `wrangler.jsonc`. This file said *Netlify* until
 14 August 2026 and it was wrong: `curl -I https://eqlsource.com` answers
@@ -268,7 +268,10 @@ assets/
                     which emptied it: the extractor had nothing left to mine
   zone-geometry.json  floor plans derived from the game meshes. Committed data,
                     NOT a build step — see _build/geometry.py
-  vendor/three.min.js   r128, vendored. Do not switch to a CDN
+  vendor/three.min.js   r128, vendored. **Loaded by no page**: the encounter
+                    viewer that used it was withdrawn 17 Aug 2026. Kept, not
+                    wired — see docs/BACKLOG.md for why 3D was declined again
+                    on 20 Aug. If a page ever loads it, do not switch to a CDN
 _build/
   _partials.py      head, nav and footer
   build1.py         home and dungeon index

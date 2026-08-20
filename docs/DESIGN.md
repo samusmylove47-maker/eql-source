@@ -66,7 +66,10 @@ The site's identity is already in its material, and nothing else has it:
   drawings. The hand-drawn SVG maps are 1,461 lines of bespoke geometry and are
   the most valuable thing on the site.
 - **The tier badges** — a published, visible standard of evidence.
-- **The 3D encounter viewer.**
+- **The floor plans read from the game's own meshes** — not a viewer, a
+  drawing. The 3D encounter viewer was listed here until 20 August 2026,
+  three days after it was withdrawn, telling every session that read this
+  binding document that 3D was part of the site's identity.
 
 **So: a survey, not a fansite.** The reference for a world, drawn precisely —
 instruments, plates, measured colour.
