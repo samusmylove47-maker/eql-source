@@ -621,6 +621,39 @@ These close with evidence, not tidying.
   every six seconds for the same 22 hit points** — a recurring drain, not ten
   decisions. The same shape appears on Vox at her top tier.
 
+  **Amended 20 Aug 2026: whether a heal is in the kit looks like a property of
+  the boss, not of the tier.** The sentence above was right about the tier and
+  incomplete about the kit. Thirty fights across the five Plane of Hate bosses
+  split in two, and the split does not move with difficulty:
+
+  | boss | fights | self-heals seen |
+  |---|---|---|
+  | Coercer T\`vala | 6 | none, in any view |
+  | Mistress of Scorn | 6 | none, in any view |
+  | Maestro of Rancor | 7 | none, in any view |
+  | Master of Spite | 5 | 0, 1, 2, 6 |
+  | Lord of Ire | 6 | 0, 2, 4, 5, 6 |
+
+  The three that never heal show zero in their **fullest** views — fourteen
+  attackers each, where under-witnessing could not hide one. Nineteen fights
+  without a single heal is not proof that the kit lacks one, but it is the
+  strongest negative evidence the corpus holds.
+
+  **Read the asymmetry carefully, because it is the whole finding.** A heal
+  *seen* proves the kit has one. A heal *not seen* proves very little, and the
+  counts do not track how much of a fight was witnessed: **Lord of Ire's fullest
+  view, at fifteen attackers, records zero heals, while its thinnest at three
+  records six.** So the attacker-count rule that explains damage totals does not
+  explain heal counts, and any sentence claiming it does is wrong — one was, in
+  this file's own handoff, until the dataset was re-read.
+
+  Thirty fights is a sample, not a proof. Re-derive rather than trusting the
+  table:
+
+  ```bash
+  python3 -c "import json,collections;f=json.load(open('assets/raids-measured.json',encoding='utf-8'));f=f.get('fights',f);d=collections.defaultdict(list);[d[x['boss']].append(x) for x in f];print({k:sorted({y.get('self_heal_low') for y in v}) for k,v in d.items() if len(v)>3})"
+  ```
+
   **The plane-boss half closed 14 Aug 2026.** Cazic-Thule was killed at D2, D3
   and D4 and Innoruuk at D3 and D4, along with ten of Innoruuk's court, and
   every spell each cast is in `assets/raids-measured.json`. Cazic-Thule runs a
