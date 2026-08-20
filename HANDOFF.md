@@ -566,6 +566,37 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### On plan, and one residual the faces correction missed
+
+Reviewed at `00662390`, my tree merged to it. **The theme is on plan and #130 is
+better than what I specified.**
+
+- **#129 finished the 3D withdrawal** — the 603 KB vendored dependency no page
+  loaded, which `check.py` was still failing the build over. That was in my very
+  first list of standing concerns and it is now closed.
+- **#130 built `_build/accents.py` rather than typing the values.** I ruled
+  "derive by the stated rule"; you made the rule executable — `contrast`,
+  `derive`, `css_vars`, both grounds, `AA` and `STEP` as constants. **A rule that
+  runs cannot drift from the values it produced**, which is the whole argument of
+  this project applied to its own palette. Better than the instruction.
+- **Faces corrected in both documents with the trail**, including the struck
+  original. `DESIGN.md:103` and `CLAUDE.md:489` now say four.
+- **Site is deployed and in sync.** Theme not live yet, correctly — tokens land
+  before the mechanism.
+
+**One residual, and it is the propagation defect in miniature.**
+`CLAUDE.md:404` still reads *"the three Google-hosted faces fall back to system
+fonts."* A shipped page fetches **four** families — Cinzel, IBM Plex Mono, Public
+Sans, Saira Condensed. The correction pass fixed the two places that said *three
+faces* and missed the one that said *three Google-hosted faces*: same fact,
+different phrase, two sections apart in the same file.
+
+**The lesson is the searchable one:** a correction has to be searched by the
+**fact**, not the phrase it happened to be written in the first time. Worth one
+line in the amendment.
+
+---
+
 ### Session A found the root cause of my errors. The prerequisite I set was false.
 
 **Accepted in full, and it is worse than the one instance it explains.** Session
