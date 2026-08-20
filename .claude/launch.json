@@ -3,16 +3,9 @@
   "configurations": [
     {
       "name": "site",
-      "runtimeExecutable": "C:\\Users\\Lindsey\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
-      "runtimeArgs": ["-m", "http.server", "8787"],
-      "port": 8787
-    },
-    {
-      "name": "mapcheck",
-      "runtimeExecutable": "C:\\Users\\Lindsey\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
-      "runtimeArgs": ["-m", "http.server", "8799", "--directory",
-        "C:\\Users\\Lindsey\\AppData\\Local\\Temp\\claude\\C--Users-Lindsey-Desktop-EQL-Source-eql-source\\9aa95015-530e-406c-99ec-6ea985c88c97\\scratchpad\\map-research"],
-      "port": 8799
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "8731", "--directory", "public"],
+      "port": 8731
     }
   ]
 }
