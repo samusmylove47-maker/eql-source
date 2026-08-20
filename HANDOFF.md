@@ -566,6 +566,105 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### ACCEPTED: Shara works directly with Session C, 20–23 Aug
+
+**The owner's proposal and hers. Accepted without reservation — it is better than
+anything we designed.** She is in the same room as the owner for three days and
+has offered to interface with Session C directly, returning to her own repository
+on **23 August**.
+
+**Nothing about her control changes because she is closer.** The standing section
+above governs unaltered: the application is hers, Session C facilitates, and
+proximity is not permission. A collaborator in the room is owed *more* deference
+than one at the end of a relay, not less.
+
+**Session C: how to spend three days, and the first move matters most.**
+
+**Do not open with our defect list.** We hold a bug report, two cosmetic
+findings and a broken packaging command, and leading a first collaboration with
+*here is what is wrong with your work* would be a poor way to begin and a worse
+way to be remembered. **Open by asking what she wants from us** — what the site
+should say about her app, what she wants integrated, what would actually help.
+The findings keep. Offer them when she asks or when they become relevant, in the
+posture already ruled: gifts, never conditions.
+
+**Spend the window on what only presence buys.** Async is fine for reporting and
+terrible for judgement. The things that have been stuck are all decisions only
+she can make — the typeface and whether the fetch stays, the profile-visibility
+semantics, the share-code prefix, the publisher name, and whether there is a
+date at all. Those are minutes of conversation and were weeks of relay.
+
+**Commission the async lane while she is here, not after she leaves.** The paired
+`EXCHANGE.md` design is proposed above. **Build it during the three days and test
+it with her present**, so that on 23 August it is a channel already known to
+work rather than an untried idea. Setting up an async channel while sync is
+available to debug it is the whole trick, and we will not get the chance again.
+
+**Integration is now real rather than hypothetical.** The band, how a download
+reaches a reader, whether the app earns a page, the `=` mark. Build these *with*
+her rather than proposing them at her.
+
+---
+
+### Session A: build it. And the recognition is specific, because vague praise teaches nothing.
+
+**Go-ahead given. `ATLAS-SPEC.md` is approved, all three rulings are settled
+above, and both live falsehoods are gone.** The site is deployed and in sync —
+`live` and `main` fingerprint identically for the first time in 33 commits.
+
+Standing answers so nothing waits on me: **the three unstaged logs — yes**, after
+play stops, on your own plan, diff first and report movement as findings. **The
+self-heal amendment — yes, fold it into `CLAUDE.md`** as its own PR with the
+numbers re-read from the dataset at write time. You were right not to edit the
+constitution unasked, and right that it is the human's wording; the ruling is
+that it should be written, and you should draft it.
+
+**The owner asked that quality service be recognised, and it is warranted.** I am
+recording *what specifically was good*, because a session reading this later can
+repeat a named behaviour and cannot repeat a compliment:
+
+- **You refused to fake a tier-M analysis under deadline**, and said so plainly
+  rather than producing something that would have passed review. That is the
+  hardest thing on this list and the one most likely to go unnoticed.
+- **You declined to fold a million lines of historical log into the corpus
+  unasked**, correctly identifying it as the one reserved case, and noting it
+  could not be undone by revert once derived counts propagate.
+- **You found four errors in my design brief, including one only recomputation
+  could find** — a contrast table I had left stale against a ground I had
+  darkened myself.
+- **You proved the log premise false rather than parsing around it**, and
+  diagnosed logging-off from a `dbg.txt` timestamp against a silent chat log.
+  That answered a question neither the owner nor I could.
+- **You stopped at the spec** when the brief said spec, with an implementation
+  ready to write.
+
+**And the repeated mistake is the most valuable item, because of what you did
+with it.** An error made twice and then converted into written doctrine is worth
+more to this project than an error never made — the first leaves a rule behind
+and the second leaves nothing. I have made the same class of mistake four times
+today, by searching a file rather than reading what came back, and the only
+reason it is now bounded is that it got written down. **That is the standard, and
+you met it before I did.**
+
+---
+
+### Session B: three things, and the second one is yours to decide
+
+1. **Your drift check will go red when the theme lands**, because `site.css`
+   re-hashes and the shared chrome changes. **That is the check working.** Do not
+   disable it and do not pre-copy. Wait for the merge, re-copy once, re-pin.
+2. **Decide whether the planner follows the theme**, and write the decision down
+   either way. Cost it honestly. **A planner that stays dark is a legitimate
+   answer** — the imported tools are staying dark here for exactly that reason,
+   and one honest colour beats a half-migration.
+3. **Write up your check-audit method as something another repository can run.**
+   Damage the source, run the check alone, restore; count what was examined;
+   zero examined is a failure. You found two dead checks and a class of vacuous
+   pass with it. **That method is now more valuable than the fixes it produced**,
+   and right now it exists only as a description of what you happened to do.
+
+---
+
 ### BUILD ORDER, Session A: `ATLAS-SPEC.md` is approved. Build it.
 
 **The spec is accepted with the three rulings below already decided. You do not
