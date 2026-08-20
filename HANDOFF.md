@@ -464,6 +464,160 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### DESIGN BRIEF, Session A: the two-theme atlas. Spec first, then build.
+
+**The design is done and approved. You implement it; I do not.** The rendered
+specimen is the reference — open it, do not re-derive it:
+`https://claude.ai/code/artifact/19c1de67-fa36-4cd0-8b21-4142a4789e24`
+
+**Bring me a spec before a generator moves.** Palette derivation, the plate
+exception, toggle mechanics, what changes in `_partials.py`, and how the imported
+pages are handled. `docs/DESIGN.md` is binding and currently describes one theme;
+amend it in the same PR that introduces the second.
+
+#### 1. The light theme is an inversion already in the tokens
+
+`--bone:#F2EADA` has been the text colour since `palette.py` measured the ground
+out of the game's `.s3d` archives. **It becomes the paper.** The umber-black
+becomes the ink. Do not invent a parchment — this one is already measured, read
+the other way up.
+
+```
+DAYLIGHT   --surface-0:#EFE6D4  --surface-1:#E7DCC6  --surface-2:#DDD0B5
+           --bone:#241C12  --txt:#3A2E1E  --mut:#6B5C46
+           --rule:#CBBA9C  --rule2:#A89575  --brass:#8A6A18
+TORCHLIGHT unchanged, exactly as it ships today.
+```
+Panels go **darker** than the page in daylight. Stacked paper reads as shadow,
+never as glow — inverting the elevation direction is the single easiest way to
+make this look wrong.
+
+#### 2. The accents are derived, never re-chosen
+
+Measured: **twelve of thirteen accents fail AA as body text on parchment**, and
+the one that passes — Castle Mistmoore `#A8324A` at 5.45 — is the *weakest* of
+all on black at 3.08. The accents are tuned to their ground.
+
+**Derivation:** mix the permanent accent toward ink `#241C12` in 2% steps, stop
+at the first value clearing **4.5:1** on `#EFE6D4`. Deterministic, thirteen in
+thirteen out, nothing hand-picked and nothing to keep in sync. The computed
+table is in the specimen; recompute it rather than copying it, and let the build
+fail if any accent cannot reach 4.5:1. The permanent accent itself **never
+changes** — this is the "derive a lifted variant" rule `DESIGN.md` already
+states, applied to a second ground.
+
+#### 3. The plates are already right. Do not rebuild them.
+
+`site.css`'s `.plate` recipe is kept whole: the 155° `color-mix(var(--c) 13%,
+--surface-1)` wash, content at `flex-end`, `.plate-art` masked out at 52% so the
+drawing fades *under* the title rather than behind it, the Saira numeral at
+132px `line-height:.7` cropped by the edge at `opacity:.3`. **Keep the `.3`** —
+your own comment records that `.19` measured 2.87:1, under the 3:1 bar, and the
+numeral is the card's only statement of its number, so it is information.
+
+**The plates stay dark in both themes.** In daylight they take a cast shadow so
+they sit *in* the sheet; on the dark ground a shadow is meaningless, so they take
+an inset hairline instead. Same component, two treatments, one token switch.
+
+#### 4. The layered maps: already built, just pass the argument
+
+The owner asked whether the per-storey plans plug in. **They do — no new geometry
+code.** `heroart.paths(slug, box, layer=N, max_paths, precision)` already takes a
+layer, and `zone-geometry.json` carries the storeys with elevation bands:
+
+```
+mistmoore   3   14@[-263,-206]  54@[-195,-164]  80@[-163,-101]
+thehole     4   21@[-910,-633]  20@[-621,-450]  187@[-390,-172]  63@[-163,39]
+warrens     1   35@[-95,-22]        planeofhate  3   523, 367, 782 lines
+```
+
+Two cautions. **Plane of Hate's layers run 523/367/782 lines** against the home
+page's `max_paths=60` — cap per-storey draws or that page gets heavy. And
+`warrens` has **one** layer, so any per-storey UI must degrade to a single plan
+rather than render an empty second tab.
+
+#### 5. The motifs — level B, the instrument set, and one hard rule
+
+Five marks, drawn, and that is the entire decorative alphabet: **dividers**
+(masthead and footer only), **compass rose** (one per page, never two),
+**scale bar** (foot of a plate), **lantern** (the theme switch, and nowhere
+else), **hachures** (storey dividers on a multi-level plate). Inline SVG,
+`aria-hidden`, 8–20% on parchment and 8–13% on the dark ground.
+
+**They never sit behind running text, a data table, or a plate.** Margins only,
+and they are the first thing to go below 700px.
+
+The ground is four layers of CSS gradient, **about 900 bytes, no image files** —
+five blooms for foxing, a 24px survey grid, a 4px laid line, a 3px cross-hatch.
+The dark ground is the identical structure with the blooms turned to brass and
+ember torch-warmth and the grid lifted rather than sunk.
+
+#### 6. The toggle, and the derived hero
+
+Label it by **destination**: `TORCHLIGHT` while in daylight, `DAYLIGHT` while in
+torchlight. Dark is default. Honour `prefers-color-scheme`, remember the choice,
+and keep it working with no JavaScript wherever possible.
+
+**The hero zone is derived from `revamped`**, most recent first — never typed.
+That is why Mistmoore leads today, and why the hero re-picks itself the next time
+a zone is treated. It also closes the audit's F-27 complaint by construction.
+**Do not renumber the plates to achieve it.** `plate` is an identifier and the
+archive is keyed on it; ordering is a sort, not a renumber.
+
+#### 7. What this collides with — audit before you build
+
+- **`CSS_V` re-hashes** and rewrites the stylesheet line on every page, so a
+  theme commit is a whole-site diff by construction. Own branch, alone.
+- **The imported pages carry their own stylesheets and never load `site.css`.**
+  Count them (`grep -rL site-foot --include='*.html' --exclude-dir=app public/`)
+  and tell me in the spec what a theme means for them. This is the one part I
+  expect to be genuinely awkward, and I would rather hear "these fifteen stay
+  dark, here is why" than see a half-themed site.
+- **The OG share cards** bake colours into PNGs. Decide whether they need light
+  variants or stay dark — and they are wrong on three counts already, so fix
+  those in the same pass.
+- **`conformance.js`** must run at both viewports **in both themes**; that
+  doubles its coverage and it is the only check here that lays a page out.
+- **Prose ceilings** if any copy is added.
+
+Sequence it behind live ingestion. This is the cosmetic pass, and a measured
+session is still worth more than a beautiful one.
+
+---
+
+### Session B: you have been idle a day. Two things, neither blocked.
+
+1. **Break your own checks on purpose.** You found both drift tests had been
+   silently skipping since the day you wrote them. That is unlikely to be the
+   only one. Go through every check in that repository, feed each a deliberately
+   broken input, and confirm it fails. Anything that passes a broken input is
+   dead. Report the count you examined — **zero examined is itself a failure**,
+   which is the rule we are adopting site-wide.
+2. **Extract your colour tokens into custom properties**, if they are not
+   already. Not a theme — just the extraction, so that adopting one later is a
+   token swap rather than a rewrite. eqlsource is getting a light theme; whether
+   the planner follows is your decision and the owner's, but the cost of that
+   decision should not be a refactor.
+
+Your licence proposal is with the owner. Do not chase it.
+
+### Session C: you have been idle a day. Re-verify, then say the date.
+
+Your two patches are with Shara and that is correct — do not push them.
+
+1. **Has her repository moved since `c7f7f4e`?** Check. If she has landed the
+   burst fix or the fonts change, the recovery list shortens and the site needs
+   to know today.
+2. **Re-state the go/no-go.** You called NO-GO for 25 August on 18 August with a
+   seven-day recovery window. That window is now six days. Say plainly whether it
+   still holds, and if the answer is "unchanged, still waiting on Shara", say
+   that — an unchanged status reported is worth more than silence.
+3. **The site's Auras band still carries the false network claim.** It is item 1
+   of Session A's interrupt and it is still live. If Shara has self-hosted the
+   font, tell Session A directly through this file rather than waiting.
+
+---
+
 ### URGENT: the live site is serving a branch. `main` is clean. Do not revert anything.
 
 **Diagnosed 19 Aug. Read this before touching git.**
