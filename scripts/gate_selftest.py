@@ -444,6 +444,33 @@ CASES = [
      "the cut lands on a digit",
      "assets/index-data.json",
      lambda t: t.replace("\\u2026", "5\\u2026", 1)),
+
+    # _build/build3.py copies the FIRST :root block out of site.css into the
+    # fifteen self-contained pages - the thirteen surveys and two imported
+    # tools - and those stay dark in both themes by design. Put a light block
+    # first and fifteen pages take parchment tokens over hard-coded dark
+    # backgrounds, with every other check still green: the CSS is valid, every
+    # page builds, and nothing lays a page out at this stage. A cascade that
+    # depends on source order needs something asserting that order.
+    #
+    # The mutation makes the first block define the daylight ground, which is
+    # what "a light block came first" looks like from the regex's side.
+    ("the first :root in site.css defining the daylight ground",
+     "the first :root in site.css defines the daylight ground",
+     "public/assets/site.css",
+     lambda t: t.replace("--surface-0:#0B0704", "--surface-0:#EFE6D4", 1)),
+
+    # The drift case between the two daylight blocks returns when the
+    # system-preference block does. Only the attribute block ships today - the
+    # CSS records why in place - so there is nothing yet for two blocks to
+    # drift apart from, and a case mutating a block that does not exist would
+    # report TEST BROKEN rather than catch anything. This guards the block that
+    # does ship: lose it and the theme has no tokens to switch to.
+    ("the daylight token block disappearing entirely",
+     "site.css defines no daylight token block at all",
+     "public/assets/site.css",
+     lambda t: t.replace(':root[data-theme="light"]{',
+                         ':root[data-theme="lightXX"]{', 1)),
 ]
 
 

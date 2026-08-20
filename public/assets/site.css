@@ -141,7 +141,91 @@
   --bar-h:58px;              /* masthead height; the mobile nav hangs off it */
   --measure:66ch;            /* comfortable reading width */
   --measure-wide:78ch;       /* asides and notes, which may run wider */
+
+  /* ---- the text half of two families that only had their material half ----
+     --instr-t was REFERENCED at .foot-contact a and defined nowhere, so it had
+     always fallen through to a literal: a dead token that reads as a working
+     one, the same silent-failure class this file documents for --line and
+     --ink. Minted here with the value it was falling through to.
+
+     --c-t is the text variant of the per-card accent. --c is set inline by the
+     generators and is MATERIAL — the plate wash, the border, the numeral. An
+     inline style cannot be theme-conditional, so a card carries both derived
+     variants under their own names and each theme points --c-t at one of them.
+     Falls back to the accent itself where a card sets neither. ------------- */
+  --instr-t:#8FBEE4;
 }
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   DAYLIGHT — the second ground. Torchlight is the block above and the default.
+
+   ORDER IS LOAD-BEARING AND NOTHING ELSE ENFORCES IT.
+   _build/build3.py injects tokens into the fifteen self-contained pages — the
+   thirteen dungeon surveys and two imported tools — by copying the FIRST :root
+   block out of this file with a regex. The surveys stay dark in both themes by
+   design, so that copy must find torchlight. Put a light block first and
+   fifteen pages silently take parchment tokens over hard-coded dark
+   backgrounds, with check.py, gate.py and toolsmoke.js all still green.
+   scripts/gate.py asserts the order; gate_selftest.py proves the assertion is
+   alive by swapping the blocks and requiring the build to fail.
+
+   The light theme was not invented. --bone has been the text colour since
+   _build/palette.py measured the ground out of the game's own .s3d archives.
+   Turn the sheet over and it becomes the paper; the umber-black becomes ink.
+
+   PANELS GO DARKER THAN THE PAGE. Stacked paper reads as shadow, never as
+   glow. Inverting the elevation direction is the single easiest way to make
+   this look wrong.
+
+   Every colour below is derived, not chosen, and the derivation is in
+   _build/accents.py: mix away from the ground until it clears its bar. Text
+   clears 4.5:1 on --surface-1, the harder of the two grounds and the one a
+   label usually sits on. Material clears 3:1, which is what keeps --instr blue
+   and --ok green instead of collapsing both to grey.
+
+   The two blocks below are identical on purpose — CSS has no mixin, and a
+   media query cannot be combined with an attribute selector. gate.py asserts
+   they stay identical so they cannot drift apart.
+   ══════════════════════════════════════════════════════════════════════════ */
+
+/* NOT YET REACHABLE, DELIBERATELY.
+   The system-preference block that would make this fire for a reader whose OS
+   is set to light is NOT here yet, and prefers-color-scheme: light is the
+   common setting - shipping it now would hand most visitors a half-finished
+   theme. Measured on the built page at this commit, in daylight: the tier-3
+   badge renders at 1.85:1 because .t3 is a hard-coded #D9A227 that does not
+   flip, and a plate's meta figures at 4.20:1 because they still compute from
+   --bone rather than --c-t. Both are fixed in the next step, and the media
+   query lands with them. Until then the only way in is an explicit
+   data-theme="light", which nothing sets. ------------------------------- */
+:root[data-theme="light"]{
+  --surface-0:#EFE6D4; --surface-1:#E7DCC6; --surface-2:#DDD0B5;
+  --bone:#241C12; --txt:#3A2E1E; --mut:#6B5C46; --dim:#685F4F; --faint:#695F52;
+  --rule:#CBBA9C; --rule2:#A89575;
+  --warn:#C9453A; --ember:#C4482E; --lava:#F22701;
+  --brass:#A17627; --ok:#538868; --instr:#62828D;
+  --warn-t:#914E45; --ember-t:#934E3C; --lava-t:#9A4632;
+  --brass-t:#775B27; --instr-t:#506469;
+  color-scheme:light;
+}
+
+/* ---- the accent text variant, declared where the accent actually is -------
+   --c is set INLINE, per card, by the generators: 1,540 declarations across
+   685 pages. --c-t cannot be declared on :root, because a custom property
+   computes on the element that declares it - a --c-t resolved at :root would
+   fall back to :root's own (absent) --c and reach every card as nothing.
+
+   Matched on the inline declaration rather than on a class list. The carriers
+   today are .shell.ent, .zrow, .card, .plate, .gaterow, .contour, .zprov,
+   .arch, .st-entry, .standard, .ch, .door - and two bare <a> with no class at
+   all, which a hand-maintained list would already have missed. A list of
+   classes is the kind of thing that goes stale in silence here; a selector
+   that matches the thing itself cannot.
+
+   The fallback is the accent, so a card that carries no derived variant keeps
+   exactly the colour it has today. ---------------------------------------- */
+[style*="--c:"]{ --c-t:var(--c-t-torch, var(--c)); }
+:root[data-theme="light"] [style*="--c:"]{ --c-t:var(--c-t-day, var(--c)); }
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
