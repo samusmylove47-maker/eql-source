@@ -833,3 +833,46 @@ def run(pages, fail, warn):
                 fail(f"{p} declares canonical {m.group(1)} but the sitemap does not "
                      f"list that address — two answers to one question, and a "
                      f"search engine picks the wrong one")
+
+    # ----------------------------------------------------------------------
+    # A TRUNCATION MUST NEVER END ON A DIGIT.
+    #
+    # named/najena.html published "the NPC record says 3" where the source says
+    # 35: a hard 190-character slice landed between the digits. Every other
+    # truncation on the site is a rough edge a reader can see; this one is a
+    # false figure a reader cannot, because a severed number looks exactly like
+    # a whole smaller one.
+    #
+    # Reports how many fields it examined, and zero examined is a failure —
+    # an assertion of the form "none of these is X" is satisfied by an empty
+    # collection, which is the vacuous pass Session B found four of.
+    try:
+        ix = json.load(open("assets/index-data.json", encoding="utf-8"))
+    except OSError:
+        ix = None
+        warn("assets/index-data.json is missing — truncation safety is unchecked")
+    if ix is not None:
+        seen = 0
+        def _walk(o):
+            global_seen = []
+            if isinstance(o, dict):
+                for k, v in o.items():
+                    if k in ("no", "d") and isinstance(v, str):
+                        global_seen.append(v)
+                    else:
+                        global_seen.extend(_walk(v))
+            elif isinstance(o, list):
+                for x in o:
+                    global_seen.extend(_walk(x))
+            return global_seen
+        fields = _walk(ix)
+        for v in fields:
+            seen += 1
+            if v.endswith("…") and len(v) > 1 and v[-2].isdigit():
+                fail(f"index-data.json truncates {v[-48:]!r} — the cut lands on a "
+                     f"digit, so a severed number publishes as a whole one. "
+                     f"derived.clip() exists to prevent exactly this")
+        if seen == 0:
+            fail("the truncation check examined 0 fields — an empty collection "
+                 "satisfies 'none of these ends on a digit' vacuously, so this "
+                 "reads as a pass while checking nothing")

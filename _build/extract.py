@@ -6,6 +6,7 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__))); os.chdir(ROOT)
 import sys, os as _os
 sys.path.insert(0, _os.path.dirname(_os.path.abspath(__file__)))
 import derived
+from derived import clip
 Z=json.load(open('assets/zones-index.json',encoding='utf-8'))
 
 BADGE=re.compile(r'<span[^>]*class="[^"]*\b(?:tag|pill|badge|new)\b[^"]*"[^>]*>.*?</span>',re.S|re.I)
@@ -255,6 +256,8 @@ def slug(s):
     return re.sub(r'[\s_]+', '-', s).strip('-')[:60]
 
 
+
+
 FIX = json.load(open("assets/catalogue-fixes.json", encoding="utf-8"))
 FRAGMENTS, GROUPS = FIX["fragments"], set(FIX["groups"])
 ALIASES, SPLITS = FIX["aliases"], FIX["split_named"]
@@ -382,7 +385,7 @@ for z in Z:
                               **({"rowdesc":True} if len(names)>1 and not aligned
                                  else {}),
                               "c":norm_cls(cls),
-                              "d":g('dropped by')[:110],"z":z['slug'],"zt":z['title'],
+                              "d":clip(g('dropped by'), 110),"z":z['slug'],"zt":z['title'],
                               "a":z['accent'],"p":z['plate'],"lv":z['levels']})
         # ---- named rosters: Named | ... | Lvl | ...
         elif 'named' in ' '.join(hd[:2]):
@@ -397,7 +400,7 @@ for z in Z:
                 for nm in SPLITS.get(nm, [ALIASES.get(nm, nm)]):
                   named.append({"n":nm,"lv":g('lvl'),"loc":g('loc (y, x)'),
                                 "fl":g('flr'),"rc":g('race / class'),
-                                "no":(g('notes') or g('spawn & notes'))[:190],
+                                "no":clip(g('notes') or g('spawn & notes'), 190),
                                 "z":z['slug'],"zt":z['title'],"a":z['accent'],"p":z['plate']})
 
 for r in items: r["u"] = slug(r["n"])

@@ -618,3 +618,37 @@ def hole_tokens():
         ('@@H_BS_RATIO@@',
          f"about {WORDS.get(round(b['ratio']), round(b['ratio']))} times"),
     ]
+
+
+def clip(s, n):
+    """Shorten to at most n characters without inventing a fact.
+
+    A hard slice published "the NPC record says 3" on named/najena.html where
+    the source says 35: extract.py's 190-character cut landed between the two
+    digits, and the site asserted a level for a named mob that no source
+    states. A severed number does not look severed - it looks like a whole,
+    smaller one. That is the single truncation that turns into a falsehood
+    rather than a rough edge, which is why it is guarded specifically.
+
+    So: break on a word boundary, drop trailing words until the last does not
+    end in a digit, and mark the cut with an ellipsis so a reader can see that
+    something was removed.
+
+    Lives here rather than in extract.py because build17.py truncates the same
+    field again for its meta description, and two truncations with one rule
+    beats two rules. extract.py cannot be imported for it - it has no __main__
+    guard and rewrites index-data.json on import.
+    """
+    s = (s or '').strip()
+    if len(s) <= n:
+        return s
+    cut = s[:n]
+    sp = cut.rfind(' ')
+    if sp > 0:
+        cut = cut[:sp]
+    cut = cut.rstrip()
+    while cut and cut[-1].isdigit():
+        sp = cut.rfind(' ')
+        cut = cut[:sp].rstrip() if sp > 0 else ''
+    cut = cut.rstrip(' ,;:.&-')
+    return (cut + '…') if cut else ''

@@ -127,25 +127,47 @@ for z in Z:
          ("Respawn", z["respawn"] or "not recorded")],
         verified))
 
+# EVERY FIGURE ON A SHARE CARD IS DERIVED, BECAUSE A CARD CANNOT BE CORRECTED.
+#
+# These were typed, and on 18 Aug 2026 four of them were false at once: the tools
+# card said "five" against a registry of six, the learn card "six" against seven,
+# the home card 452 items and 209 named against 434 and 232, and the accuracy
+# card advertised Tier C - a tier this site publicly RETRACTED on 17 August.
+#
+# A wrong page is corrected by the reader clicking it. A wrong card is the only
+# thing most people ever see, it renders in Discord, and we cannot reach it once
+# posted. So nothing here is typed: the counts come from the same registries the
+# pages read, and the tier scale from the one list that defines it.
+sys.path.insert(0, os.path.join(ROOT, '_build'))
+from _partials import TOOLS, LEARN, wordnum
+
+_IX = json.load(open('assets/index-data.json', encoding='utf-8'))
+N_ITEMS = _IX['counts']['item_pages']
+N_NAMED = _IX['counts']['named_pages']
+
+# Tier C was withdrawn on 17 Aug 2026: it was generalised from a single event,
+# and one event is not a rank on a scale. The scale is M and 1 to 5.
+TIER_SCALE = "M, and 1 to 5"
+
 # One per section. These carry no per-page data, so they say what the section is.
 SECTIONS = [
     ("home", BONE, "EVERQUEST LEGENDS", "Sourced. Dated.",
-     [("Surveys", str(len(Z))), ("Items indexed", "452"), ("Named recorded", "209")],
+     [("Surveys", str(len(Z))), ("Items indexed", str(N_ITEMS)), ("Named recorded", str(N_NAMED))],
      "every claim names its source and the date it was read"),
     ("dungeons", BONE, "DUNGEON SURVEYS", "Every zone, surveyed",
      [("Floor plans", "from the game meshes"), ("Coordinates", "checked at build time")],
      "walls drawn from the game's own files"),
     ("tools", INSTR, "TOOLS", "No account. Nothing sent.",
-     [("Trackers", "five"), ("Your progress", "travels in the link")],
+     [("Trackers", wordnum(len(TOOLS)).lower()), ("Your progress", "travels in the link")],
      "share by link, works offline"),
     ("raids", EMBER, "RAID ENCOUNTERS", "Positioning in 3D",
      [("Model", "turn it, phase it"), ("Every figure", "sourced and dated")],
      "schematic where it is schematic, and it says so"),
     ("learn", INSTR, "IS IT STILL TRUE?", "You know a lot that is wrong",
-     [("Entries", "six"), ("Open questions", "named, not hidden")],
+     [("Entries", wordnum(len(LEARN)).lower()), ("Open questions", "named, not hidden")],
      "twenty-five years of habit, tested"),
     ("sources", BONE, "ACCURACY", "Where every claim came from",
-     [("Tiers", "M, 1 to 5, and C"), ("Change log", "typed and dated")],
+     [("Tiers", TIER_SCALE), ("Change log", "typed and dated")],
      "gaps are named, not smoothed over"),
     ("archive", FAINT, "ARCHIVE", "Where this started",
      [("Original plates", "ten"), ("Retired", "10 Aug 2026")],

@@ -190,7 +190,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "40 items recorded dropping here"
+     "detail": "41 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -207,7 +207,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 323,
+   "kills": 327,
    "bosses": [
     "Lord Nagafen"
    ]
@@ -281,7 +281,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "41 items recorded dropping here"
+     "detail": "42 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -298,7 +298,7 @@
    },
    "score": 8,
    "max_score": 10,
-   "kills": 1340,
+   "kills": 1551,
    "bosses": []
   },
   "planeoffear": {
@@ -327,7 +327,7 @@
    },
    "score": 9,
    "max_score": 10,
-   "kills": 446,
+   "kills": 451,
    "bosses": [
     "Cazic-Thule",
     "Dread",
@@ -357,12 +357,12 @@
     },
     "farming": {
      "level": "measured",
-     "detail": "ZEM 86, respawn not recorded, 41 mob types measured"
+     "detail": "ZEM 86, respawn not recorded, 42 mob types measured"
     }
    },
    "score": 9,
    "max_score": 10,
-   "kills": 92,
+   "kills": 94,
    "bosses": [
     "Ashenbone Broodmaster",
     "Avatar of Abhorrence",
@@ -382,30 +382,32 @@
    "title": "Kedge Keep",
    "facets": {
     "bosses": {
-     "level": "sourced",
-     "detail": "14 named on the roster, none measured"
+     "level": "measured",
+     "detail": "1 boss measured, D4"
     },
     "loot": {
      "level": "none",
      "detail": "no loot recorded"
     },
     "difficulty": {
-     "level": "none",
-     "detail": "no measured difficulty"
+     "level": "measured",
+     "detail": "measured at D0, D4"
     },
     "inherited": {
      "level": "sourced",
      "detail": "3 inherited claims badged"
     },
     "farming": {
-     "level": "sourced",
-     "detail": "ZEM 139, respawn not recorded"
+     "level": "measured",
+     "detail": "ZEM 139, respawn not recorded, 11 mob types measured"
     }
    },
-   "score": 3,
+   "score": 7,
    "max_score": 10,
-   "kills": 0,
-   "bosses": []
+   "kills": 2,
+   "bosses": [
+    "Phinigel Autropos"
+   ]
   }
  }
 }

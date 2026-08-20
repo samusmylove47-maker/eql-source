@@ -21,7 +21,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 import backstab as _BS
-from _partials import head, bar, foot
+from _partials import head, bar, foot, wordnum
 
 # The damage a mob deals is a fact about the mob, so it stays. How many times it
 # was seen doing it, in how many sessions, on what date, is a record of one
@@ -42,6 +42,17 @@ Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 G = json.load(open('assets/zone-geometry.json', encoding='utf-8'))
 NZONES = len(Z)
 NGEO = sum(1 for z in Z if z['slug'] in G)
+
+# The zones the 28 July note actually names, counted and listed from the
+# per-zone source ids rather than typed. This paragraph said "eleven dungeons"
+# until 20 August 2026 while the note it cites names six. The correction had
+# already been applied to every per-zone source and to the change log, and not
+# here: one place missed is this project's recurring fault, not a new one.
+_PH28 = [z['title'] for z in Z
+         if z.get('placeholders_source_id') == 'patch-2026-07-28']
+_PH28_N = wordnum(len(_PH28)).lower()
+_PH28_LIST = (' and '.join([', '.join(_PH28[:-1]), _PH28[-1]])
+              if len(_PH28) > 1 else (_PH28[0] if _PH28 else '')).replace("'", '&rsquo;')
 
 CSS = '''<style>
 .rp h2{margin-top:var(--s-7)}
@@ -122,10 +133,11 @@ def page():
     <p>Where a roster carries a percentage, it is inherited from classic EverQuest, where a named
       mob shared its spawn point with a placeholder and the number described how often you got
       the one you wanted.</p>
-    <p><strong>The 28 July 2026 patch note removed placeholders from eleven dungeons.</strong>
-      In those zones the named mob spawns every cycle, and the inherited percentage describes
-      nothing about the zone now. Each survey says in place which case it is in. Where nothing
-      has been published either way, it says that instead of guessing.</p>
+    <p><strong>The 28 July 2026 patch note removed placeholders from {_PH28_N} dungeons</strong>
+      &mdash; {_PH28_LIST}. In those zones the named mob spawns every cycle, and the inherited
+      percentage describes nothing about the zone now. Other zones have had placeholders removed
+      on weaker evidence, and their surveys say so in place. Where nothing has been published
+      either way, a survey says that instead of guessing.</p>
 
     <h2 class="sec" id="measured">What a combat log can and cannot tell you</h2>
     <p class="lede">{_N_MEAS} surveys carry figures measured in play. They are the strongest

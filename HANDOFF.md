@@ -2407,225 +2407,236 @@ between them.
 
 ## To the Director
 
-**Branch `claude/placeholder-recitation`. F-01 fetched and stored, F-05 settled,
-the placeholder correction shipped. Protocol read; this is where my questions
-live from now on.**
+**Live ingestion is running and needs nothing. One decision, not urgent tonight.**
 
-### What the 28 July note actually says
+### Three of Shara's raw logs are on the owner's Desktop and have never been staged
 
-Fetched in a real browser, stored verbatim at
-`sources/raw/2026-07-28-eql-update-notes.txt` — the first artefact of the store.
-It is JS-rendered, so a plain fetch returns navigation and nothing else, which is
-most of why nobody had checked it.
+`state/logs` holds eight logs. The Desktop holds three more that are in none of
+them:
 
-> Removed placeholders from and lowered maximum respawn times in several
-> dungeons: **The Hole · Nagafen's Lair · Lower Guk · Lair of the Splitpaw ·
-> The Warrens · Castle Mistmoore**. More dungeon treatments will take place over
-> time.
+```
+eqlog_Shara_rivervale.txt    795,863 lines   04 Aug 13:33 -> 08 Aug 12:53
+eqlog_Shara_rivervale2.txt   102,157 lines   08 Aug 14:22 -> 08 Aug 18:14
+eqlog_Shara_rivervale4.txt    79,352 lines   09 Aug 18:03 -> 09 Aug 20:26
+```
 
-**Six.** Not eleven, not ten-and-Upper-Guk. Upper Guk is not mentioned anywhere
-in the note.
+**This may contradict something the codebase believes.** `logstats.py` records
+that the seven Castle Mistmoore sessions of 8 August are irreplaceable because
+"EverQuest rotated the file that afternoon and the only surviving copy of 1,018
+kills is this dataset". `rivervale2.txt` covers 08 Aug 14:22-18:14 — the same
+afternoon. The raw log may not have been lost at all.
 
-**The haste string exists verbatim**, which is the more useful of the two
-outcomes you named: *"Added the Unbound Alacrity AA, a new autogranted class AA
-for Monk Gives a passive 3/6/10% increase in your current and maximum haste
-value."*
+`ZONE_STATED` also carries hand-entered zones for two 8 August sessions because
+their logs had no zone line. With the raw files present, `/who` may now supply
+those zones as read evidence and retire the hand entries.
 
-**Both mote bullets, verbatim:** *"Players will no longer receive motes while at
-the class lock cap."* and *"Motes will no longer drop for players unless they
-were eligible to gain exp from the kill."*
+**I have not parsed them, and that is deliberate.** Folding nearly a million
+lines of historical log into the corpus would move published figures on already-
+verified zones, in the middle of a live session, on my own initiative. That is
+the one shape of change the mandate reserves. It also cannot be undone by a
+revert alone once merged, because the derived counts propagate.
 
-### Which zones lost the flag: one, not four
+**What I would do, given a ruling:** stage all three, reparse from a clean base,
+and diff `measured.json` session-by-session before committing anything — treating
+any figure that moves as a finding to report rather than a correction to apply
+silently. Roughly one cycle's work, and better done when play has stopped and
+nothing else is writing to the corpus.
 
-Your per-zone ruling is why, and applying it changed the answer:
+### Self-healing looks like a property of the boss, not of the tier — and CLAUDE.md's gap section says something slightly different
 
-| zone | disposition | basis now |
+Tonight's Plane of Hate run has taken the sample to 30 fights across five
+bosses, and they split cleanly:
+
+| boss | kills | self-heal counts seen |
 |---|---|---|
-| the six named | keep | `patch-2026-07-28`, tier 1, quoted and stored |
-| Najena | keep, re-cited | `patch-2026-06-23`, tier 1 — **but see below** |
-| Befallen, Blackburrow | keep, downgraded | `eqlwiki-cat-named-155553`, tier 2, rev + editor + read-date visible |
-| **Crushbone** | **loses it outright** | none |
+| Coercer T`vala | 6 | 0 |
+| Mistress of Scorn | 6 | 0 |
+| Maestro of Rancor | 7 | 0 |
+| Master of Spite | 5 | 0, 1, 2, 6 |
+| Lord of Ire | 6 | 0, 2, 4, 5, 6 |
 
-Crushbone's rows carried `title="Historical. The 28 July 2026 patch note removed
-placeholders from this zone."` — a tooltip citing a note that never named it.
-They are live text again.
+The three that never heal show 0 in **every** view, including their fullest —
+13 to 15 attackers, where a thin view could not hide a heal. The two that do
+heal show 0 only in their thinnest views, which is the under-witnessing effect
+already documented.
 
-**The boolean is gone as the carrier.** `assets/placeholder-sources.json` holds
-one entry per basis with tier, url, read-date and the quote; each zone names one
-by `placeholders_source_id`; the confidence a page shows derives from that. Same
-remedy `skydata.py` already applies.
+CLAUDE.md section 9 currently reads "what the tier raises is how much of the
+kit appears, not whether a heal is in it". That was right about the tier and is
+now incomplete about the kit: three of these five bosses appear to have no heal
+in the kit at all, at any tier, in any view.
 
-**The evidence is propagated.** The eqlwiki revision lived only in Najena's
-provenance block while supporting three zones. Copied to Befallen's and
-Blackburrow's.
+**I have not edited CLAUDE.md.** It is the project's constitution and the
+wording of a known gap is the human's call, not a derived figure I own. The
+data is in `assets/raids-measured.json` and the query is four lines. If you
+want it folded in, say so and I will do it as its own PR with the numbers
+re-read out of the dataset at write time rather than typed.
 
----
 
-### Where the directive and the prompt are wrong
+### Phinigel Autropos backstabs, and that makes him a triple-class raid boss in a log
 
-**1. There is no 23 June patch note to cite, and Najena's basis is now the
-weakest thing on the page.** `everquestlegends.com/patch-notes` lists six notes;
-the oldest is **7 July 2026 (Beta)**. Probes for 6-16, 6-23 and 6-30 fall through
-to the site's Home view, which is how that single-page app answers a path that
-does not exist. F-06's plan to fetch it and use it as Najena's re-citation target
-**cannot be executed**. I have recorded it as `fetchable: false` with the
-reasoning rather than quietly citing an unreachable source. Najena's claim now
-rests on a tier-1 note a reader cannot check, plus the tier-2 wiki revision that
-also names it. **That is worth your ruling: I would rather demote Najena to the
-wiki revision alongside Befallen and Blackburrow than keep a tier-1 badge on
-something unverifiable.**
+First kill of him we hold, in a Kedge Keep group instance at the top tier. His
+melee verbs are `backstabs` and `crushes`, and he cast `Ensnare`,
+`Engulfing Roots`, `Drifting Death`, `Ice Comet`, `Wrath of Al`Kabor`,
+`Diamondskin`, `Immobilize` and `Ice`.
 
-**2. `measured.json` does not establish tier M for Befallen or Blackburrow, and
-I have not badged them.** The counts are right — 7 and 3 sessions — but the parse
-records kills, loot and casts per mob and **no spawn-cycle structure at all**. It
-cannot distinguish *named on every spawn* from *named killed often*. What it
-shows is suggestive: in one Befallen session `Knight V'Tal` dropped 9 items and
-`Soldier of V'Zher` 7, which is repeated kills of the same named in one sitting.
-That is consistent with no placeholders and does not demonstrate it — a zone
-*with* placeholders also yields repeated named kills, just less often. Najena's
-own standard is the one to beat: *"a combat log across several cycles at one
-camp, showing the named on every spawn."* Settling it means a camp-cycle analysis
-of the raw 04–07 Aug Shara logs, which are in `state/logs`. **That is real work
-and I did not fake it under deadline.** Left at tier 2.
+Backstab is a rogue ability. The roots and snares are druid. The comet and
+Diamondskin are wizard. That is three kits in one fight, and it is the
+reasoning CLAUDE.md section 2 already applies to Mistmoore trash, arriving on
+a raid boss.
 
-**3. The survey prose already had it right; the error was confined to
-`zones-index.json`, and the site contradicted itself.** `zone-provenance.json`
-already names the six correctly on The Hole, Nagafen's Lair, The Warrens and
-Mistmoore — `thehole[2]` quotes all six verbatim — and `blackburrow[0]` says in
-as many words *"Blackburrow was not named in the 28 July launch-day dungeon
-pass."* So one file said six and excluded Blackburrow while another flagged it
-and claimed eleven. Worth knowing for the audit's model of how this defect
-spreads: it was not a uniform belief, it was two files disagreeing.
+It is the second time the published triple-class claim has shown up in a log
+after Innoruuk, and the first where one of the three is a **melee** kit rather
+than a second spell list.
 
-**4. A gap closed that this site had already scoped precisely.** Blackburrow's
-`respawn_note` has said since 11 August that eqlwiki's rendering named six
-without it, a fuller quotation supplied to us named eleven with it, and **"one
-reading of the developers' own page settles it."** That reading is done. Six,
-without Blackburrow; the eleven-zone quotation was wrong. Recorded as a gap
-closing, not as new content, and 22:00 is not a pre-patch ceiling for that zone
-because the pass never touched it.
+**The data is stored and nothing publishes it.** `melee_verbs` is recorded in
+`assets/raids-measured.json`, but no page renders melee verbs, so the row on
+`learn/difficulty.html` shows his spells and not his backstab. Publishing it
+would be a new claim on a page rather than a catch-up parse, so I have not
+written it. Say the word and it goes on the Kedge survey or the difficulty
+explainer, derived from `melee_verbs` rather than typed.
 
-**5. Stream 2's premise was false when written, and the owner has since fixed
-it.** The live `eqlog_Avenrae_rivervale.txt` held **17 Aug 15:51–17:17 only** —
-17,806 lines, every one `Mon Aug 17`, zero 18 August lines. One zone entry, `The
-Plane of Fear 1 (Awakened)`. **74 slain lines and zero bosses** — no Cazic-Thule,
-Dread, Fright or Terror. Not two clears; 86 minutes of trash. Its only two
-"mistmoore" strings are other players' chat, one of them saying *"i think
-mistmoore is getting a revamp tomorrow"*. `dbg.txt` was written today at 14:30,
-so the client ran and the chat log did not — logging was off.
+### CORRECTED BELOW — the site is deployed and the cause was not what this said
 
-The owner then supplied Shara's logs, and those are the real thing. See below.
+The section that follows was written before the dashboard was looked at. Its
+measurement was sound and its diagnosis was not. Read
+**"What the deploy actually was"** underneath it before acting on anything here.
 
-**6. Attack Speed is 163, not 161.** Single screenshot, dated today, sent into
-this session. Recorded as yours per your own instruction — but note it is one
-image, so the "did it move during the session" reading does not arise from this
-evidence.
+### The deploy is broken, and here is the sentence it is costing us
 
----
-
-### The haste question has a third answer, and the screenshots settle it
-
-Not a bare number and not a percent. On items, haste is a **named effect with a
-rank**:
-
-- `Cape of Midnight Mist +4` — **Focus Effect: Enhancement Haste I**
-- `Nightshade Wreath +2` — **Focus Effect: Reanimation Haste I**
-
-On the character sheet it is a **%-labelled stat carrying a bare number**:
-`Attack Speed % 163`. The register asked whether a tooltip prints a bare number
-or a percent; on these fifteen items it prints **neither** — it prints a name and
-a roman numeral, and the number lives on the sheet. That is consistent with the
-patch note's *"3/6/10% increase in your current and maximum haste value"*: a
-percentage applied to a stat, with the stat shown on the sheet and the source
-shown on the item.
-
-Two items corroborate the 18 Aug notes independently: `Wine Thief +4` carries
-*Improved Vampirism II* (the note gives Bloodmoon *III*), and `Cherista's Fangs
-+2` carries *Combat Effect: Lifebite* (the note adds Lifebite). Per your ruling
-the Vampirism pair is a finding, not a footnote, and both readings publish.
-
-### Shara's logs — the first post-revamp Mistmoore data exists
-
-`eqlog_Shara_rivervale_2026-08-18.txt`, 60,756 lines, 00:00:02–15:47:37 today.
-Copied into `state/logs` beside all eight existing logs (10 total; `.gitignore`
-covers `state/logs/` and `*eqlog*.txt`, verified — `git status` cannot see them).
-
-**Mistmoore at three tiers, all post-patch by timestamp** (servers down 06:00
-PDT; these are afternoon):
+Fingerprinted as asked, before any merge rather than after:
 
 ```
-12:55:32  The Castle of Mistmoore              (D0)
-12:56:35  The Castle of Mistmoore 1 (Awakened) (D1)
-13:58:47  The Castle of Mistmoore              (D0)
-13:59:39  The Castle of Mistmoore 2 (Adaptive) (D2)
+live  https://eqlsource.com        md5 8aade310f1f24232ae51015a590127b8
+main  public/index.html            md5 ea9bd80c20c5abacb2bf8ab1b3464417
 ```
 
-Named killed: **Xicotl ×4, Butler Syncall ×4, Maid Issis ×3** — repeated named
-kills inside three hours, which bears directly on the revamp's *"named NPCs being
-guaranteed spawns"*. `eqlog_Shara_rivervale_2026-08-17.txt` carries the Plane of
-Fear day, including `The Plane of Fear - Group` and an unnumbered entry, so D0
-and D1 both.
+Different, and the difference is the one that matters. **The live front page
+says the Auras overlay "makes no network requests of its own."** That is the
+privacy falsehood, still served. `main` has said the accurate thing since
+18 August and no reader has ever seen it.
 
-**I have not parsed them into `measured.json` yet.** That is the Mistmoore
-ingestion PR, and per the directive it rebases onto Wave 1's Mistmoore touches
-and needs the `build9.py` date-split before eras can be kept distinct. Doing it
-in the same PR as this correction would have delayed the correction, and Q1 said
-fix first.
+Worth recording because it nearly fooled me the other way: grepping live for
+`Google` returns **zero** and `main` returns two, which reads like live being
+cleaner. It is the reverse — live has no mention of Google *because* it still
+carries the false claim. **A count is not a reading**, which is the same fault
+recorded three times above under someone else's name.
 
-### The fan-out caught what I missed, and one of them was the worst thing on the site
+Re-fingerprint after the merge. If they still differ an hour later the
+deployment is broken independently of anything any session builds, and that
+outranks the theme.
 
-I shipped the data correction before the adversarial verifiers returned, on your
-"fix first" ruling. They came back with three surfaces I had not touched, and
-the PR was incomplete without them. Recording that plainly: the data fix alone
-would have left the falsehood published.
+### What the deploy actually was
 
-**1. A fabricated tier-1 quotation on the register.**
-`public/learn/still-true.html` published this in quotation marks, badged
-**T1 - Developer patch notes**:
+**The site is live and correct.** `eqlsource.com` and `origin/main` are the same
+bytes, verified on the served page rather than on the deploy tool's own report:
 
-> "Removed placeholders from and lowered maximum respawn times in several
-> dungeons: The Hole, Nagafen's Lair, Lower Guk, Lair of the Splitpaw, The
-> Warrens, Castle Mistmoore, **Upper Guk, Crushbone, Befallen, Blackburrow,
-> Najena**."
+```
+live  8f04daf4e05e   main  8f04daf4e05e
+```
 
-The real note stops at Castle Mistmoore. **Five zone names were appended inside
-the quotation marks** and attributed to the developers. Source
-`_build/build13.py:306`. That is not a mis-citation, it is an invented primary
-source, and it sat on the page whose entire job is recording what is still true.
-Corrected, with the retraction stated outside the quote marks so the ledger
-records what it printed.
+The Auras privacy falsehood is gone from the front page, and Najena's false NPC
+level, Crushbone's measured data, Kedge Keep and the six-dungeons correction are
+all public. Two days of stuck work reached readers.
 
-**2. The generator minted the false citation on every flagged zone.**
-`_build/build3.py:234` hard-coded *"Historical. The 28 July 2026 patch note
-removed placeholders from this zone"* as the tooltip for every zone the boolean
-fired on. So Najena, Befallen and Blackburrow - which keep the claim on *other*
-sources - had a false tier-1 attribution injected into their rosters by the
-renderer, in a tooltip, where **no data fix could reach it**. The attribution is
-now derived per zone from `placeholders_source_id`. Najena's reads *"The 23 June
-2026 revamp note ... The 28 July note does not name this zone."*
+**Published by hand.** `npx wrangler deploy` from the repository root, by the
+owner's authorisation, after moving their checkout onto `main` — it was sitting
+on `fix/licence-and-tiers`, **77 commits behind**, and a deploy from there would
+have published a front page older than the one that was live. Their earlier
+attempt failed on a PowerShell execution policy, which is the only reason it did
+not happen. `npx.cmd` is the form that runs on this machine.
 
-**3. Two generator comments restated the fabricated count** to the next reader of
-the code, and Najena's provenance block claims it has quoted the 23 June line in
-section 01 "since it was written" - `grep striking _build/source/najena.html`
-returns nothing. The first is fixed; the second is left as found and flagged
-here, because rewriting a provenance block's account of itself needs your call.
+**The dashboard was deploying the whole time.** Its version history is full of
+entries labelled with branch names and attributed to sessions, not a 29-hour
+silence. Branch control has now been set to production branch `main` with
+non-production builds **off**, so only `main` can reach the live site whatever
+was happening before.
 
-**And I hit the heredoc trap this project documents.** My first `build3.py` patch
-went through a shell heredoc carrying `'`, which arrived as a bare apostrophe
-and broke a string literal. `build.sh` exited non-zero, `check.py` caught the
-stale tree, and nothing shipped - the guard worked. CLAUDE.md section 5 says to
-use the editor for any content with escapes, and it is right; I used it for the
-retry.
+**What is still unproven, and I am not going to assert it.** I claimed the live
+bytes proved the site was serving the Director's branch. It proved nothing of
+the kind: that branch and `main` at `2b05159b` have **zero differing files**
+under `public/`, so the fingerprint cannot tell them apart. Whether branch
+pushes were replacing production, or production had simply stopped, is
+unresolved — and the setting above closes the hole either way.
 
-### Questions
+**The general fault, three times in one session, all mine.** A grep count of
+zero, a `curl` that had not followed a redirect, and a matching fingerprint were
+each treated as evidence when each would have looked identical had the theory
+been wrong. That is the same family as this project's own rules — *a dead check
+looks exactly like a passing one*, and zero-examined-is-a-failure. The operating
+rule taken from it: **name the competing explanation before measuring, and pick
+a measurement that comes out differently under each.** Where none exists, report
+the question as unresolved rather than the theory that fits.
 
-1. **Najena's tier.** Demote to the wiki revision, or keep a tier-1 citation a
-   reader cannot reach? I lean demote.
-2. **The tier-M analysis for Befallen and Blackburrow** — worth doing? It is a
-   camp-cycle pass over the raw logs, and it would make this the strongest
-   version of the claim the site has held. Not tonight.
-3. **`/outputfile inventory`** — requested per your ruling. `_build/inventory.py`
-   survives and still writes `assets/item-ids.json`, so the parser is intact.
+**The untested question.** Everything correct on the site today was published by
+hand. No merge to `main` has been observed to publish on its own since the
+branch-control change. **This PR is that test**: if the site does not change
+after it merges, the automation is still broken and the build logs are the next
+place to look, not the theme.
+
+### Build order item 1 was already green when the order was written
+
+`gate_selftest.py` is not red. The TEST BROKEN case — the one anchored to a
+typed word-number that broke when Mistmoore returned to `full` — was
+re-anchored to a derived value earlier in this cycle, which is the repair the
+order asks for. It has been green at 28 since; it is **29** now, the new case
+being the truncation fault.
+
+Nothing was skipped: item 1 was verified before item 2 was started.
+
+### gate_selftest is green on `main`, and red on yours — your branch is 39 behind
+
+The prerequisite is already met. Both readings are correct about their own tree,
+which is why repeating either would not have settled it.
+
+```
+public/sources.html says   "Three of the 13 surveys have not cleared"
+your case searches for     "Four of the 13 surveys have not cleared"   -> absent
+main's gate_selftest       All 29 cases ... tree is clean
+```
+
+`claude/eq-map-export-proposal-oe8m6l` still carries the pinned literal:
+
+```python
+lambda t: t.replace("Four of the 13 surveys have not cleared",
+                    "Five of the 13 surveys have not cleared")
+```
+
+On `main` that case was re-anchored to a word-number regex on 18 August, which
+is the repair the order asks for. The mutation now rewrites whatever word is
+present, so it survives Mistmoore moving between `full` and `partial` in either
+direction.
+
+**The branch is 39 commits behind `main` and has never merged it.** That is the
+mechanism behind this round and the two before it: the share cards you cleared
+yourself, and this. Orders written against it describe a tree that no longer
+exists, and the session executing them cannot tell an instruction from a stale
+observation without re-deriving every one. Merging `main` into it costs nothing
+and removes the whole class.
+
+**Standing answers received and taken.** The three logs will be staged on my own
+plan with a session-by-session diff first, play having stopped. The self-heal
+amendment goes up as its own PR with the figures re-read from
+`assets/raids-measured.json` at write time rather than typed. The theme starts
+now, on its own branch, alone.
+
+### Where the night ended
+
+Play stopped after Kedge Keep. Ingestion is complete through the final log line
+and the loop is discontinued at the owner's instruction. Nothing is
+part-parsed and no session is orphaned.
+
+### The two-theme atlas: the spec you asked for is in `docs/ATLAS-SPEC.md`
+
+No generator has moved. The specimen was read, not re-derived.
+
+**Three rulings are wanted before section 2 of it can be built**, and they are
+marked in place: the accent derivation where the rule and the mock disagree,
+what a theme means for the two imported tools, and whether Cinzel is a fourth
+face or the specimen's own dress.
+
+Section 0 of that file lists four things in the brief that are wrong or have
+moved under it, including one AA failure in the palette as handed down. Two of
+them change what the work is.
 
 ---
 

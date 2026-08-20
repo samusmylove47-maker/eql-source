@@ -180,8 +180,14 @@ CASES = [
     ("the count of surveys short of the full standard, off by one",
      "surveys have not cleared the full standard",
      "public/sources.html",
-     lambda t: t.replace("Four of the 13 surveys have not cleared",
-                         "Five of the 13 surveys have not cleared")),
+     # Derived, not typed. This pinned the literal "Four of the 13 surveys" and
+     # went TEST BROKEN the moment Mistmoore returned to full and the sentence
+     # read "Three" - a self-test that hard-codes the value it mutates rots
+     # exactly like the pages it is guarding. It now rewrites whatever word is
+     # there into one that is certainly wrong.
+     lambda t: re.sub(r'\b(One|Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Eleven|Twelve|Thirteen)'
+                      r'( of the \d+ surveys have not cleared)',
+                      r'Thirteen\2', t, count=1)),
 
     ("a withheld coordinate reprinted in the roster",
      "prints a coordinate for 'Rathyl', which is withheld",
@@ -427,6 +433,17 @@ CASES = [
      "assets/catalogue-fixes.json",
      lambda t: t.replace('"aliases": {},',
                          '"aliases": {"A Ghoul That No Survey Names": "A Ghoul"},')),
+
+    # named/najena.html published "the NPC record says 3" where the source says
+    # 35, because a hard 190-character slice landed between the digits. Every
+    # other truncation is a rough edge a reader can see; that one was a false
+    # figure they could not, since a severed number looks like a whole smaller
+    # one. The mutation puts a digit back in front of an existing ellipsis, so
+    # it stays correct however the underlying notes change.
+    ("a truncation that ends on a digit, publishing a severed number as a whole one",
+     "the cut lands on a digit",
+     "assets/index-data.json",
+     lambda t: t.replace("\\u2026", "5\\u2026", 1)),
 ]
 
 

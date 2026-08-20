@@ -1264,7 +1264,7 @@
   "The Castle of Mistmoore": {
    "difficulty": 1,
    "date": "08 Aug 2026",
-   "kills": 1340,
+   "kills": 1551,
    "per_mob": {
     "a pledge familiar": {
      "Mayong Mistmoore": -5,
@@ -1922,7 +1922,7 @@
   "Nagafen's Lair - Group": {
    "difficulty": 1,
    "date": "10 Aug 2026",
-   "kills": 31,
+   "kills": 35,
    "per_mob": {
     "a fire giant warrior": {
      "Nagafen": -12,
@@ -2110,7 +2110,7 @@
   "The Plane of Fear - Group": {
    "difficulty": 2,
    "date": "12 Aug 2026",
-   "kills": 26,
+   "kills": 31,
    "per_mob": {},
    "factions": [],
    "factions_seen": [],
@@ -2201,7 +2201,7 @@
   "The Plane of Hate - Group": {
    "difficulty": 4,
    "date": "12 Aug 2026",
-   "kills": 18,
+   "kills": 20,
    "per_mob": {},
    "factions": [],
    "capped": {
@@ -2327,6 +2327,151 @@
     "Dark Elf"
    ],
    "helps": []
+  },
+  "Kedge Keep": {
+   "difficulty": 0,
+   "date": "18 Aug 2026",
+   "kills": 2,
+   "per_mob": {
+    "a seahorse patriarch": {
+     "Phinigel Autropos": -5
+    }
+   },
+   "factions": [
+    "Phinigel Autropos"
+   ],
+   "factions_seen": [
+    "Phinigel Autropos"
+   ],
+   "falling": [
+    "Phinigel Autropos"
+   ],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Kedge Keep - Group": {
+   "difficulty": 4,
+   "date": "18 Aug 2026",
+   "kills": 0,
+   "per_mob": {},
+   "factions": [],
+   "factions_seen": [
+    "Phinigel Autropos"
+   ],
+   "falling": [],
+   "rising": [],
+   "capped_up": [],
+   "capped_down": [],
+   "steps_undone": [],
+   "steps_helped": [],
+   "damages": [],
+   "helps": []
+  },
+  "Clan Crushbone": {
+   "difficulty": 1,
+   "date": "19 Aug 2026",
+   "kills": 144,
+   "per_mob": {
+    "a dwarven slave": {
+     "Clerics of Underfoot": -5,
+     "Kazon Stormhammer": -5,
+     "Miners Guild 249": -3
+    },
+    "Rondo Dunfire": {
+     "Butcherblock Bandits": -25,
+     "Miners Guild 628": 5
+    },
+    "Ambassador D`Vinn": {
+     "Indigo Brotherhood": -75,
+     "Steel Warriors": 5,
+     "Primordial Malice": 150
+    }
+   },
+   "factions": [
+    "Butcherblock Bandits",
+    "Clerics of Underfoot",
+    "Indigo Brotherhood",
+    "Kazon Stormhammer",
+    "Miners Guild 249",
+    "Miners Guild 628",
+    "Primordial Malice",
+    "Steel Warriors"
+   ],
+   "capped": {
+    "Crushbone Orcs": "down",
+    "Storm Guard": "up",
+    "Faydarks Champions": "up",
+    "Emerald Warriors": "up"
+   },
+   "factions_seen": [
+    "Butcherblock Bandits",
+    "Clerics of Underfoot",
+    "Crushbone Orcs",
+    "Emerald Warriors",
+    "Faydarks Champions",
+    "Indigo Brotherhood",
+    "Kazon Stormhammer",
+    "Miners Guild 249",
+    "Miners Guild 628",
+    "Primordial Malice",
+    "Steel Warriors",
+    "Storm Guard"
+   ],
+   "falling": [
+    "Butcherblock Bandits",
+    "Clerics of Underfoot",
+    "Indigo Brotherhood",
+    "Kazon Stormhammer",
+    "Miners Guild 249"
+   ],
+   "rising": [
+    "Miners Guild 628",
+    "Primordial Malice",
+    "Steel Warriors"
+   ],
+   "capped_up": [
+    "Emerald Warriors",
+    "Faydarks Champions",
+    "Storm Guard"
+   ],
+   "capped_down": [
+    "Crushbone Orcs"
+   ],
+   "steps_undone": [
+    {
+     "step": "tonics400",
+     "name": "Tumpy Tonics",
+     "factions": [
+      "Kazon Stormhammer"
+     ],
+     "races": [
+      "Dwarf"
+     ]
+    }
+   ],
+   "steps_helped": [
+    {
+     "step": "iceberg",
+     "name": "Lion Delights to Iceberg",
+     "factions": [
+      "Steel Warriors"
+     ],
+     "races": [
+      "Barbarian"
+     ]
+    }
+   ],
+   "damages": [
+    "Dwarf"
+   ],
+   "helps": [
+    "Barbarian"
+   ]
   }
  }
 }

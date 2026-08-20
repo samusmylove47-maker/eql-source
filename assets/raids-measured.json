@@ -1533,6 +1533,44 @@
  },
  {
   "boss": "Cazic-Thule",
+  "difficulty": null,
+  "difficulty_label": null,
+  "date": "19 Aug 2026",
+  "zone": null,
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 6,
+  "other_players": 5,
+  "our_damage_share_pct": 29.9,
+  "damage_is_floor": false,
+  "joined_late_seconds": 5,
+  "damage_low": 166694,
+  "damage_high": 166694,
+  "damage_spread_pct": 0.0,
+  "seconds": 404,
+  "spells": {
+   "Avatar Power": 11,
+   "Shadow Vortex": 7,
+   "Life Leech": 4,
+   "Negation of Life": 2,
+   "Dooming Darkness": 2,
+   "Word of Spirit": 1,
+   "Blood of Pain": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 4,
+  "self_heal_high": 4,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "kicks",
+   "slashes"
+  ]
+ },
+ {
+  "boss": "Cazic-Thule",
   "difficulty": 0,
   "difficulty_label": "Base",
   "date": "17 Aug 2026",
@@ -1646,6 +1684,45 @@
  },
  {
   "boss": "Cazic-Thule",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 33.5,
+  "damage_is_floor": true,
+  "joined_late_seconds": 7,
+  "damage_low": 165655,
+  "damage_high": 165655,
+  "damage_spread_pct": 0.0,
+  "seconds": 400,
+  "spells": {
+   "Avatar Power": 11,
+   "Shadow Vortex": 6,
+   "Life Leech": 4,
+   "Negation of Life": 2,
+   "Dooming Darkness": 2,
+   "Word of Spirit": 1,
+   "Blood of Pain": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 4,
+  "self_heal_high": 4,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "kicks",
+   "slashes"
+  ],
+  "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 12"
+ },
+ {
+  "boss": "Cazic-Thule",
   "difficulty": 4,
   "difficulty_label": "Refined",
   "date": "12 Aug 2026",
@@ -1756,7 +1833,7 @@
   "melee_verbs": [
    "hits"
   ],
-  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
+  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 13"
  },
  {
   "boss": "Coercer T`vala",
@@ -1795,7 +1872,7 @@
   "melee_verbs": [
    "hits"
   ],
-  "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 7"
+  "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 13"
  },
  {
   "boss": "Coercer T`vala",
@@ -1834,7 +1911,7 @@
   "melee_verbs": [
    "hits"
   ],
-  "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 7"
+  "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 13"
  },
  {
   "boss": "Coercer T`vala",
@@ -1849,7 +1926,7 @@
   "attackers": 7,
   "other_players": 6,
   "our_damage_share_pct": 21.3,
-  "damage_is_floor": false,
+  "damage_is_floor": true,
   "joined_late_seconds": null,
   "damage_low": 66752,
   "damage_high": 66752,
@@ -1869,7 +1946,48 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "crushes"
-  ]
+  ],
+  "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 13"
+ },
+ {
+  "boss": "Coercer T`vala",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 12.4,
+  "damage_is_floor": true,
+  "joined_late_seconds": 608,
+  "damage_low": 431769,
+  "damage_high": 431769,
+  "damage_spread_pct": 0.0,
+  "seconds": 433,
+  "spells": {
+   "Tashania": 12,
+   "Engulfing Roots": 9,
+   "Ensnare": 8,
+   "Immobilize": 6,
+   "Superior Healing": 4,
+   "Drifting Death": 2,
+   "Shiftless Deeds": 2,
+   "Life Leech": 2,
+   "Ice": 1,
+   "Dazzle": 1,
+   "Efflorescing Heal": 1
+  },
+  "spells_distinct": 11,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "crushes"
+  ],
+  "partial_reason": "joined 608s after the boss was engaged"
  },
  {
   "boss": "Dread",
@@ -2046,6 +2164,76 @@
    "kicks",
    "pet"
   ]
+ },
+ {
+  "boss": "Dread",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 1,
+  "other_players": 0,
+  "our_damage_share_pct": 100.0,
+  "damage_is_floor": true,
+  "joined_late_seconds": 9,
+  "damage_low": 445,
+  "damage_high": 445,
+  "damage_spread_pct": 0.0,
+  "seconds": 3,
+  "spells": {
+   "Superior Healing": 1
+  },
+  "spells_distinct": 1,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "hits"
+  ],
+  "partial_reason": "saw 1 attackers where another kill of this boss at this tier saw 12"
+ },
+ {
+  "boss": "Dread",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 36.9,
+  "damage_is_floor": true,
+  "joined_late_seconds": 12,
+  "damage_low": 85527,
+  "damage_high": 85527,
+  "damage_spread_pct": 0.0,
+  "seconds": 315,
+  "spells": {
+   "Earth Elemental Attack": 17,
+   "Superior Healing": 8,
+   "Ensnare": 5,
+   "Chloroplast": 2,
+   "Efflorescing Heal": 1,
+   "Sha's Lethargy": 1,
+   "Engulfing Roots": 1
+  },
+  "spells_distinct": 7,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
   "boss": "Dread",
@@ -2505,6 +2693,48 @@
    "kicks"
   ],
   "partial_reason": "joined 92s after the boss was engaged"
+ },
+ {
+  "boss": "Fright",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 34.3,
+  "damage_is_floor": true,
+  "joined_late_seconds": 2,
+  "damage_low": 73505,
+  "damage_high": 73505,
+  "damage_spread_pct": 0.0,
+  "seconds": 260,
+  "spells": {
+   "Earth Elemental Attack": 14,
+   "Sha's Lethargy": 12,
+   "Immobilize": 9,
+   "Discordant Mind": 8,
+   "Greater Healing": 4,
+   "Tashania": 4,
+   "Gravity Flux": 2,
+   "Swift Like the Wind": 1,
+   "Dazzle": 1,
+   "Envenomed Breath": 1
+  },
+  "spells_distinct": 10,
+  "self_heal_low": 4,
+  "self_heal_high": 4,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
   "boss": "Fright",
@@ -3205,6 +3435,41 @@
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
+  "boss": "Innoruuk, the Prince of Hate",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 11,
+  "other_players": 10,
+  "our_damage_share_pct": 7.3,
+  "damage_is_floor": true,
+  "joined_late_seconds": 5,
+  "damage_low": 361742,
+  "damage_high": 361742,
+  "damage_spread_pct": 0.0,
+  "seconds": 436,
+  "spells": {
+   "Malosi": 6,
+   "Plague": 6,
+   "Immobilize": 3,
+   "Rend": 2,
+   "Elnerick's Entombment of Ice": 2
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "bashes",
+   "hits"
+  ],
+  "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
   "boss": "Keeper of Souls",
   "difficulty": 0,
   "difficulty_label": "Base",
@@ -3661,6 +3926,41 @@
   ]
  },
  {
+  "boss": "Lord Nagafen",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "Nagafen's Lair - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 14.6,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 373810,
+  "damage_high": 373810,
+  "damage_spread_pct": 0.0,
+  "seconds": 354,
+  "spells": {
+   "Bonds of Force": 3,
+   "Supernova": 1,
+   "Markar's Clash": 1,
+   "Elnerick's Entombment of Ice": 1,
+   "Immobilize": 1
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "crushes",
+   "frenzies"
+  ]
+ },
+ {
   "boss": "Lord of Ire",
   "difficulty": 3,
   "difficulty_label": "Fused",
@@ -3856,6 +4156,50 @@
    "kicks"
   ],
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 15"
+ },
+ {
+  "boss": "Lord of Ire",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 11,
+  "other_players": 10,
+  "our_damage_share_pct": 10.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 1,
+  "damage_low": 374265,
+  "damage_high": 374265,
+  "damage_spread_pct": 0.0,
+  "seconds": 393,
+  "spells": {
+   "Malosi": 9,
+   "Plague": 7,
+   "Shadow Vortex": 3,
+   "Rain of Swords": 2,
+   "Shock of Swords": 2,
+   "Envenomed Bolt": 2,
+   "Superior Healing": 2,
+   "Harm Touch": 1,
+   "Harnessing of Spirit": 1,
+   "Elemental Maelstrom": 1,
+   "Shock of Venom": 1,
+   "Flame Arc": 1,
+   "Togor's Insects": 1,
+   "Life Leech": 1
+  },
+  "spells_distinct": 14,
+  "self_heal_low": 4,
+  "self_heal_high": 4,
+  "melee_verbs": [
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 15"
  },
  {
   "boss": "Lord of Loathing",
@@ -4269,6 +4613,45 @@
    "slashes"
   ],
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
+  "boss": "Maestro of Rancor",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 7.8,
+  "damage_is_floor": true,
+  "joined_late_seconds": 681,
+  "damage_low": 369895,
+  "damage_high": 369895,
+  "damage_spread_pct": 0.0,
+  "seconds": 713,
+  "spells": {
+   "Superior Healing": 41,
+   "Chloroplast": 19,
+   "Malosi": 14,
+   "Plague": 6,
+   "Shock of Venom": 4,
+   "Blizzard Blast": 1,
+   "Envenomed Bolt": 1,
+   "Sha's Lethargy": 1,
+   "Gale of Poison": 1
+  },
+  "spells_distinct": 9,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "crushes"
+  ],
+  "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
   "boss": "Magi P`tasa",
@@ -4730,7 +5113,7 @@
   "attackers": 6,
   "other_players": 5,
   "our_damage_share_pct": 17.7,
-  "damage_is_floor": false,
+  "damage_is_floor": true,
   "joined_late_seconds": null,
   "damage_low": 234249,
   "damage_high": 242060,
@@ -4753,6 +5136,47 @@
   "self_heal_high": 10,
   "melee_verbs": [
    "hits",
+   "pierces"
+  ],
+  "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 13"
+ },
+ {
+  "boss": "Master Yael",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Ruins of Old Paineel - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 5.8,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 384584,
+  "damage_high": 384584,
+  "damage_spread_pct": 0.0,
+  "seconds": 335,
+  "spells": {
+   "Immobilize": 10,
+   "Elnerick's Entombment of Ice": 5,
+   "Insidious Retrogression": 4,
+   "Shadow Vortex": 4,
+   "Ignite Blood": 3,
+   "Wrath of Al`Kabor": 2,
+   "Force": 2,
+   "Superior Healing": 1,
+   "Sacred Echo": 1,
+   "Circle of Force": 1,
+   "Gravity Flux": 1,
+   "Infectious Cloud": 1
+  },
+  "spells_distinct": 12,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
    "pierces"
   ]
  },
@@ -4908,6 +5332,46 @@
    "kicks"
   ],
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
+  "boss": "Master of Spite",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 12.9,
+  "damage_is_floor": true,
+  "joined_late_seconds": 136,
+  "damage_low": 385277,
+  "damage_high": 385277,
+  "damage_spread_pct": 0.0,
+  "seconds": 363,
+  "spells": {
+   "Malosi": 7,
+   "Superior Healing": 6,
+   "Engulfing Roots": 3,
+   "Drifting Death": 2,
+   "Fire": 2,
+   "Efflorescing Heal": 2,
+   "Chloroplast": 2,
+   "Sha's Lethargy": 2,
+   "Ice": 1,
+   "Ensnare": 1
+  },
+  "spells_distinct": 10,
+  "self_heal_low": 6,
+  "self_heal_high": 6,
+  "melee_verbs": [
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
   "boss": "Mistress of Scorn",
@@ -5090,6 +5554,40 @@
    "punches"
   ],
   "partial_reason": "saw 8 attackers where another kill of this boss at this tier saw 14"
+ },
+ {
+  "boss": "Mistress of Scorn",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "The Plane of Hate - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 6.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 1260,
+  "damage_low": 339466,
+  "damage_high": 339466,
+  "damage_spread_pct": 0.0,
+  "seconds": 362,
+  "spells": {
+   "Sha's Lethargy": 8,
+   "Envenomed Breath": 7,
+   "Frost Shard": 5
+  },
+  "spells_distinct": 3,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "cleaves",
+   "crushes",
+   "kicks"
+  ],
+  "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
   "boss": "Noble Dojorn",
@@ -5465,6 +5963,43 @@
    "pierces"
   ],
   "partial_reason": "saw 1 attackers where another kill of this boss at this tier saw 6"
+ },
+ {
+  "boss": "Phinigel Autropos",
+  "difficulty": 4,
+  "difficulty_label": "Refined",
+  "date": "18 Aug 2026",
+  "zone": "Kedge Keep - Group 4 (Refined)",
+  "group_instance": true,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 13,
+  "other_players": 12,
+  "our_damage_share_pct": 7.4,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 337650,
+  "damage_high": 337650,
+  "damage_spread_pct": 0.0,
+  "seconds": 251,
+  "spells": {
+   "Immobilize": 13,
+   "Engulfing Roots": 6,
+   "Ensnare": 5,
+   "Ice": 2,
+   "Drifting Death": 2,
+   "Ice Comet": 1,
+   "Wrath of Al`Kabor": 1,
+   "Diamondskin": 1
+  },
+  "spells_distinct": 8,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "backstabs",
+   "crushes"
+  ]
  },
  {
   "boss": "Protector of Sky",
@@ -5997,6 +6532,82 @@
  },
  {
   "boss": "Terror",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 3,
+  "other_players": 2,
+  "our_damage_share_pct": 47.7,
+  "damage_is_floor": true,
+  "joined_late_seconds": 1,
+  "damage_low": 3188,
+  "damage_high": 3188,
+  "damage_spread_pct": 0.0,
+  "seconds": 15,
+  "spells": {
+   "Negation of Life": 1,
+   "Harm Touch": 1,
+   "Life Leech": 1,
+   "Earth Elemental Attack": 1,
+   "Dooming Darkness": 1
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 1,
+  "self_heal_high": 1,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "hits",
+   "kicks",
+   "pet"
+  ],
+  "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 12"
+ },
+ {
+  "boss": "Terror",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 28.6,
+  "damage_is_floor": true,
+  "joined_late_seconds": 16,
+  "damage_low": 79224,
+  "damage_high": 79224,
+  "damage_spread_pct": 0.0,
+  "seconds": 216,
+  "spells": {
+   "Earth Elemental Attack": 12,
+   "Life Leech": 3,
+   "Shadow Vortex": 3,
+   "Invoke Fear": 2,
+   "Dooming Darkness": 2
+  },
+  "spells_distinct": 5,
+  "self_heal_low": 3,
+  "self_heal_high": 3,
+  "melee_verbs": [
+   "bashes",
+   "cleaves",
+   "frenzies",
+   "hits",
+   "kicks"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
+ },
+ {
+  "boss": "Terror",
   "difficulty": 4,
   "difficulty_label": "Refined",
   "date": "12 Aug 2026",
@@ -6279,6 +6890,37 @@
  },
  {
   "boss": "a dracoliche",
+  "difficulty": null,
+  "difficulty_label": null,
+  "date": "19 Aug 2026",
+  "zone": null,
+  "group_instance": false,
+  "observers": [
+   "Avenrae"
+  ],
+  "attackers": 5,
+  "other_players": 4,
+  "our_damage_share_pct": 21.4,
+  "damage_is_floor": false,
+  "joined_late_seconds": null,
+  "damage_low": 45867,
+  "damage_high": 45867,
+  "damage_spread_pct": 0.0,
+  "seconds": 109,
+  "spells": {
+   "Tangling Weeds": 7,
+   "Dragon Fear": 3,
+   "Rotting Flesh": 3
+  },
+  "spells_distinct": 3,
+  "self_heal_low": 0,
+  "self_heal_high": 0,
+  "melee_verbs": [
+   "crushes"
+  ]
+ },
+ {
+  "boss": "a dracoliche",
   "difficulty": 0,
   "difficulty_label": "Base",
   "date": "17 Aug 2026",
@@ -6498,6 +7140,49 @@
   "melee_verbs": [
    "slashes"
   ]
+ },
+ {
+  "boss": "a dracoliche",
+  "difficulty": 3,
+  "difficulty_label": "Fused",
+  "date": "19 Aug 2026",
+  "zone": "The Plane of Fear - Group 3 (Fused)",
+  "group_instance": true,
+  "observers": [
+   "Shara"
+  ],
+  "attackers": 4,
+  "other_players": 3,
+  "our_damage_share_pct": 23.7,
+  "damage_is_floor": true,
+  "joined_late_seconds": 7,
+  "damage_low": 151642,
+  "damage_high": 151642,
+  "damage_spread_pct": 0.0,
+  "seconds": 445,
+  "spells": {
+   "Tangling Weeds": 17,
+   "Dragon Fear": 12,
+   "Rotting Flesh": 12,
+   "Malaisement": 9,
+   "Insidious Retrogression": 6,
+   "Paralyzing Earth": 3,
+   "Ignite Blood": 2,
+   "Infectious Cloud": 2,
+   "Greater Healing": 2,
+   "Ensnaring Roots": 2,
+   "Torbas' Poison Blast": 2,
+   "Bond of Death": 1,
+   "Shadow Vortex": 1
+  },
+  "spells_distinct": 13,
+  "self_heal_low": 8,
+  "self_heal_high": 8,
+  "melee_verbs": [
+   "crushes",
+   "pet"
+  ],
+  "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
   "boss": "a dracoliche",

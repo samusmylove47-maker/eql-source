@@ -30,7 +30,7 @@
    "Throwing Boulder": [
     {
      "mob": "Fire Giant Warrior",
-     "seen": 73,
+     "seen": 90,
      "off_roster": false,
      "sessions": [
       {
@@ -57,6 +57,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -116,7 +121,7 @@
     },
     {
      "mob": "King Tranix",
-     "seen": 7,
+     "seen": 8,
      "off_roster": false,
      "sessions": [
       {
@@ -153,12 +158,17 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
     {
      "mob": "Magus Rokyl",
-     "seen": 7,
+     "seen": 8,
      "off_roster": false,
      "sessions": [
       {
@@ -195,6 +205,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -222,7 +237,7 @@
     },
     {
      "mob": "Warlord Skarlon",
-     "seen": 5,
+     "seen": 6,
      "off_roster": false,
      "sessions": [
       {
@@ -249,6 +264,11 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     },
@@ -953,6 +973,37 @@
      ]
     }
    ],
+   "Crushbone Belt": [
+    {
+     "mob": "Orc centurion",
+     "seen": 38,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Orc trainee",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Drop of Mercury": [
     {
      "mob": "An elemental crusader",
@@ -1249,7 +1300,7 @@
    "Mistmoore Granite": [
     {
      "mob": "A flouting gargoyle",
-     "seen": 30,
+     "seen": 32,
      "off_roster": true,
      "sessions": [
       {
@@ -1281,7 +1332,7 @@
     },
     {
      "mob": "A leering gargoyle",
-     "seen": 14,
+     "seen": 18,
      "off_roster": true,
      "sessions": [
       {
@@ -1313,7 +1364,7 @@
     },
     {
      "mob": "A jeering gargoyle",
-     "seen": 13,
+     "seen": 15,
      "off_roster": true,
      "sessions": [
       {
@@ -1351,42 +1402,24 @@
      ]
     }
    ],
-   "Gargoyle Eye": [
+   "Legionnaire's Bracer": [
     {
-     "mob": "A flouting gargoyle",
-     "seen": 29,
+     "mob": "Orc legionnaire",
+     "seen": 31,
      "off_roster": true,
      "sessions": [
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
        "difficulty": 1
       }
      ]
-    },
+    }
+   ],
+   "Gargoyle Eye": [
     {
-     "mob": "A leering gargoyle",
-     "seen": 15,
+     "mob": "A flouting gargoyle",
+     "seen": 30,
      "off_roster": true,
      "sessions": [
       {
@@ -1418,7 +1451,7 @@
     },
     {
      "mob": "A jeering gargoyle",
-     "seen": 14,
+     "seen": 17,
      "off_roster": true,
      "sessions": [
       {
@@ -1444,8 +1477,40 @@
      ]
     },
     {
+     "mob": "A leering gargoyle",
+     "seen": 17,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A sneering gargoyle",
-     "seen": 5,
+     "seen": 7,
      "off_roster": true,
      "sessions": [
       {
@@ -1520,7 +1585,7 @@
    "Rune of Ivy": [
     {
      "mob": "A deathly usher",
-     "seen": 26,
+     "seen": 28,
      "off_roster": false,
      "sessions": [
       {
@@ -1581,6 +1646,89 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Black Silk Gloves": [
+    {
+     "mob": "A deathly usher",
+     "seen": 24,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A will sapper",
+     "seen": 15,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A glyphed aegis",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -1733,89 +1881,6 @@
      ]
     }
    ],
-   "Black Silk Gloves": [
-    {
-     "mob": "A deathly usher",
-     "seen": 21,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A will sapper",
-     "seen": 12,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A glyphed aegis",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Pristine Studded Leather Gloves": [
     {
      "mob": "Footman of V`Zher",
@@ -1850,6 +1915,37 @@
      ]
     }
    ],
+   "Slave Trammels": [
+    {
+     "mob": "Orc slaver",
+     "seen": 21,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "orc slaver",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Pristine Studded Leather Leggings": [
     {
      "mob": "Soldier of V`Zher",
@@ -1875,6 +1971,40 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Sacrificial Dagger": [
+    {
+     "mob": "An imp familiar",
+     "seen": 17,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -2036,6 +2166,47 @@
      ]
     }
    ],
+   "Power of Wind": [
+    {
+     "mob": "A gypsy dancer",
+     "seen": 16,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a gypsy dancer",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
    "Apothic Robe": [
     {
      "mob": "Amygdalan warrior",
@@ -2163,12 +2334,100 @@
      ]
     }
    ],
+   "Rune of Fortune": [
+    {
+     "mob": "Enynti",
+     "seen": 16,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Nightshade Wreath": [
     {
      "mob": "Maid Issis",
      "seen": 16,
      "off_roster": false,
      "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Cape of Midnight Mist": [
+    {
+     "mob": "Butler Syncall",
+     "seen": 15,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
       {
        "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
@@ -2279,91 +2538,6 @@
      ]
     }
    ],
-   "Power of Wind": [
-    {
-     "mob": "A gypsy dancer",
-     "seen": 14,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a gypsy dancer",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      }
-     ]
-    }
-   ],
-   "Cape of Midnight Mist": [
-    {
-     "mob": "Butler Syncall",
-     "seen": 14,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Leather Whip": [
     {
      "mob": "Splitpaw Commander",
@@ -2386,76 +2560,128 @@
        "difficulty": 2
       }
      ]
+    },
+    {
+     "mob": "Orc Taskmaster",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Orc trainee",
+     "seen": 6,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
     }
    ],
-   "Sacrificial Dagger": [
+   "Bronze Rapier": [
     {
-     "mob": "An imp familiar",
+     "mob": "Royal Guard",
      "seen": 13,
      "off_roster": false,
      "sessions": [
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
        "difficulty": 1
       },
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A gnoll elite",
+     "seen": 7,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "04 Aug 2026",
+       "zone": null,
+       "difficulty": 3
+      },
+      {
+       "date": "07 Aug 2026",
+       "zone": "Blackburrow",
+       "difficulty": 2
+      }
+     ]
+    },
+    {
+     "mob": "A necro acolyte",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "06 Aug 2026",
+       "zone": "Befallen",
        "difficulty": 1
       },
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
        "difficulty": 1
-      },
+      }
+     ]
+    },
+    {
+     "mob": "A pledge familiar",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
       {
        "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
-    }
-   ],
-   "Rune of Fortune": [
+    },
     {
-     "mob": "Enynti",
-     "seen": 13,
+     "mob": "The Thaumaturgist",
+     "seen": 2,
      "off_roster": false,
      "sessions": [
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "06 Aug 2026",
+       "zone": "Befallen",
        "difficulty": 1
-      },
+      }
+     ]
+    },
+    {
+     "mob": "A Necro Theurgist",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
        "difficulty": 1
-      },
+      }
+     ]
+    },
+    {
+     "mob": "Priest Amiaz",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
        "difficulty": 1
       }
      ]
@@ -2628,6 +2854,52 @@
      ]
     }
    ],
+   "Lute of the Gypsy Princess": [
+    {
+     "mob": "Mynthi Davissi",
+     "seen": 12,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A werewolf gypsy",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Bark Splinted Shoulderpads": [
     {
      "mob": "Splitpaw Commander",
@@ -2648,6 +2920,50 @@
        "date": "07 Aug 2026",
        "zone": "Blackburrow",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Glowing Sword Hilt": [
+    {
+     "mob": "Xicotl",
+     "seen": 12,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -2814,47 +3130,6 @@
      ]
     }
    ],
-   "Lute of the Gypsy Princess": [
-    {
-     "mob": "Mynthi Davissi",
-     "seen": 11,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A werewolf gypsy",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Blackened Wand": [
     {
      "mob": "Priest Amiaz",
@@ -2875,6 +3150,42 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Illegible Scroll": [
+    {
+     "mob": "A dark librarian",
+     "seen": 10,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A dark ass't librarian",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -3010,6 +3321,71 @@
      ]
     }
    ],
+   "Master Crushbone Cell Key": [
+    {
+     "mob": "Bloodgurgler",
+     "seen": 10,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Bonefire",
+     "seen": 10,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Orc Warden",
+     "seen": 4,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Chokehold",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Well Worn Boots": [
     {
      "mob": "Splitpaw Explorer",
@@ -3078,6 +3454,25 @@
      ]
     }
    ],
+   "Disgusting Padded Shirt": [
+    {
+     "mob": "The Prophet",
+     "seen": 10,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Dagger of Marnek": [
     {
      "mob": "The Thaumaturgist",
@@ -3093,45 +3488,6 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Glowing Sword Hilt": [
-    {
-     "mob": "Xicotl",
-     "seen": 10,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
       }
      ]
     }
@@ -3405,6 +3761,69 @@
      ]
     }
    ],
+   "Grimy Black Silk Robe": [
+    {
+     "mob": "Marrowbane",
+     "seen": 9,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Loam Encrusted Robe": [
+    {
+     "mob": "Master Yael",
+     "seen": 9,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Pristine Studded Leather Sleeves": [
     {
      "mob": "Soldier of V`Zher",
@@ -3582,40 +4001,20 @@
      ]
     }
    ],
-   "Loam Encrusted Robe": [
+   "Dark Cauldron": [
     {
-     "mob": "Master Yael",
+     "mob": "An ancille cook",
      "seen": 8,
-     "off_roster": false,
+     "off_roster": true,
      "sessions": [
       {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 0
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       },
       {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
-      },
-      {
-       "date": "10 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 3
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -3635,11 +4034,11 @@
      ]
     }
    ],
-   "Illegible Scroll": [
+   "Gypsy Lute": [
     {
-     "mob": "A dark librarian",
+     "mob": "A gypsy musician",
      "seen": 7,
-     "off_roster": false,
+     "off_roster": true,
      "sessions": [
       {
        "date": "08 Aug 2026",
@@ -3654,102 +4053,6 @@
       {
        "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A dark ass't librarian",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Bronze Rapier": [
-    {
-     "mob": "A gnoll elite",
-     "seen": 7,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "04 Aug 2026",
-       "zone": null,
-       "difficulty": 3
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Blackburrow",
-       "difficulty": 2
-      }
-     ]
-    },
-    {
-     "mob": "A necro acolyte",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "06 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A pledge familiar",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "The Thaumaturgist",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "06 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A Necro Theurgist",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Priest Amiaz",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
        "difficulty": 1
       }
      ]
@@ -3980,6 +4283,25 @@
      ]
     }
    ],
+   "Headsplitter": [
+    {
+     "mob": "Bonefire",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Butler Syncalls Fang": [
     {
      "mob": "Butler Syncall",
@@ -4000,6 +4322,50 @@
        "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Polished Mithril Torque": [
+    {
+     "mob": "King Tranix",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -4039,6 +4405,78 @@
        "date": "11 Aug 2026",
        "zone": "The Ruins of Old Paineel - Group",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Imbrued Platemail Greaves": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 7,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Brass Earring": [
+    {
+     "mob": "Orc Taskmaster",
+     "seen": 7,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Slaver`s Lash": [
+    {
+     "mob": "Orc slaver",
+     "seen": 7,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
       }
      ]
     }
@@ -4343,6 +4781,23 @@
      ]
     },
     {
+     "mob": "A dark librarian",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A froglok shin knight",
      "seen": 2,
      "off_roster": true,
@@ -4402,6 +4857,18 @@
     },
     {
      "mob": "A thought corruptor",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A wraithish ancille",
      "seen": 2,
      "off_roster": true,
      "sessions": [
@@ -4488,18 +4955,6 @@
      ]
     },
     {
-     "mob": "A dark librarian",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
      "mob": "A dark ritualist",
      "seen": 1,
      "off_roster": true,
@@ -4572,6 +5027,18 @@
      ]
     },
     {
+     "mob": "A shadowy sage",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A shadowy scrivener",
      "seen": 1,
      "off_roster": true,
@@ -4585,6 +5052,18 @@
     },
     {
      "mob": "A soul inveigling",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A soul seductress",
      "seen": 1,
      "off_roster": true,
      "sessions": [
@@ -4656,9 +5135,9 @@
      ]
     },
     {
-     "mob": "A wraithish ancille",
+     "mob": "Enynti",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "sessions": [
       {
        "date": "18 Aug 2026",
@@ -4759,25 +5238,6 @@
       {
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Gypsy Lute": [
-    {
-     "mob": "A gypsy musician",
-     "seen": 6,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -5018,6 +5478,23 @@
      ]
     },
     {
+     "mob": "A ghastish ancille",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A glyphed guard",
      "seen": 3,
      "off_roster": true,
@@ -5063,18 +5540,6 @@
       },
       {
        "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A ghastish ancille",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
@@ -5686,6 +6151,25 @@
      ]
     }
    ],
+   "Spiky Splintmail": [
+    {
+     "mob": "Bloodgurgler",
+     "seen": 6,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Valorium Helmet": [
     {
      "mob": "Cleric of Innoruuk",
@@ -5715,75 +6199,74 @@
      ]
     }
    ],
-   "Polished Mithril Torque": [
+   "Diamondine Earring": [
     {
-     "mob": "King Tranix",
+     "mob": "Lasna Cheroon",
      "seen": 6,
      "off_roster": false,
      "sessions": [
       {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       },
       {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       },
       {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       },
       {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 2
       },
       {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
-      },
-      {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
    ],
-   "Imbrued Platemail Greaves": [
+   "Crushbone Fetish": [
     {
-     "mob": "Mistress of Scorn",
+     "mob": "Orc oracle",
      "seen": 6,
-     "off_roster": true,
+     "off_roster": false,
      "sessions": [
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Vial of Noble's Blood": [
+    {
+     "mob": "A Fallen Noble",
+     "seen": 5,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       },
       {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       },
       {
-       "date": "15 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      },
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      },
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -6439,25 +6922,6 @@
      ]
     }
    ],
-   "Dark Cauldron": [
-    {
-     "mob": "An ancille cook",
-     "seen": 5,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Valorium Vambraces": [
     {
      "mob": "An ire ghast",
@@ -6595,31 +7059,21 @@
      ]
     }
    ],
-   "Diamondine Earring": [
+   "Bandolier of Teeth": [
     {
-     "mob": "Lasna Cheroon",
+     "mob": "Lord Darish",
      "seen": 5,
      "off_roster": false,
      "sessions": [
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
        "difficulty": 1
       },
       {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
        "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
       }
      ]
     }
@@ -6731,7 +7185,7 @@
     },
     {
      "mob": "A werewolf gypsy",
-     "seen": 2,
+     "seen": 3,
      "off_roster": true,
      "sessions": [
       {
@@ -6873,6 +7327,30 @@
       {
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Noble's Robes": [
+    {
+     "mob": "A Fallen Noble",
+     "seen": 4,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -7529,6 +8007,42 @@
      ]
     }
    ],
+   "Werewolf Talon": [
+    {
+     "mob": "A gypsy musician",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A werewolf",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Rune Etched Gauntlets": [
     {
      "mob": "A shiverback",
@@ -7559,7 +8073,7 @@
     },
     {
      "mob": "Master of Spite",
-     "seen": 3,
+     "seen": 4,
      "off_roster": true,
      "sessions": [
       {
@@ -7569,6 +8083,11 @@
       },
       {
        "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
@@ -7617,6 +8136,278 @@
        "date": "12 Aug 2026",
        "zone": "The Plane of Fear",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Jade": [
+    {
+     "mob": "A soul temptress",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A Teir`Dal shadowknight",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "04 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 1
+      },
+      {
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 1
+      },
+      {
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "A soul inveigling",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A Teir`Dal ranger",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "04 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A Teir`Dal rogue",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "04 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 1
+      },
+      {
+       "date": "07 Aug 2026",
+       "zone": "Befallen",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "A dark offerer",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A thought corruptor",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 2
+      }
+     ]
+    },
+    {
+     "mob": "lava guardian",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A dark elf noble",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A dark sacrificer",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A gnoll elite",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "04 Aug 2026",
+       "zone": null,
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "A shadowy scribe",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A soul seductress",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A spiritish ancille",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A thought spoiler",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A wan ghoul knight",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "06 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A yun ghoul wizard",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A zol ghoul knight",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Hoptor Thaggelum",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Princess Cherista",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -7775,6 +8566,25 @@
      ]
     }
    ],
+   "Rib-bone Stiletto": [
+    {
+     "mob": "Bloodgurgler",
+     "seen": 4,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Ethereal Mist Helm": [
     {
      "mob": "Cleric of Innoruuk",
@@ -7800,6 +8610,47 @@
      "sessions": [
       {
        "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Insidious Sleeves": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 4,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "An ashenbone drake",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 1
+      },
+      {
+       "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
       }
@@ -7981,314 +8832,6 @@
       {
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Noble's Robes": [
-    {
-     "mob": "A Fallen Noble",
-     "seen": 3,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Vial of Noble's Blood": [
-    {
-     "mob": "A Fallen Noble",
-     "seen": 3,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Jade": [
-    {
-     "mob": "A Teir`Dal shadowknight",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "04 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "A soul inveigling",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A Teir`Dal ranger",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "04 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A Teir`Dal rogue",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "04 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 1
-      },
-      {
-       "date": "07 Aug 2026",
-       "zone": "Befallen",
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "A dark offerer",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A soul temptress",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A thought corruptor",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 2
-      }
-     ]
-    },
-    {
-     "mob": "lava guardian",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A dark elf noble",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A dark sacrificer",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A gnoll elite",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "04 Aug 2026",
-       "zone": null,
-       "difficulty": 3
-      }
-     ]
-    },
-    {
-     "mob": "A soul seductress",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A spiritish ancille",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A thought spoiler",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A wan ghoul knight",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "06 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A yun ghoul wizard",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A zol ghoul knight",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Hoptor Thaggelum",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Princess Cherista",
-     "seen": 1,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -8582,37 +9125,6 @@
       {
        "date": "16 Aug 2026",
        "zone": "The Plane of Hate - Group",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Werewolf Talon": [
-    {
-     "mob": "A gypsy musician",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      },
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A werewolf",
-     "seen": 3,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "18 Aug 2026",
-       "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
      ]
@@ -8988,6 +9500,25 @@
      ]
     }
    ],
+   "Corroded Hand Guards": [
+    {
+     "mob": "Bonefire",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Insidious Slippers": [
     {
      "mob": "Coercer T`vala",
@@ -9086,6 +9617,39 @@
      ]
     }
    ],
+   "Torn Elvish Tapestry": [
+    {
+     "mob": "Lord Darish",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Bladestopper": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Gold Plated Koshigatana": [
     {
      "mob": "Lord Nagafen",
@@ -9110,6 +9674,73 @@
      ]
     }
    ],
+   "Red Dragon Scales": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Rokyls Channelling Crystal": [
+    {
+     "mob": "Magus Rokyl",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Wood Elf Scout Bauble": [
+    {
+     "mob": "Marrowbane",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Pub Pants": [
     {
      "mob": "Master Brewer",
@@ -9125,6 +9756,49 @@
        "date": "07 Aug 2026",
        "zone": "Blackburrow",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Rune Etched Boots": [
+    {
+     "mob": "Master of Spite",
+     "seen": 3,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "A boogeyman",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "17 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A phantasm",
+     "seen": 1,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Fear",
+       "difficulty": 1
       }
      ]
     }
@@ -9269,6 +9943,25 @@
      ]
     }
    ],
+   "Rotting Faydark Mask": [
+    {
+     "mob": "The Prophet",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      },
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Shining Metallic Robes": [
     {
      "mob": "The ghoul arch magus",
@@ -9279,6 +9972,30 @@
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Mithril Greaves": [
+    {
+     "mob": "Warlord Skarlon",
+     "seen": 3,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 2
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -9416,6 +10133,23 @@
      ]
     },
     {
+     "mob": "A shadowy scribe",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A thought spoiler",
      "seen": 2,
      "off_roster": true,
@@ -9481,6 +10215,18 @@
      ]
     },
     {
+     "mob": "A dark elf noble",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "A jin ghoul wizard",
      "seen": 1,
      "off_roster": true,
@@ -9517,12 +10263,12 @@
      ]
     },
     {
-     "mob": "A shadowy scribe",
+     "mob": "A shadowy sage",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "08 Aug 2026",
+       "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
       }
@@ -10391,42 +11137,6 @@
      ]
     }
    ],
-   "Insidious Sleeves": [
-    {
-     "mob": "An ashenbone drake",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 1
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Coercer T`vala",
-     "seen": 2,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      },
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Hate",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Bloodstone Eyepatch": [
     {
      "mob": "An imp familiar",
@@ -10563,6 +11273,20 @@
      ]
     }
    ],
+   "Armband of Serrated Teeth": [
+    {
+     "mob": "Chokehold",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Rune Etched Helm": [
     {
      "mob": "Cleric of Innoruuk",
@@ -10629,6 +11353,23 @@
      ]
     },
     {
+     "mob": "Innoruuk`s Chosen",
+     "seen": 2,
+     "off_roster": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "An elite dragoon",
      "seen": 1,
      "off_roster": true,
@@ -10637,18 +11378,6 @@
        "date": "12 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Innoruuk`s Chosen",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 1
       }
      ]
     }
@@ -10680,6 +11409,20 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Dwarven Axe": [
+    {
+     "mob": "Lord Darish",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
       }
      ]
     }
@@ -10722,16 +11465,16 @@
      ]
     }
    ],
-   "Bladestopper": [
+   "Blight, Hammer of the Scourge": [
     {
      "mob": "Lord Nagafen",
      "seen": 2,
      "off_roster": false,
      "sessions": [
       {
-       "date": "11 Aug 2026",
+       "date": "18 Aug 2026",
        "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
+       "difficulty": 4
       }
      ]
     }
@@ -10755,6 +11498,25 @@
      ]
     }
    ],
+   "Gauntlets of Fiery Might": [
+    {
+     "mob": "Lord Nagafen",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Hierophant`s Crook": [
     {
      "mob": "Lord Nagafen",
@@ -10770,25 +11532,6 @@
        "date": "12 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 4
-      }
-     ]
-    }
-   ],
-   "Red Dragon Scales": [
-    {
-     "mob": "Lord Nagafen",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
       }
      ]
     }
@@ -10812,59 +11555,52 @@
      ]
     }
    ],
-   "Rokyls Channelling Crystal": [
+   "Brell's Girdle": [
     {
-     "mob": "Magus Rokyl",
+     "mob": "Master Yael",
      "seen": 2,
      "off_roster": false,
      "sessions": [
       {
        "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 2
       },
       {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 3
+       "date": "18 Aug 2026",
+       "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 4
       }
      ]
     }
    ],
-   "Rune Etched Boots": [
+   "Imbrued Platemail Boots": [
     {
-     "mob": "Master of Spite",
+     "mob": "Mistress of Scorn",
      "seen": 2,
      "off_roster": true,
      "sessions": [
       {
-       "date": "12 Aug 2026",
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
     },
     {
-     "mob": "A boogeyman",
+     "mob": "A gorgon",
      "seen": 1,
      "off_roster": true,
      "sessions": [
       {
-       "date": "17 Aug 2026",
+       "date": "12 Aug 2026",
        "zone": "The Plane of Fear",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A phantasm",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "13 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 1
+       "difficulty": 4
       }
      ]
     }
@@ -10896,6 +11632,20 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Ornament of the Oracle": [
+    {
+     "mob": "Orc oracle",
+     "seen": 2,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
       }
      ]
     }
@@ -10962,25 +11712,6 @@
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
        "difficulty": 0
-      }
-     ]
-    }
-   ],
-   "Mithril Greaves": [
-    {
-     "mob": "Warlord Skarlon",
-     "seen": 2,
-     "off_roster": false,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 1
-      },
-      {
-       "date": "11 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 2
       }
      ]
     }
@@ -11120,6 +11851,20 @@
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
        "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Mistmoore Heirloom Ring": [
+    {
+     "mob": "A Fallen Noble",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
       }
      ]
     }
@@ -11430,32 +12175,6 @@
      ]
     }
    ],
-   "Imbrued Platemail Boots": [
-    {
-     "mob": "A gorgon",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear",
-       "difficulty": 4
-      }
-     ]
-    },
-    {
-     "mob": "Mistress of Scorn",
-     "seen": 1,
-     "off_roster": true,
-     "sessions": [
-      {
-       "date": "15 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Vermiculated Bracelet": [
     {
      "mob": "A gorgon",
@@ -11594,6 +12313,34 @@
      ]
     }
    ],
+   "Dragoon Dirk": [
+    {
+     "mob": "Ambassador DVinn",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Wood Elf Scout Shoes": [
+    {
+     "mob": "Ambassador DVinn",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Shadow Rage Wristguard": [
     {
      "mob": "An abhorrent",
@@ -11706,6 +12453,20 @@
      ]
     }
    ],
+   "Dwarven Ringmail Tunic": [
+    {
+     "mob": "Emperor Crush",
+     "seen": 1,
+     "off_roster": false,
+     "sessions": [
+      {
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Ethereal Mist Bracers": [
     {
      "mob": "High Priest M`kari",
@@ -11762,30 +12523,28 @@
      ]
     }
    ],
-   "Gauntlets of Fiery Might": [
+   "Bracers of Battle": [
     {
-     "mob": "Lord Nagafen",
+     "mob": "Orc Warden",
      "seen": 1,
      "off_roster": false,
      "sessions": [
       {
-       "date": "12 Aug 2026",
-       "zone": "Nagafen's Lair - Group",
-       "difficulty": 4
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
       }
      ]
-    }
-   ],
-   "Brell's Girdle": [
+    },
     {
-     "mob": "Master Yael",
+     "mob": "Orc Warlord",
      "seen": 1,
      "off_roster": false,
      "sessions": [
       {
-       "date": "11 Aug 2026",
-       "zone": "The Ruins of Old Paineel - Group",
-       "difficulty": 2
+       "date": "19 Aug 2026",
+       "zone": "Clan Crushbone",
+       "difficulty": 1
       }
      ]
     }
@@ -12014,5 +12773,5 @@
    ]
   }
  },
- "hash": "1be595a8a64a5846"
+ "hash": "6fa9280005fce133"
 }

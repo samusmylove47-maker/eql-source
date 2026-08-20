@@ -36,6 +36,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
+from derived import clip as _clip
 
 Z = {z['slug']: z for z in json.load(open('assets/zones-index.json', encoding='utf-8'))}
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
@@ -425,7 +426,7 @@ for nm in IX['named']:
               f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])} survey</a>.</p>')
     desc = (f"{nm['n']} in {nm['zt']}, EverQuest Legends"
             + (f", level {nm['lv']}" if nm.get('lv') else "")
-            + (f". {nm['no'][:100]}" if nm.get('no') else "."))
+            + (f". {_clip(nm['no'], 100)}" if nm.get('no') else "."))
     facts = [
         ("Level", esc(nm['lv']) if nm.get('lv') else None),
         ("Race and class", esc(nm['rc']) if nm.get('rc') else None),
