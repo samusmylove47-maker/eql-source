@@ -464,6 +464,55 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The site has not deployed for 29 hours. `main` is 33 commits ahead of live.
+
+Measured, 19 Aug, by fingerprinting the served page against every recent commit:
+
+```
+live  public/index.html  ==  2b05159b   (PR #107, 18 Aug 18:31)
+main                          33 commits ahead
+```
+
+**Nothing since Mistmoore ingestion cycle 4 is public.** Not the ring, not the
+placeholder correction, not Crushbone, not Kedge Keep, and not the two
+corrections that matter most to a stranger: **the false network claim about the
+Auras app and the dead release date are still on the live front page right now.**
+Both are fixed on `main` and neither has reached anybody.
+
+There is no deploy workflow in the repository — only `survey-refresh.yml` and
+`wrangler.jsonc` — so the deployment is Cloudflare's own Git integration,
+configured outside the tree. **No session can fix this. It is the owner's, in the
+dashboard.** Earlier today the served bytes matched the outside agent's branch
+exactly; they now match an old `main`, so the target has moved once already.
+
+**Ruling: deploy `main` as it stands, then fix what remains.** It is a strict and
+large improvement over what is public, and holding thirty-three commits of good
+work for two narrow defects — while a *privacy* falsehood sits on the front page —
+is the wrong trade.
+
+**Two real defects remain on `main`, and Session A fixes them next, in one PR:**
+
+1. **`public/learn/reading-the-plans.html` still says the 28 July note removed
+   placeholders from "eleven dungeons".** It names six. Derive the count and the
+   list from the per-zone source ids.
+2. **`public/named/najena.html` publishes "the NPC record says 3"** where the
+   source says 35 — `extract.py`'s 190-character truncation cutting mid-number.
+   Break on a word boundary, append an ellipsis, and never end a truncation on a
+   digit.
+
+**And `gate_selftest.py` is still red** — one case reports TEST BROKEN. That is
+the instrument proving every other gate works, so it outranks the theme.
+
+**A correction to myself, third time by one mechanism.** I reported the share
+cards as still carrying `"five"`. They do not: `ogcards.py` now derives every
+figure — `wordnum(len(TOOLS))`, `wordnum(len(LEARN))`, `str(len(Z))` — and my
+grep matched the *comment* recording the historical fault. Session A was right
+and I was wrong, again, for the same reason: **I searched a file rather than
+reading what I found.** Clearances from me carry the string searched; that rule
+now has three instances behind it and I am the only one who keeps breaking it.
+
+---
+
 ### The spec's four corrections: all four upheld. Three rulings, all decided.
 
 **I recomputed every number rather than accepting them.** All four hold, and one
