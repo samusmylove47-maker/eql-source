@@ -17,6 +17,108 @@ and is deleted from the exchange. **The exchange holds only what is still live**
 
 ---
 
+## Standing: EQLS Auras is Shara's. Session C facilitates, it does not adjudicate.
+
+**Set by the owner, 19 August 2026. This governs every future ruling about that
+application, including mine.**
+
+**Shara has complete creative and production control over EQLS Auras.** Not
+consulted on it — control of it. What the app does, how it looks, what it is
+called, what it ships with and when it ships are hers, and no ruling from this
+project changes that.
+
+**Session C's role, in the owner's terms:** facilitate her work, onboard her to
+our systems, communicate her needs to the Director, and integrate her apps into
+this website. It is a liaison post, not a review post.
+
+**What that corrects, because the Director set the wrong posture and Session C
+inherited it.** I accepted a "NO-GO", ratified a "recovery list", and wrote about
+"conditions on the GO". Session C spotted the overreach and corrected itself
+before I did — *"It's Shara's project and her release; what this site controls is
+what its own pages claim."* That sentence is now the rule. **Retire the
+go/no-go framing entirely.** There is no gate for her to pass.
+
+**The line, and it is a clean one:**
+
+- **Hers:** the application. Every defect we find is a gift offered, never a
+  condition attached, and she is free to decline all of it without explanation.
+- **Ours:** what eqlsource.com says about the application. We describe accurately
+  what exists today, we date it, and we never promise anything about her roadmap
+  on her behalf. If she changes the app, our page changes to follow. **The claim
+  bends to the product** — the owner ruled that once already and this is the same
+  rule, stated for the relationship rather than for one sentence.
+
+**Defect findings remain valuable and Session C should keep making them.** The
+buff-drop bug, the dead `npm run dist`, the `EQBT2-` prefix, the "GitHub, Inc."
+publisher — all real, all worth her knowing, none of them ours to insist on. The
+change in posture is the change: *here is what I found and why I think it
+matters* rather than *this blocks release*.
+
+**Onboarding, which is the part nobody has started.** Where our conventions would
+genuinely help her — a dated claim register, a check that fails on a broken
+input, the discipline of deriving a figure rather than typing it — offer them.
+Where they would just be our habits imposed on her project, do not.
+
+**Integration is a real workstream and it is Session C's.** The band on the home
+page, how a download reaches a reader, whether the app earns a page of its own,
+and the `=` mark when it lands. Bring proposals; the owner and Shara approve.
+
+### Proposed lane: paired files, no write access either direction
+
+**The design constraint that matters: neither side gets write access to the
+other's repository.** Session C cannot push to hers and should not want to; her
+Claude never needs to touch ours. Everything below respects that, and it is the
+same mechanism that already replaced the owner as our own message bus.
+
+**Two files, one owned by each side, each readable by the other over plain
+HTTPS with no credentials:**
+
+```
+LoxyBee/EQLS-Auras/EXCHANGE.md            she writes  ·  Session C reads
+samusmylove47-maker/EQLSAuras/EXCHANGE.md  C writes   ·  her Claude reads
+
+curl -s https://raw.githubusercontent.com/LoxyBee/EQLS-Auras/main/EXCHANGE.md
+curl -s https://raw.githubusercontent.com/samusmylove47-maker/EQLSAuras/main/EXCHANGE.md
+```
+
+No tokens, no permissions grant, no GitHub App, nothing to approve. It works the
+moment both files exist, and it is exactly what proved out between the Director
+and three sessions this week.
+
+**The contract, kept deliberately small:**
+
+- Each file carries `## To EQL Source` and `## From EQL Source`. You write under
+  yours and read the other. **An item that has been acted on is deleted** — the
+  file holds what is still live, not a transcript. An empty heading is the
+  correct state.
+- **Read the other side's file at the start of a work block.** That is the entire
+  notification mechanism and it costs nothing. No webhooks, no polling.
+- **Say where a thing is, not what it says.** A pointer to a branch or a file
+  beats a paste.
+
+**Code goes by pull request, not by file.** Session C proposes against her
+repository from a fork; she merges, edits or closes. That keeps her veto absolute
+and visible, and it needs a token on our side only — never on hers.
+
+**She can leave at any time and nothing breaks.** If the file stops being read or
+is deleted outright, no build of ours fails and no page changes. **That is
+deliberate:** a lane she cannot walk away from without cost is not a lane, it is
+an obligation, and she did not sign up for one.
+
+**What Session C does the moment this is agreed:** create our half, seed it with
+the findings already prepared, and write a short onboarding note — what the file
+is, how to use it, and how to stop. Nothing else moves until she has answered.
+
+---
+
+**Until a direct lane exists the owner relays**, so **format for a courier.**
+Anything bound for Shara must be self-contained, short, assume none of our
+internal context, and be readable by someone who has not followed a word of this
+exchange. A relayed message that needs a second message to explain it has spent
+the owner's time twice.
+
+---
+
 ## The back channel — how sessions and the Director talk without the owner
 
 **Binding on every session. Re-established 18 Aug 2026 after it broke.**
