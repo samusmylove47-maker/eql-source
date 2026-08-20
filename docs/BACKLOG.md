@@ -240,8 +240,21 @@ Order set by which fights a diagram actually helps with:
 2. **Bazzt Zzzt** (Island 6) — the bee split tree is a decision graph.
 3. **Sister of the Spire** (Island 7).
 
-Copy `_build/build4.py`. The 3D engine is self-contained in it. **Every model
-must state in place whether it is surveyed from `/loc` data or schematic.**
+**Do not build these as 3D models, and `_build/build4.py` is gone.** This said
+to copy that file until 20 August 2026; it was deleted with the Eye of Veeshan
+on 17 August, so the instruction pointed at nothing. The withdrawal rule is in
+`CLAUDE.md` section 8: a drawing is an assertion, so it needs *more* evidence
+behind it, not less, and no encounter model may be built of a fight nobody
+here has fought. `docs/PLANES.md` section 6b already declined the same idea
+for Plane of Hate: *a downgrade dressed as an upgrade*.
+
+A 20 August investigation added the arithmetic reason. `assets/zone-geometry.json`
+holds `lines`, `n` and `z` per storey and nothing else — flat outlines, two
+height numbers per band, and no walls anywhere in the file. A 3D view would have
+to invent a height for every floor, every wall, and the gaps between storeys —
+gaps `_build/geometry.py` states do not exist, because stairs and ramps fill
+them. **If these fights are ever worth a diagram, it is a floor plan or a
+section, drawn from what the mesh actually holds.**
 
 ### Sourcing verdict, 8 Aug 2026 — read before writing any of these
 
