@@ -113,8 +113,23 @@ for p in glob.glob("public/raids/*.html"):
     h = open(p, encoding="utf-8").read()
     if "cdnjs" in h or "unpkg" in h or "jsdelivr" in h:
         fail(f"{p} loads a script from a CDN — vendor it into assets/vendor/ instead")
-if not os.path.exists("public/assets/vendor/three.min.js"):
-    fail("assets/vendor/three.min.js is missing — the 3D viewer will not load")
+# Vendored libraries must resolve where a page actually asks for one. This
+# asserted unconditionally that three.min.js exists, "or the 3D viewer will not
+# load" — a viewer withdrawn on 17 Aug 2026 whose generator was deleted with it.
+# It failed the build to protect a dependency that no shipped page has requested
+# since, and told whoever hit it that a nonexistent feature was about to break.
+#
+# The real invariant is CLAUDE.md's no-CDN rule: a page that loads a vendored
+# library must find it on disk. Where nothing loads it, there is nothing to
+# check and nothing to assert.
+_vendor_refs = 0
+for p in pages:
+    h = open(p, encoding="utf-8", errors="replace").read()
+    for m in re.finditer(r'src="[^"]*?(?:\.\./)*assets/vendor/([^"?]+)', h):
+        _vendor_refs += 1
+        if not os.path.exists(os.path.join("public/assets/vendor", m.group(1))):
+            fail(f"{page_key(p)} loads assets/vendor/{m.group(1)}, which is not on disk")
+print(f"  vendored script references checked: {_vendor_refs}")
 
 # 4b. tier discipline: the badge CSS must exist and the scale must be published
 css = open("public/assets/site.css", encoding="utf-8").read()
@@ -233,6 +248,11 @@ if os.path.exists("build.sh"):
                    # experience ranking and the measured-boss counts, so a
                    # page cannot type an ordinal that goes stale in silence.
                    "derived.py",
+                   # Derives each zone accent's text variant for both grounds
+                   # and refuses any that cannot clear 4.5:1. Imported by the
+                   # generators that emit per-card tokens rather than run on
+                   # its own; run it directly to print the table.
+                   "accents.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it

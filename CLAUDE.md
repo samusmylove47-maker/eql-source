@@ -1,7 +1,7 @@
 # EQL Source — project rules
 
-A reference site for EverQuest Legends: dungeon surveys, 3D raid
-encounter guides, and progression tools. Static HTML, no server, no database.
+A reference site for EverQuest Legends: dungeon surveys, measured raid data
+and progression tools. Static HTML, no server, no database.
 **Cloudflare** publishes on every merge to `main` — the host is a Worker with
 static assets, configured by `wrangler.jsonc`. This file said *Netlify* until
 14 August 2026 and it was wrong: `curl -I https://eqlsource.com` answers
@@ -268,7 +268,10 @@ assets/
                     which emptied it: the extractor had nothing left to mine
   zone-geometry.json  floor plans derived from the game meshes. Committed data,
                     NOT a build step — see _build/geometry.py
-  vendor/three.min.js   r128, vendored. Do not switch to a CDN
+  vendor/three.min.js   r128, vendored. **Loaded by no page**: the encounter
+                    viewer that used it was withdrawn 17 Aug 2026. Kept, not
+                    wired — see docs/BACKLOG.md for why 3D was declined again
+                    on 20 Aug. If a page ever loads it, do not switch to a CDN
 _build/
   _partials.py      head, nav and footer
   build1.py         home and dungeon index
@@ -483,8 +486,14 @@ because they are easy to break by accident:
 - **Monochrome chrome, polychrome content.** The frame is bone and graphite. All
   colour comes from the material — the zone accents, instrument blue for
   tools, ember for raids.
-- **Three faces.** Saira Condensed (display, uppercase, tight), IBM Plex Mono
-  (data, labels, anything numeric), Public Sans (prose).
+- **Four faces.** Cinzel (the top two display levels), Saira Condensed (the
+  condensed workhorse beneath it, uppercase, tight), IBM Plex Mono (data,
+  labels, anything numeric), Public Sans (prose). This said *three* until
+  20 August 2026 and had been wrong since Cinzel landed: `docs/DESIGN.md`
+  line 160 records the change in as many words — "~~No fourth typeface.~~
+  **Four now.**" — and `scripts/check.py`'s `FACES` set has listed all four
+  the whole time. **The checker and the design brief agreed; this file was the
+  outlier**, and it is the one a session reads first.
 - **The plate cards** are the home page's signature: one card per zone, washed
   with its own accent, carrying its plate number cropped by the card edge. They
   reflow, so adding a zone needs no layout change. A fixed-column spectrum of

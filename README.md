@@ -57,7 +57,8 @@ assets/
   site.js               nav only, deliberately tiny
   zones-index.json      hand-edited. Drives all navigation
   index-data.json       GENERATED — mined from the plates by extract.py
-  vendor/three.min.js   r128, vendored so the 3D has no CDN dependency
+  vendor/three.min.js   r128, vendored. Loaded by no page since the encounter
+                        viewer was withdrawn on 17 Aug 2026
 
 dungeons/               GENERATED
   index.html            the ten plates and the five maps
@@ -66,7 +67,7 @@ dungeons/               GENERATED
 
 raids/
   index.html            encounter index                            GENERATED
-  eye-of-veeshan.html   3D encounter guide                         GENERATED
+  plane-of-sky.html     the Sky page, side elevation from the mesh  GENERATED
 
 tools/                  GENERATED
   index.html
@@ -80,7 +81,6 @@ _build/                 blocked from the public site in netlify.toml
   build1.py             home and dungeon index
   build2.py             tools, raids and sources indexes
   build3.py             imports the plates and tools, injects chrome
-  build4.py             raid encounter guides — contains the 3D engine
   build5.py             The Index
   extract.py            mines the plates into assets/index-data.json
   sitemap.py            sitemap + robots
@@ -106,10 +106,11 @@ and an unused accent, drop `<slug>.html` into `_build/source/`, run
 `./build.sh`, and change `grid-template-columns:repeat(10,1fr)` in `site.css`
 to the new zone count.
 
-**A new raid encounter.** Copy `_build/build4.py` and change the data and the
-phase array. The viewer engine is self-contained in that file: islands,
-markers, radius rings, dashed paths, phases, and a hand-rolled orbit control,
-so there is no dependency beyond the vendored Three.js.
+**A new raid encounter.** There is no template, deliberately. `_build/build4.py`
+and the Eye of Veeshan page it rendered were withdrawn on 17 Aug 2026 because
+the tactic the model illustrated was inherited Project 1999 text. See
+`CLAUDE.md` section 8: a drawing is an assertion, so it needs more evidence
+behind it, not less. Measured figures belong on the zone page.
 
 **The change log** on `sources.html` is hand-edited and typed — Addition,
 Correction, Source refresh — so a fix is never mistaken for new content.
@@ -139,11 +140,10 @@ On Windows, `build.sh` needs a `python3` on PATH; Windows ships only `python`.
 Solid: the ten plates and their coordinates, the tools, the race and Sky data.
 All of it traces to a named source with a date.
 
-**The Eye of Veeshan model is schematic, not surveyed.** Island proportions and
-the vertical offset show the relationship between islands 7 and 8; they are not
-scaled from game coordinates, because Plane of Sky has never been surveyed. A
-handful of `/loc` readings would turn it into a measured model. The page says so
-in place.
+**The Plane of Sky side elevation is measured, not schematic.** `_build/skyislands.py`
+reads `airplane.s3d` and measures 21 bodies of walkable floor across 2,878 units
+of height, and ten `/loc` readings label them. It prints its own vertical
+exaggeration. It replaced a schematic model that was withdrawn.
 
 **D4 encounter behaviour is the biggest gap.** Difficulty tiers change mob kits,
 not mob levels, and no published source records which kits attach to which raid
