@@ -76,6 +76,20 @@ const VIEWPORTS = [
   { name: 'mobile', width: 390, height: 844 },
 ];
 
+// The two grounds. Torchlight is the default and sets no attribute at all -
+// asking for it explicitly would test a state most readers never reach.
+//
+// TRAP, and it cost a wrong answer while this was written: the attribute has to
+// be set AFTER Page.navigate, not before. Navigating replaces the document and
+// takes any attribute with it, so a theme applied up front measures the default
+// twice and reports a clean daylight sweep without ever having rendered
+// daylight. That is the same shape as mobile:true above - a check that cannot
+// fail rather than one that passes.
+const THEMES = [
+  { name: 'torchlight', attr: null },
+  { name: 'daylight', attr: 'light' },
+];
+
 const CANDIDATES = [
   'C:/Program Files/Google/Chrome/Application/chrome.exe',
   'C:/Program Files (x86)/Google/Chrome/Application/chrome.exe',
@@ -167,7 +181,8 @@ const groupOf = (p) => {
 (async () => {
   const args = process.argv.slice(2);
   const only = args.filter((a) => !a.startsWith('--'));
-  const showAll = args.includes('--show');
+  const themes = process.argv.includes('--one-theme') ? [THEMES[0]] : THEMES;
+const showAll = args.includes('--show');
   const viewports = args.includes('--desktop')
     ? VIEWPORTS.filter((v) => v.name === 'desktop')
     : args.includes('--mobile')
@@ -267,10 +282,19 @@ const groupOf = (p) => {
                          // check can then never fire.
       }, sessionId);
 
+     for (const theme of themes) {
       consoleErrors = [];
       loaded = false;
       await cdp.send('Page.navigate', { url }, sessionId);
       for (let i = 0; i < 100 && !loaded; i++) await sleep(20);
+
+      // After navigate, never before - see THEMES.
+      await cdp.send('Runtime.evaluate', {
+        expression: theme.attr
+          ? `document.documentElement.setAttribute('data-theme','${theme.attr}')`
+          : `document.documentElement.removeAttribute('data-theme')`,
+      }, sessionId);
+      await sleep(30);   // let the cascade settle before measuring
 
       let m;
       try {
@@ -285,7 +309,7 @@ const groupOf = (p) => {
         }, sessionId);
         m = r.result.value;
       } catch (e) {
-        findings.push({ page, vp: vp.name, kind: 'evaluate failed', detail: e.message });
+        findings.push({ page, vp: vp.name, theme: theme.name, kind: 'evaluate failed', detail: e.message });
         continue;
       }
 
@@ -293,7 +317,7 @@ const groupOf = (p) => {
       // fault gate_selftest.py exists to prevent one level up. --show prints
       // every number so a clean sweep can be read rather than trusted.
       if (showAll) {
-        console.log(`  ${page} @ ${vp.name}: scrollWidth ${m.scrollWidth} / innerWidth `
+        console.log(`  ${page} @ ${vp.name}/${theme.name}: scrollWidth ${m.scrollWidth} / innerWidth `
                   + `${m.innerWidth}, innerText ${m.textLength} chars, `
                   + `${consoleErrors.length} console error(s)`);
       }
@@ -306,24 +330,25 @@ const groupOf = (p) => {
       if (m.scrollWidth > m.innerWidth) {
         gs.overflow++;
         findings.push({
-          page, vp: vp.name, kind: 'overflow',
+          page, vp: vp.name, theme: theme.name, kind: 'overflow',
           detail: `scrollWidth ${m.scrollWidth} > innerWidth ${m.innerWidth} (+${m.scrollWidth - m.innerWidth}px)`,
         });
       }
       if (consoleErrors.length) {
         gs.errors++;
         findings.push({
-          page, vp: vp.name, kind: 'console',
+          page, vp: vp.name, theme: theme.name, kind: 'console',
           detail: consoleErrors.slice(0, 3).join(' | ').slice(0, 300),
         });
       }
       if (m.textLength < 40) {
         gs.empty++;
         findings.push({
-          page, vp: vp.name, kind: 'empty',
+          page, vp: vp.name, theme: theme.name, kind: 'empty',
           detail: `body.innerText is ${m.textLength} chars`,
         });
       }
+     }
     }
   }
 
