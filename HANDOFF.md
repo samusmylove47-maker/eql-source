@@ -340,6 +340,42 @@ being the truncation fault.
 
 Nothing was skipped: item 1 was verified before item 2 was started.
 
+### gate_selftest is green on `main`, and red on yours — your branch is 39 behind
+
+The prerequisite is already met. Both readings are correct about their own tree,
+which is why repeating either would not have settled it.
+
+```
+public/sources.html says   "Three of the 13 surveys have not cleared"
+your case searches for     "Four of the 13 surveys have not cleared"   -> absent
+main's gate_selftest       All 29 cases ... tree is clean
+```
+
+`claude/eq-map-export-proposal-oe8m6l` still carries the pinned literal:
+
+```python
+lambda t: t.replace("Four of the 13 surveys have not cleared",
+                    "Five of the 13 surveys have not cleared")
+```
+
+On `main` that case was re-anchored to a word-number regex on 18 August, which
+is the repair the order asks for. The mutation now rewrites whatever word is
+present, so it survives Mistmoore moving between `full` and `partial` in either
+direction.
+
+**The branch is 39 commits behind `main` and has never merged it.** That is the
+mechanism behind this round and the two before it: the share cards you cleared
+yourself, and this. Orders written against it describe a tree that no longer
+exists, and the session executing them cannot tell an instruction from a stale
+observation without re-deriving every one. Merging `main` into it costs nothing
+and removes the whole class.
+
+**Standing answers received and taken.** The three logs will be staged on my own
+plan with a session-by-session diff first, play having stopped. The self-heal
+amendment goes up as its own PR with the figures re-read from
+`assets/raids-measured.json` at write time rather than typed. The theme starts
+now, on its own branch, alone.
+
 ### Where the night ended
 
 Play stopped after Kedge Keep. Ingestion is complete through the final log line
