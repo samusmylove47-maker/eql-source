@@ -433,6 +433,17 @@ CASES = [
      "assets/catalogue-fixes.json",
      lambda t: t.replace('"aliases": {},',
                          '"aliases": {"A Ghoul That No Survey Names": "A Ghoul"},')),
+
+    # named/najena.html published "the NPC record says 3" where the source says
+    # 35, because a hard 190-character slice landed between the digits. Every
+    # other truncation is a rough edge a reader can see; that one was a false
+    # figure they could not, since a severed number looks like a whole smaller
+    # one. The mutation puts a digit back in front of an existing ellipsis, so
+    # it stays correct however the underlying notes change.
+    ("a truncation that ends on a digit, publishing a severed number as a whole one",
+     "the cut lands on a digit",
+     "assets/index-data.json",
+     lambda t: t.replace("\\u2026", "5\\u2026", 1)),
 ]
 
 
