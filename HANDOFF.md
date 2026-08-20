@@ -464,6 +464,124 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### HOLD, Session A: do not point the generator at `band.html`. My ruling was wrong.
+
+**Session C caught this and it is correct. I verified it myself before ruling:**
+
+```
+docs/auras/band.html:7   <h2 class="feath">EQL Auras</h2>     ← a THIRD variant
+_build/build1.py:368     <h2 class="feath">EQLS Auras</h2>    ← correct
+public/index.html                          EQLS Auras         ← correct, live
+```
+
+I ruled that `build1.py` should **read** `band.html` rather than assert that it
+does. Executed as written, that would have **silently regressed the shipped
+product name** from `EQLS Auras` to `EQL Auras` — a name nobody has ever
+approved, on the home page, introduced by a fix for a comment.
+
+**The irony is worth recording, because it is the day's lesson inverted.** The
+fault I found — a comment claiming to copy a file it had actually retyped — was
+the only reason the heading is right today. The retyping that caused the
+divergence is what protected the site from a defect in the file it claimed to
+copy. *A drifted copy is not automatically the wrong copy, and the direction of
+the drift has to be checked before it is closed.*
+
+**Correct order, which is Session C's and which I adopt unchanged:**
+1. Fix `band.html` to read `EQLS Auras`.
+2. **Then** point the generator at it.
+3. **Then** retire the untrue comment.
+
+Nothing in step 2 or 3 happens before step 1 lands.
+
+---
+
+### Resolving a conflict between two of my own rulings — the later one wins
+
+Session C found it: my Auras-sentence ruling says to state the Google fetch **is
+being removed**; the owner's later ruling says self-hosting is *offered, never
+required*, and that if Shara prefers the fetch our page simply says so.
+
+**The later ruling governs. The copy describes what the application does today
+and promises nothing on her behalf.** Stating a removal we cannot commit to
+would be making a claim about someone else's roadmap — the same overreach the
+owner corrected once already, in smaller print.
+
+**And take Session C's optional clause.** It re-verified the checkable claims
+itself at `baea785` rather than inheriting the earlier pass, because the tree had
+moved: telemetry, analytics, sentry, posthog, mixpanel, crashReporter,
+autoUpdater and electron-updater are **all absent**. The entire external exposure
+is `fonts.googleapis.com` and `fonts.gstatic.com`, one file, main window only.
+
+> **The overlay drawn over the game requests nothing at all.**
+
+That is true, verified, and it is exactly the thing a cautious reader actually
+worries about when they install something that draws over their game. It is a
+better sentence than the one it replaces.
+
+**Session C, on your two self-corrections:** both accepted, and the second one
+matters. You framed findings as *conditions on a release* and then corrected it
+yourself to findings taken to their author. That is the ruling applied to your
+own work without being told twice, and it is the right instinct.
+
+---
+
+### Session A: your self-heal finding amends CLAUDE.md. Publish it.
+
+Thirty fights, five bosses, and it splits cleanly:
+
+```
+Coercer T`vala    6 kills   0 heals in every view
+Mistress of Scorn 6 kills   0 heals in every view
+Maestro of Rancor 7 kills   0 heals in every view
+Master of Spite   5 kills   0, 1, 2, 6
+Lord of Ire       6 kills   0, 2, 4, 5, 6
+```
+
+The three that never heal show zero in their **fullest** views — 13 to 15
+attackers, where under-witnessing cannot hide a heal. The two that do heal show
+zero only in their thinnest. That is a clean separation and the sample supports
+it.
+
+**`CLAUDE.md` §9 says "what the tier raises is how much of the kit appears, not
+whether a heal is in it." Amend it.** That sentence was right about the *tier*
+and is now incomplete about the *kit*: three of these five appear to have no heal
+in the kit at all, at any tier, in any view. Write it as *self-healing looks like
+a property of the boss rather than of the tier*, name the five, and say plainly
+that thirty fights is a sample and not a proof. Change-log entry typed Addition.
+
+This is the first thing the site has learned that contradicts its own recorded
+lesson rather than an inherited one, which is worth saying out loud.
+
+---
+
+### Session B: 82 examined, 2 dead, and one finding that belongs to all of us
+
+Exactly the discipline asked for, and the method — damage the source, run the
+check alone, restore — is now the house standard.
+
+**Two things generalise beyond your repository and I am adopting both here.**
+
+**The vacuous pass.** An assertion of the form *"none of this collection is X"*
+is satisfied by an empty collection. You found four. This is the same fault as
+the 403-reads-as-pass and the same as `check.py` reporting green over a
+fabricated quotation. It folds directly into gate **G-0**: every anchored check
+reports *how many things it examined*, and **zero examined is a failure**. Not a
+warning — a failure.
+
+**A report that exists is not a report that is current.** Your contamination
+gate asserted the file was *present* and never that it was *fresh*, so a page
+whose whole purpose is honest self-description published figures four commits
+stale. Session A: **we have the same page and very likely the same gap** —
+`scripts/contamination.py` is hand-run and `assets/contamination.json` is
+committed. Check whether anything asserts its currency. If not, that is a G-0
+case too.
+
+Your correction to your own comment about argument order — that the flip leaves
+everything green because an index record has no field to overwrite with — is the
+kind of thing that would have misled the next reader for a year. Good.
+
+---
+
 ### DESIGN BRIEF, Session A: the two-theme atlas. Spec first, then build.
 
 **The design is done and approved. You implement it; I do not.** The rendered
