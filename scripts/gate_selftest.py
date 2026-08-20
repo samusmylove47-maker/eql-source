@@ -460,17 +460,19 @@ CASES = [
      "public/assets/site.css",
      lambda t: t.replace("--surface-0:#0B0704", "--surface-0:#EFE6D4", 1)),
 
-    # The drift case between the two daylight blocks returns when the
-    # system-preference block does. Only the attribute block ships today - the
-    # CSS records why in place - so there is nothing yet for two blocks to
-    # drift apart from, and a case mutating a block that does not exist would
-    # report TEST BROKEN rather than catch anything. This guards the block that
-    # does ship: lose it and the theme has no tokens to switch to.
-    ("the daylight token block disappearing entirely",
-     "site.css defines no daylight token block at all",
+    # Both daylight blocks ship now - one for the system setting, one for the
+    # toggle - and they are byte-identical on purpose, because CSS has no mixin
+    # and a media query cannot be combined with an attribute selector. Drift
+    # between them is close to invisible: it takes a reader who uses BOTH the
+    # system setting and the toggle to meet it, so it would sit there.
+    #
+    # The generated block is written FROM the authored one, so they cannot
+    # differ at birth. This catches them being edited apart afterwards.
+    ("the two daylight token blocks drifting apart",
+     "daylight token blocks in site.css have drifted apart",
      "public/assets/site.css",
-     lambda t: t.replace(':root[data-theme="light"]{',
-                         ':root[data-theme="lightXX"]{', 1)),
+     lambda t: t.replace(':root[data-theme="light"]{\n  --surface-0:#EFE6D4;',
+                         ':root[data-theme="light"]{\n  --surface-0:#EFE6D5;', 1)),
 ]
 
 

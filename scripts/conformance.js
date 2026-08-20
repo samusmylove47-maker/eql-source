@@ -85,9 +85,19 @@ const VIEWPORTS = [
 // twice and reports a clean daylight sweep without ever having rendered
 // daylight. That is the same shape as mobile:true above - a check that cannot
 // fail rather than one that passes.
+// prefers-color-scheme is EMULATED rather than left to the host, and that is
+// load-bearing now that the site honours it. With the media query shipping, a
+// torchlight case that merely removes the attribute renders DAYLIGHT on a
+// machine set to light - so the sweep would measure daylight twice and report
+// a clean torchlight run having never rendered it. The third instance of the
+// same shape in this file, after mobile:true and set-the-theme-before-navigate:
+// a check that cannot fail rather than one that passes.
+//
+// Each ground is therefore pinned twice over - the media feature AND the
+// attribute - so neither the host's setting nor a stored choice can move it.
 const THEMES = [
-  { name: 'torchlight', attr: null },
-  { name: 'daylight', attr: 'light' },
+  { name: 'torchlight', attr: 'dark', media: 'dark' },
+  { name: 'daylight', attr: 'light', media: 'light' },
 ];
 
 const CANDIDATES = [
@@ -287,6 +297,10 @@ const showAll = args.includes('--show');
       loaded = false;
       await cdp.send('Page.navigate', { url }, sessionId);
       for (let i = 0; i < 100 && !loaded; i++) await sleep(20);
+
+      await cdp.send('Emulation.setEmulatedMedia', {
+        features: [{ name: 'prefers-color-scheme', value: theme.media }],
+      }, sessionId);
 
       // After navigate, never before - see THEMES.
       await cdp.send('Runtime.evaluate', {
