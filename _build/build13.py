@@ -398,7 +398,7 @@ CSS = '''<style>
 .st-ev .ev-d{grid-column:2;color:var(--dim)}
 @media(max-width:560px){.st-ev li{grid-template-columns:1fr}.st-ev .ev-d{grid-column:1}}
 .st-settle{margin:16px 0 0;padding:12px 14px;border-left:3px solid var(--instr);
-  background:rgba(92,147,196,.06);color:var(--dim);font-size:14px;line-height:1.6}
+  background:rgba(92,147,196,.06);color:var(--txt);font-size:14px;line-height:1.6}
 .st-settle strong{color:var(--ink)}
 .st-credit{margin:10px 0 0;font-family:"IBM Plex Mono",monospace;font-size:12px;
   color:var(--faint)}

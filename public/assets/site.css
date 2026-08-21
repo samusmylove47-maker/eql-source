@@ -226,10 +226,10 @@
     --rule:#CBBA9C; --rule2:#A89575;
     --warn:#C9453A; --ember:#C4482E; --lava:#F22701;
     --brass:#A17627; --ok:#538868; --instr:#62828D;
-    --warn-t:#914E45; --ember-t:#934E3C; --lava-t:#9A4632;
-    --brass-t:#775B27; --instr-t:#506469; --ok-t:#45684E;
-    --tier-1:#45684E; --tier-2:#506469; --tier-3:#7B5C1C;
-    --tier-4:#915220; --tier-5:#914E45;
+    --warn-t:#874940; --ember-t:#884938; --lava-t:#8D412E;
+    --brass-t:#705625; --instr-t:#4D5A62; --ok-t:#426048;
+    --tier-1:#426048; --tier-2:#4A5B5E; --tier-3:#70541B;
+    --tier-4:#824B1E; --tier-5:#874940;
     --bloom-1:rgba(150,110,60,.115); --bloom-2:rgba(126,92,48,.095);
     --bloom-3:rgba(150,110,60,.090); --bloom-4:rgba(110,80,42,.062);
     --bloom-5:rgba(128,86,40,.055);
@@ -246,10 +246,10 @@
   --rule:#CBBA9C; --rule2:#A89575;
   --warn:#C9453A; --ember:#C4482E; --lava:#F22701;
   --brass:#A17627; --ok:#538868; --instr:#62828D;
-  --warn-t:#914E45; --ember-t:#934E3C; --lava-t:#9A4632;
-  --brass-t:#775B27; --instr-t:#506469; --ok-t:#45684E;
-  --tier-1:#45684E; --tier-2:#506469; --tier-3:#7B5C1C;
-  --tier-4:#915220; --tier-5:#914E45;
+  --warn-t:#874940; --ember-t:#884938; --lava-t:#8D412E;
+  --brass-t:#705625; --instr-t:#4D5A62; --ok-t:#426048;
+  --tier-1:#426048; --tier-2:#4A5B5E; --tier-3:#70541B;
+  --tier-4:#824B1E; --tier-5:#874940;
   --bloom-1:rgba(150,110,60,.115); --bloom-2:rgba(126,92,48,.095);
   --bloom-3:rgba(150,110,60,.090); --bloom-4:rgba(110,80,42,.062);
   --bloom-5:rgba(128,86,40,.055);
@@ -1208,13 +1208,13 @@ h1.display em{color:var(--z01)}
 .fdown,.fup,.fwarn,.fgood{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:.14em;text-transform:uppercase;margin:0 0 var(--s-2)}
 .fdown,.fwarn{color:var(--warn-t)}
-.fup,.fgood{color:var(--ok)}
+.fup,.fgood{color:var(--ok-t)}
 .fwarn,.fgood{margin-top:var(--s-4)}
 .flist,.fsteps{list-style:none;margin:0;padding:0}
 .flist li{padding:var(--s-2) 0;border-bottom:1px solid var(--rule)}
 .flist li b{display:block;color:var(--txt);font-size:var(--t-sm)}
 .flist li.down b{color:var(--warn-t)}
-.flist li.up b{color:var(--ok)}
+.flist li.up b{color:var(--ok-t)}
 .fdelta,.fuse{display:block;font-size:var(--t-2xs);color:var(--dim);margin-top:2px}
 .fdelta{font-family:"IBM Plex Mono",monospace}
 /* A faction that moves both ways in one zone, and a sample too small to be a
@@ -1276,7 +1276,7 @@ h1.display em{color:var(--z01)}
   border-bottom:1px solid var(--rule);padding:0 var(--s-3) var(--s-2) 0}
 .dtable td{border-bottom:1px solid var(--rule);padding:var(--s-3) var(--s-3) var(--s-3) 0;
   vertical-align:top}
-.dtable .dn{font-family:"IBM Plex Mono",monospace;color:var(--instr);font-weight:600;
+.dtable .dn{font-family:"IBM Plex Mono",monospace;color:var(--instr-t);font-weight:600;
   white-space:nowrap}
 .dtable .dname{color:var(--bone);font-weight:600}
 .dtable .dnote{color:var(--dim)}

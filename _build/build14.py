@@ -72,7 +72,7 @@ CSS = '''<style>
   text-transform:uppercase;letter-spacing:.02em;font-size:26px;color:var(--ink)}
 .arch-meta{margin:3px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
   letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-.arch-meta a{color:color-mix(in srgb, var(--c) 58%, var(--bone))}
+.arch-meta a{color:var(--c-t)}
 /* The archived blocks carry the plate markup as it last shipped. It is not
    restyled — a restyled archive is not an archive. */
 .arch section{border:0;padding:0}
@@ -85,7 +85,7 @@ CSS = '''<style>
   font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--dim)}
 /* Lifted at the point of use: two of the ten accents fail 4.5:1 as 12px
    text on this ground. The accent itself is never altered — see CLAUDE.md. */
-.arch .legend .n{color:color-mix(in srgb, var(--c) 58%, var(--bone))}
+.arch .legend .n{color:var(--c-t)}
 .arch .legend .lv{color:var(--faint)}
 .arch .lede{color:var(--dim);font-size:14px;line-height:1.6;max-width:70ch}
 </style>'''
