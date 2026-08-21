@@ -304,14 +304,18 @@
    before any script runs and stays right with JavaScript off; only the
    switching needs script.
 
-   It is a lantern because that is the site's own framing for the two grounds,
-   and the lantern is the one motif DESIGN.md assigns to this control and to
-   nothing else. ---------------------------------------------------------- */
+   It is a lantern because that is the site's own framing for the two grounds.
+   This comment claimed DESIGN.md assigned the mark to this control; it does
+   not - the words lantern, compass, hachure and motif appear nowhere in it.
+   The alphabet is in the design brief and in docs/ATLAS-SPEC.md. Asserting a
+   provenance a file does not have is the exact fault this site corrects in
+   other people's work, and it was written here by the session that wrote the
+   rule. ------------------------------------------------------------------ */
 .lamp{
   margin-left:var(--s-3); flex:none; cursor:pointer;
   font-family:"IBM Plex Mono",monospace; font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider); text-transform:uppercase;
-  padding:6px 10px; border-radius:var(--r-1);
+  padding:6px 10px; border-radius:var(--r);
   border:1px solid var(--rule); background:transparent; color:var(--txt);
   transition:color var(--speed), border-color var(--speed);
 }
@@ -365,6 +369,37 @@
   .site-bar .shell{ flex-wrap:wrap; row-gap:var(--s-2); }
   .lamp{ margin-left:auto; padding:6px 8px; }
 }
+
+/* ---- the divider: the only drawn mark with a safe home --------------------
+   In flow as the last child of the footer, never absolute and never a
+   pseudo-element. .site-foot has neither position:relative nor overflow:hidden,
+   so an absolutely-positioned mark escapes the footer entirely - and a leftward
+   escape does not even trip conformance.js, which measures scrollWidth. In
+   flow, it cannot sit behind running text, cannot leave its box, and cannot
+   grow the page.
+
+   The masthead half of "masthead and footer only" is not built. The bar's
+   free space collapses to nothing between roughly 760px and 1040px, which is
+   above the 700px escape hatch and a width nothing in the repo tests.
+
+   OPACITY IS AGAINST THE FOOTER'S GROUND, NOT THE PAGE'S. The footer sits on
+   --surface-1, and the brief's 8-13% dark band was written for --surface-0,
+   which is 3x darker. Equal visual weight on --surface-1 is 6.3-11.3% on
+   graphite and 8-20% on parchment, so .11 and .16 sit mid-band in both.
+
+   It is NOT self-closing, deliberately: gate.py:235 strips <svg.*?</svg> to
+   keep drawn labels out of the prose count, and a self-closed <svg/> does not
+   match it - the regex would run on to the next </svg> on the page and delete
+   the prose between, LOWERING the count. It would pass, prose_budget.py would
+   bake the wrong ceiling in, and the repair would fail the build on a page
+   nobody had edited. ----------------------------------------------------- */
+.site-foot .rule-mark{display:block;width:100%;height:9px;margin-top:var(--s-6);
+  color:var(--bone);opacity:.11}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]) .site-foot .rule-mark{opacity:.16}
+}
+:root[data-theme="light"] .site-foot .rule-mark{opacity:.16}
+@media (max-width:700px){.site-foot .rule-mark{display:none}}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
