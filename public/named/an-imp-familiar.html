@@ -49,6 +49,12 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
   box-shadow:0 0 0 2px var(--surface-1)}
 .loc-mark::after{content:"";position:absolute;inset:3.5px;border-radius:50%;
   background:var(--c)}
+/* The needle sits in the plan's corner, over the plan's own padding rather
+   than over the drawing, and it is the one mark on these pages that carries a
+   fact. Kept small and low-contrast on purpose: the caption is what states the
+   orientation, and this only has to make it visible at a glance. */
+.loc-n{position:absolute;top:8px;right:8px;width:9px;height:16px;
+  color:var(--mut);opacity:.75;pointer-events:none}
 .locator figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--faint);line-height:1.6}
 .locator figcaption b{color:color-mix(in srgb, var(--c) 58%, var(--bone));font-weight:500}
@@ -124,7 +130,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
     <h1 class="display">An imp familiar</h1>
     <div class="ent-top">
       <dl class="facts"><div><dt>Level</dt><dd>29–35</dd></div><div><dt>Race and class</dt><dd>IMP · WAR</dd></div><div><dt>Position</dt><dd>−16, 435</dd></div><div><dt>Zone</dt><dd><a href="../dungeons/mistmoore.html">Castle Mistmoore</a></dd></div><div><dt>Notes</dt><dd>In the Graveyard. A rare spawn.</dd></div></dl>
-      <figure class="locator"><span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/mistmoore.svg" alt="" width="890" height="778" decoding="async"><span class="loc-mark" style="left:23.16%;top:41.26%"></span></span></span><figcaption>Castle Mistmoore &middot; <b>/loc −16, 435</b><br>Floor from the game&rsquo;s own mesh</figcaption></figure>
+      <figure class="locator"><span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/mistmoore.svg" alt="" width="890" height="778" decoding="async"><span class="loc-mark" style="left:23.16%;top:41.26%"></span></span><svg class="loc-n" viewBox="0 0 14 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M7 22V4"></path><path d="M3 8 7 2l4 6z" fill="currentColor" stroke="none"></path></svg></span><figcaption>Castle Mistmoore &middot; <b>/loc −16, 435</b><br>North is up &middot; floor from the game&rsquo;s own mesh</figcaption></figure>
     </div>
   </div>
 </section>
