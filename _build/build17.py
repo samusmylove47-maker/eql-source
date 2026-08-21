@@ -120,7 +120,7 @@ CSS = '''<style>
 .drops li{border-left:2px solid var(--line);padding:3px 0 3px 10px;font-size:14px;color:var(--dim)}
 .drops a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
-.drops.seen li{border-left-color:var(--ok)}
+.drops.seen li{border-left-color:var(--ok-t)}
 .drops.seen b{color:var(--ink)}
 /* The badge carries the whole provenance claim for the block below it, so it
    sits in the heading rather than in a sentence. Raised off the middle: the

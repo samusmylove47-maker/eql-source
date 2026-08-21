@@ -87,7 +87,7 @@ main.sky::before{background-image:
    strength: one grid, two intensities. One soft shadow, because it floats. */
 .sky-wrap{max-width:1200px;margin:0 auto;padding:var(--s-6) clamp(10px,2vw,26px) var(--s-8)}
 .sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--s-8);
-  background:rgba(11,7,4,.58);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
+  background:color-mix(in srgb, var(--surface-0) 58%, transparent);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
 .sheet::before{content:"";position:absolute;inset:var(--s-2);pointer-events:none;
   border:1px solid rgba(242,234,218,.085)}
 
@@ -255,7 +255,7 @@ ul.hz strong{color:var(--bone)}
   grid-template-columns:44px minmax(0,1fr) minmax(0,150px);gap:6px 16px;align-items:baseline}
 .chain .i{font-family:"Saira Condensed",sans-serif;font-size:21px;font-weight:700;color:var(--bone)}
 .chain .b{font-family:"Saira Condensed",sans-serif;font-size:17px;font-weight:600;color:var(--bone)}
-.chain .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--instr);
+.chain .k{font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--instr-t);
   letter-spacing:.05em;text-align:right}
 .chain .nt{grid-column:2/-1;color:var(--dim);font-size:14px;line-height:1.55;margin-top:2px}
 @media(max-width:620px){.chain li{grid-template-columns:38px minmax(0,1fr)}

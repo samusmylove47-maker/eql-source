@@ -134,7 +134,7 @@ CSS = '''<style>
 .upgo{display:block;margin:var(--s-6) 0 0;padding:var(--s-5) var(--s-5);text-decoration:none;
   border:1px solid var(--rule2);border-left:3px solid var(--brass);border-radius:var(--r);
   background:var(--surface-2);transition:border-color .15s,background .15s}
-.upgo:hover{background:#31281a;border-color:var(--brass)}
+.upgo:hover{background:var(--surface-2);border-color:var(--brass)}
 .upgo b{display:block;font-family:"Saira Condensed",sans-serif;font-size:var(--t-xl);
   font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
 .upgo span{display:block;margin-top:4px;font-family:"IBM Plex Mono",monospace;

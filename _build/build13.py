@@ -374,10 +374,10 @@ body = ''.join(entry_html(e, i + 1) for i, e in enumerate(ENTRIES))
 
 CSS = '''<style>
 .st-entry{border:1px solid #40372D;border-left:3px solid var(--c);border-radius:4px;
-  padding:20px 22px;margin:0 0 18px;background:#1E1914}
+  padding:20px 22px;margin:0 0 18px;background:var(--surface-2)}
 .st-head{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin:0 0 14px}
 .st-status{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--c);border:1px solid var(--c);border-radius:3px;
+  text-transform:uppercase;color:var(--c-t);border:1px solid var(--c);border-radius:3px;
   padding:2px 7px;white-space:nowrap}
 .st-head h3{margin:0;font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:20px;
   letter-spacing:.01em;color:var(--ink)}
