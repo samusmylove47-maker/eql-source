@@ -169,6 +169,21 @@
      each derived to clear 4.5:1 rather than picked. --------------------- */
   --tier-1:#5FA37E; --tier-2:#7FB2C7; --tier-3:#D9A227;
   --tier-4:#D9762A; --tier-5:#D46C64;
+
+  /* ---- the paper: what the ground is made of, as colour rather than image --
+     Five blooms for foxing, a 24px survey grid, and the fine grain that was
+     already here. No image files - a few hundred bytes of gradient, which
+     scales and themes for free where a texture PNG would do neither.
+
+     On graphite the marks are torchlight, brass and a little ember, LIFTED off
+     the ground. On parchment they are ink, SUNK into it. Same structure,
+     mirrored colours. --------------------------------------------------- */
+  --bloom-1:rgba(201,146,46,.115); --bloom-2:rgba(196,72,46,.062);
+  --bloom-3:rgba(201,146,46,.062); --bloom-4:rgba(201,146,46,.038);
+  --bloom-5:rgba(201,146,46,.030);
+  --graticule:rgba(242,234,218,.052);
+  --grain:rgba(242,234,218,.9); --grain-2:rgba(242,234,218,.55);
+  --grain-o:.032; --grain-blend:overlay;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -214,6 +229,12 @@
     --brass-t:#775B27; --instr-t:#506469; --ok-t:#45684E;
     --tier-1:#45684E; --tier-2:#506469; --tier-3:#7B5C1C;
     --tier-4:#915220; --tier-5:#914E45;
+    --bloom-1:rgba(150,110,60,.115); --bloom-2:rgba(126,92,48,.095);
+    --bloom-3:rgba(150,110,60,.090); --bloom-4:rgba(110,80,42,.062);
+    --bloom-5:rgba(128,86,40,.055);
+    --graticule:rgba(90,66,34,.075);
+    --grain:rgba(90,66,34,.55); --grain-2:rgba(120,90,50,.35);
+    --grain-o:.05; --grain-blend:multiply;
     color-scheme:light;
   }
 }
@@ -227,6 +248,12 @@
   --brass-t:#775B27; --instr-t:#506469; --ok-t:#45684E;
   --tier-1:#45684E; --tier-2:#506469; --tier-3:#7B5C1C;
   --tier-4:#915220; --tier-5:#914E45;
+  --bloom-1:rgba(150,110,60,.115); --bloom-2:rgba(126,92,48,.095);
+  --bloom-3:rgba(150,110,60,.090); --bloom-4:rgba(110,80,42,.062);
+  --bloom-5:rgba(128,86,40,.055);
+  --graticule:rgba(90,66,34,.075);
+  --grain:rgba(90,66,34,.55); --grain-2:rgba(120,90,50,.35);
+  --grain-o:.05; --grain-blend:multiply;
   color-scheme:light;
 }
 
@@ -314,7 +341,16 @@
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
-body{margin:0;background:var(--surface-0);color:var(--txt);
+body{margin:0;background-color:var(--surface-0);color:var(--txt);
+  background-image:
+    radial-gradient(62% 44% at 16% 2%,  var(--bloom-1), transparent 72%),
+    radial-gradient(50% 38% at 88% 28%, var(--bloom-2), transparent 74%),
+    radial-gradient(72% 54% at 72% 99%, var(--bloom-3), transparent 72%),
+    radial-gradient(22% 18% at 40% 54%, var(--bloom-4), transparent 76%),
+    radial-gradient(18% 15% at 62% 38%, var(--bloom-5), transparent 76%),
+    repeating-linear-gradient(0deg,  var(--graticule) 0 1px, transparent 1px 24px),
+    repeating-linear-gradient(90deg, var(--graticule) 0 1px, transparent 1px 24px);
+  background-attachment:fixed;
   font-family:"Public Sans",system-ui,-apple-system,sans-serif;
   font-size:var(--t-base);line-height:var(--lh-base);
   -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
@@ -809,12 +845,12 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .band.ember .ember-stats dd{font-size:var(--t-2xl)}
 
 /* ---------- a fine grain, to stop large dark fields reading as dead flat --- */
-body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.032;
+body::after{content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:var(--grain-o);
   background-image:
-    repeating-linear-gradient(0deg, rgba(242,234,218,.9) 0 1px, transparent 1px 3px),
-    repeating-linear-gradient(90deg, rgba(242,234,218,.55) 0 1px, transparent 1px 4px);
-  mix-blend-mode:overlay}
-@media (prefers-reduced-motion:reduce){body::after{opacity:.02}}
+    repeating-linear-gradient(0deg, var(--grain) 0 1px, transparent 1px 3px),
+    repeating-linear-gradient(90deg, var(--grain-2) 0 1px, transparent 1px 4px);
+  mix-blend-mode:var(--grain-blend)}
+@media (prefers-reduced-motion:reduce){body::after{opacity:calc(var(--grain-o)*.6)}}
 
 /* Hero: the headline's second line takes the first plate's accent, so the
    page's largest object is coloured by the material rather than by chrome. */
