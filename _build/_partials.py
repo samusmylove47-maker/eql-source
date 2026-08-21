@@ -222,8 +222,16 @@ def bar(rel=""):
       <a href="{rel}sources.html">Accuracy</a>
       <a href="{rel}search.html" class="nav-find">Search</a>
     </nav>
-    <button class="lamp" type="button" aria-live="polite"
-      title="Switch the ground"></button>
+    <button class="lamp" type="button">
+      <svg class="lantern" viewBox="0 0 100 126" fill="none" stroke="currentColor"
+        stroke-width="1.15" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M50 4v10"/><path d="M34 20h32l6 10H28Z"/><path d="M30 30v60h40V30"/>
+        <path d="M26 90h48l-5 10H31Z"/><path d="M38 38v44M50 34v52M62 38v44" opacity=".55"/>
+        <ellipse cx="50" cy="62" rx="9" ry="13" opacity=".7"/>
+        <path d="M34 14a16 8 0 0 1 32 0" stroke-width=".9"/>
+      </svg>
+      <span class="lamp-to-day">Daylight</span><span class="lamp-to-torch">Torchlight</span>
+    </button>
   </div>
 </header>
 <script>/* Labelled by DESTINATION, not by state: it reads DAYLIGHT while you are
