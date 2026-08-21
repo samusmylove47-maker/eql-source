@@ -444,6 +444,35 @@ CASES = [
      "the cut lands on a digit",
      "assets/index-data.json",
      lambda t: t.replace("\\u2026", "5\\u2026", 1)),
+
+    # _build/build3.py copies the FIRST :root block out of site.css into the
+    # fifteen self-contained pages - the thirteen surveys and two imported
+    # tools - and those stay dark in both themes by design. Put a light block
+    # first and fifteen pages take parchment tokens over hard-coded dark
+    # backgrounds, with every other check still green: the CSS is valid, every
+    # page builds, and nothing lays a page out at this stage. A cascade that
+    # depends on source order needs something asserting that order.
+    #
+    # The mutation makes the first block define the daylight ground, which is
+    # what "a light block came first" looks like from the regex's side.
+    ("the first :root in site.css defining the daylight ground",
+     "the first :root in site.css defines the daylight ground",
+     "public/assets/site.css",
+     lambda t: t.replace("--surface-0:#0B0704", "--surface-0:#EFE6D4", 1)),
+
+    # Both daylight blocks ship now - one for the system setting, one for the
+    # toggle - and they are byte-identical on purpose, because CSS has no mixin
+    # and a media query cannot be combined with an attribute selector. Drift
+    # between them is close to invisible: it takes a reader who uses BOTH the
+    # system setting and the toggle to meet it, so it would sit there.
+    #
+    # The generated block is written FROM the authored one, so they cannot
+    # differ at birth. This catches them being edited apart afterwards.
+    ("the two daylight token blocks drifting apart",
+     "daylight token blocks in site.css have drifted apart",
+     "public/assets/site.css",
+     lambda t: t.replace(':root[data-theme="light"]{\n  --surface-0:#EFE6D4;',
+                         ':root[data-theme="light"]{\n  --surface-0:#EFE6D5;', 1)),
 ]
 
 

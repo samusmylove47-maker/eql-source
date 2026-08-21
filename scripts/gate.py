@@ -23,6 +23,12 @@ Imported and run by scripts/check.py.
 """
 import fnmatch, glob, json, os, re, sys
 
+# The two grounds, named once. gate.py asserts which of them the FIRST :root in
+# site.css defines, because _build/build3.py copies that block into the fifteen
+# self-contained pages and they stay dark by design.
+DARK_GROUND = "#0B0704"
+LIGHT_GROUND = "#EFE6D4"
+
 sys.path.insert(0, os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "_build"))
 
 STRIP = re.compile(r"<[^>]+>")
@@ -876,3 +882,64 @@ def run(pages, fail, warn):
             fail("the truncation check examined 0 fields — an empty collection "
                  "satisfies 'none of these ends on a digit' vacuously, so this "
                  "reads as a pass while checking nothing")
+
+    # ----------------------------------------------------------------------
+    # THE FIRST :root IN site.css MUST BE THE DARK ONE.
+    #
+    # _build/build3.py injects tokens into the fifteen self-contained pages by
+    # copying the FIRST :root block out of site.css with a regex. Those pages
+    # are the thirteen dungeon surveys and two imported tools, and they stay
+    # dark in both themes by design — so that copy has to find torchlight.
+    #
+    # Put a light block first and fifteen pages take parchment tokens over
+    # hard-coded dark backgrounds. Nothing else would notice: the CSS is valid,
+    # every page still builds, and check.py, gate.py and toolsmoke.js all stay
+    # green. It is a cascade that depends on source order with nothing
+    # asserting that order, which is the same class as every other fault this
+    # gate exists for.
+    try:
+        css = open("public/assets/site.css", encoding="utf-8").read()
+    except OSError:
+        css = None
+        warn("public/assets/site.css is missing — theme block order is unchecked")
+    if css is not None:
+        first = re.search(r":root\{(.*?)\}", css, re.S)
+        if not first:
+            fail("public/assets/site.css has no :root block — build3.py copies "
+                 "the first one into fifteen self-contained pages and would "
+                 "inject nothing")
+        else:
+            body = first.group(1)
+            if DARK_GROUND not in body:
+                fail(f"the first :root in site.css does not define the dark "
+                     f"ground {DARK_GROUND} — build3.py copies this block into "
+                     f"the fifteen self-contained pages, which stay dark by "
+                     f"design. Torchlight must come first")
+            if LIGHT_GROUND in body:
+                fail(f"the first :root in site.css defines the daylight ground "
+                     f"{LIGHT_GROUND} — the fifteen self-contained pages would "
+                     f"take parchment tokens over dark backgrounds")
+
+        # The two daylight blocks are identical on purpose: CSS has no mixin and
+        # a media query cannot be combined with an attribute selector. Identical
+        # by intent is only safe if something says so.
+        decls = []
+        for pat in (r"@media \(prefers-color-scheme: light\)\{\s*"
+                    r":root:not\(\[data-theme=\"dark\"\]\)\{(.*?)\}",
+                    r":root\[data-theme=\"light\"\]\{(.*?)\}"):
+            m = re.search(pat, css, re.S)
+            if m:
+                decls.append(re.sub(r"\s+", "", m.group(1)))
+        if len(decls) == 2 and decls[0] != decls[1]:
+            fail("the two daylight token blocks in site.css have drifted apart. "
+                 "They are duplicated because CSS has no mixin, so one theme "
+                 "would follow the system setting and the other the toggle, and "
+                 "only a reader who used both would ever see it")
+        elif not decls:
+            fail("site.css defines no daylight token block at all — the theme "
+                 "tokens have been removed or renamed and nothing switches")
+        # Exactly one is the documented rollout state: the attribute block ships
+        # first and the system-preference block joins it once the theme is
+        # readable. The CSS says so in place. Two is the finished state and is
+        # checked for drift above; one is not a fault and must not warn on every
+        # build, because a standing warning is one people learn to scroll past.
