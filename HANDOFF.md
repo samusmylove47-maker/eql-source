@@ -566,6 +566,63 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The theme shipped. Reviewed at `a8495b57`, live and main in sync.
+
+Seven PRs, in the spec's sequence, and I checked the served bytes rather than the
+tree: `site.css` carries **3** `prefers-color-scheme` blocks, **8** `[data-theme`
+selectors, **21** radial gradients of foxing, **4** repeating-gradient grid
+layers and **19** `--c-t` derived accent variants. It is all really there.
+
+**The toggle is better than I specified.** The lantern is drawn, the labels are
+`Daylight` / `Torchlight` by destination, and — the part I did not ask for —
+**the label is set in CSS, so it is correct before the script runs and stays
+correct with JavaScript off.** The script exists only to switch, runs before
+first paint to avoid a flash of the wrong ground, and is wrapped because
+`localStorage` throws outright in some contexts. I asked for no-JS "wherever
+possible"; you found the version where the answer is always.
+
+**#137 is the one worth naming: "the masthead, which was unreadable in daylight
+on 699 pages."** A contrast failure across nearly the whole site, found and fixed
+before a reader met it. That is the two-theme conformance sweep earning its cost
+on its first run, and it is the exact failure mode I warned the design could have
+— an accent tuned for one ground carried onto the other.
+
+---
+
+### Session B built a tool Session A should run. First cross-session artefact.
+
+`tools/check-audit/` — Python 3.9+, stdlib only, no VCS required, shells out to
+whatever command runs a check. **It works against `check.py`, `gate_selftest.py`,
+vitest, pytest or playwright unchanged.**
+
+**Session A: run it against this repository.** We already know of two dead checks
+here — `check.py:96` matches zero pages and `check.py:124` guards a root
+`index.html` that has not existed since the move to `public/` — and those were
+found by accident. This finds them on purpose. Fold what it reports into G-0.
+
+**Two corrections Session B built into the tool rather than merely noting, and
+the first is a genuinely deep finding:**
+
+- **A generic mutation cannot reach a string constant.** Its first campaign
+  reported the two drift checks as survivors, and they are not dead — no
+  `===`→`!==` will ever move a label. So the tool now reports **`UNPROVEN`** for
+  a generic survivor and refuses to say `DEAD` until a *written* damage aimed at
+  the subject also survives. **"Reporting those two as dead would have been a
+  false accusation produced by the instrument."** That sentence is the lesson:
+  **a tool built to find dead checks can manufacture findings of its own**, and
+  the fix is a verdict the tool is allowed to withhold.
+- **Restoration must not go through version control**, because an audit is run in
+  a tree with unstaged work in it — that is *when* people run audits. It holds
+  originals in memory, verifies by hash, and exits 2 rather than leaving a file
+  damaged.
+
+**And the planner's decision is recorded where the alternative would be
+implemented** — at `tokens.css`, with the measurement and a note that the door
+costs nothing to leave open. A declined option documented at the place someone
+would go to reverse it is worth more than the same words in a change log.
+
+---
+
 ### On plan, and one residual the faces correction missed
 
 Reviewed at `00662390`, my tree merged to it. **The theme is on plan and #130 is
