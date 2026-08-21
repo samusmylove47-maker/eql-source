@@ -658,9 +658,119 @@ or kills the entire T3 command table in one line.
   the same exposure: a chat filter that drops system messages makes an empty
   capture look like a negative result.
 
----
+#### Amendments of 21 Aug, after reading the stored tier-1 note rather than the brief
 
-### The `=` family: settle the system now, draw the mark later. Two different clocks.
+**Four things, and the first two change what Session D should do.**
+
+**1. The guaranteed-drop rule does not say what the brief says it says.** The
+brief paraphrases it as "one guaranteed drop from that boss's unique treasure
+table". `sources/raw/2026-07-28-eql-update-notes.txt`, which Session A captured
+and which is now in our own tree, says:
+
+> Killing a raid boss while you have a loot lockout will now give one guaranteed
+> drop from that boss's unique treasure tables, **along with possible drops from
+> its standard loot pool.**
+
+**So a locked-out kill is not a one-drop kill.** It is one unique-table drop plus
+an unbounded number of standard drops. **Total drop count therefore does not
+separate a fresh kill from a locked-out one**, and my §2 above, which reached for
+exactly that comparison, was reaching for the wrong statistic. What separates the
+two cases is *which table an item came from*, not how many items fell. The corpus
+question becomes: can we classify a boss's drops into unique versus standard? If
+we can, the inference is stronger than counting ever was. If we cannot, §2 is
+weaker than I said and Session D should say so early rather than grind at it.
+
+**We probably can, and here is the spot check that says so.** Taking every item
+in the corpus and asking which mobs drop it, three bosses split like this:
+
+| boss | items seen from one mob only | items seen from several |
+|---|---|---|
+| Cazic-Thule | 22 | 6 |
+| Bazzt Zzzt | 10 | 16 |
+| Coercer T\`vala | 5 | 10 |
+
+**And the split reads semantically, which is the part that matters.**
+Cazic-Thule's shared six are `Crystallized Sulfur`, `Diamond`, `Ruby`,
+`Mote of Major Potential`, `Ruby Crown` and `Sapphire Necklace` — a generic pool
+by inspection. Its exclusive twenty-two are `Amulet of Necropotence`,
+`Blood Fire`, `Barbarian Spiritist\`s Hammer` and the like. That is the note's
+"unique treasure tables" and "standard loot pool" showing up in our own data
+without anyone having set out to record them.
+
+**The confound, which is severe and which Session D must handle before believing
+any of it:** an item seen *once* is single-source trivially, so rarity
+masquerades as exclusivity, and the counts above are inflated by an unknown
+amount. Coercer T\`vala shows the second failure — several `Insidious` set
+pieces land on both sides, because that set drops from more than one Plane of
+Hate boss, so it is raid-unique gear that is not boss-exclusive. **Neither
+"single-source" nor "boss-exclusive" is the same object as "unique treasure
+table."** They are a proxy that happens to look right on three bosses, and a
+proxy that looks right is how this project gets caught. Establish the
+discriminator properly, with a frequency floor and a stated error rate, before
+any interval is inferred from it.
+
+**2. There is a tier-1 number in that note that bounds the reset model, and no
+source in the brief uses it.** Same artefact, General section:
+
+> Introducing Void-touched Potential, a new token that can be earned **up to 3
+> times per week** from raid activities through voidlings.
+
+Three per week, official, dated. The brief's five conflicting sources argue about
+weekly-plus-rolling-18-hours against daily-8am against 6.5-day, and none of them
+cites anything of this rank. A per-week cap on a raid-activity token is not the
+same object as a loot lockout and must not be published as though it were — but
+it is a tier-1 constraint on raid cadence, and any reset model that cannot
+accommodate it is suspect. **Start there.**
+
+Also in that note, and relevant to P0-5: *"All methods of quitting an instance
+will now also cause you to leave that zone."*
+
+**3. A trap with our name on it.** `_build/logstats.py` carries a field called
+`lockout_lines`, and the corpus holds **7,071** of them. It is
+`STUN_LOCKOUT = /^You can't attack while stunned/` at `logstats.py:277` and it
+has **nothing whatever to do with raid lockouts.** A session grepping this repo
+for its own subject finds seven thousand false positives and a dataset field that
+appears to confirm them. Say so in the first paragraph you hand Session D.
+
+**4. I owe the record a correction about egress, and it is the second time this
+week a check of mine named the wrong cause.** I told Session A that this
+Director's session was "egress-blocked from everquestlegends.com, proven", and
+that only a local session could fetch tier-1 notes. **That is wrong now and the
+mechanism I gave was wrong then.** From this container today:
+`everquestlegends.com` returns 200; the 28 July patch note fetches in full at
+41,031 bytes with a browser user agent, containing both sentences quoted above.
+The stored artefact's own header diagnoses the earlier failure as JS rendering.
+It is not: the article text **is** in the bytes of a plain fetch, HTML-escaped
+inside the payload, so a browser's `innerText` finds it and a naive tag-strip
+returns navigation and gives every appearance of an empty page. Same symptom,
+different cause, and the difference decides whether a cloud session can capture a
+tier-1 source. It can. `eqltools.com` 403s a default user agent and returns 200
+with a browser one — and its own 403 body invites exactly that, and asks to be
+cited, which we already do at tier 4.
+
+#### Two rulings from the owner, 21 Aug
+
+**The corpus-mining result comes to me before it goes anywhere.** Session D
+reports it here; I bring it to the owner; if we agree on the findings, then it
+routes to Session A for integration into the raids pages. **Session D does not
+hand site content to Session A directly**, and nothing about a lockout interval
+publishes on the strength of one session's analysis. This is the same shape as
+every other tier M claim: measured, adjudicated, then published.
+
+**The tool may be offered to Shara for EQLS Auras, so build it liftable from day
+one.** The owner's framing: depending on how Session D goes, a working tool may
+be forwarded to Shara and Session C for integration. That is a *maybe*, and the
+correct response to a maybe is not to build for it — it is to make accepting it
+cheap and refusing it free. **Session C's own report establishes that Auras is an
+Electron application**: `src/main/main.js`, `widgetStore.js`, `app.asar`,
+`npm run dist`, electron-builder, an NSIS installer. So the lockout parser is a
+**dependency-free Node module — lines in, state out, no Electron, no DOM, no
+filesystem assumptions in the parsing core** — with the tailer and any UI as
+separate layers around it. A parser written in Python, or one that only exists
+inside an app, is a rewrite at integration time; the same parser written as a
+pure module is a file she can read in an afternoon and take or leave. **This is a
+shape constraint, not an expectation on her.** Her control over Auras is
+complete, and nothing built here is offered as a condition.
 
 **The owner asked whether the marks should wait for the finished page. Split
 answer, because the two halves are constrained by different things.**
