@@ -748,6 +748,97 @@ tier-1 source. It can. `eqltools.com` 403s a default user agent and returns 200
 with a browser one — and its own 403 body invites exactly that, and asks to be
 cited, which we already do at tier 4.
 
+#### RETRACTION, same day: §2 does not work, and I am the third person to run the wrong test
+
+**A seven-agent fan-out was sent at the siting question and came back having
+killed my own corpus proposal. Recorded in full, because the shape of the error
+is more instructive than the error.**
+
+**The drop-count comparison cannot work, and two independent agents ran it anyway
+before catching themselves — after I had already written the amendment above
+saying it could not work.** Three attempts, one day, same superseded rule. The
+test was run against the 23 June wording ("1 piece of loot per named raid
+creature"), which the 28 July note in our own tree replaced. Under the current
+rule a locked-out kill pays a unique-table drop *plus* standard-pool rolls, so
+the count carries no signal at all.
+
+**And the instrument is worse than blunt — it is null.** `logstats.py:214` is
+`LOOT = re.compile(r"looted an? (.+?) from (.+?)'s corpse")`, applied with
+`.search()` at `:675`. It is unanchored and captures the item and the corpse and
+**never the looter**. `<Player> has looted a X from Y's corpse` matches
+identically to `You have looted`. In 5–14-player pick-up raids, `mobs[].loot` is
+therefore an unknown mixture of our entitlement and other people's. **Any lockout
+inference drawn from it is uninterpretable in both directions**, and the most
+dangerous outcome available was the one nearly published: a confident negative
+saying the weekly lockout does not exist.
+
+The measured result, so it is not lost: across 60 within-lockout-week repeat
+kills the predicted suppression is absent — median 4 items on the repeat day,
+only 3 of 60 at the predicted 1, and no step across a Tuesday 08:00 boundary
+(Mann-Whitney z=0.16). **That falsifies the *June* rule and says nothing about
+the July one.** File it as method, not as finding.
+
+**One apparent signal was real and turned out to be attendance.** Raw Sky loot
+collapses on 16 Aug — Bazzt Zzzt 12 → 15 → 3, Gorgalosk 8 → 9 → 0 — which reads
+exactly like a lockout. Normalised by kill count it vanishes: 16 Aug was a duo
+killing each boss once against 3–8 kills on the previous days. `attackers` and
+`our_damage_share_pct` are in `raids-measured.json` and they explain it. **This
+is the same lesson as the raid-boss retraction of 11 Aug** — read the attacker
+count before describing a fight — arriving a second time by a different route.
+
+**So the corpus cannot bound the interval**, and the reason is structural rather
+than statistical: neither dataset carries a lockout-state label, an instance
+identity, or a per-kill loot split. **Two further gaps found while proving it,
+both worth more than the failed test:**
+
+- **No clock time survives anywhere.** `start_ts` is built at `raidstats.py:255`
+  and dropped by `merge()`. Zero of 213 fights carry a time. The five candidate
+  reset models differ by *hours*, so date-only data cannot separate them. The
+  rescue is a join nobody has done: matching each fight's (boss, date) to the
+  session window in `measured.json` recovers sub-hour bounds for **211 of 213**
+  fights, median 44 minutes.
+- **No timezone is recorded anywhere in the corpus.** Grepping `logstats.py`,
+  `raidstats.py`, `docs/SOURCES.md` and `CLAUDE.md` for Pacific / PDT / UTC
+  returns nothing. Log stamps are the owner's Windows clock; every candidate
+  reset rule is stated in Pacific. **Any 8am-boundary test is off by an unknown
+  constant.** That costs one sentence from the owner, not one minute of play, and
+  it must be captured before P0-6 rather than after.
+
+#### The P0-2 and P0-3 premise is probably wrong, and that is the best thing found
+
+`/dzlisttimers`, `/dzhelp` and the rest of the brief's command table are **live
+EverQuest / EQEmu Expedition commands.** eqlwiki documents voidling-hail raid
+instances and hourly personal-instance charges, and documents **no DZ commands at
+all.** The brief already flags that table as a RedGuides import; the consequence
+it does not draw is that **Session D may be planning to capture the output of
+commands the client does not have.**
+
+That is CLAUDE.md §2's central failure mode — inherited classic text wearing the
+clothes of current fact — pointed at us this time. One command settles it, which
+is why `/dzhelp` runs first and why the protocol needs a branch for *"the command
+does not exist"* rather than a plan that assumes it does.
+
+Related, and it shrinks the problem: the "rolling 18 hours" fan claim is most
+plausibly a garbled retelling of the documented 2-charge / 1-per-hour instance
+mechanic, which has nothing to do with lockouts. That reduces five conflicting
+sources to two coexisting mechanisms plus one contaminant.
+
+#### Competitor recon (P0-7) is done, and the answer is a clean no
+
+**Zero public source parses `/dzlisttimers`, `/dzhelp`, or any Expedition/DZ
+system message for EverQuest Legends.** Nobody has done P0-3 for us.
+
+Exactly one competitor ships a raid-lockout feature — `itsspin/spinips`
+("Loremaster") — and **it does not instrument the game at all.** It infers
+lockouts from boss kills and hardcodes the unverified reset rule as two
+constants. That is the typed-number-beside-the-data fault this project exists to
+avoid, shipped as a feature, by the only person who has shipped this feature.
+**Credit them by name; do not copy the method.** It also means the bar is low and
+the honest version is genuinely worth building.
+
+Second name collision to carry into the brief, beside `STUN_LOCKOUT`:
+`LockoutSpellTimer` in blastlaster's spell DB is SPA id 390 and is unrelated.
+
 #### Two rulings from the owner, 21 Aug
 
 **The corpus-mining result comes to me before it goes anywhere.** Session D
@@ -771,6 +862,129 @@ inside an app, is a rewrite at integration time; the same parser written as a
 pure module is a file she can read in an afternoon and take or leave. **This is a
 shape constraint, not an expectation on her.** Her control over Auras is
 complete, and nothing built here is offered as a condition.
+
+#### Siting: Session D runs LOCAL. Not a hybrid.
+
+**Recommended 21 Aug on the evidence above.** Four of five probes and the
+synthesis land here; the one that argued cloud named the local-only work
+correctly and then undervalued it.
+
+**The owner's own design principle — builders local, planners and researchers
+cloud — supports this cleanly, and is not being overturned.** Session D is the
+most builder-shaped session yet commissioned: it instruments a live client, tails
+a growing file, and ships a component into a desktop app. The principle's real
+mechanic is *a session must be able to see the thing it makes claims about*, and
+that points at local without strain — exactly as it points Session B, a planner
+over committed data, at cloud.
+
+**Three load-bearing reasons.**
+
+1. **The two highest-value tasks in the brief are local file reads costing zero
+   play minutes, and neither has been done.** Grepping `state/logs/*.txt` for
+   lockout, expedition and voidling lines settles whether Phase 0 needs fresh
+   capture at all or only a re-parse of nineteen days of logs already on disk
+   covering 213 boss fights. And EQEmu emits the lockout text by numeric string
+   id (`DZ_TIMER 3519`, `DZ_NO_TIMERS 3529`), which in live EverQuest ships as a
+   file in the install — eqltools' own 403 body confirms EQL ships parseable
+   install files. Checking whether EQL has the equivalent is one directory
+   listing away and could collapse P0-2, P0-3 and possibly P0-6 into a file read.
+   **A cloud session cannot run either check and cannot tell whether the files
+   exist**, because `state/logs/` is gitignored and absent from every clone.
+2. **Capture failure is unfalsifiable from a distance, and it is paid for in the
+   one resource the project cannot buy more of.** A filtered-off message leaves
+   no bytes, so an empty capture and a true negative are byte-identical. This
+   repo has already been bitten by that exact shape: `logstats.py:357-366`
+   records Mistmoore sessions being unplaceable because logging was enabled
+   *after* the zone crossing, so the line was never written. Add the
+   wrong-command premise above and a cloud-authored protocol can be void at
+   minute one with nobody present to pivot.
+3. **The deliverable's acceptance test is local by construction.** The parser is
+   a zero-dependency Node module for an Electron app; the question that decides
+   whether it works is *does it run on Windows against a real growing log*. And
+   this container cannot obtain the Auras repo as a tree at all — see the egress
+   correction below.
+
+**The asymmetry, which is the whole argument.** Being wrong toward local costs
+*scheduling* — a third session contending for one machine — and is reversible the
+moment a redacted fixture is committed, because the parser is specified as a pure
+function. Being wrong toward cloud costs *owner play time* and is not
+recoverable: author protocol, owner plays, discover the capture failed, owner
+plays again. **For P0-6 a missed reset window costs a full cycle — up to a week.**
+
+**The strongest argument against, stated fairly:** most of the work is the parser
+and the tracker, which need no game and would occupy the only machine that can
+publish. If Shara's `logWatcher.js` already supplies debugged lines and one
+committed fixture is enough, every iteration after the first sitting is
+cloud-shaped forever. **It does not win, because you cannot commit a fixture of a
+message nobody has seen — identifying that message *is* Phase 0.** Run the gate
+locally, get the lines, commit the fixture, then decide on evidence. The
+contention problem has a scheduling fix; the capture problem has no fix from
+cloud.
+
+**Mitigations, required because local is the riskier seat for everything except
+the work itself:**
+
+- **No publish authority, stated explicitly.** D branches and opens pull
+  requests; never merges, never pushes `main`, never hands site content to
+  Session A directly. The one destructive incident in this repo's record came
+  from an agent with write access to a *local* clone. Cloud gets this restraint
+  by default; local has to be told.
+- **No re-parse that rewrites `measured.json` or `raids-measured.json` in place.**
+  Folding historical logs in moves already-published figures. Write to a new file
+  and diff first.
+- **Run the two zero-play file checks before the owner plays.** Either may make
+  most of the sitting unnecessary.
+- **A positive control in every capture** — a message of known channel in the
+  same window at the same moment, so an empty result is separable from a filtered
+  one — **and the machine timezone recorded beside it.**
+- **One redacted fixture is a named deliverable of the first sitting**, committed
+  verbatim to `sources/raw/`. It is the exit ramp to cloud and must not be an
+  afterthought. A local session that hoards captures makes them unauditable.
+- **Do not decode the log as UTF-8.** See the defect below.
+
+#### Corrections I owe the record about my own session, and they are not small
+
+**1. "The Director cannot rebuild" is false, and it has shaped siting decisions
+for three days.** `/usr/bin/python3.12` and `/usr/bin/python3.13` are installed
+in this container; only the `python3` PATH default is 3.11.15. With a one-line
+symlink shim I ran `build.sh` end to end and then `check.py`: **714 pages, all
+checks passed**, and the rebuild moved three files, all date-stamped. The
+CLAUDE.md §5 version floor is real and is cleared by a symlink. **Strike the
+standing limit.** It does not change the ruling above — D is not a publishing
+session — but the folklore it fed does need correcting: cloud has been treated
+here as capability-limited when it was configuration-limited, and that is twice
+this week I have named a wrong cause for a real symptom.
+
+**2. "Egress reaches github.com" was too coarse to act on.** From this container:
+`github.com` HTML, `codeload.github.com` and `api.github.com` all return 403, and
+`git clone` is denied. **Only `raw.githubusercontent.com` answers.** So a cloud
+session can read a file whose exact path it already knows and cannot clone, list
+a tree, code-search or diff one. Two further traps in the same area: `WebFetch`
+and `curl` have **different egress policies in the same container**, so one
+failed fetch is not evidence a source is unreachable; and
+`everquestlegends.com` **soft-404s**, returning 200 and the homepage for a
+nonexistent patch-note slug, so a status-code existence check reports a missing
+note as found.
+
+**3. The Auras repo's default branch is `master`, not `main`.** The
+default-looking raw URL 404s and reads as "private or gone", which is exactly the
+fabricate-or-give-up trap.
+
+#### One live defect for Session A, independent of all of the above
+
+`_build/logstats.py:407` opens combat logs with `encoding='utf-8',
+errors='replace'`. Our own Sky Ledger, written against a live log, uses
+`TextDecoder("windows-1252", { fatal: false })` and states that the client writes
+the Windows ANSI codepage, so UTF-8 decoding turns every accented NPC name into
+U+FFFD. **Two of our parsers disagree about the same bytes and the one written
+against a live file is right.** The committed corpus cannot show the damage — it
+is ASCII-clean precisely because logstats' regexes only ever match combat, cast,
+loot and zone lines, so the corpus's silence is silence about exactly the subset
+Session D needs. Worth its own ticket.
+
+---
+
+### The `=` family: settle the system now, draw the mark later. Two different clocks.
 
 **The owner asked whether the marks should wait for the finished page. Split
 answer, because the two halves are constrained by different things.**
