@@ -301,6 +301,12 @@ def foot(rel=""):
       Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
       or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
     </p>
+    <svg class="rule-mark" width="100%" height="9" viewBox="0 0 1160 9"
+      preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1"
+      aria-hidden="true" focusable="false"><path d="M0 4.5h486"/><path
+      d="M674 4.5h486"/><path d="M580 1l7 3.5-7 3.5-7-3.5z"/><path
+      d="M508 4.5h44M608 4.5h44" stroke-width=".7" opacity=".75"/><path
+      d="M566 4.5h-8M594 4.5h8" stroke-width=".7" opacity=".5"/></svg>
   </div>
 </footer>
 <script src="{rel}assets/site.js"></script>

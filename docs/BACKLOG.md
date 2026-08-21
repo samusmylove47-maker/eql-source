@@ -44,6 +44,49 @@ nothing**.
 
 ---
 
+## The decorative alphabet: two of five shipped, three dropped for good
+
+Ruled 20 Aug 2026, after the two-theme atlas landed. The brief named five marks —
+dividers, compass rose, scale bar, lantern, hachures. **Two have a home and three
+should not exist here.** Written down because a session arriving with energy and
+no context will build all five enthusiastically.
+
+**Shipped.** The **lantern**, on the theme switch and nowhere else. The
+**divider**, in the footer only, in flow. The masthead half is unbuilt: the bar's
+free space collapses to nothing between roughly 760px and 1040px, above the
+700px escape hatch and a width nothing in the repo tests.
+
+**Do not build the compass rose.** Two reasons and the second is the one that
+settles it. All thirteen surveys already draw a north arrow from the mesh
+(`_build/build6.py`), so a decorative rose is the *second* compass on the page
+and a reader cannot tell which one is the measurement. And this site publishes,
+live at `learn/reading-the-plans.html`: *"An image model will draw a convincing
+dungeon map, with a legend and a scale bar and a compass rose, and every spatial
+relationship in it will be invented."* **Two of the five marks are named there as
+the tells of a fabrication.** Shipping house versions of both while that sentence
+stands is a contradiction a reader finds in one search.
+
+**Do not build the scale bar.** The floor plans already carry one, measured,
+labelled in game units at full opacity (`_build/build6.py`). A faded ornamental
+twin beside a real instrument is worse than none. On a plate card it is worse
+still: the card art is letterboxed and path-capped, so its units-per-pixel is
+unknowable — a bar there asserts a scale it cannot state.
+
+**Do not build hachures.** The objection is semantic, so no placement fixes it.
+**Hachures encode slope**, and using them as a storey separator asserts a
+gradient nobody measured — on a site whose rule is that a drawing is an
+assertion. The plate art also flattens every storey into one point cloud before
+drawing, so a divider across it divides the card rather than the zone, and it
+would look right, which is the dangerous part.
+
+**The real gap the survey found is not a motif.** 680 pages carry an oriented
+floor plan in `<figure class="locator">` and none of them says which way is up;
+"North is up" appears on the thirteen surveys and nowhere else. The orientation
+is a verified derived fact. That is an instrument, not ornament, and it belongs
+in a content change against `_build/build17.py`.
+
+---
+
 ## P0 — Aesthetic uplift
 
 See `docs/DESIGN.md` for the full brief. Break it into these commits:
