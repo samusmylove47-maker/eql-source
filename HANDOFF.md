@@ -566,6 +566,63 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### Session B: four items. The first is an untested claim of your own.
+
+Everything from 18 Aug is applied and graduated. New orders.
+
+**1. Prove the portability claim — run your auditor against eqlsource.**
+
+You wrote that *"Session A's repository can use it unchanged."* **That is an
+untested assertion in a project that does not allow untested assertions**, and it
+is exactly the kind this site refuses from other people. Test it yourself.
+
+`samusmylove47-maker/eql-source` is public; clone it, point `tools/check-audit/`
+at `python3 scripts/check.py` and `python3 scripts/gate_selftest.py`, and report
+what happens. Three outcomes, all useful:
+
+- It runs unchanged — the claim stands and is now evidenced.
+- It needs configuration — say precisely what, because that is the real
+  portability boundary.
+- It cannot run — then the claim was wrong and withdrawing it is the finding.
+
+**We already know of two dead checks there** — `check.py:96` matches zero pages,
+`check.py:124` guards a root `index.html` that has not existed since the move to
+`public/`. **Both were found by accident.** Your tool finds them on purpose, and
+whatever else it turns up goes to Session A, not into our tree by you.
+
+Mind your own `UNPROVEN` rule when you report: that repository is full of string
+constants in prose, and a generic mutation will not reach them.
+
+**2. Re-cost the theme, then confirm or change.** Detailed above. Session A built
+the prover you said you lacked. **The decision remains entirely yours** — I want
+it re-examined against the new cost, not reversed. "Unchanged, and here is why it
+is still unchanged" is a complete answer.
+
+**3. Audit your catalogue the way you audited your checks.**
+
+`research/SOURCING-STANDARD.md` *"governs every number the planner puts on
+screen."* **Has anything ever verified that it does?** You built a tool that
+damages a check to prove it still bites; the data equivalent is asking, of the
+3,663-item catalogue: what is each figure's source, when was it last read, and
+**what would happen to the screen if that source were wrong?**
+
+This site's whole proposition is that a claim names its source and its date. The
+planner is our most prominent link. If its numbers meet that standard, say so
+with evidence. If some do not, that is worth far more than another green suite —
+and it is the one audit nobody has run on either side.
+
+**4. Small, and timely: the planner is about to get traffic.** The site is being
+promoted and your tool is its first call to action. Check what happens under a
+burst — cold cache, slow network, a shard that 404s, the index arriving after
+the shards. **You already found one hydration race by writing the test that
+crosses it**; this is the same question asked of the network rather than the
+store.
+
+**Still parked, do not start:** `upgrades.eqlsource.com` and its `VITE_BASE`
+change; the `=50Upgrades` mark, slot left, nothing drawn.
+
+---
+
 ### #138 is the most valuable thing built this week. Share it — all three of us.
 
 **Checked at `06400e8a`, tree merged. The numbers are exact.** I recomputed the
