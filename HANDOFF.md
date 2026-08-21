@@ -566,6 +566,77 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### The `=` family: settle the system now, draw the mark later. Two different clocks.
+
+**The owner asked whether the marks should wait for the finished page. Split
+answer, because the two halves are constrained by different things.**
+
+**Defer the drawing. The visual system is still moving** — a second ground landed
+two days ago and 124 daylight contrast findings are open. A mark drawn against
+that is drawn against a moving target, and it would have to be redone.
+
+**Do not defer the system. It is semantic, and it is not moving at all.** What
+`=` means, what it attaches to and how the family is built are decisions that
+would be identical whether the site were parchment or graphite. Settling them now
+costs nothing later and prevents three repositories inventing three
+interpretations in the meantime, which is exactly what happened to the tool
+footer.
+
+**And one input has a closing window: Shara is in the room until 23 August.**
+She originated the mark. Her view on `=Auras` — whether it fits what she has
+built, what she wants it to feel like — is a three-day opportunity and then it is
+a relay again. **Get it this week, in writing, before the drawing exists**, so
+the eventual spec is answering her rather than presenting to her.
+
+#### `=Guides` changes what the family is, and that is worth naming
+
+The owner listed `=50Upgrades`, `=Auras`, `=SkyLedger` and **`=Guides`**. The
+first three are products. The fourth is not — it is the dungeon surveys, which
+are *content*.
+
+**That is a better system than a product-badge family, and it resolves what the
+mark means.** `=` reads as *this is measured*, and the surveys are the most
+measured thing here. So:
+
+```
+=            EQL Source itself
+=Guides      the surveys — measured content
+=SkyLedger   ·  =50Upgrades  ·  =Auras   — measured tools
+```
+
+A family that spans content and tools says the standard is the same for both,
+which is the site's actual claim. A family that only badges products would have
+said the tools are the thing and the surveys are the wrapper — the opposite of
+what is true here.
+
+**Written down now so the drawing has something to be faithful to.** Three
+constraints already fixed and not up for reinvention: it is **type and CSS, never
+an asset file**; the searchable name stays plain in `<title>`, `og:title` and
+`TOOLS`, because nobody types an equals sign into a search box; and it must clear
+favicon size on **both** grounds.
+
+**Phase it as P-next rather than P5-parked:** the system and Shara's input this
+week, the spec once the daylight backlog is closed and the visual system has
+stopped moving, the implementation after that. `upgrades.eqlsource.com` stays
+parked separately — it is DNS on the owner's side and unrelated.
+
+#### And 50 Upgrades deserves product thought, not only quality work
+
+The owner wants more given to the planner itself. Fair, and worth stating
+plainly: **Session B's last three assignments were all infrastructure** — drift
+checks, an audit tool, a costing. Good work, none of it visible to a reader.
+
+The question nobody has asked is the product one: **what does someone planning
+gear actually need that the planner does not do?** Not bugs, not coverage —
+absence. That is a different kind of review and it wants the owner's and Shara's
+eyes as much as a session's, because they are the ones who play.
+
+Commissioned, not scheduled: I will put it to Session B after its current four,
+and I would rather have the owner's own answer to that question first than have
+a session guess at it.
+
+---
+
 ### Session B: four items. The first is an untested claim of your own.
 
 Everything from 18 Aug is applied and graduated. New orders.
