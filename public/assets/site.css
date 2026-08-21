@@ -307,11 +307,29 @@
 }
 .lamp:hover{ color:var(--bone); border-color:var(--rule2); }
 .lamp:focus-visible{ outline:2px solid var(--brass); outline-offset:2px; }
-.lamp::before{ content:"Daylight"; }
+/* THE LABEL IS REAL TEXT, IN TWO SPANS, NOT CSS CONTENT.
+   It was ::before content until 20 Aug 2026, which looked identical and left
+   the button with EMPTY text content - so its only accessible name was a title
+   attribute, the weakest naming mechanism there is, and a static one that could
+   not say which way you were going.
+
+   display:none removes a node from the accessibility tree, so exactly one span
+   is both visible and nameable at a time. The name is therefore correct in both
+   grounds with NO JavaScript, which CSS content could not promise and a
+   script-updated label could not either. */
+.lamp .lamp-to-torch{ display:none; }
 @media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]) .lamp::before{ content:"Torchlight"; }
+  :root:not([data-theme="dark"]) .lamp .lamp-to-day{ display:none; }
+  :root:not([data-theme="dark"]) .lamp .lamp-to-torch{ display:inline; }
 }
-:root[data-theme="light"] .lamp::before{ content:"Torchlight"; }
+:root[data-theme="light"] .lamp .lamp-to-day{ display:none; }
+:root[data-theme="light"] .lamp .lamp-to-torch{ display:inline; }
+
+/* The lantern, the one mark the brief assigns to this control and to nothing
+   else. Drawn, aria-hidden, and it carries no meaning the label does not. */
+.lamp{ display:inline-flex; align-items:center; gap:6px; }
+.lamp .lantern{ width:11px; height:14px; flex:none; opacity:.62; }
+.lamp:hover .lantern{ opacity:1; }
 
 /* SIZED FOR THE LONGER WORD, WHICH IS NOT COSMETIC.
    The label is the destination, so it changes length when the ground changes:
