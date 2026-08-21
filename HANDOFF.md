@@ -566,6 +566,100 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### EQLS Lockouts: yes to a new session, and its first three tasks need no game
+
+**Ruled 21 Aug. Spin up Session D.** The work is genuinely separable — empirical
+discovery rather than site building — and it is blocked on in-game capture, which
+is exactly the shape that would stall Session A between long idle waits. It does
+not belong to Session C either: C is a liaison, not a builder.
+
+**The handoff document is unusually good and already in our idiom** — provenance
+per claim, "do not invent regexes, capture them", append-only ledger, pure
+projections, and it correctly identifies the eqlwiki `Commands` page as a
+RedGuides import whose every row inherits that defect. It needs almost no
+correction. It needs three things added.
+
+#### 1. Its tier scheme conflicts with ours, and M6 publishes here
+
+The document uses **T0 observed / T1 official / T2 fan-fresh / T3 imported**.
+This site uses **Tier M** for measured and **1–5 descending**, where 1 is patch
+notes, 2 is structured wiki that passes the provenance test, and 5 is wiki prose.
+Its T1 coincides with ours; **its T0 is our Tier M, and its T2/T3 do not map at
+all.**
+
+Milestone M6 writes the reset-rule finding up *for eqlsource*. **Two
+incompatible scales inside one project is precisely the fault we keep catching in
+other people's work.** Reconcile before anything publishes: Session D may keep
+its internal shorthand for captures, but anything crossing into this site is
+restated on our scale, and the mapping is written down once.
+
+#### 2. We may already hold the answer to the blocking question
+
+Nobody looked. `assets/raids-measured.json` holds 213 fights, and **39 of 78
+boss-and-difficulty pairs were killed on more than one date**:
+
+```
+Coercer T`vala      D4   12, 13, 15, 16, 18 Aug     <- 12 and 13 are consecutive
+Master of Spite     D4   12, 13, 15, 16, 18 Aug
+Mistress of Scorn   D4   12, 13, 15, 16, 18 Aug
+Bazzt Zzzt          D0   14, 15, 16 Aug             <- three consecutive days
+```
+
+**The same boss at the same difficulty, killed on consecutive days, repeatedly.**
+That does not by itself prove a lockout expired — the 28 July note says a
+locked-out kill still yields one guaranteed drop, so a consecutive kill may be a
+locked-out kill. **But that is the point:** the document itself says the two
+cases should differ in their *loot pattern*, and we hold the loot. Comparing drop
+counts across those 39 pairs may separate fresh kills from locked-out ones **in
+data already on disk**, and bound the short-cycle interval before the owner
+spends a minute in-game.
+
+If it resolves Model A against Model B, that is a Tier M finding this site can
+publish, obtained from a corpus gathered for an unrelated reason. If it does not
+resolve it, it will still tell Phase 0 exactly what to capture.
+
+#### 3. The owner's play time is the scarce resource — protect it
+
+Phase 0 lists seven tasks. **Do not send the owner in seven times.** Their time
+in-game is the binding constraint on this whole project, and a trip that forgets
+one capture costs another trip.
+
+**Session D's first deliverable is a single consolidated capture protocol** — one
+sitting, ordered, with the exact commands, the chat-filter setup done first, and
+what to write down beside each capture. `/dzhelp` runs first because it converts
+or kills the entire T3 command table in one line.
+
+#### Order of work, and none of the first three need the client
+
+1. **Competitor recon (P0-7).** Fully doable now. If any open-source parser
+   already reads `/dzlisttimers`, **its regexes are a Tier M artefact and someone
+   has already done P0-3.** Credit them by name; never copy silently.
+2. **Mine our own corpus**, per §2 above.
+3. **Write the consolidated capture protocol.**
+4. *Then* the owner plays, once, and everything downstream follows.
+
+#### Standing rulings that apply from day one
+
+- **This is a component, not a product.** The owner's framing: we develop the
+  system, Shara incorporates it if she wants it. **The standing section on EQLS
+  Auras governs** — her control is complete, and nothing built here is offered as
+  a condition or an expectation on her.
+- **No memory reading, no packet inspection, no client injection.** The document
+  already says so and is right. It is also our own line: a suspension would cost
+  more than the feature is worth and would poison the credibility this site runs
+  on.
+- **Every displayed value carries its provenance**, observed against projected.
+  The app may not be sloppier than the site.
+- **Derive, never type.** A figure that cites a dataset is read out of it at
+  build time. This week that rule caught a wrong *explanation*, not just a wrong
+  number — see the self-heal amendment.
+- **Before trusting an instrument, ask what it cannot see and what it changes by
+  looking.** Three sessions found that independently this week. A log tailer has
+  the same exposure: a chat filter that drops system messages makes an empty
+  capture look like a negative result.
+
+---
+
 ### The `=` family: settle the system now, draw the mark later. Two different clocks.
 
 **The owner asked whether the marks should wait for the finished page. Split
