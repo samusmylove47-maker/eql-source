@@ -75,7 +75,7 @@ else:
         '<div class="card" style="--c:var(--ok)"><div class="kicker">Dungeons</div>'
         '<h3 class="t">Verification gates, all cleared</h3>'
         '<p class="d">All ten surveys have passed all three gates, and the evidence for each '
-        'is recorded on the <a href="dungeons/index.html" style="color:var(--ok)">plates page</a>. '
+        'is recorded on the <a href="dungeons/index.html" style="color:var(--ok-t)">plates page</a>. '
         'That is not the same as complete. It means each survey has been checked against its live '
         'source and every coordinate lands somewhere a player can stand &mdash; the gaps listed '
         'here are what remains.</p></div>')
@@ -255,7 +255,7 @@ main.raidx::before{background-image:
 @media (prefers-contrast:more){body::before{display:none}}
 .sky-wrap{max-width:1200px;margin:0 auto;padding:var(--s-6) clamp(10px,2vw,26px) var(--s-8)}
 .sheet{position:relative;padding:0 clamp(16px,3vw,44px) var(--s-8);
-  background:rgba(11,7,4,.58);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
+  background:color-mix(in srgb, var(--surface-0) 58%, transparent);border:1px solid var(--rule2);box-shadow:var(--shadow-2)}
 .sheet::before{content:"";position:absolute;inset:var(--s-2);pointer-events:none;
   border:1px solid rgba(242,234,218,.085)}
 .mast{padding:var(--s-7) 0 var(--s-5);border-bottom:1px solid var(--rule2)}

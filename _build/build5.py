@@ -25,7 +25,7 @@ NPAGES = IX['counts']['item_pages']
 NZONES = len(json.load(open('assets/zones-index.json', encoding='utf-8')))
 
 CSS = '''<style>
-.ix-controls{position:sticky;top:58px;z-index:30;background:rgba(14,19,21,.96);
+.ix-controls{position:sticky;top:58px;z-index:30;background:color-mix(in srgb, var(--surface-0) 96%, transparent);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--rule);padding:14px 0 12px;margin-bottom:0}
 .ix-search{width:100%;font-family:"IBM Plex Mono",monospace;font-size:15px;padding:13px 15px;
   background:var(--panel2);border:1px solid var(--rule2);color:var(--bone)}
