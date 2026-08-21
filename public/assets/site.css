@@ -184,6 +184,7 @@
   --graticule:rgba(242,234,218,.052);
   --grain:rgba(242,234,218,.9); --grain-2:rgba(242,234,218,.55);
   --grain-o:.032; --grain-blend:overlay;
+  --bar-bg:rgba(11,7,4,.88);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
@@ -235,6 +236,7 @@
     --graticule:rgba(90,66,34,.075);
     --grain:rgba(90,66,34,.55); --grain-2:rgba(120,90,50,.35);
     --grain-o:.05; --grain-blend:multiply;
+    --bar-bg:rgba(239,230,212,.90);
     color-scheme:light;
   }
 }
@@ -254,6 +256,7 @@
   --graticule:rgba(90,66,34,.075);
   --grain:rgba(90,66,34,.55); --grain-2:rgba(120,90,50,.35);
   --grain-o:.05; --grain-blend:multiply;
+  --bar-bg:rgba(239,230,212,.90);
   color-scheme:light;
 }
 
@@ -282,10 +285,17 @@
    _build/accents.py, which fails rather than lowering the bar. ----------- */
 [style*="--c:"]{ --c-t:color-mix(in srgb, var(--c) 56%, var(--bone)); }
 @media (prefers-color-scheme: light){
-  :root:not([data-theme="dark"]) [style*="--c:"]{
+  :root:not([data-theme="dark"]) [style*="--c:"]:not(.plate):not(.plotwrap){
     --c-t:color-mix(in srgb, var(--c) 48%, var(--bone)); }
 }
-:root[data-theme="light"] [style*="--c:"]{
+/* THE SURFACES THAT STAY DARK ARE EXCLUDED, AND THIS IS A SPECIFICITY BUG THAT
+   ALREADY BIT. The daylight rule is (0,3,0) and the dark-island rule that gives
+   .plate its torchlight tokens is (0,1,0), so in daylight the island lost and
+   every plate took the PARCHMENT accent ratio - 48% toward ink - onto a card
+   that is still dark. Measured at 1.31:1 on the plate meta figures, from 4.98.
+   The island cannot win on specificity without an arms race, so the rule that
+   should not apply says so instead. */
+:root[data-theme="light"] [style*="--c:"]:not(.plate):not(.plotwrap){
   --c-t:color-mix(in srgb, var(--c) 48%, var(--bone)); }
 
 /* ---- the lamp: the ground switch ----------------------------------------
@@ -302,7 +312,7 @@
   font-family:"IBM Plex Mono",monospace; font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider); text-transform:uppercase;
   padding:6px 10px; border-radius:var(--r-1);
-  border:1px solid var(--rule); background:transparent; color:var(--mut);
+  border:1px solid var(--rule); background:transparent; color:var(--txt);
   transition:color var(--speed), border-color var(--speed);
 }
 .lamp:hover{ color:var(--bone); border-color:var(--rule2); }
@@ -382,7 +392,18 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
 .hidden{display:none!important}
 
 /* ---------- masthead ---------- */
-.site-bar{position:sticky;top:0;z-index:80;background:rgba(11,7,4,.88);
+/* THE MASTHEAD IS CHROME, SO IT FOLLOWS THE GROUND - it did not, and that was
+   a live failure on 699 pages. This declared the torchlight literal
+   rgba(11,7,4,.88) with no daylight partner anywhere in the file, so on a
+   parchment page the bar composited to rgb(38,34,29) while its children took
+   daylight tokens: the wordmark measured 1.06:1, which is invisible, and the
+   burger and the theme switch's own label 2.44:1.
+
+   Unlike .plate and .plotwrap there is nothing dark inside a masthead that the
+   theme cannot reach, so the answer is to flip it rather than pin it. --bar-bg
+   is declared in both grounds and the translucency is kept, because the bar is
+   sticky and content scrolls under it. */
+.site-bar{position:sticky;top:0;z-index:80;background:var(--bar-bg);
   backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
 .site-bar .shell{display:flex;align-items:center;gap:var(--s-4);height:var(--bar-h)}
 .mark{display:flex;align-items:baseline;gap:9px;text-decoration:none;flex:0 0 auto}
@@ -580,7 +601,10 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 .t4{color:var(--tier-4)}.t5{color:var(--tier-5)}
 /* Tier C — a named player's first-hand report, unconfirmed. Deliberately not
    on the numeric ramp: it is a different kind of claim, not a weaker one. */
-.tc{background:rgba(92,147,196,.16);color:#8FBEE4;border-color:rgba(92,147,196,.5)}
+/* --instr-t rather than the #8FBEE4 literal it duplicated: the token flips with
+   the ground, the literal did not, and this is a chip that sits on the page
+   rather than on a dark field of its own. */
+.tc{background:rgba(92,147,196,.16);color:var(--instr-t);border-color:rgba(92,147,196,.5)}
 /* A figure we still print because the source says it, while telling the reader
    we do not believe it. Never delete a source figure to make a page tidy. */
 .disputed{text-decoration:line-through;text-decoration-color:var(--warn-t);
@@ -793,12 +817,24 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
    --c-t is reset to the torchlight ratio too. The card is dark whatever the
    page is doing, so its accent text needs the lift that a dark ground wants,
    not the darkening a parchment one wants. -------------------------------- */
-.plate{
+.plate, .plotwrap, .vpause, .ember-stats>div{
   --surface-1:#191309; --surface-2:#282013;
   --bone:#F2EADA; --txt:#DFD6C4; --mut:#B5AA95; --dim:#9A8F7C; --faint:#978C7C;
   --rule:#544833; --rule2:#6B5C46;
   --c-t:color-mix(in srgb, var(--c) 56%, var(--bone));
 }
+/* THE OTHER THREE ARE HERE FOR THE SAME REASON AND FOUND THE HARD WAY.
+   A surface stays dark when what it CONTAINS is dark - a drawing, a video, a
+   field the theme cannot reach. .plotwrap holds the survey plots, drawn light
+   on dark; .vpause sits on top of a video; .ember-stats panels are a dark band.
+   All three declared a dark background as a literal and took their TEXT from
+   the page tokens, so in daylight they put dark ink on a dark ground:
+   .vpause measured 1.34:1 and the ember band's emphasis 1.85:1.
+
+   The plate was fixed on its own on 20 August because it was the one I went
+   looking at. These three were found by sweeping every text-bearing element on
+   the page for contrast instead of checking the component I had in mind, which
+   is the only reason they are here rather than shipped. */
 .plate{position:relative;isolation:isolate;display:flex;flex-direction:column;
   justify-content:flex-end;
   min-height:230px;overflow:hidden;text-decoration:none;border-radius:var(--r);
