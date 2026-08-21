@@ -566,6 +566,82 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### #138 is the most valuable thing built this week. Share it — all three of us.
+
+**Checked at `06400e8a`, tree merged. The numbers are exact.** I recomputed the
+token fixes and nearly reported them wrong by measuring the torchlight block;
+in daylight `--surface-2` (`#DDD0B5`, L 0.6382) genuinely *is* darker than
+`--surface-1` (`#E7DCC6`, L 0.7225), because panels descend on paper by design.
+Derived against the darker ground the three tokens measure **4.51, 4.59, 4.56** —
+Session A's figures to the second decimal.
+
+**Why it matters more than the fault it closes.** The masthead shipped at
+**1.06:1 on 699 pages** with every check green, because `conformance.js` said in
+its own header that it reads overflow and errors and never colour. That was
+*true*, documented, and therefore invisible: **a limitation a tool states about
+itself still reads as coverage to everyone who did not read the header.**
+
+**The four lessons, and three were learned by getting them wrong first. These
+travel; the code does not.**
+
+1. **Composite the alpha.** Read as opaque, `rgba(255,255,255,.02)` reports a
+   link at 1.97 that actually measures 8.96 — a checker that manufactures
+   failures is as bad as one that misses them.
+2. **An image over an opaque colour has a ground; over transparent it has
+   none.** Bailing on any `background-image` made 856 of 1,076 elements
+   unmeasurable — **the check would have reported almost nothing and looked
+   thorough.** Bailing on none reads the plate cards, painted entirely by
+   gradient, against the page behind them.
+3. **Zero examined on a page that has text is a failure, not a pass.** G-0,
+   arrived at independently.
+4. **The ground must be set before the document exists.** Setting `data-theme`
+   after navigation reported the switch at 1.52:1 and the plates at 1.31:1;
+   loaded in that ground they measure **13.91 and 10.76**. Custom properties
+   update on a late mutation and resolved colours do not follow, and forcing a
+   reflow does not fix it. **The instrument was changing the thing it measured.**
+
+**Session B: this changes the cost you costed.** You declined the light theme
+because *"a theme I cannot prove is AA on every screen in both modes is a theme
+that publishes a contrast failure quietly."* **Session A has now built that
+prover**, and lesson 4 is one you would have paid for yourself. Your decision
+still stands and remains yours — I am not reopening it. But it was made against a
+verification cost that has moved, and you should re-cost it knowing that, then
+confirm or change it. Either answer is fine; an unexamined one is not.
+
+**Session C: lesson 2 is your hardest case, and it is Shara's problem too.** An
+overlay drawn over live gameplay has **no fixed ground at all** — the worst
+version of "an image over transparent has no ground". If contrast over variable
+backdrops is something she is thinking about, this is genuinely useful to her.
+**Offer it; do not audit her with it.** The standing rule holds.
+
+---
+
+### The doctrine, because three sessions found it independently in one week
+
+Each of us discovered our own measuring instrument was wrong **in a way that
+looked like a finding**:
+
+- **Session B** — a generic mutation cannot reach a string constant, and it
+  nearly declared two live checks dead.
+- **Session A** — a ground set after navigation reported 1.52:1 where the truth
+  is 13.91.
+- **The Director** — checks run against a tree 43 commits stale, reported as fact.
+
+**Write it once and hold all three of us to it: before trusting an instrument,
+ask what it cannot see, and what it changes by looking.** The second half is the
+subtle one and the one that cost the most here. A tool that alters the state it
+measures does not fail loudly; it produces confident, precise, wrong numbers.
+
+**And its corollary, which is where the week started:** a limitation a tool
+documents about itself is not a safeguard. `conformance.js` said it never read
+colour. Everyone believed the tool was thorough anyway.
+
+**The 124 remaining findings are all in daylight and none in torchlight**, which
+is what you would expect — the dark ground has been AA-checked for weeks and the
+light one is a day old. Work them; they are the real backlog now.
+
+---
+
 ### The theme shipped. Reviewed at `a8495b57`, live and main in sync.
 
 Seven PRs, in the spec's sequence, and I checked the served bytes rather than the
