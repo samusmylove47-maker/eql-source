@@ -280,6 +280,8 @@ const showAll = args.includes('--show');
 
   const findings = [];
   const groups = new Map();
+  let contrastChecked = 0, contrastUnmeasurable = 0;
+  let themeScriptId = null;
   const t0 = Date.now();
 
   for (const page of pages) {
@@ -293,22 +295,54 @@ const showAll = args.includes('--show');
       }, sessionId);
 
      for (const theme of themes) {
+      // THE GROUND IS SET BEFORE THE DOCUMENT EXISTS, NOT AFTER IT LOADS.
+      //
+      // This used to set data-theme with Runtime.evaluate after navigation and
+      // it reported the previous ground: the theme switch at 1.52:1 and the
+      // plate cards at 1.31:1, both of which measure 13.91 and 10.76 on a page
+      // that was actually LOADED in that ground. Custom properties update on a
+      // late mutation; resolved colours do not reliably follow within the tick,
+      // and forcing a reflow did not fix it either.
+      //
+      // addScriptToEvaluateOnNewDocument runs before the page's own scripts, so
+      // the attribute is on <html> at first paint and every style is computed
+      // once, in the ground being measured. That is also what a reader gets,
+      // because the site's own no-flash script does exactly this.
+      if (themeScriptId) {
+        await cdp.send('Page.removeScriptToEvaluateOnNewDocument',
+          { identifier: themeScriptId }, sessionId);
+        themeScriptId = null;
+      }
+      await cdp.send('Emulation.setEmulatedMedia', {
+        features: [{ name: 'prefers-color-scheme', value: theme.media }],
+      }, sessionId);
+      const ins = await cdp.send('Page.addScriptToEvaluateOnNewDocument', {
+        // A new-document script runs at document CREATION, before the parser
+        // has made <html> - documentElement is null and a bare setAttribute
+        // throws, which the sweep then reports as a console error on every
+        // page. The observer applies it the instant the element appears, which
+        // is still before any style is resolved for paint.
+        source: `(function(){
+          var want = ${JSON.stringify(theme.attr)};
+          function set(){
+            var d = document.documentElement;
+            if (!d) return false;
+            if (want) d.setAttribute('data-theme', want); else d.removeAttribute('data-theme');
+            return true;
+          }
+          if (!set()) {
+            var o = new MutationObserver(function(){ if (set()) o.disconnect(); });
+            o.observe(document, { childList: true, subtree: true });
+          }
+        })();`,
+      }, sessionId);
+      themeScriptId = ins.identifier;
+
       consoleErrors = [];
       loaded = false;
       await cdp.send('Page.navigate', { url }, sessionId);
       for (let i = 0; i < 100 && !loaded; i++) await sleep(20);
 
-      await cdp.send('Emulation.setEmulatedMedia', {
-        features: [{ name: 'prefers-color-scheme', value: theme.media }],
-      }, sessionId);
-
-      // After navigate, never before - see THEMES.
-      await cdp.send('Runtime.evaluate', {
-        expression: theme.attr
-          ? `document.documentElement.setAttribute('data-theme','${theme.attr}')`
-          : `document.documentElement.removeAttribute('data-theme')`,
-      }, sessionId);
-      await sleep(30);   // let the cascade settle before measuring
 
       let m;
       try {
@@ -337,7 +371,7 @@ const showAll = args.includes('--show');
       }
 
       const g = groupOf(page);
-      if (!groups.has(g)) groups.set(g, { n: 0, overflow: 0, errors: 0, empty: 0 });
+      if (!groups.has(g)) groups.set(g, { n: 0, overflow: 0, errors: 0, empty: 0, contrast: 0 });
       const gs = groups.get(g);
       gs.n++;
 
@@ -362,19 +396,148 @@ const showAll = args.includes('--show');
           detail: `body.innerText is ${m.textLength} chars`,
         });
       }
+
+      // ── CONTRAST ────────────────────────────────────────────────────────
+      // Added 20 Aug 2026, after .site-bar shipped a torchlight literal with no
+      // daylight partner and left the masthead at 1.06:1 on 699 pages. The
+      // wordmark was invisible in daylight and every check in this repository
+      // was green, because this file's own header said it reads overflow and
+      // errors and never colour. That was true and it is the gap this closes.
+      //
+      // Three things it does that a naive version gets wrong, each learned by
+      // getting it wrong first:
+      //
+      //   1. ALPHA IS COMPOSITED. .foot-contact carries rgba(255,255,255,.02);
+      //      read as an opaque near-white ground it reports 1.97 on a link that
+      //      actually measures 8.96.
+      //   2. A BACKGROUND IMAGE IS NOT A COLOUR. The plate cards are painted by
+      //      a gradient, so walking for a background-COLOUR sails past them to
+      //      the page and reports dark-on-dark for light-on-dark text. Those
+      //      elements are counted as UNMEASURABLE and reported, never guessed
+      //      at and never silently skipped.
+      //   3. IT MEASURES A FRESH LOAD. Flipping data-theme in place and reading
+      //      getComputedStyle reports the previous ground, because style
+      //      recalculation lags the attribute. The sweep navigates per theme,
+      //      so every reading here is of a page that was laid out in the ground
+      //      it claims to be.
+      //
+      // Large text takes the 3:1 bar, as WCAG allows: >=24px, or >=18.66px bold.
+      let c;
+      try {
+        const rc = await cdp.send('Runtime.evaluate', {
+          expression: `(() => {
+            // Force style + layout before reading anything. Setting data-theme
+            // and reading getComputedStyle in the same task returns the
+            // PREVIOUS ground: custom properties update, resolved colours lag.
+            // It reported the theme switch at 1.52:1 and the plate cards at
+            // 1.31:1, both of which measure fine on a fresh load. Fourth
+            // instance of the same shape in this file.
+            void document.body.offsetHeight;
+            const lin = v => { v /= 255; return v <= 0.04045 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4); };
+            const px = s => {
+              const n = (String(s).match(/[\\d.]+/g) || ['0','0','0']).map(Number);
+              if (String(s).indexOf('color(') === 0) return { rgb: n.slice(0,3).map(v => v*255), a: 1 };
+              return { rgb: n.slice(0,3), a: n.length > 3 ? n[3] : 1 };
+            };
+            const lum = c => 0.2126*lin(c[0]) + 0.7152*lin(c[1]) + 0.0722*lin(c[2]);
+            const ground = el => {
+              const stack = [];
+              for (let n = el; n && n.nodeType === 1; n = n.parentElement) {
+                const cs = getComputedStyle(n);
+                const { rgb, a } = px(cs.backgroundColor);
+                const painted = cs.backgroundImage && cs.backgroundImage !== 'none';
+                // An image OVER an opaque colour still has a defined ground: the
+                // page carries decorative gradients at 3-12% alpha above
+                // --surface-0, and bailing on those made 856 of 1,076 elements
+                // unmeasurable - the check would have reported almost nothing
+                // and looked thorough doing it. An image over TRANSPARENT is a
+                // different thing: that is the plate cards, painted entirely by
+                // a gradient, and there is no colour to read.
+                if (painted && a < 1) return null;
+                if (a > 0) { stack.push({ rgb, a }); if (a >= 1) break; }
+              }
+              if (!stack.length) return null;
+              let out = stack[stack.length-1].rgb;
+              for (let i = stack.length-2; i >= 0; i--) {
+                const L = stack[i];
+                out = out.map((v,j) => L.rgb[j]*L.a + v*(1-L.a));
+              }
+              return out;
+            };
+            let checked = 0, unmeasurable = 0;
+            const bad = [];
+            const all = document.querySelectorAll('body *');
+            for (const el of all) {
+              let own = '';
+              for (const n of el.childNodes) if (n.nodeType === 3) own += n.textContent.trim();
+              if (own.length < 2) continue;
+              const box = el.getBoundingClientRect();
+              if (box.width < 1 || box.height < 1) continue;
+              const cs = getComputedStyle(el);
+              if (cs.visibility === 'hidden' || cs.opacity === '0') continue;
+              const bg = ground(el);
+              if (!bg) { unmeasurable++; continue; }
+              checked++;
+              const size = parseFloat(cs.fontSize) || 16;
+              const weight = parseInt(cs.fontWeight, 10) || 400;
+              const bar = (size >= 24 || (size >= 18.66 && weight >= 700)) ? 3 : 4.5;
+              const f = lum(px(cs.color).rgb), b = lum(bg);
+              const ratio = (Math.max(f,b) + 0.05) / (Math.min(f,b) + 0.05);
+              if (ratio < bar) bad.push({
+                sel: el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className
+                       ? '.' + el.className.trim().split(/\\s+/).join('.') : ''),
+                ratio: Math.round(ratio*100)/100, bar,
+                text: own.slice(0,28),
+              });
+            }
+            bad.sort((x,y) => x.ratio - y.ratio);
+            return { checked, unmeasurable, bad: bad.slice(0,6) };
+          })()`,
+          returnByValue: true,
+        }, sessionId);
+        c = rc.result.value;
+      } catch (e) {
+        findings.push({ page, vp: vp.name, theme: theme.name, kind: 'contrast probe failed', detail: e.message });
+        c = null;
+      }
+      if (c) {
+        contrastChecked += c.checked;
+        contrastUnmeasurable += c.unmeasurable;
+        // Zero examined is a failure, not a pass: "no element is below the bar"
+        // is satisfied for free by an empty collection. Same rule gate.py uses.
+        if (c.checked === 0 && m.textLength > 200) {
+          findings.push({
+            page, vp: vp.name, theme: theme.name, kind: 'contrast',
+            detail: `examined 0 elements on a page with ${m.textLength} chars of text — the probe is not reading this page`,
+          });
+        }
+        for (const b of c.bad) {
+          gs.contrast++;
+          findings.push({
+            page, vp: vp.name, theme: theme.name, kind: 'contrast',
+            detail: `${b.sel} ${b.ratio}:1 against a ${b.bar}:1 bar — ${JSON.stringify(b.text)}`,
+          });
+        }
+      }
      }
     }
   }
 
   const secs = ((Date.now() - t0) / 1000).toFixed(1);
 
+  console.log(`  contrast: ${contrastChecked.toLocaleString()} element(s) measured, `
+            + `${contrastUnmeasurable.toLocaleString()} unmeasurable (painted by an image, `
+            + `not a colour) — reported rather than skipped
+`);
+
   console.log(`Conformance sweep — ${pages.length} pages x ${viewports.length} viewport(s) `
             + `in ${secs}s, ${blocked} non-file request(s) aborted\n`);
 
-  console.log('  group          pages  overflow  console  empty');
+  console.log('  group          pages  overflow  console  empty  contrast');
   for (const [g, s] of [...groups].sort()) {
     console.log(`  ${g.padEnd(14)} ${String(s.n).padStart(5)} ${String(s.overflow).padStart(9)} `
-              + `${String(s.errors).padStart(8)} ${String(s.empty).padStart(6)}`);
+              + `${String(s.errors).padStart(8)} ${String(s.empty).padStart(6)} `
+              + `${String(s.contrast).padStart(9)}`);
   }
 
   if (!findings.length) {
@@ -386,7 +549,7 @@ const showAll = args.includes('--show');
 
   console.log(`\n${findings.length} finding(s):\n`);
   for (const f of findings) {
-    console.log(`  [${f.kind.padEnd(9)}] ${f.page} @ ${f.vp}`);
+    console.log(`  [${f.kind.padEnd(9)}] ${f.page} @ ${f.vp}${f.theme ? '/' + f.theme : ''}`);
     console.log(`               ${f.detail}`);
   }
   console.log('\nReported, not judged. The webfonts were aborted, so nothing above is a');
