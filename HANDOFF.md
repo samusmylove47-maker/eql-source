@@ -568,6 +568,60 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+#### SUPERSEDED 21 Aug, same evening — the order stands, and the promotion gets a trigger
+
+**The owner reversed their own instruction after reading the three findings below,
+and landed somewhere better than either of us started.** The band order does **not**
+change now. `=50Upgrades` stays at the top, `=SkyLedger` second, `=Auras` third,
+plates last. **`=Auras` goes to the top when it fully releases, and not before.**
+
+That keeps `build1.py:184-187`'s principle intact — *a teaser must not outrank a
+shipped product* — and it converts a matter of taste into **a condition that can be
+checked**: the promotion fires when `LoxyBee/EQLS-Auras` publishes a release, which
+today reads "There aren't any releases here." Amend that comment block to record the
+trigger rather than rewriting the rationale, because the rationale survived.
+
+**What changes instead: `=50Upgrades` has to earn the top slot.** It is currently
+766 characters against Sky Ledger's 2,271, with no image, and it is the first thing
+a reader meets. That is the real problem and the reorder would only have moved it.
+
+**The material for a full presentation already exists and the band uses none of
+it.** From `assets/50-upgrades.json`, the planner's own snapshot:
+
+| | |
+|---|---|
+| catalogue before the era purge | **11,252** |
+| **quarantined** | **7,599** |
+| shipped | 3,663 |
+| tier 2 standing | 2,045 |
+| tier M | 5 |
+| tier 5 | 126 |
+| unattributed | 1,487 |
+
+**Two thirds of the catalogue was thrown away to ship the third that survived, and
+every survivor carries a source tier.** That is the same property that makes this
+site worth reading, built independently by Session B, and the landing page does not
+mention it. The band instead leads with interface mechanics — pick a trio, fill
+twenty-three slots — which is what every planner says about itself.
+
+**The distinction that unblocks this, because `build1.py:203-206` records a
+deliberate decision not to put "honest-framing figures" in a band:** that decision
+was about the **caveat**, and it was right — 1,487 unattributed is a caveat and a
+band leading with its own caveat does not get clicked. **7,599 quarantined is not a
+caveat, it is a boast.** They are different numbers pointing opposite ways, and the
+recorded decision does not forbid the boast. Lead with the purge; leave the
+unattributed count one click away where it already lives.
+
+**Session B has not asked for any of this.** Checked their handoff: no request for
+prominence, no design ask about the landing page, nothing parked on it. The owner is
+offering it unprompted. So B is being **invited to consult, not deferred to on
+ground they already argued** — and the invitation should say so, or it reads as
+answering a complaint they never made.
+
+**Everything below this line was written before the reversal and is kept as the
+reasoning that produced it, not as a live order.** The eyebrow finding and the
+missing-link finding still apply the day Auras is promoted.
+
 #### Session A — the band order, and three things that ship with it
 
 **Ruled by the owner: `=Auras`, then `=SkyLedger`, then `=50Upgrades`, then the
