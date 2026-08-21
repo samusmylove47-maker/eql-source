@@ -22,7 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=65c90030">
+<link rel="stylesheet" href="../assets/site.css?v=59aeb432">
 <script>/* Torchlight is the default and the CSS says so, so this only ever has
    work to do for a reader who chose daylight. It runs before first paint to
    avoid a flash of the wrong ground, and it is wrapped because localStorage
@@ -35,13 +35,13 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 .dl{flex:1 1 260px;display:block;padding:15px 17px;text-decoration:none;
   border:1px solid var(--rule2);border-left:3px solid var(--brass);
   background:var(--surface-2);border-radius:4px;transition:border-color .15s,background .15s}
-.dl:hover{background:#31281a;border-color:var(--brass)}
+.dl:hover{background:var(--surface-2);border-color:var(--brass)}
 .dl b{display:block;font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;
   text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
 .dl span{display:block;margin-top:3px;font-family:"IBM Plex Mono",monospace;
   font-size:11.5px;color:var(--mut);letter-spacing:.02em}
-.dl.alt{border-left-color:var(--instr)}
-.dl.alt:hover{border-color:var(--instr)}
+.dl.alt{border-left-color:var(--instr-t)}
+.dl.alt:hover{border-color:var(--instr-t)}
 
 /* Two doors, and they are not equals: one runs the thing, one explains it. */
 .slrun{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
@@ -49,14 +49,14 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 .slrun>a,.slrun>div{display:block;background:var(--surface-1);border:1px solid var(--rule2);
   border-radius:var(--r);padding:var(--s-5) var(--s-5) var(--s-4);text-decoration:none;
   border-top:3px solid var(--c,var(--instr))}
-.slrun a:hover{background:var(--surface-2);border-color:var(--instr)}
+.slrun a:hover{background:var(--surface-2);border-color:var(--instr-t)}
 .slrun h3{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
   text-transform:uppercase;letter-spacing:.015em;color:var(--bone);margin:0 0 6px}
 .slrun p{margin:0;color:var(--mut);font-size:var(--t-base);line-height:1.55}
 .slrun .m{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.13em;
   text-transform:uppercase;color:var(--faint);margin:10px 0 0}
 .slrun .go{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;
-  font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--instr)}
+  font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--instr-t)}
 
 /* The claims. Big mono figure, small caption — the numbers ARE the argument. */
 .slfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr));
@@ -80,7 +80,7 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 
 .slkeys{width:100%;border-collapse:collapse;font-size:var(--t-sm);margin:var(--s-4) 0 0}
 .slkeys td{border-bottom:1px solid var(--rule);padding:9px var(--s-4) 9px 0;color:var(--mut)}
-.slkeys td:first-child{font-family:"IBM Plex Mono",monospace;color:var(--instr);
+.slkeys td:first-child{font-family:"IBM Plex Mono",monospace;color:var(--instr-t);
   white-space:nowrap;width:1%}
 </style></head>
 <body><header class="site-bar">
@@ -342,6 +342,12 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
       Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
       or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
     </p>
+    <svg class="rule-mark" width="100%" height="9" viewBox="0 0 1160 9"
+      preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1"
+      aria-hidden="true" focusable="false"><path d="M0 4.5h486"/><path
+      d="M674 4.5h486"/><path d="M580 1l7 3.5-7 3.5-7-3.5z"/><path
+      d="M508 4.5h44M608 4.5h44" stroke-width=".7" opacity=".75"/><path
+      d="M566 4.5h-8M594 4.5h8" stroke-width=".7" opacity=".5"/></svg>
   </div>
 </footer>
 <script src="../assets/site.js"></script>

@@ -66,26 +66,26 @@ CSS = '''<style>
 .arch-jump a:hover{color:var(--ink);border-color:var(--dim)}
 .arch{border-top:1px solid var(--line);padding:30px 0 6px}
 .arch-head{display:flex;gap:16px;align-items:flex-start;margin:0 0 6px}
-.arch-n{font-family:"IBM Plex Mono",monospace;font-size:34px;line-height:1;color:var(--c);
+.arch-n{font-family:"IBM Plex Mono",monospace;font-size:34px;line-height:1;color:var(--c-t);
   opacity:.65;font-weight:500}
 .arch-head h2{margin:0;font-family:"Saira Condensed",sans-serif;font-weight:600;
   text-transform:uppercase;letter-spacing:.02em;font-size:26px;color:var(--ink)}
 .arch-meta{margin:3px 0 0;font-family:"IBM Plex Mono",monospace;font-size:11.5px;
   letter-spacing:.08em;text-transform:uppercase;color:var(--faint)}
-.arch-meta a{color:color-mix(in srgb, var(--c) 58%, var(--bone))}
+.arch-meta a{color:var(--c-t)}
 /* The archived blocks carry the plate markup as it last shipped. It is not
    restyled — a restyled archive is not an archive. */
 .arch section{border:0;padding:0}
 .arch h2 .num{display:none}
 .arch svg{max-width:100%;height:auto;display:block;border:1px solid var(--line);
-  border-radius:4px;background:#191410}
+  border-radius:4px;background:var(--surface-1)}
 .arch .legend ol{list-style:none;margin:14px 0 0;padding:0;display:grid;
   grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:5px}
 .arch .legend li{display:grid;grid-template-columns:26px 1fr auto;gap:8px;align-items:baseline;
   font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--dim)}
 /* Lifted at the point of use: two of the ten accents fail 4.5:1 as 12px
    text on this ground. The accent itself is never altered — see CLAUDE.md. */
-.arch .legend .n{color:color-mix(in srgb, var(--c) 58%, var(--bone))}
+.arch .legend .n{color:var(--c-t)}
 .arch .legend .lv{color:var(--faint)}
 .arch .lede{color:var(--dim);font-size:14px;line-height:1.6;max-width:70ch}
 </style>'''

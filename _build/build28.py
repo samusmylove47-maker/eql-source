@@ -97,13 +97,13 @@ CSS = '''<style>
 .dl{flex:1 1 260px;display:block;padding:15px 17px;text-decoration:none;
   border:1px solid var(--rule2);border-left:3px solid var(--brass);
   background:var(--surface-2);border-radius:4px;transition:border-color .15s,background .15s}
-.dl:hover{background:#31281a;border-color:var(--brass)}
+.dl:hover{background:var(--surface-2);border-color:var(--brass)}
 .dl b{display:block;font-family:"Saira Condensed",sans-serif;font-size:19px;font-weight:600;
   text-transform:uppercase;letter-spacing:.03em;color:var(--bone)}
 .dl span{display:block;margin-top:3px;font-family:"IBM Plex Mono",monospace;
   font-size:11.5px;color:var(--mut);letter-spacing:.02em}
-.dl.alt{border-left-color:var(--instr)}
-.dl.alt:hover{border-color:var(--instr)}
+.dl.alt{border-left-color:var(--instr-t)}
+.dl.alt:hover{border-color:var(--instr-t)}
 
 /* Two doors, and they are not equals: one runs the thing, one explains it. */
 .slrun{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));
@@ -111,14 +111,14 @@ CSS = '''<style>
 .slrun>a,.slrun>div{display:block;background:var(--surface-1);border:1px solid var(--rule2);
   border-radius:var(--r);padding:var(--s-5) var(--s-5) var(--s-4);text-decoration:none;
   border-top:3px solid var(--c,var(--instr))}
-.slrun a:hover{background:var(--surface-2);border-color:var(--instr)}
+.slrun a:hover{background:var(--surface-2);border-color:var(--instr-t)}
 .slrun h3{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
   text-transform:uppercase;letter-spacing:.015em;color:var(--bone);margin:0 0 6px}
 .slrun p{margin:0;color:var(--mut);font-size:var(--t-base);line-height:1.55}
 .slrun .m{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.13em;
   text-transform:uppercase;color:var(--faint);margin:10px 0 0}
 .slrun .go{display:block;margin-top:12px;font-family:"IBM Plex Mono",monospace;
-  font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--instr)}
+  font-size:var(--t-xs);letter-spacing:.1em;text-transform:uppercase;color:var(--instr-t)}
 
 /* The claims. Big mono figure, small caption — the numbers ARE the argument. */
 .slfacts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,215px),1fr));
@@ -142,7 +142,7 @@ CSS = '''<style>
 
 .slkeys{width:100%;border-collapse:collapse;font-size:var(--t-sm);margin:var(--s-4) 0 0}
 .slkeys td{border-bottom:1px solid var(--rule);padding:9px var(--s-4) 9px 0;color:var(--mut)}
-.slkeys td:first-child{font-family:"IBM Plex Mono",monospace;color:var(--instr);
+.slkeys td:first-child{font-family:"IBM Plex Mono",monospace;color:var(--instr-t);
   white-space:nowrap;width:1%}
 </style>'''
 

@@ -98,6 +98,12 @@ CSS = '''<style>
   box-shadow:0 0 0 2px var(--surface-1)}
 .loc-mark::after{content:"";position:absolute;inset:3.5px;border-radius:50%;
   background:var(--c)}
+/* The needle sits in the plan's corner, over the plan's own padding rather
+   than over the drawing, and it is the one mark on these pages that carries a
+   fact. Kept small and low-contrast on purpose: the caption is what states the
+   orientation, and this only has to make it visible at a glance. */
+.loc-n{position:absolute;top:8px;right:8px;width:9px;height:16px;
+  color:var(--mut);opacity:.75;pointer-events:none}
 .locator figcaption{font-family:"IBM Plex Mono",monospace;font-size:10px;
   letter-spacing:.1em;text-transform:uppercase;color:var(--faint);line-height:1.6}
 .locator figcaption b{color:color-mix(in srgb, var(--c) 58%, var(--bone));font-weight:500}
@@ -120,7 +126,7 @@ CSS = '''<style>
 .drops li{border-left:2px solid var(--line);padding:3px 0 3px 10px;font-size:14px;color:var(--dim)}
 .drops a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
 .drops span{display:block;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--faint)}
-.drops.seen li{border-left-color:var(--ok)}
+.drops.seen li{border-left-color:var(--ok-t)}
 .drops.seen b{color:var(--ink)}
 /* The badge carries the whole provenance claim for the block below it, so it
    sits in the heading rather than in a sentence. Raised off the middle: the
@@ -265,10 +271,23 @@ def locator(zslug, ztitle, loc=None):
     # gain. width/height carry the plan's real aspect so the box is reserved
     # at its true shape and the page does not shift when it arrives.
     b = _PB[zslug]
+    # ORIENTATION, STATED. 673 pages drew an oriented plan and 13 said which way
+    # was up - the thirteen surveys. The convention is real and recorded in
+    # _build/plans.py: +Y is north, +X is west, and both invert into page
+    # coordinates. Its own comment warns that getting it wrong "looks plausible
+    # enough to ship", which is exactly why a reader should not have to assume it.
+    #
+    # The needle is aria-hidden and the fact is in the caption as words, because
+    # the image carries alt="" and the caption is what a screen reader gets. A
+    # drawn arrow alone would assert the orientation to sighted readers only.
+    needle = ('<svg class="loc-n" viewBox="0 0 14 24" fill="none" stroke="currentColor" '
+              'stroke-width="1.3" stroke-linejoin="round" aria-hidden="true" '
+              'focusable="false"><path d="M7 22V4"></path>'
+              '<path d="M3 8 7 2l4 6z" fill="currentColor" stroke="none"></path></svg>')
     return (f'<figure class="locator">'
             f'<span class="loc-plan"><span class="loc-fit"><img src="../assets/plans/{zslug}.svg" alt="" '
-            f'width="{b["w"]:.0f}" height="{b["h"]:.0f}" decoding="async">{mark}</span></span>'
-            f'<figcaption>{cap}<br>Floor from the game&rsquo;s own mesh</figcaption>'
+            f'width="{b["w"]:.0f}" height="{b["h"]:.0f}" decoding="async">{mark}</span>{needle}</span>'
+            f'<figcaption>{cap}<br>North is up &middot; floor from the game&rsquo;s own mesh</figcaption>'
             f'</figure>')
 
 def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon,
