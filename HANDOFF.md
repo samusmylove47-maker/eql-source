@@ -566,6 +566,153 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
+
+#### Session A — the band order, and three things that ship with it
+
+**Ruled by the owner: `=Auras`, then `=SkyLedger`, then `=50Upgrades`, then the
+dungeon plates.** Today `build1.py` emits 50 Upgrades → Sky Ledger → EQLS Auras →
+Start here → the atlas. Reorder the three `band feat` blocks. Leave the
+`band doors` ("Start here") where it sits — the owner named the four items, not
+that navigational strip, and moving it was not asked for.
+
+**The owner's instinct about "bare" is right and it measures.** Text content of
+the three bands as built: **50 Upgrades 766 characters, EQLS Auras 1,777, Sky
+Ledger 2,271.** The page currently opens with its thinnest band, and it is the
+only one of the three carrying no image or video at all. Auras carries the page's
+only moving picture.
+
+**Three things go wrong if the blocks are simply swapped, and all three are
+cheap.**
+
+1. **The eyebrow on the Auras band literally reads `Next`** — `<p class="eyebrow">Next
+   &middot; <b>reads your own log</b></p>`. It is positional copy and it becomes
+   false at the top of the page. Rewrite it; do not carry it up.
+2. **The Auras band has no link. Zero `href`s.** The other two have two and four.
+   There is no `public/tools/auras.html` — the tools directory holds
+   50-upgrades, sky-ledger, index-search, race-unlocks, combo-calculator and
+   faction-impact, and nothing for Auras. **So the reorder puts the page's lead
+   feature in the one slot a reader cannot act on.**
+3. **It reverses a recorded principle, and the premise has not expired.**
+   `_build/build1.py:184-187` says, in as many words: *"50 UPGRADES — first of the
+   three bands, because it is the only one of them a stranger can use today …
+   EQLS Auras is a teaser for a build that does not exist yet, and a teaser must
+   not outrank a shipped product."* Checked tonight: `LoxyBee/EQLS-Auras` shows
+   **"There aren't any releases here."** There is still nothing to download.
+
+**None of that overrides the owner — it is their page and they have stated the
+order twice.** What follows is only that the reversal must be *recorded* rather
+than silently applied: rewrite that comment block to say the order changed, who
+changed it and on what date, so the next session does not read a rationale the
+page no longer follows. A stale rationale beside changed code is the fault this
+project keeps finding in other people's work.
+
+**Recommended shape of the change:** reorder, rewrite the eyebrow, amend the
+comment — and give Auras a destination in the same PR or the next one. An
+`/tools/auras.html` carrying the trailer and what it is would make the lead band
+actionable without claiming a release. **That page is about Shara's product, so
+it goes to her before it publishes**, which is easy now that she is engaged.
+
+#### Session A — a dead check, found by Session B and verified here
+
+`scripts/check.py:139` is `if os.path.exists("index.html"):`, and **root
+`index.html` has not existed since the site moved to `public/`.** So the block at
+`:139-151` has never run since the move — including the assertion whose own
+message reads *"the scale is the reason the site exists and must stay published on
+the home page."*
+
+Session B proved it by mutation: deleting `Aggregator` from `public/index.html`
+entirely leaves `check.py` green. **A dead check looks exactly like a passing
+one**, and this is our own, in the file we point at everyone else.
+
+**The fix is one line and it is safe.** Verified here before ordering it: all five
+tier names are present in `public/index.html`, and the badge count is 3, so
+repointing the path turns the block green immediately rather than red. Do it, and
+add a case to `gate_selftest.py` so a path that stops existing fails loudly
+instead of silently skipping.
+
+#### Shara has commissioned the lockout component. It is a build now, not a study.
+
+**The owner relayed the weekly-task finding to Shara and she wants a working
+prototype to incorporate into `=Auras`.** That converts EQLS Lockouts from
+research into a deliverable with a named recipient.
+
+**Build it to MEASURE the reset, not to assume it. That is the whole
+differentiator** and it is the one thing jmoyers' shipped implementation does not
+do — his day is a typed constant his own source marks `VERIFY IN GAME`. Ours reads
+the game's own weekly task and records when it turns over.
+
+The three line shapes, verified verbatim in real committed EQL output:
+
+```
+You have been assigned the task 'Potential of the Void - <Boss> - Weekly'.
+Your task 'Potential of the Void - <Boss> - Weekly' has been updated.
+You have been given: Void-Touched Potential
+```
+
+**Shape constraints, settled now so integration is free:** a single
+dependency-free CommonJS module; the parsing core takes **lines in and an explicit
+`now` in, and returns JSON-clonable state out**; no `require` of anything but node
+builtins; no Electron, no DOM, no filesystem in the core; `Date.now()` never
+called inside. Tailer, persistence and UI are separate layers Shara already owns.
+This matches her app's own stated layering — parsers pure, engines builtins-only,
+Electron injected.
+
+**Hard rules for this build.**
+
+- **No reset day is hardcoded.** The module reports what it observed and says
+  "not recorded" for what it has not. If it ever ships a default, that default
+  carries its own uncertainty on the face of it.
+- **Every displayed value carries its provenance**, observed against inferred.
+- **Nothing from jmoyers' repository enters this module.** The *line shapes* are
+  Daybreak's client output and are facts we may use; his fixtures, regexes and
+  code are his. Build our fixtures from our own logs.
+- **Credit him by name** wherever the finding is described — the lead came from
+  reading his tree, and he is the reason we know the line exists.
+
+**First step costs no play time: grep our own logs.** `state/logs/` holds nineteen
+days across 213 boss fights. Search for `Potential of the Void`,
+`has been assigned the task`, `has been updated`, `Void-Touched Potential`. **If
+those lines are in there, we may be able to date the turnover from history
+alone** — and the whole prototype gets its fixtures for free. That grep is local
+and it is the first thing Session D does.
+
+#### Session B — next work
+
+Their portability campaign found a real dead check in Session A's tree and, more
+usefully, **found four ways their own instrument manufactured findings** and fixed
+all four, including a `MASKED` verdict for when a damage trips a staleness guard
+before the assertion. That is a better instrument than the one they started with,
+and the discipline is worth spending again.
+
+1. **Aim written damages at `gate.py`.** Their own report grades it UNPROVEN — it
+   survived every generic operator, which by their rule means nobody has aimed a
+   real damage at it, not that it is sound. `gate.py` is the propagation gate and
+   it is the check we rely on most.
+2. **Re-run the campaign against the two checks they could not reach**, now that
+   the 3.12 shim is known to work in a container — see the correction above. Their
+   report says `./build.sh` needs 3.12 against their 3.11.15; that is a PATH
+   default, not a limit.
+3. **Write up the `MASKED` verdict as a method note we can adopt.** A staleness
+   guard firing before an assertion is a general hazard and we have the same
+   guard.
+
+#### Session C — the back channel has gone stale, and that is the finding
+
+`samusmylove47-maker/EQLSAuras/HANDOFF.md` still reads *"Standing by for the
+archive, the plan and her prompt"* and carries the 18 August NO-GO as current.
+**The owner reports that C and Shara have accomplished a great deal since.** So
+the file the whole system reads is describing a state that is days out of date.
+
+**The point of the back channel is that the owner stops relaying.** A handoff that
+only updates when asked is worse than no handoff, because everyone else treats it
+as current. Ask C for a report covering: what landed with Shara, whether the two
+release-blocking findings are closed, whether the Google Fonts fetch was
+self-hosted, and whether the NO-GO still stands. **And the standing instruction:
+update the file when the state changes, not when the Director asks.**
+
+---
+
 ### jmoyers/everquest-companion — read 21 Aug 2026. It changes Session D and it changes the portfolio.
 
 **Josh Moyers (jmoyers), `github.com/jmoyers/everquest-companion`, FSL-1.1-MIT,
