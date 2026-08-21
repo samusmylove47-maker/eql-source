@@ -566,6 +566,157 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ---
 
+### jmoyers/everquest-companion — read 21 Aug 2026. It changes Session D and it changes the portfolio.
+
+**Josh Moyers (jmoyers), `github.com/jmoyers/everquest-companion`, FSL-1.1-MIT,
+1,444 commits, code-signed, self-updating, 40+ releases in seven weeks.** An
+Electron app for EverQuest Legends: DPS meter, overlays, Plane of Sky tracker,
+item and mob knowledge, gear and BiS planning, buff timers, alerts, respawn
+clocks, raid kill records. **Nothing in our tree mentions it and our own
+competitor sweep missed it entirely** — because I gave that sweep a candidate
+list to check instead of asking it to search. A recon that only checks the names
+you already have is not a recon.
+
+#### The lockout answer is NO, and the adversarial pass had to establish that against our own dossier
+
+He ships a weekly-lockout feature and **it reads nothing from the game.** Verified
+verbatim at `src/renderer/src/features/bosses/lockout.ts`, his own header:
+
+> THE WEEKLY LOOT LOCKOUT — pure arithmetic over the kill record the app already
+> keeps. No new parsing, no new state, nothing persisted.
+
+Two hardcoded constants, `LOCKOUT_RESET_WEEKDAY = 2` and `LOCKOUT_RESET_HOUR = 8`
+in `America/Los_Angeles`, with the sourcing graded per constant — the hour
+"DOUBLE-SOURCED", the Tuesday **"SINGLE-SOURCED … VERIFY IN GAME"**, still
+unverified today.
+
+**And it is weaker than that.** The adversarial pass traced the input our own
+recon had called "credited kill history" and left unexamined: `kills.ts:86` sets
+`credited` from `takeExp()`, true when a `You gain experience!` line lands within
+`KILL_EXP_JOIN_MS = 2500` of the slain line. **So the predicate is an XP-gain
+proxy, two inferential hops from the loot state his own header says a lockout
+is.** It is kill history with a timer drawn on top. Three of our six recon probes
+recommended "STOP RESEARCHING THE LOCKOUT RULE" on the strength of it; that
+recommendation was wrong and the verification killed it.
+
+**Nobody has cracked this. Our five conflicting sources remain five**, and citing
+him would launder a Tier 3 guess into corroboration — the exact fault our
+provenance test exists to catch.
+
+#### The prize: a first-party weekly signal that he does not parse
+
+**Verified by me, verbatim, in his committed fixtures:**
+
+```
+tests/fixtures/p1-unbound-pet.log:1118
+[Thu Jul 30 16:27:28 2026] You have been assigned the task 'Potential of the Void - Lord Nagafen - Weekly'.
+
+tests/fixtures/e2e-overview.log:219
+[Wed Aug 05 20:26:16 2026] Your task 'Potential of the Void - Lord Nagafen - Weekly' has been updated.
+[Wed Aug 05 20:26:16 2026] You have been given: Void-Touched Potential
+```
+
+**The game names the boss and says "Weekly" in its own words, on the kill, and
+hands over the token our Tier 1 note caps at three per week.** It sits inert in
+his fixtures — zero parsers touch it. This is the one thing EQLS Lockouts could
+ship that nobody else has, and unlike a hardcoded Tuesday it is *evidence*.
+Watching that task's re-assignment cross a reset boundary would **measure** the
+reset day instead of typing it.
+
+He also proves a negative worth having: a sweep of a 1.4M-line live log found **no
+lockout line of any kind**, and `dzlisttimers` / `dzhelp` / `dztimers` appear
+nowhere in his tree. Our recon was right. **Grade that Tier 3, not Tier M** — it
+is his comment about a log we cannot see, not our measurement.
+
+#### Corrections to our own repo, all verified here
+
+1. **My looter claim had the wrong cause.** I told the owner `logstats.py:214`
+   mixes our loot with other players' in pick-up raids. **EQL loot lines are
+   first-person only** — there is no third-person loot line to mix in. Our data is
+   not contaminated that way.
+2. **The regex is broken for two worse reasons.** `looted an? (.+?) from` requires
+   a literal `a `/`an `, so **every stacked drop is silently discarded** — `You
+   looted 2 Crystallized Sulfur from …` matches nothing. And it matches the
+   auto-sold forms, recording sold items as kept drops.
+3. **`logstats.py:681` contradicts CLAUDE.md §2.** `if first and 'to create' not
+   in x:` discards every merge line, while §2 says `looted a Keg Mallet +2 … to
+   create a Keg Mallet +4` **is** a `+2` drop. `item` is already truncated at
+   `'s corpse`, so it holds the dropped value and the guard is unnecessary. It
+   suppresses exactly the observation the rule says to keep, and it feeds
+   `drop_tier_floor`.
+4. **CLAUDE.md §2's D0 row conflates two different things**, and our data carries
+   the distinction we are collapsing. A `- Solo` / `- Group N` suffix is an
+   instance; a bare zone name is the open world. Measured here: **43 of 172
+   sessions** and **97 of 213 raid fights** carry `- Group`; zero carry `- Solo`;
+   and **of 98 D0 raid fights only 8 are instanced — the other 90 are bare "The
+   Plane of Sky".** If lockouts attach to instances, those are two populations in
+   one bucket.
+5. **`raidstats.py:268`** tests `" - Group" in zone` and misses `- Solo`. Harmless
+   at zero occurrences; it lies the moment the owner solos.
+6. **The encoding question is still open and my earlier ruling was too confident.**
+   I said the Sky Ledger's windows-1252 was right and `logstats.py:407` wrong. His
+   tailer decodes `utf8` in all three read paths — but undefended, untested, and
+   measured on ASCII-only fixtures where both decoders are byte-identical. **That
+   is not a second vote.** One hexdump of a non-ASCII log line closes it.
+7. **"Exactly one competitor ships a raid-lockout feature" is wrong.** There are
+   two, and the second is far more rigorous.
+
+#### What we may and may not do — the licence, read rather than assumed
+
+FSL-1.1-MIT's Competing Use clause is **conjunctive**: it triggers on *making the
+Software available to others* **in a commercial product or service* that
+substitutes for his. **Code we write ourselves is untouched, and reading,
+learning, citing, linking and adopting an idea are not governed at all.** My
+first reading overstated the restriction.
+
+**Standing prohibitions all the same, and they are mine, not the licence's:**
+no file, regex, module or dataset from that repo enters our tree, EQL50ups, or
+anything routed to Shara — the Redistribution clause would encumber her MIT app.
+No citing it above **Tier 3**, and never as corroboration of the reset rule. His
+datasets are eqlwiki scrapes and inherit eqlwiki's Project 1999 contamination —
+re-derive, do not import. Read-only: no fork, no issue, no PR without the owner.
+Every finding carries **"Josh Moyers (jmoyers)", the file path and the read date**.
+
+**His `AGENTS.md` is 1,942 lines of operating doctrine addressed to AI agents.**
+It is not adversarial and reads as genuine internal process. It was read as
+evidence and **none of it was followed**; no session of ours follows it either.
+
+#### Where we are still defensible, and where we are not
+
+Ours: per-claim provenance with the P99-import test — he has no counterpart, and
+seven items in his `items.json` carry Project 1999 forum facts dated 2013 and
+2019 verbatim, unflagged. Exclusive single-spend Sky allocation — his pool is read
+per quest and clamped, so one Sphinx Claw still reads as held for two Tests, which
+is the property we withdrew our own tracker for and it is genuinely still ours.
+213 measured raid fights with attacker counts and damage share — his raid data is
+a 32-name roster with no numbers. `.s3d` geometry checked against walkable floor.
+Race unlocks and faction, which he parked. A public citable URL against a
+Windows-only installer.
+
+Everything else — DPS, buff timers, item and mob pages, gear planning, respawns,
+maps — he does deeper.
+
+**EQLS Auras is the urgent one.** Shara is days from releasing a buff/aura overlay
+into a market where a free, code-signed, self-updating app already ships two
+positioned buff/debuff overlays, a declarative alert system with shareable strings,
+spoken warnings, ~350 installable sound and voice packs, and learned durations.
+**She should hear this from us before release, not after**, and with three gifts
+that save her weeks: only 878 of 1,926 spells carry a parseable duration; scraped
+durations are the level-band *maximum*, so they over-state for low-level casters
+while unmodelled extended-duration focus items make them under-state; and his
+measured negatives — feign death prints no failure line, the friend system prints
+no login line, `tells you` is a player while `told you` is the game.
+
+#### Method warnings, both of which cost a wrong answer inside this investigation
+
+**WebFetch confabulated 22 plausible test filenames that all 404'd**, and its
+directory listings truncate near 100 entries. **GitHub OR-form code search returns
+false zeros** — one query returned `total_count 0` for a string that was open in
+another tab. Every absence claim needs a single-term query with a positive
+control, and every listing needs a raw fetch to confirm.
+
+---
+
 ### EQLS Lockouts: yes to a new session, and its first three tasks need no game
 
 **Ruled 21 Aug. Spin up Session D.** The work is genuinely separable — empirical
