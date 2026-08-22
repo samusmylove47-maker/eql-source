@@ -568,7 +568,110 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
-### 22 Aug — Session D delivered, Session B corrected me twice, Session C has not reported
+### 22 Aug — Session C reported, and it was a sandbox, not a lapse
+
+**Withdrawn: my "structural problem" framing below.** Session C had been
+instructed to stay inside a sandbox and was waiting on permission to push. The
+owner granted it and the file went live at 24,660 bytes, up from 5,999.
+**I read a session obeying an instruction as a session ignoring one**, and said
+so twice in writing. The lesson is narrow and worth keeping: **an empty channel
+has more than one cause, and "has not reported" is a claim about a file, not
+about a session.** Session D reached the same wrong reading independently from
+the same evidence, which is how a plausible inference becomes consensus.
+
+#### Their installer-figure concern, cleared — and the clearance names its strings
+
+C reports the installer was rebuilt on the 21st at **78,440,299 bytes / 74.81
+MiB**, so their standing figure of 74.9 MB is short by about 64 KB and should
+round to 74.8. They asked whether it is printed on the site.
+
+**It is not, and nothing needs correcting.** Searched `public/`, `_build/` and
+`assets/*.json` for `74.9`, `74.8`, `78,504,631`, `78504631`, and for `MB` in the
+same line as `installer`, `download` or `setup`. The EQLS Auras band on the home
+page **states no size at all**. The only MB figures on the site are the Sky
+Ledger's 100.5 MB and 0.1 MB, and both are **derived at build time** from
+`_SL_REL["mb"]` and `ov.get("mb")`, read off the packages by `skyledger.py`.
+
+**That is the derive-not-type rule paying out in the least dramatic way possible.**
+C's typed figure went stale in three days; ours cannot, because no one typed it.
+
+#### Both release blockers are closed, and half of one was never true
+
+**Quick-Buff burst — closed.** A landing during a player-triggered burst is now
+queued for the user rather than dropped, and answering calls `resolveAmbiguousCast`
+ending in `_land(known)`, so the buff appears immediately. C states the caveat
+rather than burying it: `_land` starts the duration at resolution, so a buff
+answered twenty seconds late shows twenty seconds too much. Recovery exists; the
+timer is optimistic by the answer delay.
+
+**Profile-scoped visibility — closed, and the alarming half was wrong.**
+`forceShown` is an **in-memory `Set`** at `widgetManager.js:47`, written nowhere.
+The fix mutates no persisted data at all, so there was never anything for an
+updater to update. That was the load-bearing half of the NO-GO argument and it did
+not survive contact with the tree.
+
+**The Google Fonts fetch is NOT self-hosted.** The `preconnect` pair and the
+stylesheet link are still at `src/renderer/main-window/index.html:13-15`, no font
+files in the tree. **Session A's sentence on the landing page is still correct and
+must not be changed.** C will report the day it changes.
+
+#### "Released" now has a definition Session A can check
+
+This is what I asked for and it is better than what I asked for:
+
+> **`=Auras` is released when `LoxyBee/EQLS-Auras` publishes a GitHub release
+> whose tag matches the `version` in `package.json`, with an installer attached as
+> a release asset.**
+
+One command — `gh release list --repo LoxyBee/EQLS-Auras` — returns nothing today
+and returns a row the moment it is true. **That is the trigger for moving `=Auras`
+to the top of the landing page**, and it replaces a judgement call with a
+condition that cannot be true early. Session A should wire the promotion to it
+rather than to anyone's opinion.
+
+**And the NO-GO's basis is gone, replaced by a plainer one.** Both findings that
+produced it are closed. C is not asking for it to be lifted because a better
+reason has taken its place: **there is nothing released to point at.** No tag, no
+release, no `build.publish` block. On the only question our page asks, the answer
+is still no, and it is now checkable rather than argued.
+
+**One risk the owner should see: 51 commits are local and unpushed.** The
+canonical remote last received a push on 19 Aug, so everything above exists on one
+machine. That is Shara's call, not ours, but it is worth her knowing.
+
+#### Session C's six integration constraints — routed to Session D
+
+C read Shara's live tree and answered the question I told them to ask before the
+module was written rather than after. **D's chosen shape is endorsed unchanged.**
+Six things that would cost real work to retrofit:
+
+1. **Take the raw line, prefix and all** — her watcher emits
+   `[Wed Aug 19 19:17:52 2026] <text>` and both existing engines strip internally.
+   D already matches this.
+2. **Never read the clock, never hold a timer.** `now` in the signature must be the
+   *only* source, or replaying 1.5M lines produces different answers than live.
+3. **One-second resolution, and no sub-second ordering.** Every timestamp is whole
+   seconds; two events in the same second arrive in an order the log does not
+   guarantee. **D was bitten by exactly this** — the Voidling's closing line
+   arriving *before* the task line in the same second produced a false 0.474-hour
+   bracket. **Two sessions, two codebases, same finding, reached independently.**
+   It should be written into the module's contract, not just fixed.
+4. **State must survive `JSON.parse(JSON.stringify(x))`** — a `Map`, `Set` or
+   `Date` passes every unit test and silently empties on first reload.
+5. **Hand back a plain config object; do not own a file.**
+6. **Say plainly whether feeding the same line twice is safe.** Her watcher can
+   re-read a tail. *"Undecided is what hurts."*
+
+**Their one question back — is lockout state per-character or global? — is
+answered, and D already has the evidence.** Per-character. D's own corpus
+classifies Avenrae 6 granted / 22 refused and Shara 6 / 20 separately, and when D
+merged the two characters the detector produced a **four-second reset bracket**
+off grants four seconds apart. **The character name is an input.** D should
+confirm it is already threaded rather than take my word.
+
+---
+
+### 22 Aug — Session D delivered, Session B corrected me twice, Session C had not yet reported
 
 #### Session D: the lockout mechanism is found, and the reset is measured rather than guessed
 
