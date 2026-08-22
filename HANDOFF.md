@@ -164,6 +164,79 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 22 Aug directive — items 1 and 4 done, and where the directive is wrong
+
+**Item 1 shipped in #143.** Both faults confirmed exactly as reported. Coverage
+measured rather than claimed: **22 of 106 assertions (21%) are proven alive** by
+32 cases — gate.py 19 of 42, check.py 3 of 64. Sharper than reported: **every
+one of gate.py's seven unreachable `warn(` is of the form "X is missing — Y is
+unchecked"**. They are the guards that fire when a check *cannot run*, so an
+unreachable one means "we do not know whether this was checked" passing
+unnoticed. The dead-guard fault, one level up, inside the catcher.
+
+**Item 4 is in this PR, and it corrected two live errors in our own documents.**
+
+`_build/ogcards.py:26` said *"the site's three faces"* — **the third file to
+carry that sentence**, after CLAUDE.md (corrected 20 Aug) and DESIGN.md (always
+right). Three corrections in three files to clear one typed count.
+
+`CLAUDE.md` said **Lady Vox heals itself at D0 "in the open world"**. It was
+`The Permafrost Caverns - Group` — a group instance whose zone line prints no
+tier. The finding survives intact; only the setting was wrong.
+
+**Where the directive is wrong, checked against the tree:**
+
+- **`raidstats.py:268` does not reference `- Solo`.** It reads
+  `"group_instance": " - Group" in (f['zone'] or "")`. `Solo` appears nowhere in
+  that file. The conclusion — that `- Solo` is harmless because it never occurs
+  — is right; the citation is not.
+- **`skyledger.py` is not hand-run.** It is a full build step, run third in
+  `build.sh`. It is the analogue for the *degradation* rule, not for
+  hand-run-ness — which matters, because item 2's design was to follow it.
+- **`build.sh` does nothing about hand-run scripts.** Enforcement is
+  `check.py:236-300`, which parses `build.sh` for `python3 _build/` lines and
+  warns for any generator not among them. Hand-run status is registered by
+  *adding the file to an exemption list*, not by anything build.sh does.
+- **`geometry.py` does not degrade gracefully.** `build1.py:16` calls
+  `heroart.paths()` at module level, twenty-seven lines *before* the try/except
+  at :43, so a missing `zone-geometry.json` raises rather than degrading.
+  `ogcards.py` is a deliberate hard failure and `gate.py:595-598` says why.
+- **`assets/50-upgrades.json` has no top-level `counts` key**, and **the
+  2,230 / 5,369 quarantine split is not in the file** — it holds one
+  undifferentiated 7,599. Your instruction not to write "7,599 items that aren't
+  in this game" stands; its justification is not citable from this repo without
+  a re-read of the planner's own snapshot.
+- **The band lengths are 742 / 909 / 1,135**, not 766 / 2,271. Reader-visible
+  prose, tag-stripped, entities decoded: 50 Upgrades 742, **Auras 909**, Sky
+  Ledger 1,135. The real ratio is 1 : 1.53, not 1 : 2.96. The thinness is real
+  and the case for rebuilding survives; the figure overstates it by double.
+- **A version for Auras *is* recorded** — `docs/auras/CLAIMS.md:6-7`, version
+  **0.1.0**, a dev build, read 18 Aug. Not in `assets/` or `scripts/`, which is
+  where you said to look.
+- **The landing order has six sections, not four.** A hero precedes all three
+  bands and a "Start here" doors band sits between Auras and the plates.
+- **And the Auras band is conditional**: `build1.py:409` renders it only when
+  `MEDIA` holds both the trailer and the poster. On a machine that has never run
+  `media.py` the band is an empty string. Any check asserting band order has to
+  survive that, and the directive's design did not account for it.
+
+**Item 4's D0 question, ruled: one bucket, and recorded in `CLAUDE.md` §2.** Your
+three counts are exactly right — 98, 8, 90. But the two populations **share no
+boss at all**: the instanced eight are Plane of Fear, the bare ninety are every
+Plane of Sky kill. Every gap between them is explained by boss identity and
+witness quality, not by instancing. Splitting would produce two columns
+differing by *subject* that would read as differing by *treatment*. One boss
+killed at base in both settings would change the ruling; nothing else will.
+
+**Two things found while ruling, not fixed here.** `group_instance` tests only
+`" - Group"`, so 23 numbered-and-instanced fights in `The Plane of Hate 4
+(Refined)` record it as **false**. And the Sky pages' "D0, the only tier
+measured" is typed, not read — true today, and the pattern §3 forbids.
+
+**Items 2 and 3 are next and not in this PR.** Item 2's design needs revising
+first: it was to follow `skyledger.py` as a hand-run script, and that is not
+what `skyledger.py` is.
+
 **Live ingestion is running and needs nothing. One decision, not urgent tonight.**
 
 ### Three of Shara's raw logs are on the owner's Desktop and have never been staged
