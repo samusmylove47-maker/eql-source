@@ -74,12 +74,34 @@ def check():
 
 
 def failures(out):
-    """Every blocker check.py printed, in order, stripped of the FAIL prefix.
+    """Every assertion check.py printed, in order, stripped of its prefix.
 
     All of them, not the first. Reading only the first is how two cases came to
     be proved by the staleness check and the link checker.
+
+    WARN AS WELL AS FAIL, AND THAT WAS A BLIND SPOT IN THE INSTRUMENT ITSELF.
+    This collected only lines beginning "FAIL". gate.py holds 35 `fail(` and 7
+    `warn(` assertions, so SEVEN of its checks could not be proved by the
+    harness that exists to prove them — and a warn firing correctly was
+    indistinguishable from a warn that had gone dead, which is the exact fault
+    this whole file was written to catch, sitting inside the catcher.
+
+    Session B reached the identical conclusion in their own instrument
+    independently, which is the strongest evidence available that it is the
+    shape and not the repository.
+
+    A case may now assert against either, so a warn-only check is reachable.
+    The prefix is stripped in both cases and the caller matches on the message,
+    so no existing case changes meaning.
     """
-    return [l.strip()[6:].strip() for l in out.splitlines() if l.strip().startswith("FAIL")]
+    out_lines = []
+    for line in out.splitlines():
+        s = line.strip()
+        for prefix in ("FAIL", "WARN"):
+            if s.startswith(prefix):
+                out_lines.append(s[len(prefix):].strip())
+                break
+    return out_lines
 
 
 def judge(expect, rc, out):
@@ -473,6 +495,24 @@ CASES = [
      "public/assets/site.css",
      lambda t: t.replace(':root[data-theme="light"]{\n  --surface-0:#EFE6D4;',
                          ':root[data-theme="light"]{\n  --surface-0:#EFE6D5;', 1)),
+
+    # THE TIER SCALE, AND THE REASON THIS CASE EXISTS AT ALL.
+    #
+    # check.py guarded this block with `if os.path.exists("index.html")` and the
+    # site moved to public/ long ago, so it had never run - including the
+    # assertion whose own message says the scale "is the reason the site exists
+    # and must stay published on the home page". Session B proved it by deleting
+    # a tier name from the home page and watching check.py stay green.
+    #
+    # This case is that mutation, kept. It also stands as the general guard the
+    # directive asked for: `if os.path.exists(X)` wrapped round an assertion
+    # turns a moved file into a silent skip, and a skipped check reads exactly
+    # like a passing one. If the path ever moves again, this goes TEST BROKEN
+    # loudly instead of going quiet.
+    ("a source tier missing from the home page's published scale",
+     "names only 4 of the 5 source tiers",
+     "public/index.html",
+     lambda t: t.replace("Aggregator", "Aggreg&#97;tor", 1)),
 ]
 
 

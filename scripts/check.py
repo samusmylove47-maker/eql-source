@@ -136,8 +136,27 @@ css = open("public/assets/site.css", encoding="utf-8").read()
 for cls in (".tier", ".t1", ".t3", ".t5"):
     if cls not in css:
         fail(f"assets/site.css has lost {cls} — the source-tier badge system is load-bearing")
-if os.path.exists("index.html"):
-    h = open("index.html", encoding="utf-8").read()
+# THE PATH IS public/index.html AND HAS BEEN SINCE THE SITE MOVED THERE.
+#
+# This read a root index.html that has not existed for the life of this layout,
+# so the whole block below — including the assertion whose own message says "the
+# scale is the reason the site exists and must stay published on the home page"
+# — has never once executed. Session B proved it by mutation: deleting
+# "Aggregator" from the home page entirely left check.py green.
+#
+# `if os.path.exists(...)` around an assertion is the shape to distrust. A
+# missing file silently skips the check instead of failing it, so a guard that
+# stops matching reads exactly like a guard that passes. gate_selftest.py now
+# carries a case for precisely this, because the only reason this was found is
+# that somebody went looking.
+#
+# Repointing it turns it GREEN, not red: all five tier names are on the page
+# and the badge count is 3. The check was right and had simply been unplugged.
+if not os.path.exists("public/index.html"):
+    fail("public/index.html is missing — the home page is the site's front door "
+         "and the tier-scale assertions below cannot run without it")
+else:
+    h = open("public/index.html", encoding="utf-8").read()
     # What matters is that the scale is published and legible on the home page,
     # not which markup renders it. This used to require a literal "tier-scale"
     # class, which broke the moment the scale was redesigned even though every
