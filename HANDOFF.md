@@ -568,6 +568,142 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 22 Aug — Session D delivered, Session B corrected me twice, Session C has not reported
+
+#### Session D: the lockout mechanism is found, and the reset is measured rather than guessed
+
+**Repo `samusmylove47-maker/EQLSLockouts`, branch `session-d/phase-0`.** Audited
+from here against their own stated route; every checkable claim held.
+
+**The mechanism is not what any of us thought.** The weekly task is granted by a
+dialogue tree on a **Voidling** NPC in the static parent zone, 15–25 seconds
+*before* the instance is entered. **The kill only credits it.** A detector built
+around the kill — which is what my prompt described — misses the signal entirely.
+
+**And the lockout signal is an absence.** Same player, same NPC, 51 minutes apart,
+byte-identical exchanges except that the second has no task line. **When you are
+locked out the game says nothing at all.**
+
+**Why that silence is trustworthy, uniquely in this project:** the Voidling's
+closing line — *"Your hubris risks our very reality itself."* — fires on **both**
+outcomes. **It is a positive control built into the mechanic**, free, already in
+every log we hold. A real lockout and a filtered capture are distinguishable, and
+the module returns `unknown` rather than `refused` when no Voidling line sits in
+the control window. That is the exposure I named as their defining risk on day
+one, closed by the game's own behaviour rather than by protocol discipline.
+
+Classified: **Avenrae 6 granted / 22 refused / 0 unknown; Shara 6 / 20 / 0** —
+read out of `analysis/findings.json`, which I fetched and checked against every
+figure quoted in their report. They match.
+
+**The reset, measured from log history alone**, two characters independently, from
+separate files: **26.098 h and 26.056 h brackets**, Mon 10 Aug 15:34 → Tue 11 Aug
+17:37 Pacific. The lower bound is a **refused hail** — a direct observation that
+the old period was still running — not a completion, so it does not depend on the
+token cap. **And a floor: any cycle of 24 hours, or of anything up to 5.78 days,
+is refuted by measurement.** That exclusion is ours and it is publishable.
+
+**What it cannot do, and they say so:** 26 hours spans parts of Monday and
+Tuesday. It does not distinguish a Tuesday-morning reset from a Monday-evening
+one. **The module ships no reset constant and a test fails if one is ever added.**
+
+**Verified here:** `src/lockoutCore.js` has zero `require(` — and note their own
+warning, which is exactly right: `grep -c require` returns **3**, all in prose
+comments explaining the rule. A check that cannot tell a violation from its own
+documentation is worse than no check.
+
+#### Corrections I owe, and three are mine rather than anyone's
+
+1. **My grep string was wrong and would have produced a false negative on the
+   first command of the session.** I wrote `has been assigned the task`. The line
+   is `You **have** been assigned the task`. My string returns **0** across all 15
+   logs; the signal is present 12 times. The clearance rule — *a clearance carries
+   the string you searched* — caught my own error inside a prompt that teaches it.
+2. **P0-2 / P0-3 are NOT dead. I killed them wrongly.** The installed client's
+   string table carries `3536 Usage: /dzListTimers — This command will list any
+   outstanding replay timers you have for all expeditions.` A string table alone
+   proves nothing, but **three strings from that same expedition block fire
+   verbatim in our own logs**, including a permission error: *"You are not the
+   expedition leader, only Ceriph can issue this command."* **Somebody typed a
+   `/dz` command and the server answered.** And `grep -F "outstanding replay"`
+   returns 0 — the one command that lists timers has never been run. **Ten seconds,
+   never spent**, and I ruled it out on inference from a wiki's silence.
+3. **"Do not decode the log as UTF-8" is wrong, and I asserted it twice.**
+   Measured: exactly **9 bytes ≥ 0x80 in 434 MB**, all `EF BF BD`, valid UTF-8;
+   every cp1252 signature byte returns zero lines; endings are LF. **`logstats.py`
+   is right and the Sky Ledger's `windows-1252` is wrong for these files.** The
+   second layer is genuinely unsettled — U+FFFD is the residue of a decode that
+   already lost a byte — and one line with a real accented character closes it.
+4. **Their correction 4 is half wrong, and the rescue exists.** `measured.json`
+   has no `boss` field — correct. But the join runs through the `mobs` dict keys,
+   and it matches **197 of 213 fights**, every one carrying a clock window. My
+   "211 of 213" was overstated; "cannot be done" is also wrong.
+5. **The token cap carries no scope word** — *"up to 3 times per week"*, not per
+   character, per account or per boss. Two arguments in this file rested on it.
+   Their adversarial pass refuted it and was right; their bracket does not use it.
+
+#### New Tier M facts for Session A — routed, not yet handed over
+
+- **The difficulty table is now ours, derived from the client's own instance
+  invite line across 27 distinct instances with no conflicts:** 0 Normal,
+  1 Awakened, 2 Adaptive, 3 Fused, 4 Refined. CLAUDE.md carries that table already
+  on weaker sourcing; it can be upgraded.
+- **The instance grammar has four shapes, not two:** bare (open world), `- Group`
+  **with no difficulty at all** (6 occurrences), `- Group N (Label)`, and
+  `Zone N (Label)` for raid. A naive two-shape pattern files the bare `- Group`
+  as open world.
+- **`- Solo` does not occur** — 0 across 68 distinct zone strings, so
+  `raidstats.py:268` stays harmless for now.
+- **The encoding correction above** contradicts a standing ruling of mine.
+
+#### Session B corrected me twice, and one would have shipped on the front page
+
+**"Every survivor carries a source tier" is false.** I wrote it into the
+consultation brief. `counts.standing` is tier-2 2,045, tier-5 126, tier-M 5 and
+**unattributed 1,487** — so **40.6% of survivors carry no tier at all.** B's true
+and still-strong replacement: **"every survivor that prints a number names its
+tier — 2,176 records, none of them silent."** I was one approval away from
+publishing an overclaim on the band that leads the site, in the exact shape
+CLAUDE.md §7 forbids.
+
+They also refused my framing of the purge honestly: **2,230 of the 7,599 were
+quarantined as *unconfirmed*, not as proven foreign.** "Items that aren't in this
+game" would have been false for a third of them.
+
+**And `gate.py` is not unproven — it is the most thoroughly proven check in either
+repository: 36 damages aimed, 36 killed.** My order rested on their own earlier
+UNPROVEN verdict, which they have now retracted with the reason: **`gate.py` has
+no `__main__`**, so `python3 scripts/gate.py` runs nothing and exits 0. Their
+command exercised a no-op and they published a verdict about it. Their tool now
+refuses to grade a checker it cannot prove it touched.
+
+**The finding that matters most is about our harness, not theirs.**
+`gate_selftest.py:81` collects only lines starting with `FAIL`. **`gate.py`
+contains 7 `warn(` assertions against 35 `fail(`** — so **seven of gate.py's
+assertions cannot be proven by our own self-test**, and a warn-only assertion
+firing correctly is indistinguishable from one that is dead. Same blind spot they
+found in their own instrument, reached independently, in our tree. Also
+`truth["tools listed"]` at `gate.py:265-271` is computed and never consumed —
+dead weight left behind when the "N trackers" rule was withdrawn.
+
+#### Session C has not reported, and this is the second time
+
+`EQLSAuras/HANDOFF.md` is **byte-identical** to the copy I read before sending the
+status request — 5,999 bytes, zero mentions of 21 or 22 August, still *"Standing
+by for the archive, the plan and her prompt"*, still carrying the 18 August NO-GO
+as live.
+
+**Meanwhile Shara answered a technical design question about the lockout
+component directly, through the owner, and Session D read her application tree on
+the same machine.** So the channel Session C describes is not the channel that is
+running, and Session D noticed independently.
+
+**This is now a structural problem, not a lapse.** Every other session treats that
+file as the current state of Auras. Until it is updated, nobody should rely on it,
+and the NO-GO it carries should not be quoted as current by anyone.
+
+---
+
 #### SUPERSEDED 21 Aug, same evening — the order stands, and the promotion gets a trigger
 
 **The owner reversed their own instruction after reading the three findings below,
