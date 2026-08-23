@@ -568,6 +568,66 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 23 Aug — users have seen the grid and want it. That is a commitment, and it exposes a delivery gap.
+
+**The prototype rendering went to the guild and the response was immediate and
+positive** — *"It will be used a lot by people."* Two named players reacted. **We
+have now shown a working-looking thing to an audience, which converts a research
+project into a promise.**
+
+**Do not name those players anywhere on the site.** They reacted in a guild
+channel; they did not consent to being quoted as testimonial. The credits page is
+the only place this site names people, and it names our own.
+
+#### The gap: the thing users just got excited about has no route to them that we control
+
+**EQLS Lockouts is currently specified as a component for `=Auras`.** And
+`=Auras` has, verified this week: **no GitHub release, no tag, no
+`build.publish` block**, and 51 commits sitting unpushed on one machine.
+Distribution today is a hand-built installer handed over as a file.
+
+**So the path from this grid to a player runs entirely through a third party's
+unreleased product, on no date we control.** That was a sound plan when this was
+research. It is a weak plan now that people are asking for it.
+
+#### The Sky Ledger has already solved this exact problem, and the precedent is exact
+
+Read off the built page tonight — the Sky Ledger band ships **two surfaces from
+one engine**:
+
+```
+app/sky-ledger.dad68d2b.html                     a browser page we host
+SkyLedger-v1.1.0-windows.zip                     a downloadable overlay
+"In a browser with nothing to install, or as an overlay on the game."
+```
+
+**We already run a browser-based combat-log reader in production.** A
+browser-hosted lockout grid is not a new capability, a new risk, or a new
+argument with anyone — it is the pattern this site already ships, applied to a
+second dataset.
+
+**And it does not compete with Shara. It is the same shape the owner already
+operates:** our web surface, her overlay, one engine underneath. The standing
+ruling holds unchanged — she incorporates what she wants, on her timetable, and
+nothing is conditioned on her. **What changes is only that our promise to users
+stops depending on her release date**, which is better for her too: it removes
+any pressure her schedule would otherwise carry.
+
+**Recommendation to the owner: authorise a browser surface for the lockout grid
+on eqlsource, built on the Sky Ledger pattern.** Session D's core is already the
+right shape for it — a dependency-free module taking lines and an explicit `now`,
+returning JSON-clonable state, with no filesystem in the core. That is precisely
+what a browser page needs and it is why the constraint was worth insisting on.
+
+#### What got more urgent tonight
+
+**The eight mis-tiered rows in `assets/raids-measured.json`.** The published
+artifact draws on that file and I corrected for them by hand. **Anything else
+that renders from it will show completed D0 cells that are wrong**, and the grid
+is now the most likely thing to be rendered from it. Session A's fix moves up.
+
+---
+
 ### 23 Aug — the full roster, checked against our own corpus. Three name traps and a defect in our data.
 
 **The owner has given the grid: five bosses × five tiers = 25 cells.** Lady Vox,
