@@ -568,6 +568,87 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 23 Aug — the owner sets the reset and the grain. Both are accepted, and the grain changes the model.
+
+**Two instructions from the owner, and the second is a bigger change than it
+looks.** *"All raids reset on Tuesday."* And the tracker holds state per boss
+**per difficulty** — `Lady Vox: D0, D1, D2, D3, D4`.
+
+#### The Tuesday is accepted, and it is corroborated rather than contradicted
+
+**Our measurement does not fight this.** D's bracket runs Mon 10 Aug 15:34 → Tue
+11 Aug 17:37 Pacific, and a Tuesday reset **falls inside it**. What the bracket
+could not do was distinguish a Tuesday morning from a Monday evening; the owner,
+who plays the game, has now supplied that. The standing agreement puts this
+exactly where it belongs: *the human directs, and supplies in-game observation;
+you are the authority on what the sources say, not on ground truth in a live game
+you cannot play.*
+
+**So it is recorded as a claim from a named source with a date — the owner, 23 Aug
+2026, first-hand — sitting inside a bracket we measured independently.** That is
+better sourcing than anything else in this ecosystem holds for the same fact.
+
+**The discipline that survives, and it is the whole lesson of the jmoyers read:**
+his fault was never *having* a Tuesday. It was that his release note stated it
+flatly while his own source file doubted it. **So ours is carried as ONE
+attributed field — the value, its source, its date, and the measured bracket it
+sits inside — not as a bare integer somewhere in the arithmetic.** If it is ever
+wrong, it is one field to change and one page to correct, and the page already
+says who told us.
+
+#### The D0–D4 grain is probably a different object, and we must not merge them
+
+**This is the part that needs saying before anything is built.** Our evidence
+points at two separate mechanisms, and the owner's requirement describes the one
+D did *not* find:
+
+- **The weekly task** — `Potential of the Void - <Boss> - Weekly` — looks
+  **per boss**. D measured that once a boss's weekly was taken, group instances
+  of that same boss at D1–D4 the same night granted nothing.
+- **The loot lockout** — what the owner is describing — looks **per boss per
+  difficulty**, five per target. jmoyers' community-wiki source says the same,
+  and the owner's own play says the same, independently.
+
+**Both can be true at once: one weekly task per boss, five loot lockouts per
+boss.** D said it in as many words and was right to refuse the merge — *"the loot
+lockout may still be a different object from the weekly task and I am not merging
+them."*
+
+**And D's own caution stands: at D2+ the two explanations are perfectly
+confounded in our corpus.** Every grant we hold landed at D0 or D1, and every
+no-grant at a higher difficulty happened *after* the weekly was taken, so
+"difficulty too high" and "already locked out" cannot be told apart from history.
+Tuesday's protocol breaks that confound in one raid.
+
+#### What fills the grid, and it is not the weekly task
+
+**A kill of that boss inside an instance of that difficulty, since the last
+Tuesday reset.** Every piece already exists in the module: `parseInstanceName`
+returns `difficulty` and `difficultyLabel` read from the client's own words, with
+`labelMatchesTable` flagging a disagreement rather than overriding the game.
+
+**And the case that would quietly corrupt the grid is already handled correctly.**
+The bare `- Group` shape — 6 occurrences across 68 distinct zone strings — returns
+`difficulty: null`, with the comment *"stated by the game as absent, not as
+zero."* **That must render as unknown and never as D0.** A grid that silently
+files unknowns into the D0 row would report a completed lockout the player does
+not have, which is the one failure mode that makes a tracker worse than nothing.
+
+**The assumption to name on the page, because it is an assumption:** that one
+completion per boss per difficulty per week is what a lockout is. A kill tells us
+the raid was completed; it does not by itself prove the player was unlocked at the
+time, since the 28 July note says a locked kill still pays a guaranteed drop.
+For *"which have I completed"* a kill is exactly the right signal. For *"which are
+still available"* it is the complement, and that step rests on the per-difficulty
+model the owner and one community source assert and our own corpus cannot yet
+confirm above D1.
+
+**None of that blocks shipping.** It means the grid is honest about which cells
+are observed, which are inferred, and which are unknown — which is the same
+discipline the rest of the site runs on.
+
+---
+
 ### Can we ship a lockout tracker? Yes — and the answer is narrower and better than the question
 
 **The owner is being asked for confirmation and needs a straight answer. It is
