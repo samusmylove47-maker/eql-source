@@ -568,6 +568,92 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### STANDING — the `=Auras` endgame. Future-context from the owner, 23 Aug.
+
+**The owner's direction, recorded because it governs planning from here.** When
+`=Auras` reaches 1.0, the intent is to begin folding **every tool we build** into
+that package. `=Auras` is not another tracker: it is an overlay system aiming at
+**WeakAuras-class** functionality for EverQuest Legends, and Shara has already
+used the click-through capability from our own `=SkyLedger` overlay to prototype
+**a redesign of the game's entire interior UI**. Her goal is to rebuild the
+in-game user experience around what the overlay and our data can carry together.
+The owner's own read of eqlsource is that it "has been mostly reactionary to
+stated needs," and that this is the thing that is genuinely new.
+
+**Three things follow. The first is confirmation, the second is a trap, and the
+third is cheap now and expensive later.**
+
+#### 1. The module shape stops being a concession and becomes the house standard
+
+I imposed a shape on the lockout core and justified it narrowly — *cheap for
+Shara to accept, free for her to refuse.* **That justification is now too small.**
+If every tool is eventually to fold into one overlay, then every tool should be
+built from the start as:
+
+> a dependency-free module, taking **lines in and an explicit `now` in**,
+> returning **JSON-clonable state out**, with **no Electron, no DOM and no
+> filesystem in the core**, and its own clock never read.
+
+Session D's core already meets it. The Sky Ledger's engine and 50 Upgrades'
+planner logic do not, because nobody asked them to. **That is a retrofit bill we
+are choosing to take on later unless we write the standard down now.**
+
+#### 2. The trap: "fold everything in" could cost us the only ground we hold
+
+**Read literally, folding every tool into a Windows desktop app makes us a
+Windows desktop product.** And when I audited jmoyers this week, the single
+clearest thing on our side of the ledger was the opposite: *a public, linkable,
+citable web reference against a Windows-only installer whose knowledge you cannot
+read without installing it.*
+
+**Surrendering that to gain integration would be trading our durable advantage for
+someone else's release cadence.** It also concentrates every tool's platform,
+schedule and ownership onto one third party — who owns her product completely and
+should, and whose canonical repo currently sits 51 commits behind one machine.
+
+**The resolution is not a compromise, it is a pattern we already run.** The Sky
+Ledger ships `app/sky-ledger.<hash>.html` *and* a downloadable Windows overlay
+from one engine — *"in a browser with nothing to install, or as an overlay on the
+game."*
+
+> **One engine, many surfaces. The engines fold into `=Auras`. The web surfaces
+> stay on eqlsource.**
+
+That gives the owner everything the direction asks for and gives up nothing. It
+is also better for Shara: her release date stops being the gate on other people's
+promises, so her schedule carries no pressure it did not choose.
+
+#### 3. Do now, because it is one document today and three retrofits later
+
+**Write the engine contract once, as a spec every tool follows**, rather than
+re-deriving it per tool as I have been doing. Session C's six integration
+constraints — raw line in, never read the clock, one-second resolution with no
+sub-second ordering, JSON-clonable state, hand back config rather than own a
+file, and a stated answer on double-feeding — **are already 80% of that document,
+written by someone reading the host tree.** They should be promoted out of one
+session's handoff into a spec the whole fleet builds against.
+
+#### Two principles for the later work, recorded now while they are cheap
+
+**At WeakAuras scale the display stops being the differentiator.** WeakAuras'
+power was never its rendering — it was that thousands of people authored and
+shared auras. Shara already ships paste-shareable alert strings; jmoyers ships
+them too. **When everyone can draw a timer, the thing worth having is knowing
+where the number came from**, and that is the one asset this project has spent
+every week building. Our contribution to her system is most likely not more
+widgets — it is provenance underneath the widgets.
+
+**An overlay that advises is the highest-stakes assertion surface we would ever
+ship.** Our own rule is that *a drawing is an assertion*, and that a model or a
+diagram needs more evidence than the same claim in prose because it carries more
+conviction. A number rendered over the running game, at the moment of a decision,
+where the player cannot check it, is the strongest form of that. **Everything we
+put in front of a player mid-fight must be measured, or must say that it is
+not.** That principle costs nothing to adopt today and would be very expensive to
+retrofit onto a shipped overlay.
+
+---
+
 ### 23 Aug — users have seen the grid and want it. That is a commitment, and it exposes a delivery gap.
 
 **The prototype rendering went to the guild and the response was immediate and
