@@ -568,6 +568,74 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### Can we ship a lockout tracker? Yes — and the answer is narrower and better than the question
+
+**The owner is being asked for confirmation and needs a straight answer. It is
+yes**, for the thing they actually described — *which raid lockouts have I
+completed this week* — and most of it is already built and tested.
+
+**What the game gives us, first-party, boss-named, already parsed.** Three
+distinct signals, not one:
+
+| state | the line | what it proves |
+|---|---|---|
+| taken | `You have been assigned the task 'Potential of the Void - <Boss> - Weekly'.` | you were not locked out for that boss at that moment |
+| completed | `Your task '… - Weekly' has been updated.` + `You have been given: Void-Touched Potential` | you took the week's reward |
+| locked | a Voidling hail with the closing line and **no** task line | you are locked out |
+
+`project(state, now)` in `src/lockoutCore.js` already returns a per-boss row
+carrying `timesAssigned`, `timesCompleted`, `lastAssigned` and `lastCompleted`.
+**The screen the owner is describing is a rendering of a projection that
+exists.**
+
+**The one thing we cannot do honestly is count down.** `available` is deliberately
+`NOT_RECORDED`, with the reason written in the file: *"A UI showing 'available in
+3d 4h' would be inventing a number."* That is correct and it must not be
+softened.
+
+**And here is the insight that makes the product shippable without the reset
+rule.** The reset is **observable, not merely calculable.** When a boss whose
+weekly was already taken is granted a second time, a reset has demonstrably
+occurred — `projectReset` already brackets exactly that, and only from tasks the
+game itself labels with a cadence. **So the tracker anchors to the last OBSERVED
+reset instead of to a calendar rule.** No constant, no typed Tuesday, and it is
+strictly stronger evidence than the shipped competitor's hardcoded day, which its
+own author marks `VERIFY IN GAME`.
+
+**The residual risk, and the honest UI for it.** If the player has not hailed
+since a boundary passed, the tracker cannot know the week rolled. So the display
+must say which of two things it is showing:
+
+- **observed** — "taken since your last confirmed reset, *N* days ago"
+- **stale** — once now exceeds the last observed reset plus the measured floor,
+  the rows are marked *may have reset — hail a voidling to confirm* rather than
+  silently continuing to claim a completed week.
+
+**We can bound that honestly today**: any cycle of 24 hours or of anything up to
+**5.78 days** is refuted by measurement, so a display is safe for at least five
+days after an observed reset and uncertain after it. That is a measured floor,
+not a guess.
+
+**Two limits to state on the page rather than discover later.**
+
+1. **We know of three bosses that carry a weekly** — Lord Nagafen, Lady Vox and
+   Master Yael — and that is a list of what we have hailed for, not a list of
+   what exists. `parseLine` correctly accepts any boss name the game emits. **A
+   boss we have never seen and a boss with no weekly look identical**, so the UI
+   shows observed rows and a "not seen" state, never an authoritative roster.
+2. **A fresh install has no history.** The module says so itself — a tailer that
+   starts at end-of-file has seen nothing before it started. Backfill is the
+   whole answer, and Shara has independently planned the button for it. D
+   measured 434 MB in 7.0 seconds, so the scan is a few seconds.
+
+**So the confirmation the owner can give: yes, a tracker showing which weeklies
+you have taken and completed since your last observed reset, per character, read
+from the game's own words. What it will not do is invent a countdown.** That
+refusal is the feature — it is the only one in this space whose numbers a user
+can check.
+
+---
+
 ### 22 Aug — Session C reported, and it was a sandbox, not a lapse
 
 **Withdrawn: my "structural problem" framing below.** Session C had been
