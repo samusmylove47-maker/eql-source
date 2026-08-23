@@ -568,6 +568,73 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 23 Aug — the full roster, checked against our own corpus. Three name traps and a defect in our data.
+
+**The owner has given the grid: five bosses × five tiers = 25 cells.** Lady Vox,
+Lord Nagafen, Master Yael, Innoruuk *(PoHate raid instance, not open world)* and
+Cazic Thule *(PoFear raid instance, not open world)*. One completion per tier per
+week.
+
+**And they gave the reason, which is a design input rather than a preamble:**
+*"we humans experience our own form of compression drift, and only remember that
+we've done some of those raids, not precisely which ones."* **So the primary view
+is what REMAINS, not what is done.** A grid that foregrounds completions is a
+scoreboard; a grid that foregrounds the four cells still open is the tool they
+described. Build the second one.
+
+#### Checked every boss against `assets/raids-measured.json`. Three names do not match.
+
+| the owner wrote | the game writes | consequence if taken literally |
+|---|---|---|
+| Innoruuk | **`Innoruuk, the Prince of Hate`** | row never matches, renders permanently empty |
+| Cazic Thule | **`Cazic-Thule`** (hyphen) | same |
+| Lady Vox / Lord Nagafen / Master Yael | exact | fine |
+
+**An unmatched roster row and a genuinely uncompleted raid render identically**,
+which is the failure this tracker exists to prevent, arriving through the roster
+rather than through the parser. Key on the game's string; carry the owner's label
+for display only.
+
+#### The instance distinction is real, it is in our data, and it is not settled
+
+The owner's *"raid instance, not open world"* maps onto shapes we already hold:
+
+```
+The Plane of Hate 4 (Refined)          Zone N (Label)      23 fights — the COURT only
+The Plane of Hate - Group 4 (Refined)  - Group N (Label)    Innoruuk, every time
+```
+
+**Innoruuk appears in our corpus exclusively in `- Group N (Label)` and never once
+in `Zone N (Label)`.** So the two instanced shapes are not interchangeable, and
+which one consumes a lockout is a question our history cannot answer. Both are
+plainly distinct from the open world, which is what the owner is separating.
+**Key the grid on the instance SHAPE, not the zone name**, and put the question on
+Tuesday's list.
+
+#### A defect in our own published data, and it is exactly the one I warned about
+
+**8 fights in `assets/raids-measured.json` assert `difficulty: 0` where the client
+stated no difficulty at all** — `The Plane of Fear - Group` ×6,
+`The Permafrost Caverns - Group` ×1, `The Ruins of Old Paineel - Group` ×1.
+
+The bare `- Group` shape carries no tier. **Session D's parser returns
+`difficulty: null` — "stated by the game as absent, not as zero." Ours infers a
+zero.** So the corruption I described yesterday as a hypothetical is already
+present in published data, and if the grid were built from our corpus rather than
+from D's parser, three of those cells would show a completed D0 the player may
+never have run. **Session A's to fix; D's parser is correct and must not be
+changed to match ours.**
+
+#### What our corpus already covers of the 25 cells
+
+Vox D1–D3 · Nagafen D1–D4 · Yael D1–D4 · Cazic-Thule D2–D4 · Innoruuk D1, D3, D4
+— plus the eight mis-tiered bare-`- Group` fights and one Cazic-Thule fight with
+no zone at all. **Enough real coverage to build against and to test the empty
+states honestly**, which matters more: `not_looked`, `unknown` and `available`
+have to be distinguishable from each other, and only real data proves they are.
+
+---
+
 ### 23 Aug — the owner sets the reset and the grain. Both are accepted, and the grain changes the model.
 
 **Two instructions from the owner, and the second is a bigger change than it
