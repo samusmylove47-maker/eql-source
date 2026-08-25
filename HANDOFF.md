@@ -568,6 +568,93 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 25 Aug, evening — the tool corrected the Director's published page, and C found the portfolio's biggest risk
+
+#### My artifact over-claimed. Session D caught it. The page has been changed to match the tool.
+
+**I published a grid reading 15 completed. The module refuses seven of them and it
+is right.** Those seven — Lady Vox D1/D2/D3, Lord Nagafen D1/D2, Master Yael
+D1/D2 — rest entirely on kills made on **Tuesday 11 August after 20:52, the reset
+day itself**, whose turnover *hour* has never been measured. Earlier that day and
+they belong to this week; later and they belong to the previous one. **Both fit
+the log.** D's module lands on 8 completed and independently reproduces the
+corrected figure.
+
+**My open column was exact, cell for cell** — which is the column the tool exists
+to produce, so the user-facing promise held even while the boast did not.
+
+The live page now reads **10 open · 8 completed · 7 unsure**, carries a
+`repeating-linear-gradient` hatch for the new state, and says on its face that
+the module corrected the page rather than the page constraining the module.
+**That order is the whole discipline and it is worth showing rather than
+claiming.**
+
+#### Session C: the largest single risk in the portfolio, and it grew
+
+**92 unpushed commits, not 51 — and the remote has not moved at all.** C verified:
+`LoxyBee/EQLS-Auras` remote `master` does not contain their HEAD; the remote's
+`feat/detection-fixes-…` head `da698b4` is exactly the commit their branch was
+based on. **So all 92 commits live in one working copy and one 2.45 MB archive**,
+and the exposure has grown by 41 commits in two days. Still no tag, no release, no
+`build.publish`, version `0.1.0`.
+
+**This is a single disk away from losing everything Shara has built since 19
+August.** It is entirely hers to decide and nothing about it is ours to fix — but
+she should be told plainly today, and it is the most urgent item anywhere in this
+project.
+
+**And C refused to answer the half they could not verify.** They have no
+visibility into what Shara did with the handover — no commits after theirs,
+nothing modified on the 24th or 25th, the only trace being that the archive left
+the Desktop. Their words: *"I am reporting on the throw and never the catch."*
+**That refusal is worth more than the guess would have been**, and it names the
+one thing that would close it: one line back from her saying what she took.
+
+#### A seventh contract clause, and it lands on a fix Session D already made
+
+**C: "bounded state with the bound stated."** The other six predate the backfill
+measurement. 5.25M lines in one call on the main process, straight after a 112 MB
+stream, puts every per-entity structure at its maximum *exactly* when the user
+presses the button. Their own `damageEngine` caps its pending buffer at 400 for
+this reason.
+
+**This hits Session D directly.** D made voidling replies a **set of seconds** to
+win idempotence — correct for that problem, and **unbounded in principle** over
+months of logs. Cheap to bound now, a redesign later.
+
+**Two clauses need amending now they govern more than one module**, and C is right
+on both: clause 2 reads as banning anything time-based when it should name the
+pattern that satisfies it — *expose `tick(now)`, the host owns the interval*; and
+clause 4 reads as banning `Map` and `Set` outright when it should bind only what
+crosses `serialize()`/IPC, not private fields. **Clause 6's open question is
+closed** — per-character, settled by D's four-second false bracket rather than by
+anyone's preference.
+
+**And C's principle on the contract becoming the house standard is adopted
+verbatim:**
+
+> *"I'd keep it a contract, not a style guide. Every clause exists because
+> something broke, and each names the breakage. The moment one is added because it
+> seems tidy, it stops being evidence and the next author will be right to ignore
+> it."*
+
+#### Two findings neither session could have had alone
+
+**`logSplitter.js` writes per-day files by design.** So D's "scan the folder, not
+the newest file" hits Shara *twice over*: she does not merely risk a log that
+rolls over — **she manufactures the split herself, continuously.** D could not
+have known that; C read her tree.
+
+**D corrected a standing ruling of their own after catching their instrument.**
+Their earlier hexdump had been piped through `grep`, which strips the terminator
+and appends its own — so they had measured the instrument rather than the file.
+They caught it, corrected to UTF-8, and wrote down which way they had been wrong.
+C verified rather than relayed it. **That is the third time this week a session
+has audited its own tool and found the tool at fault**, and it is the habit this
+project should be most protective of.
+
+---
+
 ### 25 Aug — the critical path, and the browser surface is already solved in our own tree
 
 **The tracker is top priority and must be usable ASAP. So the first thing to say
