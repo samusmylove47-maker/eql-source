@@ -568,6 +568,59 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 25 Aug — the critical path, and the browser surface is already solved in our own tree
+
+**The tracker is top priority and must be usable ASAP. So the first thing to say
+is what is NOT blocking it: the Tuesday measurements.** Session D established
+that the module is complete *because* it reports a bracket rather than a value,
+and the owner has since supplied Tuesday as the rule from first-hand play. **The
+scans are time-locked and worth doing today, but nothing waits on them.**
+
+**What is blocking: the grid projection and a surface a user can open.** Neither
+exists. Everything else — engine, contract, 37 tests, idempotence proven by
+replay diff — is done.
+
+#### The browser surface must not be invented. We already ship one.
+
+`public/app/sky-ledger.dad68d2b.html` reads a live EverQuest log in a browser,
+and its own comments describe the exact mechanism:
+
+> *"Live tailing without a download. `showOpenFilePicker` hands back a handle we
+> can re-read; each poll asks for the file again, slices only the bytes past our
+> offset and folds them into the same ledger a file drop would build. If the file
+> shrinks the log was rotated, so the offset resets rather than silently reading
+> garbage from the middle of a line."*
+
+**Every hard case both D and C independently hit is already solved in that
+file:**
+
+| the problem | how it is already solved |
+|---|---|
+| tailing a growing file with no install | `showOpenFilePicker` handle, re-read per poll |
+| rotation / truncation | file shrinks → offset resets, never mid-line garbage |
+| two reads sharing one offset | `S.polling` guard — *"never let two reads share one offset"* |
+| browsers without File System Access | drop-file fallback via `FileReader.readAsArrayBuffer` |
+| the two paths disagreeing | *"decoded the same way the tail decodes, so both paths see identical text"* |
+| `localStorage` throwing in a sandboxed frame | every access guarded, app forgets rather than breaks |
+
+**One correction to carry across: that file decodes windows-1252, and D measured
+that UTF-8 is right** — 9 bytes above 0x80 in 434 MB, all U+FFFD. **Copy the
+structure, fix the decode.**
+
+**This is the difference between shipping this week and shipping in three.** The
+ingestion layer is the part with all the scars, and ours are already paid for.
+
+#### The delivery route follows from "ASAP"
+
+`=Auras` has no release, no tag and no publish block. **A tracker that ships only
+inside it cannot reach the users who asked for it.** The Sky Ledger pattern —
+engine in its own repo, browser page copied into `public/app/` under a content
+hash by a small generator, exactly as `skyledger.py` does — is the route we
+control, and it is the same one-engine-two-surfaces shape recorded above. **The
+engine still folds into `=Auras` when she wants it. Nothing about that changes.**
+
+---
+
 ### STANDING — the `=Auras` endgame. Future-context from the owner, 23 Aug.
 
 **The owner's direction, recorded because it governs planning from here.** When
