@@ -568,6 +568,48 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 26 Aug — promote the tracker. What is actually missing is wiring, plus one labelling fix.
+
+**Checked before ordering it. The page is honest and safe to publish:**
+`LOCKOUT_MODEL` carries `days: 6, daysProvenance: 'conditional'` with
+`differenceSeconds: 514800` as the observed fact, and the shipped bytes hold 15
+`not recorded`, 39 `observed` and 21 `provenance`. **The discipline survived the
+trip into the artifact**, which is the thing I would have blocked on.
+
+**What promotion needs is wiring, and A anticipated most of it.**
+`assets/lockouts.json` already carries `"promoted": false`, so the gate is a data
+flag rather than a hand edit, and `check.py` already warns that the page is
+served and unlinked *"until Session D reports… on promotion, make this a
+fail()"*. Remaining: a seventh entry in `_partials.TOOLS` (six today), a
+`tools/lockouts.html` on the `build28.py` pattern, and flipping the flag and the
+warn together.
+
+#### The one thing I would fix before strangers see it, and it is a label not a gap
+
+**The roster is five targets. The alt+Z window proved a single Plane of Fear run
+locks five bosses and a Plane of Hate run locks two** — Terror, Dread, Fright,
+`a dracoliche` and Maestro of Rancor appear in the shipped bytes only as
+comments.
+
+**That is not an under-reporting bug, because those bosses lock together.** If
+one run locks all five, five cells that always move in lockstep are noise, and
+one cell is the right unit for the decision a player actually makes. **But the
+row is then mislabelled: it says `Cazic Thule` when it means `the Plane of Fear
+raid`.** A player who wants to know whether to run Fear should not have to know
+which boss we picked to stand for it. **Label the row by what you run, and name
+what it contains.**
+
+#### The band is the owner's call, and their own principle answers it
+
+`build1.py:184-187` records *"a teaser must not outrank a shipped product."*
+**Lockouts is shipped, working and honest; `=Auras` still publishes no release.**
+So by the rule already in the tree the order would be **50 Upgrades, Sky Ledger,
+Lockouts, Auras, plates** — which adds a band without reversing anything the
+owner settled, and applies their principle rather than making an exception to it.
+Recommended, not assumed.
+
+---
+
 ### 26 Aug — my six-day claim was an assumption. D killed it, and what replaces it is better.
 
 **RETRACTED: "5d:23h:58m with ~2 minutes elapsed is a SIX-DAY ROLLING TIMER."**
