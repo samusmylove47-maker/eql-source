@@ -60,6 +60,26 @@ def find_repo():
     for c in CANDIDATES:
         if c and os.path.exists(os.path.join(c, 'SkyLedger.html')):
             return os.path.abspath(c)
+    # THE FIXED CANDIDATES ABOVE MISS ENTIRELY IN A GIT WORKTREE, and did so
+    # silently. ROOT is `.claude/worktrees/<name>` there, so `../ClaSkyApp` and
+    # `../../ClaSkyApp` resolve inside `.claude` and find nothing; this function
+    # returned None and main() kept the committed copy without complaint.
+    # Verified on 26 August 2026 — every pull request built from a worktree had
+    # been skipping the re-copy, and the only reason nothing shipped stale is
+    # that the served copy happened to match upstream byte for byte.
+    #
+    # Walking up finds the repo from either checkout and needs no edit when
+    # either moves. The failure mode it removes is the bad one: not a wrong
+    # answer, but a silent old answer.
+    here = ROOT
+    for _ in range(7):
+        cand = os.path.join(here, 'ClaSkyApp')
+        if os.path.exists(os.path.join(cand, 'SkyLedger.html')):
+            return os.path.abspath(cand)
+        parent = os.path.dirname(here)
+        if parent == here:
+            break
+        here = parent
     return None
 
 

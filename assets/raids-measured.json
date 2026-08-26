@@ -3,6 +3,19 @@
   "boss": "Ashenbone Broodmaster",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -40,6 +53,19 @@
   "boss": "Ashenbone Broodmaster",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -75,6 +101,19 @@
   "boss": "Ashenbone Broodmaster",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -114,6 +153,19 @@
   "boss": "Ashenbone Broodmaster",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -151,6 +203,19 @@
   "boss": "Ashenbone Broodmaster",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -183,6 +248,19 @@
   "boss": "Avatar of Abhorrence",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 1 (Awakened)",
   "group_instance": true,
@@ -211,6 +289,19 @@
   "boss": "Avatar of Abhorrence",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -248,6 +339,19 @@
   "boss": "Avatar of Abhorrence",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -282,6 +386,19 @@
   "boss": "Avatar of Abhorrence",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -315,7 +432,15 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -347,7 +472,15 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -380,7 +513,15 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -413,7 +554,16 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -445,7 +595,15 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -477,7 +635,15 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -506,7 +672,15 @@
  {
   "boss": "Bazzt Zzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -539,7 +713,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -570,7 +752,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -604,7 +794,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -636,7 +834,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -671,7 +877,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -703,7 +917,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -735,7 +957,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -768,7 +998,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -797,7 +1035,16 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -829,7 +1076,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -861,7 +1116,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -892,7 +1155,15 @@
  {
   "boss": "Bazzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -925,7 +1196,15 @@
  {
   "boss": "Bizazzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -957,7 +1236,15 @@
  {
   "boss": "Bzizzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -985,7 +1272,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1019,7 +1314,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1051,7 +1354,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1085,7 +1396,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1118,7 +1437,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1150,7 +1477,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1183,7 +1518,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1215,7 +1558,16 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1247,7 +1599,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1278,7 +1638,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1309,7 +1677,15 @@
  {
   "boss": "Bzzazzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1342,7 +1718,15 @@
  {
   "boss": "Bzzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1373,7 +1757,15 @@
  {
   "boss": "Bzzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1405,7 +1797,16 @@
  {
   "boss": "Bzzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1437,7 +1838,15 @@
  {
   "boss": "Bzzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1469,7 +1878,15 @@
  {
   "boss": "Bzzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1501,7 +1918,15 @@
  {
   "boss": "Bzzzt",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -1535,6 +1960,8 @@
   "boss": "Cazic-Thule",
   "difficulty": null,
   "difficulty_label": null,
+  "difficulty_from": "no zone line",
+  "difficulty_evidence": {},
   "date": "19 Aug 2026",
   "zone": null,
   "group_instance": false,
@@ -1572,7 +1999,15 @@
  {
   "boss": "Cazic-Thule",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Fear - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "17 Aug 2026",
   "zone": "The Plane of Fear - Group",
   "group_instance": true,
@@ -1610,6 +2045,19 @@
   "boss": "Cazic-Thule",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -1649,6 +2097,19 @@
   "boss": "Cazic-Thule",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -1686,6 +2147,19 @@
   "boss": "Cazic-Thule",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -1725,6 +2199,19 @@
   "boss": "Cazic-Thule",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 4 (Refined)",
   "group_instance": true,
@@ -1762,6 +2249,19 @@
   "boss": "Coercer T`vala",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -1799,6 +2299,19 @@
   "boss": "Coercer T`vala",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -1839,6 +2352,19 @@
   "boss": "Coercer T`vala",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "13 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -1878,6 +2404,19 @@
   "boss": "Coercer T`vala",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -1917,6 +2456,19 @@
   "boss": "Coercer T`vala",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -1953,6 +2505,19 @@
   "boss": "Coercer T`vala",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -1992,7 +2557,15 @@
  {
   "boss": "Dread",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Fear - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "17 Aug 2026",
   "zone": "The Plane of Fear - Group",
   "group_instance": true,
@@ -2025,6 +2598,19 @@
   "boss": "Dread",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -2060,6 +2646,19 @@
   "boss": "Dread",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -2095,6 +2694,19 @@
   "boss": "Dread",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -2129,6 +2741,19 @@
   "boss": "Dread",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -2169,6 +2794,19 @@
   "boss": "Dread",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -2200,6 +2838,19 @@
   "boss": "Dread",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -2239,6 +2890,19 @@
   "boss": "Dread",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 4 (Refined)",
   "group_instance": true,
@@ -2281,6 +2945,8 @@
   "boss": "Eye of Veeshan",
   "difficulty": null,
   "difficulty_label": null,
+  "difficulty_from": "no zone line",
+  "difficulty_evidence": {},
   "date": "15 Aug 2026",
   "zone": null,
   "group_instance": false,
@@ -2309,7 +2975,15 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2337,7 +3011,15 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2368,7 +3050,15 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2396,7 +3086,16 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2425,7 +3124,15 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2455,7 +3162,15 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2486,7 +3201,15 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2517,7 +3240,16 @@
  {
   "boss": "Eye of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2547,7 +3279,15 @@
  {
   "boss": "Fright",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Fear - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "17 Aug 2026",
   "zone": "The Plane of Fear - Group",
   "group_instance": true,
@@ -2580,6 +3320,19 @@
   "boss": "Fright",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -2613,6 +3366,19 @@
   "boss": "Fright",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -2657,6 +3423,19 @@
   "boss": "Fright",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -2698,6 +3477,19 @@
   "boss": "Fright",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -2740,6 +3532,19 @@
   "boss": "Fright",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 4 (Refined)",
   "group_instance": true,
@@ -2781,7 +3586,15 @@
  {
   "boss": "Gorgalosk",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2811,7 +3624,16 @@
  {
   "boss": "Gorgalosk",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2839,7 +3661,15 @@
  {
   "boss": "Gorgalosk",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2870,7 +3700,15 @@
  {
   "boss": "Gorgalosk",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2899,7 +3737,15 @@
  {
   "boss": "Gorgalosk",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -2931,6 +3777,19 @@
   "boss": "Grandmaster R`tal",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 1 (Awakened)",
   "group_instance": true,
@@ -2960,6 +3819,19 @@
   "boss": "Grandmaster R`tal",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -2993,6 +3865,19 @@
   "boss": "Grandmaster R`tal",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -3028,6 +3913,19 @@
   "boss": "Grandmaster R`tal",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "13 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -3068,6 +3966,19 @@
   "boss": "Grandmaster R`tal",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "13 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -3107,6 +4018,19 @@
   "boss": "Grandmaster R`tal",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -3143,6 +4067,19 @@
   "boss": "High Priest M`kari",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -3181,6 +4118,19 @@
   "boss": "High Priest M`kari",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -3217,6 +4167,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 1 (Awakened)",
   "group_instance": true,
@@ -3253,6 +4216,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -3291,6 +4267,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -3329,6 +4318,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -3368,6 +4370,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -3404,6 +4419,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -3438,6 +4466,19 @@
   "boss": "Innoruuk, the Prince of Hate",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -3472,7 +4513,15 @@
  {
   "boss": "Keeper of Souls",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -3503,7 +4552,15 @@
  {
   "boss": "Keeper of Souls",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -3534,7 +4591,15 @@
  {
   "boss": "Keeper of Souls",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -3565,7 +4630,15 @@
  {
   "boss": "Keeper of Souls",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -3594,7 +4667,15 @@
  {
   "boss": "Lady Vox",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Permafrost Caverns - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "The Permafrost Caverns - Group",
   "group_instance": true,
@@ -3628,6 +4709,19 @@
   "boss": "Lady Vox",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Permafrost Caverns - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Permafrost Caverns - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "The Permafrost Caverns - Group 1 (Awakened)",
   "group_instance": true,
@@ -3658,6 +4752,19 @@
   "boss": "Lady Vox",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Permafrost Caverns - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Permafrost Caverns - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "The Permafrost Caverns - Group 1 (Awakened)",
   "group_instance": true,
@@ -3689,6 +4796,19 @@
   "boss": "Lady Vox",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Permafrost Caverns - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Permafrost Caverns - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "The Permafrost Caverns - Group 2 (Adaptive)",
   "group_instance": true,
@@ -3725,6 +4845,19 @@
   "boss": "Lady Vox",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Permafrost Caverns - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Permafrost Caverns - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "The Permafrost Caverns - Group 3 (Fused)",
   "group_instance": true,
@@ -3763,6 +4896,19 @@
   "boss": "Lord Nagafen",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Nagafen's Lair - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "Nagafen's Lair - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "Nagafen's Lair - Group 1 (Awakened)",
   "group_instance": true,
@@ -3794,6 +4940,19 @@
   "boss": "Lord Nagafen",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Nagafen's Lair - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "Nagafen's Lair - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "Nagafen's Lair - Group 1 (Awakened)",
   "group_instance": true,
@@ -3823,6 +4982,19 @@
   "boss": "Lord Nagafen",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Nagafen's Lair - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "Nagafen's Lair - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "Nagafen's Lair - Group 2 (Adaptive)",
   "group_instance": true,
@@ -3860,6 +5032,19 @@
   "boss": "Lord Nagafen",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Nagafen's Lair - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "Nagafen's Lair - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "Nagafen's Lair - Group 3 (Fused)",
   "group_instance": true,
@@ -3895,6 +5080,19 @@
   "boss": "Lord Nagafen",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Nagafen's Lair - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "Nagafen's Lair - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "Nagafen's Lair - Group 4 (Refined)",
   "group_instance": true,
@@ -3929,6 +5127,19 @@
   "boss": "Lord Nagafen",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Nagafen's Lair - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "Nagafen's Lair - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "Nagafen's Lair - Group 4 (Refined)",
   "group_instance": true,
@@ -3964,6 +5175,19 @@
   "boss": "Lord of Ire",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -4006,6 +5230,19 @@
   "boss": "Lord of Ire",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -4043,6 +5280,19 @@
   "boss": "Lord of Ire",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4081,6 +5331,19 @@
   "boss": "Lord of Ire",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4123,6 +5386,19 @@
   "boss": "Lord of Ire",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -4161,6 +5437,19 @@
   "boss": "Lord of Ire",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4205,6 +5494,19 @@
   "boss": "Lord of Loathing",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 1 (Awakened)",
   "group_instance": true,
@@ -4241,6 +5543,19 @@
   "boss": "Lord of Loathing",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -4280,6 +5595,19 @@
   "boss": "Lord of Loathing",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -4324,6 +5652,19 @@
   "boss": "Lord of Loathing",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -4363,6 +5704,19 @@
   "boss": "Lord of Loathing",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4402,6 +5756,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 1 (Awakened)",
   "group_instance": true,
@@ -4431,6 +5798,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -4465,6 +5845,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -4501,6 +5894,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4540,6 +5946,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4580,6 +5999,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4618,6 +6050,19 @@
   "boss": "Maestro of Rancor",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4657,6 +6102,19 @@
   "boss": "Magi P`tasa",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 1 (Awakened)",
   "group_instance": true,
@@ -4691,6 +6149,19 @@
   "boss": "Magi P`tasa",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 3 (Fused)",
   "group_instance": true,
@@ -4729,6 +6200,19 @@
   "boss": "Magi P`tasa",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -4770,6 +6254,19 @@
   "boss": "Magi P`tasa",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4808,6 +6305,19 @@
   "boss": "Magi P`tasa",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -4842,6 +6352,19 @@
   "boss": "Magi P`tasa",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -4881,7 +6404,15 @@
  {
   "boss": "Master Yael",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group",
   "group_instance": true,
@@ -4919,6 +6450,19 @@
   "boss": "Master Yael",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 1 (Awakened)",
   "group_instance": true,
@@ -4955,6 +6499,19 @@
   "boss": "Master Yael",
   "difficulty": 1,
   "difficulty_label": "Awakened",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 1 (Awakened)",
+    "tier": 1,
+    "label": "Awakened"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 1 (Awakened)",
   "group_instance": true,
@@ -4989,6 +6546,19 @@
   "boss": "Master Yael",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 2 (Adaptive)",
   "group_instance": true,
@@ -5025,6 +6595,19 @@
   "boss": "Master Yael",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "11 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 2 (Adaptive)",
   "group_instance": true,
@@ -5063,6 +6646,19 @@
   "boss": "Master Yael",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 3 (Fused)",
   "group_instance": true,
@@ -5102,6 +6698,19 @@
   "boss": "Master Yael",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "10 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 4 (Refined)",
   "group_instance": true,
@@ -5144,6 +6753,19 @@
   "boss": "Master Yael",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Ruins of Old Paineel - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Ruins of Old Paineel - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Ruins of Old Paineel - Group 4 (Refined)",
   "group_instance": true,
@@ -5184,6 +6806,19 @@
   "boss": "Master of Spite",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5225,6 +6860,19 @@
   "boss": "Master of Spite",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "13 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -5261,6 +6909,19 @@
   "boss": "Master of Spite",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5299,6 +6960,19 @@
   "boss": "Master of Spite",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -5337,6 +7011,19 @@
   "boss": "Master of Spite",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5377,6 +7064,19 @@
   "boss": "Mistress of Scorn",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5412,6 +7112,19 @@
   "boss": "Mistress of Scorn",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "13 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -5452,6 +7165,19 @@
   "boss": "Mistress of Scorn",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5487,6 +7213,19 @@
   "boss": "Mistress of Scorn",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate 4 (Refined)",
   "group_instance": false,
@@ -5525,6 +7264,19 @@
   "boss": "Mistress of Scorn",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5559,6 +7311,19 @@
   "boss": "Mistress of Scorn",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Hate - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "The Plane of Hate - Group 4 (Refined)",
   "group_instance": true,
@@ -5592,7 +7357,15 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5623,7 +7396,15 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5654,7 +7435,15 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5686,7 +7475,16 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5717,7 +7515,15 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5748,7 +7554,15 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5779,7 +7593,15 @@
  {
   "boss": "Noble Dojorn",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5811,7 +7633,15 @@
  {
   "boss": "Overseer of Air",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5842,7 +7672,15 @@
  {
   "boss": "Overseer of Air",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5873,7 +7711,15 @@
  {
   "boss": "Overseer of Air",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5904,7 +7750,15 @@
  {
   "boss": "Overseer of Air",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5935,7 +7789,16 @@
  {
   "boss": "Overseer of Air",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -5968,6 +7831,19 @@
   "boss": "Phinigel Autropos",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "Kedge Keep - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "Kedge Keep - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "18 Aug 2026",
   "zone": "Kedge Keep - Group 4 (Refined)",
   "group_instance": true,
@@ -6004,7 +7880,15 @@
  {
   "boss": "Protector of Sky",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6032,7 +7916,15 @@
  {
   "boss": "Protector of Sky",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6060,7 +7952,15 @@
  {
   "boss": "Protector of Sky",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6089,7 +7989,15 @@
  {
   "boss": "Protector of Sky",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6117,7 +8025,15 @@
  {
   "boss": "Protector of Sky",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6147,7 +8063,15 @@
  {
   "boss": "Sister of the Spire",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6180,7 +8104,15 @@
  {
   "boss": "Sister of the Spire",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6214,7 +8146,15 @@
  {
   "boss": "Sister of the Spire",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6247,7 +8187,15 @@
  {
   "boss": "Sister of the Spire",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6279,7 +8227,15 @@
  {
   "boss": "Sister of the Spire",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6312,7 +8268,16 @@
  {
   "boss": "Sister of the Spire",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6346,7 +8311,15 @@
  {
   "boss": "Terror",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Fear - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "17 Aug 2026",
   "zone": "The Plane of Fear - Group",
   "group_instance": true,
@@ -6379,6 +8352,19 @@
   "boss": "Terror",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -6420,6 +8406,19 @@
   "boss": "Terror",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -6457,6 +8456,19 @@
   "boss": "Terror",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -6497,6 +8509,19 @@
   "boss": "Terror",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -6534,6 +8559,19 @@
   "boss": "Terror",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -6572,6 +8610,19 @@
   "boss": "Terror",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -6610,6 +8661,19 @@
   "boss": "Terror",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 4 (Refined)",
   "group_instance": true,
@@ -6649,7 +8713,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6683,7 +8755,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6719,7 +8799,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6757,7 +8845,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6791,7 +8887,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6823,7 +8927,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6857,7 +8969,15 @@
  {
   "boss": "The Spiroc Lord",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -6892,6 +9012,8 @@
   "boss": "a dracoliche",
   "difficulty": null,
   "difficulty_label": null,
+  "difficulty_from": "no zone line",
+  "difficulty_evidence": {},
   "date": "19 Aug 2026",
   "zone": null,
   "group_instance": false,
@@ -6922,7 +9044,15 @@
  {
   "boss": "a dracoliche",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Fear - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "17 Aug 2026",
   "zone": "The Plane of Fear - Group",
   "group_instance": true,
@@ -6955,7 +9085,15 @@
  {
   "boss": "a dracoliche",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Fear - Group 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "17 Aug 2026",
   "zone": "The Plane of Fear - Group",
   "group_instance": true,
@@ -6991,6 +9129,19 @@
   "boss": "a dracoliche",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -7033,6 +9184,19 @@
   "boss": "a dracoliche",
   "difficulty": 2,
   "difficulty_label": "Adaptive",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 2 (Adaptive)",
+    "tier": 2,
+    "label": "Adaptive"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 2 (Adaptive)",
   "group_instance": true,
@@ -7067,6 +9231,19 @@
   "boss": "a dracoliche",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -7109,6 +9286,19 @@
   "boss": "a dracoliche",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -7145,6 +9335,19 @@
   "boss": "a dracoliche",
   "difficulty": 3,
   "difficulty_label": "Fused",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 3 (Fused)",
+    "tier": 3,
+    "label": "Fused"
+   }
+  },
   "date": "19 Aug 2026",
   "zone": "The Plane of Fear - Group 3 (Fused)",
   "group_instance": true,
@@ -7188,6 +9391,19 @@
   "boss": "a dracoliche",
   "difficulty": 4,
   "difficulty_label": "Refined",
+  "difficulty_from": "zone line",
+  "difficulty_evidence": {
+   "zone_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   },
+   "invite_line": {
+    "text": "The Plane of Fear - Group 4 (Refined)",
+    "tier": 4,
+    "label": "Refined"
+   }
+  },
   "date": "12 Aug 2026",
   "zone": "The Plane of Fear - Group 4 (Refined)",
   "group_instance": true,
@@ -7229,7 +9445,15 @@
  {
   "boss": "the Hand of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "14 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -7260,7 +9484,15 @@
  {
   "boss": "the Hand of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -7291,7 +9523,15 @@
  {
   "boss": "the Hand of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -7322,7 +9562,15 @@
  {
   "boss": "the Hand of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "instance invite",
+  "difficulty_evidence": {
+   "invite_line": {
+    "text": "The Plane of Sky 0 (Normal)",
+    "tier": 0,
+    "label": "Normal"
+   }
+  },
   "date": "15 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,
@@ -7353,7 +9601,16 @@
  {
   "boss": "the Hand of Veeshan",
   "difficulty": 0,
-  "difficulty_label": "Base",
+  "difficulty_label": "Normal",
+  "difficulty_from": "inferred: every recorded entry to this instance was tier 0",
+  "difficulty_evidence": {
+   "instance_history": {
+    "tiers": [
+     0
+    ],
+    "entries": 9
+   }
+  },
   "date": "16 Aug 2026",
   "zone": "The Plane of Sky",
   "group_instance": false,

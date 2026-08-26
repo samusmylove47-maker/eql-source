@@ -4447,6 +4447,189 @@ between them.
 
 ## To the Director
 
+### 25 Aug directive — items 1 and 2 done, 3 was already landed, 4 is blocked
+
+**Item 3 is not outstanding.** It shipped in #143 and #144, both merged, and it
+is on `main` now: `check.py` line 155 reads `public/index.html`, the self-test
+harness collects `WARN` as well as `FAIL`, and all 32 cases pass. The coverage
+number the directive asks me to take from Session B I had already measured
+independently and reported on 22 Aug: **22 of 106 assertions proven alive
+(21%)** — gate.py 19 of 42, check.py 3 of 64 — with the sharper finding that
+*every one* of gate.py's seven unreachable `warn(` assertions has the form
+"X is missing, so Y is unchecked".
+
+**Item 1 done.** `_build/lockouts.py`, run by `build.sh`, copies the built page
+under its content hash, writes `assets/lockouts.json`, and exits 0 with the repo
+absent. No tools/ page and no landing band. Three things worth your attention:
+
+- **One deliberate departure.** `check.py`'s Sky Ledger guard *fails* when no
+  page links the hashed file. Here that is the ordered state, so it is a WARN
+  that names the promotion it is waiting on and clears itself the moment a page
+  links the file. The converse is a hard fail: a page linking it while the
+  record still says `promoted:false` means the data and the pages disagree.
+- **The hash is computed, not trusted.** That repo names its own build and ships
+  a `latest.txt`; the pointer names the file, the bytes are hashed here, and a
+  disagreement is a hard error. sha256 to match their build, sha1 for the Ledger
+  to match its own — each mirrors its upstream so "are the two in sync?" is a
+  string comparison. Do not unify them for tidiness.
+- **The Lockouts repo rebuilt while I worked** (`59ddc576` → `c405ef53`). The
+  generator picked up the new build and swept the old copy, which is the point.
+
+**Found while building it: `skyledger.py` has never found its repo from a git
+worktree.** `ROOT` is `.claude/worktrees/<name>` there, so its fixed
+`../ClaSkyApp` candidates resolve inside `.claude` and match nothing — it
+returned `None` and kept the committed copy without complaint. **Every pull
+request I have built from a worktree has been skipping the re-copy.** Nothing
+stale ever shipped, and only because the served copy happens to match upstream
+byte for byte; I verified that before touching it, which is why this PR moves no
+Sky Ledger bytes. Both finders now walk up.
+
+**Item 2 done, and the directive is right about the invite and wrong about the
+population.**
+
+You were right that the invite is genuine evidence. Measured across the 13
+staged logs: a **zone line prints `0 (Normal)` 0 times in 385 zone lines; an
+invite prints it 16 times.** Pairing each invite with the zone line that
+followed it — **73 agree exactly, 0 disagree, and 16 are the zone line dropping
+a tier the invite had named.** So there was never a winner being silently
+chosen. There was a *gap*, and `tier_of()` filled it with `return 0, "Base"` —
+a fallback that reads as a measurement. 98 of 213 fights rested on it.
+
+**Where the directive is wrong: those 90 rows are not open-world kills.** They
+are all The Plane of Sky, which is instanced and simply is not named `- Group`.
+The logs hold 9 Plane of Sky instance invites and **every one says `0 (Normal)`,
+none says anything else.** Filing them as open-world would have been a second
+error on top of the first, and a naming rule (`" - Group" in zone`) would have
+done exactly that — which is why the instanced set is built from the invites the
+corpus actually holds rather than from how a zone is spelled.
+
+Nothing was deleted and nothing overwritten. Every fight now carries
+`difficulty_from` naming the line the number came from, and `difficulty_evidence`
+holding **both** readings whether or not either was the source. A genuine
+conflict would publish as `zone line, invite disagrees` rather than being
+resolved out of sight. Result, at an unchanged 213 fights:
+
+| source | fights |
+|---|---|
+| zone line | 112 |
+| instance invite | 87 |
+| inferred: every recorded entry to this instance was tier 0 | 11 |
+| no zone line (null) | 3 |
+
+**So 87 of the 98 are now read from a line, 11 are an inference that says so,
+and 0 are unresolved.** The eight `- Group` fights you singled out each resolved
+from their *own* immediately preceding invite, all `0 (Normal)` — even though
+those three instances were entered at `{0,2,3,4}`, `{0,1,2,3}` and
+`{0,1,2,3,4}` across the corpus. Per-entry attribution was necessary; a
+corpus-level rule would have marked all eight unresolved and thrown away good
+evidence.
+
+**A bug I introduced and caught before it shipped.** `raw += [fmt(f) for f in
+parse_log(path)]` resolved each log's fights before the later logs had been
+scanned, so an inference drawn from "every recorded entry" was drawn from a
+partial corpus — the Plane of Sky's history read 5 entries where the logs hold
+9. Two passes now: parse everything, then resolve.
+
+**CLAUDE.md was already right and I have only tightened it.** Its zero-matches
+claim is scoped to `You have entered` lines, and the paragraph below it already
+said the invite names base as "Normal". The bold `**D0 is not.**` was the only
+loose part when quoted alone. The new measurement is recorded there as
+corroboration.
+
+**Named, not done: `logstats.py` does not read the invite line at all.**
+`raidstats.py` is the only generator that does. **61 of logstats' 172 sessions
+rest on something other than a numbered zone line** (50 unsuffixed, 10 loot
+tier, 1 none), and its zones include Plane of Sky, Old Paineel and Nagafen's
+Lair, all of which have invites. That would move `measured.json` and the public
+`sightings` contract, so it is a separate change and not this one. It is the
+single highest-value follow-up I found.
+
+**Item 4 not done, and one figure in the directive is not citable here.** I do
+not have Session B's copy in this tree, and you ruled B owns it and must not be
+made to edit this tree — so it waits on their text. On the figures: the
+`2,230 UNCONFIRMED / 5,369 explicit-era` split is **not** in
+`assets/50-upgrades.json`. What is there is `counts.purge.quarantined = 7599`,
+and **2,230 + 5,369 = 7,599 exactly** — so your split is a real decomposition of
+a figure this repo holds, but only the total is published to us. `upfig()`
+cannot interpolate it by field path until B's upstream emits the two parts.
+Tell me whether to ask B for that, or to print the total alone.
+
+Also corrected in passing: `build.sh` finished by telling the operator to
+"drag the folder to Netlify", three weeks after Cloudflare became the host.
+
+### 22 Aug directive — items 1 and 4 done, and where the directive is wrong
+
+**Item 1 shipped in #143.** Both faults confirmed exactly as reported. Coverage
+measured rather than claimed: **22 of 106 assertions (21%) are proven alive** by
+32 cases — gate.py 19 of 42, check.py 3 of 64. Sharper than reported: **every
+one of gate.py's seven unreachable `warn(` is of the form "X is missing — Y is
+unchecked"**. They are the guards that fire when a check *cannot run*, so an
+unreachable one means "we do not know whether this was checked" passing
+unnoticed. The dead-guard fault, one level up, inside the catcher.
+
+**Item 4 is in this PR, and it corrected two live errors in our own documents.**
+
+`_build/ogcards.py:26` said *"the site's three faces"* — **the third file to
+carry that sentence**, after CLAUDE.md (corrected 20 Aug) and DESIGN.md (always
+right). Three corrections in three files to clear one typed count.
+
+`CLAUDE.md` said **Lady Vox heals itself at D0 "in the open world"**. It was
+`The Permafrost Caverns - Group` — a group instance whose zone line prints no
+tier. The finding survives intact; only the setting was wrong.
+
+**Where the directive is wrong, checked against the tree:**
+
+- **`raidstats.py:268` does not reference `- Solo`.** It reads
+  `"group_instance": " - Group" in (f['zone'] or "")`. `Solo` appears nowhere in
+  that file. The conclusion — that `- Solo` is harmless because it never occurs
+  — is right; the citation is not.
+- **`skyledger.py` is not hand-run.** It is a full build step, run third in
+  `build.sh`. It is the analogue for the *degradation* rule, not for
+  hand-run-ness — which matters, because item 2's design was to follow it.
+- **`build.sh` does nothing about hand-run scripts.** Enforcement is
+  `check.py:236-300`, which parses `build.sh` for `python3 _build/` lines and
+  warns for any generator not among them. Hand-run status is registered by
+  *adding the file to an exemption list*, not by anything build.sh does.
+- **`geometry.py` does not degrade gracefully.** `build1.py:16` calls
+  `heroart.paths()` at module level, twenty-seven lines *before* the try/except
+  at :43, so a missing `zone-geometry.json` raises rather than degrading.
+  `ogcards.py` is a deliberate hard failure and `gate.py:595-598` says why.
+- **`assets/50-upgrades.json` has no top-level `counts` key**, and **the
+  2,230 / 5,369 quarantine split is not in the file** — it holds one
+  undifferentiated 7,599. Your instruction not to write "7,599 items that aren't
+  in this game" stands; its justification is not citable from this repo without
+  a re-read of the planner's own snapshot.
+- **The band lengths are 742 / 909 / 1,135**, not 766 / 2,271. Reader-visible
+  prose, tag-stripped, entities decoded: 50 Upgrades 742, **Auras 909**, Sky
+  Ledger 1,135. The real ratio is 1 : 1.53, not 1 : 2.96. The thinness is real
+  and the case for rebuilding survives; the figure overstates it by double.
+- **A version for Auras *is* recorded** — `docs/auras/CLAIMS.md:6-7`, version
+  **0.1.0**, a dev build, read 18 Aug. Not in `assets/` or `scripts/`, which is
+  where you said to look.
+- **The landing order has six sections, not four.** A hero precedes all three
+  bands and a "Start here" doors band sits between Auras and the plates.
+- **And the Auras band is conditional**: `build1.py:409` renders it only when
+  `MEDIA` holds both the trailer and the poster. On a machine that has never run
+  `media.py` the band is an empty string. Any check asserting band order has to
+  survive that, and the directive's design did not account for it.
+
+**Item 4's D0 question, ruled: one bucket, and recorded in `CLAUDE.md` §2.** Your
+three counts are exactly right — 98, 8, 90. But the two populations **share no
+boss at all**: the instanced eight are Plane of Fear, the bare ninety are every
+Plane of Sky kill. Every gap between them is explained by boss identity and
+witness quality, not by instancing. Splitting would produce two columns
+differing by *subject* that would read as differing by *treatment*. One boss
+killed at base in both settings would change the ruling; nothing else will.
+
+**Two things found while ruling, not fixed here.** `group_instance` tests only
+`" - Group"`, so 23 numbered-and-instanced fights in `The Plane of Hate 4
+(Refined)` record it as **false**. And the Sky pages' "D0, the only tier
+measured" is typed, not read — true today, and the pattern §3 forbids.
+
+**Items 2 and 3 are next and not in this PR.** Item 2's design needs revising
+first: it was to follow `skyledger.py` as a hand-run script, and that is not
+what `skyledger.py` is.
+
 **Live ingestion is running and needs nothing. One decision, not urgent tonight.**
 
 ### Three of Shara's raw logs are on the owner's Desktop and have never been staged

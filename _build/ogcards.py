@@ -23,7 +23,13 @@ assets/zones-index.json, so a card cannot drift from the page it represents.
 
 TYPOGRAPHY, AND AN HONEST DEVIATION
 -----------------------------------
-The site's three faces are Saira Condensed, IBM Plex Mono and Public Sans. None
+The site's four faces are Cinzel, Saira Condensed, IBM Plex Mono and Public Sans.
+This said THREE until 22 August 2026 and had been wrong since Cinzel landed —
+the third file to carry that sentence, after CLAUDE.md (corrected 20 Aug) and
+docs/DESIGN.md (which was always right and records the change at line 160).
+check.py's FACES set has listed four the whole time. A count typed into prose
+beside data that already holds it is the fault this project keeps finding; it
+took three corrections in three files to clear one sentence. None
 is on this machine and vendoring three font files to draw ten images is a poor
 trade, so the cards use the nearest system equivalents: Franklin Gothic Demi
 Condensed for display and Consolas for data. It is a deviation from the design

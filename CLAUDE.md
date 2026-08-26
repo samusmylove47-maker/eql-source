@@ -154,12 +154,79 @@ log their absence as a defect.
   from behind, max 405. Never publish a combined average for a mob that
   backstabs.
 
-  The tiers are named in game, and the zone line prints the name on entry —
-  `You have entered The Castle of Mistmoore 1 (Awakened).`
+  **D1 to D4 are named in game** and the zone line prints the name on entry —
+  `You have entered The Castle of Mistmoore 1 (Awakened).` **D0 is not, on that
+  line** — it is named on the instance invite, two paragraphs down. This
+  file said "the tiers are named" of all five rows until 22 August 2026, and
+  searching every `You have entered` line in every staged log for `0 (`, `Base`
+  or `Normal` returns **zero matches**: the game never prints a parenthesised
+  tier name for base. D0 is *inferred from the absence of a suffix*, which is a
+  weaker reading than the other four and is why the loot-tier floor matters most
+  there.
+
+  **Double-derived, 22 Aug 2026.** Session D reproduced this map independently
+  from the client's own instance-invite line across 27 distinct instances with
+  no conflicts — 0 Normal, 1 Awakened, 2 Adaptive, 3 Fused, 4 Refined. That is a
+  second, unrelated source agreeing with the zone line, so the mapping is
+  corroborated rather than merely recorded. Note the invite line *does* name
+  base as "Normal" where the zone line prints nothing, which is how D0 has a
+  name at all.
+
+  **Counted in our own logs, 26 Aug 2026, and it settles the ranking.** Across
+  the 13 staged logs a zone line prints `0 (Normal)` **0 times in 385 zone
+  lines**; an invite prints it **16 times**. Pairing each invite with the zone
+  line that followed it: **73 agree exactly, 0 disagree, and 16 are the zone
+  line dropping a tier the invite had named.** So the invite never contradicts
+  the zone line — it fills a gap the zone line leaves — and for tier 0 it is the
+  *better* source, not the weaker one. Anything deriving a difficulty should
+  read it. Only `_build/raidstats.py` does; `_build/logstats.py` does not, and
+  61 of its 172 sessions rest on something other than a numbered zone line.
+
+  **The instance grammar has four shapes, not two.** Measured across 68 distinct
+  zone strings:
+
+  | shape | meaning |
+  |---|---|
+  | `Zone` | open world |
+  | `Zone - Group` | a group instance printing **no difficulty at all** |
+  | `Zone - Group N (Label)` | a group instance at a named tier |
+  | `Zone N (Label)` | a raid instance at a named tier |
+
+  **The second shape is the trap.** A parser that expects only bare-or-suffixed
+  files `Zone - Group` as open world; `raidstats.py`'s `tier_of()` falls through
+  to `(0, "Base")` for it, which is right about the difficulty and silent about
+  the instancing. `- Solo` does not occur at all — 0 of 68.
+
+  **RULED 22 Aug 2026: D0 stays one bucket, and the reason is that the data
+  cannot support two.** Of 98 measured D0 raid fights, 8 are instanced and 90
+  are bare `The Plane of Sky`. The question asked was whether those are two
+  populations our figures are mixing. They are not, and splitting them would
+  manufacture a finding rather than reveal one:
+
+  - **They share no boss at all.** The instanced eight are Plane of Fear bosses;
+    the bare ninety are every Plane of Sky kill we hold. There is no boss
+    measured in both settings, so nothing in the corpus compares like with like.
+  - **Every gap between them is explained by boss identity and witness quality**
+    — the fullest-view rule this file already records — not by instancing. Six
+    of the eight instanced fights are solo kills; the ninety are a repeatedly
+    farmed public zone.
+  - So a split would produce two columns that differ by *subject*, and it would
+    read as though they differed by *treatment*. That is the shape of an
+    artefact dressed as a result.
+
+  **What would change the ruling** is one boss killed at base in both settings,
+  with comparable attacker counts. Until then the honest reading is that we have
+  no evidence either way, which is what one bucket says.
+
+  Two things found while ruling and worth fixing separately: `group_instance` in
+  `raidstats.py` tests only for `" - Group"`, so 23 fights in
+  `The Plane of Hate 4 (Refined)` — numbered, and instanced — record it as
+  **false**. And the Sky pages' "D0, the only tier measured" is typed rather
+  than read from the dataset. It is true today and it is the pattern §3 forbids.
 
   | | Name |
   |---|---|
-  | **D0** | Base / Normal — the default. The open world, and any instance run at base |
+  | **D0** | Base / Normal — the default. The open world, and any instance run at base. **Deliberately one bucket, see below** |
   | **D1** | Awakened |
   | **D2** | Adaptive |
   | **D3** | Fused |
@@ -624,8 +691,13 @@ These close with evidence, not tidying.
 
   **Self-healing is not gated at D3.** "He healed himself never at D0–D2" was
   read off one session. A later D2 kill of the same boss shows one self-heal
-  (`Superior Healing`, 210 hp), and **Lady Vox heals itself at D0**, in the open
-  world. What the tier raises is how much of the kit appears, not whether a
+  (`Superior Healing`, 210 hp), and **Lady Vox heals itself at D0** — at base
+  difficulty, in `The Permafrost Caverns - Group`. This file said "in the open
+  world" until 22 August 2026 and that was wrong: the fight is in a group
+  instance whose zone line prints no tier at all, which is a shape this file did
+  not describe until today. **The finding survives the correction intact** — the
+  point was always that a heal appears at base, and it does. Only the setting
+  was wrong. What the tier raises is how much of the kit appears, not whether a
   heal is in it. **And "ten times at D4" is ten log lines of one effect ticking
   every six seconds for the same 22 hit points** — a recurring drain, not ten
   decisions. The same shape appears on Vox at her top tier.

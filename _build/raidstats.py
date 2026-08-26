@@ -95,16 +95,134 @@ BOSSES = ["Master Yael", "Lord Nagafen", "Lady Vox", "Phinigel Autropos",
 
 TIER_NAME = {"1": "Awakened", "2": "Adaptive", "3": "Fused", "4": "Refined"}
 
+# "<name> has asked you to join the instance: The Plane of Sky 0 (Normal).
+#  Would you like to join? ..." - the sentence ends at the first ". ", and
+# reading to the end of the line instead carries the question into the zone
+# name so that it matches nothing. That mistake made an early pass of this work
+# conclude that no invite ever names a tier, which is the opposite of the truth.
+INVITE = re.compile(r'asked you to join the instance:\s*(.+?)\.\s')
+TIER_RE = re.compile(r'\s(\d) \(([A-Za-z]+)\)\s*$')
+
+# The game's own word for each tier, learned from the invites rather than typed.
+# "Normal" is in here because the invites say "0 (Normal)"; the site's own word
+# for an INFERRED tier 0 stays "Base", so the label itself records whether the
+# number was read or reasoned to.
+TIER_LABEL = {}
+# zone base -> set of tiers it has ever been entered at, and how many entries.
+# Filled by note_invite() during the scan, read by resolve_tier() afterwards.
+INSTANCED = collections.defaultdict(set)
+INSTANCED_N = collections.Counter()
+
+
+def note_invite(name):
+    base, num, label = split_tier(name)
+    if base is None or num is None:
+        return
+    INSTANCED[base].add(num)
+    INSTANCED_N[base] += 1
+    TIER_LABEL.setdefault(num, label)
+
+
+def split_tier(name):
+    """("The Plane of Sky", 0, "Normal") or ("The Plane of Sky", None, None)."""
+    if not name:
+        return None, None, None
+    m = TIER_RE.search(name)
+    if not m:
+        return name.strip(), None, None
+    return TIER_RE.sub('', name).strip(), int(m.group(1)), m.group(2)
+
+
+# WHY THIS IS NOT A ONE-LINE FALLBACK ANY MORE
+# --------------------------------------------
+# It used to be. An unsuffixed zone name returned `0, "Base"`, which reads as a
+# measurement and is not one, and 98 of 213 fights were published on the back of
+# it. Measured across the 13 staged logs on 26 August 2026:
+#
+#   * A ZONE line prints "0 (Normal)" exactly 0 times, in 385 zone lines.
+#   * An INVITE line prints it 16 times.
+#
+# So tier 0 IS named in the game - on the instance invite, never on the zone
+# line. CLAUDE.md said flatly that D0 is not named and that was wrong; the true
+# claim is narrower and is now recorded there.
+#
+# Pairing each invite with the zone line that followed it: 73 agree exactly,
+# 16 are the zone line dropping a tier the invite had named, and **0 disagree**.
+# The invite never contradicts the zone line, so there is no winner to choose -
+# there is a gap to fill, and filling it silently with 0 was the fault.
+#
+# The two populations behind those 98 rows are not alike:
+#
+#   * The Plane of Sky, 90 fights. Every Sky invite in the corpus says 0, and
+#     no Sky invite says anything else. Those rows are corroborated.
+#   * Eight "- Group" fights in three zones entered at {0,2,3,4}, {0,1,2,3} and
+#     {0,1,2,3,4}. A bare "The Plane of Fear - Group" cannot mean 0 when that
+#     instance was entered at four different tiers. Those are unresolved, and
+#     saying so is the whole point.
+#
+# The invite is evidence and is kept whether or not it is the field's source.
+
+def resolve_tier(zone, invite):
+    """(number, label, source, evidence) for one zone entry.
+
+    `invite` is the instance invite immediately preceding this entry, for this
+    same zone, or None. Nothing is overwritten: both readings go into the
+    evidence, and `source` names the one the number came from.
+    """
+    ev = {}
+    if zone is None:
+        return None, None, "no zone line", ev
+
+    zbase, znum, zlabel = split_tier(zone)
+    if znum is not None:
+        ev['zone_line'] = dict(text=zone, tier=znum, label=zlabel)
+    if invite:
+        ibase, inum, ilabel = split_tier(invite)
+        if inum is not None:
+            ev['invite_line'] = dict(text=invite, tier=inum, label=ilabel)
+
+    zl, il = ev.get('zone_line'), ev.get('invite_line')
+    if zl and il and zl['tier'] != il['tier']:
+        # Never seen in the corpus. If it ever happens the zone line wins -
+        # it records where the character actually stood, where the invite
+        # records what was offered - but the disagreement is published rather
+        # than resolved out of sight.
+        return zl['tier'], zl['label'], "zone line, invite disagrees", ev
+    if zl:
+        return zl['tier'], zl['label'], "zone line", ev
+    if il:
+        return il['tier'], il['label'], "instance invite", ev
+
+    # NEITHER LINE NAMED A TIER, so whatever comes back is an inference and is
+    # labelled as one. What kind of inference depends on the zone, and "does it
+    # say - Group" is the wrong test: The Plane of Sky is instanced and is not
+    # named that way, so a naming rule would have quietly filed 90 fights as
+    # open-world. INSTANCED is built from the invites the corpus actually holds.
+    seen = INSTANCED.get(zbase)
+    if not seen:
+        # No invite for this zone anywhere in the corpus. It is open world as
+        # far as anything we hold can say, and 0 follows from the absence of an
+        # instance rather than from a line naming it.
+        return 0, "Base", "inferred: open world, no instance recorded", ev
+    if len(seen) == 1:
+        # Every recorded entry to this instance was at the same tier. That is
+        # weaker than reading the line for THIS entry and stronger than a bare
+        # default, so it is published with the reasoning attached rather than
+        # rounded to either.
+        only = next(iter(seen))
+        ev['instance_history'] = dict(tiers=[only], entries=INSTANCED_N[zbase])
+        return only, TIER_LABEL.get(only), (
+            f"inferred: every recorded entry to this instance was tier {only}"), ev
+    # Entered at more than one tier, and nothing says which one this was. This
+    # is the honest answer and the one the site was not giving.
+    ev['instance_history'] = dict(tiers=sorted(seen), entries=INSTANCED_N[zbase])
+    return None, None, "unresolved", ev
+
 
 def tier_of(zone):
-    """D-tier from the zone line. The game prints it on entry, which is the
-    only unambiguous source: loot +N is modal and can disagree."""
-    if not zone:
-        return None, None
-    m = re.search(r'\s(\d) \(([A-Za-z]+)\)\s*$', zone)
-    if not m:
-        return 0, "Base"
-    return int(m.group(1)), m.group(2)
+    """Back-compat for callers that have only a zone string."""
+    num, label, _src, _ev = resolve_tier(zone, None)
+    return num, label
 
 
 # The verb sits between the attacker and the boss, and the game inflects it per
@@ -162,6 +280,8 @@ def parse_log(path):
     char = re.search(r'eqlog_([^_]+)_', os.path.basename(path))
     char = char.group(1) if char else "unknown"
     zone = None
+    pending_invite = None      # seen, not yet attached to a zone entry
+    zone_invite = None         # the invite that named the zone we are in
     open_fights = {}
     # When the boss was first seen doing anything in this zone. A fight opens on
     # the first damage dealt TO the boss, so if the boss was already swinging or
@@ -174,12 +294,28 @@ def parse_log(path):
         if not m:
             continue
         ts, b = m.group(1), m.group(2)
+        inv = INVITE.search(b)
+        if inv:
+            # Held until the next zone line, then attached to it. An invite is
+            # evidence about the entry that follows it, not about the zone the
+            # character is standing in when it arrives.
+            pending_invite = inv.group(1)
+            note_invite(pending_invite)
+            continue
         z = ZONE.match(b)
         if z:
             if not z.group(1).startswith(NOT_A_ZONE):
                 open_fights.clear()          # zoning ends every fight in progress
                 first_active.clear()
                 zone = z.group(1)
+                # Only where it is an invite for THIS zone. Declining an invite
+                # and going somewhere else would otherwise stamp the wrong
+                # instance's tier onto the zone actually entered.
+                zone_invite = (pending_invite
+                               if pending_invite
+                               and split_tier(pending_invite)[0] == split_tier(zone)[0]
+                               else None)
+                pending_invite = None
             continue
         for boss, rx in boss_re.items():
             if boss_sub[boss] not in b:
@@ -190,7 +326,8 @@ def parse_log(path):
             d = rx['dmg'].search(b) or rx['spell'].match(b)
             if d:
                 f = open_fights.setdefault(boss, dict(
-                    boss=boss, zone=zone, character=char, start=ts, damage=0,
+                    boss=boss, zone=zone, zone_invite=zone_invite,
+                    character=char, start=ts, damage=0,
                     healed=0, heal_count=0, casts=collections.Counter(),
                     melee_verbs=collections.Counter(), melee_hits=[],
                     by=collections.Counter(),
@@ -227,7 +364,7 @@ def fmt(f):
     t = datetime.datetime.strptime
     secs = int((t(f['end'], '%a %b %d %H:%M:%S %Y')
                 - t(f['start'], '%a %b %d %H:%M:%S %Y')).total_seconds())
-    num, label = tier_of(f['zone'])
+    num, label, dsrc, dev = resolve_tier(f['zone'], f.get('zone_invite'))
     hits = f['melee_hits']
     # WHO WAS ACTUALLY THERE.
     # Names are counted and thrown away. Other players do not get named on this
@@ -265,6 +402,13 @@ def fmt(f):
         "damage_is_floor": late is not None and secs and late > max(20, 0.25 * secs),
         "date": t(f['end'], '%a %b %d %H:%M:%S %Y').strftime('%d %b %Y'),
         "difficulty": num, "difficulty_label": label,
+        # WHICH LINE THIS CAME FROM. A number with no provenance beside it is
+        # how 98 fights came to be published as tier 0 on the strength of a
+        # fallback. Both readings are kept in difficulty_evidence whether or not
+        # they were the source, so nothing is chosen out of sight, and
+        # difficulty is null where the logs genuinely do not say.
+        "difficulty_from": dsrc,
+        "difficulty_evidence": dev,
         "group_instance": " - Group" in (f['zone'] or ""),
         "seconds": secs,
         "damage_to_kill": f['damage'],
@@ -276,6 +420,27 @@ def fmt(f):
         "melee_min": min(hits) if hits else None,
         "melee_max": max(hits) if hits else None,
     }
+
+
+# How much a difficulty reading is worth, best first. A line naming the tier
+# beats an inference from the zone's history, which beats an inference from the
+# absence of an instance, which beats nothing at all.
+SRC_RANK = ("zone line, invite disagrees", "zone line", "instance invite")
+
+
+def src_rank(src):
+    src = src or ""
+    if src in SRC_RANK:
+        return SRC_RANK.index(src)
+    if src.startswith("inferred: every recorded entry"):
+        return len(SRC_RANK)
+    if src.startswith("inferred:"):
+        return len(SRC_RANK) + 1
+    return len(SRC_RANK) + 2          # unresolved, or no zone line
+
+
+def best_src(obs):
+    return min(obs, key=lambda o: src_rank(o.get('difficulty_from')))
 
 
 def merge(rows):
@@ -334,7 +499,15 @@ def merge(rows):
         heals = [o['self_heal_count'] for o in obs]
         out.append({
             "boss": boss, "difficulty": diff,
-            "difficulty_label": obs[0]['difficulty_label'],
+            "difficulty_label": best_src(obs)['difficulty_label'],
+            # THE BEST-SOURCED CLIENT DESCRIBES THE FIGHT, not the first one in
+            # the list. Two characters in one group log the same kill, and one
+            # may have accepted the instance invite while the other zoned in
+            # without it - so one client can read the tier from a line while the
+            # other can only infer it. obs[0] was whichever log was parsed first,
+            # which is not a reason to prefer its provenance.
+            "difficulty_from": best_src(obs)['difficulty_from'],
+            "difficulty_evidence": best_src(obs)['difficulty_evidence'],
             "date": date, "zone": obs[0]['zone'],
             "group_instance": obs[0]['group_instance'],
             "observers": sorted(o['character'] for o in obs),
@@ -401,9 +574,19 @@ def main(src):
         m = re.search(r'eqlog_([^_]+)_', os.path.basename(p))
         if m:
             OURS.add(m.group(1))
-    raw = []
+    # TWO PASSES, AND THE ORDER IS LOAD-BEARING.
+    # fmt() resolves a fight's difficulty, and one of the readings it can fall
+    # back on is the set of tiers this instance has EVER been entered at, which
+    # is a fact about the whole corpus. Parsing and formatting in one loop -
+    # `raw += [fmt(f) for f in parse_log(path)]` - resolved log 1's fights
+    # against a registry holding only log 1, so the Plane of Sky's history read
+    # 5 entries where the logs hold 9, and an inference drawn from a partial
+    # corpus is not the inference it claims to be. Parse everything, then
+    # resolve.
+    parsed = []
     for path in logs:
-        raw += [fmt(f) for f in parse_log(path)]
+        parsed += list(parse_log(path))
+    raw = [fmt(f) for f in parsed]
     out = merge(raw)
     json.dump(out, open('assets/raids-measured.json', 'w', encoding='utf-8',
                         newline=chr(10)), indent=1)
