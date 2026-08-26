@@ -78,4 +78,4 @@ python3 _build/build27.py
 python3 _build/build23.py
 python3 _build/sitemap.py
 python3 scripts/stamp.py
-echo "Rebuilt. Commit and push, or drag the folder to Netlify."
+echo "Rebuilt. Open a pull request; merging to main is what publishes."
