@@ -164,6 +164,116 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 25 Aug directive — items 1 and 2 done, 3 was already landed, 4 is blocked
+
+**Item 3 is not outstanding.** It shipped in #143 and #144, both merged, and it
+is on `main` now: `check.py` line 155 reads `public/index.html`, the self-test
+harness collects `WARN` as well as `FAIL`, and all 32 cases pass. The coverage
+number the directive asks me to take from Session B I had already measured
+independently and reported on 22 Aug: **22 of 106 assertions proven alive
+(21%)** — gate.py 19 of 42, check.py 3 of 64 — with the sharper finding that
+*every one* of gate.py's seven unreachable `warn(` assertions has the form
+"X is missing, so Y is unchecked".
+
+**Item 1 done.** `_build/lockouts.py`, run by `build.sh`, copies the built page
+under its content hash, writes `assets/lockouts.json`, and exits 0 with the repo
+absent. No tools/ page and no landing band. Three things worth your attention:
+
+- **One deliberate departure.** `check.py`'s Sky Ledger guard *fails* when no
+  page links the hashed file. Here that is the ordered state, so it is a WARN
+  that names the promotion it is waiting on and clears itself the moment a page
+  links the file. The converse is a hard fail: a page linking it while the
+  record still says `promoted:false` means the data and the pages disagree.
+- **The hash is computed, not trusted.** That repo names its own build and ships
+  a `latest.txt`; the pointer names the file, the bytes are hashed here, and a
+  disagreement is a hard error. sha256 to match their build, sha1 for the Ledger
+  to match its own — each mirrors its upstream so "are the two in sync?" is a
+  string comparison. Do not unify them for tidiness.
+- **The Lockouts repo rebuilt while I worked** (`59ddc576` → `c405ef53`). The
+  generator picked up the new build and swept the old copy, which is the point.
+
+**Found while building it: `skyledger.py` has never found its repo from a git
+worktree.** `ROOT` is `.claude/worktrees/<name>` there, so its fixed
+`../ClaSkyApp` candidates resolve inside `.claude` and match nothing — it
+returned `None` and kept the committed copy without complaint. **Every pull
+request I have built from a worktree has been skipping the re-copy.** Nothing
+stale ever shipped, and only because the served copy happens to match upstream
+byte for byte; I verified that before touching it, which is why this PR moves no
+Sky Ledger bytes. Both finders now walk up.
+
+**Item 2 done, and the directive is right about the invite and wrong about the
+population.**
+
+You were right that the invite is genuine evidence. Measured across the 13
+staged logs: a **zone line prints `0 (Normal)` 0 times in 385 zone lines; an
+invite prints it 16 times.** Pairing each invite with the zone line that
+followed it — **73 agree exactly, 0 disagree, and 16 are the zone line dropping
+a tier the invite had named.** So there was never a winner being silently
+chosen. There was a *gap*, and `tier_of()` filled it with `return 0, "Base"` —
+a fallback that reads as a measurement. 98 of 213 fights rested on it.
+
+**Where the directive is wrong: those 90 rows are not open-world kills.** They
+are all The Plane of Sky, which is instanced and simply is not named `- Group`.
+The logs hold 9 Plane of Sky instance invites and **every one says `0 (Normal)`,
+none says anything else.** Filing them as open-world would have been a second
+error on top of the first, and a naming rule (`" - Group" in zone`) would have
+done exactly that — which is why the instanced set is built from the invites the
+corpus actually holds rather than from how a zone is spelled.
+
+Nothing was deleted and nothing overwritten. Every fight now carries
+`difficulty_from` naming the line the number came from, and `difficulty_evidence`
+holding **both** readings whether or not either was the source. A genuine
+conflict would publish as `zone line, invite disagrees` rather than being
+resolved out of sight. Result, at an unchanged 213 fights:
+
+| source | fights |
+|---|---|
+| zone line | 112 |
+| instance invite | 87 |
+| inferred: every recorded entry to this instance was tier 0 | 11 |
+| no zone line (null) | 3 |
+
+**So 87 of the 98 are now read from a line, 11 are an inference that says so,
+and 0 are unresolved.** The eight `- Group` fights you singled out each resolved
+from their *own* immediately preceding invite, all `0 (Normal)` — even though
+those three instances were entered at `{0,2,3,4}`, `{0,1,2,3}` and
+`{0,1,2,3,4}` across the corpus. Per-entry attribution was necessary; a
+corpus-level rule would have marked all eight unresolved and thrown away good
+evidence.
+
+**A bug I introduced and caught before it shipped.** `raw += [fmt(f) for f in
+parse_log(path)]` resolved each log's fights before the later logs had been
+scanned, so an inference drawn from "every recorded entry" was drawn from a
+partial corpus — the Plane of Sky's history read 5 entries where the logs hold
+9. Two passes now: parse everything, then resolve.
+
+**CLAUDE.md was already right and I have only tightened it.** Its zero-matches
+claim is scoped to `You have entered` lines, and the paragraph below it already
+said the invite names base as "Normal". The bold `**D0 is not.**` was the only
+loose part when quoted alone. The new measurement is recorded there as
+corroboration.
+
+**Named, not done: `logstats.py` does not read the invite line at all.**
+`raidstats.py` is the only generator that does. **61 of logstats' 172 sessions
+rest on something other than a numbered zone line** (50 unsuffixed, 10 loot
+tier, 1 none), and its zones include Plane of Sky, Old Paineel and Nagafen's
+Lair, all of which have invites. That would move `measured.json` and the public
+`sightings` contract, so it is a separate change and not this one. It is the
+single highest-value follow-up I found.
+
+**Item 4 not done, and one figure in the directive is not citable here.** I do
+not have Session B's copy in this tree, and you ruled B owns it and must not be
+made to edit this tree — so it waits on their text. On the figures: the
+`2,230 UNCONFIRMED / 5,369 explicit-era` split is **not** in
+`assets/50-upgrades.json`. What is there is `counts.purge.quarantined = 7599`,
+and **2,230 + 5,369 = 7,599 exactly** — so your split is a real decomposition of
+a figure this repo holds, but only the total is published to us. `upfig()`
+cannot interpolate it by field path until B's upstream emits the two parts.
+Tell me whether to ask B for that, or to print the total alone.
+
+Also corrected in passing: `build.sh` finished by telling the operator to
+"drag the folder to Netlify", three weeks after Cloudflare became the host.
+
 ### 22 Aug directive — items 1 and 4 done, and where the directive is wrong
 
 **Item 1 shipped in #143.** Both faults confirmed exactly as reported. Coverage

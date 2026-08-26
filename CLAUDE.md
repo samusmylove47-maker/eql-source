@@ -155,7 +155,8 @@ log their absence as a defect.
   backstabs.
 
   **D1 to D4 are named in game** and the zone line prints the name on entry —
-  `You have entered The Castle of Mistmoore 1 (Awakened).` **D0 is not.** This
+  `You have entered The Castle of Mistmoore 1 (Awakened).` **D0 is not, on that
+  line** — it is named on the instance invite, two paragraphs down. This
   file said "the tiers are named" of all five rows until 22 August 2026, and
   searching every `You have entered` line in every staged log for `0 (`, `Base`
   or `Normal` returns **zero matches**: the game never prints a parenthesised
@@ -170,6 +171,16 @@ log their absence as a defect.
   corroborated rather than merely recorded. Note the invite line *does* name
   base as "Normal" where the zone line prints nothing, which is how D0 has a
   name at all.
+
+  **Counted in our own logs, 26 Aug 2026, and it settles the ranking.** Across
+  the 13 staged logs a zone line prints `0 (Normal)` **0 times in 385 zone
+  lines**; an invite prints it **16 times**. Pairing each invite with the zone
+  line that followed it: **73 agree exactly, 0 disagree, and 16 are the zone
+  line dropping a tier the invite had named.** So the invite never contradicts
+  the zone line — it fills a gap the zone line leaves — and for tier 0 it is the
+  *better* source, not the weaker one. Anything deriving a difficulty should
+  read it. Only `_build/raidstats.py` does; `_build/logstats.py` does not, and
+  61 of its 172 sessions rest on something other than a numbered zone line.
 
   **The instance grammar has four shapes, not two.** Measured across 68 distinct
   zone strings:
