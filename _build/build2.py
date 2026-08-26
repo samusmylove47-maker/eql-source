@@ -29,6 +29,9 @@ BYSLUG = {z["slug"]: z for z in ZONES}
 # Sky Ledger's dataset counts, read out of assets/sky-ledger.json rather than
 # typed. _build/skyledger.py counts them from the tool's own sky.json.
 SLD = json.load(open("assets/sky-ledger.json", encoding="utf-8"))["dataset"]
+# Same rule for the lockout tracker: the build facts come out of its manifest
+# rather than being typed into a card that then goes stale on the next copy.
+LKA = json.load(open("assets/lockouts.json", encoding="utf-8"))["app"]
 # The planner's vendored snapshot, read by field path exactly as build1.py and
 # build29.py read it. counts.items is the catalogue; counts.purge.shipped is
 # what survived the era purge, and they are not the same quantity.
@@ -141,6 +144,18 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
           values, and it grades its own rows &mdash; this page says how many carry no source standing at all before
           you trust a comparison.</p>
         <div class="chipline"><span class="pill">{UPF['counts.items']:,} items</span><span class="pill">Three classes at once</span><span class="pill">No account</span></div>
+        <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
+
+      <a class="card" href="lockouts.html" style="--c:var(--ember)">
+        <div class="kicker">Raiding &middot; reads your combat log</div>
+        <h3 class="t">Lockout tracker</h3>
+        <p class="d">Every other tracker here says what you have done. This one says
+          <strong>what is still open</strong>. Where it has no history for a boss it prints
+          <strong>not looked</strong> rather than <em>open</em> &mdash; an empty log is not
+          evidence of availability, and the guess that looks most useful is wrong in the one
+          direction that costs you a night. It keeps the weekly task, the instance lockout and
+          the replay timer apart, which is where most lockout advice goes wrong.</p>
+        <div class="chipline"><span class="pill">Says &ldquo;not looked&rdquo;</span><span class="pill">No countdown</span><span class="pill">No install</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">

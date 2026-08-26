@@ -565,14 +565,33 @@ if _lk:
              f"cache if the stale file stops being served")
     _llinked = any(_lapp["file"] in open(p, encoding="utf-8", errors="replace").read()
                    for p in pages)
-    if _llinked and not _lk.get("promoted"):
+    # THE GATE IS DERIVED FROM THE FLAG, NOT HAND-EDITED TO MATCH IT.
+    #
+    # This was a warn() for one day, while the app was copied and deliberately
+    # unlinked. Promotion flipped `promoted` in assets/lockouts.json, and the
+    # check follows the flag rather than a person remembering to come back:
+    #
+    #   promoted, not linked  -> FAIL. Exactly the Sky Ledger's rule. A hashed
+    #                            URL nothing points at is a file nobody reaches.
+    #   linked, not promoted  -> FAIL. The data and the pages disagree.
+    #   neither               -> warn. The interim state is still expressible,
+    #                            and still says out loud that it is interim.
+    #
+    # Writing it this way is the point. A check hand-edited to match a state it
+    # does not read goes stale the moment the state changes, and a dead check
+    # looks exactly like a passing one.
+    _lpromoted = bool(_lk.get("promoted"))
+    if _lpromoted and not _llinked:
+        fail(f"public/app/{_lapp['file']} is served and promoted, but no page "
+             f"links it. Run python3 _build/build30.py, or set promoted:false")
+    elif _llinked and not _lpromoted:
         fail(f"a page links public/app/{_lapp['file']}, but "
-             f"assets/lockouts.json still records promoted:false. The tool is "
+             f"assets/lockouts.json records promoted:false. The tool is "
              f"promoted or it is not; the data and the pages must agree")
-    if not _llinked:
-        warn(f"public/app/{_lapp['file']} is served and no page links it. This "
-             f"is intended until Session D reports (Director, 25 Aug 2026). "
-             f"On promotion, make this a fail() like the Sky Ledger's")
+    elif not _lpromoted:
+        warn(f"public/app/{_lapp['file']} is served and no page links it, and "
+             f"assets/lockouts.json records promoted:false, so this is "
+             f"deliberate. Promotion flips both together")
 
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts

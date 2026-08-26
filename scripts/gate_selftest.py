@@ -338,6 +338,34 @@ CASES = [
                            if k != "tools/sky-ledger.html"},
                           indent=1, sort_keys=True)),
 
+    # THE PROMOTION GATE, BOTH DIRECTIONS.
+    #
+    # The lockout tracker was copied into public/app/ on 25 Aug 2026 and left
+    # deliberately unlinked, guarded by a warn(). Promotion on the 26th flipped
+    # `promoted` in the manifest and turned that warn into a fail() derived from
+    # the flag. These two cases exist because that is exactly the moment a check
+    # goes dead: it was written for a state that no longer holds, it stops
+    # firing, and a silent check and a passing one read the same.
+    #
+    # Both mutate the manifest rather than the pages, because two pages link the
+    # app - the band and the tool page - so no single-page edit can make it
+    # unlinked. The first case necessarily trips the "not in public/app/" check
+    # as well; what it proves is that the promoted-and-unlinked branch is
+    # reachable and that its sentence still appears.
+    ("an app that is promoted but that no page links",
+     "is served and promoted, but no page links it",
+     "assets/lockouts.json",
+     lambda t: json.dumps({**json.loads(t),
+                           "app": {**json.loads(t)["app"],
+                                   "file": "eqls-lockouts.00000000.html"}},
+                          indent=1, sort_keys=True)),
+
+    ("a linked app whose manifest still says it is not promoted",
+     "records promoted:false",
+     "assets/lockouts.json",
+     lambda t: json.dumps({**json.loads(t), "promoted": False},
+                          indent=1, sort_keys=True)),
+
     # A registered tool with no card on the hub that lists the tools. This
     # shipped twice: once when the inventory reader was built, registered and
     # footer-linked with no card, and again on 18 Aug 2026 when 50 Upgrades —
