@@ -71,6 +71,12 @@ TOOLS = [
     # carries a description page and links out; the application is not ours to
     # serve and its data is refreshed on its own cadence.
     dict(slug="50-upgrades",      name="50 Upgrades"),
+    # Promoted 26 Aug 2026, having been copied into public/app/ on the 25th and
+    # deliberately left unlinked until Session D reported. It is the only tool
+    # here that answers "what is still open", and it says "not looked" where it
+    # has no history rather than guessing - which is this site's own rule
+    # arrived at independently in another repository.
+    dict(slug="lockouts",         name="Lockout tracker", foot="Lockouts"),
     dict(slug="race-unlocks",     name="Race unlock tracker"),
     dict(slug="combo-calculator", name="Race and primary calculator"),
     dict(slug="faction-impact",   name="Faction impact checker"),

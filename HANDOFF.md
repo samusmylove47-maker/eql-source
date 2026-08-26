@@ -4554,6 +4554,96 @@ between them.
 
 ## To the Director
 
+### 26 Aug — the tracker is live. All five items done, and one drift check did not hold
+
+**Item 1, seventh tool.** Registered in `_partials.TOOLS` with a short footer
+label. Registry 7, hub cards 7, footer 7, and "Seven trackers" has already
+propagated to the home page, the 404, search, Accuracy and the tools hub —
+that count is derived, so it moved on its own.
+
+**You asked me to confirm our drift check still holds. It does not, in two
+places, and one of them was live and green while it was wrong.**
+
+- `scripts/toolsmoke.js` keeps a **second, hand-maintained copy of the
+  registry**. When the seventh tool landed — registered, built, footer-linked,
+  on the hub — that file went on printing **"All 6 tools ran"**. A passing line
+  for a set that had grown underneath it. Its own comment admitted the hole in
+  as many words: a tool is listed there "because nothing else forces a new tool
+  to appear here". Now something does: it reads the slugs out of `_partials.py`
+  and refuses to run on a mismatch, in either direction — registered-but-unsmoked
+  and smoked-but-unregistered are both failures. Mutation-proven: removing the
+  entry exits 2 and names the missing slug.
+- `scripts/gate.py` computes `truth["tools listed"] = len(TOOLS)` at line 269 and
+  **no regex consumes it**. The "N trackers" prose rule was withdrawn on purpose
+  (gate.py:289-295) with a good reason — the tools index legitimately writes
+  "including the two trackers" meaning something else, and a check that blocks
+  correct prose gets switched off. So that is a deliberate gap rather than a
+  defect, but it is not protection, and the computed line reads like it is. What
+  actually holds is check 6, registry against footers and hub, and it does hold:
+  I exercised it.
+
+**Item 2, `tools/lockouts.html`.** On build28's pattern. Build facts from
+`assets/lockouts.json`. The two timing figures are **read out of the served
+bundle at build time**, because they are not in the manifest and typing them
+beside the data they came from is the fault this project keeps finding. If the
+constants cannot be parsed the build **fails** rather than shipping a page with
+the interesting part quietly missing.
+
+**Item 3, gate flipped, both halves together.** `promoted` is true in the
+manifest and `check.py` derives from the flag rather than being hand-edited to
+match it: promoted-and-unlinked **fails**, linked-and-not-promoted **fails**,
+neither still warns so the interim state stays expressible. **Both directions
+are mutation-proven and are now permanent self-test cases — 34, up from 32.**
+Also caught: `lockouts.py`'s own console line hardcoded the word "unpromoted"
+and went on printing it after the flag flipped, one line below the record it
+disagreed with.
+
+**Item 4, copy. All three retractions are honoured, and here is the evidence
+rather than the assurance.**
+
+- **Not "resets Tuesday".** Tuesday appears once, as the only weekday in the
+  model, governing the weekly task and its Void-Touched Potential token — badged
+  *stated, not measured*. The instance lockout is set out beside it as rolling,
+  with no weekday at all, and the page says plainly that this is the one people
+  describe as resetting on Tuesday and it does not.
+- **Not a measured six days.** The page prints the **difference** as the fact —
+  5 days 23 hours, 514,800 seconds, marked `observed` — and explains that it is
+  a subtraction, which is why it holds whatever the elapsed time was. The 6-day
+  period sits beside it marked `conditional` with the condition named. Both
+  labels are read from the bundle, so the page cannot drift from the tool.
+- **No countdown.** None on the page. It states the deliberate absence and the
+  reason: the reset hour is not recorded, so a ticking number would be inventing
+  precision.
+
+**Item 5, band. The owner approved it and chose your placement** — third, above
+Auras, applying build1.py's own rule rather than making an exception to it. I
+put it to them rather than deciding here, because they had ruled on 17 Aug that
+the Auras band was not to move, and Auras going third to fourth is the visible
+consequence. The comment block is amended to record that the rule **placed** the
+band, and that the alternative reading — that an exception was made — is the one
+a future session would otherwise take from the diff.
+
+**Things you should know that were not in the brief:**
+
+- **The upstream repo's working tree does not currently load** —
+  `ReferenceError: ROSTER is not defined`, mid-refactor from five boss rows to
+  five raid rows. The **committed build we serve is fine**: I opened it and it
+  renders its empty state with no console errors, and I re-opened it after each
+  rebuild. But the app rebuilt **three times during this session**
+  (`c405ef53` → `89ee5808` → `779df7f5`), so what we serve is moving under us.
+  The hash in the manifest is what makes that safe rather than silent.
+- **A ceiling was raised by hand**, which is a decision and not a side effect:
+  `index.html` 954 → 1,087. A fourth feature band cannot fit a three-band
+  ceiling. I trimmed the band from +206 words to +133 before raising it.
+  `prose_budget.py` enrolled the new page at 851 and only lowered others.
+- `public/_redirects` said "the three trackers" while listing three there and a
+  fourth further down. It is five now, and the comment no longer counts them.
+- This file said the tool count "went from nine to six on 18 Aug and **six is
+  final**". That was a prediction, and it is seven.
+- One rendering bug in my own CSS — a nested `<em>` inheriting `display:block`
+  and breaking a sentence across four lines — was caught only by reading the
+  built page. No check here can see that, which is the point of the rule.
+
 ### 25 Aug directive — items 1 and 2 done, 3 was already landed, 4 is blocked
 
 **Item 3 is not outstanding.** It shipped in #143 and #144, both merged, and it
@@ -4977,7 +5067,9 @@ It lists eight tools and omits `50-upgrades` — which is to say it omits the pa
 it is. It is our footer as it stood before PR #90 registered that tool.
 
 Fixing it entry by entry now means fixing it twice, because the tool count went from nine to six
-on 18 Aug and six is final. **After the consolidation lands, copy the footer
+on 18 Aug. **It is seven from 26 Aug 2026** — the lockout tracker was promoted —
+so "six is final", which this paragraph said until then, was a prediction rather
+than a fact and should not be read as one again. **After the consolidation lands, copy the footer
 once from the final state and add the drift check** — the same shape you already
 built for the nav. A hand-copied footer drifts silently, which is the argument
 that put `len(TOOLS)` behind ours and `gate.py` rule 6 in front of it; rule 6

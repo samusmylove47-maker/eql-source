@@ -8,10 +8,14 @@
 # only version of this that cannot rot — see the publish-directory note in
 # HANDOFF.md.
 
-# Pretty URLs for the three trackers that get shared in chat.
+# Pretty URLs for the trackers that get shared in chat. This said "the three
+# trackers" while listing three here and a fourth further down (/upgrades), and
+# it is five now. Counting them in a comment is how it went stale; the list is
+# the count.
 /sky         /tools/sky-ledger.html        301
 /races       /tools/race-unlocks.html      301
 /calculator  /tools/combo-calculator.html  301
+/lockouts    /tools/lockouts.html          301
 
 # EVERY WITHDRAWAL RULE IS WRITTEN IN BOTH FORMS, AND HERE IS WHY.
 #

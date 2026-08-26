@@ -33,6 +33,9 @@ python3 _build/build2.py
 python3 _build/build3.py
 # The Sky Ledger page. Prints every dataset figure out of assets/sky-ledger.json.
 python3 _build/build28.py
+# tools/lockouts.html. Reads the timing constants out of the served bundle, so
+# it must run after lockouts.py has put that bundle in public/app/.
+python3 _build/build30.py
 # The 50 Upgrades description page. Reads assets/50-upgrades.json, which is a
 # vendored snapshot of the planner's own meta.json rather than anything we count.
 python3 _build/build29.py

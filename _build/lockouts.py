@@ -173,17 +173,28 @@ def main():
         # null rather than absent, and null rather than invented: a version
         # string typed here would be the exact fault this file exists to avoid.
         version=None,
-        # Nothing on the site links this yet, by order of 25 Aug 2026. Recorded
-        # so the state is a fact in the data rather than a thing you have to
-        # notice, and so check.py can WARN from it rather than from a guess.
-        promoted=False,
+        # PROMOTED 26 AUG 2026. This was false for one day by order, while the
+        # app sat copied and unlinked pending Session D.
+        #
+        # It stays a field rather than becoming an assumption because check.py
+        # reads it: with promoted true, an unlinked served app is a build
+        # FAILURE, and a page linking it while this said false would also fail.
+        # Flipping it and flipping the check are one act - a gate that only
+        # warns after promotion is the dead-check class, and a dead check looks
+        # exactly like a passing one.
+        promoted=True,
         app=dict(file=name, hash=short, sha256=sha256, bytes=len(blob),
                  kb=round(len(blob) / 1024)),
     )
     json.dump(rec, open(OUT, 'w', encoding='utf-8', newline='\n'),
               indent=1, sort_keys=True)
 
-    print(f"lockouts: {name} ({rec['app']['kb']} KB, unpromoted)"
+    # Read off the record, not typed beside it. This line said "unpromoted"
+    # literally, and went on saying it after the flag flipped - a caption
+    # disagreeing with the data one line above it, which is the fault this file
+    # already documents twice.
+    print(f"lockouts: {name} ({rec['app']['kb']} KB, "
+          f"{'promoted' if rec['promoted'] else 'unpromoted'})"
           + (f", dropped {', '.join(dropped)}" if dropped else ''))
     return 0
 
