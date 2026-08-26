@@ -568,6 +568,90 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 26 Aug — my six-day claim was an assumption. D killed it, and what replaces it is better.
+
+**RETRACTED: "5d:23h:58m with ~2 minutes elapsed is a SIX-DAY ROLLING TIMER."**
+I asserted an absolute period from a single reading. **It is conditional on the
+replay period being exactly one hour, and I never said so.** Session D's
+adversarial pass caught it and their arithmetic is unarguable:
+
+```
+replay remaining   0d 0h 58m 05s  =     3,485 s
+boss   remaining   5d 23h 58m 05s =   518,285 s
+
+R − E = 3485 and B − E = 518285.  Two equations, three unknowns.
+Subtracting cancels E:   B − R = 514,800 s = EXACTLY 5 days 23 hours
+```
+
+**The difference is the measurement.** Exact, whole, and true for every possible
+elapsed time — nothing assumed to get it. The absolute period is not determined:
+a 1-hour replay gives 6d 0h, 90 minutes gives 6d 0h 30m, 2 hours gives 6d 1h,
+each self-consistent to the second. `LOCKOUT_MODEL.days` is now labelled
+`conditional` with the alternatives beside it.
+
+**D also retracted three of their own claims in the same report**, which is the
+part worth copying: *"no other pairing gives a whole number"* was false (B is
+determined by R, so every round R yields one); the anchor at 22:40:33 was **"one
+free parameter fitted to itself"** and `anchorEvent` is now `null`; and "36
+timers" is really **18 distinct locks displayed twice** — 14 boss locks and 4
+replay locks, each under two name-shapes.
+
+#### What survives without any assumption, and it is the load-bearing finding
+
+**Per-kill stamping is dead.** Fourteen distinct locks were earned across kills
+spanning **20:54:59 to 22:37:12 — 6,133 seconds**. A timer stamped at each kill
+would render fourteen different values at any single instant. **The window shows
+one value with zero spread.** No assumption about periods or elapsed time is
+needed to conclude that.
+
+**And my "the display groups and rounds" alternative is dead too, killed by the
+detail I had flattened.** The replay rows are not one value: two read `58m:04s`
+and six read `58m:05s`. **A display resolving one second cannot also collapse a
+6,133-second spread into one bucket** — that would need roughly six-hour
+granularity. It cannot be both.
+
+**The consequence is the one I flagged and D has made load-bearing: if the lock
+is stamped somewhere other than the kill, a kill-inference tracker is measuring
+the wrong event, and no volume of kill data would ever reveal it.**
+
+#### Two parser hazards found by reading the image rather than my description of it
+
+**The instance names are TRUNCATED at a fixed column width.** Every Group row
+reads `The Plane of Fear - Group 4 (Refine` — the `d)` cut off — while
+`- Solo 4 (Refined)` fits, because "Solo" is a character shorter. **If
+`/dzlisttimers` prints the same truncation, a parser matching full instance names
+fails on exactly half the rows.**
+
+**`Dracoliche` needs a name mapping as well as `Innoruuk`.** The log and
+`raids-measured.json` both write **`a dracoliche`** — lower case, with the
+article. Terror, Dread, Fright, Cazic-Thule and Maestro of Rancor match verbatim.
+
+#### Three objects now separated, with a test that keeps them apart
+
+| object | period | provenance | governs |
+|---|---|---|---|
+| `RESET_RULE` | Tuesday, hour not recorded | **stated** — owner, 23 Aug | the weekly task and its token |
+| `LOCKOUT_MODEL` | 6 days rolling, **conditional** | **observed** — alt+Z | instance loot |
+| `REPLAY_MODEL` | ~1 hour rolling | **observed** — alt+Z | **re-entry, not loot** |
+
+A test asserts all three periods are distinct, so a future merge fails the build.
+**The mutual corroboration holds**: our measured floor refuted any cycle up to
+5.78 days; six days clears it by about five hours — a measurement made without
+this window and a window read without that measurement, agreeing from opposite
+directions.
+
+#### Two cheap owner actions, and the second is new
+
+1. **`/dzlisttimers`**, with `/say timers check done` immediately after as the
+   positive control. D wrote the four-outcome table so an empty result can never
+   be mistaken for a filtered capture.
+2. **NEW, and it settles the period with no raid and no waiting: open alt+Z
+   within a minute of entering a fresh instance.** The Replay Timer then reads
+   close to its full period, which fixes R — and the exact difference above fixes
+   B immediately. Ten seconds, same trip.
+
+---
+
 ### 25 Aug, late — the Instance Information window. The lockout is printed, and it is not weekly.
 
 **The owner ran four raids — Cazic-Thule D3 and D4, Innoruuk D3 and D4 — and sent
