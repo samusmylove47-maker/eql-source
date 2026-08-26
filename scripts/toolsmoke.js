@@ -59,6 +59,11 @@ const TOOLS = [
    * is unsmoked. */
   { file: '50-upgrades.html', fills: null,
     note: 'a description page — the app it links is hosted and tested in its own repo' },
+  /* Third of the same shape. Promoted 26 Aug 2026; the page describes the
+   * application and the application itself is smoked below, out of
+   * public/app/, along with the Sky Ledger's. */
+  { file: 'lockouts.html', fills: null,
+    note: 'a description page — the app it links is tested in its own repo' },
   { file: 'index-search.html', fills: 'results', expect: '<',
     note: 'the result list renders unfiltered on load' },
   { file: 'faction-impact.html', fills: null,
@@ -237,7 +242,49 @@ async function run(tool) {
   return { ok: true, rendered: `#${tool.fills}, ${html_.length} chars` };
 }
 
+/* THE LIST ABOVE IS A SECOND COPY OF THE REGISTRY, SO IT IS PINNED TO THE FIRST.
+ *
+ * Its own comment said a tool is listed here "because nothing else forces a new
+ * tool to appear", and on 26 Aug 2026 that came true: the lockout tracker was
+ * registered in _build/_partials.py, shipped a page, reached the footer and the
+ * hub, and this file went on reporting "All 6 tools ran" — a green line for a
+ * set that had grown underneath it. A hand-maintained parallel list with nothing
+ * comparing it to its original is the drift this project keeps finding.
+ *
+ * So: read the slugs out of _partials.py and refuse to run if the two disagree.
+ * A tool missing here is unsmoked; a tool here that no longer exists is a test
+ * pointing at nothing. Both are failures, and neither is silent any more. */
+function pinToRegistry() {
+  const py = path.join(__dirname, '..', '_build', '_partials.py');
+  let src;
+  try {
+    src = fs.readFileSync(py, 'utf8');
+  } catch {
+    console.error(`toolsmoke: cannot read ${py} to pin the tool list`);
+    process.exit(2);
+  }
+  const block = src.slice(src.indexOf('TOOLS = ['));
+  const registry = [...block.slice(0, block.indexOf('\n]')).matchAll(/slug="([^"]+)"/g)]
+    .map((m) => `${m[1]}.html`);
+  const listed = TOOLS.map((t) => t.file);
+  const missing = registry.filter((f) => !listed.includes(f));
+  const extra = listed.filter((f) => !registry.includes(f));
+  if (missing.length || extra.length) {
+    console.error('toolsmoke: this file has drifted from _build/_partials.py TOOLS');
+    if (missing.length) {
+      console.error(`  registered but unsmoked: ${missing.join(', ')}`);
+    }
+    if (extra.length) {
+      console.error(`  smoked but not registered: ${extra.join(', ')}`);
+    }
+    console.error('  Add or remove the entry above; the registry is the truth.');
+    process.exit(2);
+  }
+  console.log(`  [pinned     ] ${registry.length} tools, matching _partials.TOOLS`);
+}
+
 /* -------------------------------------------------------------------- main */
+pinToRegistry();
 const only = process.argv[2];
 const picked = only ? TOOLS.filter(t => t.file.includes(only)) : TOOLS;
 if (!picked.length) {

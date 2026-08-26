@@ -181,10 +181,21 @@ try:
 except (OSError, ValueError):
     MEDIA = {}
 
-# 50 UPGRADES — first of the three bands, because it is the only one of them a
+# 50 UPGRADES — first of the four bands, because it is the only one of them a
 # stranger can use today. Sky Ledger ships too, but the planner is the link
 # being posted; EQLS Auras is a teaser for a build that does not exist yet, and
 # a teaser must not outrank a shipped product.
+#
+# THAT LAST RULE PLACED THE LOCKOUT BAND ON 26 AUG 2026 RATHER THAN BEING
+# OVERRIDDEN BY IT. The tracker ships and Auras still does not, so the tracker
+# goes above it: third, ahead of the teaser. The order is 50 Upgrades, Sky
+# Ledger, Lockouts, Auras.
+#
+# Auras moving from third to fourth is the visible consequence, and it was put
+# to the owner rather than decided here, because they had ruled on 17 Aug that
+# the Auras band was not to move. They chose to apply the rule. Recorded because
+# the alternative reading — that an exception was made — is the one a future
+# session would otherwise draw from the diff.
 #
 # WHERE EACH FIGURE COMES FROM, BECAUSE THEY COME FROM TWO PLACES.
 #
@@ -347,6 +358,47 @@ feature = f'''
 # NO CONTROL IMPLYING SOUND. The encode carries no audio stream at all, so a
 # mute button would offer to silence something that does not exist. Pause is the
 # only control, and the caption says "silent" so a reader knows before they ask.
+# THE LOCKOUT BAND. Third, above the Auras teaser, by the rule recorded above.
+#
+# Build facts read from assets/lockouts.json. The band deliberately carries no
+# duration: the measured figure is a DIFFERENCE between two timers and the
+# six-day period only follows from it if the replay period is exactly one hour.
+# A landing-page band is the worst place to compress that into a number, so it
+# says what the tool refuses to do and sends the reader to the page for the
+# arithmetic. The Director asserted the six days as fact and retracted it this
+# week; a band is the copy most likely to be quoted back.
+LK_APP = json.load(open('assets/lockouts.json', encoding='utf-8'))['app']
+
+lockouts = f'''
+<section class="band feat">
+  <div class="shell">
+    <div class="featwrap">
+      <div class="featgrid">
+        <div>
+          <p class="eyebrow">Live now &middot; <b>reads your own log</b></p>
+          <h2 class="feath">Lockout tracker</h2>
+          <p class="featlede">Every other tracker here tells you what you have done. This one
+            tells you <strong>what is still open</strong>. It reads your combat log in the
+            browser, and nothing leaves the machine.</p>
+          <p class="featsub"><strong>With no history for a boss it says &ldquo;not looked&rdquo;,
+            not &ldquo;open&rdquo;.</strong> An empty log is not evidence that something is
+            available, and the useful-looking guess is wrong in the one direction that costs
+            you a night.</p>
+          <p class="featsub">It keeps the weekly task, the instance lockout and the replay timer
+            apart, which is where most lockout advice goes wrong. Tuesday belongs to the weekly
+            task; the instance lockout is rolling, with no weekday at all.</p>
+          <div class="featdoors">
+            <a class="featdoor lead" href="app/{LK_APP['file']}">Run it in your browser &rarr;</a>
+            <a class="featdoor" href="tools/lockouts.html">What it does &rarr;</a>
+          </div>
+        </div>
+      </div>
+      <p class="featfoot">One file, {LK_APP['kb']} KB &middot; build {LK_APP['hash']} &middot; nothing installed, nothing sent
+    </div>
+  </div>
+</section>
+'''
+
 auras = f'''
 <section class="band feat">
   <div class="shell">
@@ -445,6 +497,7 @@ home = head("Accurate, sourced and kept current",
 </section>
 {upgrades}
 {feature}
+{lockouts}
 {auras}
 <section class="band doors">
   <div class="shell">
