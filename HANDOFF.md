@@ -568,6 +568,66 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 25 Aug, late — the Instance Information window. The lockout is printed, and it is not weekly.
+
+**The owner ran four raids — Cazic-Thule D3 and D4, Innoruuk D3 and D4 — and sent
+the Alt+Z *Instance Information* window. It lists "Outstanding Instance Timers"
+with three columns: Lockout Time, Instance Name, Event Name.** This is the state
+we concluded the client never exposes, and it re-founds the model.
+
+**What the window shows, read off it directly and not inferred:**
+
+- **Two distinct timer classes.** Eight rows at **`0d:0h:58m`** whose Event Name
+  is literally **`Replay Timer`** — one for each of Plane of Fear and Plane of
+  Hate × tiers 3 and 4 × **Solo and Group**. And roughly thirty rows at
+  **`5d:23h:58m`** whose Event Name is a **boss name**.
+- **The long timers are per BOSS, and they name bosses our roster does not
+  carry** — `Terror`, `Dread`, `Fright`, `Dracoliche`, `Cazic-Thule`,
+  `Innoruuk`, `Maestro of Rancor`.
+- **They exist for both `- Solo N` and `- Group N` of the same zone and tier**,
+  from four raids that were run as Group. So killing in one shape marks both.
+- **One raid locks every boss in that zone at that tier**, not just the one the
+  raid was named for — four raids produced timers for seven distinct bosses.
+
+**Three consequences, and the first two overturn things we had settled.**
+
+**1. `5d:23h:58m` with roughly two minutes elapsed is a SIX-DAY ROLLING TIMER
+from the kill, not a Tuesday-anchored week.** And it does not contradict the
+owner — it separates two objects we already refused to merge. The **weekly task**
+(`Potential of the Void`, the Void-Touched token) resets Tuesday, which is what
+the owner observes in play. The **instance loot lockout** is 6 days rolling from
+the moment you take it. **Session D declined to merge those two objects on
+measured evidence and was right**; this is the vindication of that refusal.
+
+**And Session D's own negative evidence brackets it.** They measured that any
+cycle up to **5.78 days** is refuted. Six days clears that floor by five hours.
+The measurement and the window agree, from opposite directions.
+
+**2. Solo and Group are NOT separate locks — but they are separate ROWS**, which
+is a different thing and matters for parsing. jmoyers' community-wiki source said
+the lock is *shared* between solo and multiplayer; the window is consistent with
+that and displays both. Do not read two rows as two locks without evidence.
+
+**3. The names in this window are not the names in the kill lines.** The window
+says `Innoruuk`; `raids-measured.json` says `Innoruuk, the Prince of Hate`. **Any
+tracker reading both surfaces needs a mapping**, and an unmapped name renders as
+a missing lockout — the same failure class as the roster trap, arriving through a
+second door.
+
+**THE ONE QUESTION THAT DECIDES EVERYTHING, AND IT IS UNANSWERED.** This is a UI
+window. **We do not know whether `/dzlisttimers` prints this to the log.** Session
+D established the client's string table carries
+`3536 Usage: /dzListTimers — This command will list any outstanding replay timers
+you have for all expeditions`, and that `grep -F "outstanding replay"` returns
+**0** across 434 MB — the command has never been run. **If it logs, the tracker
+stops inferring and starts reading, and becomes exact.** If it does not, this
+window is still the ground truth we validate inference against.
+
+**Ten seconds of the owner's time settles it.** It is the highest-value
+unspent action in the project and has been for a week, on my wrong ruling.
+
+---
+
 ### 25 Aug, evening — the tool corrected the Director's published page, and C found the portfolio's biggest risk
 
 #### My artifact over-claimed. Session D caught it. The page has been changed to match the tool.
