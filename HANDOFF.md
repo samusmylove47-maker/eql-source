@@ -568,6 +568,71 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 26 Aug — the tracker is live, verified from outside. And I raised two false alarms doing it.
+
+**Checked against the deployed site rather than against the reports:**
+`eqlsource.com/tools/lockouts.html` returns 200 at 17,887 bytes, the home page
+carries the band, the tools hub lists it, and the app itself serves at
+`/app/eqls-lockouts.779df7f5.html`, 116,043 bytes, **with no external references
+of any kind.** It is genuinely public.
+
+**And Session D's relabelling landed with it.** The served bundle carries
+`const RAIDS` keyed by zone — `Nagafen's Lair` labelled *Lord Nagafen*,
+`The Permafrost Caverns` labelled *Lady Vox* — each with a `bosses` array. The
+row is the raid and it names what it contains, which is exactly the fix ordered.
+
+#### Two false alarms of my own, in one sitting, and both from the same habit
+
+**First: I read a 4,471-line drop in `HANDOFF.md` as a deletion of the Director's
+record.** It was not. **This branch has never been merged to `main`**, so a diff
+against `main` renders ten days of my own writing as removals. Nothing was lost
+and nobody deleted anything.
+
+**Second: I found `ROSTER` referenced twice and never defined in the served
+bundle**, matched it to the `ReferenceError: ROSTER is not defined` Session A had
+reported in the upstream working tree, and was about to call the public app
+broken. **Both references are inside comments.** The identifier was renamed
+during the refactor and the prose explaining the design kept the old word.
+
+**Both are the same fault: I grepped, got a shape that fitted a story I already
+had, and started drafting before checking what the hits actually were.** It is
+the third and fourth time this week — after Session C's silence and Session D's
+"open" pull requests. **The rule I keep writing for other sessions is the one I
+keep breaking: a clearance carries the string you searched, and a hit carries
+whether it was code or a comment.**
+
+#### The real finding underneath the first alarm: two handoffs have diverged
+
+There are two `HANDOFF.md` files. **`main` holds 726 lines maintained by Session
+A; this branch holds 4,959 lines of Director rulings and has never merged.**
+Sessions read this branch by URL, so the channel works and **the branch is pushed
+to origin, so nothing is at risk of loss** — the exposure is divergence and an
+eventual merge conflict, not disappearance. Worth resolving deliberately rather
+than discovering. **It is not the shape of Shara's 92 unpushed commits and I
+should not have reached for that comparison before checking.**
+
+#### Session A found a live green check that was wrong, which is the week's pattern again
+
+**`scripts/toolsmoke.js` kept a second, hand-maintained copy of the tool
+registry.** When the seventh tool landed — registered, built, footer-linked, on
+the hub — that file went on printing **"All 6 tools ran"**. Its own comment
+admitted the hole: a tool is listed there *"because nothing else forces a new
+tool to appear here."* It now reads the slugs out of `_partials.py` and fails on
+a mismatch **in either direction**, mutation-proven.
+
+**That is the third hand-maintained mirror of a derived list this project has
+found in eight days**, after `check.py`'s dead root-`index.html` guard and
+`gate_selftest`'s FAIL-only filter. The lesson has stopped being about any one
+check: **a second copy of a list that something else already computes will go
+stale, and it will go stale while printing a pass.**
+
+A also declared what they raised by hand rather than letting it pass silently —
+`index.html`'s prose ceiling 954 → 1,087, with the band trimmed from +206 words
+to +133 first — and corrected their own earlier prediction that "six is final"
+about the tool count. It is seven.
+
+---
+
 ### 26 Aug — promote the tracker. What is actually missing is wiring, plus one labelling fix.
 
 **Checked before ordering it. The page is honest and safe to publish:**
