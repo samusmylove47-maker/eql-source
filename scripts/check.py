@@ -511,6 +511,69 @@ if _sl:
     if not _linked:
         fail(f"public/app/{_app['file']} is served but no page links it")
 
+# ---- the EQLS Lockouts app, copied but deliberately not promoted ------------
+# Same guard as the Sky Ledger's, with one clause deliberately different.
+#
+# The record must exist, the file it names must be on disk, its name must still
+# be a hash of its own contents, and no earlier build may still be sitting
+# there. All of that is identical, and all of it catches the same fault: an
+# asset served under a stable URL going stale in a reader's cache in silence.
+#
+# WHAT IS DIFFERENT, AND WHY IT IS A WARN
+# The Sky Ledger block ends by FAILING when no page links the hashed file. That
+# is right for a promoted tool and wrong here: by the Director's order of
+# 25 August 2026 this app is copied without a tools/ page or a landing band,
+# pending a report from Session D. So an unlinked file is the intended state.
+#
+# It is a WARN rather than nothing at all, because a check that quietly permits
+# an interim state permits it forever. The warning names the promotion that is
+# owed, appears in every build, and goes away by itself the moment a page links
+# the file. When that happens, turn this into the same fail() the Ledger uses.
+try:
+    _lk = json.load(open("assets/lockouts.json", encoding="utf-8"))
+except FileNotFoundError:
+    _lk = None                              # not copied yet, which is allowed
+except Exception as e:
+    fail(f"assets/lockouts.json unreadable: {e}")
+    _lk = None
+if _lk:
+    import hashlib
+    _lapp = _lk["app"]
+    _lserved = os.path.join("public", "app", _lapp["file"])
+    if not os.path.exists(_lserved):
+        fail(f"assets/lockouts.json names {_lapp['file']}, which is not in "
+             f"public/app/. Run python3 _build/lockouts.py")
+    else:
+        _lblob = open(_lserved, "rb").read()
+        # sha256 here, sha1 for the Ledger. Each mirrors its own upstream build
+        # so that "are the two repos in sync?" is a string comparison. This is
+        # not an inconsistency to tidy away.
+        _lgot = hashlib.sha256(_lblob).hexdigest()
+        if not _lapp["file"].endswith(f".{_lgot[:8]}.html"):
+            fail(f"public/app/{_lapp['file']} hashes to {_lgot[:8]}, so its URL "
+                 f"no longer describes its contents. Re-run "
+                 f"python3 _build/lockouts.py")
+        if _lgot != _lapp["sha256"] or len(_lblob) != _lapp["bytes"]:
+            fail(f"public/app/{_lapp['file']} does not match the sha256 or the "
+                 f"byte count recorded in assets/lockouts.json")
+    _lstale = sorted(os.path.basename(p)
+                     for p in glob.glob("public/app/eqls-lockouts.*.html")
+                     if os.path.basename(p) != _lapp["file"])
+    if _lstale:
+        fail(f"public/app/ still holds {len(_lstale)} earlier Lockouts "
+             f"build(s): {', '.join(_lstale)}. A hashed URL only stops a stale "
+             f"cache if the stale file stops being served")
+    _llinked = any(_lapp["file"] in open(p, encoding="utf-8", errors="replace").read()
+                   for p in pages)
+    if _llinked and not _lk.get("promoted"):
+        fail(f"a page links public/app/{_lapp['file']}, but "
+             f"assets/lockouts.json still records promoted:false. The tool is "
+             f"promoted or it is not; the data and the pages must agree")
+    if not _llinked:
+        warn(f"public/app/{_lapp['file']} is served and no page links it. This "
+             f"is intended until Session D reports (Director, 25 Aug 2026). "
+             f"On promotion, make this a fail() like the Sky Ledger's")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of

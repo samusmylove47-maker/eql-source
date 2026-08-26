@@ -1,0 +1,14 @@
+{
+ "app": {
+  "bytes": 105126,
+  "file": "eqls-lockouts.59ddc576.html",
+  "hash": "59ddc576",
+  "kb": 103,
+  "sha256": "59ddc576cb74f241a13918fe1df0e37548efd03a4d0493bc892ec184a18addc8"
+ },
+ "pointer": "latest.txt",
+ "promoted": false,
+ "read": "2026-08-26",
+ "source": "public/app/eqls-lockouts.59ddc576.html",
+ "version": null
+}

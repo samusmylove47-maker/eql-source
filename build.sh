@@ -16,6 +16,10 @@ python3 _build/skydata.py
 # fail on a machine without the Ledger repo - the copy and the record are both
 # committed, same rule as geometry.py and the game's own files.
 python3 _build/skyledger.py
+# The EQLS Lockouts app, copied under its content hash the same way. Nothing
+# links it yet - the tool is not promoted - so this ships the copy only, and
+# check.py WARNs for as long as that stays true.
+python3 _build/lockouts.py
 python3 _build/extract.py
 # Grades each zone on what a PLAYER needs - bosses, loot, difficulty,
 # inherited advice, farming value - computed from the measured data.
