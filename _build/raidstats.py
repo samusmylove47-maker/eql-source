@@ -194,10 +194,39 @@ def resolve_tier(zone, invite):
         return il['tier'], il['label'], "instance invite", ev
 
     # NEITHER LINE NAMED A TIER, so whatever comes back is an inference and is
-    # labelled as one. What kind of inference depends on the zone, and "does it
-    # say - Group" is the wrong test: The Plane of Sky is instanced and is not
-    # named that way, so a naming rule would have quietly filed 90 fights as
-    # open-world. INSTANCED is built from the invites the corpus actually holds.
+    # labelled as one - and the label names WHICH rule produced it, because the
+    # rules are not equally strong and a reader is entitled to tell them apart.
+
+    # THE CLIENT OMITS THE INSTANCE INDEX EXACTLY WHEN IT IS ZERO.
+    #
+    # This file said the opposite for two days. #145 was told to "stop inferring
+    # tier 0", so a bare "Zone - Group" resolved to `unresolved`; the ruling was
+    # reversed on 27 Aug 2026 after Session D measured the client's behaviour,
+    # and re-derived here from our own 13 staged logs before restoring it:
+    #
+    #   * 514 entry lines. Not one prints an index of 0.
+    #   * 89 invite-to-entry pairs for the same zone: 73 match the index
+    #     exactly, 16 omit it, 0 conflict.
+    #   * THE FALSIFYING CASE - an index omitted for a tier above zero - occurs
+    #     0 times. All 16 omissions followed an invite naming tier 0.
+    #
+    # So the omission is not missing information. It is how the client writes
+    # zero, and a bare "- Group" is evidence OF tier 0 rather than absence of
+    # evidence. Weaker than the line stating it, stronger than not knowing, and
+    # the label says which.
+    #
+    # DELIBERATELY NOT WIDENED PAST "- Group". A second instanced family exists
+    # whose entry lines carry no mode word, and at tier 0 it drops the suffix
+    # entirely and is indistinguishable from an ordinary open-world zone-in.
+    # " - Group" marks a line as instanced independently of the index, so the
+    # absence of an index is informative there and nowhere else. The Plane of
+    # Sky is that other family, which is why it falls through to the history
+    # rule below rather than being caught here.
+    if " - Group" in zone:
+        return 0, "Normal", "bare - Group implies tier 0", ev
+
+    # What kind of inference depends on the zone. INSTANCED is built from the
+    # invites the corpus actually holds, rather than from how a zone is spelled.
     seen = INSTANCED.get(zbase)
     if not seen:
         # No invite for this zone anywhere in the corpus. It is open world as
@@ -425,7 +454,13 @@ def fmt(f):
 # How much a difficulty reading is worth, best first. A line naming the tier
 # beats an inference from the zone's history, which beats an inference from the
 # absence of an instance, which beats nothing at all.
-SRC_RANK = ("zone line, invite disagrees", "zone line", "instance invite")
+# Strongest first. The order is the argument: a line stating the index beats an
+# invite naming it, which beats the client's own convention of omitting a zero,
+# which beats a generalisation over the corpus, which beats knowing nothing.
+# "bare - Group implies tier 0" sits third because it reads THIS entry's own
+# line, where the two rules below it reason about other entries instead.
+SRC_RANK = ("zone line, invite disagrees", "zone line", "instance invite",
+            "bare - Group implies tier 0")
 
 
 def src_rank(src):
@@ -602,5 +637,59 @@ def main(src):
               f"({len(r['observers'])} clients, {r['damage_spread_pct']}% apart)")
 
 
+def selftest():
+    """Prove every difficulty rule still fires, and still ranks where it should.
+
+    WHY THIS EXISTS. Restoring the "- Group" inference on 27 Aug 2026 changed no
+    published figure at all - 213 fights, an identical distribution - because
+    every bare "- Group" fight in the corpus happens to carry an attached
+    invite, so the branch resolves nothing today. A branch the data never
+    exercises is the dead-check class this project has now found four times, and
+    it does not stop being that because it is new. So it is exercised here
+    directly, with the ranking, which is the part a merge silently depends on.
+
+        python3 _build/raidstats.py --selftest
+    """
+    INSTANCED['The Plane of Sky'].add(0)
+    INSTANCED_N['The Plane of Sky'] = 9
+    INSTANCED['Zone - Group'].update({0, 2, 3})
+    TIER_LABEL.setdefault(0, 'Normal')
+
+    cases = [
+        ('Zone - Group 3 (Fused)', None, 'zone line', 3),
+        ('Zone - Group', 'Zone - Group 0 (Normal)', 'instance invite', 0),
+        # The rule the corpus does not reach. An instanced line whose index the
+        # client omitted, with no invite to fall back on.
+        ('Zone - Group', None, 'bare - Group implies tier 0', 0),
+        # Deliberately NOT caught by that rule: no mode word, so the absence of
+        # an index says nothing and the history rule has to answer instead.
+        ('The Plane of Sky', None, 'inferred: every recorded entry', 0),
+        ('The Feerrott', None, 'inferred: open world', 0),
+        (None, None, 'no zone line', None),
+    ]
+    bad = 0
+    for zone, invite, expect, tier in cases:
+        num, label, src, _ev = resolve_tier(zone, invite)
+        ok = src.startswith(expect) and num == tier
+        bad += not ok
+        print(f"  [{'ok ' if ok else 'BAD'}] {str(zone):<26} -> D{num} via {src}")
+
+    order = [r for r in ('zone line', 'instance invite',
+                         'bare - Group implies tier 0',
+                         'inferred: every recorded entry to this instance was tier 0',
+                         'inferred: open world, no instance recorded',
+                         'unresolved')]
+    ranks = [src_rank(r) for r in order]
+    if ranks != sorted(ranks) or len(set(ranks)) != len(ranks):
+        print(f"  [BAD] the rules do not rank strongest-first: {ranks}")
+        bad += 1
+
+    print('\nEvery rule fired and the ranking is strictly strongest-first.'
+          if not bad else f'\n{bad} case(s) failed.')
+    return 1 if bad else 0
+
+
 if __name__ == '__main__':
+    if '--selftest' in sys.argv:
+        sys.exit(selftest())
     main(sys.argv[1] if len(sys.argv) > 1 else 'state/logs')
