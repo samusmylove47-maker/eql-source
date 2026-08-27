@@ -568,6 +568,67 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 27 Aug — the copy step is Session A's, and D corrected me three times getting here
+
+**The site is behind because the copy step needs both repos and only Session A
+has them.** `_build/lockouts.py` finds a sibling `EQLSLockouts` checkout (or an
+env var) and, *"where the repo is missing, the committed copy stands and this
+exits 0."* That is deliberate — a rebuild must work on a machine without the
+Lockouts repo, exactly as `skyledger.py` and `geometry.py` do. **The consequence
+is that D shipping a build does not move the website, and cannot.** Verified:
+`eql-source` main and the live page both serve `779df7f5`, while D's PR #8
+carries the fix.
+
+**This is a structural property of the two-repo design, not an oversight, and it
+should be named as one: every D release needs an A commit.** Worth a line in
+`lockouts.py`'s header so the next session does not rediscover it as a bug.
+
+#### Three corrections from Session D, and the middle one is the expensive kind
+
+**1. `onBoundaryDay` was FALSE and that branch never ran.** My reasoning was that
+`h2` can differ from `h1` only when it is true, therefore fifteen unknown cells
+proved it true on a Wednesday. **The premise was wrong:** `under()` can return
+`unknown` from inside itself, and `h1 === h2` then carries it out. The tell I
+missed was that the message that branch emits never appeared anywhere.
+
+**2. THE BARE `- Group` SHAPE MEANS TIER 0, AND MY RULING SAID THE OPPOSITE.**
+The client omits the instance index exactly when it is zero:
+
+```
+17:52:12  Shangfei has asked you to join the instance: The Plane of Hate - Group 0 (Normal).
+17:55:57  You have entered The Plane of Hate - Group.
+```
+
+Across sixteen files: tiers 1–4 match invite-to-entry exactly, and tier 0 is
+**twelve invites to twelve bare entries, with not one entry line anywhere
+stating an index of 0.** A verifier confirmed it independently — across 65 full
+`- Group N` entries the nearest preceding same-zone invite named the same tier
+**65 times out of 65.**
+
+**I wrote "stated by the game as absent, not as zero", called our own
+`raidstats.py` wrong for inferring a zero, and ordered Session A to stop doing
+it. `raidstats.py` was right and I was exactly backwards.** Session A's fix
+recorded provenance rather than deleting, which is the only reason this is
+cheap to reverse — 87 invite-derived difficulties survived in
+`difficulty_from`. **That discipline of theirs saved my error from costing data.**
+
+**One limit D flagged and I am carrying forward:** do not widen the omission rule
+past `- Group`. A second entry family with no mode word exists — 149 lines — and
+at tier 0 it drops the whole suffix and collapses onto the ordinary open-world
+zone-in. `- Group` marks a line as instanced independently of the index, which is
+why its absence is informative there and nowhere else.
+
+**3. My mutation test would have locked a false model into the tree.** I ordered:
+*"a run dated Wednesday must produce zero unknown cells."* D refused to write it,
+correctly — the owner's raids ran Tuesday 20:31–22:37, so a Wednesday run **must**
+be able to produce ambiguous cells. What it must not do is produce them when
+nothing ambiguous happened. **A test I specified would have asserted a wrong
+invariant permanently**, and the session I gave it to was right to decline.
+
+**Result: 0 uncertain, 10 done, 88 tests green, the full corpus replaying clean.**
+
+---
+
 ### 26 Aug — the tool works. The uplift has one trap, and it is the one we criticise in public.
 
 **The fix landed and the owner's own log now reads `6 raids still open · 12
