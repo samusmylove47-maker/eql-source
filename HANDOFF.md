@@ -568,6 +568,49 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 27 Aug — Shara has published a build. Three facts, checked, before anything is promoted.
+
+**Yes, both the `.exe` and the repo link go to Session C.** They hold the audit
+history — the userData pin, the naming residue, the share-code prefix, the fonts
+finding — and a published artifact is the first chance to check that audit
+against something a stranger can actually install.
+
+**Three things verified from here first, because two of them touch our own page.**
+
+**1. `master` has moved, and that is the good news.** `package.json` reads
+version `0.1.0`, `productName` `EQLS Auras`, **zero dependencies** — confirming
+Session C's finding — and the releases page shows a build *"automatically built
+from the latest push to master"* on 26 August. **The 92-commits-in-one-working-copy
+exposure looks resolved**, which was the largest single risk anywhere in this
+project. **Whether master now carries all 92 is C's to confirm**, not something I
+can see from a raw fetch.
+
+**2. The promotion trigger has NOT fired, and this is a fact about our wiring
+rather than a judgement of her work.** C's definition, which the owner accepted
+and Session A wired the landing page to:
+
+> released when `LoxyBee/EQLS-Auras` publishes a GitHub release whose tag matches
+> the `version` in `package.json`, with an installer attached as a release asset.
+
+The published tag is **`latest-dev`**, described as automatically built from the
+latest push to master. `package.json` says `0.1.0`. **A rolling auto-build tag is
+not a version match**, and the practical reason matters more than the rule: **a
+`latest-dev` asset changes under us on every push to master.** Pointing the top
+band of our landing page at a moving target is the stale-copy problem the content
+hash exists to prevent, except we would not control the target.
+
+**This is not a gate on her and must not be relayed as one.** She may prefer to
+ship rolling, and if so the definition adapts — deliberately, in writing, rather
+than by us quietly linking whatever is newest. **The question for her, through C:
+is a versioned release coming?** A tag we can pin is what lets us promote safely.
+
+**3. The Google Fonts fetch is STILL LIVE — three references in
+`src/renderer/main-window/index.html` on `master` today.** So **Session A's
+disclosure sentence on the landing page stands and must not be touched.** C
+undertook to report here the day it changes; it has not changed.
+
+---
+
 ### 27 Aug — D's theme question answered against the CSS, and the real finding is a hole in our browser checks
 
 #### The theme: follow the site. D read it correctly and my mockup did not.
