@@ -11,6 +11,25 @@ IX = json.load(open('assets/index-data.json', encoding='utf-8'))
 # They stay in index-data.json as a record of what the source row said, and are
 # printed on their parent's page - see assets/catalogue-fixes.json.
 IX['items'] = [i for i in IX['items'] if i.get('kind') != 'fragment']
+
+# A WITHHELD COORDINATE IS REMOVED FROM THE DATA, NOT HIDDEN BY THE RENDERER.
+#
+# This page embeds the whole dataset in the bundle and filters it in the
+# browser, so four of the six withheld Najena positions were shipping inside
+# window.__IX__ and printing in the result cell as "loc −262, 167" while the
+# survey they link to said "withheld". Suppressing them in the render function
+# would leave the numbers in the page source, which is not withholding.
+#
+# They are replaced here, before json.dumps, so the coordinate never reaches
+# the reader in any form. The mob keeps its row - deleting it would be the
+# dishonest version, exactly as _build/withheld.py says.
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from withheld import WITHHELD
+_wh = 0
+for _n in IX.get('named', []):
+    if (_n.get('z'), _n.get('n')) in WITHHELD and _n.get('loc'):
+        _n['loc'] = 'withheld'
+        _wh += 1
 # Counted once, in extract.py. Filtering fragments here and not groups was why
 # this page printed 441 while the home page printed 451: two files, two
 # definitions, neither of them reading the `kind` field that exists to settle it.

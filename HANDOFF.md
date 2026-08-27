@@ -248,6 +248,71 @@ guard, toolsmoke.js's second copy of the tool registry, this file's `public/app/
 exclusion, and now this file's unvalidated argument.** Three of the four were
 documented. Being written down is what stopped anyone re-examining them.
 
+### Addendum, same day — the verification fan-out found two more, and one is a live content defect
+
+I ran a read-only fan-out to cross-check this work. It confirmed every
+load-bearing number above and found three things I had not.
+
+**FIRST, AND IT WAS SHIPPING: all six withheld Najena coordinates were published
+on their named-mob pages.** `public/named/rathyl.html` carried
+`Position −670, −119`, and four of the six were embedded in The Index's search
+bundle as `loc −262, 167`, while the plate they link to said "withheld". These
+are the coordinates that sit 57 to 513 units outside the zone's own drawn floor
+— positions we had already decided we do not trust.
+
+It survived because **gate rule 4 hardcoded its scan to
+`public/dungeons/{slug}.html`**. The rule's own comment already said withholding
+"applies to the whole page, not just the roster". It was right, and it was
+enforced on 13 pages out of 715. Checking one directory is the same fault as
+checking one table, one scale up. Fixed in three places — `build17.py` prints
+the withheld mark, `build5.py` strips the coordinate from the embedded data
+before it reaches the browser rather than hiding it in the renderer, and the
+gate now scans every page. Mutation-proven, and a permanent self-test case.
+
+**SECOND, AND IT IS THE WORST ONE THIS WEEK: `check.py` could crash while
+printing a failure, and exit 1 with no reason given.** On Windows a piped stdout
+encodes as cp1252, which cannot represent U+2212 MINUS SIGN — and **141 of the
+site's recorded coordinates use U+2212 rather than an ASCII hyphen.** So the
+withheld-coordinate rule, which quotes the coordinate it found, killed the
+reporter with the report. The caller saw a non-zero exit and an empty
+explanation.
+
+It reproduced *only* without `PYTHONIOENCODING` set, which is how it survived
+every run made from a terminal that happened to have it — I hit both behaviours
+within a minute and briefly mistook the second for a stale run. A validator must
+be able to print any failure it can detect; both `check.py` and
+`gate_selftest.py` now set their own encoding.
+
+**THIRD, a real defect in my own item-2 change.** The `- Group` rule sat above
+the instance-history check, so a bare `- Group` entry in an instance every
+recorded entry to which was tier 4 would have silently overwritten a
+better-informed answer with a thinner one. The line still wins — the omission is
+measured client behaviour and the history is a generalisation — but the
+disagreement is published in `difficulty_from` now instead of being resolved out
+of sight. It fires on zero fights today; the self-test covers it.
+
+**And the evidence base is thinner than my line count suggested.** The 16
+omissions are 16 log lines but **9 independent events**, and the `- Group` shape
+specifically rests on **3 events across 2 days** — cross-log duplication inflates
+it roughly threefold, because two characters log the same zone-in and one staged
+file is a byte-exact prefix of another. Against that, a control I had not run:
+**all three zones that print a bare `- Group` also print numbered `- Group N`
+lines for tiers above zero**, so the omission is not a per-zone formatting quirk.
+Three events with a clean control is enough to prefer the reading and not enough
+to be casual about it. Both are recorded in CLAUDE.md.
+
+Two corrections to my own figures while I was there: CLAUDE.md said `0 times in
+385 zone lines` and `68 distinct zone strings`; I re-measured **514** and **80**.
+
+**One process failure to report, and it is mine.** My standing rule is that
+fan-out is read-only. One agent ran `raidstats.py` in-process to compare
+versions, which executed `main()`'s `open(..., 'w')` and **truncated
+`assets/raids-measured.json` to 0 bytes**. It restored the file from `HEAD` and
+disclosed it unprompted. I verified independently: 207,239 bytes, 213 fights,
+byte-identical in commit `8ff58cab`, nothing damaged entered history. But
+"read-only" is not a property of an agent's intentions — importing a module runs
+its side effects, and the instruction alone does not prevent that.
+
 ### 26 Aug — the tracker is live. All five items done, and one drift check did not hold
 
 **Item 1, seventh tool.** Registered in `_partials.TOOLS` with a short footer

@@ -6,6 +6,26 @@ Exit code 0 = safe to commit. Anything else is a blocker, not a warning.
 """
 import json, os, re, sys, glob
 
+# THIS FILE COULD CRASH WHILE PRINTING A FAILURE, AND EXIT 1 WITH NO REASON.
+#
+# On Windows a piped stdout is encoded with the locale default, cp1252, which
+# cannot represent U+2212 MINUS SIGN. 141 of the site's recorded coordinates use
+# U+2212 rather than an ASCII hyphen, and the withheld-coordinate rule quotes
+# the coordinate it found — so the failure most worth reporting was the one that
+# killed the reporter. The caller saw a non-zero exit and an empty explanation,
+# which reads exactly like a check that fired for no stated reason.
+#
+# Found 27 Aug 2026 when gate_selftest.py reported WRONG CHECK with an empty
+# detail for a rule that was working perfectly. It reproduced only without
+# PYTHONIOENCODING set, which is how it survived every run made from a terminal
+# that happened to have it.
+#
+# A validator must be able to print any failure it can detect.
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, ValueError):
+    pass
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 fails, warns = [], []

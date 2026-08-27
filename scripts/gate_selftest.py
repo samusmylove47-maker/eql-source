@@ -68,8 +68,43 @@ N_ITEMS, N_NAMED = _IX["counts"]["item_pages"], _IX["counts"]["named_pages"]
 N_ZONES = len(json.load(open("assets/zones-index.json", encoding="utf-8")))
 
 
+# THE OTHER HALF OF THE SAME PROBLEM: THIS FILE'S OWN OUTPUT.
+#
+# Reading check.py's pipe as utf-8 fixed the silent loss and immediately turned
+# it into a crash, because a Windows console is cp1252 and cannot ENCODE what
+# had just been correctly decoded. A harness that dies while reporting a caught
+# failure is no better than one that loses it.
+#
+# Both directions are utf-8 now. Windows is the platform this project builds on,
+# and CLAUDE.md already records that every open() here needs an explicit
+# encoding; a pipe and a console are the two that are easy to forget because
+# nothing declares them.
+try:
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+except (AttributeError, ValueError):        # not a real stream, e.g. under a pipe wrapper
+    pass
+
+
 def check():
-    r = subprocess.run([sys.executable, "scripts/check.py"], capture_output=True, text=True)
+    # ENCODING IS LOAD-BEARING, AND ITS ABSENCE HID A REAL FAILURE.
+    #
+    # `text=True` with no encoding decodes the pipe with the platform default,
+    # which on Windows is cp1252. check.py's messages carry U+2212 MINUS SIGN
+    # and em dashes, and 141 of the site's recorded coordinates use U+2212
+    # rather than an ASCII hyphen — so the failure lines most likely to matter
+    # are exactly the ones cp1252 cannot represent.
+    #
+    # On 27 Aug 2026 a new case reported WRONG CHECK with an EMPTY detail: the
+    # check had fired, the process had exited 1, and the line saying so was
+    # lost in decoding. A harness that exists to prove checks are alive was
+    # dropping their evidence on the floor, and reported that as the case being
+    # wrong rather than as itself being broken.
+    #
+    # utf-8 with errors="replace" so a decode problem degrades to a visible
+    # replacement character in a line that still matches, never to silence.
+    r = subprocess.run([sys.executable, "scripts/check.py"],
+                       capture_output=True, text=True,
+                       encoding="utf-8", errors="replace")
     return r.returncode, r.stdout
 
 
@@ -337,6 +372,20 @@ CASES = [
      lambda t: json.dumps({k: v for k, v in json.loads(t).items()
                            if k != "tools/sky-ledger.html"},
                           indent=1, sort_keys=True)),
+
+    # A WITHHELD COORDINATE ON A PAGE THAT IS NOT A PLATE.
+    #
+    # Rule 4 hardcoded its scan to public/dungeons/{slug}.html, so it proved 13
+    # pages and all six withheld Najena coordinates shipped on their named-mob
+    # pages anyway - "Position −670, −119" on rathyl.html - with four more
+    # embedded in The Index's search bundle. The rule was right and its reach
+    # was one directory wide. This case exists so the widened scan cannot
+    # quietly narrow again.
+    ("a withheld coordinate on a named-mob page",
+     "whose coordinate is withheld",
+     "public/named/rathyl.html",
+     lambda t: t.replace('<dt>Position</dt><dd><span class="wh">withheld</span></dd>',
+                         '<dt>Position</dt><dd>−670, −119</dd>', 1)),
 
     # THE PROMOTION GATE, BOTH DIRECTIONS.
     #

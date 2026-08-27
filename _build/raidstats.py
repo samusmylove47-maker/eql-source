@@ -222,7 +222,28 @@ def resolve_tier(zone, invite):
     # absence of an index is informative there and nowhere else. The Plane of
     # Sky is that other family, which is why it falls through to the history
     # rule below rather than being caught here.
+    # WHERE THIS RULE CONTRADICTS THE ZONE'S OWN HISTORY, SAY SO.
+    #
+    # The rule sits above the history check below because it reads THIS entry's
+    # line, where the history reasons from other entries. But the two can
+    # genuinely disagree: a bare "Kedge Keep - Group" in an instance every
+    # recorded entry to which was tier 4. Preferring the line silently would
+    # overwrite a better-informed answer with a thinner one and leave no trace,
+    # which is the fault the whole provenance exercise exists to stop.
+    #
+    # So the line still wins - the omission is measured behaviour of the client,
+    # and the history is a generalisation - but the disagreement is published in
+    # the source string and the history goes into the evidence. It occurs zero
+    # times today. It is written down because the sample behind this rule is
+    # THREE independent events, and a rule that thin should not quietly beat
+    # anything without leaving a record that it did.
     if " - Group" in zone:
+        seen_g = INSTANCED.get(zbase)
+        if seen_g and 0 not in seen_g:
+            ev['instance_history'] = dict(tiers=sorted(seen_g),
+                                          entries=INSTANCED_N[zbase])
+            return 0, "Normal", (
+                "bare - Group implies tier 0, instance history disagrees"), ev
         return 0, "Normal", "bare - Group implies tier 0", ev
 
     # What kind of inference depends on the zone. INSTANCED is built from the
@@ -460,7 +481,8 @@ def fmt(f):
 # "bare - Group implies tier 0" sits third because it reads THIS entry's own
 # line, where the two rules below it reason about other entries instead.
 SRC_RANK = ("zone line, invite disagrees", "zone line", "instance invite",
-            "bare - Group implies tier 0")
+            "bare - Group implies tier 0",
+            "bare - Group implies tier 0, instance history disagrees")
 
 
 def src_rank(src):
@@ -653,6 +675,8 @@ def selftest():
     INSTANCED['The Plane of Sky'].add(0)
     INSTANCED_N['The Plane of Sky'] = 9
     INSTANCED['Zone - Group'].update({0, 2, 3})
+    INSTANCED['Solo - Group'].add(4)          # a single-tier instance, never 0
+    INSTANCED_N['Solo - Group'] = 3
     TIER_LABEL.setdefault(0, 'Normal')
 
     cases = [
@@ -661,6 +685,10 @@ def selftest():
         # The rule the corpus does not reach. An instanced line whose index the
         # client omitted, with no invite to fall back on.
         ('Zone - Group', None, 'bare - Group implies tier 0', 0),
+        # The same rule where the zone's own history contradicts it. The line
+        # still wins and the disagreement is published rather than hidden.
+        ('Solo - Group', None,
+         'bare - Group implies tier 0, instance history disagrees', 0),
         # Deliberately NOT caught by that rule: no mode word, so the absence of
         # an index says nothing and the history rule has to answer instead.
         ('The Plane of Sky', None, 'inferred: every recorded entry', 0),
@@ -676,6 +704,7 @@ def selftest():
 
     order = [r for r in ('zone line', 'instance invite',
                          'bare - Group implies tier 0',
+                         'bare - Group implies tier 0, instance history disagrees',
                          'inferred: every recorded entry to this instance was tier 0',
                          'inferred: open world, no instance recorded',
                          'unresolved')]
