@@ -37,6 +37,7 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
 from derived import clip as _clip
+from withheld import WITHHELD, MARK
 
 Z = {z['slug']: z for z in json.load(open('assets/zones-index.json', encoding='utf-8'))}
 IX = json.load(open('assets/index-data.json', encoding='utf-8'))
@@ -449,7 +450,20 @@ for nm in IX['named']:
     facts = [
         ("Level", esc(nm['lv']) if nm.get('lv') else None),
         ("Race and class", esc(nm['rc']) if nm.get('rc') else None),
-        ("Position", esc(nm['loc']) if nm.get('loc') else None),
+        # WITHHOLDING APPLIES TO THE PAGE, NOT TO THE PLATE.
+        #
+        # These pages printed all six withheld Najena coordinates as bare
+        # positions - "Position −670, −119" on rathyl.html - while the plate
+        # three clicks away said "withheld". The coordinates were withheld
+        # because they sit 57 to 513 units outside the zone's own drawn floor,
+        # so publishing them here was publishing a position we had already
+        # decided we do not trust.
+        #
+        # It survived because gate.py rule 4 hardcoded its scan to
+        # public/dungeons/{slug}.html. The rule was right and its reach was one
+        # directory wide; it now scans every page, which is what found this.
+        ("Position", MARK if (nm.get('z'), nm.get('n')) in WITHHELD
+         else (esc(nm['loc']) if nm.get('loc') else None)),
         ("Zone", f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])}</a>'),
     ]
     if nm.get('no'):

@@ -173,7 +173,7 @@ log their absence as a defect.
   name at all.
 
   **Counted in our own logs, 26 Aug 2026, and it settles the ranking.** Across
-  the 13 staged logs a zone line prints `0 (Normal)` **0 times in 385 zone
+  the 13 staged logs a zone line prints `0 (Normal)` **0 times in 514 zone
   lines**; an invite prints it **16 times**. Pairing each invite with the zone
   line that followed it: **73 agree exactly, 0 disagree, and 16 are the zone
   line dropping a tier the invite had named.** So the invite never contradicts
@@ -182,7 +182,7 @@ log their absence as a defect.
   read it. Only `_build/raidstats.py` does; `_build/logstats.py` does not, and
   61 of its 172 sessions rest on something other than a numbered zone line.
 
-  **The instance grammar has four shapes, not two.** Measured across 68 distinct
+  **The instance grammar has four shapes, not two.** Measured across 80 distinct
   zone strings:
 
   | shape | meaning |
@@ -212,6 +212,25 @@ log their absence as a defect.
   So the omission is not missing information; it is how the client writes zero,
   and a bare `- Group` is evidence **of** tier 0. `raidstats.py` was right
   before #145 changed it.
+
+  **The control matters more than the count.** All three zones that print a bare
+  `Zone - Group` line **also print numbered `- Group N` lines for tiers above
+  zero**. The same zone, in the same shape, numbers 1–4 and omits 0 — so the
+  omission is not a per-zone formatting quirk, which was the obvious competing
+  explanation and is now ruled out.
+
+  **And the sample is thinner than the line count looks.** Those 16 omissions
+  are 16 log lines but only **9 independent events**, and the `- Group` shape
+  specifically rests on **3 events across 2 days** — seven log lines inflated
+  roughly threefold, because two characters log the same zone-in and one staged
+  file is a byte-exact prefix of another. Cross-log duplication inflating a
+  count is a trap this corpus sets repeatedly; count events, not lines.
+
+  Three events with a clean control is enough to prefer the reading and not
+  enough to be casual about it. Where the rule contradicts a zone's own invite
+  history, `raidstats.py` still prefers the line — the omission is measured
+  client behaviour, the history is a generalisation — but it publishes the
+  disagreement in `difficulty_from` rather than resolving it out of sight.
 
   **Do not widen this past `- Group`.** The fourth shape's family carries no
   mode word, and at tier 0 it drops the suffix entirely and is indistinguishable
