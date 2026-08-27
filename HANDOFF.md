@@ -568,6 +568,86 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 26 Aug, later — `/dzlisttimers` answered, and the timers say the lockout is NOT rolling
+
+**Three findings from the owner's Plane of Fear D3 raid. The third contradicts
+the model in the live tool and needs Session D tonight.**
+
+#### 1. `/dzlisttimers` LOGS, and the answer is a clean negative
+
+In the chat capture, in system yellow:
+
+```
+You have entered The Plane of Fear - Group 3 (Fused).
+...
+You have no outstanding timers.
+```
+
+**And the control line is present** — `You say, 'timers check done'` — so the
+channel was open and unfiltered. **The negative is real, not a filtered
+capture.** Session D's four-outcome protocol did exactly the job it was built
+for, and this is the row it predicted: *the command works; it just prints a
+different thing than alt+Z shows.*
+
+**It reports REPLAY timers, which is what its own string table entry says** —
+*"list any outstanding replay timers"* — and at that moment there were none,
+because the ~58-minute re-entry timers from the previous night had long expired.
+Meanwhile the alt+Z window was showing roughly fifty loot lockouts.
+
+**So the loot lockout is not readable from the log.** Inference stays the
+product, and alt+Z is ground truth for validating it. That question is closed
+after eight days, and I was wrong to kill the command a week ago — running it is
+what proved it reports the wrong object.
+
+#### 2. The live tool's roster is wrong about Nagafen's Lair
+
+`Nagafen's Lair` ships as a single-boss raid, commented *"single-boss raid: the
+boss name is the right label"*. **The window shows four bosses locked there** —
+`King Tranix`, `Warlord Skarlon`, `Magus Rokyl` and `Lord Nagafen`, each at both
+Group and Solo, tiers 3 and 4. Permafrost shows `Lady Vox` at Solo 3.
+
+**And a tier-0 row appears for the first time**: `The Plane of Hate - Group 0
+(Norma…`. So base-difficulty instances do produce lockouts and **are** named
+`Normal` in the instance string — a third surface naming D0, after the invite
+line and against the zone line's silence.
+
+#### 3. THE MODEL IS PROBABLY WRONG: the locks share one expiry, they do not roll
+
+**Compare the two windows.**
+
+| | 25 Aug reading | 26 Aug reading |
+|---|---|---|
+| every row | `5d:23h:58m:05s` | `5d:11h:29m:08s` |
+| zones present | Fear, Hate only | Fear, Hate, **Nagafen's Lair, Permafrost** |
+
+**Nagafen's Lair and Permafrost locks did not exist in the first window. They
+were earned after it. And they read the same remaining time as locks earned the
+night before.**
+
+**A six-day rolling timer cannot do that.** A lock taken twelve hours later would
+show roughly twelve hours more remaining. Identical values across locks earned on
+different days means **a common expiry instant** — which is a fixed boundary, not
+a rolling period.
+
+**And a fixed boundary is what the owner told us it was.** *"All raids reset on
+Tuesday."* The rolling reading came from me, from a single window, and this is
+the second time the same single-reading habit has produced a wrong period. The
+`differenceSeconds` measurement survives — it was never about the anchor — but
+`LOCKOUT_MODEL`'s rolling shape does not.
+
+**What would settle it beyond argument:** the exact wall-clock time of each
+reading. Two timestamps plus two remaining-times give the expiry instant twice
+over, and if they agree the boundary is proven and its hour falls out. **The
+owner has both screenshots; the times they were taken are the missing input.**
+
+#### One thing that must not reach the site
+
+The window names eight players — the raid roster, all flagged. **Other players
+are never named on the site outside the credits.** The count and the shape may be
+recorded; the names are discarded, exactly as `raidstats.py` already does.
+
+---
+
 ### 26 Aug — the tracker is live, verified from outside. And I raised two false alarms doing it.
 
 **Checked against the deployed site rather than against the reports:**
