@@ -568,6 +568,65 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 27 Aug — D's theme question answered against the CSS, and the real finding is a hole in our browser checks
+
+#### The theme: follow the site. D read it correctly and my mockup did not.
+
+**Measured in `site.css` rather than argued:** bare `:root` carries
+`--surface-0: #0B0704` with `--ink: var(--bone)` — light text on a near-black
+ground — and there are **four `prefers-color-scheme: light` blocks** overriding
+`--surface-0` to `#EFE6D4`. **The site is dark-first and light is the override.**
+
+**So D is right and I should say so plainly: my artifact was light-first because
+that was my choice for a standalone page, not because it reflected the design
+system.** The owner liked that rendering, and an OS-aware page still gives it to
+them — a light-set machine gets the parchment. What it must not do is invert the
+site's default because a Director's mockup happened to be built the other way up.
+
+**One thing for the owner before testers open it today:** a tester on a dark-set
+machine sees the graphite ground, not the parchment. That is correct behaviour
+and matches every other page on the site — it should not be read as a defect when
+a tester's screenshot looks unlike the mockup.
+
+**D's contrast work checks out exactly.** `#FBF7F0` on `#C4482E` computes to
+**4.56:1**, matching their figure to two decimals — and they volunteered that
+they had previously tested two inks, declared the solid fill impossible, shipped
+a tint, and were wrong. *"The fill never had to move."*
+
+#### The real finding: `public/app/` is covered by neither browser check
+
+D reports the `shortDay()` temporal dead zone — declared halfway down `render()`,
+called from above, throwing on every render, so **the page loaded, the engine
+ran, and the grid never appeared.** Their note: *"That's the third time this
+project has shipped something the tests were happy with and a browser wasn't."*
+
+**It is the third time, and the reason is structural.**
+
+```
+scripts/conformance.js:174   if (depth === 0 && e.name !== 'app') walk(p, depth + 1);
+scripts/toolsmoke.js:51      "the application itself lives in public/app/ with its
+                              own test suite in its own repo"
+```
+
+**`conformance.js` — the only instrument that opens a page in a real browser and
+reports console errors — explicitly skips `public/app/`. `toolsmoke.js` skips it
+too, deliberately, on the reasoning that the app is tested elsewhere.** But
+*elsewhere* is a Node suite, and a Node suite does not lay out a page either.
+
+**So the two pages a reader actually opens as applications — the Sky Ledger and
+the Lockout tracker — sit in the one directory no browser check reaches.** Both
+of this project's shipped render failures happened there: the Sky Ledger's
+escaped `\n\n` that raised a `SyntaxError` while **196 dataset assertions passed**,
+and now this.
+
+**The exclusion is documented, deliberate, and wrong** — which is the most
+expensive shape a gap can take, because it reads as a decision rather than an
+oversight and nobody re-examines it. **A check that names its own hole is still a
+hole.** That is the third time in ten days: after `check.py`'s dead root guard
+and `toolsmoke`'s second copy of the tool registry.
+
+---
+
 ### 27 Aug — the copy step is Session A's, and D corrected me three times getting here
 
 **The site is behind because the copy step needs both repos and only Session A
