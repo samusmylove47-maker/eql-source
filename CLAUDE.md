@@ -188,7 +188,7 @@ log their absence as a defect.
   | shape | meaning |
   |---|---|
   | `Zone` | open world |
-  | `Zone - Group` | a group instance printing **no difficulty at all** |
+  | `Zone - Group` | a group instance **at tier 0** — see below |
   | `Zone - Group N (Label)` | a group instance at a named tier |
   | `Zone N (Label)` | a raid instance at a named tier |
 
@@ -196,6 +196,39 @@ log their absence as a defect.
   files `Zone - Group` as open world; `raidstats.py`'s `tier_of()` falls through
   to `(0, "Base")` for it, which is right about the difficulty and silent about
   the instancing. `- Solo` does not occur at all — 0 of 68.
+
+  **THE CLIENT OMITS THE INSTANCE INDEX EXACTLY WHEN IT IS ZERO. Corrected
+  27 Aug 2026, reversing a ruling made two days earlier.** The 25 Aug directive
+  said to "stop inferring tier 0", and #145 duly made a bare `Zone - Group`
+  resolve to `unresolved`. That was backwards. Session D measured the client's
+  behaviour and it re-derives from our own 13 staged logs:
+
+  - **514 entry lines, and not one prints an index of `0`.**
+  - 89 invite-to-entry pairs for the same zone: **73 match the index exactly,
+    16 omit it, 0 conflict.**
+  - **The falsifying case — an index omitted for a tier above zero — occurs
+    0 times.** All 16 omissions followed an invite naming tier 0.
+
+  So the omission is not missing information; it is how the client writes zero,
+  and a bare `- Group` is evidence **of** tier 0. `raidstats.py` was right
+  before #145 changed it.
+
+  **Do not widen this past `- Group`.** The fourth shape's family carries no
+  mode word, and at tier 0 it drops the suffix entirely and is indistinguishable
+  from an ordinary open-world zone-in. `- Group` marks a line instanced
+  *independently of the index*, which is the only reason the absence of an index
+  is informative there. The Plane of Sky is the other family, and it is resolved
+  by instance history instead.
+
+  **The provenance half of #145 stands, and it is what made the reversal cheap.**
+  Every fight records which rule produced its difficulty, ranked strongest
+  first: `zone line` > `instance invite` > `bare - Group implies tier 0` >
+  `inferred: every recorded entry…` > `inferred: open world…` > `no zone line`.
+  Restoring the inference moved **no published figure** — 213 fights, an
+  identical distribution — because every bare `- Group` fight in the corpus
+  carries an attached invite. A branch the data never exercises is a dead check,
+  so `python3 _build/raidstats.py --selftest` fires all six rules and asserts
+  the ranking.
 
   **RULED 22 Aug 2026: D0 stays one bucket, and the reason is that the data
   cannot support two.** Of 98 measured D0 raid fights, 8 are instanced and 90

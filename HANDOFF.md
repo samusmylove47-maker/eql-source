@@ -164,6 +164,90 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 27 Aug — D's build is live, the tier-0 ruling is reversed, and public/app/ is under a browser again
+
+**Item 1. We serve `eb2a1195`, from `cc6b9cc`.** I opened it: it renders the
+grid, no console errors. The build it replaces was `779df7f5` — the one that
+told the owner "0 of 25 done".
+
+`lockouts.py`'s header now states that **every Lockouts release needs a commit
+here**, as a property rather than a defect, with the reason: the alternative,
+fetching a build at deploy time, would let the site change with no diff, no
+review and no way to say afterwards what a reader saw. The hash is the record of
+what shipped and it is only worth anything because a human merged it.
+
+The no-op is audible in all three cases, each verified by running it:
+
+- `up to date — eqls-lockouts.eb2a1195.html is what the sibling repo points at and what we serve`
+- `sibling repo points at X; we serve Y. Copying.`
+- `NOT COPIED — no EQLSLockouts checkout beside this one. Serving the committed … (present, read 2026-08-27)`
+
+**Item 2. Your reversal is right, and I re-derived it from our own logs before
+restoring anything** — 514 entry lines, and **not one prints an index of 0**;
+89 same-zone invite-to-entry pairs, **73 matching exactly, 16 omitting the
+index, 0 conflicting**; and the falsifying case, an index omitted for a tier
+above zero, occurs **0 times**. All 16 omissions followed a tier-0 invite. The
+omission is how the client writes zero.
+
+**No published figure moves. None.** 213 fights before and after, and an
+identical distribution — D0 98, D1 12, D2 13, D3 30, D4 57, null 3. The reason
+is worth knowing: **the `unresolved` branch your ruling created was resolving
+nothing**, because every bare `- Group` fight in the corpus happens to carry an
+attached invite. So the damage was latent rather than published, and the
+provenance half is what made that checkable in a minute.
+
+The label names which rule produced it, ranked strongest first, and all six are
+distinguishable in the data:
+
+| rank | rule |
+|---|---|
+| 1 | `zone line` — the entry line stated the index |
+| 2 | `instance invite` — an invite for this entry named it |
+| 3 | **`bare - Group implies tier 0`** — new |
+| 4 | `inferred: every recorded entry to this instance was tier 0` |
+| 5 | `inferred: open world, no instance recorded` |
+| 6 | `no zone line` — null |
+
+Not widened past `- Group`, as ordered: the Plane of Sky is the other family and
+falls through to rank 4 instead. **And because the new branch fires on zero
+fights today, it is a dormant branch — which is the fault class of this whole
+week.** `python3 _build/raidstats.py --selftest` exercises all six rules and
+asserts the ranking is strictly strongest-first.
+
+**Item 3. `public/app/` is in the sweep: 717 pages, `app 8`, zero findings.**
+
+The settle loop is spent **only on a page that already measures empty**, so the
+715 static pages cost nothing and an app gets up to two seconds to paint before
+it is judged. Why the exclusion existed is written next to the fix, including
+the part that makes it dangerous — those Node suites cannot lay out a page, so
+"it has its own tests" was never an answer to "did anything appear".
+
+**And I mutation-tested it, which is how I caught myself shipping a dead one.**
+My first "renders nothing" mutation reported the page clean, and I read that as
+a gap in the check. It was not: **there is no `<body>` tag in that file**, so my
+mutation never applied and I had a vacuous test, not a passing one. Asserting
+the mutation applied, on the second attempt:
+
+| mutation | result |
+|---|---|
+| SyntaxError in the inline script (the Sky Ledger's failure) | **caught** — `console 1` |
+| renders nothing and logs nothing (D's failure) | **caught** — `empty 1` |
+| restored | clean |
+
+**You asked whether I could see a fourth. Yes, and it is in this same file.**
+`conformance.js` given a path that does not exist **swept clean** — Chrome
+answers a missing `file://` with its own error page, which carries well over the
+40 characters the empty check wants. `node scripts/conformance.js publik`
+reported "No page overflowed its viewport, logged a console error, or rendered
+empty." A mistyped path, which is the normal way anyone narrows a run while
+iterating, produced a green sweep of nothing at all. It now refuses and exits 2,
+and both exit codes are verified.
+
+That makes four in ten days, and they share one shape: **check.py's dead root
+guard, toolsmoke.js's second copy of the tool registry, this file's `public/app/`
+exclusion, and now this file's unvalidated argument.** Three of the four were
+documented. Being written down is what stopped anyone re-examining them.
+
 ### 26 Aug — the tracker is live. All five items done, and one drift check did not hold
 
 **Item 1, seventh tool.** Registered in `_partials.TOOLS` with a short footer

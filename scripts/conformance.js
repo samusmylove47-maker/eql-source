@@ -165,13 +165,45 @@ async function getJSON(url, tries = 60) {
 
 /* ---- the page set: exactly what check.py checks -------------------------- */
 
+/* A page that looks blank is given this long to fill before it is called empty.
+ * Only a page that currently measures empty spends it, so the static site pays
+ * nothing. 20 x 100ms = two seconds, on top of the load wait. */
+const EMPTY_CHARS = 40;
+const SETTLE_TRIES = 20;
+const SETTLE_MS = 100;
+
+/* WHY public/app/ WAS EXCLUDED, AND WHY IT IS NOT ANY MORE.
+ *
+ * This walk read `if (depth === 0 && e.name !== 'app')`, so the only instrument
+ * that opens a page in a real browser skipped the two files a reader opens AS
+ * APPLICATIONS. toolsmoke.js skips them for the same stated reason: the
+ * applications live in their own repositories and have their own test suites.
+ *
+ * That reasoning is wrong in one specific way, and it took three shipped
+ * failures to see it. Those suites run under Node. **A Node suite does not lay
+ * out a page.** It can prove an engine computes the right answer and tell you
+ * nothing about whether anything appeared on screen:
+ *
+ *   - The Sky Ledger's escaped `\n\n` raised a SyntaxError in the browser while
+ *     196 dataset assertions passed. It was public for six minutes.
+ *   - The lockout tracker's shortDay() temporal dead zone: the page loaded, the
+ *     engine ran, the grid never appeared, and the tests were green.
+ *
+ * So the exclusion was documented, deliberate, and load-bearing in the worst
+ * way - being written down is what stopped anyone re-examining it. It is the
+ * third check in ten days to name its own hole and be trusted anyway, after
+ * check.py's dead root guard and toolsmoke.js's second copy of the tool
+ * registry. If you are reading this because you want to exclude something from
+ * a check again: write down what would go unseen, then go and look at whether
+ * anything else would actually see it.
+ */
 function sitePages() {
   const out = [];
   const walk = (dir, depth) => {
     for (const e of fs.readdirSync(dir, { withFileTypes: true })) {
       const p = path.join(dir, e.name).replace(/\\/g, '/');
       if (e.isDirectory()) {
-        if (depth === 0 && e.name !== 'app') walk(p, depth + 1);
+        if (depth === 0) walk(p, depth + 1);
       } else if (e.name.endsWith('.html') && !e.name.startsWith('_')) {
         out.push(p);
       }
@@ -208,6 +240,28 @@ const showAll = args.includes('--show');
   }
 
   const pages = only.length ? only.map((p) => p.replace(/\\/g, '/')) : sitePages();
+
+  // A NAMED PAGE THAT DOES NOT EXIST USED TO SWEEP CLEAN.
+  //
+  // The positional argument is a path, not a filter, and nothing checked it.
+  // Chrome answers a missing file:// URL with its own error page, that page
+  // carries well over the 40 characters the empty check wants, and the run
+  // finished with "No page overflowed its viewport, logged a console error, or
+  // rendered empty." A mistyped path - the normal way anyone narrows a run
+  // while iterating - produced a green sweep of nothing at all.
+  //
+  // Found 27 Aug 2026 while mutation-testing this file, and it is the fourth
+  // instrument in ten days whose green light could mean nothing: after
+  // check.py's dead root guard, toolsmoke.js's second copy of the tool
+  // registry, and this file's own public/app/ exclusion.
+  const missing = pages.filter((p) => !fs.existsSync(p));
+  if (missing.length) {
+    console.error(`conformance: ${missing.length} named page(s) do not exist:`);
+    for (const p of missing) console.error(`  ${p}`);
+    console.error('Refusing to run. A missing page loads Chrome\'s error page, '
+                + 'which is not empty and would sweep clean.');
+    process.exit(2);
+  }
   if (!pages.length) {
     console.log('WARN  no built pages found. Run ./build.sh first.');
     process.exit(0);
@@ -344,8 +398,7 @@ const showAll = args.includes('--show');
       for (let i = 0; i < 100 && !loaded; i++) await sleep(20);
 
 
-      let m;
-      try {
+      const readMetrics = async () => {
         const r = await cdp.send('Runtime.evaluate', {
           expression: `(() => ({
             scrollWidth: document.documentElement.scrollWidth,
@@ -355,7 +408,26 @@ const showAll = args.includes('--show');
           }))()`,
           returnByValue: true,
         }, sessionId);
-        m = r.result.value;
+        return r.result.value;
+      };
+
+      let m;
+      try {
+        m = await readMetrics();
+        // THE APPS IN public/app/ RENDER AFTER LOAD, so one read at
+        // loadEventFired would call a working application empty. This is the
+        // thing that made excluding them look reasonable, and it is a couple of
+        // lines to solve instead.
+        //
+        // The grace period is spent ONLY on a page that currently looks empty,
+        // so the 715 static pages measure exactly as before and pay nothing: a
+        // page with text leaves the loop without ever sleeping. A page that is
+        // still blank after the full wait is reported empty, which is the
+        // failure we want and the one that shipped twice.
+        for (let i = 0; i < SETTLE_TRIES && m && m.textLength < EMPTY_CHARS; i++) {
+          await sleep(SETTLE_MS);
+          m = await readMetrics();
+        }
       } catch (e) {
         findings.push({ page, vp: vp.name, theme: theme.name, kind: 'evaluate failed', detail: e.message });
         continue;
@@ -389,7 +461,7 @@ const showAll = args.includes('--show');
           detail: consoleErrors.slice(0, 3).join(' | ').slice(0, 300),
         });
       }
-      if (m.textLength < 40) {
+      if (m.textLength < EMPTY_CHARS) {
         gs.empty++;
         findings.push({
           page, vp: vp.name, theme: theme.name, kind: 'empty',

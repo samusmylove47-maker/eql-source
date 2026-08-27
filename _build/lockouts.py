@@ -42,6 +42,26 @@ ABSENT REPO
 A rebuild must work on a machine that does not have the Lockouts repo, exactly
 as with skyledger.py and geometry.py. Where the repo is missing, the committed
 copy stands and this exits 0.
+
+**EVERY LOCKOUTS RELEASE NEEDS A COMMIT IN THIS REPOSITORY.** That is a property
+of the design, not a bug to be diagnosed. The app is copied out of a sibling
+checkout and committed here under its content hash; nothing on a build machine
+reaches across to that repository, and nothing in that repository can reach into
+this one. So a release there is invisible here until a session runs this file and
+commits the result. It happened immediately: the site served 779df7f5 on 27 Aug
+while the Lockouts repo had shipped three further builds, and the one readers
+were opening was the build that told the owner "0 of 25 done".
+
+The cost of that property is this paragraph. The alternative — fetching a build
+at deploy time — would mean the site could change without a commit, which is
+worse: there would be no diff, no review and no way to say afterwards what a
+reader saw. The hash in assets/lockouts.json is the record of exactly which
+build shipped, and it is only trustworthy because a human merged it.
+
+**So the no-op is announced.** When the sibling repo is missing, or is present
+and already matches what we serve, this says so on stdout and names the hash. A
+silent skip and a successful copy used to print differently only in the hash,
+which nobody reads when they are not looking for it.
 """
 import datetime
 import glob
@@ -114,29 +134,57 @@ def source_build(repo):
              f"say which is current: {', '.join(found)}")
 
 
-def keep_committed():
-    """Report on the copy already in the tree, and exit clean."""
+def keep_committed(reason):
+    """Report on the copy already in the tree, and exit clean.
+
+    `reason` says WHY nothing was copied. A skip and a copy used to differ only
+    in the hash on a line nobody reads unless they are already suspicious, and
+    the whole failure mode here is a stale build being served for days without
+    anyone noticing. So the no-op names itself.
+    """
     if not os.path.exists(OUT):
-        print('lockouts: repo not found and no committed record — nothing to '
-              'copy, and nothing links this tool yet either')
+        print(f'lockouts: {reason}, and no committed record — nothing to copy, '
+              f'and nothing serves this tool yet either')
         return 0
     rec = json.load(open(OUT, encoding='utf-8'))
     served = os.path.join(APPDIR, rec['app']['file'])
     state = 'present' if os.path.exists(served) else 'MISSING'
-    print(f"lockouts: repo not found, keeping the committed copy "
-          f"({rec['app']['file']}, {state})")
+    print(f"lockouts: NOT COPIED — {reason}. Serving the committed "
+          f"{rec['app']['file']} ({state}, read {rec.get('read', '?')})")
     return 0
 
 
 def main():
     repo = find_repo()
     if repo is None:
-        return keep_committed()
+        return keep_committed('no EQLSLockouts checkout beside this one')
 
     src, named = source_build(repo)
     if src is None:
-        print(f'lockouts: {repo} holds no built app yet')
-        return keep_committed()
+        return keep_committed(f'{repo} holds no built app yet')
+
+    # THE COMPARISON IS THE POINT, AND IT IS MADE OUT LOUD.
+    #
+    # Every release in that repository needs a commit in this one, so the
+    # interesting question on any given day is "is what they shipped what we
+    # serve?" - and until 27 Aug 2026 this file answered it only by printing a
+    # hash. It served a build three releases old for a day, to testers, and the
+    # build said "0 of 25 done".
+    #
+    # Now the answer is a sentence either way: up to date, or the two hashes
+    # side by side. Read before the copy so an already-current tree still says
+    # so rather than silently rewriting an identical file.
+    try:
+        current = json.load(open(OUT, encoding='utf-8'))['app']['file']
+    except (OSError, ValueError, KeyError):
+        current = None
+    if current == named:
+        print(f'lockouts: up to date — {named} is what the sibling repo '
+              f'points at and what we serve')
+        return 0
+    if current:
+        print(f'lockouts: sibling repo points at {named}; we serve {current}. '
+              f'Copying.')
 
     blob = open(src, 'rb').read()
     sha256 = hashlib.sha256(blob).hexdigest()

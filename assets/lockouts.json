@@ -1,14 +1,14 @@
 {
  "app": {
-  "bytes": 116043,
-  "file": "eqls-lockouts.779df7f5.html",
-  "hash": "779df7f5",
-  "kb": 113,
-  "sha256": "779df7f5fa07d440e5956595c84628526805b58293f9c51e674c9d840fac57f5"
+  "bytes": 265191,
+  "file": "eqls-lockouts.eb2a1195.html",
+  "hash": "eb2a1195",
+  "kb": 259,
+  "sha256": "eb2a119552478168f43a8cff07e8e05f7dacbf6e4321f4b4db1b58474bed0b47"
  },
  "pointer": "latest.txt",
  "promoted": true,
- "read": "2026-08-26",
- "source": "public/app/eqls-lockouts.779df7f5.html",
+ "read": "2026-08-27",
+ "source": "public/app/eqls-lockouts.eb2a1195.html",
  "version": null
 }
