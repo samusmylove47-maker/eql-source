@@ -568,6 +568,48 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 26 Aug — the tool works. The uplift has one trap, and it is the one we criticise in public.
+
+**The fix landed and the owner's own log now reads `6 raids still open · 12
+uncertain · 7 of 25 done`**, with Fear D3, Hate D3/D4, Nagafen D3/D4 and Vox
+D3/D4 all resolving. They are taking it to human testers today.
+
+**The cosmetic uplift is ordered — and the obvious way to do it would repeat, on
+our own page, the exact defect we publish about somebody else's app.**
+
+| | |
+|---|---|
+| eqlsource.com | loads Cinzel, Saira Condensed, IBM Plex Mono and Public Sans **from `fonts.googleapis.com`**, with `preconnect` to `fonts.gstatic.com` |
+| the lockout app | **zero external references** — measured, 0 hits for any font host, `http://` or `https://` — and a test asserts it |
+| the app's own subtitle | **"Your log never leaves this machine."** |
+
+**Our landing page says of EQLS Auras: *"It fetches its typeface from Google each
+time it launches, which discloses your IP address to Google."*** Session C found
+that, we disclosed it, and Session C's recommendation to its author was to
+self-host, on the reasoning that **it changes where a file comes from and not how
+anything looks.**
+
+**We do not get to take the shortcut we advised her against, on a page whose best
+sentence is a privacy claim.** Subset the four faces to the glyphs the page
+actually uses and inline them as `@font-face` data URIs. The cost is bounded,
+measurable and one-time; the guarantee stays absolute.
+
+**And extend the self-containment test rather than relying on it holding:** it
+currently asserts no `http://`, `<link`, `<img`, `fetch(` or `XMLHttpRequest`.
+Add the font hosts by name, so the day somebody reaches for a `<link>` the build
+fails instead of the claim quietly becoming false — which is precisely how the
+Auras sentence went stale under Session A in the first place.
+
+#### What the uplift actually is, measured against the shipped page
+
+The app carries **11 CSS custom properties, no `prefers-color-scheme`, no
+`data-theme`, and a system monospace stack.** The site's design system is
+binding, has four faces and two grounds, and none of it has reached this page.
+The gap is not taste, it is that the page was built to work and the look was
+deferred — correctly, in that order.
+
+---
+
 ### 26 Aug — the live tool tells the owner nothing, and the cause is half bug, half doctrine
 
 **The owner ran the shipped tool against their own log and it returned `0 of 25
