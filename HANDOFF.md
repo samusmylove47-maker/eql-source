@@ -568,6 +568,75 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 26 Aug — the live tool tells the owner nothing, and the cause is half bug, half doctrine
+
+**The owner ran the shipped tool against their own log and it returned `0 of 25
+done`, 15 uncertain, 10 open — after a week in which they completed Fear D3 and
+D4, Hate D3 and D4, and more.** They are right that it is not correct. The cause
+is two things and only one is a defect.
+
+#### The defect: `onBoundaryDay` looks true when it cannot be
+
+The shipped logic is:
+
+```js
+const h1 = under(boundaryDayStart, d);
+const h2 = onBoundaryDay ? under(priorBoundaryStart, d) : h1;
+…
+} else if (h1.s === h2.s) { cellState = h1.s; }
+else { cellState = 'unknown'; because = `today is ${RESET_RULE.weekdayName} …` }
+```
+
+**`h2` can differ from `h1` only when `onBoundaryDay` is true**, and the message
+it produces says *today is Tuesday*. Otherwise `h2 === h1`, the two always agree,
+and **no cell can ever be `unknown`.**
+
+**Fifteen cells came back `unknown`. So `onBoundaryDay` evaluated true.** The
+provenance panel says the log covers to **2026-08-26 19:47:56**, and 26 August
+2026 is a Wednesday. **It cannot have been Tuesday when that ran.** Session D
+should find why — a weekday computed against the period start rather than
+against now, or a timezone crossing between the log's Eastern stamps and the
+rule's Pacific — but the shape of the fault is that a branch meant to fire on one
+day a week is firing on a day it is not.
+
+#### The doctrine problem, which survives the fix and matters more
+
+**Even with that corrected, the owner's raids were run on Tuesday 25 August
+between 20:31 and 22:37 — on the boundary day itself.** With the reset hour
+unrecorded, those kills are genuinely ambiguous: after the turnover they count
+for this week, before it they belong to last. The tool would still answer
+`unknown`.
+
+**So our own discipline, applied without judgement, has produced a tool that says
+nothing in precisely the case the user cares about most.** Refusing to invent a
+number was right. Refusing to *measure* one for eight days was not, and that is
+mine.
+
+**The reset hour is now one sentence away from being known.** The alt+Z window
+prints the remaining time on every lock. **`the moment the screenshot was taken`
+plus `the remaining time` gives the expiry instant directly** — and if the locks
+share a common expiry, that instant *is* the reset boundary, to the second. The
+owner has two screenshots. **The only missing input is what time each was
+taken.**
+
+#### And I must withdraw the strongest claim I made from those screenshots
+
+I wrote that Nagafen's Lair and Permafrost locks *"did not exist in the first
+window,"* and built the common-expiry conclusion on it. **Both windows are
+scrolled lists with more rows than the pane shows.** I could not have known the
+first was complete, and I did not check before asserting it.
+
+**The observation that survives is weaker and still useful:** every row visible in
+each window carries one identical value, and the two windows are 12h 28m 57s
+apart. That is consistent with a common expiry and does not establish it. **The
+timestamps settle it; my reading of two cropped screenshots does not.**
+
+That is the fourth time today I have built a conclusion on a partial read. The
+pattern is specific enough to name: **I treat the visible portion of an artifact
+as the whole artifact.**
+
+---
+
 ### 26 Aug, later — `/dzlisttimers` answered, and the timers say the lockout is NOT rolling
 
 **Three findings from the owner's Plane of Fear D3 raid. The third contradicts
