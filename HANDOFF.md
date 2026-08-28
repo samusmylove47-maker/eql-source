@@ -568,6 +568,46 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 27 Aug — the webpage needs nothing. Checked, rather than assumed.
+
+**The owner asked whether D's refined understanding has to reach our page or can
+just go to Shara. Answer: the page is already current, and the refinements are
+not the kind that change a displayed claim.**
+
+Verified on the live bundle and on `main`:
+
+- `createState` carries `bosses` and `label` through — the silent-drop bug D
+  caught by opening the page is fixed in what we serve.
+- The full roster is live, King Tranix and `a dracoliche` included.
+- **`raids-measured.json` has the tier-0 inference right**: all 8 bare
+  `- Group` fights carry difficulty 0, and `difficulty_from` records 112 from the
+  zone line, 87 from the instance invite, 11 inferred and 3 with no zone line.
+  My backwards ruling did not survive into the data.
+
+**What D refined since does not touch a rendered claim.** The `<Name> died.`
+shape is deliberately unparsed because it carries player and pet deaths — and it
+**touches none of the ten roster bosses**, zero hits, so the grid is unaffected.
+The CRLF canon correction never affected the parser. The third was a canon claim
+D downgraded in its own commit.
+
+**One judgement of D's I am upholding against my own order.** I told them to fix
+the roster; they recorded the extra bosses as `alsoDies` — named in the tooltip,
+inert for completion — and explained why: Lord Nagafen already dies on every
+visit King Tranix does, so promoting Tranix buys nothing, and **the single case
+it changes is a group that kills Tranix then wipes on Nagafen, which would be
+told the raid is done.** *"It can only fail in the dangerous direction."* That is
+the right call and better than the instruction it declined.
+
+They also found a boss nobody has ever named — **`A priest of Nagafen`, carrying
+Lady Vox's exact signature across 12 of 12 Permafrost visits, hidden by its
+leading article exactly as `a dracoliche` was.**
+
+**Eventually worth doing, not now and not on the tracker page:** CLAUDE.md's
+instance-grammar and D0 discussion predates these measurements and is now more
+weakly sourced than D's `docs/CANON.md`. A task for Session A, after the release.
+
+---
+
 ### 27 Aug — the handover to `=Auras`. What ships is the research, and the code is the smaller half.
 
 **Shara has asked for the lockout tracker inside `=Auras`, targeting Tuesday
