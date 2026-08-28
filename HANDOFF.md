@@ -568,6 +568,64 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 27 Aug — the handover to `=Auras`. What ships is the research, and the code is the smaller half.
+
+**Shara has asked for the lockout tracker inside `=Auras`, targeting Tuesday
+1 September.** Session D ships to Session C; C builds it in at her direction.
+
+**Verified live before ordering the handover:** bundle `eb2a1195`, 265,191 bytes,
+**7 inlined `@font-face` declarations and 0 external references** — the faces were
+subsetted and embedded, so the *"your log never leaves this machine"* guarantee
+survived the uplift rather than being traded for it. Nagafen's Lair now carries
+King Tranix, Warlord Skarlon and Magus Rokyl alongside Lord Nagafen.
+
+#### The risk in this handover is not the code. It is that the code arrives without its scars.
+
+**Every hard-won thing in this module is a fact about the game that took a week
+and several inversions to establish, and none of it is visible from reading the
+source.** A module handed over as source plus tests will be correct on the day and
+wrong the first time somebody refactors it, because the reasons will not have
+travelled with it.
+
+**Four findings inverted at least once during development, and each would be
+re-inverted by a careful reader working from first principles:**
+
+1. **A bare `- Group` MEANS tier 0.** The client omits the instance index exactly
+   when it is zero. D's canon said the opposite, I ordered Session A to follow the
+   opposite, and `raidstats.py` — which had it right — was "corrected" to match my
+   error. Evidence: 12 invites naming `Group 0 (Normal)` against 12 bare entries,
+   no entry line anywhere stating index 0, and a verifier matching 65 of 65 full
+   `- Group N` entries to their preceding invite.
+2. **The lock is not stamped at the kill.** 14 locks earned across 6,133 seconds
+   of kills render one value with zero spread. **If a future version infers from
+   kill timestamps, no volume of kill data will ever reveal the error.**
+3. **`B − R = exactly 5d 23h` is the measurement. Six days is CONDITIONAL** on the
+   replay period being one hour. I published the six days as fact and had to
+   retract it.
+4. **`/dzlisttimers` reports REPLAY timers, not loot lockouts** — closed by a
+   capture carrying its own control line, so the negative is real rather than a
+   filtered channel.
+
+**And the property that must survive integration above all others: the tool says
+what it does not know.** Four cell states, `not_looked` never rendering as `open`,
+no countdown, `days` labelled conditional, every figure carrying its provenance.
+**That is the entire reason this is worth putting in front of players rather than
+the kill-inference-plus-typed-constant that already exists elsewhere.** If it
+arrives in `=Auras` with the uncertainty smoothed off, we have shipped a worse
+copy of something that already exists — which is the one thing CLAUDE.md forbids
+outright.
+
+#### One consequence of the Tuesday target worth stating now
+
+**1 September is a reset day.** Users who raid that Tuesday will see boundary-day
+cells, because the reset *hour* is still unmeasured — the ambiguity is honest and
+it will look like vagueness on day one. **One timestamp from the owner retires it
+for everyone**: the moment an alt+Z screenshot was taken, plus the remaining time
+it shows, gives the reset instant directly. That measurement has been one sentence
+away for nine days and is now on a deadline.
+
+---
+
 ### 27 Aug — Shara has published a build. Three facts, checked, before anything is promoted.
 
 **Yes, both the `.exe` and the repo link go to Session C.** They hold the audit
