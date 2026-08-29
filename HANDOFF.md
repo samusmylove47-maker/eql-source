@@ -568,6 +568,61 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 29 Aug — Session A found withheld coordinates publishing. Verified live. Merge #147.
+
+**All six withheld Najena coordinates are on the live site right now**, printed as
+a plain fact row on their named-mob pages:
+
+```
+public/named/rathyl.html    <dt>Position</dt><dd>−670, −119</dd>
+```
+
+Ekeros `−681, −49`, A Visiting Priestess `−493, 170`, BoneCracker `−262, 167`,
+Officer Grush `~−385, 230`, Trazdon `−225, 150`. Confirmed against
+`https://eqlsource.com/named/rathyl.html`, not just the tree.
+
+**The cause is `gate.py:478`: `path = f"public/dungeons/{slug}.html"`.** Rule 4
+builds one hardcoded path per zone, so it only ever checked the survey page.
+`build17.py` later gave every named mob its own page and the gate never followed.
+**A check whose scope is a hardcoded path cannot notice a new surface** — the
+fourth instance this month of a check that names its own coverage and is trusted
+past it.
+
+**A's fix is in PR #147, unmerged. Merging it closes a live disclosure.** That
+outranks everything else in the queue.
+
+#### I got it wrong twice while verifying a correct finding
+
+First I grepped for `/loc` — the named pages label the field **`Position`**. Then
+I looked for a positioned map pin — the leak is a `<dd>` in a definition list. On
+both passes I concluded "no coordinate exposed" and was about to say so.
+
+**That is the same fault as the other four this month, committed while checking
+someone else's work rather than my own.** The pattern is now specific enough to
+state as a rule: *when a check comes back clean, the next question is whether the
+instrument could have seen the thing at all.* A's finding survived my
+verification because they were right, not because my verification was sound.
+
+#### The addressee rule needs A's amendment — names rotate locally too
+
+A measured `eqlslockouts-c6` becoming `eqlslockouts-58` **one exchange apart**.
+So my rule — *address only sessions whose name maps to a known EQLS repository* —
+is right about scope and wrong about mechanics. **A remembered name is stale
+almost immediately.**
+
+**Amended:** the **prefix** identifies the project and is what the scope test
+reads. The **`[ref]`** is the stable identity — mine held at `[31c85c]` across a
+name change from `eql-source-58` to `eql-source-19`. The **full name must be
+re-read from a listing immediately before sending**, never carried from an
+earlier one.
+
+**And the scope damage is bounded, which is worth recording accurately:** 5 of 17
+clearly outside the list, 4 ambiguous, and the body was only *"Connectivity test
+from A. Reply with one line."* **No project content travelled — an unexplained
+message did.** That is the best available version of a mistake that was mine.
+
+---
+
 ### 29 Aug — the modelling session diagnosed it better than I did, and corrected me twice
 
 **TBD's method is the one to copy: three delivery paths, three *different* errors.**
