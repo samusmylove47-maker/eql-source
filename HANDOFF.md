@@ -645,18 +645,56 @@ it skips. The enforcement is entirely in `gate.py` rule 4, and rule 4 sees one
 path per zone. A module whose own header describes a guard that was never
 written is the exact object this project keeps finding in other people's work.
 
-**The fix is three parts, and the third is the only one that generalises:**
+#### RESOLVED in PR #148, verified independently. Merge it.
 
-1. `build17.py` imports `WITHHELD` and replaces the `Position` row with the mark,
-   as `build3.py` already does for the plate.
-2. `extract.py` stops writing `loc` for a withheld mob, which fixes The Index and
-   anything downstream of `index-data.json` at once, rather than one consumer at
-   a time.
-3. **Rule 4 stops naming its own coverage.** It should walk the built tree and
-   assert no page anywhere carries the coordinate, instead of constructing a path
-   per zone. Then a generator added next month is covered on the day it ships.
-   `gate_selftest.py` gets a case that plants a coordinate on a page rule 4 was
-   never told about — that is the fault, and today it is unprovable.
+A's account of the mechanism is right and I could not have found it: **#147
+merged two of its three commits.** `8bc4f35f` reached the branch after the merge
+had completed, so the PR closed without it. GitHub reported MERGED and the remote
+tip matched their local HEAD, so both obvious checks read clean; only
+`git log origin/main..HEAD` showed the gap. **A green PR state is not proof your
+last commit is in it** — that belongs beside the propagation lessons, because it
+is one: the fault was in the space between two systems that each looked correct.
+
+#148 re-proposes it against current main and does all three things I would have
+ordered, plus two I did not know about. Verified against the branch, not taken on
+report — swept the whole tree for the six coordinates **in both forms**, literal
+U+2212 and `−` escapes:
+
+- **zero occurrences anywhere under `public/`.** The survivors are
+  `assets/index-data.json` (6, correct — withheld is not deleted) plus comments
+  and the self-test fixture.
+- `build17.py` prints the mark; `build5.py` strips `loc` from the data **before
+  `json.dumps`**, not in the renderer, so the number never reaches the page
+  source in any form;
+- **rule 4 now scans every page** instead of constructing `public/dungeons/
+  {slug}.html`, with a `gate_selftest.py` case that plants the coordinate back on
+  `rathyl.html` — the fault that was unprovable is now proven.
+
+Stripping in `build5.py` rather than `extract.py` is sufficient, and I checked
+why rather than assuming: `assets/index-data.json` is not under `public/`, and
+`wrangler.jsonc` serves `public/`. The raw dataset is never published.
+
+**Two findings of A's that outrank mine.** `check.py` could **crash while
+printing a failure and exit 1 with no message** — a piped stdout on Windows is
+cp1252, which cannot encode U+2212, and 141 recorded coordinates use it. So the
+withheld-coordinate rule killed the reporter with the report, and it reproduced
+only where `PYTHONIOENCODING` was unset. *A validator must be able to print any
+failure it can detect.* That is a better rule than anything I contributed here.
+And A caught a real defect in their own `- Group` change before it shipped.
+
+**One count is wrong and it is only in comments.** `gate.py:481`,
+`gate_selftest.py:380` and `HANDOFF.md:258` say **four** coordinates were in The
+Index's bundle. It is **six** — one occurrence per mob, measured on `origin/main`.
+Behaviour is unaffected, since the filter keys on `WITHHELD` membership. Raised on
+the PR as a follow-up, explicitly not a merge blocker: a live disclosure outranks
+a wrong number in a comment. It still has to be fixed, because §3 exists over
+exactly this — a typed figure beside the data it claims to come from, in the file
+whose job is to catch that.
+
+**Watch item, not a defect.** Rule 4 is now proximity-based across 715 pages. A
+future note carrying `NN, NN` within 90 characters of a withheld mob's name will
+fail the build with a message that reads like a leak. It fails closed, which is
+the right direction, and someone editing a Najena note should know why.
 
 #### The addressee rule needs A's amendment — names rotate locally too
 
@@ -675,6 +713,53 @@ earlier one.
 clearly outside the list, 4 ambiguous, and the body was only *"Connectivity test
 from A. Reply with one line."* **No project content travelled — an unexplained
 message did.** That is the best available version of a mistake that was mine.
+
+#### D closed the loop, and reproduced the modelling session's hazard rather than relaying it
+
+D confirms local A↔D messaging works in both directions, `eql-source-58` is
+unreachable by name, and every cloud send returns success carrying the rider that
+a cloud session cannot be messaged back. That is a third independent
+confirmation of the shape: **inbound is a capability a cloud session holds and
+outbound is a separate one it does not.** My own `ListAgents` says the same from
+here — no reachable peers, so A's and D's notes arrive and nothing I write leaves
+by that channel. HANDOFF and a pull-request comment are the reply path.
+
+**The killing-blow hazard reproduces on our corpus.** The modelling session
+measured that the client reports damage *applied*, capped at the target's
+remaining hit points. D tested it here instead of taking it:
+
+| damage against the source's modal value | hits | landed on the death tick |
+|---|---|---|
+| below modal | 5 | 5 — **100%** |
+| at modal | 2,805 | 49 — 1.7% |
+
+Every below-modal observation in the sample is a killing blow, against a 1.7%
+base rate. It does not touch the shipped lockout module — `parseLine` returns
+null for every damage shape — and the filter is written in beside `SLAIN_BY_RE`
+for whoever needs it. **Anything on this site that builds a damage distribution
+must exclude the killing blow**, and `raidstats.py`'s damage-to-kill totals are
+unaffected because a total is a sum, not a distribution.
+
+**And the methodological note is the better half:** D's first attempt found
+nothing, because the capture groups were reversed and melee was keyed on
+attacker+target — and `a rock golem` names many mobs, so death-tick matching
+diluted to noise. *A null result from a badly aimed test is not a null result.*
+That is the same rule I wrote for myself after the `/loc` grep, arrived at
+independently, and it is worth stating in the general form: **when a check comes
+back clean, the next question is whether the instrument could have seen the thing
+at all.**
+
+#### BLOCKER, and it is the owner's to clear — eleven days open, two days left
+
+**The wall-clock time each alt+Z screenshot was taken.** That plus the remaining
+time the window shows gives the reset instant directly, and retires the "unsure"
+cells permanently for every user.
+
+**1 September is a Tuesday — the boundary day.** So on the release day itself,
+every user who raids that evening sees their own raids come back *unsure*. The
+tracker ships correct and reads broken, on the one day the most people look at
+it. One sentence from the owner closes it. There is no measurement any session
+can substitute: the screenshots exist, the times they were taken do not.
 
 ---
 
