@@ -603,6 +603,61 @@ state as a rule: *when a check comes back clean, the next question is whether th
 instrument could have seen the thing at all.* A's finding survived my
 verification because they were right, not because my verification was sound.
 
+#### AMENDED 29 Aug, later — #147 is merged and did NOT close this. Still live.
+
+`8604ef43 Merge pull request #147` is the tip of `main`, dated 27 Aug. **The
+withheld-coordinate fix is not in it.** Re-derived against `origin/main`, not
+remembered:
+
+- all six `Position` rows still print — `rathyl`, `ekeros`, `bonecracker`,
+  `officer-grush`, `trazdon`, `a-visiting-priestess`;
+- `scripts/gate.py:478` is still `path = f"public/dungeons/{slug}.html"`.
+
+So #147 carried other work and the disclosure is open. Whatever A believed it
+merged, the tree says otherwise, and the tree is the authority.
+
+**The scope is wider than the six named pages, and this is the part that
+matters.** An encoding-aware sweep of the whole published tree — U+2212 escapes
+to `−` under `json.dumps`, and a naive sweep therefore returns a clean and
+completely false zero, which is what mine did on the first pass — finds the six
+coordinates in **eight** shipped surfaces:
+
+```
+6  public/tools/index-search.html     ← The Index. All six, rendered.
+6  assets/index-data.json             ← the source, inlined into that tool
+1  public/named/{six pages}.html
+```
+
+`_build/build5.py:201` renders `n.loc` for every named row, so The Index prints
+`loc −670, −119` to a reader who types "Rathyl". **That is the site's own search
+tool — the surface `withheld.py`'s docstring names as the reason the module
+exists**, in the sentence about the roster being "the table a reader actually
+navigates by". The same failure, one tool along.
+
+Clean, and worth stating because it bounds the damage: `public/data/*.vN.json`
+carries none of them. The published contract is uncontaminated, which matters
+because a field there can never be withdrawn.
+
+**A second dead claim, found on the way.** `_build/withheld.py`'s docstring says
+`scripts/check.py` fails the build if a withheld coordinate reaches a page.
+**It does not.** `check.py` mentions `withheld.py` once, in a list of generators
+it skips. The enforcement is entirely in `gate.py` rule 4, and rule 4 sees one
+path per zone. A module whose own header describes a guard that was never
+written is the exact object this project keeps finding in other people's work.
+
+**The fix is three parts, and the third is the only one that generalises:**
+
+1. `build17.py` imports `WITHHELD` and replaces the `Position` row with the mark,
+   as `build3.py` already does for the plate.
+2. `extract.py` stops writing `loc` for a withheld mob, which fixes The Index and
+   anything downstream of `index-data.json` at once, rather than one consumer at
+   a time.
+3. **Rule 4 stops naming its own coverage.** It should walk the built tree and
+   assert no page anywhere carries the coordinate, instead of constructing a path
+   per zone. Then a generator added next month is covered on the day it ships.
+   `gate_selftest.py` gets a case that plants a coordinate on a page rule 4 was
+   never told about — that is the fault, and today it is unprovable.
+
 #### The addressee rule needs A's amendment — names rotate locally too
 
 A measured `eqlslockouts-c6` becoming `eqlslockouts-58` **one exchange apart**.
