@@ -568,6 +568,77 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 29 Aug — the modelling session diagnosed it better than I did, and corrected me twice
+
+**TBD's method is the one to copy: three delivery paths, three *different* errors.**
+
+| path | result | rules out |
+|---|---|---|
+| `SendMessage` → a name | *"No agent named … is reachable"* | a **lookup** failure |
+| `SendMessage` → `bridge:session_…` | auth, cannot message other sessions | address **resolves**, fails at **authorization** |
+| `claude -p … --cloud <id>` | *"Session expired. Please run /login"* | container has **no account credential** |
+
+**And the definitive evidence, which I did not find:** `get_session` reports
+`"cross_session_inbound":"available"` **with no outbound counterpart.** The
+platform models the two directions as separate capabilities and a cloud session
+holds only the receiving one. The egress proxy reports `recentRelayFailures: []`,
+so it was never a network problem. Also noted: `container_cc_version: 2.1.238`
+against the CLI's 2.1.251 — a skew inside one session, flagged and not diagnosed.
+
+**The unblock that exists today, needing nothing enabled:**
+`claude -p "<message>" --cloud <session-id>`, run from the **owner's own
+terminal** signed in with `claude auth login` — not from inside a container,
+which is exactly why it failed here.
+
+**TBD offered a Routines-as-message-bus path and deliberately did not take it.
+Upholding that.** `create_trigger` with `persistent_session_id` plus
+`fire_trigger` with `text` would deliver into a peer, but it is off-label use of
+a scheduler, it leaves a persistent Routine object per correspondent in the
+owner's account, and the owner has just ruled that nothing changes for the
+foreseeable future. **A workaround built against a stated freeze is a
+liability.** Recorded as available and declined.
+
+#### Two corrections to me, both from TBD, both upheld
+
+**1. `samusmylove47-maker/sky-ledger` does NOT contain a browser log-tailer.** I
+told TBD it did. They grepped the whole repo for `windows-1252`, `cp1252`,
+`TextDecoder`, `logWatcher` and `tailer` — **zero hits.** Verified from here: the
+tailer is the *built artefact* at `public/app/sky-ledger.dad68d2b.html` **in
+eql-source**, and `skyledger.py` copies it from a Ledger repo whose location is
+env-var driven. **The artefact is ours; the source is not in the repo TBD holds.**
+I conflated a build output with its origin and sent someone to look in the wrong
+place.
+
+**2. They refused to corroborate the encoding finding, and were right to.**
+Their log is 28,297 bytes with **zero** bytes above 0x7F, so it decodes
+identically under UTF-8, ASCII and windows-1252 and tests nothing. *"Their 434 MB
+sample is the real evidence; I'm not adding a fake second witness."* **That is
+the standard, stated better than I have stated it.**
+
+**And a false alarm I did not raise, having checked first:** the shipped lockouts
+bundle carries `TextDecoder("utf-8", { fatal: true })` with windows-1252 as a
+**fallback**. Session D did not blind-inherit the Sky Ledger's decode; they built
+strict-UTF-8-first with a fallback, which is better than either alone.
+
+#### My instruction caused cross-project contamination, and the fix is a checkable rule
+
+**Sessions A and D messaged every session on the machine — including dormant ones
+belonging to unrelated projects.** My test prompt said *"send to every session the
+listing showed"* and scoped it to nothing. **That is my error, not theirs.**
+
+**The standing rule, phrased so it can be checked:** address only sessions whose
+name maps to a known EQLS repository — `eql-source`, `EQLSLockouts`, `EQL50ups`,
+`EQLSAuras`, `sky-ledger`. Anything else is out of scope, and when in doubt, do
+not send.
+
+**On the owner's shared-message-board idea: keep the boundary at *who may be
+addressed*, not at *what may be said*.** A channel whose rule is "do not let
+context cross" is a rule nobody can verify and everybody will break by accident,
+because the purpose of a shared channel is that context flows. A rule about
+addressees is checkable against a list.
+
+---
+
 ### 29 Aug — ANSWERED. Inbound works, outbound is blocked at the credential, and the cause is none of my theories.
 
 **Session D and Session A both reached this cloud session from the Windows
