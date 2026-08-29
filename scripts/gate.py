@@ -474,6 +474,37 @@ def run(pages, fail, warn):
     except ImportError:
         WITHHELD = set()
         warn("_build/withheld.py could not be imported — withholding is unchecked")
+    # THE SCAN WAS ONE DIRECTORY WIDE, AND THE LEAK WAS EVERYWHERE ELSE.
+    #
+    # This hardcoded public/dungeons/{slug}.html, so it proved the plates and
+    # nothing else - while all six withheld Najena coordinates printed on their
+    # named-mob pages as "Position −670, −119", and four were embedded in The
+    # Index's search bundle as "loc −262, 167". Found 27 Aug 2026.
+    #
+    # The rule's own comment already said withholding "applies to the whole
+    # page, not just the roster". It was right, and it was enforced on 13 pages
+    # out of 715. Checking one directory is the same fault as checking one
+    # table, one scale up, and it is the fault this whole file exists to stop.
+    #
+    # The roster check below stays plate-shaped, because that markup only
+    # exists on a plate. The proximity check is generic and now runs over every
+    # page in the build.
+    WH_NAMES = sorted({n for _z, n in WITHHELD})
+    for path in pages:
+        h = open(path, encoding="utf-8", errors="replace").read()
+        body = text_of(h)
+        for name in WH_NAMES:
+            if name not in body:
+                continue
+            for m in re.finditer(re.escape(name), body):
+                near = body[m.end(): m.end() + 90]
+                hit = re.search(r"[-−]?\d{2,4}\s*,\s*[-−]?\d{2,4}", near)
+                if hit:
+                    fail(f"{path} prints {hit.group(0)!r} beside {name!r}, whose "
+                         f"coordinate is withheld — withholding applies to every "
+                         f"page, not just the plate it was withheld on")
+                    break
+
     for slug, name in sorted(WITHHELD):
         path = f"public/dungeons/{slug}.html"
         if not os.path.exists(path):
@@ -492,20 +523,12 @@ def run(pages, fail, warn):
         # nothing else, so Najena shipped "BoneCracker L24 · −262, 167" in its
         # key-chain list while the roster three sections below said "withheld".
         # Withholding a coordinate means withholding it from the PAGE, so the
-        # whole page is checked: any "<name> ... <number>, <number>" within a
-        # short span of the name is a coordinate that escaped.
+        # whole page is checked — and that check now runs over every page in
+        # the build, above, rather than only over the plates.
         #
-        # Both minus signs are matched. 141 recorded coordinates use U+2212
-        # rather than ASCII hyphen, and a pattern that knows only one of them
-        # would pass exactly the coordinates most likely to be missed.
-        body = text_of(h)
-        for m in re.finditer(re.escape(name), body):
-            near = body[m.end(): m.end() + 90]
-            hit = re.search(r"[-−]?\d{2,4}\s*,\s*[-−]?\d{2,4}", near)
-            if hit:
-                fail(f"{path} prints {hit.group(0)!r} beside {name!r}, whose coordinate is "
-                     f"withheld — withholding applies to the whole page, not just the roster")
-                break
+        # Both minus signs are matched there. 141 recorded coordinates use
+        # U+2212 rather than ASCII hyphen, and a pattern that knows only one of
+        # them would pass exactly the coordinates most likely to be missed.
 
     # ---- 5. metadata may not assert what the body will not ------------------
     #
