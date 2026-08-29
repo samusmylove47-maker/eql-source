@@ -568,6 +568,52 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 29 Aug — cross-session messaging: live in this session, and it can see nothing
+
+**Tested rather than predicted, twice, with the machine on and all four sessions
+running.**
+
+```
+ListAgents  →  This session is eql-source-6f [9da05c]
+               No reachable agents — no other Claude session is running
+               on this machine right now
+SendMessage →  No agent named 'eql-source' is reachable.
+```
+
+**Two independent reasons, and I can fix neither from here.**
+
+**1. The local sessions are on Windows, and the feature is macOS and Linux
+only.** The announcement the owner sent says so in as many words. Our own records
+put A, C and D on a Windows machine — CLAUDE.md carries a whole Windows section,
+and Session D reported the game install at `C:\Users\Public\Daybreak Game
+Company\…` and Shara's tree at `C:\Users\Lindsey\…`. **If that is right, A, C and
+D cannot message each other either**, which is the half that would actually have
+changed our day-to-day.
+
+**2. This session is an isolated ephemeral container, and its address is not
+even stable.** It was `eql-source-84 [91ddb8]` two days ago and is
+`eql-source-6f [9da05c]` today. **Even with discovery working, a peer could not
+hold an address for me between turns.** Discovery here is machine-scoped; my
+tool's own description says it reaches other machines and cloud sessions only
+*"when Remote Control is connected here"*, and it plainly is not.
+
+#### The one test that separates the two, and only the owner can run it
+
+**Ask any session on the PC to run `ListAgents`.** If A can see C and D, the
+local mesh works and only the cloud link is missing — which would be genuinely
+useful, because A, C and D coordinate constantly and currently route through the
+owner to do it. If A sees nothing, it is the platform, and there is nothing to
+configure.
+
+**Until that is known, the handoff files stay as the coordination mechanism**,
+and I should not have implied otherwise. **What I can say is that the handoff
+would remain necessary regardless**: messages are explicitly *"never your
+conversation history or files"*, while this week alone the written record caught
+four of my own wrong claims because they were somewhere a session could check
+them.
+
+---
+
 ### 27 Aug — the webpage needs nothing. Checked, rather than assumed.
 
 **The owner asked whether D's refined understanding has to reach our page or can
