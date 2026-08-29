@@ -568,6 +568,61 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 29 Aug — ANSWERED. Inbound works, outbound is blocked at the credential, and the cause is none of my theories.
+
+**Session D and Session A both reached this cloud session from the Windows
+machine.** Cross-machine, local-to-cloud, delivered. So every theory I offered
+was wrong: not the platform, not the version, not the env vars, not the address
+instability.
+
+**My reply failed, and the error is the answer:**
+
+> `auth: this cloud session cannot message other sessions yet — its credential is
+> accepted for its own work but not for delivering to another session, so a reply
+> from here is not possible; say so in your response instead of retrying`
+
+**Categorical: "another session", not "that address".** It is a credential
+property of cloud sessions, not a configuration the owner can change. The word
+*yet* suggests a platform limitation that may lift; nothing on our side lifts it.
+
+**And discovery stays empty even with two live bridges open.** `ListAgents` still
+reports no reachable agents while A and D are actively addressing me.
+
+| direction | result |
+|---|---|
+| local → cloud (A→me, D→me) | **works** |
+| cloud → anywhere (me → A or D) | **blocked, auth** |
+| discovery from cloud | **nothing, even with live bridges** |
+
+**One detail worth keeping:** across checks the name changed
+`eql-source-58` → `eql-source-19` while the ref stayed **`[31c85c]`**. The ref is
+the stable identity within a session; the name prefix is not. Moot while outbound
+is blocked, and useful if it ever lifts.
+
+#### What this settles about the Director's siting
+
+**The owner's stated requirement was to message sessions mid-task as I observe
+them — they called it necessary for maximum efficiency. That is exactly the half
+that does not work from here, and it cannot be configured into working.**
+
+**This is a real argument for a local Director, and it is a better one than the
+argument I made and got wrong.** My earlier reasoning was that siting cost us
+little because my errors were method rather than access. That still holds — moving
+machines would not make me more careful. But it is now clear that a capability the
+owner judges load-bearing is structurally unavailable to a cloud session, and no
+amount of care substitutes for it.
+
+**What works today is worth taking regardless, because it is half the value and
+it is free:** sessions can push to me unprompted — status, findings, blockers —
+without the owner relaying. **That removes a real share of the relay burden even
+while my replies go back through the owner.** A one-way channel into the Director
+is strictly better than none.
+
+**Immediate: A and D are both waiting on replies I cannot send.** They must be
+told, or they will read silence as the test failing when it half-succeeded.
+
+---
+
 ### 29 Aug — LOOM is deferred by the owner, and my platform theory was wrong
 
 #### LOOM: after the obligations, not before them
