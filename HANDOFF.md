@@ -568,6 +568,80 @@ mine about anything rendered or fetched, yours wins by default.**
 
 ### Orders of 21 Aug (evening): the landing page, the lockout build, and a dead check
 
+### 29 Aug — LOOM is deferred by the owner, and my platform theory was wrong
+
+#### LOOM: after the obligations, not before them
+
+**The owner has ruled: `=Auras` integration and the tools players are waiting on
+come first, and LOOM waits until those are met.** They will say when. Recorded so
+no session starts building infrastructure while a Tuesday release is live.
+
+**The two documents are sound and better than most architecture writing, because
+they name their own failure modes and rank them.** Three things in them are
+already proven true here: the plane 3 / plane 4 separation (*"a model grading its
+own work in the same context confirms its own reasoning"*), *"nothing is
+trustworthy because it finished"* — our dead-check problem, three instances in
+ten days — and F1, a grader that approves everything, which is exactly
+`toolsmoke.js` printing *"All 6 tools ran"* while seven existed.
+
+**Three pushbacks recorded for when it is picked up:**
+
+1. **The capability table is the foundation and is unverified.** A dozen platform
+   features asserted with dates and links. By our own standard that is a tier-2
+   claim in tier-1 clothes, and verifying it is Phase 0 — before the control repo,
+   not after.
+2. **No mid-run human input means this is a supervised relay, not an unattended
+   machine.** Every gate is a stop. Worth naming so it does not disappoint against
+   a promise it never made.
+3. **The sharpest: LOOM removes what has saved this project most often — a
+   session with the standing to refuse an instruction.** Session D declined a
+   mutation test I ordered that would have locked a false invariant into the tree,
+   and refused a roster change I ordered because *"it can only fail in the
+   dangerous direction"*. Session B caught a false sentence of mine before it
+   reached the front page. **A work-order specialist implements the order.** The
+   grader checks the artifact against the rubric, and both descend from the same
+   flawed brief — so nothing in the loop catches a bad instruction faithfully
+   executed. If LOOM is built, at least one role needs explicit standing to refuse
+   and escalate, with refusals visible rather than counted as failures.
+
+**And one thing worth doing regardless, cheaply, because it is LOOM's foundation
+either way:** we have Tier 1 (`CLAUDE.md`) and Tier 2 (`HANDOFF.md`) and they
+work. We have no `rubrics/` — a written statement of what good looks like, per
+deliverable class, **that can fail.** That would improve the fleet immediately
+whether or not LOOM is ever built.
+
+#### My platform theory was wrong, and the address is unstable
+
+**Both sides run 2.1.251.** Native Windows support landed at 2.1.234, so the
+machine is not the blocker. I built that theory on the release note the owner
+first sent, which said macOS and Linux, and did not ask their version before
+asserting it.
+
+**A caveat on the new source, because it is our own discipline:** the correction
+came from a **Google AI Overview summarising Anthropic docs**, not from the docs.
+It invents plausible specifics — I nearly took its `crossSessionInbound` values
+and env-var list as fact. The version claim is likely right; the rest wants
+verifying. Checked here: all four named blocking variables are **unset** on my
+side.
+
+**The finding that may end this line of work: my address changes every session.**
+
+```
+eql-source-84 [91ddb8]   →   eql-source-6f [9da05c]   →   eql-source-58 [31c85c]
+```
+
+Three distinct names across three checks. **And I do not run continuously — I am
+invoked per message, in a fresh container.** So a peer cannot hold an address for
+me, and a message sent while I am not running has to survive re-provisioning to
+reach me at all.
+
+**That is testable rather than arguable, and it is the whole question:** have a
+local session send to `eql-source-58` now. **If it arrives on my next turn, the
+queue outlives the container and this works. If it does not, the instability is
+fatal and we stop spending time on it.** Either answer is worth having today.
+
+---
+
 ### 29 Aug — cross-session messaging: live in this session, and it can see nothing
 
 **Tested rather than predicted, twice, with the machine on and all four sessions
