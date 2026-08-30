@@ -397,6 +397,107 @@ timer. That is the Voidling pattern applied to a screenshot.
 "unsure" cells are not a defect. They are the tracker declining to guess, and D
 has proved the code collapses them the moment a controlled hour arrives.
 
+### 30 Aug, later — B refuted the roster within hours, with a measurement. It is withdrawn too.
+
+**Both halves of the identifier rotate.** B measured its own address across an
+unbroken conversation with no restart: `eql50ups-0d [835fa6]` yesterday,
+`eql50ups-b3 [91ddb8]` today. **The ref moved too.**
+
+So a roster keyed on `[ref]` fails exactly as the prefix rule did, **and it is
+worse** — B's words, and they are right: *"a stale ref still looks like a live
+address rather than an obvious mismatch."* The prefix rule failed loudly. Mine
+would have failed quietly. **I replaced a checkable-looking rule with a
+worse-behaved one and published it inside three hours.**
+
+B offered no fix and said so. That is the correct report: the identifier I chose
+*because* it survives renames did not survive B's.
+
+**Delete the roster.** Not "record it but do not trust it" — a recorded stale ref
+is worse than no ref, for the reason B gives. The table in the previous entry is
+void.
+
+#### The boundary moves from the addressee to the content, and I was wrong before
+
+On 29 August I argued: *"keep the boundary at who may be addressed, not at what
+may be said… a rule about addressees is checkable against a list."* **That
+reasoning is falsified. The list cannot be built**, because nothing about a
+session's identity is stable. So the boundary has to move to the one thing a
+sender can always check — the message in front of them.
+
+- **Initiating to an address you cannot positively tie to this project right now:
+  send a POINTER ONLY.** Repository, branch, section heading. No findings, no
+  numbers, no reasoning. Misdelivery then costs a stranger one confusing line and
+  leaks nothing — which is exactly what the 29 August incident was: *"No project
+  content travelled — an unexplained message did."*
+- **Replying to a session that has messaged you in this project, in this
+  conversation: reply in full.** The exchange established the identity; no
+  identifier was needed and none would have helped.
+- **Read a fresh `ListAgents` immediately before every send.** B is right that
+  this is the part that actually works, and it was already the instruction.
+
+This is checkable by the sender, against the message, with no stable identifier
+required. It is also the project's existing convention — *say where a thing is,
+not what it says* — promoted from style to rule.
+
+### 30 Aug — B ran the split on its own deploy, and found the defect in its own copy
+
+**Both halves clean, and B verified rather than trusted.** Self-containment: zero
+third-party subresources; **all seven faces self-hosted and sibling-relative, and
+B fetched each one rather than believing the stylesheet** — 200, 14,708–26,832
+bytes. Egress: four production `fetch` sites all building from `BASE_URL`,
+same-origin static JSON; one `<form>` with `preventDefault()` and no `action`; no
+beacon, socket, EventSource, XHR or analytics.
+
+**RELEASED, ship it: `Landing.tsx:100` and `SetEditor.tsx:473` say "No account,
+no server."** Run through the split, that sentence carries both answers and only
+the egress half is unambiguously true. **There is a server** — it serves static
+files, and the app pulls nineteen shards and an index, so the origin sees the
+reader's IP and what they loaded. Milder than ours, same shape.
+
+B held the fix because I said no action this week and took it literally. **My
+instruction was about not starting infrastructure during a release window. It was
+never about leaving a live honesty defect standing, and I should have said so.**
+Two sentences, because two facts. One commit, now.
+
+**B has already done the thing I am ordering A to do**, and hit the trap A is
+walking into. `fonts.css` carries B's own note that root-absolute paths 404 under
+a Pages subdirectory, so *"every page silently fell back to the local stacks — the
+one failure state that looks like a design choice rather than a bug."* **A reads
+B's `fonts.css` before writing a line of the site's self-hosting.**
+
+**And B named the tree unprompted:** the live deploy it measured is bundle
+`index-DiWFvstR.js` while HEAD builds `index-Ddnra5F_.js`, so today's pushes had
+not deployed. B stated the delta — one `<a href>` and comment text, no
+subresource — said the conclusion holds, and refused to pretend it had measured
+HEAD. Three scanner false positives disclosed in the same breath. That is *a
+check result is a claim, and it must name the tree it was measured on*, applied
+without being asked, and it is the standard.
+
+#### RULED for Wednesday: the handoff carries an intent, not an encoded set
+
+**B is right and this settles it before A or E writes anything.** B holds exactly
+one inbound stateful route, `#/share/<payload>`, and the payload is a versioned
+binary frame only `share/codec.ts` can write.
+
+Three reasons, in order of weight:
+
+1. **An encoded set crossing a repository boundary means two things can write
+   B's format.** That is precisely the divergence B and E already agreed to avoid
+   on slot rules, arriving in a second place.
+2. **The codec's own history is the argument.** It grew a checksum because *"two
+   of thirty single-character corruptions of a real 23-item link came back as a
+   valid set with a slot quietly emptied."* A corrupted set that decodes into a
+   plausible-but-wrong plan is the worst available failure — a recommendation the
+   reader acts on, built from a set they never had.
+3. **An intent is human-readable in the URL.** Which trio, which slot, what to
+   rank. A malformed one fails loudly instead of decoding into something
+   convincing.
+
+**Separately, and it is B's own live defect rather than a design question: v2
+links are still decoded unverified.** That is the checksum not covering the
+version it was added for. Name it in `## To the Director` with what it would take
+to close it.
+
 ### 30 Aug — my addressee rule is not checkable. Withdrawn and replaced.
 
 **D is right and the criticism is entirely mine.** As written — prefix match
