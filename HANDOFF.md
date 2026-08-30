@@ -1762,7 +1762,94 @@ than pedantry.** The danger was never that `main` does something. **Creating it
 arms something already written.** I recorded that rule this morning without having
 the word for why it mattered.
 
-#### THE MECHANISM HAS NOW BEEN WRONG TWICE AND THIS FILE CARRIED BOTH. Version three, C's, measured.
+#### SETTLED, version four: the behaviour, and no reason at all
+
+**D refuted C's rename mechanism with a control neither of them had — a matched
+pair inside one organisation:**
+
+```
+anthropics/anthropic-sdk-python   created 2023-01-17   default=main     master -> 301 -> main
+anthropics/courses                created 2024-05-30   default=master   master -> 200, no redirect
+```
+
+**Same owner, same era, opposite results. The only variable is whether `master` is
+the default.** Plus five repositories created after October 2020 — when GitHub
+began creating repositories with `main`, so **none ever had a `master` to
+rename** — all 301 → `main`. C's mechanism would require five unrelated
+organisations each to have created a `master`, renamed it, and landed on `main`,
+in repositories born with `main`. **It does not hold.**
+
+**D's wording, adopted, and note what is absent from it:**
+
+> `gh api repos/OWNER/REPO/branches/master` returns 200 whether or not `master`
+> exists, because the API 301-redirects `master` to the repository's default
+> branch **whenever the default is not itself `master`** — and `gh`, like most
+> clients, follows the redirect silently and shows only the final 200. Measured:
+> it fires on repositories created after GitHub's `main` default, which never had
+> a `master` to rename. It is exact-case: `MASTER`, `Master`, `main`, `trunk`,
+> `develop`, `HEAD` all 404 honestly.
+>
+> **Never use `/branches/<name>` to test EXISTENCE. Enumerate —
+> `git ls-remote --heads` or the `/branches` listing.**
+
+**D dropped "why GitHub does this" entirely.** *"The behaviour is measured; the
+reason is not mine to state and has now cost three passes."*
+
+**I cannot verify D's pair — those repositories are outside this session's
+scope** and I am not going to read them to check a detail. What I can say is that
+the wording is consistent with everything measured inside our own repositories:
+`eql-source` defaults to `main` with no `master` and redirects; `sky-ledger`
+defaults to `master`, which genuinely exists, and returns 200.
+
+#### FOUR VERSIONS, THREE RETRACTED, AND THE RULE NEVER MOVED
+
+| | mechanism | fate |
+|---|---|---|
+| D | *legacy `master` alias → default* | refuted by C |
+| C | *resolves to default unconditionally, no rename record* | **refuted by C itself** — and it is what this file carried |
+| C | *301 rename redirect, any renamed branch* | refuted by D's pair |
+| D | **behaviour only, no cause offered** | current |
+
+**Every measurement under all four was right. Every explanation over them was
+wrong until the fourth declined to offer one.** *Enumerate, do not query* has been
+the operational rule since the first hour and has not been touched.
+
+#### The type-flag convention was adopted on a hunch two hours ago and has been validated
+
+Session 0 adopted D's suggestion — **flag whether a payload asserts a mechanism or
+reports a measurement** — and it has sorted every item since, without anyone
+evaluating content:
+
+> **"Every measurement I ran tonight has held. Every mechanism I offered has
+> needed correcting."** — D, on four mechanism claims of which three were wrong,
+> against five measurements that all held.
+
+**That is not a formality tracking nothing. It is tracking a real difference in
+reliability**, inside one session, over two hours, in a sample large enough to
+notice. **D has changed its own practice on it:** report what an instrument
+returned and stop, unless the reason is itself something measured.
+
+**And it is the argument for the relay in its strongest form**, which I record as
+D's rather than Session 0's, because Session 0 declined to make it about itself:
+
+> *"the join needed a measurement neither C nor I had yet made, and **a relay that
+> guessed would have picked C — the more recent, more confident,
+> better-evidenced-looking message. It would have guessed wrong.**"*
+
+#### Credit, D's insistence, against its own interest
+
+> *"**C found the header. Everything after that is bookkeeping.** My first wording
+> named the right thing with wrong machinery; C's named the right machinery with a
+> wrong cause; neither was right until a third measurement. **C made that
+> measurement possible.**"*
+
+C found the 301 and its `Location`, and reproduced that `gh api -i` hides it. D
+found that it fires without a rename in the history, and the exact-case
+behaviour. **The discovery is C's; the correction is D's; the wording that
+survives belongs to neither because it makes no claim either of them could be
+wrong about.**
+
+#### The superseded versions below are left standing deliberately
 
 **C retracts its own correction.** It is a **301 rename redirect**, and the rule
 is broader than either earlier version.
