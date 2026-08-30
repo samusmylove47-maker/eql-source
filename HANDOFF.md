@@ -1485,22 +1485,55 @@ Every defect found since Thursday is one of four, and each needs a different
 check. Written as one thing because the specific bugs will be forgotten and this
 will not.
 
-| # | shape | worked examples | what catches it |
+**D collapsed my five into four and it is right.** What I had as *cannot fire* and
+*measured the intermediary* are one form: **an instrument that cannot return one
+of its two answers.**
+
+| | form | worked examples | what catches it |
 |---|---|---|---|
-| **1** | **Cannot fire.** The guard is broken and its verdict carries no information | `fbd0932` flagging relative URLs; C's `\b` eaten into a backspace; gate rule 4's hardcoded `public/dungeons/` | **A matched pair** — one input it must flag, one it must pass, differing only in the thing detected |
-| **2** | **Never asked.** The guard is correct, verified, and nothing invokes it | D's 106 tests with no CI; the ratchet inside Shara's installer; `check.py` as advice inside an agent prompt | **Trace the pipeline** — or delete the guard and see whether anything goes red. *A guard is not a gate until something fails because of it* |
-| **3** | **Searched, not surveyed.** A null read as an absence | the `−` sweep; the two-command publishing check; D's `*.yml` extension list; C's guess-list of deploy configs | **Enumerate rather than query** — *a search can establish presence; only a survey can establish absence, over a surface you have enumerated rather than guessed* |
-| **4** | **Measured the intermediary.** A plausible number from the wrong layer | E's `curl -sSI` returning the proxy's `200 Connection Established`; C's `$?` after a pipe measuring `tail`; A's `grep -c`; my `\.wh` matching `.why` | **A positive control through the same code path** — *a measurement through an intermediary measures the intermediary until you give it one* |
+| **A** | **The instrument cannot return one of its answers**, so the answer it does return carries no information | `fbd0932` — could never say YES · `gh api …/pages` 404 — off *or* unauthorised · **`gh api …/branches/master` — 200 for a branch that does not exist** · `curl` through a CONNECT proxy — 200 for everything · `$?` after a pipe — measures `tail` · `2>/dev/null` — a fatal becomes an empty · my `\.wh` — matched `.why` | **A matched pair**, and a **precondition** that proves the instrument could have said the other thing |
+| **B** | **The instrument is never invoked** | D's 106 tests with no CI · the ratchet inside Shara's installer · `check.py` as advice inside an agent prompt | **Trace the pipeline**, or delete the guard and see if anything goes red. *A guard is not a gate until something fails because of it* |
+| **C** | **The surface was guessed, not enumerated** | the `−` sweep · D's `*.yml` extension list · C's guess-list of deploy configs · **surveying one ref when a config sat on another** | **Enumerate.** *A search establishes presence; only a survey establishes absence — over a surface you have enumerated rather than guessed* |
+| **D** | **The hazard is inert by accident**, and nothing is defending the inertness | C's `build-installer.yml`, harmless only because no `master` ref exists | **Ask what is keeping it safe, and whether anyone chose that** |
 
-**Shapes 3 and 4 are opposites and both were mistaken for answers.** Three
-produces a false negative that reads as *nothing is there*; four produces a
-positive reading that is true about the wrong thing. **Neither announces itself,
-and no instrument reports either.**
+#### Direction of failure decides whether it is ever found — D's, and it is the sharpest part
 
-**And a fifth surface, which is D's and applies underneath all four: what surface
-did you enumerate?** C satisfied shape 3's rule honestly, over the root of one
-ref, and missed a `build-installer.yml` on another. *The listing gives the row,
-the history gives the column, neither alone gives the cell.*
+Of four instances of **form A** today, three failed *toward safety* and one *toward
+alarm*:
+
+| instrument | it could not say | so it failed |
+|---|---|---|
+| D's auditor `fbd0932` | YES | **toward safety** |
+| `gh api …/pages` | "you may not look" | **toward safety** |
+| C's `2>/dev/null` | "this errored" | **toward safety** |
+| `gh api …/branches/master` | NO | **toward alarm** |
+
+**The one that fails toward alarm is the cheap one, because it starts an argument
+and gets caught.** D nearly overturned C's correction with a 200 in hand and
+stopped. **E's `/pages` reading ran undetected precisely because its output was
+reassuring.**
+
+**So when you build a check, choose which way it breaks.** An instrument that
+cries wolf gets audited on its first false positive. One that quietly says *fine*
+is never examined at all, and this week is the evidence: every silent one needed a
+different session to find it.
+
+#### And a trap sitting in the obvious verification of C's correction
+
+`gh api repos/OWNER/REPO/branches/master` **returns 200 for a repository with no
+`master`**, handing back the default branch under the name asked for. D's control
+proves the endpoint *can* 404 — a nonsense branch name does — so **the one string
+that names the hazard is the one string it will not deny.**
+
+**I could not corroborate that specific trap, and the reason is itself form A:**
+this container's proxy returns **403 for every GitHub API URL**, so my instrument
+cannot return a distinguishing answer either. Saying so beats reporting a
+corroboration I did not make.
+
+**What I did verify, with the honest instrument:** `git ls-remote --heads` on
+`samusmylove47-maker/EQLSAuras` returns exactly `main` and
+`session-c/feat-lockouts-wip`. **No `master`.** C's correction holds, and three
+sessions have now reached it by enumeration.
 
 ### 30 Aug — A withdraws the slot-rules misattribution, and finds a hazard the relay's fidelity creates
 
