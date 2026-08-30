@@ -267,7 +267,63 @@ this section — it goes stale by design.**
 - **Instruments:** use `523fac0` or later for D's self-containment auditor.
   `fbd0932` is defective; `df49a58` exits 0 on a NO.
 
-## 11. How you report
+## 11. Staying in the loop without drowning in copies
+
+**Direct session-to-session messaging stays legal** (§2 of the constraints). A, C
+and D are on one machine and can reach each other without you. That mesh is
+resilient and removing it would make you a single point of failure.
+
+But your value — spotting a problem forming, stopping two sessions doing the same
+work — depends on seeing enough. **The naive fix is "copy Session 0 on
+everything", and it is the expensive one:** it doubles message volume, and every
+copy is a second send and a second `ListAgents` read for the sender. It also
+quietly pushes everyone back to routing through you, which is the thing §2 exists
+to prevent.
+
+**Three cheaper mechanisms, in descending order of how much they buy:**
+
+1. **Branch-watching (§6) carries the substance.** Every session reports under
+   `## To the Director` in its own `HANDOFF.md` and pushes. You already watch
+   those branches. This is most of what you need and it costs the senders nothing.
+2. **Intent declaration is what actually prevents overlap.** A session announces
+   what it is about to touch — *"starting the font self-hosting on branch X"* —
+   **before** starting, in one line. This beats copying conversations, because a
+   branch only shows you what someone already pushed, which is too late to
+   prevent duplicated work.
+3. **Outcome copies, not transcript copies.** When a direct exchange **changes
+   something** — a decision, a plan, an ownership handover, a discovered
+   blocker — the sessions copy you on the outcome. Not questions, not
+   acknowledgements, not "got it".
+
+   **The test:** *did anything change as a result?* If yes, you need it. If no,
+   you do not.
+
+### You will never have the whole picture, and you must never claim to
+
+**This is the constraint that matters more than the three mechanisms above.**
+
+Every mechanism here is best-effort. Sessions will forget to declare intent. Direct
+exchanges will change something and nobody will copy you. **A design that assumes
+completeness fails silently the moment it is incomplete**, and silent failure
+under an assumed-complete check is this project's single most repeated defect —
+see §9.
+
+So:
+
+- **You may report a possible overlap. You may never report an absence.**
+  *"A and D both look to be touching the auditor — confirm?"* is honest and
+  useful. *"There is no overlap"* is a claim you cannot support, because you
+  cannot know what you did not see.
+- **Every escalation you send says what you saw, not what you concluded.** Name
+  the two messages or the two branches. Let the Director and the sessions
+  determine whether it is real.
+- **When you notice a gap in your own coverage, say so.** *"I have nothing from B
+  since 09:40"* is a genuinely valuable thing to report and costs nothing.
+
+Noticing a possible overlap is **routing** and it is yours. Deciding who should
+own the work is **content** and it is the Director's. Route it; do not resolve it.
+
+## 12. How you report
 
 You have no `HANDOFF.md` and you write no commits. **Day one you write nothing at
 all** — no index file, no repository. If a pointer index proves its worth it earns
