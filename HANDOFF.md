@@ -1,5 +1,45 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — CLOSED. #151 merged. Zero of 717 pages fetch another origin.
+
+**Verified on `origin/main` at `8a9ed628`, not taken from the report:**
+
+- **No `<link>` or `preconnect` to `fonts.googleapis.com` or `fonts.gstatic.com`
+  anywhere in 717 pages.** Zero pages carry a `preconnect` at all.
+- 26 `.woff2` files self-hosted under `public/assets/fonts/`.
+- The site went from **715 of 717 pages disclosing every reader's IP to Google
+  before anything rendered** — several while printing *"Nothing transmitted"* — to
+  none, inside one working day.
+
+**One textual hit remains and it is not a regression.** `public/sources.html`
+contains the hostnames inside `<code>` tags **in the correction itself** — the
+entry quotes the hosts it is confessing to. A future session grepping the
+hostname will find 1 of 717 and must not read it as a relapse. A named this
+before anyone could trip on it, which is the right instinct: **a scar that will
+be re-discovered should be labelled at the time it is made.**
+
+**What published with the fix matters as much as the fix.** The correction on
+`sources.html` says what this was — that we published the criticism while
+committing it at scale, that a reader could have checked the sentence against the
+page at any time, that two sessions found it in the same hour, and that **four of
+the five windows in Shara's application request nothing at all, against 715 of our
+717.** Her scoping was tighter than ours while we described the fault as hers.
+Publishing that comparison, in our own correction, unprompted, is the standard
+this project claims and rarely has to prove under pressure.
+
+Two checks shipped with it, both mutation-proven as **matched pairs** per the rule
+set this morning: no page may fetch another origin on load, and every declared
+face must resolve from the stylesheet's own directory — **B's trap**, where a
+missing font falls back silently and *"looks like a design choice rather than a
+bug."* 36 self-test cases.
+
+**Still open, unrelated, and the only finding in 717 pages:**
+`learn/difficulty.html` overflows 390px by 4 pixels in both grounds.
+
+**One thing to route rather than adjudicate:** A reports 33 faces resolving; I
+count 34 `@font-face` blocks in `fonts.css`. That is a counting boundary rather
+than a defect and I have not understood it, so it goes to A as a question.
+
 ### 30 Aug — PR #151 is open, and my auditor pointer was false. Four sessions, nobody measured.
 
 **PR #151 verified open from the API, not from report:**
@@ -170,12 +210,12 @@ stale; this block is the one place that is kept current.**
 
 | what | current | superseded |
 |---|---|---|
-| site `main` | `5206f8e0` (#147–#150 merged) | — |
+| site `main` | **`8a9ed628`** (#147–**#151** merged; the Google Fonts defect is CLOSED) | `5206f8e0` |
 | Director's rulings | branch `claude/eq-map-export-proposal-oe8m6l` | — |
 | relay briefing | `RELAY.md`, same branch | — |
 | D's self-containment auditor | **`22ce477`** (= `523fac0` = `fe14728`, byte-identical, 19,364 B). **`df49a58` is SOUND** — 18,621 B, behaves identically, and **nothing measured with it needs redoing** | **`fbd0932` only** — it could never return YES, so its NO carried no information |
 | served lockout build | `public/app/eqls-lockouts.16d4edad.html` — correct and intended | `eb2a1195`, `779df7f5` |
-| Google Fonts repair | **PR #151 OPEN**, `claude/self-host-fonts-and-split-the-claim` @ `d72fba97` onto `5206f8e0`, mergeable clean, 755 files. **The owner merges** | `20136c60` |
+| Google Fonts repair | **MERGED**, #151 at `8a9ed628`. **0 of 717 pages fetch another origin** — verified here, not reported | `20136c60`, `d72fba97` |
 
 **Re-derive rather than trusting this table.** It is a convenience, not an
 authority, and the authority is always the tree.
