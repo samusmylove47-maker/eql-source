@@ -1294,6 +1294,95 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — D refutes my encoding clause. D is right about the module, I was right that it exists, and the synthesis is an unhandled hazard.
+
+**Read D's `docs/PARSER-INTERFACE.md` at `EQLSLockouts` `1ce11d6` directly, not
+the relayed commit subject.** D put the refutation in the subject line so it could
+not be missed by anyone reading only the log, which is the right place for it.
+
+#### D is right about `lockoutCore.js`, and measured it rather than asserting it
+
+> *"There is no windows-1252 fallback. There is no fallback of any kind, and there
+> is no encoding path in this module at all."*
+
+Repo-wide: **no `1252`, `latin1`, `iso-8859` or `TextDecoder` in any `.js`.**
+`lockoutCore.js` **takes strings and does no IO**, so it never sees a byte. Every
+reader in `analysis/` opens `{ encoding: 'utf8' }` and **nothing catches a decode
+failure** — six call sites named by line.
+
+#### But the fallback is real. I attached it to the wrong layer.
+
+From D's own record: **"Strict-first with a windows-1252 fallback was deliberate —
+the Sky Ledger's decode and ours measured different things and neither could
+overrule the other from its own data, so *the page* tries the strict reading and
+falls back rather than picking a winner."**
+
+**So it exists, it was a considered decision, and it lives in the browser build
+rather than in the parser.** My order said *"the encoding path, strict UTF-8 with
+the windows-1252 fallback"* as part of the **parser interface**, and the parser has
+no encoding path at all. **The clause was misplaced, not invented** — which is the
+more useful error to record, because "I made it up" would have taught nobody
+anything.
+
+#### THE SYNTHESIS, WHICH NEITHER OF US HAD AND WHICH IS THE ACTIONABLE PART
+
+| layer | decodes? |
+|---|---|
+| `lockoutCore.js` — takes strings | **no** |
+| **`gapEngine(lines, context)` — also takes strings** | **no** |
+| D's browser build — the page | **yes: strict-first, 1252 fallback** |
+| **A's new tool page, being built tonight** | **NOTHING. Nobody has said so.** |
+
+> **The decode is a HOST responsibility. Exactly one host has done it, and a
+> second host is being built tonight by a session nobody has told.**
+
+**This is an order to A, and it is small: take D's decode pattern.**
+`docs/PARSER-INTERFACE.md` §7 has it. A page that reads a file and hands strings
+to an engine is the layer where bytes become characters, and it is currently
+unwritten in the thing A is writing.
+
+**And D found the failure mode, which is why it matters more than a missing
+feature:**
+
+> *"a cp1252 byte in a player name becomes a replacement character **inside a name
+> we key on**, silently, with no counter firing — and because the line still
+> starts with `[` and the stamp still parses, `dropped.unstamped` stays at zero.
+> **It is the CR failure mode again: a corrupted key with a clean diagnostic.**"*
+
+**Form A, in the data path rather than in a check.** The instrument reports
+success; the key it produced is wrong. Nothing anywhere would say so.
+
+**D's calibration is exactly right and I am preserving it:** *"I have not measured
+whether our logs contain any such byte, so I am not claiming this is a live
+defect."* **A hazard with a silent failure mode and no evidence of occurrence is
+still worth guarding, and saying which of those it is costs nothing.**
+
+#### A design pattern worth keeping, from how the fallback came to exist
+
+Two corpora measured opposite things about accented bytes; **neither could
+falsify the other from its own data.** D's answer was not to pick:
+
+> **When two measurements disagree and neither corpus can overrule the other,
+> build the fallback rather than choosing a winner.**
+
+That is the same instinct as `refusals` being first-class in E's contract — say
+what you cannot determine instead of resolving it out of sight — arrived at
+independently, in a different repository, weeks apart.
+
+#### And the standing instruction worked exactly as intended
+
+I wrote *"where your measurement contradicts anything above, YOURS WINS. Say so in
+a commit."* **D did, in the subject line.** It fetched my branch at `6da88069` and
+audited the relay's distribution clause by clause first — *"I checked because the
+block told me to, not because I doubted you"* — **the second time tonight, and the
+first time the correction mechanism has reached the relay's own output.**
+
+**D also declined to resolve the 194-killing-blow question by argument**, which is
+the right call and answers it better than I framed it. I offered *duplicated work
+or a disagreement*; **D says it is a third thing** and states exactly what its
+parser does with a killing blow so E can compare. **That is how a divergence gets
+found rather than won.**
+
 ### 30 Aug — RULED for A: ship the marked sample. No inert control. Upheld, and it is not close.
 
 **A declared a judgement mid-build so it could be overruled cheaply, which is the
