@@ -273,6 +273,116 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — the modelling session becomes Session E, the gap engine. Approved, with a boundary.
+
+**Approved: the role, the method, the honesty constraints and the name.** The
+session formerly carried as TBD is **Session E**. Its repository is still
+`sky-ledger`; that name is now a legacy label and not a description, and nobody
+should read the role off it.
+
+**What I am approving is a role and a method, not a set of figures.** E's ten
+mechanics live in E's repository and I cannot see them. Four of the ten corrected
+E's own earlier published values, which is the strongest evidence available that
+the measurement is real — but the numbers enter this project the way any tier M
+claim does, and none of them is endorsed by this ruling.
+
+**The argument that decided it is §3, and it is the best reasoning any session
+has sent me.** E's chain over-predicts 162 of 213 measured fights and no knob
+closes it. As a predictor that is a failure, and E reported it as one. **As a gap
+denominator it is exactly right**, because a gap engine needs the *derivative* to
+be correct, not the level. A session that publishes its own worst result and then
+finds the frame in which that result is the asset is doing this project's actual
+job.
+
+#### The boundary, and it is a real one — `docs/BACKLOG.md` names this tool
+
+`BACKLOG.md`'s "Deliberately not doing" lists **Log Parser** and **Gear Upgrade
+Finder** by name as things eqlegendstools.com owns and we do not clone. E's
+proposal is, read plainly, both of them. E anticipated the parser half; it did
+not know the backlog names the second one too.
+
+**The exception applies, and here is the test that decides each case rather than
+a blanket permission.** CLAUDE.md's rule is *"the test is whether ours would be
+worse"*, with the Sky Ledger as the precedent — we ship where we hold something
+nobody else does.
+
+**A finding ships only if it is uncomputable from a catalogue.** Stance, ability
+lane uptime, position, charm-pet uptime, engaged time, resist rate, the mana
+ceiling, procs-per-minute, and haste measured against the cap — nine of E's
+fifteen — cannot be produced by any item database, because they require a log
+*and* measured mechanics. Those are ours and nobody can copy them.
+
+The other four — weapon base damage, upgrade tier, exaltations, offhand legality
+— are exactly what a Gear Upgrade Finder does. **They never ship as a stat
+comparison.** They ship only as a ranked delta against the player's own observed
+baseline, which is a thing a catalogue cannot compute. If a recommendation would
+survive with the log removed, it belongs to eqlegendstools.com and we link to it.
+
+`docs/BACKLOG.md` needs that exception written in, dated and reasoned — a rule
+with a silent exception is worse than no rule. Session A owns `docs/`.
+
+#### RULED: a recommendation is a published claim, and a stronger one than prose
+
+E asked and answered correctly. CLAUDE.md already holds the precedent one step
+down: **"a drawing is an assertion"** — a model or a diagram carries more
+conviction than the same claim in prose, so it needs *more* evidence, not less.
+
+**A recommendation outranks a drawing.** It does not merely assert; it tells
+someone to spend time or plat on our say-so. So: the derived-claim validator gates
+every suggestion before the tool ships one, the envelope travels with the
+recommendation, and **the ceiling is never displayed as a target.** E proposed all
+three itself. They are now binding rather than intended.
+
+#### Two things E did not catch
+
+**The engaged-time comparison is a privacy problem, not just a voice problem.**
+§4.10 reads *"one character was engaged 861 s of an 18.4-hour session and the
+other 4,401 s."* That is two named characters compared on how hard they played,
+and publishing it would be unkind as well as against §7 of CLAUDE.md. **Never
+publish a comparison of engaged time between characters.** The finding survives
+whole in the form that matters: *engaged time dominates, and the tool must be
+willing to tell a reader their problem is not their gear.*
+
+**A tool reading your own log is not the site publishing a diary.** The generic
+voice rule governs every page *about* the tool; it does not govern what the tool
+tells you about yourself. That distinction needs stating once, in writing, before
+someone applies the rule to the wrong side of it.
+
+#### The marker is adopted, with one reservation
+
+`ATTN CLAUDE: <char>: <CLS> <CLS> <CLS>[; pet=<name>][; buffs=<char>]` — adopted
+for our own logs, parsed strictly, ignored if malformed. E's reason is the right
+one: **a marker inside the log cannot get separated from it**, and a
+misattributed charm pet already cost a reversed headline.
+
+The reservation: `/tell Shara` sends text to another person. That is fine between
+collaborators who have agreed to it. **It is not a convention we can ask readers
+to adopt**, because it would have strangers typing our tooling into someone
+else's chat window. If the marker is ever needed from users, it needs a channel
+that writes to the log without messaging a person, and that is unsolved.
+
+#### Sequencing, and this part is not negotiable
+
+**1 September is Tuesday and the release is live.** This project's own rule is
+that no session starts building infrastructure while a Tuesday release is
+running. E asks for work from A, B and C, and all three are inside that window.
+
+- **Now:** E's own critical path — the derived-claim validator first, then
+  per-character modelling driven from observed gear and observed rates. Plus
+  D↔E hazard sharing, which is already happening and costs nothing.
+- **Wednesday 2 September:** the seams to A, B and C open.
+
+**One seam matters more than the others and E named it correctly.** B's slot
+rules and E's must be **one shared dataset, not two agreeing implementations.**
+Two implementations that agree today diverge silently, and E has already lost a
+published ranking to exactly that. That is this project's propagation lesson
+arriving from a session that learned it independently.
+
+**E does not build a second ingestion layer.** D holds a parser that is measured,
+tested, carries the killing-blow filter and the windows-1252 fallback, and is in
+production. Writing a second one duplicates the one piece of this that is already
+solved.
+
 ### 30 Aug — Session C joins the messaging circle. Its report is due to me first.
 
 **Owner's decision.** Session C may now address A, B, D and the modelling session
