@@ -396,6 +396,22 @@ CASES = [
      lambda t: t.replace('<dt>Position</dt><dd><span class="wh">withheld</span></dd>',
                          '<dt>Position</dt><dd>−670, −119</dd>', 1)),
 
+    # A PAGE THAT FETCHES FROM ANOTHER ORIGIN ON LOAD.
+    #
+    # 715 of 717 pages fetched their typefaces from Google until 30 August 2026,
+    # disclosing every reader's IP before anything rendered, on pages that said
+    # "Nothing transmitted". The faces are self-hosted now. This case exists
+    # because one CDN link added in six months would restore the fault in
+    # silence — and because nothing was watching for it the first time:
+    # conformance.js aborts every non-file: request, so it had always measured a
+    # page whose remote fetches never happened.
+    ("a page fetching a stylesheet from another origin",
+     "from another origin",
+     "public/index.html",
+     lambda t: t.replace('<link rel="stylesheet"',
+                         '<link rel="stylesheet" href="https://cdn.example.com/x.css">'
+                         '<link rel="stylesheet"', 1)),
+
     # THE PROMOTION GATE, BOTH DIRECTIONS.
     #
     # The lockout tracker was copied into public/app/ on 25 Aug 2026 and left

@@ -193,7 +193,7 @@ page = head("Sky Ledger",
         <p>One file, {APP['kb']} KB, served from this site. Chrome or Edge on desktop can
           follow your log file live; Firefox and Safari cannot, so drop the log on
           the panel for a one-off read.</p>
-        <p class="m">Build {APP['hash']} &middot; nothing installed &middot; nothing sent</p>
+        <p class="m">Build {APP['hash']} &middot; nothing installed &middot; your log never leaves this machine</p>
         <span class="go">Open the app &rarr;</span>
       </a>
       <a href="{OV.get('url', '#overlay')}" style="--c:var(--brass)">

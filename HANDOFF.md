@@ -164,6 +164,44 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 30 Aug 01:30 — STANDBY. Fonts done and pushed; five lines for the restore
+
+**Relayed the standby block to C, D, B and E before touching my own tree**, as
+ordered. All four sent.
+
+1. **What I was doing: the Google Fonts fix, and it is DONE, not in progress.**
+   All four faces are self-hosted from `public/assets/fonts/`, 26 files, 318 KB,
+   fetched once by a new hand-run `_build/fetchfonts.py`. **Zero of 715 pages
+   fetch another origin.** Verified with D's `df49a58` as a matched pair on one
+   page: `index.html` reads self-contained **NO** before and **YES** after, with
+   no-transmit-path YES both times, so the verdict turns on exactly the change.
+2. **The next concrete step is to open the PR.** The branch is
+   `claude/self-host-fonts-and-split-the-claim`, pushed. It was never opened as a
+   pull request because standby arrived first. Everything is committed; nothing
+   is half-applied.
+3. **The directive's "three lines in one file" was wrong and the correction is
+   the thing most worth not re-deriving.** `_partials.py:202-204` fixed **700**
+   pages. The other **15** — the thirteen surveys and two imported tools — never
+   call `head()`, carry their own `<head>`, and were the most-read pages on the
+   site. They are rewritten in `build3.py`'s `inject()` so a sixteenth imported
+   page cannot arrive with a Google link nobody notices.
+4. **Two new checks, both mutation-proven, both passing.** `check.py` now fails
+   any page fetching another origin on load, and fails if a declared face does
+   not resolve from the stylesheet's own directory — B's trap, where a missing
+   font silently falls back and "looks like a design choice rather than a bug".
+   36 self-test cases, up from 35.
+5. **Held in my head and in no file: `learn/difficulty.html` overflows 390px by
+   4 pixels**, in both grounds, found by the conformance run I did immediately
+   before standby. It is unrelated to the fonts, it is not fixed, and it is the
+   only finding in 717 pages. Second unfiled thing: E's carried note says the
+   BACKLOG arithmetic is **three** unaccounted, not two — `procs-per-minute` is a
+   mechanic, not one of their fifteen — and their nine/six split closes it. #150
+   merged with my wording and wants amending to theirs.
+
+**Not done, deliberately, because standby says start nothing:** the PR, the
+`sources.html` correction is written and committed but unreviewed, and the
+`learn/difficulty.html` overflow.
+
 ### 30 Aug — 16d4edad published (not 9ad53415), the count corrected to six, and the Auras answer
 
 **Item 1. Published, both conditions met — and the build moved under me while I

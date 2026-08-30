@@ -379,7 +379,7 @@ lockouts = f'''
           <h2 class="feath">Lockout tracker</h2>
           <p class="featlede">Every other tracker here tells you what you have done. This one
             tells you <strong>what is still open</strong>. It reads your combat log in the
-            browser, and nothing leaves the machine.</p>
+            browser, and <strong>your log never leaves this machine</strong>.</p>
           <p class="featsub"><strong>With no history for a boss it says &ldquo;not looked&rdquo;,
             not &ldquo;open&rdquo;.</strong> An empty log is not evidence that something is
             available, and the useful-looking guess is wrong in the one direction that costs
@@ -393,7 +393,7 @@ lockouts = f'''
           </div>
         </div>
       </div>
-      <p class="featfoot">One file, {LK_APP['kb']} KB &middot; build {LK_APP['hash']} &middot; nothing installed, nothing sent
+      <p class="featfoot">One file, {LK_APP['kb']} KB &middot; build {LK_APP['hash']} &middot; nothing installed &middot; your log never leaves this machine
     </div>
   </div>
 </section>

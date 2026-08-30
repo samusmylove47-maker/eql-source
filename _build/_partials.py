@@ -30,6 +30,20 @@ def _asset_v(path):
 
 
 CSS_V = _asset_v('public/assets/site.css')
+# THE FOUR FACES ARE SERVED FROM THIS ORIGIN, AND THAT IS THE POINT.
+#
+# Until 30 August 2026 these three lines were a preconnect to
+# fonts.googleapis.com, a preconnect to fonts.gstatic.com, and a stylesheet from
+# the first — on every page. So 715 of 717 published pages disclosed a reader's
+# IP address to Google before anything rendered, and several of those pages said
+# "Nothing transmitted" while doing it. We had published that exact criticism
+# about a collaborator's application.
+#
+# Served from here the disclosure stops existing rather than being disclosed
+# better. The files are byte-identical copies fetched once by
+# _build/fetchfonts.py; see that file for why they are Google's own subsets
+# rather than ours.
+FONTS_V = _asset_v('public/assets/fonts/fonts.css')
 
 # ---------------------------------------------------------------------------
 # The site's own navigation registries. Nothing here may be typed twice.
@@ -199,9 +213,7 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
 <meta property="og:title" content="{title} — {SITE}">
 <meta property="og:description" content="{desc}">
 <meta property="og:type" content="website">
-{social}{canonical}<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Public+Sans:wght@400;600&family=Saira+Condensed:wght@600;700&display=swap" rel="stylesheet">
+{social}{canonical}<link rel="stylesheet" href="{rel}assets/fonts/fonts.css{'?v=' + FONTS_V if FONTS_V else ''}">
 <link rel="icon" href="{rel}favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="{rel}assets/site.css{'?v=' + CSS_V if CSS_V else ''}">
 <script>/* Torchlight is the default and the CSS says so, so this only ever has
