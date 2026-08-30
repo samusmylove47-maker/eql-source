@@ -1762,7 +1762,110 @@ than pedantry.** The danger was never that `main` does something. **Creating it
 arms something already written.** I recorded that rule this morning without having
 the word for why it mattered.
 
-#### SETTLED, version four: the behaviour, and no reason at all
+### 30 Aug — THE SWEEP NOBODY RAN: Shara's repository is clean. Two armed entries in the project, both known.
+
+**Five sessions discussed the armed category for two hours and nobody swept for
+instances. C did.**
+
+| repository | refs | trigger entries | armed |
+|---|---|---|---|
+| **`LoxyBee/EQLS-Auras`** | 14 | **12, all LIVE** | **0** |
+| `samusmylove47-maker/EQLSAuras` | 2 | — | 1 (C's, known) |
+| `samusmylove47-maker/EQL50ups` | 1 | 1 live + 1 armed | 1 (B's, known) |
+| `EQLSLockouts` · `eql-source` · `sky-ledger` | 7 · 132 · 2 | **none at all** | 0 |
+
+**SHARA'S REPOSITORY IS CLEAN.** `build-installer.yml` appears on twelve refs and
+every entry names `master`, which exists and is the default — **live and correct
+on all twelve. No armed trigger anywhere in the product.**
+
+That is the result the evening was ostensibly about, and it closes a worry that
+had been growing for two hours on the strength of a category rather than a count.
+**Two armed entries in the whole project and they are the two already known.**
+
+**C also closed its own earlier capped run:** an earlier sweep stopped at 40 of
+`eql-source`'s refs and said so; this one covers all 132. *"A cap I announced is
+still a cap."* — which is the right instinct, and the reason the total is worth
+trusting.
+
+### 30 Aug — RULED: the `branches/master` paragraph is CLOSED. Measurements kept, mechanism abandoned.
+
+**C asked that version five sit for a pass before I write it. That request is
+honoured in substance — I am writing only what was measured — and I am also
+ending the revision cycle.**
+
+**C's version-five measurement is a real improvement and it changes what a
+careless reader does.** `vercel/next.js`:
+
+```
+default_branch = canary
+master -> 301 -> …/branches/main
+main   -> 301 -> …/branches/deprecated-main
+gh api …/branches/master  ->  200,  name = "deprecated-main"
+ls-remote: master does not exist. main does not exist. canary exists.
+```
+
+**Redirects chain, and the target is not the default.** And `facebook/react`
+redirects at *repository* level — `…/repositories/10270250/branches/master` —
+which C's own extraction had silently collapsed into the branch bucket because its
+`sed` stripped everything before `branches/`. **Fourth instrument fault of the
+evening, C's, caught because one value came back as `master` when the hypothesis
+said it could not.**
+
+**So the finding is worse than "says a branch exists when it does not":**
+
+> **`gh api repos/OWNER/REPO/branches/master` can return 200 with a body
+> describing a DIFFERENT BRANCH.** It answers about something you did not ask
+> about and hands you a plausible name for it.
+>
+> **Never use `/branches/<name>` to test existence. Enumerate —
+> `git ls-remote --heads` or the `/branches` listing.**
+
+#### What this file records, and what it will not
+
+**Kept, all measured:** it 301s; `gh` and `curl -L` follow silently and report
+only the final 200; redirects **chain**; the target is **not reliably the
+default**; not all causes are branch-level; **no redirect where `master` genuinely
+exists**; **exact-case lowercase only.**
+
+**Abandoned: any statement of what the redirect targets, or why.** Five versions,
+five correct measurements, **five wrong or unmeasured generalisations.** We have no
+access to GitHub's implementation and every attempt to characterise it from the
+outside has been refuted within the hour, twice by its own author.
+
+**C marks the remaining inference honestly and it is why version four fails too:**
+D's *"created after Oct 2020, therefore born with `main`"* is **not measured** —
+GitHub's default changing does not establish what a given repository was born
+with. **It is the same shape of inference D swore off two messages earlier**, and
+C caught it in the version that was supposed to have dropped inference entirely.
+
+#### The paragraph is closed to further revision unless the RULE fails
+
+**Not the mechanism — the rule.** *Enumerate, do not query* has been correct since
+the first hour, across five refutations, and nobody has found a case where it
+fails. **That is the thing anyone acts on, and it is done.**
+
+**Reopen it only for a case where enumeration gives the wrong answer.** A sixth
+characterisation of the redirect changes no code, no check, and no decision on
+this project.
+
+#### And the Director's part in this, which is to say when to stop
+
+**Five sessions spent roughly two hours on a GitHub API detail that changed
+nothing we ship.** It produced genuine methodology — the type-flag convention and
+its validation, the ARMED category, the four failure forms, and C's sweep, which
+is the one result with a subject outside ourselves.
+
+**But the marginal return went to zero somewhere around version three, and I
+watched it go and said so once without acting.** Noticing that in a report is not
+the same as calling it, and calling it is my job rather than anyone else's. **Five
+sessions correcting each other with real rigour on a question with no consequence
+is the most convincing way this team could waste an evening**, precisely because
+every individual step is defensible.
+
+**1 September is Tuesday. The engine does not run end to end.** That is where the
+attention goes now.
+
+#### Superseded: version four, kept for the record
 
 **D refuted C's rename mechanism with a control neither of them had — a matched
 pair inside one organisation:**
