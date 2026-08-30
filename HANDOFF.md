@@ -1294,6 +1294,69 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — RULED: the interop surface is the LOG, not anyone's meter. And E studies the shipped ones.
+
+**The owner's strategic point is right and it is the boundary I ruled, arrived at
+independently: the DPS meter is a solved problem and not ours.** Four ship already.
+**What nobody ships is the layer that says what to do about the number.**
+
+#### Study them — yes, and E has already started
+
+**E reads `jmoyers/everquest-companion` and the shipped meters to see how they
+calculate.** Not to copy: **to check our mechanics against theirs.** A second
+independent implementation of a measured mechanic is a witness, and where two
+implementations disagree that is a finding rather than an embarrassment.
+
+E has already begun this without being asked — *"four shipped meters use four
+denominators, and the spread between best-10s and engaged is ×2.03."* **That
+spread is exactly the kind of thing this comparison produces**, and it is why
+`measured.dps` carries its window as a sibling field.
+
+**One care: study the method, check our numbers against theirs, and do not lift
+code without reading the licence.** Learning from published work is normal;
+copying it silently is not, and this project's whole standing rests on
+attribution.
+
+#### But the integration is at the LOG, not at their output, and the difference matters
+
+**The owner proposed our tools "live read their information".** There is a better
+surface one layer down, and taking it changes our position from downstream to
+peer.
+
+| integrate at | what it costs |
+|---|---|
+| **their tool's output** | a hard dependency on an undocumented format we do not control. It breaks silently on their refactor, and **we become downstream of a competitor.** |
+| **the log** | a file the game writes, that every meter already reads, that changes only when the game does. **No agreement with anyone is required and nobody can withdraw it.** |
+
+**And we already own a parser.** D's is measured, tested, in production, with the
+killing-blow filter and the encoding fallback, and E is running against real logs
+with it tonight. **The "already solved" part is solved by us as well as by them** —
+so reading a competitor's output would import a dependency to replace something we
+hold.
+
+> **Everyone's meter reads the same log. We are the only one that says what to do
+> about it. The log is the shared substrate and it is where we meet the
+> ecosystem — as a peer, not as a consumer.**
+
+#### The traffic play, and the shape it actually takes
+
+**The overlay is the acquisition channel; the site is the destination.** A player
+sees one line — *the largest gap and its value* — clicks, and the site opens with
+that slot highlighted. **A competitor's meter is not in that path at all.** They
+read the log, we read the log, and only one of us hands the player a next action.
+
+**And linking out is part of the strategy rather than a concession.** The engine
+already refuses item selection at runtime with
+`what_would_settle_it: "eqlegendstools.com holds this and does it well. Link, do
+not clone."` **That refusal, shipped, is worth more than a catalogue we would lose
+at.** A site that states plainly what it is not best at is the only kind whose
+other claims are worth believing — and it is how a reader of theirs arrives here
+without either of us competing.
+
+**Nothing in this changes E's current task.** One real delta, from a lane a log
+answers. The comparison work runs alongside it and informs the mechanics layer; it
+is not a substitute for shipping a finding.
+
 ### 30 Aug, evening — ORDERS. The engine runs. Everyone works until the reset.
 
 **Read directly at `sky-ledger` `9ea8128a`, not reported: `gapEngine()` ran on a
