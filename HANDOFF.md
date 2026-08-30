@@ -1294,6 +1294,88 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — E HIT THE TARGET. Two real deltas, and the killing-blow question closed by E finding its own bug.
+
+**Read at `sky-ledger` `7e24dbe2`, directly.** The order set the target at **one**
+real delta end to end from a real log.
+
+```
+lane.bash   fire bash at its cooldown rather than the observed 0.11/s   +5.3   floor
+lane.kick   fire kick at its cooldown rather than the observed 0.09/s   +5.7   floor
+```
+
+**Both `kind: floor`, not `estimate`** — the conservative form, correctly chosen.
+Ability-lane uptime, exactly the lane I ordered: **computable from a log, and
+uncomputable from any catalogue.**
+
+#### The killing-blow question closed the way D said it should, and it is the best process result of the night
+
+I framed it as *duplicated work or a disagreement, and neither of you can tell
+which.* **D said "neither — a third thing"**, published exactly what its parser
+does with a killing blow, and **refused to resolve it by asserting its own method
+was right.**
+
+**E compared, and found the bug was E's:** `killing_blows_excluded_from_rates`
+**194 → 120**, a 38% over-marking, with `crit_rate` moving 0.0736 → 0.0731
+behind it.
+
+> **Two implementations of one measured mechanic, disagreement treated as a
+> finding rather than an argument, and the session that was wrong found it in its
+> own tree.** Nobody had to win.
+
+That is the whole method working end to end, and it took about ninety minutes from
+D publishing to E correcting. **D's refusal to argue is what made it fast.**
+
+#### THE HONEST ASSESSMENT, because celebrating this would be the wrong reading
+
+**+5.3 and +5.7 against a 1,372.9 baseline is 0.8% combined.** A player told *"fire
+kick at cooldown for +5.7"* is being offered four tenths of one percent.
+
+**That is not a weak engine. It is the wrong demonstration character.** The
+resists in the same report — `Denon's Desperate Dirge IX`, `Togor's Insects V`,
+`Blade Dance II` — are bard songs. **The melee lanes are marginal for this
+character, so a correct measurement of them yields a marginal delta.** The engine
+reported the truth about a case where the truth is small.
+
+**The consequence for the demo, and it is a real one: a melee-primary character
+would show these lanes at many times the value.** Whoever picks the case to show
+should pick one where the lane being measured is load-bearing. **That is a
+selection question, not an engine question, and it should not be solved by
+retuning anything.**
+
+#### RULED, and it comes straight from looking at the output
+
+> **A delta may never be rendered without the baseline it was measured against.**
+
+`+5.7 dps_delta_vs_observed` floating free is uninterpretable and reads as either
+trivial or impressive depending on nothing. **`measured.dps` is in the same
+document; a surface that renders `deltas` alone loses it.**
+
+This is the same rule as `dps_window` one level up — **a difference without its
+base is not a measurement, exactly as a rate without its denominator is not.**
+**Session A: this binds the surface**, and it is cheap now and expensive after the
+markup settles.
+
+#### And the resist denominator landed with it
+
+E's second commit subject: *"the denominator changes the headline 3x."* The resist
+counts I flagged as a number-without-a-denominator now have one. **A headline that
+moves by a factor of three when its denominator arrives is the argument for the
+whole `dps_window` discipline**, restated in a second measurement by the session
+that wrote it.
+
+#### Session 0 closed its own sha gap, and it was Session 0's
+
+It reported twice that my order cited `9ea8128a` against its `561d9c0f` baseline
+and that it had not reconciled it. **Resolved: `9ea8128a` is a real commit between
+its stale baseline and the tip. No conflict — the baseline was behind.**
+
+**Third time tonight the baseline was the fault rather than anyone's report**, and
+Session 0 named it as its own each time rather than leaving it as an open
+discrepancy in my file. **That is the failure mode of the post, it is now
+well-characterised, and the mitigation it adopted — re-read before reporting — is
+the one that addresses it.**
+
 ### 30 Aug — PR #154 is open and the owner merges. A turned two rulings into gates.
 
 **Verified from the API, not the report:** `claude/gap-engine-surface` @
