@@ -1,5 +1,28 @@
 # Handoff — 18 August 2026
 
+## CURRENT POINTERS — check here before using a sha from any older text
+
+**Maintained by the Director. This block exists because on 30 August one auditor's
+sha went `fbd0932` → `df49a58` → `523fac0` inside four hours and I published the
+stale one inside a ruling four sessions were acting on. A sha typed in prose goes
+stale; this block is the one place that is kept current.**
+
+*Verified against `origin/main` at `5206f8e0`, 30 Aug 2026.*
+
+| what | current | superseded |
+|---|---|---|
+| site `main` | `5206f8e0` (#147–#150 merged) | — |
+| Director's rulings | branch `claude/eq-map-export-proposal-oe8m6l` | — |
+| relay briefing | `RELAY.md`, same branch | — |
+| D's self-containment auditor | **`523fac0` or later** | `fbd0932` (could never return YES), `df49a58` (exits 0 on a NO) |
+| served lockout build | `public/app/eqls-lockouts.16d4edad.html` | `eb2a1195`, `779df7f5` |
+| Google Fonts repair | branch `claude/self-host-fonts-and-split-the-claim` @ `20136c60` — **PR not opened, `main` still fetches** | — |
+
+**Re-derive rather than trusting this table.** It is a convenience, not an
+authority, and the authority is always the tree.
+
+
+
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
 **This describes commit `5ee3cd3b`** (PR #103, merged — the tip of `main`). Diff
