@@ -1294,6 +1294,133 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug, 19:40 — ORDERS. The owner is away two hours. E leads; A and D are released early.
+
+**Lanes checked before starting, because the owner asked for that first.** They
+are secure enough, with one named residual and a new redundancy:
+
+- **The two-doors problem is closed.** Session 0 has adopted the `[offline]` rule
+  and identified all six dead registrations in its own listing. It accounts
+  exactly for what A and D reported.
+- **The residual: Session 0's baselines go stale between reports** — four times
+  today, twice on the cloud sessions whose *only* voice it is. It self-reports
+  each time and now announces *fetch before acting* on everything.
+- **The redundancy that closes it: I can read every repository directly.**
+  Verified — `git ls-remote` and a shallow clone work for `sky-ledger`,
+  `EQLSLockouts`, `EQL50ups` and `EQLSAuras` from this container. **So E and B are
+  no longer single-pathed.** I read E's branch myself and confirmed `9dbfb4d`
+  while Session 0's last report said `1900717`.
+
+**That is the deciding fact. Proceed.**
+
+#### THE SEAMS OPEN NOW FOR A AND D. C STAYS ON THE RELEASE.
+
+**I held the seams to Wednesday to protect the 1 September release. A and D are
+not in that release** — it is D shipping to C and C building at Shara's direction,
+and D is frozen with nothing in flight. **So holding A and D bought nothing and
+cost two idle sessions.** Withdrawn for those two. **C is untouched and stays on
+Shara and the release; the owner confirms.** B was never held.
+
+#### E — LEAD. Ultracode. Build §21.
+
+**E's engine contract at `sky-ledger` `9dbfb4d`, §21, is adopted as the
+specification.** I have read it directly. A, B and D build against it.
+
+**One decision in it is better than my ruling and replaces it.** I ruled *modelled
+DPS may not be displayed*. E made it **unrepresentable**: `measured` and `deltas`
+are separate top-level keys, `Delta.kind` may be `estimate` or `floor` and **never
+`ceiling`**, and no absolute modelled number exists anywhere in the structure.
+
+> *"A convention that says 'do not display this' fails open the first time
+> somebody maps the object generically; a schema with no such field cannot."*
+
+**That is the ruling made structural, and it is strictly stronger.** A constraint
+enforced by shape cannot be forgotten by a surface author. Adopted.
+
+**`refusals` as a first-class output is the other load-bearing call and I endorse
+it.** A tool that silently omits what it cannot do fails open — the reader sees a
+short list and reads *"nothing else to improve"* when the truth is *"I could not
+see your gear."* That is this week's failure shape, designed out in advance rather
+than found later.
+
+**E's deliverable in the window: a runnable reference implementation of
+`gapEngine` against E's own corpus, producing a real `Report` from real log lines,
+with the output pasted into its HANDOFF.** Not a mock. One lane computed
+end-to-end beats five sketched. **Stance is the obvious first lane** — it is read
+from a damage histogram, it needs no catalogue, and it is the largest and cheapest
+finding the tool can make.
+
+#### D — RELEASED NOW. Publish the parser interface E must not duplicate.
+
+**My ruling says E does not build a second ingestion layer, and D holds the
+production parser.** So the contract has a seam D owns and E cannot write:
+
+- what `lines` E receives — raw, or already normalised;
+- what is **already filtered** on the way in, killing blows especially;
+- what the encoding path does, strict UTF-8 with the windows-1252 fallback;
+- what `parseLine` returns and what `applyLine` deliberately drops, and why the
+  early return before the dedupe index is load-bearing.
+
+**Push it under `## To the Director` and tell Session 0. E fetches it.** This is
+the highest-value thing D can do and D is frozen with an empty queue.
+
+#### A — RELEASED NOW. Adversarial review, then the surface spec.
+
+**First: refute E's §21.** A has found more real defects than anyone this week and
+review blocks nothing. Read it at `sky-ledger` `9dbfb4d` and report as a commit.
+
+**Then: specify the web surface, do not build it.** What page, what generator,
+what registry entry, what `check.py` and `gate.py` rules a page rendering a
+reader's own log would have to satisfy — **and this is the sharp one: CLAUDE.md §7
+forbids per-character diary content on any page a reader sees.** A tool reading
+*your own* log is not the site publishing a diary, and that distinction has to be
+written down before someone applies the rule to the wrong side of it. **Name the
+rules that would bite. Do not touch the seam with B's slot rules.**
+
+#### B — the slot-rules dataset. Your half, now, without waiting for E.
+
+B has read the ruling and flagged two assigned areas it does not hold. **The
+dataset is the first act and it does not need E:** `Delta.requires` carries
+`{slot, hands, class_any, must_list_secondary}`. **Specify what B needs to resolve
+those into an obtainable item**, and where the shared dataset lives and who owns
+it. **One shared dataset, not two agreeing implementations.**
+
+#### RULED, against D's own proposal, because C is right and had evidence
+
+**D proposed C's search-versus-survey formulation supersede D's three steps. It
+does not. All three stand.**
+
+C found the counter-example on itself within ten minutes of writing the
+formulation: it surveyed the root of **one ref**, honestly, and
+`session-c/feat-lockouts-wip` carried a `build-installer.yml` with
+`permissions: contents: write`. Nothing fired only because the workflow filters on
+`branches: [master]`. **"That is the filter saving me, not my method."**
+
+| part | says | whose |
+|---|---|---|
+| the three commands | **what to run** | D's |
+| search-versus-survey | **what the running proves** | C's |
+| **survey every ref** | **what surface to enumerate** | **D's, and the only one that found a live defect today** |
+
+**C's formulation does not say what the surface is.** C enumerated honestly and
+enumerated the wrong thing. None subsumes the others, and the per-ref refinement
+would have been lost entirely had I taken D's proposal — which C argued against
+in its own disfavour.
+
+**And E hit the same shape a fourth time, on its own instrument:** `curl -sSI`
+through its container proxy returned `200 Connection Established` for all three
+URLs — the tunnel handshake, not the origin. E nearly filed it as *"something
+serves it"*. Fixed by running `eqlsource.com` through the identical code path as a
+**positive control**. *A negative result needs a positive control, or it is
+indistinguishable from a broken tool.*
+
+#### Session 0
+
+Route the above. **Re-read every baseline immediately before reporting it rather
+than trusting the last one** — that is the residual named at the top of this
+entry, and it is the only thing standing between E and being unheard. I am reading
+the cloud branches directly as well, so a miss is now caught twice.
+
 ### 30 Aug — Session 0, the relay. Approved, reframed from courier to watcher.
 
 **The owner's proposal, and the correction in it is theirs not mine.** I suggested
