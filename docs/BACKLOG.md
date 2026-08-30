@@ -551,13 +551,65 @@ your measured haste and the cap you are already missing" cannot be computed
 without the log, and is ours. Strip the log from the second sentence and it
 collapses into the first, which is the test working.
 
-**An open question in the ruling, recorded rather than smoothed over.** Nine plus
-four is thirteen. **E's tool has fifteen findings, so two are unaccounted for by
-the ruling as given.** They may be admitted, refused, or not gear-and-log at all
-— this section does not know, and it should not guess on E's behalf. Whoever
-lands the first of those two applies the test above to it in writing, here, and
-names it. Until then, thirteen are ruled on and two are not, and that is the
-honest state.
+**The open question in the ruling is closed, and it was three rather than two.**
+This section recorded on 30 August that nine plus four is thirteen against
+fifteen findings, and asked whoever landed the remainder to apply the test to it
+in writing rather than guess. E did, the same day.
+
+**Why it was three.** The Director's nine names **procs-per-minute**, which is a
+*mechanic* from E's own table rather than one of the fifteen things the tool
+reports. So eight of the nine land on the list, plus the four gear findings, is
+twelve — leaving **spell/song rank**, **missing spells**, and **crit chance
+against crit damage**. That is E's correction to a count this section took from
+the ruling, and only E could have made it: the error was reading a mixed list as
+a list of findings.
+
+**The test applied to all three, which is what this section asked for:**
+
+- **Missing spells entirely** — a lane the trio has access to and never casts.
+  **Ours outright.** A catalogue can list what a trio *could* cast; only a log
+  shows that it never did. **Absence is the one thing a catalogue structurally
+  cannot hold.**
+- **Spell and song rank.** **Conditional**, the same standing as the four gear
+  findings. The catalogue holds every rank and what it does; the log holds which
+  one you actually have, because the rank is printed in the line. Ships only as a
+  ranked delta against the player's own observed output — a table of rank IX
+  against rank X is a spell catalogue and is theirs.
+- **Crit chance against crit damage.** **Conditional**, and it touches a second
+  row in this file: **AA Planner** is already named as theirs, so the ladder and
+  its costs are not ours to publish. What is ours is that the observed crit rate
+  identifies which ranks a player holds, and at their observed damage the chain
+  says which of the two is worth more — **and it is not always the same one.**
+  That comparison cannot be computed from a ladder alone. Delta only.
+
+**So the split is nine and six, and it closes:**
+
+| ours outright — uncomputable from any catalogue | conditional — ranked delta only |
+|---|---|
+| haste against the cap · stance · ability-lane uptime · position · charm-pet uptime · engaged time · **missing spells** · resist rate · mana ceiling | weapon base damage · upgrade tier · exaltations · offhand legality · **spell/song rank** · **crit chance vs crit damage** |
+| **9** | **6** |
+
+**A SIXTEENTH FINDING INHERITS NOTHING.** The count above is load-bearing, not
+descriptive. A new finding is **inadmissible until the test has been applied to
+it in writing in this section** — which makes a rule of what was asked as a
+favour, and is E's suggestion.
+
+**A worked example, and it bit its author.** E's own gate ran against real claims
+for the first time on 30 August and **rejected E's trio-DPS ceiling**: that
+figure is computable from an item catalogue and a damage chain with no log at
+all, so as a shipping finding it fails the test outright. It survives only as an
+internal denominator that is never shown to a reader in any form. **The gap is
+ours; the ceiling is not.**
+
+**A tool reading your own log is not the site publishing a diary.** `CLAUDE.md`
+§7 governs every page *about* a tool: no kill counts, no session windows, no
+"seen x12". **It does not govern what a tool tells you about yourself.** The
+whole value of a log-reading tool is that it says *your* haste, *your* uptime,
+*your* missing lane — and someone applying the generic-voice rule to the output
+rather than to the page would strip it of the only thing that makes it useful.
+Written down here because that is a mistake a careful session makes while
+following the rules, which is the kind worth pre-empting. E raised it; the
+placement is this section's call.
 
 **Ownership.** This section is the site's, not E's. E proposes wording; what a
 page may claim about provenance is settled here, on the same footing as every
