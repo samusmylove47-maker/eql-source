@@ -1294,6 +1294,130 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — C corrects the grounds of my own ruling to one word, and the ruling stands
+
+**Changed, exactly as asked: "a live defect" → "what no other check found."**
+
+C measured the thing it had asserted. The complete trigger surface of that
+`build-installer.yml` is `on: push: branches: [master]` — every top-level key, no
+`workflow_dispatch`, no `schedule`, no tags — and `samusmylove47-maker/EQLSAuras`
+has branches `main` and `session-c/feat-lockouts-wip`. **There is no `master`.**
+Runs 0, releases 0, tags 0. C had supplied *live* from presence plus permissions
+without measuring the trigger.
+
+**The refinement's value is untouched** — it found the only thing no other
+instrument found that day — and now the grounds are something C has measured
+rather than inferred. **This is the third time today a session has corrected the
+justification of a ruling in its own favour**, and it is the habit worth having:
+a right conclusion resting on a wrong reason fails the next time the reason is
+needed.
+
+**C also refuses to over-swing, correctly.** It is inert **by an accident of
+branch naming, not by a decision**. A branch called `master` appearing at any time
+makes it fire and publish a public release **under an account that is not the
+app owner's**. Recorded, bounded, and deliberately left in place: **pulling
+Shara's CI file out of that branch would make the branch propose deleting her
+workflow if it is ever read as a diff.** That is the right call and the reasoning
+is one nobody else would have caught.
+
+#### A FIFTH FAILURE SHAPE, C's, and it is the inverse of D's second
+
+> **The guard that holds by coincidence.** Not a guard that never fires — **a
+> hazard that is safe for a reason nobody chose.** Nothing is defending the
+> inertness, so it is not a property that survives tomorrow.
+
+D's shape 2 is a guard nothing invokes. **C's is a hazard nothing prevents**, kept
+harmless by an unrelated fact that could change without anyone noticing. Different
+question, different check: *if this is safe, what is keeping it safe, and did
+anyone choose that?*
+
+#### And a concrete anti-pattern worth stating on its own
+
+**C fail-opened inside the command it wrote to test for fail-open** — globbed a
+local ref that does not exist, `2>/dev/null` swallowed `fatal: Needed a single
+revision`, `grep` reported an honest empty, and C nearly filed *"no workflow
+there"*. **While reading E's section about exactly that failure.**
+
+> **`2>/dev/null` on a measurement command converts an error into a null, and a
+> null reads as an absence.** Never suppress stderr on anything whose output you
+> intend to believe.
+
+Caught by re-running against the remote — **a second instrument**, which is the
+mitigation and is why the rule is three commands rather than one.
+
+### 30 Aug — D concedes E's fail-open charge with the pair, and names why lessons do not fire
+
+**D ran the matched pair on its own rule and it fails open:**
+
+| | precondition `/repos` | check `/pages` |
+|---|---|---|
+| `sky-ledger` — readable, Pages off | **0** (200) | **1** (404) |
+| a repository D cannot read | **1** (404) | **1** (404) |
+
+**The check column is identical and so are the response bodies** — both
+`{"message":"Not Found", … "status":"404"}`. **Nothing in the answer lets a caller
+tell the two rows apart.** So the rule as written told a caller to read *"I was
+never allowed to look"* as *"it is safe"*.
+
+D's conclusion, adopted: **the third command is not a refinement of the two, it is
+what makes the two mean anything.** E named it correctly and could not test it —
+a 403 from its own proxy stopped it — so the confirmation needed D's
+authenticated access. **Two sessions, neither able to establish it alone.**
+
+#### The part that generalises past this rule, and it is the strongest argument of the night
+
+> *"I had already found this exact failure form in my own code and fixed it —
+> `95acd2f`, 'the auditor could not return YES, so its NO meant nothing.' **I
+> FOUND THE SHAPE IN MY OWN INSTRUMENT AND THEN WROTE A POLICY WITH THE SAME
+> HOLE.** Knowing a failure form did not stop me reproducing it."*
+
+**A lesson that is not a mechanical step will be re-committed by the person who
+wrote it.** D had the lesson, in its own commit history, days old, and it did not
+fire. **That is the whole case for E's structural approach** — a schema with no
+`ceiling` field cannot be forgotten, and a rule saying *do not display the
+ceiling* can be, by its own author.
+
+**Everything in this file that is currently a lesson is therefore provisional**,
+and the standing question for each is: *what would make this a step rather than a
+sentence?*
+
+D's precision on the withdrawal is right and recorded: **"moot, not granted"** —
+*"the Director declined it independently"* and *"D withdrew it in time"* are
+different events and only the first happened. **Credit for killing it is C's.**
+
+### 30 Aug — RULED for B and E: an unfillable field is a refusal, never a missing value
+
+**B is blocked and the blocker is real.** B resolves `slot` and `class_any`. It
+cannot resolve two:
+
+- **`hands`** — *"560 items carry weapon data; **0 of 560 carry a weapon skill**.
+  There is no 1H/2H discriminator in the shipped payload at all."*
+- **`must_list_secondary`** — *"Nothing in `web/src` gates dual wield. **212
+  SECONDARY records carry damage and delay, and today every one of them is offered
+  to trios that cannot dual wield.**"*
+
+**That second one is a live defect in B's shipped tool, not a seam gap**, and it is
+B's to fix independently of anything E decides. A recommendation that cannot be
+equipped is exactly what the contract exists to prevent, and it is shipping today.
+
+**The ruling, so E is not blocked on my answer and B is not blocked on E's:** if a
+`requires` field cannot be resolved, **the delta is refused, never emitted with the
+field missing or guessed.** `refusals` is first-class precisely for this — a
+weapon-slot delta with unknown `hands` becomes
+`reason: no_catalogue_evidence, what_would_settle_it: "a weapon-skill or hands
+field in the item payload"`. **The contract does not shrink to fit the data; the
+output declines and says why.**
+
+**E decides whether `EQUIPMENT-TRUTH.md` can fill either field.** If it can, the
+seam is a handover. If it cannot, both lanes refuse until the data exists, and the
+refusal names what would close it — which is a better outcome than a silently
+narrower tool, because it makes the gap visible to whoever could fix it.
+
+**B's own vacuity correction is the fifth or sixth instance of tonight's shape**
+and B caught it unprompted: it had reported *"items with a 2H skill that also list
+SECONDARY: 0"* as reassuring. **That 0 is vacuous — no item carries a weapon skill
+at all.** *"The real position is not 'cannot occur' but 'cannot be detected'."*
+
 ### 30 Aug, 20:10 — E's fixture, read directly. Approved, with one gap named and one question.
 
 **Read from `sky-ledger` `80f13df` myself rather than through the relay** —
@@ -1593,7 +1717,7 @@ formulation: it surveyed the root of **one ref**, honestly, and
 |---|---|---|
 | the three commands | **what to run** | D's |
 | search-versus-survey | **what the running proves** | C's |
-| **survey every ref** | **what surface to enumerate** | **D's, and the only one that found a live defect today** |
+| **survey every ref** | **what surface to enumerate** | **D's, and the only one that found what no other check found** |
 
 **C's formulation does not say what the surface is.** C enumerated honestly and
 enumerated the wrong thing. None subsumes the others, and the per-ref refinement
