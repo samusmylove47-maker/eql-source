@@ -146,6 +146,19 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">{UPF['counts.items']:,} items</span><span class="pill">Three classes at once</span><span class="pill">No account</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
+      <a class="card" href="gap-engine.html" style="--c:var(--ok)">
+        <div class="kicker">Preview &middot; reads your combat log</div>
+        <h3 class="t">Gap engine</h3>
+        <p class="d">Every other tracker here tells you what you have. This one reads your log
+          and says <strong>what to change</strong> &mdash; always as a difference against what you
+          are already doing, never as a score to hit. It shows what it
+          <strong>refused</strong> to answer just as prominently as what it found, because a
+          short list of findings otherwise reads as &ldquo;nothing else to improve&rdquo;.
+          <strong>Not yet live</strong>: the page is a preview and every figure on it is
+          invented.</p>
+        <div class="chipline"><span class="pill">Deltas, never levels</span><span class="pill">Refusals shown</span><span class="pill">Preview</span></div>
+        <div class="foot"><span>Engine in its own repo</span><span class="go">Open &rarr;</span></div></a>
+
       <a class="card" href="lockouts.html" style="--c:var(--ember)">
         <div class="kicker">Raiding &middot; reads your combat log</div>
         <h3 class="t">Lockout tracker</h3>

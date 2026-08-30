@@ -85,6 +85,12 @@ TOOLS = [
     # carries a description page and links out; the application is not ours to
     # serve and its data is refreshed on its own cadence.
     dict(slug="50-upgrades",      name="50 Upgrades"),
+    # Session E's gap engine. The page is a PREVIEW: the engine runs in its own
+    # repository and is not yet a bundle this site can serve, so the page renders
+    # a synthetic fixture and says so rather than offering a control that does
+    # nothing. Registered now because the Director assigned the surface; the
+    # wiring is one generator change when E ships.
+    dict(slug="gap-engine",       name="Gap engine"),
     # Promoted 26 Aug 2026, having been copied into public/app/ on the 25th and
     # deliberately left unlinked until Session D reported. It is the only tool
     # here that answers "what is still open", and it says "not looked" where it

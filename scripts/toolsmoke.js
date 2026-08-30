@@ -59,6 +59,12 @@ const TOOLS = [
    * is unsmoked. */
   { file: '50-upgrades.html', fills: null,
     note: 'a description page — the app it links is hosted and tested in its own repo' },
+  /* Fourth of the same shape, and the thinnest: the gap engine's bundle is not
+   * served here at all yet. The page is a preview rendering a synthetic
+   * fixture, so there is nothing for this file to execute beyond the shared
+   * chrome — and that is exactly why it is listed rather than omitted. */
+  { file: 'gap-engine.html', fills: null,
+    note: 'a preview page rendering a synthetic fixture - no app is served yet' },
   /* Third of the same shape. Promoted 26 Aug 2026; the page describes the
    * application and the application itself is smoked below, out of
    * public/app/, along with the Sky Ledger's. */
