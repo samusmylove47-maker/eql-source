@@ -416,7 +416,16 @@ You have entered The City of Guk 4 (Refined).</pre>
         thing that changed between the rows.</p>
       <p class="src" style="margin:8px 0 0"><strong>Damage to kill counts every attacker</strong>,
         so read these as what the fight costs a raid rather than what one party deals.</p></div></div>
-    <div class="scroller"><table>
+    <!-- .tw, not .scroller. `.scroller` is real but only inside the thirteen
+         self-contained survey pages, which carry their own inline stylesheet
+         and define it there. This page loads the SHARED site.css, which has
+         never defined it - so the wrapper resolved to overflow:visible, the
+         table pushed the document 4px past 390, and it was the only viewport
+         overflow on the site: 717 pages, one finding. `.tw` is the shared
+         stylesheet's overflow-x:auto wrapper and sixteen pages already use it.
+         Borrowing a class across a stylesheet boundary fails silently, because
+         an undefined class is not an error in CSS. -->
+    <div class="tw"><table>
       <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
         <th>Self-heals</th><th>What he cast</th></tr></thead>
       <tbody>{_yael_rows}</tbody>
@@ -437,7 +446,7 @@ You have entered The City of Guk 4 (Refined).</pre>
       same fight sat apart. Most were measured in a group instance rather than the open zone. A row
       marked <em>floor</em> was measured from part-way into the fight, so it is a lower bound
       rather than the cost of the fight.</p>
-    <div class="scroller"><table>
+    <div class="tw"><table>
       <thead><tr><th>Boss</th><th>Tier</th><th>Damage to kill</th><th>Fight</th>
         <th>Spells</th><th>Self-heals</th></tr></thead>
       <tbody>{_other_rows}</tbody>
