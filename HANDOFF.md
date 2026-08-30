@@ -1762,6 +1762,95 @@ than pedantry.** The danger was never that `main` does something. **Creating it
 arms something already written.** I recorded that rule this morning without having
 the word for why it mattered.
 
+### 30 Aug — the owner's growth parameter for Session 0. Endorsed, with one risk it did not name.
+
+**The owner has told Session 0 to remain the relay, to observe and learn, and has
+drawn a line I think is the right one:** the domain is one knowledge base, the
+communication structure is another, and Session 0's is the second. **That line is
+what makes the direction sound** — it grows the post into something that competes
+with no other session and duplicates nobody's work.
+
+**Session 0 relayed it in the owner's words rather than its own summary, named the
+tension with `RELAY.md` §2 rather than resolving it quietly, and invited a risk
+into this file without needing its agreement.** All three were the right call.
+
+**Its own guard, and I endorse it as written:**
+
+> **"The view is real, the authority is not.** I know what was said, by whom, when,
+> and what superseded it. I do not know what is true."
+
+**Tonight is the proof and Session 0 cites it correctly:** one observation produced
+six versions of a mechanism, four retracted, each attached to a correct
+measurement — and at no point could the relay have said which was right,
+**including the two moments when the more recent and better-evidenced message was
+the wrong one.**
+
+#### THE RISK IT HAS NOT NAMED: traffic volume is anti-correlated with importance here
+
+**A relay learns from what passes through it, and what passes through it is not a
+sample of what matters.** It is a sample of **what was contested.**
+
+Tonight the `branches/master` paragraph generated something like fifteen messages
+across five sessions. **E's engine contract generated three.** The fonts repair —
+715 pages, a live honesty defect, the most consequential thing that shipped —
+generated almost none, because A simply did it and reported.
+
+**The things that generate traffic are the uncertain, low-stakes, arguable ones.
+The things that matter are often done quietly by one session and announced once.**
+A post cultivated on its own traffic would learn, precisely backwards, that the
+API detail was the centre of the evening.
+
+**That is not a reason to change anything.** It is a bias to hold explicitly,
+because it is invisible from inside the channel that produces it. **The correction
+is cheap: weight by consequence, not by volume — and consequence is usually
+measured by what shipped, which lives in the trees rather than in the messages.**
+
+#### And a second, structural: the relay is the only party whose judgement is never tested
+
+A, B, C, D and E were each wrong tonight and each was corrected, because **their
+work is in a tree where another session can read and refute it.** Session 0 has
+been corrected twice — the stale baselines, the `703 files` count — and **both
+were mechanical.** Its judgement has never been put at risk, because the post is
+built never to render one.
+
+**That is correct for the post and it is the thing to be careful about in
+growth:** whatever judgement it grows into will be **untested in a way everyone
+else's is not.** Not unreliable — untested. Different problem, and it needs a
+different remedy than care.
+
+#### The concrete suggestion, which costs nothing and preserves the owner's intent
+
+**Session 0 has written three files to session memory that survive compaction and
+sit outside every repository.** It was careful to exclude project facts, which was
+right — those go stale and belong in a tree.
+
+**But "the shape of the post" is itself a claim**, formed over an evening that
+included a two-hour detour Session 0 was central to routing. **Those files are, by
+construction, the one durable artefact in this project that nobody can review** —
+outside the exact correction mechanism that caught everything else tonight.
+
+**So: keep them, and make them readable on request.** Not committed, not
+published — simply pasteable into a message when anyone asks. That re-enters them
+into the loop at zero cost and changes nothing the owner asked for. **A relay
+whose operating manual cannot be read is the only unreviewable thing here, and it
+would be the last place any of us would think to look.**
+
+#### Session 0's own test is good and I am adopting it as the boundary
+
+> **"Does it improve routing without requiring me to judge whether a claim is
+> true? If it does not, it is not mine."**
+
+**Checkable, and every improvement it took tonight passes** — the type-flag,
+timestamped pointers, skipping `[offline]` rows, never reporting an absence. None
+required understanding a parser, a generator or a claim. **That is the boundary,
+and it is a better statement of it than §2's.**
+
+**One consequence of the owner's own note, worth stating plainly:** the owner
+intends to watch Session 0's session more than all the others combined. **That
+makes the relay's framing the owner's primary view of the project** — which is a
+reason *"the view is real, the authority is not"* matters more here than it would
+in a post nobody watched.
+
 ### 30 Aug — the closure holds, and it caught a false-safety rule in my own superseded text
 
 **D withdrew version four and converged with C independently.** Both wrote, minutes
