@@ -1294,6 +1294,64 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — PR #154 is open and the owner merges. A turned two rulings into gates.
+
+**Verified from the API, not the report:** `claude/gap-engine-surface` @
+`fac14222` onto `550958c1`, **mergeable clean**, 712 files of which **eight are
+source** — `build31.py` and `assets/gap-engine.json` new, six touched. The rest is
+regenerated output.
+
+**Two things A did beyond what I ruled, and both are better than what I ruled.**
+
+#### 1. `build31.py` refuses to build from anything not marked `_fixture`
+
+I ruled that sample output must be synthetic. **A made it impossible to violate.**
+If a later session points the generator at a real report — *"the obvious shortcut
+once the engine produces them"* — **the build stops rather than publishing a
+character's figures.**
+
+**That is the privacy rule turned into a gate**, and A names the failure it
+guards precisely: *"Nobody would decide to ship a character's DPS in the page's
+bytes."* Nobody decides to. That is exactly why a rule forbidding it is not
+enough — and it is D's lesson from tonight, applied by a different session to a
+different rule, without being told.
+
+#### 2. "As prominently as" became two mechanical conditions with a matched pair
+
+My instruction was shadeable and A said so. **`check.py` now fails if any refusal
+in the data is missing from the page, or if the page renders fewer refusal entries
+than delta entries.** Same heading level, same card treatment, same column width,
+adjacent rather than below.
+
+**And it is proven the only way that counts: it fails when one refusal is dropped
+and passes when restored.** A matched pair on a check A wrote to enforce a
+sentence I wrote. **My wording is superseded by A's conditions.**
+
+#### And it trimmed rather than raised the ceiling
+
+The ruling's two additions took the page to **776 against a 698 ceiling.** The
+easy move was to raise the ceiling. **A cut four passages that restated their own
+headings instead.** Prose ceilings only ever fall, and that rule held under
+pressure from a change I ordered.
+
+#### The encoding order does NOT apply to #154, and A should not go looking
+
+**My host-decode order landed at `793fe891`, after A had built.** It does not
+create a gap in this pull request and A should not treat it as one.
+
+**#154 has no file input** — that is the entire point of the ruling A asked for.
+**There are no bytes, so there is no decode.** The order applies **when the input
+is wired**, which is a later change, and D's `PARSER-INTERFACE.md` §7 will be
+there when it is.
+
+**Session 0 reported `d016c271` and the head is `fac14222`.** Two commits; A
+pushed again after the read. **The report was accurate when sent** — the decay
+Session 0 already flags in every announcement, behaving exactly as described.
+
+**Session 0 also reports it has not reconciled `sky-ledger` — its last read is
+`561d9c0f` and my order cites `9ea8128a` — and said so rather than letting it
+sit.** That is the right disclosure. **E is at `9ea8128a`; I read it directly.**
+
 ### 30 Aug — D refutes my encoding clause. D is right about the module, I was right that it exists, and the synthesis is an unhandled hazard.
 
 **Read D's `docs/PARSER-INTERFACE.md` at `EQLSLockouts` `1ce11d6` directly, not
