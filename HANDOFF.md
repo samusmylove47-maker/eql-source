@@ -273,6 +273,69 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — Session 0, the relay. Approved, reframed from courier to watcher.
+
+**The owner's proposal, and the correction in it is theirs not mine.** I suggested
+Session A as the hub. A is the wrong choice and the owner saw it: A is the
+highest-volume producer on the project — it completed the entire fonts repair
+tonight *while* relaying a standby to four sessions — and interrupt-driven routing
+alongside deep multi-file work will eventually degrade one of them. A dedicated
+session is right.
+
+**`EQLS Relay Session 0`.** Zero rather than a letter, deliberately: it marks the
+post as *not a workstream*, which is load-bearing given the second constraint
+below.
+
+#### The reframe: it watches, it does not carry
+
+**My outbound never needed carrying.** Every ruling is committed to `HANDOFF.md`
+on `claude/eq-map-export-proposal-oe8m6l`, readable by any local session with
+`git fetch origin <branch> && git show FETCH_HEAD:HANDOFF.md` — no merge, no
+owner, no permission. What the owner hand-carried all night was my *prose in
+chat*, which was never the authoritative copy.
+
+**So Session 0's primary job is to watch the branch and announce that it moved**,
+not to ferry sentences. That removes the owner from my outbound entirely rather
+than merely lightening it, and it is strictly better than a courier because the
+thing it points at is versioned, dated and attributable while a relayed paragraph
+is none of those.
+
+**Tonight is the argument.** `fbd0932` → `df49a58` → `523fac0` inside four hours,
+and I published the stale one *in a ruling*. A post whose entire job is "what is
+the current pointer" catches that. I did not.
+
+#### Three constraints. The first is what makes the post safe rather than dangerous.
+
+1. **VERBATIM OR NOT AT ALL.** Every message that mattered tonight was precise:
+   `518,285 − 3,485 = 514,800`; `eql50ups-0d [835fa6]` → `eql50ups-b3 [91ddb8]`;
+   *"fifteen files never call `head()`"*. Paraphrased, each becomes a vague
+   gesture and the value is destroyed. Worse, **a relay that interprets
+   manufactures a claim nobody made**, and claim-drift is this project's entire
+   failure history. Session 0 may add a routing header. It may never summarise,
+   compress, correct or improve a payload.
+2. **IT PRODUCES NOTHING.** No findings, no code, no pull requests, no
+   adjudication, no opinions on technical questions. A session with read access to
+   every folder will be tempted to work. The moment it does, it is Session F with
+   a confusing name and an unearned view of everything.
+3. **IT IS THE DEFAULT PATH, NOT THE ONLY ONE.** Tonight's mesh was resilient
+   because everyone could reach everyone. Direct session-to-session stays legal.
+   Session 0 is for broadcast, for crossing the cloud boundary, and for when you
+   do not know who is live.
+
+**Day one it writes nothing at all** — no index file, no repository of its own. It
+reads and it relays. If a pointer index proves its worth, it earns a home later.
+Inventing a repository on day one is the kind of infrastructure this project
+builds before it knows the shape.
+
+#### The honest limit, stated so nobody plans around a capability that does not exist
+
+Session 0 is local, so it can message me. **I still cannot reply to it.** My
+outbound is solved by branch-watching, not by the relay, and nothing gives me a
+live outbound channel until the platform enables it. Session 0 halves the owner's
+load as a courier; the watching is what removes them.
+
+
+
 ### 30 Aug, 01:55 — A's standby report corrects my standby entry in three places
 
 **Read this before the 01:30 entry below; it supersedes it.** A pushed to
