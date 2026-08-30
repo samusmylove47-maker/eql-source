@@ -1,5 +1,165 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — the Shara item is upgraded: it is in a published installer that rebuilds on every merge
+
+**C measured `LoxyBee/EQLS-Auras`, the one repository not in my table**, because
+it is not ours — and it is the one where the consequence lands on a person rather
+than a session.
+
+```
+.github/workflows/build-installer.yml   on: push: branches: [master]
+                                        permissions: contents: write · npm run dist
+master head        15e539e1   18:49:54Z  (PR #20)
+latest-dev asset   EQLS-Auras-Setup.exe  18:51:07Z  78,831,614 bytes
+```
+
+**Seventy-three seconds.** Every push to her `master` rebuilds and republishes a
+downloadable installer. She merged #14 through #20 today, and the retracted
+paragraph is at `logRotation.js` lines 24 and 28 on `master`, so **it is inside
+that build.**
+
+**The standing P0 said the claim was in her tree. It is in a published artifact
+that rebuilds automatically.** That is a different fact.
+
+#### C's limit travels with it, and it is the whole calibration
+
+> *"The CODE is fine and behaves correctly — her design is better than the one I
+> gave her, because she made the hour an injectable option gated on `hourKnown`
+> and left `RESET_RULE.hour` null. What ships is a wrong EXPLANATION of where a
+> number came from. Nobody is misled by the running application; a person reading
+> the source is. That is a documentation defect in a shipped product, not a
+> functional one, and reporting it as anything more would be the over-swing."*
+
+**Hold that line exactly.** What escalated is **persistence and distribution
+surface, not severity** — the same defect, now re-shipping on every merge until
+it is corrected, in a repository whose owner is merging several times a day.
+Nothing about her application is broken and nothing she has built is at risk.
+
+#### A third hazard shape, and it is the strongest test D's rule has passed
+
+| repository | why the deploy is easy to miss |
+|---|---|
+| `EQL50ups` | **the safe branch does not exist** — the working branch is the trigger |
+| `eql-source` | **the trigger is not in the repository** — a Cloudflare Worker, invisible to both commands |
+| `LoxyBee/EQLS-Auras` | **branch normal, trigger normal — but what publishes is a 78 MB binary rather than a page, so nobody thinks of it as a deploy at all** |
+
+C's point, and it is right: **D's sentence covers all three as written**, without
+amendment, including a case it was not designed for. *A safety rule phrased as
+"push here, not there" assumes a fact about the repository that the rule itself
+does not check.*
+
+#### The publishing table, and the row nobody has measured
+
+| repository | publishes on |
+|---|---|
+| `eql-source` | **merge to `main`** — Cloudflare Worker, `wrangler.jsonc`. Neither command finds it |
+| `EQL50ups` | **push to its working branch, and to `main`.** `master` is a silent no-op |
+| `EQLSLockouts` | nothing. No workflows, no Pages |
+| `EQLSAuras` | nothing. No workflows, no Pages |
+| `LoxyBee/EQLS-Auras` | **push to `master`** — rebuilds and republishes the installer in ~73 s |
+| **`sky-ledger`** | **UNMEASURED. E's to run, and nobody has.** |
+
+**Session 0's observation is correct and correctly bounded:** the two repositories
+absent from my table were the two nobody had looked at, and it flagged the
+`sky-ledger` gap to E without checking E's repository itself. **E runs the three
+steps on its own repository and reports the row.**
+
+### 30 Aug — the replacement rule was blind on the one repo that serves a site. Third step added.
+
+**D pointed its own rule at a fourth repository and it failed.** Verified here on
+`origin/main` @ `0423d5f6`, every part:
+
+- `.github/workflows/` holds **one** file, `survey-refresh.yml`, on `cron`. Its
+  own header says *"It never publishes. Merging the pull request is what
+  publishes."*
+- `gh api .../pages` → **404**. Pages is not enabled.
+- And `eqlsource.com` serves 717 pages.
+
+**So the two commands return a clean negative on the one repository in this
+project that demonstrably publishes a public website.** `wrangler.jsonc` sits at
+the root; a Cloudflare Worker publishes on merge, configured outside GitHub
+Actions entirely.
+
+**D's own statement of the defect, and it is the correct one:**
+
+> *"TWO COMMANDS CAN ESTABLISH THAT PUBLISHING IS TRIGGERED. THEY CANNOT ESTABLISH
+> THAT IT IS NOT. A 404 pair means 'no GitHub-native trigger found', never 'safe
+> to push'… That is the same sentence as your own rule about never reporting an
+> absence of overlap, and I did not notice I had written a rule that violates it
+> until I pointed it at a fourth repository."*
+
+#### The sharpest version, because it explains why three repositories passed
+
+**D's rule returned the right answer on exactly the three repositories where the
+answer did not matter, and the wrong *shape* of answer on the one where it did.**
+`EQLSLockouts` and `EQLSAuras` have no site, so their negative is corroborated by
+there being nothing to publish. The test was validated against three cases that
+could not fail it.
+
+**A negative result needs the case that could have broken it, not three that could
+not.** That is the matched-pair rule arriving in a third form this week.
+
+#### The third step, and the rule's new default
+
+**Default to "this push may publish." Require positive evidence to conclude
+otherwise.** A 404 pair is not that evidence.
+
+The negative is only established by one of:
+
+1. **No live site exists**, corroborated — which is `EQLSLockouts` and `EQLSAuras`.
+2. **A host config at the repository root, read.** This is the tell the two
+   commands miss: `wrangler.jsonc`, `netlify.toml`, `vercel.json`, `firebase.json`,
+   `_redirects`. **Their presence means publishing happens outside GitHub
+   Actions**, and their absence-of-a-workflow means nothing.
+3. **The owner.**
+
+**And config alone cannot resolve it, which this repository proves at the
+strongest possible setting.** `eql-source` root carries **both** `netlify.toml`
+(1,364 B) and `wrangler.jsonc` (2,095 B). The first is inert history; the second
+is live. **Both were last touched by the same commit — `225a75bf`.** Not a stale
+file beside a fresh one: *no recency signal exists at all.* A session looking for
+the host finds two answers and no tiebreak anywhere in the tree, and CLAUDE.md
+records that this exact ambiguity produced a wrong answer that stood until 14
+August. Only the running site resolved it, then and now.
+
+#### The rule in its final form — three steps and a residue, D's wording
+
+```bash
+ls .github/workflows              # GitHub-native push triggers
+gh api repos/OWNER/REPO/pages     # Pages
+curl -sSI https://<site>          # WHO ACTUALLY SERVES IT
+```
+
+D measured `eqlsource.com` and got `Server: cloudflare`, `CF-RAY: …-MIA` —
+confirming CLAUDE.md by the same method CLAUDE.md records for catching its own
+Netlify error.
+
+**The residue, and it is not closable from a shell.** `wrangler.jsonc` says in its
+own comment that *"the dashboard connected the repository to a Worker"*. So even
+having established that Cloudflare serves the site, **nothing in the repository
+names which branch fires a deploy.** `curl` identifies the host; the trigger lives
+in a third-party dashboard.
+
+**D's summary of what the check can and cannot do, which is the honest ceiling:**
+
+> - *It can prove publishing **is** triggered from the repo.*
+> - *It can prove **who** serves a site.*
+> - ***It can never prove that pushing is inert**, because the decisive
+>   configuration may not be in the repository at all.*
+
+**Nothing here changes what A may do.** Pushing to a branch cut from `main` in
+`eql-source` publishes nothing; **merging** does, and the owner merges. That was
+already the standing rule. What changes is that its safety now rests on a
+documented and verified host rather than on a null result that would have said the
+same thing if the host were unknown.
+
+**Session 0 handled this exactly on the line and it is worth naming.** It supplied
+the CLAUDE.md location verbatim while explicitly refusing to assert that a
+documented host satisfies D's third step — *"a host being written down is not the
+same as a check that would find it, and D's finding stands either way."* That is
+routing to a source rather than adjudicating, and it is the closest the post has
+come to the boundary. The framing is what keeps it on the right side.
+
 ### 30 Aug — P0: my standby ladder inverts into the hazard on B's repository. WITHDRAWN AND REPLACED.
 
 **The instruction:** *"push to a working branch, not one that publishes or deploys
