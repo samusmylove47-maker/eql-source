@@ -1638,7 +1638,103 @@ than pedantry.** The danger was never that `main` does something. **Creating it
 arms something already written.** I recorded that rule this morning without having
 the word for why it mattered.
 
-#### CORRECTED — the mechanism is not the legacy name, and the wrong version grants exemptions
+#### THE MECHANISM HAS NOW BEEN WRONG TWICE AND THIS FILE CARRIED BOTH. Version three, C's, measured.
+
+**C retracts its own correction.** It is a **301 rename redirect**, and the rule
+is broader than either earlier version.
+
+```
+curl -sI  …/repos/samusmylove47-maker/EQL50ups/branches/master     ← redirects NOT followed
+  HTTP/1.1 301 Moved Permanently
+  Location: …/branches/claude/eql-gear-optimizer-tfzvh6
+```
+
+| repository | result |
+|---|---|
+| `EQLSAuras`, `EQLSLockouts`, `eql-source` | **301 → `main`** |
+| `EQL50ups` | **301 → `claude/eql-gear-optimizer-tfzvh6`** |
+| `sky-ledger`, `LoxyBee/EQLS-Auras` | **200** — `master` genuinely exists |
+| `develop`, `trunk`, `staging` | **404** — no rename record |
+
+**Every repository showing the behaviour renamed `master` to its current
+default. Nothing special-cases the string — it is simply the name that got
+renamed.** So **D's "legacy alias" was the wrong mechanism and nearer the truth
+than C's**, and C says so: *"My counter-example refuted D's wording while
+confirming D's substance, and I read it as refuting both."*
+
+**THE CORRECTED RULE IS BROADER THAN ANYTHING RECORDED SO FAR:** the redirect
+applies to **any branch that was ever renamed, from its old name.** So
+`branches/<name>` cannot test existence for **any** name that may once have been
+renamed — and no client with follow-redirects enabled, which is nearly all of
+them including `gh`, will show you the difference. **Enumeration remains the only
+honest instrument.**
+
+#### THE TWO FINDINGS ARE ONE EVENT, and this is the best thing anyone found today
+
+**A repository that renames `master` → `main` acquires both halves in a single
+action:**
+
+1. **any `master`-triggered workflow left behind becomes ARMED**, because the ref
+   it names is gone;
+2. **a 301 makes `branches/master` answer 200**, so the obvious audit reports the
+   branch exists and the workflow is live.
+
+> **The rename creates the hazard and disables the instrument that would detect
+> it, simultaneously.**
+
+**And the correlation runs the wrong way:** the population where `branches/master`
+lies is *exactly* the population where a `master`-triggered workflow is most
+likely to be stale and armed. **The trap is not random with respect to the
+hazard — it is anti-correlated with detection.**
+
+C is careful that its own repository is not the general case: the rename is C's
+own, and the workflow arrived on a branch copied from `LoxyBee/EQLS-Auras` where
+`master` is real and the workflow genuinely live. **Same end state, different
+history**, and C does not claim the causal story for it.
+
+#### C's third instance of the same fault, committed while sharpening a finding about it
+
+**`gh api -i` follows the 301 silently and prints only the final `200 OK`.** C
+wrote *"no Location header"* and concluded there was no redirect — **an instrument
+that could not return one of its two answers, used to sharpen D's finding about
+instruments that cannot return one of their two answers.** Caught only because C
+said the risk out loud before believing the result and re-ran with `curl` minus
+`-L`.
+
+#### What survived all three mechanisms, which is the lesson worth more than the fact
+
+| | mechanism | status |
+|---|---|---|
+| D | *"the legacy `master` name resolves to the default branch"* | wrong, and nearer |
+| C | *"resolves to the default ref unconditionally, not a rename record"* | **wrong, and it is what this file recorded** |
+| C | *"301 rename redirect; applies to ANY renamed branch, from its old name"* | measured, redirects unfollowed |
+
+**Three explanations, two of them wrong, and the operational rule never
+changed once: enumerate, do not query.** Each version was produced by a session
+correcting the previous one, and **each carried a measurement that was right**.
+
+**That is the argument for deriving a rule from behaviour rather than from
+cause.** A rule that depended on the mechanism being right would have been
+rewritten three times tonight and been wrong twice in between. The one we have was
+wrong about *why* from the first hour and correct about *what to do* throughout.
+
+**I could not corroborate the 301 and have to say so a third time:** this
+container's proxy returns 403 for every GitHub API URL — and its output opens with
+`HTTP/1.1 200 Connection Established`, **which is E's proxy-handshake finding
+appearing in my own terminal.** What I did verify with the honest instrument:
+`eql-source` has **no `master` ref**, consistent with C's account and not proof of
+it.
+
+**B gets the credit for ARMED and C asked for that explicitly**, including for
+catching that *"inert" is the word that makes a reader stop looking.* C reports
+B's fourth step additive rather than redundant: *D's third command asks whether
+publishing can be triggered; B's asks whether a trigger is waiting for a branch;
+neither implies the other.*
+
+**The sha discrepancy is closed** — C measured `561d9c0f` and `ad4f2a70`, matching
+Session 0's reading and mine. `41adbc8c` matches neither.
+
+#### The superseded entry below is left standing deliberately
 
 **I recorded D's explanation — *"GitHub resolves the legacy `master` name to the
 default branch"* — and C has shown it is narrower than the behaviour.** The sample
