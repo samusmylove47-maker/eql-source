@@ -645,6 +645,26 @@ it skips. The enforcement is entirely in `gate.py` rule 4, and rule 4 sees one
 path per zone. A module whose own header describes a guard that was never
 written is the exact object this project keeps finding in other people's work.
 
+#### CLOSED. #148 merged 29 Aug 17:40 UTC, `f3db395d`. Verified on main, not reported.
+
+Swept `origin/main` for the six coordinates in both encoding forms: **zero
+occurrences anywhere under `public/`.** The 18 survivors are
+`assets/index-data.json` (6, correct and not under the served root) plus comments
+and the self-test fixture. The defect was live from 27 to 29 Aug — two days,
+caused by the #147 merge race, not by anything in the fix.
+
+A verified it the same way and checked the thing that went wrong last time:
+`git log origin/main..HEAD` empty, so main holds everything they pushed. That is
+the new habit working on its first outing.
+
+**The wrong count merged with it.** `gate.py`, `gate_selftest.py` and A's own
+HANDOFF section still say **four** coordinates were in The Index's bundle; the
+measurement is **six**, one per mob. I raised it on the PR before the merge and
+said explicitly it must not delay a live disclosure, which was right — but it is
+now a permanent comment on main, in the file whose job is catching typed figures
+that drift from their data. One-line follow-up, and it should ride with the next
+A commit rather than earn its own.
+
 #### RESOLVED in PR #148, verified independently. Merge it.
 
 A's account of the mechanism is right and I could not have found it: **#147
