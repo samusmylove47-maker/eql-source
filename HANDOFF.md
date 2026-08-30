@@ -1,5 +1,126 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — the two-doors problem is SOLVED, and it was never Session 0's. The owner read the listing.
+
+**Session 0 appears once.** `eql-source-64`, live, `C:\Users\Lindsey\Desktop\EQL
+Source`. It is not double-registered and **the folder access the owner granted has
+nothing to do with any of this.**
+
+**The duplication is on the recipient side.** From D's listing, 19 peers:
+
+| session | rows |
+|---|---|
+| **A** | `repo-docs-review-37a9c9-28` (live, worktree path) **plus TWO `[offline] EQLS Main Session A · Remote Control`** |
+| **C** | `eqls-auras-0e` (live) **plus TWO `[offline] EQLS Auras Session C · Remote Control`** |
+
+Plus four more dead registrations — `Old: First Session A`, `EQL Source Website
+Main`, `Handoff review`, `desktop-79p7h0r-zazzy-newell`, all `[offline]`.
+
+**So Session 0 did exactly what it reported: it saw the same session at several
+rows and sent to more than one.** The `[offline]` Remote Control rows are historical
+registrations that accumulated as sessions were restarted. A message to one goes
+nowhere and cannot be replied to — which is precisely the silent loss D and A
+described.
+
+#### THE RULE, and it is one line and checkable
+
+> **Never send to a row marked `[offline]`.** It is a dead registration, not a
+> peer.
+
+**Live is `[unknown]` with a working-directory path, or `[idle]`.** Nothing else.
+Six of the nineteen rows in that listing are dead registrations of sessions that
+are also present live under a different name.
+
+#### AND THE SCOPE TEST I HAVE BEEN LOOKING FOR ALL DAY IS THE PATH
+
+Both my roster schemes failed because **names rotate and refs rotate.** The
+listing shows the thing that does not: **local rows carry a working directory.**
+
+```
+eqls-auras-0e              C:\Users\Lindsey\EQLS Auras
+eql-source-64              C:\Users\Lindsey\Desktop\EQL Source
+repo-docs-review-37a9c9-28 C:\Users\Lindsey\Desktop\EQL Source\...\worktrees\...
+```
+
+**Scope on the path prefix, not the full path** — A's leaf is a worktree that will
+come and go, but it sits under the project root and that root is stable.
+
+**For cloud sessions there is no path and the name is all there is** — and it
+happens to work: the three that matter are `EQLS Residual Session E`,
+`EQLS Project DIRECTOR`, `EQLS 50 Upgrades Session B`. The unrelated cloud rows
+are `Anneal Game`, `Lindsey's vision research`, `Wuxia MMORPG starter area`,
+`$100K investment simulation plans` — **which are exactly the sessions
+contaminated on 29 August.** The `EQLS ` prefix separates them cleanly.
+
+**So the addressee rule, final form, and this one is derived from a listing rather
+than assumed:**
+
+1. **Skip every `[offline]` row.**
+2. **Local:** send only where the working-directory path sits under an EQLS
+   project root.
+3. **Cloud:** send only to rows named `EQLS …`.
+4. Read a fresh listing immediately before every send — names still rotate, and
+   this test does not depend on them.
+
+**Two of my three attempts at this rule were wrong because I reasoned about
+identifiers instead of reading the listing.** The owner ran one command and it
+answered the question three sessions had been circling for two days.
+
+### 30 Aug — A found the same fault twice, and the second instance is three days live on main
+
+**Confirmed here on `origin/main` @ `0423d5f6`: `.wh` is not defined in
+`public/assets/site.css`.** It exists only in `build3.py:49`'s injected block,
+which reaches the plates. The six named-mob pages print `class="wh"` and get
+nothing.
+
+**My own first check said it was defined and was wrong** — I grepped `\.wh`
+unanchored and matched **`.why`**, twice. The same substring trap that made the
+minus-sign sweep return a false zero, in the same file, by me, four days later.
+
+#### The shape is worth more than either instance
+
+**A class borrowed across a stylesheet boundary.** `.scroller` is real inside the
+thirteen self-contained survey pages, which carry their own inline CSS;
+`learn/difficulty.html` loads the shared sheet, which never defined it, so its
+table wrapper resolved to `overflow:visible` and overflowed by four pixels.
+`.wh` is the same fault in the other direction.
+
+**An undefined CSS class is not an error.** The markup is valid, the page renders,
+nothing reports it. That is this week's pattern in a new subsystem: **a failure
+with no symptom is indistinguishable from success**, and here the only symptom was
+four pixels at one viewport.
+
+**A's severity reading is right and I am not inflating it.** The mark still says
+*withheld*, so the honesty held and nothing extracts as a live coordinate. What
+was lost is that it read as a value rather than as a deliberate absence, which is
+most of what the mark is for. **A defect, not a disclosure**, and it is the second
+time this week A has stated its own error plainly rather than in a footnote.
+
+**And A measured instead of over-fixing: 715 pages use 40 class names nothing
+defines.** Most are inert — `.nav-find` is on 700 pages, referenced once, dead and
+harmless. **A fixed the two with a visible consequence and left the other 38
+measured and named.** Fixing all forty would be a whole-site diff for no reader
+benefit, and the restraint is the right call.
+
+**PR #153 is open**, 703 files, and the whole-site diff is a consequence of
+rehashing the stylesheet rather than scope creep. **The site now has zero viewport
+findings across 717 pages, two viewports, two grounds.**
+
+#### Build drift, fifth instance — and the fix is to make it loud, not to stop it
+
+A: *"five times in four days, every one caught by diffing against main and none by
+noticing. On this repository any `./build.sh` is a publish decision."*
+
+**Do not make the app sweep manual.** That is the obvious fix and it is wrong: a
+manual step gets forgotten and the site serves a stale build, which already
+happened and is why *every D release needs an A commit* is recorded.
+
+**The fault is that the side effect is silent, so make it loud.** `build.sh`
+should print what it swept, by name, when it sweeps an app republish. The habit
+that works — diff against `main` before pushing — stays. But five for five caught
+after the fact and none at the time is a signal that the tool is not telling
+anyone what it did. **A's call to make, in its own repository.**
+
 ### 30 Aug — the gap engine is the next build. Architecture, and two constraints that decide what gets built.
 
 **The owner's direction:** E leads a module deployable on the website *and*
