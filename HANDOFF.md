@@ -1294,6 +1294,67 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug, 20:10 — E's fixture, read directly. Approved, with one gap named and one question.
+
+**Read from `sky-ledger` `80f13df` myself rather than through the relay** —
+`fixtures/sample-report.json`, 85 lines. Every ruling I have made about this tool
+is in it, and two of them E reached before I published them.
+
+**E shipped the synthetic-fixture rule before my ruling landed.** Its header:
+
+```
+"_why":   "SYNTHETIC. Every figure below is invented for layout and carries no
+           measurement. It exists so the landing page never renders a real
+           character's log."
+"_never": "Do not replace these values with figures from a real log, ours or a
+           reader's… they are not claims and cannot be wrong."
+```
+
+My sample-output ruling committed at `92d61988`; E's fixture at `80f13df`. **Two
+parties reached it independently**, which is worth more than either statement of
+it.
+
+**The rulings that are now structural rather than remembered:**
+
+| ruling | how E made it unbreakable |
+|---|---|
+| modelled DPS not displayable | `measured` and `deltas` are separate keys; **no absolute modelled figure exists in the document** |
+| no ceiling as a target | `kind` is `estimate` or `floor`; `ceiling` is not a value |
+| deltas, never items | *"a PRIMARY 1H at DMG >= 30, delay <= 22"* — and `refusals` carries `item.selection → computable_from_catalogue → "eqlegendstools.com holds this and does it well. Link, do not clone."` **My BACKLOG boundary as a runtime value.** |
+| engaged-time comparison | `refusals` carries it as `privacy`, *"refused in all cases and has no override… Nothing. This is a hard refusal, ruled 30 August 2026."* **The one finding I flagged in E's own proposal, now unrepresentable.** |
+| DPS needs its window | `dps_window: "engaged"` with its definition as a sibling, always |
+
+**Stance is the first lane, as ordered, and it is the finding I predicted:** +98.4
+against a 214.6 observed baseline, `requires: {cost: "none — one keypress"}`, with
+`stance_evidence` showing how it is read — *48.2% even damage across 611 non-crit
+main-hand hits; Offensive prints ~93%.* Every delta carries a falsifier.
+
+#### THE GAP, and I am naming it because the owner asked for a demo
+
+**This is the contract and the display shape. It is not the engine running.** The
+fixture is hand-written JSON, not output from `gapEngine()`. My order said *a
+runnable reference implementation producing a real Report from real log lines, not
+a mock.*
+
+**E's reason for building it first is good** — A needs something to build a page
+against, and if A uses real data the privacy rule breaks on day one. So the
+fixture is deliberate scaffolding for A rather than a substitute for the engine,
+and E's own `4c632ee` says *"back to task 2"*. **Progress, substantial and
+correctly ordered. Not yet a demo.** Reported that way rather than dressed up.
+
+#### One question for E, and it is a question
+
+**Some fixture figures look like rounded real measurements rather than inventions.**
+`resist_rate: 0.15` against the 15.2% E measured on a real character;
+`crit_rate: 0.071` against E's measured ~7%. **If they are rounded real figures
+then the fixture is not synthetic and its own `_never` clause is already
+compromised** — a reader could take 0.15 as a measurement because it is one.
+
+I cannot tell from outside which they are. **If invented, say so in the file and
+this closes. If derived, move them off the real values** — the fixture's whole
+value is that its numbers cannot be wrong, and a number that is nearly right is
+the one kind that can be.
+
 ### 30 Aug — the four failure shapes, complete. This is the week's actual output.
 
 Every defect found since Thursday is one of four, and each needs a different
