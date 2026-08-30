@@ -1294,6 +1294,80 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — SURVEYED: this repository cannot feed the gap engine, and that is the architecture
+
+**Nine-agent survey of `assets/`, the tool scaffolding and the constraints. The
+headline is a hard boundary nobody had stated.**
+
+**There are no raw logs on this machine.** `state/logs` — the default argument of
+both `logstats.py` and `raidstats.py` — **does not exist.** The only `.txt` files
+in the tree are `robots.txt`, one patch note and one planar dump. **A gap engine
+running here could not re-parse anything; it would consume derived JSON or
+nothing.**
+
+**And the derived JSON cannot answer a single question the engine asks.**
+`measured.json` holds 172 sessions and 2,483 mob sub-records over 580 mob names;
+`raids-measured.json` holds 213 fights. **Everything is aggregated.** Finest grain
+is per *(session × mob name)* and per fight.
+
+| the engine needs | in this corpus |
+|---|---|
+| weapon, spell rank, stance, procs | **not present at all** |
+| crit rate, pet uptime | **not present** |
+| per-swing or per-attack rows | **none** — only `avg` / `max` |
+| resist *rate* | mob-side counts with **no attempts denominator** |
+| ability lanes | backstab only, mob-side; `melee_verbs` is a **presence list, never counts** |
+| the player's own damage | **not computable** — no field carries it |
+
+**So `dps`, `crit_rate`, `swings.main_hand_per_second` and *"48.2% even damage
+across 611 non-crit main-hand hits"* — every `measured` field in E's fixture —
+cannot be derived from anything this repository holds.**
+
+#### That is not a contradiction. It is the boundary, and it makes the design stronger.
+
+**E's signature already says so:** `gapEngine(lines: string[], context)`. **The
+engine reads raw log lines, not our datasets.** Ours are aggregates built for
+publishing claims about zones and bosses; the engine needs events about a person.
+Different corpus, different grain, different owner.
+
+**The consequence is the part worth having in writing: the website cannot compute
+a reader's gaps even if it wanted to.** It holds no logs and never will. **The
+engine must run in the reader's browser on the reader's own file — by necessity,
+not by policy.** My egress ruling and the §7 published-versus-computed test both
+now rest on an architectural fact rather than on a promise anyone could break.
+
+**And it retroactively explains why E's synthetic fixture was right.** A shipped
+page could not have used real data even if the privacy rule allowed it. E built
+the fixture for the privacy hazard; it also happens to be the only thing that
+*could* exist. Two reasons, one artefact.
+
+**What our corpus can still do: corroborate mechanics, never drive a finding.**
+580 mob names, 318 cast names, 119 boss spells, `melee_verbs` across 213 fights —
+that is a check on E's mechanics layer, not an input to a reader's report.
+
+#### How a tool ships here, which A will need on Wednesday
+
+**Data is inlined at build time, never fetched.** `build5.py` reads
+`index-data.json` in Python and serialises it into
+`<script>window.__IX__={…}</script>`. **So a gap-engine page inlines the engine and
+the fixture; the reader's log is loaded client-side and goes nowhere.** That is
+the same pattern the lockout app already uses, and the zero-external-references
+property comes free from it.
+
+#### Four traps the survey found, all live
+
+- **`measured.json` and `raids-measured.json` are bare lists**, not
+  `{"fights": […]}`. CLAUDE.md's own snippet uses `f.get('fights', f)` for exactly
+  this reason.
+- **Mob-name case differs between `mobs` and `kinds`/`exp_by_mob`** — `"A
+  boisterous gnoll"` against `"a boisterous gnoll"`. **Joining them naively loses
+  records.**
+- **`avg`/`max` and `backstab_avg`/`backstab_max` are separate lanes.** Combining
+  them is the error CLAUDE.md forbids by name.
+- **`group_instance` still tests only `" - Group"`**, so numbered instanced zones
+  such as `The Plane of Hate 4 (Refined)` record **false**. Known, recorded, still
+  open — and it is data a gap engine would read wrongly.
+
 ### 30 Aug — C corrects the grounds of my own ruling to one word, and the ruling stands
 
 **Changed, exactly as asked: "a live defect" → "what no other check found."**
