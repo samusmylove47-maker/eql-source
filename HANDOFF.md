@@ -1,5 +1,100 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — D found a third failure shape, and it indicts this repository hardest
+
+**A guard that is correct, verified, and never invoked.** D measured Shara's
+pipeline: `build-installer.yml` runs `npm ci → npm run dist → publish`, and
+`package.json` has `test: node test/run.js` with **no `predist` and no chained
+test.** So `npm test` is never invoked between a push to `master` and an installer
+reaching a user. C ported the ratchet correctly and verified it by injection; it
+is simply not wired to the artifact.
+
+**D's rule, and it is a genuinely new shape rather than a repeat:**
+
+> **A GUARD IS NOT A GATE UNTIL SOMETHING FAILS BECAUSE OF IT.**
+> *"Correctness and reachability are independent properties, and every method we
+> have built today tests the first one. A matched pair proves a guard CAN
+> discriminate. It says nothing about whether anything invokes it."*
+
+That is right, and my matched-pair rule does not reach it. **The three shapes are
+now distinct and need distinct checks:**
+
+| shape | example | what catches it |
+|---|---|---|
+| **Cannot fire** | `fbd0932`; C's `\b` eaten into a backspace; gate rule 4's hardcoded path | **a matched pair** — one input it must flag, one it must pass |
+| **Never asked** | D's 106 tests; the ratchet inside the installer | **trace the pipeline** — or delete the guard and see whether anything goes red |
+| **Searched, not surveyed** | the `−` sweep; the two-command publishing check; my `.wh` grep | **enumerate rather than query** |
+
+#### It indicts `eql-source` harder than it indicts D, and I verified that myself
+
+D says its own 106 tests are ungated because `EQLSLockouts` has no CI — *"they
+pass because I run them"* — and notes it read that measurement **for the hazard it
+removed and not for the guarantee it also removed, in the same breath.**
+
+**Measured here on `origin/main` @ `0423d5f6`: `eql-source` is the same and
+slightly worse.** One workflow, `survey-refresh.yml`, on `schedule` and
+`workflow_dispatch`. **No `push`. No `pull_request`.** It does invoke `check.py` —
+at line 104, inside an agent prompt — and the next line reads *"If you cannot,
+open the pull request"*. **So the check is advisory even where it runs.**
+
+**Nothing in this project gates on anything.** `check.py` across 715 pages, the
+propagation gate, 36 self-test cases, both matched-pair checks A shipped today —
+every one of them runs because a session chose to run it, and none can block a
+merge.
+
+**So "enforced by tests" is false everywhere here, and "enforced by discipline" is
+true everywhere.** The checks are not worthless — they have caught an enormous
+amount this week — but *enforced* has been doing work it has not earned, in this
+file and in others.
+
+**Not proposing CI tonight** for any repository, and certainly not for Shara's.
+Recording the honest state, and adding the column D asked for.
+
+#### The sibling column D asked for: tests on push
+
+| repository | publishes on push | **tests on push** |
+|---|---|---|
+| `eql-source` | merge to `main` (Cloudflare, dashboard-configured) | **no** — one cron workflow; `check.py` is advisory inside it |
+| `EQLSLockouts` | nothing | **no CI at all** (D) |
+| `LoxyBee/EQLS-Auras` | push to `master` → installer in ~73 s | **no** — `npm test` never invoked in the publish path (D) |
+| `EQLSAuras` | nothing (C, full root survey) | **no workflows at all** (C) |
+| `EQL50ups` | working branch, and `main` | **UNMEASURED** — `deploy.yml` exists; whether it tests is B's to say |
+| `sky-ledger` | **UNMEASURED** | **UNMEASURED** — E's to run |
+
+#### The sequence is the finding, and Session 0 was right to report it as routing
+
+Four sessions have now measured a repository they do not own, each prompted by the
+last, and **every one came back with something about their own work rather than
+about the repository they measured**:
+
+- **B** found its own branch was a deploy trigger — from `RELAY.md` §4 being wrong.
+- **D** found its two-command rule blind on `eql-source` — from pointing it at a
+  fourth repository.
+- **C** found its own "nothing deploys" row uncorroborated — from reading the
+  ruling that cited it.
+- **D** found its own 106 tests ungated — from reading Shara's pipeline.
+
+**Nobody found any of these by examining their own work directly.** Each needed a
+different repository as the mirror, which is an argument for the cross-measurement
+this week produced by accident and should now do on purpose.
+
+**C's flag is still open on its other half.** D has spoken about `EQLSLockouts`
+having no CI, which is not the same claim as the live-site negative C corroborated
+for its own repository by full root survey. **That row stays unconfirmed until D
+surveys it**, and Session 0 was right to put both statements in front of me rather
+than declare the flag answered.
+
+#### And a correction that reached me: PR #153 is two source files, not 703
+
+Session 0 reported *"703 files"* — accurate from the API and misleading, as A
+pointed out: **two source files, `_build/build11.py` and `public/assets/site.css`,
+plus 701 regenerated.** Session 0 corrected it everywhere it had sent it, under
+the reach rule adopted this evening, and named the error as its own.
+
+**I repeated the raw figure to the owner and it is corrected here too.** A number
+taken from an API and passed on without saying what it is made of made a two-file
+change read as a review burden twenty times its size.
+
 ### 30 Aug — the two-doors problem is SOLVED, and it was never Session 0's. The owner read the listing.
 
 **Session 0 appears once.** `eql-source-64`, live, `C:\Users\Lindsey\Desktop\EQL
@@ -315,12 +410,51 @@ otherwise.** A 404 pair is not that evidence.
 
 The negative is only established by one of:
 
-1. **No live site exists**, corroborated — which is `EQLSLockouts` and `EQLSAuras`.
-2. **A host config at the repository root, read.** This is the tell the two
-   commands miss: `wrangler.jsonc`, `netlify.toml`, `vercel.json`, `firebase.json`,
-   `_redirects`. **Their presence means publishing happens outside GitHub
-   Actions**, and their absence-of-a-workflow means nothing.
+1. **A survey of the repository root — every entry listed and read**, plus a
+   `deployments` count of 0, no homepage and `has_pages: false`. **Corroborated
+   for `EQLSAuras` by C, 30 Aug.** `EQLSLockouts` is **D's to confirm or
+   withdraw** — that row was cited as corroborated before anyone had done this,
+   and C flagged its own half rather than let the citation stand.
+2. **A host config at the repository root, read.** `wrangler.jsonc`,
+   `netlify.toml`, `vercel.json`, `firebase.json`, `_redirects`. **Their presence
+   proves publishing happens outside GitHub Actions. Their absence from a
+   guess-list proves nothing** — see below.
 3. **The owner.**
+
+#### WHAT DOES NOT ESTABLISH A NEGATIVE, which is C's addition and the better half
+
+All three failures this evening lived here:
+
+- **a 404 pair** — D's, on `eql-source`;
+- **a guess-list grep for known deploy configs** — C's near-miss, avoided;
+- **an absence in any single listing.**
+
+**All three are searches for expected things. None of them surveys.**
+
+**C's near-miss is the proof and C avoided it by noticing:** its first instinct
+was to grep the root for `wrangler.jsonc`, `netlify.toml`, `vercel.json` and the
+rest. **`eql-source` is the case that breaks that** — nobody's guess-list had
+`wrangler.jsonc` on it until D pointed the rule at a repository where it
+mattered. So C listed **every** root entry and read it.
+
+> **A SEARCH CANNOT ESTABLISH AN ABSENCE. ONLY A SURVEY CAN.**
+> C's phrasing: the difference between *"I looked for the things I could think
+> of"* and *"I looked at what is there."*
+
+**This is the unifying statement of the whole week and it explains nearly every
+defect in it.** Each was a search for an expected form whose null was read as an
+absence:
+
+| defect | what was searched | what was there |
+|---|---|---|
+| the withheld-coordinate sweep | `−` | `−` escapes |
+| gate rule 4 | `public/dungeons/` | every page |
+| `check.py:139` | a root `index.html` | it moved to `public/` in a refactor |
+| my `.wh` check | `\.wh` unanchored | matched `.why`, twice |
+| the publishing check | two known trigger locations | a Cloudflare dashboard |
+
+**Where the answer must be an absence, enumerate rather than query.** That is now
+standing, and it applies well beyond deploy configuration.
 
 **And config alone cannot resolve it, which this repository proves at the
 strongest possible setting.** `eql-source` root carries **both** `netlify.toml`
