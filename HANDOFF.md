@@ -1294,6 +1294,138 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — the four failure shapes, complete. This is the week's actual output.
+
+Every defect found since Thursday is one of four, and each needs a different
+check. Written as one thing because the specific bugs will be forgotten and this
+will not.
+
+| # | shape | worked examples | what catches it |
+|---|---|---|---|
+| **1** | **Cannot fire.** The guard is broken and its verdict carries no information | `fbd0932` flagging relative URLs; C's `\b` eaten into a backspace; gate rule 4's hardcoded `public/dungeons/` | **A matched pair** — one input it must flag, one it must pass, differing only in the thing detected |
+| **2** | **Never asked.** The guard is correct, verified, and nothing invokes it | D's 106 tests with no CI; the ratchet inside Shara's installer; `check.py` as advice inside an agent prompt | **Trace the pipeline** — or delete the guard and see whether anything goes red. *A guard is not a gate until something fails because of it* |
+| **3** | **Searched, not surveyed.** A null read as an absence | the `−` sweep; the two-command publishing check; D's `*.yml` extension list; C's guess-list of deploy configs | **Enumerate rather than query** — *a search can establish presence; only a survey can establish absence, over a surface you have enumerated rather than guessed* |
+| **4** | **Measured the intermediary.** A plausible number from the wrong layer | E's `curl -sSI` returning the proxy's `200 Connection Established`; C's `$?` after a pipe measuring `tail`; A's `grep -c`; my `\.wh` matching `.why` | **A positive control through the same code path** — *a measurement through an intermediary measures the intermediary until you give it one* |
+
+**Shapes 3 and 4 are opposites and both were mistaken for answers.** Three
+produces a false negative that reads as *nothing is there*; four produces a
+positive reading that is true about the wrong thing. **Neither announces itself,
+and no instrument reports either.**
+
+**And a fifth surface, which is D's and applies underneath all four: what surface
+did you enumerate?** C satisfied shape 3's rule honestly, over the root of one
+ref, and missed a `build-installer.yml` on another. *The listing gives the row,
+the history gives the column, neither alone gives the cell.*
+
+### 30 Aug — A withdraws the slot-rules misattribution, and finds a hazard the relay's fidelity creates
+
+**A supplied a possessive the ruling did not carry.** My text said *"first act on
+Wednesday is the slot-rules dataset"* inside a paragraph about the seams to A, B
+and C. A rendered it as *"the first act at **my** seam"*. **The ruling names an
+act; it does not name an owner.** E's §21.7 assigns the dataset to B, Session 0
+routed it to B as B's, and told me the same.
+
+**The lesson is bigger than the error, and it is about the relay working
+correctly:**
+
+> *"You then quoted my own sentence back to me, which is what a verbatim relay
+> does, and I later read my own words as yours… a claim acquiring authority by
+> being repeated back. It travelled one hop and I could not tell my phrasing from
+> the source's."*
+
+**The relay's fidelity is what makes this possible.** Because Session 0 quotes
+exactly, a session's own words return wearing the source's authority. That is a
+cost of verbatim relay I did not anticipate when I ruled it, and it does not
+change the ruling — the alternative manufactures claims nobody made — but it needs
+the mitigation Session 0 has already adopted: **attribution markers around quoted
+fragments inside a routing note, not only around whole payloads.**
+
+**And A declined Session 0's offer to take the ambiguity, correctly:**
+
+> *"A relay that accepts blame it does not own degrades the thing it exists to
+> provide. If you had absorbed it, the record would show a routing error where
+> there was an attribution error, and the next session would learn to distrust
+> your routing rather than to check possessives."*
+
+**Session 0's response is the right one and worth recording as precedent:** it
+refused to argue the question at all — *"that would be adjudicating a question
+about my own conduct, which is worse than adjudicating someone else's"* — put both
+accounts in front of me, and acted only on the operational half, which is
+checkable and needs no verdict about content.
+
+### 30 Aug — RULED for A and E: the voice rule governs what the site ASSERTS, not what a tool COMPUTES
+
+**A's question, raised before Wednesday on purpose:** `measured.dps` carries its
+window convention as a sibling field, and this site publishes no DPS at all
+because CLAUDE.md §7 strips per-character figures from every page. **A reads the
+BACKLOG distinction — *a tool reading your own log is not the site publishing a
+diary* — as settling it, and asked in case E or I read it differently.**
+
+**A's reading is right. Here is the boundary, stated so it cannot be misapplied in
+either direction.**
+
+**The test is one question: is the number PUBLISHED or COMPUTED?**
+
+| | |
+|---|---|
+| **Published** — fixed in the page, identical for every reader, asserted by us | **§7 applies in full.** No kill counts, no swing counts, no session windows, no damage shares. |
+| **Computed** — different for every reader, derived from their own input, never stored and never transmitted | **§7 does not apply.** It is their figure about themselves. |
+
+**§7's own stated reason proves it.** The rule exists because *"experience is a
+function of the reader's level, so a figure measured at 26 tells a stranger at 35
+nothing true."* The fault it guards against is **our measurement presented as
+general truth.** A reader's own DPS is measured on them, for them, and is offered
+to nobody else — it is the one case the reason cannot reach.
+
+**And the egress guarantee is what makes the distinction safe rather than
+convenient.** E's engine is a pure function with no fetch: the reader's log never
+leaves their machine. **The claim is not merely "it is their data" — it is "their
+data never becomes ours."** That is exactly the egress half of the claim split
+that shipped in #151, and it is why this ruling rests on something structural
+rather than on a promise.
+
+**Two corollaries, both binding, because each would collapse the distinction:**
+
+1. **The tool transmits nothing.** The moment a reader's figures leave the page,
+   they become data we hold and §7 applies to them again.
+2. **No figure of ours is baked into the page.** A worked example rendered into
+   the HTML is *published* by the test above, however it is framed.
+
+**So sample output needs care and I am ruling it now rather than after someone
+ships it.** CLAUDE.md §7 already exempts *"sample inputs on tools… because a
+reader needs to see the shape of what to type."* **Sample *output* gets the same
+narrow exemption and no more: it must be plainly marked as a sample, and it must
+not carry measured figures from our own characters.** Synthetic numbers, or the
+reader's own, or nothing.
+
+**A's three non-questions are all correct** and I am recording that they were
+checked rather than assumed: the two registers already exist as the tier
+discipline, `refusals` has a home in the existing "Where it stops" block — which A
+reads as CLAUDE.md's *never delete a flagged gap* in different words, and it is —
+and `computable_from_catalogue` naming eqlegendstools.com is the BACKLOG boundary
+expressed as a runtime value.
+
+#### Three smaller things, closed
+
+**D withdrew the supersede proposal and Session 0 checked the file rather than
+deciding.** It found the ruling already stood at `f23439d7`, so nothing had
+propagated and the withdrawal did not need to travel as a correction. **D's own
+test, applied by its author against himself:** *"This is a CLAIM, being withdrawn
+before anyone has acted on it. If the Director has already acted, it stops being a
+withdrawal and becomes a correction, and then it must travel regardless of my
+asking."*
+
+**D corrected a claim that had reached C:** it is the **listing** that separates a
+repository whose workflow is filtered out from one that never had a workflow, not
+the run history — both read runs 0 / releases 0. *The listing gives the row, the
+history gives the column, neither alone gives the cell.*
+
+**And D asked Session 0 for a location rather than a payload** — the cross-repo
+fetch for E's §20, which calls D's own rule fail-open. *"I would rather read their
+argument than have it characterised, including by me."* That is the second time
+today the most useful thing the relay held was a location, and the first time a
+session asked for one specifically to avoid being told what it said about them.
+
 ### 30 Aug, 19:40 — ORDERS. The owner is away two hours. E leads; A and D are released early.
 
 **Lanes checked before starting, because the owner asked for that first.** They
