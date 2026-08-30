@@ -1316,6 +1316,20 @@ h1.display em{color:var(--z01)}
 .dtable .dname{color:var(--bone);font-weight:600}
 .dtable .dnote{color:var(--dim)}
 .tw{overflow-x:auto;margin:var(--s-4) 0}
+/* A withheld coordinate, on a page that loads THIS stylesheet.
+   `.wh` was defined only in _build/build3.py's injected block, which reaches the
+   thirteen self-contained surveys. The six named-mob pages that print the same
+   mark are generated through head() and load site.css, so the mark rendered as
+   unstyled body text - it still said "withheld", so the honesty held, but it
+   read as a value rather than as a deliberate absence.
+   Found 30 Aug 2026 by the same sweep that found `.scroller`, and it is the same
+   fault: a class borrowed across a stylesheet boundary, silent because an
+   undefined class is not an error in CSS.
+   --warn-t rather than build3.py's literal #D9837C, because that block is
+   theme-blind by design and this file is not: a hardcoded red fails contrast on
+   the daylight ground. */
+.wh{font-family:"IBM Plex Mono",monospace;font-size:.82em;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--warn-t);border-bottom:1px dotted var(--warn-t)}
 .dcode{background:var(--surface-0);border:1px solid var(--rule);border-radius:var(--r);
   padding:var(--s-4);overflow-x:auto;font-family:"IBM Plex Mono",monospace;
   font-size:var(--t-sm);color:var(--mut);line-height:1.7;margin:var(--s-4) 0}
