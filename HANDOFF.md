@@ -273,6 +273,176 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — TOP OF EVERYTHING: we do on 715 pages the thing we published about Shara's app
+
+**Found by A, verified independently by D with its own auditor, and re-measured
+here on `origin/main` at `f3db395d`: 715 of 717 published pages fetch Google
+Fonts.** Two `fonts.googleapis.com` references and one `fonts.gstatic.com` per
+page, before anything renders.
+
+**The two exceptions are the only two files built to be self-contained** —
+`public/app/eqls-lockouts.eb2a1195.html` and `public/app/sky-ledger.dad68d2b.html`.
+Every page *about* them breaks the promise the bundles keep.
+
+`tools/lockouts.html` prints **"Nothing transmitted"** and **"no server to upload
+to"** while making three requests to Google. So does `search.html`. `index.html`
+and `tools/sky-ledger.html` carry "nothing sent". D's auditor counts seven
+claim-bearing pages against my four; **D's instrument is better than my grep and
+the count is not settled — and the finding does not depend on it.** One page
+would be enough.
+
+**Why this is not a tidy-up.** We published, about a collaborator's application:
+*"It fetches its typeface from Google each time it launches, which discloses your
+IP address to Google."* That sentence is true, and we were right to write it. We
+are doing the same thing on 715 pages, and on several of them we say we are not.
+`scripts/contamination.py` exists because *a scanner that only finds other
+people's rot is an attack ad*. This is that failure in its purest form: we found
+the fault in someone else's work and not in our own, and the page carrying the
+accusation commits it.
+
+#### RULED, and the copy decision is mine
+
+**D's recommendation is right and I am adopting it. Do not soften the claim —
+split it.** There are two claims inside one sentence and they have different
+truth values:
+
+| claim | status |
+|---|---|
+| **Egress** — *your data never leaves this machine; there is no server to upload to* | **TRUE on every page.** No fetch, no XHR, no beacon, no form. The page genuinely cannot send your log anywhere. It survives integration into `=Auras` unchanged. |
+| **Artifact** — *nothing transmitted*, unqualified | **FALSE on 715 pages.** The page transmits the reader's IP to Google before it renders. True today of two bundles and almost nothing else. |
+
+Two sentences, not one, exactly as D has already split them in
+`test/build.test.js`. **Softening the egress claim would be the wrong repair** —
+it is the true one, it is the one that matters to a reader, and weakening it to
+cover our own fault would trade an accurate promise for a vague one.
+
+**And splitting the copy is the honest fix, not the real one.** Self-host the
+four faces. Cinzel, Saira Condensed, IBM Plex Mono and Public Sans are all
+open-licensed; served from our own origin the disclosure stops existing and the
+artifact sentence becomes true rather than qualified. **Do both: the copy today,
+the fonts as the fix.** A consequence to name rather than trip over —
+`scripts/conformance.js` aborts every non-`file:` request, so it currently
+measures a page with the webfonts fallen back. Self-hosted faces are `file:`
+requests and it would start seeing them. That is an improvement and it is *not*
+licence to extend that tool to judge type or spacing; CLAUDE.md's prohibition
+stands.
+
+**This publishes as a Correction on `sources.html`, and it says what it was.**
+Not "we improved our privacy posture". That we criticised this behaviour in
+another project's application while committing it at scale on our own, that a
+reader could have checked the sentence against the page at any time, and that two
+sessions found it in the same hour. Publishing it is worth more than the fix.
+
+**C carries it to Shara, and it is not an apology to extract anything.** The
+disclosure sentence about `=Auras` stays up and stays accurate. What changes is
+that it stops being a criticism of her app and becomes a shared finding, ours
+worse by three orders of scale. She is owed that before she reads it anywhere
+else.
+
+**Nobody touches the Auras disclosure sentence while this is in flight.** A has
+already said they have not, correctly.
+
+### 30 Aug — D's verdict on C's breakthrough: NOT YET. Accepted, and the process worked.
+
+**C failed its own breakthrough and said so first.** D verified independently,
+re-derived every figure rather than trusting the arithmetic, and reached the same
+verdict for a reason in C's own §2 rather than by scoring my tests. That is
+exactly the design working, and it produced the answer on Saturday rather than
+Tuesday.
+
+**What survives:** two readings 10.836 h apart agreeing to **6 seconds** —
+`2026-09-01T15:00:12Z` and `15:00:18Z`, mean `15:00:15Z` = 08:00:15 Pacific,
+inside our own Mon 15:34 → Tue 17:37 bracket. **Test 3 passes on width**: carried
+back to 11 August it clears the 20:52 ambiguity by 9.86 hours under Pacific,
+Eastern and UTC alike. That is the first hour figure with arithmetic behind it.
+
+**Test 2 fails and decides it.** No positive control, so nothing distinguishes
+reading the weekly lockout window from reading the **Instance Information**
+window — and `HANDOFF.md:1830` records that the Instance Information lockout **is
+not weekly**. A control exists precisely to stop that confusion. And the hour is
+not shown stable backwards to 11 August, which is the week the ambiguity lives
+in — C wrote that down itself rather than letting a clean 6-second agreement
+carry it.
+
+Test 6 fails; **D weights it lower than C does and I agree with D** — the
+`logRotation.js` constants are C's code, not the measurement.
+
+#### The miss is the more important half, and it is not only D's
+
+**`RESET_RULE.hour` had zero uses in the entire module.** `projectGrid` took the
+boundary as midnight on the weekday; the hour never entered a computation. **A
+perfect hour handed over today would have changed not one cell.**
+
+D calls that theirs. **Part of it is mine.** I put that request at the top of
+every report to the owner for days, called it a blocker, counted the days it had
+been open — and never once asked whether the code could consume the answer. My
+own recorded failure is treating the visible part of an artifact as the whole
+artifact. Here the artifact was *the request*, and I amplified it without
+checking the one thing that would have made it worth making.
+
+D has now built and proven the path: hour null → both boundary-day kills
+conditional; hour 12 → `conditionalCount` 0, the 06:00 kill open, the 20:00 kill
+completed. Dormant while null, byte-identical today. **The code path is no longer
+the obstacle.**
+
+**The wall-clock request stands, in its corrected form.** What displaces it: the
+same alt+Z reading **with a positive control**, plus one reading from a second
+character or a second week. **A candidate control, offered to D to accept or
+reject rather than ruled:** one reading covering a boss the character has *not*
+killed this week alongside one it has. Same window, two known-different states —
+if it shows both correctly it is reading the weekly lockout and not the instance
+timer. That is the Voidling pattern applied to a screenshot.
+
+**A consequence worth stating plainly: the tracker ships honest on Tuesday.** The
+"unsure" cells are not a defect. They are the tracker declining to guess, and D
+has proved the code collapses them the moment a controlled hour arrives.
+
+### 30 Aug — my addressee rule is not checkable. Withdrawn and replaced.
+
+**D is right and the criticism is entirely mine.** As written — prefix match
+against `eql-source`, `EQLSLockouts`, `EQL50ups`, `EQLSAuras`, `sky-ledger` — the
+only session in today's listing that matches is `eqls-auras-4c`. A is
+`repo-docs-review-37a9c9-c4`. B is `EQLS 50 Upgrades Session B`. I am
+`EQLS Project DIRECTOR`. **None of those is a repository name, and I ordered D to
+message all four.** A rule that must be reinterpreted to be followed is not
+checkable, which was the one property I claimed for it.
+
+I built it on a sample of one naming convention that has since stopped holding.
+That is the same fault as a hardcoded path: it named its own coverage.
+
+**Replaced: the roster is the rule.** A session is in scope if its **`[ref]`** is
+in the roster below. Refs survive renames — mine held at `[31c85c]` across two.
+Names do not, so they are a display label and never the test.
+
+| session | `[ref]` | repository |
+|---|---|---|
+| Director | `31c85c` | `eql-source` (branch `claude/eq-map-export-proposal-oe8m6l`) |
+| E | `6861fc` | `sky-ledger` |
+| A | **not recorded** | `eql-source` |
+| B | **not recorded** | `EQL50ups` |
+| C | **not recorded** | `EQLSAuras` |
+| D | **not recorded** | `EQLSLockouts` |
+
+**Every session reports its own `[ref]` in its next message.** That is a one-line
+ask and it closes this. Until the roster is complete the interim rule is: **send
+only to a session whose `[ref]` is in the table above, or from which you have
+received a message in this project.** When in doubt, do not send. Every session
+excluded by the 29 August incident stays excluded under either rule.
+
+### 30 Aug — the killing-blow rule: truncation confirmed twice, the detector is not general
+
+**E refuted the generality of D's rule and was right; D accepted it and shipped
+the correction.** On direct damage the per-target distribution is bimodal, so a
+modal baseline flags a second legitimate population: E's corpus gives **1.64×**
+lift against D's **59×** on the melee shape. **The truncation is confirmed
+twice. "Below modal implies killing blow" is not** — it holds on the shape D
+measured and not on direct damage, and the module now says where each half holds.
+
+**I propagated the unqualified version into Session C's orders** as "5 of 5 on
+the death tick against 1.7%". Those numbers are D's and they are right about D's
+corpus. The inference rule drawn from them is not general, and C's copy must be
+corrected.
+
 ### 30 Aug — the modelling session becomes Session E, the gap engine. Approved, with a boundary.
 
 **Approved: the role, the method, the honesty constraints and the name.** The
