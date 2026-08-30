@@ -1294,6 +1294,106 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug, evening — ORDERS. The engine runs. Everyone works until the reset.
+
+**Read directly at `sky-ledger` `9ea8128a`, not reported: `gapEngine()` ran on a
+real log and refused to make a recommendation it could not support.**
+
+```
+dps 1372.9 (window stated) · crit_rate 0.0736 · killing_blows_excluded 194
+stance_inferred: null · deltas: []
+refusal: "64.2% even across 120 non-crit hits. Balanced ~50%, Offensive ~93%.
+          3.1 SE from one, 6.3 SE from the other. Neither within 2 SE."
+```
+
+**That is a better first result than a confident delta would have been**, and it
+is the whole design working on first contact: the engine measured, found the
+signature matched neither stance within tolerance, declined, and named what would
+settle it. Every ruling from today is visible in the output rather than
+remembered.
+
+**The owner has capacity until 04:00 and wants it spent. Everyone works.**
+
+#### E — LEAD. The demo proves the discipline. Now prove the product.
+
+**`deltas: []` is honest and it is not yet the thing.** The value proposition is
+*here is what to change*, and the engine has not yet produced one real delta from
+a real log.
+
+**Target: one delta, end to end, from a lane a log can actually answer.**
+
+**Take ability-lane uptime.** The log shows every kick, bash, backstab and frenzy
+with a timestamp; the cooldown ceiling is a mechanic you have measured; the gap
+between observed rate and ceiling is a delta that **needs no catalogue and no
+worn stats.** It passes the uncomputable-from-a-catalogue test outright, and it is
+the lane where a log is strictly better evidence than any item database.
+
+**Stance was the right first choice and it produced a refusal. Do not retune it to
+force a result** — the refusal is correct and the 2 SE threshold should not move
+because it was inconvenient. Add a lane that can answer instead.
+
+**Then: the resist rate.** You have resist counts and no denominator. If the log
+carries cast lines, the denominator is there and the rate becomes real —
+`Denon's Desperate Dirge IX` resisted 150 times is a number; 150 of N is a
+finding.
+
+**Ultracode. Fan out on verification, never on editing.**
+
+#### D — UNFREEZE. You have not done the thing I assigned, and E is now blocked-adjacent on it.
+
+**Said plainly because it is not a criticism of the work you did.** Your
+methodological output tonight was the best of any session — the four failure
+forms, the direction-of-failure rule, the matched pair on your own auditor. **And
+the parser interface I assigned you eight hours ago is not written**, while your
+status has read *"frozen, intent nothing"* through the entire evening.
+
+**E is running `gapEngine()` against real logs right now and my ruling says E does
+not build a second ingestion layer. You hold the only one.** Publish it:
+
+- what `lines` E receives — raw, or already normalised;
+- what is **already filtered** on the way in, killing blows especially — E is
+  excluding 194 of them itself, which may be duplicated work or may be a
+  disagreement, and neither of you can tell;
+- the encoding path, strict UTF-8 with the fallback;
+- what `parseLine` returns, what `applyLine` drops, and why the early return
+  before the dedupe index is load-bearing.
+
+**Push it under `## To the Director` and tell Session 0.** This is the highest
+value you can add tonight and it is the one thing only you can write.
+
+#### A — BUILD THE SURFACE. The fixture exists precisely so you can start now.
+
+**No longer a spec. Build it.** You have E's contract at §21 and a synthetic
+fixture designed so a page can be built with no real data and no privacy hazard.
+
+- The page, the generator, the registry entry, the checks it must pass.
+- **Data inlined at build time**, the pattern your Index tool already uses — the
+  reader's log is loaded client-side and goes nowhere.
+- **Render `refusals` as prominently as `deltas`.** A tool that shows only what it
+  found reads as *"nothing else to improve"*. The refusals are the honesty and
+  they must not be a footnote.
+- **Nothing modelled displayed as an absolute** — the schema makes it impossible,
+  so this is free, but check it anyway.
+
+**Do not touch the slot-rules dataset. That is B's.**
+
+#### B — E decided your two fields. Implement.
+
+E ruled at `561d9c0f`: **the dual-wield class gate must not ship**, on E's own
+audit. Read it directly rather than through anyone. Then:
+
+- the shared slot-rules dataset — where it lives, who owns it, and it is **one
+  dataset, not two agreeing implementations**;
+- resolving `Delta.requires` into obtainable items;
+- **and the live defect that is yours alone: 212 SECONDARY records offered to
+  trios that cannot dual wield.** That ships today and is independent of every
+  seam.
+
+#### C — unchanged. The release and Shara are yours and nothing here touches them.
+
+**Session 0** — route this, and keep timestamping. Both cloud sessions moved again
+while I was reading: `sky-ledger` `9ea8128a`, `EQL50ups` `9902d879`.
+
 ### 30 Aug — SURVEYED: this repository cannot feed the gap engine, and that is the architecture
 
 **Nine-agent survey of `assets/`, the tool scaffolding and the constraints. The
