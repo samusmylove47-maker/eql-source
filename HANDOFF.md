@@ -176,13 +176,23 @@ ordered. All four sent.
    reads self-contained **NO** before and **YES** after, with no-transmit-path
    YES both times, so the verdict turns on exactly the change.
 
-   **The sha to use is `523fac0` or later, NOT the `df49a58` this entry named
-   when it was written.** D fixed the auditor's exit status at `fe14728`: at
-   `df49a58` it exits 0 on a self-contained NO, so a CI check reading only the
-   exit code would go green beside a page fetching from three origins — the exact
-   failure this whole thread is about. The measurement above stands unchanged,
-   because `df49a58`'s *verdicts* are right and only its exit status was wrong;
-   it is automation, not conclusions, that would be misled.
+   **Measured with `df49a58`, and that sha is fine.** An earlier version of this
+   paragraph said to move to `523fac0` because `df49a58` supposedly exited 0 on a
+   failing page. **There was never an exit-code defect, at any sha.** Measured
+   here directly, no shell pipeline in the path: `df49a58` exits **1** on a page
+   reporting self-contained NO and **0** on one reporting YES, which is correct.
+   C measured all four shas and found `fe14728`, `523fac0` and `22ce477`
+   byte-identical to each other; only `df49a58` differs, and it is also correct.
+   Any of them is safe.
+
+   **The way that error travelled is worth more than the error.** C read `$?`
+   after a `| tail` pipeline, so they measured `tail`, which always succeeds.
+   D changed code on that report without reproducing it once, and told me. **I
+   then wrote it into this file without measuring either** — with the auditor and
+   both test pages already on disk, twenty seconds away. Three sessions, and the
+   only one who could have caught it cheaply was the last one. A bug report is a
+   claim, not an observation, and it does not stop being a claim because it comes
+   from someone who is usually right.
 2. **The next concrete step is to open the PR.** The branch is
    `claude/self-host-fonts-and-split-the-claim`, pushed. It was never opened as a
    pull request because standby arrived first. Everything is committed; nothing
