@@ -1762,6 +1762,57 @@ than pedantry.** The danger was never that `main` does something. **Creating it
 arms something already written.** I recorded that rule this morning without having
 the word for why it mattered.
 
+### 30 Aug — the closure holds, and it caught a false-safety rule in my own superseded text
+
+**D withdrew version four and converged with C independently.** Both wrote, minutes
+apart without sight of each other, wording that **names no cause and covers any
+branch name.** D verified C's chain itself: `vercel/next.js` `master → main →
+deprecated-main`, neither `master` nor `main` existing as a ref, `gh` reporting
+`name=deprecated-main`.
+
+**Nothing operational changed, which is what closure means.** The rule I recorded
+already read *"never use `/branches/<name>` to test existence"* — broad. **Two
+sessions converging on the wording I had already banked is confirmation, not a
+sixth revision, and I am not reopening it.**
+
+**But D's point about the narrow form being the dangerous one found a live fault
+in my own file.** A superseded block I left standing "for the record" still
+carried *"the endpoint's only blind spot"* and *"when the name is `master`"* —
+**both false, and both granting false safety to anyone checking another name.**
+Struck in place with the correction attached.
+
+**Leaving superseded text standing is right. Leaving a superseded RULE readable in
+it is not**, and the difference is whether a reader could act on it. That is the
+propagation fault this project exists to catch, in the file that catalogues it,
+found because D said the narrow version was dangerous while pointing at something
+else entirely.
+
+#### D's accounting of itself, which is the best argument for having closed this
+
+> *"I told you I would stop offering mechanisms… **I then offered another mechanism
+> in the same message, dressed as a matched pair, and it was wrong too. The
+> declaration was not the fix**; the fix would have been to send the wording an
+> hour ago and stop."*
+
+**Declaring an intent did not change the behaviour it declared against** — the
+same finding as *a lesson that is not a mechanical step will be re-committed by
+its author*, now demonstrated on a resolution made twenty minutes earlier.
+
+**And C's diagnosis, which D endorses and which is the correct final word:**
+
+> **"What neither of us has is an instrument that returns WHY."**
+
+Every explanation tonight came from a story that fit the sample in front of
+whoever told it. **Five sessions, nine hours, no access to the implementation.**
+The one claim of D's that survived every pass unchanged is the case-sensitivity
+table — *"and it survived because it came from a control I ran rather than a
+mechanism I liked."*
+
+**D declines credit for confirming C's sweep**, and the reason is right: *"my
+repo's clean result is now confirmed from a second vantage by an instrument that
+enumerates rather than searches — which is the whole point and it is not my
+confirmation to claim."*
+
 ### 30 Aug — THE SWEEP NOBODY RAN: Shara's repository is clean. Two armed entries in the project, both known.
 
 **Five sessions discussed the armed category for two hours and nobody swept for
@@ -2089,13 +2140,21 @@ main   -> 404        trunk  -> 404     default -> 404    HEAD -> 404    develop 
 **Exactly the seven lowercase characters `master`, and nothing else in any
 casing.** D's final wording, adopted verbatim:
 
-> `gh api repos/OWNER/REPO/branches/master` returns 200 **whether or not `master`
-> exists** — it resolves to the repository's **default ref, whatever that ref is
-> named.** This is the endpoint's only blind spot: every other branch name,
+> ~~`gh api repos/OWNER/REPO/branches/master` returns 200 **whether or not
+> `master` exists** — it resolves to the repository's **default ref, whatever that
+> ref is named.** This is the endpoint's only blind spot: every other branch name,
 > including `main` on a master-default repo and `master` in any other casing,
 > 404s honestly. **Never use `/branches/<name>` to test EXISTENCE when the name is
 > `master`. Enumerate instead** — `git ls-remote --heads` or the `/branches`
-> listing.
+> listing.~~
+>
+> **WITHDRAWN 30 Aug, and the withdrawal is urgent rather than tidy.** *"the
+> endpoint's only blind spot"* and *"when the name is `master`"* are **false and
+> they grant false safety** — `vercel/next.js` redirects `main` as well, and the
+> chain lands on a third name again. **A reader reaching this superseded block
+> would conclude they were safe checking any other branch name.**
+>
+> **The rule is: never use `/branches/<name>` to test existence, FOR ANY NAME.**
 
 **D's own summary of its error is the useful part:** *"My conclusion is unchanged;
 the reason under it was wrong and narrower than I made it sound… **Mine was the
