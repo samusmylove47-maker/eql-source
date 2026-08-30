@@ -146,7 +146,7 @@ page = head(
       tells you <strong>what is still open</strong> &mdash; which is the question you have at
       the start of an evening. It reads your own combat log, in the browser.
       <strong>Nothing is uploaded</strong>; there is no server to upload to.</p>
-    <p class="hero-sig"><span>Reads your log</span><span>Nothing transmitted</span><span>No install</span></p>
+    <p class="hero-sig"><span>Reads your log</span><span>Your log never leaves</span><span>No install</span></p>
   </div>
 </section>
 
@@ -158,7 +158,7 @@ page = head(
         <h3>Run it in your browser</h3>
         <p>One file, {APP['kb']} KB, served from this site. Point it at your log and it
           works out what is still open from what it can see there.</p>
-        <p class="m">Build {APP['hash']} &middot; nothing installed &middot; nothing sent</p>
+        <p class="m">Build {APP['hash']} &middot; nothing installed &middot; your log never leaves this machine</p>
         <span class="go">Open the app &rarr;</span>
       </a>
     </div>

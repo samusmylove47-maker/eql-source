@@ -106,7 +106,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
       URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
       <strong>Sky Ledger is the exception</strong>: it reads your combat log rather than asking you to
       tick anything.</p>
-    <p class="hero-sig"><span>Nothing transmitted</span><span>Share by link</span><span>Works offline</span></p>
+    <p class="hero-sig"><span>Your data never leaves</span><span>Share by link</span><span>Works offline</span></p>
   </div>
 </section>
 

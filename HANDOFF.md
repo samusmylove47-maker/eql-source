@@ -164,6 +164,102 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 30 Aug 01:30 — STANDBY. Fonts done and pushed; five lines for the restore
+
+**Relayed the standby block to C, D, B and E before touching my own tree**, as
+ordered. All four sent.
+
+1. **What I was doing: the Google Fonts fix, and it is DONE, not in progress.**
+   All four faces are self-hosted from `public/assets/fonts/`, 26 files, 318 KB,
+   fetched once by a new hand-run `_build/fetchfonts.py`. **Zero of 715 pages
+   fetch another origin.** Verified as a matched pair on one page: `index.html`
+   reads self-contained **NO** before and **YES** after, with no-transmit-path
+   YES both times, so the verdict turns on exactly the change.
+
+   **Measured with `df49a58`, and that sha is fine.** An earlier version of this
+   paragraph said to move to `523fac0` because `df49a58` supposedly exited 0 on a
+   failing page. **There was never an exit-code defect, at any sha.** Measured
+   here directly, no shell pipeline in the path: `df49a58` exits **1** on a page
+   reporting self-contained NO and **0** on one reporting YES, which is correct.
+   C measured all four shas and found `fe14728`, `523fac0` and `22ce477`
+   byte-identical to each other; only `df49a58` differs, and it is also correct.
+   Any of them is safe.
+
+   **The way that error travelled is worth more than the error.** C read `$?`
+   after a `| tail` pipeline, so they measured `tail`, which always succeeds.
+   D changed code on that report without reproducing it once, and told me. **I
+   then wrote it into this file without measuring either** — with the auditor and
+   both test pages already on disk, twenty seconds away. Three sessions, and the
+   only one who could have caught it cheaply was the last one. A bug report is a
+   claim, not an observation, and it does not stop being a claim because it comes
+   from someone who is usually right.
+2. **The next concrete step is to open the PR.** The branch is
+   `claude/self-host-fonts-and-split-the-claim`, pushed. It was never opened as a
+   pull request because standby arrived first. Everything is committed; nothing
+   is half-applied.
+3. **The directive's "three lines in one file" was wrong and the correction is
+   the thing most worth not re-deriving.** `_partials.py:202-204` fixed **700**
+   pages. The other **15** — the thirteen surveys and two imported tools — never
+   call `head()`, carry their own `<head>`, and were the most-read pages on the
+   site. They are rewritten in `build3.py`'s `inject()` so a sixteenth imported
+   page cannot arrive with a Google link nobody notices.
+4. **Two new checks, both mutation-proven, both passing.** `check.py` now fails
+   any page fetching another origin on load, and fails if a declared face does
+   not resolve from the stylesheet's own directory — B's trap, where a missing
+   font silently falls back and "looks like a design choice rather than a bug".
+   36 self-test cases, up from 35.
+5. **Held in my head and in no file: `learn/difficulty.html` overflows 390px by
+   4 pixels**, in both grounds, found by the conformance run I did immediately
+   before standby. It is unrelated to the fonts, it is not fixed, and it is the
+   only finding in 717 pages. Second unfiled thing: E's carried note says the
+   BACKLOG arithmetic is **three** unaccounted, not two — `procs-per-minute` is a
+   mechanic, not one of their fifteen — and their nine/six split closes it. #150
+   merged with my wording and wants amending to theirs.
+
+**Not done, deliberately, because standby says start nothing:** the PR, the
+`sources.html` correction is written and committed but unreviewed, and the
+`learn/difficulty.html` overflow.
+
+**One correction arriving after the above was written, from D at standby.** The
+auditor's exit-status fault — exits 0 on a self-contained NO — **is fixed**, at
+`fe14728`. **If anyone wires this into CI, use `523fac0` or later, not
+`df49a58`**: against `df49a58` a green tick would sit beside a page fetching from
+three origins, which is the exact failure this whole thread is about. The
+matched-pair measurement above stands unchanged — `df49a58`'s verdicts are
+correct and only its exit code was wrong, so nothing I concluded moves. D is at
+`22ce477`, 106 green; the Director's standby snapshot has them at `df49a58` / 104
+and is two commits stale.
+
+**CARRIED FROM C AT STANDBY, and it changes what tomorrow starts on.** Recorded
+here because I am the only session that can reach the Director and the Director
+cannot reply.
+
+- **Shara has merged the lockout work and built on it.** PR #14 into `master` at
+  01:22Z, PR #15 at 05:25Z; her master is **8 commits beyond** head `6834d78`,
+  which is an ancestor of it. Every document saying "unpushed" was stale within
+  hours.
+- **Her shipped master carries C's retracted paragraph verbatim**, at
+  `src/main/logRotation.js` lines 24, 28 and 42 — *"THE RESET, MEASURED RATHER
+  THAN TYPED … a measurement, not a constant somebody typed"*. C withdrew that
+  today, and she has built an Eastern reset setting on top of it. The number may
+  be right; **the claim that anyone measured it is not**, because those two Alt+Z
+  readings are object 2, the six-day rolling instance lockout.
+  `proposed/FOR-SHARA-2026-08-30-reset-provenance.md` is written and pushed, and
+  it leads with her design being better than C's — she gated the hour on
+  `hourKnown` with `RESET_RULE` as fallback and left `RESET_RULE.hour` null,
+  which closes the gap C had reported open without breaking D's anti-constant
+  rule. **Somebody has to make sure she sees it.**
+- **C is NOT mid ratchet-port.** The standby snapshot says so and it is wrong;
+  the port is finished, committed and verified — injecting `hour:11` into the
+  vendored `RESET_RULE` now fails the ported test where before the port it
+  produced zero failures. C is at `fd198c7c` (docs) and `session-c/feat-lockouts-wip`
+  at `28feac2` (app), both pushed to the EQLSAuras repo so a session without this
+  disk can still read them.
+- **Four of five `=Auras` renderers are self-contained, overlay included**,
+  measured with `df49a58`. That turns our band's scoping sentence — *"the overlay
+  drawn over the game requests nothing at all"* — from an assertion into a
+  measurement. Commands in their HANDOFF section 19.
+
 ### 30 Aug — 16d4edad published (not 9ad53415), the count corrected to six, and the Auras answer
 
 **Item 1. Published, both conditions met — and the build moved under me while I

@@ -274,9 +274,42 @@ def mark_placeholders(h, slug):
 PH_MARKED = []
 
 
+# THE IMPORTED PAGES ASKED GOOGLE FOR THEIR OWN FONTS, AND THEY ARE THE ONLY
+# PAGES THAT COULD STILL DO IT.
+#
+# These fifteen never call head(), so replacing the font links in _partials.py on
+# 30 August 2026 fixed 700 pages and left these behind — the thirteen surveys and
+# the two imported tools, which are among the most-read pages on the site.
+#
+# Rewritten here rather than in the fifteen source files, for the reason the
+# whole repository is built this way: a sixteenth imported page would arrive with
+# its own Google link and nobody would notice. The generator cannot forget.
+#
+# The local stylesheet is a superset of what any of them requests — they ask for
+# Cinzel 700 and IBM Plex Mono 400;500, and fonts.css carries 500;600;700 and
+# 400;500;600 — so no page loses a weight it was using.
+FONT_LINK = re.compile(
+    r'\s*<link[^>]+fonts\.(?:googleapis|gstatic)\.com[^>]*>', re.I)
+
+
+def local_fonts(h, rel):
+    """Point an imported page at our own faces, and prove it landed."""
+    if 'fonts.googleapis.com' not in h and 'fonts.gstatic.com' not in h:
+        return h
+    h = FONT_LINK.sub('', h)
+    link = f'\n<link rel="stylesheet" href="{rel}assets/fonts/fonts.css">'
+    if '</head>' not in h:
+        # An imported page with no </head> would silently keep no stylesheet at
+        # all, which is a worse outcome than the one being fixed.
+        raise SystemExit('build3: an imported page has font links and no '
+                         '</head> to put the local stylesheet in')
+    return h.replace('</head>', link + '\n</head>', 1)
+
+
 def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False,
            wh_slug=None, ph_zone=None, og_card=None, canon=None):
     h = open(src, encoding='utf-8').read()
+    h = local_fonts(h, rel)
     if wh_slug:
         h, nwh = mark_withheld(h, wh_slug)
         if nwh:

@@ -151,6 +151,103 @@ for p in pages:
             fail(f"{page_key(p)} loads assets/vendor/{m.group(1)}, which is not on disk")
 print(f"  vendored script references checked: {_vendor_refs}")
 
+# 4a2. NO PAGE MAY FETCH FROM ANOTHER ORIGIN ON LOAD.
+#
+# On 30 August 2026, 715 of 717 published pages preconnected to
+# fonts.googleapis.com and loaded a stylesheet from it, disclosing every reader's
+# IP address to Google before anything rendered. Several of those pages printed
+# "Nothing transmitted" while doing it, and the site had published that exact
+# criticism about a collaborator's application.
+#
+# The faces are self-hosted now, which makes the disclosure stop existing rather
+# than be disclosed better. THIS IS THE CHECK THAT KEEPS IT THAT WAY. One CDN
+# link added in six months would restore the fault silently, and the reason it
+# went unseen for so long is that nothing was looking: conformance.js aborts
+# every non-file: request, so it has always measured a page whose remote fetches
+# never happened.
+#
+# WHAT IT DOES NOT COVER, deliberately. A canonical URL, an og:image and a
+# Twitter card all name https://eqlsource.com and are metadata rather than
+# fetches — the reader's browser requests none of them. Only constructs the
+# browser acts on at load are checked.
+_EGRESS = [
+    (re.compile(r'<link[^>]+rel=["\'][^"\']*(?:preconnect|dns-prefetch|preload|prefetch)', re.I),
+     "a preconnect or prefetch hint"),
+    # Only link types the browser FETCHES. rel="canonical" and rel="alternate"
+    # name a URL without requesting it, and every page carries a canonical — the
+    # first draft of this rule failed all 714 pages on exactly that.
+    (re.compile(r'<link[^>]+rel=["\'](?:stylesheet|icon|apple-touch-icon|manifest)["\'][^>]*href=["\'](?:https?:)?//', re.I),
+     "a stylesheet, icon or manifest from another origin"),
+    (re.compile(r'<link[^>]+href=["\'](?:https?:)?//[^>]*rel=["\'](?:stylesheet|icon|apple-touch-icon|manifest)["\']', re.I),
+     "a stylesheet, icon or manifest from another origin"),
+    (re.compile(r'<script[^>]+src=["\'](?:https?:)?//', re.I), "a script from another origin"),
+    (re.compile(r'<(?:img|iframe|video|audio|source|embed)[^>]+src=["\'](?:https?:)?//', re.I),
+     "media from another origin"),
+    (re.compile(r'@import\s+(?:url\()?["\']?(?:https?:)?//', re.I), "a CSS @import from another origin"),
+    (re.compile(r'url\(\s*["\']?(?:https?:)?//', re.I), "a CSS url() pointing at another origin"),
+]
+_egress_hits = 0
+for p in pages:
+    h = open(p, encoding="utf-8", errors="replace").read()
+    for rx, what in _EGRESS:
+        m = rx.search(h)
+        if m:
+            _egress_hits += 1
+            fail(f"{p} loads {what}: {m.group(0)[:110]!r}. Published pages serve "
+                 f"their own assets — see public/assets/fonts/LICENSES.md")
+            break
+if not _egress_hits:
+    print(f"  pages fetching another origin on load: 0 of {len(pages)}")
+
+# 4a3. EVERY SELF-HOSTED FACE MUST RESOLVE, FROM EVERY PAGE THAT LINKS IT.
+#
+# Session B hit this exact failure self-hosting their own faces and named it
+# better than I would have: root-absolute font paths 404 under a subdirectory,
+# and "every page silently fell back to the local stacks — the one failure state
+# that looks like a design choice rather than a bug."
+#
+# That is the whole hazard. A missing typeface does not throw, does not warn, and
+# does not look broken; it looks like a slightly different design. Nothing in
+# this repository would have caught it: conformance.js aborts non-file: requests
+# so it never loaded a webfont in its life, and a page with no font renders
+# perfectly well.
+#
+# So both halves are checked, and BY RESOLVING FILES rather than by reading the
+# stylesheet — B's other instruction, which is the same lesson as "open the page"
+# one layer down. A stylesheet that looks right and points at nothing is the
+# failure being prevented.
+_fcss = "public/assets/fonts/fonts.css"
+if not os.path.exists(_fcss):
+    fail(f"{_fcss} is missing — run python3 _build/fetchfonts.py")
+else:
+    _ftext = open(_fcss, encoding="utf-8").read()
+    _fdir = os.path.dirname(_fcss)
+    _urls = re.findall(r"url\(\s*['\"]?([^'\")]+)['\"]?\s*\)", _ftext)
+    _missing = [u for u in _urls
+                if not u.startswith("data:")
+                and not os.path.exists(os.path.normpath(os.path.join(_fdir, u)))]
+    if _missing:
+        fail(f"{_fcss} names {len(_missing)} font file(s) that are not on disk: "
+             f"{', '.join(_missing[:4])}. Every page would fall back silently")
+    elif not _urls:
+        fail(f"{_fcss} declares no font files at all — every page would fall "
+             f"back to system stacks and look like a design choice")
+    # And the link itself, resolved per page, because the href is relative and
+    # its depth differs. One wrong `rel` and a whole directory loses its faces.
+    _badlink = []
+    for p in pages:
+        h = open(p, encoding="utf-8", errors="replace").read()
+        m = re.search(r'<link[^>]+href="([^"]*fonts/fonts\.css)(?:\?[^"]*)?"', h)
+        if not m:
+            continue
+        if not os.path.exists(os.path.normpath(os.path.join(os.path.dirname(p), m.group(1)))):
+            _badlink.append(p)
+    if _badlink:
+        fail(f"{len(_badlink)} page(s) link a fonts.css that does not resolve "
+             f"from their own directory, e.g. {_badlink[0]}")
+    else:
+        print(f"  self-hosted faces: {len(_urls)} file(s), all resolving")
+
 # 4b. tier discipline: the badge CSS must exist and the scale must be published
 css = open("public/assets/site.css", encoding="utf-8").read()
 for cls in (".tier", ".t1", ".t3", ".t5"):
@@ -311,6 +408,12 @@ if os.path.exists("build.sh"):
                    # their output is committed. A rebuild has to work on a
                    # machine with no EverQuest Legends install.
                    "geometry.py", "skyislands.py", "palette.py",
+                   # Fetches the four faces from Google once so no reader ever
+                   # fetches them again. Needs the network, and a rebuild must
+                   # work on a machine that has none. Its output —
+                   # public/assets/fonts/ and the stylesheet beside it — is
+                   # committed. Same rule as geometry.py and ogcards.py.
+                   "fetchfonts.py",
                    # Reads combat logs out of state/logs/, which are
                    # gitignored because they can carry private chat. Run
                    # by hand; only the derived counts are committed.
