@@ -397,6 +397,112 @@ timer. That is the Voidling pattern applied to a screenshot.
 "unsure" cells are not a defect. They are the tracker declining to guess, and D
 has proved the code collapses them the moment a controlled hour arrives.
 
+### 30 Aug, URGENT — the auditor I named as the instrument could not return YES. Use `df49a58`, not `fbd0932`.
+
+**`fbd0932` is defective and the sha is in my own ruling.** C found it. The
+link/img/script rules flagged any `href` or `src` that was not a `data:` URI,
+**including relative ones**. C's test case was 83 bytes —
+`<link rel="stylesheet" href="local.css">` — and it reported self-contained **NO**.
+
+**Every real application window has a local stylesheet, so the tool could never
+return YES. Its NO was guaranteed in advance and therefore carried no
+information.**
+
+**A must pull `df49a58` before measuring, and any NO it has already seen means
+nothing either way.** That run needs repeating.
+
+#### This one is mine, and I wrote the rule I broke on the same day
+
+I named `fbd0932` "the instrument" in the Google Fonts ruling and in the orders
+to A, on D's report, **without asking whether it had ever been shown to fail.**
+Hours earlier I put *"If you have not seen it fail, you have not seen it work"*
+into Session C's orders as a standing lesson. I then endorsed a detector without
+applying it. Writing a rule down is not holding it.
+
+#### Third detector shipped without being shown to discriminate. That is a pattern.
+
+D names the other two: the countdown regex and the killing-blow test. **All three
+failed identically — the alarm was checked, the discrimination was not.**
+
+D's own verification was invalidated by the same fault: it had "proved" detection
+by pointing the tool at `index.html` and getting NO. **Strip every font host out
+of that file and it still said NO.** That shows the alarm fires, not that it fires
+on the thing claimed.
+
+**RULE, and it is now the standing form of the gate-selftest principle:**
+
+> **A detector is not shown to work by a positive. It is shown to work by a
+> matched pair — one input it must flag and one it must pass, differing only in
+> the thing being detected.** A tool that returns the same verdict on both is
+> measuring something else, and a green check and a dead check read identically.
+
+**The repaired tool passes exactly that test, which is why it is trustworthy
+now:** `index.html` reads **NO as-is and YES with the fonts self-hosted.** The
+verdict turns on precisely the change I ordered A to make. Before the repair it
+read NO both times.
+
+An adversarial pass then got real third-party requests through it **thirteen more
+ways**, each verified twice — against a separate origin's own request log and
+against a real Chromium, which is what Electron runs. Four structural holes:
+
+- **The `data:` exemption was a skeleton key.** It tested the whole tag, so one
+  `data:` substring anywhere whitelisted a real remote URL beside it — and the
+  lazy-load idiom hits that by accident.
+- **`link`/`img`/`script` is three of eleven elements that fetch.** `iframe`,
+  `object`, `embed`, `source`, video `poster`, `input type=image` and svg `image`
+  all walked past.
+- **The comment stripper ate `//` lines**, deleting protocol-relative URLs inside
+  CSS `url()`.
+- **`meta refresh` and `image-set()` had no rule at all.**
+
+13/13 caught, 0 false positives.
+
+### 30 Aug — C measured object 2. The wall-clock request stands, undisplaced.
+
+**The arithmetic identifies which object C was reading, and it is not the weekly
+lockout.** `518,285 − 3,485 = 514,800` — matching `LOCKOUT_MODEL` exactly, and
+`514,800 s` is 5.958 days, the **six-day rolling instance lockout** already in the
+record at `HANDOFF.md:1979` as `differenceSeconds: 514800`.
+
+**So test 2 was not a technicality.** The missing control was not a missing
+formality — the measurement was of the wrong object, and the arithmetic proves it
+rather than merely leaving it open. A six-second agreement across 10.8 hours was
+real, precise, and about something else. **That is the strongest vindication a
+control requirement could get**, and it is worth remembering the next time a clean
+number argues for itself.
+
+### 30 Aug — the heredoc trap's severity is a lottery, and that is the finding
+
+C found its own guard's `\b` eaten by a heredoc into literal `0x08` **backspace**
+bytes: a test that read correctly, passed, and **could never fire**. Fourth
+incident of the trap CLAUDE.md §5 already records.
+
+**D's observation is the new part.** Heredocs ate backslashes in D's files five
+times the same day, and **every one produced a visibly wrong character**. The
+difference between a fault found in an hour and a fault found never was *which
+byte the shell happened to eat*. A mangled `\n` shouts. A mangled `\b` is
+invisible and disarms the test that contains it.
+
+So the rule is not "be careful with heredocs" — it is that **the trap's cost is
+uncorrelated with its visibility**, and the cheap sweep for control characters
+is worth running after any heredoc write, not only a suspicious one.
+
+### 30 Aug — the roster is dead, and D's own message is the proof
+
+D sent its ref for the roster before my withdrawal reached it, and **the message
+refutes the roster inside itself**: D reads mine as `4408a8`; I reported
+`31c85c`. D said *"one of those is wrong and I am reporting what I see rather than
+reconciling it"* — which was exactly right, and the answer is that **neither is
+wrong.** Both were live readings at different moments. `4408a8` appears nowhere
+in this file before today.
+
+Two sessions, two honest readings of one identifier, disagreeing. That is B's
+measurement reproduced by accident, on the roster's entry for me, in a message
+contributing to the roster.
+
+**No session sends me a ref again.** The rule is the pointer-only boundary in the
+next entry, and it needs no identifier.
+
 ### 30 Aug, later — B refuted the roster within hours, with a measurement. It is withdrawn too.
 
 **Both halves of the identifier rotate.** B measured its own address across an
