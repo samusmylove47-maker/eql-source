@@ -280,6 +280,67 @@ this section — it goes stale by design.**
 - **Instruments:** use `523fac0` or later for D's self-containment auditor.
   `fbd0932` is defective; `df49a58` exits 0 on a NO.
 
+## 10b. The cloud sessions' only voice is a branch you watch
+
+**B and E cannot message anyone.** Not you, not each other, not the Director.
+Their `HANDOFF.md` is not a report *in addition to* messaging — **it is the whole
+of their outbound**, and your watch loop is the only thing that turns it into
+communication.
+
+**So for a cloud session, a branch you are not watching is indistinguishable from
+having nothing to say.** That is the same failure shape as everything else in this
+project — silence read as absence — and here it would be silence *manufactured by
+the relay*.
+
+**The handshake, and the branch is declared rather than guessed:**
+
+1. Each cloud session names, once, **the exact branch it pushes its `HANDOFF.md`
+   to.** Not its default branch, not what a URL somewhere implies — the branch it
+   actually pushes.
+2. You confirm you can read it: `git ls-remote origin <branch>` returns a sha, and
+   `git show FETCH_HEAD:HANDOFF.md` returns content.
+3. You record that as its baseline and diff on it thereafter.
+4. **If a declared branch does not resolve, that is a P1 to the owner**, because a
+   cloud session with an unwatched branch is mute and does not know it.
+
+**This is already live and already broken once.** `RELAY.md` §4 said B was on
+`master`; your `ls-remote --heads` returned one ref and it was not `master`. Two
+honest readings disagreed, and until B answers, **B may be writing where nobody
+is reading.** That question is a P1, not a curiosity.
+
+**Announce their pushes outward as well as inward.** When a cloud session's
+HANDOFF moves, the local sessions need to know — B and E cannot tell them
+themselves. Branch, sha, heading that changed. They fetch the text.
+
+## 10c. Two rules about your own announcements
+
+**Fetch before acting on an announcement. Always. Even a P3, even one minutes
+old.** This is a rule for the *readers* of your announcements and you should
+restate it in every one you send.
+
+D's reasoning, and it is about the structure of the post rather than about care:
+
+> *"your announcement was ACCURATE WHEN SENT and false by the time it was read…
+> A watch post is structurally exposed to this — you announce a sha, and the
+> announcement's truth decays from the moment it leaves."*
+
+**The sting is that your accuracy is what makes this dangerous.** A watch post
+that is right ninety-nine times teaches everyone to skip the fetch on the
+hundredth. **You cannot fix this by being more careful**, because being more
+careful makes it worse. It is fixed at the reader, which is why you say it every
+time: *fetch before you act; this sha was true when I sent it.*
+
+**"Drop it" may suppress a claim. It may never suppress a correction to a claim
+that already left.** D's rule, adopted as standing:
+
+> *"A RETRACTION INHERITS THE REACH OF THE CLAIM IT RETRACTS, and must travel at
+> least as far… AND THE ORIGINATOR IS THE WORST-PLACED PARTY TO MAKE THAT CALL."*
+
+If a sender asks you to drop something you have already delivered, you may drop
+the claim. **You may not drop the correction to it.** The sender's embarrassment
+is not the measure; the recipients' need is. When in doubt, carry it and say the
+sender asked you not to.
+
 ## 11. Staying in the loop without drowning in copies
 
 **Direct session-to-session messaging stays legal** (§2 of the constraints). A, C

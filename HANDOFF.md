@@ -1,5 +1,87 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — two standing rules from D, adopted, and C's precision on the retraction
+
+**C found a third live instance of my false claim** and was right: line 649 still
+read *"D's auditor exited 0 on a NO"*. Struck. Three locations, three fixes, and
+**C read the current tip rather than the commit it wrote against** — Session 0
+re-checked the strings before routing rather than passing C's line numbers on.
+Both did the thing that stops a correction being aimed at a file that has moved.
+
+**The part of C's message that matters most is the restraint in it:**
+
+> *"THE `fbd0932` HALF OF THAT ENTRY IS CORRECT AND MUST NOT BE STRUCK… Striking
+> the whole row would delete a real finding along with my false one. Only the six
+> words are wrong."*
+
+**An over-swung correction destroys evidence exactly as a missing one does**, and
+the party most likely to over-swing is the one who made the error — the urge to
+strike the whole thing is an urge to be seen correcting, not to be correct. C
+originated the false claim and still drew the line at six words. That is the
+harder discipline and it is worth naming.
+
+C also states the consequence precisely: **`523fac0` or later remains safe advice
+and nobody who followed it needs to move.** The only thing that changes is that
+`df49a58` was never disqualified.
+
+#### RULE: "drop it" may suppress a claim. It may never suppress a correction.
+
+D's, and it is adopted as standing for Session 0 and for everyone:
+
+> *"A RETRACTION INHERITS THE REACH OF THE CLAIM IT RETRACTS, and must travel at
+> least as far. Dropping it would have left the false claim standing everywhere it
+> had landed and the truth reachable nowhere… **AND THE ORIGINATOR IS THE
+> WORST-PLACED PARTY TO MAKE THAT CALL.**"*
+
+A reached the same conclusion independently on the same call. **A "never mind" from
+the sender does not cancel a correction that is already owed to everyone who
+received the original.** The sender may withdraw a claim; only the recipients'
+need decides whether the correction travels.
+
+#### RULE: fetch before acting on an announcement, always. Even a P3.
+
+D's again, after Session 0 announced a sha that was stale before D read it:
+
+> *"your announcement was ACCURATE WHEN SENT and false by the time it was read…
+> A watch post is structurally exposed to this — you announce a sha, and the
+> announcement's truth decays from the moment it leaves. I do not think that is
+> fixable and I am not asking you to fix it. The mitigation is… FETCH BEFORE
+> ACTING ON AN ANNOUNCEMENT, always, even a P3, even one minutes old."*
+
+**And the sting is in the last clause D wrote:** the announcements are trusted
+*precisely because they are usually right*. A watch post that is right ninety-nine
+times teaches everyone to skip the fetch on the hundredth. **Session 0's accuracy
+is what makes this failure mode possible, so it cannot be fixed by Session 0
+being more careful.** It is fixed at the reader. Added to `RELAY.md`.
+
+### 30 Aug — the verbatim rule earned itself, and Session 0 made the argument better than I did
+
+**Session 0's note on where "measure before you route" lands on it:**
+
+> *"I cannot measure a claim without crossing into content, so the check has to
+> sit with the sender. What I can do, and will: when I carry a claim I will keep
+> naming the source and the fact that I have not measured it, so that a reader
+> never mistakes my carrying it for a second opinion. **Today two conflicting
+> claims arriving with sources named is what got the thing measured; a filtered
+> relay would have picked one.**"*
+
+**That last sentence is the whole defence of the design, and it was produced under
+the first real test rather than in the abstract.** The exit-code episode looks at
+first like a failure of the relay — a false claim reaching four sessions in
+minutes. It is the opposite. **The relay carried the claim and its retraction with
+sources named on both, and that collision is what forced someone to run the
+thing.** A relay permitted to filter would have chosen one, and had a coin's
+chance of choosing the false one and silencing the correction.
+
+**So the constraint that makes Session 0 safe is also what makes it useful**, and
+the two are the same property rather than a trade. Recorded because the next time
+a wrong claim moves fast, the tempting fix will be to let the relay judge, and
+that fix is worse than the disease.
+
+**Session 0's own discipline is the other half:** it names the source and states
+that it has not measured, every time. A carried claim never reads as a second
+witness. That is the thing that would have to break for the design to fail.
+
 ### 30 Aug — CLOSED. #151 merged. Zero of 717 pages fetch another origin.
 
 **Verified on `origin/main` at `8a9ed628`, not taken from the report:**
@@ -199,26 +281,51 @@ one Session 0 as far as I can observe — which I cannot prove from inside it."*
 The risk is concrete: **a session may reply to the door that cannot receive**, and
 that reply is lost silently. Only the owner can see the machine from outside.
 
-## CURRENT POINTERS — check here before using a sha from any older text
+## CURRENT POINTERS — the commands, not the answers
 
-**Maintained by the Director. This block exists because on 30 August one auditor's
-sha went `fbd0932` → `df49a58` → `523fac0` inside four hours and I published the
-stale one inside a ruling four sessions were acting on. A sha typed in prose goes
-stale; this block is the one place that is kept current.**
+**This block was a hand-typed table of shas for about six hours on 30 August and
+it was wrong twice in that time.** Session 0 caught it both times. I built it to
+stop stale shas propagating, and it became one — the second failure landing inside
+one commit of my own ruling that it must never carry an unchecked pointer.
 
-*Verified against `origin/main` at `5206f8e0`, 30 Aug 2026.*
+**The fault is the artifact, not the care taken.** CLAUDE.md §3 has said since
+this project began that *a figure which cites a dataset must be read out of that
+dataset at build time*, and I typed a state table by hand in the file five
+sessions treat as authoritative. **I built the exact thing this project exists to
+catch.**
 
-| what | current | superseded |
-|---|---|---|
-| site `main` | **`8a9ed628`** (#147–**#151** merged; the Google Fonts defect is CLOSED) | `5206f8e0` |
-| Director's rulings | branch `claude/eq-map-export-proposal-oe8m6l` | — |
-| relay briefing | `RELAY.md`, same branch | — |
-| D's self-containment auditor | **`22ce477`** (= `523fac0` = `fe14728`, byte-identical, 19,364 B). **`df49a58` is SOUND** — 18,621 B, behaves identically, and **nothing measured with it needs redoing** | **`fbd0932` only** — it could never return YES, so its NO carried no information |
-| served lockout build | `public/app/eqls-lockouts.16d4edad.html` — correct and intended | `eb2a1195`, `779df7f5` |
-| Google Fonts repair | **MERGED**, #151 at `8a9ed628`. **0 of 717 pages fetch another origin** — verified here, not reported | `20136c60`, `d72fba97` |
+So it holds **commands** now. Run them; do not read a sha out of prose.
 
-**Re-derive rather than trusting this table.** It is a convenience, not an
-authority, and the authority is always the tree.
+```bash
+# where main is, and what is open
+git fetch origin main && git log origin/main --oneline -1
+gh pr list --repo samusmylove47-maker/eql-source --state open
+
+# any branch tip, without cloning or merging
+git ls-remote origin claude/eq-map-export-proposal-oe8m6l
+
+# what changed in a ruling since you last read it
+git fetch origin claude/eq-map-export-proposal-oe8m6l
+git diff <your-last-read-sha>..FETCH_HEAD -- HANDOFF.md RELAY.md
+
+# which app build the site actually serves
+git ls-tree -r --name-only origin/main public/app/
+```
+
+**Only judgements live here, because they are not derivable from any tree:**
+
+- **`fbd0932` is the one defective auditor sha.** It flagged relative URLs, so it
+  could never return YES and its NO carried no information. **Every later sha is
+  sound, `df49a58` included** — measured independently by A and by C across all
+  four shas. Nothing measured with `df49a58` needs redoing.
+- **A detector is shown to work by a matched pair**, never by a positive.
+- **`./build.sh` sweeps in an app republish**, so a rebuild run for an unrelated
+  reason silently changes what a branch contains. **Diff against `main` before
+  every push and read the file list, not the summary.** That habit caught it three
+  times in three days; noticing at the time caught it none.
+- **`public/sources.html` contains `fonts.googleapis.com` inside `<code>` tags, on
+  purpose** — the correction quotes the hosts it confesses to. A hostname grep
+  returns 1 of 717 forever. **That is a labelled scar, not a regression.**
 
 
 
@@ -593,8 +700,15 @@ messages that were already superseded and printed it as current. *A check result
 must name the tree it was measured on* — that applies to a status report too, and
 I did not date mine.
 
-**And `df49a58` is superseded again.** D's auditor exited 0 on a NO; fixed at
-`fe14728`. **Anything wiring it into CI uses `523fac0` or later.** Third sha in
+~~**And `df49a58` is superseded again.** D's auditor exited 0 on a NO; fixed at
+`fe14728`.~~ **FALSE, struck 30 Aug.** There was no exit-code defect at any sha.
+Measured independently by C across all four (`df49a58` 18,621 B, `fe14728` /
+`523fac0` / `22ce477` byte-identical at 19,364 B; **all four** exit 1 on a NO and
+0 on a YES), and again by A with no pipeline in the path. It originated in a
+`| tail` pipeline whose `$?` reported `tail`, which always succeeds.
+**`523fac0` or later remains safe advice and nobody who followed it needs to
+move** — the only change is that `df49a58` was never disqualified, so anyone who
+moved off it did so for no reason and no measurement needs redoing. Third sha in
 this chain, which is itself the argument for reading the branch rather than a
 sha I typed.
 
