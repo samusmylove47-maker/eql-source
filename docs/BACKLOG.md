@@ -514,3 +514,52 @@ well:
 **Our layer is quests, factions, routes and tactics** — the human-knowledge
 layer. That is where every new tool should sit. When a player needs something we
 deliberately do not build, link to whoever does it well.
+
+### The exception for Session E's gap engine, ruled 30 August 2026
+
+Read plainly, the rule above forbids Session E's tool twice over: it parses a log
+and it recommends gear, and **Log Parser** and **Gear Upgrade Finder** are named
+in the first paragraph as EQL Tools' layer. The Director has ruled the exception
+applies. It is written here because **a rule with a silent exception is worse
+than no rule** — an unwritten carve-out reads to the next session as either a
+dead rule or a broken one, and both readings are wrong.
+
+**The exception is per finding, not per tool.** Nothing is exempt because of
+whose repository it lives in. Each finding is admitted or refused on its own, and
+a tool may ship nine findings and be refused the tenth.
+
+**THE TEST, and it is deliberately one sentence you can apply without judgement:**
+
+> **If a recommendation survives with the log removed, it belongs to
+> eqlegendstools.com and we link to it.**
+
+A finding ships only if it is **uncomputable from a catalogue**. An item database
+plus a character sheet is the thing that already exists and is maintained better
+than we would maintain it; anything reachable from those two inputs is theirs.
+
+**What that admits.** Nine of E's fifteen need a log *and* measured mechanics,
+and no item database can produce them: stance, lane uptime, position, pet uptime,
+engaged time, resist rate, mana ceiling, procs-per-minute, and haste-against-cap.
+Each is a fact about what a character actually did, not about what a character
+could theoretically hold.
+
+**What it constrains.** The four gear findings **never ship as a stat
+comparison** — only as a ranked delta against the player's *own observed
+baseline*. The distinction is the whole exception: "this sword has more DPS than
+that one" is a catalogue answer and is theirs. "This sword closes the gap between
+your measured haste and the cap you are already missing" cannot be computed
+without the log, and is ours. Strip the log from the second sentence and it
+collapses into the first, which is the test working.
+
+**An open question in the ruling, recorded rather than smoothed over.** Nine plus
+four is thirteen. **E's tool has fifteen findings, so two are unaccounted for by
+the ruling as given.** They may be admitted, refused, or not gear-and-log at all
+— this section does not know, and it should not guess on E's behalf. Whoever
+lands the first of those two applies the test above to it in writing, here, and
+names it. Until then, thirteen are ruled on and two are not, and that is the
+honest state.
+
+**Ownership.** This section is the site's, not E's. E proposes wording; what a
+page may claim about provenance is settled here, on the same footing as every
+other row in this file. `sky-ledger` is E's repository name and is a legacy
+label, not a description of its role.
