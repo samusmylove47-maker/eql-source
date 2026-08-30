@@ -36,6 +36,9 @@ python3 _build/build28.py
 # tools/lockouts.html. Reads the timing constants out of the served bundle, so
 # it must run after lockouts.py has put that bundle in public/app/.
 python3 _build/build30.py
+# tools/gap-engine.html. Reads assets/gap-engine.json, which is E's synthetic
+# fixture; the generator refuses to build from anything not marked _fixture.
+python3 _build/build31.py
 # The 50 Upgrades description page. Reads assets/50-upgrades.json, which is a
 # vendored snapshot of the planner's own meta.json rather than anything we count.
 python3 _build/build29.py

@@ -716,6 +716,57 @@ if _lk:
              f"assets/lockouts.json records promoted:false, so this is "
              f"deliberate. Promotion flips both together")
 
+# 4a4. THE GAP ENGINE PAGE MUST PUBLISH ITS REFUSALS, AND ALL OF THEM.
+#
+# The Director's instruction was that refusals render "as prominently as"
+# deltas. That is a judgement a later session can shade while believing it is
+# complying — trimming one, moving them below the fold, folding them into a
+# disclosure — and each step looks reasonable on its own.
+#
+# So the checkable version: every refusal in the data appears on the page, and
+# the page carries as many refusal entries as delta entries at minimum. The
+# reason is E's and it is the same as this site's own rule about never deleting
+# a flagged gap: a tool that silently omits what it cannot do fails open,
+# because a short list of findings reads as "nothing else to improve".
+#
+# Also guarded here, though the schema makes it nearly impossible: no delta may
+# reach the page carrying anything but a difference. build31.py refuses to build
+# such a thing; this catches a page edited by hand afterwards.
+try:
+    _ge = json.load(open("assets/gap-engine.json", encoding="utf-8"))
+except FileNotFoundError:
+    _ge = None
+except Exception as e:
+    fail(f"assets/gap-engine.json unreadable: {e}")
+    _ge = None
+if _ge:
+    _gp = "public/tools/gap-engine.html"
+    if not _ge.get("_fixture"):
+        fail("assets/gap-engine.json is not marked _fixture. That page renders "
+             "SYNTHETIC data only — a real report must never be published there")
+    if not os.path.exists(_gp):
+        fail(f"{_gp} is missing — run python3 _build/build31.py")
+    else:
+        _gh = open(_gp, encoding="utf-8", errors="replace").read()
+        _missing = [r["lane"] for r in _ge.get("refusals", [])
+                    if r.get("lane") and r["lane"] not in _gh]
+        if _missing:
+            fail(f"{_gp} omits {len(_missing)} refusal(s) the data holds: "
+                 f"{', '.join(_missing)}. A tool that hides what it declined "
+                 f"reads as having found nothing left to improve")
+        _nr = _gh.count('class="ge-r"')
+        _nd = _gh.count('class="ge-d"')
+        if _nr < _nd:
+            fail(f"{_gp} renders {_nd} delta(s) and only {_nr} refusal(s). "
+                 f"Refusals carry equal weight there by instruction")
+        for _d in _ge.get("deltas", []):
+            if not str(_d.get("unit", "")).startswith("dps_delta"):
+                fail(f"{_gp}: delta on lane {_d.get('lane')!r} carries unit "
+                     f"{_d.get('unit')!r}, which is not a difference. A modelled "
+                     f"absolute must never reach a page")
+        if not _missing and _nr >= _nd:
+            print(f"  gap engine: {_nd} delta(s), {_nr} refusal(s), all published")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of
