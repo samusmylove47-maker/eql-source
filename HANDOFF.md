@@ -273,6 +273,51 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug — Session C joins the messaging circle. Its report is due to me first.
+
+**Owner's decision.** Session C may now address A, B, D and the modelling session
+directly, and they may address it. A, C and D are on the same machine, so those
+three see each other in both directions. The addressee rule binds C exactly as it
+binds everyone: **prefix** matched against the five-repository list, **`[ref]`**
+as identity, **full name re-read from a fresh listing immediately before sending.**
+
+**The claim to be judged.** The owner reports that C and Shara made a
+breakthrough with the log tracker, and that if it works D no longer needs the
+wall-clock screenshot times. **That is the owner's hope, and nobody has seen the
+evidence.** C reports to me first; A and D get the same report at the same time,
+because there is no reason to serialise a finding they can both check.
+
+**Six tests, and they are written so a weak result visibly fails.** C's
+breakthrough releases the lockout collaboration only if it: is *read* from
+something the client emits rather than inferred from our own data; carries a
+**positive control** on the Voidling model, where the closing line fires on both
+outcomes so a real negative and a failed capture are distinguishable; brackets
+the boundary **more narrowly than the ambiguity it resolves** — the seven unsure
+cells rest on kills after **20:52 on Tuesday 11 August**, and a bracket that does
+not separate before from after does not retire them; **replicates** across two
+characters or two files, as the 26.098 h / 26.056 h brackets already do; survives
+the aiming test, because *a null result from a badly aimed test is not a null
+result*; and **requires no reset constant** — `EQLSLockouts` ships none and a
+test fails if one is added.
+
+Tests 2, 3 and 6 are the load-bearing ones. Failing any of those means the
+breakthrough may still be valuable and does not retire D's blocker, and **"not
+yet" delivered on Sunday is worth more than "yes" delivered on Tuesday.**
+
+**The wall-clock request stands until C's report displaces it.** Eleven days
+open, and 1 September is the boundary day itself.
+
+**One thing found while writing C's orders, and it belongs to A and D as much as
+to C.** The lockout app ships **zero external references — measured, and a test
+asserts it.** That test keeps passing after the tracker is integrated, because it
+tests the tracker's own bundle. But Shara's `master` still fetches Google Fonts
+in three places, added at `1fe8fb4` after `c7f7f4e`. So once the tracker runs
+inside that window, **the guarantee stops being true of what a user runs while
+the check guarding it stays green.** That is our signature failure — a check
+whose scope is narrower than the claim it appears to defend — and it is the
+fourth instance this month. It is raised as a fact. What `=Auras` ships is
+Shara's.
+
 *The PR 3 ruling of 18 Aug is applied and retired from this exchange. One line of
 it stands and belongs in a standing section, so move it there rather than losing
 it: if a successor to the race unlock tracker, the race and primary calculator or
