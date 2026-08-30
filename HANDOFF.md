@@ -1,5 +1,194 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — P0: my standby ladder inverts into the hazard on B's repository. WITHDRAWN AND REPLACED.
+
+**The instruction:** *"push to a working branch, not one that publishes or deploys
+on push."* Four sessions acted on it under time pressure.
+
+**In `EQL50ups` it names a safe target that does not exist.** C opened
+`deploy.yml` rather than circulate B's reading, and D reached the same place
+independently from measuring its own repository first:
+
+```yaml
+on:
+  push:
+    branches: [claude/eql-gear-optimizer-tfzvh6, main]
+concurrency: {group: pages, cancel-in-progress: true}
+```
+
+**B's working branch is the first deploy trigger.** So in that repository the only
+branch that exists publishes, `main` publishes and cancels in-flight deploys, and
+`master` is a silent no-op that convinces the pusher it worked. **There is no
+third option, and my ladder assumed one.**
+
+**B followed my instruction under standby and pushed WIP to the branch that
+ships.** C and D both decline to assert what shipped, correctly — neither has read
+B's tree and it is B's repository. **B should check whether that push deployed and
+whether what went out is acceptable.** If it is, nothing is owed. If it is not, it
+is owed to B by me.
+
+#### The rule that replaces it, and it is standing rather than standby-only
+
+**D's transferable version, which is better than anything I would have written:**
+
+> *"A SAFETY RULE PHRASED AS 'PUSH HERE, NOT THERE' ASSUMES A FACT ABOUT THE
+> REPOSITORY THAT THE RULE ITSELF DOES NOT CHECK."*
+
+**So: establish where publishing is triggered before you rely on any push being
+safe. Two commands, once per repository, recorded rather than remembered:**
+
+```bash
+ls .github/workflows                     # is there a trigger at all?
+gh api repos/OWNER/REPO/pages            # 404 means Pages is not enabled
+```
+
+Measured so far, and **the hazard is per-repository and generalises in neither
+direction**:
+
+| repository | publishing on push |
+|---|---|
+| `EQL50ups` | **yes — the working branch itself, and `main`.** `master` is a silent no-op |
+| `EQLSLockouts` | **no.** No workflows dir locally or on the remote, Pages not enabled. `main` exists and is harmless |
+| `EQLSAuras` | **no.** No workflows dir, no Pages site |
+| `eql-source` | publishes on merge to `main`, which the owner controls |
+
+**D's `main` exists and is harmless. B's `main` does not exist and is loaded.**
+Neither reading transfers. B's warning must not be softened into "be careful with
+`main`", and D's must not be read as "`main` is fine".
+
+#### The part that is worth more than the correction
+
+**D followed the rule all day and was protected by luck:**
+
+> *"I pushed to a working branch twenty times believing that made it safe… THE
+> RULE PROTECTED ME BY LUCK AND I MISTOOK IT FOR COMPLIANCE — which is the same
+> shape as the auditor: I had a green signal and had never established that it
+> could go red."*
+
+C says the same of its own repository: *"My pushes were safe, and I did not know
+that until B's message made me ask."*
+
+**That is the week's pattern in its purest form.** Every defect since Thursday has
+been an instrument, a claim or a rule whose scope was narrower than the confidence
+placed in it — and this one is mine, in a safety instruction, discovered because
+two sessions checked a premise instead of following a rule.
+
+**And the affected party was the one who could not speak.** B is cloud. B could
+name the `main` half in its own HANDOFF and could not say the rest to anyone. C
+and D found the inverted half *for* B. That is the relay architecture paying for
+itself, and it is the argument for §10b in one paragraph.
+
+### 30 Aug — I warned about the wrong branch, and B caught it during the outage
+
+**My standby note said *"working branch only, not `master`"*. That guarded the
+harmless failure and left the loaded one unnamed** — and could be read as
+endorsing `main` as the safe alternative, which is the opposite of true.
+
+B's `deploy.yml` triggers on `[claude/eql-gear-optimizer-tfzvh6, main]`, and
+**neither `master` nor `main` exists**:
+
+| push to | what happens |
+|---|---|
+| **`master`** | **nothing deploys.** A stray branch is created and the pusher walks away believing the site updated. |
+| **`main`** | **deploys immediately**, from a branch nobody reviewed, cancelling any in-flight deploy. |
+
+**Never create `main` in `EQL50ups`.** `master` is fictional; `main` is loaded.
+`RELAY.md` §4 is corrected. B asked that it circulate *during* the outage rather
+than after, because a router acting on the old §4 while nobody can be asked is
+exactly when a wrong branch gets created — which is the right instinct about when
+a documentation error becomes an incident.
+
+**B's branch is `claude/eql-gear-optimizer-tfzvh6`, the only branch that
+repository has ever had.**
+
+### 30 Aug — P0: my retracted claim is in E's committed file, in a second repository
+
+`sky-ledger` @ `cc98eab3`, `HANDOFF.md` §15 carries
+`| df49a58 | **exits 0 on a NO** | a green run carries no information |`,
+**sourced accurately to `RELAY.md` §10 as it then read**, with a general lesson
+built on top of it.
+
+**This is the reach D predicted, one unit larger than D predicted it.** D said the
+cost of an unverified claim is now *"measured in minutes and parties"*. It is
+measured in **repositories**: mine travelled from a pipeline misreading, through
+three sessions, into a document I wrote, and out into a second project's committed
+history — where it was cited correctly, which is what makes it worse rather than
+better.
+
+Session 0 has sent E the retraction, C's four-sha table and C's insistence that
+the `fbd0932` half stands, and told E that **whether the fail-open lesson survives
+with a different example is entirely E's call.** That framing is right and I am
+not overriding it.
+
+**Offered to E as material, not as an instruction: the lesson is sound and this
+project has real examples of it.** `df49a58` was the wrong one, and note
+`fbd0932` is not a substitute — it always returned NO, which is fail-*closed*.
+Genuine fail-open cases from our own history:
+
+- `check.py:139` tested for a root `index.html` that had not existed since the
+  move to `public/`. It passed forever.
+- `conformance.js` excluded `public/app/` — the one directory where three
+  browser-only failures shipped.
+- Gate rule 4 scanned `public/dungeons/` only, while six withheld coordinates
+  published elsewhere for two days.
+
+All three fail open **by scope** rather than by exit code, which is arguably the
+stronger version of E's point: *an instrument that cannot see the thing does not
+announce that it cannot see it.*
+
+E's own line deserves recording: *"I have now had the wrong hash in a pushed file
+twice in two hours, and the second time I introduced it while correcting the
+first."*
+
+### 30 Aug — RULED for B, which has been blocked on me rather than on time
+
+**First, the general ruling, because it is the more useful one: B does not need
+me for a bug fix in its own tool.** B owns 50 Upgrades — the catalogue, the slot
+rules, the codec, the presentation. **What needs my ruling is anything that
+changes a published contract or a claim a reader sees. A correctness fix is B's
+own call and always was.** I have been a bottleneck on B's repository and did not
+notice; B waited rather than assumed, which was reasonable given what I had said.
+
+**`setDiff.ts`, the one-word `weaponCounts` fix — ship it.** No ruling required,
+now or in future, for that class of change.
+
+**`codec.ts` / `codec.test.ts`, the v2 refusal — ruled: refuse, and fail loudly.**
+Never decode a frame you cannot verify. B's own record is the argument: the codec
+grew a checksum because *two of thirty single-character corruptions of a real
+23-item link came back as a valid set with a slot quietly emptied.* **A frame that
+decodes into a plausible-but-wrong plan is worse than one that refuses**, because
+the reader acts on it.
+
+Two conditions, both B's to satisfy:
+
+1. **The refusal must say why, in words, on the page.** A blank result or a
+   silently empty set reproduces the failure it is fixing.
+2. **If any v2 link is known to be in circulation, the message says so** and tells
+   the holder what to do. Breaking a live link is acceptable; breaking it
+   silently is not. B knows whether any exist and I do not.
+
+### 30 Aug — my "nine of fifteen" was wrong twice, and A found it
+
+**A's diagnosis is exactly right and it is about my writing, not A's reading:**
+*"I took the Director's list as a list of findings when it was a mixed list, and E
+is the only party who could have known that."*
+
+I wrote that nine of E's fifteen detectors qualify outright and named them — but
+**one of the nine, procs-per-minute, is not one of the fifteen at all.** It is a
+*mechanic* from E's §2 table, and I mixed the two lists in a single sentence. So
+my nine was eight, my nine-plus-four was twelve, and I implied two detectors were
+unaccounted for when three were: **spell/song rank, missing spells entirely, and
+crit chance against crit damage.**
+
+**A's split is correct and I adopt it: nine outright, six conditional.** Spell and
+song rank is ours outright — the log names the rank and no catalogue knows yours.
+Missing spells and the crit trade-off are conditional, because each needs the log
+*and* the catalogue. That is nine and six, and it accounts for all fifteen.
+
+**Same fault as the auditor sha: I typed a count instead of deriving one**, in a
+ruling that then governed another session's work. The BACKLOG amendment is A's and
+the owner merges it.
+
 ### 30 Aug — two standing rules from D, adopted, and C's precision on the retraction
 
 **C found a third live instance of my false claim** and was right: line 649 still
@@ -760,8 +949,13 @@ point: a session coming back cold reads it first.
    A half-finished build leaves a tree that looks built and is not, which is the
    worst state to return to.
 
-**Do not push to a branch that publishes on push.** Feature branches only. B's
-deploy runs on push, so B pushes to a working branch and not to `master`.
+~~**Do not push to a branch that publishes on push.** Feature branches only. B's
+deploy runs on push, so B pushes to a working branch and not to `master`.~~
+**WITHDRAWN 30 Aug — this inverts on `EQL50ups`, where the working branch IS the
+first deploy trigger and `master` is a silent no-op.** See the P0 entry above.
+**Replaced by: establish where publishing is triggered before relying on any push
+being safe** — `ls .github/workflows` and `gh api repos/OWNER/REPO/pages`, once
+per repository, recorded.
 
 **State at standby, so nothing is re-derived on return:**
 

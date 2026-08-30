@@ -68,7 +68,7 @@ If a message is too long, send it whole anyway. If it is unclear, send it whole
 | | repository | owns | where |
 |---|---|---|---|
 | **A** | `samusmylove47-maker/eql-source` | the website, all generators in `_build/`, `docs/`, everything published | this machine |
-| **B** | `samusmylove47-maker/EQL50ups` — **branch unresolved, see below** | the 50 Upgrades planner, the item catalogue, slot rules, the share codec | **cloud** |
+| **B** | `samusmylove47-maker/EQL50ups` — branch **`claude/eql-gear-optimizer-tfzvh6`**, the only branch it has ever had. **Never create `main` — see below** | the 50 Upgrades planner, the item catalogue, slot rules, the share codec | **cloud** |
 | **C** | `samusmylove47-maker/EQLSAuras` | liaison to Shara; band material and proposed patches only | this machine |
 | **D** | `samusmylove47-maker/EQLSLockouts` | the raid lockout tracker, the log parser, the self-containment auditor | this machine |
 | **E** | `samusmylove47-maker/sky-ledger` | the gap engine — combat modelling, measured mechanics | **cloud** |
@@ -86,13 +86,24 @@ read a session's job off its repo name.
 - **B is cloud, not unconfirmed.** So **B and E are both cloud** — they receive
   and cannot reply — and **A, C, D and you are local.** That is the whole map;
   nothing else about it is open.
-- **B's branch is unresolved and nobody should assume `master`.** This file said
-  `master`, sourced from a `raw.githubusercontent.com` URL recorded earlier.
-  Session 0's `git ls-remote --heads` returned exactly one ref and it was not
-  `master`. Two honest readings disagree. **Route it to B — B knows its own
-  repository — and do not resolve it from the outside.** Until B answers, a
-  session trying to read B's `HANDOFF.md` from a guessed branch may get nothing
-  and should not read that silence as B having nothing.
+- **B's branch is `claude/eql-gear-optimizer-tfzvh6`**, answered by B and
+  confirmed by `ls-remote`: one ref, also HEAD. This file said `master`, which was
+  wrong. **And the branch to warn about was never `master`.** B's
+  `.github/workflows/deploy.yml` triggers on
+  `[claude/eql-gear-optimizer-tfzvh6, main]`, and **neither `master` nor `main`
+  exists today**, so the two failure modes are opposite:
+
+  | push to | what happens |
+  |---|---|
+  | **`master`** | **nothing deploys.** A stray branch is created and the pusher walks away believing the site updated. Silent no-op. |
+  | **`main`** | **deploys immediately**, from a branch nobody reviewed, and supersedes any in-flight deploy — `concurrency: {group: pages, cancel-in-progress: true}`. |
+
+  **So: never create `main` in `EQL50ups`.** `master` is merely fictional; `main`
+  is loaded. The Director's standby warning said *"working branch only, not
+  `master`"* — which guarded the harmless one and, worse, could read as an
+  endorsement of `main` as the safe alternative. **That was the Director's error
+  and B caught it.** The `deploy.yml` reading is B's; Session 0 verified only the
+  ref list and holds no view on the workflow file.
 
 ### What each is good at, for routing purposes only
 
