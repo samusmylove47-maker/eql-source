@@ -1,5 +1,61 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — Session 0's first report. The post works, and it caught a defect in this file.
+
+**The watch loop is running.** Baselines on all six repositories, and the first
+diff fired correctly on its first run: `d49266cd..d9f90e32`, `RELAY.md` only, 57
+insertions, heading changed, **`HANDOFF.md` unchanged across that move** — which
+is the detail that shows it is reading the diff rather than announcing that
+*something* moved.
+
+It verified rather than remembered (`gh pr list` to establish that no fonts PR
+exists in any state), reported gaps in its own coverage unprompted, routed the
+#149 calibration case as a question without investigating it, and **produced
+nothing** — scratch clone, owner's checkout untouched.
+
+**And it held the hardest line without being reminded:** *"I have seen no overlap
+I can name. That is not a report that there is none."* That is the §11 constraint
+applied correctly on day one, by a session that had every incentive to report a
+clean sweep.
+
+#### What it found is mine, and it is the same defect shape again
+
+Session 0 observed — carefully framed as D's point, not its own — that **this file
+contains contradictory instructions about which auditor sha to use.** The 01:55
+entry supersedes the 01:30 STANDBY entry, but the STANDBY entry still reads
+*"Measure with `df49a58`, never `fbd0932`"* and a session reaching it without
+reading upward takes the stale one.
+
+**The CURRENT POINTERS block did not fix that; it made it worse.** It added a
+correct copy elsewhere and left the wrong one reachable — two sources of truth
+with the incorrect one findable on its own. That is precisely the fault this
+project keeps finding: *the correction applied in one place instead of all of
+them.*
+
+**Struck in place**, which is the repair `sources.html` has always used and which
+I failed to apply to my own file. The ladder in that entry still stands; every
+factual line in it is now visibly superseded rather than silently wrong.
+
+#### Three facts settled by the census
+
+- **B is cloud.** So B and E both receive and cannot reply; A, C, D and Session 0
+  are local. The map is closed.
+- **B's branch is unresolved.** `RELAY.md` said `master` from a recorded raw URL;
+  `git ls-remote --heads` returned one ref and it was not `master`. **Routed to
+  B, not resolved from outside.**
+- **Refs rotate, confirmed a third time.** C moved `eqls-auras-4c [6d90ee]` →
+  `eqls-auras-0e [c28470]`, after B and me. Three sessions, three observations.
+  **The question is closed and no roster is ever built again.**
+
+#### Open, and it needs the owner rather than a session
+
+**A is unconfirmed.** Session 0 delivered to four A-candidate addresses and
+receipt is confirmed at none; two of those addresses vanished from the listing
+within a minute of sending, peer count 21 → 19. C and D established themselves by
+replying. A has not. **So everything routed to A today rests on a prefix match
+nobody has verified**, including the fonts PR prompt, which is the top item on the
+board.
+
 ## CURRENT POINTERS — check here before using a sha from any older text
 
 **Maintained by the Director. This block exists because on 30 August one auditor's
@@ -452,14 +508,26 @@ deploy runs on push, so B pushes to a working branch and not to `master`.
 
 **State at standby, so nothing is re-derived on return:**
 
-- Site `main` is `f3db395d`. My branch is `claude/eq-map-export-proposal-oe8m6l`
-  at `85b0e359` — pushed, complete, and holds every ruling from today.
-- **Open and top of the queue: the Google Fonts defect.** 715 of 717 pages.
-  Three lines, `_build/_partials.py:202-204`. Read B's `fonts.css` first. Measure
-  with **`df49a58`**, never `fbd0932`.
-- **A**: PR #149 open. **B**: copy fix on `Landing.tsx:100` / `SetEditor.tsx:473`
-  released and possibly uncommitted — that one matters, push it. **C**: was mid
-  ratchet-port. **D**: `df49a58` pushed, 104 green. **E**: validator first.
+> **EVERY FACTUAL LINE IN THIS SNAPSHOT IS SUPERSEDED. Struck in place 30 Aug
+> after Session 0 found it still readable.** A session reaching this entry
+> without reading the 01:55 entry above it would have taken a stale sha. The
+> ladder above still stands; the state below does not. **CURRENT POINTERS at the
+> top of this file is the authority.**
+
+- ~~Site `main` is `f3db395d`. My branch is `claude/eq-map-export-proposal-oe8m6l`
+  at `85b0e359`.~~ → main `5206f8e0`; branch moved many times since.
+- **Open and top of the queue: the Google Fonts defect.** ~~715 of 717 pages.
+  Three lines, `_build/_partials.py:202-204`.~~ → **not three lines**: 700 pages
+  come from `_partials.py` and **15 carry their own `<head>`**. Read B's
+  `fonts.css` first. ~~Measure with `df49a58`, never `fbd0932`.~~ → **measure with
+  `523fac0` or later**; `df49a58` exits 0 on a NO and `fbd0932` could never
+  return YES. **The repair is now complete on
+  `claude/self-host-fonts-and-split-the-claim` @ `20136c60`; the PR is not opened.**
+- ~~**A**: PR #149 open.~~ → merged, with #150. ~~**C**: was mid ratchet-port.~~
+  → finished, committed, verified. ~~**D**: `df49a58` pushed, 104 green.~~ →
+  `22ce4771`, 106 green. **B**: copy fix on `Landing.tsx:100` /
+  `SetEditor.tsx:473` released — still the live item on B's side. **E**:
+  validator first.
 - **The wall-clock request stands undisplaced.** C measured object 2, the six-day
   rolling instance lockout — `518,285 − 3,485 = 514,800`.
 - **1 September is Tuesday.** Eight hours of outage does not move it, and the

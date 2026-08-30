@@ -68,7 +68,7 @@ If a message is too long, send it whole anyway. If it is unclear, send it whole
 | | repository | owns | where |
 |---|---|---|---|
 | **A** | `samusmylove47-maker/eql-source` | the website, all generators in `_build/`, `docs/`, everything published | this machine |
-| **B** | `samusmylove47-maker/EQL50ups` (branch **`master`**) | the 50 Upgrades planner, the item catalogue, slot rules, the share codec | unconfirmed |
+| **B** | `samusmylove47-maker/EQL50ups` — **branch unresolved, see below** | the 50 Upgrades planner, the item catalogue, slot rules, the share codec | **cloud** |
 | **C** | `samusmylove47-maker/EQLSAuras` | liaison to Shara; band material and proposed patches only | this machine |
 | **D** | `samusmylove47-maker/EQLSLockouts` | the raid lockout tracker, the log parser, the self-containment auditor | this machine |
 | **E** | `samusmylove47-maker/sky-ledger` | the gap engine — combat modelling, measured mechanics | **cloud** |
@@ -80,6 +80,19 @@ session, and she has complete creative and production control over EQLS Auras.
 
 `sky-ledger` is a legacy repository name and does not describe E's role. Do not
 read a session's job off its repo name.
+
+**Two corrections to this table, from Session 0's first census, 30 Aug:**
+
+- **B is cloud, not unconfirmed.** So **B and E are both cloud** — they receive
+  and cannot reply — and **A, C, D and you are local.** That is the whole map;
+  nothing else about it is open.
+- **B's branch is unresolved and nobody should assume `master`.** This file said
+  `master`, sourced from a `raw.githubusercontent.com` URL recorded earlier.
+  Session 0's `git ls-remote --heads` returned exactly one ref and it was not
+  `master`. Two honest readings disagree. **Route it to B — B knows its own
+  repository — and do not resolve it from the outside.** Until B answers, a
+  session trying to read B's `HANDOFF.md` from a guessed branch may get nothing
+  and should not read that silence as B having nothing.
 
 ### What each is good at, for routing purposes only
 
