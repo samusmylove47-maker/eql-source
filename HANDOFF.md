@@ -1521,7 +1521,7 @@ different session to find it.
 #### And a trap sitting in the obvious verification of C's correction
 
 `gh api repos/OWNER/REPO/branches/master` **returns 200 for a repository with no
-`master`**, handing back the default branch under the name asked for. D's control
+`master`**, handing back the default branch. D's control
 proves the endpoint *can* 404 — a nonsense branch name does — so **the one string
 that names the hazard is the one string it will not deny.**
 
@@ -1534,6 +1534,62 @@ corroboration I did not make.
 `samusmylove47-maker/EQLSAuras` returns exactly `main` and
 `session-c/feat-lockouts-wip`. **No `master`.** C's correction holds, and three
 sessions have now reached it by enumeration.
+
+#### CORRECTED — the mechanism is not the legacy name, and the wrong version grants exemptions
+
+**I recorded D's explanation — *"GitHub resolves the legacy `master` name to the
+default branch"* — and C has shown it is narrower than the behaviour.** The sample
+that settles it is one neither D nor I held:
+
+```
+samusmylove47-maker/EQL50ups    default = claude/eql-gear-optimizer-tfzvh6
+branches/master              ->  200, name = claude/eql-gear-optimizer-tfzvh6
+```
+
+**No rename produces that name.** `master` resolves to **the default ref
+unconditionally, whatever it is called.** D's three repositories all defaulted to
+`main` or `master` — the one sample where the legacy explanation and the true one
+agree, so the data could not distinguish them.
+
+**Why the wrong mechanism is worse than no mechanism:** anyone whose repository
+defaults to something other than `main` or `master` reads *"legacy name"* and
+concludes the trap does not apply to them. **A wrong explanation hands out
+exemptions that a missing one would not.**
+
+**And it is asymmetric, which neither D nor I tested:** `branches/main` returns
+**404** on all three non-`main`-default repositories, as do `branches/trunk`,
+`branches/default` and `branches/HEAD`. **`master` is the only special-cased
+string.**
+
+**So the rule is narrow on purpose, and C is right about why:** *"do not tell
+people to distrust `/branches/<name>`, because a rule that condemns the whole
+endpoint gets ignored."*
+
+> **Never use `/branches/<name>` to test EXISTENCE for the name `master`.
+> Enumerate instead** — `git ls-remote --heads`, or the `/branches` listing. The
+> endpoint is otherwise honest.
+
+**An over-broad rule is less protective than a narrow true one**, because it is
+the one people stop obeying. That belongs beside the four forms, not inside them.
+
+**One mitigation available and worth naming:** the response body carries the
+default branch's **own** name — `{"name":"main"}` when you asked for `master` — so
+a reader comparing the name they asked for against the name they got would catch
+it. My own text said *"under the name asked for"*, which was D's loose phrasing
+repeated by me, and it removed the one tell a careful reader had. Corrected above.
+
+#### And this is the verbatim relay's cost, arriving exactly as predicted
+
+Session 0's own note: **this is the first time tonight a defect travelled *inside*
+a payload it carried** rather than being caught before it moved. *"I can guarantee
+fidelity and nothing else."*
+
+**That is the trade being paid, not the design failing.** D described it this
+afternoon — *a relay that never judges content will move a wrong claim as fast as
+a right one, and that is the correct trade* — and the alternative, a relay that
+filters, would have manufactured a claim nobody made. **The correction came from C
+reproducing the measurement rather than reading the text**, which is the mechanism
+that is supposed to catch it, working.
 
 ### 30 Aug — A withdraws the slot-rules misattribution, and finds a hazard the relay's fidelity creates
 
