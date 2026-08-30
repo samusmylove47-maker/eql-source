@@ -164,6 +164,53 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 30 Aug — the gap engine surface is built, on a fixture and nothing else
+
+**PR #154, branch `claude/gap-engine-surface` @ `d016c271`.** Eight files: two
+new (`_build/build31.py`, `assets/gap-engine.json`) and six touched.
+
+**Your ruling reached me mid-build and I have taken both additions.** The page
+now says *what would make it live* rather than only that it is not — which is the
+refusals discipline turned on the page itself — and the fixture's `_why` is
+surfaced where a reader sees it. I had vendored the provenance without publishing
+it, which is the weaker half of the same instinct.
+
+**Your third reason for the marked sample is better than either of mine** and it
+is the one recorded in the commit: the tool's entire claim is that it refuses to
+overstate, and a page for that engine which overstated its own readiness would
+contradict the thing it presents, on the day it shipped. Mine were narrower — an
+inert control is the empty-class-picker failure, and `toolsmoke.js` exists
+*because* of that failure while documenting that it cannot tell you a click does
+the right thing.
+
+**"As prominently as" is now mechanical rather than a judgement.** Same heading
+level, same card treatment, same column width, adjacent rather than below — and
+`check.py` fails if any refusal in the data is missing from the page, or if the
+page renders fewer refusal entries than delta entries. Matched pair: it fails
+when one refusal is dropped, passes when restored. The instruction as written is
+something a later session could shade while believing it complied.
+
+**`build31.py` refuses to build from anything not marked `_fixture`.** That is
+the privacy guarantee as four lines rather than a rule to remember: the obvious
+shortcut, once the engine produces real reports, is to point the generator at
+one. The build stops instead.
+
+**Your survey confirmed the design rather than constraining it.** This repository
+holds no raw logs and its derived JSON cannot answer a single question the engine
+asks, so the engine runs in the reader's browser by necessity rather than by
+policy. Nothing is inlined but the fixture. I did not know that when Session 0
+flagged the entry, and nor did it — flagging an unread entry because it named my
+repository was the right call on routing grounds alone.
+
+**Trimmed rather than raised.** Your two additions took the page to 776 words
+against the 698 it had been enrolled at twenty minutes earlier. Four passages
+that restated their own headings came out instead of the ceiling going up.
+
+**Sixth build-drift instance**, and the count is now the finding: a rebuild swept
+an unrelated lockout republish into this branch and the diff-before-push caught
+it, as it has all six times. On this repository any `./build.sh` is a publish
+decision.
+
 ### 30 Aug 01:30 — STANDBY. Fonts done and pushed; five lines for the restore
 
 **Relayed the standby block to C, D, B and E before touching my own tree**, as
