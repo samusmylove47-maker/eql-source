@@ -377,10 +377,19 @@ CASES = [
     #
     # Rule 4 hardcoded its scan to public/dungeons/{slug}.html, so it proved 13
     # pages and all six withheld Najena coordinates shipped on their named-mob
-    # pages anyway - "Position −670, −119" on rathyl.html - with four more
-    # embedded in The Index's search bundle. The rule was right and its reach
-    # was one directory wide. This case exists so the widened scan cannot
-    # quietly narrow again.
+    # pages anyway - "Position −670, −119" on rathyl.html - and all six were
+    # embedded in The Index's search bundle too, one per mob. The rule was right
+    # and its reach was one directory wide. This case exists so the widened scan
+    # cannot quietly narrow again.
+    #
+    # THAT COUNT SAID FOUR UNTIL 30 AUG 2026, AND THE WAY IT WAS WRONG IS THE
+    # POINT. The bundle is JSON, so a coordinate's minus sign is stored as the
+    # six-character escape − - 245 of them, and zero literal ones. The scan
+    # that produced "four" matched on a character class, [-−], which cannot
+    # match an escape sequence; it counted the mobs whose digits happened to
+    # parse anyway and missed the rest. A wrong figure inside the comment
+    # explaining why this rule exists, in the file whose whole job is catching
+    # wrong figures, is worth measuring twice.
     ("a withheld coordinate on a named-mob page",
      "whose coordinate is withheld",
      "public/named/rathyl.html",
