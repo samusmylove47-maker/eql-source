@@ -1,5 +1,93 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — the gap engine is the next build. Architecture, and two constraints that decide what gets built.
+
+**The owner's direction:** E leads a module deployable on the website *and*
+inside `=Auras`, pointing at 50 Upgrades, with plug-and-play adjustment for weapon
+swaps, mote-levelled items, mote-levelled spells, and AA recommendations driven by
+a character's detected damage-type shares. Other sessions facilitate. **The
+strategic claim is that an in-game meter which names what your trio can upgrade
+drives traffic to the site**, which no standard meter attempts.
+
+#### CONSTRAINT 1 — it is not a DPS meter, and this is a build instruction rather than a word game
+
+`docs/BACKLOG.md` names **Log Parser** and **Gear Upgrade Finder** as things
+eqlegendstools.com owns and we do not clone. The exception ruled on 30 August is
+per-finding: **a finding ships only if it is uncomputable from a catalogue.**
+
+**So: if we ship a DPS meter with a gap feature, we are cloning. If we ship a gap
+engine that computes DPS internally, we are not.** The difference decides what
+gets refused — a live damage readout with no gap attached is eqlegendstools'
+product and belongs behind a link, however easy it would be to add.
+
+The owner's own description is the gap engine — *"identifying what the user's trio
+can upgrade, acquire, or improve."* **"DPS meter" is the shorthand, not the
+brief**, and a session building to the phrase will build the wrong thing.
+
+#### CONSTRAINT 2 — measured DPS may be displayed. Modelled DPS may not.
+
+E's own §3: the chain **over-predicts 162 of 213 measured fights and no knob
+closes it.** It is a ceiling, not an estimate. E reported that itself and it is
+why the role was approved.
+
+**So the number a reader sees must be measured or must be a delta. Never a
+modelled absolute.** Live DPS read out of the log is a measurement and may be
+shown. The modelled ceiling is a denominator and may never be displayed as a
+target — that was ruled on approval and it constrains the product directly. A
+"DPS meter" that shows a big number the player cannot reach would be the worst
+thing we could build, because it would be confidently wrong in the one place a
+reader checks it against their own play.
+
+#### The architecture — three pieces, and the seams are where the work is
+
+| piece | owner | contract |
+|---|---|---|
+| **The engine** | **E** | A pure function. Log lines in → measured state plus ranked modelled deltas out. No DOM, no fetch, no dependency on anything of E's. This is the same artefact that drops into `=Auras` and that the website calls. |
+| **The catalogue** | **B** | Items, slot rules, mote curves, the AA ladder. Answers *what could this character obtain next.* |
+| **The surfaces** | **A** (web) · **C→Shara** (overlay) | Presentation. A owns the page; the overlay is Shara's and C offers rather than builds. |
+
+**The engine returns deltas, not items.** E computes *"a weapon at DMG 30 / delay
+22 in that slot is worth +47"*; **B answers which obtainable item has those
+stats.** E proposed staying out of item selection and that is now the boundary —
+it keeps one owner for slot rules, which is the divergence B and E already agreed
+to avoid and which has already cost E a published ranking.
+
+**One shared dataset for slot rules, not two agreeing implementations.** Decided
+by B and E, upheld. Where it lives and who owns it is the first thing they settle
+on Wednesday, before either writes against it.
+
+**The overlay is the acquisition channel; the site is the destination.** The
+`=Auras` component shows *one line* — the largest gap and its value. The full
+ranked plan lives on the website. That is E's design and it is endorsed: it makes
+the component small enough that Shara can take it or leave it on its merits, and
+it is the whole of the traffic argument.
+
+**The handoff carries an intent, not an encoded set** — ruled 30 August on B's
+codec history. Which trio, which slot, what to rank.
+
+#### E decides; it does not ask
+
+**E has no outbound.** Every question it asks costs a round trip through a commit,
+Session 0, an addressee, and a commit back. **So give E decisions to make rather
+than questions to answer**, and let A, B and C work against what E has written
+rather than waiting on E to confirm.
+
+Concretely: **E writes the engine's contract — inputs, outputs, the evidence
+envelope, and what it refuses to answer — into its own HANDOFF and pushes.** That
+document is the specification. A, B and C build against it and report
+disagreements as commits. Nobody waits.
+
+#### Sequencing, unchanged
+
+**1 September is Tuesday and the lockout release owns it.** E's own critical path
+runs now: the derived-claim validator first — nothing ships before it, E's
+ordering and binding — then per-character modelling driven from observed gear and
+observed rates, which E correctly called the real work.
+
+**The seams to A, B and C open Wednesday 2 September.** First act on Wednesday is
+the slot-rules dataset, because everything else depends on it and it is the one
+thing that diverges silently.
+
 ### 30 Aug — the Shara item is upgraded: it is in a published installer that rebuilds on every merge
 
 **C measured `LoxyBee/EQLS-Auras`, the one repository not in my table**, because
