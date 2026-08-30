@@ -273,6 +273,72 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 30 Aug, 01:55 — A's standby report corrects my standby entry in three places
+
+**Read this before the 01:30 entry below; it supersedes it.** A pushed to
+`claude/self-host-fonts-and-split-the-claim` at `20136c60` and relayed the
+standby block before touching its own tree, which was the right order.
+
+#### FIRST THING ON RETURN, AND IT NEEDS THE OWNER: Shara shipped our retracted claim
+
+**Shara merged the lockout work and built on it in the last ten minutes before
+standby** — PR #14 at 01:22Z, PR #15 at 05:25Z, her `master` now 8 commits beyond
+`6834d78`. **Her shipped `master` carries C's retracted paragraph verbatim** at
+`src/main/logRotation.js` lines 24, 28 and 42 — *"a measurement, not a constant
+somebody typed"* — and an Eastern reset setting built on top of it.
+
+**The number may well be right. The claim that anyone measured it is not**, because
+those readings are object 2, the six-day rolling instance lockout:
+`518,285 − 3,485 = 514,800`.
+
+This is the worst error this project can export — **a false provenance claim, in
+our words, inside a collaborator's shipped product**, while she actively builds on
+it. A has written `proposed/FOR-SHARA-2026-08-30-reset-provenance.md`, pushed, and
+led it with her design being better than C's, which is the right framing and the
+true one.
+
+**Only the owner can reach her. It is the first thing on return, ahead of the
+pull request.** It is a correction we owe, not a request for anything.
+
+#### My standby snapshot was stale, and I published it without dating it
+
+C is **not** mid ratchet-port — finished, committed, verified. D is at `22ce477`
+with **106** green, not `df49a58` with 104. I assembled a state snapshot out of
+messages that were already superseded and printed it as current. *A check result
+must name the tree it was measured on* — that applies to a status report too, and
+I did not date mine.
+
+**And `df49a58` is superseded again.** D's auditor exited 0 on a NO; fixed at
+`fe14728`. **Anything wiring it into CI uses `523fac0` or later.** Third sha in
+this chain, which is itself the argument for reading the branch rather than a
+sha I typed.
+
+#### "Three lines in one file" was wrong, and my instrument could not see the rest
+
+`_partials.py:202-204` fixed **700** pages. **The other 15 never call `head()` and
+carry their own `<head>`** — thirteen surveys and two imported tools, among the
+most-read pages on the site. Anyone acting on my order would have declared
+victory with fifteen still fetching.
+
+Verified here: 15 files in `_build/source/*.html` carry the link, and
+`build3.py:293` says so in as many words — *"Surveys, maps and tools are
+standalone pages that never call head()."*
+
+**My grep was `_build/*.py`.** The fifteen are `.html`, so the instrument could
+not have seen them, and I read its silence as coverage. **Third time today**, after
+the `−` sweep and endorsing `fbd0932`. Two of those I had already named as
+lessons in other sessions' orders before committing them myself.
+
+**The work is done rather than open.** Zero of 715 pages fetch another origin, all
+four faces self-hosted, the copy split applied in D's egress wording and aligned
+with C's note to Shara, and the `sources.html` correction written. **Measured as a
+matched pair** — `index.html` NO before, YES after, no-transmit-path YES both
+times, which is the standard I set being met rather than claimed. Two new checks,
+mutation-proven, 36 self-test cases.
+
+**The pull request is not opened. That is the next concrete step on return**, and
+the owner merges it.
+
 ### 30 Aug, 01:30 — STANDBY. Power goes out in 30 minutes, for about 8 hours.
 
 **Every session stops and pushes. Nothing new starts.** The owner's machine loses
