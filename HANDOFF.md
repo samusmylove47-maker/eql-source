@@ -1,5 +1,68 @@
 # Handoff — 18 August 2026
 
+### 30 Aug — PR #151 is open, and my auditor pointer was false. Four sessions, nobody measured.
+
+**PR #151 verified open from the API, not from report:**
+`claude/self-host-fonts-and-split-the-claim` @ `d72fba97` onto `5206f8e0`,
+`mergeable_state: clean`, 755 files, +1,517 / −2,167. **The owner merges. It is
+the top item on the board and the only thing standing between a live honesty
+defect and its repair.**
+
+#### RETRACTED: "df49a58 exits 0 on a NO." It does not, and I published it in the one place built to be trusted.
+
+**`df49a58` is sound.** A measured it with no shell pipeline in the path: exit 1
+on a NO, exit 0 on a YES, which is correct. C independently measured all four
+shas — `fe14728`, `523fac0` and `22ce477` byte-identical at 19,364 bytes,
+`df49a58` differing at 18,621 and behaving identically. **There was never an
+exit-code defect at any sha, and nothing measured with `df49a58` needs redoing.**
+
+I cannot check this myself; D's repository is not on this machine. **I accept it
+on two independent measurements against zero**, which is the same standard I hold
+everyone else to. `fbd0932` remains genuinely defective and is now the only sha
+described that way — A was right that leaving the two labelled identically was
+wrong, and that call was mine to make.
+
+**The chain, because it is worth more than the claim:**
+
+| | what happened |
+|---|---|
+| **C** | read `$?` after a `\| tail` pipeline and measured `tail`, which always succeeds |
+| **D** | changed code on that report **without reproducing it once**, and asked the relay to carry it |
+| **A** | wrote it into its own HANDOFF **without measuring**, with the auditor and both test pages on disk, twenty seconds away |
+| **me** | put it in **CURRENT POINTERS** and into orders to A |
+
+**Mine is the worst of the four and the reason is where I put it.** That block
+exists *because a sha in prose goes stale*; its entire purpose is to be the one
+place a session can trust without checking. **Putting an unverified claim there is
+worse than putting it in prose**, because prose invites a check and that block is
+designed to end one. I created the artifact and then made it lie on its second day.
+
+**And I struck a correct line to make room for the false one.** The 01:30 standby
+entry said *"measure with `df49a58`, never `fbd0932`"* — right the first time. My
+correction on 30 Aug replaced it with the wrong thing. Un-struck.
+
+C, D and A all retracted unprompted within the hour. Four sessions, four different
+failures, one shape: **nobody ran it.**
+
+#### The build contaminates a branch as a side effect, and diffing caught it three times
+
+`./build.sh` sweeps in an app republish. So **a rebuild run for an unrelated
+reason silently adds an unrelated app file to whatever branch you are on** —
+`16d4edad` → `57e1ed1e` rode into the fonts branch that way, and the same shape
+produced #149's stale branch name.
+
+**All three were caught by diffing against `main` before pushing. None by
+noticing at the time.** That is the habit, and it is now standing: **diff against
+`main` before every push and read the file list, not the summary.**
+
+#### #149's branch name — answered, and it was an accident
+
+A verified `9ad53415`, ran `./build.sh` for an unrelated reason before amending,
+and `lockouts.py` copied a newer build and swept the old one. A corrected the
+commit, title and body to `16d4edad` before merge; only the branch name could not
+change. **`main` serving `16d4edad` is correct and intended.** Session 0 routed
+that as a question and formed no view, which is exactly right.
+
 ### 30 Aug — Session 0's first report. The post works, and it caught a defect in this file.
 
 **The watch loop is running.** Baselines on all six repositories, and the first
@@ -47,14 +110,54 @@ factual line in it is now visibly superseded rather than silently wrong.
   `eqls-auras-0e [c28470]`, after B and me. Three sessions, three observations.
   **The question is closed and no roster is ever built again.**
 
-#### Open, and it needs the owner rather than a session
+#### CLOSED by events — A is confirmed
 
-**A is unconfirmed.** Session 0 delivered to four A-candidate addresses and
-receipt is confirmed at none; two of those addresses vanished from the listing
-within a minute of sending, peer count 21 → 19. C and D established themselves by
-replying. A has not. **So everything routed to A today rests on a prefix match
-nobody has verified**, including the fonts PR prompt, which is the top item on the
-board.
+A replied to Session 0 at `repo-docs-review-37a9c9-28 [d1f23b]`, **re-derived the
+P1 rather than taking it**, answered the #149 question and has sent two further
+outcome reports. The prefix match held. **A, C and D are all now established by
+reply**, which is the only form of confirmation available.
+
+Still unconfirmed and worth holding: the three `EQLS Main Session A` addresses and
+`EQLS Lockouts Session D [0da875]`. Two vanished mid-session, peer count 21 → 19.
+
+#### RULED: the relay raises the cost of an unverified claim, and that is now a rule
+
+**D's observation, and it is the sharpest thing anyone has said about the
+architecture I just built:**
+
+> *"a relay that never judges content will move a wrong claim as fast as a right
+> one, and that is the correct trade, but it means the cost of an unverified
+> claim is now measured in minutes and parties rather than in one conversation."*
+
+That is exactly right and it is a consequence I did not state when I designed the
+post. **Verbatim relay is the correct trade** — the alternative is a relay that
+filters on content, which manufactures claims nobody made. But it changes the
+arithmetic upstream.
+
+**So: the relay does not lower the bar on verification, it raises it.** Before
+Session 0, a wrong claim cost one conversation. Today the exit-code claim reached
+four sessions in minutes, changed code in one of them, and entered the block built
+to be trusted without checking.
+
+**The rule: measure before you route.** If you are about to hand the relay a claim
+that will change what someone else does, run it once first. C's `| tail` pipeline,
+D's un-reproduced code change, A's unmeasured HANDOFF line and my CURRENT POINTERS
+entry were all twenty seconds of work away from being caught.
+
+**And the corollary is for me specifically:** a claim I put in CURRENT POINTERS
+must be one I measured or one I explicitly mark as accepted-on-report. That block
+ends checking; anything in it that has not been checked is a trap I built.
+
+#### One operational thing for the owner, which no session can resolve from inside
+
+**Session 0 appears to have two addresses.** Its introduction reached D twice —
+once from its pipe and once from `bridge:session_01Das6VEWSrB9mKjrxeqinm8` — and
+**D could not reply to the second**. A reports the same shape. Session 0 declined
+to explain it, correctly: *"any explanation from me would be a guess, and there is
+one Session 0 as far as I can observe — which I cannot prove from inside it."*
+
+The risk is concrete: **a session may reply to the door that cannot receive**, and
+that reply is lost silently. Only the owner can see the machine from outside.
 
 ## CURRENT POINTERS — check here before using a sha from any older text
 
@@ -70,9 +173,9 @@ stale; this block is the one place that is kept current.**
 | site `main` | `5206f8e0` (#147–#150 merged) | — |
 | Director's rulings | branch `claude/eq-map-export-proposal-oe8m6l` | — |
 | relay briefing | `RELAY.md`, same branch | — |
-| D's self-containment auditor | **`523fac0` or later** | `fbd0932` (could never return YES), `df49a58` (exits 0 on a NO) |
-| served lockout build | `public/app/eqls-lockouts.16d4edad.html` | `eb2a1195`, `779df7f5` |
-| Google Fonts repair | branch `claude/self-host-fonts-and-split-the-claim` @ `20136c60` — **PR not opened, `main` still fetches** | — |
+| D's self-containment auditor | **`22ce477`** (= `523fac0` = `fe14728`, byte-identical, 19,364 B). **`df49a58` is SOUND** — 18,621 B, behaves identically, and **nothing measured with it needs redoing** | **`fbd0932` only** — it could never return YES, so its NO carried no information |
+| served lockout build | `public/app/eqls-lockouts.16d4edad.html` — correct and intended | `eb2a1195`, `779df7f5` |
+| Google Fonts repair | **PR #151 OPEN**, `claude/self-host-fonts-and-split-the-claim` @ `d72fba97` onto `5206f8e0`, mergeable clean, 755 files. **The owner merges** | `20136c60` |
 
 **Re-derive rather than trusting this table.** It is a convenience, not an
 authority, and the authority is always the tree.
@@ -519,10 +622,10 @@ deploy runs on push, so B pushes to a working branch and not to `master`.
 - **Open and top of the queue: the Google Fonts defect.** ~~715 of 717 pages.
   Three lines, `_build/_partials.py:202-204`.~~ → **not three lines**: 700 pages
   come from `_partials.py` and **15 carry their own `<head>`**. Read B's
-  `fonts.css` first. ~~Measure with `df49a58`, never `fbd0932`.~~ → **measure with
-  `523fac0` or later**; `df49a58` exits 0 on a NO and `fbd0932` could never
-  return YES. **The repair is now complete on
-  `claude/self-host-fonts-and-split-the-claim` @ `20136c60`; the PR is not opened.**
+  `fonts.css` first. **"Measure with `df49a58`, never `fbd0932`" was RIGHT and I
+  wrongly struck it on 30 Aug** — see the entry above. `df49a58` is sound;
+  `fbd0932` was the only defective one. **The repair is now PR #151 on
+  `claude/self-host-fonts-and-split-the-claim` @ `d72fba97`.**
 - ~~**A**: PR #149 open.~~ → merged, with #150. ~~**C**: was mid ratchet-port.~~
   → finished, committed, verified. ~~**D**: `df49a58` pushed, 104 green.~~ →
   `22ce4771`, 106 green. **B**: copy fix on `Landing.tsx:100` /
