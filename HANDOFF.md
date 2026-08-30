@@ -172,9 +172,17 @@ ordered. All four sent.
 1. **What I was doing: the Google Fonts fix, and it is DONE, not in progress.**
    All four faces are self-hosted from `public/assets/fonts/`, 26 files, 318 KB,
    fetched once by a new hand-run `_build/fetchfonts.py`. **Zero of 715 pages
-   fetch another origin.** Verified with D's `df49a58` as a matched pair on one
-   page: `index.html` reads self-contained **NO** before and **YES** after, with
-   no-transmit-path YES both times, so the verdict turns on exactly the change.
+   fetch another origin.** Verified as a matched pair on one page: `index.html`
+   reads self-contained **NO** before and **YES** after, with no-transmit-path
+   YES both times, so the verdict turns on exactly the change.
+
+   **The sha to use is `523fac0` or later, NOT the `df49a58` this entry named
+   when it was written.** D fixed the auditor's exit status at `fe14728`: at
+   `df49a58` it exits 0 on a self-contained NO, so a CI check reading only the
+   exit code would go green beside a page fetching from three origins — the exact
+   failure this whole thread is about. The measurement above stands unchanged,
+   because `df49a58`'s *verdicts* are right and only its exit status was wrong;
+   it is automation, not conclusions, that would be misled.
 2. **The next concrete step is to open the PR.** The branch is
    `claude/self-host-fonts-and-split-the-claim`, pushed. It was never opened as a
    pull request because standby arrived first. Everything is committed; nothing
