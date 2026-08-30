@@ -164,6 +164,148 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 30 Aug — 16d4edad published (not 9ad53415), the count corrected to six, and the Auras answer
+
+**Item 1. Published, both conditions met — and the build moved under me while I
+worked, which is worth more than the publish.** You named `9ad53415`. I verified
+that build, ran `./build.sh` before amending a commit, and `lockouts.py` did
+exactly what it is designed to do: it found a NEWER build in D's repo,
+`16d4edad`, copied it and swept the old one. So the commit, the PR title and my
+report to you all said `9ad53415` while the tree shipped `16d4edad`.
+
+Caught before merge, by an unrelated grep that listed the served file. **It is
+280,212 bytes**, read off disk, and I have now verified it the same two ways:
+zero external references statically, and zero network requests observed in a
+browser, rendering the grid. `9ad53415` was 275,459 bytes; `eb2a1195`, which both
+replace, was 265,191, read 27 Aug, matching your figure exactly.
+
+**The lesson is about the design, not the accident.** "Every D release needs an A
+commit" makes a rebuild a publish decision — so any `./build.sh` between
+verification and commit can silently change what ships. The audible no-op I added
+on 27 Aug printed the swap plainly and I did not read it, because I ran the build
+for an unrelated reason. Verify immediately before committing, or not at all.
+
+**Zero external references, verified two independent ways.** Statically: no
+absolute `src`/`href`, no protocol-relative URL, no `@import`, no remote `url()`,
+no `fetch`/`XHR`/`WebSocket`/`sendBeacon`/`importScripts`, no preconnect, no
+`fonts.googleapis.com`, no CDN, and no `http(s)://` literal anywhere — against a
+deliberately over-broad pattern set, on both the old build and the new. Seven
+embedded `data:` URIs, all fonts. At runtime: opened in a browser,
+**no network requests recorded at all**, no console errors, and it renders the
+grid rather than an empty shell.
+
+**Item 2. You are right, it is six — one per mob, and the way I got four is the
+part worth keeping.** Measured against the pre-fix artefact at `8604ef43`:
+
+| mob | loc field in the pre-fix bundle |
+|---|---|
+| A Visiting Priestess | `−493, 170` |
+| BoneCracker | `−262, 167` |
+| Ekeros | `−681, −49` |
+| Officer Grush | `~−385, 230` |
+| Rathyl | `−670, −119` |
+| Trazdon | `−225, 150` |
+
+The bundle is JSON, so the minus is stored as the **six-character escape**
+`−` — **245 of them, and zero literal minus signs in the file.** The scan
+that produced "four" matched on the character class `[-−]`, which cannot match an
+escape sequence; it counted the mobs whose digits happened to parse anyway. Fixed
+in `gate.py`, `gate_selftest.py` and above, each with the reason rather than just
+the number.
+
+**Item 3. Yes — two sentences become false, and one of them is on the home page.**
+
+The site's claims about the app are these, verbatim:
+
+- home band: *"It reads your combat log in the browser, and **nothing leaves the
+  machine**."*
+- tools page: *"**Nothing is uploaded**; there is no server to upload to."*,
+  hero-sig *"**Nothing transmitted**"*, and *"nothing installed · **nothing
+  sent**"*
+
+**"Nothing leaves the machine" is the one that breaks outright.** A Google Fonts
+fetch leaves the machine. It does not carry the log, but the sentence is broader
+than the log. *"Nothing transmitted"* and *"nothing sent"* are unqualified and
+break the same way.
+
+**And the site would then contradict itself on one page.** Your Auras disclosure
+— which I have not touched — already says the fetch *"is the main window only:
+the overlay drawn over the game requests nothing at all."* The tracker is being
+integrated into `src/renderer/main-window/index.html`, which **is** that window.
+So the home page would simultaneously say the main window fetches from Google and
+that the tracker sends nothing, about the same running code.
+
+**The fix is to scope the claim to the artefact, not to the tool.** Every one of
+those sentences sits beside *"Run it in your browser"* and *"served from this
+site"*, so they were always about the copy we serve — the copy I verified today.
+They just do not say so.
+
+**D has proposed better wording than mine and I would take it**: the engine has
+no transmit path, so your log cannot leave regardless of where it is embedded.
+That is true of the standalone build and of the integrated one, which is exactly
+the property a sentence on a landing page should have. I have not applied it —
+this PR publishes a build and fixes a count, and rewording the band is a separate
+decision. Say the word and it is two sentences.
+
+**And the verification fan-out found the part I had missed: the tension is not in
+the future, it is live now, on our own pages.**
+
+`public/tools/lockouts.html` — the page that prints *"Nothing transmitted"* and
+*"there is no server to upload to"* — **itself preconnects to
+`fonts.googleapis.com` and `fonts.gstatic.com` and loads a stylesheet from
+Google, on load, before a reader has clicked anything.** So does every other
+page: **715 of them**, from the shared head in `_partials.py:202-204`. It
+predates this branch and is nothing to do with the lockout tool.
+
+Both things are true at once, and that is the whole problem: the **app** is
+genuinely clean — I verified zero external references statically and zero network
+requests at runtime — while the **page making that promise** discloses the
+reader's IP to Google to render its own headings.
+
+**The sharpest form of it is an asymmetry in our own disclosure.** We tell a
+reader, in the Auras band, that Auras *"fetches its typeface from Google each
+time it launches, which discloses your IP address to Google"*. We say nothing of
+the kind about the page they are reading that sentence on, which has already done
+it. Holding a third party to a standard we do not state for ourselves is the
+shape this project calls an attack ad, and `scripts/contamination.py` exists
+because of exactly that reasoning.
+
+The tools hub is where it reads worst: its signature line says **"Works
+offline"** above all seven cards, on a page that needs Google to finish drawing.
+
+**Three things follow, and none of them is mine to decide alone:**
+
+1. Scope the tool claims to the artefact ("the copy on this page"), or take D's
+   egress wording, which is true in every host.
+2. Consider a site-level font disclosure equivalent to the one we give Auras.
+   Your instruction protects the Auras sentence; it says nothing about our
+   silence regarding ourselves, and I am raising that rather than acting on it.
+3. `conformance.js` aborts every non-file request, which is why nothing here ever
+   surfaced from a sweep: it has measured a site whose webfonts never load since
+   the day it was written. That is documented and deliberate, and it is also why
+   this went unseen — the fourth instrument this month whose stated limitation
+   hid something real.
+
+**What I could not verify:** the Auras repository is **not checked out on this
+machine** — only `EQLS-Auras-2026-08-23.zip`, dated a week ago. I cannot confirm
+the three Google Fonts fetches or commit `1fe8fb4` myself. Everything I say about
+Shara's master is taken from you and from D, and is marked as such.
+
+**Item 4.** D reached me directly during this work with seven commits' worth of
+change, including that a bare `- Group` means tier 0 — which I had already
+restored on 27 Aug in #147, so we agree and D's copy of our state was one cycle
+stale. Their other three points cost this PR nothing: my page says "four" only
+inside a CSS comment about line-breaking, mentions a countdown only to say it is
+deliberately absent, and credits no typefaces, so the new five-state grid, the
+no-clock rule and the OFL renaming to "EQLS Mono"/"EQLS Condensed" falsify
+nothing currently published. D also flagged `analysis/audit-self-contained.js` as
+a portable checker that can be pointed at the integrated build — that is the tool
+that would keep the guarantee honest after 1 September.
+
+Conformance is clean across 717 pages, both viewports, both grounds, `app 8`
+included — the app is theme-aware now and sits in the site's palette rather than
+a foreign one.
+
 ### 27 Aug — D's build is live, the tier-0 ruling is reversed, and public/app/ is under a browser again
 
 **Item 1. We serve `eb2a1195`, from `cc6b9cc`.** I opened it: it renders the
@@ -255,8 +397,9 @@ load-bearing number above and found three things I had not.
 
 **FIRST, AND IT WAS SHIPPING: all six withheld Najena coordinates were published
 on their named-mob pages.** `public/named/rathyl.html` carried
-`Position −670, −119`, and four of the six were embedded in The Index's search
-bundle as `loc −262, 167`, while the plate they link to said "withheld". These
+`Position −670, −119`, and **all six** were embedded in The Index's search
+bundle as `loc −262, 167`, while the plate they link to said "withheld".
+(This said "four of the six" until 30 Aug 2026 — see the correction below.) These
 are the coordinates that sit 57 to 513 units outside the zone's own drawn floor
 — positions we had already decided we do not trust.
 

@@ -478,8 +478,15 @@ def run(pages, fail, warn):
     #
     # This hardcoded public/dungeons/{slug}.html, so it proved the plates and
     # nothing else - while all six withheld Najena coordinates printed on their
-    # named-mob pages as "Position −670, −119", and four were embedded in The
+    # named-mob pages as "Position −670, −119", and all six were embedded in The
     # Index's search bundle as "loc −262, 167". Found 27 Aug 2026.
+    #
+    # This comment said FOUR until 30 August 2026. The bundle is JSON and stores
+    # a coordinate's minus as the escape −, 245 times, with no literal
+    # minus anywhere in the file; the scan that produced "four" matched on the
+    # character class [-−] and could not match an escape sequence. Measured
+    # against the pre-fix artefact at 8604ef43: six mobs, six coordinate-bearing
+    # loc fields, one each.
     #
     # The rule's own comment already said withholding "applies to the whole
     # page, not just the roster". It was right, and it was enforced on 13 pages
