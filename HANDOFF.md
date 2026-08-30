@@ -202,6 +202,46 @@ ordered. All four sent.
 `sources.html` correction is written and committed but unreviewed, and the
 `learn/difficulty.html` overflow.
 
+**One correction arriving after the above was written, from D at standby.** The
+auditor's exit-status fault — exits 0 on a self-contained NO — **is fixed**, at
+`fe14728`. **If anyone wires this into CI, use `523fac0` or later, not
+`df49a58`**: against `df49a58` a green tick would sit beside a page fetching from
+three origins, which is the exact failure this whole thread is about. The
+matched-pair measurement above stands unchanged — `df49a58`'s verdicts are
+correct and only its exit code was wrong, so nothing I concluded moves. D is at
+`22ce477`, 106 green; the Director's standby snapshot has them at `df49a58` / 104
+and is two commits stale.
+
+**CARRIED FROM C AT STANDBY, and it changes what tomorrow starts on.** Recorded
+here because I am the only session that can reach the Director and the Director
+cannot reply.
+
+- **Shara has merged the lockout work and built on it.** PR #14 into `master` at
+  01:22Z, PR #15 at 05:25Z; her master is **8 commits beyond** head `6834d78`,
+  which is an ancestor of it. Every document saying "unpushed" was stale within
+  hours.
+- **Her shipped master carries C's retracted paragraph verbatim**, at
+  `src/main/logRotation.js` lines 24, 28 and 42 — *"THE RESET, MEASURED RATHER
+  THAN TYPED … a measurement, not a constant somebody typed"*. C withdrew that
+  today, and she has built an Eastern reset setting on top of it. The number may
+  be right; **the claim that anyone measured it is not**, because those two Alt+Z
+  readings are object 2, the six-day rolling instance lockout.
+  `proposed/FOR-SHARA-2026-08-30-reset-provenance.md` is written and pushed, and
+  it leads with her design being better than C's — she gated the hour on
+  `hourKnown` with `RESET_RULE` as fallback and left `RESET_RULE.hour` null,
+  which closes the gap C had reported open without breaking D's anti-constant
+  rule. **Somebody has to make sure she sees it.**
+- **C is NOT mid ratchet-port.** The standby snapshot says so and it is wrong;
+  the port is finished, committed and verified — injecting `hour:11` into the
+  vendored `RESET_RULE` now fails the ported test where before the port it
+  produced zero failures. C is at `fd198c7c` (docs) and `session-c/feat-lockouts-wip`
+  at `28feac2` (app), both pushed to the EQLSAuras repo so a session without this
+  disk can still read them.
+- **Four of five `=Auras` renderers are self-contained, overlay included**,
+  measured with `df49a58`. That turns our band's scoping sentence — *"the overlay
+  drawn over the game requests nothing at all"* — from an assertion into a
+  measurement. Commands in their HANDOFF section 19.
+
 ### 30 Aug — 16d4edad published (not 9ad53415), the count corrected to six, and the Auras answer
 
 **Item 1. Published, both conditions met — and the build moved under me while I
