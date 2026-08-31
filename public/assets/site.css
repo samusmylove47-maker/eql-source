@@ -947,6 +947,35 @@ h1.display em{color:var(--z01)}
 
 /* A surveyor's slug line under the headline — the kind of marginalia a real
    plate carries. Ornament that happens to be true. */
+/* THE FIRST THING A STRANGER CAN ACT ON, and it is a plain GET form.
+   The audit found the site had no search FIELD, not that it had no search:
+   index.html has always linked search.html, and build23.py:190 already runs a
+   query on arrival from ?q=. So this needs no JavaScript at all - it submits to
+   a page that reads the query string - and it works with scripting disabled,
+   which the tools behind it do not.
+   Placed inside the hero shell, after the headline and before the signature
+   strip, so the first actionable thing sits above the fold rather than roughly
+   two thousand pixels down at "Start here". */
+.hero-find{display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+  margin:var(--s-5) 0 0;max-width:min(100%,560px)}
+.hero-find label{position:absolute;width:1px;height:1px;overflow:hidden;
+  clip:rect(0 0 0 0);white-space:nowrap}
+.hero-find input{flex:1 1 240px;min-width:0;padding:12px 14px;
+  background:var(--surface-1);border:1px solid var(--rule2);border-radius:var(--r);
+  font-family:"IBM Plex Mono",monospace;font-size:15px;color:var(--bone)}
+.hero-find input::placeholder{color:var(--faint)}
+.hero-find input:focus{outline:2px solid var(--instr-t);outline-offset:1px;
+  border-color:var(--instr-t)}
+/* --surface-0, NOT --ink. `--ink` is defined at line 57 as `var(--bone)` — a
+   legacy alias kept so old callers do not churn — so `background:var(--bone);
+   color:var(--ink)` renders bone on bone and conformance measured it at 1:1
+   against a 4.5:1 bar. The site's own precedent for dark-on-light is
+   `::selection` at line 424, which uses --surface-0. */
+.hero-find button{flex:0 0 auto;padding:12px 20px;cursor:pointer;
+  background:var(--bone);color:var(--surface-0);border:1px solid var(--bone);
+  border-radius:var(--r);font-family:"Saira Condensed",sans-serif;font-size:16px;
+  font-weight:600;text-transform:uppercase;letter-spacing:.05em}
+.hero-find button:hover{background:var(--surface-2);color:var(--bone)}
 .hero-sig{display:flex;gap:var(--s-4);flex-wrap:wrap;margin:var(--s-5) 0 0;
   font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--faint)}

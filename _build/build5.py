@@ -246,6 +246,17 @@ SCRIPT = '<script>window.__IX__=' + json.dumps(IX, separators=(",",":")) + ';</s
       render();
     };
   });
+  // ARRIVING WITH ?q= RUNS THE SEARCH, so a link can carry one.
+  //
+  // search.html has done this since it was built (build23.py:190) and this page
+  // did not, which mattered the moment the home page grew a search field: the
+  // stranger the field exists for is looking for an ITEM - "where does a Dark
+  // Reaver drop" - and search.html indexes PAGES and says so on itself,
+  // "Looking for an item or a named mob? The Index does that properly."
+  // Pointing the field at the page that answers page questions would have been
+  // a field that works and answers the wrong question.
+  var pre=(location.search.match(/[?&]q=([^&]*)/)||[])[1]||location.hash.slice(1);
+  if(pre){ var v=decodeURIComponent(pre.replace(/\\+/g,' ')); $("#q").value=v; q=v.trim(); }
   render();
 })();
 </script>'''

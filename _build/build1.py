@@ -469,12 +469,37 @@ recent = "\n".join(
         <span class="d">{e['date']}</span>
       </li>''' for e in ENTRIES[:4])
 
+# THE ART COMES AFTER THE WORDS IN SOURCE ORDER, AND ONLY IN SOURCE ORDER.
+#
+# `{hero_art}` used to sit inside <section class="hero"> ahead of the shell, and
+# it is 21,654 bytes of path data — so the headline "Norrath, measured." did not
+# appear until byte 26,689 of a 241,709-byte document. Everything a crawler, a
+# link-preview generator, a reader on a slow connection or a screen reader met
+# first was an aria-hidden decoration.
+#
+# Emitted after the shell it lands the h1 at 5,032: an 81.1% improvement for
+# ZERO added bytes — the file is byte-identical at 241,709.
+#
+# THIS CHANGES NO PIXEL. `.hero-art` is position:absolute with an explicit
+# z-index at site.css:706-707, so it is out of flow and its paint order does not
+# depend on markup position. Verify that before moving it back for any reason.
+#
+# IT IS NOT A CASE FOR DELETING THE ART. Ruled 31 Aug 2026: the sixteen inline
+# SVGs are 85.4% of RAW bytes but only 39.9% of the render-blocking path over
+# the wire, because path data compresses about 10.6:1 while the search index
+# that would replace them compresses at 3.7:1. Removing them to save weight
+# makes the page 2.23x HEAVIER. The defect was order, not size.
+#
+# AND THIS NOTE BELONGS HERE RATHER THAN IN THE TEMPLATE. Written first as an
+# HTML comment inside the f-string, it shipped 1,269 bytes of developer prose to
+# every reader and pushed the h1 it was explaining down to 6,301 — undoing a
+# fifth of the fix it documented. Caught by measuring the output rather than by
+# reading the diff.
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
 <main>
 
 <section class="hero">
-  {hero_art}
   <div class="shell">
     <!-- THE EYEBROW CARRIES CONTEXT, NOT A CLAIM, AND THAT IS DELIBERATE.
          It read "EverQuest Legends &middot; surveyed, sourced, dated" until
@@ -491,8 +516,15 @@ home = head("Accurate, sourced and kept current",
     <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
       a Legends-shaped hole. We go in with the log running and write down what actually happened.
       Every figure names its source and the day it was read, and every gap says so out loud.</p>
+    <form class="hero-find" method="get" action="tools/index-search.html" role="search">
+      <label for="hq">Search {NITEMS} items and {NNAMED} named mobs</label>
+      <input id="hq" name="q" type="search" autocomplete="off"
+             placeholder="Dark Reaver, Najena, Fine Steel&hellip;">
+      <button type="submit">Search</button>
+    </form>
     <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
   </div>
+  {hero_art}
   {hero_src}
 </section>
 {upgrades}
