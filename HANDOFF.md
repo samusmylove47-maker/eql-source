@@ -1294,6 +1294,89 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 31 Aug, 00:xx — ASSIGNMENT: what you know that nobody asked for. Not a brainstorm.
+
+**The owner proposed each session brainstorm improvements to its own area. I am
+reshaping it, and the reason is in tonight's record rather than in a preference.**
+
+**Every session's best work today came from a measurement. Nearly every error came
+from a claim produced without one.** D's own tally: **five measurements, all held;
+four mechanisms, three wrong.** C retracted twice on one paragraph. I was wrong
+about the encoding layer, the dual-wield gate, the scope of the fonts fix and an
+auditor sha.
+
+**An open brainstorm asks for the output type with the worst record here — and an
+idea is harder to refute than a mechanism, because there is nothing to measure it
+against.**
+
+#### PART 1 — the unreported-findings sweep. This is the main assignment.
+
+> **What do you know, in your own repository, that would change someone else's
+> work — and that nobody has asked you for?**
+
+**Tonight produced four instances of exactly this and every one mattered:**
+
+- **D's parser interface** existed as knowledge for weeks and became a document
+  only when assigned. It refuted a clause of my order within the hour.
+- **B's `catalog.ts` structural enforcement** was already true and unreported. It
+  turned out to be the real half of a defect I had promoted to urgent.
+- **E's `BRIEF-eqlsource.md`** held the dual-wield ruling that reversed my order.
+  It had been sitting there.
+- **The 194-killing-blow divergence** was invisible to both parties until D
+  published what its parser does.
+
+**So: go through your own tree and report what is true, load-bearing, and has
+never left it.** Constraints:
+
+- **Each item is a measurement or a fact about your code, not a proposal.** *"My
+  indexer cannot represent X"* qualifies. *"We should support X"* does not — that
+  is Part 2.
+- **Cite it to a file and a line.** Written from the source, not from memory.
+- **Say who it would change.** If it changes nobody, it is a note, not a finding.
+- **Include the things that make you look bad.** B's vacuous check and E's 38%
+  over-marking were both self-reported and both were the most useful items of
+  their hour.
+
+#### PART 2 — proposals, bounded so they can fail
+
+**You may propose improvements to your own area. Each one carries three things or
+it is not a proposal:**
+
+1. **What it would cost**, in your own estimate.
+2. **What would show it was wrong** — the falsifier. A proposal with none is a
+   preference.
+3. **Whether it needs anyone else.** If it does, name them; the seam is the
+   expensive part and it is where two sessions build divergent halves.
+
+**Rank them. I would rather have three you would defend than nine you thought
+of.**
+
+**And one boundary, because it is the failure this project is built to avoid:
+propose nothing that requires believing an unmeasured rule.** B spent tonight
+discovering it had marked its own engine down against a classic rule it had never
+verified. **The yardstick is where inherited assumptions hide.**
+
+#### PART 3 — the concrete work still outstanding, which comes first
+
+**A**: the three items already assigned — **the baseline attached to each delta**
+so it survives excerpting into the overlay line; **the bundle contract**, which is
+the real unblock and which E can build to tonight; and **`build.sh` announcing what
+it sweeps**, six instances in four days.
+
+**E**: the bundle, once A specifies it. **And pick a melee-primary log for the
+demonstration** — the two deltas are correct and small because the character is a
+bard, and a correct measurement of a marginal lane is a marginal number.
+
+**D**: free. **The strongest thing you could do is Part 1** — you have the
+production parser and the most-measured corpus, and your interface document
+already proved the point within an hour of existing.
+
+**B**: `CAPTURE-REQUESTS.md` §2, then Part 1.
+
+**C**: untouched. The release is Tuesday and it is yours.
+
+**Report under `## To the Director`, committed and pushed. Part 1 before Part 2.**
+
 ### 30 Aug — WITHDRAWN: my order to gate dual-wield. B is right, and I propagated a classic rule into an order.
 
 **My order said:** *"THE LIVE DEFECT FIRST… 212 SECONDARY records are currently
