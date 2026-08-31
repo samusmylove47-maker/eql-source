@@ -98,13 +98,63 @@ Measured, 31 August:
 | `new TextDecoder('utf-8', {fatal: true})` | **throws `TypeError`** |
 | `new TextDecoder('windows-1252')` | `"[Tue “”]"` — correct |
 
-So the host can **detect** and **recover**, and both are one line. The site will:
+**It is a detector with a matched pair, which is the property that makes it
+trustworthy rather than merely available.** D's framing, and it is better than
+calling it a fallback: `{fatal: true}` returns *both* of its answers — it throws
+on the bad input and passes the good one. Measured here, both directions:
 
-1. Decode with `new TextDecoder('utf-8', {fatal: true})`.
+| input | `{fatal: true}` |
+|---|---|
+| the cp1252 bytes | **throws `TypeError`** |
+| valid UTF-8 (`[Tue ok]`) | **passes** — the control |
+
+A detector only shown to fire is the fault that invalidated D's own
+self-containment auditor for a day, when it could not return YES for any page
+with a local stylesheet. This one is shown by a pair.
+
+The site will:
+
+1. Decode with `new TextDecoder('utf-8', {fatal: true})` — **as the first decode
+   of the raw bytes, before anything else touches them.**
 2. On `TypeError`, decode again with `new TextDecoder('windows-1252')`.
 3. **Report which path was taken** in the page's own output, because a log that
    needed the fallback is a fact about the reader's file that they are entitled
    to know, and because a silent recovery is how the original fault hid.
+4. **Count `U+FFFD` in the result and report that too, on both paths.**
+
+### The ordering in step 1 is load-bearing, and getting it wrong disables the detector silently
+
+**D flagged this and I measured it before writing it down.** The natural
+implementation — decode, then validate — does not work, and it fails in the
+direction that looks fine:
+
+```
+raw cp1252 bytes  --> TextDecoder('utf-8')            "[Tue ��]"   no throw
+                  --> re-encode, then {fatal: true}   PASSES
+                      ...while two U+FFFD remain in the data
+```
+
+Once a lossy decode has run, the replacement characters **are legitimate
+`U+FFFD`** and the byte stream really is valid UTF-8. `{fatal: true}` is then
+telling the truth about the wrong thing. **A correct detector, applied one step
+too late, stops detecting and reports success.**
+
+So: `{fatal: true}` sees the *bytes*, never a string that something else has
+already decoded. That is a constraint on the implementation, not a preference,
+and it is why step 1 says so explicitly.
+
+**Step 4 exists because neither decoder can catch everything.** If the log file
+already contains `U+FFFD` as legitimate encoded bytes — E measured six such in
+its own corpus, where a strict decode passes and a round-trip passes — then no
+decoder can distinguish that from clean input, because at the byte level it *is*
+clean input. Counting them and printing the count is the only honest instrument
+left, and it costs one line.
+
+**Exposure, measured by D and not by me, and the two halves do not imply each
+other.** D enumerated 279,172 key-field values across roughly 57.7 MB of the
+Lockouts corpus and found **zero** non-ASCII. So this may never fire on real
+logs. That is a fact about D's corpus; mine is that the host can detect and
+recover if it ever does. Neither result makes the other unnecessary.
 
 **E should assume nothing and check nothing about encoding.** If a `U+FFFD` ever
 reaches the engine it is my defect, not E's, and step 3 is what will make it
