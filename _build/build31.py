@@ -179,7 +179,7 @@ def resists_html():
     if not rs:
         return ''
     rows = "".join(f'''
-      <li class="ge-r">
+      <li class="ge-nr">
         <p class="ge-lane">{esc(r.get('spell', 'unnamed'))}<span class="ge-kind r">no denominator</span></p>
         <p class="ge-stat">Resisted {esc(r.get('resisted'))} times, landed
           {esc(r.get('landed'))} &mdash; <strong>no rate is claimed</strong>.</p>
@@ -223,6 +223,11 @@ CSS = '''<style>
 .ge-kind{border:1px solid var(--rule2);border-radius:3px;padding:1px 6px;
   font-size:10px;letter-spacing:.09em;color:var(--dim)}
 .ge-kind.r{border-color:var(--warn-t);color:var(--warn-t)}
+/* A no-rate row is styled like a refusal because it IS one, but it carries
+   its own class so scripts/check.py can count refusals without counting
+   these too. Sharing .ge-r made the check print "4 refusal(s)" against 3
+   in the data, and made its equal-weight comparison measure the wrong
+   quantity. */
 .ge-stat{margin:7px 0 0;color:var(--bone);font-size:15.5px;line-height:1.5}
 .ge-val{margin:9px 0 0;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap}
 .ge-val b{font-family:"IBM Plex Mono",monospace;font-size:21px;color:var(--ok-t)}
