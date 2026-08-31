@@ -89,6 +89,22 @@ LEDGERS = [
     # The faction tool is one card per zone we have faction data for. Same
     # shape: a ceiling over the cards forbids measuring an eleventh zone.
     ("tools/faction-impact.html", "", r'<article class="fzone">.*?</article>'),
+    # The gap engine page's deltas, refusals and resist rows. Their length is a
+    # function of WHAT THE ENGINE EMITS, not of how much anyone has written: on
+    # 31 August the fixture gained a `materiality` line per delta and a resist
+    # object carrying its own explanation of why no rate is claimed, and the
+    # page went 155 words over a ceiling set two hours earlier without a word
+    # being written.
+    #
+    # A ceiling over these rows would mean the page can never report a fourth
+    # finding, or a fifth refusal — and it would put budget pressure on the
+    # refusals specifically, which are the half a tool is tempted to drop
+    # anyway. That is the same edge the open-gates list has, and the same
+    # answer: more evidence is the goal.
+    #
+    # Everything around them stays governed — the three section ledes, the
+    # preview note, the measured tiles' prose and every heading.
+    ("tools/gap-engine.html", 'class="ge-list"', r'<li class="ge-[dr]">.*?</li>'),
     # The difficulty explainer's measured tables: one row per boss kill at one
     # tier. They grew from five rows to twelve the day we parsed two more
     # bosses, and a ceiling over them means the page can never report a third.

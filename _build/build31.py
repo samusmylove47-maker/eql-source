@@ -118,15 +118,28 @@ def esc(s):
 # This is the same fault as a share card asserting a figure the body hedges,
 # which this repository already gates against. I did not connect them.
 def baseline_phrase(d):
-    """"46% of your measured 214.6 DPS" — the comparison, never a bare number."""
+    """"82% of your measured 105.2 DPS" — the comparison, never a bare number.
+
+    THE SHARE IS THE ENGINE'S, NOT MINE. An earlier version of this function
+    computed `value / measured.dps` here. E now emits `share_of_observed_dps`
+    per delta, so computing it again would be two implementations of one
+    quantity that can disagree — the exact duplication this repository spends
+    its time removing, and the reason `zones-index.json` holds the revamp date
+    instead of two generators holding it.
+
+    The fallback computes it only when the engine did not supply it, and says
+    plainly when there is no baseline at all rather than printing the delta as
+    though it stood by itself.
+    """
     base = M.get('dps')
-    try:
-        pct = round(100 * float(d['value']) / float(base))
-    except (TypeError, ValueError, ZeroDivisionError):
-        # No baseline to compare against is a fact worth printing, not a reason
-        # to print the delta alone as though it stood by itself.
-        return 'no measured baseline to compare against'
-    return f"{pct}% of your measured {base} DPS ({M.get('dps_window', 'window not stated')})"
+    share = d.get('share_of_observed_dps')
+    if share is None:
+        try:
+            share = float(d['value']) / float(base)
+        except (TypeError, ValueError, ZeroDivisionError):
+            return 'no measured baseline to compare against'
+    return (f"{round(float(share) * 100)}% of your measured {base} DPS "
+            f"({M.get('dps_window', 'window not stated')})")
 
 
 def deltas_html():
@@ -141,10 +154,43 @@ def deltas_html():
         <p class="ge-lane">{esc(d['lane'])}<span class="ge-kind">{esc(d.get('kind', ''))}</span></p>
         <p class="ge-stat">{esc(d['statement'])}</p>
         <p class="ge-val"><b>+{esc(d['value'])}</b><span>{esc(baseline_phrase(d))}</span></p>
+        {f'<p class="ge-mat">{esc(d["materiality"])}</p>' if d.get('materiality') else ''}
         {f'<p class="ge-req">{bits}</p>' if bits else ''}
         <p class="ge-fals"><em>What would show this wrong:</em> {esc(d.get('falsifier', 'not recorded'))}</p>
       </li>''')
     return "".join(out)
+
+
+# A REFUSAL LIVING INSIDE `measured`, AND IT IS THE SHARPEST THING ON THE PAGE.
+#
+# E's resist entries carry `rate: null` with a note saying the denominator is
+# unknown and NO RATE IS CLAIMED. That is the refusals discipline applied inside
+# the measured register rather than in the refusals list — a count is published,
+# the rate it obviously implies is not, and the reason is given in the same
+# object.
+#
+# The temptation this removes is exact and this site has fallen for its cousin:
+# "resisted 2 times" invites a page to print a resist rate, because a rate is
+# what a reader wants. Without landings there is no denominator, and a rate
+# computed from a numerator alone is invented. Rendering the null AS a null,
+# with its note, is the whole point of carrying the field.
+def resists_html():
+    rs = M.get('resists') or []
+    if not rs:
+        return ''
+    rows = "".join(f'''
+      <li class="ge-r">
+        <p class="ge-lane">{esc(r.get('spell', 'unnamed'))}<span class="ge-kind r">no denominator</span></p>
+        <p class="ge-stat">Resisted {esc(r.get('resisted'))} times, landed
+          {esc(r.get('landed'))} &mdash; <strong>no rate is claimed</strong>.</p>
+        <p class="ge-fals"><em>Why:</em> {esc(r.get('note', 'not recorded'))}</p>
+      </li>''' for r in rs)
+    return f'''
+    <h3 class="ge-sub">Counted, but not turned into a rate</h3>
+    <p class="lede">A count with no denominator is not a rate, and the engine says so in
+      the data rather than leaving a page to work it out.</p>
+    <ul class="ge-list">{rows}
+    </ul>'''
 
 
 def refusals_html():
@@ -182,6 +228,11 @@ CSS = '''<style>
 .ge-val b{font-family:"IBM Plex Mono",monospace;font-size:21px;color:var(--ok-t)}
 .ge-val span{font-size:12.5px;color:var(--faint)}
 .ge-req,.ge-fals{margin:8px 0 0;font-size:13px;line-height:1.55;color:var(--dim)}
+.ge-mat{margin:7px 0 0;font-size:12.5px;line-height:1.5;color:var(--faint);
+  font-style:normal}
+.ge-sub{font-family:"Saira Condensed",sans-serif;font-size:clamp(18px,2.2vw,21px);
+  font-weight:600;text-transform:uppercase;letter-spacing:.04em;color:var(--bone);
+  margin:var(--s-6) 0 4px}
 .ge-req{font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--faint)}
 .ge-fals em{font-style:normal;color:var(--faint)}
 .ge-meas{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,190px),1fr));
@@ -242,20 +293,24 @@ page = head(
       <p class="lede" style="margin:0">A page that mixes them invites you to trust the weaker
         one.</p></div></div>
 
-    <p class="lede"><strong>Measured</strong> comes out of the log, computed in your browser and
-      never sent anywhere. A DPS figure always carries the window it was measured over: four
-      shipped meters use four denominators, and the spread between them is more than double.</p>
+    <p class="lede"><strong>Measured</strong> comes out of the log, computed in your browser.
+      A DPS figure always carries the window it was measured over: four shipped meters use four
+      denominators, and the spread is more than double.</p>
 
     <div class="ge-meas">
       <div><b>{esc(M['dps'])}</b><span>DPS &middot; {esc(M['dps_window'])}</span>
         <em>{esc(M['dps_window_note'])}</em></div>
-      <div><b>{esc(round(M['crit_rate'] * 100, 1))}%</b><span>Crit rate</span>
-        <em>Counted from the log&rsquo;s own crit lines.</em></div>
-      <div><b>{esc(M['engaged_seconds'])}s</b><span>Engaged</span>
-        <em>The union of intervals with no gap above 15 seconds.</em></div>
+      <div><b>{esc(round(M['crit_rate'] * 100, 2))}%</b><span>Crit rate</span>
+        <em>Counted from the log&rsquo;s own crit lines, over the hits above.</em></div>
+      <div><b>{esc(M['hits_counted'])}</b><span>Hits counted</span>
+        <em>Across {esc(M['engagements'])} engagements.
+          {esc(M['killing_blows_excluded_from_rates'])} killing blows are excluded from the
+          rates: a killing blow is truncated by the target dying.</em></div>
       <div><b>{esc(M['stance_inferred'])}</b><span>Stance &middot; inferred</span>
         <em>{esc(M['stance_evidence'])}</em></div>
     </div>
+
+    {resists_html()}
   </section>
 
   <section class="band">
@@ -286,8 +341,8 @@ page = head(
 
   <section class="band">
     <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it saw, and what it assumed</h2></div></div>
-    <p class="lede"><strong>Observed:</strong> {esc(", ".join(COV['inputs_observed']))}.</p>
-    <p class="lede"><strong>Assumed, and therefore a source of error:</strong>
+    <p class="lede"><strong>Observed:</strong> {esc(", ".join(COV['inputs_observed']))}.
+      <br><strong>Assumed, and therefore a source of error:</strong>
       {esc(", ".join(COV['inputs_assumed']))}.</p>
     <div class="note sig"><strong>Where it stops.</strong> {esc(COV['note'])}</div>
   </section>
