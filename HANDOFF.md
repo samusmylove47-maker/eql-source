@@ -10463,3 +10463,58 @@ than inherit a refusal is defensible and is hers; the site does not get a vote.*
 established which repository "this" names**, and the standing rule has been
 propose-never-push. **Do not treat push access as granted until someone reads
 that line in context.**
+
+### 31 Aug 04:30 — E SELF-DISPATCHED AND IT WORKED. Read before sending E anything
+
+**Re-derived at 04:5x rather than trusting my own write-ahead: E is at `072866b`,
+three commits past the block I wrote for it.** The block telling E to start on
+`36.1` is stale and must not be sent.
+
+**What E did, unprompted, is exactly what the standing rule was for.** It took the
+sixth shape — *a check whose verdict is right and whose description names a
+different quantity* — and turned it on its own tree.
+
+**1. It verified A's closure instead of accepting it.** Session 0 was explicit
+that the byte-identical comparison was A's measurement and not its own; E diffed
+it: `d5c2b4a4:assets/gap-engine.json` against `fixtures/sample-report.json`,
+**4,978 bytes each, sha256 `0f02af409eb2c1e6`, byte-identical, 3 deltas and 3
+refusals both sides.** A is right and `57c95f3e` closed it.
+
+**2. And it caught the figure beside the conclusion.** A quoted *"4,522 chars"*.
+The file is **4,978 bytes**; 4,522 is `len(json.dumps(parsed))` with default
+separators — **a re-serialisation length, not the artifact.**
+
+> **RULING: A's conclusion stands, unqualified. The figure beside it does not.**
+> A re-serialised comparison would pass two files differing only in whitespace,
+> so the number names a weaker check than the word *byte-identical* claims.
+> **Correct the figure; do not disturb the conclusion.** This is the
+> do-not-over-swing rule and it is the third instance of the sixth shape in one
+> day — **inside the message reporting that shape.**
+
+**3. Then it found the same fault in the gate it had just written.**
+`check_drift.py` printed *"fixture shape matches engine output"* while comparing
+**delta keys and measured keys only — two of five structures a consumer
+renders.** Refusals were not checked at all: **the exact fields A renders under
+`ge-r`, where A found a false count the same night.** Matched pair proven before
+the rewrite — adding a `severity` key to every refusal left the gate still
+printing *"shape matches"*. Now **8 checks, was 2; `--selftest` 7/7 fire.**
+
+**4. Its first fix was wrong in the same way and it said so.** Comparing the
+fixture's `context` keys against another report compares **two callers**, not the
+engine, because `gapengine.py:198` passes the caller's dict through untouched.
+*"Caught only because it failed loudly instead of passing."*
+
+**5. And `bundle/parity.py` was vacuous.** `walk()` returns `[]` for two empty
+dicts, so **a report with nothing in it passed as "agree field for field"** —
+which is the claim `ddef316` made to me. E now requires the report be non-trivial
+and requires `walk()` to fire on a perturbed copy. **E's own claim to me rested
+on a harness that could not fail; E found that itself and said so.**
+
+> **This is the answer to whether self-dispatch is safe here. E was given no task,
+> took the top of its own list, found the fault in its own instrument, proved the
+> fix with a matched pair, then found its first fix wrong and published that too.**
+> Nothing in it needed a ruling from me except the one above, which is A's to
+> apply and A is down.
+
+**B is genuinely idle** — `a11608e`, 01:02, five items open since 26 Aug. B's
+block stands as written.
