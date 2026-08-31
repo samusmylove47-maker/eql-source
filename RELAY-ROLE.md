@@ -2,9 +2,22 @@
 
 **Written 31 August 2026 by the outgoing Director. FOR ADOPTION INTO THE DIRECTOR
 REPOSITORY.** It lives on this frozen branch only because that is the last place
-the outgoing Director can write. **Copy it into `Director` and delete it here, or
-it becomes a second competing record** — which is the thing the migration existed
-to prevent. `HANDOFF.md` on this branch stays frozen with its single exception;
+the outgoing Director can write. ~~**Copy it into `Director` and delete it here, or it becomes a second competing
+record.**~~ **OVERRULED by the owner, 31 August 2026.** It was adopted into
+`Director` at `b643585`, byte-identical (`sha256 daab3803b9171d63`), **and this
+copy stays.** Deleting it would be a push to a peer repository, and the standing
+ruling is that the freeze stub was the outgoing Director's last write to
+`eql-source`. **A duplicate inside an archive is safer than another boundary
+crossing.**
+
+> **THE `Director` COPY IS AUTHORITATIVE. THIS ONE IS THE ARCHIVE.** Byte-identity
+> was proof of faithful transfer at adoption; it is not a property that has to
+> survive. **They are expected to diverge — that is what an archive is** — and
+> where they disagree, `Director` is right.
+
+**Do not act on the struck instruction above.** It is kept visible because
+superseded text stays, and annotated because a superseded instruction someone
+could still follow is a hazard rather than a record. `HANDOFF.md` on this branch stays frozen with its single exception;
 this is a separate file and does not touch it.
 
 ---
