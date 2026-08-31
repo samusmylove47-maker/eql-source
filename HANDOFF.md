@@ -10072,3 +10072,106 @@ commit** — a reformat deleted evidence on 17 August and a green build did not
 notice. `scripts/check.py` validates that pages are well-formed, and `gate.py`
 validates that figures agree with their data. Neither notices a sentence
 describing a thing that no longer exists.
+
+### 31 Aug — PR #155: MERGE IT, after A fixes two sentences in §4. And a fifth failure shape, which is new
+
+#### The merge ruling, and it is narrow
+
+**I read `docs/BUNDLE-CONTRACT.md` §4 on `claude/bundle-contract` at `d1c19dfc`
+rather than ruling from A's report.**
+
+**The specification is right and stands unchanged:**
+
+1. `TextDecoder('utf-8', {fatal: true})` as the first decode of the raw bytes
+2. on `TypeError`, `TextDecoder('windows-1252')`
+3. report which path was taken
+
+**That is D's `decode()` line for line, including `S.decoder`.** Which is the
+point I ruled on at `8179f2fa` and A had not received when it wrote §4.
+
+**Two sentences in §4 are false and they are the ones a future session will act
+on:**
+
+> *"There is no windows-1252 fallback — anywhere. D measured it across the whole
+> Lockouts repository."*
+
+D measured `.js` and said `.js`. **The document as written attributes to D a
+claim D did not make, in a repository D owns, and it is the reference E and
+everyone else now builds against.** The concrete cost is already demonstrated:
+one session read that scope and rebuilt an existing decoder. Left in the tree it
+invites the second.
+
+**A: replace those two sentences with the scope D actually stated, and cite
+`src/app.template.html:494–500` as prior art. Everything else in §4 stays.** It
+is not a block on the substance and I do not want it treated as one — **the
+design is correct, the PR is otherwise ready, and the owner should merge it once
+those sentences are right.**
+
+#### What A added that D does not have, because the correction must not swallow it
+
+**A ran the matched pair and D's file does not contain one.** Bad input throws,
+**valid UTF-8 passes — the control.** D's implementation comment carries the
+asymmetry argument (`windows-1252` cannot encode U+FFFD) but not a demonstration
+that the detector can return both answers. **A supplied the property that makes
+it trustworthy rather than merely available**, which is the standard this project
+set after D's own auditor could not return YES.
+
+**And §4's decode-then-validate finding is A's alone and is new:** once a lossy
+decode has run, the replacement characters *are* legitimate UTF-8, so re-encoding
+and re-validating **passes**. That is a real trap, it is not in D's tree, and it
+is the strongest thing in the document. **The duplicate implementation is the
+problem. A's evidence is not — it is additive and it stays.**
+
+#### A's `check.py` NameError: verified independently on `origin/main`
+
+Not taken on report.
+
+- `check.py:151` calls `page_key(p)` bare.
+- check.py imports `json, os, re, sys, glob, subprocess`. **It never defines or
+  imports `page_key`.**
+- `page_key` exists only at `gate.py:141`.
+- `check.py:547` calls the same name behind `if 'page_key' in dir()` — **`dir()`
+  never contains it, so that guard is permanently false** and that site silently
+  degrades to the raw path.
+
+**All of it holds, including A's read that somebody met this once, guarded one
+site and left the other.**
+
+#### THE FIFTH SHAPE, and it is genuinely not one of the four
+
+The four forms all describe an instrument that gives the wrong verdict or none.
+**This one gives the right verdict and destroys its own message.**
+
+> **The check fires correctly, raises before it can say why, and exits non-zero
+> with a traceback pointing at the checker instead of the fault.**
+
+**And the property that makes it worse than a silent failure: the cost lands on
+a different party than the one who owns the bug.** A: *"the session that tripped
+it would have debugged my repository instead of their own missing file."* It was
+waiting for whichever of B, C, D or E shipped a vendored library first.
+
+**Test to add to the collection:** *when this check fails, does its message
+survive the failure?* A guard whose diagnostic is computed by code that only runs
+on the failing path has never been executed. **The failing path is the one nobody
+runs, which is why the message on it is the least-tested code in any checker.**
+
+#### Two more of A's, both self-reported
+
+**The egress rule covered 716 pages and neither application** — `pages` excludes
+`public/app/`, so §3's promise to E that no fetch is checkable *"was a promise,
+not a gate, until tonight."* **The 30 August fonts repair rests on that rule**, so
+this widens a gate my own record leans on. Now 0 of 716 pages and 0 of 2 apps.
+
+**And A corrupted the Sky Ledger bundle writing the self-test for it**, caught
+only because the served hash is verified — a CLAUDE.md line that predates
+tonight, doing exactly the job it was written for. Constraint recorded where the
+next case gets added.
+
+#### One thing worth naming about how A worked
+
+A reported that the safety classifier was rate-limited during its sweep, **and
+responded by verifying every load-bearing claim against the file before touching
+anything.** All four held. **Degraded tooling answered with more verification
+rather than more hedging is the right reflex**, and A asked for the method to be
+recorded rather than the result. That is the third session tonight to ask that
+its own contribution be described smaller or its method more visible.
