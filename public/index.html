@@ -148,10 +148,10 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
           </div>
         </div>
         <figure class="feattrailer">
-          <video src="assets/media/sky-ledger-trailer.42d7f115.mp4"
-                 poster="assets/media/sky-ledger-poster.af5c97c2.jpg"
-                 width="1600" height="900" autoplay muted loop playsinline
-                 preload="metadata" id="sltrailer"
+          <video data-src="assets/media/sky-ledger-trailer.42d7f115.mp4"
+                 data-poster="assets/media/sky-ledger-poster.af5c97c2.jpg"
+                 width="1600" height="900" muted loop playsinline
+                 preload="none" id="sltrailer"
                  aria-label="The Sky Ledger overlay running over the game: quests marked ready,
                              the panel narrowed to its compact width, and the transparency
                              slider dimming it against the scenery."></video>
@@ -172,21 +172,36 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
       </ul>
       <p class="featfoot">No install &middot; nothing uploaded &middot; build dad68d2b &middot; 178 KB</p>
       <script>
-      /* A loop that cannot be stopped is a nuisance, and one that starts
-         moving at a reader who asked for less motion is worse than a nuisance.
-         The video carries `autoplay` so it works with no script at all; this
-         only ever takes motion AWAY, never adds it. */
+      /* NOTHING IS FETCHED UNTIL THIS BAND IS ACTUALLY APPROACHED.
+         The trailer used to carry `autoplay`, which overrides preload and pulls
+         the whole file during first paint. Both trailers and their posters came
+         to 2.19 MB, roughly 80% of the page's load time, spent before a stranger
+         had seen anything - and this band is below the fold, so most of that was
+         for a picture nobody had scrolled to.
+         The src and the poster are both held in data- attributes and attached on
+         intersection. That costs the no-script reader the motion, which the
+         `autoplay` attribute used to give them; it is the deliberate trade, and
+         the still is still described by aria-label.
+         Reduced-motion and narrow screens load the poster and NOT the video, so
+         a tap is what spends the megabyte. This only ever takes motion away. */
       (function(){
         var v=document.getElementById('sltrailer'), b=document.getElementById('slpause');
         if(!v||!b) return;
         var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function sync(){ b.textContent=v.paused?'Play':'Pause'; }
-        /* Autoplay costs a megabyte of someone's mobile data for a loop they
-           did not ask for. The poster carries the same picture at 177 KB, so
-           a narrow screen gets the still and a tap gets the motion. */
         var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
-        if(quiet||small){ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }
-        b.addEventListener('click',function(){ v.paused?v.play():v.pause(); sync(); });
+        function sync(){ b.textContent=v.paused?'Play':'Pause'; }
+        function attach(motion){
+          if(!v.hasAttribute('poster')&&v.dataset.poster) v.setAttribute('poster',v.dataset.poster);
+          if(!v.hasAttribute('src')&&v.dataset.src){ v.setAttribute('src',v.dataset.src); v.load(); }
+          if(motion&&!quiet&&!small){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+        }
+        if(window.IntersectionObserver){
+          var io=new IntersectionObserver(function(es){
+            for(var i=0;i<es.length;i++) if(es[i].isIntersecting){ attach(true); io.disconnect(); return; }
+          },{rootMargin:'300px'});
+          io.observe(v);
+        } else { attach(true); }
+        b.addEventListener('click',function(){ attach(false); v.paused?v.play():v.pause(); sync(); });
         v.addEventListener('play',sync); v.addEventListener('pause',sync);
         sync();
       })();
@@ -230,10 +245,10 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
     <div class="featwrap">
       <div class="featgrid">
         <figure class="feattrailer">
-          <video src="assets/media/auras-trailer.5fc3fbbc.mp4"
-                 poster="assets/media/auras-poster.5c861299.jpg"
-                 width="1600" height="900" autoplay muted loop playsinline
-                 preload="metadata" id="autrailer"
+          <video data-src="assets/media/auras-trailer.5fc3fbbc.mp4"
+                 data-poster="assets/media/auras-poster.5c861299.jpg"
+                 width="1600" height="900" muted loop playsinline
+                 preload="none" id="autrailer"
                  aria-label="A Quick Buff cast landing on screen, and the overlay filling with
                              fourteen buff icons across the top of the game, each counting
                              down its own remaining time."></video>
@@ -264,18 +279,28 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         </div>
       </div>
       <script>
-      /* Identical to the Sky Ledger band's, on the same reasoning: the video
-         carries `autoplay` so it works with no script at all, and this only
-         ever takes motion AWAY. Below 700px and under prefers-reduced-motion
-         the poster is what shows, and a tap gets the motion. */
+      /* Identical to the Sky Ledger band's, on the same reasoning - see the long
+         note there. Nothing is fetched until the band is approached; below 700px
+         and under prefers-reduced-motion the poster is what shows and a tap gets
+         the motion. */
       (function(){
         var v=document.getElementById('autrailer'), b=document.getElementById('aupause');
         if(!v||!b) return;
         var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function sync(){ b.textContent=v.paused?'Play':'Pause'; }
         var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
-        if(quiet||small){ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }
-        b.addEventListener('click',function(){ v.paused?v.play():v.pause(); sync(); });
+        function sync(){ b.textContent=v.paused?'Play':'Pause'; }
+        function attach(motion){
+          if(!v.hasAttribute('poster')&&v.dataset.poster) v.setAttribute('poster',v.dataset.poster);
+          if(!v.hasAttribute('src')&&v.dataset.src){ v.setAttribute('src',v.dataset.src); v.load(); }
+          if(motion&&!quiet&&!small){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); }
+        }
+        if(window.IntersectionObserver){
+          var io=new IntersectionObserver(function(es){
+            for(var i=0;i<es.length;i++) if(es[i].isIntersecting){ attach(true); io.disconnect(); return; }
+          },{rootMargin:'300px'});
+          io.observe(v);
+        } else { attach(true); }
+        b.addEventListener('click',function(){ attach(false); v.paused?v.play():v.pause(); sync(); });
         v.addEventListener('play',sync); v.addEventListener('pause',sync);
         sync();
       })();
