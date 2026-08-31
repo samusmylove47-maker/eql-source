@@ -501,6 +501,25 @@ recent = "\n".join(
 # every reader and pushed the h1 it was explaining down to 6,301 — undoing a
 # fifth of the fix it documented. Caught by measuring the output rather than by
 # reading the diff.
+# UTILITY BEFORE METHODOLOGY, in the hero lede.
+#
+# The lede opened on three sentences about sourcing standards and named nothing a
+# reader could actually do, so a stranger's first ten seconds went on why to
+# trust us rather than on what is here. An external audit read the site as a
+# personal diary rather than a reference, and this paragraph is the first thing
+# it would have read.
+#
+# The sourcing sentence STAYS - it is the reason the site exists and it is what
+# the tier badges are for - but it goes second. The positioning line about
+# inherited classic text moved down to "Why you can check us", the band that
+# exists to argue methodology. MOVED, NOT DELETED: it is a claim about the
+# state of this community's references, and dropping it to shorten a lede would
+# be tidying a finding away.
+#
+# The rationale lives here, in Python, and not in an HTML comment beside the
+# markup. A previous note of mine was written into the f-string and shipped
+# 1,269 bytes to every reader, which undid a fifth of the byte-offset fix it was
+# describing.
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
 <main>
@@ -519,9 +538,9 @@ home = head("Accurate, sourced and kept current",
          headline land. -->
     <p class="eyebrow">EverQuest Legends</p>
     <h1 class="display">Norrath,<br><em>measured.</em></h1>
-    <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
-      a Legends-shaped hole. We go in with the log running and write down what actually happened.
-      Every figure names its source and the day it was read, and every gap says so out loud.</p>
+    <p class="hero-lede">Find what a named mob drops, what to wear at 50, and which Plane of Sky
+      turn-ins you can hand in right now. {wordnum(len(TOOLS)).capitalize()} trackers, no account, no server holding your
+      data. Every figure names its source and the day it was read, and every gap says so out loud.</p>
     <form class="hero-find" method="get" action="tools/index-search.html" role="search">
       <label for="hq">Search {NITEMS} items and {NNAMED} named mobs</label>
       <input id="hq" name="q" type="search" autocomplete="off"
@@ -602,7 +621,8 @@ home = head("Accurate, sourced and kept current",
 
       <aside class="standard contour" style="--c:var(--instr);--cx:92%;--cy:112%">
         <h3 class="stdh">Why you can check us</h3>
-        <p class="stdp">Every claim carries the weight of its source. Tiers 1 and 2 print plain;
+        <p class="stdp">Most of what this community reads about Legends is classic EverQuest text
+          in a Legends-shaped hole. Every claim here carries the weight of its source. Tiers 1 and 2 print plain;
           anything weaker carries its badge wherever it appears
           &mdash; <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
         <ol class="stdscale">
