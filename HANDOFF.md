@@ -1,3 +1,31 @@
+# THE RECORD MOVED — 31 August 2026
+
+> ## This file is FROZEN. Nothing is written here any more.
+>
+> **The Director's record is now `HANDOFF.md` on `main` of
+> `https://github.com/samusmylove47-maker/Director`.**
+>
+> ```bash
+> git clone https://github.com/samusmylove47-maker/Director /tmp/director
+> git -C /tmp/director show origin/main:HANDOFF.md
+> ```
+>
+> **Migrated from this branch at commit `0d094560138f1f5a3b9e2adc6e38f964d93724ff`**
+> (this file's blob `ba190522`), whole and byte-identical. The Director post moved
+> from a cloud session to a local one on 31 August 2026; a local Director can
+> message sessions directly, which is why it moved.
+>
+> **This branch stays alive on purpose.** Every session prompt, every hourly
+> Routine and §7 of `DIRECTOR-ONBOARDING.md` point here. None of those pointers
+> is dead — each is now one hop short, and this is the hop. **A dead pointer that
+> still looks live is worse than none, and that has cost this project twice.**
+>
+> **Everything below is the record as it stood at migration, kept so that
+> existing references into it still resolve.** It will not be updated. If it
+> disagrees with the Director repository, the Director repository is right.
+
+---
+
 # Handoff — 18 August 2026
 
 ### 30 Aug — D found a third failure shape, and it indicts this repository hardest
