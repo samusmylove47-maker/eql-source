@@ -102,6 +102,33 @@ def esc(s):
     return (str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;'))
 
 
+# THE BASELINE TRAVELS WITH THE NUMBER, IN THE SAME SENTENCE.
+#
+# The first version of this page printed "+98.4" beside the words "against this
+# character's own measured baseline", with the baseline itself — 214.6 — about
+# two kilobytes higher up the document. That satisfies the letter of "a delta is
+# a difference" and misses the point, and the Director found it by applying a
+# test I had not: DOES THE CLAIM SURVIVE BEING EXCERPTED.
+#
+# It does not. The overlay teaser is a delta with no page around it. "+98.4"
+# travelling alone is a number a reader will read as a score, which is the exact
+# thing E's schema removes the field for. "+98.4 — 46% of your measured 214.6"
+# cannot be misread and cannot be excerpted into meaninglessness.
+#
+# This is the same fault as a share card asserting a figure the body hedges,
+# which this repository already gates against. I did not connect them.
+def baseline_phrase(d):
+    """"46% of your measured 214.6 DPS" — the comparison, never a bare number."""
+    base = M.get('dps')
+    try:
+        pct = round(100 * float(d['value']) / float(base))
+    except (TypeError, ValueError, ZeroDivisionError):
+        # No baseline to compare against is a fact worth printing, not a reason
+        # to print the delta alone as though it stood by itself.
+        return 'no measured baseline to compare against'
+    return f"{pct}% of your measured {base} DPS ({M.get('dps_window', 'window not stated')})"
+
+
 def deltas_html():
     out = []
     for d in D:
@@ -113,7 +140,7 @@ def deltas_html():
       <li class="ge-d">
         <p class="ge-lane">{esc(d['lane'])}<span class="ge-kind">{esc(d.get('kind', ''))}</span></p>
         <p class="ge-stat">{esc(d['statement'])}</p>
-        <p class="ge-val"><b>+{esc(d['value'])}</b><span>against this character&rsquo;s own measured baseline</span></p>
+        <p class="ge-val"><b>+{esc(d['value'])}</b><span>{esc(baseline_phrase(d))}</span></p>
         {f'<p class="ge-req">{bits}</p>' if bits else ''}
         <p class="ge-fals"><em>What would show this wrong:</em> {esc(d.get('falsifier', 'not recorded'))}</p>
       </li>''')

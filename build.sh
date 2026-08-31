@@ -84,4 +84,42 @@ python3 _build/build27.py
 python3 _build/build23.py
 python3 _build/sitemap.py
 python3 scripts/stamp.py
+# WHAT THIS BUILD SWEPT IN, SAID LAST, WHERE A PERSON ACTUALLY LOOKS.
+#
+# Six times in four days a ./build.sh run for an unrelated reason has copied a
+# newer third-party bundle into public/app/ and swept the old one, putting an
+# app republish into a branch that had nothing to do with it. Twice it reached a
+# pull request: once naming the wrong hash in its own title, once carrying 1,428
+# lines of sitemap churn into a docs-only change.
+#
+# Every one was caught by diffing against main before pushing, and none by
+# noticing at the time - because the copy announces itself two hundred lines up,
+# in the middle of fifty generators, while you are watching for something else.
+#
+# This is not a new safeguard. It is the existing habit made cheaper: the diff
+# is still the thing that catches it, and this only makes the thing worth
+# diffing visible without asking for it. On this repository every release of a
+# sibling tool needs a commit here, so any build is a publish decision.
+python3 - <<'SWEEP'
+import subprocess, sys
+try:
+    out = subprocess.run(['git', 'status', '--porcelain', '--',
+                          'public/app', 'assets/lockouts.json',
+                          'assets/sky-ledger.json', 'assets/gap-engine-app.json'],
+                         capture_output=True, text=True, timeout=20).stdout.strip()
+except Exception:
+    sys.exit(0)                      # not a git tree, or git absent: say nothing
+if not out:
+    sys.exit(0)
+lines = [l for l in out.splitlines() if l.strip()]
+print()
+print('  ' + '=' * 68)
+print('  THIS BUILD CHANGED A SERVED APPLICATION. That is a publish decision.')
+print('  ' + '=' * 68)
+for l in lines:
+    print('   ', l)
+print()
+print('  If you are on a branch about something else, these do not belong in it.')
+print('  Check before you commit:  git diff --stat origin/main -- public/app assets')
+SWEEP
 echo "Rebuilt. Open a pull request; merging to main is what publishes."
