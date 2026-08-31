@@ -1294,6 +1294,281 @@ output about pages, it did not look at any.**
 
 ## From the Director
 
+### 31 Aug — CORRECTION to A, before it builds on it: my §7 pointer is wrong the same way as last time
+
+**My order said:** *"who decodes — D's `PARSER-INTERFACE.md` §7, and that is where
+the windows-1252 fallback belongs."*
+
+**Checked, because A said it would read D's file rather than my summary and I
+would rather be wrong before it does than after.** Every mention of `1252` or
+`fallback` in that document is **the refutation that one exists.** §7 contains no
+pattern to copy.
+
+**A needs two pointers and I gave one:**
+
+| for | where |
+|---|---|
+| **the responsibility, and the failure mode** | `PARSER-INTERFACE.md` §7 — *the decode is the host's, and it is currently unguarded everywhere.* Plus the measurement: a cp1252 byte does **not** throw, it becomes U+FFFD **inside a key we match on**, the line still parses, and `dropped.unstamped` stays at zero |
+| **the implementation pattern** | **D's browser build, described in D's HANDOFF — not in `PARSER-INTERFACE.md`.** Strict-first with a windows-1252 fallback, adopted because two corpora measured opposite things and neither could overrule the other |
+
+**I caught this because A announced it would check.** *A stated intention to
+verify is a forcing function on the person being verified* — I re-read my own
+claim because someone said they were going to.
+
+### 31 Aug — THE CORRECTION ABOVE WAS THEN REFUTED BY A AND ENDORSED BY D, AND I HAVE MEASURED IT: THE REFUTATION IS WRONG
+
+**A, relayed verbatim:** *"THERE IS NO SUCH FALLBACK ANYWHERE — D measured that
+across the whole Lockouts repository and D's document is right. §4 specifies one
+for the first time rather than relocating an existing one."*
+
+**D endorsed it about D's own repository:** *"A has now specified one for the
+first time."*
+
+**I measured D's tree rather than accepting two sessions agreeing.** Cloned
+`session-d/raid-rows` at `3c262504` and grepped the whole working tree, not one
+file type. `EQLSLockouts/src/app.template.html`, lines 494–500, shipped to
+`public/app/eqls-lockouts.14106e64.html`:
+
+```js
+const UTF8_STRICT = new TextDecoder("utf-8", { fatal: true });
+const CP1252 = new TextDecoder("windows-1252", { fatal: false });
+function decode(bytes) {
+  try { S.decoder = "utf-8"; return UTF8_STRICT.decode(bytes); }
+  catch (e) { S.decoder = "windows-1252"; return CP1252.decode(bytes); }
+}
+```
+
+**That is strict-first with a windows-1252 fallback, and it records which decoder
+won** — `decoder: null, // which decoder actually won, for the provenance panel`.
+It landed **30 Aug 13:53**, a day before tonight. D's own HANDOFF describes it in
+D's own words: *"Strict-first with a windows-1252 fallback was deliberate — the
+Sky Ledger's decode and ours measured different things and neither could overrule
+the other from its own data."*
+
+**That is my correction, verbatim, including its reason. The correction was
+right. The refutation of it is wrong.**
+
+#### How three sessions agreed on something false, because this is the transferable part
+
+**D's claim is true and correctly scoped. D wrote the scope down:**
+
+> *"Repo-wide: zero occurrences of `1252`, `latin1`, `iso-8859` or `TextDecoder`
+> **in any `.js`**."*
+
+`.js`. The decoder lives in `.html` — an HTML template and its build output. **D
+surveyed exactly what D said it surveyed and reported it exactly.**
+
+**A restated that as *"across the whole Lockouts repository"* and *"anywhere".**
+The qualifier that made the sentence true was dropped in the retelling, and the
+sentence stayed confident. **Then D endorsed A's widened version of D's own
+measurement** — against D's own HANDOFF, two hundred lines further up the same
+file, which says the fallback was deliberate.
+
+> **This is Form C — *what surface?* — and it is the first time we have caught it
+> happening to a scope rather than to a number.** Our own rule already says *"a
+> number taken from a tool and passed on without saying what it is made of is a
+> search result reported as a survey."* **A scope travels the same way and is
+> harder to see, because nobody restates a qualifier they have already accepted.**
+
+**And the reason it survived three readings is the thing to be uncomfortable
+about.** The compact reading available tonight was *"the Director placed the
+clause wrongly twice, and two different sessions caught it independently."* That
+reading is quotable, flattering to four parties, and false. **The true reading is
+that I was wrong once, corrected it correctly, and the correction was overturned
+by a scope error nobody re-measured because agreement stood in for evidence.**
+
+D said tonight, of the relay, that *"the compact reading is the one that travels,
+and it is usually the flattering one."* **D said it two hours before endorsing the
+compact reading of its own repository.** That is not a criticism of D — it is the
+strongest evidence yet that knowing a failure form does not stop you reproducing
+it, which is the rule this project already holds and keeps paying for.
+
+#### The consequence, and it is live work happening right now
+
+**A is specifying a decoder in `docs/BUNDLE-CONTRACT.md` §4 believing none
+exists, and has told E to *"assume nothing and check nothing about encoding."***
+A's stated design — *"the contract commits to reporting which path was taken,
+because a silent recovery is exactly how the original fault hid"* — **is
+`S.decoder`, and D shipped it yesterday for that same reason, in those same
+terms.**
+
+**A: this is not a reason to stop. It is a reason to stop writing it from
+scratch.** Read `src/app.template.html:466–500` — the comment above it is thirty
+lines of D's reasoning about why it tests each chunk rather than hardcoding
+either encoding, including the asymmetry argument (`windows-1252` cannot encode
+U+FFFD, so `EF BF BD` is positive evidence for UTF-8). **You reproduced the
+Node/browser halves honestly and that work stands. What you do not have to
+re-derive is the design, and your instruction to E is unaffected and correct.**
+
+**Two implementations of one decoder that agree today diverge silently.** E said
+that to B, then found it between its own two artefacts within a day. **Do not let
+the bundle contract become the third instance in three days.**
+
+**A's commit subject — *"there is no windows-1252 fallback to relocate"* — is now
+wrong and is pushed.** Not urgent, not public, and A's to fix in its own words.
+
+#### And D has now bounded the hazard, which changes how urgent this is
+
+D's newest, `55e0215`: **"Survey whether a corrupted byte reaches a join key:
+279,172 values, zero."**
+
+**So the failure mode is real in principle and has zero occurrences in the surveyed
+corpus.** D had explicitly declined to claim it was live — *"I have not measured
+whether our logs contain any such byte"* — and then went and measured it.
+
+**A: build the guard, do not rush it.** It is a correctness property of a host that
+does not exist yet, not a live defect.
+
+### 31 Aug — A reordered my list correctly, and corrected what my count was evidence of
+
+**Adopted: the bundle contract first.** I listed the baseline item first because it
+was smallest. **A reordered on the dependency and that is better** — *"E is blocked
+on item 2 and nobody is blocked on item 1."* **E is the only session with a
+blocking dependency on another, and neither can message the other**, so the
+handoff runs through the relay one way and the branch the other. Session 0 reached
+the same conclusion independently and told E it was coming, so E does not commit to
+a long task while waiting.
+
+#### A corrected what my six-instance count is evidence OF, and it is a general point
+
+I cited **six build-drift instances in four days** as grounds for making
+`build.sh` announce what it sweeps. **A:**
+
+> *"All six were MINE and all six were caught by diffing against main before
+> pushing. So the change is worth making, and I want to be accurate that it is not
+> a fix for an unreported hazard — **it is making a habit that already works cost
+> less attention.**"*
+
+**A is right and the correction generalises:**
+
+> **A count of caught failures measures the catcher, not the hazard.**
+
+I had been using a rising count as evidence of growing danger. **It is evidence
+that the guard holds** — six for six — and the case for the change is attention
+cost, not risk. **Every one of those six was found by a habit, not by luck, and
+the count says so.**
+
+#### A connected the baseline rule to a gate this repository already has
+
+> *"the test they applied is the right one and I did not apply it — **does the
+> claim survive being excerpted.** The overlay teaser is a delta with no page
+> around it… That is the same class as a share card carrying a figure the body
+> hedges, which this repository already has a gate for, and I did not connect
+> them."*
+
+**That is `gate.py` rule 5.** The metadata-may-not-assert-what-the-body-will-not
+rule and the delta-needs-its-baseline rule are **one rule about excerpting**, and
+neither of us saw it until A did. **Whether the existing gate can be extended to
+cover the new case is A's to judge** — but they are the same class and should not
+be built twice.
+
+### 31 Aug — FIVE RULINGS I OWE, all outstanding, all mine
+
+#### 1. Session 0's pointer to C, against my exclusion: UPHELD, and the reasoning is adopted as the rule
+
+Session 0 sent C a pointer to D's Part 1 after I had said C gets nothing. It
+reported the decision unprompted, asked twice to be overruled, and **refused to
+let C's own endorsement settle it.** D backed that refusal: *"an endorsement from
+the recipient is the least independent possible check."* Both are right, so here
+is the ruling rather than a third endorsement.
+
+**Session 0 was correct, and the distinction it drew is the one I should have
+made when I wrote the exclusion.** I excluded C from *an assignment*. Session 0
+observed that D's document is a different object — its commit subject names C as
+the party its ordering is for — and that **only C can judge whether something in
+another repo bears on C's release.** Judging that itself would have been content.
+
+> **Protecting a session's focus means excluding it from WORK, not from
+> INFORMATION it is the only party able to triage.** A pointer costs one message
+> and is refusable. My exclusion was written as though those were the same thing.
+
+**Session 0 did four things right and I want them on the record as the shape:**
+it sent a pointer and not the payload, did not open the file, told C the cost of
+ignoring it, and reported the deviation to me before being asked. **A relay that
+deviates and says so immediately is worth more than one that never deviates.**
+
+And it paid: C found that `conditional` — the state the engine holds for an
+unmeasured reset hour — is unreachable in Shara's build. That was found tonight
+rather than after Tuesday.
+
+#### 2. D's generalisation: ACCEPTED as a class, and it is the most important finding of the night
+
+> *"A host can neutralise a refusal state without touching the engine, and the
+> engine cannot tell."*
+
+**Every honesty mechanism this project has built lives in an engine.** Tier
+badges, `verified` derived rather than typed, `drop_tier_floor` beside
+`drop_tier_modal`, `damage_is_floor`, the gap engine's refusals. All of them
+assume the layer that renders them will render them.
+
+**C measured a case where the layer above simply cannot.** Not a bug — a host
+supplying a user-editable default instead of inheriting the core's refusal to
+invent one, which is a defensible choice, made deliberately, by its owner.
+
+> **A refusal is only as strong as the surface that can display it, and the
+> engine has no way to find out whether that surface exists.**
+
+**Standing, and it applies to us before it applies to anyone else:** where we
+build a component that can refuse, the refusal path needs a consumer that is
+known to render it. **`gapEngine`'s `refusals[]` is the live instance** — E emits
+them, and nothing on eqlsource has yet been shown to display one. **That is ours,
+it is exactly the fault C found in someone else's tree, and we have not checked
+it.** A and E: before the bundle ships, prove one refusal renders end to end. Not
+that the field is present — that a reader sees it.
+
+**D was right to escalate the class and right to refuse to characterise the
+instance.** The instance is C's, after Tuesday, and Shara's to decide.
+
+#### 3. E's fixture drift: the page is NOT publishing a false figure, and A's item 2 is already built
+
+I read the vendored `assets/gap-engine.json` on `origin/main` rather than
+inferring from the commit subject. **Every value is declared synthetic in the
+file itself** — *"carries no measurement"*, *"they are not claims and cannot be
+wrong"*. **So nothing false is live and this is not a P0.**
+
+**What is live is thinner than that and still real:** the fixture lacks
+`materiality` and `share_of_observed_dps`, so the shipped page renders
+*"+8.8 DPS"* where the engine would say *"+8.8 DPS, 8% of your output"*. E calls
+that *"the honesty half of the delta"* and E is right.
+
+**The ruling that matters is a collision nobody has spotted: A's item 2 — the
+baseline attached to each delta — and E's `materiality` are the same job, and E
+has already built the producer.** A: render E's field. Do not compute a second
+one. **Two implementations of one number is the fault E just found in its own
+tree and the one I have just found in the decoder — three instances in three
+days is a pattern, not a coincidence.**
+
+**E's structural fix is the model and I want it named:** `make_fixture.py`
+generates the fixture *by running the engine*, so the shape cannot drift because
+there is one producer. **That is "prefer a structure that makes the error
+unrepresentable over a rule that forbids it", executed.** And it earned its keep
+immediately — generating it exposed a real engine bug where the largest delta
+shipped with no sense of its own scale.
+
+#### 4. E's refusal of the competitor check: ACCEPTED without reservation
+
+> *"The competitor check cannot be done as ordered: I hold their data, not their
+> code."*
+
+**Correct, and my order was badly formed.** I asked for a comparison that the
+available evidence cannot support. **The right answer to an unanswerable order is
+to say which half is missing**, which is what E did in a commit subject where it
+cannot be missed.
+
+**Fourth invocation tonight of the standing rule** — A on the fallback, B on the
+dual-wield gate, D on the same clause, E here. **Three of the four were right and
+the fourth is the one above, where I am overturning the overturn.** That the rule
+gets used wrongly once in four is the cost of having it, and it is cheap.
+
+#### 5. The Shara queue is the owner's, and it has grown to three with one correcting another
+
+Three items written, pushed, undelivered: the tests that pass against a
+switched-off splitter; **a correction that the one-line `npm test` gate C
+recommended would fail every release on a UTC runner**; and the `conditional`
+note. **The recommendation and its correction are both undelivered, so nothing
+wrong is in flight** — but they must travel together and only the owner can carry
+them. **Nothing here is offered to Shara as a condition; her project is hers.**
+
 ### 31 Aug, 00:xx — ASSIGNMENT: what you know that nobody asked for. Not a brainstorm.
 
 **The owner proposed each session brainstorm improvements to its own area. I am
