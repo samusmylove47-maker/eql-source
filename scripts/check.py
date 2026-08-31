@@ -142,6 +142,30 @@ for p in glob.glob("public/raids/*.html"):
 # The real invariant is CLAUDE.md's no-CDN rule: a page that loads a vendored
 # library must find it on disk. Where nothing loads it, there is nothing to
 # check and nothing to assert.
+# page_key IS gate.py's, AND THIS FILE CALLED IT WITHOUT HAVING IT.
+#
+# Line 151 below called `page_key(p)` bare. check.py imports json, os, re, sys,
+# glob and subprocess — and never defines or imports page_key, which exists only
+# at gate.py:157. So the one branch that reports a missing vendored script would
+# have raised `NameError` at module scope: no message, no accumulated failures
+# printed, just a traceback and exit 1. **The check would fire and report
+# nothing.** A session shipping a page that loads a vendored library would have
+# debugged check.py instead of their own missing file.
+#
+# It has never been taken because no page under public/ references
+# assets/vendor/ at all — `_vendor_refs` is 0 — which is exactly how a dead
+# branch survives review.
+#
+# Line 567 calls the same name behind `if 'page_key' in dir()`, which at module
+# scope is permanently false, so that site has silently been printing the raw
+# path all along. Somebody met this once, guarded one site and left the other.
+#
+# Imported from gate rather than redefined: two implementations of one string
+# transform is how the counts in this repository used to disagree. gate.py
+# imports only stdlib, so moving the path insert above the first use is safe.
+sys.path.insert(0, os.path.join(ROOT, "scripts"))
+from gate import page_key
+
 _vendor_refs = 0
 for p in pages:
     h = open(p, encoding="utf-8", errors="replace").read()
@@ -186,18 +210,38 @@ _EGRESS = [
     (re.compile(r'@import\s+(?:url\()?["\']?(?:https?:)?//', re.I), "a CSS @import from another origin"),
     (re.compile(r'url\(\s*["\']?(?:https?:)?//', re.I), "a CSS url() pointing at another origin"),
 ]
+# AND IT COVERS public/app/, WHICH `pages` DELIBERATELY EXCLUDES.
+#
+# `pages` drops public/app/ at line 47 because those files are applications
+# rather than pages and none of the chrome rules apply to them. That exclusion
+# is right for chrome and WRONG HERE, and I shipped it wrong: the two served
+# bundles are the artifacts most likely to fetch something, and they were the
+# only two files under public/ this rule could not see.
+#
+# Found 31 August by testing it rather than reading it — a stylesheet link
+# injected into the Sky Ledger bundle produced no finding at all. This is the
+# same shape as conformance.js skipping public/app/ for three shipped render
+# failures, and it is the fourth check this month whose documented exclusion
+# turned out to cover something it should not have.
+#
+# It matters now rather than in principle: docs/BUNDLE-CONTRACT.md tells Session
+# E that "no fetch, no XHR, no WebSocket" is checkable and that I will check it.
+# Until this loop included them, that sentence was a promise rather than a gate.
+_APPS = sorted(p.replace(os.sep, "/") for p in glob.glob("public/app/*.html"))
 _egress_hits = 0
-for p in pages:
+for p in pages + _APPS:
     h = open(p, encoding="utf-8", errors="replace").read()
     for rx, what in _EGRESS:
         m = rx.search(h)
         if m:
             _egress_hits += 1
-            fail(f"{p} loads {what}: {m.group(0)[:110]!r}. Published pages serve "
-                 f"their own assets — see public/assets/fonts/LICENSES.md")
+            fail(f"{p} loads {what}: {m.group(0)[:110]!r}. Published pages and "
+                 f"served applications carry their own assets — see "
+                 f"public/assets/fonts/LICENSES.md and docs/BUNDLE-CONTRACT.md")
             break
 if not _egress_hits:
-    print(f"  pages fetching another origin on load: 0 of {len(pages)}")
+    print(f"  fetching another origin on load: 0 of {len(pages)} page(s) "
+          f"and 0 of {len(_APPS)} served app(s)")
 
 # 4a3. EVERY SELF-HOSTED FACE MUST RESOLVE, FROM EVERY PAGE THAT LINKS IT.
 #
@@ -544,7 +588,11 @@ for _p in sorted(glob.glob("public/tools/*.html")):
         _used = set(_USE.findall(_stripped))
         _missing = sorted(_used - _declared)
         if _missing:
-            fail(f"{page_key(_p) if 'page_key' in dir() else _p}: script uses "
+            # Was `page_key(_p) if 'page_key' in dir() else _p`. At module scope
+            # dir() is the globals and page_key was never among them, so that
+            # guard was constant-false and this printed the raw path every time.
+            # It is imported properly now, so the label is the one intended.
+            fail(f"{page_key(_p)}: script uses "
                  f"{len(_missing)} undefined constant(s) — the tool will throw "
                  f"before it renders: {', '.join(_missing[:5])}")
 
