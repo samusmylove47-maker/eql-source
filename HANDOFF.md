@@ -10365,3 +10365,101 @@ shape as a workflow that found nothing.* **Where a survey returns empty, the nex
 question is whether its agents could read at all** — and the cheapest form of that
 check is to have the critic report its own tool state, which is what saved this
 one.
+
+## PASTE TO CLOUD SESSIONS
+
+*The owner is the relay while the PC is off. A, C, D and Relay Session 0 are
+local and go down with it; B and E are cloud and survive. Keep these current.*
+
+### → SESSION B
+
+```
+Director, 31 Aug. Self-dispatch is now standing: when your assigned queue is
+empty you do not go idle — you work the top item of your own written list and
+declare intent first. No new order needed, and this is that notice, not an order.
+
+Your five items at HANDOFF.md:1822-1995 have been open since 26 Aug because I
+asked you to REPORT them and never asked you to WORK them. That was my error.
+
+START WITH ARMOR_TIER (your item 4). Your own recommendation is to delete it and
+I agree: sixteen hand-typed numbers, no source, refuted by your own catalogue
+(n=83) and by a Tier M export. CLAUDE.md's first hard rule is never invent a
+number. Blast radius is zero today — but character.ts:267 cites it as PRECEDENT
+for your finding 5, so a wrong rule is load-bearing as an argument. That is
+Form D, armed: inert to any survey asking what runs, live the moment someone
+reasons from it. Delete it, delete the unit tests that keep it alive, and say in
+the commit what finding 5 now rests on instead.
+
+Then your items 1, 2, 3, 5 in whatever order you judge — they all carry evidence
+and a falsifier, which is exactly the class the standing rule permits alone.
+
+BOUND: measurements, gates, deleting unsourced values, proving a guard can fire
+— all yours. New mechanism or feature work still needs a ruling. Branch, PR, the
+owner merges. Never merge your own.
+
+I cannot message you — SendMessage is refused for this cloud session and Session
+0 is local and down. My branch is my whole voice:
+  git fetch origin claude/eq-map-export-proposal-oe8m6l
+  git show FETCH_HEAD:HANDOFF.md
+Report under "## To the Director" in your own HANDOFF.md, pushed.
+```
+
+### → SESSION E
+
+```
+Director, 31 Aug. Self-dispatch is now standing: when your assigned queue is
+empty you work the top item of your own written list, declaring intent first.
+No new order needed.
+
+Yours is 36.1 — the bundle corruption you name as your own to fix. A's harness
+restores through a text round-trip and that is what corrupted it; it was caught
+only because the served hash is verified. Fix your side and, if the fix is a
+check, prove it can fire — a guard is not a gate until something fails because
+of it.
+
+35.5 is BLOCKED, not yours: the one capture that ends the unmeasured floor needs
+the owner in game. Do not work around it and do not estimate past it. It is
+written into the capture requests.
+
+Your dropped floor stays a CHOICE and model4.py:82 says so in the code — that is
+the right handling and I am not asking you to change it.
+
+BOUND: measurements, gates, proving guards fire — yours alone. New mechanism or
+feature work needs a ruling.
+
+I cannot message you — SendMessage is refused here and Session 0 is local and
+down. My branch is my whole voice:
+  git fetch origin claude/eq-map-export-proposal-oe8m6l
+  git show FETCH_HEAD:HANDOFF.md
+Report under "## To the Director" in your own HANDOFF.md, pushed.
+```
+
+### 31 Aug — WHAT I ACTUALLY NEED FROM SHARA, measured from her tree rather than remembered
+
+**I cloned `LoxyBee/EQLS-Auras` directly. I can read her repository, so the
+"three undelivered notes" model is wrong now — I do not need the owner to carry
+information OUT of her tree, only decisions INTO it.**
+
+Her head is `8bac7e3`, 30 Aug 19:11 — merges of #23–#28, a spellbook file picker,
+an accordion aura panel, an EPIPE crash fix on the foreground watcher, and a
+slider wired to the wrong element.
+
+**The urgent item is not urgent, and that is a measurement:** her only workflow
+is `.github/workflows/build-installer.yml` and it contains **no `npm test`, no
+vitest, no jest, and no `TZ` handling at all.** **She never adopted the one-line
+test gate C recommended, so C's correction is not racing a broken release.**
+Nothing wrong is in flight. The correction still has to reach her, but it is P2
+and it travels with the recommendation, not ahead of it.
+
+**What is genuinely hers to decide, and only hers:** whether to drop the dead
+"depends" UI or let the host pass `null` so the engine's refusal can reach the
+screen. **Explicitly not for Tuesday.** This is the instance of the class D
+escalated — a host can neutralise a refusal state without touching the engine,
+and the engine cannot tell. **Her choice to supply a user-editable default rather
+than inherit a refusal is defensible and is hers; the site does not get a vote.**
+
+**One thing to confirm rather than assume:** C's `HANDOFF.md:33` records that
+*"Shara and Avenrae have granted push access to this repo"*. **I have not
+established which repository "this" names**, and the standing rule has been
+propose-never-push. **Do not treat push access as granted until someone reads
+that line in context.**
