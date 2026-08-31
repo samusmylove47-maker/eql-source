@@ -74,6 +74,8 @@ import sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
+import appskip
+
 OUT = 'assets/lockouts.json'
 APPDIR = 'public/app'
 PREFIX = 'eqls-lockouts'
@@ -155,6 +157,11 @@ def keep_committed(reason):
 
 
 def main():
+    # Asked first, so a branch that is not about this app never even looks at
+    # the sibling repo. See _build/appskip.py for what it costs not to have it.
+    if appskip.skipping():
+        return keep_committed(appskip.REASON)
+
     repo = find_repo()
     if repo is None:
         return keep_committed('no EQLSLockouts checkout beside this one')
