@@ -802,6 +802,11 @@ if _ge:
             fail(f"{_gp} omits {len(_missing)} refusal(s) the data holds: "
                  f"{', '.join(_missing)}. A tool that hides what it declined "
                  f"reads as having found nothing left to improve")
+        # ge-r is refusals ONLY. The no-rate rows inside `measured` are
+        # ge-nr: they are refusals in spirit and they are not the list this
+        # rule is about, and while they shared a class this printed
+        # "4 refusal(s)" against 3 in the data and compared the wrong
+        # quantity — a dropped refusal could have been masked by a resist row.
         _nr = _gh.count('class="ge-r"')
         _nd = _gh.count('class="ge-d"')
         if _nr < _nd:
