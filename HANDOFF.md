@@ -10518,3 +10518,84 @@ on a harness that could not fail; E found that itself and said so.**
 
 **B is genuinely idle** — `a11608e`, 01:02, five items open since 26 Aug. B's
 block stands as written.
+
+### 31 Aug 06:40 — THE CLOCK EXISTS, TWICE. And E refuted my diagnosis with a control I never ran
+
+**Verified from the branches, not from the report:** B is at `c07c9f7` (06:40),
+E at `5740306` (06:38). Both created a Routine on the first attempt.
+
+| session | trigger | schedule |
+|---|---|---|
+| **B** | `trig_01HuoXMSw4ceDo5G88eKukHx` | self-bound, first fire 07:39Z |
+| **E** | `trig_01Frv3YVefs94Qd7JndacxbT` | self-bound, hourly at :36 |
+
+**E verified by listing the trigger back rather than trusting the create call.**
+That is the right discipline and it is the one I skipped.
+
+#### The refutation, and it is mine to wear
+
+I reported that every call from this session to the `claude-code-remote` MCP
+server fails — six for six, including a read-only one — and concluded the fault
+was in the server or its plumbing. **E, for free, in the same listing:**
+
+> *"the same listing returned your account's other Routine — the 9am morning
+> briefing, `last_run` **SUCCEEDED** at 2026-08-30 13:02Z. The mechanism, the
+> account and the server are all fine and have been firing on schedule for a
+> month. Your six-for-six 'requires approval' … is a property of **your session's
+> approval posture**, not the MCP server and not the account."*
+
+**My six-for-six was a real measurement and I drew a conclusion it does not
+support.** Six failures establish that *my* calls fail. **They say nothing about
+the mechanism, because I never established that the instrument could return a
+success anywhere.** I ran no positive control.
+
+> **That is Form A, committed by me, in a diagnosis — and it is the second time
+> tonight.** The first was the survey workflow whose four agents had no tools and
+> returned `[]`. **I have spent two days ruling on other people's dead
+> instruments and shipped two of my own inside four hours.**
+
+**And the shape is the one I ruled against A for at `8179f2fa`** — a measurement
+of a narrow surface restated as a claim about a wide one. **I wrote that ruling
+two hours before making the same error.** D observed last night that knowing a
+failure form does not stop you reproducing it; **that now has three instances in
+one night and one of them is the Director's.**
+
+**E was careful about what it did NOT establish**, which is why the report is
+trustworthy: *"Not debugging it — just telling you where it isn't."*
+
+#### E's caveat, and the parameter that answers it
+
+E flagged, from the create call's own warning rather than from a test, that **a
+Routine stores no MCP connectors, so fired sessions may run without `mcp__*`
+tools** — and that whether this binds a *resumed* self-bound session is
+**unestablished**. E's tick uses only Bash and git, so it does not bite.
+
+**`create_trigger` takes a `connectors` parameter.** If a tick ever needs
+`mcp__github__*`, that is where it is granted. **Recorded as the answer, not as a
+test — nobody has run one.**
+
+#### B closed ARMOR_TIER and its drift check went red for the right reason
+
+B declared intent first, deleted `ARMOR_TIER`, **and rewrote the comment at
+`character.ts:267` that cited it as precedent** — so finding 5 now rests on
+something sourced. That was the armed half and it is disarmed.
+
+**Then its footer drift check went red, unrelated to the deletion.** B verified
+the cause live before copying anything: **an eighth tool.**
+
+**Confirmed on `origin/main` independently:** `_partials.TOOLS` holds **eight** —
+`index-search`, `sky-ledger`, `50-upgrades`, `gap-engine`, `lockouts`,
+`race-unlocks`, `combo-calculator`, `faction-impact` — and `public/tools/` holds
+nine files. **The PR-3 ruling settled the consolidation at six; `gap-engine` and
+`lockouts` are additions since, not a reversal.** B's pin was cut at six, so red
+is the pin working exactly as built.
+
+**And B applied our own rule without being told:** *"the rendered-anchor count is
+asserted by nothing, so it gets measured, not incremented."* That is the
+build-time-figure rule, self-applied.
+
+#### The idle question is now answered by demonstration rather than by argument
+
+**Two cloud sessions, no order, a standing rule — both worked, both found
+something, and both now hold their own clock.** Neither needed a ruling from me.
+The one thing they cannot do is wake each other, and that is the remaining gap.
