@@ -10599,3 +10599,47 @@ build-time-figure rule, self-applied.
 **Two cloud sessions, no order, a standing rule — both worked, both found
 something, and both now hold their own clock.** Neither needed a ruling from me.
 The one thing they cannot do is wake each other, and that is the remaining gap.
+
+### 31 Aug — THE DIRECTOR'S APPROVAL POSTURE: what was tried, what is known, what is not
+
+**The owner was explicit that nothing was being denied deliberately and asked for
+the block removed.** Recording the attempt so the next session does not repeat
+it.
+
+**What was wrong with my earlier account:** I said the whole
+`claude-code-remote` MCP server was unreachable and the fault was in the server
+or its plumbing. **E refuted it with a control I never ran** — the account's 9am
+briefing Routine has `last_run` SUCCEEDED at 2026-08-30 13:02Z. The mechanism,
+account and server are fine. **The failure is local to this session.**
+
+**What was found:** `.claude/settings.json` carries an `allow` list with **no MCP
+entries of any kind**. The same file explains an unrelated puzzle — `Bash(rm
+-rf:*)` is in `deny`, which is why a clone attempt was refused earlier.
+
+**What was done:** added eight narrowly-scoped entries to
+`.claude/settings.local.json` — the trigger tools, `send_later`, `get_session`,
+`add_repo` — merged with the existing entry, not replacing it. **JSON validates,
+9 entries, and `.gitignore:8` already covers that file, so it is a local grant
+and never reaches the repository.**
+
+**What it did NOT do:** the cheapest read-only call, `list_triggers`, **still
+returns `requires approval`** after the edit. **Tested rather than assumed.**
+
+**What is known and what is not:**
+
+| | |
+|---|---|
+| **Known** | the mechanism works on this account; this session's calls fail; the allowlist as written does not change that *within this session* |
+| **NOT known** | whether a fresh session reads it. Settings are read at start, and this one began before the file changed |
+
+> **The one clean test is a new session in this environment calling
+> `list_triggers`.** If it returns, the allowlist was the fix and only needed a
+> reload. **If it still gates, the allowlist is not the mechanism and we stop
+> spending the owner's attention on it.** Do not run more variants of the create
+> call — six attempts produced six identical errors and no new information.
+
+**And this is no longer urgent.** B and E each hold a working Routine
+(`trig_01HuoXMSw4ceDo5G88eKukHx`, `trig_01Frv3YVefs94Qd7JndacxbT`). **The clock
+exists; it simply is not in the Director's session.** The cost of that is that I
+cannot initiate — which is a real constraint on this role and should be designed
+around rather than fought.
