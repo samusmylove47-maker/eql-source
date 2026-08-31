@@ -141,10 +141,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <p class="tagline">{TAGS['sky-ledger']}</p>
         <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
           can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
-          once</strong> &mdash; {SLD['contested']} of the {SLD['items']} items are wanted by more than one test, so holding one does
+          once</strong> &mdash; {SLD['contested']} of the {SLD['items']} turn-in items are wanted by more than one test, so holding one does
           not make several quests ready. It prints a dry streak as a bound rather than as a zero, and it
           replaces the tracker published here before it.</p>
-        <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested items</span><span class="pill">No install</span></div>
+        <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested turn-in items</span><span class="pill">No install</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="50-upgrades.html" style="--c:var(--brass)">
@@ -153,10 +153,10 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <p class="tagline">{TAGS['50-upgrades']}</p>
         <p class="d">Pick a trio and a race, fill twenty-three slots, and compare what each candidate does to the
           character rather than to the item beside it. Every item upgrades from +0 to +10 and the stat sheet
-          recomputes as you touch it. It holds {UPF['counts.items']:,} items, {UPF['counts.withStats']:,} of them carrying stat
+          recomputes as you touch it. It holds {UPF['counts.items']:,} catalogue items, {UPF['counts.withStats']:,} of them carrying stat
           values, and it grades its own rows &mdash; this page says how many carry no source standing at all before
           you trust a comparison.</p>
-        <div class="chipline"><span class="pill">{UPF['counts.items']:,} items</span><span class="pill">Three classes at once</span><span class="pill">No account</span></div>
+        <div class="chipline"><span class="pill">{UPF['counts.items']:,} catalogue items</span><span class="pill">Three classes at once</span><span class="pill">No account</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="gap-engine.html" style="--c:var(--ok)">

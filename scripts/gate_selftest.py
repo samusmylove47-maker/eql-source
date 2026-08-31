@@ -66,6 +66,11 @@ _IX = json.load(open("assets/index-data.json", encoding="utf-8"))
 # matched nothing.
 N_ITEMS, N_NAMED = _IX["counts"]["item_pages"], _IX["counts"]["named_pages"]
 N_ZONES = len(json.load(open("assets/zones-index.json", encoding="utf-8")))
+# The two quantities that used to share the word "items" with N_ITEMS. Read from
+# the same files the gate reads, so a dataset change moves the case and the rule
+# together rather than leaving one of them asserting a stale figure.
+N_TURNIN = json.load(open("assets/sky-ledger.json", encoding="utf-8"))["dataset"]["items"]
+N_CATALOGUE = json.load(open("assets/50-upgrades.json", encoding="utf-8"))["figures"]["counts.items"]
 
 
 # THE OTHER HALF OF THE SAME PROBLEM: THIS FILE'S OWN OUTPUT.
@@ -503,6 +508,23 @@ CASES = [
      f"says 'Ten' for 'zones surveyed' but the data holds {N_ZONES}",
      "public/dungeons/index.html",
      lambda t: t.replace(f"{N_ZONES} zones,", "Ten zones,")),
+
+    # The two counts that were unreachable while everything was called "items".
+    # Both live on the tools hub, which printed three different quantities under
+    # that one word; the gate could only ever check the first of them. These are
+    # the positive half of the pair - the negative half is that check.py passes
+    # on the unmutated tree, where all three counts are correct and differently
+    # named, so neither rule is matching by accident.
+    ("a Sky turn-in count drifting from its dataset",
+     f"for 'turn-in items' but the data holds {N_TURNIN}",
+     "public/tools/index.html",
+     lambda t: t.replace(f"{N_TURNIN} turn-in items", f"{N_TURNIN + 1} turn-in items")),
+
+    ("a planner catalogue count drifting from its snapshot",
+     f"for 'catalogue items' but the data holds {N_CATALOGUE}",
+     "public/tools/index.html",
+     lambda t: t.replace(f"{N_CATALOGUE:,} catalogue items",
+                         f"{N_CATALOGUE + 1:,} catalogue items")),
 
     # ---- the curated corrections have not gone stale -------------------------
     #

@@ -236,7 +236,7 @@ upgrades = f'''
           <p class="featlede">Pick a trio and a race, fill twenty-three slots, and compare what
             each candidate does to the character rather than to the item beside it. Every item
             upgrades from +0 to +10, and the stat sheet recomputes as you touch it.</p>
-          <p class="featsub">It holds {upfig('counts.items'):,} items, {upfig('counts.withStats'):,} of them
+          <p class="featsub">It holds {upfig('counts.items'):,} catalogue items, {upfig('counts.withStats'):,} of them
             carrying stat values. Eligibility is the union of your three classes, so a paladin
             in the mix opens plate for everyone, and points past a cap score nothing.</p>
           <p class="featsub">Your sets live in this browser and travel as a link. Every item

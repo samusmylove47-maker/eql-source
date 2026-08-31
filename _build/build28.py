@@ -319,7 +319,7 @@ page = head("Sky Ledger",
       them appear in no client string file at all, so they could only ever have been found by
       reading a real log. Quest data was cross-checked against
       eqlegendstools.com and loadoutlegends.com, which agree
-      independently at {DS['quests']} tests, {DS['turnin_slots']} turn-in slots and {DS['items']} unique items.</div>
+      independently at {DS['quests']} tests, {DS['turnin_slots']} turn-in slots and {DS['items']} unique turn-in items.</div>
   </section>
 
 </div>
