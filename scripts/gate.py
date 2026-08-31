@@ -280,6 +280,30 @@ def run(pages, fail, warn):
         "zones surveyed": len(Z),
         "tools listed": None,          # filled below, once _partials is importable
     }
+
+    # THREE QUANTITIES WERE ALL CALLED "items" AND ONLY ONE WAS CHECKABLE.
+    #
+    # The tools hub printed 435 item pages, 128 Sky turn-in items and 3,663 rows
+    # of the planner's catalogue within one screen, and called every one of them
+    # "items". The labelled rule below keys on "N items, N named", so it reached
+    # the first and was blind to the other two - the familiar shape here, a check
+    # that would have fired and reported nothing. Naming the unit in the prose is
+    # what makes them reachable, so the rules follow the rename.
+    #
+    # Both files are committed assets that build2.py already loads without
+    # guarding, but a moved field drops the label rather than crashing the gate,
+    # exactly as "tools listed" does below.
+    for _label, _path, _keys in (
+            ("turn-in items", "assets/sky-ledger.json", ("dataset", "items")),
+            ("catalogue items", "assets/50-upgrades.json", ("figures", "counts.items"))):
+        try:
+            _v = json.load(open(_path, encoding="utf-8"))
+            for _k in _keys:
+                _v = _v[_k]
+            truth[_label] = int(_v)
+        except Exception:
+            pass
+
     try:
         from _partials import TOOLS as _T
         truth["tools listed"] = len(_T)
@@ -312,6 +336,14 @@ def run(pages, fail, warn):
     SINGLE = [
         (re.compile(r"\b([\w,]+)\s+(?:zones?|surveys?)\s*,?\s*surveyed\b", re.I), "zones surveyed"),
     ]
+    # Evaluated against the UNSTRIPPED page — see the note above the loop that
+    # uses it. Anchored tight on purpose: "29 contested turn-in items" is a
+    # DIFFERENT quantity from "128 turn-in items", so the digits must sit
+    # immediately before the unit, or this would fail a page that is correct.
+    SINGLE_UNSTRIPPED = [
+        (re.compile(r"\b([\d,]+)\s+turn-in items\b", re.I), "turn-in items"),
+        (re.compile(r"\b([\d,]+)\s+catalogue items\b", re.I), "catalogue items"),
+    ]
     # The <head> is where hand-typed facts survived longest. Body counts were
     # made to print from data on 10 Aug; the meta descriptions beside them still
     # said "ten surveyed dungeons" the next day, and metadata is the only text
@@ -331,8 +363,31 @@ def run(pages, fail, warn):
                 if n is not None and n != truth[label]:
                     fail(f"{p} says {m.group(1)!r} for '{label}' but the data holds "
                          f"{truth[label]} — print the count, never type it")
+    # NAMING THE UNIT WAS NECESSARY AND NOT SUFFICIENT, AND THIS IS WHY.
+    #
+    # LEDGERS exempts ('tools/index.html', 'class="cards c2"', '<a class="card">')
+    # — the whole tool-card grid — so that adding a tool does not read as prose
+    # growth. The exemption is right, and its side effect is that EVERY COUNT
+    # PRINTED INSIDE A TOOL CARD IS INVISIBLE to any rule evaluated against the
+    # ledger-stripped text. Stripping takes tools/index.html from 17,536 bytes to
+    # 9,915, and the turn-in and catalogue counts go with it.
+    #
+    # So the SINGLE rules above could never have reached the page this check was
+    # written for, no matter how the prose was worded. LABELLED below already
+    # reads the unstripped page, which is the only reason "N items, N named" was
+    # ever checked. These two read it the same way, deliberately: they are
+    # anchored on a unit word that appears nowhere else, so they do not need the
+    # repetition guard that stripping provides.
     for p in pages:
         t = text_of(open(p, encoding="utf-8", errors="replace").read())
+        for rx, label in SINGLE_UNSTRIPPED:
+            if label not in truth:
+                continue
+            for m in rx.finditer(t):
+                n = as_int(m.group(1))
+                if n is not None and n != truth[label]:
+                    fail(f"{p} says {m.group(1)!r} for '{label}' but the data holds "
+                         f"{truth[label]} — print the count, never type it")
         for rx, labels in LABELLED:
             for m in rx.finditer(t):
                 for got, label in zip(m.groups(), labels):

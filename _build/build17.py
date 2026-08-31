@@ -35,7 +35,7 @@ import json, os, re, sys, collections
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
-from _partials import head, bar, foot
+from _partials import head, bar, foot, NAME_INDEX
 from derived import clip as _clip
 from withheld import WITHHELD, MARK
 
@@ -303,7 +303,7 @@ def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon,
 <section class="hero page">
   <div class="shell ent" style="--c:{accent}">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="../tools/index-search.html">The Index</a> &nbsp;/&nbsp; {eyebrow}</p>
+      <a href="../tools/index-search.html">{NAME_INDEX}</a> &nbsp;/&nbsp; {eyebrow}</p>
     <h1 class="display">{esc(title)}</h1>
     <div class="ent-top">
       <dl class="facts">{rows}</dl>
@@ -514,10 +514,10 @@ def hub(fname, title, desc, blurb, entries, folder):
 <section class="hero page">
   <div class="shell">
     <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="../tools/index-search.html">The Index</a></p>
+      <a href="../tools/index-search.html">{NAME_INDEX}</a></p>
     <h1 class="display">{title}</h1>
     <p class="lede">{blurb} To filter by class, slot or zone, use
-      <a href="../tools/index-search.html">The Index</a>.</p>
+      <a href="../tools/index-search.html">{NAME_INDEX}</a>.</p>
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">

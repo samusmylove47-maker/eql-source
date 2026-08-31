@@ -74,32 +74,57 @@ FONTS_V = _asset_v('public/assets/fonts/fonts.css')
 # this. Neither renders a page: the first writes assets/planar.json, which the
 # measured-drop matcher needs or it discards every planar set drop as trash, and
 # the second writes assets/item-ids.json, published as items.v1.json.
+# THE "=" IS IDENTITY. THE LINE BESIDE IT IS THE DESCRIPTION.
+#
+# Ruled 31 Aug 2026. EQLS reads aloud as "equals", so the tools are one family:
+# =Index, =Sky, =Upgrades, =Gaps, =Lockouts, =Races, =Combos, =Faction. That
+# makes eight tools legible as one product rather than eight unrelated ones,
+# which was its own audit finding.
+#
+# IT DOES NOT SOLVE THE STRANGER TEST AND IS NOT ASKED TO. The audit found our
+# names tell a stranger nothing, and "=Lockouts" tells them no more than
+# "Lockouts" did - the prefix is identity, not description. The Director
+# collapsed those two problems and unfixed them when I said so. So every entry
+# carries `tagline`: the sentence that does the descriptive work, written for
+# somebody who has never heard of this site and wants to know whether the thing
+# is for them.
+#
+# `name` IS DISPLAY ONLY AND SO IS `foot`. Every URL on this site is built from
+# `slug` (see _foot_links, line 277), so renaming a tool moves no address and
+# breaks no share card, no canonical, no sitemap entry and no external link.
+# That is why this rename is safe and why a SLUG rename would not be.
 TOOLS = [
-    dict(slug="index-search",     name="The Index"),
+    dict(slug="index-search",     name="=Index", foot="=Index",
+         tagline="Every item and named mob we have recorded, searchable in one place"),
     # Replaced tools/plane-of-sky.html on 17 Aug 2026. Ours counted a held
     # turn-in piece against every test that wanted it; Sky Ledger spends each
     # unit once. Two Sky trackers is the "which do I use" problem and after
     # that property the older one is the wrong answer.
-    dict(slug="sky-ledger",       name="Sky Ledger"),
+    dict(slug="sky-ledger",       name="=Sky", foot="=Sky",
+         tagline="Which Plane of Sky class unlocks you can hand in right now"),
     # A gear planner built in its own repository and hosted there. This site
     # carries a description page and links out; the application is not ours to
     # serve and its data is refreshed on its own cadence.
-    dict(slug="50-upgrades",      name="50 Upgrades"),
+    dict(slug="50-upgrades",      name="=Upgrades", foot="=Upgrades",
+         tagline="What to wear at 50, for a trio, across every slot"),
     # Session E's gap engine. The page is a PREVIEW: the engine runs in its own
     # repository and is not yet a bundle this site can serve, so the page renders
     # a synthetic fixture and says so rather than offering a control that does
-    # nothing. Registered now because the Director assigned the surface; the
-    # wiring is one generator change when E ships.
-    dict(slug="gap-engine",       name="Gap engine"),
+    # nothing.
+    dict(slug="gap-engine",       name="=Gaps", foot="=Gaps",
+         tagline="Reads your combat log and says what to change, and what it will not answer"),
     # Promoted 26 Aug 2026, having been copied into public/app/ on the 25th and
     # deliberately left unlinked until Session D reported. It is the only tool
     # here that answers "what is still open", and it says "not looked" where it
-    # has no history rather than guessing - which is this site's own rule
-    # arrived at independently in another repository.
-    dict(slug="lockouts",         name="Lockout tracker", foot="Lockouts"),
-    dict(slug="race-unlocks",     name="Race unlock tracker"),
-    dict(slug="combo-calculator", name="Race and primary calculator"),
-    dict(slug="faction-impact",   name="Faction impact checker"),
+    # has no history rather than guessing.
+    dict(slug="lockouts",         name="=Lockouts", foot="=Lockouts",
+         tagline="What is still open to you this week, read from your own log"),
+    dict(slug="race-unlocks",     name="=Races", foot="=Races",
+         tagline="Which races you have unlocked and what each one still costs"),
+    dict(slug="combo-calculator", name="=Combos", foot="=Combos",
+         tagline="Pick the class that must sit in your primary slot, and cost every route to it"),
+    dict(slug="faction-impact",   name="=Faction", foot="=Faction",
+         tagline="What killing in a zone does to every faction it touches"),
 ]
 
 # `blurb` is what the Learn hub prints under each title. It lives here so the
@@ -232,6 +257,9 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 {extra}</head>
 <body>'''
 
+NAME_INDEX = next(t['name'] for t in TOOLS if t['slug'] == 'index-search')
+_NAV_INDEX = NAME_INDEX
+
 def bar(rel=""):
     return f'''<header class="site-bar">
   <div class="shell">
@@ -241,7 +269,7 @@ def bar(rel=""):
       <a href="{rel}dungeons/index.html">Dungeons</a>
       <a href="{rel}raids/index.html">Raids</a>
       <a href="{rel}tools/index.html">Tools</a>
-      <a href="{rel}tools/index-search.html">The Index</a>
+      <a href="{rel}tools/index-search.html">{_NAV_INDEX}</a>
       <a href="{rel}learn/index.html">Learn</a>
       <a href="{rel}sources.html">Accuracy</a>
       <a href="{rel}search.html" class="nav-find">Search</a>

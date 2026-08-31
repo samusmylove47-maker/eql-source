@@ -4,6 +4,12 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot, TOOLS, wordnum
+
+# The home page's door named this tool by hand while the nav and the footer
+# read it from the registry, so a rename moved two of the three. It reads from
+# the registry now. The doors for 'The surveys' and 'The trackers' name
+# sections rather than tools and are deliberately left alone.
+NAMES = {t['slug']: t['name'] for t in TOOLS}
 import heroart
 
 # THE HOME PAGE'S ART IS A REAL DUNGEON.
@@ -230,7 +236,7 @@ upgrades = f'''
           <p class="featlede">Pick a trio and a race, fill twenty-three slots, and compare what
             each candidate does to the character rather than to the item beside it. Every item
             upgrades from +0 to +10, and the stat sheet recomputes as you touch it.</p>
-          <p class="featsub">It holds {upfig('counts.items'):,} items, {upfig('counts.withStats'):,} of them
+          <p class="featsub">It holds {upfig('counts.items'):,} catalogue items, {upfig('counts.withStats'):,} of them
             carrying stat values. Eligibility is the union of your three classes, so a paladin
             in the mix opens plate for everyone, and points past a cap score nothing.</p>
           <p class="featsub">Your sets live in this browser and travel as a link. Every item
@@ -273,10 +279,10 @@ feature = f'''
           </div>
         </div>
         <figure class="feattrailer">
-          <video src="assets/media/{MEDIA['sky-ledger-trailer']['file']}"
-                 poster="assets/media/{MEDIA['sky-ledger-poster']['file']}"
-                 width="1600" height="900" autoplay muted loop playsinline
-                 preload="metadata" id="sltrailer"
+          <video data-src="assets/media/{MEDIA['sky-ledger-trailer']['file']}"
+                 data-poster="assets/media/{MEDIA['sky-ledger-poster']['file']}"
+                 width="1600" height="900" muted loop playsinline
+                 preload="none" id="sltrailer"
                  aria-label="The Sky Ledger overlay running over the game: quests marked ready,
                              the panel narrowed to its compact width, and the transparency
                              slider dimming it against the scenery."></video>
@@ -297,21 +303,36 @@ feature = f'''
       </ul>
       <p class="featfoot">No install &middot; nothing uploaded &middot; build {SL_APP['hash']} &middot; {SL_APP['kb']} KB</p>
       <script>
-      /* A loop that cannot be stopped is a nuisance, and one that starts
-         moving at a reader who asked for less motion is worse than a nuisance.
-         The video carries `autoplay` so it works with no script at all; this
-         only ever takes motion AWAY, never adds it. */
+      /* NOTHING IS FETCHED UNTIL THIS BAND IS ACTUALLY APPROACHED.
+         The trailer used to carry `autoplay`, which overrides preload and pulls
+         the whole file during first paint. Both trailers and their posters came
+         to 2.19 MB, roughly 80% of the page's load time, spent before a stranger
+         had seen anything - and this band is below the fold, so most of that was
+         for a picture nobody had scrolled to.
+         The src and the poster are both held in data- attributes and attached on
+         intersection. That costs the no-script reader the motion, which the
+         `autoplay` attribute used to give them; it is the deliberate trade, and
+         the still is still described by aria-label.
+         Reduced-motion and narrow screens load the poster and NOT the video, so
+         a tap is what spends the megabyte. This only ever takes motion away. */
       (function(){{
         var v=document.getElementById('sltrailer'), b=document.getElementById('slpause');
         if(!v||!b) return;
         var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
-        /* Autoplay costs a megabyte of someone's mobile data for a loop they
-           did not ask for. The poster carries the same picture at 177 KB, so
-           a narrow screen gets the still and a tap gets the motion. */
         var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
-        if(quiet||small){{ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }}
-        b.addEventListener('click',function(){{ v.paused?v.play():v.pause(); sync(); }});
+        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
+        function attach(motion){{
+          if(!v.hasAttribute('poster')&&v.dataset.poster) v.setAttribute('poster',v.dataset.poster);
+          if(!v.hasAttribute('src')&&v.dataset.src){{ v.setAttribute('src',v.dataset.src); v.load(); }}
+          if(motion&&!quiet&&!small){{ var p=v.play(); if(p&&p.catch) p.catch(function(){{}}); }}
+        }}
+        if(window.IntersectionObserver){{
+          var io=new IntersectionObserver(function(es){{
+            for(var i=0;i<es.length;i++) if(es[i].isIntersecting){{ attach(true); io.disconnect(); return; }}
+          }},{{rootMargin:'300px'}});
+          io.observe(v);
+        }} else {{ attach(true); }}
+        b.addEventListener('click',function(){{ attach(false); v.paused?v.play():v.pause(); sync(); }});
         v.addEventListener('play',sync); v.addEventListener('pause',sync);
         sync();
       }})();
@@ -405,10 +426,10 @@ auras = f'''
     <div class="featwrap">
       <div class="featgrid">
         <figure class="feattrailer">
-          <video src="assets/media/{MEDIA['auras-trailer']['file']}"
-                 poster="assets/media/{MEDIA['auras-poster']['file']}"
-                 width="1600" height="900" autoplay muted loop playsinline
-                 preload="metadata" id="autrailer"
+          <video data-src="assets/media/{MEDIA['auras-trailer']['file']}"
+                 data-poster="assets/media/{MEDIA['auras-poster']['file']}"
+                 width="1600" height="900" muted loop playsinline
+                 preload="none" id="autrailer"
                  aria-label="A Quick Buff cast landing on screen, and the overlay filling with
                              fourteen buff icons across the top of the game, each counting
                              down its own remaining time."></video>
@@ -439,18 +460,28 @@ auras = f'''
         </div>
       </div>
       <script>
-      /* Identical to the Sky Ledger band's, on the same reasoning: the video
-         carries `autoplay` so it works with no script at all, and this only
-         ever takes motion AWAY. Below 700px and under prefers-reduced-motion
-         the poster is what shows, and a tap gets the motion. */
+      /* Identical to the Sky Ledger band's, on the same reasoning - see the long
+         note there. Nothing is fetched until the band is approached; below 700px
+         and under prefers-reduced-motion the poster is what shows and a tap gets
+         the motion. */
       (function(){{
         var v=document.getElementById('autrailer'), b=document.getElementById('aupause');
         if(!v||!b) return;
         var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
         var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
-        if(quiet||small){{ v.autoplay=false; v.removeAttribute('autoplay'); v.pause(); }}
-        b.addEventListener('click',function(){{ v.paused?v.play():v.pause(); sync(); }});
+        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
+        function attach(motion){{
+          if(!v.hasAttribute('poster')&&v.dataset.poster) v.setAttribute('poster',v.dataset.poster);
+          if(!v.hasAttribute('src')&&v.dataset.src){{ v.setAttribute('src',v.dataset.src); v.load(); }}
+          if(motion&&!quiet&&!small){{ var p=v.play(); if(p&&p.catch) p.catch(function(){{}}); }}
+        }}
+        if(window.IntersectionObserver){{
+          var io=new IntersectionObserver(function(es){{
+            for(var i=0;i<es.length;i++) if(es[i].isIntersecting){{ attach(true); io.disconnect(); return; }}
+          }},{{rootMargin:'300px'}});
+          io.observe(v);
+        }} else {{ attach(true); }}
+        b.addEventListener('click',function(){{ attach(false); v.paused?v.play():v.pause(); sync(); }});
         v.addEventListener('play',sync); v.addEventListener('pause',sync);
         sync();
       }})();
@@ -469,12 +500,56 @@ recent = "\n".join(
         <span class="d">{e['date']}</span>
       </li>''' for e in ENTRIES[:4])
 
+# THE ART COMES AFTER THE WORDS IN SOURCE ORDER, AND ONLY IN SOURCE ORDER.
+#
+# `{hero_art}` used to sit inside <section class="hero"> ahead of the shell, and
+# it is 21,654 bytes of path data — so the headline "Norrath, measured." did not
+# appear until byte 26,689 of a 241,709-byte document. Everything a crawler, a
+# link-preview generator, a reader on a slow connection or a screen reader met
+# first was an aria-hidden decoration.
+#
+# Emitted after the shell it lands the h1 at 5,032: an 81.1% improvement for
+# ZERO added bytes — the file is byte-identical at 241,709.
+#
+# THIS CHANGES NO PIXEL. `.hero-art` is position:absolute with an explicit
+# z-index at site.css:706-707, so it is out of flow and its paint order does not
+# depend on markup position. Verify that before moving it back for any reason.
+#
+# IT IS NOT A CASE FOR DELETING THE ART. Ruled 31 Aug 2026: the sixteen inline
+# SVGs are 85.4% of RAW bytes but only 39.9% of the render-blocking path over
+# the wire, because path data compresses about 10.6:1 while the search index
+# that would replace them compresses at 3.7:1. Removing them to save weight
+# makes the page 2.23x HEAVIER. The defect was order, not size.
+#
+# AND THIS NOTE BELONGS HERE RATHER THAN IN THE TEMPLATE. Written first as an
+# HTML comment inside the f-string, it shipped 1,269 bytes of developer prose to
+# every reader and pushed the h1 it was explaining down to 6,301 — undoing a
+# fifth of the fix it documented. Caught by measuring the output rather than by
+# reading the diff.
+# UTILITY BEFORE METHODOLOGY, in the hero lede.
+#
+# The lede opened on three sentences about sourcing standards and named nothing a
+# reader could actually do, so a stranger's first ten seconds went on why to
+# trust us rather than on what is here. An external audit read the site as a
+# personal diary rather than a reference, and this paragraph is the first thing
+# it would have read.
+#
+# The sourcing sentence STAYS - it is the reason the site exists and it is what
+# the tier badges are for - but it goes second. The positioning line about
+# inherited classic text moved down to "Why you can check us", the band that
+# exists to argue methodology. MOVED, NOT DELETED: it is a claim about the
+# state of this community's references, and dropping it to shorten a lede would
+# be tidying a finding away.
+#
+# The rationale lives here, in Python, and not in an HTML comment beside the
+# markup. A previous note of mine was written into the f-string and shipped
+# 1,269 bytes to every reader, which undid a fifth of the byte-offset fix it was
+# describing.
 home = head("Accurate, sourced and kept current",
   "EverQuest Legends reference kept honest: progression trackers, a searchable loot index, dungeon surveys and the Plane of Sky island by island. Every claim names its source and its date.", og="home", canon="index") + bar() + f'''
 <main>
 
 <section class="hero">
-  {hero_art}
   <div class="shell">
     <!-- THE EYEBROW CARRIES CONTEXT, NOT A CLAIM, AND THAT IS DELIBERATE.
          It read "EverQuest Legends &middot; surveyed, sourced, dated" until
@@ -488,11 +563,18 @@ home = head("Accurate, sourced and kept current",
          headline land. -->
     <p class="eyebrow">EverQuest Legends</p>
     <h1 class="display">Norrath,<br><em>measured.</em></h1>
-    <p class="hero-lede">Most of what this community reads about Legends is classic EverQuest text in
-      a Legends-shaped hole. We go in with the log running and write down what actually happened.
-      Every figure names its source and the day it was read, and every gap says so out loud.</p>
+    <p class="hero-lede">Find what a named mob drops, what to wear at 50, and which Plane of Sky
+      turn-ins you can hand in right now. {wordnum(len(TOOLS)).capitalize()} trackers, no account, no server holding your
+      data. Every figure names its source and the day it was read, and every gap says so out loud.</p>
+    <form class="hero-find" method="get" action="tools/index-search.html" role="search">
+      <label for="hq">Search {NITEMS} items and {NNAMED} named mobs</label>
+      <input id="hq" name="q" type="search" autocomplete="off"
+             placeholder="Dark Reaver, Najena, Fine Steel&hellip;">
+      <button type="submit">Search</button>
+    </form>
     <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
   </div>
+  {hero_art}
   {hero_src}
 </section>
 {upgrades}
@@ -507,7 +589,7 @@ home = head("Accurate, sourced and kept current",
 
       <a class="door contour" href="tools/index-search.html" style="--c:var(--bone);--cx:88%;--cy:116%">
         <span class="dq">I need to find something</span>
-        <h3 class="dt">The Index</h3>
+        <h3 class="dt">{NAMES['index-search']}</h3>
         <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
           Ask where a thing drops, filter by class and slot, or find the named you have not met.</p>
         <span class="dgo">Search {NITEMS} items &rarr;</span>
@@ -564,7 +646,8 @@ home = head("Accurate, sourced and kept current",
 
       <aside class="standard contour" style="--c:var(--instr);--cx:92%;--cy:112%">
         <h3 class="stdh">Why you can check us</h3>
-        <p class="stdp">Every claim carries the weight of its source. Tiers 1 and 2 print plain;
+        <p class="stdp">Most of what this community reads about Legends is classic EverQuest text
+          in a Legends-shaped hole. Every claim here carries the weight of its source. Tiers 1 and 2 print plain;
           anything weaker carries its badge wherever it appears
           &mdash; <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
         <ol class="stdscale">
