@@ -164,6 +164,160 @@ in the change log, redirect both address forms, no tombstone.
 
 ## To the Director
 
+### 31 Aug — Part 1: what is true here, load-bearing, and has never left this tree
+
+Every item measured tonight from the source, not recalled. The ones that make me
+look bad are first, because they are the ones that were costing someone else
+something.
+
+**0. `check.py` called a function it does not have, in the branch that reports a
+missing vendored script. `scripts/check.py:151`.** It called `page_key(p)` bare;
+`check.py` imports `json, os, re, sys, glob` and `subprocess` and defines
+`page_key` nowhere. The name exists only at `gate.py:157`. **So the branch would
+have raised `NameError` at module scope: no message, no accumulated failures
+printed, a traceback and exit 1. The check would have fired and reported
+nothing.**
+
+It has never been taken because no page under `public/` references
+`assets/vendor/` at all — `_vendor_refs` is 0 — which is exactly how a dead
+branch survives review. **And `check.py:567` calls the same name behind
+`if 'page_key' in dir()`, which at module scope is permanently false**, so that
+site has been printing the raw path all along. Somebody met this once, guarded
+one site and left the other.
+
+**Who it changes: any session shipping a page that loads a vendored library** —
+B, C, D or E bundling something into `assets/vendor/`. They would have got a
+traceback in my file instead of a sentence naming their missing asset, and
+debugged the wrong repository. Fixed by importing from `gate` rather than
+redefining, and matched-pair proven: the branch now reports
+`index.html loads assets/vendor/nonexistent.js, which is not on disk` with no
+traceback.
+
+**Found by a read-only fan-out, not by me**, and worth saying because it is the
+first thing tonight I would not have found alone. The safety classifier was
+rate-limited during that sweep, so I verified every load-bearing claim in this
+item against the file before acting on any of it.
+
+**1. My own egress rule could not see the two files most likely to break it.
+`scripts/check.py:47`.** The rule added on 30 August iterates `pages`, and
+`pages` excludes `public/app/` — so the Sky Ledger and lockout bundles were the
+only files under `public/` it could not reach. **Found by testing it rather than
+reading it**: a stylesheet link injected into the Sky Ledger bundle produced no
+finding at all.
+
+**Who it changes: Session E, tonight.** `docs/BUNDLE-CONTRACT.md` §3 tells E that
+"no fetch, no XHR, no WebSocket" is checkable and that this repository will check
+it. **Until tonight that sentence was a promise, not a gate.** Fixed, and the
+check now reports `0 of 716 page(s) and 0 of 2 served app(s)`. This is the fourth
+check this month whose documented exclusion covered something it should not
+have, after `conformance.js` skipping `public/app/`, `toolsmoke.js`'s second copy
+of the registry, and `check.py`'s dead root guard.
+
+**2. `gate_selftest.py`'s mutation path is TEXT, and it corrupted a served
+bundle when I pointed it at one.** The runner reads with
+`open(path, encoding="utf-8")` and restores with `newline="\n"`. That is lossless
+for pages this repository generates and **is not** for a 182 KB artifact built
+elsewhere: the restored Sky Ledger hashed to `cae880e4` against a recorded
+`dad68d2b`. `check.py` caught it because the served hash is verified, which is
+the only reason this is a paragraph rather than a shipped corruption.
+
+**Who it changes: anyone adding a self-test case.** The constraint is now written
+at the top of `CASES`: do not point the harness at anything whose bytes are
+load-bearing — anything under `public/app/`, anything hashed, anything vendored.
+
+**3. A CSS class defined in the self-contained pages does not exist on the rest
+of the site, and the failure is silent.** `_build/build3.py` injects its own
+`<style>` into the thirteen surveys and two imported tools. Classes defined there
+— `.scroller`, `.wh` — are real on those 15 pages and undefined on the other 701,
+which load `site.css`. **An undefined class is not an error in CSS**: valid
+markup, page renders, nothing reports it.
+
+**This bit me twice in one day.** `.scroller` produced the site's only viewport
+overflow, and `.wh` shipped my withheld-coordinate marks as unstyled body text
+for three days. **Who it changes: anyone adding a shared class**, and anyone
+reading a survey's CSS as though it were the site's.
+
+**4. Editing `public/assets/site.css` by one byte rewrites the stylesheet line on
+717 pages.** `CSS_V` in `_partials.py:32` is a content hash of that file, and
+every page carries it. Measured: 717 pages reference `assets/site.css`. **Who it
+changes: anyone proposing a style change** — the review is 700+ files whatever
+the edit was, and CLAUDE.md permits it only when the CSS genuinely changed.
+
+**5. `scripts/gate.py:285` computes `truth["tools listed"] = len(TOOLS)` and
+nothing consumes it.** The "N trackers" prose rule was withdrawn deliberately and
+for a good reason — the tools index legitimately writes "including the two
+trackers" meaning something else — but the computed line remains and reads like
+protection. **Who it changes: anyone assuming a typed tool count is gated in
+prose.** It is not. What is gated is the registry against the footers and the hub.
+
+**6. 40 class names are used in built pages and defined nowhere.** `.nav-find`
+sits on 700 pages, referenced once in `_partials.py:241` and used by no
+JavaScript — dead, harmless, and not worth a whole-site diff to remove. **Who it
+changes: anyone auditing the CSS**, who would otherwise read 40 as 40 defects.
+Two of them had a visible consequence and were fixed; the rest are named.
+
+**7. A new tool page fails the build until it is enrolled in
+`assets/prose-budget.json`, and `prose_budget.py` only ever lowers.** So a page
+whose content is DATA rather than prose needs a `LEDGERS` entry in `gate.py`
+instead — the pattern already used for the tools cards, the measured tables and
+the open-gates list. **Who it changes: E and B, when they ship a page.** The gap
+engine page needed one within two hours of shipping, because E's fixture gained a
+`materiality` line per delta and the page went 155 words over without a word
+being written.
+
+**8. I shipped a page against a stale fixture and did not notice until E told
+me.** I vendored E's `sample-report.json` at 3,821 bytes, E's engine moved, and
+my page rendered the old shape on `main` for four hours. Nothing on it was false
+— every figure was synthetic and marked — but **I had no way to know it had
+drifted, and still do not.** There is no check that a vendored file matches its
+upstream. **Who it changes: anyone vendoring anything**, which is this repository
+three times over: `gap-engine.json`, the two app bundles, `50-upgrades.json`.
+
+**9. Credit where the survey is not mine:** that this repository holds no raw
+logs, and that its derived JSON cannot answer a question the engine asks, is the
+Director's nine-agent survey and not my finding. I confirmed it rather than
+discovering it.
+
+### 31 Aug — Part 2: three proposals I would defend
+
+Each carries what it costs, what would show it wrong, and whether it needs anyone
+else. Ranked.
+
+**1. Make `gate_selftest.py` round-trip bytes rather than text.**
+*Cost:* small — read `rb`, write `wb`, and decode only for the mutation, which
+means each case's lambda takes and returns `str` as now. Perhaps thirty lines.
+*What would show it wrong:* if no case ever needs to touch a byte-sensitive
+artifact, the change buys nothing and adds a decode step to forty cases. I think
+that is already false — the served bundles are exactly what a bundle contract
+needs proving against, and I had to delete a case tonight because of this.
+*Needs anyone else:* no.
+
+**2. A check that a class used by a `head()`-generated page is defined in
+`site.css`.** Not all 40 — the specific, checkable subset: a class that appears
+in a page loading the shared stylesheet and is defined only inside
+`build3.py`'s injected block. That is the exact shape of both faults I shipped
+this week, and it is mechanically detectable.
+*Cost:* small, and it reuses the measurement I already wrote tonight.
+*What would show it wrong:* if the false-positive rate is not near zero. Today
+the intersection is two classes, both now fixed, so it would currently pass
+clean — which is either evidence it is tight or evidence it is vacuous, and I
+would want the matched pair before trusting it.
+*Needs anyone else:* no.
+
+**3. A check that a vendored file still matches its upstream, where the upstream
+is reachable.** Finding 8 is currently uncovered: nothing tells us
+`assets/gap-engine.json` has drifted from E's tree, and I found out because E
+published a commit subject about it.
+*Cost:* medium, and it is the one with a real objection: it needs the network, so
+it belongs with `fetchfonts.py` and `geometry.py` as hand-run, and a hand-run
+check is one nobody runs. A weaker version that costs nothing: record the
+upstream sha in the vendored file's own metadata, so a human comparing takes ten
+seconds rather than a diff.
+*What would show it wrong:* if the weak version is enough, the strong version is
+waste. I would ship the weak one first and see whether anyone ever uses it.
+*Needs anyone else:* E, B and D would each have to keep a sha in a file I read.
+**That is a request across a seam, so it is a proposal and not a decision.**
+
 ### 30 Aug — the gap engine surface is built, on a fixture and nothing else
 
 **PR #154, branch `claude/gap-engine-surface` @ `d016c271`.** Eight files: two

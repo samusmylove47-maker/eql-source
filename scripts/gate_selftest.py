@@ -396,6 +396,28 @@ CASES = [
      lambda t: t.replace('<dt>Position</dt><dd><span class="wh">withheld</span></dd>',
                          '<dt>Position</dt><dd>−670, −119</dd>', 1)),
 
+    # NO CASE HERE FOR A SERVED APPLICATION FETCHING FROM ANOTHER ORIGIN, AND
+    # THE REASON IS A LIMIT OF THIS HARNESS RATHER THAN OF THE CHECK.
+    #
+    # The egress rule now covers public/app/ — it did not until 31 August, when
+    # `pages` excluded those two bundles and they were the only files under
+    # public/ it could not see. I proved the fix with a matched pair by hand:
+    # a stylesheet link injected into the Sky Ledger bundle is caught, and the
+    # restored file passes.
+    #
+    # I then wrote it as a case here and it CORRUPTED THE BUNDLE. This runner
+    # reads with `open(path, encoding="utf-8")` and restores with
+    # `newline="\n"`, which is a lossless round-trip for pages this repository
+    # generates and is NOT one for a 182 KB artifact built in another repository:
+    # the restored file hashed to cae880e4 against a recorded dad68d2b, and
+    # check.py caught it because the served hash is verified.
+    #
+    # So the constraint, for whoever adds the next case: THE MUTATION PATH HERE
+    # IS TEXT. Do not point it at anything whose bytes are load-bearing —
+    # anything under public/app/, anything hashed, anything vendored. Fixing the
+    # runner to round-trip binary would be the real repair and it is not a 2am
+    # change to the file that proves every other check is alive.
+
     # A PAGE THAT FETCHES FROM ANOTHER ORIGIN ON LOAD.
     #
     # 715 of 717 pages fetched their typefaces from Google until 30 August 2026,
