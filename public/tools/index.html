@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://eqlsource.com/tools/">
 <link rel="stylesheet" href="../assets/fonts/fonts.css?v=4c604a33">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=eceb3189">
+<link rel="stylesheet" href="../assets/site.css?v=43f19197">
 <script>/* Torchlight is the default and the CSS says so, so this only ever has
    work to do for a reader who chose daylight. It runs before first paint to
    avoid a flash of the wrong ground, and it is wrapped because localStorage
@@ -37,7 +37,7 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
       <a href="../dungeons/index.html">Dungeons</a>
       <a href="../raids/index.html">Raids</a>
       <a href="../tools/index.html">Tools</a>
-      <a href="../tools/index-search.html">The Index</a>
+      <a href="../tools/index-search.html">=Index</a>
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
       <a href="../search.html" class="nav-find">Search</a>
@@ -85,7 +85,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; 435 items, 232 named</div>
-        <h3 class="t">The Index</h3>
+        <h3 class="t">=Index</h3>
+        <p class="tagline">Every item and named mob we have recorded, searchable in one place</p>
         <p class="d">Every item and named mob recorded across the 13 surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
           links back to the survey it was mined from, so you can read the surrounding context before planning a night
@@ -95,7 +96,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; reads your combat log</div>
-        <h3 class="t">Sky Ledger</h3>
+        <h3 class="t">=Sky</h3>
+        <p class="tagline">Which Plane of Sky class unlocks you can hand in right now</p>
         <p class="d">It follows your own log and says which of the 95 Plane of Sky class-unlock tests you
           can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
           once</strong> &mdash; 29 of the 128 items are wanted by more than one test, so holding one does
@@ -106,7 +108,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="50-upgrades.html" style="--c:var(--brass)">
         <div class="kicker">Gear planning &middot; built and hosted elsewhere</div>
-        <h3 class="t">50 Upgrades</h3>
+        <h3 class="t">=Upgrades</h3>
+        <p class="tagline">What to wear at 50, for a trio, across every slot</p>
         <p class="d">Pick a trio and a race, fill twenty-three slots, and compare what each candidate does to the
           character rather than to the item beside it. Every item upgrades from +0 to +10 and the stat sheet
           recomputes as you touch it. It holds 3,663 items, 1,713 of them carrying stat
@@ -117,7 +120,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="gap-engine.html" style="--c:var(--ok)">
         <div class="kicker">Preview &middot; reads your combat log</div>
-        <h3 class="t">Gap engine</h3>
+        <h3 class="t">=Gaps</h3>
+        <p class="tagline">Reads your combat log and says what to change, and what it will not answer</p>
         <p class="d">Every other tracker here tells you what you have. This one reads your log
           and says <strong>what to change</strong> &mdash; always as a difference against what you
           are already doing, never as a score to hit. It shows what it
@@ -130,7 +134,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="lockouts.html" style="--c:var(--ember)">
         <div class="kicker">Raiding &middot; reads your combat log</div>
-        <h3 class="t">Lockout tracker</h3>
+        <h3 class="t">=Lockouts</h3>
+        <p class="tagline">What is still open to you this week, read from your own log</p>
         <p class="d">Every other tracker here says what you have done. This one says
           <strong>what is still open</strong>. Where it has no history for a boss it prints
           <strong>not looked</strong> rather than <em>open</em> &mdash; an empty log is not
@@ -142,7 +147,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
-        <h3 class="t">Race unlock tracker</h3>
+        <h3 class="t">=Races</h3>
+        <p class="tagline">Which races you have unlocked and what each one still costs</p>
         <p class="d">Every race unlock with its required factions, the recommended method, and honest work counts &mdash;
           items to gather, kills, hours. Mark the races you want and the route page merges their grinds into a single
           shopping list, stripping out the duplicated steps. Wood Elf and High Elf share two of three outright.</p>
@@ -151,7 +157,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="faction-impact.html" style="--c:var(--ok)">
         <div class="kicker">Planning &middot; measured from play</div>
-        <h3 class="t">Faction impact checker</h3>
+        <h3 class="t">=Faction</h3>
+        <p class="tagline">What killing in a zone does to every faction it touches</p>
         <p class="d">Faction moves while you are not looking, and you find out hours later when a vendor stops
           speaking to you. Name a zone, a faction or a race and it says what rises, what falls, how far per kill,
           and which unlocks that helps or costs. The movement is counted from parsed combat logs rather than
@@ -162,7 +169,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
       <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
         <div class="kicker">Planning</div>
-        <h3 class="t">Race &amp; primary calculator</h3>
+        <h3 class="t">=Combos</h3>
+        <p class="tagline">Pick the class that must sit in your primary slot, and cost every route to it</p>
         <p class="d">The primary slot is the only one you can never change &mdash; it locks at level 11 and every
           loadout you ever build will contain it. Name the class that must sit there and the race you want, and it
           costs every route to both. It takes the requirement literally instead of talking you out of it.</p>
@@ -200,14 +208,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
       </ul></div>
       <div><h4>Tools</h4><ul>
-        <li><a href="../tools/index-search.html">The Index</a></li>
-        <li><a href="../tools/sky-ledger.html">Sky Ledger</a></li>
-        <li><a href="../tools/50-upgrades.html">50 Upgrades</a></li>
-        <li><a href="../tools/gap-engine.html">Gap engine</a></li>
-        <li><a href="../tools/lockouts.html">Lockouts</a></li>
-        <li><a href="../tools/race-unlocks.html">Race unlock tracker</a></li>
-        <li><a href="../tools/combo-calculator.html">Race and primary calculator</a></li>
-        <li><a href="../tools/faction-impact.html">Faction impact checker</a></li>
+        <li><a href="../tools/index-search.html">=Index</a></li>
+        <li><a href="../tools/sky-ledger.html">=Sky</a></li>
+        <li><a href="../tools/50-upgrades.html">=Upgrades</a></li>
+        <li><a href="../tools/gap-engine.html">=Gaps</a></li>
+        <li><a href="../tools/lockouts.html">=Lockouts</a></li>
+        <li><a href="../tools/race-unlocks.html">=Races</a></li>
+        <li><a href="../tools/combo-calculator.html">=Combos</a></li>
+        <li><a href="../tools/faction-impact.html">=Faction</a></li>
       </ul></div>
       <div><h4>Learn</h4><ul>
         <li><a href="../learn/still-true.html">Is it still true?</a></li>

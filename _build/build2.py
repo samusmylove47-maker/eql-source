@@ -5,6 +5,16 @@ sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot, TOOLS, wordnum
 
+# THE TAGLINE IS THE DESCRIPTIVE HALF, AND IT COMES FROM THE REGISTRY.
+#
+# The "=" names are identity and tell a stranger nothing on their own - that was
+# the point of the audit finding and the reason the Director unfused the two
+# problems. The sentence under each name is what does the work, and it lives in
+# _partials.TOOLS so the hub, and anything else that grows a tool list, cannot
+# describe the same tool two different ways.
+TAGS = {t['slug']: t['tagline'] for t in TOOLS}
+NAMES = {t['slug']: t['name'] for t in TOOLS}
+
 # Counts are printed from the mined data, never typed. The tools index said
 # "208 named" while every other page said 209, four days after a change log
 # entry promised exactly this.
@@ -116,7 +126,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
-        <h3 class="t">The Index</h3>
+        <h3 class="t">{NAMES['index-search']}</h3>
+        <p class="tagline">{TAGS['index-search']}</p>
         <p class="d">Every item and named mob recorded across the {len(ZONES)} surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
           links back to the survey it was mined from, so you can read the surrounding context before planning a night
@@ -126,7 +137,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; reads your combat log</div>
-        <h3 class="t">Sky Ledger</h3>
+        <h3 class="t">{NAMES['sky-ledger']}</h3>
+        <p class="tagline">{TAGS['sky-ledger']}</p>
         <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
           can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
           once</strong> &mdash; {SLD['contested']} of the {SLD['items']} items are wanted by more than one test, so holding one does
@@ -137,7 +149,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="50-upgrades.html" style="--c:var(--brass)">
         <div class="kicker">Gear planning &middot; built and hosted elsewhere</div>
-        <h3 class="t">50 Upgrades</h3>
+        <h3 class="t">{NAMES['50-upgrades']}</h3>
+        <p class="tagline">{TAGS['50-upgrades']}</p>
         <p class="d">Pick a trio and a race, fill twenty-three slots, and compare what each candidate does to the
           character rather than to the item beside it. Every item upgrades from +0 to +10 and the stat sheet
           recomputes as you touch it. It holds {UPF['counts.items']:,} items, {UPF['counts.withStats']:,} of them carrying stat
@@ -148,7 +161,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="gap-engine.html" style="--c:var(--ok)">
         <div class="kicker">Preview &middot; reads your combat log</div>
-        <h3 class="t">Gap engine</h3>
+        <h3 class="t">{NAMES['gap-engine']}</h3>
+        <p class="tagline">{TAGS['gap-engine']}</p>
         <p class="d">Every other tracker here tells you what you have. This one reads your log
           and says <strong>what to change</strong> &mdash; always as a difference against what you
           are already doing, never as a score to hit. It shows what it
@@ -161,7 +175,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="lockouts.html" style="--c:var(--ember)">
         <div class="kicker">Raiding &middot; reads your combat log</div>
-        <h3 class="t">Lockout tracker</h3>
+        <h3 class="t">{NAMES['lockouts']}</h3>
+        <p class="tagline">{TAGS['lockouts']}</p>
         <p class="d">Every other tracker here says what you have done. This one says
           <strong>what is still open</strong>. Where it has no history for a boss it prints
           <strong>not looked</strong> rather than <em>open</em> &mdash; an empty log is not
@@ -173,7 +188,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
-        <h3 class="t">Race unlock tracker</h3>
+        <h3 class="t">{NAMES['race-unlocks']}</h3>
+        <p class="tagline">{TAGS['race-unlocks']}</p>
         <p class="d">Every race unlock with its required factions, the recommended method, and honest work counts &mdash;
           items to gather, kills, hours. Mark the races you want and the route page merges their grinds into a single
           shopping list, stripping out the duplicated steps. Wood Elf and High Elf share two of three outright.</p>
@@ -182,7 +198,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="faction-impact.html" style="--c:var(--ok)">
         <div class="kicker">Planning &middot; measured from play</div>
-        <h3 class="t">Faction impact checker</h3>
+        <h3 class="t">{NAMES['faction-impact']}</h3>
+        <p class="tagline">{TAGS['faction-impact']}</p>
         <p class="d">Faction moves while you are not looking, and you find out hours later when a vendor stops
           speaking to you. Name a zone, a faction or a race and it says what rises, what falls, how far per kill,
           and which unlocks that helps or costs. The movement is counted from parsed combat logs rather than
@@ -193,7 +210,8 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
         <div class="kicker">Planning</div>
-        <h3 class="t">Race &amp; primary calculator</h3>
+        <h3 class="t">{NAMES['combo-calculator']}</h3>
+        <p class="tagline">{TAGS['combo-calculator']}</p>
         <p class="d">The primary slot is the only one you can never change &mdash; it locks at level 11 and every
           loadout you ever build will contain it. Name the class that must sit there and the race you want, and it
           costs every route to both. It takes the requirement literally instead of talking you out of it.</p>

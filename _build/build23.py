@@ -29,7 +29,7 @@ import os, re, sys, json, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
-from _partials import head, bar, foot
+from _partials import head, bar, foot, NAME_INDEX
 
 # public/app/ holds the Sky Ledger browser build verbatim — a 176 KB
 # application, not a page of ours. Indexing it would put its whole UI into the
@@ -124,7 +124,7 @@ BODY = f'''
     <h1 class="display">Search<br><em>everything else.</em></h1>
     <p class="hero-lede">Surveys, raid guides, tools, explainers and the change log &mdash;
       {len(DOCS)} pages. Looking for an item or a named mob?
-      <a href="tools/index-search.html">The Index</a> does that properly, with filters for class,
+      <a href="tools/index-search.html">{NAME_INDEX}</a> does that properly, with filters for class,
       slot and zone.</p>
     <input class="sf" id="q" type="search" autocomplete="off" spellcheck="false"
       placeholder="Screaming Terror, voidling, mote, backstab, placeholder&hellip;">
@@ -179,7 +179,7 @@ SCRIPT = ('<script>window.__S__=' + json.dumps(DOCS, separators=(',', ':')) + ';
     C.textContent=hits.length+' page'+(hits.length===1?'':'s');
     E.innerHTML = hits.length ? '' :
       '<div class="sempty">Nothing matches. Items and named mobs live in '+
-      '<a href="tools/index-search.html">The Index</a>.</div>';
+      '<a href="tools/index-search.html">__NAME_INDEX__</a>.</div>';
     R.innerHTML=hits.slice(0,40).map(function(h){
       return '<li><a href="'+h.d.u+'"><span class="st">'+mark(h.d.t,terms)+'</span>'+
              '<span class="su">'+esc(h.d.u)+'</span>'+
@@ -199,6 +199,11 @@ page = (head("Search", f"Search {len(DOCS)} pages of EverQuest Legends surveys, 
              rel="", extra=CSS, og="home", canon="search")
         + bar("") + BODY + foot("").replace('</body>', SCRIPT + '\n</body>'))
 
+# The empty-state message is built inside a plain JavaScript block, so it
+# carries a placeholder rather than an f-string field. Substituted here, once,
+# against the same registry constant every other site reads.
+page = page.replace('__NAME_INDEX__', NAME_INDEX)
+assert '__NAME_INDEX__' not in page
 open('public/search.html', 'w', encoding='utf-8', newline='\n').write(page)
 kb = len(json.dumps(DOCS, separators=(',', ':'))) / 1024
 print(f"search.html written: {len(DOCS)} pages indexed, {kb:.0f} KB index")

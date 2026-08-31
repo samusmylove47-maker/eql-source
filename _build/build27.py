@@ -11,6 +11,28 @@ reason to use ours.
 """
 import os, sys, json
 
+# THE ZONE SPLIT IS DERIVED, BECAUSE IT WAS TYPED AND WENT STALE.
+#
+# This page said "Thirteen zones of far more - ten dungeons and two of the
+# planes". Thirteen and two were right; TEN WAS WRONG and had been since Kedge
+# Keep was added as the eleventh dungeon. The sentence contradicted itself in
+# its own clause: ten plus two is twelve, printed beside a thirteen.
+#
+# _build/build5.py:42-44 records this EXACT fault against itself - "It was typed
+# as 'ten' in two sentences on this page and stayed at ten when the site reached
+# thirteen" - and defends it with len(zones-index). This file had no such guard
+# and reproduced the fault on the page whose whole subject is what we promise
+# not to break.
+#
+# A plane is identified by its title because the dataset carries no type field.
+# If a zone is ever added whose title contains "Plane" and which is not one, this
+# is where to fix it - and the count will be wrong loudly rather than quietly,
+# because the two halves must still sum to the total.
+_Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
+NPLANES = sum(1 for _z in _Z if 'plane' in _z['title'].lower())
+NDUNGEONS = len(_Z) - NPLANES
+assert NDUNGEONS + NPLANES == len(_Z)
+
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
@@ -100,8 +122,8 @@ page = (head("Public data",
       Legends, and roughly a third of what any reference in this space publishes is that.
       <a href="../learn/contamination.html">We scan ourselves for it</a> and publish what
       turns up. Read the provenance before you present a number as fact.
-      <br><br><strong>Completeness.</strong> Thirteen zones of far more &mdash; ten dungeons and
-      two of the planes &mdash; plus the Plane of Sky written up separately, and a limited sample
+      <br><br><strong>Completeness.</strong> {len(_Z)} zones of far more &mdash; {NDUNGEONS} dungeons and
+      {NPLANES} of the planes &mdash; plus the Plane of Sky written up separately, and a limited sample
       of measured play behind it. Everything here states what it does not know; that is the most
       useful field in the file.</div>
 

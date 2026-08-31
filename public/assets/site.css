@@ -536,6 +536,8 @@ a.card:hover{background:var(--surface-2);transform:translateY(-2px);box-shadow:v
   color:var(--c-t,var(--dim))}
 .card .t{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
   line-height:1;letter-spacing:.005em;text-transform:uppercase;color:var(--bone);margin:0 0 var(--s-2)}
+.card .tagline{font-size:var(--t-base);color:var(--dim);margin:0 0 var(--s-3);
+  line-height:1.5;max-width:48ch;text-wrap:balance}
 .card .d{font-size:var(--t-base);color:var(--mut);margin:0 0 14px;line-height:1.55}
 .card .foot{margin-top:auto;display:flex;align-items:center;gap:var(--s-3);flex-wrap:wrap;
   padding-top:var(--s-3);border-top:1px solid var(--rule);

@@ -4,6 +4,12 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot, TOOLS, wordnum
+
+# The home page's door named this tool by hand while the nav and the footer
+# read it from the registry, so a rename moved two of the three. It reads from
+# the registry now. The doors for 'The surveys' and 'The trackers' name
+# sections rather than tools and are deliberately left alone.
+NAMES = {t['slug']: t['name'] for t in TOOLS}
 import heroart
 
 # THE HOME PAGE'S ART IS A REAL DUNGEON.
@@ -539,7 +545,7 @@ home = head("Accurate, sourced and kept current",
 
       <a class="door contour" href="tools/index-search.html" style="--c:var(--bone);--cx:88%;--cy:116%">
         <span class="dq">I need to find something</span>
-        <h3 class="dt">The Index</h3>
+        <h3 class="dt">{NAMES['index-search']}</h3>
         <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
           Ask where a thing drops, filter by class and slot, or find the named you have not met.</p>
         <span class="dgo">Search {NITEMS} items &rarr;</span>

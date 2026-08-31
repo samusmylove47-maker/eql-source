@@ -34,6 +34,30 @@ for _n in IX.get('named', []):
 # this page printed 441 while the home page printed 451: two files, two
 # definitions, neither of them reading the `kind` field that exists to settle it.
 NITEMS = IX['counts']['item_rows']
+
+# THE SIX WAS TYPED BESIDE TWO DERIVED FIGURES THAT COUNT SOMETHING ELSE.
+#
+# This sentence read "435 items, 440 rows: six drop in two zones". Every figure
+# in it is correct and they are not the same population: the first two are
+# ITEMS ONLY, and the six is over items AND groups. A reader subtracting 435
+# from 440 gets five and cannot reconcile it with the six beside it.
+#
+# The Director ruled the six wrong, corrected themselves, and ruled it right -
+# and it IS right: six names appear in more than one zone, five of them items
+# and the sixth the group "Fine steel weapons". So the defect was never the
+# number, it was that nothing on the page said which population it counted.
+#
+# Both halves are derived here rather than named, so the split cannot go stale
+# and the sentence cannot collide again.
+_zbyname = {}
+for _i in IX['items']:
+    _zbyname.setdefault(_i['n'], set()).add(_i.get('z'))
+_multi = [(_n, [_x for _x in IX['items'] if _x['n'] == _n][0].get('kind'))
+          for _n, _zs in _zbyname.items() if len(_zs) > 1]
+NMULTI = len(_multi)
+NMULTI_ITEMS = sum(1 for _n, _k in _multi if _k == 'item')
+NMULTI_GROUPS = NMULTI - NMULTI_ITEMS
+MULTI_GROUP_NAMES = ', '.join(sorted(_n for _n, _k in _multi if _k != 'item'))
 NNAMED = IX['counts']['named_pages']
 # Two counts, both true, and the site published them for a day without saying
 # which was which: rows, because some items drop in two zones, against pages,
@@ -141,7 +165,7 @@ BODY = f'''
   <div class="ix-results" id="results"></div>
   <div class="note" style="margin-top:34px"><strong>What this is and is not.</strong> It indexes the loot and named
     tables from our own surveys &mdash; so its coverage is exactly the {NZONES} zones we have surveyed, not the whole
-    game. {NPAGES} items, {NITEMS} rows: six drop in two zones. Stats are quoted as the survey records them, which means anything the survey flagged as uncertain is uncertain
+    game. {NPAGES} items across {NITEMS} rows. {NMULTI} things drop in two zones &mdash; {NMULTI_ITEMS} items and {NMULTI_GROUPS} group, {MULTI_GROUP_NAMES} &mdash; which is why the row count is higher than the item count. Stats are quoted as the survey records them, which means anything the survey flagged as uncertain is uncertain
     here too. Follow the zone link to read the surrounding context before you plan a night around a drop.</div>
   <div class="note sig"><strong>Looking for a gear upgrade check against your own inventory?</strong>
     <a href="https://eqltools.com/gear" style="color:var(--bone)">EQL Tools has one</a> that reads your inventory file
