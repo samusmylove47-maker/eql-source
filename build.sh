@@ -11,6 +11,16 @@ cd "$(dirname "$0")"
 # before anything renders it.
 python3 _build/skydata.py
 # Copies the Sky Ledger browser build into public/app/ under a content hash and
+# BOTH COPIERS BELOW HONOUR EQLS_SKIP_APPS. Set it when the branch is not about
+# an app, and the committed copies are kept exactly as they are:
+#
+#     EQLS_SKIP_APPS=1 ./build.sh
+#
+# Without it, every build on every branch picks up whatever the sibling repos
+# have built since the branch point - which is a publish decision, made by
+# whoever happened to rebuild. Unset stays the default: a guard that silently
+# stopped a real publish would be worse than the problem. See _build/appskip.py.
+#
 # records what it copied in assets/sky-ledger.json. The home page and both tool
 # pages link and quote that file, so it runs before any of them. It does not
 # fail on a machine without the Ledger repo - the copy and the record are both

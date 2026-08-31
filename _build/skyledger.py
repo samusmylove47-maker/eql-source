@@ -47,6 +47,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 
 OUT = 'assets/sky-ledger.json'
+import appskip
+
 APPDIR = 'public/app'
 
 # Where the Ledger repo might be. An env var wins, so a machine that keeps it
@@ -154,19 +156,36 @@ def release_info(repo, version):
 
 
 
+def keep_committed(reason):
+    """Report on the copy already in the tree, and exit clean.
+
+    Extracted from main() on 31 Aug 2026 so that a DELIBERATE skip can name
+    itself. This used to print "repo not found" for the only no-op it had; with
+    EQLS_SKIP_APPS there are two, and reporting a deliberate skip as a missing
+    checkout would be a false statement in the build log. The same reasoning,
+    and the same shape, as lockouts.py's keep_committed.
+    """
+    if not os.path.exists(OUT):
+        print(f"sky ledger: {reason} and no committed record - "
+              "the tool page will not build")
+        return 0
+    rec = json.load(open(OUT, encoding='utf-8'))
+    served = os.path.join(APPDIR, rec['app']['file'])
+    state = 'present' if os.path.exists(served) else 'MISSING'
+    print(f"sky ledger: NOT COPIED - {reason}. Keeping the committed "
+          f"{rec['app']['file']} ({state})")
+    return 0
+
+
 def main():
+    # Asked before the repo is looked for, so a branch that is not about this
+    # app never picks up someone else's build. See _build/appskip.py.
+    if appskip.skipping():
+        return keep_committed(appskip.REASON)
+
     repo = find_repo()
     if repo is None:
-        if os.path.exists(OUT):
-            rec = json.load(open(OUT, encoding='utf-8'))
-            served = os.path.join(APPDIR, rec['app']['file'])
-            state = 'present' if os.path.exists(served) else 'MISSING'
-            print(f"sky ledger: repo not found, keeping the committed copy "
-                  f"({rec['app']['file']}, {state})")
-        else:
-            print("sky ledger: repo not found and no committed record — "
-                  "the tool page will not build")
-        return 0
+        return keep_committed('repo not found')
 
     src = os.path.join(repo, 'SkyLedger.html')
     blob = open(src, 'rb').read()

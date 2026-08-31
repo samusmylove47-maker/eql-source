@@ -433,6 +433,11 @@ if os.path.exists("build.sh"):
                    # generators that emit per-card tokens rather than run on
                    # its own; run it directly to print the table.
                    "accents.py",
+                   # One function and a docstring, imported by skyledger.py
+                   # and lockouts.py so the two cannot describe the same
+                   # condition differently. It emits nothing, so build.sh
+                   # has nothing to run it for.
+                   "appskip.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it
