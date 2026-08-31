@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Read", "Glob", "Grep",
+      "Read",
+      "Glob",
+      "Grep",
       "Edit(_build/source/**)",
       "Edit(assets/**)",
       "Edit(docs/**)",
@@ -11,9 +13,22 @@
       "Bash(./build.sh)",
       "Bash(python3 scripts/check.py)",
       "Bash(python3 _build/*)",
-      "Bash(git status)", "Bash(git diff:*)", "Bash(git log:*)",
-      "Bash(git add:*)", "Bash(git commit:*)", "Bash(git checkout:*)",
-      "Bash(gh pr:*)", "Bash(ls:*)", "Bash(cat:*)"
+      "Bash(git status)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git checkout:*)",
+      "Bash(gh pr:*)",
+      "Bash(ls:*)",
+      "Bash(cat:*)",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__list_triggers",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__create_trigger",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__update_trigger",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__delete_trigger",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__fire_trigger",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__send_later",
+      "mcp__bf7c680d-5fdc-5ef4-b4a0-abadb619bf0a__get_session"
     ],
     "deny": [
       "Bash(git push --force:*)",
