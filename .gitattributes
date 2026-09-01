@@ -1,0 +1,73 @@
+# Line endings are DECLARED, because this repository makes byte-exact assertions.
+#
+# WHAT THIS FIXES, measured 31 Aug 2026.
+#
+# There was no .gitattributes, so every checkout used whatever the contributor's
+# git happened to be configured for. On Windows the default is
+# core.autocrlf=true, which rewrites LF to CRLF on checkout. Simulating that
+# conversion against the committed blobs:
+#
+#   sky.v1.json          recorded 128324   CRLF checkout 134041   +5717
+#   sightings.v1.json    recorded 243228   CRLF checkout 256004  +12776
+#   zones.v1.json        recorded  16282   CRLF checkout  16742    +460
+#   items.v1.json        recorded   9797   CRLF checkout  10084    +287
+#
+# All four byte assertions in scripts/check.py fail, against byte-for-byte
+# CORRECT content, and check.py then says "Do not commit until these are fixed."
+#
+# THE SIGNATURE IS THE WORST PART: the HASHES all stay green, because the check
+# parses the JSON before re-serialising it and json.load discards whitespace. So
+# it presents as four bytes-only failures with every hash clean, which reads like
+# data corruption and is line endings. That is an hour of looking in the wrong
+# place.
+#
+# It reaches further than those four. scripts/stamp.py fingerprints the raw bytes
+# of every build input, so on a CRLF checkout the fingerprint of a correct tree
+# does not match the committed stamp and check.py reports "public/ is stale" on a
+# clone that has never been touched.
+#
+# Not an outage: .github/workflows/survey-refresh.yml runs on ubuntu-latest, so
+# CI and the published site were never affected. This is a trap on contributors'
+# machines, and both of ours are Windows.
+#
+# This is the checkout half of the same fault as scripts/stamp.py writing CRLF.
+# That fixed the WRITE side; nothing declared the CHECKOUT side. A repository
+# that has begun asserting byte counts has to declare its line endings, and the
+# assertions were added without the declaration.
+
+* text=auto eol=lf
+
+# AND THE TRAP INSIDE THE FIX, which is why these lines exist.
+#
+# Three tracked text files carry CRLF *in the repository*, and two of them are
+# the served application bundles — foreign artefacts whose sha1/sha256 is part of
+# their own filename and is verified by scripts/check.py:
+#
+#   public/app/eqls-lockouts.16d4edad.html   3308 CRLF
+#   public/app/sky-ledger.dad68d2b.html      2114 CRLF
+#
+# Normalising those would change their bytes, change their hash, and leave the
+# served URL describing a file that no longer exists. `-text` keeps them exactly
+# as the repository that built them produced them, which is the whole point of
+# copying them in under a content hash.
+public/app/* -text
+
+# Hashed media, same reasoning: _build/media.py names each file after a sha1 of
+# its own bytes.
+_media/* -text
+public/assets/media/* -text
+
+# Belt and braces for anything git might mis-detect as text.
+*.png  -text
+*.jpg  -text
+*.jpeg -text
+*.webp -text
+*.ico  -text
+*.mp4  -text
+*.webm -text
+*.woff  -text
+*.woff2 -text
+*.ttf  -text
+*.otf  -text
+*.s3d  -text
+*.zip  -text
