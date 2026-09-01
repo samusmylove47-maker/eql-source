@@ -579,10 +579,6 @@ home = head("Accurate, sourced and kept current",
   {hero_art}
   {hero_src}
 </section>
-{auras}
-{upgrades}
-{feature}
-{lockouts}
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>
@@ -618,6 +614,11 @@ home = head("Accurate, sourced and kept current",
       written up in full, measured in play.</p>
   </div>
 </section>
+{auras}
+{upgrades}
+{feature}
+{lockouts}
+
 
 <section class="band">
   <div class="shell">

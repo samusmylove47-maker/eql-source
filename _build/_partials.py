@@ -258,6 +258,21 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 <body>'''
 
 NAME_INDEX = next(t['name'] for t in TOOLS if t['slug'] == 'index-search')
+
+# PLAIN LANGUAGE IN THE NAV, THE BRAND EVERYWHERE ELSE.
+#
+# The global nav read "=Index" - the product name, in the one place a stranger
+# looks first, telling them nothing. It reads "Items & mobs" now. The footer,
+# the tools hub and the tool pages keep the "=" mark, which is the brand rather
+# than decoration, and NAME_INDEX still drives those.
+#
+# This deliberately reintroduces two labels for one tool, a day after they were
+# unified. The unification was right: the fault was four places drifting BY
+# ACCIDENT. Two labels chosen for two audiences is a decision, and both still
+# come from this file.
+#
+# The note is here and not beside the markup: written into the f-string it
+# shipped on all 717 pages and moved the hero 632 bytes down. Third time.
 _NAV_INDEX = NAME_INDEX
 
 def bar(rel=""):
@@ -269,10 +284,10 @@ def bar(rel=""):
       <a href="{rel}dungeons/index.html">Dungeons</a>
       <a href="{rel}raids/index.html">Raids</a>
       <a href="{rel}tools/index.html">Tools</a>
-      <a href="{rel}tools/index-search.html">{_NAV_INDEX}</a>
+      <a href="{rel}tools/index-search.html">Items &amp; mobs</a>
       <a href="{rel}learn/index.html">Learn</a>
       <a href="{rel}sources.html">Accuracy</a>
-      <a href="{rel}search.html" class="nav-find">Search</a>
+      <a href="{rel}search.html" class="nav-find">Site search</a>
     </nav>
     <button class="lamp" type="button">
       <svg class="lantern" viewBox="0 0 100 126" fill="none" stroke="currentColor"
