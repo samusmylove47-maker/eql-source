@@ -96,6 +96,25 @@ python3 _build/build404.py
 python3 _build/publicdata.py
 python3 _build/build27.py
 python3 _build/build23.py
+# THE SELF-AUDIT NOW RUNS IN THE BUILD, because its ARTIFACT is published.
+#
+# scripts/contamination.py was hand-run. On 1 Sep 2026 its scope changed in code
+# - six signatures, and it began scanning public/ instead of only the build
+# inputs - and assets/contamination.json was last regenerated on 14 AUGUST. So
+# /learn/contamination published "24 files scanned, 291 unmarked" for eighteen
+# days while the code that produced it had moved on. Nothing was blocked and no
+# check was red: the output IS the stale thing.
+#
+# It costs 1.7 seconds and needs no network, no browser and no game install, so
+# the reason it was manual does not survive contact with the fact that a reader
+# sees its number.
+#
+# ORDER MATTERS BOTH WAYS. It scans public/**, so it must run after the pages
+# exist; build26.py renders its result, so that must run after the scan. Hence
+# here, at the end, with build26 repeated rather than moved - the earlier run
+# keeps the page present for the scan, and this one gives it today's numbers.
+python3 scripts/contamination.py --write
+python3 _build/build26.py
 python3 _build/sitemap.py
 python3 scripts/stamp.py
 # WHAT THIS BUILD SWEPT IN, SAID LAST, WHERE A PERSON ACTUALLY LOOKS.

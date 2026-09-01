@@ -59,10 +59,10 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
       <a href="../dungeons/index.html">Dungeons</a>
       <a href="../raids/index.html">Raids</a>
       <a href="../tools/index.html">Tools</a>
-      <a href="../tools/index-search.html">=Index</a>
+      <a href="../tools/index-search.html">Items &amp; mobs</a>
       <a href="../learn/index.html">Learn</a>
       <a href="../sources.html">Accuracy</a>
-      <a href="../search.html" class="nav-find">Search</a>
+      <a href="../search.html" class="nav-find">Site search</a>
     </nav>
     <button class="lamp" type="button">
       <svg class="lantern" viewBox="0 0 100 126" fill="none" stroke="currentColor"
@@ -100,9 +100,9 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
     <div class="score">
       <div><b class="good">0</b>
         <span>unmarked, on mechanics we know changed</span></div>
-      <div><b>16</b><span>of those, marked</span></div>
-      <div><b>302</b><span>classic formats, mostly harmless</span></div>
-      <div><b>24</b><span>files scanned</span></div>
+      <div><b>25</b><span>of those, marked</span></div>
+      <div><b>2013</b><span>classic formats, mostly harmless</span></div>
+      <div><b>736</b><span>files scanned</span></div>
     </div>
   </div>
 </section>
@@ -122,7 +122,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
       demonstrably works differently in Legends.</p>
     <div class="tw"><table>
       <thead><tr><th>Signature</th><th>Unmarked</th><th>Marked</th><th>What it is</th></tr></thead>
-      <tbody><tr><td class="sig">haste-pct</td><td class="n ok">0</td><td class="n ok">16</td><td class="what"><b>Classic:</b> Haste was a percentage that divided weapon delay.<br><b>Legends:</b> Legends uses a flat value on an attack-speed stat. EQL Tools documents it; eqlwiki still carries the classic formula, so the two best sources in the field disagree.<br><b>What would settle it:</b> One screenshot of a Legends haste tooltip.<br><span style="color:var(--faint)">Found in: sky.json, index-data.json, lowerguk.html</span></td></tr></tbody>
+      <tbody><tr><td class="sig">haste-pct</td><td class="n ok">0</td><td class="n ok">25</td><td class="what"><b>Classic:</b> Haste was a percentage that divided weapon delay.<br><b>Legends:</b> Legends uses a flat value on an attack-speed stat. EQL Tools documents it; eqlwiki still carries the classic formula, so the two best sources in the field disagree.<br><b>What would settle it:</b> One screenshot of a Legends haste tooltip.<br><span style="color:var(--faint)">Found in: sky.json, index-data.json, lowerguk.html</span></td></tr></tbody>
     </table></div>
 
     <h2 class="sec">Classic formats</h2>
@@ -132,7 +132,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
       number in it is right.</p>
     <div class="tw"><table>
       <thead><tr><th>Signature</th><th>Unmarked</th><th>Marked</th><th>What it is</th></tr></thead>
-      <tbody><tr><td class="sig">charges</td><td class="n bad">9</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic printed a charge count in brackets on clickable items.<br><b>Legends:</b> Nobody has published whether Legends keeps charge counts or the same numbers.<br><b>What would settle it:</b> One screenshot of a clickable item tooltip.<br><span style="color:var(--faint)">Found in: sky.json</span></td></tr><tr><td class="sig">sv-resist</td><td class="n bad">217</td><td class="n ok">9</td><td class="what"><b>Classic:</b> Classic stat blocks abbreviated resists as SV MAGIC +N.<br><b>Legends:</b> The abbreviation may well be current. Its presence marks a block transcribed from a classic-era record, which is worth knowing even when the number is right.<br><b>What would settle it:</b> Compare one block against the item in game.<br><span style="color:var(--faint)">Found in: index-data.json, warrens.html, sky.json</span></td></tr><tr><td class="sig">nodrop</td><td class="n bad">65</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic flag wording on item records.<br><b>Legends:</b> Legends may use different wording. Unchecked.<br><b>What would settle it:</b> One screenshot of an item tooltip carrying the flag.<br><span style="color:var(--faint)">Found in: mistmoore.html, najena.html, warrens.html</span></td></tr></tbody>
+      <tbody><tr><td class="sig">charges</td><td class="n bad">9</td><td class="n ok">1</td><td class="what"><b>Classic:</b> Classic printed a charge count in brackets on clickable items.<br><b>Legends:</b> Nobody has published whether Legends keeps charge counts or the same numbers.<br><b>What would settle it:</b> One screenshot of a clickable item tooltip.<br><span style="color:var(--faint)">Found in: sky.json</span></td></tr><tr><td class="sig">sv-resist</td><td class="n bad">712</td><td class="n ok">14</td><td class="what"><b>Classic:</b> Classic stat blocks abbreviated resists as SV MAGIC +N.<br><b>Legends:</b> The abbreviation may well be current. Its presence marks a block transcribed from a classic-era record, which is worth knowing even when the number is right.<br><b>What would settle it:</b> Compare one block against the item in game.<br><span style="color:var(--faint)">Found in: index-data.json, warrens.html, warrens.html</span></td></tr><tr><td class="sig">nodrop</td><td class="n bad">918</td><td class="n ok">3</td><td class="what"><b>Classic:</b> Classic flag wording on item records.<br><b>Legends:</b> Legends may use different wording. Unchecked.<br><b>What would settle it:</b> One screenshot of an item tooltip carrying the flag.<br><span style="color:var(--faint)">Found in: index-data.json, mistmoore.html, mistmoore.html</span></td></tr><tr><td class="sig">rarity-word</td><td class="n bad">351</td><td class="n ok">5</td><td class="what"><b>Classic:</b> Classic loot tables graded every drop rare, common or uncommon.<br><b>Legends:</b> These are the wiki word, not a measurement. Nothing here has counted a drop against the kills that produced it.<br><b>What would settle it:</b> The same thing the percentages need: a count and a denominator.<br><span style="color:var(--faint)">Found in: index-data.json, lowerguk.html, lowerguk.html</span></td></tr></tbody>
     </table></div>
 
     <div class="note"><strong>Why this page is about us and not about anyone else.</strong>
@@ -144,7 +144,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 </div>
 
     <p class="src">Run by hand with <code>scripts/contamination.py</code> over
-      24 files: every survey and tool source, the Plane of Sky dataset, the
+      736 files: every survey and tool source, the Plane of Sky dataset, the
       planar sets, the mined catalogue and the mote values. The retired plate archive is
       excluded deliberately &mdash; it republishes superseded coordinates verbatim, is
       marked as history and is kept out of search.</p>

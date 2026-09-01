@@ -291,13 +291,33 @@ def locator(zslug, ztitle, loc=None):
             f'<figcaption>{cap}<br>North is up &middot; floor from the game&rsquo;s own mesh</figcaption>'
             f'</figure>')
 
+# EVERY LINK PASTED INTO A CHAT SHOWED A CARD READING "DUNGEONS".
+#
+# All 673 catalogue pages carried og:image = dungeons.png, so an item page, a
+# named mob and the dungeon index were indistinguishable the moment anyone
+# shared one - on a site that has just launched a product into a community that
+# shares links.
+#
+# Thirteen per-zone cards already exist and nothing used them. A page belonging
+# to exactly one zone gets that zone's card; a page spanning several keeps the
+# generic one, because a card naming one of three zones would be a worse answer
+# than a neutral one.
+OG_ZONES = {f[len('dungeons-'):-4] for f in os.listdir('public/assets/og')
+            if f.startswith('dungeons-') and f.endswith('.png')}
+
+
+def og_for(zones):
+    zs = sorted(set(zones))
+    return f'dungeons-{zs[0]}' if len(zs) == 1 and zs[0] in OG_ZONES else 'dungeons'
+
+
 def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon,
-         locator_html=''):
+         locator_html='', og='dungeons'):
     rows = ''.join(
         f'<div><dt>{k}</dt><dd{" class=\'none\'" if v is None else ""}>'
         f'{v if v is not None else "not recorded"}</dd></div>'
         for k, v in facts)
-    return (head(title, desc, rel="../", extra=CSS, og="dungeons", canon=canon)
+    return (head(title, desc, rel="../", extra=CSS, og=og, canon=canon)
             + bar("../") + f'''
 <main>
 <section class="hero page">
@@ -442,7 +462,8 @@ for name, rows in by_item.items():
     s = slug(name)
     open(f'public/items/{s}.html', 'w', encoding='utf-8', newline='\n').write(
         page("item", name, "Item", a['a'], facts, extra, desc[:180], f"items/{s}",
-             locator(a['z'], a['zt'])))
+             locator(a['z'], a['zt']),
+             og=og_for(r['z'] for r in rows)))
     if name in GROUP_NAMES:
         n_groups += 1
     else:
@@ -504,7 +525,8 @@ for nm in IX['named']:
         facts.append(("Notes", esc(nm['no'])))
     open(f'public/named/{s}.html', 'w', encoding='utf-8', newline='\n').write(
         page("named", nm['n'], "Named mob", nm['a'], facts, extra, desc[:180], f"named/{s}",
-             locator(nm['z'], nm['zt'], nm.get('loc') or '')))
+             locator(nm['z'], nm['zt'], nm.get('loc') or ''),
+             og=og_for([nm['z']])))
     n_named += 1
 
 # ---- the two hub pages ------------------------------------------------------
