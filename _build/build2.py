@@ -245,7 +245,10 @@ open('public/tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 # comparison below, which is a comparison between two bosses.
 try:
     _SL = json.load(open('assets/sky-loot.json', encoding='utf-8'))
-    _SKY_BIGGEST = max(b['damage_max'] for b in _SL['bosses'])
+    # Derived once in skyloot.py. Both this page and the Sky page compared
+    # against their own max over the bosses, and both picked damage_max -
+    # a floor. They agreed by making the same mistake.
+    _SKY_BIGGEST = _SL['dearest']['damage']
     _SKY_KEYS = len(_SL['keys'])
     _CT = max((f['damage_low'] for f in json.load(open('assets/raids-measured.json', encoding='utf-8'))
                if f['boss'] == 'Cazic-Thule' and f['difficulty'] == 4), default=None)

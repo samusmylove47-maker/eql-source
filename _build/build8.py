@@ -129,7 +129,10 @@ def plane_god(name):
 
 
 CT = plane_god('Cazic-Thule')
-BIGGEST = max(b['damage_max'] for b in LOOT['bosses'])
+# Derived once in skyloot.py, not chosen again here - see the note beside
+# 'dearest' there. This read max(damage_max), which includes fights the parser
+# marked a floor, so the comparison ran against a lower bound.
+BIGGEST = LOOT['dearest']['damage']
 RATIO = round(CT / BIGGEST) if CT else None
 
 
@@ -149,8 +152,20 @@ def dmg_cell(b):
     """A floor is marked wherever the figure appears. The bee table printed the
     bare number while the boss table above it said "or more" for the same
     fight, which is two different claims about one measurement."""
-    d = fmt(b['damage_max'])
-    return f'{d}&nbsp;<em>or more</em>' if b['damage_max_is_floor'] else d
+    # THE FULLEST COMPLETE VIEW, not the largest number seen.
+    #
+    # This printed damage_max, the biggest total observed - including fights
+    # joined after the boss was engaged, which are lower bounds. So six of eight
+    # bosses published a FLOOR that sat ABOVE their own fullest complete view,
+    # and /learn/difficulty printed the smaller, better figure for the same boss
+    # at the same tier. Two pages, one boss, one tier, two numbers.
+    #
+    # CLAUDE.md: trust the fullest view of a boss at a tier and treat the rest
+    # as lower bounds. "or more" now marks the case it was meant for - a boss
+    # with no complete view at all, which is none of the fifteen today.
+    complete = b.get('damage_complete_max')
+    d = fmt(complete if complete else b['damage_max'])
+    return d if complete else f'{d}&nbsp;<em>or more</em>'
 
 
 # ---------------------------------------------------------------- the ring SVG

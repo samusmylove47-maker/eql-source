@@ -1,0 +1,33 @@
+{
+ "_README": "EQLS Auras is Shara's project. Shara has creative and production control over it and her copy reaches this file through the owner. NOTHING IN HERE MAY BE WRITTEN BY A BUILD SESSION. The fields below were moved verbatim out of _build/build1.py on 1 Sep 2026 so that the home-page band and /auras.html read one source instead of two; not a word of them was authored here. Fill download.url and media.gallery and the page grows to fit. Leave a field null and the page omits it rather than inventing it.",
+
+ "name": "EQLS Auras",
+ "eyebrow": "Next &middot; <b>reads your own log</b>",
+ "platform": "Windows.",
+
+ "lede": "It reads your combat log and draws your buffs over the game as icons that count down, so you can see what is about to drop off without opening a window.",
+
+ "body": [
+  "It reads files the client already has: the log it writes as you play, your spellbook, and the game&rsquo;s own spell icons. It does not read or alter the game&rsquo;s memory, inject code into it, or send it input. <strong>It fetches its typeface from Google each time it launches</strong>, which discloses your IP address to Google; beyond that it sends nothing &mdash; no telemetry, no analytics, no update check. That fetch is the main window only: <strong>the overlay drawn over the game requests nothing at all.</strong>",
+  "The idea is WeakAuras&rsquo;. The code is not: a from-scratch implementation for EverQuest Legends, sharing no code and no trigger format with it, and neither affiliated with nor endorsed by its authors."
+ ],
+
+ "download": {
+  "url": null,
+  "label": null,
+  "version": null,
+  "_note": "Fill url with the real download address and the page renders a download control. While it is null the page says nothing about how to get it, because there is no true thing to say. NEVER put a guessed URL here."
+ },
+
+ "links": [],
+ "_links_note": "Optional. Each entry {\"href\": ..., \"label\": ..., \"note\": ...}. Somewhere it runs, a guide, a place to report a problem. Empty renders nothing.",
+
+ "media": {
+  "trailer": "auras-trailer",
+  "poster": "auras-poster",
+  "gallery": [],
+  "_gallery_note": "Keys into assets/media.json. Drop Shara's stills or GIFs into _media/, run python3 _build/media.py, then list their keys here — e.g. [\"auras-timers\", \"auras-setup\"]. Each renders in a fixed 16:9 slot, so adding one moves no layout. An animated GIF is treated as an image and is not motion-gated; prefer a video for anything long."
+ },
+
+ "caption": "The overlay in play &middot; 9s, silent"
+}

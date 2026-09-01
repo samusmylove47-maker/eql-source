@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>EQLS Auras — EQL Source</title>
+<meta name="description" content="EQLS Auras reads your EverQuest Legends combat log and draws your buffs over the game as icons that count down.">
+<meta property="og:title" content="EQLS Auras — EQL Source">
+<meta property="og:description" content="EQLS Auras reads your EverQuest Legends combat log and draws your buffs over the game as icons that count down.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://eqlsource.com/assets/og/tools.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="EQL Source">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="EQLS Auras — EQL Source">
+<meta name="twitter:description" content="EQLS Auras reads your EverQuest Legends combat log and draws your buffs over the game as icons that count down.">
+<meta name="twitter:image" content="https://eqlsource.com/assets/og/tools.png">
+<link rel="canonical" href="https://eqlsource.com/auras">
+<link rel="stylesheet" href="assets/fonts/fonts.css?v=4c604a33">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="assets/site.css?v=436f407f">
+<script>/* Torchlight is the default and the CSS says so, so this only ever has
+   work to do for a reader who chose daylight. It runs before first paint to
+   avoid a flash of the wrong ground, and it is wrapped because localStorage
+   throws outright in a browser with cookies blocked - the site must render
+   dark in that case, not fail to render. */
+(function(){try{var t=localStorage.getItem("eqls-theme");
+if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}})()</script>
+<style>
+.au-hero .display{max-width:16ch}
+.au-lede{font-size:var(--t-lg);color:var(--dim);line-height:1.5;max-width:52ch;
+  margin:var(--s-4) 0 0;text-wrap:balance}
+.au-plat{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin:var(--s-4) 0 0}
+.au-body p{color:var(--mut);font-size:var(--t-base);line-height:1.65;max-width:70ch;
+  margin:0 0 var(--s-4)}
+.au-shot{margin:0 0 var(--s-5);border:1px solid var(--rule);border-radius:var(--r);
+  overflow:hidden;background:var(--surface-2)}
+.au-shot video,.au-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;
+  object-fit:cover}
+.au-shot figcaption{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
+  padding:10px 14px;border-top:1px solid var(--rule)}
+.au-grid{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.au-get{display:inline-flex;align-items:center;gap:var(--s-3);margin:var(--s-5) 0 0;
+  padding:13px 22px;border-radius:var(--r);background:var(--bone);color:var(--surface-0);
+  font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-lg);
+  text-transform:uppercase;letter-spacing:.03em;text-decoration:none}
+.au-get:hover{filter:brightness(1.08)}
+.au-links{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
+.au-links li{background:var(--panel);padding:13px 16px}
+.au-links a{color:var(--instr-t);text-decoration:none;font-weight:600}
+.au-links span{display:block;color:var(--faint);font-size:var(--t-sm);margin-top:3px}
+.au-pending{margin:var(--s-5) 0 0;padding:14px 16px;border:1px dashed var(--rule);
+  border-radius:var(--r);color:var(--faint);font-size:var(--t-sm);line-height:1.6;max-width:62ch}
+</style></head>
+<body><header class="site-bar">
+  <div class="shell">
+    <a class="mark" href="index.html"><span class="m1">EQL Source</span><span class="m2">Survey</span></a>
+    <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
+    <nav class="site-nav" id="nav">
+      <a href="dungeons/index.html">Dungeons</a>
+      <a href="raids/index.html">Raids</a>
+      <a href="tools/index.html">Tools</a>
+      <a href="tools/index-search.html">=Index</a>
+      <a href="learn/index.html">Learn</a>
+      <a href="sources.html">Accuracy</a>
+      <a href="search.html" class="nav-find">Search</a>
+    </nav>
+    <button class="lamp" type="button">
+      <svg class="lantern" viewBox="0 0 100 126" fill="none" stroke="currentColor"
+        stroke-width="1.15" stroke-linejoin="round" aria-hidden="true" focusable="false">
+        <path d="M50 4v10"/><path d="M34 20h32l6 10H28Z"/><path d="M30 30v60h40V30"/>
+        <path d="M26 90h48l-5 10H31Z"/><path d="M38 38v44M50 34v52M62 38v44" opacity=".55"/>
+        <ellipse cx="50" cy="62" rx="9" ry="13" opacity=".7"/>
+        <path d="M34 14a16 8 0 0 1 32 0" stroke-width=".9"/>
+      </svg>
+      <span class="lamp-to-day">Daylight</span><span class="lamp-to-torch">Torchlight</span>
+    </button>
+  </div>
+</header>
+<script>/* Labelled by DESTINATION, not by state: it reads DAYLIGHT while you are
+   in torchlight. The label itself is set in CSS so it is correct before this
+   runs and stays correct with JavaScript off; only the switching needs script.
+   A CSS-only toggle would need a checkbox ahead of every themed element in
+   source order, and the chrome is injected into pages whose body order we do
+   not control. */
+(function(){var b=document.querySelector(".lamp");if(!b)return;
+b.addEventListener("click",function(){var d=document.documentElement;
+var next=d.getAttribute("data-theme")==="light"?"dark":"light";
+d.setAttribute("data-theme",next);
+try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
+<main>
+<section class="hero page au-hero">
+  <div class="shell">
+    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; EQLS Auras</p>
+    <h1 class="display">EQLS Auras</h1>
+    <p class="au-lede">It reads your combat log and draws your buffs over the game as icons that count down, so you can see what is about to drop off without opening a window.</p>
+    <p class="au-plat">Windows.</p>
+    <p class="au-pending">No download address is published here yet. This page will carry it as soon as there is one to carry.</p>
+  </div>
+</section>
+
+<section class="band" style="border-top:0;padding-top:0">
+  <div class="shell">
+    <figure class="au-shot" id="auwrap2" data-video="assets/media/auras-trailer.5fc3fbbc.mp4" data-poster="assets/media/auras-poster.5c861299.jpg"><img src="assets/media/auras-poster.5c861299.jpg" width="1600" height="900" alt=""><button class="vplay" type="button">Play</button><figcaption>The overlay in play &middot; 9s, silent</figcaption></figure>
+    
+    <div class="au-body"><p>It reads files the client already has: the log it writes as you play, your spellbook, and the game&rsquo;s own spell icons. It does not read or alter the game&rsquo;s memory, inject code into it, or send it input. <strong>It fetches its typeface from Google each time it launches</strong>, which discloses your IP address to Google; beyond that it sends nothing &mdash; no telemetry, no analytics, no update check. That fetch is the main window only: <strong>the overlay drawn over the game requests nothing at all.</strong></p><p>The idea is WeakAuras&rsquo;. The code is not: a from-scratch implementation for EverQuest Legends, sharing no code and no trigger format with it, and neither affiliated with nor endorsed by its authors.</p></div>
+    
+  </div>
+  <script>
+  (function(){
+    var w=document.getElementById('auwrap2');
+    if(!w) return;
+    var b=w.querySelector('.vplay');
+    if(!b) return;
+    b.addEventListener('click',function(){
+      var v=document.createElement('video');
+      v.src=w.getAttribute('data-video');
+      v.setAttribute('poster',w.getAttribute('data-poster'));
+      v.muted=true; v.loop=true; v.playsInline=true; v.controls=true;
+      v.setAttribute('width','1600'); v.setAttribute('height','900');
+      w.replaceChild(v,w.querySelector('img'));
+      b.remove();
+      var p=v.play(); if(p&&p.catch) p.catch(function(){});
+    });
+  })();
+  </script>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div><h4>Dungeons</h4><ul>
+        <li><a href="dungeons/index.html">All surveys</a></li>
+        <li><a href="dungeons/najena.html">Najena</a></li>
+        <li><a href="dungeons/lowerguk.html">Lower Guk</a></li>
+        <li><a href="dungeons/mistmoore.html">Castle Mistmoore</a></li>
+        <li><a href="items/index.html">Every item</a></li>
+        <li><a href="named/index.html">Every named mob</a></li>
+        <li><a href="sets/index.html">Every planar set</a></li>
+      </ul></div>
+      <div><h4>Raids</h4><ul>
+        <li><a href="raids/index.html">Encounter index</a></li>
+        <li><a href="raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+      </ul></div>
+      <div><h4>Tools</h4><ul>
+        <li><a href="tools/index-search.html">=Index</a></li>
+        <li><a href="tools/sky-ledger.html">=Sky</a></li>
+        <li><a href="tools/50-upgrades.html">=Upgrades</a></li>
+        <li><a href="tools/gap-engine.html">=Gaps</a></li>
+        <li><a href="tools/lockouts.html">=Lockouts</a></li>
+        <li><a href="tools/race-unlocks.html">=Races</a></li>
+        <li><a href="tools/combo-calculator.html">=Combos</a></li>
+        <li><a href="tools/faction-impact.html">=Faction</a></li>
+      </ul></div>
+      <div><h4>Learn</h4><ul>
+        <li><a href="learn/still-true.html">Is it still true?</a></li>
+        <li><a href="learn/difficulty.html">What difficulty changes</a></li>
+        <li><a href="learn/motes.html">Motes</a></li>
+        <li><a href="learn/raid-access.html">How raid access works</a></li>
+        <li><a href="learn/deity.html">Deity, and the level 11 lock</a></li>
+        <li><a href="learn/reading-the-plans.html">Reading a floor plan</a></li>
+        <li><a href="learn/contamination.html">Contamination</a></li>
+      </ul></div>
+      <div><h4>About</h4><ul>
+        <li><a href="search.html">Search the site</a></li>
+        <li><a href="data/index.html">Public data</a></li>
+        <li><a href="credits.html">Credits</a></li>
+        <li><a href="archive/index.html">The original plates</a></li>
+        <li><a href="sources.html">Sourcing standard</a></li>
+        <li><a href="sources.html#gaps">Known gaps</a></li>
+        <li><a href="sources.html#changelog">Change log</a></li>
+      </ul></div>
+    </div>
+    <div class="foot-contact">
+      <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
+        That is the most useful thing anyone can send us, and every finding is credited by name.
+        <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
+        a finding</a> &middot; <a href="learn/still-true.html">see what is already open</a>.</p>
+      <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
+        carry private chat. Say you have one and we will ask.</p>
+    </div>
+    <p class="foot-legal">
+      Every claim on this site names its source and the date that source was read. Where a source is
+      uncertain, contradicted or stale, the page says so rather than smoothing it over.<br>
+      Unofficial fan resource. Not affiliated with or endorsed by Daybreak Game Company, Game Jawn
+      or Darkpaw Studios. EverQuest is a registered trademark of Daybreak Game Company LLC.
+    </p>
+    <svg class="rule-mark" width="100%" height="9" viewBox="0 0 1160 9"
+      preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1"
+      aria-hidden="true" focusable="false"><path d="M0 4.5h486"/><path
+      d="M674 4.5h486"/><path d="M580 1l7 3.5-7 3.5-7-3.5z"/><path
+      d="M508 4.5h44M608 4.5h44" stroke-width=".7" opacity=".75"/><path
+      d="M566 4.5h-8M594 4.5h8" stroke-width=".7" opacity=".5"/></svg>
+  </div>
+</footer>
+<script src="assets/site.js"></script>
+</body>
+</html>

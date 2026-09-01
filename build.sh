@@ -38,6 +38,10 @@ python3 _build/coverage.py
 # Copies the committed trailer and poster into public/ under a content hash.
 # Runs before build1, which prints their filenames into the home page.
 python3 _build/media.py
+# The EQLS Auras page. Runs BEFORE build1.py because the home-page band reads
+# the same assets/auras.json and links this page; a band pointing at a page
+# that does not exist yet would fail the link check on a clean tree.
+python3 _build/build32.py
 python3 _build/build1.py
 python3 _build/build2.py
 python3 _build/build3.py
