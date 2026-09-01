@@ -874,6 +874,23 @@ try:
 except Exception as e:                      # a broken gate must not pass silently
     fail(f"the propagation gate did not run: {type(e).__name__}: {e}")
 
+# ---- the staleness watcher is pointed at what the build reads ---------------
+# stamp.py enumerates the build's inputs by EXTENSION, so an input in a covered
+# directory with an uncovered suffix is invisible. Two turned up on 31 Aug 2026
+# one directory apart - public/assets/site.css and _build/planar_raw.txt - and
+# neither was a forgotten file so much as an enumeration that had fallen behind
+# what the generators read. This notices when that happens again.
+#
+# It reports what it could NOT see as well as what it checked. Most file access
+# here builds its path at runtime and is invisible to a source read, so a clean
+# line means "nothing found among the sites I can see" and never "nothing to
+# find". See scripts/inputscover.py.
+try:
+    import inputscover
+    inputscover.run(fail, lambda m: print(f"  {m}"))
+except Exception as e:
+    fail(f"the build-input coverage check did not run: {type(e).__name__}: {e}")
+
 # ---- the public data contract is intact -------------------------------------
 # /data/*.vN.json is published as a promise: fields are never removed and never
 # change type, because other people's tools read them. That promise is only

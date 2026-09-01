@@ -42,8 +42,35 @@ os.chdir(ROOT)
 # Both are read-only during a build (only _partials.py, build3.py and the
 # hand-run fetchfonts.py touch them), so adding them cannot make the stamp
 # invalidate itself.
-INPUTS = ("_build/*.py", "_build/source/*.html", "assets/*.json",
-          "site.config.json", "build.sh",
+# AND THE GLOBS THEMSELVES ARE THE RISK, WHICH IS HOW site.css WAS MISSED.
+#
+# Every entry here is extension-specific, so a build input in a covered
+# DIRECTORY with an uncovered EXTENSION is invisible. Audited 31 Aug 2026 by
+# listing every literal path the generators open for reading and subtracting
+# what these globs match. One survived: _build/planar_raw.txt, read by
+# _build/planardata.py, which build.sh runs at line 73 to write
+# assets/planar.json. Measured the same way as the stylesheets - edit it, do not
+# rebuild, check.py exits 0.
+#
+# assets/planar.json IS covered, so a rebuild propagates. What nothing noticed
+# was the raw file and the generated one disagreeing, which is the state you are
+# left in by editing the source and walking away.
+#
+# The audit cannot see dynamic open() calls - 105 of them - so this list is
+# "everything reachable by reading the source", not "everything". Re-run that
+# audit when a generator starts reading a new kind of file.
+# _media/ IS A BUILD INPUT AND A LITERAL-PATH AUDIT CANNOT SEE IT.
+#
+# _build/media.py:35 sets SRC = '_media' and copies from it under a content
+# hash. Found 31 Aug 2026 by a fan-out reading the generators, AFTER a
+# literal-path audit of my own had reported the coverage clean - media.py builds
+# its paths with glob and os.path.join, so no source read resolves them. That is
+# the stated limit of scripts/inputscover.py arriving as a real instance rather
+# than a caveat, and it is why that check prints how many sites it could not see.
+#
+# Measured: edit a file in _media/, do not rebuild, check.py exits 0.
+INPUTS = ("_build/*.py", "_build/*.txt", "_build/source/*.html", "assets/*.json",
+          "_media/*", "site.config.json", "build.sh",
           "public/assets/site.css", "public/assets/fonts/fonts.css")
 
 
@@ -51,6 +78,8 @@ def fingerprint():
     h = hashlib.sha256()
     for pat in INPUTS:
         for f in sorted(glob.glob(pat)):
+            if not os.path.isfile(f):
+                continue          # a glob may match a directory; that is not an input
             if f.endswith("prose-budget.json"):
                 continue          # written after the build, from the build
             h.update(f.replace(os.sep, "/").encode())
