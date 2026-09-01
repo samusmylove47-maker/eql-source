@@ -438,10 +438,25 @@ for nm in IX['named']:
         f'<li><a href="../items/{slug(d["n"])}.html">{esc(d["n"])}</a>'
         f'<span>{esc(d["sr"] or d["s"])}{" &middot; " + esc(d["st"][:60]) if d.get("st") else ""}</span></li>'
         for d in drops)
-    extra = (f'<h2 class="sec">What it drops</h2><ul class="drops">{dl}</ul>'
-             if drops else
-             '<p class="lede">No drops recorded &mdash; a gap, not an empty mob.</p>')
-    extra += seen_block(SIGHT['by_named'].get(nm['n'], []), 'Observed drops')
+    # THE LEDE IS GATED ON BOTH SOURCES, BECAUSE THERE ARE TWO.
+    #
+    # `drops` is the survey's loot table; `seen` is what we measured in play.
+    # This tested only the first and then appended the second regardless, so a
+    # mob with no survey entry and real measured drops printed "No drops
+    # recorded - a gap, not an empty mob" DIRECTLY ABOVE a list of its recorded
+    # drops. 30 named pages did exactly that.
+    #
+    # "A gap, not an empty mob" is a claim about our evidence, and it is false
+    # when we hold evidence. It is only printed now when both sources are empty,
+    # which is the state it was written to describe.
+    seen = seen_block(SIGHT['by_named'].get(nm['n'], []), 'Observed drops')
+    if drops:
+        extra = f'<h2 class="sec">What it drops</h2><ul class="drops">{dl}</ul>'
+    elif seen:
+        extra = ''
+    else:
+        extra = '<p class="lede">No drops recorded &mdash; a gap, not an empty mob.</p>'
+    extra += seen
     extra += (f'<p class="src" style="margin-top:18px">From the '
               f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])} survey</a>.</p>')
     desc = (f"{nm['n']} in {nm['zt']}, EverQuest Legends"
