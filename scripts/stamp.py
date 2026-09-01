@@ -89,6 +89,13 @@ def fingerprint():
 
 if __name__ == "__main__":
     os.makedirs("state", exist_ok=True)
+    # newline is explicit per CLAUDE.md section 5. Without it, json.dump's
+    # indent newlines became CRLF on Windows, so the committed file carried them
+    # and a build on Linux would rewrite every line of it. It also blocked a
+    # gate_selftest case: that harness restores through a text round-trip with
+    # newline="\n", which would have converted the file it was meant to leave
+    # exactly as it found it.
     json.dump({"inputs": fingerprint()},
-              open("state/last-build.json", "w", encoding="utf-8"), indent=1)
+              open("state/last-build.json", "w", encoding="utf-8",
+                   newline="\n"), indent=1)
     print("build stamped")

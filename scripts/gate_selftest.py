@@ -543,6 +543,15 @@ CASES = [
      lambda t: t.replace(f"{N_CATALOGUE:,} catalogue items",
                          f"{N_CATALOGUE + 1:,} catalogue items")),
 
+    # The stamp present but UNREADABLE - the other half of the same asymmetry.
+    # A bare `except Exception` used to swallow this, so corrupt JSON, a KeyError
+    # on "inputs", a permission error or a syntax error in stamp.py all read
+    # green and the freshness detector could die completely without saying so.
+    ("the build stamp is unreadable, so freshness cannot be checked",
+     "could not be verified",
+     "state/last-build.json",
+     lambda t: t.replace('"inputs"', '"inputs_renamed"', 1)),
+
     # ---- content hashes are SENSITIVE, not merely stable ---------------------
     #
     # R93. A hash exists so that different content produces a different value. A
@@ -786,7 +795,30 @@ def mutate_missing_item_page():
     return p, orig
 
 
+def mutate_missing_stamp():
+    """Delete the build stamp, so freshness cannot be checked at all.
+
+    Until 31 Aug 2026 this was a warn(): the comparison FAILING blocked the
+    build and the comparison being IMPOSSIBLE did not, which is backwards. An
+    impossible comparison is worse than a failed one, because a failed one told
+    you something true.
+
+    The runner restores by writing `orig` back, so deleting the file here is
+    safe - and it is only safe to round-trip at all because stamp.py was fixed
+    the same day to write LF. It had been writing CRLF on Windows, which this
+    harness would have converted while claiming to leave the tree as it found
+    it.
+    """
+    p = "state/last-build.json"
+    orig = open(p, encoding="utf-8").read()
+    os.remove(p)
+    return p, orig
+
+
 SPECIAL = [
+    ("the build stamp is gone, so freshness cannot be checked at all",
+     "is missing, so build freshness could not be checked",
+     mutate_missing_stamp),
     ("a full zone still naming an open gate",
      "is marked full but its verify_gate still names an open gate",
      mutate_zone_gate),
