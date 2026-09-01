@@ -126,7 +126,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="index-search.html" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
-        <h3 class="t">{NAMES['index-search']}</h3>
+        <h2 class="t">{NAMES['index-search']}</h2>
         <p class="tagline">{TAGS['index-search']}</p>
         <p class="d">Every item and named mob recorded across the {len(ZONES)} surveyed dungeons, searchable in one place.
           Filter by class, slot and zone, or search a drop source to see everything a given mob carries. Each result
@@ -137,7 +137,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; reads your combat log</div>
-        <h3 class="t">{NAMES['sky-ledger']}</h3>
+        <h2 class="t">{NAMES['sky-ledger']}</h2>
         <p class="tagline">{TAGS['sky-ledger']}</p>
         <p class="d">It follows your own log and says which of the {SLD['quests']} Plane of Sky class-unlock tests you
           can hand in now, and what the missing pieces drop from. <strong>A turn-in piece can only be spent
@@ -149,7 +149,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="50-upgrades.html" style="--c:var(--brass)">
         <div class="kicker">Gear planning &middot; built and hosted elsewhere</div>
-        <h3 class="t">{NAMES['50-upgrades']}</h3>
+        <h2 class="t">{NAMES['50-upgrades']}</h2>
         <p class="tagline">{TAGS['50-upgrades']}</p>
         <p class="d">Pick a trio and a race, fill twenty-three slots, and compare what each candidate does to the
           character rather than to the item beside it. Every item upgrades from +0 to +10 and the stat sheet
@@ -161,7 +161,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="gap-engine.html" style="--c:var(--ok)">
         <div class="kicker">Preview &middot; reads your combat log</div>
-        <h3 class="t">{NAMES['gap-engine']}</h3>
+        <h2 class="t">{NAMES['gap-engine']}</h2>
         <p class="tagline">{TAGS['gap-engine']}</p>
         <p class="d">Every other tracker here tells you what you have. This one reads your log
           and says <strong>what to change</strong> &mdash; always as a difference against what you
@@ -175,7 +175,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="lockouts.html" style="--c:var(--ember)">
         <div class="kicker">Raiding &middot; reads your combat log</div>
-        <h3 class="t">{NAMES['lockouts']}</h3>
+        <h2 class="t">{NAMES['lockouts']}</h2>
         <p class="tagline">{TAGS['lockouts']}</p>
         <p class="d">Every other tracker here says what you have done. This one says
           <strong>what is still open</strong>. Where it has no history for a boss it prints
@@ -188,7 +188,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
-        <h3 class="t">{NAMES['race-unlocks']}</h3>
+        <h2 class="t">{NAMES['race-unlocks']}</h2>
         <p class="tagline">{TAGS['race-unlocks']}</p>
         <p class="d">Every race unlock with its required factions, the recommended method, and honest work counts &mdash;
           items to gather, kills, hours. Mark the races you want and the route page merges their grinds into a single
@@ -198,7 +198,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="faction-impact.html" style="--c:var(--ok)">
         <div class="kicker">Planning &middot; measured from play</div>
-        <h3 class="t">{NAMES['faction-impact']}</h3>
+        <h2 class="t">{NAMES['faction-impact']}</h2>
         <p class="tagline">{TAGS['faction-impact']}</p>
         <p class="d">Faction moves while you are not looking, and you find out hours later when a vendor stops
           speaking to you. Name a zone, a faction or a race and it says what rises, what falls, how far per kill,
@@ -210,7 +210,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
       <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
         <div class="kicker">Planning</div>
-        <h3 class="t">{NAMES['combo-calculator']}</h3>
+        <h2 class="t">{NAMES['combo-calculator']}</h2>
         <p class="tagline">{TAGS['combo-calculator']}</p>
         <p class="d">The primary slot is the only one you can never change &mdash; it locks at level 11 and every
           loadout you ever build will contain it. Name the class that must sit there and the race you want, and it
@@ -362,7 +362,7 @@ raids = head("Raid encounters", "The Plane of Sky, island by island: the key cha
   <div class="cards c2">
     <a class="card" href="plane-of-sky.html" style="--c:var(--ember)">
       <div class="kicker">Complete &middot; island by island</div>
-      <h3 class="t">The Plane of Sky</h3>
+      <h2 class="t">The Plane of Sky</h2>
       <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
         every island through to the Eye and the Hand of Veeshan. What each boss costs to kill,
         where the efreeti gear comes from, and how high the place actually is.</p>

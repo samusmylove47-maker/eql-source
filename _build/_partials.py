@@ -325,7 +325,7 @@ def foot(rel=""):
     return f'''<footer class="site-foot">
   <div class="shell">
     <div class="foot-grid">
-      <div><h4>Dungeons</h4><ul>
+      <nav aria-label="Dungeons"><p class="fh">Dungeons</p><ul>
         <li><a href="{rel}dungeons/index.html">All surveys</a></li>
         <li><a href="{rel}dungeons/najena.html">Najena</a></li>
         <li><a href="{rel}dungeons/lowerguk.html">Lower Guk</a></li>
@@ -333,18 +333,18 @@ def foot(rel=""):
         <li><a href="{rel}items/index.html">Every item</a></li>
         <li><a href="{rel}named/index.html">Every named mob</a></li>
         <li><a href="{rel}sets/index.html">Every planar set</a></li>
-      </ul></div>
-      <div><h4>Raids</h4><ul>
+      </ul></nav>
+      <nav aria-label="Raids"><p class="fh">Raids</p><ul>
         <li><a href="{rel}raids/index.html">Encounter index</a></li>
         <li><a href="{rel}raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
-      </ul></div>
-      <div><h4>Tools</h4><ul>
+      </ul></nav>
+      <nav aria-label="Tools"><p class="fh">Tools</p><ul>
 {_foot_links(TOOLS, "tools", rel)}
-      </ul></div>
-      <div><h4>Learn</h4><ul>
+      </ul></nav>
+      <nav aria-label="Learn"><p class="fh">Learn</p><ul>
 {_foot_links(LEARN, "learn", rel)}
-      </ul></div>
-      <div><h4>About</h4><ul>
+      </ul></nav>
+      <nav aria-label="About"><p class="fh">About</p><ul>
         <li><a href="{rel}search.html">Search the site</a></li>
         <li><a href="{rel}data/index.html">Public data</a></li>
         <li><a href="{rel}credits.html">Credits</a></li>
@@ -352,7 +352,7 @@ def foot(rel=""):
         <li><a href="{rel}sources.html">Sourcing standard</a></li>
         <li><a href="{rel}sources.html#gaps">Known gaps</a></li>
         <li><a href="{rel}sources.html#changelog">Change log</a></li>
-      </ul></div>
+      </ul></nav>
     </div>
     <div class="foot-contact">
       <p><strong>Found something the site gets wrong, or something the wiki does?</strong>

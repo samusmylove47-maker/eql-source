@@ -33,27 +33,27 @@ page = head("Page not found",
     <div class="cards c2">
       <a class="card" href="dungeons/index.html" style="--c:var(--z01)">
         <div class="kicker">Every zone</div>
-        <h3 class="t">Dungeon surveys</h3>
+        <h2 class="t">Dungeon surveys</h2>
         <p class="d">Every surveyed zone, each with a floor plan derived from the game&rsquo;s own
           geometry, its named mobs, and what they drop.</p>
         <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="tools/index.html" style="--c:var(--instr)">
         <div class="kicker">{wordnum(len(TOOLS))} trackers</div>
-        <h3 class="t">Tools</h3>
+        <h2 class="t">Tools</h2>
         <p class="d">Progression trackers, The Index, and the faction impact checker. No account,
           nothing transmitted.</p>
         <div class="foot"><span>Share by link</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="raids/index.html" style="--c:var(--ember)">
         <div class="kicker">Encounters</div>
-        <h3 class="t">Raids</h3>
+        <h2 class="t">Raids</h2>
         <p class="d">The Plane of Sky island by island, with what every boss cost us to kill.</p>
         <div class="foot"><span>Built from play</span><span class="go">Open &rarr;</span></div></a>
 
       <a class="card" href="sources.html" style="--c:var(--bone)">
         <div class="kicker">Accuracy</div>
-        <h3 class="t">Sources and change log</h3>
+        <h2 class="t">Sources and change log</h2>
         <p class="d">Where every claim comes from, and every correction we have made, typed and
           dated.</p>
         <div class="foot"><span>Dated</span><span class="go">Open &rarr;</span></div></a>

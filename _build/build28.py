@@ -112,7 +112,7 @@ CSS = '''<style>
   border-radius:var(--r);padding:var(--s-5) var(--s-5) var(--s-4);text-decoration:none;
   border-top:3px solid var(--c,var(--instr))}
 .slrun a:hover{background:var(--surface-2);border-color:var(--instr-t)}
-.slrun h3{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
+.slrun h2{font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-xl);
   text-transform:uppercase;letter-spacing:.015em;color:var(--bone);margin:0 0 6px}
 .slrun p{margin:0;color:var(--mut);font-size:var(--t-base);line-height:1.55}
 .slrun .m{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);letter-spacing:.13em;
@@ -189,7 +189,7 @@ page = head("Sky Ledger",
   <section class="band" style="border-top:0;padding-top:0">
     <div class="slrun">
       <a href="{HREF}" style="--c:var(--instr)">
-        <h3>Run it in your browser</h3>
+        <h2>Run it in your browser</h2>
         <p>One file, {APP['kb']} KB, served from this site. Chrome or Edge on desktop can
           follow your log file live; Firefox and Safari cannot, so drop the log on
           the panel for a one-off read.</p>
@@ -197,7 +197,7 @@ page = head("Sky Ledger",
         <span class="go">Open the app &rarr;</span>
       </a>
       <a href="{OV.get('url', '#overlay')}" style="--c:var(--brass)">
-        <h3>Put it over the game</h3>
+        <h2>Put it over the game</h2>
         <p>The browser build cannot pass clicks through to the game and can only fake
           transparency. The Electron shell fixes both, with two global hotkeys and a
           continuous opacity slider.</p>

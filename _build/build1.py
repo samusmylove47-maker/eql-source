@@ -693,7 +693,7 @@ dplates = "\n".join(
         {plate_art(z['slug'])}
         <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
         <span class="num" aria-hidden="true">{z['plate']:02d}</span>
-        <h3 class="pt">{z['title']}</h3>
+        <h2 class="pt">{z['title']}</h2>
         <span class="meta"><span>ZEM <b>{z['zem']}</b></span><span>Respawn <b>{z['respawn'] or 'not recorded'}</b></span>{_cov(z)}</span>
       </a>''' for i, z in enumerate(Z))
 

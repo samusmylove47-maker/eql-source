@@ -102,6 +102,8 @@ DIFF_WORDS = f"{_d} days {_h} hours"
 DIFF_EXACT = f"{DIFF_S:,}"
 
 CSS = '''<style>
+.slrun h2{font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:var(--t-lg);
+  letter-spacing:.04em;text-transform:uppercase;margin:0 0 var(--s-2);color:var(--bone)}
 .lkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));
   gap:1px;background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);
   overflow:hidden;margin:var(--s-5) 0 0}
@@ -155,7 +157,7 @@ page = head(
   <section class="band" style="border-top:0;padding-top:0">
     <div class="slrun">
       <a href="{HREF}" style="--c:var(--instr)">
-        <h3>Run it in your browser</h3>
+        <h2>Run it in your browser</h2>
         <p>One file, {APP['kb']} KB, served from this site. Point it at your log and it
           works out what is still open from what it can see there.</p>
         <p class="m">Build {APP['hash']} &middot; nothing installed &middot; your log never leaves this machine</p>

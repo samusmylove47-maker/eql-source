@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://eqlsource.com/learn/">
 <link rel="stylesheet" href="../assets/fonts/fonts.css?v=4c604a33">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d0c8e376">
+<link rel="stylesheet" href="../assets/site.css?v=f6c24ee2">
 <script>/* Torchlight is the default and the CSS says so, so this only ever has
    work to do for a reader who chose daylight. It runs before first paint to
    avoid a flash of the wrong ground, and it is wrapped because localStorage
@@ -35,7 +35,7 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 .lh a{background:var(--panel);padding:20px 22px;display:grid;gap:7px;align-content:start;
   text-decoration:none;transition:background .12s}
 .lh a:hover{background:var(--panel2)}
-.lh h3{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;
+.lh h2{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;
   text-transform:uppercase;letter-spacing:.02em;color:var(--bone);margin:0;line-height:1.1}
 .lh p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.6}
 .lh .go{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
@@ -93,37 +93,37 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <div class="shell">
     <div class="lh">
       <a href="still-true.html">
-        <h3>Is it still true?</h3>
+        <h2>Is it still true?</h2>
         <p>Inherited advice, tested against Legends. What classic did, what happens now, the evidence with tiers and dates, and what would settle the open ones.</p>
         <span class="go">Read &rarr;</span>
       </a>
       <a href="difficulty.html">
-        <h3>What difficulty changes</h3>
+        <h2>What difficulty changes</h2>
         <p>D0 to D4 does not raise mob levels. What it does raise, and one boss measured at all five tiers showing where the class kit widens.</p>
         <span class="go">Read &rarr;</span>
       </a>
       <a href="motes.html">
-        <h3>Motes, and what they are worth</h3>
+        <h2>Motes, and what they are worth</h2>
         <p>Spells scale doubled, items scale flat. That one difference decides every mote decision, including why converting them upward costs you.</p>
         <span class="go">Read &rarr;</span>
       </a>
       <a href="raid-access.html">
-        <h3>How raid access works</h3>
+        <h2>How raid access works</h2>
         <p>Instances, lockouts and voidlings. Which door gives you the boss and which gives you an empty zone.</p>
         <span class="go">Read &rarr;</span>
       </a>
       <a href="deity.html">
-        <h3>Deity, and the level 11 lock</h3>
+        <h2>Deity, and the level 11 lock</h2>
         <p>The third permanent choice, and how permanent it actually is.</p>
         <span class="go">Read &rarr;</span>
       </a>
       <a href="reading-the-plans.html">
-        <h3>How to read a floor plan</h3>
+        <h2>How to read a floor plan</h2>
         <p>What the floor plans draw, what they deliberately leave out, and what a combat log can and cannot tell you.</p>
         <span class="go">Read &rarr;</span>
       </a>
       <a href="contamination.html">
-        <h3>What the scanner finds here</h3>
+        <h2>What the scanner finds here</h2>
         <p>We scan our own pages for Project 1999 conventions and publish what turns up. Pointed at us, not at anybody else.</p>
         <span class="go">Read &rarr;</span>
       </a>
@@ -134,7 +134,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 <footer class="site-foot">
   <div class="shell">
     <div class="foot-grid">
-      <div><h4>Dungeons</h4><ul>
+      <nav aria-label="Dungeons"><p class="fh">Dungeons</p><ul>
         <li><a href="../dungeons/index.html">All surveys</a></li>
         <li><a href="../dungeons/najena.html">Najena</a></li>
         <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
@@ -142,12 +142,12 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../items/index.html">Every item</a></li>
         <li><a href="../named/index.html">Every named mob</a></li>
         <li><a href="../sets/index.html">Every planar set</a></li>
-      </ul></div>
-      <div><h4>Raids</h4><ul>
+      </ul></nav>
+      <nav aria-label="Raids"><p class="fh">Raids</p><ul>
         <li><a href="../raids/index.html">Encounter index</a></li>
         <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
-      </ul></div>
-      <div><h4>Tools</h4><ul>
+      </ul></nav>
+      <nav aria-label="Tools"><p class="fh">Tools</p><ul>
         <li><a href="../tools/index-search.html">=Index</a></li>
         <li><a href="../tools/sky-ledger.html">=Sky</a></li>
         <li><a href="../tools/50-upgrades.html">=Upgrades</a></li>
@@ -156,8 +156,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../tools/race-unlocks.html">=Races</a></li>
         <li><a href="../tools/combo-calculator.html">=Combos</a></li>
         <li><a href="../tools/faction-impact.html">=Faction</a></li>
-      </ul></div>
-      <div><h4>Learn</h4><ul>
+      </ul></nav>
+      <nav aria-label="Learn"><p class="fh">Learn</p><ul>
         <li><a href="../learn/still-true.html">Is it still true?</a></li>
         <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
         <li><a href="../learn/motes.html">Motes</a></li>
@@ -165,8 +165,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
         <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
         <li><a href="../learn/contamination.html">Contamination</a></li>
-      </ul></div>
-      <div><h4>About</h4><ul>
+      </ul></nav>
+      <nav aria-label="About"><p class="fh">About</p><ul>
         <li><a href="../search.html">Search the site</a></li>
         <li><a href="../data/index.html">Public data</a></li>
         <li><a href="../credits.html">Credits</a></li>
@@ -174,7 +174,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../sources.html">Sourcing standard</a></li>
         <li><a href="../sources.html#gaps">Known gaps</a></li>
         <li><a href="../sources.html#changelog">Change log</a></li>
-      </ul></div>
+      </ul></nav>
     </div>
     <div class="foot-contact">
       <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
