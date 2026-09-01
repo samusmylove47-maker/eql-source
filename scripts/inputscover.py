@@ -33,7 +33,11 @@ that. So it audits a MINORITY of read sites and it must never be read as
 "everything the build reads is covered".
 
 The count of what it could NOT see is therefore part of its output, not a note
-in this docstring. A checker that reports a clean sweep while seeing a fraction
+in this docstring - and it NAMES ITS EXIT. scripts/inputprobe.py answers the
+question this one raises, by recording what the build actually opens at runtime.
+A caveat a reader cannot resolve is a permanent shrug; one that points at the
+instrument which resolves it is a map. The dynamic region is not evenly empty:
+_media/ was hiding in it. A checker that reports a clean sweep while seeing a fraction
 of the field is the fault it was built to catch, wearing a badge - the same
 shape as an empty `unknown` list asserting a comparison was complete.
 
@@ -125,7 +129,8 @@ def run(fail, report):
     # THE LIMIT IS PART OF THE RESULT. See the docstring: a clean line here
     # means "nothing found among the sites I can see", never "nothing to find".
     report(f"build inputs: {literal} literal read site(s) checked, "
-           f"{dynamic} dynamic site(s) not visible to this check")
+           f"{dynamic} dynamic site(s) not visible to this check "
+           f"(run scripts/inputprobe.py to see those)")
 
 
 if __name__ == "__main__":
