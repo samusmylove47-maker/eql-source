@@ -28,7 +28,7 @@ CSS = '''<style>
 .lh a{background:var(--panel);padding:20px 22px;display:grid;gap:7px;align-content:start;
   text-decoration:none;transition:background .12s}
 .lh a:hover{background:var(--panel2)}
-.lh h3{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;
+.lh h2{font-family:"Saira Condensed",sans-serif;font-size:22px;font-weight:700;
   text-transform:uppercase;letter-spacing:.02em;color:var(--bone);margin:0;line-height:1.1}
 .lh p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.6}
 .lh .go{font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.16em;
@@ -38,7 +38,7 @@ CSS = '''<style>
 
 cards = "\n".join(
     f'''      <a href="{it["slug"]}.html">
-        <h3>{it["name"]}</h3>
+        <h2>{it["name"]}</h2>
         <p>{it["blurb"]}</p>
         <span class="go">Read &rarr;</span>
       </a>''' for it in LEARN)

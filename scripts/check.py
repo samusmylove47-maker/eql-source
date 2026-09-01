@@ -330,6 +330,39 @@ for _cls in _unstyled:
          f'rather than as a grading')
 print(f"  tier badges: {len(_rendered)} class(es) rendered, "
       f"{len(_rendered) - len(_unstyled)} styled")
+
+# HEADING LEVELS MAY NOT SKIP. A screen-reader user navigates by heading, and a
+# level is a depth claim: h1 then h3 asserts a middle section that is not there.
+#
+# 703 of 717 pages skipped one on 1 Sep 2026, and the cause was a single shared
+# part - the footer's five <h4> column labels, which are navigation groups and
+# were never document sections. They are <nav aria-label> now. Promoting them
+# exposed a second layer underneath: ten pages whose only content headings were
+# <h3> cards sitting directly under the <h1>, with no <h2> anywhere.
+#
+# Both faults are invisible on the page. Nothing renders differently, no link
+# breaks, and every other check stayed green through all 703. Only the outline
+# is wrong, so only a reader who navigates by outline ever meets it.
+#
+# The regexes here carry no backslash on purpose - this file is written through
+# a shell heredoc often enough that CLAUDE.md keeps a list of the times an
+# escape was eaten, and a lookahead does the same job as a word boundary.
+_CODE = re.compile(r"<(script|style)[^>]*>.*?</(?:script|style)>", re.S | re.I)
+_HEAD = re.compile(r"<h([1-6])(?=[ >/])")
+_skips = []
+for _p in pages:
+    _txt = _CODE.sub("", open(_p, encoding="utf-8", errors="replace").read())
+    _lv = [int(_m.group(1)) for _m in _HEAD.finditer(_txt)]
+    _jump = next((f"h{_a} to h{_b}" for _a, _b in zip(_lv, _lv[1:]) if _b > _a + 1), None)
+    if _jump:
+        _skips.append((_p.replace(os.sep, "/")[len("public/"):], _jump))
+for _name, _jump in _skips[:12]:
+    fail(f"{_name} skips a heading level ({_jump}) - a level is a depth claim, "
+         f"and the section it names is not on the page")
+if len(_skips) > 12:
+    fail(f"and {len(_skips) - 12} more page(s) skip a heading level")
+print(f"  heading outline: {len(pages) - len(_skips)} of {len(pages)} pages "
+      f"have no level skip")
 # THE PATH IS public/index.html AND HAS BEEN SINCE THE SITE MOVED THERE.
 #
 # This read a root index.html that has not existed for the life of this layout,

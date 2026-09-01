@@ -601,7 +601,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
   padding:var(--s-7) 0 70px;background:var(--surface-1)}
 .foot-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:var(--s-6)}
 .foot-grid>*{min-width:0}
-.foot-grid h4{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+.foot-grid .fh{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:var(--t-2xs);
   letter-spacing:var(--tr-wider);text-transform:uppercase;color:var(--faint);margin:0 0 var(--s-3)}
 .foot-grid ul{list-style:none;margin:0;padding:0}
 .foot-grid li{margin-bottom:7px}

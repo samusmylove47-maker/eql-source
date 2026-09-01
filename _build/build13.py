@@ -380,14 +380,14 @@ def entry_html(e, i):
   <article class="st-entry" id="q{i}" style="--c:{TONE[e['status']]}">
     <div class="st-head">
       <span class="st-status">{LABEL[e['status']]}</span>
-      <h3>{e['q']}</h3>
+      <h2>{e['q']}</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>{e['classic']}</p></div>
-      <div><h4>What Legends does</h4><p>{e['legends']}</p></div>
+      <div><h3>What classic did</h3><p>{e['classic']}</p></div>
+      <div><h3>What Legends does</h3><p>{e['legends']}</p></div>
     </div>
     {note}
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev">{ev}</ul>
     <p class="st-settle"><strong>What would settle it.</strong> {e['settle']}</p>
     {credit}
@@ -404,11 +404,11 @@ CSS = '''<style>
 .st-status{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--c-t);border:1px solid var(--c);border-radius:3px;
   padding:2px 7px;white-space:nowrap}
-.st-head h3{margin:0;font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:20px;
+.st-head h2{margin:0;font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:20px;
   letter-spacing:.01em;color:var(--ink)}
 .st-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:720px){.st-split{grid-template-columns:1fr;gap:14px}}
-.st-split h4,.st-evh{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+.st-split h3,.st-evh{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--faint);margin:0 0 5px}
 .st-evh{margin:16px 0 7px}
 .st-split p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.6}

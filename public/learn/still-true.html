@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://eqlsource.com/learn/still-true">
 <link rel="stylesheet" href="../assets/fonts/fonts.css?v=4c604a33">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=d0c8e376">
+<link rel="stylesheet" href="../assets/site.css?v=f6c24ee2">
 <script>/* Torchlight is the default and the CSS says so, so this only ever has
    work to do for a reader who chose daylight. It runs before first paint to
    avoid a flash of the wrong ground, and it is wrapped because localStorage
@@ -35,11 +35,11 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 .st-status{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--c-t);border:1px solid var(--c);border-radius:3px;
   padding:2px 7px;white-space:nowrap}
-.st-head h3{margin:0;font-family:"Saira Condensed",sans-serif;font-weight:600;font-size:20px;
+.st-head h2{margin:0;font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:20px;
   letter-spacing:.01em;color:var(--ink)}
 .st-split{display:grid;grid-template-columns:1fr 1fr;gap:20px}
 @media(max-width:720px){.st-split{grid-template-columns:1fr;gap:14px}}
-.st-split h4,.st-evh{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+.st-split h3,.st-evh{font-family:"IBM Plex Mono",monospace;font-weight:700;font-size:10.5px;letter-spacing:.14em;
   text-transform:uppercase;color:var(--faint);margin:0 0 5px}
 .st-evh{margin:16px 0 7px}
 .st-split p{margin:0;color:var(--dim);font-size:14.5px;line-height:1.6}
@@ -125,14 +125,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q1" style="--c:var(--instr)">
     <div class="st-head">
       <span class="st-status">Open</span>
-      <h3>Is haste a percentage, or a flat attack-speed value?</h3>
+      <h2>Is haste a percentage, or a flat attack-speed value?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>A percentage that divides weapon delay. The formula everyone quotes is <code>new delay = delay / (1 + haste)</code>, with haste as a decimal, and item tooltips read <em>Haste +41%</em>.</p></div>
-      <div><h4>What Legends does</h4><p><strong>The two best sources in this community disagree, and we were republishing one of them without noticing.</strong> EQL Tools states that slow and haste in Legends are <em>flat values on an attack-speed stat</em> &mdash; a mob at 100 attack speed with 60 haste sits at 160, and the numbers add rather than compounding. eqlwiki&rsquo;s own <em>Haste Guide</em>, edited 4 August 2026, still carries the classic percentage formula and cites classic-era raid content around it.</p></div>
+      <div><h3>What classic did</h3><p>A percentage that divides weapon delay. The formula everyone quotes is <code>new delay = delay / (1 + haste)</code>, with haste as a decimal, and item tooltips read <em>Haste +41%</em>.</p></div>
+      <div><h3>What Legends does</h3><p><strong>The two best sources in this community disagree, and we were republishing one of them without noticing.</strong> EQL Tools states that slow and haste in Legends are <em>flat values on an attack-speed stat</em> &mdash; a mob at 100 attack speed with 60 haste sits at 160, and the numbers add rather than compounding. eqlwiki&rsquo;s own <em>Haste Guide</em>, edited 4 August 2026, still carries the classic percentage formula and cites classic-era raid content around it.</p></div>
     </div>
     <p class="st-note">This is not an abstract question for us. <strong>Six Plane of Sky reward tooltips on this site carry percentage haste</strong> &mdash; five of them the identical <em>+41%</em>, which is a copied constant rather than five readings &mdash; they are marked suspect in place rather than deleted.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">T3</span><span class="ev-s">EQL Tools <em>Slow, haste &amp; crowd control</em>, read 14 Aug 2026</span><span class="ev-d">States flat attack-speed values for Legends, with a worked example.</span></li><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki <em>Haste Guide</em>, read 14 Aug 2026</span><span class="ev-d">Classic percentage formula, and the surrounding content describes classic-era raid targets. Last edited 4 Aug 2026, which is after launch and does not by itself make the mechanic current.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> One screenshot of a Legends haste item tooltip. If it reads a bare number rather than a percentage, EQL Tools is right and every percentage figure on this site is a classic import.</p>
     
@@ -140,14 +140,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q2" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Do Journeyman&rsquo;s Boots still come from a quest, or do they drop?</h3>
+      <h2>Do Journeyman&rsquo;s Boots still come from a quest, or do they drop?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>On Live in 1999 the boots were made a quest reward on 13 October, and Project 1999 text records that they &ldquo;formerly dropped from Drelzna in Najena&rdquo; before that change. That sentence is imported into eqlwiki&rsquo;s Drelzna page, where it sits inside a structured NPC record and reads like current data.</p></div>
-      <div><h4>What Legends does</h4><p><strong>They drop from Drelzna, and there is no quest.</strong> A first-hand report, 14 August 2026: seen dropping for other players and confirmed by guildmates. eqlwiki&rsquo;s <em>item</em> record agrees, naming Najena and Drelzna as the source.</p></div>
+      <div><h3>What classic did</h3><p>On Live in 1999 the boots were made a quest reward on 13 October, and Project 1999 text records that they &ldquo;formerly dropped from Drelzna in Najena&rdquo; before that change. That sentence is imported into eqlwiki&rsquo;s Drelzna page, where it sits inside a structured NPC record and reads like current data.</p></div>
+      <div><h3>What Legends does</h3><p><strong>They drop from Drelzna, and there is no quest.</strong> A first-hand report, 14 August 2026: seen dropping for other players and confirmed by guildmates. eqlwiki&rsquo;s <em>item</em> record agrees, naming Najena and Drelzna as the source.</p></div>
     </div>
     <p class="st-note">This is the shape of mistake this register exists for, and an auditor made it: reading the classic sentence inside the structured NPC page and grading our survey against it. The survey had read the item record and was right. <strong>A tier 5 sentence inside a tier 2 container is the most dangerous object in this ecosystem</strong>, because it wears the wrong clothes.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">Report</span><span class="ev-s">First-hand report, 14 Aug 2026</span><span class="ev-d">The boots seen dropping for other players, confirmed by guildmates. First-hand and unparsed, so it carries no tier: the scale ranks readings of documents, and this is neither a document nor a log.</span></li><li><span class="ev-t">T2</span><span class="ev-s">eqlwiki <em>Journeyman&rsquo;s Boots</em> item record</span><span class="ev-d">Names Najena and Drelzna as the source.</span></li><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki <em>Drelzna</em> NPC page</span><span class="ev-d">Carries the Project 1999 sentence about the 1999 quest change, verbatim.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> One combat log line showing the loot. No parsed session here holds a Drelzna kill, so this stays a report until a parse replaces it.</p>
     
@@ -155,14 +155,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q3" style="--c:var(--instr)">
     <div class="st-head">
       <span class="st-status">Open</span>
-      <h3>Does Paragon of Spirit stack with Clarity and bard regeneration songs?</h3>
+      <h2>Does Paragon of Spirit stack with Clarity and bard regeneration songs?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>On Live EverQuest and on Project 1999 the beastlord line is widely reported to occupy its own buff slots, so it stacks with enchanter Clarity and with bard regeneration songs.</p></div>
-      <div><h4>What Legends does</h4><p><strong>Nobody has published an answer for Legends.</strong> Asked on 10 August 2026, an AI assistant answered that the spell uses &ldquo;slots nine, ten and eleven&rdquo; and cited eqlwiki&rsquo;s <em>Buff Lines</em> page. We read that page the same day. It describes slots 1&ndash;8 and a Layer 2. <strong>It contains no slot 9, 10 or 11, and it does not mention Paragon of Spirit at all.</strong> The spell has no page on eqlwiki either &mdash; the URL returns 404. The answer was reasoning from an absence, then backfilled from Live and Project 1999.</p></div>
+      <div><h3>What classic did</h3><p>On Live EverQuest and on Project 1999 the beastlord line is widely reported to occupy its own buff slots, so it stacks with enchanter Clarity and with bard regeneration songs.</p></div>
+      <div><h3>What Legends does</h3><p><strong>Nobody has published an answer for Legends.</strong> Asked on 10 August 2026, an AI assistant answered that the spell uses &ldquo;slots nine, ten and eleven&rdquo; and cited eqlwiki&rsquo;s <em>Buff Lines</em> page. We read that page the same day. It describes slots 1&ndash;8 and a Layer 2. <strong>It contains no slot 9, 10 or 11, and it does not mention Paragon of Spirit at all.</strong> The spell has no page on eqlwiki either &mdash; the URL returns 404. The answer was reasoning from an absence, then backfilled from Live and Project 1999.</p></div>
     </div>
     <p class="st-note">Asked to be more certain because the answer was worth dozens of hours, the same tool returned more sources and more specific detail. <strong>Confidence rose; evidence did not.</strong> That is the failure mode every player using an AI assistant will meet, and it is worth more than this one spell.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">T2</span><span class="ev-s">eqlwiki <em>Buff Lines</em>, read 10 Aug 2026</span><span class="ev-d">Lists Cantata of Replenishment at +13, Cassindra&rsquo;s Chorus of Clarity at +7 (+14 pulsed) and Clarity II at +11 in its mana regeneration tables. Slots run 1&ndash;8 plus a Layer 2. Paragon of Spirit does not appear.</span></li><li><span class="ev-t">&mdash;</span><span class="ev-s">eqlwiki <em>Paragon of Spirit</em>, read 10 Aug 2026</span><span class="ev-d">No such page. HTTP 404.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> Cast Paragon of Spirit, then have a bard sing Cantata of Replenishment and an enchanter cast Clarity on the same target. <strong>A screenshot of the buff bar showing all three at once settles it outright.</strong> The combat log adds the timestamps and any overwrite message &mdash; if one displaces another, the log shows the displaced spell wearing off within a second of the new cast rather than at its natural duration.</p>
     <p class="st-credit">Raised 10 August 2026, after an AI assistant gave two confident and differently-worded answers.</p>
@@ -170,14 +170,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q4" style="--c:var(--instr)">
     <div class="st-head">
       <span class="st-status">Open</span>
-      <h3>Do slashing and blunt weapons still suffer underwater?</h3>
+      <h2>Do slashing and blunt weapons still suffer underwater?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>In classic EverQuest, underwater combat is widely reported to have penalised slashing and blunt weapons, leaving piercing as the sensible choice in water zones. <strong>We have not sourced this to a citable record</strong>, and say so rather than repeating it as established.</p></div>
-      <div><h4>What Legends does</h4><p><strong>Reported not to apply.</strong> A player fighting in Kedge Keep &mdash; a zone that is entirely underwater &mdash; reports landing normal hits with a sword.</p></div>
+      <div><h3>What classic did</h3><p>In classic EverQuest, underwater combat is widely reported to have penalised slashing and blunt weapons, leaving piercing as the sensible choice in water zones. <strong>We have not sourced this to a citable record</strong>, and say so rather than repeating it as established.</p></div>
+      <div><h3>What Legends does</h3><p><strong>Reported not to apply.</strong> A player fighting in Kedge Keep &mdash; a zone that is entirely underwater &mdash; reports landing normal hits with a sword.</p></div>
     </div>
     <p class="st-note">eqlwiki&rsquo;s Kedge Keep page carries <code>{{Classic Era}}</code>, discusses breathing at length, and says nothing whatever about weapon types underwater. Its search returns zero results for &ldquo;underwater&rdquo; on a wiki whose own Kedge Keep page uses the word repeatedly, so <strong>the search index is unreliable and an empty result there proves nothing.</strong></p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">Report</span><span class="ev-s">A player report, 9 August 2026</span><span class="ev-d">First-hand, in Kedge Keep, using a sword and landing hits. Unconfirmed: a report of play, not a parsed log.</span></li><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki <em>Kedge Keep</em>, read 9 Aug 2026</span><span class="ev-d">Classic Era import. Silent on weapon types underwater. Neither confirms nor denies.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> One combat log line showing a slashing or blunt weapon landing normal damage on a mob while submerged. If a penalty exists it should show as a visible drop in average damage against the same mob type fought on land.</p>
     <p class="st-credit">Credited on the credits page.</p>
@@ -185,14 +185,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q5" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Is a class-locked epic quest closed to everyone else?</h3>
+      <h2>Is a class-locked epic quest closed to everyone else?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>On Live EverQuest and on Project 1999 a class epic is a class quest. The Fiery Avenger is the paladin epic, and the quest steps as well as the reward are understood to be paladin-only.</p></div>
-      <div><h4>What Legends does</h4><p><strong>The quest is not class-locked. The reward still is.</strong> A non-paladin completed every step of the Fiery Avenger, final turn-in included. The item it returns is unchanged: <code>Class: PAL</code>, 2H Slashing, 33/44, Flame Shock combat effect at level 45, Virtuous Bash worn effect.</p></div>
+      <div><h3>What classic did</h3><p>On Live EverQuest and on Project 1999 a class epic is a class quest. The Fiery Avenger is the paladin epic, and the quest steps as well as the reward are understood to be paladin-only.</p></div>
+      <div><h3>What Legends does</h3><p><strong>The quest is not class-locked. The reward still is.</strong> A non-paladin completed every step of the Fiery Avenger, final turn-in included. The item it returns is unchanged: <code>Class: PAL</code>, 2H Slashing, 33/44, Flame Shock combat effect at level 45, Virtuous Bash worn effect.</p></div>
     </div>
     <p class="st-note">So the two halves separate. <strong>Doing the quest and being able to hold the reward are different permissions</strong>, and only the second is still a class gate &mdash; which a trio carrying Paladin would clear. This is one epic, on one character. It is a reason to test the other fifteen, not evidence about them: <strong>we have no report on any other epic and do not assume this generalises.</strong></p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">Report</span><span class="ev-s">A player report, 10 August 2026</span><span class="ev-d">First-hand: &ldquo;can now confirm can do all parts of the fiery avenger including final turn in as a non paladin&rdquo;. Reported with an in-game screenshot of the completed item. A report of play, not a parsed log.</span></li><li><span class="ev-t">Report</span><span class="ev-s">Item inspection, 10 August 2026</span><span class="ev-d">The reward reads <code>Class: PAL</code>, <code>Race: ALL</code>, Lore Equipped, No Trade. The class restriction on the item itself has not changed.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> The same run on a second epic with a different class gate would show whether this is the rule or one quest&rsquo;s wiring. A log of the final turn-in dialogue would raise this from a report to a measurement.</p>
     <p class="st-credit">Credited on the credits page. The same player raised the underwater weapon question above.</p>
@@ -200,14 +200,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q6" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Does killing a raid boss lock you out for the week?</h3>
+      <h2>Does killing a raid boss lock you out for the week?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>Classic EverQuest has no lockout at all. A boss has a spawn timer, and whoever is standing there when it pops gets the kill.</p></div>
-      <div><h4>What Legends does</h4><p><strong>The lockout is per difficulty, not per boss.</strong> The patch notes establish a weekly bonus-loot lockout resetting Tuesdays at 8AM PST, and that a kill made while locked still returns one guaranteed drop from the boss&rsquo;s unique table. What they do not say is that D0 through D4 each carry their own lockout &mdash; so the same boss can be run once per tier.</p></div>
+      <div><h3>What classic did</h3><p>Classic EverQuest has no lockout at all. A boss has a spawn timer, and whoever is standing there when it pops gets the kill.</p></div>
+      <div><h3>What Legends does</h3><p><strong>The lockout is per difficulty, not per boss.</strong> The patch notes establish a weekly bonus-loot lockout resetting Tuesdays at 8AM PST, and that a kill made while locked still returns one guaranteed drop from the boss&rsquo;s unique table. What they do not say is that D0 through D4 each carry their own lockout &mdash; so the same boss can be run once per tier.</p></div>
     </div>
     <p class="st-note">That reframes a raid week. A first clear at D0 costs nothing at D1 and above, so there is no reason to open at a difficulty you are unsure of. <strong>The per-difficulty part is a player report, not a patch note</strong>, and the notes neither state it nor contradict it.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">T1</span><span class="ev-s">Patch notes, 23 June 2026</span><span class="ev-d">&ldquo;you will only receive 1 piece of loot per named raid creature that has its own lockout. The raid bonus loot lockouts reset every Tuesday at 8AM PST.&rdquo;</span></li><li><span class="ev-t">T1</span><span class="ev-s">Patch notes, 28 July 2026</span><span class="ev-d">&ldquo;Killing a raid boss while you have a loot lockout will now give one guaranteed drop from that boss&rsquo;s unique treasure tables.&rdquo;</span></li><li><span class="ev-t">Report</span><span class="ev-s">Annalise (AnnaWulf), 10 August 2026</span><span class="ev-d">&ldquo;weekly lock out per difficulty and then daily lock out for 1 loot item till a tues reset&rdquo;. She also reports a D4 Lord Nagafen taking a long time even with a group, and D1 hit-point pools being a drag solo.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> Kill one boss at D0, then open the same boss at D1 and check whether the full loot lockout applies or only the daily one.</p>
     <p class="st-credit">Per-difficulty behaviour reported by a player, 10 August 2026. Credited on the credits page.</p>
@@ -215,14 +215,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q7" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Can you still plan a character around one class?</h3>
+      <h2>Can you still plan a character around one class?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>Every character is one class, chosen at creation and permanent.</p></div>
-      <div><h4>What Legends does</h4><p><strong>No. Characters run three classes at once.</strong> Two at creation, a third at level 10, with primary class and race locking permanently at 11.</p></div>
+      <div><h3>What classic did</h3><p>Every character is one class, chosen at creation and permanent.</p></div>
+      <div><h3>What Legends does</h3><p><strong>No. Characters run three classes at once.</strong> Two at creation, a third at level 10, with primary class and race locking permanently at 11.</p></div>
     </div>
     <p class="st-note">This invalidates a large amount of inherited advice in both directions, and it is the single biggest reason a classic guide can be confidently wrong about Legends. What level the active trio runs at is a separate question with a different amount of evidence behind it, and it has its own entry below.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">T1</span><span class="ev-s">Official documentation and the level 11 lock</span><span class="ev-d">Published behaviour, not inferred. The deity, race and primary class unlock tokens are priced in the Producer&rsquo;s Letter of 8 July 2026, which only makes sense because those choices lock. <strong>That covers the structure &mdash; three classes, two at creation, a third at 10, locking at 11 &mdash; and nothing beyond it.</strong></span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> Settled.</p>
     
@@ -230,14 +230,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q8" style="--c:var(--instr)">
     <div class="st-head">
       <span class="st-status">Open</span>
-      <h3>Does the active trio run at the level of its lowest class?</h3>
+      <h2>Does the active trio run at the level of its lowest class?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>No equivalent existed. A classic character had one class and one level.</p></div>
-      <div><h4>What Legends does</h4><p><strong>Not recorded.</strong> It is repeated widely, including in this project&rsquo;s own working notes, that the active trio uses the level of the <em>lowest</em> class in it. Nothing has been read that says so.</p></div>
+      <div><h3>What classic did</h3><p>No equivalent existed. A classic character had one class and one level.</p></div>
+      <div><h3>What Legends does</h3><p><strong>Not recorded.</strong> It is repeated widely, including in this project&rsquo;s own working notes, that the active trio uses the level of the <em>lowest</em> class in it. Nothing has been read that says so.</p></div>
     </div>
     <p class="st-note">This sat inside the multiclass entry above until 31 August 2026, asserted at T1 and marked <em>Settled</em> on evidence that spoke only to the level&ndash;11 lock: three claims, one source, one badge. That is the exact failure this page exists to refuse, on the page that refuses it. It is carried as open rather than deleted, because the claim may well be right and removing it would lose the question along with the error.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">&mdash;</span><span class="ev-s">No source read</span><span class="ev-d">The Producer&rsquo;s Letter of 8 July 2026 is cited above for the multiclass locks. It does not address what level the trio runs at, and no other source has been read for it.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> One read of the Producer&rsquo;s Letter of 8 July 2026 settles it either way, and it is the cheapest evidence available.</p>
     
@@ -245,14 +245,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q9" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Does raising the difficulty just make mobs higher level?</h3>
+      <h2>Does raising the difficulty just make mobs higher level?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>No equivalent existed. Difficulty tiers are new.</p></div>
-      <div><h4>What Legends does</h4><p><strong>No. D0&ndash;D4 does not raise mob levels at all.</strong> It gives mobs player-style class kits, widens aggro ranges and pre-upgrades loot. The tiers are named in game and the zone line prints the name on entry: D0 Base, D1 Awakened, D2 Adaptive, D3 Fused, D4 Refined.</p></div>
+      <div><h3>What classic did</h3><p>No equivalent existed. Difficulty tiers are new.</p></div>
+      <div><h3>What Legends does</h3><p><strong>No. D0&ndash;D4 does not raise mob levels at all.</strong> It gives mobs player-style class kits, widens aggro ranges and pre-upgrades loot. The tiers are named in game and the zone line prints the name on entry: D0 Base, D1 Awakened, D2 Adaptive, D3 Fused, D4 Refined.</p></div>
     </div>
     <p class="st-note"><strong>And it starts earlier than published.</strong> The published claim is that named mobs run multiclass from D2. In Castle Mistmoore at <strong>D1</strong>, two ordinary trash types backstab while the same types cast Root, Screaming Terror and Shadow Vortex. Backstab is a rogue ability and a spell list is not, so that mob type carries two kits at D1, on trash.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">Tier M</span><span class="ev-s">Measured in play, Castle Mistmoore at Awakened</span><span class="ev-d">Both trash types backstab, and both are logged casting. Melee reaches 39 and backstab 168, which is why no single average is printed for a mob that backstabs.</span></li><li><span class="ev-t">T1</span><span class="ev-s">Zone line on entry</span><span class="ev-d"><code>You have entered The Castle of Mistmoore 1 (Awakened).</code> The number and the name agree, and the modal loot drop of +1 agrees independently.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> Settled for D1 and D2, and for the kits: <a href="difficulty.html">bosses measured at D3 and D4</a> carry every spell each cast, Cazic-Thule and Innoruuk among them. <strong>What is still pinned by nobody is D3 and D4 hit points</strong> &mdash; damage to kill bounds them from above and no further.</p>
     
@@ -260,14 +260,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q10" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Do named mobs still have placeholders?</h3>
+      <h2>Do named mobs still have placeholders?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>A named shares its spawn point with a placeholder. You kill the placeholder repeatedly until the named appears, and published spawn percentages describe how often it does.</p></div>
-      <div><h4>What Legends does</h4><p><strong>Gone in six dungeons, and this entry was wrong about the rest.</strong> The 28 July patch note names <strong>six</strong> &mdash; The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The Warrens, Castle Mistmoore. It never mentions Upper Guk. <strong>Najena keeps the claim</strong> on the 23 June revamp note, which is no longer published anywhere a reader can reach. <strong>Befallen and Blackburrow keep it</strong> on a dated eqlwiki category revision &mdash; tier 2, not a patch note. <strong>Crushbone loses it outright</strong>: no source names it, and its percentages are live again rather than struck. Plane of Fear, Plane of Hate and Kedge Keep were never on the list and nothing is established for them.</p></div>
+      <div><h3>What classic did</h3><p>A named shares its spawn point with a placeholder. You kill the placeholder repeatedly until the named appears, and published spawn percentages describe how often it does.</p></div>
+      <div><h3>What Legends does</h3><p><strong>Gone in six dungeons, and this entry was wrong about the rest.</strong> The 28 July patch note names <strong>six</strong> &mdash; The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The Warrens, Castle Mistmoore. It never mentions Upper Guk. <strong>Najena keeps the claim</strong> on the 23 June revamp note, which is no longer published anywhere a reader can reach. <strong>Befallen and Blackburrow keep it</strong> on a dated eqlwiki category revision &mdash; tier 2, not a patch note. <strong>Crushbone loses it outright</strong>: no source names it, and its percentages are live again rather than struck. Plane of Fear, Plane of Hate and Kedge Keep were never on the list and nothing is established for them.</p></div>
     </div>
     <p class="st-note">We carried this as open while the patch note said it plainly the whole time. <strong>The lesson is about where we looked</strong>, not about the answer.</p>
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">T1</span><span class="ev-s">Developer patch notes</span><span class="ev-d">&ldquo;Removed placeholders from and lowered maximum respawn times in several dungeons: The Hole, Nagafen&rsquo;s Lair, Lower Guk, Lair of the Splitpaw, The Warrens, Castle Mistmoore.&rdquo; <strong>That is the whole list.</strong> This register printed the same sentence with <em>Upper Guk, Crushbone, Befallen, Blackburrow, Najena</em> appended inside the quotation marks, badged T1, until 18 August 2026 &mdash; when the note was fetched and stored verbatim at <code>sources/raw/2026-07-28-eql-update-notes.txt</code>. Five zone names had been added to a developer quotation.</span></li><li><span class="ev-t">Report</span><span class="ev-s">First-hand play</span><span class="ev-d">Confirmed in play across these zones before this site existed, and again at one camp across consecutive cycles with no placeholder seen.</span></li><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki individual mob pages, against</span><span class="ev-d"><em>Drelzna</em>: &ldquo;Her placeholder is a necromancer that spawns in front of the chair.&rdquo; Classic text nobody has revisited. It is wrong.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> Settled by the patch note for the six it names, and on weaker sources for three more. <strong>What it does not settle is the second half of its own sentence</strong> &mdash; maximum respawn times were lowered and no figures were published, so every respawn on this site is a pre-patch ceiling rather than a current value.</p>
     
@@ -275,14 +275,14 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
   <article class="st-entry" id="q11" style="--c:var(--warn-t)">
     <div class="st-head">
       <span class="st-status">Changed</span>
-      <h3>Is the Per-Level Hunting Guide still good advice?</h3>
+      <h2>Is the Per-Level Hunting Guide still good advice?</h2>
     </div>
     <div class="st-split">
-      <div><h4>What classic did</h4><p>It is one of the most-linked pages on the wiki.</p></div>
-      <div><h4>What Legends does</h4><p><strong>It is a Project 1999 import and it predates everything that matters.</strong> It cites P1999 forums, carries the phrase &ldquo;As of June 2020&rdquo;, and repeats the P99-specific claim that characters &ldquo;generally perform like characters three or more levels higher&rdquo; &mdash; a statement about a single-class server at fixed difficulty. It predates both multiclass and D0&ndash;D4, so it is wrong in both directions.</p></div>
+      <div><h3>What classic did</h3><p>It is one of the most-linked pages on the wiki.</p></div>
+      <div><h3>What Legends does</h3><p><strong>It is a Project 1999 import and it predates everything that matters.</strong> It cites P1999 forums, carries the phrase &ldquo;As of June 2020&rdquo;, and repeats the P99-specific claim that characters &ldquo;generally perform like characters three or more levels higher&rdquo; &mdash; a statement about a single-class server at fixed difficulty. It predates both multiclass and D0&ndash;D4, so it is wrong in both directions.</p></div>
     </div>
     
-    <h4 class="st-evh">The evidence</h4>
+    <h3 class="st-evh">The evidence</h3>
     <ul class="st-ev"><li><span class="ev-t">T5</span><span class="ev-s">eqlwiki <em>Per-Level Hunting Guide</em></span><span class="ev-d">Project 1999 import by origin, with its own internal citations to P1999 forums.</span></li></ul>
     <p class="st-settle"><strong>What would settle it.</strong> Settled.</p>
     
@@ -304,7 +304,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 <footer class="site-foot">
   <div class="shell">
     <div class="foot-grid">
-      <div><h4>Dungeons</h4><ul>
+      <nav aria-label="Dungeons"><p class="fh">Dungeons</p><ul>
         <li><a href="../dungeons/index.html">All surveys</a></li>
         <li><a href="../dungeons/najena.html">Najena</a></li>
         <li><a href="../dungeons/lowerguk.html">Lower Guk</a></li>
@@ -312,12 +312,12 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../items/index.html">Every item</a></li>
         <li><a href="../named/index.html">Every named mob</a></li>
         <li><a href="../sets/index.html">Every planar set</a></li>
-      </ul></div>
-      <div><h4>Raids</h4><ul>
+      </ul></nav>
+      <nav aria-label="Raids"><p class="fh">Raids</p><ul>
         <li><a href="../raids/index.html">Encounter index</a></li>
         <li><a href="../raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
-      </ul></div>
-      <div><h4>Tools</h4><ul>
+      </ul></nav>
+      <nav aria-label="Tools"><p class="fh">Tools</p><ul>
         <li><a href="../tools/index-search.html">=Index</a></li>
         <li><a href="../tools/sky-ledger.html">=Sky</a></li>
         <li><a href="../tools/50-upgrades.html">=Upgrades</a></li>
@@ -326,8 +326,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../tools/race-unlocks.html">=Races</a></li>
         <li><a href="../tools/combo-calculator.html">=Combos</a></li>
         <li><a href="../tools/faction-impact.html">=Faction</a></li>
-      </ul></div>
-      <div><h4>Learn</h4><ul>
+      </ul></nav>
+      <nav aria-label="Learn"><p class="fh">Learn</p><ul>
         <li><a href="../learn/still-true.html">Is it still true?</a></li>
         <li><a href="../learn/difficulty.html">What difficulty changes</a></li>
         <li><a href="../learn/motes.html">Motes</a></li>
@@ -335,8 +335,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../learn/deity.html">Deity, and the level 11 lock</a></li>
         <li><a href="../learn/reading-the-plans.html">Reading a floor plan</a></li>
         <li><a href="../learn/contamination.html">Contamination</a></li>
-      </ul></div>
-      <div><h4>About</h4><ul>
+      </ul></nav>
+      <nav aria-label="About"><p class="fh">About</p><ul>
         <li><a href="../search.html">Search the site</a></li>
         <li><a href="../data/index.html">Public data</a></li>
         <li><a href="../credits.html">Credits</a></li>
@@ -344,7 +344,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
         <li><a href="../sources.html">Sourcing standard</a></li>
         <li><a href="../sources.html#gaps">Known gaps</a></li>
         <li><a href="../sources.html#changelog">Change log</a></li>
-      </ul></div>
+      </ul></nav>
     </div>
     <div class="foot-contact">
       <p><strong>Found something the site gets wrong, or something the wiki does?</strong>

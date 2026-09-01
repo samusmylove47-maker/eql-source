@@ -613,6 +613,28 @@ because they are easy to break by accident:
   **Four now.**" — and `scripts/check.py`'s `FACES` set has listed all four
   the whole time. **The checker and the design brief agreed; this file was the
   outlier**, and it is the one a session reads first.
+- **A heading level is an outline claim, not a size.** The footer's five column
+  labels were `<h4>` and are `<nav aria-label>` groups now: they are navigation,
+  never document sections, and as headings they skipped a level on **703 of 717
+  pages**. Do not restore them. Ten pages underneath carried `<h3>` cards
+  directly beneath the `<h1>` with no `<h2>` at all, and those were promoted.
+
+  **The trap is that `site.css` has a bare `h3{}` rule and no bare `h2{}`.**
+  Promoting an unclassed heading therefore strips its entire appearance — Saira
+  Condensed 22px uppercase falls back to browser-default Public Sans, mixed
+  case. Seven pages did that at once while `check.py`, `toolsmoke.js` and
+  `conformance.js` all stayed green, because not one of them reads type, and the
+  diff looked exactly like the change that was intended. Style a heading by
+  class; where a rule is keyed to an element, the rule moves with the heading.
+
+  `scripts/headstyle.js` is the instrument: it dumps the computed type of every
+  heading on a page, and a pure level change must differ in the element column
+  and nowhere else. It aborts the webfonts exactly as `conformance.js` does, and
+  it is still sound, because **it only ever compares two equally-handicapped
+  builds and never judges one.** That is the difference `docs/DESIGN.md` and this
+  file both mean when they forbid conformance.js from judging type. Keep it
+  differential: give it a threshold and it inherits the objection.
+
 - **The plate cards** are the home page's signature: one card per zone, washed
   with its own accent, carrying its plate number cropped by the card edge. They
   reflow, so adding a zone needs no layout change. A fixed-column spectrum of

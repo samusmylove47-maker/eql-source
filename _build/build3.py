@@ -307,7 +307,7 @@ def local_fonts(h, rel):
 
 
 def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=False,
-           wh_slug=None, ph_zone=None, og_card=None, canon=None):
+           wh_slug=None, ph_zone=None, og_card=None, canon=None, h1=None):
     h = open(src, encoding='utf-8').read()
     h = local_fonts(h, rel)
     if wh_slug:
@@ -317,6 +317,14 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
     if subs:
         for a, b in subs:
             h = h.replace(a, b)
+    if h1:
+        # One source file is injected at two URLs, so its masthead <h1> can only
+        # name one of them. Both pages announced "Standing", which names neither
+        # and is the first thing a screen reader reads out. The lambda keeps the
+        # replacement literal: a bare string would eat backslashes and group refs.
+        h, nh1 = re.subn(r'<h1[^>]*>.*?</h1>', lambda m: '<h1>' + h1 + '</h1>',
+                         h, count=1, flags=re.S)
+        assert nh1 == 1, 'no <h1> to rename in ' + src
     if ph_zone:
         h, nph = mark_placeholders(h, ph_zone)
         if nph:
@@ -447,6 +455,7 @@ for z in Z:
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/race-unlocks.html', '../',
        'Tools', 'tools/index.html', 'Race unlock tracker',
        extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
+       h1='Race unlock tracker',
        own_bar=True, og_card='tools', canon='tools/race-unlocks')
 # calculator = same app, boots on the calc tab, shares the same save key
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator.html', '../',
@@ -454,6 +463,7 @@ inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator
        extra='<span class="ns-sep">/</span><a href="race-unlocks.html">&larr; Race unlocks</a>',
        subs=[(' show("track");\n})();', ' show("calc");\n})();'),
              ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')],
+       h1='Race &amp; primary calculator',
        own_bar=True, og_card='tools', canon='tools/combo-calculator')
 n += 2
 if PH_MARKED:

@@ -20,7 +20,7 @@ body{margin:0;background:var(--bg);color:var(--txt);font-family:"Public Sans",sy
 h1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:clamp(32px,5.4vw,64px);line-height:1.04;letter-spacing:.005em;margin:0 0 10px;text-transform:uppercase;text-wrap:balance}
 h2{font-family:"Saira Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(23px,4.2vw,32px);line-height:1;margin:0 0 6px}
 h2 .num{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:500;color:var(--acc);vertical-align:top;margin-right:12px;letter-spacing:.1em}
-h3{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:18px;letter-spacing:.04em;margin:0 0 8px}
+h3,.sheet h2,footer h2{font-family:"Saira Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:18px;letter-spacing:.04em;margin:0 0 8px}
 .subtitle{font-family:"Saira Condensed",sans-serif;font-weight:500;font-size:clamp(16px,3vw,21px);color:var(--mut);letter-spacing:.02em;margin:0 0 24px;text-transform:uppercase}
 .lede{color:var(--mut);margin:0 0 20px;max-width:72ch}
 .note{border-left:2px solid var(--line);padding:2px 0 2px 16px;margin:16px 0;color:var(--mut);max-width:80ch;font-size:14px}
@@ -131,13 +131,13 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--acc);back
 
 .veil{position:fixed;inset:0;background:rgba(8,11,13,.82);z-index:60;display:flex;align-items:center;justify-content:center;padding:22px}
 .sheet{background:var(--panel);border:1px solid var(--line);border-top:2px solid var(--acc);max-width:640px;width:100%;padding:24px}
-.sheet h3{color:var(--acc)}.sheet p{font-size:13.5px;color:var(--mut)}
+.sheet h2{color:var(--acc)}.sheet p{font-size:13.5px;color:var(--mut)}
 .linkbox{width:100%;font-family:"IBM Plex Mono",monospace;font-size:11.5px;margin:6px 0}
 .primary{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;border:1px solid var(--acc);color:var(--acc);padding:12px 20px;background:rgba(217,162,39,.08)}
 .primary:hover{background:rgba(217,162,39,.18)}
 .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
 footer{margin-top:64px;padding-top:22px;border-top:1px solid var(--line);color:var(--mut);font-size:12.5px}
-footer h3{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{margin-bottom:7px}
+footer h2{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{margin-bottom:7px}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
@@ -172,7 +172,7 @@ footer h3{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{
 
 <header class="mast">
   <p class="eyebrow">EverQuest Legends · Untapped Potential · Races</p>
-  <h1>Standing</h1>
+  <h1>Race &amp; primary calculator</h1>
   <p class="subtitle">Every race unlock, the cheapest route through them, and one merged shopping list</p>
 </header>
 
@@ -192,7 +192,7 @@ footer h3{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{
 
 <div id="share" class="veil hidden">
   <div class="sheet">
-    <h3>Your progress link</h3>
+    <h2>Your progress link</h2>
     <p>Which races you own, which you want, and every faction you have maxed are all encoded in this link. Nothing is stored on a server. Bookmark it, paste it in guild chat, or mail it to yourself — opening it anywhere restores this exact sheet.</p>
     <input class="linkbox" id="linkbox" type="text" readonly>
     <p id="savenote" style="margin:2px 0 0"></p>
@@ -201,7 +201,7 @@ footer h3{color:var(--txt)}footer ul{padding-left:18px;max-width:84ch}footer li{
 </div>
 
 <footer>
-  <h3>Where this comes from</h3>
+  <h2>Where this comes from</h2>
   <ul>
     <li><strong>Unlock requirements, methods and faction values</strong> — Alanna's Race Unlock Guide on eqlwiki.com, revision 166686, <strong>last edited 5 August 2026</strong>. That is the definitive deep-dive; every quantity, NPC, zone and per-turn-in faction figure below traces to it. For full dialogue, alternative methods and step-by-step detail, read it directly.</li>
     <li><strong>Race / primary class matrix, alignments, racials and starting cities</strong> — eqlwiki.com/Character_Races, revision 163936, last edited 28 July 2026 (launch day). That page carries a general "needs updating" banner, but the class lists were revised at launch and include Legends-specific changes from classic EverQuest — Kerran can take Druid, Wood Elf cannot take Beastlord. Treat the class lists as current and the surrounding prose as older.</li>
