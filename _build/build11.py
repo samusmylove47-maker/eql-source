@@ -200,7 +200,16 @@ except (OSError, ValueError):
     SESSIONS = []
 
 TIERS = [
-    (0, 'Base / Normal', 'the open world, and what you get if you never touch the setting'),
+    # THE GAME'S WORD FOR THIS TIER IS "NORMAL". "Base" is ours.
+    #
+    # Printing both as if they were alternatives put our own inferred label
+    # beside the game's actual name and made them look equivalent. They are
+    # not: searching every `You have entered` line in every staged log for
+    # `0 (`, `Base` or `Normal` returns ZERO matches, so the zone line never
+    # names this tier at all. The instance invite does, and it says Normal.
+    # That is the whole reason D0 has a name, and it is why the note now
+    # says where the name comes from rather than offering a choice of two.
+    (0, 'Normal', 'the open world, and any instance run at base. The zone line never names this tier; the instance invite does, and that is where the name comes from'),
     (1, 'Awakened', 'the first instanced tier'),
     (2, 'Adaptive', ''),
     (3, 'Fused', ''),
