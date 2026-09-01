@@ -199,6 +199,23 @@ def _shrink_dataset(text, key, keep):
     return json.dumps(d)
 
 
+def _json_poke(text):
+    """Change a published dataset's PAYLOAD, keeping valid JSON and every
+    contracted field. A scalar so the emptiness and floor rules do not fire
+    instead and prove the wrong check."""
+    d = json.loads(text)
+    d["data"]["__selftest__"] = 1
+    return json.dumps(d)
+
+
+def _media_poke(text):
+    """Make one media entry's recorded byte count disagree with the file."""
+    d = json.loads(text)
+    k = sorted(d)[0]
+    d[k]["bytes"] = int(d[k]["bytes"]) + 1
+    return json.dumps(d, indent=1, sort_keys=True)
+
+
 CASES = [
     # A tool whose data constant went missing. The Sky tracker shipped on 14
     # August with ORDER undefined: the class picker rendered nothing, the trio
@@ -525,6 +542,55 @@ CASES = [
      "public/tools/index.html",
      lambda t: t.replace(f"{N_CATALOGUE:,} catalogue items",
                          f"{N_CATALOGUE + 1:,} catalogue items")),
+
+    # ---- content hashes are SENSITIVE, not merely stable ---------------------
+    #
+    # R93. A hash exists so that different content produces a different value. A
+    # test asserting only that a hash is STABLE across rebuilds is satisfied by
+    # the literal "deadbeef"; only the sensitivity direction is load-bearing,
+    # and on 31 Aug 2026 four of this repo's six hashed things had nobody
+    # testing it. Each case below mutates content and requires the check to
+    # notice.
+    #
+    # The two served apps are absent from this list on purpose. Their checks are
+    # alive and were proved by hand, but they are foreign binaries and this
+    # harness restores through a utf-8 text round-trip - which is lossless for
+    # our own pages and NOT for a 182 KB bundle. A case of mine corrupted the
+    # Sky Ledger that way once. Same reason the hashed media is reached through
+    # its manifest below rather than by touching the .jpg.
+
+    # public/assets/site.css is hand-edited and _partials.py hashes it into the
+    # stylesheet URL of every page. Before this input was added to stamp.py,
+    # editing it and not rebuilding left check.py at exit 0 - so the cache-
+    # busting hash silently stopped being recomputed, which is the exact
+    # incident _asset_v was written after.
+    ("the stylesheet changed and nothing rebuilt",
+     "public/ is stale",
+     "public/assets/site.css",
+     lambda t: t + "/* selftest */"),
+
+    # The same input, separately, so that dropping either one from stamp.py's
+    # INPUTS fails a case. One case covering both would pass on either.
+    ("the webfont stylesheet changed and nothing rebuilt",
+     "public/ is stale",
+     "public/assets/fonts/fonts.css",
+     lambda t: t + "/* selftest */"),
+
+    # A published dataset drifting from its own content hash. `hash` was in the
+    # contract's required top-level fields, so a MISSING one failed and a WRONG
+    # one passed. We tell consumers to cache on that value.
+    ("a published dataset drifted from its own content hash",
+     "but its data hashes to",
+     "public/data/zones.v1.json",
+     lambda t: _json_poke(t)),
+
+    # The hashed media, reached through assets/media.json because the files
+    # themselves are binary. Changing the recorded byte count must be caught;
+    # nothing verified this manifest at all until 31 Aug 2026.
+    ("hashed media disagreeing with its manifest",
+     "recorded in assets/media.json",
+     "assets/media.json",
+     lambda t: _media_poke(t)),
 
     # ---- the curated corrections have not gone stale -------------------------
     #
