@@ -276,6 +276,11 @@ body .meas#measured::before{content:"From the log"}
 </style>
 
 <link rel="stylesheet" href="../assets/fonts/fonts.css">
+
+<style>
+.sr-only{display:inline-block;width:1px;height:1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;vertical-align:top}
+</style>
 <style>:root{--surface-0:#0B0704;--surface-1:#191309;--surface-2:#282013;--ground:var(--surface-0);--panel:var(--surface-1);--panel2:var(--surface-2);--rule:#544833;--rule2:#6B5C46;--line:var(--rule);--ink:var(--bone);--bone:#F2EADA;--txt:#DFD6C4;--mut:#B5AA95;--dim:#9A8F7C;--faint:#978C7C;--ok:#5FA37E;--warn:#C9453A;--warn-t:#D46C64;--ember:#C4482E;--ember-t:#D76C55;--instr:#7FB2C7;--brass:#C9922E;--brass-t:#D9A63F;--lava:#FF2800;--lava-t:#FF6A4D;--r:4px;--speed:.16s;}</style><style>
 .inj-contact{margin:26px 0 0;padding:15px 17px;border:1px solid #40372D;border-radius:4px;
   background:rgba(255,255,255,.02)}
@@ -531,7 +536,7 @@ svg .route[hidden]{display:none}
   <table>
     <thead><tr><th>Item</th><th>Slot / type</th><th>Stats</th><th>Dropped by</th></tr></thead>
     <tbody>
-      <tr><td class="it">Cloak of Flames</td><td class="st">Back</td><td class="st">AC 10 · DEX +9 · AGI +9 · <strong>HP +50</strong><br>SV Fire +15 · <strong>Haste +36% <span class="tier t5" title="Classic percentage haste. Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat.">T5</span></strong> · ALL classes</td><td class="src">Lord Nagafen</td></tr>
+      <tr><td class="it">Cloak of Flames</td><td class="st">Back</td><td class="st">AC 10 · DEX +9 · AGI +9 · <strong>HP +50</strong><br>SV Fire +15 · <strong>Haste +36% <span class="tier t5" title="Classic percentage haste. Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat.">T5<span class="sr-only"> — Classic percentage haste. Legends uses a flat attack-speed value, so this figure is a classic import and not a Legends stat.</span></span></strong> · ALL classes</td><td class="src">Lord Nagafen</td></tr>
       <tr><td class="it">Bladestopper</td><td class="st">Secondary · lore</td><td class="st"><strong>AC 25</strong> · STA +15 · HP +50<br>Rune IV at level 40 · 600s cooldown</td><td class="src">Lord Nagafen</td></tr>
       <tr><td class="it">Razing Sword of Skarlon</td><td class="st">Primary · 2H Slash<br><strong>25</strong> / 40 · lore · no drop</td><td class="st">Serpent Sight (worn)</td><td class="src">Warlord Skarlon <em>(ultra-rare)</em></td></tr>
       <tr><td class="it">Crown of King Tranix</td><td class="st">Head · lore</td><td class="st"><strong>AC 13 · CHA +15 · SV Magic +20</strong><br>Serpent Sight (worn) · ALL classes</td><td class="src">King Tranix <em>(rare)</em></td></tr>

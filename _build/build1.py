@@ -91,7 +91,12 @@ def _gate(z):
     lv = z["verify_level"]
     label = {"full":"all three gates cleared","partial":"partial — "+(z.get("verify_gate") or ""),
              "none":"not verified — "+(z.get("verify_gate") or "")}[lv]
-    return f'<span class="gate {lv}" title="{label}"></span>'
+    # The dot carries no text node at all, so `title` was the sole carrier of
+    # the verification state on 26 dots across two pages. On dungeons/index.html
+    # the same words are repeated in the visible "Open gates" aside; on the home
+    # page they are not, so there the tooltip was the only copy in existence.
+    return (f'<span class="gate {lv}" title="{label}">'
+            f'<span class="sr-only">Verification: {label}.</span></span>')
 
 
 def _cov(z):
@@ -104,9 +109,13 @@ def _cov(z):
         return ''
     got = [k for k, f in c['facets'].items() if f['level'] == 'measured']
     tip = '; '.join(f"{k}: {f['detail']}" for k, f in c['facets'].items())
+    measured = f' ({len(got)} of {len(c["facets"])} facets measured)' if got else ''
     return (f'<span class="cov" title="{tip}">'
             f'<b>{c["score"]}</b>/{c["max_score"]}'
-            + (f' &middot; {len(got)} measured' if got else '') + '</span>')
+            + (f' &middot; {len(got)} measured' if got else '')
+            + f'<span class="sr-only"> coverage out of {c["max_score"]}'
+              f'{measured}. {tip}.</span>'
+            + '</span>')
 
 # THE PLATE CARDS CARRY THEIR OWN ZONE, DRAWN.
 #
@@ -574,7 +583,7 @@ home = head("Accurate, sourced and kept current",
              placeholder="Dark Reaver, Najena, Fine Steel&hellip;">
       <button type="submit">Search</button>
     </form>
-    <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} fully verified</span></p>
+    <p class="hero-sig"><span>{len(Z)} zones surveyed</span><span>{NITEMS} items indexed</span><span>{NNAMED} named recorded</span><span>{nfull} past all three gates</span></p>
   </div>
   {hero_art}
   {hero_src}
@@ -623,9 +632,12 @@ home = head("Accurate, sourced and kept current",
 <section class="band">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">The atlas</h2>
-      <p class="lede" style="margin:0">Thirteen dungeons, each drawn from the game&rsquo;s own mesh.
+      <p class="lede" style="margin:0">{len(Z)} dungeons, each drawn from the game&rsquo;s own mesh.
         <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays against a
-        baseline of 75.</p></div>
+        baseline of 75. The figure out of 10 is <b>coverage</b>: five facets worth two
+        points each &mdash; bosses, loot, difficulty, inherited claims and farming. It measures
+        what a zone gives a reader, not whether it has cleared the survey gates. The two
+        disagree often, and in both directions, so neither stands in for the other.</p></div>
       <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
     <div class="plates">
 {plates}
@@ -650,10 +662,12 @@ home = head("Accurate, sourced and kept current",
       <aside class="standard contour" style="--c:var(--instr);--cx:92%;--cy:112%">
         <h3 class="stdh">Why you can check us</h3>
         <p class="stdp">Most of what this community reads about Legends is classic EverQuest text
-          in a Legends-shaped hole. Every claim here carries the weight of its source. Tiers 1 and 2 print plain;
+          in a Legends-shaped hole. Every claim here carries the weight of its source. Measured logs
+            outrank every read source for what they directly measure; tiers 1 and 2 print plain;
           anything weaker carries its badge wherever it appears
           &mdash; <span class="tier t3">T3</span> <span class="tier t4">T4</span> <span class="tier t5">T5</span></p>
         <ol class="stdscale">
+          <li class="tm" style="--tc:var(--ok)"><b>Measured combat logs</b><span>First-hand, parsed rather than remembered</span></li>
           <li style="--tc:#5FA37E"><b>Developer statements</b><span>Patch notes and direct answers</span></li>
           <li style="--tc:#7FB2C7"><b>Structured wiki data</b><span>Infoboxes, tables, coordinate records</span></li>
           <li style="--tc:#D9A227"><b>Named community guides</b><span>Attributed, maintained, one reading</span></li>
@@ -744,7 +758,7 @@ if _open:
         <span class="gn">{z['plate']:02d}</span>
         <span class="gz">{z['title']}</span>
         <span class="gs">{z['verify_gate']}</span>
-        <span class="gl">{'unstarted' if z['verify_level']=='none' else 'open'}</span>
+        <span class="gl">{'not cleared' if z['verify_level']=='none' else 'open'}</span>
       </li>'''
       for z in sorted(_open, key=lambda z: (_ORDER[z['verify_level']], z['plate'])))
 else:
@@ -770,8 +784,11 @@ dung = head("Dungeon surveys",
       tables, named rosters with spawn data, loot tied to its drop source, and coordinates
       re-derived from the wiki&rsquo;s <code>/loc</code> records and checked against the floor the
       game itself draws. <b>ZEM</b> is the zone experience modifier &mdash; how fast a zone pays
-      against a baseline of 75.</p>
-    <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len([z for z in Z if z['slug'] in PLANS])} with a floor plan</span><span>{nfull} fully verified</span><span>{npart} partial</span><span>{nnone} unverified</span></p>
+      against a baseline of 75. The figure out of 10 is <b>coverage</b>: five facets worth two
+      points each &mdash; bosses, loot, difficulty, inherited claims and farming. It measures
+      what a zone gives a reader, not whether it has cleared the survey gates. The two
+      disagree often, and in both directions, so neither stands in for the other.</p>
+    <p class="hero-sig"><span>{len(Z)} surveys</span><span>{len([z for z in Z if z['slug'] in PLANS])} with a floor plan</span><span>{nfull} past all three gates</span><span>{npart} partial</span><span>{nnone} not cleared</span></p>
   </div>
 </section>
 

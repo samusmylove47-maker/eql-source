@@ -8,8 +8,8 @@
   "classic intact. What matters is marked against unmarked."
  ],
  "scanned": 736,
- "unmarked": 1990,
- "marked": 48,
+ "unmarked": 1994,
+ "marked": 44,
  "signatures": [
   {
    "id": "haste-pct",
@@ -82,8 +82,8 @@
    "classic": "Classic stat blocks abbreviated resists as SV MAGIC +N.",
    "legends": "The abbreviation may well be current. Its presence marks a block transcribed from a classic-era record, which is worth knowing even when the number is right.",
    "settle": "Compare one block against the item in game.",
-   "unmarked": 712,
-   "marked": 14,
+   "unmarked": 714,
+   "marked": 12,
    "files": {
     "assets/index-data.json": 84,
     "public\\dungeons\\warrens.html": 24,
@@ -690,8 +690,8 @@
    "classic": "Classic loot tables graded every drop rare, common or uncommon.",
    "legends": "These are the wiki word, not a measurement. Nothing here has counted a drop against the kills that produced it.",
    "settle": "The same thing the percentages need: a count and a denominator.",
-   "unmarked": 351,
-   "marked": 5,
+   "unmarked": 353,
+   "marked": 3,
    "files": {
     "assets/index-data.json": 89,
     "public\\dungeons\\lowerguk.html": 37,
@@ -806,6 +806,10 @@
     },
     {
      "file": "public\\dungeons\\lowerguk.html",
+     "text": "(rare)"
+    },
+    {
+     "file": "public\\dungeons\\lowerguk.html",
      "text": "(common)"
     },
     {
@@ -815,10 +819,6 @@
     {
      "file": "public\\dungeons\\lowerguk.html",
      "text": "(rare)"
-    },
-    {
-     "file": "public\\dungeons\\lowerguk.html",
-     "text": "(common)"
     }
    ]
   }

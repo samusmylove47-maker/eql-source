@@ -33,8 +33,11 @@ figure rests on. A drop seen once is "seen once", never a drop rate.
 
 - Zone and difficulty arrive together: `You have entered The Castle of Mistmoore
   1 (Awakened).` The parenthesised word is the difficulty tier name:
-  **D0 Base/Normal, D1 Awakened, D2 Adaptive, D3 Fused, D4 Refined.** Supplied by
-  the collaborator, 8 Aug 2026.
+  **D1 Awakened, D2 Adaptive, D3 Fused, D4 Refined.** Supplied by the
+  collaborator, 8 Aug 2026. **The zone line never names base.** It prints no
+  parenthesis there at all &mdash; 0 times in 514 zone lines &mdash; so base is
+  the absence of a suffix. Its name, **Normal**, comes from the instance invite,
+  which prints it 16 times and never contradicts a zone line that does carry one.
 - Difficulty is separately readable from loot: items drop at `+N`, and the
   **lowest** `N` is the difficulty — not the modal, which is what this said
   until 11 Aug 2026. **Difficulty is a floor.** In 1,742 upgradeable drops from

@@ -149,7 +149,9 @@ for (boss, diff), rows in _groups:
         f'<tr><td class="nmob">{boss}</td><td class="lv">'
         + ('D%d' % diff if diff is not None
            else '<span class="unk" title="No numbered zone line, and nothing dropped carrying '
-                'an independent tier">not resolved</span>')
+                'an independent tier">not resolved'
+                '<span class="sr-only"> — no numbered zone line, and nothing '
+                'dropped carrying an independent tier</span></span>')
         + f'</td><td class="lv">{dmg}{" <em>floor</em>" if is_floor else ""}</td>'
         + f'<td class="lv">{secs}s</td>'
         + f'<td class="lv">{max(r["spells_distinct"] for r in use)}</td>'

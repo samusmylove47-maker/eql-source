@@ -244,9 +244,9 @@ CASES = [
                          f"{N_ITEMS} items, {N_NAMED - 1} named")),
 
     ("verification count off the ledger",
-     "claims 8 fully verified; the ledger says",
+     "claims 8 zones past all three gates; the ledger says",
      "public/index.html",
-     lambda t: re.sub(r"(\d+) fully verified", "8 fully verified", t, count=1)),
+     lambda t: re.sub(r"(\d+) past all three gates", "8 past all three gates", t, count=1)),
 
     # The other half of check 2, revived 18 Aug 2026. It had read "of the ten
     # plates have not cleared" since the plates became surveys on 10 August, so
