@@ -152,6 +152,13 @@ nnone = sum(1 for z in Z if z["verify_level"]=="none")
 # counts from the Ledger's own dataset. The tool's README types "three quests"
 # about an item its data wants twice; that is the exact reason nothing here is
 # typed beside the data it claims to come from.
+# EQLS AURAS: ONE SOURCE FOR THE COPY, AND IT IS NOT THIS FILE.
+# The band's text used to be written here, so this page and /auras.html would
+# have been two copies of a third party's words drifting apart. It lives in
+# assets/auras.json now. Shara has creative control of that product and her
+# copy reaches us through the owner; no build session authors it.
+AURAS = json.load(open('assets/auras.json', encoding='utf-8'))
+
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
 
 # The planner's vendored snapshot, read BY FIELD PATH exactly as build29.py
@@ -421,69 +428,54 @@ lockouts = f'''
 '''
 
 auras = f'''
-<section class="band feat">
+<section class="band feat" id="auras" style="--c:var(--instr)">
   <div class="shell">
     <div class="featwrap">
       <div class="featgrid">
-        <figure class="feattrailer">
-          <video data-src="assets/media/{MEDIA['auras-trailer']['file']}"
-                 data-poster="assets/media/{MEDIA['auras-poster']['file']}"
-                 width="1600" height="900" muted loop playsinline
-                 preload="none" id="autrailer"
-                 aria-label="A Quick Buff cast landing on screen, and the overlay filling with
-                             fourteen buff icons across the top of the game, each counting
-                             down its own remaining time."></video>
-          <button class="vpause" type="button" id="aupause" aria-controls="autrailer">Pause</button>
-          <figcaption><span>The overlay in play &middot; 9s, silent</span></figcaption>
+        <figure class="feattrailer" id="auwrap"
+                data-video="assets/media/{MEDIA['auras-trailer']['file']}"
+                data-poster="assets/media/{MEDIA['auras-poster']['file']}">
+          <img src="assets/media/{MEDIA['auras-poster']['file']}" width="1600" height="900"
+               alt="The EQLS Auras overlay running over the game, buff icons across the top
+                    of the screen each counting down its own remaining time.">
+          <button class="vplay" type="button">Play</button>
+          <figcaption><span>{AURAS['caption']}</span></figcaption>
         </figure>
         <div>
-          <p class="eyebrow">Next &middot; <b>reads your own log</b></p>
-          <h2 class="feath">EQLS Auras</h2>
-          <p class="featlede">It reads your combat log and draws your buffs over the game as
-            icons that count down, so you can see what is about to drop off without opening
-            a window.</p>
-          <p class="featsub">It reads files the client already has: the log it writes as you
-            play, your spellbook, and the game's own spell icons. It does not read or alter
-            the game's memory, inject code into it, or send it input. <strong>It fetches its
-            typeface from Google each time it launches</strong>, which discloses your IP
-            address to Google; beyond that it sends nothing &mdash; no telemetry, no
-            analytics, no update check. That fetch is the main window only:
-            <strong>the overlay drawn over the game requests nothing at all.</strong></p>
-          <p class="featsub">The idea is WeakAuras'. The code is not: a from-scratch
-            implementation for EverQuest Legends, sharing no code and no trigger format with
-            it, and neither affiliated with nor endorsed by its authors.</p>
-          <!-- NO DATE. Session C withdrew its GO on 18 Aug 2026 and a date already
-               missed once must not be re-typed. The band is where a reader forms an
-               expectation, and this site cannot currently meet a dated one. It stays
-               absent until Session C says GO - not softened, not hedged, absent. -->
-          <p class="featfoot">Windows.</p>
+          <p class="eyebrow">{AURAS['eyebrow']}</p>
+          <h2 class="feath">{AURAS['name']}</h2>
+          <p class="featlede">{AURAS['lede']}</p>
+          <p class="featsub">{AURAS['body'][0]}</p>
+          <p class="featsub">{AURAS['body'][1]}</p>
+          <p class="featfoot">{AURAS['platform']}</p>
+          <p class="feat-cta"><a href="auras.html">More about {AURAS['name']}</a></p>
         </div>
       </div>
       <script>
-      /* Identical to the Sky Ledger band's, on the same reasoning - see the long
-         note there. Nothing is fetched until the band is approached; below 700px
-         and under prefers-reduced-motion the poster is what shows and a tap gets
-         the motion. */
+      /* CLICK TO PLAY, BECAUSE THIS BAND IS NOW ABOVE THE FOLD.
+         The deferred-video pattern used elsewhere loads on intersection, which is
+         correct for a band a reader scrolls to. Featuring this one moved it into
+         the first screen, so "load when visible" became "load immediately" and put
+         839 KB of trailer back in front of first paint - undoing the fix shipped
+         yesterday, silently, as a side effect of a layout decision.
+         scripts/mediadefer.js caught it.
+         So the poster is the page and the video is opt-in. The reader sees the
+         product at once for 175 KB; the motion costs bytes only if they ask. */
       (function(){{
-        var v=document.getElementById('autrailer'), b=document.getElementById('aupause');
-        if(!v||!b) return;
-        var quiet=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        var small=window.matchMedia&&window.matchMedia('(max-width: 700px)').matches;
-        function sync(){{ b.textContent=v.paused?'Play':'Pause'; }}
-        function attach(motion){{
-          if(!v.hasAttribute('poster')&&v.dataset.poster) v.setAttribute('poster',v.dataset.poster);
-          if(!v.hasAttribute('src')&&v.dataset.src){{ v.setAttribute('src',v.dataset.src); v.load(); }}
-          if(motion&&!quiet&&!small){{ var p=v.play(); if(p&&p.catch) p.catch(function(){{}}); }}
-        }}
-        if(window.IntersectionObserver){{
-          var io=new IntersectionObserver(function(es){{
-            for(var i=0;i<es.length;i++) if(es[i].isIntersecting){{ attach(true); io.disconnect(); return; }}
-          }},{{rootMargin:'300px'}});
-          io.observe(v);
-        }} else {{ attach(true); }}
-        b.addEventListener('click',function(){{ attach(false); v.paused?v.play():v.pause(); sync(); }});
-        v.addEventListener('play',sync); v.addEventListener('pause',sync);
-        sync();
+        var w=document.getElementById('auwrap');
+        if(!w) return;
+        var b=w.querySelector('.vplay');
+        if(!b) return;
+        b.addEventListener('click',function(){{
+          var v=document.createElement('video');
+          v.src=w.getAttribute('data-video');
+          v.setAttribute('poster',w.getAttribute('data-poster'));
+          v.muted=true; v.loop=true; v.playsInline=true; v.controls=true;
+          v.setAttribute('width','1600'); v.setAttribute('height','900');
+          w.replaceChild(v,w.querySelector('img'));
+          b.remove();
+          var p=v.play(); if(p&&p.catch) p.catch(function(){{}});
+        }});
       }})();
       </script>
     </div>
@@ -577,10 +569,10 @@ home = head("Accurate, sourced and kept current",
   {hero_art}
   {hero_src}
 </section>
+{auras}
 {upgrades}
 {feature}
 {lockouts}
-{auras}
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>

@@ -252,6 +252,30 @@ def main():
             thin_fights=sum(1 for a in atk if a <= 3),
         ),
         'bosses': bosses,
+        # THE DEAREST BOSS, DERIVED ONCE, BECAUSE TWO PAGES COMPARE AGAINST IT.
+        #
+        # Both the raids index and the Sky page state Sky's cost against
+        # Cazic-Thule at Refined, and each computed its own max over the bosses
+        # above. They agreed only because they made the same choice - and both
+        # chose `damage_max`, which is the largest observed total INCLUDING
+        # fights the parser marked a floor. So the pages published 35,946 "or
+        # more" for Bazzt Zzzt while /learn/difficulty printed 23,321 for the
+        # same boss at the same tier: a lower bound stated ABOVE the fullest
+        # complete view, on six of eight bosses.
+        #
+        # CLAUDE.md's rule is to trust the fullest view of a boss at a tier and
+        # treat the rest as lower bounds. `damage_complete_max` is that view and
+        # it has been in this file all along with no readers. It is chosen here,
+        # once, so the two pages cannot make the choice differently.
+        #
+        # `is_floor` stays true only if NO complete view exists for that boss -
+        # today that is none of the fifteen, and a page must still be able to
+        # say "or more" if it ever happens.
+        'dearest': (lambda d: dict(
+            boss=d['boss'],
+            damage=d['damage_complete_max'] if d['damage_complete_max'] else d['damage_max'],
+            is_floor=not d['damage_complete_max'],
+        ))(max(bosses, key=lambda b: b['damage_complete_max'] or b['damage_max'])),
         'looted_but_unfought': looted_only,
         'keys': keys,
         'efreeti_sources': {k: dict(v.most_common()) for k, v in sorted(efreeti.items())},

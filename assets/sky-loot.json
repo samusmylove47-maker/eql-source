@@ -1533,6 +1533,11 @@
    ]
   }
  ],
+ "dearest": {
+  "boss": "Bazzt Zzzt",
+  "damage": 23321,
+  "is_floor": false
+ },
  "looted_but_unfought": [
   "Heart harpie",
   "The Hand of Veeshan",
