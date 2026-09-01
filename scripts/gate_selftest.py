@@ -552,6 +552,22 @@ CASES = [
      "state/last-build.json",
      lambda t: t.replace('"inputs"', '"inputs_renamed"', 1)),
 
+    # A TIER BADGE THAT RENDERS WITH NO SELECTOR TO STYLE IT.
+    #
+    # `class="tier tC"` shipped against a stylesheet defining `.tc`. CSS class
+    # selectors are case-sensitive, so one letter was the entire defect, and it
+    # was invisible: an unstyled badge still reads as text, so the page looks
+    # merely plain rather than broken.
+    #
+    # The old check listed four classes somebody had typed. It could not notice
+    # a class nobody listed, which is what tC was. The replacement derives the
+    # set from the pages that actually render badges, so this case mutates the
+    # STYLESHEET rather than the list.
+    ("a tier badge renders with no selector to style it",
+     "defines no .tC",
+     "public/assets/site.css",
+     lambda t: t.replace(".tC{", ".tc{", 1)),
+
     # ---- content hashes are SENSITIVE, not merely stable ---------------------
     #
     # R93. A hash exists so that different content produces a different value. A

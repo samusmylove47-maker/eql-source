@@ -297,6 +297,39 @@ css = open("public/assets/site.css", encoding="utf-8").read()
 for cls in (".tier", ".t1", ".t3", ".t5"):
     if cls not in css:
         fail(f"assets/site.css has lost {cls} — the source-tier badge system is load-bearing")
+
+# AND EVERY TIER THE SITE ACTUALLY RENDERS MUST HAVE A SELECTOR.
+#
+# The list above is four classes somebody typed. It is why `tier tC` shipped
+# unstyled: the markup rendered tC, the stylesheet defined `.tc`, and a
+# hardcoded list of remembered classes cannot notice a class nobody remembered.
+# CSS class selectors are case-sensitive, so one letter was the whole defect,
+# and it was invisible - an unstyled badge still reads as text.
+#
+# This derives the set from the built pages instead. A badge that renders is a
+# badge that must be styled, whatever anybody thought to list.
+_rendered = set()
+for _p in pages:
+    for _m in re.finditer(r'class="tier (t[A-Za-z0-9]+)"',
+                          open(_p, encoding="utf-8", errors="replace").read()):
+        _rendered.add(_m.group(1))
+_unstyled = []
+for _cls in sorted(_rendered):
+    _sel = "." + _cls
+    _i = css.find(_sel)
+    # a real selector ends at a non-identifier character; `.tc` inside `.tcx`
+    # is not a definition of `.tc`
+    while _i != -1 and _i + len(_sel) < len(css) and (
+            css[_i + len(_sel)].isalnum() or css[_i + len(_sel)] in "_-"):
+        _i = css.find(_sel, _i + 1)
+    if _i == -1:
+        _unstyled.append(_cls)
+for _cls in _unstyled:
+    fail(f'pages render class="tier {_cls}" and assets/site.css defines no '
+         f'{"." + _cls} — the badge ships unstyled, which reads as plain text '
+         f'rather than as a grading')
+print(f"  tier badges: {len(_rendered)} class(es) rendered, "
+      f"{len(_rendered) - len(_unstyled)} styled")
 # THE PATH IS public/index.html AND HAS BEEN SINCE THE SITE MOVED THERE.
 #
 # This read a root index.html that has not existed for the life of this layout,
