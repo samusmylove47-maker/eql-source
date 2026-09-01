@@ -19,6 +19,24 @@ def txt(x):
     return t
 def cells(row): return [txt(c) for c in re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>',row,re.S)]
 
+# THE TIER BADGE DID NOT SURVIVE txt(), AND THAT IS WHAT SENT IT TO GOOGLE BARE.
+#
+# A survey stat cell carries its grading inline:
+#   <strong>Haste +10% <span class="tier t5" title="Classic percentage haste...">T5</span></strong>
+#
+# txt() strips every tag, so the SPAN went and the LETTERS stayed. The item
+# page then printed "Haste +10% T5" as plain prose with no badge, and the
+# same string reached the <meta description> Google shows - a tier 5 classic
+# import presented in a search snippet with nothing marking it as unverified.
+#
+# CLAUDE.md: a T3 claim printed bare is a bug, and a worse one than a broken
+# link. Measured across every survey: 15 cells carry a badge, never more than
+# one each, so a single tier per record is lossless rather than a compromise.
+RAW = re.compile(r'<t[dh][^>]*>(.*?)</t[dh]>', re.S)
+TIER = re.compile(r'class="tier (t[0-9M])"')
+
+def raw_cells(row): return RAW.findall(row)
+
 SLOTS=["Head","Face","Ear","Neck","Shoulders","Arms","Back","Wrist","Hands",
        "Fingers","Finger","Chest","Waist","Legs","Feet","Primary","Secondary",
        "Range","Ammo","Charm","Shield"]
@@ -318,6 +336,22 @@ for z in Z:
                 use = '' if slot else col('what it', 'for') or col('used for')
                 # "Effect" is Mistmoore's word for the stats column.
                 stats = col('stats') or col('effect')
+                # The grading of that same cell, read from the markup txt() drops.
+                rc = raw_cells(r)
+                def col_tier(*words):
+                    for k, i in ix.items():
+                        if all(w in k for w in words) and i < len(rc):
+                            m = TIER.search(rc[i])
+                            if m:
+                                return m.group(1)
+                    return ''
+                stats_tier = col_tier('stats') or col_tier('effect')
+                if stats_tier:
+                    # The badge's letters survived the tag strip as bare prose.
+                    # Remove them: the page renders the badge from the field now,
+                    # and a stray "T5" in running text is the noise this fixes.
+                    token = 'T' + stats_tier[1:].upper()
+                    stats = stats.replace(' ' + token, '').replace(token, '').strip()
                 cls=col('class')
                 names=[x.strip() for x in c[0].split(' · ') if x.strip()]
                 desc = slot or use
@@ -372,6 +406,9 @@ for z in Z:
                               # but a cap that silently drops the tail of a fact
                               # is the shape of the bug this whole change fixes.
                               "st":st,
+                              # Empty for the overwhelming majority; present
+                              # only where a survey graded the claim.
+                              **({"stt": stats_tier} if stats_tier else {}),
                               **({"use":use} if use else {}),
                               **f,
                               "kind":kind,

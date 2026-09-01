@@ -89,6 +89,54 @@ SIGNATURES = [
          legends='Legends caps a raid at 8. Anything sized larger is inherited '
                  'and describes nothing about this game.',
          settle='Nothing — the cap is published.'),
+    # THE TWO LARGEST FAMILIES, AND THE SCANNER HAD NO SIGNATURE FOR EITHER.
+    #
+    # Until now it defined five, and reported "0 unmarked" — a true statement
+    # about those five and SILENT about the two that account for most of the
+    # inherited data on this site. A number that cannot come back non-zero for a
+    # family is not a measurement of that family.
+    #
+    # Neither can be reached by carrying badge markup through extraction, which
+    # is why they need their own signatures: the 15 graded cells carry a span,
+    # and these carry their provenance as a SENTENCE in the parent survey. A
+    # sentence does not survive extraction into a catalogue page.
+    #
+    # Patterns use character classes rather than backslash escapes throughout,
+    # because this file is edited through shells that eat them.
+    # A `spawn-pct` signature was written here and WITHDRAWN before shipping,
+    # and the reason is recorded so nobody writes it again the same way.
+    #
+    # The family is real: roughly 90 inherited per-kill spawn percentages sit in
+    # named-mob Notes cells, carried from classic wikis, describing nothing about
+    # this game. They are the largest inherited family on the site and they are
+    # NOT reachable by carrying badge markup through extraction, because their
+    # provenance is a sentence in the parent survey and a sentence does not
+    # survive into a catalogue page.
+    #
+    # WHAT DEFEATED THE SIGNATURE: a bare percentage pattern matches layout.
+    # Stripping <style> and <script> is not enough, because the percentages that
+    # ruin it live in ATTRIBUTES - `style="left:63.48%;top:39.85%"` on every
+    # locator mark, `width="100%"` on every rule. Measured: 233 named pages
+    # against a true family of about 90, and the extra 143 are stylesheet
+    # arithmetic. Session 0 got the identical 233 independently.
+    #
+    # The scope that would work is the audit's - percentages in Notes that are
+    # inherited - and expressing it needs a TEXT-ONLY scan. That conflicts with
+    # marker detection, which reads `class="tier t5"` out of the markup: strip
+    # the tags and the markers go with them. Resolving that is a real change to
+    # how this file reads a page, not a pattern tweak.
+    #
+    # So the family is NAMED AND UNMEASURED rather than badly measured. A wrong
+    # number in a published report is worse than a stated gap, which is the whole
+    # argument of /learn/contamination.
+    dict(id='rarity-word', certainty='convention',
+         pattern=r'[(](?:rare|common|uncommon)[)]',
+         classic='Classic loot tables graded every drop rare, common or '
+                 'uncommon.',
+         legends='These are the wiki word, not a measurement. Nothing here has '
+                 'counted a drop against the kills that produced it.',
+         settle='The same thing the percentages need: a count and a '
+                'denominator.'),
     # A `plat-cost` signature was here and has been removed. It matched any
     # three-digit platinum figure, which is not a classic fingerprint: it hit
     # "over 1600 plat of ore" for the Iksar unlock and "around 100 to 120
@@ -100,28 +148,77 @@ SIGNATURES = [
 # Where our claims live. The archive is excluded deliberately: it republishes
 # retired plates verbatim and is marked, noindexed and explained as history.
 SURFACES = [
+    # THE BUILT TREE, WHICH THIS SCANNER NEVER LOOKED AT.
+    #
+    # Every surface below is a build INPUT. So this measured the layer
+    # BEFORE the damage: extract.py stripped a tier badge's markup and left
+    # its letters, 'Haste +10% T5' shipped to 675 catalogue pages and into
+    # the meta descriptions Google shows, and a scanner whose whole purpose
+    # is finding classic conventions in our own published content could not
+    # see it, because our own published content was not on the list.
+    #
+    # A self-audit that reads the sources and not the output is checking
+    # what we meant rather than what we said.
+    ('public/**/*.html', 'every published page'),
     ('_build/source/*.html', 'survey and tool sources'),
     ('assets/sky.json', 'Plane of Sky dataset'),
     ('assets/planar.json', 'planar armour sets'),
     ('assets/index-data.json', 'mined item and mob catalogue'),
     ('assets/motes.json', 'mote values'),
 ]
+# public/app/ holds applications built in OTHER repositories and copied in
+# verbatim under a content hash. Their contents are not ours to write and not
+# ours to fix, so reporting their figures as our contamination would be
+# misattribution AND unactionable - and this file exists because a scanner
+# that finds other people's rot is an attack ad. They are published by us and
+# a reader does see them; that is a question for their own repositories, and
+# the Sky Ledger's is where it has to be asked.
 SKIP = ('assets/archive-plates.json',)
+SKIP_PREFIX = ('public/app/',)
 
 # A hit inside one of these is already declared below tier 2 at the point of
 # use, so it is marked rather than bare.
 MARKERS = (r'class="tier t[345]"', r'class="tier tC"', r'\bsus\s*:', r'"status"\s*:\s*"suspect"',
            r'classic-era', r'Suspect figure', r'not confirmed for Legends',
            r'inherited', r'Project 1999', r'\bT5\b', r'\bT4\b', r'\bT3\b')
+# A HEADING THAT DECLARES THE CONTENT CLASSIC IS A MARKER, and a stronger one
+# than a badge. /learn/still-true is built as two columns, "What classic did"
+# against "What Legends does", so a classic haste percentage under that
+# heading is the page doing its job rather than the site asserting a stale
+# figure. Without this the scanner reported its own explainer as
+# contamination - a false positive inside a report we publish.
+MARKERS = MARKERS + ('What classic did',)
+
 MARKER_RE = re.compile('|'.join(MARKERS), re.I)
 WINDOW = 400          # chars either side of a hit to look for a marker
 
 
+CODE = re.compile(r'<(script|style)\b.*?</\1>', re.S | re.I)
+
+
 def scan_text(text, sig):
+    """Hits in a signature's pattern, each with whether it is declared nearby.
+
+    STYLE AND SCRIPT ARE REMOVED FIRST, and that is not tidiness. A percentage
+    signature run over a page's raw bytes matches `width:100%` and
+    `color-mix(in srgb, var(--c) 58%, ...)` in the inline stylesheet - a
+    thousand hits of stylesheet arithmetic reported as inherited game data. The
+    five older signatures escaped it by luck rather than design: none of their
+    patterns happen to occur in CSS.
+
+    `exclude` lets a signature reject a hit by its CONTEXT rather than by a
+    lookbehind. The bare-rate pattern has to match a percentage anywhere, and
+    the site prints two of its own - a zone ZEM and item haste - which are not
+    inherited and must not be counted as such.
+    """
     rx = re.compile(sig['pattern'], re.I)
-    for m in rx.finditer(text):
-        a, b = max(0, m.start() - WINDOW), min(len(text), m.end() + WINDOW)
-        yield m.group(0).strip(), bool(MARKER_RE.search(text[a:b]))
+    ex = re.compile(sig['exclude'], re.I) if sig.get('exclude') else None
+    body = CODE.sub(' ', text)
+    for m in rx.finditer(body):
+        a, b = max(0, m.start() - WINDOW), min(len(body), m.end() + WINDOW)
+        if ex and ex.search(body[max(0, m.start() - 70):m.end() + 25]):
+            continue
+        yield m.group(0).strip(), bool(MARKER_RE.search(body[a:b]))
 
 
 def scan_json(data, sig):
@@ -160,8 +257,9 @@ def main():
                                                     samples=[]))
     scanned = []
     for pattern, label in SURFACES:
-        for path in sorted(glob.glob(pattern)):
-            if path.replace(os.sep, '/') in SKIP:
+        for path in sorted(glob.glob(pattern, recursive=True)):
+            _p = path.replace(os.sep, '/')
+            if _p in SKIP or _p.startswith(SKIP_PREFIX):
                 continue
             try:
                 text = open(path, encoding='utf-8').read()
