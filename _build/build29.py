@@ -164,7 +164,7 @@ CSS = '''<style>
 # doubled positions account for the rest (two ears, two wrists, two fingers).
 # Read 18 Aug 2026. Do not "correct" this to eighteen.
 page = head(
-    "=Upgrades",
+    "EQLS Upgrades",
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "
     "no account and no server.",
     rel="../", extra=CSS, og="tools", canon="tools/50-upgrades") + bar("../") + f'''
@@ -172,7 +172,7 @@ page = head(
   <section class="band" style="border-top:0">
     <div class="shell">
       <p class="eyebrow">Gear planning &middot; <b>built and hosted elsewhere</b></p>
-      <h1 class="display">=Upgrades</h1>
+      <h1 class="display">EQLS Upgrades</h1>
       <p class="hero-lede">Pick a trio and a race, fill the slots, and compare what each
         candidate does to the character rather than to the item beside it. It runs entirely
         in the browser: nothing is stored, no account is made, and a build travels as a

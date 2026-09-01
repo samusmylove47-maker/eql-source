@@ -259,7 +259,7 @@ upgrades = f'''
       <div class="featgrid">
         <div>
           <p class="eyebrow">Live now &middot; <b>no account, no server</b></p>
-          <h2 class="feath">50 Upgrades</h2>
+          <h2 class="feath">EQLS Upgrades</h2>
           <p class="featlede">Pick a trio and a race, fill twenty-three slots, and compare what
             each candidate does to the character rather than to the item beside it. Every item
             upgrades from +0 to +10, and the stat sheet recomputes as you touch it.</p>
