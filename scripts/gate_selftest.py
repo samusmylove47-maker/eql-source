@@ -576,6 +576,19 @@ CASES = [
      "public/assets/fonts/fonts.css",
      lambda t: t + "/* selftest */"),
 
+    # THE ENUMERATION FALLING BEHIND WHAT THE GENERATORS READ.
+    #
+    # This mutation removes the glob that covers _build/planar_raw.txt, which
+    # _build/planardata.py opens by a literal path. That is the same condition
+    # someone creates by adding a generator that reads a new kind of file, and
+    # it is the condition scripts/inputscover.py exists to notice. The case is
+    # built this way because there is currently NO uncovered file to point at -
+    # so the only honest way to exercise the check is to re-create the gap.
+    ("stamp.py stopped covering an input a generator reads",
+     "does not fingerprint it",
+     "scripts/stamp.py",
+     lambda t: t.replace(chr(34) + "_build/*.txt" + chr(34) + ", ", "", 1)),
+
     # A raw build input whose EXTENSION no glob covered. stamp.py's INPUTS are
     # extension-specific, so a file in a covered directory with an uncovered
     # suffix is invisible - which is how site.css was missed, one directory
