@@ -544,9 +544,18 @@ const showAll = args.includes('--show');
               for (const n of el.childNodes) if (n.nodeType === 3) own += n.textContent.trim();
               if (own.length < 2) continue;
               const box = el.getBoundingClientRect();
-              if (box.width < 1 || box.height < 1) continue;
+              // A 1x1 box shows no readable text, so its contrast measures
+              // nothing. The bound was < 1 and a visually-hidden label is
+              // exactly 1px, so the .sr-only spans added on 1 Sep 2026 arrived
+              // as dozens of findings about text no eye will ever meet - and a
+              // report full of those is one nobody reads, which is how a real
+              // finding gets lost.
+              if (box.width <= 1 || box.height <= 1) continue;
               const cs = getComputedStyle(el);
               if (cs.visibility === 'hidden' || cs.opacity === '0') continue;
+              // Belt and braces: a larger box clipped away to nothing is just
+              // as invisible as a 1px one.
+              if (/rect\(0px,? 0px,? 0px,? 0px\)/.test(cs.clip)) continue;
               const bg = ground(el);
               if (!bg) { unmeasurable++; continue; }
               checked++;

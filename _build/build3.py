@@ -44,6 +44,41 @@ def bar_html(rel, crumb, crumb_href, here, extra=""):
 # less important of the two, so it stops following on those pages.
 UNPIN = '<style>.ns-bar{position:static}</style>'
 
+# THE IMPORTED PAGES DO NOT LINK site.css. THEY NEVER HAVE.
+#
+# Every page built by _partials.head() links assets/site.css; the imported plates
+# and tools link only assets/fonts/fonts.css and carry their own <style> block
+# from _build/source/. So a utility class added to site.css reaches 704 pages and
+# silently misses these 15.
+#
+# That is not a hypothetical. The .sr-only labels added on 1 Sep 2026 landed on
+# the tier badges inside Lower Guk's loot table, where the class did not exist -
+# so instead of a 1x1 clipped box the page rendered 462px of visible sentence
+# inside a table cell, widened the table by 540px and pushed the whole page into
+# a sideways scroll on a phone. It looked like a CSS bug and it was a missing
+# stylesheet.
+#
+# Injected here rather than copied into thirteen source files, because thirteen
+# copies of a rule is the fault this repo keeps finding in other people's work.
+# Unconditional: WH_CSS below is injected only when a page has a withheld
+# coordinate, and a label rule that applies to some pages is worse than none.
+# READ, NOT COPIED. A second copy of the declaration would drift from the first
+# the day either changed, and a label rule that is subtly different on 15 pages
+# is worse than one that is missing - it looks right in both files and behaves
+# differently in the browser. The assert makes a rename of the class a loud
+# build failure here rather than a silent loss of the rule on the imported pages.
+def _sr_rule():
+    css = open('public/assets/site.css', encoding='utf-8').read()
+    i = css.find('.sr-only{')
+    j = css.find('}', i)
+    assert i != -1 and j != -1, (
+        'public/assets/site.css defines no .sr-only rule, so the imported pages '
+        'would ship visually-hidden labels as visible text')
+    return css[i:j + 1]
+
+
+SR_CSS = "\n<style>\n" + _sr_rule() + "\n</style>\n"
+
 WH_CSS = """
 <style>
 .wh{font-family:"IBM Plex Mono",monospace;font-size:.82em;letter-spacing:.06em;
@@ -260,7 +295,8 @@ def mark_placeholders(h, slug):
     def one(m):
         nonlocal n
         n += 1
-        return (f'<span class="ph-old" title="{title}">{m.group(1)}</span>'
+        return (f'<span class="ph-old" title="{title}">{m.group(1)}'
+                f'<span class="sr-only"> — retracted: {title}</span></span>'
                 f'<span class="ph-old-tag">was</span>')
 
     # only inside the roster's notes cells, never in body prose
@@ -310,6 +346,7 @@ def inject(src, dst, rel, crumb, crumb_href, here, extra="", subs=None, own_bar=
            wh_slug=None, ph_zone=None, og_card=None, canon=None, h1=None):
     h = open(src, encoding='utf-8').read()
     h = local_fonts(h, rel)
+    h = h.replace('</head>', SR_CSS + '</head>', 1)
     if wh_slug:
         h, nwh = mark_withheld(h, wh_slug)
         if nwh:

@@ -37,8 +37,10 @@ The zone line carries both:
 
     You have entered The Castle of Mistmoore 1 (Awakened).
 
-The parenthesised word is the tier name: D0 Base/Normal, D1 Awakened, D2
-Adaptive, D3 Fused, D4 Refined. Loot is read separately — items drop at +N and
+The parenthesised word is the tier name: D1 Awakened, D2 Adaptive, D3 Fused,
+D4 Refined. THE ZONE LINE NEVER NAMES BASE - it prints no parenthesis at all,
+0 times in 514 zone lines. Base is named Normal on the instance invite, which
+prints it 16 times, and on the zone line it is the ABSENCE of a suffix. Loot is read separately — items drop at +N and
 the modal N is the difficulty — and the two are reported apart rather than
 collapsed, because they are independent and their agreement is evidence. They
 agreed on the 8 Aug Mistmoore session. Where they disagree, the page says the

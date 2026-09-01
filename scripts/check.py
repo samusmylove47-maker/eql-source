@@ -4,7 +4,7 @@
 Run before every commit:  python3 scripts/check.py
 Exit code 0 = safe to commit. Anything else is a blocker, not a warning.
 """
-import json, os, re, sys, glob, hashlib
+import json, os, re, sys, glob, hashlib, collections
 
 # THIS FILE COULD CRASH WHILE PRINTING A FAILURE, AND EXIT 1 WITH NO REASON.
 #
@@ -363,6 +363,72 @@ if len(_skips) > 12:
     fail(f"and {len(_skips) - 12} more page(s) skip a heading level")
 print(f"  heading outline: {len(pages) - len(_skips)} of {len(pages)} pages "
       f"have no level skip")
+
+# A `title` ATTRIBUTE MAY NOT BE THE ONLY PLACE A CLAIM EXISTS.
+#
+# A tooltip needs a mouse. It does not appear on a touch screen at all, screen
+# readers treat it inconsistently and several ignore it by default, it cannot be
+# selected or copied, and no search engine reads it. A claim that lives only
+# there has been published to one kind of reader and withheld from the rest.
+#
+# 80 of the site's 83 title attributes were sole carriers on 1 Sep 2026. The
+# worst was the verification gate dot: a 7x7 empty square whose entire meaning -
+# whether a zone had cleared its survey gates, and why not - existed nowhere but
+# the tooltip. The coverage score was a bare fraction with its five-facet
+# breakdown in the same place, and the placeholder retractions kept the claim
+# visible and the SOURCE of the retraction hoverable.
+#
+# The remedy is a visually-hidden span carrying the same words. It is NOT to
+# delete the title: the tooltip is still useful to the reader who has a mouse.
+#
+# `pages` excludes public/app/, which is where the exemption lives: those bundles
+# are copied wholesale from sibling repos by _build/skyledger.py and
+# _build/lockouts.py and verified by hash, so editing them here would be
+# overwritten on the next copy and would break that check. Their 6 remaining
+# title-only attributes are real and have to be fixed upstream.
+#
+# Whitespace is normalised with split()/join rather than a regex, because this
+# file is written through a shell heredoc and CLAUDE.md section 5 keeps a list of
+# the times a backslash escape was eaten on the way in.
+_TITLE = re.compile('title="([^"]{4,})"')
+_TAG = re.compile("<[^>]+>")
+# COUNT the copies, do not merely look for one.
+#
+# The first version of this asked whether the text appeared anywhere else on the
+# page, and it was dead on arrival: ten gate dots carry the same words, so
+# deleting one label left nine identical siblings answering for it and the check
+# passed a page it should have failed. A positive control caught that, which is
+# the only reason it is not still true.
+#
+# Requiring one readable copy per title attribute is the real rule: ten dots
+# making the same claim need ten labels, because a reader meets them one at a
+# time.
+_orphans = []
+for _p in pages:
+    _h = open(_p, encoding="utf-8", errors="replace").read()
+    _titles = _TITLE.findall(_h)
+    if not _titles:
+        continue
+    _visible = " ".join(_TAG.sub(" ", _TITLE.sub("", _h)).split()).lower()
+    _want = collections.Counter()
+    for _t in _titles:
+        _probe = " ".join(_TAG.sub(" ", _t).split()).lower()[:60]
+        if _probe:
+            _want[_probe] += 1
+    for _probe, _n in _want.items():
+        _have = _visible.count(_probe)
+        if _have < _n:
+            _orphans.append((_p.replace(os.sep, "/")[len("public/"):], _probe,
+                             _n - _have, _n))
+for _name, _probe, _short, _n in _orphans[:10]:
+    fail(f'{_name}: {_short} of {_n} element(s) titled "{_probe[:46]}" have no '
+         f'readable copy of it - a tooltip needs a mouse, so each one needs a '
+         f'<span class="sr-only"> saying the same thing')
+if len(_orphans) > 10:
+    fail(f"and {len(_orphans) - 10} more title-only claim(s)")
+print(f"  title attributes: {len(_orphans)} of "
+      f"{sum(len(_TITLE.findall(open(_q, encoding='utf-8', errors='replace').read())) for _q in pages)}"
+      f" are the sole carrier of their text")
 # THE PATH IS public/index.html AND HAS BEEN SINCE THE SITE MOVED THERE.
 #
 # This read a root index.html that has not existed for the life of this layout,

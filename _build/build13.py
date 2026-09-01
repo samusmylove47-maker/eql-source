@@ -292,8 +292,10 @@ ENTRIES = [
          classic='No equivalent existed. Difficulty tiers are new.',
          legends='<strong>No. D0&ndash;D4 does not raise mob levels at all.</strong> It gives mobs '
                  'player-style class kits, widens aggro ranges and pre-upgrades loot. The tiers '
-                 'are named in game and the zone line prints the name on entry: D0 Base, D1 '
-                 'Awakened, D2 Adaptive, D3 Fused, D4 Refined.',
+                 'are named in game. The zone line prints the name on entry for D1 Awakened, '
+                 'D2 Adaptive, D3 Fused and D4 Refined &mdash; but never for base, which is '
+                 'named <strong>Normal</strong> on the instance invite and is the absence of a '
+                 'suffix on the zone line.',
          note='<strong>And it starts earlier than published.</strong> The published claim is that '
               'named mobs run multiclass from D2. In Castle Mistmoore at <strong>D1</strong>, two '
               'ordinary trash types backstab while the same types cast Root, Screaming Terror and '

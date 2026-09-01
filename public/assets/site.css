@@ -1128,6 +1128,39 @@ h1.display em{color:var(--z01)}
   letter-spacing:.06em;color:var(--dim);margin-top:3px}
 .stdfoot{margin:var(--s-4) 0 0}
 
+/* ---------- text for a reader who cannot see the thing it labels ----------
+   The clip pattern, not display:none and not visibility:hidden: both of those
+   take the text out of the accessibility tree as well as off the page, which is
+   the exact opposite of the job. The site had no general rule for this until
+   1 Sep 2026 - only .hero-find label, welded to one element on one page - so a
+   claim carried by a title attribute had nowhere else to go.
+
+   IN FLOW, NOT ABSOLUTE, AND THAT IS THE WHOLE POINT.
+
+   The usual recipe positions this class absolutely. That version shipped for
+   about an hour and broke Lower Guk: an absolutely positioned box takes its
+   containing block from the nearest POSITIONED ancestor, and the loot table has
+   none - so the label escaped that table's horizontal scroll wrapper entirely,
+   landed at its static x of roughly 900px in the document, and took the page
+   scrollWidth from 375 to 537 at 390px wide. overflow on a wrapper does not clip
+   a descendant it is not the containing block of.
+
+   An in-flow 1x1 inline-block cannot escape anything. It costs one pixel of
+   layout, which is a smaller cost than a page that scrolls sideways on a phone.
+
+   THIS RULE ALONE IS NOT ENOUGH. The 15 imported pages - the dungeon plates and
+   two race tools - do not link this stylesheet at all; they carry their own
+   <style> from _build/source/. _build/build3.py injects a copy of this rule into
+   every one of them, and the two must not drift. */
+.sr-only{display:inline-block;width:1px;height:1px;overflow:hidden;
+  clip-path:inset(50%);white-space:nowrap;vertical-align:top}
+
+/* Tier M sits above tier 1 and is not a number, so it must not take one from the
+   counter. sources.html has published it as "Tier M - strongest" in var(--ok)
+   since the hierarchy card was written; the ladder simply never carried it. */
+.stdscale li.tm{counter-increment:none}
+.stdscale li.tm::before{content:"M"}
+
 /* ---------- interior page heroes ----------
    Same device as the home page at reduced scale, so an interior page is
    recognisably the same site without competing with the front door. */

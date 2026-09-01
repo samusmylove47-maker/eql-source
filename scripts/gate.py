@@ -248,6 +248,25 @@ def page_words(path, key):
     # Same reasoning as the ledger rows above: the ceiling must bite on writing
     # more and never on measuring or drawing more. Everything outside the <svg>
     # — the lede, the legend, the caveats under it — stays governed.
+    # A LABEL FOR A THING THAT IS NOT TEXT IS NOT PROSE EITHER.
+    #
+    # Exactly the argument three paragraphs up, applied to the other half of the
+    # same problem. The gate dot is a 7x7 square and the coverage score is a bare
+    # fraction; neither says what it means, and until 1 Sep 2026 both said it only
+    # in a `title` attribute - on hover, to a mouse, and to nobody else. Moving
+    # those words into a visually-hidden span is what makes the claim readable at
+    # all, and it added 774 words to the home page the moment it landed.
+    #
+    # Counting them would mean the ratchet tightens every time a claim is made
+    # available, and the cheapest way to pass would be to take the label back out.
+    # That is the ratchet arguing against the reader, which is the fault the svg
+    # strip below was written to fix. The ceiling must bite on writing more, and
+    # never on labelling better.
+    #
+    # Narrow on purpose: .sr-only is a labelling utility, not a place to put
+    # prose. Hiding a paragraph in one to duck the ceiling would be plain in the
+    # diff, and gate_selftest.py is where that would be caught.
+    h = re.sub(r'<span class="sr-only">.*?</span>', " ", h, flags=re.S | re.I)
     h = re.sub(r"<svg\b.*?</svg>", " ", h, flags=re.S | re.I)
     h = re.sub(r"<footer\b.*?</footer>", " ", h, flags=re.S | re.I)
     h = re.sub(r'<header class="site-bar".*?</header>', " ", h, flags=re.S | re.I)
@@ -408,9 +427,9 @@ def run(pages, fail, warn):
                "twelve": 12, "thirteen": 13}
     for p in pages:
         t = text_of(open(p, encoding="utf-8", errors="replace").read())
-        for m in re.finditer(r"(\d+)\s+fully verified", t):
+        for m in re.finditer(r"(\d+)\s+(?:fully verified|past all three gates)", t):
             if int(m.group(1)) != nfull:
-                fail(f"{p} claims {m.group(1)} fully verified; the ledger says {nfull}")
+                fail(f"{p} claims {m.group(1)} zones past all three gates; the ledger says {nfull}")
         # The gaps page once said five plates had not cleared the standard on
         # the same page whose change log said all ten had.
         #
