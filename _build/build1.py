@@ -159,6 +159,17 @@ nnone = sum(1 for z in Z if z["verify_level"]=="none")
 # copy reaches us through the owner; no build session authors it.
 AURAS = json.load(open('assets/auras.json', encoding='utf-8'))
 
+# THE BAND CARRIES HER ONE-LINER; THE PAGE CARRIES THE REST.
+# Shara wrote the pitch in two lengths for exactly this, so placing them is a
+# layout call rather than an edit of her words. The band is a teaser with a
+# link; auras.html holds the longer pitch, the privacy note and the attribution.
+# It also keeps the home page inside its prose ceiling without cutting a
+# syllable of hers.
+#
+# This note is a PYTHON comment. Written into the f-string it shipped to every
+# reader, which is the same mistake corrected on the first day of this work and
+# the second time I have made it.
+
 SL = json.load(open('assets/sky-ledger.json', encoding='utf-8'))
 
 # The planner's vendored snapshot, read BY FIELD PATH exactly as build29.py
@@ -445,8 +456,7 @@ auras = f'''
           <p class="eyebrow">{AURAS['eyebrow']}</p>
           <h2 class="feath">{AURAS['name']}</h2>
           <p class="featlede">{AURAS['lede']}</p>
-          <p class="featsub">{AURAS['body'][0]}</p>
-          <p class="featsub">{AURAS['body'][1]}</p>
+
           <p class="featfoot">{AURAS['platform']}</p>
           <p class="feat-cta"><a href="auras.html">More about {AURAS['name']}</a></p>
         </div>
