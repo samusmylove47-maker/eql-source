@@ -206,6 +206,47 @@ from a single source and must be badged T4.
 
 ---
 
+## P1.75 — `lastmod` is a build date wearing a modification date's name
+
+**Found 1 Sep 2026, 05:00, while checking the scope of an unrelated commit.**
+Not started deliberately: it touches `public/`, it carries a design decision, and
+it turned up an hour before a shutdown. Reverted out of that branch rather than
+left half-done.
+
+`_build/sitemap.py:9` computes `today = datetime.date.today().isoformat()` and
+line 34 writes it into the `<lastmod>` of **every** URL. So all 715 entries in
+`public/sitemap.xml` carry one date: the day of the last build.
+
+**Two separate problems, and the second bites daily.**
+
+1. It asserts every page on the site was modified on the build date. That is not
+   true of any of them &mdash; a figure claiming something the data does not
+   support, on 715 pages, which is the largest live instance of this project's
+   oldest rule.
+2. **Any rebuild on a new day rewrites all 715 lines.** A pull request opened
+   after one carries a 715-line diff nobody made, and a real one-line sitemap
+   change would be invisible inside it. That is how a change hides.
+
+**The decision, which is why this is not a five-minute fix.** Either give each
+URL the real modification date of the page it points at, or drop `lastmod`
+entirely. Both are defensible: an absent `lastmod` is honest and costs a crawler
+hint; a per-page date is more useful and needs a source that is not "when the
+generator last ran". **A filesystem mtime is not that source** &mdash; every
+build rewrites every page, so the mtime is the build date again with extra steps.
+An honest per-page date probably has to come from git history, and that is the
+part to settle before writing any code.
+
+**Acceptance criteria**
+
+- `public/sitemap.xml` does not change when a rebuild changes no page.
+- Whatever date is published, a reader can say what it means without reading
+  `sitemap.py`.
+- If `lastmod` is kept: one page whose content changed and one that did not carry
+  different dates. Without that pair the fix is unproven.
+- `scripts/check.py` stays green and the sitemap still lists every published page.
+
+---
+
 ## P2 - Faction Impact Checker  — BUILT 8 Aug 2026
 
 **Why:** nobody has built one, it is a real and constant EverQuest problem, and
