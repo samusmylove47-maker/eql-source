@@ -347,6 +347,20 @@ print(f"  tier badges: {len(_rendered)} class(es) rendered, "
 # The regexes here carry no backslash on purpose - this file is written through
 # a shell heredoc often enough that CLAUDE.md keeps a list of the times an
 # escape was eaten, and a lookahead does the same job as a word boundary.
+# WHAT THIS CHECK CANNOT SEE, STATED SO NOBODY READS ITS SILENCE AS COVERAGE:
+# HEADINGS BUILT BY JAVASCRIPT. Stripping <script> is right - a heading inside a
+# template literal is not on the page - but it means a heading the tool WRITES at
+# runtime is invisible here.
+#
+# Measured 1 Sep 2026, because the Director reported 2 skipping pages against
+# this check's 0 and both numbers were honest. tools/combo-calculator.html and
+# tools/race-unlocks.html contain `<h4>${esc(K.l)}` inside a script, so a grep
+# over the raw file sees h2 -> h4. The rendered DOM at load carries h1, h2, h2
+# and no h4 at all: that template belongs to a panel which has not been built.
+# Whether it skips after a click is not settled, and neither this check nor
+# conformance.js can settle it - only driving the tool can.
+#
+# scripts/headstyle.js reads the live DOM and is the instrument for that.
 _CODE = re.compile(r"<(script|style)[^>]*>.*?</(?:script|style)>", re.S | re.I)
 _HEAD = re.compile(r"<h([1-6])(?=[ >/])")
 _skips = []
