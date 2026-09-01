@@ -42,7 +42,24 @@ os.chdir(ROOT)
 # Both are read-only during a build (only _partials.py, build3.py and the
 # hand-run fetchfonts.py touch them), so adding them cannot make the stamp
 # invalidate itself.
-INPUTS = ("_build/*.py", "_build/source/*.html", "assets/*.json",
+# AND THE GLOBS THEMSELVES ARE THE RISK, WHICH IS HOW site.css WAS MISSED.
+#
+# Every entry here is extension-specific, so a build input in a covered
+# DIRECTORY with an uncovered EXTENSION is invisible. Audited 31 Aug 2026 by
+# listing every literal path the generators open for reading and subtracting
+# what these globs match. One survived: _build/planar_raw.txt, read by
+# _build/planardata.py, which build.sh runs at line 73 to write
+# assets/planar.json. Measured the same way as the stylesheets - edit it, do not
+# rebuild, check.py exits 0.
+#
+# assets/planar.json IS covered, so a rebuild propagates. What nothing noticed
+# was the raw file and the generated one disagreeing, which is the state you are
+# left in by editing the source and walking away.
+#
+# The audit cannot see dynamic open() calls - 105 of them - so this list is
+# "everything reachable by reading the source", not "everything". Re-run that
+# audit when a generator starts reading a new kind of file.
+INPUTS = ("_build/*.py", "_build/*.txt", "_build/source/*.html", "assets/*.json",
           "site.config.json", "build.sh",
           "public/assets/site.css", "public/assets/fonts/fonts.css")
 
