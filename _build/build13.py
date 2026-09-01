@@ -249,17 +249,42 @@ ENTRIES = [
          q='Can you still plan a character around one class?',
          classic='Every character is one class, chosen at creation and permanent.',
          legends='<strong>No. Characters run three classes at once.</strong> Two at creation, a '
-                 'third at level 10, with primary class and race locking permanently at 11. The '
-                 'active trio uses the level of the <em>lowest</em> class in it.',
+                 'third at level 10, with primary class and race locking permanently at 11.',
          note='This invalidates a large amount of inherited advice in both directions, and it is '
-              'the single biggest reason a classic guide can be confidently wrong about Legends.',
+              'the single biggest reason a classic guide can be confidently wrong about Legends. '
+              'What level the active trio runs at is a separate question with a different amount '
+              'of evidence behind it, and it has its own entry below.',
          evidence=[
              ('T1', 'Official documentation and the level 11 lock',
               'Published behaviour, not inferred. The deity, race and primary class unlock tokens '
               'are priced in the Producer&rsquo;s Letter of 8 July 2026, which only makes sense '
-              'because those choices lock.'),
+              'because those choices lock. <strong>That covers the structure &mdash; three '
+              'classes, two at creation, a third at 10, locking at 11 &mdash; and nothing '
+              'beyond it.</strong>'),
          ],
          settle='Settled.',
+         credit=''),
+
+    dict(status='open',
+         q='Does the active trio run at the level of its lowest class?',
+         classic='No equivalent existed. A classic character had one class and one level.',
+         legends='<strong>Not recorded.</strong> It is repeated widely, including in this '
+                 'project&rsquo;s own working notes, that the active trio uses the level of the '
+                 '<em>lowest</em> class in it. Nothing has been read that says so.',
+         note='This sat inside the multiclass entry above until 31 August 2026, asserted at T1 '
+              'and marked <em>Settled</em> on evidence that spoke only to the level&ndash;11 '
+              'lock: three claims, one source, one badge. That is the exact failure this page '
+              'exists to refuse, on the page that refuses it. It is carried as open rather than '
+              'deleted, because the claim may well be right and removing it would lose the '
+              'question along with the error.',
+         evidence=[
+             ('&mdash;', 'No source read',
+              'The Producer&rsquo;s Letter of 8 July 2026 is cited above for the multiclass '
+              'locks. It does not address what level the trio runs at, and no other source has '
+              'been read for it.'),
+         ],
+         settle='One read of the Producer&rsquo;s Letter of 8 July 2026 settles it either way, '
+                'and it is the cheapest evidence available.',
          credit=''),
 
     dict(status='changed',
