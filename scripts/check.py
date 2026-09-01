@@ -4,7 +4,7 @@
 Run before every commit:  python3 scripts/check.py
 Exit code 0 = safe to commit. Anything else is a blocker, not a warning.
 """
-import json, os, re, sys, glob
+import json, os, re, sys, glob, hashlib
 
 # THIS FILE COULD CRASH WHILE PRINTING A FAILURE, AND EXIT 1 WITH NO REASON.
 #
@@ -825,6 +825,44 @@ if _ge:
         if not _missing and _nr >= _nd:
             print(f"  gap engine: {_nd} delta(s), {_nr} refusal(s), all published")
 
+# ---- the hashed media still hashes to its own name --------------------------
+# _build/media.py names every trailer and poster <stem>.<sha1[:8]><ext> for the
+# same reason the two apps are hashed: a changed file must be a different cache
+# key. assets/media.json records the name and the byte count.
+#
+# NOTHING VERIFIED IT. Measured 31 Aug 2026: changing a media file's bytes while
+# leaving its hashed name alone left check.py at exit 0. The two served apps are
+# checked exactly this way a few sections above, so the repo already knew the
+# shape - this manifest simply never got it.
+#
+# The direction that matters is DIFFERENT CONTENT GIVES A DIFFERENT NAME. A test
+# that only asserts the name is stable across rebuilds is satisfied by a
+# constant, and would pass on a hash function that had stopped working.
+try:
+    _md = json.load(open("assets/media.json", encoding="utf-8"))
+except FileNotFoundError:
+    _md = None                              # no media committed, which is allowed
+except Exception as e:
+    fail(f"assets/media.json unreadable: {e}")
+    _md = None
+if _md:
+    for _key, _ent in sorted(_md.items()):
+        _mp = os.path.join("public", "assets", "media", _ent["file"])
+        if not os.path.exists(_mp):
+            fail(f"assets/media.json names {_ent['file']}, which is not in "
+                 f"public/assets/media/. Run python3 _build/media.py")
+            continue
+        _mblob = open(_mp, "rb").read()
+        _mshort = hashlib.sha1(_mblob).hexdigest()[:8]
+        _parts = _ent["file"].rsplit(".", 2)
+        if len(_parts) != 3 or _parts[1] != _mshort:
+            fail(f"public/assets/media/{_ent['file']} hashes to {_mshort}, so "
+                 f"its URL no longer describes its contents — a cache would "
+                 f"serve the wrong file. Re-run python3 _build/media.py")
+        if len(_mblob) != _ent["bytes"]:
+            fail(f"public/assets/media/{_ent['file']} is {len(_mblob)} bytes "
+                 f"against {_ent['bytes']} recorded in assets/media.json")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of
@@ -909,6 +947,34 @@ for _d in _idx.get("datasets", []):
              f"check.py — add one before shipping it, or consumers have no "
              f"promise to rely on")
         continue
+    # THE HASH WAS REQUIRED TO EXIST AND NEVER REQUIRED TO BE TRUE.
+    #
+    # `hash` is in the `top` set above, so a dataset that dropped the field
+    # failed - and a dataset carrying a WRONG one passed. Measured 31 Aug 2026:
+    # editing a published dataset in place, keeping valid JSON and every field,
+    # left check.py at exit 0. We publish that value to strangers and tell them
+    # to "watch `hash` if you cache", so it is a claim we make and did not check.
+    #
+    # This is the sensitivity direction. Asserting a hash is STABLE across
+    # rebuilds is satisfied by a constant; only "different content gives a
+    # different value" is load-bearing. publicdata.py hashes the PAYLOAD, not
+    # the file, so this recomputes it the same way - see _build/publicdata.py:83.
+    _selfhash = _body.get("hash")
+    _recomputed = hashlib.sha256(
+        json.dumps(_body.get("data"), sort_keys=True,
+                   ensure_ascii=False).encode("utf-8")).hexdigest()[:16]
+    if _selfhash != _recomputed:
+        fail(f"public/data/{_fname} carries hash {_selfhash} but its data "
+             f"hashes to {_recomputed}. The file and its own content hash "
+             f"disagree, and consumers are told to cache on that value")
+    if _d.get("hash") != _recomputed:
+        fail(f"the data index lists hash {_d.get('hash')} for {_fname}, which "
+             f"hashes to {_recomputed}. A consumer reading the index would "
+             f"cache the wrong thing")
+    _size = os.path.getsize(_p)
+    if _d.get("bytes") != _size:
+        fail(f"the data index lists {_d.get('bytes')} bytes for {_fname}, "
+             f"which is {_size} on disk")
     _missing = sorted(_want["top"] - set(_body))
     if _missing:
         fail(f"{_fname} has lost top-level field(s) {_missing} — that breaks "
