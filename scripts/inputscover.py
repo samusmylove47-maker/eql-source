@@ -20,6 +20,30 @@ and the set of extensions a generator might read is open-ended. Two instances
 turned up in one night, one directory apart. The next generator that reads a
 .csv, a .yaml or a .tsv reopens the hole and nothing would mention it.
 
+TWO FAULT SHAPES THAT LOOK ALIKE AND NEED DIFFERENT REMEDIES
+------------------------------------------------------------
+This repository already hunts one of them: an instrument that CANNOT FAIL. A
+dead regex, a hash asserted only to be stable across rebuilds, a check whose
+branch nothing reaches. The remedy is a matched pair - break the thing and prove
+the check notices - and scripts/gate_selftest.py exists to do exactly that.
+
+The fault this file is about is the other one: AN INSTRUMENT THAT WORKS
+PERFECTLY AND IS AIMED AWAY FROM THE THING. stamp.py's fingerprint was never
+broken. It was correct, sensitive to every byte of every file it covered, and
+simply not pointed at site.css - the one file whose whole purpose is cache
+invalidation, so a correct and sensitive hash was rendered inert by a watcher
+that could not see its input.
+
+A MATCHED PAIR CANNOT FIND THAT, and this is the part worth keeping. Mutate a
+covered input and the check fails exactly as it should; the pair passes and
+proves nothing about the region outside it. The remedy for an aimed-away
+instrument is not a test, it is a COVERAGE AUDIT: enumerate what the thing is
+pointed at, enumerate what it ought to be pointed at, and subtract. That is what
+this file does, and it is why it is not another case in gate_selftest.py.
+
+Told apart by one question: would the check pass if the code were correct? If no,
+it may be dead - use a matched pair. If yes, ask what it is looking at.
+
 Covering the directory instead of the extension was considered and rejected:
 "_build/*" sweeps in every scratch file anyone leaves there, so the stamp moves
 for edits that change no output. Enumeration is right; what was missing is
