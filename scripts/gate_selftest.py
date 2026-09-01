@@ -576,6 +576,16 @@ CASES = [
      "public/assets/fonts/fonts.css",
      lambda t: t + "/* selftest */"),
 
+    # A raw build input whose EXTENSION no glob covered. stamp.py's INPUTS are
+    # extension-specific, so a file in a covered directory with an uncovered
+    # suffix is invisible - which is how site.css was missed, one directory
+    # over. _build/planar_raw.txt is read by planardata.py, which build.sh runs
+    # to write assets/planar.json.
+    ("a raw build input changed and nothing rebuilt",
+     "public/ is stale",
+     "_build/planar_raw.txt",
+     lambda t: t + "# selftest"),
+
     # A published dataset drifting from its own content hash. `hash` was in the
     # contract's required top-level fields, so a MISSING one failed and a WRONG
     # one passed. We tell consumers to cache on that value.
