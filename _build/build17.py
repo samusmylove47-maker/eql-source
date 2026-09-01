@@ -390,7 +390,14 @@ for name, rows in by_item.items():
              f'<a href="../sources.html">How we source</a>.</p>')
     desc = (f"{name} in EverQuest Legends: "
             + (f"{a['sr']}. " if a.get('sr') else "")
-            + (f"{a['st'][:90]}. " if a.get('st') else "")
+            # A META DESCRIPTION CANNOT CARRY A BADGE, SO IT MUST NOT CARRY THE
+            # CLAIM. This is the text Google shows, and it was publishing
+            # "Haste +10% T5" - a classic import, in a search snippet, with
+            # nothing to mark it unverified and no tooltip to explain it. A
+            # figure that needs a badge to be honest cannot appear where badges
+            # do not exist, so a graded stats line is omitted here rather than
+            # flattened into an assertion.
+            + (f"{a['st'][:90]}. " if a.get('st') and not a.get('stt') else "")
             + f"Drops in {', '.join(sorted({r['zt'] for r in rows}))}.")
     facts = [
         ("Slot", esc(a['sl']) if a.get('sl') else None),
@@ -403,8 +410,20 @@ for name, rows in by_item.items():
         ("What it is for", esc(a['use']) if a.get('use') else None),
         # Where a loot row listed several items behind one stats cell, the stats
         # describe the row and not this item. Say which rather than assert them.
+        # THE SURVEY'S GRADING TRAVELS WITH THE FIGURE.
+        #
+        # extract.py used to strip the badge's markup and leave its letters, so
+        # this printed "Haste +10% T5" as plain prose - the grading reduced to
+        # noise on the page and absent from the tooltip that explained it. It
+        # carries `stt` now and the badge is rendered rather than spelled.
+        #
+        # CLAUDE.md: tiers 1 and 2 print plain; 3, 4 and 5 carry a visible badge
+        # WHEREVER THE CLAIM APPEARS. A catalogue page is where the claim
+        # appears.
         ("Stats" if not a.get('shared') else "Stats, from a shared row",
-         (esc(a['st']) + ('' if not a.get('shared') else
+         (esc(a['st']) + (f' <span class="tier {a["stt"]}">{a["stt"][1:].upper()}</span>'
+                          if a.get('stt') else '')
+          + ('' if not a.get('shared') else
           ' <em style="color:var(--faint)">&mdash; this row lists several items '
           'behind one stats cell, so this line describes the row</em>'))
          if a.get('st') else None),
@@ -436,7 +455,7 @@ for nm in IX['named']:
     drops = drops_by_mob.get((nm['z'], nm['n']), [])
     dl = ''.join(
         f'<li><a href="../items/{slug(d["n"])}.html">{esc(d["n"])}</a>'
-        f'<span>{esc(d["sr"] or d["s"])}{" &middot; " + esc(d["st"][:60]) if d.get("st") else ""}</span></li>'
+        f'<span>{esc(d["sr"] or d["s"])}{" &middot; " + esc(d["st"][:60]) if d.get("st") else ""}{f' <span class="tier {d["stt"]}">{d["stt"][1:].upper()}</span>' if d.get("stt") else ""}</span></li>'
         for d in drops)
     # THE LEDE IS GATED ON BOTH SOURCES, BECAUSE THERE ARE TWO.
     #
