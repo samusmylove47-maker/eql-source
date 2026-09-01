@@ -486,10 +486,39 @@ try:
     if want != got:
         fail("public/ is stale — a source changed since the last successful "
              "./build.sh, or a generator crashed part way. Re-run ./build.sh")
+# A COMPARISON THAT CANNOT RUN IS WORSE THAN ONE THAT FAILS, AND IT USED TO BE
+# THE QUIETER OF THE TWO.
+#
+# These were warn() until 31 Aug 2026. So the comparison FAILING blocked the
+# build, and the comparison being IMPOSSIBLE did not - which is backwards. A
+# failed comparison told you something true; an impossible one means this check,
+# whose own comment two lines up says that if the stamp does not match nothing
+# else here means anything, produced no answer at all and said so in the success
+# channel. Measured: deleting state/last-build.json gave exit 0, "All checks
+# passed with 1 warning(s)".
+#
+# The bare Exception was the worse half. Corrupt JSON, a KeyError on "inputs", a
+# permission error, or a syntax error in stamp.py - every one of them read green,
+# so the freshness detector could die completely and nothing would say so.
+#
+# THE ARGUMENT AGAINST WAS THE NEWCOMER, AND THE NEWCOMER DOES NOT ARISE.
+# state/last-build.json is TRACKED - `git cat-file -e origin/main:state/last-build.json`
+# succeeds - so a fresh clone HAS a stamp and a pre-build check.py gets an
+# ordinary mismatch with an actionable message. A MISSING stamp does not mean
+# "never built"; it means someone deleted it, which is exactly the case worth
+# being loud about.
+#
+# This also matches gate.py's "a broken gate must not pass silently" a few
+# hundred lines below. Two adjacent checks in one file with opposite exception
+# policies is worse than either policy.
 except FileNotFoundError:
-    warn("state/last-build.json is missing — run ./build.sh to stamp the tree")
+    fail("state/last-build.json is missing, so build freshness could not be "
+         "checked at all and nothing else in this run means anything. It is a "
+         "tracked file, so this means it was deleted. Re-run ./build.sh")
 except Exception as e:
-    warn(f"could not verify build freshness: {type(e).__name__}: {e}")
+    fail(f"build freshness could not be verified: {type(e).__name__}: {e}. "
+         f"The check did not fail — it could not run, which is worse. "
+         f"Fix scripts/stamp.py or state/last-build.json, then re-run ./build.sh")
 
 # ---- stray control characters in source ------------------------------------
 # Three separate times a regex has shipped with a literal backspace (0x08) where
