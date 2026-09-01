@@ -162,6 +162,19 @@ page = head(
         <span class="go">Open the app &rarr;</span>
       </a>
     </div>
+    <!-- THE TOOL CANNOT READ A LOG THE GAME NEVER WROTE.
+         The word "/log on" appeared nowhere on this page and nowhere in the
+         served application, while EverQuest writes no log until it is asked to.
+         A reader who has never enabled it opens the tool, gets a full week of
+         "not looked", and is given nothing anywhere to act on - which is CORRECT
+         behaviour and USELESS OUTPUT at the same time, and no amount of accuracy
+         in the grid closes that.
+         The wording is the site's own, from tools/sky-ledger.html: "Anything
+         looted before /log on is invisible." Reused rather than re-authored. -->
+    <p class="note" style="margin-top:var(--s-5)"><strong>All &ldquo;not looked&rdquo;?
+      Start with the log.</strong> The game writes one only when asked:
+      <code>/log on</code> begins it. Anything earlier is invisible, which is what the
+      grid is telling you.</p>
   </section>
 
   <section class="band">

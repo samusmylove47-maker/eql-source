@@ -110,14 +110,27 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
   <section class="band" style="border-top:0;padding-top:0">
     <div class="slrun">
-      <a href="../app/eqls-lockouts.16d4edad.html" style="--c:var(--instr)">
+      <a href="../app/eqls-lockouts.fd053e47.html" style="--c:var(--instr)">
         <h3>Run it in your browser</h3>
-        <p>One file, 274 KB, served from this site. Point it at your log and it
+        <p>One file, 302 KB, served from this site. Point it at your log and it
           works out what is still open from what it can see there.</p>
-        <p class="m">Build 16d4edad &middot; nothing installed &middot; your log never leaves this machine</p>
+        <p class="m">Build fd053e47 &middot; nothing installed &middot; your log never leaves this machine</p>
         <span class="go">Open the app &rarr;</span>
       </a>
     </div>
+    <!-- THE TOOL CANNOT READ A LOG THE GAME NEVER WROTE.
+         The word "/log on" appeared nowhere on this page and nowhere in the
+         served application, while EverQuest writes no log until it is asked to.
+         A reader who has never enabled it opens the tool, gets a full week of
+         "not looked", and is given nothing anywhere to act on - which is CORRECT
+         behaviour and USELESS OUTPUT at the same time, and no amount of accuracy
+         in the grid closes that.
+         The wording is the site's own, from tools/sky-ledger.html: "Anything
+         looted before /log on is invisible." Reused rather than re-authored. -->
+    <p class="note" style="margin-top:var(--s-5)"><strong>All &ldquo;not looked&rdquo;?
+      Start with the log.</strong> The game writes one only when asked:
+      <code>/log on</code> begins it. Anything earlier is invisible, which is what the
+      grid is telling you.</p>
   </section>
 
   <section class="band">
@@ -141,8 +154,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
       <div><b>unknown</b><span>Where a refusal could not be seen</span>
         <em>Reported instead of a lock whenever the log cannot prove a refusal would have
           shown up.</em></div>
-      <div><b>274 KB</b><span>The whole application</span>
-        <em>One file, build <code>16d4edad</code>, read 2026-08-30.</em></div>
+      <div><b>302 KB</b><span>The whole application</span>
+        <em>One file, build <code>fd053e47</code>, read 2026-09-01.</em></div>
     </div>
   </section>
 
