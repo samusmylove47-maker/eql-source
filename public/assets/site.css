@@ -654,7 +654,7 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
 /* --instr-t rather than the #8FBEE4 literal it duplicated: the token flips with
    the ground, the literal did not, and this is a chip that sits on the page
    rather than on a dark field of its own. */
-.tc{background:rgba(92,147,196,.16);color:var(--instr-t);border-color:rgba(92,147,196,.5)}
+.tC{background:rgba(92,147,196,.16);color:var(--instr-t);border-color:rgba(92,147,196,.5)}
 /* A figure we still print because the source says it, while telling the reader
    we do not believe it. Never delete a source figure to make a page tidy. */
 .disputed{text-decoration:line-through;text-decoration-color:var(--warn-t);
