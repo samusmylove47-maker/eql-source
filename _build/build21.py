@@ -76,8 +76,8 @@ page = (head("Motes, and what they are worth",
 <main>
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Learn</a> &nbsp;/&nbsp; Motes</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Learn</a> &nbsp;/&nbsp; Motes</p>
     <h1 class="display">Spells scale doubled.<br><em>Items scale flat.</em></h1>
     <p class="hero-lede">That one difference decides every mote decision you will make. A mote is
       worth <strong>2<sup>rank&minus;1</sup></strong> to a spell and <strong>exactly its rank</strong>
@@ -143,7 +143,7 @@ page = (head("Motes, and what they are worth",
       Developers sharing a creator&rsquo;s work is not the same as writing it, and the difference is
       two tiers, so everything here is badged <span class="tier t3">T3</span>. Show us the
       developers wrote it and the badges come off. The creator is on our
-      <a href="../credits.html">credits page</a>.</div>
+      <a href="../credits">credits page</a>.</div>
     <div class="note warn"><strong>One claim does not fit the patch notes.</strong> The guide shows
       ten mote ranks. The 21 June 2026 note says the conversion construct
       &ldquo;can only accept ranks 1-8&rdquo;. Either it was extended since, or ranks 9 and 10

@@ -90,8 +90,8 @@ page = (head("What the scanner finds here",
 <main>
 <section class="hero page">
   <div class="shell cn">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Learn</a> &nbsp;/&nbsp; Contamination</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Learn</a> &nbsp;/&nbsp; Contamination</p>
     <h1 class="display">What the scanner<br><em>finds here.</em></h1>
     <p class="hero-lede">Every EverQuest Legends reference is part Project 1999 text
       describing a game that stopped existing in 2001, and this one is no exception. So we

@@ -224,8 +224,8 @@ page = head("Faction impact checker",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Tools</a> &nbsp;/&nbsp; Faction impact</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Tools</a> &nbsp;/&nbsp; Faction impact</p>
     <h1 class="display">What tonight<br><em>costs you later.</em></h1>
     <p class="hero-lede">Faction moves while you are not looking. You clear a zone for six hours and
       find out afterwards that an unlock you had not started is now expensive, or that a vendor has

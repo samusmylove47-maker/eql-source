@@ -22,7 +22,7 @@ page = head("How raid access works",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Learn</p>
     <h1 class="display">How raid access<br><em>actually works.</em></h1>
     <p class="hero-lede">Open-world raid bosses no longer spawn. Three different things are called
       &ldquo;instances&rdquo; and only one of them contains a raid boss. Getting that wrong costs you a
@@ -161,7 +161,7 @@ page = head("How raid access works",
       in-game observation, not further reading.
       <br><br><strong>The third question here is now answered.</strong> Which class kits a raid boss
       runs at D3 and above was open until 12&ndash;15 August 2026;
-      <a href="../learn/difficulty.html">twenty bosses are logged at those tiers</a> with every spell
+      <a href="../learn/difficulty">twenty bosses are logged at those tiers</a> with every spell
       each cast. <span class="tier tM">TIER M</span></div>
   </div>
 </section>

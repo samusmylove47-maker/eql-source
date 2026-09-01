@@ -898,8 +898,9 @@ def run(pages, fail, warn):
                 continue
             foot = h[h.rfind("<footer"):]
             for slug in sorted(listed):
-                if f"tools/{slug}.html" not in foot:
-                    fail(f"{p}: footer does not link tools/{slug}.html")
+                if (f'tools/{slug}"' not in foot
+                        and f'tools/{slug}.html"' not in foot):
+                    fail(f"{p}: footer does not link tools/{slug}")
                     break
 
     # ---- 6b. every registered tool must have a card on the tools hub --------
@@ -920,7 +921,13 @@ def run(pages, fail, warn):
     # this makes the drift fail the build instead of waiting to be noticed.
     if listed is not None and os.path.exists("public/tools/index.html"):
         hub = open("public/tools/index.html", encoding="utf-8", errors="replace").read()
-        carded = set(re.findall(r'<a class="card" href="([a-z0-9-]+)\.html"', hub))
+        # The extension is optional because internal links went extensionless on
+        # 1 Sep 2026 and this pattern still has to match a hub that carries either
+        # form. Pinned to .html it found 8 cards before the migration and 0 after,
+        # which reads as "every tool has been dropped from the hub" rather than as
+        # "the check stopped matching" - a rule that fails loudly for the wrong
+        # reason, which is only marginally better than one that passes quietly.
+        carded = set(re.findall(r'<a class="card" href="([a-z0-9-]+)(?:\.html)?"', hub))
         for slug in sorted(listed - carded):
             fail(f"tools/index.html has no card for {slug!r}, which is in the TOOLS "
                  f"registry and in every footer. The hub that lists the tools is "

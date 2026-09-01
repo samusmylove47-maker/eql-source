@@ -85,7 +85,7 @@ page = (head("Public data",
 <main>
 <section class="hero page">
   <div class="shell dt">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Public data</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Public data</p>
     <h1 class="display">Take the data.<br><em>Please.</em></h1>
     <p class="hero-lede">Nobody in this community publishes machine-readable data, so every
       tool re-transcribes the same wiki pages and inherits the same 1999 errors doing it.
@@ -120,7 +120,7 @@ page = (head("Public data",
       <br><br><strong>Anything marked below tier 2.</strong> Every claim carries its tier.
       A tier 5 figure is inherited Project 1999 prose that nobody has checked against
       Legends, and roughly a third of what any reference in this space publishes is that.
-      <a href="../learn/contamination.html">We scan ourselves for it</a> and publish what
+      <a href="../learn/contamination">We scan ourselves for it</a> and publish what
       turns up. Read the provenance before you present a number as fact.
       <br><br><strong>Completeness.</strong> {len(_Z)} zones of far more &mdash; {NDUNGEONS} dungeons and
       {NPLANES} of the planes &mdash; plus the Plane of Sky written up separately, and a limited sample
@@ -134,7 +134,7 @@ page = (head("Public data",
       issue</a> &mdash; the point of publishing this is that it gets used, and a schema
       nobody can use is a press release.
       <br><br>And if you find something wrong in it, that is the most useful thing anyone
-      can send us. Every finding is credited by name on <a href="../credits.html">the credits
+      can send us. Every finding is credited by name on <a href="../credits">the credits
       page</a>.</p>
   </div>
 </section>

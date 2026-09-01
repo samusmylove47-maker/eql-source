@@ -465,6 +465,11 @@ scripts/
                     that moves data a tool reads, and diff. toolsmoke says the
                     pane is full; only this says it is full of the same thing
   gate.py           the propagation gate, run by check.py
+  serve.py          the local preview server, named by .claude/launch.json.
+                    Maps /x to x.html the way the host's html_handling does,
+                    because nothing local reproduced it and 64% of internal
+                    links 404ed under `python -m http.server` once they went
+                    extensionless. Serves only; it never builds
   gate_selftest.py  proves the gate still catches each fault it was built for
   prose_budget.py   lowers the prose ceilings after a trim. Run by hand
   stamp.py          fingerprints the build inputs so a stale tree cannot pass

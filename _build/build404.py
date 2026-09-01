@@ -19,7 +19,7 @@ page = head("Page not found",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Not found</p>
+    <p class="crumb"><a href="./">EQL Source</a> &nbsp;/&nbsp; Not found</p>
     <h1 class="display">Nothing here,<br><em>but it is nearby.</em></h1>
     <p class="hero-lede">That address does not exist on this site. Either it was mistyped, or it
       pointed at something since withdrawn &mdash; when a page is removed we record it on the change
@@ -31,27 +31,27 @@ page = head("Page not found",
 <div class="shell">
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
-      <a class="card" href="dungeons/index.html" style="--c:var(--z01)">
+      <a class="card" href="dungeons/" style="--c:var(--z01)">
         <div class="kicker">Every zone</div>
         <h2 class="t">Dungeon surveys</h2>
         <p class="d">Every surveyed zone, each with a floor plan derived from the game&rsquo;s own
           geometry, its named mobs, and what they drop.</p>
         <div class="foot"><span>Start here</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="tools/index.html" style="--c:var(--instr)">
+      <a class="card" href="tools/" style="--c:var(--instr)">
         <div class="kicker">{wordnum(len(TOOLS))} trackers</div>
         <h2 class="t">Tools</h2>
         <p class="d">Progression trackers, The Index, and the faction impact checker. No account,
           nothing transmitted.</p>
         <div class="foot"><span>Share by link</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="raids/index.html" style="--c:var(--ember)">
+      <a class="card" href="raids/" style="--c:var(--ember)">
         <div class="kicker">Encounters</div>
         <h2 class="t">Raids</h2>
         <p class="d">The Plane of Sky island by island, with what every boss cost us to kill.</p>
         <div class="foot"><span>Built from play</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="sources.html" style="--c:var(--bone)">
+      <a class="card" href="sources" style="--c:var(--bone)">
         <div class="kicker">Accuracy</div>
         <h2 class="t">Sources and change log</h2>
         <p class="d">Where every claim comes from, and every correction we have made, typed and

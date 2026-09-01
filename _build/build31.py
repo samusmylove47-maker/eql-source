@@ -265,8 +265,8 @@ page = head(
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Tools</a> &nbsp;/&nbsp; Gap engine</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Tools</a> &nbsp;/&nbsp; Gap engine</p>
     <h1 class="display">Gap engine.</h1>
     <p class="hero-lede">Every other tracker here tells you what you have. This one reads your
       combat log and tells you <strong>what to change</strong> &mdash; as a difference against

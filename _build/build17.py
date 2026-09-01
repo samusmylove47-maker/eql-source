@@ -234,7 +234,7 @@ def seen_block(rows, label):
             f'<p class="src"><b>Observed, not a rate</b> &mdash; no kill count sits '
             f'behind this, and the tiers are those recorded rather than the only '
             f'ones that drop it. '
-            f'<a href="../learn/reading-the-plans.html#measured">What a log can tell you</a>.</p>')
+            f'<a href="../learn/reading-the-plans#measured">What a log can tell you</a>.</p>')
 
 
 
@@ -322,8 +322,8 @@ def page(kind, title, eyebrow, accent, facts, extra_html, desc, canon,
 <main>
 <section class="hero page">
   <div class="shell ent" style="--c:{accent}">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="../tools/index-search.html">{NAME_INDEX}</a> &nbsp;/&nbsp; {eyebrow}</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="../tools/index-search">{NAME_INDEX}</a> &nbsp;/&nbsp; {eyebrow}</p>
     <h1 class="display">{esc(title)}</h1>
     <div class="ent-top">
       <dl class="facts">{rows}</dl>
@@ -379,7 +379,7 @@ for name, rows in by_item.items():
     cls_txt = ("Every class" if cls == ["ALL"]
                else ', '.join(CLASSES.get(c, c) for c in cls) if cls else None)
     zones = ''.join(
-        f'<li><b><a href="../dungeons/{r["z"]}.html">{esc(r["zt"])}</a></b>'
+        f'<li><b><a href="../dungeons/{r["z"]}">{esc(r["zt"])}</a></b>'
         f'{" &mdash; off " + esc(r["d"]) if r.get("d") else ""}'
         f'<span>Survey {r["p"]:02d} &middot; levels {esc(Z[r["z"]]["levels"].split(" (")[0])}'
         f' &middot; ZEM {Z[r["z"]]["zem"]}</span></li>' for r in rows)
@@ -407,7 +407,7 @@ for name, rows in by_item.items():
     extra = (f'<h2 class="sec">Where it drops</h2><ul class="srcs">{zones}</ul>{seen}{also_html}'
              f'{verbatim}{caveat}'
              f'<p class="src" style="margin-top:18px">Figures are the survey&rsquo;s own. '
-             f'<a href="../sources.html">How we source</a>.</p>')
+             f'<a href="../sources">How we source</a>.</p>')
     desc = (f"{name} in EverQuest Legends: "
             + (f"{a['sr']}. " if a.get('sr') else "")
             # A META DESCRIPTION CANNOT CARRY A BADGE, SO IT MUST NOT CARRY THE
@@ -475,7 +475,7 @@ for nm in IX['named']:
     s = slug(nm['n'])
     drops = drops_by_mob.get((nm['z'], nm['n']), [])
     dl = ''.join(
-        f'<li><a href="../items/{slug(d["n"])}.html">{esc(d["n"])}</a>'
+        f'<li><a href="../items/{slug(d["n"])}">{esc(d["n"])}</a>'
         f'<span>{esc(d["sr"] or d["s"])}{" &middot; " + esc(d["st"][:60]) if d.get("st") else ""}{f' <span class="tier {d["stt"]}">{d["stt"][1:].upper()}</span>' if d.get("stt") else ""}</span></li>'
         for d in drops)
     # THE LEDE IS GATED ON BOTH SOURCES, BECAUSE THERE ARE TWO.
@@ -498,7 +498,7 @@ for nm in IX['named']:
         extra = '<p class="lede">No drops recorded &mdash; a gap, not an empty mob.</p>'
     extra += seen
     extra += (f'<p class="src" style="margin-top:18px">From the '
-              f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])} survey</a>.</p>')
+              f'<a href="../dungeons/{nm["z"]}">{esc(nm["zt"])} survey</a>.</p>')
     desc = (f"{nm['n']} in {nm['zt']}, EverQuest Legends"
             + (f", level {nm['lv']}" if nm.get('lv') else "")
             + (f". {_clip(nm['no'], 100)}" if nm.get('no') else "."))
@@ -519,7 +519,7 @@ for nm in IX['named']:
         # directory wide; it now scans every page, which is what found this.
         ("Position", MARK if (nm.get('z'), nm.get('n')) in WITHHELD
          else (esc(nm['loc']) if nm.get('loc') else None)),
-        ("Zone", f'<a href="../dungeons/{nm["z"]}.html">{esc(nm["zt"])}</a>'),
+        ("Zone", f'<a href="../dungeons/{nm["z"]}">{esc(nm["zt"])}</a>'),
     ]
     if nm.get('no'):
         facts.append(("Notes", esc(nm['no'])))
@@ -562,18 +562,18 @@ def hub(fname, title, desc, blurb, entries, folder):
             letter = ch
             body.append(f'<h2 class="azh">{ch}</h2><ul class="az">')
         tag = f' <span class="azz">{tail}</span>' if tail else ''
-        body.append(f'<li><a href="{sl}.html">{name}</a>{tag}</li>')
+        body.append(f'<li><a href="{sl}">{name}</a>{tag}</li>')
     body.append('</ul>')
     html = (head(title, desc, rel="../", extra=HUB_CSS, og="tools",
                  canon=f"{folder}/index") + bar("../") + f'''
 <main>
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="../tools/index-search.html">{NAME_INDEX}</a></p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="../tools/index-search">{NAME_INDEX}</a></p>
     <h1 class="display">{title}</h1>
     <p class="lede">{blurb} To filter by class, slot or zone, use
-      <a href="../tools/index-search.html">{NAME_INDEX}</a>.</p>
+      <a href="../tools/index-search">{NAME_INDEX}</a>.</p>
   </div>
 </section>
 <section class="band" style="border-top:0;padding-top:0">

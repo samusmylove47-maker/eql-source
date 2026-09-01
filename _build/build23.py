@@ -29,7 +29,7 @@ import os, re, sys, json, glob
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
-from _partials import head, bar, foot, NAME_INDEX
+from _partials import head, bar, foot, NAME_INDEX, public_path
 
 # public/app/ holds the Sky Ledger browser build verbatim — a 176 KB
 # application, not a page of ours. Indexing it would put its whole UI into the
@@ -82,7 +82,13 @@ def build():
         desc = re.search(r'<meta name="description" content="([^"]*)"', h)
         body = text_of(h)
         docs.append({
-            'u': key.replace('public/', ''),
+            # public_path() is the site's one definition of a page's public
+            # address and already serves the canonical tags and the sitemap.
+            # This derived it a third way from the file path, which is how a
+            # search result could disagree with the canonical of the page it
+            # opened. `u` is the href AND the visible URL under each result,
+            # so both now show the address the page actually claims.
+            'u': public_path(key) or './',
             't': title,
             'h': heads[:24],
             'd': (desc.group(1) if desc else '')[:180],
@@ -120,11 +126,11 @@ BODY = f'''
 <main>
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Search</p>
+    <p class="crumb"><a href="./">EQL Source</a> &nbsp;/&nbsp; Search</p>
     <h1 class="display">Search<br><em>everything else.</em></h1>
     <p class="hero-lede">Surveys, raid guides, tools, explainers and the change log &mdash;
       {len(DOCS)} pages. Looking for an item or a named mob?
-      <a href="tools/index-search.html">{NAME_INDEX}</a> does that properly, with filters for class,
+      <a href="tools/index-search">{NAME_INDEX}</a> does that properly, with filters for class,
       slot and zone.</p>
     <input class="sf" id="q" type="search" autocomplete="off" spellcheck="false"
       placeholder="Screaming Terror, voidling, mote, backstab, placeholder&hellip;">
@@ -179,7 +185,7 @@ SCRIPT = ('<script>window.__S__=' + json.dumps(DOCS, separators=(',', ':')) + ';
     C.textContent=hits.length+' page'+(hits.length===1?'':'s');
     E.innerHTML = hits.length ? '' :
       '<div class="sempty">Nothing matches. Items and named mobs live in '+
-      '<a href="tools/index-search.html">__NAME_INDEX__</a>.</div>';
+      '<a href="tools/index-search">__NAME_INDEX__</a>.</div>';
     R.innerHTML=hits.slice(0,40).map(function(h){
       return '<li><a href="'+h.d.u+'"><span class="st">'+mark(h.d.t,terms)+'</span>'+
              '<span class="su">'+esc(h.d.u)+'</span>'+

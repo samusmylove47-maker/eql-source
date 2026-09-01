@@ -205,9 +205,14 @@ def head(title, desc, rel="", extra="", og="home", canon=None, robots=None):
     """Page head.
 
     `og` names the share card in public/assets/og/. `canon` is the page's path
-    from the site root, without the .html — the host 301s .html to the
-    extensionless form, so that is the address a search engine should keep and
-    the one a canonical tag has to name.
+    from the site root, without the .html — that is the address a search engine
+    should keep and the one a canonical tag has to name.
+
+    This said the host "301s" .html to the extensionless form. It does not: it
+    answers 307, measured live on 1 Sep 2026. The distinction matters because a
+    307 is temporary and passes nothing on, which is exactly why the canonical
+    tag has to carry the claim rather than the status code. Internal links are
+    extensionless now, so nothing on the site follows that redirect anyway.
     """
     # Share cards must be absolute: Discord and Twitter fetch them from their own
     # servers, where a relative path resolves to nothing.
@@ -276,18 +281,24 @@ NAME_INDEX = next(t['name'] for t in TOOLS if t['slug'] == 'index-search')
 _NAV_INDEX = NAME_INDEX
 
 def bar(rel=""):
+    # THE HOME LINK IS THE ONE HREF THAT CANNOT SIMPLY LOSE ITS FILENAME.
+    # `rel` is "" on a root page, so `{rel}index.html` would become an empty
+    # href, which a browser reads as "this page" - the masthead would stop
+    # leading home from the home page. "./" is the root of the current
+    # directory, which is what index.html was.
+    HOME = rel or "./"
     return f'''<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="{rel}index.html"><span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
+    <a class="mark" href="{HOME}"><span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
-      <a href="{rel}dungeons/index.html">Dungeons</a>
-      <a href="{rel}raids/index.html">Raids</a>
-      <a href="{rel}tools/index.html">Tools</a>
-      <a href="{rel}tools/index-search.html">Items &amp; mobs</a>
-      <a href="{rel}learn/index.html">Learn</a>
-      <a href="{rel}sources.html">Accuracy</a>
-      <a href="{rel}search.html" class="nav-find">Site search</a>
+      <a href="{rel}dungeons/">Dungeons</a>
+      <a href="{rel}raids/">Raids</a>
+      <a href="{rel}tools/">Tools</a>
+      <a href="{rel}tools/index-search">Items &amp; mobs</a>
+      <a href="{rel}learn/">Learn</a>
+      <a href="{rel}sources">Accuracy</a>
+      <a href="{rel}search" class="nav-find">Site search</a>
     </nav>
     <button class="lamp" type="button">
       <svg class="lantern" viewBox="0 0 100 126" fill="none" stroke="currentColor"
@@ -317,7 +328,7 @@ def _foot_links(items, folder, rel):
     """Footer list items for a registry. Generated so the footer cannot drift
     from the pages it is meant to link."""
     return "\n".join(
-        f'        <li><a href="{rel}{folder}/{it["slug"]}.html">'
+        f'        <li><a href="{rel}{folder}/{it["slug"]}">'
         f'{it.get("foot", it["name"])}</a></li>' for it in items)
 
 
@@ -326,17 +337,17 @@ def foot(rel=""):
   <div class="shell">
     <div class="foot-grid">
       <nav aria-label="Dungeons"><p class="fh">Dungeons</p><ul>
-        <li><a href="{rel}dungeons/index.html">All surveys</a></li>
-        <li><a href="{rel}dungeons/najena.html">Najena</a></li>
-        <li><a href="{rel}dungeons/lowerguk.html">Lower Guk</a></li>
-        <li><a href="{rel}dungeons/mistmoore.html">Castle Mistmoore</a></li>
-        <li><a href="{rel}items/index.html">Every item</a></li>
-        <li><a href="{rel}named/index.html">Every named mob</a></li>
-        <li><a href="{rel}sets/index.html">Every planar set</a></li>
+        <li><a href="{rel}dungeons/">All surveys</a></li>
+        <li><a href="{rel}dungeons/najena">Najena</a></li>
+        <li><a href="{rel}dungeons/lowerguk">Lower Guk</a></li>
+        <li><a href="{rel}dungeons/mistmoore">Castle Mistmoore</a></li>
+        <li><a href="{rel}items/">Every item</a></li>
+        <li><a href="{rel}named/">Every named mob</a></li>
+        <li><a href="{rel}sets/">Every planar set</a></li>
       </ul></nav>
       <nav aria-label="Raids"><p class="fh">Raids</p><ul>
-        <li><a href="{rel}raids/index.html">Encounter index</a></li>
-        <li><a href="{rel}raids/plane-of-sky.html">Plane of Sky, island by island</a></li>
+        <li><a href="{rel}raids/">Encounter index</a></li>
+        <li><a href="{rel}raids/plane-of-sky">Plane of Sky, island by island</a></li>
       </ul></nav>
       <nav aria-label="Tools"><p class="fh">Tools</p><ul>
 {_foot_links(TOOLS, "tools", rel)}
@@ -345,20 +356,20 @@ def foot(rel=""):
 {_foot_links(LEARN, "learn", rel)}
       </ul></nav>
       <nav aria-label="About"><p class="fh">About</p><ul>
-        <li><a href="{rel}search.html">Search the site</a></li>
-        <li><a href="{rel}data/index.html">Public data</a></li>
-        <li><a href="{rel}credits.html">Credits</a></li>
-        <li><a href="{rel}archive/index.html">The original plates</a></li>
-        <li><a href="{rel}sources.html">Sourcing standard</a></li>
-        <li><a href="{rel}sources.html#gaps">Known gaps</a></li>
-        <li><a href="{rel}sources.html#changelog">Change log</a></li>
+        <li><a href="{rel}search">Search the site</a></li>
+        <li><a href="{rel}data/">Public data</a></li>
+        <li><a href="{rel}credits">Credits</a></li>
+        <li><a href="{rel}archive/">The original plates</a></li>
+        <li><a href="{rel}sources">Sourcing standard</a></li>
+        <li><a href="{rel}sources#gaps">Known gaps</a></li>
+        <li><a href="{rel}sources#changelog">Change log</a></li>
       </ul></nav>
     </div>
     <div class="foot-contact">
       <p><strong>Found something the site gets wrong, or something the wiki does?</strong>
         That is the most useful thing anyone can send us, and every finding is credited by name.
         <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
-        a finding</a> &middot; <a href="{rel}learn/still-true.html">see what is already open</a>.</p>
+        a finding</a> &middot; <a href="{rel}learn/still-true">see what is already open</a>.</p>
       <p class="foot-nolog">Please do not attach a combat log to a public issue &mdash; they can
         carry private chat. Say you have one and we will ask.</p>
     </div>

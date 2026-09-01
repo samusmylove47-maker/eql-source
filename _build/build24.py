@@ -158,8 +158,8 @@ page = (head("Every planar set",
 <main>
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="../tools/index.html">Tools</a> &nbsp;/&nbsp; Every set</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="../tools/">Tools</a> &nbsp;/&nbsp; Every set</p>
     <h1 class="display">Every planar set,<br><em>piece by piece.</em></h1>
     <p class="hero-lede">All {len(by_set)} sets and {len(ITEMS)} pieces &mdash; the sixteen class
       sets plus the two shared ones. Want to know what to <em>chase</em> rather than what exists?

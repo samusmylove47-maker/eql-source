@@ -172,8 +172,8 @@ page = head("Sky Ledger",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Tools</a> &nbsp;/&nbsp; Sky Ledger</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Tools</a> &nbsp;/&nbsp; Sky Ledger</p>
     <h1 class="display">Sky Ledger.</h1>
     <p class="hero-lede">It reads your own combat log and works out which of the
       {DS['quests']} Plane of Sky class-unlock tests you can hand in right now, and what the
@@ -273,7 +273,7 @@ page = head("Sky Ledger",
         closes. Refusals only count when the line names your character.</li>
       <li><b>Five classes carry a <code>?</code>.</b> Ranger, Rogue, Shadow Knight, Shaman and
         Wizard have no confirmed Legends-era reward stat blocks. Their turn-ins are current; the
-        stat numbers may still be classic. <a href="../sources.html#gaps">The same gap is open
+        stat numbers may still be classic. <a href="../sources#gaps">The same gap is open
         here</a>, because the data came from us.</li>
       <li><b>Two items have sources that disagree.</b> The Efreeti Great Staff and the Efreeti
         Statuette are attributed differently by us and by eqlegendstools. Both are marked in the
@@ -308,9 +308,9 @@ page = head("Sky Ledger",
       suite and its own documentation. It is served here rather than rebuilt here.</div>
     <div class="note"><strong>Our own Plane of Sky tracker is withdrawn.</strong> It is the tool
       Sky Ledger supersedes, and running both would only ask a reader to pick. Its quest data
-      lives on: <a href="../data/index.html">the Sky dataset is published</a> with a source
+      lives on: <a href="../data/">the Sky dataset is published</a> with a source
       recorded per claim, and Sky Ledger&rsquo;s own dataset was extracted from it. The zone
-      itself is written up at <a href="../raids/plane-of-sky.html">Plane of Sky, island by
+      itself is written up at <a href="../raids/plane-of-sky">Plane of Sky, island by
       island</a>.</div>
     <div class="note"><strong>Credit where the parsing came from.</strong> The log-line cases that
       break naive counting &mdash; the autosell tail, combine consumption, upgrade-tier suffixes,

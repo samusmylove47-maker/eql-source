@@ -133,14 +133,14 @@ BODY = f'''
 <main>
 <div class="shell">
   <div class="page-head">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; <a href="index.html">Tools</a> &nbsp;/&nbsp; The Index</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; <a href="./">Tools</a> &nbsp;/&nbsp; The Index</p>
     <h1>The Index</h1>
     <p class="lede">Every item and every named mob recorded across the {NZONES} surveyed dungeons, in one searchable
       place. Ask it where something drops, what a zone holds for your classes, or which named you still have not
       met. <strong>{NPAGES} items and {NNAMED} named</strong>, each tied back to the survey it came from.</p>
     <p class="lede">Every name here opens its own page. You can also browse the full
-      <a href="../items/index.html">A to Z of items</a> or the
-      <a href="../named/index.html">A to Z of named mobs</a>.</p>
+      <a href="../items/">A to Z of items</a> or the
+      <a href="../named/">A to Z of named mobs</a>.</p>
   </div>
 </div>
 
@@ -227,25 +227,25 @@ SCRIPT = '<script>window.__IX__=' + json.dumps(IX, separators=(",",":")) + ';</s
   function rowItem(i){
     return '<div class="res" style="--zc:'+i.a+'">'
       +'<span></span>'
-      +'<span><a class="nm" href="../items/'+i.u+'.html">'+hl(i.n)+'</a>'
+      +'<span><a class="nm" href="../items/'+i.u+'">'+hl(i.n)+'</a>'
         +'<span class="cls">'+i.c.map(function(c){
             return '<span class="'+(fC.has(c)?"hit":"")+'">'+esc(c)+'</span>'}).join("")+'</span></span>'
       +'<span class="cell"><em>Slot</em>'+esc(i.s)+'</span>'
       +'<span class="cell"><em>Stats</em>'+(i.st?hl(i.st):"&mdash;")+'</span>'
       +'<span class="cell"><em>Dropped by</em>'+(i.d?hl(i.d):"&mdash;")+'</span>'
       +'<span class="cell zone"><em>Survey '+String(i.p).padStart(2,"0")+'</em>'
-        +'<a href="../dungeons/'+i.z+'.html">'+esc(i.zt)+'</a></span></div>';
+        +'<a href="../dungeons/'+i.z+'">'+esc(i.zt)+'</a></span></div>';
   }
   function rowNamed(n){
     return '<div class="res" style="--zc:'+n.a+'">'
       +'<span></span>'
-      +'<span><a class="nm" href="../named/'+n.u+'.html">'+hl(n.n)+'</a>'
+      +'<span><a class="nm" href="../named/'+n.u+'">'+hl(n.n)+'</a>'
         +'<span class="sub">'+(n.rc?esc(n.rc)+" &middot; ":"")+(n.fl?"floor "+esc(n.fl)+" &middot; ":"")
         +(n.loc?"loc "+esc(n.loc):"")+'</span></span>'
       +'<span class="cell"><em>Level</em>'+(n.lv?esc(n.lv):"&mdash;")+'</span>'
       +'<span class="cell" style="grid-column:span 2"><em>Notes</em>'+(n.no?hl(n.no):"&mdash;")+'</span>'
       +'<span class="cell zone"><em>Survey '+String(n.p).padStart(2,"0")+'</em>'
-        +'<a href="../dungeons/'+n.z+'.html">'+esc(n.zt)+'</a></span></div>';
+        +'<a href="../dungeons/'+n.z+'">'+esc(n.zt)+'</a></span></div>';
   }
   function render(){
     var rows, html;

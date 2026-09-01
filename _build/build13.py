@@ -308,7 +308,7 @@ ENTRIES = [
               '<code>You have entered The Castle of Mistmoore 1 (Awakened).</code> The number and '
               'the name agree, and the modal loot drop of +1 agrees independently.'),
          ],
-         settle='Settled for D1 and D2, and for the kits: <a href="difficulty.html">bosses measured '
+         settle='Settled for D1 and D2, and for the kits: <a href="difficulty">bosses measured '
                 'at D3 and D4</a> carry every spell each cast, Cazic-Thule and Innoruuk '
                 'among them. <strong>What is still pinned by nobody is D3 and D4 hit points</strong> '
                 '&mdash; damage to kill bounds them from above and no further.',
@@ -440,7 +440,7 @@ page = head("Is it still true?",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Learn
       &nbsp;/&nbsp; Is it still true?</p>
     <h1 class="display">You already know<br><em>a lot that is wrong.</em></h1>
     <p class="hero-lede">Almost everyone playing EverQuest Legends played EverQuest, and arrives
