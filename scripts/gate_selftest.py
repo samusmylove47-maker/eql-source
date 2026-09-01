@@ -815,7 +815,48 @@ def mutate_missing_stamp():
     return p, orig
 
 
+def mutate_media_name():
+    """Rename a hashed media file so its NAME no longer describes its CONTENT.
+
+    THE BRANCH THIS REACHES WAS GUARDED BY NOTHING. check.py's media block has
+    two failures: a sha1-vs-name comparison, and a byte-count comparison. The
+    case written for it in #159 mutates the recorded BYTE COUNT, so it exercised
+    the second and left the first - the only line that makes the media check
+    content-sensitive, and the whole reason #159 touched media at all - untested.
+    Proved by disabling that branch outright: the suite still reported every case
+    caught.
+
+    Reaching it from the manifest alone is not possible, and I measured that
+    rather than assuming: changing the recorded filename makes the file MISSING
+    and trips a third branch instead. The content cannot be edited either,
+    because this harness restores through a utf-8 text round-trip and media files
+    are binary - the limit stated when the media check was written.
+
+    So the file is RENAMED, which preserves every byte, and the manifest is
+    updated to match. The runner restores the manifest; the cleanup returned here
+    renames the file back.
+    """
+    p = "assets/media.json"
+    orig = open(p, encoding="utf-8").read()
+    d = json.loads(orig)
+    k = sorted(d)[0]
+    old = d[k]["file"]
+    parts = old.rsplit(".", 2)
+    parts[1] = "deadbeef"
+    new = ".".join(parts)
+    src = os.path.join("public", "assets", "media", old)
+    dst = os.path.join("public", "assets", "media", new)
+    os.rename(src, dst)
+    d[k]["file"] = new
+    open(p, "w", encoding="utf-8", newline=chr(10)).write(
+        json.dumps(d, indent=1, sort_keys=True))
+    return p, orig, lambda: os.rename(dst, src)
+
+
 SPECIAL = [
+    ("hashed media whose name no longer describes its content",
+     "a cache would serve the wrong file",
+     mutate_media_name),
     ("the build stamp is gone, so freshness cannot be checked at all",
      "is missing, so build freshness could not be checked",
      mutate_missing_stamp),
@@ -853,12 +894,20 @@ def main():
             open(path, "w", encoding="utf-8", newline="\n").write(orig)
 
     for label, expect, fn in SPECIAL:
-        path, orig = fn()
+        # A SPECIAL may return a third element: a callable that undoes side
+        # effects the single-file restore below cannot reach. Added 31 Aug 2026
+        # for the media-hash case, which has to RENAME a file - the only way to
+        # make a name disagree with its own content without editing a binary.
+        _got = fn()
+        path, orig = _got[0], _got[1]
+        _cleanup = _got[2] if len(_got) > 2 else None
         try:
             rc, out = check()
             results.append((label,) + judge(expect, rc, out))
         finally:
             open(path, "w", encoding="utf-8", newline="\n").write(orig)
+            if _cleanup:
+                _cleanup()
 
     bad = 0
     for name, status, detail in results:
