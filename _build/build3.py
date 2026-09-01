@@ -33,7 +33,13 @@ RETURN_CSS = """
 """
 
 def bar_html(rel, crumb, crumb_href, here, extra=""):
-    return (f'<div class="ns-bar"><a class="ns-mark" href="{rel}index.html">{SITE}</a>'
+    # THE HOME LINK IS THE ONE HREF THAT CANNOT SIMPLY LOSE ITS FILENAME.
+    # `rel` is "" on a root page, so `{rel}index.html` would become an empty
+    # href, which a browser reads as "this page" - the masthead would stop
+    # leading home from the home page. "./" is the root of the current
+    # directory, which is what index.html was.
+    HOME = rel or "./"
+    return (f'<div class="ns-bar"><a class="ns-mark" href="{HOME}">{SITE}</a>'
             f'<span class="ns-sep">/</span><a href="{rel}{crumb_href}">{crumb}</a>'
             f'<span class="ns-sep">/</span><span style="color:var(--txt)">{here}</span>'
             f'{extra}<span class="ns-tag">Sourced &amp; dated &middot; updated daily</span></div>')
@@ -134,7 +140,7 @@ p.tight{color:#B0A9A2;font-size:14px;line-height:1.6;margin:0}
 PH_CONFIRMED = """
 <div class="ph-note ph-yes"><strong>Named spawn every cycle. No placeholders here.</strong>
   Percentages below are inherited classic data and describe nothing about this zone now.
-  <a href="REL_learn/reading-the-plans.html">Why they are still printed &rarr;</a></div>"""
+  <a href="REL_learn/reading-the-plans">Why they are still printed &rarr;</a></div>"""
 
 
 # THE INJECTED CHROME USES TOKENS, AND THESE PAGES HAVE NONE.
@@ -188,7 +194,7 @@ CONTACT = """
   <p><strong>Found something this page gets wrong, or something the wiki does?</strong>
     That is the most useful thing anyone can send us, and every finding is credited by name.
     <a href="https://github.com/samusmylove47-maker/eql-source/issues/new?template=finding.yml">Send
-    a finding</a> &middot; <a href="REL_learn/still-true.html">see what is already open</a>.</p>
+    a finding</a> &middot; <a href="REL_learn/still-true">see what is already open</a>.</p>
   <p class="nolog">Please do not attach a combat log to a public issue &mdash; they can carry
     private chat. Say you have one and we will ask.</p>
 </div>"""
@@ -475,7 +481,7 @@ for z in Z:
     s = z['slug']
     extra = ''
     n += 1
-    inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/index.html',
+    inject(os.path.join(SRC, f'{s}.html'), f'public/dungeons/{s}.html', '../', 'Dungeons', 'dungeons/',
            f"Survey {z['plate']:02d} &middot; {z['title']}", extra, wh_slug=s, ph_zone=s,
            subs=derived.tokens(s),
            og_card=f"dungeons-{s}", canon=f"dungeons/{s}")
@@ -490,14 +496,14 @@ for z in Z:
 # assets/sky.json is still published at /data/, but nothing renders it now.
 # /tools/plane-of-sky.html 301s to /tools/sky-ledger.html in public/_redirects.
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/race-unlocks.html', '../',
-       'Tools', 'tools/index.html', 'Race unlock tracker',
-       extra='<span class="ns-sep">/</span><a href="combo-calculator.html">Combo calculator &rarr;</a>',
+       'Tools', 'tools/', 'Race unlock tracker',
+       extra='<span class="ns-sep">/</span><a href="combo-calculator">Combo calculator &rarr;</a>',
        h1='Race unlock tracker',
        own_bar=True, og_card='tools', canon='tools/race-unlocks')
 # calculator = same app, boots on the calc tab, shares the same save key
 inject(os.path.join(SRC,'eql-race-unlocks.html'), 'public/tools/combo-calculator.html', '../',
-       'Tools', 'tools/index.html', 'Race &amp; primary calculator',
-       extra='<span class="ns-sep">/</span><a href="race-unlocks.html">&larr; Race unlocks</a>',
+       'Tools', 'tools/', 'Race &amp; primary calculator',
+       extra='<span class="ns-sep">/</span><a href="race-unlocks">&larr; Race unlocks</a>',
        subs=[(' show("track");\n})();', ' show("calc");\n})();'),
              ('<title>Race Unlock Tracker', '<title>Race &amp; Primary Calculator')],
        h1='Race &amp; primary calculator',

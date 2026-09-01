@@ -134,7 +134,7 @@ page = (head(A['name'],
 <main>
 <section class="hero page au-hero">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; {A['name']}</p>
+    <p class="crumb"><a href="./">EQL Source</a> &nbsp;/&nbsp; {A['name']}</p>
     <h1 class="display">{A['name']}</h1>
     <p class="au-lede">{A['lede']}</p>
     <p class="au-plat">{A['platform']}</p>

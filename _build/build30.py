@@ -141,8 +141,8 @@ page = head(
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Tools</a> &nbsp;/&nbsp; Lockout tracker</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Tools</a> &nbsp;/&nbsp; Lockout tracker</p>
     <h1 class="display">Lockout tracker.</h1>
     <p class="hero-lede">Every other tracker here tells you what you have done. This one
       tells you <strong>what is still open</strong> &mdash; which is the question you have at

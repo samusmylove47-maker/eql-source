@@ -82,13 +82,13 @@ if N_OPEN:
         '<h3 class="t">Verification gates</h3>'
         f'<p class="d">{wordnum(N_OPEN)} of the {len(ZONES)} surveys have not cleared the full '
         'three-gate standard. Which gate is open is listed against each zone on the '
-        '<a href="dungeons/index.html" style="color:var(--warn-t)">plates page</a>.</p></div>')
+        '<a href="dungeons/" style="color:var(--warn-t)">plates page</a>.</p></div>')
 else:
     gates_card = (
         '<div class="card" style="--c:var(--ok)"><div class="kicker">Dungeons</div>'
         '<h3 class="t">Verification gates, all cleared</h3>'
         '<p class="d">All ten surveys have passed all three gates, and the evidence for each '
-        'is recorded on the <a href="dungeons/index.html" style="color:var(--ok-t)">plates page</a>. '
+        'is recorded on the <a href="dungeons/" style="color:var(--ok-t)">plates page</a>. '
         'That is not the same as complete. It means each survey has been checked against its live '
         'source and every coordinate lands somewhere a player can stand &mdash; the gaps listed '
         'here are what remains.</p></div>')
@@ -110,7 +110,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Tools</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Tools</p>
     <h1 class="display">{wordnum(len(TOOLS))} trackers,<br><em>no account.</em></h1>
     <p class="hero-lede">No login, no server holding your data. What you tick is packed into the page
       URL &mdash; bookmark it, paste it into guild chat, open it anywhere and the sheet rebuilds exactly.
@@ -124,7 +124,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
   <section class="band" style="border-top:0;padding-top:0">
     <div class="cards c2">
 
-      <a class="card" href="index-search.html" style="--c:var(--bone)">
+      <a class="card" href="index-search" style="--c:var(--bone)">
         <div class="kicker">Lookup &middot; {N_ITEMS} items, {N_NAMED} named</div>
         <h2 class="t">{NAMES['index-search']}</h2>
         <p class="tagline">{TAGS['index-search']}</p>
@@ -135,7 +135,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Cross-zone</span><span class="pill">Class filter</span><span class="pill">No upload</span></div>
         <div class="foot"><span>Built from the surveys</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="sky-ledger.html" style="--c:var(--instr)">
+      <a class="card" href="sky-ledger" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; reads your combat log</div>
         <h2 class="t">{NAMES['sky-ledger']}</h2>
         <p class="tagline">{TAGS['sky-ledger']}</p>
@@ -147,7 +147,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">{SLD['quests']} tests</span><span class="pill">{SLD['contested']} contested turn-in items</span><span class="pill">No install</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="50-upgrades.html" style="--c:var(--brass)">
+      <a class="card" href="50-upgrades" style="--c:var(--brass)">
         <div class="kicker">Gear planning &middot; built and hosted elsewhere</div>
         <h2 class="t">{NAMES['50-upgrades']}</h2>
         <p class="tagline">{TAGS['50-upgrades']}</p>
@@ -159,7 +159,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">{UPF['counts.items']:,} catalogue items</span><span class="pill">Three classes at once</span><span class="pill">No account</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="gap-engine.html" style="--c:var(--ok)">
+      <a class="card" href="gap-engine" style="--c:var(--ok)">
         <div class="kicker">Preview &middot; reads your combat log</div>
         <h2 class="t">{NAMES['gap-engine']}</h2>
         <p class="tagline">{TAGS['gap-engine']}</p>
@@ -173,7 +173,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Deltas, never levels</span><span class="pill">Refusals shown</span><span class="pill">Preview</span></div>
         <div class="foot"><span>Engine in its own repo</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="lockouts.html" style="--c:var(--ember)">
+      <a class="card" href="lockouts" style="--c:var(--ember)">
         <div class="kicker">Raiding &middot; reads your combat log</div>
         <h2 class="t">{NAMES['lockouts']}</h2>
         <p class="tagline">{TAGS['lockouts']}</p>
@@ -186,7 +186,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Says &ldquo;not looked&rdquo;</span><span class="pill">No countdown</span><span class="pill">No install</span></div>
         <div class="foot"><span>Runs in the browser</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="race-unlocks.html" style="--c:var(--instr)">
+      <a class="card" href="race-unlocks" style="--c:var(--instr)">
         <div class="kicker">Progression &middot; 16 unlocks</div>
         <h2 class="t">{NAMES['race-unlocks']}</h2>
         <p class="tagline">{TAGS['race-unlocks']}</p>
@@ -196,7 +196,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="chipline"><span class="pill">Faction routes</span><span class="pill">Merged list</span></div>
         <div class="foot"><span>Share link</span><span class="go">Open &rarr;</span></div></a>
 
-      <a class="card" href="faction-impact.html" style="--c:var(--ok)">
+      <a class="card" href="faction-impact" style="--c:var(--ok)">
         <div class="kicker">Planning &middot; measured from play</div>
         <h2 class="t">{NAMES['faction-impact']}</h2>
         <p class="tagline">{TAGS['faction-impact']}</p>
@@ -208,7 +208,7 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
         <div class="foot"><span>Measured in play</span><span class="go">Open &rarr;</span></div></a>
 
 
-      <a class="card" href="combo-calculator.html" style="--c:var(--instr)">
+      <a class="card" href="combo-calculator" style="--c:var(--instr)">
         <div class="kicker">Planning</div>
         <h2 class="t">{NAMES['combo-calculator']}</h2>
         <p class="tagline">{TAGS['combo-calculator']}</p>
@@ -342,7 +342,7 @@ raids = head("Raid encounters", "The Plane of Sky, island by island: the key cha
 <div class="sheet">
 
 <header class="mast">
-  <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Raids</p>
+  <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Raids</p>
   <p class="eyebrow">Encounter index</p>
   <div class="title"><h1>Raid encounters</h1><span class="leader"></span>
     <span class="plateno">{len(RAID_PAGES)}</span></div>
@@ -360,7 +360,7 @@ raids = head("Raid encounters", "The Plane of Sky, island by island: the key cha
 
 <section>
   <div class="cards c2">
-    <a class="card" href="plane-of-sky.html" style="--c:var(--ember)">
+    <a class="card" href="plane-of-sky" style="--c:var(--ember)">
       <div class="kicker">Complete &middot; island by island</div>
       <h2 class="t">The Plane of Sky</h2>
       <p class="d">The whole zone in the order you do it: the Key Master, the spur at 1.5, and
@@ -388,7 +388,7 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
+    <p class="crumb"><a href="./">EQL Source</a> &nbsp;/&nbsp; Accuracy</p>
     <h1 class="display">Sourcing<br><em>standard.</em></h1>
     <p class="hero-lede">This site exists because most EverQuest Legends reference material is classic
       EverQuest text in a Legends-shaped hole. The only defence against that is a standard applied

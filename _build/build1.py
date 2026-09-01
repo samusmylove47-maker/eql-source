@@ -58,7 +58,7 @@ def zsub(z):
 
 # ---------------------------------------------------------------- HOME
 zrows = "\n".join(
-  f'''    <a class="zrow" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
+  f'''    <a class="zrow" href="dungeons/{z['slug']}" style="--c:{z['accent']}">
       <span class="pn">{z['plate']:02d}</span>
       <span><span class="zt">{z['title']}</span><span class="zs">{zsub(z)}</span></span>
       <span class="cell zonesub"><em>Respawn</em>{z['respawn'] or 'not recorded'}</span>
@@ -139,7 +139,7 @@ def plate_art(slug):
 
 
 plates = "\n".join(
-  f'''    <a class="plate" href="dungeons/{z['slug']}.html" style="--c:{z['accent']}">
+  f'''    <a class="plate" href="dungeons/{z['slug']}" style="--c:{z['accent']}">
       {plate_art(z['slug'])}
       <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
       <span class="num" aria-hidden="true">{z['plate']:02d}</span>
@@ -271,7 +271,7 @@ upgrades = f'''
             sourced and what is not is one click away.</p>
           <div class="featdoors">
             <a class="featdoor lead" href="{UP['url']}">Open the planner &rarr;</a>
-            <a class="featdoor" href="tools/50-upgrades.html">What it does &rarr;</a>
+            <a class="featdoor" href="tools/50-upgrades">What it does &rarr;</a>
           </div>
         </div>
       </div>
@@ -302,7 +302,7 @@ feature = f'''
           <div class="featdoors">
             <a class="featdoor lead" href="app/{SL_APP['file']}">Run it in your browser &rarr;</a>
             <a class="featdoor" href="{SL_OVERLAY_HREF}">{SL_OVERLAY_LABEL}</a>
-            <a class="featdoor" href="tools/sky-ledger.html">What it does &rarr;</a>
+            <a class="featdoor" href="tools/sky-ledger">What it does &rarr;</a>
           </div>
         </div>
         <figure class="feattrailer">
@@ -437,7 +437,7 @@ lockouts = f'''
             task; the instance lockout is rolling, with no weekday at all.</p>
           <div class="featdoors">
             <a class="featdoor lead" href="app/{LK_APP['file']}">Run it in your browser &rarr;</a>
-            <a class="featdoor" href="tools/lockouts.html">What it does &rarr;</a>
+            <a class="featdoor" href="tools/lockouts">What it does &rarr;</a>
           </div>
         </div>
       </div>
@@ -467,7 +467,7 @@ auras = f'''
           <p class="featlede">{AURAS['lede']}</p>
 
           <p class="featfoot">{AURAS['platform']}</p>
-          <p class="feat-cta"><a href="auras.html">More about {AURAS['name']}</a></p>
+          <p class="feat-cta"><a href="auras">More about {AURAS['name']}</a></p>
         </div>
       </div>
       <script>
@@ -594,7 +594,7 @@ home = head("Accurate, sourced and kept current",
       <p class="lede" style="margin:0">Three ways in, depending on what you came for.</p></div></div>
     <div class="doorgrid">
 
-      <a class="door contour" href="tools/index-search.html" style="--c:var(--bone);--cx:88%;--cy:116%">
+      <a class="door contour" href="tools/index-search" style="--c:var(--bone);--cx:88%;--cy:116%">
         <span class="dq">I need to find something</span>
         <h3 class="dt">{NAMES['index-search']}</h3>
         <p class="dd">Every item and named mob across the surveyed dungeons, searchable in one place.
@@ -602,7 +602,7 @@ home = head("Accurate, sourced and kept current",
         <span class="dgo">Search {NITEMS} items &rarr;</span>
       </a>
 
-      <a class="door contour" href="dungeons/index.html" style="--c:var(--z01);--cx:12%;--cy:110%">
+      <a class="door contour" href="dungeons/" style="--c:var(--z01);--cx:12%;--cy:110%">
         <span class="dq">I am going into a zone</span>
         <h3 class="dt">The surveys</h3>
         <p class="dd">Population tables, named rosters with spawn data, loot tied to its drop source,
@@ -610,7 +610,7 @@ home = head("Accurate, sourced and kept current",
         <span class="dgo">{len(Z)} surveys &rarr;</span>
       </a>
 
-      <a class="door contour" href="tools/index.html" style="--c:var(--instr);--cx:84%;--cy:104%">
+      <a class="door contour" href="tools/" style="--c:var(--instr);--cx:84%;--cy:104%">
         <span class="dq">I am planning a character</span>
         <h3 class="dt">The trackers</h3>
         <p class="dd">Class unlocks, race unlocks and the primary-slot decision you can never take back.
@@ -619,7 +619,7 @@ home = head("Accurate, sourced and kept current",
       </a>
 
     </div>
-    <p class="doornote">Raid encounters live under <a href="raids/index.html">Raids</a> &mdash; one zone
+    <p class="doornote">Raid encounters live under <a href="raids/">Raids</a> &mdash; one zone
       written up in full, measured in play.</p>
   </div>
 </section>
@@ -638,7 +638,7 @@ home = head("Accurate, sourced and kept current",
         points each &mdash; bosses, loot, difficulty, inherited claims and farming. It measures
         what a zone gives a reader, not whether it has cleared the survey gates. The two
         disagree often, and in both directions, so neither stands in for the other.</p></div>
-      <a class="link" href="dungeons/index.html">Every survey &rarr;</a></div>
+      <a class="link" href="dungeons/">Every survey &rarr;</a></div>
     <div class="plates">
 {plates}
     </div>
@@ -655,7 +655,7 @@ home = head("Accurate, sourced and kept current",
         <ul class="chlist">
 {recent}
         </ul>
-        <p style="margin-top:var(--s-5)"><a class="link" href="sources.html#changelog"
+        <p style="margin-top:var(--s-5)"><a class="link" href="sources#changelog"
           style="margin:0">The full change log &rarr;</a></p>
       </div>
 
@@ -674,7 +674,7 @@ home = head("Accurate, sourced and kept current",
           <li style="--tc:#D9762A"><b>Aggregators</b><span>Mined snapshots, stale after a patch</span></li>
           <li style="--tc:#D46C64"><b>Inherited classic prose</b><span>Project 1999 text. Quoted, marked</span></li>
         </ol>
-        <p class="stdfoot"><a class="link" href="sources.html" style="margin:0">The full standard, and
+        <p class="stdfoot"><a class="link" href="sources" style="margin:0">The full standard, and
           every open gap &rarr;</a></p>
       </aside>
     </div>
@@ -687,7 +687,7 @@ open('public/index.html','w',encoding='utf-8',newline='\n').write(home)
 
 # ---------------------------------------------------------------- DUNGEONS
 drows = "\n".join(
-  f'''    <a class="zrow" href="{z['slug']}.html" style="--c:{z['accent']}">
+  f'''    <a class="zrow" href="{z['slug']}" style="--c:{z['accent']}">
       <span class="pn">{z['plate']:02d}</span>
       <span><span class="zt">{z['title']}</span><span class="zs">{zsub(z)} &middot; /who {z['who']}</span></span>
       <span class="cell zonesub"><em>Respawn</em>{z['respawn'] or 'not recorded'}</span>
@@ -703,7 +703,7 @@ drows = "\n".join(
 # which is most of why a visitor's eye slid off it. The atlas is on both pages
 # now, and this is the same card.
 dplates = "\n".join(
-  f'''      <a class="plate" href="{z['slug']}.html" style="--c:{z['accent']}">
+  f'''      <a class="plate" href="{z['slug']}" style="--c:{z['accent']}">
         {plate_art(z['slug'])}
         <span class="lvl"><b>{z['plate']:02d}</b> &middot; {z['levels'].split(' (')[0]}</span>{_gate(z)}
         <span class="num" aria-hidden="true">{z['plate']:02d}</span>
@@ -778,7 +778,7 @@ dung = head("Dungeon surveys",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Dungeons</p>
     <h1 class="display">{wordnum(len(Z))} zones,<br><em>surveyed.</em></h1>
     <p class="hero-lede">Each carrying a floor plan drawn from the game&rsquo;s own mesh, population
       tables, named rosters with spawn data, loot tied to its drop source, and coordinates

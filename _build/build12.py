@@ -90,7 +90,7 @@ page = head("Deity, and the level 11 lock",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Learn
       &nbsp;/&nbsp; Deity</p>
     <h1 class="display">Permanent,<br><em>until you spend $4.99.</em></h1>
     <p class="hero-lede">Deity locks at level 11 with your race and primary class, and almost every

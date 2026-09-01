@@ -37,7 +37,7 @@ CSS = '''<style>
 </style>'''
 
 cards = "\n".join(
-    f'''      <a href="{it["slug"]}.html">
+    f'''      <a href="{it["slug"]}">
         <h2>{it["name"]}</h2>
         <p>{it["blurb"]}</p>
         <span class="go">Read &rarr;</span>
@@ -51,7 +51,7 @@ page = (head("Learn",
 <main>
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Learn</p>
     <h1 class="display">{wordnum(len(LEARN))} things<br><em>worth knowing.</em></h1>
     <p class="hero-lede">Every EverQuest Legends player is a returning EverQuest player carrying
       twenty-five years of muscle memory, and a large amount of what they know is now wrong. These

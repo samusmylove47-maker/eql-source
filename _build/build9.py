@@ -153,7 +153,7 @@ def control_html(s):
             f'<tbody>{rows}</tbody></table></div>'
             f'<p class="caveat" style="margin:0 0 18px"><b>Read this as a kill order.</b> '
             f'Whatever casts the spell at the top takes your turn away most often. '
-            f'<a href="../learn/reading-the-plans.html#measured">Why it is not a property of the mob &rarr;</a></p>')
+            f'<a href="../learn/reading-the-plans#measured">Why it is not a property of the mob &rarr;</a></p>')
 
 
 def merge(sessions):
@@ -436,7 +436,7 @@ def section(sess_list, zone_title, revamp=None, revamped=None):
         f'rates. A drop seen once is not a drop rate, and nothing here is a probability. '
         f'Damage is what the mob dealt against the armour it met, so treat the maximum as '
         f'the shape of the hit rather than a constant. '
-        f'<a href="../learn/reading-the-plans.html#measured">What a log can and cannot tell you &rarr;</a></p>'
+        f'<a href="../learn/reading-the-plans#measured">What a log can and cannot tell you &rarr;</a></p>'
         f'</section>')
 
 

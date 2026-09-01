@@ -91,7 +91,7 @@ page = (head("Credits",
 <main>
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="index.html">EQL Source</a> &nbsp;/&nbsp; Credits</p>
+    <p class="crumb"><a href="./">EQL Source</a> &nbsp;/&nbsp; Credits</p>
     <h1 class="display">People who<br><em>told us things.</em></h1>
     <p class="hero-lede">Almost everything on this site that is genuinely about EverQuest Legends,
       rather than inherited from a wiki that predates it, came from a player who went and looked.

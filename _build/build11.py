@@ -313,7 +313,7 @@ page = head("What difficulty changes",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Learn
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Learn
       &nbsp;/&nbsp; Difficulty</p>
     <h1 class="display">Harder, not<br><em>higher level.</em></h1>
     <p class="hero-lede">Difficulty does not make anything higher level. It makes mobs hit harder,

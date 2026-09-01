@@ -650,7 +650,7 @@ for z in Z:
         <p class="lede" style="margin:0">{len(pts)} of {zone_total} named mobs plotted
           &middot; {step}-unit grid &middot; levels {int(lo)}&ndash;{int(hi)} shown green through red.
           Dashed outlines group positions that sit near each other; they are not room shapes.</p></div>
-      <a class="link" href="{z['slug']}.html">Survey {z['plate']:02d} &rarr;</a></div>
+      <a class="link" href="{z['slug']}">Survey {z['plate']:02d} &rarr;</a></div>
     {height}
   </div>
   <div class="plotwrap">{svg}</div>
@@ -844,7 +844,7 @@ def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
                f'&mdash; this survey says do not kill '
                f'{"it" if len(skipped) == 1 else "them"}. '
                if skipped else '')
-            + '<a href="../learn/reading-the-plans.html">Why the line crosses walls '
+            + '<a href="../learn/reading-the-plans">Why the line crosses walls '
               '&rarr;</a></p>')
 
     lv = ''
@@ -872,7 +872,7 @@ def write_plate_plan(z, svg, layers, npts, on_floor, tour, tour_len, pts):
              f'{route_note}'
              f'<p class="fp-note">Lines are floor edges &mdash; a wall or a drop. '
              f'<b>{on_floor} of {npts} recorded positions land on drawn floor.</b> '
-             f'<a href="../learn/reading-the-plans.html">What this plan does not '
+             f'<a href="../learn/reading-the-plans">What this plan does not '
              f'mark &rarr;</a></p></section>')
 
     h = h.replace('</head>', PLATE_CSS + '</head>', 1)
@@ -894,8 +894,8 @@ page = head("Survey plots",
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-      <a href="index.html">Dungeons</a> &nbsp;/&nbsp; Plots</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+      <a href="./">Dungeons</a> &nbsp;/&nbsp; Plots</p>
     <h1 class="display">Where everything<br><em>actually is.</em></h1>
     <p class="hero-lede">{tot_plot} named mobs plotted from their recorded <code>/loc</code>, labelled
       where they stand and coloured by level. The other {tot_named - tot_plot} wander, have no

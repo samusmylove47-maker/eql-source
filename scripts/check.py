@@ -49,6 +49,26 @@ if len(pages) < 20:
     fail(f"only {len(pages)} pages found — expected 20 or more. Did a build fail?")
 
 # 1. every internal href/src resolves
+#
+# INTERNAL LINKS ARE EXTENSIONLESS AND THE FILES ON DISK ARE NOT. Since 1 Sep 2026
+# a page links `tools/lockouts`, and what exists is `tools/lockouts.html`; a
+# directory index is linked `dungeons/` and lives at `dungeons/index.html`. The
+# host resolves both, and os.path.exists resolves neither, so a plain existence
+# test would fail 23,143 of 32,332 links on a site where every one of them works.
+#
+# This maps a public address back to the file that serves it, the same three ways
+# the host does. It deliberately does NOT accept a bare `x` when only `x.html`
+# is missing - the point is still to catch a link to a page that does not exist.
+def _resolves(tgt):
+    if os.path.exists(tgt) and not os.path.isdir(tgt):
+        return True                       # an asset, or a file linked by name
+    if os.path.exists(tgt + ".html"):
+        return True                       # tools/lockouts -> tools/lockouts.html
+    if os.path.isdir(tgt) and os.path.exists(os.path.join(tgt, "index.html")):
+        return True                       # dungeons/ -> dungeons/index.html
+    return False
+
+
 SCRIPTS = re.compile(r"<script\b.*?</script>", re.S | re.I)
 for p in pages:
     h = open(p, encoding="utf-8", errors="replace").read()
@@ -58,7 +78,7 @@ for p in pages:
         if ref.startswith(("http", "#", "mailto:", "data:", "javascript:")):
             continue
         tgt = os.path.normpath(os.path.join(base, ref.split("#")[0].split("?")[0]))
-        if tgt and not os.path.exists(tgt):
+        if tgt and not _resolves(tgt):
             fail(f"{p} -> broken link: {ref}")
 
     for ref in re.findall(r'<script[^>]+src="([^"]+)"', h):
@@ -124,7 +144,8 @@ else:
     # would force the page back into being a table of contents for itself.
     if os.path.exists("public/dungeons/index.html"):
         h = open("public/dungeons/index.html", encoding="utf-8").read()
-        missing = [z["slug"] for z in Z if f'{z["slug"]}.html' not in h]
+        missing = [z["slug"] for z in Z
+                   if f'{z["slug"]}"' not in h and f'{z["slug"]}.html"' not in h]
         if missing:
             fail(f"dungeons/index.html does not link {len(missing)} zone(s): {', '.join(missing)}")
 

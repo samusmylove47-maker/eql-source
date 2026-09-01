@@ -610,8 +610,8 @@ page = (head("Plane of Sky",
 <div class="sheet">
 
 <header class="mast">
-  <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp;
-    <a href="index.html">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
+  <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+    <a href="./">Raids</a> &nbsp;/&nbsp; Plane of Sky</p>
   <p class="eyebrow">Raid survey</p>
   <div class="title"><h1>The Plane of Sky</h1><span class="leader"></span>
     <span class="plateno">{len(RING)}</span></div>
@@ -770,7 +770,7 @@ page = (head("Plane of Sky",
   </ul>
   <p class="imprint">Plane of Sky &middot; measured at base difficulty &middot; elevation derived
     from airplane.s3d &middot; tactics from players named on the
-    <a href="../credits.html">credits page</a></p>
+    <a href="../credits">credits page</a></p>
 </section>
 
 </div>

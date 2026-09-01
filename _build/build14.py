@@ -51,7 +51,7 @@ blocks = ''.join(
       <div>
         <h2>{BY[slug]['title']}</h2>
         <p class="arch-meta">Plate {BY[slug]['plate']:02d} &middot; retired 10 Aug 2026 &middot;
-          <a href="../dungeons/{slug}.html">the survey that replaced it &rarr;</a></p>
+          <a href="../dungeons/{slug}">the survey that replaced it &rarr;</a></p>
       </div>
     </div>
     {ARCH[slug]}
@@ -95,12 +95,12 @@ page = head("The original plates",
   "mesh-derived floor plans replaced them in August 2026.",
   rel="../", extra=CSS, og="archive", canon="archive/index", robots="noindex") + bar("../") + f'''
 <main>
-<div class="shell"><div class="note danger" style="margin-top:22px" id="archive-warn"><strong>Kept exactly as they last shipped, and some of it is known to be wrong.</strong> The Najena plate carries six coordinates later found to sit 57&ndash;513 units outside the zone. Nothing here is corrected &mdash; that is what an archive is &mdash; so read it as a record, not as guidance. The <a href="../dungeons/index.html">surveys</a> are current.</div></div>
+<div class="shell"><div class="note danger" style="margin-top:22px" id="archive-warn"><strong>Kept exactly as they last shipped, and some of it is known to be wrong.</strong> The Najena plate carries six coordinates later found to sit 57&ndash;513 units outside the zone. Nothing here is corrected &mdash; that is what an archive is &mdash; so read it as a record, not as guidance. The <a href="../dungeons/">surveys</a> are current.</div></div>
 
 
 <section class="hero page">
   <div class="shell">
-    <p class="crumb"><a href="../index.html">EQL Source</a> &nbsp;/&nbsp; Archive</p>
+    <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp; Archive</p>
     <h1 class="display">Where this<br><em>started.</em></h1>
     <p class="hero-lede">Ten hand-built coordinate plots. Every named mob&rsquo;s <code>/loc</code>
       read off the wiki, transformed into page space and drawn by hand, with a numbered legend

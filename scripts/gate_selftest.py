@@ -318,9 +318,9 @@ CASES = [
      lambda t: t.replace('"zem_pct": 171', '"zem_pct": 170', 1)),
 
     ("a tool dropped from the footer",
-     "footer does not link tools/faction-impact.html",
+     "footer does not link tools/faction-impact",
      "public/index.html",
-     lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact\.html">[^<]*</a></li>', "", t)),
+     lambda t: re.sub(r'\s*<li><a href="[^"]*tools/faction-impact">[^<]*</a></li>', "", t)),
 
     # This one shipped. the withdrawn build4.py's BODY carried the 3D engine's JavaScript, so
     # it can never be an f-string, and f-string syntax written into it renders as
@@ -492,8 +492,8 @@ CASES = [
     ("a registered tool with no card on the tools hub",
      "has no card for",
      "public/tools/index.html",
-     lambda t: t.replace('<a class="card" href="50-upgrades.html"',
-                         '<a class="card" href="50-upgrades-x.html"', 1)),
+     lambda t: t.replace('<a class="card" href="50-upgrades"',
+                         '<a class="card" href="50-upgrades-x"', 1)),
 
     # A published dataset that lost most of itself and stayed green. The
     # emptiness rule beside the floor catches a dataset that lost EVERYTHING;
