@@ -8,6 +8,19 @@ static assets, configured by `wrangler.jsonc`. This file said *Netlify* until
 `Server: cloudflare`. `netlify.toml` is still in the repo and its headers and
 redirects are **inert**; treat it as history until it is removed deliberately.
 
+**Only `main` can reach the live site**, and that is a dashboard setting rather
+than anything in this repo: Cloudflare's production branch is `main` with
+non-production builds OFF. It is what makes "publishes on every merge to `main`"
+safe to rely on, and it is why a branch deploy cannot surprise anyone.
+
+**Publishing by hand is possible and is a loaded gun.** `npx wrangler deploy`
+from the repository root publishes **whatever the checkout holds** — so the
+checkout must be on `main` first. The owner's was once on a branch 77 commits
+behind, and deploying from it would have published a front page older than the
+one already live. On Windows the form that runs is `npx.cmd`, and a first attempt
+can fail on the PowerShell execution policy rather than on anything to do with
+the site.
+
 Read this before your first edit in a session. For what to do, read `HANDOFF.md`
 then `docs/BACKLOG.md`. For design work, `docs/DESIGN.md` is binding.
 
@@ -610,6 +623,22 @@ a version floor, not a bug. Found 18 Aug 2026 by a session in a 3.11 container.
 `python`. Any new `open()` in a generator must specify `encoding='utf-8'` and,
 for writes, `newline='\n'` — the platform defaults corrupt the output.
 
+**A bug report is a claim, not an observation.** It does not stop being a claim
+because it comes from someone who is usually right. One reached this project by
+reading `$?` after a `| tail` pipeline — which measures `tail`, and `tail` always
+succeeds — and a second session changed code on that report without reproducing
+it once, while the auditor and both test pages sat on disk twenty seconds away.
+Reproduce first. The cheapest moment to catch it is the one where somebody hands
+it to you.
+
+**A READ-ONLY INVESTIGATION MUST RUN A GENERATOR AS A SUBPROCESS, NEVER IMPORT
+IT.** An agent comparing two versions of `raidstats.py` imported it to do so,
+which executed `main()`, which executed its `open(..., 'w')`, which truncated
+`assets/raids-measured.json` **to 0 bytes**. "Read-only" is not a property of an
+agent's intentions: importing a module runs its side effects, and an instruction
+not to write does not prevent that. A generator's whole job is to overwrite a
+committed dataset.
+
 **A shell heredoc eats backslash escapes.** Any file whose content contains
 `\n`, `\t`, `\x89`, or a regex escape like `\b` or `\d` is written through the
 editor, never through `python - <<'PY'` or `cat <<'EOF'`. This has cost three
@@ -853,6 +882,17 @@ These close with evidence, not tidying.
   wizard (`Ice Comet`, `Wrath of Al`Kabor`), shaman (`Malosi`, `Plague`,
   `Gale of Poison`) and priest (`Superior Healing`) in one fight, which is the
   published triple-class claim showing up in a log for the first time.
+
+  **And a second instance, this one with a melee kit in it.** Phinigel Autropos,
+  killed in `Kedge Keep - Group 4 (Refined)` on 18 Aug 2026, ran three at once:
+  **backstab** (rogue — `melee_verbs` holds `backstabs` and `crushes`), Ensnare,
+  Engulfing Roots and Drifting Death (druid), and Ice Comet, Wrath of Al`Kabor
+  and Diamondskin (wizard). Innoruuk’s three are all spell lists; this is the
+  first record where one of the three is melee, which is the harder half to see:
+  `melee_verbs` is parsed into `assets/raids-measured.json` and rendered by no
+  page, and the boss table on `learn/difficulty.html` has a Spells column and no
+  melee column — so every backstabbing raid boss in the corpus reads as a caster
+  there.
 
   D3/D4 hit points are still not pinned by anyone: damage to kill is an upper
   bound, not HP.

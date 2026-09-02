@@ -8,6 +8,52 @@ flag the gap, not to invent the number.
 
 ---
 
+## Recovered from the exchange, 1 Sep 2026
+
+Five findings that existed only inside `HANDOFF.md`'s "To the Director" section
+and would have been lost when it was pruned. Each is real, each was verified
+against the tree on the day, and none has an owner yet.
+
+**`assets/gap-engine.json` has no upstream identity.** Nothing checks that the
+vendored fixture still matches what it was vendored from, and the file carries no
+sha to compare against — its metadata keys are `_fixture`, `_why`, `_never` and
+`_regenerate`, and none of them names an upstream. Contrast the served apps,
+which `scripts/check.py` verifies byte-for-byte against a recorded hash for
+exactly this reason. *Acceptance: an upstream sha recorded in the vendored file's
+own metadata, and a check that compares it.*
+
+**Teach `logstats.py` to read the instance invite.** `raidstats.py` reads it and
+`logstats.py` does not, so 61 of its 172 sessions rest on something other than a
+numbered zone line — 50 unsuffixed, 10 loot-tier, 1 with nothing at all. This was
+called the highest-value follow-up available and was held back because it moves
+`measured.json` and the public `sightings` contract. *Acceptance: the 61 resolve
+or are stated as unresolved with a reason, and the published contract is versioned
+rather than changed in place.*
+
+**`check.py`'s own assertions are almost entirely unexercised.** A coverage pass
+found 22 of 106 assertions proven alive — `gate.py` 19 of 42, `check.py` 3 of 64 —
+and every one of `gate.py`'s seven unreachable `warn(` calls has the same shape:
+"X is missing, so Y is unchecked". `gate_selftest.py` records the blind spot and
+the seven, not the coverage. *Acceptance: the figure regenerates from a command
+rather than being typed here, per HANDOFF.md's own rule.*
+
+**`melee_verbs` is measured and rendered nowhere.** `raidstats.py` parses and
+stores it; no page reads it. The boss table on `learn/difficulty.html` has a
+Spells column and no melee column, so every backstabbing raid boss in the corpus
+reads there as a caster — including Phinigel Autropos, whose three kits are now
+recorded in CLAUDE.md section 9. *Acceptance: either published, or moved to the
+"do not build" table with a reason. An unread field with no note beside it is what
+a later session deletes as dead.*
+
+**A correction can sit merged on `main` and unserved to readers indefinitely.**
+It happened for weeks once, and nothing in the toolchain watches for it.
+`scripts/freshness.py` does not cover this: it compares committed output against a
+fresh build, not the tree against the live site. *Acceptance: a command that
+fingerprints a live page against the same page on `main`. Lower priority — the
+deploy path is now understood and documented in CLAUDE.md.*
+
+---
+
 ## P0 — `sightings.py` is discarding every drop from an unsurveyed zone
 
 **Found 15 August 2026, while rewriting the Plane of Sky page.**
