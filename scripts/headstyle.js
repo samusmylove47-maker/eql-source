@@ -20,22 +20,29 @@
  * to every check this repo owns, and it is invisible in the diff too - the diff
  * says `<h3>` became `<h2>`, which is what was intended.
  *
- * THE FONTS OBJECTION, AND WHY IT DOES NOT APPLY
+ * THE FONTS OBJECTION, WHICH I GOT WRONG WHEN I WROTE THIS FILE
  *
- * CLAUDE.md forbids extending conformance.js to judge type, and it is right:
- * that script aborts every non-file request, so the three Google-hosted faces
- * fall back and it would be measuring a page which does not ship.
+ * This header used to say that conformance.js aborts every non-file request, so
+ * the three Google-hosted faces fall back and it measures a page that does not
+ * ship - and that this script "aborts them too", getting away with it only
+ * because a differential read cancels the handicap.
  *
- * This script aborts them too. It gets away with it because it never judges a
- * measurement - it only compares two of them. Both builds fall back identically,
- * so the handicap cancels and any surviving difference is real. An absolute read
- * would be worthless here; a differential one is sound. Do not add a threshold,
- * a target value, or a pass/fail to this file. The moment it judges a single
- * build on its own it inherits the objection and becomes wrong.
+ * THE FACES ARE SELF-HOSTED AND HAVE BEEN SINCE 30 AUGUST 2026. 26 committed
+ * .woff2 files, zero googleapis references, and a full sweep reports 0 non-file
+ * requests aborted. Measured 1 Sep 2026 by rendering one string in each face
+ * against a guaranteed fallback: monospace 563px, Cinzel 611, Saira Condensed
+ * 409, IBM Plex Mono 614, Public Sans 553. Four distinct widths - every face
+ * loads, here and in conformance.js alike.
  *
- * It also reports font-family, which IS affected by the fallback - the name will
- * read as the fallback, not the shipped face. That is fine for a diff and a lie
- * as an absolute. Same rule.
+ * So there was never a handicap to cancel. This script reads the real type, and
+ * the font-family it reports is the shipped face rather than a fallback name.
+ *
+ * KEEP IT DIFFERENTIAL ANYWAY, for the reason that actually applies: what it is
+ * FOR is proving a change moved nothing. A threshold or a target value would
+ * make it a style opinion, and there is no agreed target for how a heading
+ * should look - only agreement that a refactor must not alter it. Two dumps and
+ * a diff answer that exactly. One dump and a rule answers a question nobody
+ * asked.
  *
  * USE
  *
