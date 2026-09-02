@@ -35,6 +35,7 @@ node scripts/toolsmoke.js       # every tool runs; every served bundle parses
 | How many pages ship | `python3 scripts/check.py` prints `checked N pages` |
 | How many tools are registered | `python3 -c "import sys;sys.path.insert(0,'_build');from _partials import TOOLS;print(len(TOOLS))"` |
 | Which tools | same import, `[t['slug'] for t in TOOLS]` |
+| Whether the committed output is what a fresh build produces | `python3 scripts/freshness.py` &mdash; the one fault `check.py` structurally cannot see, because it runs after the build |
 | Every prose ceiling | `assets/prose-budget.json` — and `scripts/gate.py`'s `page_words` is the only correct way to measure against it |
 | A page's current weight | `python3 -c "import sys;sys.path.insert(0,'scripts');from gate import page_words;print(page_words('public/index.html','index.html'))"` |
 | The planner's catalogue counts | `assets/50-upgrades.json` → `figures`, **keyed by the dotted path each figure was read from** in the planner's `meta.json`. `counts.items` is the catalogue; `counts.purge.shipped` is what survived the era purge. They are not the same quantity and were equal until 18 Aug 2026 |
