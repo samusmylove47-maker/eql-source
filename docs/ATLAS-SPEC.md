@@ -233,11 +233,21 @@ one.
 
 ## 6. What this collides with
 
-- **`conformance.js` has no theme handling at all** — confirmed; the word does
-  not appear in it. Two viewports become four runs, ~86s each, so roughly three
-  minutes. It must set `data-theme` explicitly rather than trusting the headless
-  default, or the second pass silently repeats the first — and a clean sweep and
-  a dead check read the same, which is what `--show` exists for.
+- ~~**`conformance.js` has no theme handling at all** — confirmed; the word does
+  not appear in it.~~ **THIS WAS OVERTAKEN AND IS NOW FALSE, both halves.**
+  Measured 2 Sep 2026: the word appears 28 times, `THEMES` is declared at
+  `conformance.js:98`, and the sweep runs every page at two viewports **and** two
+  grounds — the finding lines read `@ mobile/torchlight` and `@ mobile/daylight`.
+  It already sets `data-theme` explicitly at `:391`, which is the thing this bullet
+  lists as a requirement; `:361` records why, and it is the trap this bullet
+  correctly predicted. So the work is done and the spec never noticed.
+
+  The runtime figure moved with it: **~238s for the whole site**, not ~86s each.
+
+  Kept struck rather than deleted, because a spec that asserts a *confirmed
+  absence* of something already present is the same shape as a "do not build"
+  row for a thing that ships — and this one would have sent a session to build
+  theme handling twice.
 - **OG cards** — figures already correct (section 0). The remaining question is
   whether the PNGs need light variants. **Recommendation: no.** They render
   against Discord and Slack chrome, not against our page, so our theme is not

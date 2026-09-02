@@ -465,16 +465,15 @@ scripts/
                     here first and the result publishes either way
   conformance.js    loads every built page in headless Chrome over file:// and
                     reports console errors, viewport overflow and an empty body,
-                    at 1440x900 and 390x844. Hand-run, ~86s for the site, no
+                    at 1440x900 and 390x844. Hand-run, ~238s for the site, no
                     dependencies — it drives Chrome over the DevTools Protocol
                     with node's built-in WebSocket. WARNs and exits 0 where no
-                    browser is installed. ~238s for the site, not 86 — measured
-                    1 Sep 2026. It still aborts every non-file: request, but
-                    THE FACES ARE SELF-HOSTED SINCE 30 AUG, so nothing remote is
-                    requested, the abort never fires and it lays every page out
-                    in the type that ships. The old ban on judging type rested on
-                    the opposite, and that reason is gone — see section 5 before
-                    acting on it. `--show` prints every layout measurement
+                    browser is installed. It still aborts every non-file: request,
+                    but THE FACES ARE SELF-HOSTED SINCE 30 AUG 2026, so nothing
+                    remote is requested, the abort never fires, and it lays every
+                    page out in the type that ships. The old ban on judging type
+                    rested on the opposite, and that reason is gone — see section 5
+                    before acting on it. `--show` prints every layout measurement
   toolrender.js     dumps what a tool actually renders, so a refactor can be
                     proved to change nothing. Run it before and after any change
                     that moves data a tool reads, and diff. toolsmoke says the
@@ -542,7 +541,7 @@ still the only way to know it works.
 node scripts/conformance.js
 ```
 
-Hand-run and not part of `build.sh` — it takes about 86 seconds against the
+Hand-run and not part of `build.sh` — it takes about four minutes against the
 whole site and needs a browser installed, and a rebuild must work without one.
 It loads every built page over `file://` at 1440x900 and 390x844 and reports
 console errors, `scrollWidth` against `innerWidth`, and an empty body. That is
