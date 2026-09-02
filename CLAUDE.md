@@ -471,6 +471,11 @@ scripts/
                     links 404ed under `python -m http.server` once they went
                     extensionless. Serves only; it never builds
   gate_selftest.py  proves the gate still catches each fault it was built for
+  freshness.py      rebuilds a COMMITTED tree and requires nothing to change.
+                    The one fault section 4 says check.py cannot catch: a
+                    generated file edited in place. check.py runs after the
+                    build, so the edit is already gone and it reports green.
+                    Hand-run, before opening a pull request
   prose_budget.py   lowers the prose ceilings after a trim. Run by hand
   stamp.py          fingerprints the build inputs so a stale tree cannot pass
 state/              automation memory. Do not hand-edit
@@ -480,7 +485,11 @@ state/              automation memory. Do not hand-edit
 page, plate cards and dungeon index all read from it.
 
 Generated files are overwritten by `./build.sh`. A rebuild silently throws away
-anything edited in place; `check.py` will not catch it.
+anything edited in place; `check.py` will not catch it &mdash; it runs *after* the
+build, so it validates the regenerated page and reports green while the edit is
+already gone. **`python3 scripts/freshness.py` is what catches it**: it rebuilds a
+committed tree and requires nothing to change. Run it before opening a pull
+request.
 
 ---
 
