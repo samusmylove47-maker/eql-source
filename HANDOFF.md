@@ -1,8 +1,8 @@
-# Handoff — 18 August 2026
+# Handoff — 1 September 2026
 
 Read `CLAUDE.md` first. This file is the current state and the open work.
 
-**This describes commit `5ee3cd3b`** (PR #103, merged — the tip of `main`). Diff
+**This describes commit `53fd3113`** (PR #181, merged — the tip of `main`). Diff
 against it rather than trusting anything below — a later session should
 re-derive, not remember. Name a commit `main` actually pointed at: a branch
 commit that only ever reached `main` inside a merge is not one, so diffing
@@ -20,8 +20,20 @@ and is deleted from the exchange. **The exchange holds only what is still live**
 ## Every figure here is a command, not a number
 
 A remembered figure survives a session boundary as a fact. A command survives as
-a fact-checker. Nothing in this file states a count that you cannot regenerate,
+a fact-checker. Nothing in this file SHOULD state a count you cannot regenerate,
 because the counts move and this file will not.
+
+**Stated as a fact this was false, and an audit on 1 Sep 2026 measured how
+false.** The file carried bare figures with no command beside them, and four had
+already drifted: 717 pages referencing `assets/site.css` when it was 718,
+`.nav-find` on 700 pages when it was 702, "36 self-test cases" when there are 48,
+and `conformance.js` at "86 seconds" when it now takes 238. Every one was true
+when it was typed, which is the whole problem: a figure is only as good as the
+command beside it, and a figure without one has no way to announce that its
+moment has passed.
+
+So read the sentence as the intention it always was, and put the command beside
+any number you add.
 
 ```bash
 ./build.sh                      # must exit 0
@@ -43,7 +55,7 @@ node scripts/toolsmoke.js       # every tool runs; every served bundle parses
 | How to refresh that snapshot | `node scripts/refresh-upgrades.mjs <YYYY-MM-DD>`. Hand-run, needs network, never in `build.sh`. Never hand-edit a figure |
 | Which zones are revamped | `assets/zones-index.json` → any zone with `revamped` |
 | How many zones have cleared every gate | `python3 -c "import json,collections;print(collections.Counter(z['verify_level'] for z in json.load(open('assets/zones-index.json',encoding='utf-8'))))"` |
-| Which pages lack the shared footer | `grep -rL site-foot --include='*.html' --exclude-dir=app public/` — the imported pages, and nothing else. Do **not** use `public/**/*.html`: with globstar off it silently skips the five root pages |
+| Which pages lack the shared footer | `grep -rL site-foot --include='*.html' --exclude-dir=app public/` — the imported pages, and nothing else. Do **not** use `public/**/*.html`: with globstar off it silently skips the six root pages |
 | What the Sky Ledger serves | `assets/sky-ledger.json` → `app.file`, `app.hash` |
 | Measured sessions, zones, raid fights | `assets/measured.json`, `assets/raids-measured.json` |
 
@@ -67,7 +79,7 @@ unwritten they read as omissions.
 | Withdrawing any existing tool | Nothing currently duplicates anything. The Sky Ledger withdrawal on 17 Aug was justified by a correctness property ours lacked; absent that, two tools are two tools. |
 | A shared `.btn` class | The imported pages carry their own stylesheets and never load `site.css`. A shared button would have to be injected into every one of them, and each already styles its own. Count them, never quote a number: `grep -rL site-foot --include='*.html' --exclude-dir=app public/`. Real, and post-launch. |
 | The doubled `cache-control` header | Real, harmless, post-launch. |
-| ~~Migrating every internal href to the extensionless form~~ **DONE 1 Sep 2026** | All 33,732 internal page links are extensionless; the 4 that are not are the hashed app bundles, which have no extensionless form. The 29 `_redirects` targets went with them. **The `.html` files are untouched on disk and the 307 stays**, so every URL already in the wild still works &mdash; measured, 0 previously-published addresses lost, and an independent sweep of 35,848 links found 0 unserved. **The local cost, found and then fixed:** `python -m http.server` does no extension guessing, so 23,140 of 35,848 links (64%) 404ed on the configured preview server while every one worked in production. `scripts/serve.py` performs the same mapping the host does and `.claude/launch.json` runs it; measured after, every link shape resolves and an unknown path serves the site's own 404. **Raw `file://` browsing still cannot navigate** and nothing can fix that &mdash; `conformance.js` is unaffected, since it opens each page by path and never follows a link. |
+| ~~Migrating every internal href to the extensionless form~~ **DONE 1 Sep 2026** | All internal page links are extensionless &mdash; 33,732 of 33,736 on 1 Sep 2026, the four being the hashed app bundles; the 4 that are not are the hashed app bundles, which have no extensionless form. The 29 `_redirects` targets went with them. **The `.html` files are untouched on disk and the 307 stays**, so every URL already in the wild still works &mdash; measured, 0 previously-published addresses lost, and an independent sweep of 35,848 links found 0 unserved. **The local cost, found and then fixed:** `python -m http.server` does no extension guessing, so 23,140 of 35,848 links (64%) 404ed on the configured preview server while every one worked in production. `scripts/serve.py` performs the same mapping the host does and `.claude/launch.json` runs it; measured after, every link shape resolves and an unknown path serves the site's own 404. **Raw `file://` browsing still cannot navigate** and nothing can fix that &mdash; `conformance.js` is unaffected, since it opens each page by path and never follows a link. |
 | Self-hosting the site's fonts | Real, post-launch. |
 | The map export | Post-launch. |
 | Editing `public/assets/site.css` casually | It re-hashes `CSS_V` and rewrites the stylesheet line on every page. Fine when the CSS genuinely changed; never as a side effect. |
@@ -83,9 +95,9 @@ that notices it is not wired into anything.
 **It stays hand-run. It does not go inside `check.py`.** Three reasons, in order
 of weight:
 
-1. **86 seconds against 2.3.** `check.py` runs before every commit and is
+1. **238 seconds against 7.7** (86 against 2.3 when this was written). `check.py` runs before every commit and is
    currently fast enough that nobody weighs whether to run it. Folding in the
-   sweep makes it roughly forty times slower, and the first thing that happens
+   sweep makes it roughly thirty times slower, and the first thing that happens
    to a slow pre-commit check is that people stop running it. A check that is
    skipped catches nothing, so this would trade a live fast check for a
    thorough one nobody runs.
@@ -95,12 +107,12 @@ of weight:
    no Chrome must still be able to build and validate this site.
 3. **It measures something that changes rarely.** Layout breaks when the chrome,
    the stylesheet or a template changes — not when a survey gains a paragraph.
-   Wiring it to every commit spends 86 seconds re-proving an unchanged layout
+   Wiring it to every commit spends about four minutes re-proving an unchanged layout
    hundreds of times over.
 
 The counter-argument is real and worth stating: `toolsmoke.js` **is** called by
 `check.py`, and it is also a node script that can be absent. The difference is
-0.08 seconds against 85.7 — two orders of magnitude, not a difference of
+0.09 seconds against 238 - nearly four orders of magnitude, not a difference of
 principle. If it ever gets fast enough, this reasoning is what to re-open.
 
 `CLAUDE.md` §5 names it as the thing to run **after a layout, chrome or
@@ -131,10 +143,10 @@ output about pages, it did not look at any.**
 **PR 3 is not being done, and this is the reasoning rather than a deferral.**
 
 The consolidation was going to take nine tools to three. It took nine to six and
-stops there. Ruled 18 Aug 2026 with the owner's authority delegated.
+stops there. Ruled 18 Aug 2026 with the owner's authority delegated. **(The registry holds eight today: `gap-engine` and `lockouts` were added afterwards, so the ruling was honoured - no further tool was deleted - and the count rose by addition.)**
 
 PR 2 removed the character sheet, the planar gear tool and the inventory reader,
-and it was right for one reason: **50 Upgrades already did all three jobs,
+and it was right for one reason: **EQLS Upgrades already did all three jobs,
 better, against a bigger catalogue.** Keeping a worse copy of something already
 available is the rule this site applies to other people's tools, so it has to
 apply to ours.
@@ -149,7 +161,7 @@ Three items were carried to PR 3 and are now moot in the right direction:
 
 - **The undefined-constant check stays.** It was to be retired because no
   surviving tool page would declare a capitalised constant. Three still do —
-  `combo-calculator` and `race-unlocks` nine each, `faction-impact` two — and
+  `combo-calculator` and `race-unlocks` eleven each **(this said nine, and it was already eleven at the commit it was written against &mdash; the count missed two comma-continued declarations)**, `faction-impact` two — and
   `gate_selftest` case 1 still points at a live target.
 - **The tools-index prose stays true.** "What you tick is packed into the page
   URL" describes race unlocks and the calculator, which survive; so does "the
@@ -164,6 +176,24 @@ in the change log, redirect both address forms, no tombstone.
 ---
 
 ## To the Director
+
+> **THIS SECTION HAS NOT BEEN PRUNED SINCE 18 AUGUST 2026, and by the rule at the
+> top of this file most of it should be gone.** Measured 1 Sep 2026 by
+> reconstructing it at all 24 commits that have touched this file since: it grew
+> monotonically from 1 entry and 39 lines to 20 entries and ~1,100 lines, and not
+> one commit in that range ever removed an entry. It is now roughly 83% of the
+> file. Six entries were sampled across the range and five report work that is
+> settled and merged &mdash; three say so in their own text, and one still names
+> an outstanding next action ("open the PR") that was completed and merged the
+> same week.
+>
+> **This is left for the Director rather than done here.** It is their exchange
+> and their rule, and deleting somebody's record on their behalf is not a
+> correction. But a cold session reads this file to learn the current state, and
+> at present five sixths of what it reads is finished work presented in the
+> present tense. That is the same failure as a stale count, at the scale of a
+> whole section.
+
 
 ### 31 Aug — Part 1: what is true here, load-bearing, and has never left this tree
 
@@ -240,7 +270,7 @@ reading a survey's CSS as though it were the site's.
 
 **4. Editing `public/assets/site.css` by one byte rewrites the stylesheet line on
 717 pages.** `CSS_V` in `_partials.py:32` is a content hash of that file, and
-every page carries it. Measured: 717 pages reference `assets/site.css`. **Who it
+every page carries it. Measured: 718 pages reference `assets/site.css`. **Who it
 changes: anyone proposing a style change** — the review is 700+ files whatever
 the edit was, and CLAUDE.md permits it only when the CSS genuinely changed.
 
@@ -252,7 +282,7 @@ protection. **Who it changes: anyone assuming a typed tool count is gated in
 prose.** It is not. What is gated is the registry against the footers and the hub.
 
 **6. 40 class names are used in built pages and defined nowhere.** `.nav-find`
-sits on 700 pages, referenced once in `_partials.py:241` and used by no
+sits on 702 pages, referenced once in `_partials.py:241` and used by no
 JavaScript — dead, harmless, and not worth a whole-site diff to remove. **Who it
 changes: anyone auditing the CSS**, who would otherwise read 40 as 40 defects.
 Two of them had a visible consequence and were fixed; the rest are named.
@@ -409,7 +439,7 @@ ordered. All four sent.
    any page fetching another origin on load, and fails if a declared face does
    not resolve from the stylesheet's own directory — B's trap, where a missing
    font silently falls back and "looks like a design choice rather than a bug".
-   36 self-test cases, up from 35.
+   48 self-test cases.
 5. **Held in my head and in no file: `learn/difficulty.html` overflows 390px by
    4 pixels**, in both grounds, found by the conformance run I did immediately
    before standby. It is unrelated to the fonts, it is not fixed, and it is the
@@ -578,7 +608,10 @@ offline"** above all seven cards, on a page that needs Google to finish drawing.
 2. Consider a site-level font disclosure equivalent to the one we give Auras.
    Your instruction protects the Auras sentence; it says nothing about our
    silence regarding ourselves, and I am raising that rather than acting on it.
-3. `conformance.js` aborts every non-file request, which is why nothing here ever
+3. `conformance.js` aborts every non-file request &mdash; **and since the faces
+   were self-hosted on 30 Aug 2026 nothing remote is requested, so it never
+   fires and the sweep lays out the real type.** This entry, and the reasoning
+   below it, predate that. Nothing here ever
    surfaced from a sweep: it has measured a site whose webfonts never load since
    the day it was written. That is documented and deliberate, and it is also why
    this went unseen — the fourth instrument this month whose stated limitation
@@ -1267,7 +1300,7 @@ It lists eight tools and omits `50-upgrades` — which is to say it omits the pa
 it is. It is our footer as it stood before PR #90 registered that tool.
 
 Fixing it entry by entry now means fixing it twice, because the tool count went from nine to six
-on 18 Aug. **It is seven from 26 Aug 2026** — the lockout tracker was promoted —
+on 18 Aug. **It is eight from 30 Aug 2026** — the gap engine was registered — (it was seven from 26 Aug; this paragraph's count has now gone stale three times, which is the argument the paragraph is making) —
 so "six is final", which this paragraph said until then, was a prediction rather
 than a fact and should not be read as one again. **After the consolidation lands, copy the footer
 once from the final state and add the drift check** — the same shape you already
@@ -1277,7 +1310,7 @@ cannot see your copy.
 
 **Your outbound links are already correct** and this closed a hold on our side:
 all 42 are absolute and extensionless, none end `.html`. Both forms resolve —
-`/x.html` 307s to `/x` — so nothing was ever broken, and the prohibition on our
+`/x.html` 307s to `/x` - so nothing was ever broken. **The prohibition is now STRONGER, not lifted:** the 307 is Cloudflare's default `html_handling`, the only lever would 404 all 716 sitemap URLs at once, and `wrangler.jsonc` carries that ruling in capitals beside the key. Internal links went extensionless on 1 Sep 2026 instead, so no internal click touches the redirect at all. What follows was written before that and is superseded: the prohibition on our
 touching that redirect is now lifted.
 
 Two more facts you cannot see from that repository:
@@ -1288,7 +1321,7 @@ entry, and both `_build/build9.py` (the survey's measured section) and
 `_build/build11.py` (the difficulty explainer) read it. When post-revamp logs
 land, the ingestion path is a data edit and a rebuild — no generator changes.
 
-**The licence correction is ours too.** `eqlwiki.com` publishes no content
+**The licence correction is ours too. DONE 18 Aug 2026** &mdash; `sources.html` records the withdrawal, and the planner snapshot carries no `license` field at all. Kept for the reasoning, which still governs any future licence claim. `eqlwiki.com` publishes no content
 licence: `siteinfo` `rightsinfo` is empty and `Project:Copyrights` is absent,
 checked 18 August 2026. Any Sources screen carrying `used under CC BY-SA 4.0`
 for eqlwiki-derived data is repeating an unsourced claim. Keep the attribution,

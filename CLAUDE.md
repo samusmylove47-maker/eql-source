@@ -455,11 +455,13 @@ scripts/
                     at 1440x900 and 390x844. Hand-run, ~86s for the site, no
                     dependencies — it drives Chrome over the DevTools Protocol
                     with node's built-in WebSocket. WARNs and exits 0 where no
-                    browser is installed. It aborts every non-file: request, so
-                    the webfonts fall back and it must NEVER be extended to
-                    judge type or spacing: that would be measuring a page which
-                    does not ship. `--show` prints every measurement, because a
-                    silent pass and a dead check read the same
+                    browser is installed. ~238s for the site, not 86 — measured
+                    1 Sep 2026. It still aborts every non-file: request, but
+                    THE FACES ARE SELF-HOSTED SINCE 30 AUG, so nothing remote is
+                    requested, the abort never fires and it lays every page out
+                    in the type that ships. The old ban on judging type rested on
+                    the opposite, and that reason is gone — see section 5 before
+                    acting on it. `--show` prints every layout measurement
   toolrender.js     dumps what a tool actually renders, so a refactor can be
                     proved to change nothing. Run it before and after any change
                     that moves data a tool reads, and diff. toolsmoke says the
@@ -534,10 +536,28 @@ console errors, `scrollWidth` against `innerWidth`, and an empty body. That is
 the layer `check.py` and `toolsmoke.js` both miss: neither of them lays a page
 out, so neither can see a page that overflows 390px or throws on load.
 
-**It aborts every non-file request, so the three Google-hosted faces fall back
-to system fonts.** Nothing it reports is a statement about type, rhythm or
-whether a label fits its box — it is measuring a page that does not ship. Do not
-extend it to make that judgement.
+**THE REASON THIS TOOL WAS BANNED FROM JUDGING TYPE NO LONGER HOLDS, and the
+ban has not been re-argued on other grounds.** This said the sweep aborts every
+non-file request so the three Google-hosted faces fall back, making anything it
+reported a statement about a page that does not ship.
+
+The abort rule is still there. Nothing remote is requested any more: the faces
+were **self-hosted on 30 August 2026** — 26 committed `.woff2` files and zero
+`googleapis` references — so a full sweep reports **0 non-file requests aborted**
+and lays out every page in the real faces. Measured 1 Sep 2026 by rendering one
+string in each face against a guaranteed fallback: monospace 563px, Cinzel 611,
+Saira Condensed 409, IBM Plex Mono 614, Public Sans 553. Four distinct widths;
+all four faces load.
+
+The script itself said both things at once until that day, printing
+`0 non-file request(s) aborted` and `the webfonts were aborted` in adjacent
+lines of the same output.
+
+**So the ban is a rule with a dead reason, not a rule that has been re-argued.**
+It may still be the right rule — a layout sweep that starts grading typography
+grows a second job — but that case has not been made, and nobody should cite the
+fallback fonts for it, because they no longer fall back. Ask before extending it;
+do not treat the old sentence as settling the question.
 
 Two traps are recorded in its header and both cost a wrong answer while it was
 being written: `mobile:true` makes the layout viewport elastic, so the overflow
@@ -643,7 +663,8 @@ because they are easy to break by accident:
 
   `scripts/headstyle.js` is the instrument: it dumps the computed type of every
   heading on a page, and a pure level change must differ in the element column
-  and nowhere else. It aborts the webfonts exactly as `conformance.js` does, and
+  and nowhere else. It aborts remote requests exactly as `conformance.js` does —
+  which since 30 Aug 2026 means it aborts nothing, because the faces are local —
   it is still sound, because **it only ever compares two equally-handicapped
   builds and never judges one.** That is the difference `docs/DESIGN.md` and this
   file both mean when they forbid conformance.js from judging type. Keep it

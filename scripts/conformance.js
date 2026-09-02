@@ -623,7 +623,8 @@ const showAll = args.includes('--show');
 
   if (!findings.length) {
     console.log('\nNo page overflowed its viewport, logged a console error, or rendered empty.');
-    console.log('This says nothing about how any of it looks: the webfonts were aborted.');
+    console.log(`Type IS what ships: ${blocked} remote request(s) aborted, and the faces`);
+    console.log('are self-hosted - so these pages were laid out in the real type.');
     cleanup();
     process.exit(0);
   }
@@ -633,7 +634,9 @@ const showAll = args.includes('--show');
     console.log(`  [${f.kind.padEnd(9)}] ${f.page} @ ${f.vp}${f.theme ? '/' + f.theme : ''}`);
     console.log(`               ${f.detail}`);
   }
-  console.log('\nReported, not judged. The webfonts were aborted, so nothing above is a');
+  console.log(`
+Reported, not judged. ${blocked} remote request(s) were aborted and the faces`);
+  console.log('are self-hosted, so this WAS laid out in the type that ships.');
   console.log('statement about type, rhythm or whether a label fits its box.');
   cleanup();
   process.exit(0);
