@@ -117,6 +117,10 @@ def fig(path):
 # the prose with it. Rounded to whole points: the source counts are exact and
 # the ratio is not the sort of figure that wants a decimal.
 PCT_UNATTRIBUTED = round(100 * fig('counts.standing.unattributed') / fig('counts.items'))
+# THIS REPO HOLDS THE TOTAL, NOT THE SPLIT. A 2,230 UNCONFIRMED / 5,369
+# explicit-era decomposition exists upstream and sums to exactly the 7,599 that
+# counts.purge.quarantined carries. Only the total is published to us, so anyone
+# handed the two parts should check they still sum before printing either.
 PCT_QUARANTINED = round(100 * fig('counts.purge.quarantined') / fig('counts.purge.before'))
 # The catalogue is counts.items; counts.purge.shipped is what survived the era
 # purge. The gap is the items admitted on evidence other than era, and it is the

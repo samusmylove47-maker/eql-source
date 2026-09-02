@@ -19,6 +19,13 @@ import heroart
 # when they called the site AI slop. This is a measurement, like every figure
 # on the page, and it carries its source line for the same reason they do.
 HERO_ZONE = 'najena'
+# UNGUARDED ON PURPOSE, AND THIS FILE DOES NOT DEGRADE GRACEFULLY BECAUSE OF IT.
+# The guarded read of assets/zone-geometry.json is further down in a try/except;
+# this call is at module level and runs first, and heroart.load() opens that file
+# without a guard. On a machine where the committed JSON is missing, build1.py
+# raises rather than falling back. The invariant rests on the file being
+# committed - which it is, and which is why geometry.py is a hand-run step and
+# not a build step. Do not cite this module as the model for optional inputs.
 _hp, _hw, _hh = heroart.paths(HERO_ZONE, box=1000, precision=0)
 _hstat = heroart.stats(HERO_ZONE)
 # Stagger the draw-in so it reads as a survey rather than a switch being

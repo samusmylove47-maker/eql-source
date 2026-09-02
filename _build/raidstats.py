@@ -139,7 +139,10 @@ def split_tier(name):
 # measurement and is not one, and 98 of 213 fights were published on the back of
 # it. Measured across the 13 staged logs on 26 August 2026:
 #
-#   * A ZONE line prints "0 (Normal)" exactly 0 times, in 385 zone lines.
+#   * A ZONE line prints "0 (Normal)" exactly 0 times, in 514 zone lines.
+#     (This read 385 until 1 Sep 2026. The corpus grew and the figure was
+#     re-measured to 514 in CLAUDE.md, docs/SOURCES.md, logstats.py and at
+#     line 207 OF THIS FILE - four places out of five. The fifth was here.)
 #   * An INVITE line prints it 16 times.
 #
 # So tier 0 IS named in the game - on the instance invite, never on the zone

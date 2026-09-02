@@ -297,6 +297,13 @@ def run(pages, fail, warn):
         # while passing tools/index.html, which printed 451 for months.
         "items indexed": IX["counts"]["item_pages"],
         "zones surveyed": len(Z),
+        # DELIBERATELY COMPUTED AND DELIBERATELY UNCONSUMED, which reads like
+        # protection that does not exist. No rule below names this label - LABELLED
+        # carries only "items indexed" and "named recorded", SINGLE only "zones
+        # surveyed", SINGLE_UNSTRIPPED only the two catalogue counts - so A TYPED
+        # TOOL COUNT IN PROSE IS NOT GATED HERE. What holds the count is check 6
+        # below, testing the registry against the footers and the hub. The prose
+        # rule was withdrawn for the reason given there; this line is its remains.
         "tools listed": None,          # filled below, once _partials is importable
     }
 

@@ -172,7 +172,14 @@ const EMPTY_CHARS = 40;
 const SETTLE_TRIES = 20;
 const SETTLE_MS = 100;
 
-/* WHY public/app/ WAS EXCLUDED, AND WHY IT IS NOT ANY MORE.
+/* A MUTATION THAT CANNOT APPLY REPORTS CLEAN. Before trusting any test that
+ * mutates one of these bundles, check the mutation landed: a 'renders nothing'
+ * case once passed because THERE IS NO <body> TAG IN THE LOCKOUTS BUNDLE, so the
+ * edit matched nothing. Still true - grep -c '<body' on eqls-lockouts returns 0,
+ * while the Sky Ledger bundle returns 1. A vacuous test and a passing one are
+ * the same colour.
+ *
+ * WHY public/app/ WAS EXCLUDED, AND WHY IT IS NOT ANY MORE.
  *
  * This walk read `if (depth === 0 && e.name !== 'app')`, so the only instrument
  * that opens a page in a real browser skipped the two files a reader opens AS
