@@ -454,6 +454,26 @@ lockouts = f'''
 </section>
 '''
 
+# THE LAUNCH BAND, from Session C's handover of 3 Sep 2026.
+#
+# It replaced a band whose only call to action was "More about EQLS Auras" - on a
+# product that had been released for two days, from a page carrying no way to get
+# it, under an eyebrow reading "Live now". It also described one feature of nine
+# and printed no figures while both neighbouring bands printed several.
+#
+# THE COPY IS READ, NOT WRITTEN HERE. See the note beside AURAS above: this
+# generator is explicitly not the home of that product's words. Band-specific
+# strings live under `band` in assets/auras.json; name, lede and caption are read
+# from the top level so the one-liner on this page and on /auras is one string.
+AB = AURAS['band']
+_au_subs = "\n".join(f'          <p class="featsub">{t}</p>' for t in AB['subs'])
+_au_sig = "".join(f'<span>{x}</span>' for x in AB['sig'])
+# The first door leads; the rest follow. `lead` is what makes the download the
+# filled button rather than the outline one.
+_au_doors = "\n".join(
+    f'            <a class="featdoor{" lead" if i == 0 else ""}" href="{d["href"]}">{d["label"]}</a>'
+    for i, d in enumerate(AB['doors']))
+
 auras = f'''
 <section class="band feat" id="auras" style="--c:var(--instr)">
   <div class="shell">
@@ -463,18 +483,20 @@ auras = f'''
                 data-video="assets/media/{MEDIA['auras-trailer']['file']}"
                 data-poster="assets/media/{MEDIA['auras-poster']['file']}">
           <img src="assets/media/{MEDIA['auras-poster']['file']}" width="1600" height="900"
-               alt="The EQLS Auras overlay running over the game, buff icons across the top
-                    of the screen each counting down its own remaining time.">
+               alt="{AB['alt']}">
           <button class="vplay" type="button">Play</button>
           <figcaption><span>{AURAS['caption']}</span></figcaption>
         </figure>
         <div>
-          <p class="eyebrow">{AURAS['eyebrow']}</p>
+          <p class="eyebrow">{AB['eyebrow']}</p>
           <h2 class="feath">{AURAS['name']}</h2>
           <p class="featlede">{AURAS['lede']}</p>
-
-          <p class="featfoot">{AURAS['platform']}</p>
-          <p class="feat-cta"><a href="auras">More about {AURAS['name']}</a></p>
+{_au_subs}
+          <p class="hero-sig featsig">{_au_sig}</p>
+          <div class="featdoors">
+{_au_doors}
+          </div>
+          <p class="featfoot">{AB['foot']}</p>
         </div>
       </div>
       <script>
@@ -595,6 +617,11 @@ home = head("Accurate, sourced and kept current",
   {hero_art}
   {hero_src}
 </section>
+<!-- THE LAUNCH BAND SITS DIRECTLY UNDER THE HERO, NOT THIRD.
+     Ordered by Session C 3 Sep 2026 and it is a promotion, not a tidy-up: the
+     released flagship was the third section and had a weaker call to action
+     than the tool below it. Order is now hero -> =Auras -> Start here. -->
+{auras}
 <section class="band doors">
   <div class="shell">
     <div class="sechead"><div><h2 class="sec">Start here</h2>
@@ -630,7 +657,6 @@ home = head("Accurate, sourced and kept current",
       written up in full, measured in play.</p>
   </div>
 </section>
-{auras}
 {upgrades}
 {feature}
 {lockouts}

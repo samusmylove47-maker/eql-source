@@ -13,7 +13,7 @@
   "url": "https://github.com/LoxyBee/EQLS-Auras/releases/download/latest-dev/EQLS-Auras-Setup.exe",
   "label": null,
   "version": null,
-  "_note": "Supplied by the owner 2 Sep 2026, in their words: \"This link will always be updated with the latest release version\". THAT SENTENCE IS THE CONTRACT - the URL is stable and the artefact behind it moves, which is why no version is pinned here. Verified on the day: 200, application/octet-stream, 75.4 MB, redirecting to GitHub's release-asset host. label and version stay null so the control derives its text from `name` above. NEVER put a guessed URL here."
+  "_note": "Supplied by the owner 2 Sep 2026, in their words: \"This link will always be updated with the latest release version\". THAT SENTENCE IS THE CONTRACT - the URL is stable and the artefact behind it moves, which is why no version is pinned here. Verified on the day: 200, application/octet-stream, 79.1 MB (79,088,490 bytes, decimal), redirecting to GitHub's release-asset host. label and version stay null so the control derives its text from `name` above. NEVER put a guessed URL here."
  },
  "links": [],
  "_links_note": "Optional. Each entry {\"href\": ..., \"label\": ..., \"note\": ...}. Somewhere it runs, a guide, a place to report a problem. Empty renders nothing.",
@@ -38,5 +38,32 @@
   ]
  },
  "caption": "The overlay in play &middot; 9s, silent",
- "_source": "HIGHLIGHTS.md (Shara, via the owner) — ## Pitch, read 1 Sep 2026"
+ "_source": "HIGHLIGHTS.md (Shara, via the owner) — ## Pitch, read 1 Sep 2026",
+ "band": {
+  "_README": "Session C's launch band copy, adjudicated 3 Sep 2026 against LoxyBee/EQLS-Auras@3a4d119c and handed over at samusmylove47-maker/EQLSAuras@932d6b53 (handoff/auras-launch-band.html). EXTRACTED FROM THAT FILE PROGRAMMATICALLY, NOT RETYPED, so what ships is what was gate-checked. It lives here rather than in _build/build1.py because that generator says in as many words that this product's copy has one home and it is not there - the band and /auras would otherwise be two copies of a third party's words drifting apart. TWO THINGS THAT MUST NOT COME BACK: the '11,337 buffs' figure from docs/auras/BAND-COPY.md (that file is an unreferenced archive; the roster actually loads 1,067, so the recommended figure overstates by 10.6x), and the clause 'It makes no network requests of its own' (false - the main window fetches a typeface at launch, which body[1] above discloses).",
+  "eyebrow": "Out now &middot; <b>version 1.0</b>",
+  "alt": "The EQLS Auras overlay running over the game, buff icons across the top of the screen each counting down its own remaining time.",
+  "subs": [
+   "Add overlays and put them where you want. Point an aura at any line in your log, not just buffs the app knows. It shows what you have landed on each groupmate, skins your action bar, routes you across the map, and tracks the weekly raid lockouts EQ never prints. One key hides the lot.",
+   "It reads files the client already has: the log it writes as you play, your spellbook, and the game&rsquo;s own spell icons. It does not read or alter the game&rsquo;s memory, inject code into it, or send it input. No telemetry, no analytics, no update check."
+  ],
+  "sig": [
+   "1,067 spells known",
+   "53 stacking slots",
+   "100+ zones routed",
+   "15 sounds included"
+  ],
+  "foot": "Free. It finds your EverQuest install on its own. Windows SmartScreen warns about an unknown publisher &mdash; <b>More info</b>, then <b>Run anyway</b>.",
+  "doors": [
+   {
+    "label": "Download for Windows &middot; 79.1 MB &rarr;",
+    "href": "https://github.com/LoxyBee/EQLS-Auras/releases/download/latest-dev/EQLS-Auras-Setup.exe"
+   },
+   {
+    "label": "What it does &rarr;",
+    "href": "auras"
+   }
+  ],
+  "_figures": "Verified independently by Session A before publishing, 3 Sep 2026: 1,067 = entries in src/shared/data/buffs.json; 53 = headings in src/shared/data/buff-lines.json; 15 = audio files in sounds/ (16 files, one is LICENSE.txt); 79.1 MB = 79,088,490 bytes decimal, matching the site's own convention; version 1.0 = package.json 1.0.0. '100+ zones routed' is Shara's own figure from HIGHLIGHTS.md and is hers to state."
+ }
 }
