@@ -159,14 +159,30 @@ CSS = '''<style>
 # travels on a share card where a stale figure cannot be corrected. Counting in
 # words sidesteps the whole class of fault.
 #
-# "TWENTY-THREE SLOTS" IS NOT A TYPO FOR EIGHTEEN, AND THIS IS THE ANSWER.
+# "TWENTY-THREE SLOTS" IS NOT A TYPO FOR EIGHTEEN, AND IT IS CHECKED NOW.
 # It was flagged twice on 18 Aug 2026 as unreconcilable, because the snapshot's
-# slots.worn.length is 18 and no path in the planner's meta.json equals 23.
-# Both figures are right and they count different things: 18 is slot TYPES in
-# the data, 23 is POSITIONS in the interface. The planner's own landing page
-# states it — "twenty-three slots including the two Any Slots" — and the
-# doubled positions account for the rest (two ears, two wrists, two fingers).
-# Read 18 Aug 2026. Do not "correct" this to eighteen.
+# slots.worn.length is 18 and NO PATH IN THE PLANNER'S meta.json EQUALLED 23.
+# Both figures were right and they count different things: 18 is slot TYPES in
+# the data, 23 is POSITIONS in the interface. The reasoning rested on the
+# planner's own landing-page copy, which is the weakest kind of support: prose
+# that can change without anything here noticing.
+#
+# ON 2 SEP 2026 THE PLANNER STARTED PUBLISHING IT, and it corroborates the 18 Aug
+# reading exactly: slots.positions is {total: 23, worn: 21, any: 2, types: 18,
+# doubled: [EAR, WRIST, FINGERS]} — 18 types, a second position for each of the
+# three doubled ones, plus the two Any Slots. So the word below is no longer a
+# typed figure resting on somebody else's marketing copy.
+#
+# The assert is the point. The description stays in WORDS for the reason given
+# above — it travels on a share card where a stale numeral cannot be corrected —
+# and the assert is what stops the word going stale silently. If the planner ever
+# reshapes its slots again this build fails here, loudly, instead of a share card
+# claiming twenty-three of something the planner no longer has.
+_POSITIONS = fig('slots.positions.total')
+assert _POSITIONS == 23, (
+    f"the planner now reports {_POSITIONS} slot positions, and the description "
+    f"below says twenty-three in words. Re-read the planner, then change the word "
+    f"and this assert together - do not delete the assert to make the build pass.")
 page = head(
     "EQLS Upgrades",
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "
