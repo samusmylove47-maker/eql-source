@@ -464,6 +464,39 @@ if len(_orphans) > 10:
 print(f"  title attributes: {len(_orphans)} of "
       f"{sum(len(_TITLE.findall(open(_q, encoding='utf-8', errors='replace').read())) for _q in pages)}"
       f" are the sole carrier of their text")
+
+# EVERY FACE THE BUILD SHIPS MUST HAVE A LICENCE NOTICE, AND THE LIST IS DERIVED.
+#
+# The site self-hosted its typefaces on 30 Aug 2026, which moved a licence
+# obligation onto this repository: the OFL requires the notice to travel with the
+# font. public/assets/fonts/LICENSES.md carries it, and until 3 Sep 2026 NOTHING
+# CHECKED THAT IT STILL DID. Not an existence-shaped check that could pass while
+# covering three faces of four - no check at all.
+#
+# The families come from fonts.css, the artifact that actually declares them,
+# rather than from a list written here. That is the whole point: embedding a
+# fifth face makes this fail, where a hardcoded list of four would keep passing
+# and cover four of five. A guard that enumerates from a copy of the truth is the
+# same fault it is meant to catch, one level up.
+_fcss = "public/assets/fonts/fonts.css"
+_flic = "public/assets/fonts/LICENSES.md"
+if os.path.exists(_fcss):
+    _fam = sorted(set(re.findall(r"""font-family:\s*["']([^"']+)["']""",
+                                 open(_fcss, encoding="utf-8").read())))
+    if not _fam:
+        fail(f"{_fcss} declares no font-family, so the licence check below has "
+             f"nothing to check and would pass silently")
+    _lic = open(_flic, encoding="utf-8").read() if os.path.exists(_flic) else ""
+    if not _lic:
+        fail(f"{_flic} is missing, and the site self-hosts {len(_fam)} typeface "
+             f"famil(ies) whose licence requires the notice to ship with them")
+    for _f in _fam:
+        if _f not in _lic:
+            fail(f'"{_f}" is served from public/assets/fonts/ and is named nowhere '
+                 f"in {_flic}. The licence requires the notice to travel with the "
+                 f"font; shipping the face without it is the obligation unmet")
+    print(f"  font licences: {len(_fam)} shipped famil(ies), "
+          f"{sum(1 for _f in _fam if _f in _lic)} named in LICENSES.md")
 # THE PATH IS public/index.html AND HAS BEEN SINCE THE SITE MOVED THERE.
 #
 # This read a root index.html that has not existed for the life of this layout,
