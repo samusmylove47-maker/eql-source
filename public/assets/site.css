@@ -612,7 +612,19 @@ code{font-family:"IBM Plex Mono",monospace;font-size:.88em;color:var(--bone);
   text-transform:uppercase;letter-spacing:.02em;font-size:17px;color:var(--ink)}
 .zprov p,.zprov div{margin:0 0 9px;color:var(--dim);font-size:13.5px;line-height:1.6}
 .zprov strong{color:var(--ink)}
-.src-line{margin:0;font-size:13.5px;color:var(--dim)}
+/* THE PROVENANCE LINE, AND THIS RULE STYLED NOTHING UNTIL 3 SEP 2026.
+   `.src-line` is used by exactly 13 pages and NONE OF THEM LINKS THIS
+   STYLESHEET - they are the imported plates, which carry their own CSS and their
+   own copy of this rule. So the selector here was dead.
+   Meanwhile 678 pages that DO link this stylesheet render `<p class="src">`, the
+   provenance line under a figure - the site's signature move - and it had no
+   rule at all, so it shipped as unstyled body text at full size and full colour.
+   Two halves of a rename that only ever went one way: the class moved and the
+   selector did not follow. Same shape as the tC/.tc badge mismatch.
+   Both names are matched now. Measured before changing it: on pages that link
+   this file the only bare `src` class is that paragraph, 1,706 of them, so there
+   is nothing else for the new half of the selector to catch. */
+.src-line,.src{margin:0;font-size:13.5px;color:var(--dim)}
 .foot-contact{margin:22px 0 0;padding:16px 18px;border:1px solid var(--line);
   border-radius:4px;background:rgba(255,255,255,.02)}
 .foot-contact p{margin:0;color:var(--dim);font-size:14px;line-height:1.6}

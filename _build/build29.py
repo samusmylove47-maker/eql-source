@@ -189,14 +189,17 @@ page = head(
     "no account and no server.",
     rel="../", extra=CSS, og="tools", canon="tools/50-upgrades") + bar("../") + f'''
 <main>
-  <section class="band" style="border-top:0">
+  <section class="hero page">
     <div class="shell">
+      <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+        <a href="./">Tools</a> &nbsp;/&nbsp; EQLS Upgrades</p>
       <p class="eyebrow">Gear planning &middot; <b>built and hosted elsewhere</b></p>
       <h1 class="display">EQLS Upgrades</h1>
       <p class="hero-lede">Pick a trio and a race, fill the slots, and compare what each
         candidate does to the character rather than to the item beside it. It runs entirely
         in the browser: nothing is stored, no account is made, and a build travels as a
         link rather than as a saved record on someone else&rsquo;s machine.</p>
+      <p class="hero-sig"><span>{fig('counts.items'):,} items</span><span>{fig('counts.withStats'):,} with stats</span><span>{_POSITIONS} slots</span><span>3 classes at once</span></p>
 
       <a class="upgo" href="{U['url']}">
         <b>Open the planner</b>

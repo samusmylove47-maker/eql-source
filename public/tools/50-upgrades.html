@@ -20,7 +20,7 @@
 <link rel="canonical" href="https://eqlsource.com/tools/50-upgrades">
 <link rel="stylesheet" href="../assets/fonts/fonts.css?v=4c604a33">
 <link rel="icon" href="../favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="../assets/site.css?v=0f49cea2">
+<link rel="stylesheet" href="../assets/site.css?v=071d0555">
 <script>/* Torchlight is the default and the CSS says so, so this only ever has
    work to do for a reader who chose daylight. It runs before first paint to
    avoid a flash of the wrong ground, and it is wrapped because localStorage
@@ -91,14 +91,17 @@ var next=d.getAttribute("data-theme")==="light"?"dark":"light";
 d.setAttribute("data-theme",next);
 try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 <main>
-  <section class="band" style="border-top:0">
+  <section class="hero page">
     <div class="shell">
+      <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
+        <a href="./">Tools</a> &nbsp;/&nbsp; EQLS Upgrades</p>
       <p class="eyebrow">Gear planning &middot; <b>built and hosted elsewhere</b></p>
       <h1 class="display">EQLS Upgrades</h1>
       <p class="hero-lede">Pick a trio and a race, fill the slots, and compare what each
         candidate does to the character rather than to the item beside it. It runs entirely
         in the browser: nothing is stored, no account is made, and a build travels as a
         link rather than as a saved record on someone else&rsquo;s machine.</p>
+      <p class="hero-sig"><span>3,883 items</span><span>1,776 with stats</span><span>23 slots</span><span>3 classes at once</span></p>
 
       <a class="upgo" href="https://samusmylove47-maker.github.io/EQL50ups/">
         <b>Open the planner</b>
