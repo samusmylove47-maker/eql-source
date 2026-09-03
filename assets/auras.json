@@ -10,10 +10,10 @@
   "The idea is WeakAuras&rsquo;. The code is not: a from-scratch implementation for EverQuest Legends, sharing no code and no trigger format with it, and neither affiliated with nor endorsed by its authors."
  ],
  "download": {
-  "url": null,
+  "url": "https://github.com/LoxyBee/EQLS-Auras/releases/download/latest-dev/EQLS-Auras-Setup.exe",
   "label": null,
   "version": null,
-  "_note": "Fill url with the real download address and the page renders a download control. While it is null the page says nothing about how to get it, because there is no true thing to say. NEVER put a guessed URL here."
+  "_note": "Supplied by the owner 2 Sep 2026, in their words: \"This link will always be updated with the latest release version\". THAT SENTENCE IS THE CONTRACT - the URL is stable and the artefact behind it moves, which is why no version is pinned here. Verified on the day: 200, application/octet-stream, 75.4 MB, redirecting to GitHub's release-asset host. label and version stay null so the control derives its text from `name` above. NEVER put a guessed URL here."
  },
  "links": [],
  "_links_note": "Optional. Each entry {\"href\": ..., \"label\": ..., \"note\": ...}. Somewhere it runs, a guide, a place to report a problem. Empty renders nothing.",

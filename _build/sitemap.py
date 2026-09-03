@@ -90,7 +90,45 @@ for p in sorted(glob.glob("public/*.html")+glob.glob("public/*/*.html")):
 open("public/sitemap.xml","w",encoding="utf-8",newline="\n").write(
  '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
  + "\n".join(pages) + "\n</urlset>\n")
-open("public/robots.txt","w",encoding="utf-8",newline="\n").write(f"User-agent: *\nAllow: /\nDisallow: /_build/\n\nSitemap: {DOMAIN}/sitemap.xml\n")
+# WE DISALLOW NOTHING, AND THAT IS A DECISION RATHER THAN AN OVERSIGHT.
+#
+# Ruled 2 Sep 2026 by the Director and this session jointly, on the owner's
+# instruction to settle what we withhold from OpenAI, ClaudeBot and other
+# reputable crawlers. The answer is: nothing.
+#
+# THE DECIDING ARGUMENT IS ABOUT THIS SITE, not about openness in general.
+# CLAUDE.md's founding premise is that this community repeats classic EverQuest
+# text as though it were Legends fact, and the site exists to displace it. AI
+# assistants are now a principal channel carrying that error. Blocking reputable
+# AI crawlers would remove the correction from the channel doing the damage. For
+# another site that is a trade-off; here it is self-defeating.
+#
+# Three supporting reasons, kept because a rule resting on one is fragile:
+#   * robots.txt binds only the compliant. The real choice is "present in AI
+#     answers or absent from them", with the scrapers unaffected either way.
+#   * eqprogression.com refuses us, and docs/SOURCES.md tells us to ask a human
+#     to fetch it by hand. Their Disallow did not protect the content; it turned
+#     automated access into manual access. Ours would do the same.
+#   * public/data/*.vN.json is a PUBLIC CONTRACT that check.py defends. Telling
+#     machines not to read the thing built for machines to read deters a tool
+#     author and not one scraper.
+#
+# THE OWNER WAS TOLD IT IS NOT SYMMETRICALLY REVERSIBLE. Removing a rule later
+# costs one line; material already ingested cannot be un-ingested. The ruling
+# stands because the content is already fetched wholesale by every visitor's
+# browser and already reachable by every non-compliant actor, so the marginal
+# ingestion a Disallow would prevent is small and the correction it would
+# suppress is the site's whole purpose.
+#
+# `Disallow: /_build/` WAS REMOVED, NOT FORGOTTEN. public/_build has never
+# existed, so the origin has never served that path: our only exclusion rule
+# named nothing. A robots.txt carrying a decorative rule is worse than one
+# carrying none, because it reads as a policy somebody thought about.
+#
+# No per-bot stanzas, no ai.txt, no llms.txt. A stanza naming GPTBot and
+# ClaudeBot would be the most visible statement on the site about a thing we are
+# choosing not to enforce.
+open("public/robots.txt","w",encoding="utf-8",newline="\n").write(f"User-agent: *\nAllow: /\n\nSitemap: {DOMAIN}/sitemap.xml\n")
 _dates = len(set(PAGE_DATE.values()))
 print(f"sitemap.xml + robots.txt written for {DOMAIN} ({len(pages)} urls, "
       + (f"{_dates} distinct modification date(s) from git)" if PAGE_DATE
