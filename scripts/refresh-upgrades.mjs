@@ -81,7 +81,21 @@ const PATHS = [
   'counts.purge.admittedOutsideScrape',  // the difference between the two above
   'classes.length',
   'races.length',
-  'slots.worn.length',
+  // RENAMED UPSTREAM. This was `slots.worn.length` and the planner moved it to
+  // `slots.types` on or before 2 Sep 2026. Same 18 entries; the refusal to write
+  // is what surfaced it, exactly as this file's header says it should - a path
+  // that no longer exists upstream stops the vendoring instead of quietly
+  // dropping a figure.
+  'slots.types.length',
+  // AND THE PLANNER NOW PUBLISHES THE 23 IT DID NOT PUBLISH ON 18 AUG 2026.
+  // _build/build29.py carried a long note explaining that "twenty-three slots"
+  // was not a typo for eighteen and that NO PATH IN meta.json EQUALLED 23, so the
+  // figure rested on the planner's landing-page copy. It is a field now, and it
+  // corroborates the reasoning exactly: total 23 = worn 21 + any 2, where worn is
+  // the 18 types plus a second position for each of EAR, WRIST and FINGERS.
+  'slots.positions.total',
+  'slots.positions.worn',
+  'slots.positions.any',
   'era.current',
   'license.content',
   'license.checked',
