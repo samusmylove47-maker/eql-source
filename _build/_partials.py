@@ -324,6 +324,26 @@ var next=d.getAttribute("data-theme")==="light"?"dark":"light";
 d.setAttribute("data-theme",next);
 try{{localStorage.setItem("eqls-theme",next);}}catch(e){{}}}});}})()</script>'''
 
+# EQLS AURAS IS NOT IN `TOOLS`, AND IT STILL NEEDS A ROUTE IN.
+#
+# It is Shara's product rather than one of our browser trackers, so it is not in
+# the registry: adding it there would change the tool count, demand a card on a
+# hub whose heading counts trackers, and generate a tools/ page for a thing that
+# is downloaded rather than run in a tab.
+#
+# But until 2 Sep 2026 THE ONLY LINK TO /auras ON THE WHOLE SITE WAS INSIDE THE
+# HOME PAGE'S FEATURED BAND. Measured: two pages carried the href, and one of
+# them was /auras itself, which is not a route in. When the featured slot rotates
+# to another product the site's only door to this one rotates with it, and no
+# check would say a word - the footer rule tests registered tools, and this is
+# not one.
+#
+# So it is a hand-written entry beside the generated ones. The name is read from
+# assets/auras.json rather than typed, because her name lives in one place and
+# this file is not it.
+AURAS_NAME = json.load(open('assets/auras.json', encoding='utf-8'))['name']
+
+
 def _foot_links(items, folder, rel):
     """Footer list items for a registry. Generated so the footer cannot drift
     from the pages it is meant to link."""
@@ -351,6 +371,7 @@ def foot(rel=""):
       </ul></nav>
       <nav aria-label="Tools"><p class="fh">Tools</p><ul>
 {_foot_links(TOOLS, "tools", rel)}
+        <li><a href="{rel}auras">{AURAS_NAME}</a></li>
       </ul></nav>
       <nav aria-label="Learn"><p class="fh">Learn</p><ul>
 {_foot_links(LEARN, "learn", rel)}
