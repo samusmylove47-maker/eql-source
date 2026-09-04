@@ -24,10 +24,51 @@ own metadata, and a check that compares it.*
 
 **Teach `logstats.py` to read the instance invite.** `raidstats.py` reads it and
 `logstats.py` does not, so 61 of its 172 sessions rest on something other than a
-numbered zone line — 50 unsuffixed, 10 loot-tier, 1 with nothing at all. This was
-called the highest-value follow-up available and was held back because it moves
-`measured.json` and the public `sightings` contract. *Acceptance: the 61 resolve
-or are stated as unresolved with a reason, and the published contract is versioned
+numbered zone line — 50 unsuffixed, 10 loot-tier, 1 with nothing at all. The
+generator's own docstring already describes the gap: it records that base "is
+named Normal on the instance invite, which prints it 16 times", and then does not
+read it.
+
+> **THE BLOCKER THIS ENTRY RECORDED DOES NOT EXIST. Measured 4 Sep 2026.**
+>
+> It said the work "moves `measured.json` and the public `sightings` contract"
+> and required the contract to be versioned. **`difficulty_from` appears 0 times
+> across every `public/data/*.json`.** The difficulty NUMBER is published — 2,490
+> occurrences in `sightings.v1.json`, 13 in `zones.v1.json` — so the question is
+> whether reading the invite moves a number. **It cannot.**
+>
+> Pairing every invite in all 13 staged logs with the zone line that followed it,
+> using `raidstats.py`'s own pattern and an independent implementation:
+>
+>     agree exactly                                73
+>     DISAGREE                                      0
+>     zone line dropped a tier the invite named    16
+>
+> All 16 gap-fills are tier 0, which is what `logstats.py`'s existing bare-zone-line
+> inference already produces. **So the change is PROVENANCE-ONLY: it strengthens
+> `difficulty_from` on up to 61 sessions and changes not one figure a reader sees.
+> There is nothing to version.**
+>
+> Those figures reproduce CLAUDE.md §2's own 73 / 0 / 16 exactly. **The population
+> was checked rather than assumed** — the constitution measured raid FIGHTS and
+> this covers 172 SESSIONS, so it was re-run on the full corpus rather than
+> carried across.
+>
+> **A recorded blocker that does not exist is worse than an unrecorded one: it
+> does not merely fail to warn, it actively defers.** This entry has read "held
+> back because it moves published figures" for weeks, and every reader has
+> correctly declined to start it for a reason that was not true. A stale backlog
+> entry produces no work, and nothing ever reports work that did not happen.
+
+**The real precondition is different and smaller.** `logstats.py` is hand-run and
+`assets/measured.json` is committed, so it is the `raidstats.py` shape: **prove
+the generator reproduces its committed output byte-identically before editing**,
+or a change cannot be told apart from log drift. That is an hour done properly,
+not ten minutes.
+
+*Acceptance: the 61 resolve or are stated as unresolved with a reason; the
+generator is proved to reproduce before any edit; and if a published figure does
+move after all — contrary to the measurement above — the contract is versioned
 rather than changed in place.*
 
 **`check.py`'s own assertions are almost entirely unexercised.** A coverage pass
