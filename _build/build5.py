@@ -121,7 +121,22 @@ a.nm:focus-visible{outline:2px solid var(--zc);outline-offset:3px;border-radius:
   padding:1px 4px;border:1px solid var(--rule2);color:var(--dim)}
 .res .cls span.hit{border-color:var(--bone);color:var(--bone)}
 @media(max-width:940px){
-  .res{grid-template-columns:minmax(0,1fr) auto;gap:6px 12px}
+  /* TWO PROPORTIONAL COLUMNS, NOT ONE FLEXIBLE AND ONE max-content.
+     `auto` sizes to max-content and wins outright against minmax(0,1fr),
+     whose floor is 0 - so a row whose zone name is long starved the name
+     column to nothing and the item name painted straight over the column
+     beside it. Measured at 390px across the 447 rows this tool renders:
+     37 rows under 60px, 20 of them at EXACTLY 0, and 17 rows with content
+     outside its box. Every existing check was green: check.py reads markup,
+     toolsmoke.js runs the script under a stub DOM, and conformance.js
+     compared the DOCUMENT against the viewport - and the document never
+     overflowed, because a grid track does not move when its text leaves it.
+     Found 4 Sep 2026 by the content-vs-box probe added to conformance.js in
+     the same change, which is the only instrument here that can see it.
+     minmax(0,auto) does NOT fix it - measured, no change at all, because the
+     max-content sizing still wins. Two fr tracks do: 37 -> 0, 20 -> 0,
+     17 -> 0, smallest name column 202px. */
+  .res{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:6px 12px}
   .res .cell:nth-of-type(2){display:none}
   .res .zone{grid-column:2;grid-row:1}
 }

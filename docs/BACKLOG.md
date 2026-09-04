@@ -54,6 +54,32 @@ deploy path is now understood and documented in CLAUDE.md.*
 
 ---
 
+## A display heading exceeds its 16ch measure on five pages — a design question
+
+**Reported by the content-vs-box probe in `scripts/conformance.js`, and left open
+deliberately rather than tuned out of the report.** Ten findings, desktop only,
+on `named/cauldronbubble`, `named/the-thaumaturgist`, `named/arisen-thaumaturgist`
+and two item pages. `CAULDRONBUBBLE` needs 799px in the 713px box that
+`h1.display{max-width:16ch}` gives it.
+
+**Measured, and nothing is lost:** at 1440 the heading's ink stops at 932px while
+its shell runs to 1333, so no text leaves the page and nothing sits in the
+overhang. `16ch` is a measure for line length, not a boundary, and a single
+unbreakable word cannot honour it.
+
+The mobile half of this WAS a defect and is fixed: at 390px the same heading
+painted to 407px against a 390px viewport with `document.scrollWidth` still
+reading 390, so 17px of the name was off-screen and unreachable — the layout
+clipped instead of scrolling, which is the one shape the old document-level
+check could not report. `h1.display{overflow-wrap:anywhere}` now applies under
+760px only.
+
+*Acceptance: either the desktop cap is relaxed for single-word headings, or the
+finding is accepted as a measure being exceeded harmlessly and the probe learns
+to say so. `docs/DESIGN.md` is binding — this is a typographic decision and not
+a bug to be silenced. Do not simply raise the probe's threshold past it: 86px is
+far above every real fault it has found.*
+
 ## P0 — `sightings.py` is discarding every drop from an unsurveyed zone
 
 **Found 15 August 2026, while rewriting the Plane of Sky page.**
