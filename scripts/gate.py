@@ -834,6 +834,17 @@ def run(pages, fail, warn):
                 live[f"dungeons-{_zz['slug']}.zem"] = str(_zz["zem"])
                 live[f"dungeons-{_zz['slug']}.respawn"] = _zz["respawn"] or "not recorded"
                 live[f"dungeons-{_zz['slug']}.title"] = _zz["title"]
+            # The =Upgrades card, read by the same dotted paths build29.py uses.
+            # Guarded rather than assumed: if the vendored snapshot is missing
+            # the card is not rendered either, so there is nothing to check.
+            try:
+                _u = json.load(open("assets/50-upgrades.json",
+                                    encoding="utf-8"))["figures"]
+                live["tools-50-upgrades.items"] = f"{_u['counts.items']:,}"
+                live["tools-50-upgrades.slots"] = str(_u["slots.positions.total"])
+                live["tools-50-upgrades.with_stats"] = f"{_u['counts.withStats']:,}"
+            except (OSError, ValueError, KeyError):
+                pass
             # sources.tiers is a constant in ogcards.py rather than a derived
             # figure, so there is nothing to re-derive it FROM. Recorded, not
             # checked - and said here so the omission is not read as coverage.

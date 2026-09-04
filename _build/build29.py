@@ -260,6 +260,15 @@ CSS = '''<style>
 # and the assert is what stops the word going stale silently. If the planner ever
 # reshapes its slots again this build fails here, loudly, instead of a share card
 # claiming twenty-three of something the planner no longer has.
+# ITS OWN SHARE CARD SINCE 4 SEP 2026, rather than the section's.
+#
+# This page shared tools.png with every other tool, so the relaunch's flagship
+# link showed a card naming the SECTION rather than the product - and that card
+# was itself two tools out of date, which is what sent anyone looking at it.
+#
+# The card's figures come from assets/50-upgrades.json by the same dotted paths
+# this file reads, and gate.py check 5c2 re-derives them, so the card cannot go
+# stale behind the page the way tools.png did behind the site.
 _POSITIONS = fig('slots.positions.total')
 assert _POSITIONS == 23, (
     f"the planner now reports {_POSITIONS} slot positions, and the description "
@@ -325,7 +334,7 @@ page = head(
     "EQLS Upgrades",
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "
     "no account and no server.",
-    rel="../", extra=CSS, og="tools", canon="tools/50-upgrades") + bar("../") + f'''
+    rel="../", extra=CSS, og="tools-50-upgrades", canon="tools/50-upgrades") + bar("../") + f'''
 <main>
   <section class="hero page">
     <div class="shell">

@@ -63,7 +63,10 @@
   "learn.entries": "seven",
   "raids.bosses_measured": "36",
   "sources.tiers": "M, and 1 to 5",
+  "tools-50-upgrades.items": "3,883",
+  "tools-50-upgrades.slots": "23",
+  "tools-50-upgrades.with_stats": "1,776",
   "tools.trackers": "eight"
  },
- "rendered": 20
+ "rendered": 21
 }
