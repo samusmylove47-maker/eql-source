@@ -342,6 +342,7 @@ const showAll = args.includes('--show');
   const findings = [];
   const groups = new Map();
   let contrastChecked = 0, contrastUnmeasurable = 0;
+  let clipChecked = 0;
   let themeScriptId = null;
   const t0 = Date.now();
 
@@ -450,7 +451,7 @@ const showAll = args.includes('--show');
       }
 
       const g = groupOf(page);
-      if (!groups.has(g)) groups.set(g, { n: 0, overflow: 0, errors: 0, empty: 0, contrast: 0 });
+      if (!groups.has(g)) groups.set(g, { n: 0, overflow: 0, errors: 0, empty: 0, contrast: 0, clip: 0 });
       const gs = groups.get(g);
       gs.n++;
 
@@ -545,8 +546,80 @@ const showAll = args.includes('--show');
             };
             let checked = 0, unmeasurable = 0;
             const bad = [];
+            // CONTENT AGAINST ITS OWN BOX, WHICH IS NOT WHAT THE OVERFLOW CHECK
+            // ABOVE MEASURES.
+            //
+            // scrollWidth vs innerWidth on the document is GEOMETRY: it sees a
+            // page pushed sideways. It cannot see text painting outside a cell
+            // that never moves, because a grid track stays exactly as wide as
+            // it was and only the glyphs leave it. The sibling =Upgrades
+            // project shipped that exact bug - 'white-space: nowrap' in a 140px
+            // track whose longest string needs 165px, printing one column over
+            // the next - past a document-level check that stayed green, and it
+            // was found by PHOTOGRAPHING the screen rather than by any test.
+            //
+            // Their guard took three attempts and the first two were worthless.
+            // One compared neighbouring bounding boxes, which can never
+            // intersect in a grid; one used a fixture too short to produce the
+            // long string, so it passed against the bug deliberately put back.
+            // Only content measured against its own box fails when the bug
+            // returns, so that is what this is.
+            //
+            // THE OVERFLOW DIRECTION THAT MATTERS IS 'visible', AND THAT IS THE
+            // OPPOSITE OF THE OBVIOUS RULE. Measured across this site before
+            // writing it: the home page has 0 elements overflowing with
+            // overflow-x visible and 40 with it hidden or clipped - and every
+            // one of those 40 is deliberate. A .sr-only span is a 1px box
+            // holding a sentence on purpose, and a .plate card crops its own
+            // plate number by the card edge because docs/DESIGN.md says it
+            // should. Flagging 'hidden' would report the design as a defect and
+            // miss the fault, which is text with NOTHING clipping it.
+            //
+            // 'auto' and 'scroll' are excluded for the same reason from the
+            // other side: a .tw table wrapper is SUPPOSED to be wider than its
+            // box, and CLAUDE.md requires wide tables to scroll inside one.
+            //
+            // Proved both directions in a browser on this site before landing:
+            // 0 findings on a clean page, and injecting a 140px track holding a
+            // nowrap string fires it at 280>140.
+            let clipChecked = 0;
+            const clipped = [];
             const all = document.querySelectorAll('body *');
             for (const el of all) {
+              // ABOVE the own-text guard below, deliberately. A cell that
+              // overflows often holds its text in a child, and requiring own
+              // text here would reproduce the too-short-fixture mistake: a
+              // check that runs, examines the wrong set, and passes.
+              const cw = el.clientWidth;
+              if (cw > 0) {
+                const ox = getComputedStyle(el).overflowX;
+                if (ox !== 'auto' && ox !== 'scroll' && ox !== 'hidden' && ox !== 'clip'
+                    // A DRAWING IS NOT A LAYOUT, AND ITS LABELS ARE PART OF THE
+                    // DRAWING - gate.py makes the same exclusion for the prose
+                    // ratchet, for the same reason. An SVG <text> is positioned
+                    // by the drawing's own coordinates and has no CSS box to
+                    // overflow; measuring one asks a question that has no
+                    // meaning. 84 of the first 132 findings were floor-plan
+                    // labels, which would have buried the 17 real ones.
+                    && !(el.ownerSVGElement || el.tagName === 'svg')) {
+                  clipChecked++;
+                  // FOUR PIXELS, AND THE GAP IN THE DATA IS WHY.
+                  // Measured across the site: display headings in Cinzel
+                  // overshoot their box by 2-3px on a long name, which is glyph
+                  // side-bearing and sub-pixel rounding rather than text landing
+                  // on anything - 32 findings, none of them a defect. Every real
+                  // fault was far larger: 25px in the sibling project's zone
+                  // rows, and 36-72px in this site's own index results. Nothing
+                  // measured falls between. The threshold sits in that gap
+                  // rather than at a number chosen to make the report short.
+                  if (el.scrollWidth > cw + 4) clipped.push({
+                    sel: el.tagName.toLowerCase() + (typeof el.className === 'string' && el.className
+                           ? '.' + el.className.trim().split(/\\s+/).join('.') : ''),
+                    needs: el.scrollWidth, box: cw,
+                    text: (el.innerText || '').trim().slice(0, 34),
+                  });
+                }
+              }
               let own = '';
               for (const n of el.childNodes) if (n.nodeType === 3) own += n.textContent.trim();
               if (own.length < 2) continue;
@@ -579,7 +652,9 @@ const showAll = args.includes('--show');
               });
             }
             bad.sort((x,y) => x.ratio - y.ratio);
-            return { checked, unmeasurable, bad: bad.slice(0,6) };
+            clipped.sort((x,y) => (y.needs - y.box) - (x.needs - x.box));
+            return { checked, unmeasurable, bad: bad.slice(0,6),
+                     clipChecked, clipped: clipped.slice(0,6) };
           })()`,
           returnByValue: true,
         }, sessionId);
@@ -606,6 +681,24 @@ const showAll = args.includes('--show');
             detail: `${b.sel} ${b.ratio}:1 against a ${b.bar}:1 bar — ${JSON.stringify(b.text)}`,
           });
         }
+        clipChecked += c.clipChecked;
+        // The same vacuity rule the contrast probe uses, and it earns its place
+        // here more than there: "nothing overflows its box" is what an empty
+        // collection says too, and a clean sweep is indistinguishable from a
+        // broken measurement. That is this file's own recorded trap.
+        if (c.clipChecked === 0 && m.textLength > 200) {
+          findings.push({
+            page, vp: vp.name, theme: theme.name, kind: 'clip',
+            detail: `examined 0 boxes on a page with ${m.textLength} chars of text — the clip probe is not reading this page`,
+          });
+        }
+        for (const b of c.clipped) {
+          gs.clip++;
+          findings.push({
+            page, vp: vp.name, theme: theme.name, kind: 'clip',
+            detail: `${b.sel} needs ${b.needs}px in a ${b.box}px box, with nothing clipping it — ${JSON.stringify(b.text)}`,
+          });
+        }
       }
      }
     }
@@ -615,21 +708,26 @@ const showAll = args.includes('--show');
 
   console.log(`  contrast: ${contrastChecked.toLocaleString()} element(s) measured, `
             + `${contrastUnmeasurable.toLocaleString()} unmeasurable (painted by an image, `
-            + `not a colour) — reported rather than skipped
+            + `not a colour) — reported rather than skipped`);
+  // Printed even when clean. A sweep that measured nothing looks exactly
+  // like a sweep that found nothing, which is this file's own recorded trap.
+  console.log(`  content vs its own box: ${clipChecked.toLocaleString()} box(es) measured `
+            + `— overflow-x auto, scroll, hidden and clip excluded, all four deliberately
 `);
 
   console.log(`Conformance sweep — ${pages.length} pages x ${viewports.length} viewport(s) `
             + `in ${secs}s, ${blocked} non-file request(s) aborted\n`);
 
-  console.log('  group          pages  overflow  console  empty  contrast');
+  console.log('  group          pages  overflow  console  empty  contrast  clip');
   for (const [g, s] of [...groups].sort()) {
     console.log(`  ${g.padEnd(14)} ${String(s.n).padStart(5)} ${String(s.overflow).padStart(9)} `
               + `${String(s.errors).padStart(8)} ${String(s.empty).padStart(6)} `
-              + `${String(s.contrast).padStart(9)}`);
+              + `${String(s.contrast).padStart(9)} ${String(s.clip).padStart(5)}`);
   }
 
   if (!findings.length) {
-    console.log('\nNo page overflowed its viewport, logged a console error, or rendered empty.');
+    console.log('\nNo page overflowed its viewport, logged a console error, rendered empty,');
+    console.log('or painted text outside a box with nothing clipping it.');
     console.log(`Type IS what ships: ${blocked} remote request(s) aborted, and the faces`);
     console.log('are self-hosted - so these pages were laid out in the real type.');
     cleanup();

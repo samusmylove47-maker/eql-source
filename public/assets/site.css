@@ -1061,6 +1061,24 @@ a.card.figured:hover .fig{opacity:.22}
 
 .hero .shell{max-width:none;width:min(var(--max),100%);margin:0 auto}
 h1.display{max-width:16ch}
+/* A NAME TOO LONG TO BREAK RUNS OFF THE PHONE AND CANNOT BE SCROLLED TO.
+   Measured 4 Sep 2026 on /named/cauldronbubble at 390px: the heading's ink
+   reaches 407px against a 390px viewport, while document.scrollWidth stays at
+   390 and the page reports canScrollRight false - so 17px of the mob's own
+   name is painted off the edge and there is no way to reach it. Five pages do
+   it, all of them a single unbreakable word set in Cinzel.
+
+   conformance.js could not see this before today. It compared the DOCUMENT
+   against the viewport, and the document never overflowed: the layout clips
+   instead of scrolling, which is the one shape that check cannot report. The
+   content-vs-box probe added in the same change is what found it.
+
+   MOBILE ONLY, DELIBERATELY. At 1440 the same heading exceeds its 16ch cap by
+   86px and stops 400px short of the shell's edge, so nothing is lost and
+   nothing collides - 16ch is a measure for line length, not a boundary, and
+   breaking a display word to satisfy it would damage the page to fix a number.
+   The rule applies where the box is the screen. */
+@media(max-width:760px){h1.display{overflow-wrap:anywhere}}
 /* Gradient-clipped display type: the headline takes light across it rather than
    sitting flat. The fallback colour is set first for anything without clip. */
 h1.display em{color:var(--z01)}
