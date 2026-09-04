@@ -53,6 +53,27 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
 .upnote{margin:var(--s-6) 0 0;padding:var(--s-4) var(--s-5);border-left:3px solid var(--rule2);
   background:var(--surface-1);color:var(--mut);font-size:var(--t-sm);line-height:1.6}
 .upnote strong{color:var(--bone)}
+/* The opposite problem to the Sky Ledger shots in site.css. Those are 427px
+   captures of a 427px overlay and must never be stretched; these are 1440x950
+   captures of a desktop application and can only be shrunk. Two columns would
+   put a 1440px screen into about 574px - a 40% reduction, at which every row
+   of the table it is a picture of becomes texture rather than information. So
+   one per row, at whatever width the shell gives, and a link to the file for
+   anyone who wants to read a cell. Capped at native width because upscaling
+   past 1440 softens the glyphs for no gain, exactly as it would on the overlay.
+
+   These rules are here and not in site.css on purpose: they style one page,
+   and site.css is loaded by every one of the other 700-odd. */
+.upshots{display:grid;gap:var(--s-7);margin:var(--s-6) 0 0}
+.upshot{margin:0}
+.upshot a{display:block;text-decoration:none}
+.upshot img{display:block;width:100%;max-width:1440px;height:auto;
+  border:1px solid var(--rule2);border-radius:var(--r);background:var(--surface-0)}
+.upshot a:hover img{border-color:var(--brass)}
+.upshot figcaption{margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut);
+  line-height:1.5}
+.upshot figcaption .full{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 </style></head>
 <body><header class="site-bar">
   <div class="shell">
@@ -111,7 +132,18 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">01</span><div><h2 class="sec">What it holds</h2>
+      <div class="sechead"><span class="n">01</span><div><h2 class="sec">What it looks like</h2>
+        <p class="lede" style="margin:0">The planner wears this site&rsquo;s chrome, and
+          these are its own screens &mdash; taken by its own test suite, against the
+          catalogue it ships.</p></div></div>
+      <div class="upshots"><figure class="upshot"><a href="../assets/media/upgrades-ranking.7a7f4f68.png"><img src="../assets/media/upgrades-ranking.7a7f4f68.png" alt="The Upgrades screen: four summary cards across the top, a panel listing the zones those items were seen dropping in with how far each zone is surveyed, and beneath them a slot-by-slot list pairing what is worn against the best available item and the points it would add" width="1440" height="950" loading="lazy" decoding="async"></a><figcaption>Upgrades &mdash; the screen the tool is named for. Every position ranked by what it adds to the set as a whole. <span class="full">Open full size</span></figcaption></figure><figure class="upshot"><a href="../assets/media/upgrades-compare.7b71e99a.png"><img src="../assets/media/upgrades-compare.7b71e99a.png" alt="The Compare Sets screen: a baseline build and a candidate build side by side, four summary cards above them, and a slot-by-slot table marking each row unchanged or added with what it is worth" width="1440" height="950" loading="lazy" decoding="async"></a><figcaption>Compare sets. Two builds side by side, slot by slot, under the first set&rsquo;s own weights. <span class="full">Open full size</span></figcaption></figure><figure class="upshot"><a href="../assets/media/upgrades-planar.df4b2304.png"><img src="../assets/media/upgrades-planar.df4b2304.png" alt="The Planar Gear Targets screen: a note naming which pieces carry checked numbers and which are withheld, three summary cards, and the start of a per-class breakdown" width="1440" height="950" loading="lazy" decoding="async"></a><figcaption>Planar armour. Up to five sets compete for every slot once a trio is picked. <span class="full">Open full size</span></figcaption></figure><figure class="upshot"><a href="../assets/media/upgrades-set.efb43251.png"><img src="../assets/media/upgrades-set.efb43251.png" alt="The set editor: a character header, worn items listed down the left and right with plus and minus controls on each, a grid of slot icons in the middle, and a stat sheet beneath it" width="1440" height="950" loading="lazy" decoding="async"></a><figcaption>The set editor. All 23 positions, with a stat sheet that recomputes as you touch them. <span class="full">Open full size</span></figcaption></figure></div>
+      <p class="src">Taken 2026-09-03 from the planner&rsquo;s own repository at commit <code>c4f730af</code>. The catalogue behind them still hashes to <code>22edb1547457</code>, checked here 2026-09-03.</p>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="shell">
+      <div class="sechead"><span class="n">02</span><div><h2 class="sec">What it holds</h2>
         <p class="lede" style="margin:0">Counted by the planner itself and read from its
           published snapshot, so this page cannot drift from the catalogue it describes.</p></div></div>
       <div class="upsum">
@@ -132,7 +164,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">02</span><div><h2 class="sec">Where the numbers come from</h2>
+      <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where the numbers come from</h2>
         <p class="lede" style="margin:0">The planner grades its own rows and publishes the
           grades. This is that table, unedited.</p></div></div>
       <ul class="upstand">
@@ -156,7 +188,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it will not tell you</h2></div></div>
+      <div class="sechead"><span class="n">04</span><div><h2 class="sec">What it will not tell you</h2></div></div>
       <p>Item flags are unreliable and the planner says so in its own data: the wiki carries two
         authoring conventions, and a live client window disagreed with the catalogue on both
         items anyone has checked. Do not use a tradeability flag here to decide whether a
@@ -173,7 +205,7 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">04</span><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
+      <div class="sechead"><span class="n">05</span><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
       <p class="upnote"><strong>Item data is derived from the EverQuest Legends Wiki
         (eqlwiki.com), with attribution.</strong> <strong>eqlwiki.com publishes no content
         licence</strong> &mdash; checked 2026-08-18: the wiki&rsquo;s own

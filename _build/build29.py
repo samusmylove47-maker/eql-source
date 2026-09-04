@@ -127,6 +127,67 @@ PCT_QUARANTINED = round(100 * fig('counts.purge.quarantined') / fig('counts.purg
 # reason these are now two figures on the page instead of one used twice.
 ADMITTED = fig('counts.purge.admittedOutsideScrape')
 
+# ---- the product screenshots ------------------------------------------------
+#
+# THE IMAGES ARE MADE BY THE PLANNER, NOT BY US, and that is the point. They come
+# out of its own end-to-end suite, against the payload it ships, so a screenshot
+# is a record of the application rather than a picture somebody arranged. The
+# same argument as the vendored figures above: this page reports the planner's
+# own accounting and does not summarise it.
+#
+# assets/upgrades-shots.json carries which build they are of - commit, the
+# payload's hash, when the catalogue was built - and the source line below is
+# rendered from those fields rather than typed beside them. That is CLAUDE.md's
+# rule about a figure sitting next to the data it claims to come from, applied
+# to an image, and it is the only thing that makes a stale shot identifiable
+# rather than merely suspected.
+#
+# NO CAPTION RESTATES A NUMBER THAT IS IN THE FRAME. The manifest offers them -
+# best single gain, slots with a better option - and every one would be a typed
+# figure going stale the moment the planner rebuilds, on a page whose whole
+# argument is that it does not do that. The image carries the figure; the
+# caption says what the screen is for.
+#
+# Absent on a machine that has never run _build/media.py, so the band degrades
+# to nothing rather than to four broken images. Same shape as build28.py.
+try:
+    MEDIA = json.load(open('assets/media.json', encoding='utf-8'))
+except (OSError, ValueError):
+    MEDIA = {}
+try:
+    SHOTMETA = json.load(open('assets/upgrades-shots.json', encoding='utf-8'))
+except (OSError, ValueError):
+    SHOTMETA = {}
+
+
+def shot(stem, alt, cap):
+    """One product screenshot, or nothing at all if the media is not built.
+
+    width/height are not decorative. Without them the box is 2px tall before
+    the bytes arrive, `loading="lazy"` never sees it enter the viewport, and
+    the browser never requests the image - two blank strips where the
+    screenshots should be. _build/media.py reads both out of the PNG header.
+
+    ALT TEXT IS FREE AND CAPTIONS ARE NOT. Measured 3 Sep 2026 against
+    gate.page_words: an alt attribute of seven words counts zero and a
+    figcaption of seven counts seven, which is the ratchet correctly refusing
+    to charge a page for being readable to a screen reader. So the alt
+    describes the whole screen and the caption stays to a line.
+    """
+    m = MEDIA.get(stem)
+    if not m:
+        return ''
+    dim = f' width="{m["w"]}" height="{m["h"]}"' if m.get('w') else ''
+    src = f'../assets/media/{m["file"]}'
+    # The link is to the file itself. At shell width a 1440px capture is legible
+    # in its headings and its large figures and not in its table rows, so anyone
+    # who wants to read a cell needs the full-size image, and there is no
+    # lightbox on this site to give them - nor should there be one.
+    return (f'<figure class="upshot"><a href="{src}"><img src="{src}" alt="{alt}"'
+            f'{dim} loading="lazy" decoding="async"></a>'
+            f'<figcaption>{cap} <span class="full">Open full size</span></figcaption></figure>')
+
+
 CSS = '''<style>
 .upsum{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1px;
   background:var(--rule);border:1px solid var(--rule);margin:var(--s-6) 0}
@@ -152,6 +213,27 @@ CSS = '''<style>
 .upnote{margin:var(--s-6) 0 0;padding:var(--s-4) var(--s-5);border-left:3px solid var(--rule2);
   background:var(--surface-1);color:var(--mut);font-size:var(--t-sm);line-height:1.6}
 .upnote strong{color:var(--bone)}
+/* The opposite problem to the Sky Ledger shots in site.css. Those are 427px
+   captures of a 427px overlay and must never be stretched; these are 1440x950
+   captures of a desktop application and can only be shrunk. Two columns would
+   put a 1440px screen into about 574px - a 40% reduction, at which every row
+   of the table it is a picture of becomes texture rather than information. So
+   one per row, at whatever width the shell gives, and a link to the file for
+   anyone who wants to read a cell. Capped at native width because upscaling
+   past 1440 softens the glyphs for no gain, exactly as it would on the overlay.
+
+   These rules are here and not in site.css on purpose: they style one page,
+   and site.css is loaded by every one of the other 700-odd. */
+.upshots{display:grid;gap:var(--s-7);margin:var(--s-6) 0 0}
+.upshot{margin:0}
+.upshot a{display:block;text-decoration:none}
+.upshot img{display:block;width:100%;max-width:1440px;height:auto;
+  border:1px solid var(--rule2);border-radius:var(--r);background:var(--surface-0)}
+.upshot a:hover img{border-color:var(--brass)}
+.upshot figcaption{margin-top:var(--s-3);font-size:var(--t-sm);color:var(--mut);
+  line-height:1.5}
+.upshot figcaption .full{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 </style>'''
 
 # NO DIGITS IN THE DESCRIPTION. Gate rule 3d requires every number in a meta
@@ -183,6 +265,62 @@ assert _POSITIONS == 23, (
     f"the planner now reports {_POSITIONS} slot positions, and the description "
     f"below says twenty-three in words. Re-read the planner, then change the word "
     f"and this assert together - do not delete the assert to make the build pass.")
+
+# The four shots, in the order they answer a reader's questions: what is the
+# thing it is named for, what does it do that nothing else does, and what does
+# a finished set look like. Three others were offered and are not here -
+# assets/upgrades-shots.json records which and why.
+SHOTS = ''.join(shot(*s) for s in (
+    ('upgrades-ranking',
+     'The Upgrades screen: four summary cards across the top, a panel listing the zones '
+     'those items were seen dropping in with how far each zone is surveyed, and beneath '
+     'them a slot-by-slot list pairing what is worn against the best available item and '
+     'the points it would add',
+     'Upgrades &mdash; the screen the tool is named for. Every position ranked by what it '
+     'adds to the set as a whole.'),
+    ('upgrades-compare',
+     'The Compare Sets screen: a baseline build and a candidate build side by side, four '
+     'summary cards above them, and a slot-by-slot table marking each row unchanged or '
+     'added with what it is worth',
+     'Compare sets. Two builds side by side, slot by slot, under the first '
+     'set&rsquo;s own weights.'),
+    ('upgrades-planar',
+     'The Planar Gear Targets screen: a note naming which pieces carry checked numbers '
+     'and which are withheld, three summary cards, and the start of a per-class breakdown',
+     'Planar armour. Up to five sets compete for every slot once a trio is picked.'),
+    ('upgrades-set',
+     'The set editor: a character header, worn items listed down the left and right with '
+     'plus and minus controls on each, a grid of slot icons in the middle, and a stat '
+     'sheet beneath it',
+     f'The set editor. All {_POSITIONS} positions, with a stat sheet that recomputes as '
+     f'you touch them.'),
+))
+# The source line is rendered from the provenance file, never typed. A date and
+# a hash beside an image are the same kind of claim as a figure beside a table.
+_B = SHOTMETA.get('build', {})
+_V = SHOTMETA.get('payload_verified', {})
+SHOTSRC = ''
+if SHOTS and _B:
+    SHOTSRC = (
+        f'<p class="src">Taken {_B.get("taken", "")[:10]} from the planner&rsquo;s own '
+        f'repository at commit <code>{_B.get("commit", "")[:8]}</code>. The catalogue '
+        f'behind them still hashes to <code>{_B.get("payload_sha256_12", "")}</code>, '
+        f'checked here {_V.get("date", "")}.</p>')
+# The whole band disappears if the media has not been built, rather than leaving
+# a heading over an empty grid.
+BAND_SHOTS = f'''
+  <section class="band">
+    <div class="shell">
+      <div class="sechead"><span class="n">01</span><div><h2 class="sec">What it looks like</h2>
+        <p class="lede" style="margin:0">The planner wears this site&rsquo;s chrome, and
+          these are its own screens &mdash; taken by its own test suite, against the
+          catalogue it ships.</p></div></div>
+      <div class="upshots">{SHOTS}</div>
+      {SHOTSRC}
+    </div>
+  </section>
+''' if SHOTS else ''
+
 page = head(
     "EQLS Upgrades",
     "A gear planner for EverQuest Legends: three classes, twenty-three slots, "
@@ -206,10 +344,10 @@ page = head(
         <span>Hosted in its own repository &middot; nothing to install</span></a>
     </div>
   </section>
-
+{BAND_SHOTS}
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">01</span><div><h2 class="sec">What it holds</h2>
+      <div class="sechead"><span class="n">02</span><div><h2 class="sec">What it holds</h2>
         <p class="lede" style="margin:0">Counted by the planner itself and read from its
           published snapshot, so this page cannot drift from the catalogue it describes.</p></div></div>
       <div class="upsum">
@@ -230,7 +368,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">02</span><div><h2 class="sec">Where the numbers come from</h2>
+      <div class="sechead"><span class="n">03</span><div><h2 class="sec">Where the numbers come from</h2>
         <p class="lede" style="margin:0">The planner grades its own rows and publishes the
           grades. This is that table, unedited.</p></div></div>
       <ul class="upstand">
@@ -254,7 +392,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">03</span><div><h2 class="sec">What it will not tell you</h2></div></div>
+      <div class="sechead"><span class="n">04</span><div><h2 class="sec">What it will not tell you</h2></div></div>
       <p>Item flags are unreliable and the planner says so in its own data: the wiki carries two
         authoring conventions, and a live client window disagreed with the catalogue on both
         items anyone has checked. Do not use a tradeability flag here to decide whether a
@@ -271,7 +409,7 @@ page = head(
 
   <section class="band">
     <div class="shell">
-      <div class="sechead"><span class="n">04</span><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
+      <div class="sechead"><span class="n">05</span><div><h2 class="sec">Credit, and what the licence is not</h2></div></div>
       <p class="upnote"><strong>Item data is derived from the EverQuest Legends Wiki
         (eqlwiki.com), with attribution.</strong> <strong>eqlwiki.com publishes no content
         licence</strong> &mdash; checked {fig('license.checked')}: the wiki&rsquo;s own
