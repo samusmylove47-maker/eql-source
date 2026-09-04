@@ -22,17 +22,33 @@ Change it there, run `./build.sh`, and every page, the wordmark, the sitemap and
 
 ## Deploying
 
-Netlify is connected to the GitHub repository. **Anything merged to `main`
-publishes automatically**, in about a minute. There is no build step on
-Netlify's side: the generated HTML is committed, so Netlify only serves files.
-Publish directory is `.` and the build command is empty.
+**Cloudflare** serves the site — a Worker with static assets, configured by
+`wrangler.jsonc`. **Anything merged to `main` publishes automatically**, in about
+a minute or two. There is no build step on the host's side: the generated HTML is
+committed, so the Worker only serves files.
 
-`netlify.toml` sets `must-revalidate` on `/dungeons/*` and `/raids/*` so a
-corrected guide is never served stale, caches `/assets/*` for an hour, blocks
-the internal files from the public site, and adds three short URLs: `/sky`,
-`/races`, `/calculator`.
+This section said *Netlify* until 4 September 2026. `curl -I https://eqlsource.com`
+answers `Server: cloudflare`, and CLAUDE.md has recorded the switch since 14
+August — the README simply did not move with it.
 
-Netlify keeps every previous deploy, with one-click rollback under **Deploys**.
+`public/_headers` sets the cache policy: **every** page revalidates, after a
+reader was served a pre-redesign home page from their own cache, and `/assets/*`
+is cached for an hour. It also adds the three short URLs `/sky`, `/races` and
+`/calculator`.
+
+**Nothing outside `public/` is published, and that is structural rather than a
+rule.** `wrangler.jsonc` points the served folder at `./public`, so `_build/`,
+`docs/`, `CLAUDE.md` and the rest are not reachable at any address. Verified 4
+September against the live site: those all answer 404 while `/assets/site.css`
+answers 200.
+
+`netlify.toml` is still in the repository and **nothing reads it**. Its headers
+and redirects are inert; the force-404 rules it once carried are gone, because
+they only existed when the whole repository was the publish directory. Treat it
+as history until it is removed deliberately.
+
+To undo a bad deploy, `git revert` the merge on `main` and open that as a pull
+request — merging it publishes the fix, by the same one route as everything else.
 
 ---
 
@@ -41,7 +57,9 @@ Netlify keeps every previous deploy, with one-click rollback under **Deploys**.
 ```
 index.html              home — the spectrum, section entries      GENERATED
 sources.html            sourcing standard, gaps, change log       GENERATED
-netlify.toml            headers, cache policy, redirects
+wrangler.jsonc          the host: a Worker serving ./public
+public/_headers         headers, cache policy, redirects — the file actually read
+netlify.toml            INERT. Nothing reads it; kept as history
 build.sh                full rebuild
 site.config.json        name, tagline, URL — the only place these live
 scripts/check.py        pre-commit validation. Run before every commit
@@ -74,9 +92,11 @@ tools/                  GENERATED
   plane-of-sky.html     Sky class-unlock tracker
   race-unlocks.html     race unlock tracker
   combo-calculator.html same app, boots on the calculator tab, shares one save
-  index-search.html     The Index — 452 items, 208 named mobs
+  index-search.html     The Index — every item and named mob mined from the
+                        surveys. Counts deliberately not repeated here: the two
+                        that were (452 and 208) had drifted to 435 and 232
 
-_build/                 blocked from the public site in netlify.toml
+_build/                 outside ./public, so never published at all
   _partials.py          shared head, nav bar and footer
   build1.py             home and dungeon index
   build2.py             tools, raids and sources indexes

@@ -30,7 +30,7 @@ it.
                 |
            STOP. Wait for you.
                 |
-        you read it and merge  -->  Netlify deploys  -->  live
+        you read it and merge  -->  Cloudflare deploys  -->  live
 ```
 
 **The gate is the merge.** Nothing reaches the site without you pressing a
