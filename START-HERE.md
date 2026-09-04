@@ -11,8 +11,13 @@ it day to day. It is a reference, not a checklist to run.
    generate the pages.
 2. **GitHub** — `samusmylove47-maker/eql-source`, private. Stores the folder and
    remembers every version of it.
-3. **Netlify** — watches GitHub. Anything that reaches the `main` branch is
-   published to eqlsource.netlify.app within about a minute.
+3. **Cloudflare** — watches GitHub. Anything that reaches the `main` branch is
+   published to eqlsource.com within about a minute or two.
+
+   This said *Netlify* until 4 September 2026 and had been wrong for weeks.
+   `curl -I https://eqlsource.com` answers `Server: cloudflare`. A `netlify.toml`
+   file is still in the folder and **nothing reads it** — it is history, kept
+   until somebody removes it deliberately.
 
 **Merging is what publishes.** Nothing else does.
 
@@ -26,7 +31,7 @@ it day to day. It is a reference, not a checklist to run.
 | `python3` command | A copy of `python.exe`, because Windows ships only `python` |
 | Git | Repository on `main`, line endings pinned to LF |
 | GitHub | `gh` authenticated as `samusmylove47-maker` |
-| Netlify | Linked to the repository, publish directory `.`, no build command |
+| Cloudflare | A Worker serving static assets. `wrangler.jsonc` sets the served folder to `./public` |
 | Automation | Workflow file present but **not yet running** — needs a credential |
 
 ---
@@ -70,8 +75,11 @@ them. `/newzone`, `/verify`, `/gaps` and `/ship` are the built ones.
 
 - Uncommitted changes you want to discard: `git checkout .`
 - A commit you want to undo: `git revert HEAD`
-- A bad deploy: Netlify keeps every previous version, with one-click rollback
-  under **Deploys**.
+- A bad deploy: **undo it the same way you shipped it.** `git revert` the merge
+  on `main`, open that as a pull request, and merging it publishes the fix — the
+  same one route everything else takes. Cloudflare keeps previous versions too,
+  but the revert is the path this project actually uses and the one these notes
+  can vouch for.
 
 **Never merge a pull request you have not read.** This matters most for the
 automated ones, once they start. The safety design rests on it.
@@ -110,9 +118,11 @@ Python was installed. Open a new one.
 **Git asks for a username and password** — the GitHub login expired. Run
 `gh auth login`.
 
-**Netlify deployed but the site looks wrong** — check the publish directory is
-`.` and the build command is empty. Netlify sometimes guesses a build step this
-site does not need.
+**It deployed but the site looks wrong** — first check the change is really on
+`main`: `git log --oneline -3 origin/main`. A pull request can merge without your
+last commit in it, which has happened twice. If it is there and the page is still
+wrong, the served folder is `./public` in `wrangler.jsonc`, and anything outside
+that folder is not published at all.
 
 **Genuinely stuck** — paste the exact error into Claude Code. It has the whole
 project in front of it.
