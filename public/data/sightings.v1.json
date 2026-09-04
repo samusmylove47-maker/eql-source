@@ -2575,7 +2575,7 @@
     {
      "mob": "Magi P`tasa",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -3041,6 +3041,111 @@
      ]
     },
     {
+     "mob": "Coercer T`vala",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Ashenbone Broodmaster",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "Master Yael",
      "seen": 2,
      "off_roster": false,
@@ -3054,6 +3159,24 @@
       {
        "date": "18 Aug 2026",
        "zone": "The Ruins of Old Paineel - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
@@ -3085,7 +3208,46 @@
      ]
     },
     {
+     "mob": "Lord of Ire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
      "mob": "Maestro of Rancor",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Magi P`tasa",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Master of Spite",
      "seen": 1,
      "off_roster": false,
      "off_catalogue": true,
@@ -3724,6 +3886,41 @@
      ]
     }
    ],
+   "Key of Scale": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 11,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Golden Efreeti Boots": [
     {
      "mob": "Efreeti Lord Djarn",
@@ -3903,6 +4100,41 @@
        "date": "09 Aug 2026",
        "zone": "The Ruins of Old Guk",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Fine Steel Dagger": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 11,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -4736,6 +4968,41 @@
      ]
     }
    ],
+   "Veeshan's Key": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 9,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Pristine Studded Leather Sleeves": [
     {
      "mob": "Soldier of V`Zher",
@@ -4956,6 +5223,31 @@
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Key of the Swarm": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 8,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -5373,6 +5665,19 @@
      ]
     },
     {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
      "mob": "Maid Issis",
      "seen": 2,
      "off_roster": false,
@@ -5586,6 +5891,32 @@
      ]
     },
     {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Lord of Loathing",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "Maestro of Rancor",
      "seen": 1,
      "off_roster": false,
@@ -5779,7 +6110,7 @@
     {
      "mob": "Mistress of Scorn",
      "seen": 7,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -5846,6 +6177,41 @@
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Key of Misfortune": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 7,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -7635,7 +8001,7 @@
     {
      "mob": "Avatar of Abhorrence",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -7746,6 +8112,70 @@
       {
        "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Eye of Innoruuk +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 6,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Ashenbone Broodmaster",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Maestro of Rancor",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
@@ -8385,7 +8815,7 @@
     {
      "mob": "Mistress of Scorn",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -8464,7 +8894,7 @@
     {
      "mob": "Grandmaster R`tal",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -8512,7 +8942,7 @@
     {
      "mob": "Coercer T`vala",
      "seen": 4,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -8634,6 +9064,62 @@
      ]
     },
     {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "Fire Giant Warrior",
      "seen": 3,
      "off_roster": false,
@@ -8647,6 +9133,91 @@
       {
        "date": "18 Aug 2026",
        "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Coercer T`vala",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Magi P`tasa",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Master of Spite",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Ashenbone Broodmaster",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
@@ -8673,6 +9244,19 @@
       {
        "date": "18 Aug 2026",
        "zone": "Nagafen's Lair - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Lord of Ire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
@@ -8830,6 +9414,31 @@
      ]
     }
    ],
+   "Key of Beasts": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 5,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Platinum Ring +3": [
     {
      "mob": "Gynok Moltor",
@@ -8850,6 +9459,31 @@
      ]
     }
    ],
+   "Hotof's Bracer +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 5,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Golem Metal Wand": [
     {
      "mob": "Kahaptra Z`Taj",
@@ -8866,6 +9500,31 @@
        "date": "07 Aug 2026",
        "zone": "Befallen",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Avian Key": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 5,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -8919,7 +9578,7 @@
     {
      "mob": "Magi P`tasa",
      "seen": 5,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -9642,7 +10301,7 @@
     {
      "mob": "Mistress of Scorn",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -9685,7 +10344,7 @@
     {
      "mob": "Grandmaster R`tal",
      "seen": 3,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -9972,7 +10631,7 @@
     {
      "mob": "Avatar of Abhorrence",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -10185,7 +10844,7 @@
     {
      "mob": "Master of Spite",
      "seen": 4,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -10612,7 +11271,7 @@
     {
      "mob": "Avatar of Abhorrence",
      "seen": 4,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -10751,7 +11410,7 @@
     {
      "mob": "High Priest M`kari",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -10766,7 +11425,7 @@
     {
      "mob": "Coercer T`vala",
      "seen": 4,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -10854,7 +11513,7 @@
     {
      "mob": "Grandmaster R`tal",
      "seen": 4,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -10947,6 +11606,123 @@
        "date": "11 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Shattered Emerald of Corruption": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Maestro of Rancor",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Coercer T`vala",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Lord of Loathing",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Woven Skull Cap": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -11087,6 +11863,19 @@
      ]
     },
     {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
      "mob": "Maid Issis",
      "seen": 1,
      "off_roster": false,
@@ -11209,6 +11998,36 @@
        "date": "11 Aug 2026",
        "zone": "The Ruins of Old Paineel - Group",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Dawnchaser +4": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -11424,6 +12243,19 @@
      ]
     },
     {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
      "mob": "Knight V`Tal",
      "seen": 1,
      "off_roster": false,
@@ -11502,6 +12334,32 @@
      ]
     },
     {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
      "mob": "Soldier of V`Zher",
      "seen": 1,
      "off_roster": false,
@@ -11515,6 +12373,19 @@
      ]
     },
     {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
      "mob": "Xicotl",
      "seen": 1,
      "off_roster": false,
@@ -11524,6 +12395,21 @@
        "date": "18 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Spiroc Wingblade": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 4,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -11789,7 +12675,7 @@
     {
      "mob": "Magi P`tasa",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -11878,7 +12764,7 @@
     {
      "mob": "Magi P`tasa",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12121,7 +13007,7 @@
     {
      "mob": "Magi P`tasa",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12177,7 +13063,7 @@
     {
      "mob": "Master of Spite",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12300,6 +13186,314 @@
      ]
     }
    ],
+   "Encyclopedia Necrotheurgia +4": [
+    {
+     "mob": "Ashenbone Broodmaster",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Blade of Abrogation": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Distortion": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Mote of Infinitesimal Potential": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Enynti",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "kobold noble",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Corroded Hand Guards": [
     {
      "mob": "Bonefire",
@@ -12404,7 +13598,7 @@
     {
      "mob": "Coercer T`vala",
      "seen": 3,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12421,6 +13615,31 @@
        "date": "15 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Large Sky Diamond": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -12515,6 +13734,31 @@
      ]
     }
    ],
+   "Leatherfoot Sandals +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Indicolite Greaves": [
     {
      "mob": "Innoruuk`s Chosen",
@@ -12537,7 +13781,7 @@
     {
      "mob": "Grandmaster R`tal",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12568,6 +13812,51 @@
       {
        "date": "07 Aug 2026",
        "zone": "Befallen",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Torn, Frost-Covered Book": [
+    {
+     "mob": "Lady Vox",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Warhammer of Divine Grace +1": [
+    {
+     "mob": "Lady Vox",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 0
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
        "difficulty": 1
       }
      ]
@@ -12816,7 +14105,7 @@
     {
      "mob": "Master of Spite",
      "seen": 3,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12862,7 +14151,7 @@
     {
      "mob": "Master of Spite",
      "seen": 3,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12882,7 +14171,7 @@
     {
      "mob": "Mistress of Scorn",
      "seen": 3,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -12921,6 +14210,207 @@
       {
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Efreeti War Axe": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Fine Steel Dagger +1": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 3,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Imp Protector",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A dark elf noble",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "A deathly usher",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Efreeti Lord Djarn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "Nagafen's Lair",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Maid Issis",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Mynthi Davissi",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "Princess Cherista",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "08 Aug 2026",
+       "zone": "The Castle of Mistmoore",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a ghoul ritualist",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a ghoul scribe",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "06 Aug 2026",
+       "zone": "The Ruins of Old Guk",
+       "difficulty": 1
+      }
+     ]
+    },
+    {
+     "mob": "a ghoul supplier",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "09 Aug 2026",
+       "zone": "The Ruins of Old Guk",
        "difficulty": 1
       }
      ]
@@ -13843,7 +15333,7 @@
     {
      "mob": "Coercer T`vala",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -13907,7 +15397,7 @@
     {
      "mob": "Avatar of Abhorrence",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -14143,7 +15633,7 @@
     {
      "mob": "Avatar of Abhorrence",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -14641,7 +16131,7 @@
     {
      "mob": "Grandmaster R`tal",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -14781,7 +16271,7 @@
     {
      "mob": "Master of Spite",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -14793,6 +16283,692 @@
        "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Vexthorne +4": [
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Bixie Sword Blade": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Quiescence": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": null,
+       "difficulty": null
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Divine Honeycomb": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "White Satin Gloves": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bizazzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Whitened Treant Fists": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Tablet": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Cessation": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Stein of Flowing Ichor": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bizazzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Symbol of Marr": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bizazzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Treant Tear": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Geza": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Beza": [
+    {
+     "mob": "Bzzzt",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bizazzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -14951,7 +17127,7 @@
     {
      "mob": "Coercer T`vala",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -15093,11 +17269,65 @@
      ]
     }
    ],
+   "Belt of Iniquity": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Indicolite Gauntlets": [
     {
      "mob": "Grandmaster R`tal",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -15140,6 +17370,39 @@
        "date": "12 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Ruby": [
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Cazic Thule",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "17 Aug 2026",
+       "zone": "The Plane of Fear - Group",
+       "difficulty": 0
       }
      ]
     }
@@ -15220,138 +17483,6 @@
      ]
     }
    ],
-   "Fine Steel Dagger +1": [
-    {
-     "mob": "Imp Protector",
-     "seen": 2,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A dark elf noble",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "A deathly usher",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Efreeti Lord Djarn",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Maid Issis",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Mynthi Davissi",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "Princess Cherista",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a ghoul ritualist",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a ghoul scribe",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "06 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "a ghoul supplier",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "09 Aug 2026",
-       "zone": "The Ruins of Old Guk",
-       "difficulty": 1
-      }
-     ]
-    }
-   ],
    "Golden Pendant +1": [
     {
      "mob": "Imp Protector",
@@ -15363,6 +17494,107 @@
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Eye of Innoruuk +3": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Ashenbone Broodmaster",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Leatherfoot Sandals +1": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Ring of Pureblood +1": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Ring of Pureblood +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -15389,13 +17621,185 @@
     {
      "mob": "Grandmaster R`tal",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
        "date": "13 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Belt of Transience": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Fine Velvet Cloak": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Small Shield": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Dragon Bone Bracelet +1": [
+    {
+     "mob": "Lady Vox",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "McVaxius` Horn of War +3": [
+    {
+     "mob": "Lady Vox",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Tobrin's Mystical Eyepatch +1": [
+    {
+     "mob": "Lady Vox",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "White Dragon Hide": [
+    {
+     "mob": "Lady Vox",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      },
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
       }
      ]
     }
@@ -15649,6 +18053,37 @@
      ]
     },
     {
+     "mob": "Mistress of Scorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Coercer T`vala",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "Fright",
      "seen": 1,
      "off_roster": false,
@@ -15657,6 +18092,19 @@
       {
        "date": "12 Aug 2026",
        "zone": "The Plane of Fear - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
@@ -15673,24 +18121,17 @@
        "difficulty": 4
       }
      ]
-    }
-   ],
-   "Shattered Emerald of Corruption": [
+    },
     {
-     "mob": "Maestro of Rancor",
-     "seen": 2,
+     "mob": "Master of Spite",
+     "seen": 1,
      "off_roster": false,
      "off_catalogue": true,
      "sessions": [
       {
-       "date": "15 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 3
-      },
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 1
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
       }
      ]
     }
@@ -15710,6 +18151,19 @@
       {
        "date": "16 Aug 2026",
        "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Lord of Ire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
        "difficulty": 4
       }
      ]
@@ -15772,7 +18226,7 @@
     {
      "mob": "Mistress of Scorn",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -15805,7 +18259,7 @@
     {
      "mob": "Mistress of Scorn",
      "seen": 2,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -15850,6 +18304,190 @@
        "date": "11 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Belt of Tranquility": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Standard": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Statuette": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Golden Efreeti Turban": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -15906,6 +18544,107 @@
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Efreeti Battle Axe +1": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti War Bow": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti War Horn": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Golden Efreeti Gauntlets": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -16009,6 +18748,290 @@
      ]
     }
    ],
+   "Belt of Concordance": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Belt of Virtue": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Stein of Flowing Ichor +1": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Azia": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Heda": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Jaka": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Bronze Main Gauche +2": [
     {
      "mob": "Royal Guard",
@@ -16055,6 +19078,60 @@
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Belt of the Pine": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzizzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -16158,6 +19235,80 @@
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Silken Mask": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Ena": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -16353,6 +19504,151 @@
       {
        "date": "10 Aug 2026",
        "zone": "Nagafen's Lair",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Belt": [
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Mace": [
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Magi Staff": [
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Wind Staff": [
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 2,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      },
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
        "difficulty": 0
       }
      ]
@@ -17323,7 +20619,7 @@
     {
      "mob": "Magi P`tasa",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
@@ -17727,17 +21023,547 @@
      ]
     }
    ],
+   "Black Sapphire": [
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Maestro of Rancor",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "a dracoliche",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "17 Aug 2026",
+       "zone": "The Plane of Fear - Group",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Vexthorne +1": [
+    {
+     "mob": "Avatar of Abhorrence",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
    "Woven Shadow Greaves": [
     {
      "mob": "Avatar of Abhorrence",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
        "date": "16 Aug 2026",
        "zone": "The Plane of Hate",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Belt of Virtue +1": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bixie Stinger": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Fine Wool Cloak": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Large Diamond": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Pulsating Ruby": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Silken Wrap": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Weight of the Gods +1": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Whitened Treant Fists +1": [
+    {
+     "mob": "Bazzt Zzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Belt of Contention": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Belt of the Pine +1": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzizzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bixie Essence": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzizzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Cessation +1": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Weight of the Gods": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Caza": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Izah": [
+    {
+     "mob": "Bazzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Symbol of Marr +1": [
+    {
+     "mob": "Bizazzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -17968,6 +21794,211 @@
      ]
     }
    ],
+   "Wind Rune Dena": [
+    {
+     "mob": "Bzzazzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Belt of Iniquity +1": [
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Exertion": [
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Quiescence +1": [
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Kala": [
+    {
+     "mob": "Bzzzt",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Amulet of Necropotence +1": [
     {
      "mob": "Cazic Thule",
@@ -18071,6 +22102,19 @@
        "difficulty": 3
       }
      ]
+    },
+    {
+     "mob": "Master of Spite",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
     }
    ],
    "Lyssa`s Darkwood Piccolo +2": [
@@ -18099,21 +22143,6 @@
        "date": "12 Aug 2026",
        "zone": "The Plane of Fear - Group",
        "difficulty": 3
-      }
-     ]
-    }
-   ],
-   "Ruby": [
-    {
-     "mob": "Cazic Thule",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "17 Aug 2026",
-       "zone": "The Plane of Fear - Group",
-       "difficulty": 0
       }
      ]
     }
@@ -18264,17 +22293,75 @@
      ]
     }
    ],
+   "Fire Emerald Ring +4": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Insidious Halo": [
     {
      "mob": "Coercer T`vala",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
      "sessions": [
       {
        "date": "15 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Rod of Infinite Thought +4": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Star Ruby Earring +3": [
+    {
+     "mob": "Coercer T`vala",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
       }
      ]
     }
@@ -18354,34 +22441,6 @@
      ]
     }
    ],
-   "Mote of Infinitesimal Potential": [
-    {
-     "mob": "Enynti",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "08 Aug 2026",
-       "zone": "The Castle of Mistmoore",
-       "difficulty": 1
-      }
-     ]
-    },
-    {
-     "mob": "kobold noble",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "10 Aug 2026",
-       "zone": "Nagafen's Lair",
-       "difficulty": 0
-      }
-     ]
-    }
-   ],
    "Ringmail Coat +2": [
     {
      "mob": "Enynti",
@@ -18408,6 +22467,156 @@
        "date": "08 Aug 2026",
        "zone": "The Castle of Mistmoore",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Blood Sky Ruby": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bloodsky Sapphire": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Great Staff": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": null,
+       "difficulty": null
+      }
+     ]
+    }
+   ],
+   "Ethereal Emerald": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Large Sky Lapis": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Large Sky Sapphire": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Nebulous Diamond": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Shimmering Pearl": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Storm Sky Opal": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Symbol of Veeshan": [
+    {
+     "mob": "Eye of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -18588,6 +22797,193 @@
      ]
     }
    ],
+   "Belt of Contention +1": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Belt of Tranquility +1": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Finely Crafted Amulet": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Gorgon Head": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Griffon Talon": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Light Woolen Mask": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Silken Strands": [
+    {
+     "mob": "Gorgalosk",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Sode of Empowerment +3": [
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Velium Gemmed Rune": [
+    {
+     "mob": "Grandmaster R`tal",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Maestro of Rancor",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Cloth Cape +3": [
     {
      "mob": "Gynok Moltor",
@@ -18695,8 +23091,23 @@
     {
      "mob": "High Priest M`kari",
      "seen": 1,
-     "off_roster": true,
+     "off_roster": false,
      "off_catalogue": false,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Truesight Hammer +4": [
+    {
+     "mob": "High Priest M`kari",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
      "sessions": [
       {
        "date": "16 Aug 2026",
@@ -18751,6 +23162,272 @@
      ]
     }
    ],
+   "Bloodstar Pendant +1": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Blue Diamond": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    },
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Brewer's Mesh Cloak +1": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Cloak of Scales +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Darkbrood Mask +2": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Darkbrood Mask +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Engineer's Ring +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Eye of Innoruuk +1": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Hotof's Bracer +3": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Leatherfoot Sandals +3": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Pauldrons of Power +1": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Ring of Pureblood +3": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Sapphire Necklace +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
+     "mob": "Terror",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Fear - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Skinner's Belt +3": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Triumphant Mask +3": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Triumphant Mask +4": [
+    {
+     "mob": "Innoruuk, the Prince of Hate",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Shadow Rage Leggings": [
     {
      "mob": "Innoruuk`s Chosen",
@@ -18796,6 +23473,201 @@
      ]
     }
    ],
+   "Black Silk Cape": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Black Silk Cape +1": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Blade of Abrogation +1": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Ceramic Mask": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Ceramic Mask +1": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Jester's Mask": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Light Cloth Mantle": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Light Woolen Mantle": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Mantle of Woven Grass": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Mantle of Woven Grass +1": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Silvery Ring": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Stone Amulet": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Stone Amulet +1": [
+    {
+     "mob": "Keeper of Souls",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Crown of King Tranix": [
     {
      "mob": "King Tranix",
@@ -18837,6 +23709,141 @@
        "date": "18 Aug 2026",
        "zone": "Nagafen's Lair - Group",
        "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Crystalline Spear +2": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Dragon Bone Bracelet +3": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "McVaxius` Horn of War": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "McVaxius` Horn of War +2": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Runed Bolster Belt": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "10 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Runed Bolster Belt +1": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Tobrin's Mystical Eyepatch +2": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "Warhammer of Divine Grace +2": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 2
+      }
+     ]
+    }
+   ],
+   "White Dragon Scales": [
+    {
+     "mob": "Lady Vox",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "11 Aug 2026",
+       "zone": "The Permafrost Caverns - Group",
+       "difficulty": 3
       }
      ]
     }
@@ -19013,30 +24020,32 @@
      ]
     }
    ],
-   "Black Sapphire": [
+   "Shield of the Immaculate +4": [
     {
-     "mob": "Maestro of Rancor",
+     "mob": "Lord of Ire",
      "seen": 1,
      "off_roster": false,
      "off_catalogue": true,
      "sessions": [
       {
-       "date": "16 Aug 2026",
+       "date": "18 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 4
       }
      ]
-    },
+    }
+   ],
+   "Diamond Rod +3": [
     {
-     "mob": "a dracoliche",
+     "mob": "Lord of Loathing",
      "seen": 1,
      "off_roster": false,
      "off_catalogue": true,
      "sessions": [
       {
-       "date": "17 Aug 2026",
-       "zone": "The Plane of Fear - Group",
-       "difficulty": 0
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 3
       }
      ]
     }
@@ -19052,21 +24061,6 @@
        "date": "16 Aug 2026",
        "zone": "The Plane of Hate - Group",
        "difficulty": 1
-      }
-     ]
-    }
-   ],
-   "Eye of Innoruuk +4": [
-    {
-     "mob": "Maestro of Rancor",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "16 Aug 2026",
-       "zone": "The Plane of Hate - Group",
-       "difficulty": 4
       }
      ]
     }
@@ -19146,6 +24140,19 @@
      ]
     },
     {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    },
+    {
      "mob": "Terror",
      "seen": 1,
      "off_roster": false,
@@ -19189,17 +24196,47 @@
      ]
     }
    ],
-   "Velium Gemmed Rune": [
+   "Staff of Elemental Mastery: Earth +1": [
     {
-     "mob": "Maestro of Rancor",
+     "mob": "Magi P`tasa",
      "seen": 1,
      "off_roster": false,
      "off_catalogue": true,
      "sessions": [
       {
-       "date": "15 Aug 2026",
+       "date": "16 Aug 2026",
        "zone": "The Plane of Hate - Group",
-       "difficulty": 3
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Staff of Elemental Mastery: Earth +2": [
+    {
+     "mob": "Magi P`tasa",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Staff of Elemental Mastery: Earth +4": [
+    {
+     "mob": "Magi P`tasa",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "12 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
       }
      ]
     }
@@ -19352,6 +24389,51 @@
      ]
     }
    ],
+   "Tunarian Scimitar +4": [
+    {
+     "mob": "Master of Spite",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "18 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Mote of Superior Potential": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Hate - Group",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
+   "Staff of Elemental Mastery: Fire +4": [
+    {
+     "mob": "Mistress of Scorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "13 Aug 2026",
+       "zone": "The Plane of Hate",
+       "difficulty": 4
+      }
+     ]
+    }
+   ],
    "Fire Opal": [
     {
      "mob": "Muck covered elemental",
@@ -19363,6 +24445,249 @@
        "date": "11 Aug 2026",
        "zone": "The Ruins of Old Paineel",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Brass Knuckles": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Battle Axe": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Long Sword": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Standard +1": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti War Staff": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti Zweihander": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Golden Efreeti Bracers": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Golden Efreeti Chestplate": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Golden Efreeti Greaves +2": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Golden Efreeti Vambraces": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Ozah": [
+    {
+     "mob": "Noble Dojorn",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -19595,6 +24920,51 @@
      ]
     }
    ],
+   "Efreeti Scimitar +1": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti War Bow +1": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Efreeti War Spear": [
+    {
+     "mob": "Overseer of Air",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Midnight Clad Leggings": [
     {
      "mob": "Phoboplasm",
@@ -19752,6 +25122,64 @@
      ]
     }
    ],
+   "Wind Rune Fana": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    },
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Meda": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Wind Rune Neza": [
+    {
+     "mob": "Protector of Sky",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
    "Human Blood": [
     {
      "mob": "Raster of Guk",
@@ -19853,6 +25281,156 @@
        "date": "04 Aug 2026",
        "zone": null,
        "difficulty": 3
+      }
+     ]
+    }
+   ],
+   "Amethyst Amulet": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Bracelet of Distortion +1": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Djinni Aura": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Ethereal Ruby": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Glowing Necklace +1": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Ring of Veeshan": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Ring of Veeshan +1": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Sphinx Claw +1": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "16 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Sphinxian Ring": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Sphinxian Ring +1": [
+    {
+     "mob": "Sister of the Spire",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -20022,21 +25600,6 @@
      ]
     }
    ],
-   "Sapphire Necklace +4": [
-    {
-     "mob": "Terror",
-     "seen": 1,
-     "off_roster": false,
-     "off_catalogue": true,
-     "sessions": [
-      {
-       "date": "12 Aug 2026",
-       "zone": "The Plane of Fear - Group",
-       "difficulty": 4
-      }
-     ]
-    }
-   ],
    "Slime Blood of Cazic-Thule +4": [
     {
      "mob": "Terror",
@@ -20078,6 +25641,111 @@
        "date": "19 Aug 2026",
        "zone": "Clan Crushbone",
        "difficulty": 1
+      }
+     ]
+    }
+   ],
+   "Dove Slippers": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Fine Cloth Raiment": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Shiny Pauldrons": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Spiroc Air Totem": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Spiroc Battle Staff": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Spiroc Sky Totem": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
+   ],
+   "Spiroc Wingblade +1": [
+    {
+     "mob": "The Spiroc Lord",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "14 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
       }
      ]
     }
@@ -20486,8 +26154,23 @@
       }
      ]
     }
+   ],
+   "Efreeti Magi Staff +1": [
+    {
+     "mob": "the Hand of Veeshan",
+     "seen": 1,
+     "off_roster": false,
+     "off_catalogue": true,
+     "sessions": [
+      {
+       "date": "15 Aug 2026",
+       "zone": "The Plane of Sky",
+       "difficulty": 0
+      }
+     ]
+    }
    ]
   }
  },
- "hash": "ca8392eb4770e04f"
+ "hash": "b67cc0fda1509e31"
 }

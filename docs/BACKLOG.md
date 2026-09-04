@@ -115,28 +115,43 @@ twice-built tree and calling the order correct.*
 
 ## P0 — `sightings.py` is discarding every drop from an unsurveyed zone
 
-> **HALF CLOSED 4 SEPTEMBER 2026, AND THE HALF STILL OPEN IS THE HALF THIS ENTRY
-> WAS WRITTEN ABOUT.** The item-side discard is fixed for drops from a mob our
-> roster names: 452 pairs covering 930 drops, previously thrown away, are kept
-> and marked `off_catalogue`, and 89 named-mob pages gained sightings. The
-> exclusion total fell 5,360 to 4,430 and is now reported per zone across 24
-> zones rather than as one number.
+> **CLOSED 4 SEPTEMBER 2026, AND THE SKY HALF CLOSED BY A JOIN RATHER THAN BY
+> NEW DATA — WHICH IS NOT WHAT THIS SESSION FIRST CONCLUDED.**
 >
-> **THE PLANE OF SKY IS STILL NOT RECOVERED, AND WILL NOT BE BY THIS ROUTE.**
-> Measured after the change: 0 pairs carry a Sky session, 543 Sky drops are still
-> excluded, and none of Spiroc Lord, Bazzt Zzzt, Sister of the Spire, Protector
-> of Sky or Master of Sky appears in `by_named`. Sky fails BOTH tests — no mob on
-> a roster AND no item in a catalogue — and the fix requires one of them to hold.
-> Loosening it further would keep all 4,430 remaining discards, which is the
-> vendor trash the exclusion exists for.
+> Two faults, one on each side of the same join. **The item side** discarded a
+> drop whose item was not in our catalogue, so measured evidence could only
+> confirm the catalogue and never extend it — 452 pairs covering 930 drops from
+> mobs our roster names, now kept and marked `off_catalogue`. **The mob side**
+> had no roster for any zone that is not a surveyed dungeon, which is why Sky
+> failed both tests at once.
 >
-> **So Sky needs DATA, not join logic: a Sky roster, or a third catalogue beside
-> the planar one.** `_build/skyloot.py` remains load-bearing and its docstring
-> stays true. Its line "the general fix belongs in sightings.py" is now half
-> done; do not read it as done.
+> **I reported that Sky needed new data. It did not.** The Director pointed at
+> `assets/raids-measured.json` — already in this repo, already read by two
+> generators — and asked whether its bosses match the mob names on the excluded
+> drops. Measured: **15 of 15 Sky bosses match, 0 roster names unused, 382 of the
+> 543 excluded Sky drops theirs.** So the raid bosses are admitted as a second
+> roster, exactly as `planar.json` is a second catalogue.
 >
-> *Remaining acceptance: a Sky roster or catalogue lands, `sightings.json` carries
-> Sky drops, and skyloot.py is re-derived against them before it is retired.*
+>     pairs 704 -> 1,521    items 308 -> 762    mobs 255 -> 291
+>     excluded 5,360 -> 3,895      Sky discards 543 -> 161
+>     pairs carrying a Sky session: 0 -> 266, all 15 bosses present
+>
+> **27 of 36 raid bosses were on no survey roster**, so this also recovers
+> Innoruuk's court — the case `sightings.py`'s own mob-side comment says was
+> "discarded on the way past". Every one of the 1,156 previously-kept pairs
+> survives; 0 lost.
+>
+> **What remains excluded is what should be.** 161 Sky drops from 25 unnamed
+> trash mobs — An essence carrier, An azarack, A heartsbane drake — which is the
+> vendor-trash case the exclusion exists for.
+>
+> **`_build/skyloot.py` can now be re-derived against real data.** Its docstring
+> says "the general fix belongs in sightings.py"; that is done. It is NOT
+> retired here — it should be re-derived against the recovered drops and
+> withdrawn only if it agrees, which is a separate change with its own diff.
+>
+> *Remaining acceptance: skyloot.py re-derived against the recovered Sky drops
+> and withdrawn or kept on the evidence.*
 
 
 **Found 15 August 2026, while rewriting the Plane of Sky page.**

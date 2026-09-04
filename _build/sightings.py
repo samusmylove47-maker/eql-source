@@ -78,6 +78,41 @@ def main():
     for n in IX['named']:
         named.setdefault(key(n['n']), n['n'])
 
+    # THE RAID BOSSES ARE A SECOND ROSTER, EXACTLY AS THE PLANAR SETS ARE A
+    # SECOND CATALOGUE.
+    #
+    # IX['named'] is mined from the dungeon surveys, so it holds no Plane of Sky
+    # boss at all - Sky is not a surveyed dungeon. Every Sky drop therefore
+    # failed BOTH tests at once, mob and item, and skyloot.py exists as a
+    # workaround for precisely that. Its docstring says the general fix belongs
+    # here.
+    #
+    # I CONCLUDED SKY NEEDED NEW DATA AND THAT WAS WRONG. The Director pointed
+    # at assets/raids-measured.json - already in this repo, already read by
+    # build11.py and build2.py - and asked whether its bosses match the mob
+    # names on the excluded drops. Measured 4 Sep 2026, and they do:
+    #
+    #     15 distinct Sky bosses in raids-measured.json
+    #     15 of 15 match a mob on an excluded Sky drop
+    #      0 roster names go unused
+    #    382 of the 543 excluded Sky drops are theirs, across 139 items
+    #
+    # The remaining 161 come from 25 unnamed trash mobs - An essence carrier,
+    # An azarack, A heartsbane drake - which is the vendor-trash case the
+    # exclusion exists for and which stays excluded.
+    #
+    # ALL raid bosses are admitted, not only Sky's. A boss we have killed and
+    # parsed is a named mob on the same evidence as one mined from a survey, and
+    # restricting this to one zone would be fitting the rule to the instance
+    # that exposed it.
+    try:
+        _rf = json.load(open('assets/raids-measured.json', encoding='utf-8'))
+        for f in (_rf.get('fights', _rf) if isinstance(_rf, dict) else _rf):
+            if f.get('boss'):
+                named.setdefault(key(f['boss']), f['boss'])
+    except (OSError, ValueError, KeyError):
+        pass
+
     pair = collections.defaultdict(lambda: {'n': 0, 'sessions': []})
     unmatched = 0
     discards_by_zone = collections.Counter()
