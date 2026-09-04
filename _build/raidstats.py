@@ -278,6 +278,18 @@ def tier_of(zone):
     return num, label
 
 
+# WAS THIS FIGHT INSTANCED. Two of CLAUDE.md section 2's four zone shapes are:
+#
+#     Zone - Group            a group instance at tier 0
+#     Zone - Group N (Label)  a group instance at a named tier
+#     Zone N (Label)          a RAID instance at a named tier
+#     Zone                    open world
+#
+# The third is the one `group_instance` cannot see, and it is 23 fights. A
+# trailing " N (Label)" is what marks it; an open-world line carries no number.
+_INSTANCED = re.compile(r'(?: - Group(?:\s|$)| \d+ \([^)]+\)$)')
+
+
 # The verb sits between the attacker and the boss, and the game inflects it per
 # weapon and class. Stripping it is what turns "<name> cleaves" and "<name>"
 # into one attacker instead of two. A real name is not used even in a comment:
@@ -323,6 +335,25 @@ def parse_log(path):
         slain=re.compile(rf'^(?:{boss_pat(b)} has been slain by|You have slain {boss_pat(b)})'),
         cast=re.compile(rf'^{boss_pat(b)} begins casting (.+?)\.$'),
         heal=re.compile(rf'^{boss_pat(b)} healed itself for (\d+) hit points by (.+?)\.$'),
+        # A BOSS'S PET IS NOT THE BOSS, AND THE MELEE PATTERN COULD NOT TELL.
+        #
+        # The game writes "Terror pet bashes YOU for 15 points of damage." - the
+        # owner's name, the bare word "pet", then the pet's own verb. `melee`
+        # below matches the boss name and then takes the NEXT WORD as the verb,
+        # so every one of those lines recorded the boss swinging with a verb
+        # called "pet". Measured 4 Sep 2026: 4,573 such lines across 46 owners,
+        # and `pet` duly appears in melee_verbs for 17 of 213 fights.
+        #
+        # It never reached a reader, because no page rendered melee_verbs. It was
+        # about to: the field exists to say which class kit a boss runs, and a
+        # made-up verb in that list is exactly the kind of thing that gets read
+        # as evidence. Fixing it before publication rather than after is the
+        # whole reason to look at a field before rendering it.
+        #
+        # THE PET LINES ARE NOT DISCARDED, because owning a pet is itself a class
+        # tell - the same kind of evidence backstab is. They set `has_pet`.
+        # Matched BEFORE `melee` below, because `melee` matches them too.
+        pet=re.compile(rf'^{boss_pat(b)} pet (\w+) .+? for (\d+) points? of damage\.$'),
         melee=re.compile(rf'^{boss_pat(b)} (\w+) .+? for (\d+) points? of damage\.$'),
     ) for b in BOSSES}
     # The cheap prefilter below is a case-sensitive substring test, so it has to
@@ -383,6 +414,7 @@ def parse_log(path):
                     character=char, start=ts, damage=0,
                     healed=0, heal_count=0, casts=collections.Counter(),
                     melee_verbs=collections.Counter(), melee_hits=[],
+                    pet_verbs=collections.Counter(), has_pet=False,
                     by=collections.Counter(),
                     active_since=first_active.get(boss)))
                 f['damage'] += int(d.group(1))
@@ -401,10 +433,18 @@ def parse_log(path):
             if h:
                 f['healed'] += int(h.group(1)); f['heal_count'] += 1
                 break
-            mv = rx['melee'].match(b)
-            if mv:
-                f['melee_verbs'][mv.group(1)] += 1
-                f['melee_hits'].append(int(mv.group(2)))
+            # ORDER IS LOAD-BEARING: `melee` matches a pet line too, and would
+            # record the boss swinging with a verb called "pet". See the pattern
+            # definitions above.
+            pv = rx['pet'].match(b)
+            if pv:
+                f['has_pet'] = True
+                f['pet_verbs'][pv.group(1)] += 1
+            else:
+                mv = rx['melee'].match(b)
+                if mv:
+                    f['melee_verbs'][mv.group(1)] += 1
+                    f['melee_hits'].append(int(mv.group(2)))
             if rx['slain'].match(b):
                 f['end'] = ts
                 done.append(f)
@@ -462,13 +502,35 @@ def fmt(f):
         # difficulty is null where the logs genuinely do not say.
         "difficulty_from": dsrc,
         "difficulty_evidence": dev,
+        # `group_instance` answers what its name says and nothing more: was this
+        # fought in a "- Group" instance. It is NOT the answer to "was this
+        # instanced", and reading it that way is wrong for 23 fights.
+        #
+        # CLAUDE.md section 2 gives the grammar four shapes, and two of them are
+        # instanced: "Zone - Group N (Label)" AND "Zone N (Label)", the second
+        # being a RAID instance. The 23 fights in "The Plane of Hate 4 (Refined)"
+        # are in a numbered raid instance and record group_instance false, which
+        # is correct about the group and silent about the instancing - exactly
+        # the gap CLAUDE.md section 9 flags.
+        #
+        # So the honest field is added rather than the existing one retyped. A
+        # numbered suffix is what marks a raid instance; an open-world zone line
+        # carries no number at all.
         "group_instance": " - Group" in (f['zone'] or ""),
+        "instanced": bool(_INSTANCED.search(f['zone'] or "")),
         "seconds": secs,
         "damage_to_kill": f['damage'],
         "self_healed": f['healed'], "self_heal_count": f['heal_count'],
         "spells": dict(sorted(f['casts'].items(), key=lambda kv: -kv[1])),
         "spells_distinct": len(f['casts']),
+        # SWING COUNTS ARE NOT PUBLISHED (CLAUDE.md section 7), so what leaves
+        # here is the SET of verbs. Which kit a boss runs is the fact; how many
+        # times it swung is a record of somebody's play.
         "melee_verbs": dict(f['melee_verbs']),
+        # Owning a pet is a class tell, so it is kept as a fact rather than
+        # discarded with the lines that produced it.
+        "has_pet": bool(f.get('has_pet')),
+        "pet_verbs": dict(f['pet_verbs']),
         "melee_hits": len(hits),
         "melee_min": min(hits) if hits else None,
         "melee_max": max(hits) if hits else None,
@@ -590,7 +652,16 @@ def merge(rows):
             "spells": dict(sorted(spells.items(), key=lambda kv: -kv[1])),
             "spells_distinct": len(spells),
             "self_heal_low": min(heals), "self_heal_high": max(heals),
+            # Union across clients, exactly as spells are: a swing one client
+            # was out of position for still happened. The SET, never the count -
+            # CLAUDE.md section 7 does not publish swing counts.
             "melee_verbs": sorted({v for o in obs for v in o['melee_verbs']}),
+            # A pet seen by any client was there. See the `pet` pattern for why
+            # these are not melee_verbs: until 4 Sep 2026 they were, under a
+            # verb called "pet".
+            "has_pet": any(o.get('has_pet') for o in obs),
+            "pet_verbs": sorted({v for o in obs for v in o.get('pet_verbs', {})}),
+            "instanced": obs[0]['instanced'],
         })
     # A CLIENT THAT SAW FEW ATTACKERS SAW LITTLE OF THE FIGHT.
     #

@@ -523,6 +523,49 @@ def run(pages, fail, warn):
                  f"Use @@ZEM_RANK@@ — the ranking is derived in "
                  f"_build/derived.py so it cannot go stale silently")
 
+    # ---- 3e. an exhaustiveness claim about tiers may not be typed -----------
+    #
+    # Same family as 3c, and CLAUDE.md section 9 named this one by hand before
+    # any check could: "the Sky pages' 'D0, the only tier measured' is typed
+    # rather than read from the dataset. It is true today and it is the pattern
+    # section 3 forbids."
+    #
+    # "The only tier measured" is a claim about the WHOLE dataset - that nothing
+    # in it contradicts the one value shown. A typed one cannot notice the first
+    # kill at a named tier, and this one lived in two generators, so the day it
+    # went wrong it would have gone wrong on two pages with nothing to catch it.
+    #
+    # SOURCES, NOT PAGES, for 3c's reason: the built page is SUPPOSED to contain
+    # the sentence, having derived it. Only a generator typing it is the fault.
+    #
+    # NARROW TO THE PHRASE SITTING IN MARKUP, WHICH IS WHERE THE FAULT WAS.
+    #
+    # The first draft fired on the phrase anywhere in a generator - and it
+    # flagged the fix, because the derived form legitimately builds the same
+    # sentence when the dataset says one tier. A rule that cannot tell its own
+    # remedy from the fault it names is worse than no rule: the cheapest way to
+    # pass it becomes wording the truth differently.
+    #
+    # So it fires on the phrase typed INTO A TAG - the shape it actually had,
+    # inside <small> in a <dl class="strip"> cell on two pages. A derived
+    # expression assigned to a name and interpolated later does not match, and
+    # that is the distinction worth drawing.
+    ONLY_TIER = re.compile(
+        r'<[^>]+>[^<>]{0,40}only (?:tier|difficulty) (?:measured|we have measured)',
+        re.I)
+    for src in sorted(glob.glob('_build/*.py')):
+        raw = open(src, encoding='utf-8').read()
+        for m in ONLY_TIER.finditer(raw):
+            line = raw[raw.rfind('\n', 0, m.start()) + 1:
+                       raw.find('\n', m.end()) if raw.find('\n', m.end()) != -1 else len(raw)]
+            if line.lstrip().startswith('#'):
+                continue          # the rule, and CLAUDE.md, may describe it
+            fail(f"{src} types an exhaustiveness claim about tiers straight into "
+                 f"markup. That is a claim about the whole dataset and it must be "
+                 f"read out of it at build time — see SKY_TIER_NOTE in "
+                 f"_build/build8.py. CLAUDE.md section 9 names this exact sentence "
+                 f"as the pattern section 3 forbids")
+
     # ---- 3d. a figure in the metadata must appear in the page ---------------
     #
     # The Sky Ledger tool page typed 95 into its meta description while its body

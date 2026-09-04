@@ -138,6 +138,44 @@ for r in _OTHERS:
     else:
         _groups.append(((r['boss'], r['difficulty']), [r]))
 
+# THE MELEE HALF, WHICH THIS TABLE HAD NO COLUMN FOR.
+#
+# `raidstats.py` has parsed melee_verbs the whole time and no page rendered it,
+# so a table with a Spells column and nothing beside it said, of every boss in
+# it, that it is a caster. All 73 rows here have a melee kit.
+#
+# It matters most where the two disagree. Backstab is a rogue ability and a
+# spell list is not, so a boss doing both is running two class kits at once -
+# which is the published triple-class claim, showing up in a log. FOUR bosses
+# here backstab, and until 4 Sep 2026 this file's own CLAUDE.md named only one.
+#
+# The verbs print, the swing counts do not: CLAUDE.md section 7. Union across
+# the views used for the row, exactly as the spell count is.
+#
+# `+ pet` is a fact about the boss, not a verb it uses - see the `pet` pattern
+# in raidstats.py, where these lines spent some time being recorded as one.
+# TAKES `rows`, NOT `use`, AND THAT IS THE WHOLE CARE IN THIS FUNCTION.
+#
+# _fullest() drops thin views because a thin view UNDERCOUNTS DAMAGE. A set of
+# verbs is not a total: CLAUDE.md's asymmetry applies exactly as it does to
+# self-heals - a verb SEEN proves the kit has it, and a verb not seen proves
+# very little. Passing `use` here lost Avatar of Abhorrence's backstab, because
+# the only view that witnessed it was a partial one this table drops for its
+# damage figure. Caught 4 Sep 2026 by reading the rendered row against the
+# dataset rather than trusting the helper.
+#
+# The same objection applies to the Spells column beside it, which takes
+# max(spells_distinct) over `use`. That is a published figure and moving it is
+# a separate decision, so it is recorded rather than quietly changed here.
+def _melee(rows):
+    verbs = sorted({v for r in rows for v in r.get('melee_verbs') or []})
+    if not verbs:
+        return '&mdash;'
+    shown = ', '.join(f'<strong>{v}</strong>' if v == 'backstabs' else v
+                      for v in verbs)
+    return shown + (' + pet' if any(r.get('has_pet') for r in rows) else '')
+
+
 _other_rows = ''
 for (boss, diff), rows in _groups:
     use, is_floor = _fullest(rows)
@@ -155,7 +193,16 @@ for (boss, diff), rows in _groups:
         + f'</td><td class="lv">{dmg}{" <em>floor</em>" if is_floor else ""}</td>'
         + f'<td class="lv">{secs}s</td>'
         + f'<td class="lv">{max(r["spells_distinct"] for r in use)}</td>'
-        + f'<td class="lv">{heal}</td></tr>')
+        + f'<td class="lv">{heal}</td>'
+        + f'<td class="mv">{_melee(rows)}</td></tr>')
+
+# Derived, never typed: the bosses whose melee names a class. Backstab is the
+# only verb in the set CLAUDE.md establishes as a class tell, so it is the only
+# one this counts - "frenzies" looks like one and nothing here sources it.
+_BACKSTABBERS = sorted({r['boss'] for r in RAIDS
+                        if 'backstabs' in (r.get('melee_verbs') or [])})
+_bs_names = (' and '.join([', '.join(_BACKSTABBERS[:-1]), _BACKSTABBERS[-1]])
+             if len(_BACKSTABBERS) > 1 else (_BACKSTABBERS[0] if _BACKSTABBERS else ''))
 
 # Which of the high-tier bosses the aside names. A count of what we have killed
 # is a record of our play, so the aside names the bosses and leaves the tally.
@@ -459,9 +506,14 @@ You have entered The City of Guk 4 (Refined).</pre>
       rather than the cost of the fight.</p>
     <div class="tw"><table>
       <thead><tr><th>Boss</th><th>Tier</th><th>Damage to kill</th><th>Fight</th>
-        <th>Spells</th><th>Self-heals</th></tr></thead>
+        <th>Spells</th><th>Self-heals</th><th>Melee</th></tr></thead>
       <tbody>{_other_rows}</tbody>
     </table></div>
+    <div class="note"><strong>A spell list does not make a boss a caster.</strong> Backstab is a
+      rogue ability, and {_bs_names} cast as well &mdash; two class kits in one fight, which is
+      the triple-class claim showing up in a log. Every boss here melees; the column exists
+      because a table of spells alone invites the opposite reading. <em>+ pet</em> means it
+      brought one, a class tell of its own.</div>
     <div class="note"><strong>Where the ranges come from.</strong> One view of a fight witnesses
       only part of it, so two records of the same kill differ by whatever each missed &mdash;
       between nothing and {_worst}% here. <strong>That spread is the method&rsquo;s error bar,
