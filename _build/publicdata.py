@@ -138,6 +138,11 @@ def build_sightings():
     for item, rows in s.get('by_item', {}).items():
         items[item] = [dict(mob=r['mob'], seen=r['n'],
                             off_roster=bool(r.get('off_roster')),
+                            # Adding an optional field to a v1 file is allowed
+                            # by the contract on the tin: fields are never
+                            # REMOVED and never retyped, and a consumer is told
+                            # to ignore keys it does not recognise.
+                            off_catalogue=bool(r.get('off_catalogue')),
                             sessions=[dict(date=x.get('date'), zone=x.get('zone'),
                                            difficulty=x.get('difficulty'))
                                       for x in r.get('sessions', [])])
@@ -155,6 +160,10 @@ def build_sightings():
             "what and leave the tally here.",
             "`off_roster` means the mob was named by the log rather than by a "
             "survey we had already written.",
+            "`off_catalogue` means the ITEM has no page here yet. The drop is "
+            "measured either way; the flag says our catalogue is behind our "
+            "logs, which is a fact about us rather than about the item. Rows "
+            "carrying it were discarded entirely before 4 Sep 2026.",
             "This is the one dataset in this community that is measured rather "
             "than transcribed. It is also the smallest sample. Both are true.",
         ])

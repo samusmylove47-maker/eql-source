@@ -80,7 +80,79 @@ to say so. `docs/DESIGN.md` is binding — this is a typographic decision and no
 a bug to be silenced. Do not simply raise the probe's threshold past it: 86px is
 far above every real fault it has found.*
 
+## `coverage.py` reads a file that `build.sh` writes forty-nine lines later
+
+**Found 4 September 2026, by `freshness.py`, after the sightings change moved a
+dataset far enough to make it visible.**
+
+    build.sh:33   extract.py      writes index-data.json
+    build.sh:37   coverage.py     READS sightings.json, writes coverage.json
+    build.sh:41   build1.py       reads coverage.json
+    build.sh:73   planardata.py   writes planar.json
+    build.sh:86   sightings.py    READS planar.json, WRITES sightings.json
+
+**So `coverage.json` is always computed from the PREVIOUS build's sightings, and
+the plate cards `build1.py` prints it on are one build behind.** Invisible while
+`sightings.json` is stable, which it normally is. When it moved on 4 Sep the
+error was not small: *"40 items recorded dropping here"* against a true 86, 28
+against 43, 33 against 45, 41 against 99 — eleven zones, every one understated.
+
+**It is NOT a simple reorder, which is why it is filed rather than fixed.**
+`coverage` cannot move later because `build1` reads it at 41; `sightings` cannot
+move earlier because it reads `planar.json`, written at 73. The chain
+`extract → planardata → sightings → coverage → build1` is not the order
+`build.sh` runs, and straightening it means moving `planardata` too and
+re-deriving what IT depends on.
+
+**A single build is not a fixed point on this tree.** Two consecutive builds
+after the change were identical, so the state is reachable — it just takes two.
+`freshness.py` rebuilds ONCE, so it correctly fails a tree committed after one.
+
+*Acceptance: `build.sh` ordered so one build is a fixed point, with the
+dependency stated in comments at each moved line; or a documented second pass
+with `freshness.py` taught to expect it. Do not fix it by committing a
+twice-built tree and calling the order correct.*
+
 ## P0 — `sightings.py` is discarding every drop from an unsurveyed zone
+
+> **CLOSED 4 SEPTEMBER 2026, AND THE SKY HALF CLOSED BY A JOIN RATHER THAN BY
+> NEW DATA — WHICH IS NOT WHAT THIS SESSION FIRST CONCLUDED.**
+>
+> Two faults, one on each side of the same join. **The item side** discarded a
+> drop whose item was not in our catalogue, so measured evidence could only
+> confirm the catalogue and never extend it — 452 pairs covering 930 drops from
+> mobs our roster names, now kept and marked `off_catalogue`. **The mob side**
+> had no roster for any zone that is not a surveyed dungeon, which is why Sky
+> failed both tests at once.
+>
+> **I reported that Sky needed new data. It did not.** The Director pointed at
+> `assets/raids-measured.json` — already in this repo, already read by two
+> generators — and asked whether its bosses match the mob names on the excluded
+> drops. Measured: **15 of 15 Sky bosses match, 0 roster names unused, 382 of the
+> 543 excluded Sky drops theirs.** So the raid bosses are admitted as a second
+> roster, exactly as `planar.json` is a second catalogue.
+>
+>     pairs 704 -> 1,521    items 308 -> 762    mobs 255 -> 291
+>     excluded 5,360 -> 3,895      Sky discards 543 -> 161
+>     pairs carrying a Sky session: 0 -> 266, all 15 bosses present
+>
+> **27 of 36 raid bosses were on no survey roster**, so this also recovers
+> Innoruuk's court — the case `sightings.py`'s own mob-side comment says was
+> "discarded on the way past". Every one of the 1,156 previously-kept pairs
+> survives; 0 lost.
+>
+> **What remains excluded is what should be.** 161 Sky drops from 25 unnamed
+> trash mobs — An essence carrier, An azarack, A heartsbane drake — which is the
+> vendor-trash case the exclusion exists for.
+>
+> **`_build/skyloot.py` can now be re-derived against real data.** Its docstring
+> says "the general fix belongs in sightings.py"; that is done. It is NOT
+> retired here — it should be re-derived against the recovered drops and
+> withdrawn only if it agrees, which is a separate change with its own diff.
+>
+> *Remaining acceptance: skyloot.py re-derived against the recovered Sky drops
+> and withdrawn or kept on the evidence.*
+
 
 **Found 15 August 2026, while rewriting the Plane of Sky page.**
 
