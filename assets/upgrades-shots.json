@@ -1,0 +1,38 @@
+{
+ "_comment": "Provenance for the product screenshots on tools/50-upgrades.html. The images are made by the planner's own repository, from its own test suite, against the payload it ships; this file records which build they are of, so a stale shot can be identified rather than suspected. build29.py renders the source line from these fields and never from a typed sentence.",
+ "_regenerate": "Ask the planner for a fresh handover/shots/ run, copy the PNGs into _media/, and update every field here from its MANIFEST.md. Then re-verify payload_verified below.",
+ "origin": {
+  "repo": "samusmylove47-maker/EQL50ups",
+  "ref": "claude/eql-gear-optimizer-tfzvh6",
+  "path": "handover/shots/",
+  "spec": "web/e2e/handover-shots.spec.ts"
+ },
+ "build": {
+  "commit": "c4f730aff7de222edcab97919356b0b3edb84b5e",
+  "payload": "items-index.json",
+  "payload_sha256_12": "22edb1547457",
+  "catalogue_built_at": "2026-09-03T19:10:49.530Z",
+  "items_in_payload": 3883,
+  "viewport": "1440x950",
+  "taken": "2026-09-03T19:13:02Z"
+ },
+ "payload_verified": {
+  "date": "2026-09-03",
+  "how": "fetched the live items-index.json and hashed it here, rather than taking the manifest's word",
+  "result": "matched 22edb1547457"
+ },
+ "character": "Ashvane, invented for the capture and geared by the planner's own auto-fill against the shipped catalogue. No real character, account or inventory export is loaded by the spec that takes these.",
+ "shots": [
+  "upgrades-ranking",
+  "upgrades-compare",
+  "upgrades-planar",
+  "upgrades-set"
+ ],
+ "held": {
+  "_why": "CLAUDE.md section 7 reserves the site's own character names to credits.html, once. Two of the seven shots offered render the owner's character name and are held until the planner stops printing it: the landing page's demo card, and the sources page's citation of tier0-inventory-<character>.txt. Measured 3 Sep 2026 by grepping the planner's shipped bundle, which carries the name three times - demo card, form placeholder, source citation. The placeholder is fine: section 7 exempts sample inputs on tools. The other two are not.",
+  "files": [
+   "01-landing.png",
+   "06-sources.png"
+  ]
+ }
+}

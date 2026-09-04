@@ -36,5 +36,33 @@
   "bytes": 971771,
   "file": "sky-ledger-trailer.42d7f115.mp4",
   "kb": 949
+ },
+ "upgrades-compare": {
+  "bytes": 110410,
+  "file": "upgrades-compare.7b71e99a.png",
+  "h": 950,
+  "kb": 108,
+  "w": 1440
+ },
+ "upgrades-planar": {
+  "bytes": 162927,
+  "file": "upgrades-planar.df4b2304.png",
+  "h": 950,
+  "kb": 159,
+  "w": 1440
+ },
+ "upgrades-ranking": {
+  "bytes": 156690,
+  "file": "upgrades-ranking.7a7f4f68.png",
+  "h": 950,
+  "kb": 153,
+  "w": 1440
+ },
+ "upgrades-set": {
+  "bytes": 178415,
+  "file": "upgrades-set.efb43251.png",
+  "h": 950,
+  "kb": 174,
+  "w": 1440
  }
 }
