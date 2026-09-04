@@ -80,6 +80,7 @@ def main():
 
     pair = collections.defaultdict(lambda: {'n': 0, 'sessions': []})
     unmatched = 0
+    discards_by_zone = collections.Counter()
     for s in M:
         stamp = {'date': s.get('date'), 'zone': s.get('zone'),
                  'difficulty': s.get('difficulty'),
@@ -89,9 +90,41 @@ def main():
             mk = key(mob)
             for item, count in (rec.get('loot') or {}).items():
                 ik = key(item)
+                # AN ITEM WE HAVE NOT CATALOGUED STILL DROPPED, AND FROM A MOB WE
+                # NAME IT IS EVIDENCE RATHER THAN NOISE.
+                #
+                # The paragraph below fixed exactly this asymmetry on the MOB
+                # side and the item side kept discarding: a drop whose item was
+                # not in the catalogue was thrown away before the pairing, so
+                # measured evidence could only ever confirm the catalogue and
+                # never extend it. That is the same sentence, one column over.
+                #
+                # It has already cost us once. The planar block above exists
+                # because matching against the surveys alone threw away all 86
+                # planar set drops - "including the first evidence anyone has of
+                # WHICH boss drops which set". That was patched by adding a
+                # second catalogue, which fixes the instance and leaves the rule.
+                #
+                # Measured 4 Sep 2026: of 5,360 discarded drops, 930 came from a
+                # mob our own roster NAMES - 94 mobs, 265 distinct items,
+                # including Mote of Major Potential on a site that publishes a
+                # page about motes. Those are kept now and marked.
+                #
+                # THE REST STILL GO. A drop from an unnamed mob whose item is
+                # uncatalogued is the vendor-trash case this file was built to
+                # exclude, and keeping it would bury the evidence in 4,430 rows
+                # of gnoll fur. The discards are reported per zone instead of
+                # vanishing into one total.
                 if ik not in items:
-                    unmatched += count
-                    continue
+                    if mk not in named:
+                        unmatched += count
+                        discards_by_zone[s.get('zone') or '(no zone)'] += count
+                        continue
+                    off_catalogue = True
+                    item_name = item
+                else:
+                    off_catalogue = False
+                    item_name = items[ik]
                 # A MOB WE HAVE NOT SURVEYED STILL DROPPED THE THING.
                 # This required the mob to already appear in a survey roster,
                 # which meant measured evidence could only ever confirm what we
@@ -106,8 +139,9 @@ def main():
                 # with the rest of the site; otherwise the log names it and the
                 # pair is marked so a page can say where the name came from.
                 off_roster = mk not in named
-                p = pair[(named.get(mk, mob), items[ik])]
+                p = pair[(named.get(mk, mob), item_name)]
                 p['off_roster'] = off_roster
+                p['off_catalogue'] = off_catalogue
                 p['n'] += count
                 if stamp not in p['sessions']:
                     p['sessions'].append(stamp)
@@ -118,6 +152,8 @@ def main():
         rec = {'n': v['n'], 'sessions': v['sessions']}
         if v.get('off_roster'):
             rec['off_roster'] = True     # named by the log, not by a survey
+        if v.get('off_catalogue'):
+            rec['off_catalogue'] = True  # the item has no page; the drop is real
         by_named[mob].append(dict(item=item, **rec))
         by_item[item].append(dict(mob=mob, **rec))
 
@@ -130,12 +166,29 @@ def main():
         'by_named': dict(by_named),
         'by_item': dict(by_item),
         'pairs': len(pair),
-        'excluded_trash_drops': unmatched,
+        # THE OLD NAME FOR THIS WAS `excluded_trash_drops`, AND IT ASSERTED
+        # SOMETHING THE CODE NEVER TESTED. Nothing here establishes that a drop
+        # is vendor trash; what it establishes is that the item is not in our
+        # catalogue, which is a fact about OUR coverage rather than about the
+        # item. Until 4 Sep 2026 that label covered 930 drops from mobs our own
+        # roster names, and calling those trash is the exact shape of fault this
+        # project keeps finding elsewhere - a label is where a number stops
+        # saying which quantity it is.
+        #
+        # Nothing read the old field. It was written once and consumed nowhere,
+        # so the name was a claim made to no one and checked by nothing.
+        'uncatalogued_drops_excluded': unmatched,
+        # PER ZONE, BECAUSE ONE TOTAL CANNOT BE ACTED ON. A zone contributing
+        # most of the discards is a zone whose catalogue is thin, which is a
+        # survey lead rather than a rounding error.
+        'uncatalogued_by_zone': dict(discards_by_zone.most_common()),
     }
     json.dump(out, open('assets/sightings.json', 'w', encoding='utf-8',
                         newline='\n'), indent=1)
+    _oc = sum(1 for rows in by_item.values() for r in rows if r.get('off_catalogue'))
     print(f"sightings.json: {len(pair)} named-to-item pairs across {len(by_named)} mobs "
-          f"and {len(by_item)} items ({unmatched:,} trash drops excluded)")
+          f"and {len(by_item)} items ({_oc} of them off-catalogue; "
+          f"{unmatched:,} uncatalogued drops from unnamed mobs excluded)")
 
 
 if __name__ == '__main__':

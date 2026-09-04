@@ -80,7 +80,64 @@ to say so. `docs/DESIGN.md` is binding — this is a typographic decision and no
 a bug to be silenced. Do not simply raise the probe's threshold past it: 86px is
 far above every real fault it has found.*
 
+## `coverage.py` reads a file that `build.sh` writes forty-nine lines later
+
+**Found 4 September 2026, by `freshness.py`, after the sightings change moved a
+dataset far enough to make it visible.**
+
+    build.sh:33   extract.py      writes index-data.json
+    build.sh:37   coverage.py     READS sightings.json, writes coverage.json
+    build.sh:41   build1.py       reads coverage.json
+    build.sh:73   planardata.py   writes planar.json
+    build.sh:86   sightings.py    READS planar.json, WRITES sightings.json
+
+**So `coverage.json` is always computed from the PREVIOUS build's sightings, and
+the plate cards `build1.py` prints it on are one build behind.** Invisible while
+`sightings.json` is stable, which it normally is. When it moved on 4 Sep the
+error was not small: *"40 items recorded dropping here"* against a true 86, 28
+against 43, 33 against 45, 41 against 99 — eleven zones, every one understated.
+
+**It is NOT a simple reorder, which is why it is filed rather than fixed.**
+`coverage` cannot move later because `build1` reads it at 41; `sightings` cannot
+move earlier because it reads `planar.json`, written at 73. The chain
+`extract → planardata → sightings → coverage → build1` is not the order
+`build.sh` runs, and straightening it means moving `planardata` too and
+re-deriving what IT depends on.
+
+**A single build is not a fixed point on this tree.** Two consecutive builds
+after the change were identical, so the state is reachable — it just takes two.
+`freshness.py` rebuilds ONCE, so it correctly fails a tree committed after one.
+
+*Acceptance: `build.sh` ordered so one build is a fixed point, with the
+dependency stated in comments at each moved line; or a documented second pass
+with `freshness.py` taught to expect it. Do not fix it by committing a
+twice-built tree and calling the order correct.*
+
 ## P0 — `sightings.py` is discarding every drop from an unsurveyed zone
+
+> **HALF CLOSED 4 SEPTEMBER 2026, AND THE HALF STILL OPEN IS THE HALF THIS ENTRY
+> WAS WRITTEN ABOUT.** The item-side discard is fixed for drops from a mob our
+> roster names: 452 pairs covering 930 drops, previously thrown away, are kept
+> and marked `off_catalogue`, and 89 named-mob pages gained sightings. The
+> exclusion total fell 5,360 to 4,430 and is now reported per zone across 24
+> zones rather than as one number.
+>
+> **THE PLANE OF SKY IS STILL NOT RECOVERED, AND WILL NOT BE BY THIS ROUTE.**
+> Measured after the change: 0 pairs carry a Sky session, 543 Sky drops are still
+> excluded, and none of Spiroc Lord, Bazzt Zzzt, Sister of the Spire, Protector
+> of Sky or Master of Sky appears in `by_named`. Sky fails BOTH tests — no mob on
+> a roster AND no item in a catalogue — and the fix requires one of them to hold.
+> Loosening it further would keep all 4,430 remaining discards, which is the
+> vendor trash the exclusion exists for.
+>
+> **So Sky needs DATA, not join logic: a Sky roster, or a third catalogue beside
+> the planar one.** `_build/skyloot.py` remains load-bearing and its docstring
+> stays true. Its line "the general fix belongs in sightings.py" is now half
+> done; do not read it as done.
+>
+> *Remaining acceptance: a Sky roster or catalogue lands, `sightings.json` carries
+> Sky drops, and skyloot.py is re-derived against them before it is retired.*
+
 
 **Found 15 August 2026, while rewriting the Plane of Sky page.**
 

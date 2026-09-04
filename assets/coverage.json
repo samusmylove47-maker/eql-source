@@ -103,7 +103,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "40 items recorded dropping here"
+     "detail": "86 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -132,7 +132,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "28 items recorded dropping here"
+     "detail": "43 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -161,7 +161,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "33 items recorded dropping here"
+     "detail": "45 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -190,7 +190,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "41 items recorded dropping here"
+     "detail": "99 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -221,7 +221,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "14 items recorded dropping here"
+     "detail": "33 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -281,7 +281,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "42 items recorded dropping here"
+     "detail": "98 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -310,7 +310,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "62 items recorded dropping here"
+     "detail": "104 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -345,7 +345,7 @@
     },
     "loot": {
      "level": "measured",
-     "detail": "70 items recorded dropping here"
+     "detail": "89 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -386,8 +386,8 @@
      "detail": "1 boss measured, D4"
     },
     "loot": {
-     "level": "none",
-     "detail": "no loot recorded"
+     "level": "measured",
+     "detail": "3 items recorded dropping here"
     },
     "difficulty": {
      "level": "measured",
@@ -402,7 +402,7 @@
      "detail": "ZEM 139, respawn not recorded, 11 mob types measured"
     }
    },
-   "score": 7,
+   "score": 9,
    "max_score": 10,
    "kills": 2,
    "bosses": [
