@@ -233,6 +233,22 @@ CASES = [
      "public/tools/race-unlocks.html",
      lambda t: t.replace('const RORDER=["DEF"', 'const RORDER_UNUSED=["DEF"', 1)),
 
+    # An exhaustiveness claim typed straight into markup. CLAUDE.md section 9
+    # named this one by hand for weeks - "D0, the only tier measured" was a
+    # literal in build2.py AND build8.py, true both times, and unable to notice
+    # the first Sky kill at a named tier. Check 3e reads generator SOURCES, not
+    # built pages, because the built page is supposed to contain the sentence
+    # once it has been derived.
+    #
+    # The mutation puts the literal back where it was, in the <small> of a strip
+    # cell. If 3e is ever narrowed until the derived form and the typed form
+    # look alike to it, this reports MISSED rather than passing quietly.
+    ("an exhaustiveness claim about tiers typed into markup",
+     "types an exhaustiveness claim about tiers straight into",
+     "_build/build8.py",
+     lambda t: t.replace('<small>{SKY_TIER_NOTE}</small>',
+                         '<small>D0, the only tier measured</small>', 1)),
+
     # The counts are read from the data, not typed, because this file typed them
     # once and the case silently became a no-op the next time a zone was added —
     # reported as TEST BROKEN rather than caught, which is the good failure, but

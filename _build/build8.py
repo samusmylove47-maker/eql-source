@@ -62,6 +62,24 @@ ISL = SKY['islands']
 LOOT = json.load(open('assets/sky-loot.json', encoding='utf-8'))
 RAIDS = json.load(open('assets/raids-measured.json', encoding='utf-8'))
 
+# DERIVED, NOT TYPED, AND CLAUDE.md SECTION 9 NAMED IT.
+#
+# Both this file and _build/build2.py printed "D0, the only tier measured" as a literal.
+# It was true, which is what made it dangerous: section 9 lists it as "true today
+# and it is the pattern section 3 forbids" - a sentence sitting beside the data
+# it claims to come from, in two files, so the day a Sky boss is killed at a
+# named tier the claim goes quietly wrong on two pages at once.
+#
+# scripts/gate.py refuses the literal form now, so it cannot come back by hand.
+_SKY_TIERS = sorted({f['difficulty'] for f in RAIDS
+                     if f['zone'] and 'Plane of Sky' in f['zone']
+                     and f['difficulty'] is not None})
+SKY_TIER_NOTE = ('D%d, the only tier measured' % _SKY_TIERS[0]
+                 if len(_SKY_TIERS) == 1
+                 else 'measured at ' + ', '.join('D%d' % t for t in _SKY_TIERS)
+                 if _SKY_TIERS else 'no tier resolved')
+
+
 MEAS = {b['boss']: b for b in LOOT['bosses']}
 FIGHTS = LOOT['fights']            # build-console diagnostics only, never rendered
 
@@ -624,7 +642,7 @@ page = (head("Plane of Sky",
   <dl class="strip">
     <div class="cell"><dt>Access</dt><dd>Key Master<small>island 1, first three keys</small></dd></div>
     <div class="cell"><dt>Key chain</dt><dd>{len(CONFIRMED)} of {len(PREDICTED)}<small>confirmed in play</small></dd></div>
-    <div class="cell"><dt>Difficulty</dt><dd>Base<small>D0, the only tier measured</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>Base<small>{SKY_TIER_NOTE}</small></dd></div>
     <div class="cell"><dt>See invis</dt><dd>None<small>nothing in the zone</small></dd></div>
     <div class="cell"><dt>Dearest boss</dt><dd>{fmt(BIGGEST)}<small>damage to kill</small></dd></div>
     <div class="cell"><dt>Height</dt><dd>{SKY["zmax"] - SKY["zmin"]:,.0f}<small>units, {len(ISL)} bodies of floor</small></dd></div>

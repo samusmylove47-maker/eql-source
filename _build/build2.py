@@ -236,6 +236,24 @@ tools = head("Tools", f"{wordnum(len(TOOLS))} EverQuest Legends progression trac
 open('public/tools/index.html','w',encoding='utf-8',newline='\n').write(tools)
 
 # ---------------------------------------------------------------- RAIDS
+_SKY_RAIDS = json.load(open('assets/raids-measured.json', encoding='utf-8'))
+# DERIVED, NOT TYPED, AND CLAUDE.md SECTION 9 NAMED IT.
+#
+# Both this file and _build/build8.py printed "D0, the only tier measured" as a literal.
+# It was true, which is what made it dangerous: section 9 lists it as "true today
+# and it is the pattern section 3 forbids" - a sentence sitting beside the data
+# it claims to come from, in two files, so the day a Sky boss is killed at a
+# named tier the claim goes quietly wrong on two pages at once.
+#
+# scripts/gate.py refuses the literal form now, so it cannot come back by hand.
+_SKY_TIERS = sorted({f['difficulty'] for f in _SKY_RAIDS
+                     if f['zone'] and 'Plane of Sky' in f['zone']
+                     and f['difficulty'] is not None})
+SKY_TIER_NOTE = ('D%d, the only tier measured' % _SKY_TIERS[0]
+                 if len(_SKY_TIERS) == 1
+                 else 'measured at ' + ', '.join('D%d' % t for t in _SKY_TIERS)
+                 if _SKY_TIERS else 'no tier resolved')
+
 # The Sky figures, read rather than typed. See CLAUDE.md: a number typed beside
 # data drifts from it, and this page carried four of them.
 #
@@ -353,7 +371,7 @@ raids = head("Raid encounters", "The Plane of Sky, island by island: the key cha
     boss on the ring is measured below that.</p>
   <dl class="strip">
     <div class="cell"><dt>Key chain</dt><dd>{_SKY_KEYS} keys<small>confirmed in play</small></dd></div>
-    <div class="cell"><dt>Difficulty</dt><dd>Base<small>D0, the only tier measured</small></dd></div>
+    <div class="cell"><dt>Difficulty</dt><dd>Base<small>{SKY_TIER_NOTE}</small></dd></div>
     <div class="cell"><dt>Dearest boss</dt><dd>{_SKY_BIGGEST:,}<small>damage to kill, in Sky</small></dd></div>
   </dl>
 </header>

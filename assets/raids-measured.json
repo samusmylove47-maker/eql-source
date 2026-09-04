@@ -47,6 +47,9 @@
    "claws",
    "strikes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 171s after the boss was engaged"
  },
  {
@@ -95,6 +98,9 @@
    "claws",
    "strikes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -147,6 +153,9 @@
    "claws",
    "strikes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -197,6 +206,9 @@
    "claws",
    "strikes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 64s after the boss was engaged"
  },
  {
@@ -242,7 +254,10 @@
   "melee_verbs": [
    "claws",
    "strikes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Avatar of Abhorrence",
@@ -283,7 +298,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Avatar of Abhorrence",
@@ -330,9 +348,14 @@
   "self_heal_high": 3,
   "melee_verbs": [
    "cleaves",
-   "hits",
-   "pet"
+   "hits"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "bites"
+  ],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -377,9 +400,15 @@
   "melee_verbs": [
    "backstabs",
    "cleaves",
-   "hits",
-   "pet"
+   "hits"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "bites",
+   "kicks"
+  ],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -427,6 +456,9 @@
    "cleaves",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 80s after the boss was engaged"
  },
  {
@@ -467,7 +499,10 @@
    "bashes",
    "cleaves",
    "slashes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bazzt Zzzt",
@@ -508,6 +543,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -549,6 +587,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -590,6 +631,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -630,6 +674,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -667,6 +714,9 @@
    "bashes",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -708,6 +758,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -747,7 +800,10 @@
   "melee_verbs": [
    "bashes",
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bazzzazzt",
@@ -789,6 +845,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "joined 138s after the boss was engaged"
  },
  {
@@ -829,6 +888,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "joined 174s after the boss was engaged"
  },
  {
@@ -872,6 +934,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "joined 363s after the boss was engaged"
  },
  {
@@ -912,6 +977,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "joined 401s after the boss was engaged"
  },
  {
@@ -952,6 +1020,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -993,6 +1064,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -1030,6 +1104,9 @@
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -1071,6 +1148,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -1111,6 +1191,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -1150,6 +1233,9 @@
    "bashes",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -1191,6 +1277,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -1231,7 +1320,10 @@
    "bashes",
    "cleaves",
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bzizzzt",
@@ -1267,7 +1359,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bzzazzt",
@@ -1309,7 +1404,10 @@
    "cleaves",
    "slashes",
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bzzazzt",
@@ -1349,7 +1447,10 @@
    "cleaves",
    "slashes",
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bzzazzt",
@@ -1391,6 +1492,9 @@
    "slashes",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1432,6 +1536,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1472,6 +1579,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1513,6 +1623,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1553,6 +1666,9 @@
    "bashes",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1594,6 +1710,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1633,6 +1752,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1672,6 +1794,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1713,6 +1838,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1752,7 +1880,10 @@
   "melee_verbs": [
    "cleaves",
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bzzzt",
@@ -1792,7 +1923,10 @@
    "bashes",
    "cleaves",
    "stings"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Bzzzt",
@@ -1833,6 +1967,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1873,6 +2010,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1913,6 +2053,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1954,6 +2097,9 @@
    "cleaves",
    "stings"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -1994,7 +2140,10 @@
    "cleaves",
    "kicks",
    "slashes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Cazic-Thule",
@@ -2039,7 +2188,10 @@
    "bashes",
    "crushes",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Cazic-Thule",
@@ -2091,7 +2243,10 @@
    "crushes",
    "frenzies",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Cazic-Thule",
@@ -2141,7 +2296,10 @@
    "cleaves",
    "crushes",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Cazic-Thule",
@@ -2193,6 +2351,9 @@
    "kicks",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -2243,7 +2404,10 @@
    "cleaves",
    "kicks",
    "slashes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Coercer T`vala",
@@ -2293,6 +2457,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 469s after the boss was engaged"
  },
  {
@@ -2346,6 +2513,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 13"
  },
  {
@@ -2398,6 +2568,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 13"
  },
  {
@@ -2450,6 +2623,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 13"
  },
  {
@@ -2499,6 +2675,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 13"
  },
  {
@@ -2552,6 +2731,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 608s after the boss was engaged"
  },
  {
@@ -2592,7 +2774,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Dread",
@@ -2637,9 +2822,14 @@
   "melee_verbs": [
    "bashes",
    "hits",
-   "kicks",
-   "pet"
+   "kicks"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "kicks",
+   "punches"
+  ],
+  "instanced": true,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 4"
  },
  {
@@ -2688,7 +2878,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Dread",
@@ -2735,6 +2928,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 4"
  },
  {
@@ -2786,9 +2982,15 @@
    "bashes",
    "cleaves",
    "hits",
-   "kicks",
-   "pet"
-  ]
+   "kicks"
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "bites",
+   "kicks"
+  ],
+  "instanced": true
  },
  {
   "boss": "Dread",
@@ -2832,6 +3034,9 @@
    "cleaves",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 1 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -2884,6 +3089,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -2937,9 +3145,14 @@
    "bashes",
    "cleaves",
    "hits",
-   "kicks",
-   "pet"
-  ]
+   "kicks"
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bites",
+   "kicks"
+  ],
+  "instanced": true
  },
  {
   "boss": "Eye of Veeshan",
@@ -2970,7 +3183,10 @@
    "bashes",
    "claws",
    "cleaves"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Eye of Veeshan",
@@ -3006,7 +3222,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "claws"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Eye of Veeshan",
@@ -3045,6 +3264,9 @@
    "claws",
    "cleaves"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3081,6 +3303,9 @@
   "melee_verbs": [
    "claws"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3119,6 +3344,9 @@
    "claws",
    "cleaves"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3157,6 +3385,9 @@
    "claws",
    "cleaves"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3196,6 +3427,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3235,6 +3469,9 @@
    "claws",
    "cleaves"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3274,6 +3511,9 @@
    "claws",
    "cleaves"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -3314,7 +3554,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Fright",
@@ -3360,7 +3603,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Fright",
@@ -3414,9 +3660,15 @@
    "bashes",
    "cleaves",
    "hits",
-   "kicks",
-   "pet"
+   "kicks"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "slashes"
+  ],
+  "instanced": true,
   "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -3471,6 +3723,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 92s after the boss was engaged"
  },
  {
@@ -3526,6 +3781,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -3579,9 +3837,15 @@
    "bashes",
    "cleaves",
    "hits",
+   "kicks"
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
    "kicks",
-   "pet"
-  ]
+   "slashes"
+  ],
+  "instanced": true
  },
  {
   "boss": "Gorgalosk",
@@ -3619,7 +3883,10 @@
    "claws",
    "cleaves",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Gorgalosk",
@@ -3656,6 +3923,9 @@
   "melee_verbs": [
    "claws"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 1 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -3695,6 +3965,9 @@
    "cleaves",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -3732,6 +4005,9 @@
    "claws",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -3771,6 +4047,9 @@
    "cleaves",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -3813,7 +4092,10 @@
   "melee_verbs": [
    "kicks",
    "punches"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Grandmaster R`tal",
@@ -3859,6 +4141,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 852s after the boss was engaged"
  },
  {
@@ -3907,6 +4192,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -3960,6 +4248,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -4012,6 +4303,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -4059,9 +4353,15 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "kicks",
-   "pet",
    "punches"
-  ]
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "punches"
+  ],
+  "instanced": true
  },
  {
   "boss": "High Priest M`kari",
@@ -4112,6 +4412,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -4161,7 +4464,10 @@
   "melee_verbs": [
    "crushes",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Innoruuk, the Prince of Hate",
@@ -4210,7 +4516,10 @@
   "melee_verbs": [
    "bashes",
    "hits"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Innoruuk, the Prince of Hate",
@@ -4261,7 +4570,10 @@
   "melee_verbs": [
    "bashes",
    "hits"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Innoruuk, the Prince of Hate",
@@ -4312,6 +4624,9 @@
    "bashes",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 15"
  },
  {
@@ -4364,7 +4679,10 @@
   "melee_verbs": [
    "bashes",
    "hits"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Innoruuk, the Prince of Hate",
@@ -4413,6 +4731,9 @@
    "bashes",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -4460,6 +4781,9 @@
    "bashes",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -4508,6 +4832,9 @@
    "bashes",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -4547,7 +4874,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Keeper of Souls",
@@ -4586,6 +4916,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -4625,6 +4958,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -4662,6 +4998,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -4703,7 +5042,10 @@
   "self_heal_high": 1,
   "melee_verbs": [
    "bites"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lady Vox",
@@ -4746,6 +5088,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 294s after the boss was engaged"
  },
  {
@@ -4790,6 +5135,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 5"
  },
  {
@@ -4839,7 +5187,10 @@
   "self_heal_high": 1,
   "melee_verbs": [
    "bites"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lady Vox",
@@ -4890,7 +5241,10 @@
   "self_heal_high": 10,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord Nagafen",
@@ -4934,6 +5288,9 @@
    "cleaves",
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -4976,7 +5333,10 @@
   "melee_verbs": [
    "cleaves",
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord Nagafen",
@@ -5026,7 +5386,10 @@
   "melee_verbs": [
    "bites",
    "cleaves"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord Nagafen",
@@ -5074,7 +5437,10 @@
    "cleaves",
    "frenzies",
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord Nagafen",
@@ -5121,7 +5487,10 @@
    "cleaves",
    "crushes",
    "frenzies"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord Nagafen",
@@ -5169,7 +5538,10 @@
    "cleaves",
    "crushes",
    "frenzies"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord of Ire",
@@ -5224,7 +5596,10 @@
   "melee_verbs": [
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord of Ire",
@@ -5274,6 +5649,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 15"
  },
  {
@@ -5325,6 +5703,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 215s after the boss was engaged"
  },
  {
@@ -5380,6 +5761,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 15"
  },
  {
@@ -5431,6 +5815,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 15"
  },
  {
@@ -5488,6 +5875,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 15"
  },
  {
@@ -5537,7 +5927,10 @@
   "melee_verbs": [
    "kicks",
    "slices"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord of Loathing",
@@ -5589,7 +5982,10 @@
   "melee_verbs": [
    "kicks",
    "slices"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord of Loathing",
@@ -5646,6 +6042,9 @@
    "crushes",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -5698,7 +6097,10 @@
   "melee_verbs": [
    "crushes",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Lord of Loathing",
@@ -5750,7 +6152,10 @@
   "melee_verbs": [
    "kicks",
    "slices"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Maestro of Rancor",
@@ -5792,7 +6197,10 @@
   "melee_verbs": [
    "cleaves",
    "crushes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Maestro of Rancor",
@@ -5839,6 +6247,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 482s after the boss was engaged"
  },
  {
@@ -5888,6 +6299,9 @@
    "cleaves",
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -5940,6 +6354,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 776s after the boss was engaged"
  },
  {
@@ -5993,6 +6410,9 @@
    "cleaves",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6044,6 +6464,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6096,6 +6519,9 @@
    "cleaves",
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6143,6 +6569,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 361s after the boss was engaged"
  },
  {
@@ -6194,7 +6623,10 @@
   "melee_verbs": [
    "cleaves",
    "crushes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Magi P`tasa",
@@ -6248,6 +6680,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6299,6 +6734,9 @@
    "cleaves",
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 747s after the boss was engaged"
  },
  {
@@ -6346,6 +6784,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6399,6 +6840,9 @@
    "cleaves",
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6444,7 +6888,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Master Yael",
@@ -6493,7 +6940,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Master Yael",
@@ -6540,7 +6990,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "slashes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Master Yael",
@@ -6589,7 +7042,10 @@
   "melee_verbs": [
    "pierces",
    "strikes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Master Yael",
@@ -6640,6 +7096,9 @@
   "melee_verbs": [
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -6692,7 +7151,10 @@
   "self_heal_high": 1,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Master Yael",
@@ -6747,6 +7209,9 @@
    "hits",
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 13"
  },
  {
@@ -6800,7 +7265,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Master of Spite",
@@ -6854,6 +7322,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 351s after the boss was engaged"
  },
  {
@@ -6903,6 +7374,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -6954,6 +7428,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7005,6 +7482,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7058,6 +7538,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7106,7 +7589,10 @@
    "cleaves",
    "kicks",
    "punches"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Mistress of Scorn",
@@ -7159,6 +7645,9 @@
    "crushes",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 6 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7207,6 +7696,9 @@
    "crushes",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 5 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7258,6 +7750,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 7 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7305,6 +7800,9 @@
    "kicks",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 8 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7352,6 +7850,9 @@
    "crushes",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 13 attackers where another kill of this boss at this tier saw 14"
  },
  {
@@ -7391,7 +7892,10 @@
   "melee_verbs": [
    "cleaves",
    "punches"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Noble Dojorn",
@@ -7430,6 +7934,9 @@
   "melee_verbs": [
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7470,6 +7977,9 @@
    "pierces",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7510,6 +8020,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7549,6 +8062,9 @@
    "cleaves",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7588,6 +8104,9 @@
    "cleaves",
    "crushes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7628,6 +8147,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7667,7 +8189,10 @@
   "melee_verbs": [
    "cleaves",
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Overseer of Air",
@@ -7706,6 +8231,9 @@
    "cleaves",
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7745,6 +8273,9 @@
    "cleaves",
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7784,6 +8315,9 @@
    "cleaves",
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7825,6 +8359,9 @@
    "cleaves",
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 1 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -7875,7 +8412,10 @@
   "melee_verbs": [
    "backstabs",
    "crushes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Protector of Sky",
@@ -7911,7 +8451,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "hits"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Protector of Sky",
@@ -7947,6 +8490,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -7984,6 +8530,9 @@
    "backstabs",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -8020,6 +8569,9 @@
   "melee_verbs": [
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -8058,6 +8610,9 @@
    "backstabs",
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 7"
  },
  {
@@ -8099,7 +8654,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "Sister of the Spire",
@@ -8141,6 +8699,9 @@
    "kicks",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8182,6 +8743,9 @@
    "kicks",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8222,6 +8786,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8263,6 +8830,9 @@
    "kicks",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8306,6 +8876,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8346,7 +8919,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Terror",
@@ -8397,9 +8973,13 @@
    "bashes",
    "cleaves",
    "hits",
-   "kicks",
-   "pet"
+   "kicks"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "punches"
+  ],
+  "instanced": true,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 3"
  },
  {
@@ -8450,7 +9030,10 @@
    "cleaves",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Terror",
@@ -8500,9 +9083,15 @@
    "cleaves",
    "frenzies",
    "hits",
-   "kicks",
-   "pet"
+   "kicks"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "punches"
+  ],
+  "instanced": true,
   "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -8553,7 +9142,10 @@
    "frenzies",
    "hits",
    "kicks"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "Terror",
@@ -8601,9 +9193,14 @@
    "bashes",
    "cleaves",
    "hits",
-   "kicks",
-   "pet"
+   "kicks"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks"
+  ],
+  "instanced": true,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -8655,6 +9252,9 @@
    "hits",
    "kicks"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -8706,9 +9306,14 @@
    "cleaves",
    "frenzies",
    "hits",
-   "kicks",
-   "pet"
-  ]
+   "kicks"
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "punches"
+  ],
+  "instanced": true
  },
  {
   "boss": "The Spiroc Lord",
@@ -8750,7 +9355,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "slashes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "The Spiroc Lord",
@@ -8794,6 +9402,9 @@
   "melee_verbs": [
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8840,6 +9451,9 @@
    "hits",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8882,6 +9496,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8922,6 +9539,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -8964,6 +9584,9 @@
   "melee_verbs": [
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -9006,6 +9629,9 @@
   "melee_verbs": [
    "hits"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -9039,7 +9665,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "crushes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "a dracoliche",
@@ -9078,9 +9707,13 @@
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
-   "pet",
    "pierces"
-  ]
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "punches"
+  ],
+  "instanced": true
  },
  {
   "boss": "a dracoliche",
@@ -9123,6 +9756,9 @@
   "melee_verbs": [
    "pierces"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true,
   "partial_reason": "joined 31s after the boss was engaged"
  },
  {
@@ -9175,9 +9811,15 @@
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
-   "pet",
    "pierces"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "punches"
+  ],
+  "instanced": true,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 3"
  },
  {
@@ -9225,7 +9867,10 @@
   "self_heal_high": 0,
   "melee_verbs": [
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "a dracoliche",
@@ -9277,9 +9922,15 @@
   "self_heal_low": 0,
   "self_heal_high": 10,
   "melee_verbs": [
-   "pet",
    "slashes"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "punches"
+  ],
+  "instanced": true,
   "partial_reason": "saw 11 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -9329,7 +9980,10 @@
   "self_heal_high": 10,
   "melee_verbs": [
    "slashes"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": true
  },
  {
   "boss": "a dracoliche",
@@ -9382,9 +10036,15 @@
   "self_heal_low": 8,
   "self_heal_high": 8,
   "melee_verbs": [
-   "crushes",
-   "pet"
+   "crushes"
   ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "punches"
+  ],
+  "instanced": true,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 12"
  },
  {
@@ -9438,9 +10098,15 @@
   "self_heal_low": 18,
   "self_heal_high": 19,
   "melee_verbs": [
-   "pet",
    "slashes"
-  ]
+  ],
+  "has_pet": true,
+  "pet_verbs": [
+   "bashes",
+   "kicks",
+   "punches"
+  ],
+  "instanced": true
  },
  {
   "boss": "the Hand of Veeshan",
@@ -9479,7 +10145,10 @@
   "melee_verbs": [
    "cleaves",
    "pierces"
-  ]
+  ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false
  },
  {
   "boss": "the Hand of Veeshan",
@@ -9518,6 +10187,9 @@
    "cleaves",
    "punches"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 4 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -9557,6 +10229,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -9596,6 +10271,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 3 attackers where another kill of this boss at this tier saw 6"
  },
  {
@@ -9637,6 +10315,9 @@
    "cleaves",
    "slashes"
   ],
+  "has_pet": false,
+  "pet_verbs": [],
+  "instanced": false,
   "partial_reason": "saw 2 attackers where another kill of this boss at this tier saw 6"
  }
 ]
