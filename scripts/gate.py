@@ -778,6 +778,77 @@ def run(pages, fail, warn):
             fail(f"{p} points at share card {name}, which does not exist. "
                  f"Run python3 _build/ogcards.py")
 
+    # ---- 5c2. a share card may not be older than the figures printed on it ---
+    #
+    # 5c above asks whether a card EXISTS. Nothing asked whether it is TRUE, and
+    # for a fortnight it was not: tools.png was rendered 18 Aug 2026 from a
+    # registry holding SIX tools and the site has EIGHT, so the image Discord
+    # shows for every tools link - the =Upgrades flagship included - advertised a
+    # site two tools smaller than the one it linked to.
+    #
+    # THE CAUSE IS NOT NONDETERMINISM AND THE DISTINCTION MATTERS. Measured
+    # 4 Sep 2026: two consecutive runs of ogcards.py are byte-identical, and only
+    # tools.png differed from the committed copy. So the card was CORRECT when it
+    # was made and its inputs moved underneath it. A hand-run generator whose
+    # product is committed has no instrument between it and drift - the file is
+    # the claim, and nothing re-derives it.
+    #
+    # Same shape as the contamination artifact that published an eighteen-day-old
+    # scan while its code was current: THE OUTPUT IS THE STALE THING, so every
+    # check that reads the code says green.
+    #
+    # Nothing here reads a PNG. ogcards.py writes down what it rendered FROM, and
+    # this re-derives those figures from live data and compares. A stale card is
+    # a build failure naming the figure that moved.
+    try:
+        _ogm = json.load(open("assets/og-cards.json", encoding="utf-8"))
+        _ogf = _ogm.get("figures") or {}
+    except (OSError, ValueError):
+        _ogf = None
+        fail("assets/og-cards.json is missing or unreadable, so no share card's "
+             "figures can be checked. It is written by _build/ogcards.py - run it")
+    if _ogf is not None:
+        # A MANIFEST THAT RECORDS NOTHING MUST NOT READ AS "EVERYTHING FRESH".
+        # An empty dict satisfies "no figure disagrees" for free, which is the
+        # dead-check shape gate_selftest exists to catch.
+        if not _ogf:
+            fail("assets/og-cards.json records no figures at all, so this check "
+                 "examined nothing. Re-run python3 _build/ogcards.py")
+        else:
+            from _partials import TOOLS as _T, LEARN as _L, wordnum as _wn
+            _z = json.load(open("assets/zones-index.json", encoding="utf-8"))
+            _ix = json.load(open("assets/index-data.json", encoding="utf-8"))
+            _rj = json.load(open("assets/raids-measured.json", encoding="utf-8"))
+            _rf = _rj.get("fights", _rj) if isinstance(_rj, dict) else _rj
+            live = {
+                "tools.trackers": _wn(len(_T)).lower(),
+                "learn.entries": _wn(len(_L)).lower(),
+                "raids.bosses_measured": str(len({f.get("boss") for f in _rf
+                                                  if f.get("boss")})),
+                "home.surveys": str(len(_z)),
+                "home.items_indexed": str(_ix["counts"]["item_pages"]),
+                "home.named_recorded": str(_ix["counts"]["named_pages"]),
+            }
+            for _zz in _z:
+                live[f"dungeons-{_zz['slug']}.levels"] = _zz["levels"].split(" (")[0]
+                live[f"dungeons-{_zz['slug']}.zem"] = str(_zz["zem"])
+                live[f"dungeons-{_zz['slug']}.respawn"] = _zz["respawn"] or "not recorded"
+                live[f"dungeons-{_zz['slug']}.title"] = _zz["title"]
+            # sources.tiers is a constant in ogcards.py rather than a derived
+            # figure, so there is nothing to re-derive it FROM. Recorded, not
+            # checked - and said here so the omission is not read as coverage.
+            for _k, _want in sorted(live.items()):
+                _got = _ogf.get(_k)
+                if _got is None:
+                    fail(f"assets/og-cards.json has no record of {_k}, so the "
+                         f"card carrying it cannot be checked for staleness. "
+                         f"Re-run python3 _build/ogcards.py")
+                elif _got != _want:
+                    fail(f"share card figure {_k} was rendered as {_got!r} and the "
+                         f"data now says {_want!r} - the card is STALE and a card "
+                         f"cannot be corrected once it is posted. Re-run "
+                         f"python3 _build/ogcards.py and commit the PNGs")
+
     # ---- 5d. a template placeholder may not reach a reader -------------------
     #
     # raids/eye-of-veeshan.html shipped the literal text "{EYE_FULL:,}" in its
