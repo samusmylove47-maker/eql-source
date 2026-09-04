@@ -162,6 +162,27 @@ _RAIDS = json.load(open('assets/raids-measured.json', encoding='utf-8'))
 _RF = _RAIDS.get('fights', _RAIDS) if isinstance(_RAIDS, dict) else _RAIDS
 N_BOSSES = len({f.get('boss') for f in _RF if f.get('boss')})
 
+# THE =UPGRADES FLAGSHIP GETS ITS OWN CARD, read from the same vendored
+# snapshot the page reads and by the same dotted paths.
+#
+# It shared tools.png until 4 Sep 2026 - so the relaunch's flagship link showed
+# a card that named the section rather than the product, and (until this change)
+# named it with a tool count two short. A page with its own launch deserves its
+# own card, and this is the one link the owner and the beta testers will paste.
+#
+# EVERY FIGURE BY ITS UPSTREAM DOTTED PATH, exactly as _build/build29.py reads
+# them, because a vendored number that does not say which field it is gets read
+# as the wrong quantity eventually - and did, on this very dataset, when
+# counts.purge.shipped was published under an "Items shipped" label for as long
+# as it happened to equal counts.items.
+try:
+    _UPG = json.load(open('assets/50-upgrades.json', encoding='utf-8'))['figures']
+    UPG_ITEMS = f"{_UPG['counts.items']:,}"
+    UPG_SLOTS = str(_UPG['slots.positions.total'])
+    UPG_STATS = f"{_UPG['counts.withStats']:,}"
+except (OSError, ValueError, KeyError):
+    _UPG = None
+
 # Tier C was withdrawn on 17 Aug 2026: it was generalised from a single event,
 # and one event is not a rank on a scale. The scale is M and 1 to 5.
 TIER_SCALE = "M, and 1 to 5"
@@ -190,6 +211,11 @@ SECTIONS = [
      [("Original plates", "ten"), ("Retired", "10 Aug 2026")],
      "kept exactly as they last shipped"),
 ]
+if _UPG:
+    SECTIONS.append(
+        ("tools-50-upgrades", INSTR, "GEAR PLANNING", "EQLS Upgrades",
+         [("Items", UPG_ITEMS), ("Slots", UPG_SLOTS), ("With stats", UPG_STATS)],
+         "no account, no server - a build travels as a link"))
 for slug, accent, eyebrow, title, facts, footer in SECTIONS:
     made.append(card(f"public/assets/og/{slug}.png", accent, eyebrow, title, facts, footer))
 
@@ -219,6 +245,9 @@ CARD_FIGURES = {
     "home.items_indexed": str(N_ITEMS),
     "home.named_recorded": str(N_NAMED),
     "sources.tiers": TIER_SCALE,
+    **({"tools-50-upgrades.items": UPG_ITEMS,
+        "tools-50-upgrades.slots": UPG_SLOTS,
+        "tools-50-upgrades.with_stats": UPG_STATS} if _UPG else {}),
     # Every zone card prints these three off its own record, so a zone whose ZEM
     # or respawn is corrected leaves its card behind exactly as tools.png was.
     **{f"dungeons-{z['slug']}.{k}": v for z in Z for k, v in (
