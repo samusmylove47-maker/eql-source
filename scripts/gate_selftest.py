@@ -233,6 +233,21 @@ CASES = [
      "public/tools/race-unlocks.html",
      lambda t: t.replace('const RORDER=["DEF"', 'const RORDER_UNUSED=["DEF"', 1)),
 
+    # A SHARE CARD OLDER THAN THE FIGURES ON IT. tools.png was rendered 18 Aug
+    # 2026 from a registry of six tools and the site had eight, so the image
+    # Discord shows for every tools link advertised a smaller site than it linked
+    # to - for a fortnight, with every check green, because check 5c asks whether
+    # a card EXISTS and nothing asked whether it was TRUE.
+    #
+    # The mutation puts back the REAL stale value rather than an invented one, so
+    # this case reproduces the incident instead of resembling it. Nothing here
+    # reads a PNG: ogcards.py records what it rendered from and gate.py
+    # re-derives it.
+    ("a share card older than the figures printed on it",
+     "the card is STALE and a card cannot be corrected once it is posted",
+     "assets/og-cards.json",
+     lambda t: t.replace('"tools.trackers": "eight"', '"tools.trackers": "six"', 1)),
+
     # An exhaustiveness claim typed straight into markup. CLAUDE.md section 9
     # named this one by hand for weeks - "D0, the only tier measured" was a
     # literal in build2.py AND build8.py, true both times, and unable to notice

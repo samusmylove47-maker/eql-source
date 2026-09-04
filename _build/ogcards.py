@@ -193,5 +193,55 @@ SECTIONS = [
 for slug, accent, eyebrow, title, facts, footer in SECTIONS:
     made.append(card(f"public/assets/og/{slug}.png", accent, eyebrow, title, facts, footer))
 
+# WHAT THESE CARDS WERE RENDERED FROM, RECORDED SO STALENESS BECOMES VISIBLE.
+#
+# THE PROBLEM DERIVATION DOES NOT SOLVE. The comment above records the raid card
+# advertising a 3D model for three days after that model was deleted, and the fix
+# was to DERIVE the taglines instead of typing them. Deriving fixes "typed beside
+# the data". It does nothing about "generated once and never again" - and this
+# file is hand-run, its output is committed, and no check reads a PNG.
+#
+# Measured 4 Sep 2026 on a clean tree, by running this file untouched before
+# changing anything: 19 cards came out byte-identical and tools.png did not.
+# It was rendered 18 Aug from a registry holding SIX tools. The site has eight -
+# gap-engine and lockouts shipped since - so the image Discord shows for every
+# tools link, the =Upgrades flagship included, had been saying six for a
+# fortnight. Nothing could see it: gate check 5c asks whether a card EXISTS.
+#
+# So the figures are written out beside the cards, and scripts/gate.py re-derives
+# them and fails when one has moved. A stale card is now a build failure naming
+# the figure that moved, instead of a picture nobody can read.
+CARD_FIGURES = {
+    "tools.trackers": wordnum(len(TOOLS)).lower(),
+    "learn.entries": wordnum(len(LEARN)).lower(),
+    "raids.bosses_measured": str(N_BOSSES),
+    "home.surveys": str(len(Z)),
+    "home.items_indexed": str(N_ITEMS),
+    "home.named_recorded": str(N_NAMED),
+    "sources.tiers": TIER_SCALE,
+    # Every zone card prints these three off its own record, so a zone whose ZEM
+    # or respawn is corrected leaves its card behind exactly as tools.png was.
+    **{f"dungeons-{z['slug']}.{k}": v for z in Z for k, v in (
+        ("levels", z["levels"].split(" (")[0]),
+        ("zem", str(z["zem"])),
+        ("respawn", z["respawn"] or "not recorded"),
+        ("title", z["title"]),
+    )},
+}
+json.dump({
+    "_comment": [
+        "What public/assets/og/*.png were rendered from. Written by "
+        "_build/ogcards.py; checked by scripts/gate.py.",
+        "A figure here disagreeing with the live data means a card is STALE - "
+        "re-run python3 _build/ogcards.py and commit the PNGs it writes.",
+        "This exists because tools.png said six trackers for a fortnight while "
+        "the site had eight, and every check was green.",
+    ],
+    "rendered": len(made),
+    "figures": CARD_FIGURES,
+}, open("assets/og-cards.json", "w", encoding="utf-8", newline="\n"),
+    indent=1, sort_keys=True)
+
 total = sum(os.path.getsize(p) for p in made)
-print(f"og cards: {len(made)} written, {total/1024:.0f} KB total")
+print(f"og cards: {len(made)} written, {total/1024:.0f} KB total, "
+      f"{len(CARD_FIGURES)} figure(s) recorded in assets/og-cards.json")
