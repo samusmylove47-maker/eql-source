@@ -30,6 +30,9 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
+# Read, not typed: this page stated the withheld count as a word and would
+# have kept stating it after the set changed. withheld.py owns the set.
+from withheld import count as wh_count, word as wh_word
 
 Z = json.load(open('assets/zones-index.json', encoding='utf-8'))
 BY = {z['slug']: z for z in Z}
@@ -118,7 +121,7 @@ page = head("The original plates",
       plans that came out are better in every direction that matters: the walls are the
       game&rsquo;s walls rather than an outline drawn around some dots, the storeys separate, the
       named filter by storey, and every coordinate is checked against walkable floor at build time.
-      <strong>Six impossible Najena positions were caught that way and withheld.</strong> The hand
+      <strong>{wh_word(wh_count('najena'))} impossible Najena positions were caught that way and withheld.</strong> The hand
       plots could not have caught them, because they had nothing to check against.
       <br><br>These are kept because they are the record of how the survey was done before it could
       be done properly &mdash; and because anyone who wants to judge whether we improved or merely
