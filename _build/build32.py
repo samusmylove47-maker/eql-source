@@ -54,12 +54,23 @@ CSS = '''<style>
   margin:0 0 var(--s-4)}
 .au-shot{margin:0 0 var(--s-5);border:1px solid var(--rule);border-radius:var(--r);
   overflow:hidden;background:var(--surface-2)}
-.au-shot video,.au-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;
-  object-fit:cover}
+/* EACH STILL KEEPS ITS OWN SHAPE. This was aspect-ratio:16/9 with
+   object-fit:cover, which is right when every asset is a 16:9 frame and
+   destructive the moment one is not. Shara's seven run from 322x408 PORTRAIT to
+   1123x710: measured 5 Sep 2026, the list-aura still scaled to 474px to cover a
+   210px slot, so 56 per cent of it was cropped away - and that is the image
+   carrying her "icon grid or list" claim, which is exactly what the crop
+   removed. width/height are on every img, so the browser derives the correct
+   ratio itself and still reserves the box before the bytes land. */
+.au-shot video,.au-shot img{display:block;width:100%;height:auto}
 .au-shot figcaption{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
   padding:10px 14px;border-top:1px solid var(--rule)}
-.au-grid{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+/* start, not stretch: a figure sizes to its own image now that the images
+   are different heights, so a short one does not grow a border to match
+   the tallest in its row. */
+.au-grid{display:grid;gap:var(--s-4);align-items:start;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 .au-get{display:inline-flex;align-items:center;gap:var(--s-3);margin:var(--s-5) 0 0;
   padding:13px 22px;border-radius:var(--r);background:var(--bone);color:var(--surface-0);
   font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-lg);
@@ -89,8 +100,11 @@ def shot(key, caption=None, vid=False):
         # same shape as the home-page band.
         poster = MEDIA.get(A['media'].get('poster') or '', {})
         pv = f"assets/media/{poster['file']}" if poster else ''
+        # Intrinsic size from the manifest, not a typed 1600x900 - see the note
+        # in build1.py. The old poster was that size by coincidence.
+        pw, ph = poster.get('w') or 1600, poster.get('h') or 900
         return (f'<figure class="au-shot" id="auwrap2" data-video="{src}" data-poster="{pv}">'
-                f'<img src="{pv}" width="1600" height="900" alt="">'
+                f'<img src="{pv}" width="{pw}" height="{ph}" alt="">'
                 f'<button class="vplay" type="button">Play</button>'
                 f'{cap}</figure>')
     w = m.get('w') or 1600
