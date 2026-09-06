@@ -8,16 +8,26 @@ The page's reason for existing is one specific misconception: a personal instanc
 is not a solo raid. Someone who enters a personal instance of Plane of Hate
 expecting Innoruuk finds an empty zone and has spent a charge doing it.
 """
-import os, sys
+import json, os, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
 from _partials import head, bar, foot
 
+# READ, NEVER TYPED. This page said "twenty bosses are logged at those tiers"
+# from the day the answer was written; the dataset holds 21 and has since a
+# later kill was parsed. It is the fault CLAUDE.md section 3 names - a figure
+# typed beside the data it claims to come from - inside a tier M badge, which
+# is the badge that means we measured it ourselves.
+# A numeral, per CLAUDE.md section 7 - and because spelling it forces a lookup
+# table that goes wrong at whatever number nobody wrote a word for.
+_RAIDS = json.load(open('assets/raids-measured.json', encoding='utf-8'))
+_HIGH_TIER_BOSSES = len({r['boss'] for r in _RAIDS if r['difficulty'] in (3, 4)})
+
 page = head("How raid access works",
   "Open-world raid bosses no longer spawn in EverQuest Legends. What replaced them, how the three "
   "instance types differ, and why a personal instance is not a solo raid.",
-  rel="../", og="learn", canon="learn/raid-access") + bar("../") + '''
+  rel="../", og="learn", canon="learn/raid-access") + bar("../") + f'''
 <main>
 
 <section class="hero page">
@@ -161,8 +171,8 @@ page = head("How raid access works",
       in-game observation, not further reading.
       <br><br><strong>The third question here is now answered.</strong> Which class kits a raid boss
       runs at D3 and above was open until 12&ndash;15 August 2026;
-      <a href="../learn/difficulty">twenty bosses are logged at those tiers</a> with every spell
-      each cast. <span class="tier tM">TIER M</span></div>
+      <a href="../learn/difficulty">{_HIGH_TIER_BOSSES} bosses are logged at those tiers</a> with the
+      spells each was seen to cast. <span class="tier tM">TIER M</span></div>
   </div>
 </section>
 

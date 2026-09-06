@@ -13,13 +13,29 @@ was parsed and committed to assets/measured.json and assets/raids-measured.json.
 will happen again. sightings.py joins measured drops to the item catalogue, and
 that catalogue is mined from the dungeon surveys plus the planar sets. The Plane
 of Sky is neither. So every one of the 148 Sky loot lines - 74 distinct items,
-every key in the chain, the whole efreeti line - was silently discarded as
-vendor trash, and assets/sightings.json contains not one Sky drop. No Sky mob is
-on a survey roster either.
+every key in the chain, the whole efreeti line - was silently discarded, and
+assets/sightings.json contained not one Sky drop. No Sky mob was on a survey
+roster either.
 
 docs/SKY-MEASURED.md said "full per-boss drop tables are in sightings.json".
 They were not there at all. A generator that drops evidence on the floor without
 counting what it dropped looks exactly like a generator that found nothing.
+
+**THAT WAS FIXED ON 4 SEPTEMBER 2026 AND THE PARAGRAPH ABOVE IS HISTORY.** Both
+sides of the join were repaired: the item side keeps drops from named mobs even
+where the item has no catalogue page, marking them `off_catalogue`, and the raid
+bosses were admitted as a SECOND ROSTER mirroring planar.json as a second
+catalogue. `assets/sightings.json` now holds Sky data on both axes - re-derive
+it rather than trusting this sentence:
+
+    python3 -c "import json;s=json.load(open('assets/sightings.json',encoding='utf-8'));
+    print(sum('Plane of Sky' in json.dumps(v) for v in s['by_item'].values()),'items;',
+          sum('Plane of Sky' in json.dumps(v) for v in s['by_named'].values()),'mobs')"
+
+This file is kept anyway, and not because the paragraph above is a nice story.
+It derives the Sky figures straight from the two measured datasets, so the page
+renders committed data rather than figures typed beside it, and that is a
+property worth having whether or not sightings.py can also see the zone.
 
 The general fix belongs in sightings.py and is a migration across a dataset five
 builders and the public contract read. This file is the narrow one: it derives

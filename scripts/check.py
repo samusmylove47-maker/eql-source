@@ -1192,17 +1192,68 @@ _CONTRACT = {
         data={"sources", "islands", "ladder", "order", "efreeti", "classes"},
         # Fixed sets: the zone has ten islands and the game sixteen classes.
         # These do not churn, so their floors sit at the count itself.
+        # Only fields present on EVERY row are declared, measured 6 Sep 2026.
+        # sources' rev/url/read are on 1, 2 and 3 of 4 and are deliberately
+        # absent here: declaring an optional field would make this check fail
+        # on correct data, which is the fastest way to get a check deleted.
+        data_rows={"islands": {"boss": (str,), "d": (int,), "n": (str,),
+                               "name": (str,)},
+                   "sources": {"name": (str,), "note": (str,),
+                               "tier": (int, type(None))},
+                   "classes": {"armor": (str,), "hub": (str,), "label": (str,),
+                               "quests": (list,), "verified": (bool,)}},
         floor={"sources": 4, "islands": 10, "ladder": 10, "order": 16,
                "efreeti": 2, "classes": 16}),
     "sightings.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
              "terms", "stability", "notes", "data", "hash"},
         data={"items"},
-        floor={"items": 220}),        # 277 on 18 Aug 2026
+        # RAISED 6 Sep 2026, 220 -> 600, and the old value is why this comment
+        # now carries the live figure and the date together.
+        #
+        # 220 was set against 277 keys on 18 Aug: a 21% permitted loss. The two
+        # 4 Sep commits took the dataset to 762 and neither touched this file,
+        # so the same 220 had quietly become a 71% permitted loss - 542 item
+        # keys could have vanished with check.py green. A floor is a fraction
+        # of the live count wearing an absolute number's clothes, and it decays
+        # every time the data grows. 600 restores roughly the original
+        # sensitivity against 762.
+        #
+        # AND IT COUNTS THE WRONG NOUN, which the raise does not fix: len() here
+        # is distinct item NAMES. Every row could be stripped to an empty
+        # sessions list and the count would not move. That is what the row
+        # contract below is for.
+        # `difficulty` NOW ADMITS null, AND THAT IS A WIDENING OF A PUBLISHED
+        # TYPE - recorded here rather than tidied away. It was int in 1,440 of
+        # 1,440 sessions before 4 Sep 2026 and is null in 2 of 2,490 now. Both
+        # are fights with no zone line, where null means UNRESOLVED and any
+        # number would be invented; `zone` beside it has been nullable for the
+        # same reason since long before. A strict consumer reading v1 as
+        # "difficulty is always a number" is the one this could break, which is
+        # why it is written down and declared instead of being left to be
+        # rediscovered.
+        data_rows={"items": {"mob": (str,), "seen": (int,),
+                             "off_roster": (bool,), "off_catalogue": (bool,),
+                             "sessions": (list,)},
+                   "items.sessions": {"date": (str,),
+                                      "zone": (str, type(None)),
+                                      "difficulty": (int, type(None))}},
+        floor={"items": 600},         # 762 keys live, 6 Sep 2026
+        rows_floor={"items": 1200}),  # 1,521 rows live, 6 Sep 2026
     "zones.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
              "terms", "stability", "notes", "data", "hash"},
         data={"zones"},
+        # `zem` is float on some zones and int on others, and `verify_gate` is
+        # null wherever a zone has no open gate. Both are the published shape,
+        # measured rather than tidied: a contract check that demands a neater
+        # world than the one it ships would fail on correct data.
+        data_rows={"zones": {"slug": (str,), "title": (str,), "url": (str,),
+                             "plate": (int,), "levels": (str,),
+                             "zem": (int, float), "coverage": (dict,),
+                             "coverage_score": (int,),
+                             "verify_level": (str,),
+                             "verify_gate": (str, type(None))}},
         floor={"zones": 13}),         # 13 surveys; a zone is never unsurveyed
     "items.v1.json": dict(
         top={"name", "version", "title", "description", "source", "schema",
@@ -1285,6 +1336,71 @@ for _d in _idx.get("datasets", []):
                      f"large fraction of itself by accident — find what stopped "
                      f"feeding it. If the drop is real and intended, lower the "
                      f"floor in check.py and say why in the commit")
+    # ---- the ROWS, which nothing checked until 6 Sep 2026 -------------------
+    #
+    # The contract's promise is "fields are never removed and never retyped".
+    # Everything above enforces that down to data.<key> and stops. Below that
+    # line every published row-level field - mob, seen, off_roster,
+    # off_catalogue, sessions[].date, a zone's verify_level and zem - could be
+    # removed, renamed or retyped with this file green. The floor could not see
+    # it either: it counts KEYS, so a dataset whose every row was stripped to
+    # nothing keeps its length and passes.
+    #
+    # ONLY FIELDS MEASURED PRESENT ON EVERY ROW ARE DECLARED. An optional field
+    # declared as required fails on correct data, and a check that cries wolf
+    # gets deleted rather than fixed.
+    for _coll, _fields in (_want.get("data_rows") or {}).items():
+        # "items.sessions" descends one level into a row's own list. The fault
+        # that wanted it: sessions[].difficulty was int in 1,440 of 1,440
+        # published sessions and is now null in 2 of 2,490 - a real widening of
+        # a published type, below the depth anything was looking at.
+        _coll, _, _sub = _coll.partition(".")
+        _val = (_body.get("data") or {}).get(_coll)
+        _rows = list(_val.values()) if isinstance(_val, dict) else (_val or [])
+        _flat = []
+        for _r in _rows:
+            _flat += (_r if isinstance(_r, list) else [_r])
+        _flat = [_r for _r in _flat if isinstance(_r, dict)]
+        if _sub:
+            _flat = [_s for _r in _flat for _s in (_r.get(_sub) or [])
+                     if isinstance(_s, dict)]
+            _coll = f"{_coll}.{_sub}"
+        # THE FLOOR ABOVE COUNTS KEYS AND THIS ONE COUNTS ROWS, because they are
+        # different quantities and only one of them was ever guarded. Setting
+        # every item's row list to [] leaves 762 keys standing - above any
+        # sensible key floor - while publishing nothing at all. Measured: that
+        # mutation passed every check in this file until 6 Sep 2026.
+        _rfloor = (_want.get("rows_floor") or {}).get(_coll)
+        if _rfloor is not None and len(_flat) < _rfloor:
+            fail(f"{_fname}: data.{_coll} holds {len(_flat)} row(s), below its "
+                 f"recorded floor of {_rfloor}. The key count can stay flat "
+                 f"while every row empties, so this counts the rows")
+        _gone, _wrong = {}, {}
+        for _r in _flat:
+            for _f, _types in _fields.items():
+                if _f not in _r:
+                    _gone[_f] = _gone.get(_f, 0) + 1
+                    continue
+                _v = _r[_f]
+                # bool IS an int in Python, so `isinstance(True, int)` is True
+                # and a count retyped into a flag would sail past a naive test.
+                # This is the one line where the check could quietly stop
+                # meaning anything, so it says so rather than being clever.
+                if isinstance(_v, bool):
+                    _ok = bool in _types
+                else:
+                    _ok = isinstance(_v, _types)
+                if not _ok:
+                    _wrong.setdefault(_f, set()).add(type(_v).__name__)
+        for _f, _n in sorted(_gone.items()):
+            fail(f"{_fname}: data.{_coll} has lost field {_f!r} on {_n} of "
+                 f"{len(_flat)} row(s). The v1 contract does not remove "
+                 f"published fields — publish a v2 instead")
+        for _f, _seen in sorted(_wrong.items()):
+            fail(f"{_fname}: data.{_coll}.{_f} is published as "
+                 f"{sorted(_seen)} where the v1 contract declares "
+                 f"{[t.__name__ for t in _fields[_f]]}. A consumer parsing v1 "
+                 f"breaks on a retyped field exactly as it does on a removed one")
 for _extra in sorted(set(os.path.basename(p) for p in glob.glob("public/data/*.json"))
                      - _listed - {"index.json"}):
     fail(f"public/data/{_extra} is published but not listed in index.json, so "
