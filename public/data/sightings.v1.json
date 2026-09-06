@@ -22,7 +22,7 @@
  "notes": [
   "A COUNT, NEVER A RATE. A drop seen once is seen once. Nothing here supports a drop-rate claim and none is made.",
   "`seen` and `sessions` are the evidence behind a row, not a published finding. The pages on this site print which mob drops what and leave the tally here.",
-  "`off_roster` means the mob was named by the log rather than by a survey we had already written.",
+  "`off_roster` means the mob is on NEITHER of our rosters: it was named by the log alone. `false` means it is on one of the two - the dungeon surveys, or the measured raid bosses. IT DOES NOT MEAN A PAGE EXISTS FOR IT. This note said `false` meant a survey had been written until 6 Sep 2026; 403 rows across 27 mobs are on the raid-boss roster instead, and none of those has a survey. The raid bosses were admitted as a second roster on 4 Sep and this sentence did not move with them.",
   "`off_catalogue` means the ITEM has no page here yet. The drop is measured either way; the flag says our catalogue is behind our logs, which is a fact about us rather than about the item. Rows carrying it were discarded entirely before 4 Sep 2026.",
   "This is the one dataset in this community that is measured rather than transcribed. It is also the smallest sample. Both are true."
  ],

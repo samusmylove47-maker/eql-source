@@ -2,7 +2,7 @@
  "name": "sky",
  "version": "1.0.0",
  "title": "Plane of Sky class unlock quests",
- "description": "Every Plane of Sky test for all sixteen classes, with the turn-ins, the island each component drops on, and a source recorded per claim.",
+ "description": "Every Plane of Sky test for all 16 classes, with the turn-ins, the island each component drops on, and a source recorded per claim.",
  "source": "https://eqlsource.com",
  "schema": "https://eqlsource.com/data/sky.v1.json",
  "terms": {
@@ -20,9 +20,9 @@
   "Values change as evidence improves. That is the product working, not a breach — watch `hash` if you cache."
  ],
  "notes": [
-  "`verified` is DERIVED, never hand-set: every claim of every quest must name a source of tier 2 or better with nothing marked against it. Five of sixteen classes qualify.",
+  "`verified` is DERIVED, never hand-set: every claim of every quest must name a source of tier 2 or better with nothing marked against it. 5 of 16 classes qualify.",
   "Tier 1 is a developer statement, 2 a structured wiki record that passed a provenance check, 3 a named community guide, 4 an aggregator, 5 inherited Project 1999 prose.",
-  "Six reward stat blocks carry classic percentage haste and are marked suspect in place. Legends uses a flat attack-speed value."
+  "6 reward stat blocks carry classic percentage haste and are marked suspect in place. Legends uses a flat attack-speed value."
  ],
  "data": {
   "sources": {

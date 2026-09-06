@@ -113,21 +113,40 @@ def build_sky():
             for q in c['quests'] for f in q['p'].values())
         classes[code] = dict(label=c['label'], hub=c['hub'], armor=c['armor'],
                              verified=verified, quests=quests)
+
+    # BOTH NOTES BELOW TYPED THEIR OWN COUNTS UNTIL 6 Sep 2026, in the one file
+    # whose subject is what this project promises not to get wrong. A note
+    # saying "`verified` is DERIVED, never hand-set" and then hand-typing the
+    # number of classes that qualify is the shape CLAUDE.md section 3 forbids,
+    # sitting inside its own counter-example.
+    #
+    # Both were true when checked. That is not the point: CLAUDE.md records the
+    # verified count moving from eleven to five the day the rule was applied,
+    # so this is a figure that has already moved once. If a source's tier
+    # improves and a sixth class derives verified, the data moves and a typed
+    # note does not.
+    _n_verified = sum(1 for v in classes.values() if v['verified'])
+    _n_haste = sum(
+        1 for c in s['classes'].values() for q in c['quests']
+        if 'classic percentage haste' in
+        (((q.get('p') or {}).get('stats') or {}).get('note') or ''))
     return wrap(
         'sky', '1.0.0', 'Plane of Sky class unlock quests',
-        'Every Plane of Sky test for all sixteen classes, with the turn-ins, '
-        'the island each component drops on, and a source recorded per claim.',
+        f'Every Plane of Sky test for all {len(classes)} classes, with the '
+        'turn-ins, the island each component drops on, and a source recorded '
+        'per claim.',
         dict(sources=src, islands=s['islands'], ladder=s['ladder'],
              order=s['order'], efreeti=s['efreeti'], classes=classes),
         notes=[
             "`verified` is DERIVED, never hand-set: every claim of every quest "
             "must name a source of tier 2 or better with nothing marked "
-            "against it. Five of sixteen classes qualify.",
+            f"against it. {_n_verified} of {len(classes)} classes qualify.",
             "Tier 1 is a developer statement, 2 a structured wiki record that "
             "passed a provenance check, 3 a named community guide, 4 an "
             "aggregator, 5 inherited Project 1999 prose.",
-            "Six reward stat blocks carry classic percentage haste and are "
-            "marked suspect in place. Legends uses a flat attack-speed value.",
+            f"{_n_haste} reward stat blocks carry classic percentage haste and "
+            "are marked suspect in place. Legends uses a flat attack-speed "
+            "value.",
         ])
 
 
@@ -147,6 +166,25 @@ def build_sightings():
                                            difficulty=x.get('difficulty'))
                                       for x in r.get('sessions', [])])
                        for r in rows]
+    # `off_roster: false` USED TO MEAN "we have a survey for this mob". It does
+    # not any more, and the note that defined it did not move when the meaning
+    # did. cb61e9c5 admitted the raid bosses from raids-measured.json as a
+    # SECOND roster - which was the right fix for a real gap - and in doing so
+    # made the boolean mean "on either roster". Measured 6 Sep 2026: 403 rows
+    # across 27 mobs carry off_roster=false with no survey behind them.
+    #
+    # The field kept its name and its type, so it passed every check this
+    # project has. Only the prose that gives it meaning changed underneath, and
+    # nothing watches prose. A consumer reading the boolean as documented gets
+    # those 403 wrong.
+    #
+    # The count is derived rather than typed for the obvious reason.
+    _roster = {n['n'] for n in
+               json.load(open('assets/index-data.json', encoding='utf-8'))['named']}
+    _second = sorted({r['mob'] for rows in items.values() for r in rows
+                      if not r['off_roster'] and r['mob'] not in _roster})
+    _second_rows = sum(1 for rows in items.values() for r in rows
+                       if not r['off_roster'] and r['mob'] not in _roster)
     return wrap(
         'sightings', '1.0.0', 'Measured drop sources',
         'Which mobs have been measured dropping which items, parsed from '
@@ -158,8 +196,14 @@ def build_sightings():
             "`seen` and `sessions` are the evidence behind a row, not a "
             "published finding. The pages on this site print which mob drops "
             "what and leave the tally here.",
-            "`off_roster` means the mob was named by the log rather than by a "
-            "survey we had already written.",
+            "`off_roster` means the mob is on NEITHER of our rosters: it was "
+            "named by the log alone. `false` means it is on one of the two - "
+            "the dungeon surveys, or the measured raid bosses. IT DOES NOT "
+            "MEAN A PAGE EXISTS FOR IT. This note said `false` meant a survey "
+            f"had been written until 6 Sep 2026; {_second_rows} rows across "
+            f"{len(_second)} mobs are on the raid-boss roster instead, and "
+            "none of those has a survey. The raid bosses were admitted as a "
+            "second roster on 4 Sep and this sentence did not move with them.",
             "`off_catalogue` means the ITEM has no page here yet. The drop is "
             "measured either way; the flag says our catalogue is behind our "
             "logs, which is a fact about us rather than about the item. Rows "

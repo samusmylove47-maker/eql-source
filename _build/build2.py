@@ -249,6 +249,12 @@ _SKY_RAIDS = json.load(open('assets/raids-measured.json', encoding='utf-8'))
 _SKY_TIERS = sorted({f['difficulty'] for f in _SKY_RAIDS
                      if f['zone'] and 'Plane of Sky' in f['zone']
                      and f['difficulty'] is not None})
+# The mesh figure the Sky page derives as len(ISL). This card typed 21 beside
+# it: one copy derived, one typed, both published, which is the propagation
+# shape gate.py exists for.
+_SKY_BODIES = len(json.load(open('assets/sky-islands.json',
+                                 encoding='utf-8'))['islands'])
+
 SKY_TIER_NOTE = ('D%d, the only tier measured' % _SKY_TIERS[0]
                  if len(_SKY_TIERS) == 1
                  else 'measured at ' + ', '.join('D%d' % t for t in _SKY_TIERS)
@@ -472,9 +478,11 @@ src = head("Sourcing standard", "How EQL Source sources, dates and verifies ever
         <p class="d">Two wiki pages disagree &mdash; 25/27 against 19/29. The Travel Guide has been shown wrong on
           translocators, so it is weighted lower, but the conflict is open.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Raids</div><h3 class="t">Plane of Sky geometry</h3>
-        <p class="d">The mesh gives 21 bodies of walkable floor and cannot say which is which island. <strong>One
-          <code>/loc</code> per island &mdash; nine readings &mdash; would label the elevation chart permanently
-          and let each island be drawn properly.</strong> The page says so in place.</p></div>
+        <p class="d">The mesh gives {_SKY_BODIES} bodies of walkable floor and cannot say which is which
+          island. <strong>One <code>/loc</code> per island would label the elevation chart permanently
+          and let each island be drawn properly.</strong> The Sky page states how many readings that
+          is, derived from the ring itself; repeating the count here was a second copy of a figure
+          that already had a home.</p></div>
       <div class="card" style="--c:var(--warn)"><div class="kicker">Dungeons</div><h3 class="t">Floor plans have no room names</h3>
         <p class="d">The plans are read from the game&rsquo;s own meshes, so they carry walls and storeys but no
           labels. Which chamber is which is still something you work out from the named roster.</p></div>

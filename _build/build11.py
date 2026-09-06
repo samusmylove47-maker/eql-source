@@ -71,6 +71,36 @@ _yael_heal_tiers = sorted({r['difficulty'] for r in _ALL_YAEL
                            if r.get('self_heal_high') and r['difficulty'] is not None})
 _yael_heal_low = _yael_heal_tiers[0] if _yael_heal_tiers else None
 _sp = [r['spells_distinct'] for r in YAEL]
+
+
+# THE RECURRING DRAIN, READ OUT OF THE DATA IT DESCRIBES.
+#
+# "the same 22 hit points" was typed here, citing a dataset that could not hold
+# it: self_heal_low/high are counts of heal EVENTS despite their names, and no
+# published field carried a magnitude at all. The figure was true - it is
+# Master Yael's Bond of Death - and unverifiable, which is the pairing
+# CLAUDE.md section 3 exists to prevent.
+#
+# raidstats.py now publishes self_heal_amounts as {spell: {amount: times}}, and
+# this picks the heal that REPEATS: the sentence is about a drain ticking, so
+# the qualifying heal is the one seen more than once at a single amount. A heal
+# seen once is a decision, which is the thing the sentence contrasts it with.
+def _drain(rows):
+    best = None
+    for r in rows:
+        for spell, per in (r.get('self_heal_amounts') or {}).items():
+            for amt, times in per.items():
+                if times > 1 and (best is None or times > best[2]):
+                    best = (spell, int(amt), times)
+    return best
+
+
+_YAEL_DRAIN = _drain(YAEL)
+# THE FALLBACK DROPS THE CLAIM RATHER THAN SOFTENING IT. "a constant amount
+# each time" would still assert constancy, which is the very thing that goes
+# unmeasured when this is empty - and a sentence that reads fine either way is
+# how a regression ships silently. No magnitude, no clause.
+_drain_txt = (f' for the same {_YAEL_DRAIN[1]} hit points' if _YAEL_DRAIN else '')
 _spell_span = f"{min(_sp)}&ndash;{max(_sp)}" if _sp else "several"
 
 # The repeats are kept as a statement about the measurement, not as a second
@@ -522,7 +552,7 @@ You have entered The City of Guk 4 (Refined).</pre>
       D{_yael_heal_low}, and Lady Vox at D{_heal_lowest}, the lowest there is. What the tier decides
       is how <em>much</em> of the kit turns up.
       <br><br><strong>Read a self-heal count as events, not decisions.</strong> A run of them at
-      the top tier is one effect ticking every six seconds for the same 22 hit points &mdash; the
+      the top tier is one effect ticking every six seconds{_drain_txt} &mdash; the
       same shape Lady Vox shows at hers.</div>
     <h3 class="sec" style="font-size:19px;margin-top:var(--s-6)">The other bosses</h3>
     <p class="lede" style="margin:0">Same shape, different bosses. <strong>One row per boss per
