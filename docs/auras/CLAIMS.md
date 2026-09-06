@@ -245,8 +245,30 @@ comment at `buffStore.js:285`.
 **So the advice inverted: the figure did not understate the work threefold, it
 overstated it by 10.6×.** The original reasoning was still right — print it from
 the data at build time rather than typing it beside the copy. **A hand-typed
-figure goes stale silently, which is what happened here.** The printable figure
-is **1,067**.
+figure goes stale silently, which is what happened here.** ~~The printable
+figure is **1,067**.~~
+
+> **WITHDRAWN 5 September 2026 by #197, and this line is the joke at its own
+> expense.** A paragraph about hand-typed figures going stale ended by
+> hand-typing one, and it was stale within two days.
+>
+> **1,067 was the raw entry count of `buffs.json`. The app loads 1,066:**
+> `src/main/buffStore.js:51` drops `durationSec > MAX_TRACKABLE_DURATION_SEC`
+> (5×3600), which excludes *Share Form of the Great Wolf* at 21,600s. The
+> measurement was of the FILE while the label said "spells known" — a true
+> narrow statement restated one size up. Caught by Session C.
+>
+> **There is no printable figure now, and that is the ruling, not an omission.**
+> `assets/auras.json`'s `band._figures` was emptied the same day: the numbers
+> live in another repository, the build has no network, and a figure this build
+> cannot re-derive is one it cannot guard. **Publish a figure with a guard, or
+> stop publishing it.** Two of the four figures in that record were stale within
+> two days while carrying the best provenance in the repository — a provenance
+> record answers *where a figure came from* and cannot answer *whether it is
+> still true*.
+>
+> Nothing here is a claim about what =Auras does. Shara has creative and
+> production control over that; her copy comes through the owner.
 
 **No feature that is only planned. ⚠ PARTLY CORRECTED 3 Sep 2026 — sound
 shipped.**

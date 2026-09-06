@@ -3,21 +3,26 @@
 Run by build.sh. Output: public/app/eqls-lockouts.<hash>.html and
 assets/lockouts.json.
 
-WHAT THIS IS NOT, YET
----------------------
-There is no tools/ page and no landing-page band for this tool, deliberately.
-The Director's order of 25 August 2026 was to ship the copy step and hold the
-promotion until Session D reports again. So for now the app is served under a
+WHAT THIS WAS NOT, AND NOW IS
+-----------------------------
+This section said, until 6 September 2026: "There is no tools/ page and no
+landing-page band for this tool, deliberately ... the app is served under a
 hashed URL that **nothing on the site links**, and that is the intended state
-rather than an oversight.
+rather than an oversight." It described the Director's order of 25 August 2026
+to ship the copy step and hold the promotion pending Session D.
 
-check.py's Sky Ledger guard ends by requiring that some page link the hashed
-file, on the reasoning that an unreachable 176 KB asset is a bug. That clause is
-deliberately absent for this tool and a WARN stands in its place, so the
-unpromoted state is visible in every single build instead of being silently
-tolerated. When the tool is promoted, the WARN goes away on its own and the
-clause should be turned on. A check that quietly permits the interim state is a
-check that will still permit it a year from now.
+**That hold ended.** `public/tools/lockouts.html` exists and the home page links
+the hashed file. `promoted` in `assets/lockouts.json` is the flag that says so.
+
+check.py's link clause was a WARN standing in for the fail() the Sky Ledger
+uses, to be turned on by hand at promotion. It is no longer hand-set either: it
+DERIVES from `promoted`, and fails in both directions - promoted but unlinked,
+and linked but unpromoted. That is stronger than the WARN it replaced, because
+it also catches the state nobody thought to worry about.
+
+The paragraph above outlived the state it described, which is the same fault it
+was written to guard against, one level up. A comment describing an interim
+arrangement goes stale exactly as quietly as a check permitting one.
 
 WHY THE HASH IS COMPUTED HERE AND NOT READ OFF THE FILENAME
 -----------------------------------------------------------

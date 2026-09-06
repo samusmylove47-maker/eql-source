@@ -9,13 +9,30 @@ Both files live in `_media/` and are committed. `_build/media.py` hashes them
 into `public/assets/media/` and writes `assets/media.json`; **no build change was
 needed to add them**, because that script globs the directory.
 
-| File | Size | Shipped as |
-|---|---|---|
-| `_media/auras-trailer.mp4` | 839 KB | `auras-trailer.5fc3fbbc.mp4` |
-| `_media/auras-poster.jpg` | 175 KB | `auras-poster.5c861299.jpg` |
+| File | Size | Shipped as | Dimensions |
+|---|---|---|---|
+| `_media/auras-trailer.mp4` | 839 KB | `auras-trailer.5fc3fbbc.mp4` | 1600x900 |
+| `_media/auras-hero.jpg` | 163 KB | `auras-hero.f4c9fb24.jpg` | **1123x710** |
 
-Both 1600x900. The trailer is 8.9s at 24fps and carries **no audio stream at
-all** — `ffprobe` reports a single stream, index 0, video.
+The trailer is 8.9s at 24fps and carries **no audio stream at all** — `ffprobe`
+reports a single stream, index 0, video.
+
+> **CORRECTED 6 September 2026.** This table named `_media/auras-poster.jpg`
+> shipping as `auras-poster.5c861299.jpg`, and said "Both 1600x900". #198
+> deleted that file on 5 Sep and the poster slot became `auras-hero`, which is
+> 1123x710 — not 16:9. This document says at the top that it exists to be read
+> *whenever someone re-encodes*, so it was pointing a re-encode at a filename
+> that no longer exists and a target shape that was never right for the
+> replacement. Re-derive rather than trusting the table:
+>
+> ```bash
+> python3 -c "import json;a=json.load(open('assets/auras.json',encoding='utf-8'));m=json.load(open('assets/media.json',encoding='utf-8'));k=a['media']['poster'];print(k,m[k])"
+> ```
+>
+> **Shara's seven stills are not one shape and must not be re-encoded to one.**
+> They run 322x408 portrait to 1123x710. `build32.py` renders each at its own
+> ratio for that reason; the fixed 16:9 slot it used to carry cropped 56 per
+> cent off the portrait.
 
 ---
 
@@ -50,6 +67,11 @@ desktop, with named third-party applications on it, one third of a second past
 the end.
 
 ## The poster
+
+**The `auras-poster` frame described here was replaced on 5 Sep 2026 by
+`auras-hero`, Shara's own image.** The section is kept because the REASONING
+below still governs whatever fills the slot — it is not a description of the
+current file.
 
 A frame from inside the clip at **t=10.8**, with the full buff row up.
 

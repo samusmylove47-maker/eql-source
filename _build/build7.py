@@ -179,6 +179,11 @@ page = head("How raid access works",
 </main>
 ''' + foot("../")
 
-os.makedirs('learn', exist_ok=True)
+# public/learn, not learn. This read `os.makedirs('learn', ...)` until 6 Sep
+# 2026 and created an empty directory at the REPOSITORY ROOT on every build,
+# beside the public/ tree, while writing the page to the right place one line
+# below. Untracked and empty, so nothing ever failed and nothing ever noticed.
+# The only other generator writing outside public/ is one that means to.
+os.makedirs('public/learn', exist_ok=True)
 open('public/learn/raid-access.html', 'w', encoding='utf-8', newline='\n').write(page)
 print("learn/raid-access.html written")
