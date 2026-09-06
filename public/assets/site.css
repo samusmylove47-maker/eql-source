@@ -1427,6 +1427,21 @@ h1.display em{color:var(--z01)}
   border-bottom:1px solid var(--rule);padding:0 var(--s-3) var(--s-2) 0}
 .dtable td{border-bottom:1px solid var(--rule);padding:var(--s-3) var(--s-3) var(--s-3) 0;
   vertical-align:top}
+/* THE CELL CLASSES THE GENERATORS HANG ON THESE TABLES, WHICH STYLED NOTHING.
+   `nmob`, `lv`, `mv` and `unk` are the imported plates' convention, and the
+   plates define them in their own inline <style> - they never load this file.
+   learn/difficulty.html does load this file and uses the same names, so 539
+   class attributes resolved to nothing and the damage figures rendered in
+   Public Sans beside a mono header row.
+   Same shape as the `.tw` fix recorded in _build/build11.py: borrowing a class
+   across a stylesheet boundary fails silently, because an undefined class is
+   not an error in CSS. Scoped under .dtable so they cannot leak to anything
+   that was not asking for them. DESIGN.md: numerals are IBM Plex Mono. */
+.dtable .lv{font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums;
+ white-space:nowrap}
+.dtable .nmob{color:var(--bone)}
+.dtable .mv{color:var(--mut)}
+.dtable .unk{color:var(--faint)}
 .dtable .dn{font-family:"IBM Plex Mono",monospace;color:var(--instr-t);font-weight:600;
   white-space:nowrap}
 .dtable .dname{color:var(--bone);font-weight:600}
