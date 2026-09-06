@@ -442,6 +442,15 @@ button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
   backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
 .site-bar .shell{display:flex;align-items:center;gap:var(--s-4);height:var(--bar-h)}
 .mark{display:flex;align-items:baseline;gap:9px;text-decoration:none;flex:0 0 auto}
+/* Shara's mark. The file is 256x256 and ships unaltered; only the DISPLAY size
+   is set here, which is why width/height are on the element too - they give the
+   box its ratio before the bytes land, and a mark that reflows the header on
+   load is worse than no mark.
+   align-self, not a change to the flex line: .mark aligns on the text baseline
+   and an image has no baseline worth aligning, so it would sit low and drag the
+   wordmark with it. This centres the image against the cap height and leaves
+   .m1 and .m2 exactly where they were. */
+.mark .m0{align-self:center;display:block;width:26px;height:26px;flex:0 0 auto}
 .mark .m1{font-family:"Cinzel",Georgia,serif;font-weight:700;font-size:var(--t-md);
   letter-spacing:.1em;text-transform:uppercase;color:var(--bone);line-height:1}
 .mark .m2{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
