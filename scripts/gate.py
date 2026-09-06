@@ -566,6 +566,54 @@ def run(pages, fail, warn):
                  f"_build/build8.py. CLAUDE.md section 9 names this exact sentence "
                  f"as the pattern section 3 forbids")
 
+    # ---- 3f. a page may not call a boss a caster and print its spells as 0 ---
+    #
+    # THE FAULT THIS IS BUILT FROM IS REAL AND IT SHIPPED. learn/difficulty.html
+    # published a derived note reading "Backstab is a rogue ability, and ... and
+    # Protector of Sky cast as well" four rows below its own table cell printing
+    # that boss's Spells column as 0. Both were generated, both from the same
+    # dataset, and neither could see the other.
+    #
+    # The cause was a parser that recorded only spells a boss ANNOUNCED, so a
+    # boss whose spells were visible solely as landings published an empty spell
+    # list. Fixed in raidstats.py on 6 Sep 2026 - but the fix is upstream of
+    # this page and nothing on the page would notice it regressing.
+    #
+    # THIS IS THE PROPAGATION SHAPE THE GATE EXISTS FOR: two renderings of one
+    # dataset, on one page, that may not contradict each other. It is not a
+    # restatement of the parser fix, because the two sides are computed
+    # differently - the note reads every fight, the table cell reads only the
+    # fullest views - so they can disagree without the parser being wrong at
+    # all. A count is not a reading: this names the CELL, not the file.
+    BOSS_CASTS = re.compile(r'rogue ability, and (.+?) cast as well', re.S)
+    dpath = 'public/learn/difficulty.html'
+    if os.path.exists(dpath):
+        dh = open(dpath, encoding='utf-8').read()
+        m = BOSS_CASTS.search(dh)
+        if m:
+            named = [n.strip() for n in
+                     re.sub(r'\s+', ' ', text_of(m.group(1))).replace(' and ', ', ').split(',')
+                     if n.strip()]
+            cells = {}
+            for row in re.findall(r'<tr>(.*?)</tr>', dh, re.S):
+                td = [text_of(c).strip() for c in
+                      re.findall(r'<t[dh][^>]*>(.*?)</t[dh]>', row, re.S)]
+                if len(td) >= 5 and td[4].isdigit():
+                    cells.setdefault(td[0], []).append(int(td[4]))
+            for boss in named:
+                seen = cells.get(boss)
+                if seen is None:
+                    fail(f"{dpath} names {boss!r} as casting but the page has no "
+                         f"table row for it, so the claim is unchecked against "
+                         f"the figure beside it")
+                elif max(seen) == 0:
+                    fail(f"{dpath} says {boss!r} casts, and prints its own Spells "
+                         f"column as 0 on the same page. One of the two is wrong "
+                         f"and they are generated from one dataset. This shipped "
+                         f"once: raidstats.py counted only spells a boss "
+                         f"ANNOUNCED, so a boss seen casting only when the spell "
+                         f"LANDED published an empty spell list")
+
     # ---- 3d. a figure in the metadata must appear in the page ---------------
     #
     # The Sky Ledger tool page typed 95 into its meta description while its body

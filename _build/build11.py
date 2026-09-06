@@ -196,11 +196,37 @@ for (boss, diff), rows in _groups:
         + f'<td class="lv">{heal}</td>'
         + f'<td class="mv">{_melee(rows)}</td></tr>')
 
+# EVERY SPELL A FIGHT RECORDS, however it became visible.
+#
+# `spells` holds the ones the boss announced; `spells_landed` holds the ones
+# seen only because they landed on somebody. `spells_distinct` is the union of
+# both, so any list rendered beside that number has to be the union too or the
+# row contradicts itself - a Spells column reading 1 next to a spell list
+# reading "nothing new". Added 6 Sep 2026 with the parser change.
+def _spell_names(r):
+    return set(r.get('spells') or {}) | set(r.get('spells_landed') or {})
+
+
 # Derived, never typed: the bosses whose melee names a class. Backstab is the
 # only verb in the set CLAUDE.md establishes as a class tell, so it is the only
 # one this counts - "frenzies" looks like one and nothing here sources it.
-_BACKSTABBERS = sorted({r['boss'] for r in RAIDS
-                        if 'backstabs' in (r.get('melee_verbs') or [])})
+#
+# AND THE SET IS FILTERED ON CASTING, because the sentence it feeds says the
+# bosses "cast as well". Until 6 Sep 2026 it tested melee_verbs alone, which was
+# safe only by luck: all four backstabbers do cast. The one that reads as a
+# non-caster, Protector of Sky, reads that way because the parser could not see
+# a spell that never announced itself - fixed in raidstats.py the same day. The
+# filter stays because the sentence asserts casting and nothing else was
+# checking it; `zonestats.py:two_kit_mobs` has applied exactly this test to
+# trash mobs the whole time.
+# BOTH HALVES AGGREGATE OVER THE BOSS, NEVER WITHIN ONE FIGHT. A boss can
+# backstab in the fight one client witnessed and cast in another, and requiring
+# both in the same row would drop it for a reason that is about our viewing
+# angle rather than about the boss. This file already records that exact loss
+# once, twenty lines above, on `use` and Avatar of Abhorrence's backstab.
+_bs_seen = {r['boss'] for r in RAIDS if 'backstabs' in (r.get('melee_verbs') or [])}
+_casts_seen = {r['boss'] for r in RAIDS if _spell_names(r)}
+_BACKSTABBERS = sorted(_bs_seen & _casts_seen)
 _bs_names = (' and '.join([', '.join(_BACKSTABBERS[:-1]), _BACKSTABBERS[-1]])
              if len(_BACKSTABBERS) > 1 else (_BACKSTABBERS[0] if _BACKSTABBERS else ''))
 
@@ -216,8 +242,8 @@ def _new_rows():
     cost 250 words and hid the finding. The widening is the point."""
     seen, out = set(), []
     for r in YAEL:
-        fresh = sorted(set(r["spells"]) - seen)
-        seen |= set(r["spells"])
+        fresh = sorted(_spell_names(r) - seen)
+        seen |= _spell_names(r)
         dmg = (f'{r["damage_low"]:,}' if r["damage_low"] == r["damage_high"]
                else f'{r["damage_low"]:,}&ndash;{r["damage_high"]:,}')
         heal = (str(r["self_heal_low"]) if r["self_heal_low"] == r["self_heal_high"]

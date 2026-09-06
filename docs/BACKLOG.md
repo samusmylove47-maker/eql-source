@@ -93,6 +93,28 @@ fresh build, not the tree against the live site. *Acceptance: a command that
 fingerprints a live page against the same page on `main`. Lower priority — the
 deploy path is now understood and documented in CLAUDE.md.*
 
+**A spell landing does not count as the boss being active, and probably should.**
+`raidstats.py` gained `land_dd`/`land_dot` on 6 Sep 2026 so a boss whose spells
+never announce themselves stops publishing an empty spell list. `first_active`
+was deliberately left reading swings and announcements only: it feeds
+`joined_late_seconds` and `damage_is_floor`, which are published
+damage-quality figures, and moving those is a different decision from making a
+spell visible. The inconsistency is real — a spell landing is as good a sign of
+life as a swing — and the change is one line. *Acceptance: add the two patterns
+to the `first_active` test, then diff `assets/raids-measured.json` field by
+field and publish what moved in the commit. If nothing moves, say so: that is
+the answer, not a reason to skip the measurement.*
+
+**Three bosses were published as casting nothing, and 17 of 36 had incomplete
+spell lists.** Fixed at cause the same day, but the corpus was only ever read
+for RAID bosses. `zonestats.py` parses trash mobs with its own patterns and
+nothing has asked whether it has the same blind spot — a mob that casts only
+when the spell lands would read there as a pure melee type, which is exactly
+the distinction CLAUDE.md section 2 rests its D0/D1 two-kit finding on.
+*Acceptance: run the announced-versus-landed comparison over the trash-mob
+parse and report the gap, whatever it is. `a fetid fiend` is a known case — 322
+chants, zero announcements, and 737 lines of it landing Strong Disease.*
+
 ---
 
 ## A display heading exceeds its 16ch measure on five pages — a design question

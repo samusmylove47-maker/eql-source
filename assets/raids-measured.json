@@ -40,6 +40,12 @@
    "Shock of Swords": 1,
    "Infectious Cloud": 1
   },
+  "spells_landed": {
+   "Infectious Cloud": 2,
+   "Insidious Retrogression": 2,
+   "Torbas' Poison Blast": 1,
+   "Shock of Swords": 1
+  },
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -90,6 +96,9 @@
    "Bond of Death": 1,
    "Torbas' Poison Blast": 1,
    "Insidious Retrogression": 1
+  },
+  "spells_landed": {
+   "Torbas' Poison Blast": 1
   },
   "spells_distinct": 5,
   "self_heal_low": 0,
@@ -146,6 +155,14 @@
    "Ignite Blood": 1,
    "Bond of Death": 1
   },
+  "spells_landed": {
+   "Infectious Cloud": 18,
+   "Bond of Death": 10,
+   "Ignite Blood": 8,
+   "Repulse": 4,
+   "Ensnaring Roots": 2,
+   "Insidious Retrogression": 2
+  },
   "spells_distinct": 8,
   "self_heal_low": 10,
   "self_heal_high": 10,
@@ -199,6 +216,11 @@
    "Paralyzing Earth": 2,
    "Bond of Death": 1
   },
+  "spells_landed": {
+   "Bond of Death": 10,
+   "Infectious Cloud": 4,
+   "Repulse": 3
+  },
   "spells_distinct": 7,
   "self_heal_low": 11,
   "self_heal_high": 11,
@@ -248,6 +270,10 @@
    "Shock of Swords": 2,
    "Ignite Blood": 1
   },
+  "spells_landed": {
+   "Insidious Retrogression": 2,
+   "Shock of Swords": 2
+  },
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -293,6 +319,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 125,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -343,6 +370,11 @@
    "Frost Shard": 4,
    "Envenomed Breath": 4
   },
+  "spells_landed": {
+   "Muscle Spasm": 13,
+   "Envenomed Breath": 9,
+   "Frost Shard": 3
+  },
   "spells_distinct": 5,
   "self_heal_low": 3,
   "self_heal_high": 3,
@@ -392,6 +424,10 @@
   "seconds": 13,
   "spells": {
    "Muscle Spasm": 11,
+   "Frost Shard": 1
+  },
+  "spells_landed": {
+   "Muscle Spasm": 2,
    "Frost Shard": 1
   },
   "spells_distinct": 2,
@@ -449,6 +485,11 @@
    "Frost Shard": 3,
    "Envenomed Breath": 2
   },
+  "spells_landed": {
+   "Envenomed Breath": 18,
+   "Muscle Spasm": 13,
+   "Frost Shard": 3
+  },
   "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -492,6 +533,9 @@
   "spells": {
    "Rotting Flesh": 1
   },
+  "spells_landed": {
+   "Rotting Flesh": 16
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -534,6 +578,9 @@
   "seconds": 431,
   "spells": {
    "Rotting Flesh": 4
+  },
+  "spells_landed": {
+   "Rotting Flesh": 51
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -579,6 +626,9 @@
   "spells": {
    "Rotting Flesh": 2
   },
+  "spells_landed": {
+   "Rotting Flesh": 39
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -623,6 +673,9 @@
   "spells": {
    "Rotting Flesh": 13
   },
+  "spells_landed": {
+   "Rotting Flesh": 97
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -666,6 +719,9 @@
   "spells": {
    "Rotting Flesh": 2
   },
+  "spells_landed": {
+   "Rotting Flesh": 22
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -707,7 +763,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 29,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Rotting Flesh": 12
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -749,6 +808,9 @@
   "seconds": 167,
   "spells": {
    "Rotting Flesh": 5
+  },
+  "spells_landed": {
+   "Rotting Flesh": 30
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -794,6 +856,9 @@
   "spells": {
    "Deadly Poison": 19
   },
+  "spells_landed": {
+   "Deadly Poison": 11
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -837,6 +902,9 @@
   "spells": {
    "Deadly Poison": 50
   },
+  "spells_landed": {
+   "Deadly Poison": 25
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -879,6 +947,9 @@
   "seconds": 103,
   "spells": {
    "Deadly Poison": 50
+  },
+  "spells_landed": {
+   "Deadly Poison": 9
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -926,7 +997,11 @@
   "spells": {
    "Deadly Poison": 31
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Deadly Poison": 24,
+   "Soul Leech": 1
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -969,7 +1044,11 @@
   "spells": {
    "Deadly Poison": 18
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Deadly Poison": 8,
+   "Soul Leech": 1
+  },
+  "spells_distinct": 2,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -1011,6 +1090,9 @@
   "seconds": 26,
   "spells": {
    "Deadly Poison": 8
+  },
+  "spells_landed": {
+   "Deadly Poison": 6
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1056,6 +1138,9 @@
   "spells": {
    "Deadly Poison": 34
   },
+  "spells_landed": {
+   "Deadly Poison": 26
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1100,6 +1185,9 @@
   "spells": {
    "Deadly Poison": 13
   },
+  "spells_landed": {
+   "Deadly Poison": 4
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1139,6 +1227,9 @@
   "seconds": 108,
   "spells": {
    "Deadly Poison": 59
+  },
+  "spells_landed": {
+   "Deadly Poison": 20
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1183,6 +1274,9 @@
   "spells": {
    "Deadly Poison": 23
   },
+  "spells_landed": {
+   "Deadly Poison": 15
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1226,6 +1320,9 @@
   "spells": {
    "Deadly Poison": 22
   },
+  "spells_landed": {
+   "Deadly Poison": 10
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1268,6 +1365,9 @@
   "seconds": 1092,
   "spells": {
    "Deadly Poison": 64
+  },
+  "spells_landed": {
+   "Deadly Poison": 69
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1313,6 +1413,9 @@
   "spells": {
    "Deadly Poison": 43
   },
+  "spells_landed": {
+   "Deadly Poison": 42
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1354,6 +1457,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 3,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1396,7 +1500,11 @@
   "spells": {
    "Deadly Poison": 139
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Deadly Poison": 28,
+   "Soul Leech": 1
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 2,
   "melee_verbs": [
@@ -1439,7 +1547,11 @@
   "spells": {
    "Deadly Poison": 139
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Deadly Poison": 45,
+   "Soul Leech": 1
+  },
+  "spells_distinct": 2,
   "self_heal_low": 2,
   "self_heal_high": 2,
   "melee_verbs": [
@@ -1483,7 +1595,11 @@
   "spells": {
    "Deadly Poison": 60
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Deadly Poison": 10,
+   "Soul Leech": 1
+  },
+  "spells_distinct": 2,
   "self_heal_low": 2,
   "self_heal_high": 2,
   "melee_verbs": [
@@ -1528,6 +1644,9 @@
   "spells": {
    "Deadly Poison": 27
   },
+  "spells_landed": {
+   "Deadly Poison": 18
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1570,6 +1689,9 @@
   "seconds": 235,
   "spells": {
    "Deadly Poison": 205
+  },
+  "spells_landed": {
+   "Deadly Poison": 112
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1615,6 +1737,9 @@
   "spells": {
    "Deadly Poison": 57
   },
+  "spells_landed": {
+   "Deadly Poison": 51
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1659,6 +1784,9 @@
   "spells": {
    "Deadly Poison": 61
   },
+  "spells_landed": {
+   "Deadly Poison": 45
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1701,6 +1829,9 @@
   "seconds": 93,
   "spells": {
    "Deadly Poison": 105
+  },
+  "spells_landed": {
+   "Deadly Poison": 56
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1745,6 +1876,9 @@
   "spells": {
    "Deadly Poison": 35
   },
+  "spells_landed": {
+   "Deadly Poison": 14
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1786,6 +1920,9 @@
   "seconds": 26,
   "spells": {
    "Deadly Poison": 9
+  },
+  "spells_landed": {
+   "Deadly Poison": 11
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1829,6 +1966,9 @@
   "seconds": 125,
   "spells": {
    "Deadly Poison": 175
+  },
+  "spells_landed": {
+   "Deadly Poison": 173
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1874,6 +2014,9 @@
   "spells": {
    "Deadly Poison": 20
   },
+  "spells_landed": {
+   "Deadly Poison": 15
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -1915,6 +2058,9 @@
   "seconds": 82,
   "spells": {
    "Deadly Poison": 49
+  },
+  "spells_landed": {
+   "Deadly Poison": 33
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -1959,6 +2105,9 @@
   "spells": {
    "Deadly Poison": 73
   },
+  "spells_landed": {
+   "Deadly Poison": 39
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2002,6 +2151,9 @@
   "spells": {
    "Deadly Poison": 13
   },
+  "spells_landed": {
+   "Deadly Poison": 12
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2044,6 +2196,9 @@
   "seconds": 38,
   "spells": {
    "Deadly Poison": 24
+  },
+  "spells_landed": {
+   "Deadly Poison": 15
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -2089,6 +2244,9 @@
   "spells": {
    "Deadly Poison": 62
   },
+  "spells_landed": {
+   "Deadly Poison": 74
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2132,7 +2290,15 @@
    "Word of Spirit": 1,
    "Blood of Pain": 1
   },
-  "spells_distinct": 7,
+  "spells_landed": {
+   "Avatar Power": 58,
+   "Boil Blood": 50,
+   "Negation of Life": 14,
+   "Blood of Pain": 7,
+   "Denon's Desperate Dirge": 4,
+   "Life Leech": 4
+  },
+  "spells_distinct": 9,
   "self_heal_low": 4,
   "self_heal_high": 4,
   "melee_verbs": [
@@ -2180,6 +2346,13 @@
    "Asystole": 2,
    "Boil Blood": 1,
    "Life Leech": 1
+  },
+  "spells_landed": {
+   "Cascading Darkness": 14,
+   "Boil Blood": 8,
+   "Avatar Power": 4,
+   "Life Leech": 1,
+   "Negation of Life": 1
   },
   "spells_distinct": 7,
   "self_heal_low": 1,
@@ -2235,6 +2408,13 @@
    "Harm Touch": 1,
    "Word of Spirit": 1
   },
+  "spells_landed": {
+   "Dooming Darkness": 75,
+   "Avatar Power": 40,
+   "Life Leech": 16,
+   "Negation of Life": 16,
+   "Harm Touch": 1
+  },
   "spells_distinct": 7,
   "self_heal_low": 16,
   "self_heal_high": 16,
@@ -2288,7 +2468,13 @@
    "Dooming Darkness": 2,
    "Negation of Life": 1
   },
-  "spells_distinct": 5,
+  "spells_landed": {
+   "Avatar Power": 88,
+   "Dooming Darkness": 31,
+   "Life Leech": 3,
+   "Denon's Desperate Dirge": 3
+  },
+  "spells_distinct": 6,
   "self_heal_low": 3,
   "self_heal_high": 3,
   "melee_verbs": [
@@ -2342,7 +2528,16 @@
    "Word of Spirit": 1,
    "Blood of Pain": 1
   },
-  "spells_distinct": 7,
+  "spells_landed": {
+   "Boil Blood": 96,
+   "Avatar Power": 58,
+   "Dooming Darkness": 15,
+   "Negation of Life": 14,
+   "Blood of Pain": 7,
+   "Denon's Desperate Dirge": 4,
+   "Life Leech": 4
+  },
+  "spells_distinct": 9,
   "self_heal_low": 4,
   "self_heal_high": 4,
   "melee_verbs": [
@@ -2396,7 +2591,15 @@
    "Life Leech": 3,
    "Harm Touch": 1
   },
-  "spells_distinct": 5,
+  "spells_landed": {
+   "Avatar Power": 101,
+   "Boil Blood": 72,
+   "Dooming Darkness": 47,
+   "Life Leech": 3,
+   "Denon's Desperate Dirge": 3,
+   "Harm Touch": 1
+  },
+  "spells_distinct": 7,
   "self_heal_low": 3,
   "self_heal_high": 3,
   "melee_verbs": [
@@ -2445,6 +2648,14 @@
   "spells": {
    "Tashania": 7,
    "Engulfing Roots": 4,
+   "Harm Touch": 1,
+   "Life Leech": 1,
+   "Ice": 1,
+   "Fire": 1,
+   "Dustdevil": 1
+  },
+  "spells_landed": {
+   "Engulfing Roots": 2,
    "Harm Touch": 1,
    "Life Leech": 1,
    "Ice": 1,
@@ -2507,6 +2718,12 @@
    "Lay on Hands": 1,
    "Blaze": 1
   },
+  "spells_landed": {
+   "Vampiric Drain": 17,
+   "Elemental Maelstrom": 7,
+   "Shock of Swords": 2,
+   "Blaze": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2561,6 +2778,10 @@
    "Lay on Hands": 1,
    "Malaisement": 1,
    "Gravity Flux": 1
+  },
+  "spells_landed": {
+   "Vampiric Drain": 16,
+   "Shock of Swords": 1
   },
   "spells_distinct": 9,
   "self_heal_low": 0,
@@ -2617,6 +2838,15 @@
    "Gravity Flux": 1,
    "Fire": 1
   },
+  "spells_landed": {
+   "Drifting Death": 10,
+   "Life Leech": 2,
+   "Gravity Flux": 2,
+   "Engulfing Roots": 2,
+   "Harm Touch": 1,
+   "Fire": 1,
+   "Ice": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2668,6 +2898,9 @@
    "Allure": 2,
    "Gravity Flux": 1,
    "Lay on Hands": 1
+  },
+  "spells_landed": {
+   "Vampiric Drain": 6
   },
   "spells_distinct": 7,
   "self_heal_low": 0,
@@ -2725,6 +2958,12 @@
    "Dazzle": 1,
    "Efflorescing Heal": 1
   },
+  "spells_landed": {
+   "Drifting Death": 10,
+   "Engulfing Roots": 9,
+   "Life Leech": 2,
+   "Ice": 1
+  },
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2766,6 +3005,7 @@
   "spells": {
    "Earth Elemental Attack": 3
   },
+  "spells_landed": {},
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2816,7 +3056,11 @@
    "Earth Elemental Attack": 1,
    "Insidious Retrogression": 1
   },
-  "spells_distinct": 3,
+  "spells_landed": {
+   "Bond of Death": 1,
+   "Insidious Retrogression": 1
+  },
+  "spells_distinct": 4,
   "self_heal_low": 2,
   "self_heal_high": 2,
   "melee_verbs": [
@@ -2870,7 +3114,10 @@
    "Screaming Terror": 2,
    "Paralyzing Earth": 1
   },
-  "spells_distinct": 4,
+  "spells_landed": {
+   "Bond of Death": 9
+  },
+  "spells_distinct": 5,
   "self_heal_low": 10,
   "self_heal_high": 10,
   "melee_verbs": [
@@ -2919,6 +3166,7 @@
    "Earth Elemental Attack": 4,
    "Shadow Vortex": 1
   },
+  "spells_landed": {},
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -2975,6 +3223,12 @@
    "Frost Shard": 1,
    "Drifting Death": 1
   },
+  "spells_landed": {
+   "Drifting Death": 10,
+   "Fire": 1,
+   "Engulfing Roots": 1,
+   "Frost Shard": 1
+  },
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -3027,6 +3281,7 @@
   "spells": {
    "Superior Healing": 1
   },
+  "spells_landed": {},
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -3080,6 +3335,7 @@
    "Sha's Lethargy": 1,
    "Engulfing Roots": 1
   },
+  "spells_landed": {},
   "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -3138,6 +3394,12 @@
    "Fire": 1,
    "Ensnare": 1
   },
+  "spells_landed": {
+   "Malaria": 13,
+   "Fire": 2,
+   "Starfire": 1,
+   "Engulfing Roots": 1
+  },
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -3176,7 +3438,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 165,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 43
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3217,7 +3482,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 47,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 1
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3256,7 +3524,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 85,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 30
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3297,7 +3568,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 55,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 2
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3337,7 +3611,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 143,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 33
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3377,7 +3654,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 31,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 10
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3418,7 +3698,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 169,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 82
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3461,7 +3744,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 113,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 26
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3504,7 +3790,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 81,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Soul Devour": 23
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3546,6 +3835,7 @@
   "spells": {
    "Earth Elemental Attack": 3
   },
+  "spells_landed": {},
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -3595,6 +3885,7 @@
   "spells": {
    "Earth Elemental Attack": 9
   },
+  "spells_landed": {},
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -3652,6 +3943,10 @@
    "Malaria": 1,
    "Gravity Flux": 1,
    "Discordant Mind": 1
+  },
+  "spells_landed": {
+   "Malaria": 5,
+   "Frost Shard": 1
   },
   "spells_distinct": 10,
   "self_heal_low": 0,
@@ -3714,6 +4009,9 @@
    "Gravity Flux": 1,
    "Discordant Mind": 1
   },
+  "spells_landed": {
+   "Malaria": 5
+  },
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -3771,6 +4069,10 @@
    "Swift Like the Wind": 1,
    "Dazzle": 1,
    "Envenomed Breath": 1
+  },
+  "spells_landed": {
+   "Discordant Mind": 4,
+   "Gravity Flux": 3
   },
   "spells_distinct": 10,
   "self_heal_low": 4,
@@ -3830,6 +4132,9 @@
    "Envenomed Breath": 1,
    "Frost Shard": 1
   },
+  "spells_landed": {
+   "Frost Shard": 1
+  },
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -3875,7 +4180,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 159,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Stone Breath": 6
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3917,6 +4225,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 11,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -3956,7 +4265,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 57,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Stone Breath": 11
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -3998,6 +4310,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 64,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4038,7 +4351,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 99,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Stone Breath": 18
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -4086,6 +4402,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 106,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4133,6 +4450,7 @@
   "spells": {
    "Lay on Hands": 1
   },
+  "spells_landed": {},
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4183,6 +4501,9 @@
    "Holy Might": 1,
    "Root": 1,
    "Lay on Hands": 1
+  },
+  "spells_landed": {
+   "Retribution": 1
   },
   "spells_distinct": 4,
   "self_heal_low": 0,
@@ -4241,6 +4562,13 @@
    "Gravity Flux": 1,
    "Mana Detonation": 1
   },
+  "spells_landed": {
+   "Festering Sores": 30,
+   "Elnerick's Entombment of Ice": 2,
+   "Ice Comet": 2,
+   "Markar's Clash": 1,
+   "Mana Detonation": 1
+  },
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4296,6 +4624,13 @@
    "Gravity Flux": 1,
    "Mana Detonation": 1
   },
+  "spells_landed": {
+   "Festering Sores": 28,
+   "Elnerick's Entombment of Ice": 2,
+   "Ice Comet": 2,
+   "Markar's Clash": 1,
+   "Mana Detonation": 1
+  },
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4347,6 +4682,10 @@
    "Thunderclap": 1,
    "Life Leech": 1,
    "Wrath of Al`Kabor": 1
+  },
+  "spells_landed": {
+   "Festering Sores": 31,
+   "Life Leech": 1
   },
   "spells_distinct": 6,
   "self_heal_low": 0,
@@ -4405,6 +4744,10 @@
    "Call of Flame": 1,
    "Force of Nature": 1
   },
+  "spells_landed": {
+   "Ensnaring Roots": 1,
+   "Retribution": 1
+  },
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4458,6 +4801,10 @@
    "Call of Flame": 1,
    "Sacred Echo": 1
   },
+  "spells_landed": {
+   "Immolate": 14,
+   "Call of Flame": 1
+  },
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4508,6 +4855,13 @@
    "Markar's Discord": 1,
    "Jyll's Zephyr of Ice": 1,
    "Invert Gravity": 1,
+   "Mana Detonation": 1
+  },
+  "spells_landed": {
+   "Draught of Fire": 5,
+   "Jyll's Zephyr of Ice": 4,
+   "Invert Gravity": 2,
+   "Markar's Discord": 1,
    "Mana Detonation": 1
   },
   "spells_distinct": 6,
@@ -4564,6 +4918,12 @@
    "Shock of Venom": 1,
    "Chloroplast": 1
   },
+  "spells_landed": {
+   "Plague": 60,
+   "Gale of Poison": 3,
+   "Ice Comet": 2,
+   "Shock of Venom": 1
+  },
   "spells_distinct": 8,
   "self_heal_low": 3,
   "self_heal_high": 3,
@@ -4617,7 +4977,14 @@
    "Plague": 1,
    "Chloroplast": 1
   },
-  "spells_distinct": 8,
+  "spells_landed": {
+   "Plague": 15,
+   "Denon's Desperate Dirge": 3,
+   "Shock of Venom": 2,
+   "Ice Comet": 2,
+   "Rend": 2
+  },
+  "spells_distinct": 9,
   "self_heal_low": 4,
   "self_heal_high": 4,
   "melee_verbs": [
@@ -4673,7 +5040,16 @@
    "Ice Comet": 1,
    "Inner Fire": 1
   },
-  "spells_distinct": 9,
+  "spells_landed": {
+   "Plague": 30,
+   "Denon's Desperate Dirge": 4,
+   "Wrath of Al`Kabor": 1,
+   "Rend": 1,
+   "Elnerick's Entombment of Ice": 1,
+   "Shock of Venom": 1,
+   "Ice Comet": 1
+  },
+  "spells_distinct": 10,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -4724,7 +5100,14 @@
    "Elnerick's Entombment of Ice": 1,
    "Rend": 1
   },
-  "spells_distinct": 6,
+  "spells_landed": {
+   "Plague": 21,
+   "Ice Comet": 2,
+   "Denon's Desperate Dirge": 1,
+   "Elnerick's Entombment of Ice": 1,
+   "Rend": 1
+  },
+  "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -4774,7 +5157,12 @@
    "Elnerick's Entombment of Ice": 2,
    "Superior Healing": 2
   },
-  "spells_distinct": 4,
+  "spells_landed": {
+   "Plague": 45,
+   "Denon's Desperate Dirge": 3,
+   "Elnerick's Entombment of Ice": 1
+  },
+  "spells_distinct": 5,
   "self_heal_low": 2,
   "self_heal_high": 2,
   "melee_verbs": [
@@ -4825,7 +5213,13 @@
    "Rend": 2,
    "Elnerick's Entombment of Ice": 2
   },
-  "spells_distinct": 5,
+  "spells_landed": {
+   "Plague": 61,
+   "Denon's Desperate Dirge": 3,
+   "Rend": 2,
+   "Elnerick's Entombment of Ice": 1
+  },
+  "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -4866,6 +5260,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 62,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4907,6 +5302,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 67,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4949,6 +5345,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 37,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -4991,6 +5388,7 @@
   "damage_spread_pct": 0.0,
   "seconds": 36,
   "spells": {},
+  "spells_landed": {},
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -5037,7 +5435,11 @@
    "Immobilize": 1,
    "Armor of the Faithful": 1
   },
-  "spells_distinct": 3,
+  "spells_landed": {
+   "Frost Breath": 26,
+   "Reckoning": 5
+  },
+  "spells_distinct": 4,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -5082,7 +5484,10 @@
   "spells": {
    "Immobilize": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Frost Breath": 4
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5129,7 +5534,11 @@
    "Immobilize": 2,
    "Reckoning": 1
   },
-  "spells_distinct": 2,
+  "spells_landed": {
+   "Frost Breath": 6,
+   "Reckoning": 1
+  },
+  "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5182,7 +5591,14 @@
    "Life Leech": 1,
    "Dooming Darkness": 1
   },
-  "spells_distinct": 7,
+  "spells_landed": {
+   "Frost Breath": 60,
+   "Negation of Life": 32,
+   "Dooming Darkness": 16,
+   "Retribution": 11,
+   "Life Leech": 1
+  },
+  "spells_distinct": 8,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -5236,7 +5652,16 @@
    "Cascading Darkness": 1,
    "Retribution": 1
   },
-  "spells_distinct": 9,
+  "spells_landed": {
+   "Frost Breath": 102,
+   "Ignite Blood": 21,
+   "Cascading Darkness": 17,
+   "Bond of Death": 10,
+   "Insidious Retrogression": 3,
+   "Torbas' Poison Blast": 1,
+   "Retribution": 1
+  },
+  "spells_distinct": 10,
   "self_heal_low": 10,
   "self_heal_high": 10,
   "melee_verbs": [
@@ -5281,7 +5706,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 239,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Lava Breath": 78
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5327,7 +5755,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 230,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Lava Breath": 81
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5380,7 +5811,16 @@
    "Immolate": 1,
    "Call of Flame": 1
   },
-  "spells_distinct": 7,
+  "spells_landed": {
+   "Lava Breath": 144,
+   "Immolate": 16,
+   "Scorching Arrow": 10,
+   "Ensnaring Roots": 8,
+   "Careless Lightning": 5,
+   "Invoke Lightning": 2,
+   "Call of Flame": 1
+  },
+  "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5430,7 +5870,13 @@
    "Ice Comet": 1,
    "Rend": 1
   },
-  "spells_distinct": 4,
+  "spells_landed": {
+   "Lava Breath": 200,
+   "Elnerick's Entombment of Ice": 2,
+   "Markar's Clash": 1,
+   "Ice Comet": 1
+  },
+  "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5480,7 +5926,14 @@
    "Immobilize": 2,
    "Gravity Flux": 1
   },
-  "spells_distinct": 3,
+  "spells_landed": {
+   "Lava Breath": 253,
+   "Earthquake": 99,
+   "Gravity Flux": 3,
+   "Elnerick's Entombment of Ice": 2,
+   "Mana Detonation": 1
+  },
+  "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5531,7 +5984,13 @@
    "Elnerick's Entombment of Ice": 1,
    "Immobilize": 1
   },
-  "spells_distinct": 5,
+  "spells_landed": {
+   "Lava Breath": 263,
+   "Supernova": 1,
+   "Markar's Clash": 1,
+   "Elnerick's Entombment of Ice": 1
+  },
+  "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -5590,6 +6049,11 @@
    "Envenomed Bolt": 1,
    "Shock of Venom": 1
   },
+  "spells_landed": {
+   "Plague": 21,
+   "Harm Touch": 1,
+   "Life Leech": 1
+  },
   "spells_distinct": 13,
   "self_heal_low": 5,
   "self_heal_high": 5,
@@ -5640,6 +6104,11 @@
    "Chloroplast": 5,
    "Malosi": 2,
    "Plague": 1,
+   "Retribution": 1
+  },
+  "spells_landed": {
+   "Impotent Rage": 16,
+   "Plague": 15,
    "Retribution": 1
   },
   "spells_distinct": 6,
@@ -5695,6 +6164,10 @@
    "Shadow Vortex": 2,
    "Harm Touch": 1,
    "Envenomed Bolt": 1
+  },
+  "spells_landed": {
+   "Plague": 45,
+   "Harm Touch": 1
   },
   "spells_distinct": 7,
   "self_heal_low": 0,
@@ -5754,6 +6227,12 @@
    "Instill": 1,
    "Shadow Vortex": 1
   },
+  "spells_landed": {
+   "Plague": 15,
+   "Rain of Swords": 7,
+   "Harm Touch": 1,
+   "Life Leech": 1
+  },
   "spells_distinct": 12,
   "self_heal_low": 4,
   "self_heal_high": 4,
@@ -5807,6 +6286,10 @@
    "Word Divine": 1,
    "Plague": 1,
    "Superior Healing": 1
+  },
+  "spells_landed": {
+   "Word Divine": 5,
+   "Life Leech": 1
   },
   "spells_distinct": 8,
   "self_heal_low": 2,
@@ -5868,6 +6351,14 @@
    "Togor's Insects": 1,
    "Life Leech": 1
   },
+  "spells_landed": {
+   "Plague": 46,
+   "Flame Arc": 7,
+   "Harm Touch": 1,
+   "Shock of Swords": 1,
+   "Shock of Venom": 1,
+   "Life Leech": 1
+  },
   "spells_distinct": 14,
   "self_heal_low": 4,
   "self_heal_high": 4,
@@ -5920,6 +6411,10 @@
    "Lure of Frost": 2,
    "Gravity Flux": 1,
    "Mana Detonation": 1
+  },
+  "spells_landed": {
+   "Draught of Fire": 5,
+   "Gravity Flux": 1
   },
   "spells_distinct": 6,
   "self_heal_low": 0,
@@ -5975,6 +6470,12 @@
    "Wrath of Al`Kabor": 2,
    "Cascading Darkness": 1,
    "Shadow Vortex": 1
+  },
+  "spells_landed": {
+   "Ignite Blood": 16,
+   "Elnerick's Entombment of Ice": 3,
+   "Insidious Retrogression": 2,
+   "Ice Comet": 1
   },
   "spells_distinct": 9,
   "self_heal_low": 0,
@@ -6035,6 +6536,15 @@
    "Lay on Hands": 1,
    "Elnerick's Entombment of Ice": 1
   },
+  "spells_landed": {
+   "Cascading Darkness": 17,
+   "Specter Lifetap": 6,
+   "Specter Stun": 5,
+   "Ice Comet": 2,
+   "Insidious Retrogression": 2,
+   "Spectra Stun": 1,
+   "Ignite Blood": 1
+  },
   "spells_distinct": 13,
   "self_heal_low": 15,
   "self_heal_high": 15,
@@ -6091,6 +6601,14 @@
    "Elnerick's Entombment of Ice": 1,
    "Lay on Hands": 1
   },
+  "spells_landed": {
+   "Ignite Blood": 8,
+   "Specter Lifetap": 4,
+   "Insidious Retrogression": 2,
+   "Specter Stun": 2,
+   "Ice Comet": 1,
+   "Elnerick's Entombment of Ice": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 12,
   "self_heal_high": 12,
@@ -6146,6 +6664,15 @@
    "Thunderclap": 1,
    "Gravity Flux": 1
   },
+  "spells_landed": {
+   "Ignite Blood": 9,
+   "Elnerick's Entombment of Ice": 2,
+   "Thunderclap": 1,
+   "Insidious Retrogression": 1,
+   "Wrath of Al`Kabor": 1,
+   "Gravity Flux": 1,
+   "Ice Comet": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -6191,7 +6718,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 132,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Vampire Touch": 10
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6240,7 +6770,10 @@
    "Malosi": 2,
    "Sha's Lethargy": 1
   },
-  "spells_distinct": 3,
+  "spells_landed": {
+   "Vampire Touch": 31
+  },
+  "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6292,7 +6825,10 @@
    "Shock of Venom": 1,
    "Blizzard Blast": 1
   },
-  "spells_distinct": 6,
+  "spells_landed": {
+   "Vampire Touch": 12
+  },
+  "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6347,7 +6883,11 @@
    "Gale of Poison": 1,
    "Infectious Cloud": 1
   },
-  "spells_distinct": 8,
+  "spells_landed": {
+   "Vampire Touch": 65,
+   "Plague": 30
+  },
+  "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6403,7 +6943,14 @@
    "Gale of Poison": 1,
    "Inner Fire": 1
   },
-  "spells_distinct": 10,
+  "spells_landed": {
+   "Vampire Touch": 41,
+   "Plague": 15,
+   "Gale of Poison": 2,
+   "Shock of Venom": 1,
+   "Blizzard Blast": 1
+  },
+  "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6457,7 +7004,11 @@
    "Harnessing of Spirit": 1,
    "Instill": 1
   },
-  "spells_distinct": 8,
+  "spells_landed": {
+   "Plague": 29,
+   "Vampire Touch": 19
+  },
+  "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6512,7 +7063,12 @@
    "Sha's Lethargy": 1,
    "Gale of Poison": 1
   },
-  "spells_distinct": 9,
+  "spells_landed": {
+   "Vampire Touch": 98,
+   "Plague": 15,
+   "Shock of Venom": 1
+  },
+  "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -6562,6 +7118,9 @@
    "Malosi": 3,
    "Shock of Swords": 2,
    "Rain of Swords": 1
+  },
+  "spells_landed": {
+   "Char": 6
   },
   "spells_distinct": 4,
   "self_heal_low": 0,
@@ -6616,6 +7175,10 @@
    "Starfire": 1,
    "Ice": 1,
    "Superior Healing": 1
+  },
+  "spells_landed": {
+   "Fire": 1,
+   "Starfire": 1
   },
   "spells_distinct": 9,
   "self_heal_low": 0,
@@ -6674,6 +7237,13 @@
    "Gravity Flux": 2,
    "Dazzle": 1
   },
+  "spells_landed": {
+   "Vampiric Drain": 14,
+   "Elemental Maelstrom": 14,
+   "Gravity Flux": 4,
+   "Shock of Swords": 3,
+   "Discordant Mind": 2
+  },
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -6727,6 +7297,9 @@
    "Ice": 1,
    "Fire": 1
   },
+  "spells_landed": {
+   "Engulfing Roots": 3
+  },
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -6776,6 +7349,10 @@
    "Tashania": 3,
    "Gravity Flux": 2,
    "Elemental Maelstrom": 2,
+   "Life Leech": 1
+  },
+  "spells_landed": {
+   "Vampiric Drain": 7,
    "Life Leech": 1
   },
   "spells_distinct": 5,
@@ -6833,6 +7410,11 @@
    "Starfire": 1,
    "Dustdevil": 1
   },
+  "spells_landed": {
+   "Upheaval": 4,
+   "Fire": 2,
+   "Ice": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -6880,6 +7462,13 @@
    "Frozen Harpoon": 1,
    "Draught of Jiva": 1,
    "Inferno of Al`Kabor": 1,
+   "Gravity Flux": 1,
+   "Elnerick's Entombment of Ice": 1
+  },
+  "spells_landed": {
+   "Draught of Fire": 2,
+   "Inferno of Al`Kabor": 2,
+   "Frozen Harpoon": 1,
    "Gravity Flux": 1,
    "Elnerick's Entombment of Ice": 1
   },
@@ -6935,6 +7524,11 @@
    "Elnerick's Entombment of Ice": 1,
    "Markar's Discord": 1
   },
+  "spells_landed": {
+   "Draught of Fire": 3,
+   "Inferno of Al`Kabor": 1,
+   "Elnerick's Entombment of Ice": 1
+  },
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -6985,7 +7579,14 @@
    "Frozen Harpoon": 1,
    "Mana Detonation": 1
   },
-  "spells_distinct": 5,
+  "spells_landed": {
+   "Earthquake": 39,
+   "Draught of Fire": 6,
+   "Frozen Harpoon": 1,
+   "Mana Detonation": 1,
+   "Draught of Jiva": 1
+  },
+  "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -7035,6 +7636,10 @@
    "Ice Comet": 2,
    "Bonds of Force": 2,
    "Markar's Clash": 1
+  },
+  "spells_landed": {
+   "Elnerick's Entombment of Ice": 2,
+   "Ice Comet": 2
   },
   "spells_distinct": 5,
   "self_heal_low": 0,
@@ -7090,7 +7695,15 @@
    "Superior Healing": 1,
    "Mana Detonation": 1
   },
-  "spells_distinct": 8,
+  "spells_landed": {
+   "Earthquake": 80,
+   "Elnerick's Entombment of Ice": 3,
+   "Rend": 3,
+   "Wrath of Al`Kabor": 2,
+   "Force": 2,
+   "Mana Detonation": 1
+  },
+  "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -7146,6 +7759,12 @@
    "Elnerick's Entombment of Ice": 1,
    "Screaming Terror": 1
   },
+  "spells_landed": {
+   "Ignite Blood": 21,
+   "Ice Comet": 5,
+   "Insidious Retrogression": 4,
+   "Wrath of Al`Kabor": 2
+  },
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -7200,6 +7819,13 @@
    "Screaming Terror": 3,
    "Ice Comet": 2,
    "Bond of Death": 1,
+   "Gravity Flux": 1
+  },
+  "spells_landed": {
+   "Ignite Blood": 32,
+   "Bond of Death": 10,
+   "Insidious Retrogression": 4,
+   "Ice Comet": 2,
    "Gravity Flux": 1
   },
   "spells_distinct": 10,
@@ -7260,6 +7886,16 @@
    "Gravity Flux": 1,
    "Infectious Cloud": 1
   },
+  "spells_landed": {
+   "Ignite Blood": 24,
+   "Infectious Cloud": 23,
+   "Elnerick's Entombment of Ice": 4,
+   "Insidious Retrogression": 3,
+   "Circle of Force": 3,
+   "Gravity Flux": 3,
+   "Force": 2,
+   "Wrath of Al`Kabor": 1
+  },
   "spells_distinct": 12,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -7315,6 +7951,12 @@
    "Chloroplast": 1,
    "Ensnare": 1
   },
+  "spells_landed": {
+   "Engulfing Roots": 2,
+   "Fire": 1,
+   "Shock of Venom": 1,
+   "Dustdevil": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 6,
   "self_heal_high": 6,
@@ -7365,6 +8007,9 @@
    "Malosi": 3,
    "Shock of Venom": 1,
    "Plague": 1
+  },
+  "spells_landed": {
+   "Shock of Venom": 1
   },
   "spells_distinct": 4,
   "self_heal_low": 0,
@@ -7421,6 +8066,11 @@
    "Superior Healing": 1,
    "Fire": 1
   },
+  "spells_landed": {
+   "Upheaval": 5,
+   "Shock of Venom": 1,
+   "Engulfing Roots": 1
+  },
   "spells_distinct": 8,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -7474,6 +8124,7 @@
    "Envenomed Bolt": 1,
    "Chloroplast": 1
   },
+  "spells_landed": {},
   "spells_distinct": 7,
   "self_heal_low": 2,
   "self_heal_high": 2,
@@ -7531,6 +8182,11 @@
    "Ice": 1,
    "Ensnare": 1
   },
+  "spells_landed": {
+   "Drifting Death": 20,
+   "Engulfing Roots": 2,
+   "Ice": 1
+  },
   "spells_distinct": 10,
   "self_heal_low": 6,
   "self_heal_high": 6,
@@ -7580,6 +8236,9 @@
    "Envenomed Breath": 2,
    "Frost Shard": 1,
    "Inner Fire": 1
+  },
+  "spells_landed": {
+   "Frost Shard": 1
   },
   "spells_distinct": 3,
   "self_heal_low": 0,
@@ -7637,6 +8296,10 @@
    "Retribution": 1,
    "Lay on Hands": 1
   },
+  "spells_landed": {
+   "Festering Sores": 64,
+   "Holy Might": 2
+  },
   "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -7686,6 +8349,10 @@
    "Sha's Lethargy": 4,
    "Frost Shard": 3,
    "Envenomed Breath": 2
+  },
+  "spells_landed": {
+   "Envenomed Breath": 17,
+   "Frost Shard": 3
   },
   "spells_distinct": 3,
   "self_heal_low": 0,
@@ -7742,6 +8409,10 @@
    "Root": 1,
    "Lay on Hands": 1
   },
+  "spells_landed": {
+   "Festering Sores": 39,
+   "Ensnaring Roots": 1
+  },
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -7791,6 +8462,10 @@
    "Envenomed Breath": 3,
    "Frost Shard": 2,
    "Sha's Lethargy": 1
+  },
+  "spells_landed": {
+   "Envenomed Breath": 14,
+   "Frost Shard": 2
   },
   "spells_distinct": 3,
   "self_heal_low": 0,
@@ -7842,6 +8517,9 @@
    "Envenomed Breath": 7,
    "Frost Shard": 5
   },
+  "spells_landed": {
+   "Frost Shard": 5
+  },
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -7886,7 +8564,11 @@
   "spells": {
    "Efreeti Fire": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 18,
+   "Soul Devour": 4
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -7928,6 +8610,9 @@
   "spells": {
    "Efreeti Fire": 3
   },
+  "spells_landed": {
+   "Efreeti Fire": 10
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -7968,6 +8653,9 @@
   "seconds": 48,
   "spells": {
    "Efreeti Fire": 2
+  },
+  "spells_landed": {
+   "Efreeti Fire": 6
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -8013,7 +8701,11 @@
   "spells": {
    "Efreeti Fire": 6
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 15,
+   "Soul Devour": 5
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8055,7 +8747,11 @@
   "spells": {
    "Efreeti Fire": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 7,
+   "Soul Devour": 4
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8097,7 +8793,11 @@
   "spells": {
    "Efreeti Fire": 1
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 3,
+   "Soul Devour": 1
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8140,7 +8840,11 @@
   "spells": {
    "Efreeti Fire": 5
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 16,
+   "Soul Devour": 3
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8183,7 +8887,11 @@
   "spells": {
    "Efreeti Fire": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 15,
+   "Soul Devour": 6
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8224,7 +8932,11 @@
   "spells": {
    "Efreeti Fire": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Soul Devour": 7,
+   "Efreeti Fire": 4
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8266,7 +8978,11 @@
   "spells": {
    "Efreeti Fire": 1
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 4,
+   "Soul Devour": 4
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8307,6 +9023,9 @@
   "seconds": 23,
   "spells": {
    "Efreeti Fire": 1
+  },
+  "spells_landed": {
+   "Efreeti Fire": 6
   },
   "spells_distinct": 1,
   "self_heal_low": 0,
@@ -8352,7 +9071,11 @@
   "spells": {
    "Efreeti Fire": 1
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 5,
+   "Soul Devour": 5
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8406,6 +9129,13 @@
    "Wrath of Al`Kabor": 1,
    "Diamondskin": 1
   },
+  "spells_landed": {
+   "Drifting Death": 20,
+   "Engulfing Roots": 4,
+   "Ice": 2,
+   "Ice Comet": 1,
+   "Wrath of Al`Kabor": 1
+  },
   "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -8446,7 +9176,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 24,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Whirl Bolt": 8
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8484,7 +9217,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 39,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Whirl Bolt": 6
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8523,7 +9259,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 35,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Whirl Bolt": 3
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8563,7 +9302,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 17,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Whirl Bolt": 2
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8603,7 +9345,10 @@
   "damage_spread_pct": 0.0,
   "seconds": 49,
   "spells": {},
-  "spells_distinct": 0,
+  "spells_landed": {
+   "Whirl Bolt": 4
+  },
+  "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -8644,6 +9389,9 @@
   "damage_spread_pct": 0.0,
   "seconds": 37,
   "spells": {
+   "Entomb in Ice": 2
+  },
+  "spells_landed": {
    "Entomb in Ice": 2
   },
   "spells_distinct": 1,
@@ -8690,6 +9438,9 @@
   "spells": {
    "Entomb in Ice": 2
   },
+  "spells_landed": {
+   "Entomb in Ice": 2
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -8732,6 +9483,9 @@
   "damage_spread_pct": 0.0,
   "seconds": 52,
   "spells": {
+   "Entomb in Ice": 3
+  },
+  "spells_landed": {
    "Entomb in Ice": 3
   },
   "spells_distinct": 1,
@@ -8778,6 +9532,9 @@
   "spells": {
    "Entomb in Ice": 2
   },
+  "spells_landed": {
+   "Entomb in Ice": 2
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -8819,6 +9576,9 @@
   "damage_spread_pct": 0.0,
   "seconds": 20,
   "spells": {
+   "Entomb in Ice": 1
+  },
+  "spells_landed": {
    "Entomb in Ice": 1
   },
   "spells_distinct": 1,
@@ -8867,6 +9627,9 @@
   "spells": {
    "Entomb in Ice": 9
   },
+  "spells_landed": {
+   "Entomb in Ice": 9
+  },
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -8911,6 +9674,7 @@
   "spells": {
    "Earth Elemental Attack": 7
   },
+  "spells_landed": {},
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -8964,6 +9728,11 @@
    "Screaming Terror": 2,
    "Bond of Death": 1,
    "Infectious Cloud": 1,
+   "Insidious Retrogression": 1
+  },
+  "spells_landed": {
+   "Infectious Cloud": 28,
+   "Bond of Death": 10,
    "Insidious Retrogression": 1
   },
   "spells_distinct": 7,
@@ -9022,6 +9791,10 @@
    "Infectious Cloud": 1,
    "Insidious Retrogression": 1
   },
+  "spells_landed": {
+   "Infectious Cloud": 1,
+   "Insidious Retrogression": 1
+  },
   "spells_distinct": 6,
   "self_heal_low": 9,
   "self_heal_high": 9,
@@ -9074,6 +9847,11 @@
    "Dooming Darkness": 3,
    "Life Leech": 2,
    "Negation of Life": 2
+  },
+  "spells_landed": {
+   "Dooming Darkness": 32,
+   "Negation of Life": 16,
+   "Life Leech": 2
   },
   "spells_distinct": 5,
   "self_heal_low": 1,
@@ -9133,6 +9911,11 @@
    "Negation of Life": 2,
    "Life Leech": 1
   },
+  "spells_landed": {
+   "Dooming Darkness": 46,
+   "Negation of Life": 16,
+   "Life Leech": 1
+  },
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -9185,6 +9968,10 @@
    "Life Leech": 1,
    "Earth Elemental Attack": 1,
    "Dooming Darkness": 1
+  },
+  "spells_landed": {
+   "Harm Touch": 1,
+   "Life Leech": 1
   },
   "spells_distinct": 5,
   "self_heal_low": 1,
@@ -9242,6 +10029,10 @@
    "Invoke Fear": 2,
    "Dooming Darkness": 2
   },
+  "spells_landed": {
+   "Dooming Darkness": 16,
+   "Life Leech": 3
+  },
   "spells_distinct": 5,
   "self_heal_low": 3,
   "self_heal_high": 3,
@@ -9298,6 +10089,12 @@
    "Shadow Vortex": 1,
    "Negation of Life": 1
   },
+  "spells_landed": {
+   "Dooming Darkness": 48,
+   "Negation of Life": 16,
+   "Life Leech": 4,
+   "Harm Touch": 1
+  },
   "spells_distinct": 6,
   "self_heal_low": 3,
   "self_heal_high": 3,
@@ -9350,6 +10147,9 @@
    "Call of Flame": 1,
    "Greater Spiroc Thunder": 1
   },
+  "spells_landed": {
+   "Greater Spiroc Thunder": 3
+  },
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -9395,6 +10195,11 @@
    "Greater Spiroc Thunder": 1,
    "Chloroplast": 1,
    "Scorching Arrow": 1
+  },
+  "spells_landed": {
+   "Greater Spiroc Thunder": 2,
+   "Ensnaring Roots": 1,
+   "Careless Lightning": 1
   },
   "spells_distinct": 7,
   "self_heal_low": 1,
@@ -9444,7 +10249,16 @@
    "Greater Healing": 1,
    "Scorching Arrow": 1
   },
-  "spells_distinct": 8,
+  "spells_landed": {
+   "Greater Spiroc Thunder": 4,
+   "Drones of Doom": 3,
+   "Ensnaring Roots": 2,
+   "Invoke Lightning": 1,
+   "Call of Flame": 1,
+   "Stone Spider Stun": 1,
+   "Scorching Arrow": 1
+  },
+  "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -9490,6 +10304,11 @@
    "Ensnare": 1,
    "Greater Healing": 1
   },
+  "spells_landed": {
+   "Ensnaring Roots": 1,
+   "Invoke Lightning": 1,
+   "Greater Spiroc Thunder": 1
+  },
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -9532,6 +10351,10 @@
    "Ensnaring Roots": 3,
    "Immolate": 1,
    "Greater Spiroc Thunder": 1
+  },
+  "spells_landed": {
+   "Greater Spiroc Thunder": 1,
+   "Ensnaring Roots": 1
   },
   "spells_distinct": 3,
   "self_heal_low": 0,
@@ -9578,6 +10401,10 @@
    "Greater Healing": 1,
    "Chloroplast": 1
   },
+  "spells_landed": {
+   "Greater Spiroc Thunder": 1,
+   "Ensnaring Roots": 1
+  },
   "spells_distinct": 5,
   "self_heal_low": 2,
   "self_heal_high": 2,
@@ -9623,6 +10450,11 @@
    "Greater Healing": 1,
    "Invoke Lightning": 1
   },
+  "spells_landed": {
+   "Greater Spiroc Thunder": 1,
+   "Ensnaring Roots": 1,
+   "Call of Flame": 1
+  },
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
@@ -9659,6 +10491,9 @@
    "Tangling Weeds": 7,
    "Dragon Fear": 3,
    "Rotting Flesh": 3
+  },
+  "spells_landed": {
+   "Rotting Flesh": 71
   },
   "spells_distinct": 3,
   "self_heal_low": 0,
@@ -9703,7 +10538,11 @@
    "Root": 1,
    "Ignite Bones": 1
   },
-  "spells_distinct": 4,
+  "spells_landed": {
+   "Chilling Embrace": 4,
+   "Rotting Flesh": 1
+  },
+  "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -9750,7 +10589,13 @@
    "Asystole": 2,
    "Chilling Embrace": 1
   },
-  "spells_distinct": 6,
+  "spells_landed": {
+   "Rotting Flesh": 16,
+   "Asystole": 8,
+   "Chilling Embrace": 2,
+   "Drain Spirit": 1
+  },
+  "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 1,
   "melee_verbs": [
@@ -9807,6 +10652,11 @@
    "Cascading Darkness": 1,
    "Screaming Terror": 1
   },
+  "spells_landed": {
+   "Rotting Flesh": 177,
+   "Cascading Darkness": 15,
+   "Engulfing Roots": 2
+  },
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
@@ -9862,7 +10712,11 @@
    "Paralyzing Earth": 1,
    "Screaming Terror": 1
   },
-  "spells_distinct": 6,
+  "spells_landed": {
+   "Rotting Flesh": 152,
+   "Cascading Darkness": 9
+  },
+  "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -9917,6 +10771,14 @@
    "Torbas' Poison Blast": 1,
    "Greater Healing": 1,
    "Bond of Death": 1
+  },
+  "spells_landed": {
+   "Rotting Flesh": 273,
+   "Ignite Blood": 24,
+   "Bond of Death": 10,
+   "Insidious Retrogression": 4,
+   "Ensnaring Roots": 1,
+   "Torbas' Poison Blast": 1
   },
   "spells_distinct": 11,
   "self_heal_low": 0,
@@ -9975,6 +10837,12 @@
    "Bond of Death": 1,
    "Paralyzing Earth": 1
   },
+  "spells_landed": {
+   "Rotting Flesh": 246,
+   "Ignite Blood": 16,
+   "Bond of Death": 10,
+   "Insidious Retrogression": 3
+  },
   "spells_distinct": 8,
   "self_heal_low": 10,
   "self_heal_high": 10,
@@ -10031,6 +10899,14 @@
    "Torbas' Poison Blast": 2,
    "Bond of Death": 1,
    "Shadow Vortex": 1
+  },
+  "spells_landed": {
+   "Rotting Flesh": 274,
+   "Infectious Cloud": 32,
+   "Ignite Blood": 14,
+   "Bond of Death": 9,
+   "Insidious Retrogression": 6,
+   "Torbas' Poison Blast": 2
   },
   "spells_distinct": 13,
   "self_heal_low": 8,
@@ -10094,6 +10970,14 @@
    "Infectious Cloud": 1,
    "Torbas' Poison Blast": 1
   },
+  "spells_landed": {
+   "Rotting Flesh": 519,
+   "Infectious Cloud": 22,
+   "Ignite Blood": 19,
+   "Bond of Death": 17,
+   "Insidious Retrogression": 3,
+   "Ensnaring Roots": 2
+  },
   "spells_distinct": 12,
   "self_heal_low": 18,
   "self_heal_high": 19,
@@ -10139,7 +11023,11 @@
   "spells": {
    "Efreeti Fire": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 16,
+   "Soul Devour": 8
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -10180,7 +11068,11 @@
   "spells": {
    "Efreeti Fire": 3
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 9,
+   "Soul Devour": 7
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -10222,7 +11114,11 @@
   "spells": {
    "Efreeti Fire": 2
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 5,
+   "Soul Devour": 2
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -10264,7 +11160,11 @@
   "spells": {
    "Efreeti Fire": 7
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Soul Devour": 42,
+   "Efreeti Fire": 21
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
@@ -10308,7 +11208,11 @@
   "spells": {
    "Efreeti Fire": 5
   },
-  "spells_distinct": 1,
+  "spells_landed": {
+   "Efreeti Fire": 14,
+   "Soul Devour": 7
+  },
+  "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
   "melee_verbs": [
