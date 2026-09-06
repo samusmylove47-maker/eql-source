@@ -76,6 +76,23 @@ CSS = '''<style>
   font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-lg);
   text-transform:uppercase;letter-spacing:.03em;text-decoration:none}
 .au-get:hover{filter:brightness(1.08)}
+/* Her sections. A heading, her lines, then whichever stills she put under it.
+   Deliberately quiet: the copy is the product's pitch and the site's job here is
+   to carry it legibly, not to restyle it. */
+.au-feat{margin:var(--s-7) 0 0}
+.au-feat h2{font-family:"Saira Condensed",sans-serif;font-size:var(--t-xl);
+  font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--bone);
+  margin:0 0 var(--s-3)}
+.au-feat p{margin:0 0 var(--s-3);color:var(--mut);line-height:1.6}
+.au-feat p strong{color:var(--bone)}
+.au-feat .au-grid{margin-top:var(--s-4)}
+.au-install{margin:var(--s-7) 0 0;padding:var(--s-5);border:1px solid var(--rule2);
+  border-radius:var(--r);background:var(--surface-1)}
+.au-install h2{font-family:"Saira Condensed",sans-serif;font-size:var(--t-lg);
+  font-weight:600;text-transform:uppercase;letter-spacing:.03em;color:var(--bone);
+  margin:0 0 var(--s-3)}
+.au-install ol{margin:0;padding-left:1.3em;color:var(--mut);line-height:1.7}
+.au-install .au-plat{margin-top:var(--s-3)}
 .au-links{list-style:none;margin:var(--s-5) 0 0;padding:0;display:grid;gap:1px;
   background:var(--rule);border:1px solid var(--rule);border-radius:var(--r);overflow:hidden}
 .au-links li{background:var(--panel);padding:13px 16px}
@@ -134,7 +151,43 @@ if _links:
         for l in _links)
     links = f'<ul class="au-links">{rows}</ul>'
 
-gallery = ''.join(shot(k) for k in (A['media'].get('gallery') or []))
+# HER NINE SECTIONS, IN HER ORDER, WITH HER IMAGES UNDER THE HEADINGS SHE
+# ASSIGNED THEM. Both come out of assets/auras.json, which extracted them from
+# HIGHLIGHTS.md and her RELEASE-PAGE.md table rather than retyping either - see
+# the note beside them there. Nothing on this page is our wording.
+#
+# The site carried three paragraphs of hers and one heading. She has nine
+# sections and twenty lines, and nine of those lines describe features this page
+# had never mentioned at all - travel routing and action-bar skinning among them.
+def feature(sec):
+    lines = "".join(
+        f'<p><strong>{l["lead"]}</strong> {l["rest"]}</p>' if l.get("rest")
+        else f'<p><strong>{l["lead"]}</strong></p>'
+        for l in sec.get('lines') or [])
+    imgs = "".join(shot(k) for k in (sec.get('images') or []))
+    if imgs:
+        imgs = f'<div class="au-grid">{imgs}</div>'
+    return (f'<section class="au-feat"><h2>{sec["title"]}</h2>{lines}{imgs}</section>')
+
+
+feats = "".join(feature(x) for x in (A.get('sections') or []))
+
+# Her install steps sit beside the download, which is where somebody reads them.
+# Ours compressed the same thing into one sentence in the band foot and did not
+# mention what SmartScreen actually says.
+_ins = A.get('install') or {}
+install = ''
+if _ins.get('steps'):
+    _steps = "".join(f'<li>{t}</li>' for t in _ins['steps'])
+    install = (f'<div class="au-install"><h2>Installing</h2><ol>{_steps}</ol>'
+               + (f'<p class="au-plat">{_ins["note"]}</p>' if _ins.get('note') else '')
+               + '</div>')
+
+# The flat gallery is gone: every still now sits under the section its own
+# author put it under. The key stays read so an unplaced image is still visible
+# rather than silently dropped.
+_placed = {k for x in (A.get('sections') or []) for k in (x.get('images') or [])}
+gallery = ''.join(shot(k) for k in (A['media'].get('gallery') or []) if k not in _placed)
 if gallery:
     gallery = f'<div class="au-grid">{gallery}</div>'
 
@@ -159,8 +212,10 @@ page = (head(A['name'],
 <section class="band" style="border-top:0;padding-top:0">
   <div class="shell">
     {shot(A['media'].get('trailer'), A.get('caption'), vid=True)}
-    {gallery}
     <div class="au-body">{body}</div>
+    {feats}
+    {gallery}
+    {install}
     {links}
   </div>
   <script>
@@ -174,7 +229,9 @@ page = (head(A['name'],
       v.src=w.getAttribute('data-video');
       v.setAttribute('poster',w.getAttribute('data-poster'));
       v.muted=true; v.loop=true; v.playsInline=true; v.controls=true;
-      v.setAttribute('width','1600'); v.setAttribute('height','900');
+      var im=w.querySelector('img');
+      if(im){{ v.setAttribute('width',im.getAttribute('width'));
+               v.setAttribute('height',im.getAttribute('height')); }}
       w.replaceChild(v,w.querySelector('img'));
       b.remove();
       var p=v.play(); if(p&&p.catch) p.catch(function(){{}});
