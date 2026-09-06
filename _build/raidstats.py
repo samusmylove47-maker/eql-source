@@ -457,6 +457,7 @@ def parse_log(path):
                     character=char, start=ts, damage=0,
                     healed=0, heal_count=0, casts=collections.Counter(),
                     landed=collections.Counter(),
+                    heal_by=collections.Counter(),
                     melee_verbs=collections.Counter(), melee_hits=[],
                     pet_verbs=collections.Counter(), has_pet=False,
                     by=collections.Counter(),
@@ -482,6 +483,20 @@ def parse_log(path):
             h = rx['heal'].match(b)
             if h:
                 f['healed'] += int(h.group(1)); f['heal_count'] += 1
+                # THE MAGNITUDE, WHICH WAS PARSED AND THEN THROWN AWAY. Both
+                # published heal fields are COUNTS of events despite being
+                # named self_heal_low/high, so learn/difficulty.html's "one
+                # effect ticking every six seconds for the same 22 hit points"
+                # cited a dataset that could not hold the 22. It is true -
+                # Master Yael's Bond of Death heals exactly 22, twelve times -
+                # and it was unverifiable from the published data, which is the
+                # fault CLAUDE.md section 3 names.
+                #
+                # Keyed by spell AND amount rather than summed, because "the
+                # same 22 every time" is a claim about the SHAPE of the heal.
+                # A total cannot distinguish a recurring drain from one large
+                # heal, and that distinction is the whole sentence.
+                f['heal_by'][(h.group(2), int(h.group(1)))] += 1
                 break
             # ORDER IS LOAD-BEARING: `melee` matches a pet line too, and would
             # record the boss swinging with a verb called "pet". See the pattern
@@ -571,6 +586,8 @@ def fmt(f):
         "seconds": secs,
         "damage_to_kill": f['damage'],
         "self_healed": f['healed'], "self_heal_count": f['heal_count'],
+        # {spell: {amount: times}}. JSON keys are strings, so the amount is one.
+        "self_heal_amounts": {sp: {str(a): n} for (sp, a), n in f['heal_by'].items()},
         "spells": dict(sorted(f['casts'].items(), key=lambda kv: -kv[1])),
         # Spells seen only because they landed. The count is damage lines, not
         # casts, which is why it is a separate field with a separate name.
@@ -681,6 +698,14 @@ def merge(rows):
             for k, v in (o.get('spells_landed') or {}).items():
                 landed[k] = max(landed.get(k, 0), v)
         heals = [o['self_heal_count'] for o in obs]
+        # Union across clients, and the MAX per (spell, amount): a tick one
+        # client was out of range for still landed. Same rule as spells.
+        heal_amt = {}
+        for o in obs:
+            for sp, per in (o.get('self_heal_amounts') or {}).items():
+                d = heal_amt.setdefault(sp, {})
+                for amt, n in per.items():
+                    d[amt] = max(d.get(amt, 0), n)
         out.append({
             "boss": boss, "difficulty": diff,
             "difficulty_label": best_src(obs)['difficulty_label'],
@@ -714,7 +739,15 @@ def merge(rows):
             "spells": dict(sorted(spells.items(), key=lambda kv: -kv[1])),
             "spells_landed": dict(sorted(landed.items(), key=lambda kv: -kv[1])),
             "spells_distinct": len(set(spells) | set(landed)),
+            # NAMED FOR WHAT THEY ARE. These two are COUNTS OF HEAL EVENTS,
+            # not magnitudes, and the names have implied otherwise since they
+            # were written - which is how a page came to cite "the same 22 hit
+            # points" to a dataset holding no hit points at all. Renaming a
+            # published field is a contract change, so they keep their names
+            # and the magnitudes arrive beside them under an unambiguous one.
             "self_heal_low": min(heals), "self_heal_high": max(heals),
+            "self_heal_amounts": {sp: dict(sorted(v.items(), key=lambda kv: -kv[1]))
+                                  for sp, v in sorted(heal_amt.items())},
             # Union across clients, exactly as spells are: a swing one client
             # was out of position for still happened. The SET, never the count -
             # CLAUDE.md section 7 does not publish swing counts.

@@ -49,6 +49,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws",
    "strikes"
@@ -103,6 +104,7 @@
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws",
    "strikes"
@@ -166,6 +168,11 @@
   "spells_distinct": 8,
   "self_heal_low": 10,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "80": 10
+   }
+  },
   "melee_verbs": [
    "claws",
    "strikes"
@@ -224,6 +231,14 @@
   "spells_distinct": 7,
   "self_heal_low": 11,
   "self_heal_high": 11,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "80": 10
+   },
+   "Greater Healing": {
+    "350": 1
+   }
+  },
   "melee_verbs": [
    "claws",
    "strikes"
@@ -277,6 +292,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws",
    "strikes"
@@ -323,6 +339,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -378,6 +395,11 @@
   "spells_distinct": 5,
   "self_heal_low": 3,
   "self_heal_high": 3,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "350": 3
+   }
+  },
   "melee_verbs": [
    "cleaves",
    "hits"
@@ -433,6 +455,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "backstabs",
    "cleaves",
@@ -493,6 +516,7 @@
   "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "hits"
@@ -539,6 +563,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -585,6 +610,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -632,6 +658,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -679,6 +706,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -725,6 +753,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -769,6 +798,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "stings"
@@ -815,6 +845,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -862,6 +893,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "stings"
@@ -908,6 +940,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -954,6 +987,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1004,6 +1038,11 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Soul Leech": {
+    "75": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1051,6 +1090,11 @@
   "spells_distinct": 2,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Soul Leech": {
+    "75": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1097,6 +1141,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1144,6 +1189,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1191,6 +1237,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [],
   "has_pet": false,
   "pet_verbs": [],
@@ -1234,6 +1281,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1280,6 +1328,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1326,6 +1375,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "stings"
@@ -1372,6 +1422,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1419,6 +1470,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1461,6 +1513,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "stings"
   ],
@@ -1507,6 +1560,11 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Soul Leech": {
+    "75": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1554,6 +1612,11 @@
   "spells_distinct": 2,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Soul Leech": {
+    "75": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1602,6 +1665,11 @@
   "spells_distinct": 2,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Soul Leech": {
+    "75": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1650,6 +1718,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1696,6 +1765,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1743,6 +1813,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1790,6 +1861,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "stings"
@@ -1836,6 +1908,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -1882,6 +1955,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "stings"
@@ -1927,6 +2001,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "stings"
@@ -1973,6 +2048,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2020,6 +2096,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "stings"
@@ -2065,6 +2142,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2111,6 +2189,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2157,6 +2236,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2203,6 +2283,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2250,6 +2331,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2301,6 +2383,11 @@
   "spells_distinct": 9,
   "self_heal_low": 4,
   "self_heal_high": 4,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "96": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2357,6 +2444,11 @@
   "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "118": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "crushes",
@@ -2418,6 +2510,11 @@
   "spells_distinct": 7,
   "self_heal_low": 16,
   "self_heal_high": 16,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "95": 8
+   }
+  },
   "melee_verbs": [
    "bashes",
    "crushes",
@@ -2477,6 +2574,11 @@
   "spells_distinct": 6,
   "self_heal_low": 3,
   "self_heal_high": 3,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "56": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2540,6 +2642,11 @@
   "spells_distinct": 9,
   "self_heal_low": 4,
   "self_heal_high": 4,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "96": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2602,6 +2709,11 @@
   "spells_distinct": 7,
   "self_heal_low": 3,
   "self_heal_high": 3,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "39": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -2665,6 +2777,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -2727,6 +2840,7 @@
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -2786,6 +2900,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -2850,6 +2965,7 @@
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -2905,6 +3021,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -2967,6 +3084,7 @@
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -3009,6 +3127,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3063,6 +3182,11 @@
   "spells_distinct": 4,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "35": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "hits",
@@ -3120,6 +3244,11 @@
   "spells_distinct": 5,
   "self_heal_low": 10,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "35": 10
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3170,6 +3299,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3232,6 +3362,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3285,6 +3416,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "hits"
@@ -3339,6 +3471,11 @@
   "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "200": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3403,6 +3540,11 @@
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "101": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3444,6 +3586,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -3488,6 +3631,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws"
   ],
@@ -3530,6 +3674,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -3574,6 +3719,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws"
   ],
@@ -3617,6 +3763,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws",
    "cleaves"
@@ -3660,6 +3807,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -3704,6 +3852,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -3750,6 +3899,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -3796,6 +3946,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws",
    "cleaves"
@@ -3839,6 +3990,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3889,6 +4041,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -3951,6 +4104,7 @@
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -4015,6 +4169,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -4077,6 +4232,11 @@
   "spells_distinct": 10,
   "self_heal_low": 4,
   "self_heal_high": 4,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "117": 4
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -4138,6 +4298,11 @@
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "59": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -4186,6 +4351,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -4229,6 +4395,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws"
   ],
@@ -4271,6 +4438,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -4314,6 +4482,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "claws",
    "kicks"
@@ -4357,6 +4526,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "claws",
@@ -4406,6 +4576,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "punches"
@@ -4454,6 +4625,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "kicks",
@@ -4508,6 +4680,7 @@
   "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "kicks",
@@ -4572,6 +4745,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "punches"
@@ -4634,6 +4808,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "punches"
@@ -4690,6 +4865,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "punches"
@@ -4751,6 +4927,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "punches"
@@ -4808,6 +4985,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes",
    "kicks"
@@ -4867,6 +5045,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "hits"
@@ -4927,6 +5106,11 @@
   "spells_distinct": 8,
   "self_heal_low": 3,
   "self_heal_high": 3,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "101": 3
+   }
+  },
   "melee_verbs": [
    "bashes",
    "hits"
@@ -4987,6 +5171,11 @@
   "spells_distinct": 9,
   "self_heal_low": 4,
   "self_heal_high": 4,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "200": 4
+   }
+  },
   "melee_verbs": [
    "bashes",
    "hits"
@@ -5052,6 +5241,11 @@
   "spells_distinct": 10,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Inner Fire": {
+    "4": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "hits"
@@ -5110,6 +5304,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "hits"
@@ -5165,6 +5360,11 @@
   "spells_distinct": 5,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "160": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "hits"
@@ -5222,6 +5422,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "hits"
@@ -5264,6 +5465,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -5306,6 +5508,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -5349,6 +5552,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -5392,6 +5596,7 @@
   "spells_distinct": 0,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits",
    "kicks"
@@ -5442,6 +5647,11 @@
   "spells_distinct": 4,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Armor of the Faithful": {
+    "90": 1
+   }
+  },
   "melee_verbs": [
    "bites"
   ],
@@ -5490,6 +5700,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -5541,6 +5752,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -5601,6 +5813,11 @@
   "spells_distinct": 8,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "74": 1
+   }
+  },
   "melee_verbs": [
    "bites"
   ],
@@ -5664,6 +5881,11 @@
   "spells_distinct": 10,
   "self_heal_low": 10,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "27": 10
+   }
+  },
   "melee_verbs": [
    "pierces"
   ],
@@ -5712,6 +5934,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -5761,6 +5984,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -5823,6 +6047,7 @@
   "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bites",
    "cleaves"
@@ -5879,6 +6104,7 @@
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "frenzies",
@@ -5936,6 +6162,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes",
@@ -5993,6 +6220,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes",
@@ -6057,6 +6285,14 @@
   "spells_distinct": 13,
   "self_heal_low": 5,
   "self_heal_high": 5,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "86": 1
+   },
+   "Superior Healing": {
+    "200": 4
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -6114,6 +6350,11 @@
   "spells_distinct": 6,
   "self_heal_low": 6,
   "self_heal_high": 6,
+  "self_heal_amounts": {
+   "Healing Light": {
+    "841": 6
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -6172,6 +6413,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits",
    "kicks"
@@ -6236,6 +6478,14 @@
   "spells_distinct": 12,
   "self_heal_low": 4,
   "self_heal_high": 4,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "80": 1
+   },
+   "Superior Healing": {
+    "200": 3
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -6294,6 +6544,14 @@
   "spells_distinct": 8,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "270": 1
+   },
+   "Superior Healing": {
+    "630": 1
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -6362,6 +6620,17 @@
   "spells_distinct": 14,
   "self_heal_low": 4,
   "self_heal_high": 4,
+  "self_heal_amounts": {
+   "Harnessing of Spirit": {
+    "43": 1
+   },
+   "Life Leech": {
+    "29": 1
+   },
+   "Superior Healing": {
+    "81": 2
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -6419,6 +6688,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "slices"
@@ -6480,6 +6750,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "slices"
@@ -6548,6 +6819,17 @@
   "spells_distinct": 13,
   "self_heal_low": 15,
   "self_heal_high": 15,
+  "self_heal_amounts": {
+   "Lay on Hands": {
+    "3393": 1
+   },
+   "Specter Lifetap": {
+    "68": 6
+   },
+   "Superior Healing": {
+    "600": 8
+   }
+  },
   "melee_verbs": [
    "crushes",
    "kicks"
@@ -6612,6 +6894,17 @@
   "spells_distinct": 10,
   "self_heal_low": 12,
   "self_heal_high": 12,
+  "self_heal_amounts": {
+   "Lay on Hands": {
+    "3393": 1
+   },
+   "Specter Lifetap": {
+    "55": 3
+   },
+   "Superior Healing": {
+    "600": 7
+   }
+  },
   "melee_verbs": [
    "crushes",
    "kicks"
@@ -6676,6 +6969,7 @@
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "kicks",
    "slices"
@@ -6724,6 +7018,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -6776,6 +7071,7 @@
   "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -6831,6 +7127,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -6890,6 +7187,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -6953,6 +7251,7 @@
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "hits"
@@ -7011,6 +7310,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -7071,6 +7371,7 @@
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -7125,6 +7426,7 @@
   "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -7183,6 +7485,7 @@
   "spells_distinct": 9,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -7247,6 +7550,7 @@
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -7303,6 +7607,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -7358,6 +7663,7 @@
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -7418,6 +7724,7 @@
   "spells_distinct": 10,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -7475,6 +7782,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -7532,6 +7840,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -7589,6 +7898,7 @@
   "spells_distinct": 6,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "slashes"
   ],
@@ -7644,6 +7954,7 @@
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces",
    "strikes"
@@ -7706,6 +8017,11 @@
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "210": 1
+   }
+  },
   "melee_verbs": [
    "slashes"
   ],
@@ -7768,6 +8084,11 @@
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Healing Light": {
+    "227": 1
+   }
+  },
   "melee_verbs": [
    "pierces"
   ],
@@ -7831,6 +8152,11 @@
   "spells_distinct": 10,
   "self_heal_low": 1,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "22": 10
+   }
+  },
   "melee_verbs": [
    "hits",
    "pierces"
@@ -7899,6 +8225,7 @@
   "spells_distinct": 12,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -7960,6 +8287,14 @@
   "spells_distinct": 10,
   "self_heal_low": 6,
   "self_heal_high": 6,
+  "self_heal_amounts": {
+   "Efflorescing Heal Trigger": {
+    "76": 1
+   },
+   "Superior Healing": {
+    "101": 5
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -8014,6 +8349,7 @@
   "spells_distinct": 4,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "hits",
@@ -8074,6 +8410,11 @@
   "spells_distinct": 8,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Superior Healing": {
+    "200": 1
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -8128,6 +8469,11 @@
   "spells_distinct": 7,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Healing Light": {
+    "841": 2
+   }
+  },
   "melee_verbs": [
    "cleaves",
    "hits",
@@ -8190,6 +8536,14 @@
   "spells_distinct": 10,
   "self_heal_low": 6,
   "self_heal_high": 6,
+  "self_heal_amounts": {
+   "Efflorescing Heal Trigger": {
+    "76": 2
+   },
+   "Superior Healing": {
+    "101": 4
+   }
+  },
   "melee_verbs": [
    "hits",
    "kicks"
@@ -8243,6 +8597,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "backstabs",
    "cleaves",
@@ -8303,6 +8658,7 @@
   "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes",
@@ -8357,6 +8713,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "backstabs",
    "cleaves",
@@ -8416,6 +8773,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "kicks",
@@ -8470,6 +8828,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "kicks",
@@ -8523,6 +8882,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes",
@@ -8571,6 +8931,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "punches"
@@ -8616,6 +8977,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -8660,6 +9022,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces",
@@ -8708,6 +9071,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -8754,6 +9118,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "punches"
@@ -8800,6 +9165,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "crushes"
@@ -8847,6 +9213,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -8894,6 +9261,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -8939,6 +9307,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -8985,6 +9354,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -9030,6 +9400,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -9078,6 +9449,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -9139,6 +9511,7 @@
   "spells_distinct": 8,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "backstabs",
    "crushes"
@@ -9182,6 +9555,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -9223,6 +9597,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -9265,6 +9640,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "backstabs",
    "slashes"
@@ -9308,6 +9684,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "slashes"
   ],
@@ -9351,6 +9728,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "backstabs",
    "hits"
@@ -9397,6 +9775,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9444,6 +9823,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9491,6 +9871,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9538,6 +9919,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "hits",
@@ -9584,6 +9966,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9633,6 +10016,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9678,6 +10062,7 @@
   "spells_distinct": 1,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9738,6 +10123,11 @@
   "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "35": 10
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9798,6 +10188,11 @@
   "spells_distinct": 6,
   "self_heal_low": 9,
   "self_heal_high": 9,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "35": 9
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9856,6 +10251,11 @@
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "56": 2
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9919,6 +10319,11 @@
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "56": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -9976,6 +10381,11 @@
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "96": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -10036,6 +10446,11 @@
   "spells_distinct": 5,
   "self_heal_low": 3,
   "self_heal_high": 3,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "58": 3
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -10098,6 +10513,11 @@
   "spells_distinct": 6,
   "self_heal_low": 3,
   "self_heal_high": 3,
+  "self_heal_amounts": {
+   "Life Leech": {
+    "51": 1
+   }
+  },
   "melee_verbs": [
    "bashes",
    "cleaves",
@@ -10153,6 +10573,7 @@
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "slashes"
   ],
@@ -10204,6 +10625,11 @@
   "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "350": 1
+   }
+  },
   "melee_verbs": [
    "slashes"
   ],
@@ -10261,6 +10687,11 @@
   "spells_distinct": 9,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "350": 1
+   }
+  },
   "melee_verbs": [
    "hits",
    "slashes"
@@ -10312,6 +10743,11 @@
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "350": 1
+   }
+  },
   "melee_verbs": [
    "hits"
   ],
@@ -10359,6 +10795,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "hits"
   ],
@@ -10408,6 +10845,14 @@
   "spells_distinct": 5,
   "self_heal_low": 2,
   "self_heal_high": 2,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "350": 1
+   },
+   "Skin like Diamond": {
+    "200": 1
+   }
+  },
   "melee_verbs": [
    "slashes"
   ],
@@ -10458,6 +10903,11 @@
   "spells_distinct": 5,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Greater Healing": {
+    "350": 1
+   }
+  },
   "melee_verbs": [
    "hits"
   ],
@@ -10498,6 +10948,7 @@
   "spells_distinct": 3,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "crushes"
   ],
@@ -10545,6 +10996,7 @@
   "spells_distinct": 5,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -10598,6 +11050,11 @@
   "spells_distinct": 7,
   "self_heal_low": 1,
   "self_heal_high": 1,
+  "self_heal_amounts": {
+   "Drain Spirit": {
+    "191": 1
+   }
+  },
   "melee_verbs": [
    "pierces"
   ],
@@ -10660,6 +11117,7 @@
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -10719,6 +11177,7 @@
   "spells_distinct": 7,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "pierces"
   ],
@@ -10783,6 +11242,11 @@
   "spells_distinct": 11,
   "self_heal_low": 0,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "16": 10
+   }
+  },
   "melee_verbs": [
    "slashes"
   ],
@@ -10846,6 +11310,11 @@
   "spells_distinct": 8,
   "self_heal_low": 10,
   "self_heal_high": 10,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "16": 10
+   }
+  },
   "melee_verbs": [
    "slashes"
   ],
@@ -10911,6 +11380,11 @@
   "spells_distinct": 13,
   "self_heal_low": 8,
   "self_heal_high": 8,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "27": 8
+   }
+  },
   "melee_verbs": [
    "crushes"
   ],
@@ -10981,6 +11455,11 @@
   "spells_distinct": 12,
   "self_heal_low": 18,
   "self_heal_high": 19,
+  "self_heal_amounts": {
+   "Bond of Death": {
+    "14": 19
+   }
+  },
   "melee_verbs": [
    "slashes"
   ],
@@ -11030,6 +11509,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "pierces"
@@ -11075,6 +11555,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "punches"
@@ -11121,6 +11602,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -11167,6 +11649,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"
@@ -11215,6 +11698,7 @@
   "spells_distinct": 2,
   "self_heal_low": 0,
   "self_heal_high": 0,
+  "self_heal_amounts": {},
   "melee_verbs": [
    "cleaves",
    "slashes"

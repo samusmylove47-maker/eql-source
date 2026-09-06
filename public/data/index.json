@@ -24,9 +24,9 @@
    "name": "sky",
    "version": "1.0.0",
    "title": "Plane of Sky class unlock quests",
-   "description": "Every Plane of Sky test for all sixteen classes, with the turn-ins, the island each component drops on, and a source recorded per claim.",
+   "description": "Every Plane of Sky test for all 16 classes, with the turn-ins, the island each component drops on, and a source recorded per claim.",
    "url": "https://eqlsource.com/data/sky.v1.json",
-   "bytes": 128324,
+   "bytes": 128309,
    "hash": "c8d41d080e92f873"
   },
   {
@@ -35,7 +35,7 @@
    "title": "Measured drop sources",
    "description": "Which mobs have been measured dropping which items, parsed from combat logs. Each row carries the sighting count behind it.",
    "url": "https://eqlsource.com/data/sightings.v1.json",
-   "bytes": 503865,
+   "bytes": 504252,
    "hash": "b67cc0fda1509e31"
   },
   {

@@ -21,7 +21,7 @@ import os, re, sys, json, collections
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT, '_build'))
-from _partials import head, bar, foot
+from _partials import head, bar, foot, wordnum
 
 P = json.load(open('assets/planar.json', encoding='utf-8'))
 ITEMS, SETCLASS = P['items'], P['setClass']
@@ -67,6 +67,15 @@ STAT = [("ac", "AC"), ("str", "STR"), ("sta", "STA"), ("agi", "AGI"), ("dex", "D
 by_set = collections.OrderedDict()
 for it in ITEMS:
     by_set.setdefault(it['set'], []).append(it)
+
+# DERIVED BESIDE FIGURES THAT ALREADY WERE. This page computed `len(by_set)` and
+# `len(ITEMS)` correctly and then typed "the sixteen class sets" and "the seven
+# slots" in the same sentences - the harder half done and the easy half typed,
+# which is how a page ends up half-right. 16 is the set count minus the shared
+# ones; 7 is the planar slot count, and both are in planar.json.
+N_SHARED = len(P['shared'])
+N_CLASS_SETS = len(by_set) - N_SHARED
+N_SLOTS = len(SLOTS)
 # shared sets first, then class sets alphabetically by the class they serve
 order = sorted(by_set, key=lambda s: (SETCLASS.get(s) is not None,
                                       CLASS_NAME.get(SETCLASS.get(s) or '', s)))
@@ -124,9 +133,9 @@ for s in order:
         f'<td class="st">{stats_of(i)}'
         + (f'<br><span class="fx">Effect: {i["fx"]}</span>' if i.get('fx') else '')
         + '</td></tr>' for i in rows)
-    short = len(rows) < 7
+    short = len(rows) < N_SLOTS
     note = ('' if not short else
-            f'<p class="src">Only {len(rows)} of the seven slots are recorded. '
+            f'<p class="src">Only {len(rows)} of the {N_SLOTS} slots are recorded. '
             f'{"Beastlord and Berserker did not exist in classic EverQuest, which is why their "
                "sets are the least documented." if cls in ("BST", "BER") else
                "The rest are not on the source."}</p>')
@@ -152,7 +161,8 @@ nav = "".join(f'<a href="#{slug(s)}">{s}</a>' for s in order)
 
 page = (head("Every planar set",
              f"All {len(by_set)} planar armour sets in EverQuest Legends, piece by piece with "
-             f"stats: the sixteen class sets plus Lustrous Russet and Midnight Clad.",
+             f"stats: the {N_CLASS_SETS} class sets plus "
+             f"{' and '.join(P['shared'])}.",
              rel="../", extra=CSS, og="tools", canon="sets/index")
         + bar("../") + f'''
 <main>
@@ -161,8 +171,8 @@ page = (head("Every planar set",
     <p class="crumb"><a href="../">EQL Source</a> &nbsp;/&nbsp;
       <a href="../tools/">Tools</a> &nbsp;/&nbsp; Every set</p>
     <h1 class="display">Every planar set,<br><em>piece by piece.</em></h1>
-    <p class="hero-lede">All {len(by_set)} sets and {len(ITEMS)} pieces &mdash; the sixteen class
-      sets plus the two shared ones. Want to know what to <em>chase</em> rather than what exists?
+    <p class="hero-lede">All {len(by_set)} sets and {len(ITEMS)} pieces &mdash; the {N_CLASS_SETS} class
+      sets plus the {wordnum(N_SHARED).lower()} shared ones. Want to know what to <em>chase</em> rather than what exists?
       <a href="https://samusmylove47-maker.github.io/EQL50ups/">50 Upgrades</a> ranks these
       against your trio, every slot at once.</p>
     <p class="hero-sig"><span>{len(by_set)} sets</span><span>{len(ITEMS)} pieces</span>

@@ -1437,6 +1437,28 @@ for _extra in sorted(set(os.path.basename(p) for p in glob.glob("public/data/*.j
     fail(f"public/data/{_extra} is published but not listed in index.json, so "
          f"nobody can discover it")
 
+# ---- and the other direction, which nothing checked ------------------------
+#
+# Everything above is driven by index.json: the loop reads its `datasets` list
+# and looks each name up in _CONTRACT. The sweep immediately above catches a
+# file on disk that index.json does not list. NOTHING CAUGHT THE REVERSE - a
+# dataset that _CONTRACT declares and index.json no longer lists.
+#
+# So a dataset that stopped being generated, was delisted and had its file
+# removed would leave the contract silently: no loop iteration, no orphan, no
+# failure. _CONTRACT would go on declaring a v1 shape for a URL that 404s, and
+# the file whose whole subject is "this URL will keep working" would be the
+# last to notice.
+#
+# It takes a compound mistake to get there - publicdata.py never deletes, so a
+# stale file normally trips the orphan sweep - which is why this is the cheap
+# half of a promise the rest of the block already makes.
+for _declared in sorted(set(_CONTRACT) - _listed):
+    fail(f"{_declared} is declared in check.py's v1 contract but is not listed "
+         f"in public/data/index.json, so it has left the public contract "
+         f"without anything saying so. An old version stays up: publish a v2 "
+         f"beside it rather than withdrawing v1")
+
 # ---- the tools actually run ------------------------------------------------
 # Everything above reads the HTML a page ships. None of it runs the page's
 # JavaScript, which is how the Sky tracker shipped with an empty class picker
