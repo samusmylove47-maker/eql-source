@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://eqlsource.com/archive/</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
-  <url><loc>https://eqlsource.com/auras</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/auras</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/credits</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/data/</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://eqlsource.com/dungeons/befallen</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
@@ -18,7 +18,7 @@
   <url><loc>https://eqlsource.com/dungeons/splitpaw</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/thehole</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/dungeons/warrens</loc><lastmod>2026-09-01</lastmod><priority>0.6</priority></url>
-  <url><loc>https://eqlsource.com/</loc><lastmod>2026-09-04</lastmod><priority>1.0</priority></url>
+  <url><loc>https://eqlsource.com/</loc><lastmod>2026-09-05</lastmod><priority>1.0</priority></url>
   <url><loc>https://eqlsource.com/items/2h-battle-axe</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/2h-hammer</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/items/a-broom</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
@@ -704,7 +704,7 @@
   <url><loc>https://eqlsource.com/named/zordakalicus-ragefire</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/raids/</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://eqlsource.com/raids/plane-of-sky</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
-  <url><loc>https://eqlsource.com/search</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://eqlsource.com/search</loc><lastmod>2026-09-05</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/sets/</loc><lastmod>2026-09-04</lastmod><priority>0.8</priority></url>
   <url><loc>https://eqlsource.com/sources</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
   <url><loc>https://eqlsource.com/tools/50-upgrades</loc><lastmod>2026-09-04</lastmod><priority>0.6</priority></url>
