@@ -103,8 +103,21 @@ conflict** the 14 Aug audit flagged as unresolved between us and
 eqlegendstools.
 
 Full per-boss drop tables are in `assets/sky-loot.json`, written by
-`_build/skyloot.py`. They are **not** in `assets/sightings.json` and never
-were — see correction 4.
+`_build/skyloot.py`.
+
+**They were not in `assets/sightings.json` and this said "and never were" until
+6 September 2026, by which time they had been there for two days.** The join was
+repaired on 4 Sep: drops from named mobs survive even where the item has no
+catalogue page, and the raid bosses were admitted as a second roster. Count it
+rather than believing this line:
+
+```bash
+python3 -c "import json;s=json.load(open('assets/sightings.json',encoding='utf-8'));print(sum('Plane of Sky' in json.dumps(v) for v in s['by_item'].values()),'items;',sum('Plane of Sky' in json.dumps(v) for v in s['by_named'].values()),'mobs')"
+```
+
+`sky-loot.json` remains the per-boss table, because it derives from the measured
+datasets directly. Correction 4 records why the gap existed and is still worth
+reading; it is no longer a description of the present.
 
 ## What to do with this — done 15 August 2026
 
