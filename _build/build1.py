@@ -467,7 +467,20 @@ lockouts = f'''
 # from the top level so the one-liner on this page and on /auras is one string.
 AB = AURAS['band']
 _au_subs = "\n".join(f'          <p class="featsub">{t}</p>' for t in AB['subs'])
-_au_sig = "".join(f'<span>{x}</span>' for x in AB['sig'])
+# NO FIGURES MEANS NO ELEMENT, NOT AN EMPTY ONE.
+#
+# `sig` was emptied on 5 Sep 2026 - see the reasoning in assets/auras.json. An
+# unguarded f-string would have left `<p class="hero-sig featsig"></p>` in the
+# markup: an empty paragraph still carries its margin, so the band would keep a
+# gap where the figures used to be and nothing would report it. check.py reads
+# what a page says and conformance.js looks for an empty BODY; neither has an
+# opinion about one hollow element.
+#
+# Written to survive the figures coming back, which they may: a non-empty `sig`
+# renders exactly as before.
+_au_sig = ('\n          <p class="hero-sig featsig">'
+           + "".join(f'<span>{x}</span>' for x in AB['sig'])
+           + '</p>') if AB['sig'] else ''
 # The first door leads; the rest follow. `lead` is what makes the download the
 # filled button rather than the outline one.
 _au_doors = "\n".join(
@@ -492,7 +505,7 @@ auras = f'''
           <h2 class="feath">{AURAS['name']}</h2>
           <p class="featlede">{AURAS['lede']}</p>
 {_au_subs}
-          <p class="hero-sig featsig">{_au_sig}</p>
+{_au_sig}
           <div class="featdoors">
 {_au_doors}
           </div>

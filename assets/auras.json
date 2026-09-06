@@ -3,7 +3,7 @@
  "name": "EQLS Auras",
  "eyebrow": "Live now &middot; <b>reads your own log</b>",
  "platform": "Windows.",
- "lede": "Stop alt-tabbing to check your buffs. EQLS Auras reads your EverQuest Legends log and shows a countdown overlay on top of the game.",
+ "lede": "A countdown timer for every buff you&rsquo;re running, right on top of the game. Read straight from your EverQuest Legends log.",
  "body": [
   "EQLS Auras watches your log while you play and puts a click-through overlay on screen with a timer for every buff you&rsquo;re running. Build as many overlays as you want, put them where you want, give them sounds. Point an aura at any line in your log, not just buffs the app knows. It hides when you tab out of EQ and comes back when you tab in. It tracks your weekly raid lockouts, which EQ never prints.",
   "It reads files the client already has: the log it writes as you play, your spellbook, and the game&rsquo;s own spell icons. It does not read or alter the game&rsquo;s memory, inject code into it, or send it input. <strong>It fetches its typeface from Google each time it launches</strong>, which discloses your IP address to Google; beyond that it sends nothing &mdash; no telemetry, no analytics, no update check. That fetch is the main window only: <strong>the overlay drawn over the game requests nothing at all.</strong>",
@@ -38,21 +38,16 @@
   ]
  },
  "caption": "The overlay in play &middot; 9s, silent",
- "_source": "HIGHLIGHTS.md (Shara, via the owner) — ## Pitch, read 1 Sep 2026",
+ "_source": "HIGHLIGHTS.md (Shara, via the owner) - ## Pitch, re-read 5 Sep 2026 at LoxyBee/EQLS-Auras@8da2cc88. The lede here was her 1 Sep line, 'Stop alt-tabbing to check your buffs.', which SHE DELETED on 3 Sep at fdf623a7 in a commit titled 'docs: drop \"stop alt-tabbing\" from the pitch line'. We published a sentence its author had retired, for two days, on three surfaces. body[0] was checked at the same time and still matches hers exactly. THE READ-DATE IS THE ONLY THING THAT MAKES THAT VISIBLE - it is not decoration.",
  "band": {
   "_README": "Session C's launch band copy, adjudicated 3 Sep 2026 against LoxyBee/EQLS-Auras@3a4d119c and handed over at samusmylove47-maker/EQLSAuras@932d6b53 (handoff/auras-launch-band.html). EXTRACTED FROM THAT FILE PROGRAMMATICALLY, NOT RETYPED, so what ships is what was gate-checked. It lives here rather than in _build/build1.py because that generator says in as many words that this product's copy has one home and it is not there - the band and /auras would otherwise be two copies of a third party's words drifting apart. TWO THINGS THAT MUST NOT COME BACK: the '11,337 buffs' figure from docs/auras/BAND-COPY.md (that file is an unreferenced archive; the roster actually loads 1,067, so the recommended figure overstates by 10.6x), and the clause 'It makes no network requests of its own' (false - the main window fetches a typeface at launch, which body[1] above discloses).",
-  "eyebrow": "Out now &middot; <b>version 1.0</b>",
+  "eyebrow": "Out now &middot; <b>Windows, free</b>",
   "alt": "The EQLS Auras overlay running over the game, buff icons across the top of the screen each counting down its own remaining time.",
   "subs": [
    "Add overlays and put them where you want. Point an aura at any line in your log, not just buffs the app knows. It shows what you have landed on each groupmate, skins your action bar, routes you across the map, and tracks the weekly raid lockouts EQ never prints. One key hides the lot.",
    "It reads files the client already has: the log it writes as you play, your spellbook, and the game&rsquo;s own spell icons. It does not read or alter the game&rsquo;s memory, inject code into it, or send it input. No telemetry, no analytics, no update check."
   ],
-  "sig": [
-   "1,067 spells known",
-   "53 stacking slots",
-   "100+ zones routed",
-   "15 sounds included"
-  ],
+  "sig": [],
   "foot": "Free. It finds your EverQuest install on its own. Windows SmartScreen warns about an unknown publisher &mdash; <b>More info</b>, then <b>Run anyway</b>.",
   "doors": [
    {
@@ -64,6 +59,6 @@
     "href": "auras"
    }
   ],
-  "_figures": "Verified independently by Session A before publishing, 3 Sep 2026: 1,067 = entries in src/shared/data/buffs.json; 53 = headings in src/shared/data/buff-lines.json; 15 = audio files in sounds/ (16 files, one is LICENSE.txt); 79.1 MB = 79,088,490 bytes decimal, matching the site's own convention; version 1.0 = package.json 1.0.0. '100+ zones routed' is Shara's own figure from HIGHLIGHTS.md and is hers to state."
+  "_figures": "EMPTIED 5 Sep 2026, and the reason is the useful part. This carried four figures with the best provenance in the repository - each naming its file, its field, its verifier and its date. TWO OF THE FOUR WERE STALE WITHIN TWO DAYS. '1,067 spells known' was the raw entry count of buffs.json, but src/main/buffStore.js:51 drops durationSec > MAX_TRACKABLE_DURATION_SEC (5*3600), so the app loads 1,066 - one entry, 'Share Form of the Great Wolf' at 21600s. I verified 1,067 myself on 3 Sep and I measured the FILE while the label said 'spells known'. '53 stacking slots' is 56 now. A PROVENANCE RECORD ANSWERS WHERE A FIGURE CAME FROM AND CANNOT ANSWER WHETHER IT IS STILL TRUE. The rule this repo now applies: publish a figure with a guard, or stop publishing it. THE BUILD CANNOT GUARD THESE - they live in another repository and the build has no network - so the only honest options were a vendored snapshot carrying a visible read-date, as assets/50-upgrades.json does, or silence. Silence today; the snapshot is the better answer and is not a thing to build the weekend before a relaunch. Derivations if they ever return: buffs.json minus that filter -> 1,066; `headings` in buff-lines.json -> 56; `ZONES` in zoneGraph.js -> 104; audio under sounds/ excluding LICENSE.txt -> 15."
  }
 }
