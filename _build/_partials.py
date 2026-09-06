@@ -30,6 +30,25 @@ def _asset_v(path):
 
 
 CSS_V = _asset_v('public/assets/site.css')
+
+# THE MARK. Shara's, placed and never altered.
+#
+# It sits inside the existing <a class="mark"> beside the wordmark, so the header
+# stays ONE link home rather than becoming two - that placement is the owner's
+# ruling, as is the alt text.
+#
+# NOT RESIZED, NOT RECOLOURED, NOT CROPPED. The file is 256x256 and it ships at
+# 256x256; the header displays it small through width/height attributes and CSS.
+# Re-encoding it to save bytes would produce a derivative of somebody else's mark
+# to solve a problem worth 31 KB, cached after one request.
+#
+# READ UNGUARDED, DELIBERATELY, and this is the one place in this file that can
+# raise. _media/eqls-mark.png is committed, so the invariant rests on the file
+# being there - the same argument build1.py makes for zone-geometry.json. A
+# guarded read would let the mark vanish from 702 pages the way the =Auras band
+# vanished from the home page on 5 Sep 2026, silently, with every check green.
+# If this KeyErrors, the mark is missing and the build should stop and say so.
+MARK = json.load(open('assets/media.json', encoding='utf-8'))['eqls-mark']
 # THE FOUR FACES ARE SERVED FROM THIS ORIGIN, AND THAT IS THE POINT.
 #
 # Until 30 August 2026 these three lines were a preconnect to
@@ -289,7 +308,7 @@ def bar(rel=""):
     HOME = rel or "./"
     return f'''<header class="site-bar">
   <div class="shell">
-    <a class="mark" href="{HOME}"><span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
+    <a class="mark" href="{HOME}"><img class="m0" src="{rel}assets/media/{MARK['file']}" width="{MARK['w']}" height="{MARK['h']}" alt="EQLS" decoding="async"><span class="m1">{SITE}</span><span class="m2">{TAG}</span></a>
     <button class="burger" aria-expanded="false" aria-controls="nav">Menu</button>
     <nav class="site-nav" id="nav">
       <a href="{rel}dungeons/">Dungeons</a>
