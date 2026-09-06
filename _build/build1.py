@@ -481,6 +481,33 @@ _au_subs = "\n".join(f'          <p class="featsub">{t}</p>' for t in AB['subs']
 _au_sig = ('\n          <p class="hero-sig featsig">'
            + "".join(f'<span>{x}</span>' for x in AB['sig'])
            + '</p>') if AB['sig'] else ''
+
+# THE POSTER IS NAMED IN assets/auras.json, NOT HERE, AND THAT IS THE WHOLE FIX.
+#
+# This file hardcoded the key 'auras-poster' in three places: the two src
+# attributes below and - the dangerous one - the guard at the end of the band.
+# Renaming the poster to `auras-hero` on 5 Sep 2026 therefore did not break the
+# build. IT DELETED THE ENTIRE =AURAS FEATURE BAND FROM THE HOME PAGE, silently,
+# and all 717 pages checked green.
+#
+# The guard was written to degrade gracefully on a machine with no media, which
+# is right. GRACEFUL DEGRADATION AND A SILENT REGRESSION ARE THE SAME OUTPUT:
+# the band's absence is indistinguishable from "this machine has no _media/".
+# And the orphan check that would have caught /auras going unreachable stayed
+# green, because the footer route added on 3 Sep survives independently - the
+# fix for R301 masked the symptom this would otherwise have shown.
+#
+# So the key is read from the data now, and scripts/check.py fails the build if
+# any key named in auras.json's media block is missing from media.json.
+_AU_POSTER_KEY = (AURAS.get('media') or {}).get('poster') or 'auras-poster'
+_AU_TRAILER_KEY = (AURAS.get('media') or {}).get('trailer') or 'auras-trailer'
+_au_poster = MEDIA.get(_AU_POSTER_KEY, {})
+# Intrinsic size from the manifest rather than a typed 1600x900. The old poster
+# happened to be exactly that; auras-hero is 1123x710, and a wrong width/height
+# pair is not cosmetic - it is the aspect ratio the browser reserves before the
+# bytes arrive, which is what stops the page jumping.
+_au_pw = _au_poster.get('w') or 1600
+_au_ph = _au_poster.get('h') or 900
 # The first door leads; the rest follow. `lead` is what makes the download the
 # filled button rather than the outline one.
 _au_doors = "\n".join(
@@ -493,9 +520,9 @@ auras = f'''
     <div class="featwrap">
       <div class="featgrid">
         <figure class="feattrailer" id="auwrap"
-                data-video="assets/media/{MEDIA['auras-trailer']['file']}"
-                data-poster="assets/media/{MEDIA['auras-poster']['file']}">
-          <img src="assets/media/{MEDIA['auras-poster']['file']}" width="1600" height="900"
+                data-video="assets/media/{MEDIA[_AU_TRAILER_KEY]['file']}"
+                data-poster="assets/media/{_au_poster['file']}">
+          <img src="assets/media/{_au_poster['file']}" width="{_au_pw}" height="{_au_ph}"
                alt="{AB['alt']}">
           <button class="vplay" type="button">Play</button>
           <figcaption><span>{AURAS['caption']}</span></figcaption>
@@ -542,7 +569,7 @@ auras = f'''
     </div>
   </div>
 </section>
-''' if MEDIA.get('auras-trailer') and MEDIA.get('auras-poster') else ''
+''' if MEDIA.get(_AU_TRAILER_KEY) and _au_poster else ''
 
 from changelog import ENTRIES, TONE
 

@@ -38,12 +38,23 @@ if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t)
   margin:0 0 var(--s-4)}
 .au-shot{margin:0 0 var(--s-5);border:1px solid var(--rule);border-radius:var(--r);
   overflow:hidden;background:var(--surface-2)}
-.au-shot video,.au-shot img{display:block;width:100%;height:auto;aspect-ratio:16/9;
-  object-fit:cover}
+/* EACH STILL KEEPS ITS OWN SHAPE. This was aspect-ratio:16/9 with
+   object-fit:cover, which is right when every asset is a 16:9 frame and
+   destructive the moment one is not. Shara's seven run from 322x408 PORTRAIT to
+   1123x710: measured 5 Sep 2026, the list-aura still scaled to 474px to cover a
+   210px slot, so 56 per cent of it was cropped away - and that is the image
+   carrying her "icon grid or list" claim, which is exactly what the crop
+   removed. width/height are on every img, so the browser derives the correct
+   ratio itself and still reserves the box before the bytes land. */
+.au-shot video,.au-shot img{display:block;width:100%;height:auto}
 .au-shot figcaption{font-family:"IBM Plex Mono",monospace;font-size:var(--t-2xs);
   letter-spacing:.1em;text-transform:uppercase;color:var(--faint);
   padding:10px 14px;border-top:1px solid var(--rule)}
-.au-grid{display:grid;gap:var(--s-4);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+/* start, not stretch: a figure sizes to its own image now that the images
+   are different heights, so a short one does not grow a border to match
+   the tallest in its row. */
+.au-grid{display:grid;gap:var(--s-4);align-items:start;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
 .au-get{display:inline-flex;align-items:center;gap:var(--s-3);margin:var(--s-5) 0 0;
   padding:13px 22px;border-radius:var(--r);background:var(--bone);color:var(--surface-0);
   font-family:"Saira Condensed",sans-serif;font-weight:700;font-size:var(--t-lg);
@@ -106,8 +117,8 @@ try{localStorage.setItem("eqls-theme",next);}catch(e){}});})()</script>
 
 <section class="band" style="border-top:0;padding-top:0">
   <div class="shell">
-    <figure class="au-shot" id="auwrap2" data-video="assets/media/auras-trailer.5fc3fbbc.mp4" data-poster="assets/media/auras-poster.5c861299.jpg"><img src="assets/media/auras-poster.5c861299.jpg" width="1600" height="900" alt=""><button class="vplay" type="button">Play</button><figcaption>The overlay in play &middot; 9s, silent</figcaption></figure>
-    
+    <figure class="au-shot" id="auwrap2" data-video="assets/media/auras-trailer.5fc3fbbc.mp4" data-poster="assets/media/auras-hero.f4c9fb24.jpg"><img src="assets/media/auras-hero.f4c9fb24.jpg" width="1123" height="710" alt=""><button class="vplay" type="button">Play</button><figcaption>The overlay in play &middot; 9s, silent</figcaption></figure>
+    <div class="au-grid"><figure class="au-shot"><img src="assets/media/auras-list-aura.29519895.jpg" loading="lazy" alt="" width="322" height="408"></figure><figure class="au-shot"><img src="assets/media/auras-add-aura.036605e4.png" loading="lazy" alt="" width="985" height="731"></figure><figure class="au-shot"><img src="assets/media/auras-lockouts.9ab9e76a.png" loading="lazy" alt="" width="902" height="560"></figure><figure class="au-shot"><img src="assets/media/auras-travel-popup.21606cd4.jpg" loading="lazy" alt="" width="637" height="474"></figure><figure class="au-shot"><img src="assets/media/auras-travel-route.c82d7c4a.jpg" loading="lazy" alt="" width="390" height="264"></figure><figure class="au-shot"><img src="assets/media/auras-stances.83376766.png" loading="lazy" alt="" width="755" height="468"></figure></div>
     <div class="au-body"><p>EQLS Auras watches your log while you play and puts a click-through overlay on screen with a timer for every buff you&rsquo;re running. Build as many overlays as you want, put them where you want, give them sounds. Point an aura at any line in your log, not just buffs the app knows. It hides when you tab out of EQ and comes back when you tab in. It tracks your weekly raid lockouts, which EQ never prints.</p><p>It reads files the client already has: the log it writes as you play, your spellbook, and the game&rsquo;s own spell icons. It does not read or alter the game&rsquo;s memory, inject code into it, or send it input. <strong>It fetches its typeface from Google each time it launches</strong>, which discloses your IP address to Google; beyond that it sends nothing &mdash; no telemetry, no analytics, no update check. That fetch is the main window only: <strong>the overlay drawn over the game requests nothing at all.</strong></p><p>The idea is WeakAuras&rsquo;. The code is not: a from-scratch implementation for EverQuest Legends, sharing no code and no trigger format with it, and neither affiliated with nor endorsed by its authors.</p></div>
     
   </div>

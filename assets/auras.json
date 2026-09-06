@@ -19,9 +19,16 @@
  "_links_note": "Optional. Each entry {\"href\": ..., \"label\": ..., \"note\": ...}. Somewhere it runs, a guide, a place to report a problem. Empty renders nothing.",
  "media": {
   "trailer": "auras-trailer",
-  "poster": "auras-poster",
-  "gallery": [],
-  "_gallery_note": "Keys into assets/media.json. Drop Shara's stills or GIFs into _media/, run python3 _build/media.py, then list their keys here — e.g. [\"auras-timers\", \"auras-setup\"]. Each renders in a fixed 16:9 slot, so adding one moves no layout. An animated GIF is treated as an image and is not motion-gated; prefer a video for anything long.",
+  "poster": "auras-hero",
+  "gallery": [
+   "auras-list-aura",
+   "auras-add-aura",
+   "auras-lockouts",
+   "auras-travel-popup",
+   "auras-travel-route",
+   "auras-stances"
+  ],
+  "_gallery_note": "Keys into assets/media.json. Drop Shara's stills into _media/, run python3 _build/media.py, then list their keys here. THE SLOT IS NO LONGER 16:9. It was, with object-fit:cover, and that silently cropped anything not 16:9 - auras-list-aura is 322x408 PORTRAIT and would have lost roughly four fifths of itself, which is the image that carries her 'icon grid or list' claim. Each figure now takes its own intrinsic ratio from media.json's w/h, so a portrait still stays portrait. Adding one still moves no layout: the grid is auto-fit and rows size themselves.",
   "_shotlist": [
    "Shara's intended shots, her numbering and her labels. 1-5 do most of the work.",
    "1 Hero: EQ running, two or three auras overlaid, buffs mid-countdown",
@@ -35,7 +42,8 @@
    "9 Raid lockout page",
    "10 Sound picker",
    "Videos: 1 Make an aura 20-30s, 2 Custom trigger 15-20s, 3 Share a setup 15s"
-  ]
+  ],
+  "_poster_note": "auras-hero replaced auras-poster on 5 Sep 2026. The owner's words about the old one were 'just extremely bad', and they were right: it was a full 1600x900 frame with every UI window open - chat log, loot spam, group and pet windows, two spell bars, a map and a tooltip - in which the product's own buff row was a thin strip along the top. Shara made 01-hero for this purpose and it shows the buff grid and the aura tiles legibly. Her PNG was 1,089,162 bytes at 1.37 bytes/pixel, photographic content in a lossless format; Session C's progressive JPEG q85 pass is 166,862 at 0.21, checked at native size for artefacts."
  },
  "caption": "The overlay in play &middot; 9s, silent",
  "_source": "HIGHLIGHTS.md (Shara, via the owner) - ## Pitch, re-read 5 Sep 2026 at LoxyBee/EQLS-Auras@8da2cc88. The lede here was her 1 Sep line, 'Stop alt-tabbing to check your buffs.', which SHE DELETED on 3 Sep at fdf623a7 in a commit titled 'docs: drop \"stop alt-tabbing\" from the pitch line'. We published a sentence its author had retired, for two days, on three surfaces. body[0] was checked at the same time and still matches hers exactly. THE READ-DATE IS THE ONLY THING THAT MAKES THAT VISIBLE - it is not decoration.",

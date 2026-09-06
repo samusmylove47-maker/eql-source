@@ -1092,6 +1092,47 @@ if _md:
             fail(f"public/assets/media/{_ent['file']} is {len(_mblob)} bytes "
                  f"against {_ent['bytes']} recorded in assets/media.json")
 
+# ---- a media key named in a dataset must exist in the manifest --------------
+#
+# GRACEFUL DEGRADATION AND A SILENT REGRESSION ARE THE SAME OUTPUT, and on
+# 5 Sep 2026 that cost the entire =Auras feature band.
+#
+# _build/build1.py wrapped the band in `if MEDIA.get('auras-trailer') and
+# MEDIA.get('auras-poster')`, so a machine with no _media/ renders no band
+# instead of a broken image. That is correct. But the key was HARDCODED, and
+# renaming the poster to `auras-hero` made the guard false — so the band
+# vanished from the home page, the build printed success, and ALL 717 PAGES
+# CHECKED GREEN.
+#
+# Nothing could see it. The orphan rule that would have caught /auras going
+# unreachable stayed green because the footer route added on 3 Sep survives on
+# its own — the fix for one fault masked the symptom of this one.
+#
+# So: every media key a dataset NAMES must exist in the manifest. A rename now
+# fails loudly at the point the name stops resolving, rather than quietly
+# removing whatever the name was holding up.
+for _ds, _keys in (("assets/auras.json", ("trailer", "poster")),):
+    try:
+        _dsj = json.load(open(_ds, encoding="utf-8"))
+    except (OSError, ValueError):
+        continue                      # the dataset's own checks cover its absence
+    _dsm = _dsj.get("media") or {}
+    _named = [(k, _dsm.get(k)) for k in _keys if _dsm.get(k)]
+    _named += [(f"gallery[{i}]", g) for i, g in enumerate(_dsm.get("gallery") or [])]
+    if _md is None:
+        pass                          # no manifest at all is reported above
+    else:
+        for _slot, _key in _named:
+            if _key not in _md:
+                fail(f"{_ds} names media key {_key!r} at {_slot}, which is not in "
+                     f"assets/media.json. Whatever that key was holding up has "
+                     f"silently stopped rendering — this is the fault that removed "
+                     f"the =Auras band from the home page on 5 Sep 2026. Either "
+                     f"put the file in _media/ and re-run python3 _build/media.py, "
+                     f"or change the name here deliberately")
+        if _named:
+            print(f"  media keys named in datasets: {len(_named)} checked, all resolve")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of
