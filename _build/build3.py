@@ -3,7 +3,7 @@ ROOT=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json, re, shutil, os
-from withheld import WITHHELD, REASON, MARK
+from withheld import WITHHELD, REASON, MARK, word
 # Phrases a survey must not type for itself — the experience ranking above all.
 # See _build/derived.py for why one typed superlative became four typed
 # ordinals before this existed.
@@ -218,7 +218,12 @@ def mark_withheld(h, slug):
         h, n = pat.subn(lambda m: m.group(1) + MARK + m.group(3), h)
         hits += n
     if hits:
-        note = ('<p class="whnote"><strong>Why six positions are missing.</strong> '
+        # `hits` is what was actually substituted on THIS page, which is the
+        # quantity the heading claims. It was typed as "six" and would have
+        # stayed six.
+        note = (f'<p class="whnote"><strong>Why {word(hits).lower()} position'
+                f'{"" if hits == 1 else "s"} '
+                f'{"is" if hits == 1 else "are"} missing.</strong> '
                 + REASON.get(slug, '') + '</p>')
         # after the roster table that carries them
         i = h.find(MARK)

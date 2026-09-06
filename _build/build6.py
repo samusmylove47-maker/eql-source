@@ -178,7 +178,9 @@ def lift(hexc, pct=0.56):
     a=[int(hexc[i:i+2],16) for i in (1,3,5)]; b=[0xE6,0xE9,0xE4]
     return '#%02X%02X%02X' % tuple(round(a[i]*pct+b[i]*(1-pct)) for i in range(3))
 
-ON_FLOOR = 120          # world units; a mob this close to drawn floor is on the map
+# The pages that STATE this number now read the same constant. See
+# _build/thresholds.py for why it stopped living here.
+from thresholds import ON_FLOOR
 
 def seg_dist(px, py, a, b):
     """Distance from a point to a line segment."""

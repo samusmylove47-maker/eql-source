@@ -638,6 +638,13 @@ if os.path.exists("build.sh"):
                    # condition differently. It emits nothing, so build.sh
                    # has nothing to run it for.
                    "appskip.py",
+                   # One constant: the distance gate 3 allows between a
+                   # recorded coordinate and drawn floor. build6.py ENFORCES
+                   # it and build1.py STATES it in prose, and until 6 Sep 2026
+                   # those were two independent literals in two files. Emits
+                   # nothing; a module with no side effects is the only kind a
+                   # generator can safely import.
+                   "thresholds.py",
                    # Rewrites _build/source/*.html in place, so it is hand-run
                    # like prose_budget.py. A script that rewrites its own
                    # inputs on every build eventually rewrites something it

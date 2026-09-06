@@ -4,6 +4,9 @@ os.chdir(ROOT)
 sys.path.insert(0, os.path.join(ROOT,'_build'))
 import json
 from _partials import head, bar, foot, TOOLS, wordnum
+# The number gate 3 ENFORCES, so the sentence stating it cannot drift from
+# the check. See _build/thresholds.py.
+from thresholds import ON_FLOOR
 
 # The home page's door named this tool by hand while the nav and the footer
 # read it from the registry, so a rename moved two of the three. It reads from
@@ -821,9 +824,20 @@ _CLEARED = [
    "against the survey, not sampled. It is how Kelynn was found missing from Crushbone."),
   ("History from the API", "Edit history taken from MediaWiki, never the page footer. Footers were "
    "stale on four of the first five zones checked; Befallen's was two months out."),
-  ("Coordinates on drawn floor", "All 176 plotted positions land within 120 units of walkable floor "
-   "extracted from the game's own mesh files. Six impossible Najena coordinates were caught this "
-   "way and withheld."),
+  # DORMANT AND STALE, WHICH IS THE WORST COMBINATION: this branch publishes on
+  # the day the last verification gate clears, and nobody re-reads celebration
+  # copy before it ships. It typed 176 against a live 182, "120" against
+  # ON_FLOOR, and "Six" against len(WITHHELD).
+  #
+  # THE COUNTS ARE GONE RATHER THAN DERIVED, and that is the cheaper honest
+  # answer here. `176` lives in build6.py as tot_measured and is not in scope in
+  # this file; plumbing it across a build-order dependency to feed a sentence
+  # that has never rendered would be more machinery than the claim is worth.
+  # CLAUDE.md section 7 already prefers the fact to the tally. ON_FLOOR stays
+  # because it is now a shared constant and cannot drift.
+  ("Coordinates on drawn floor", f"Every plotted position lands within {ON_FLOOR} units of walkable "
+   f"floor extracted from the game's own mesh files. The impossible Najena coordinates were caught "
+   f"this way and withheld."),
 ]
 if _open:
     gaterows = "\n".join(
@@ -881,7 +895,7 @@ dung = head("Dungeon surveys",
           <p class="lede" style="margin:0">A zone counts as verified only when all three gates pass: its
             wiki page was fetched in full and its roster re-compared, <em>its edit history was
             fetched</em> &mdash; not merely the footer date &mdash; and <em>every coordinate lands on
-            drawn floor</em>, within 120 units of geometry extracted from the game&rsquo;s own mesh
+            drawn floor</em>, within {ON_FLOOR} units of geometry extracted from the game&rsquo;s own mesh
             files.</p></div></div>
         <p class="lede">{verdict}</p>
       </div>
