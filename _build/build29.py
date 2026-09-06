@@ -306,15 +306,56 @@ SHOTS = ''.join(shot(*s) for s in (
 ))
 # The source line is rendered from the provenance file, never typed. A date and
 # a hash beside an image are the same kind of claim as a figure beside a table.
+#
+# THIS SENTENCE SAID "STILL HASHES TO" AND COULD NOT EVER SAY OTHERWISE.
+#
+# Written 3 Sep 2026 so a stale shot could be identified rather than suspected.
+# The hash and the date came from the data; the word "still" was typed here. So
+# the only sentence it could produce was a present-tense assertion of continuity,
+# and it had no way to announce that its moment had passed.
+#
+# It passed on 5 Sep. The planner rebuilt, the payload went from 22edb1547457 to
+# 917ff6713832, and this page went on saying "still" for a day - on the page the
+# relaunch points at. Nothing could catch it: the build has no network, so no
+# check here can re-derive a hash that lives on another origin.
+#
+# THE REASON IT MOVED IS THE FIX I ASKED FOR. Measured 6 Sep: 300 items both
+# sides, 0 added, 0 removed, 11 rows changed and the ONLY differing field is
+# `evidence` - tier0-inventory-<character>.txt became tier0-inventory.txt.
+# Session B redacted the owner's character name, which is exactly what #188
+# flagged. So the shots still show what the planner ships and only the sentence
+# was wrong.
+#
+# The remedy is not a fresher hash - that re-arms the same trap on the next
+# rebuild. The DATA now carries the verdict and this renders whichever verdict it
+# holds, in the past tense, anchored to the day it was taken. A record that goes
+# stale now shows as an old DATE rather than as a false CLAIM, which is the
+# difference between a reader distrusting a figure and being misled by one.
 _B = SHOTMETA.get('build', {})
 _V = SHOTMETA.get('payload_verified', {})
 SHOTSRC = ''
 if SHOTS and _B:
+    _shot_hash = _B.get('payload_sha256_12', '')
+    _seen = _V.get('payload_sha256_12') or _shot_hash
+    _when = _V.get('date', '')
+    if _seen == _shot_hash:
+        _state = (f'The catalogue payload they were taken against hashed '
+                  f'<code>{_shot_hash}</code>, and still did when this was last '
+                  f'checked on {_when}.')
+    else:
+        # The planner has rebuilt. Whether that matters to a READER depends
+        # entirely on whether any item moved, so say which - not just that the
+        # hash differs, which on its own tells nobody anything.
+        _drift = _V.get('items_changed')
+        _state = (f'They were taken against a catalogue payload hashing '
+                  f'<code>{_shot_hash}</code>. The planner has rebuilt since: on '
+                  f'{_when} it hashed <code>{_seen}</code>, '
+                  + ('with no item added, removed or altered, so these still show '
+                     'what it ships.' if _drift == 0 else
+                     f'with {_drift} item(s) changed.'))
     SHOTSRC = (
         f'<p class="src">Taken {_B.get("taken", "")[:10]} from the planner&rsquo;s own '
-        f'repository at commit <code>{_B.get("commit", "")[:8]}</code>. The catalogue '
-        f'behind them still hashes to <code>{_B.get("payload_sha256_12", "")}</code>, '
-        f'checked here {_V.get("date", "")}.</p>')
+        f'repository at commit <code>{_B.get("commit", "")[:8]}</code>. {_state}</p>')
 # The whole band disappears if the media has not been built, rather than leaving
 # a heading over an empty grid.
 BAND_SHOTS = f'''

@@ -17,9 +17,13 @@
   "taken": "2026-09-03T19:13:02Z"
  },
  "payload_verified": {
-  "date": "2026-09-03",
-  "how": "fetched the live items-index.json and hashed it here, rather than taking the manifest's word",
-  "result": "matched 22edb1547457"
+  "date": "2026-09-06",
+  "how": "fetched the live items-index.json and hashed it here, then diffed it item by item against the 3 Sep copy the shots were taken against",
+  "payload_sha256_12": "917ff6713832",
+  "matches_shot_payload": false,
+  "items_changed": 0,
+  "_finding": "THE PAYLOAD MOVED AND NOT ONE ITEM DID. 300 items on both sides, 0 added, 0 removed, 11 rows changed, and the only differing field is `evidence`: tier0-inventory-<character>.txt became tier0-inventory.txt. Session B redacted the owner character name that #188 flagged on 3 Sep, which is the fix this repo asked for. So the screenshots still depict what the planner ships and the only thing that was wrong was our sentence about it. POSITIVE CONTROL: the 3 Sep copy still hashes to 22edb1547457 by the same method, so the mismatch is a change in the file and not in the measurement.",
+  "_recheck": "Re-fetch the payload named in build.payload above, sha256 the first 12, and diff by item id. Update date, payload_sha256_12, matches_shot_payload and items_changed together. The page renders whichever verdict these hold; it cannot assert continuity on its own any more."
  },
  "character": "Ashvane, invented for the capture and geared by the planner's own auto-fill against the shipped catalogue. No real character, account or inventory export is loaded by the spec that takes these.",
  "shots": [
