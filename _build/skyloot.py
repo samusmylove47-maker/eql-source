@@ -156,7 +156,13 @@ def main():
             attackers_max=max(f['attackers'] for f in fs),
             our_share_max=max(f['our_damage_share_pct'] for f in fs),
             self_heals=max(f.get('self_heal_high') or 0 for f in fs),
-            spells=sorted({sp for f in fs for sp in (f.get('spells') or {})}),
+            # Announced casts AND spells seen only landing - the union, matching
+            # spells_distinct. Added 6 Sep 2026: three Sky bosses published an
+            # empty spell list while landing one, because the parser read
+            # announcements only.
+            spells=sorted({sp for f in fs
+                           for sp in list(f.get('spells') or {})
+                           + list(f.get('spells_landed') or {})}),
             casts=dict(m.get('casts') or {}),
             melee_avg=m.get('avg'),
             melee_max=m.get('maxhit'),

@@ -334,6 +334,38 @@ def parse_log(path):
         spell=re.compile(rf'^{boss_pat(b)} has taken (\d+) damage from (.+?)\.$'),
         slain=re.compile(rf'^(?:{boss_pat(b)} has been slain by|You have slain {boss_pat(b)})'),
         cast=re.compile(rf'^{boss_pat(b)} begins casting (.+?)\.$'),
+        # A SPELL THE BOSS NEVER ANNOUNCES IS STILL A SPELL IT CAST.
+        #
+        # `cast` above is an ANNOUNCEMENT, and until 6 Sep 2026 it was the only
+        # way a spell could enter this dataset. Some bosses never announce: the
+        # only trace they leave is the spell landing on somebody, named and
+        # attributed. Protector of Sky announced 0 casts in 1,918 lines naming
+        # it and published `spells: {}` and `spells_distinct: 0` - while landing
+        # `Whirl Bolt` on players 42 times. `learn/difficulty.html` duly printed
+        # its Spells column as 0, on the same page as a derived note calling it
+        # a caster. The note was right and the column was wrong.
+        #
+        # Measured across the corpus: 17 of 36 bosses carry at least one spell
+        # visible only as a landing, and THREE published an empty spell list
+        # while demonstrably casting - Protector of Sky (Whirl Bolt), Eye of
+        # Veeshan and Gorgalosk (Soul Devour, Stone Breath).
+        #
+        # The positive control that found it: the same announcement pattern
+        # returns 275 for Avatar of Abhorrence and 71 for The Spiroc Lord over
+        # the same logs, so the zero was a real property of the boss - of its
+        # ANNOUNCEMENTS. Proving a pattern works on the cases it already finds
+        # says nothing about the cases it cannot see, and that was the whole
+        # error: the control was sampled from inside the blind region.
+        #
+        # KEPT SEPARATE FROM `casts` DELIBERATELY. These lines are ticks and
+        # hits, not decisions - CLAUDE.md section 9 records the same trap on
+        # self-heals, where "ten times at D4" was one effect ticking every six
+        # seconds. Folding them into `casts` would publish a cast count that is
+        # really a damage-line count. The NAME is the fact; the tally is not.
+        land_dd=re.compile(
+            rf'^{boss_pat(b)} hit .+? for \d+ points? of .+? damage by (.+?)\.$'),
+        land_dot=re.compile(
+            rf'^.+? has taken \d+ damage from (.+?) by {boss_pat(b)}\.$'),
         heal=re.compile(rf'^{boss_pat(b)} healed itself for (\d+) hit points by (.+?)\.$'),
         # A BOSS'S PET IS NOT THE BOSS, AND THE MELEE PATTERN COULD NOT TELL.
         #
@@ -404,6 +436,17 @@ def parse_log(path):
         for boss, rx in boss_re.items():
             if boss_sub[boss] not in b:
                 continue
+            # A LANDING IS NOT COUNTED AS ACTIVITY HERE, DELIBERATELY.
+            #
+            # `land_dd`/`land_dot` were added 6 Sep 2026 and a spell landing is
+            # as good a sign of life as a swing, so consistency argues for
+            # adding them to this test too. It is left out because this field
+            # feeds `joined_late_seconds` and `damage_is_floor`, which are
+            # published damage-quality figures, and moving those is a different
+            # decision from making a spell visible. `build11.py` states the same
+            # rule about the Spells column it renders: recorded, not quietly
+            # changed. Adding it here is a one-line change and belongs in its
+            # own commit, with the damage diff measured.
             if boss not in open_fights and boss not in first_active and (
                     rx['melee'].match(b) or rx['cast'].match(b)):
                 first_active[boss] = ts
@@ -413,6 +456,7 @@ def parse_log(path):
                     boss=boss, zone=zone, zone_invite=zone_invite,
                     character=char, start=ts, damage=0,
                     healed=0, heal_count=0, casts=collections.Counter(),
+                    landed=collections.Counter(),
                     melee_verbs=collections.Counter(), melee_hits=[],
                     pet_verbs=collections.Counter(), has_pet=False,
                     by=collections.Counter(),
@@ -428,6 +472,12 @@ def parse_log(path):
             c = rx['cast'].match(b)
             if c:
                 f['casts'][c.group(1)] += 1
+                break
+            # A landing, not an announcement. See `land_dd` above for why these
+            # are counted apart from `casts` rather than added to it.
+            ld = rx['land_dd'].match(b) or rx['land_dot'].match(b)
+            if ld:
+                f['landed'][ld.group(1)] += 1
                 break
             h = rx['heal'].match(b)
             if h:
@@ -522,7 +572,13 @@ def fmt(f):
         "damage_to_kill": f['damage'],
         "self_healed": f['healed'], "self_heal_count": f['heal_count'],
         "spells": dict(sorted(f['casts'].items(), key=lambda kv: -kv[1])),
-        "spells_distinct": len(f['casts']),
+        # Spells seen only because they landed. The count is damage lines, not
+        # casts, which is why it is a separate field with a separate name.
+        "spells_landed": dict(sorted(f['landed'].items(), key=lambda kv: -kv[1])),
+        # THE UNION, because the question this answers is "how many distinct
+        # spells did this boss use", and a spell that never announced itself is
+        # not a spell it did not cast.
+        "spells_distinct": len(set(f['casts']) | set(f['landed'])),
         # SWING COUNTS ARE NOT PUBLISHED (CLAUDE.md section 7), so what leaves
         # here is the SET of verbs. Which kit a boss runs is the fact; how many
         # times it swung is a record of somebody's play.
@@ -618,6 +674,12 @@ def merge(rows):
         for o in obs:
             for k, v in o['spells'].items():
                 spells[k] = max(spells.get(k, 0), v)
+        # Landings union across clients exactly as announcements do: a tick one
+        # client was out of range to see still landed on somebody.
+        landed = {}
+        for o in obs:
+            for k, v in (o.get('spells_landed') or {}).items():
+                landed[k] = max(landed.get(k, 0), v)
         heals = [o['self_heal_count'] for o in obs]
         out.append({
             "boss": boss, "difficulty": diff,
@@ -650,7 +712,8 @@ def merge(rows):
             "seconds": max(o['seconds'] for o in obs),
             # union across clients: a spell one client missed still happened
             "spells": dict(sorted(spells.items(), key=lambda kv: -kv[1])),
-            "spells_distinct": len(spells),
+            "spells_landed": dict(sorted(landed.items(), key=lambda kv: -kv[1])),
+            "spells_distinct": len(set(spells) | set(landed)),
             "self_heal_low": min(heals), "self_heal_high": max(heals),
             # Union across clients, exactly as spells are: a swing one client
             # was out of position for still happened. The SET, never the count -
@@ -786,6 +849,46 @@ def selftest():
     if ranks != sorted(ranks) or len(set(ranks)) != len(ranks):
         print(f"  [BAD] the rules do not rank strongest-first: {ranks}")
         bad += 1
+
+    # THE SPELL PATTERNS, AS A MATCHED PAIR PER PATTERN.
+    #
+    # A detector is proved by one input it must flag and one it must pass. The
+    # must-pass cases are the whole point here: `land_dot` reads a line whose
+    # SUBJECT is somebody else, so the one thing it must never do is credit the
+    # boss with a spell that was cast AT it. Every "must not" below is a real
+    # line shape from the corpus, not an invented one.
+    b = 'Protector of Sky'
+    rx = dict(
+        cast=re.compile(rf'^{boss_pat(b)} begins casting (.+?)\.$'),
+        land_dd=re.compile(
+            rf'^{boss_pat(b)} hit .+? for \d+ points? of .+? damage by (.+?)\.$'),
+        land_dot=re.compile(
+            rf'^.+? has taken \d+ damage from (.+?) by {boss_pat(b)}\.$'))
+    spell_cases = [
+        ('land_dot', True, 'Accurately has taken 200 damage from Whirl Bolt '
+                           'by Protector of Sky.', 'Whirl Bolt'),
+        ('land_dd', True, 'Protector of Sky hit Kuzco for 583 points of '
+                          'unresistable damage by Whirl Bolt.', 'Whirl Bolt'),
+        ('cast', True, 'Protector of Sky begins casting Whirl Bolt.', 'Whirl Bolt'),
+        # MUST NOT FIRE. The boss is the TARGET here, not the caster: this is a
+        # player's damage-over-time ticking on it. Crediting the boss with it
+        # would invent a spell out of somebody else's spellbook.
+        ('land_dot', False, 'Protector of Sky has taken 200 damage from '
+                            'Chords of Dissonance VII by Avenrae.', None),
+        # MUST NOT FIRE. Ordinary melee, no spell named.
+        ('land_dd', False, 'Protector of Sky hits Kuzco for 62 points of damage.',
+         None),
+        # MUST NOT FIRE. An emote, which is what the whole finding turned on:
+        # "begins to chant" is not "begins casting".
+        ('cast', False, 'Protector of Sky begins to chant.', None),
+    ]
+    for name, should, line, want in spell_cases:
+        m = rx[name].match(line)
+        got = m.group(1) if m else None
+        ok = (got == want) if should else (m is None)
+        bad += not ok
+        print(f"  [{'ok ' if ok else 'BAD'}] {name:<8} "
+              f"{'catches' if should else 'passes '} {line[:58]}")
 
     print('\nEvery rule fired and the ranking is strictly strongest-first.'
           if not bad else f'\n{bad} case(s) failed.')

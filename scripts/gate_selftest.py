@@ -216,7 +216,39 @@ def _media_poke(text):
     return json.dumps(d, indent=1, sort_keys=True)
 
 
+def _zero_a_named_caster(text):
+    """Print 0 spells for a boss the same page calls a caster.
+
+    The boss is READ OUT OF THE NOTE rather than typed here, so this case
+    cannot quietly become a no-op the day the set of backstabbing bosses
+    changes - the fault the count cases above were rewritten to avoid.
+    """
+    m = re.search(r'rogue ability, and (.+?) cast as well', text, re.S)
+    if not m:
+        return text                       # reported as TEST BROKEN, not passed
+    boss = re.sub(r'<[^>]+>', '', m.group(1)).strip().split(',')[0].strip()
+    out = []
+    for row in re.split(r'(?=<tr>)', text):
+        cells = re.findall(r'<td[^>]*>.*?</td>', row, re.S)
+        if len(cells) >= 5 and f'>{boss}<' in cells[0]:
+            row = row.replace(cells[4], '<td class="lv">0</td>', 1)
+        out.append(row)
+    return ''.join(out)
+
+
 CASES = [
+    # THE NOTE AND THE TABLE CELL ARE TWO READINGS OF ONE DATASET, computed
+    # differently - the note over every fight, the cell over the fullest views
+    # only - and on 6 Sep 2026 they contradicted each other in public. The page
+    # called Protector of Sky a caster four rows under its own cell printing 0.
+    # The upstream cause was a parser that saw only announced casts; this proves
+    # the page-level check that would have caught it is still alive, because the
+    # parser fix is upstream and nothing on the page would notice it regressing.
+    ("a boss called a caster whose own Spells column reads 0",
+     "casts, and prints its own Spells column as 0 on the same page",
+     "public/learn/difficulty.html",
+     _zero_a_named_caster),
+
     # A tool whose data constant went missing. The Sky tracker shipped on 14
     # August with ORDER undefined: the class picker rendered nothing, the trio
     # could never reach three, the Build button was permanently disabled, and

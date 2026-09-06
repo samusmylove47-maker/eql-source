@@ -254,7 +254,8 @@
    "our_share_max": 100.0,
    "self_heals": 1,
    "spells": [
-    "Deadly Poison"
+    "Deadly Poison",
+    "Soul Leech"
    ],
    "casts": {
     "Deadly Poison": 683
@@ -464,7 +465,8 @@
    "our_share_max": 100.0,
    "self_heals": 2,
    "spells": [
-    "Deadly Poison"
+    "Deadly Poison",
+    "Soul Leech"
    ],
    "casts": {
     "Deadly Poison": 1842
@@ -595,7 +597,9 @@
    "attackers_max": 6,
    "our_share_max": 100.0,
    "self_heals": 0,
-   "spells": [],
+   "spells": [
+    "Soul Devour"
+   ],
    "casts": {},
    "melee_avg": 91.6,
    "melee_max": 192,
@@ -694,7 +698,9 @@
    "attackers_max": 5,
    "our_share_max": 100.0,
    "self_heals": 0,
-   "spells": [],
+   "spells": [
+    "Stone Breath"
+   ],
    "casts": {},
    "melee_avg": 71.3,
    "melee_max": 345,
@@ -898,7 +904,8 @@
    "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
-    "Efreeti Fire"
+    "Efreeti Fire",
+    "Soul Devour"
    ],
    "casts": {
     "Efreeti Fire": 38
@@ -1030,7 +1037,8 @@
    "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
-    "Efreeti Fire"
+    "Efreeti Fire",
+    "Soul Devour"
    ],
    "casts": {
     "Efreeti Fire": 13
@@ -1145,7 +1153,9 @@
    "attackers_max": 7,
    "our_share_max": 100.0,
    "self_heals": 0,
-   "spells": [],
+   "spells": [
+    "Whirl Bolt"
+   ],
    "casts": {},
    "melee_avg": 146.0,
    "melee_max": 278,
@@ -1402,7 +1412,8 @@
    "our_share_max": 100.0,
    "self_heals": 0,
    "spells": [
-    "Efreeti Fire"
+    "Efreeti Fire",
+    "Soul Devour"
    ],
    "casts": {},
    "melee_avg": null,
@@ -1444,7 +1455,8 @@
     "Greater Spiroc Thunder",
     "Immolate",
     "Invoke Lightning",
-    "Scorching Arrow"
+    "Scorching Arrow",
+    "Stone Spider Stun"
    ],
    "casts": {
     "Greater Spiroc Thunder": 13,
