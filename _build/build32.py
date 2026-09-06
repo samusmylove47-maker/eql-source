@@ -23,9 +23,14 @@ GitHub releases URL — is the one thing this project refuses on every other pag
 and a launch is not a reason to start.**
 
 MEDIA IS A DROP-IN. Shara's stills and GIFs land in `_media/`, `media.py` hashes
-them, their keys go in `media.gallery`, and each renders in a fixed 16:9 slot.
-Adding one moves no layout, so assets arriving late cost a rebuild and not a
-redesign.
+them, and their keys go in `sections[].images` - beside the section each one
+illustrates - or in `media.gallery` for the flat set. Adding one moves no
+layout, so assets arriving late cost a rebuild and not a redesign.
+
+This said "each renders in a fixed 16:9 slot" until 6 Sep 2026. It does not, and
+had not since the day before: EACH STILL KEEPS ITS OWN SHAPE. See the CSS
+comment above `.au-shot img` for what the fixed slot did to a 322x408 portrait -
+it cropped away 56 per cent of the one image carrying the claim beside it.
 
 THE TRAILER IS DEFERRED, and that is not optional: `scripts/mediadefer.js`
 fails the build if any `<video>` carries an eager `src` or `poster`. The pattern
@@ -104,7 +109,16 @@ CSS = '''<style>
 
 
 def shot(key, caption=None, vid=False):
-    """One fixed 16:9 slot. Video is deferred; an image is lazy."""
+    """One slot, at the asset's OWN aspect ratio. Video is deferred; an image
+    is lazy.
+
+    Not 16:9. width and height come from the manifest and the browser derives
+    the ratio, which is what stops a portrait still being cropped to a
+    landscape box - and still reserves the space before the bytes land.
+
+    Returns '' for a key the manifest does not hold. That is deliberate on a
+    launch page, and it is why check.py walks every key this is called with:
+    silent degradation and a silent regression are the same output."""
     m = MEDIA.get(key)
     if not m:
         return ''

@@ -78,13 +78,13 @@ and every one of `gate.py`'s seven unreachable `warn(` calls has the same shape:
 the seven, not the coverage. *Acceptance: the figure regenerates from a command
 rather than being typed here, per HANDOFF.md's own rule.*
 
-**`melee_verbs` is measured and rendered nowhere.** `raidstats.py` parses and
-stores it; no page reads it. The boss table on `learn/difficulty.html` has a
-Spells column and no melee column, so every backstabbing raid boss in the corpus
-reads there as a caster — including Phinigel Autropos, whose three kits are now
-recorded in CLAUDE.md section 9. *Acceptance: either published, or moved to the
-"do not build" table with a reason. An unread field with no note beside it is what
-a later session deletes as dead.*
+**~~`melee_verbs` is measured and rendered nowhere.~~ Done, #189, 4 Sep 2026.**
+The boss table on `learn/difficulty.html` carries a Melee column; `backstabs`
+renders in bold where it appears, and Phinigel Autropos' row shows it beside his
+spells. Three merges landed after that and none struck this item, which is why
+it sat here as open work for two days — the acceptance criterion was met and
+nothing marked it. Struck 6 Sep 2026. See also the note under the table, which
+is derived from the same field.
 
 **A correction can sit merged on `main` and unserved to readers indefinitely.**
 It happened for weeks once, and nothing in the toolchain watches for it.
@@ -649,7 +649,26 @@ field, which `refresh-upgrades.mjs` writes from a constant.
 
 ## P5 - The =logo family, and settling the sibling tool names
 
-**Recorded 18 Aug 2026, not started. `docs/DESIGN.md`'s call, with the owner.**
+**Recorded 18 Aug 2026. THE MARK LANDED 6 Sep 2026 (#200); THE NAMES DID NOT.**
+`docs/DESIGN.md`'s call, with the owner.
+
+Shara's mark ships in `_build/_partials.py`'s header, so it is on **702 of the
+719 built pages** — every page `_partials.head()` writes. The 17 without it are
+the imported plates and tools, which carry their own chrome and are injected by
+`build3.py` rather than built by `_partials`; that is the same 15-plus-2 set
+CLAUDE.md section 5 records as not linking `site.css` either. Counted 6 Sep
+2026, not typed:
+
+```bash
+grep -rl 'class="mark"' public/ | wc -l ; find public -name '*.html' | wc -l
+```
+
+**So the instruction below to "get the owner's decision on the mark before
+touching a single generator" is spent.** That decision was taken and the mark is
+live. What remains open is everything after it: the sibling tool NAMES, which is
+the larger and more expensive half and has not moved.
+
+Do not read the paragraphs below as though the mark were still undecided.
 
 The product is **EQLS Auras**, which reads aloud as "Equals Auras". That is not
 an abbreviation that happened to fit; it is the anchor for a planned logo family

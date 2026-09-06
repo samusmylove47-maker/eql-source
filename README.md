@@ -54,58 +54,65 @@ request — merging it publishes the fix, by the same one route as everything el
 
 ## Structure
 
+**Everything served lives under `public/`.** This block placed `index.html`,
+`sources.html`, `assets/`, `dungeons/`, `raids/` and `tools/` at the repository
+root until 6 September 2026. None of them has ever been there — `wrangler.jsonc`
+serves `./public` as the assets directory, and that is what the paths below
+reflect. It also listed `tools/plane-of-sky.html`, withdrawn on 17 Aug 2026 when
+the Sky Ledger superseded it, and omitted five tools that ship.
+
 ```
-index.html              home — the spectrum, section entries      GENERATED
-sources.html            sourcing standard, gaps, change log       GENERATED
-wrangler.jsonc          the host: a Worker serving ./public
-public/_headers         headers, cache policy, redirects — the file actually read
-netlify.toml            INERT. Nothing reads it; kept as history
 build.sh                full rebuild
 site.config.json        name, tagline, URL — the only place these live
-scripts/check.py        pre-commit validation. Run before every commit
-state/                  automation memory. Do not hand-edit
+wrangler.jsonc          the host: a Worker serving ./public
+netlify.toml            INERT. Nothing reads it; kept as history
+CLAUDE.md               the project rules. Read before your first edit
+HANDOFF.md              current state and open work
+START-HERE.md           the door for a cold session
+_build/                 the generators. Outside public/, so never published
+_media/                 source media. media.py hashes it into public/assets/media
+assets/                 the INTERNAL datasets and the stylesheet source
+docs/                   BACKLOG, DESIGN, SOURCES, AUTOMATION
+scripts/                check.py, gate.py, conformance.js and the rest
+sources/raw/            fetched patch notes, kept verbatim
+state/                  automation memory and the build stamp. Do not hand-edit
 .claude/                Claude Code settings and custom slash commands
 .github/workflows/      the scheduled refresh
-favicon.svg             the spectrum, in miniature
-robots.txt              GENERATED
-sitemap.xml             GENERATED
 
-assets/
-  site.css              the whole design system, one file
-  site.js               nav only, deliberately tiny
-  zones-index.json      hand-edited. Drives all navigation
-  index-data.json       GENERATED — mined from the plates by extract.py
+public/                 EVERYTHING SERVED. All GENERATED unless said otherwise
+  index.html            home — the plate cards
+  sources.html          sourcing standard, gaps, change log
+  search.html           site search index
+  404.html
+  favicon.svg  robots.txt  sitemap.xml
+  _headers              headers, cache policy, redirects — the file actually read
+  assets/
+    site.css            the whole design system, one file
+    fonts/              26 self-hosted .woff2 since 30 Aug 2026, plus fonts.css
+    media/  og/         hashed media and the share cards
+  data/                 public/data/*.vN.json — the datasets as a PUBLIC CONTRACT
+  dungeons/             the surveys, their floor plans and navigation maps
+  raids/                index and the Plane of Sky page
+  items/  named/        one page each, plus two A–Z hubs
+  learn/                the explainers
+  archive/              the ten original plates, verbatim
+  app/                  the Sky Ledger and Lockouts browser builds, hash-named
+  tools/                index.html plus one page per entry in _partials.TOOLS —
+                        50-upgrades, combo-calculator, faction-impact,
+                        gap-engine, index-search, lockouts, race-unlocks,
+                        sky-ledger
+
+assets/                 (internal, NOT served)
+  zones-index.json      hand-edited. DRIVES ALL NAVIGATION
+  index-data.json       GENERATED — mined from the surveys by extract.py
+  zone-geometry.json    floor plans from the game meshes. Committed, not built
   vendor/three.min.js   r128, vendored. Loaded by no page since the encounter
                         viewer was withdrawn on 17 Aug 2026
-
-dungeons/               GENERATED
-  index.html            the ten plates and the five maps
-  <slug>.html           survey plates (imported from _build/source/)
-  <slug>-map.html       navigation maps (imported)
-
-raids/
-  index.html            encounter index                            GENERATED
-  plane-of-sky.html     the Sky page, side elevation from the mesh  GENERATED
-
-tools/                  GENERATED
-  index.html
-  plane-of-sky.html     Sky class-unlock tracker
-  race-unlocks.html     race unlock tracker
-  combo-calculator.html same app, boots on the calculator tab, shares one save
-  index-search.html     The Index — every item and named mob mined from the
-                        surveys. Counts deliberately not repeated here: the two
-                        that were (452 and 208) had drifted to 435 and 232
-
-_build/                 outside ./public, so never published at all
-  _partials.py          shared head, nav bar and footer
-  build1.py             home and dungeon index
-  build2.py             tools, raids and sources indexes
-  build3.py             imports the plates and tools, injects chrome
-  build5.py             The Index
-  extract.py            mines the plates into assets/index-data.json
-  sitemap.py            sitemap + robots
-  source/               the original plates and tools. Edit these
 ```
+
+Counts are deliberately not repeated here: the two that were (452 and 208) had
+drifted to 435 and 232 before anyone noticed. `_partials.TOOLS` is the count of
+tools; `assets/zones-index.json` is the count of zones.
 
 Anything marked GENERATED is overwritten by `./build.sh`. Edit the originals in
 `_build/source/` or the generators in `_build/`.
@@ -122,9 +129,18 @@ Never edit the copy in `dungeons/` — a rebuild overwrites it.
 and the dungeon index all read from it, so one edit updates everything.
 
 **A new zone.** Add it to `assets/zones-index.json` with the next plate number
-and an unused accent, drop `<slug>.html` into `_build/source/`, run
-`./build.sh`, and change `grid-template-columns:repeat(10,1fr)` in `site.css`
-to the new zone count.
+and an unused accent, drop `<slug>.html` into `_build/source/`, and run
+`./build.sh`. **That is the whole procedure.**
+
+This used to end "and change `grid-template-columns:repeat(10,1fr)` in
+`site.css` to the new zone count". There is no such rule in `site.css` and there
+has not been since the fixed-column spectrum was withdrawn on 8 Aug 2026 and
+replaced by the plate cards, which reflow. CLAUDE.md section 8 says so in as
+many words — *"The plate grid reflows on its own; nothing in `site.css` needs a
+count updated"* — so the README was telling a reader to hand-edit a layout
+constant that no longer exists, in the one document a newcomer reads first.
+`check.py` fails if the home page stops linking a zone, which is the real
+backstop.
 
 **A new raid encounter.** There is no template, deliberately. `_build/build4.py`
 and the Eye of Veeshan page it rendered were withdrawn on 17 Aug 2026 because

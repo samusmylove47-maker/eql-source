@@ -32,13 +32,31 @@
  * this script does not measure, and the gain is a check that is alive.
  *
  * It makes NO typography or aesthetic judgement, and it must not be extended to
- * make one. Every page links three Google-hosted faces, this script aborts
+ * make one WITHOUT ASKING FIRST. The rule stands; the reason it was given no
+ * longer does, and those are different things.
+ *
+ * This said: "Every page links three Google-hosted faces, this script aborts
  * every non-file: request, and the fonts therefore render as system fallbacks —
  * so line length, rhythm, and whether a label fits its box are all measured
- * against a page that is not the page which ships. Overflow at 390px is
- * reported because CLAUDE.md sets it as a hard rule and a fallback face is
- * wider than the real one, which makes this the conservative direction: a
- * measurement here is a lower bound on the real page's fit.
+ * against a page that is not the page which ships."
+ *
+ * THE FACES WERE SELF-HOSTED ON 30 AUGUST 2026. 26 committed .woff2 files, no
+ * page linking a remote face, and a full sweep reporting 0 non-file requests
+ * aborted. So every page IS laid out in the type that ships, and the argument
+ * above has been false since the day it was written into this header. The
+ * script itself printed both halves at once for a while — "0 non-file
+ * request(s) aborted" and "the webfonts were aborted", in adjacent lines.
+ *
+ * The ban may still be right: a layout sweep that starts grading typography
+ * grows a second job. But that case has not been made, and nobody should cite
+ * the fallback fonts for it, because they no longer fall back. CLAUDE.md
+ * section 5 says the same thing and says to ask before extending this.
+ *
+ * Overflow at 390px is still reported because CLAUDE.md sets it as a hard rule.
+ * The old note called that the conservative direction on the grounds that a
+ * fallback face is wider than the real one — that reasoning is gone with the
+ * fallbacks, and the measurement no longer needs it: it is now simply the
+ * width the reader gets.
  *
  * WHY EVERY REQUEST IS ABORTED
  * ----------------------------
@@ -742,7 +760,11 @@ const showAll = args.includes('--show');
   console.log(`
 Reported, not judged. ${blocked} remote request(s) were aborted and the faces`);
   console.log('are self-hosted, so this WAS laid out in the type that ships.');
-  console.log('statement about type, rhythm or whether a label fits its box.');
+  // Was a fragment with no subject — the tail of a sentence rewritten when the
+  // faces stopped falling back, left on the path a reader sees whenever the
+  // sweep is not clean.
+  console.log('Even so, nothing above is a statement about type, rhythm or');
+  console.log('whether a label fits its box. See the header before extending it.');
   cleanup();
   process.exit(0);
 })().catch((e) => {

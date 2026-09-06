@@ -923,24 +923,30 @@ if _sl:
     if not _linked:
         fail(f"public/app/{_app['file']} is served but no page links it")
 
-# ---- the EQLS Lockouts app, copied but deliberately not promoted ------------
-# Same guard as the Sky Ledger's, with one clause deliberately different.
+# ---- the EQLS Lockouts app --------------------------------------------------
+# Same guard as the Sky Ledger's, with one clause that reads a flag instead of
+# being fixed.
 #
 # The record must exist, the file it names must be on disk, its name must still
 # be a hash of its own contents, and no earlier build may still be sitting
 # there. All of that is identical, and all of it catches the same fault: an
 # asset served under a stable URL going stale in a reader's cache in silence.
 #
-# WHAT IS DIFFERENT, AND WHY IT IS A WARN
-# The Sky Ledger block ends by FAILING when no page links the hashed file. That
-# is right for a promoted tool and wrong here: by the Director's order of
-# 25 August 2026 this app is copied without a tools/ page or a landing band,
-# pending a report from Session D. So an unlinked file is the intended state.
+# THIS HEADER DESCRIBED AN INTERIM STATE THAT ENDED. Until 6 Sep 2026 it said
+# the app was "copied but deliberately not promoted" by the Director's order of
+# 25 August, that an unlinked file was the intended state, and that the link
+# clause was a WARN standing in for a fail() somebody should turn on later.
 #
-# It is a WARN rather than nothing at all, because a check that quietly permits
-# an interim state permits it forever. The warning names the promotion that is
-# owed, appears in every build, and goes away by itself the moment a page links
-# the file. When that happens, turn this into the same fail() the Ledger uses.
+# Somebody did. The tool is promoted: tools/lockouts.html exists and the home
+# page links the hashed file. The clause below stopped being a WARN and became
+# a fail() derived from `promoted` in assets/lockouts.json - see the comment
+# beside it, which is the current one. This header sat above that code
+# describing its predecessor.
+#
+# Which is the fault it warned about, one level up: a check that quietly
+# permits an interim state permits it forever, and a COMMENT that describes an
+# interim state outlives it just as easily. The code was updated in place and
+# the paragraph explaining it was not.
 try:
     _lk = json.load(open("assets/lockouts.json", encoding="utf-8"))
 except FileNotFoundError:
@@ -1126,6 +1132,24 @@ for _ds, _keys in (("assets/auras.json", ("trailer", "poster")),):
     _dsm = _dsj.get("media") or {}
     _named = [(k, _dsm.get(k)) for k in _keys if _dsm.get(k)]
     _named += [(f"gallery[{i}]", g) for i, g in enumerate(_dsm.get("gallery") or [])]
+    # A SECOND PLACE THE DATASET NAMES MEDIA KEYS, ADDED BY #199 AND NOT
+    # ADDED HERE. This guard was written when `media.gallery` was the only
+    # list; the per-section placement that replaced the flat gallery puts six
+    # more keys in `sections[].images`, and build32.py renders every one of
+    # them through the same shot() that returns '' for a missing key. So the
+    # exact silent degradation this check exists to catch had a second
+    # entrance from the day the check was written.
+    #
+    # All six resolve today. That is what the fault looked like last time too:
+    # the =Auras band vanished from the home page with 717 pages green.
+    #
+    # The paths are enumerated rather than discovered, because a walk that
+    # guessed which strings are media keys could not tell a missing key from a
+    # string that was never one. When a generator learns to read keys from a
+    # new place, it is added here - that coupling is the point.
+    _named += [(f"sections[{i}].images[{j}]", k)
+               for i, _sec in enumerate(_dsj.get("sections") or [])
+               for j, k in enumerate(_sec.get("images") or [])]
     if _md is None:
         pass                          # no manifest at all is reported above
     else:

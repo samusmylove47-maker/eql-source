@@ -320,12 +320,18 @@ It is the second time the published triple-class claim has shown up in a log
 after Innoruuk, and the first where one of the three is a **melee** kit rather
 than a second spell list.
 
-**The data is stored and nothing publishes it.** `melee_verbs` is recorded in
-`assets/raids-measured.json`, but no page renders melee verbs, so the row on
-`learn/difficulty.html` shows his spells and not his backstab. Publishing it
-would be a new claim on a page rather than a catch-up parse, so I have not
-written it. Say the word and it goes on the Kedge survey or the difficulty
-explainer, derived from `melee_verbs` rather than typed.
+**~~The data is stored and nothing publishes it.~~ Published by #189 on
+4 September 2026.** `learn/difficulty.html`'s boss table carries a Melee column
+derived from `melee_verbs`, with `backstabs` in bold where it appears, so
+Phinigel's row now shows the backstab beside the spells. The offer above stood
+for two days after the work was done; struck 6 Sep 2026.
+
+**And the note under that table was wrong about one boss until the same day.**
+It named every backstabber as also casting, on a set filtered by `melee_verbs`
+alone. Protector of Sky read as a non-caster because `raidstats.py` counted only
+spells a boss ANNOUNCED, and that boss announces none — it lands `Whirl Bolt`
+without ever naming it. 17 of 36 bosses had incomplete spell lists for the same
+reason. Fixed at the parser.
 
 
 ## For the session working on the planner
