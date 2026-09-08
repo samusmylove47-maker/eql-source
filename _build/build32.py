@@ -38,6 +38,7 @@ here is the home page's, for the same reason — 2.19 MB of trailer must not loa
 before a reader has seen anything.
 """
 import json
+import re
 import os
 import sys
 
@@ -189,10 +190,29 @@ feats = "".join(feature(x) for x in (A.get('sections') or []))
 # Her install steps sit beside the download, which is where somebody reads them.
 # Ours compressed the same thing into one sentence in the band foot and did not
 # mention what SmartScreen actually says.
+# HER COPY ARRIVES AS MARKDOWN, BECAUSE HER SOURCE IS MARKDOWN.
+#
+# RELEASE-PAGE.md was transported in verbatim at #199 - which is the correct
+# way to move somebody else's words, and exactly why nobody re-read them as
+# Markdown afterwards. So `**More info**` and `**Run anyway**` shipped as
+# literal asterisks in step 3 of 4, at the moment a first-time reader is being
+# warned by Windows not to run the thing.
+#
+# Rendering her emphasis is not editing her copy: the asterisks ARE the
+# emphasis she wrote, and printing them raw is the change she did not make.
+# Bold only - this is not a Markdown parser and must not grow into one. Any
+# other construct is a decision for whoever transports it.
+_MD_BOLD = re.compile(r'\*\*([^*\n]+)\*\*')
+
+
+def md(t):
+    return _MD_BOLD.sub(r'<strong>\1</strong>', t)
+
+
 _ins = A.get('install') or {}
 install = ''
 if _ins.get('steps'):
-    _steps = "".join(f'<li>{t}</li>' for t in _ins['steps'])
+    _steps = "".join(f'<li>{md(t)}</li>' for t in _ins['steps'])
     install = (f'<div class="au-install"><h2>Installing</h2><ol>{_steps}</ol>'
                + (f'<p class="au-plat">{_ins["note"]}</p>' if _ins.get('note') else '')
                + '</div>')

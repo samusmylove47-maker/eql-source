@@ -120,7 +120,7 @@ page = (head("What the scanner finds here",
     <h2 class="sec">Mechanics we know changed</h2>
     <p class="lede">A hit here is probably a wrong number, because the mechanic it describes
       demonstrably works differently in Legends.</p>
-    <div class="tw"><table>
+    <div class="tw"><table class="dtable">
       <thead><tr><th>Signature</th><th>Unmarked</th><th>Marked</th><th>What it is</th></tr></thead>
       <tbody>{rows(CHANGED)}</tbody>
     </table></div>
@@ -130,7 +130,7 @@ page = (head("What the scanner finds here",
       often still current. They are counted because in aggregate they measure how much of a
       page was transcribed from a classic-era record, which is worth knowing even when every
       number in it is right.</p>
-    <div class="tw"><table>
+    <div class="tw"><table class="dtable">
       <thead><tr><th>Signature</th><th>Unmarked</th><th>Marked</th><th>What it is</th></tr></thead>
       <tbody>{rows(CONV)}</tbody>
     </table></div>

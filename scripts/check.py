@@ -1164,6 +1164,34 @@ for _ds, _keys in (("assets/auras.json", ("trailer", "poster")),):
         if _named:
             print(f"  media keys named in datasets: {len(_named)} checked, all resolve")
 
+# ---- unrendered Markdown reaching a reader ---------------------------------
+#
+# Shara's copy is authored in Markdown and transported into assets/auras.json
+# verbatim, which is the right way to move somebody else's words and exactly
+# why nobody re-reads them afterwards. `**More info**` and `**Run anyway**`
+# shipped as literal asterisks in step 3 of the install list - the step a
+# first-time reader follows while Windows is telling them not to run the thing.
+#
+# It is invisible to every other check here: the markup is well formed, the
+# links resolve, the page is not empty and the prose budget does not care what
+# the characters mean. Only a reader would have noticed, and readers are the
+# people this would have reached.
+#
+# Bold only, matching the renderer in _build/build32.py, and deliberately not a
+# Markdown detector: a rule that flagged every underscore or backtick on a site
+# that writes about `code` would be turned off within a week.
+_MD_LEFT = re.compile(r"\*\*[^*\n]{1,60}\*\*")
+_md_hits = []
+for _p in pages:
+    _t = open(_p, encoding="utf-8", errors="replace").read()
+    _t = re.sub(r"<script.*?</script>|<style.*?</style>", "", _t, flags=re.S)
+    for _m in _MD_LEFT.findall(_t):
+        _md_hits.append((_p, _m))
+for _p, _m in _md_hits[:10]:
+    fail(f"{_p} ships unrendered Markdown to a reader: {_m}. It came from a "
+         f"Markdown source and something moved it into HTML without rendering "
+         f"it. Render it at the generator, or write the emphasis as markup")
+
 # ---- the propagation gate ---------------------------------------------------
 # Everything above checks that a page is well formed. This checks that facts
 # agree with each other and with the data they came from, which is the class of

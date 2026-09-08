@@ -539,7 +539,7 @@ You have entered The City of Guk 4 (Refined).</pre>
          stylesheet's overflow-x:auto wrapper and sixteen pages already use it.
          Borrowing a class across a stylesheet boundary fails silently, because
          an undefined class is not an error in CSS. -->
-    <div class="tw"><table>
+    <div class="tw"><table class="dtable">
       <thead><tr><th>Tier</th><th>Damage to kill</th><th>Fight</th><th>Spells</th>
         <th>Self-heals</th><th>What he cast</th></tr></thead>
       <tbody>{_yael_rows}</tbody>
@@ -560,7 +560,7 @@ You have entered The City of Guk 4 (Refined).</pre>
       same fight sat apart. Most were measured in a group instance rather than the open zone. A row
       marked <em>floor</em> was measured from part-way into the fight, so it is a lower bound
       rather than the cost of the fight.</p>
-    <div class="tw"><table>
+    <div class="tw"><table class="dtable">
       <thead><tr><th>Boss</th><th>Tier</th><th>Damage to kill</th><th>Fight</th>
         <th>Spells</th><th>Self-heals</th><th>Melee</th></tr></thead>
       <tbody>{_other_rows}</tbody>

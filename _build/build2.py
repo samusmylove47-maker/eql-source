@@ -62,7 +62,13 @@ _rows = "".join(
     f'<td class="wp-note">{WP[s_]["note"]}</td></tr>'
     for s_ in sorted(WP, key=lambda k: BYSLUG[k]["plate"]))
 
-wiki_table = f"""<div class="tw"><table class="wp">
+# `.wp` IS DEFINED NOWHERE. This is the table on the page that exists to show
+# how each claim was sourced, and it rendered in browser defaults - no rules,
+# no mono header, no tabular revision numbers - because the class it hangs on
+# was never written into site.css. `.dtable` is the house table and is what it
+# should have carried; `wp` is kept beside it so the per-cell hooks below stay
+# addressable if anyone ever does define them.
+wiki_table = f"""<div class="tw"><table class="dtable wp">
   <thead><tr><th>Zone</th><th>Wiki page last edited</th><th>Revision</th><th>Editor</th>
     <th>Origin</th><th>What that means here</th></tr></thead>
   <tbody>{_rows}</tbody>
